@@ -22,7 +22,11 @@
     "recharts": "^2.15.1",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
-    "victory": "^37.3.6"
+    "victory": "^37.3.6",
+    "@codemirror/lang-javascript": "^6.1.9",
+    "@uiw/react-codemirror": "^4.21.9",
+    "prism-react-renderer": "^2.0.6",
+    "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
