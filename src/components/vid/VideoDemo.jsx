@@ -378,7 +378,7 @@ const MotionAmplification = () => {
             >
               <Upload className="w-4 h-4 mr-2" />
               Upload
-            </button>
+            </button><br/>
             <button 
               className={`flex items-center px-4 py-2 ${activeView === 'preview' ? 'bg-blue-500 text-white' : 'text-gray-700'}`}
               onClick={() => videoUrl && setActiveView('preview')}
@@ -386,7 +386,7 @@ const MotionAmplification = () => {
             >
               <Settings className="w-4 h-4 mr-2" />
               Preview
-            </button>
+            </button><br />
             <button 
               className={`flex items-center px-4 py-2 ${activeView === 'processing' ? 'bg-blue-500 text-white' : 'text-gray-700'}`}
               disabled={true}
