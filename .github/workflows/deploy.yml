@@ -19,7 +19,7 @@ jobs:
           node-version: '21.1'
           
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
         
       - name: Build
         run: yarn build
@@ -28,9 +28,9 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
-          branch: gh-pages        
+          branch: main        
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
-          branch: gh-pages
+          branch: main
