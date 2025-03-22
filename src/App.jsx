@@ -10,9 +10,11 @@ import ImageManipulator from './components/imaging/ImageManipulator'
 import ArticlePage from './components/WebArticle'
 import GitHubActionsMobileManager from './components/thehub/github-actions-mobile-ui'
 import MotionAmplification from './components/vid/VideoDemo'
+import PulseDetectionVisualizer from './components/vid/PulseExample'
 
 // Component keys enum
 const COMPONENTS = {
+  PULSE: 'pulse-demo',
   GH_DEMO: 'gh-demo',
   IMAGE_DEMO: 'image-demo',
   ARTICLE_DEMO: 'article-demo',
@@ -25,6 +27,11 @@ const COMPONENTS = {
 
 // Navigation items configuration
 const navigationItems = [
+ { 
+    id: COMPONENTS.PULSE, 
+    label: 'Pulse Demo', 
+    component: PulseDetectionVisualizer 
+  },
   { 
     id: COMPONENTS.GH_DEMO, 
     label: 'GH Demo', 
@@ -79,7 +86,7 @@ const NavItem = ({ id, label, isActive, onClick }) => (
 
 function App() {
   // State to track which component is active
-  const [activeComponent, setActiveComponent] = useState(COMPONENTS.AMPLIFY_DEMO)
+  const [activeComponent, setActiveComponent] = useState(COMPONENTS.PULSE)
   const [isNavOpen, setIsNavOpen] = useState(false)
 
   // Get active component from configuration
