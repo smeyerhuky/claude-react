@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, Code, Cpu, Zap, Cloud, Share2, Shield, Camera, RefreshCw, MapPin, Library, Lock, Bookmark, Layers, Settings, Database } from 'lucide-react';
-// If using React Syntax Highlighter, you would import it like this:
-// import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-// import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { ChevronDown, ChevronUp, Code, Cpu, Zap, Cloud, Share2, Shield, Camera, RefreshCw, Database } from 'lucide-react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const ArticlePage = () => {
   return (
@@ -13,9 +12,9 @@ const ArticlePage = () => {
         <TauOverview />
         <ConceptMappings />
         <ESP32Integration />
+        <CodeExample />
         <UseCases />
         <ImplementationConsiderations />
-        <CodeExample />
         <FuturePossibilities />
         <Conclusion />
       </div>
@@ -25,21 +24,21 @@ const ArticlePage = () => {
 
 const Header = () => {
   return (
-    <div className="bg-gradient-to-r from-blue-600 to-indigo-800 text-white py-12 px-4">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-4">Reimagining IoT: ESP32 and Taubyte's Tau</h1>
-        <div className="flex items-center space-x-2">
-          <div className="w-10 h-10 rounded-full bg-white text-indigo-800 flex items-center justify-center font-bold">EB</div>
-          <div>
-            <p className="font-medium">Emily Branson</p>
-            <p className="text-sm opacity-80">IoT Solutions Architect</p>
-          </div>
-        </div>
-        <p className="mt-6 text-lg max-w-3xl">
-          Exploring how ESP32 microcontrollers can participate in Taubyte's decentralized cloud computing ecosystem, challenging traditional cloud-device relationships.
-        </p>
+<div className="bg-gradient-to-r from-blue-600 to-indigo-800 text-white py-12 px-4">
+  <div className="max-w-4xl mx-auto">
+    <h1 className="text-4xl font-bold mb-4">Reimagining IoT: ESP32 and Taubyte's Tau</h1>
+    <div className="flex items-start space-x-2">
+      <div className="w-10 h-10 rounded-full bg-white text-indigo-800 flex items-center justify-center font-bold">EB</div>
+      <div>
+        <p className="font-medium">Emily Branson</p>
+        <p className="text-sm opacity-80">IoT Solutions Architect</p>
       </div>
     </div>
+    <p className="mt-6 text-lg max-w-3xl">
+      Exploring how ESP32 microcontrollers can participate in Taubyte's decentralized cloud computing ecosystem, challenging traditional cloud-device relationships.
+    </p>
+  </div>
+</div>
   );
 };
 
@@ -415,8 +414,10 @@ const ImplementationConsiderations = () => {
 
 const CodeExample = () => {
   const [showCode, setShowCode] = useState(false);
-  const [formatterInfo, setFormatterInfo] = useState(false);
+  const [fontSize, setFontSize] = useState(14);
+  const [theme, setTheme] = useState('vscDarkPlus');
   
+  // Code snippet - ESP32 C++ code for Tau integration
   const codeSnippet = `// Minimal ESP32 client for Tau network
 #include "TauNanoClient.h"
 #include "WiFi.h"
@@ -426,7 +427,7 @@ const char* ssid = "YourWiFiSSID";
 const char* password = "YourWiFiPassword";
 
 // Tau node to connect to initially
-const char* bootstrapNode = "/ip4/192.168.1.100/tcp/4242/p2p/12D3KooWKv5oNF2a6h9sYzRUPEAaYe6feTbBbcLYZYVFrMDDCHzY";
+const char* bootstrapNode = "/ip4/192.168.1.100/tcp/4242/p2p/<hash>";
 
 TauNanoClient tauClient;
 const char* contentId = nullptr;  // Will store our published content ID
@@ -494,130 +495,119 @@ float readHumidity() {
   // Read from your humidity sensor
   return 45.2;  // Placeholder value
 }`;
-  
+
+  // Theme options for the code editor
+  const themeOptions = [
+    { value: 'vscDarkPlus', label: 'VS Code Dark+' },
+    { value: 'dracula', label: 'Dracula' },
+    { value: 'atomDark', label: 'Atom Dark' },
+    { value: 'materialDark', label: 'Material Dark' }
+  ];
+
+  // Function to get the selected theme style
+  const getThemeStyle = () => {
+    switch (theme) {
+      case 'dracula':
+        return import('react-syntax-highlighter/dist/esm/styles/prism/dracula')
+          .then(module => module.default);
+      case 'atomDark':
+        return import('react-syntax-highlighter/dist/esm/styles/prism/atom-dark')
+          .then(module => module.default);
+      case 'materialDark':
+        return import('react-syntax-highlighter/dist/esm/styles/prism/material-dark')
+          .then(module => module.default);
+      default:
+        return Promise.resolve(vscDarkPlus);
+    }
+  };
+
+  // Use useState to store the dynamically imported theme
+  const [themeStyle, setThemeStyle] = useState(vscDarkPlus);
+
+  // Update theme style when theme changes
+  React.useEffect(() => {
+    getThemeStyle().then(style => setThemeStyle(style));
+  }, [theme]);
+
   return (
     <section className="mb-12">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-bold">ESP32 Integration Example</h2>
-        <div className="flex space-x-2">
-          <button 
-            onClick={() => setFormatterInfo(!formatterInfo)} 
-            className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md flex items-center"
-          >
-            <Settings className="mr-2" />
-            {formatterInfo ? "Hide Formatters" : "Code Formatters"}
-          </button>
-          <button 
-            onClick={() => setShowCode(!showCode)} 
-            className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-md flex items-center"
-          >
-            <Code className="mr-2" />
-            {showCode ? "Hide Code" : "Show Code"}
-          </button>
-        </div>
+        <button 
+          onClick={() => setShowCode(!showCode)} 
+          className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-md flex items-center"
+        >
+          <Code className="mr-2" />
+          {showCode ? "Hide Code" : "Show Code"}
+        </button>
       </div>
       
-      {formatterInfo && (
-        <div className="bg-white p-5 rounded-lg shadow-sm mb-4 border-l-4 border-indigo-500">
-          <h3 className="font-bold text-xl mb-3">Code Formatter Libraries for React</h3>
-          
-          <div className="space-y-4">
-            <div>
-              <h4 className="font-bold text-lg">1. Prettier</h4>
-              <p className="mb-2">The most popular JavaScript code formatter that enforces consistent style.</p>
-              <div className="bg-gray-100 p-3 rounded">
-                <code>npm install --save-dev prettier</code>
-                <p className="mt-2 text-sm">Add a .prettierrc file to customize rules:</p>
-                <pre className="text-sm">{`{
-  "semi": true,
-  "tabWidth": 2,
-  "printWidth": 80,
-  "singleQuote": true
-}`}</pre>
-              </div>
+      {showCode && (
+        <div className="rounded-lg overflow-hidden mb-6">
+          {/* Control Panel */}
+          <div className="bg-gray-800 p-3 border-b border-gray-700 flex flex-wrap items-center gap-4">
+            <div className="flex space-x-2 mr-4">
+              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
             </div>
+            <span className="text-gray-300 text-xs">TauNanoClient.cpp</span>
             
-            <div>
-              <h4 className="font-bold text-lg">2. ESLint</h4>
-              <p className="mb-2">Identifies and fixes problems in JavaScript/React code.</p>
-              <div className="bg-gray-100 p-3 rounded">
-                <code>npm install --save-dev eslint eslint-plugin-react</code>
-                <p className="mt-2 text-sm">Configure via .eslintrc.js:</p>
-                <pre className="text-sm">{`module.exports = {
-  extends: [
-    'eslint:recommended', 
-    'plugin:react/recommended'
-  ],
-  // Additional rules
-}`}</pre>
+            <div className="ml-auto flex items-center gap-4">
+              {/* Font Size Control */}
+              <div className="flex items-center">
+                <label htmlFor="fontSize" className="text-gray-300 text-xs mr-2">Font Size:</label>
+                <input
+                  id="fontSize"
+                  type="range"
+                  min="10"
+                  max="20"
+                  value={fontSize}
+                  onChange={(e) => setFontSize(parseInt(e.target.value))}
+                  className="w-24"
+                />
+                <span className="text-gray-300 text-xs ml-1">{fontSize}px</span>
               </div>
-            </div>
-            
-            <div>
-              <h4 className="font-bold text-lg">3. React Syntax Highlighter</h4>
-              <p className="mb-2">Component for displaying syntax-highlighted code in your React app.</p>
-              <div className="bg-gray-100 p-3 rounded">
-                <code>npm install react-syntax-highlighter</code>
-                <p className="mt-2 text-sm">Example usage:</p>
-                <pre className="text-sm">{`import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-
-<SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-  {codeString}
-</SyntaxHighlighter>`}</pre>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-bold text-lg">4. Prism.js</h4>
-              <p className="mb-2">Lightweight syntax highlighting library with React components available.</p>
-              <div className="bg-gray-100 p-3 rounded">
-                <code>npm install prismjs prism-react-renderer</code>
-                <p className="mt-2 text-sm">Example with prism-react-renderer:</p>
-                <pre className="text-sm">{`import Highlight, { defaultProps } from 'prism-react-renderer';
-import theme from 'prism-react-renderer/themes/nightOwl';
-
-<Highlight {...defaultProps} code={codeString} language="jsx" theme={theme}>
-  {({ className, style, tokens, getLineProps, getTokenProps }) => (
-    <pre className={className} style={style}>
-      {tokens.map((line, i) => (
-        <div {...getLineProps({ line, key: i })}>
-          {line.map((token, key) => (
-            <span {...getTokenProps({ token, key })} />
-          ))}
-        </div>
-      ))}
-    </pre>
-  )}
-</Highlight>`}</pre>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-bold text-lg">5. CodeMirror</h4>
-              <p className="mb-2">Full-featured code editor component for React applications.</p>
-              <div className="bg-gray-100 p-3 rounded">
-                <code>npm install @uiw/react-codemirror @codemirror/lang-javascript</code>
-                <p className="mt-2 text-sm">Example usage:</p>
-                <pre className="text-sm">{`import CodeMirror from '@uiw/react-codemirror';
-import { javascript } from '@codemirror/lang-javascript';
-
-<CodeMirror
-  value={code}
-  height="200px"
-  extensions={[javascript({ jsx: true })]}
-  onChange={(value) => setCode(value)}
-  theme="dark"
-/>`}</pre>
+              
+              {/* Theme Selector */}
+              <div className="flex items-center">
+                <label htmlFor="theme" className="text-gray-300 text-xs mr-2">Theme:</label>
+                <select
+                  id="theme"
+                  value={theme}
+                  onChange={(e) => setTheme(e.target.value)}
+                  className="bg-gray-700 text-gray-200 text-xs rounded px-2 py-1"
+                >
+                  {themeOptions.map(option => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
           </div>
-        </div>
-      )}
-      
-      {showCode && (
-        <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm mb-4">
-          <pre>{codeSnippet}</pre>
+          
+          {/* Code Display */}
+          <SyntaxHighlighter
+            language="cpp"
+            style={themeStyle}
+            showLineNumbers={true}
+            wrapLines={true}
+            customStyle={{
+              margin: 0,
+              fontSize: `${fontSize}px`,
+              borderRadius: '0 0 0.5rem 0.5rem'
+            }}
+            lineNumberStyle={{
+              minWidth: '2.5em',
+              paddingRight: '1em',
+              textAlign: 'right',
+              color: '#858585'
+            }}
+          >
+            {codeSnippet}
+          </SyntaxHighlighter>
         </div>
       )}
       
