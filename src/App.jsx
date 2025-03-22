@@ -8,17 +8,17 @@ import PendulumSimulation from './components/Pendulum'
 import VSCodeAnimation from './components/VSCodeAnimation'
 import ImageManipulator from './components/imaging/ImageManipulator'
 import ArticlePage from './components/WebArticle'
-import GitHubActionsMobileManager from './components/thehub/github-actions-mobile-ui';
+//import GitHubActionsMobileManager from './components/thehub/github-actions-mobile-ui';
 
 function App() {
   // State to track which component is active
-  const [activeComponent, setActiveComponent] = useState('gh-demo')
+  const [activeComponent, setActiveComponent] = useState('recharts-demo')
 
   // Function to render the active component
   const renderActiveComponent = () => {
     switch (activeComponent) {
-      case 'gh-demo':
-        return <GitHubActionsMobileManager />
+//      case 'gh-demo':
+//        return <GitHubActionsMobileManager />
       case 'recharts-demo':
         return <RechartsExample />
       case 'animation-demo':
@@ -41,12 +41,12 @@ function App() {
       {/* Navigation Bar */}
       <nav className="border-b mb-4">
         <div className="flex">
-          <button
+          {/* <button
             className={`py-2 px-4 font-medium ${activeComponent === 'gh-demo' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500'}`}
             onClick={() => setActiveComponent('gh-demo')}
           >
             GH Demo
-          </button>
+          </button>*/}
           <button
             className={`py-2 px-4 font-medium ${activeComponent === 'image-demo' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500'}`}
             onClick={() => setActiveComponent('image-demo')}
