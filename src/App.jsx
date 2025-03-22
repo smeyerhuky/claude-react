@@ -9,6 +9,7 @@ import VSCodeAnimation from './components/VSCodeAnimation'
 import ImageManipulator from './components/imaging/ImageManipulator'
 import ArticlePage from './components/WebArticle'
 import GitHubActionsMobileManager from './components/thehub/github-actions-mobile-ui'
+import MotionAmplification from './components/vid/VideoDemo'
 
 // Component keys enum
 const COMPONENTS = {
@@ -19,6 +20,7 @@ const COMPONENTS = {
   RECHARTS_DEMO: 'recharts-demo',
   ANIMATION_DEMO: 'animation-demo',
   PENDULUM_DEMO: 'pendulum-demo',
+  AMPLIFY_DEMO: 'motion-demo'
 }
 
 // Navigation items configuration
@@ -58,6 +60,11 @@ const navigationItems = [
     label: 'Pendulum Demo', 
     component: PendulumSimulation 
   },
+  {
+    id: COMPONENTS.AMPLIFY_DEMO,
+    label: 'Motion Amp Demo',
+    component: MotionAmplification
+  }
 ]
 
 // Navigation component
@@ -72,13 +79,13 @@ const NavItem = ({ id, label, isActive, onClick }) => (
 
 function App() {
   // State to track which component is active
-  const [activeComponent, setActiveComponent] = useState(COMPONENTS.RECHARTS_DEMO)
+  const [activeComponent, setActiveComponent] = useState(COMPONENTS.AMPLIFY_DEMO)
   const [isNavOpen, setIsNavOpen] = useState(false)
 
   // Get active component from configuration
   const getActiveComponent = () => {
     const item = navigationItems.find(item => item.id === activeComponent)
-    return item ? <item.component /> : <ArticlePage />
+    return item ? <item.component /> : <MotionAmplification />
   }
 
   // Find the active navigation item
