@@ -1,5 +1,5 @@
 # .github/workflows/deploy.yml
-name: Deploy to GitHub Pages
+name: gh-pages vite deploy
 
 on:
   push:
