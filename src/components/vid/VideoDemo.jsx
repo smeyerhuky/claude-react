@@ -587,4 +587,433 @@ const VideoPreview = ({ videoUrl, videoRef, canvasRef, videoInfo, extractFrames,
           >
             {isExtracting ? (
               <>
-              
+                <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                Extracting Frames...
+              </>
+            ) : (
+              <>
+                <RefreshCw className="w-4 h-4 mr-2" />
+                Extract Preview Frames
+              </>
+            )}
+          </button>
+        ) : (
+          <div className="space-y-2">
+            <p className="text-sm text-gray-600">
+              {videoFrames.length} frames extracted. Use the processor to analyze motion patterns.
+            </p>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setSelectedFrame(prev => Math.max(0, prev - 1))}
+                disabled={selectedFrame <= 0}
+                className="p-1 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <span className="text-sm text-gray-600 flex-1 text-center">
+                Frame {selectedFrame !== null ? selectedFrame + 1 : 0} of {videoFrames.length}
+              </span>
+              <button
+                onClick={() => setSelectedFrame(prev => Math.min(videoFrames.length - 1, prev + 1))}
+                disabled={selectedFrame >= videoFrames.length - 1}
+                className="p-1 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+// Component for parameter controls
+const ParameterControls = ({ params, onParamChange }) => {
+  return (
+    <div className="bg-gray-50 p-4 rounded-lg">
+      <h3 className="font-medium mb-3">Processing Parameters</h3>
+      
+      <div className="space-y-4">
+        {/* Vector Threshold Slider */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Vector Threshold: {params.vectorThreshold.toFixed(2)}
+          </label>
+          <input
+            type="range"
+            min="0"
+            max="0.5"
+            step="0.01"
+            value={params.vectorThreshold}
+            onChange={(e) => onParamChange('vectorThreshold', parseFloat(e.target.value))}
+            className="w-full"
+          />
+          <p className="text-xs text-gray-500 mt-1">
+            Minimum movement required to be detected
+          </p>
+        </div>
+        
+        {/* Pixel Amplification Slider */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Amplification: {params.pixelAmplification.toFixed(1)}×
+          </label>
+          <input
+            type="range"
+            min="1"
+            max="10"
+            step="0.1"
+            value={params.pixelAmplification}
+            onChange={(e) => onParamChange('pixelAmplification', parseFloat(e.target.value))}
+            className="w-full"
+          />
+          <p className="text-xs text-gray-500 mt-1">
+            How much to amplify detected movements
+          </p>
+        </div>
+        
+        {/* Sensitivity Range */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Sensitivity Range: [{params.sensitivityRange[0].toFixed(1)}, {params.sensitivityRange[1].toFixed(1)}]
+          </label>
+          <div className="flex gap-2">
+            <input
+              type="range"
+              min="0"
+              max="0.5"
+              step="0.05"
+              value={params.sensitivityRange[0]}
+              onChange={(e) => onParamChange('sensitivityRange', [parseFloat(e.target.value), params.sensitivityRange[1]])}
+              className="w-full"
+            />
+            <input
+              type="range"
+              min="0.5"
+              max="1"
+              step="0.05"
+              value={params.sensitivityRange[1]}
+              onChange={(e) => onParamChange('sensitivityRange', [params.sensitivityRange[0], parseFloat(e.target.value)])}
+              className="w-full"
+            />
+          </div>
+          <p className="text-xs text-gray-500 mt-1">
+            Range of movement magnitudes to amplify
+          </p>
+        </div>
+        
+        {/* Color Amplification Toggle */}
+        <div>
+          <label className="flex items-center">
+            <input
+              type="checkbox"
+              checked={params.colorAmplification}
+              onChange={(e) => onParamChange('colorAmplification', e.target.checked)}
+              className="mr-2"
+            />
+            <span className="text-sm font-medium text-gray-700">Color Amplification</span>
+          </label>
+          <p className="text-xs text-gray-500 mt-1">
+            Amplify color changes in addition to movement
+          </p>
+        </div>
+        
+        {/* Motion Blur Slider */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Motion Blur: {params.motionBlur}
+          </label>
+          <input
+            type="range"
+            min="0"
+            max="5"
+            step="1"
+            value={params.motionBlur}
+            onChange={(e) => onParamChange('motionBlur', parseInt(e.target.value))}
+            className="w-full"
+          />
+          <p className="text-xs text-gray-500 mt-1">
+            Smoothing applied to motion trails
+          </p>
+        </div>
+        
+        {/* Frames to Analyze */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Preview Frames: {params.framesToAnalyze}
+          </label>
+          <input
+            type="range"
+            min="2"
+            max="30"
+            step="1"
+            value={params.framesToAnalyze}
+            onChange={(e) => onParamChange('framesToAnalyze', parseInt(e.target.value))}
+            className="w-full"
+          />
+          <p className="text-xs text-gray-500 mt-1">
+            Number of frames to extract for preview
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Component for processing view
+const ProcessingView = ({ progress, videoInfo }) => {
+  return (
+    <div className="text-center py-8">
+      <RefreshCw className="mx-auto h-12 w-12 text-blue-500 animate-spin mb-4" />
+      <h3 className="text-xl font-medium mb-2">Processing Video</h3>
+      <p className="text-gray-600 mb-4">Analyzing and amplifying motion patterns...</p>
+      
+      <div className="w-full bg-gray-200 rounded-full h-4 mb-4 max-w-md mx-auto">
+        <div 
+          className="bg-blue-500 h-4 rounded-full transition-all duration-300"
+          style={{ width: `${progress}%` }}
+        ></div>
+      </div>
+      
+      <p className="text-gray-500">
+        Processing {Math.round(progress)}% complete
+      </p>
+      
+      {videoInfo.width > 0 && (
+        <div className="mt-6 text-sm text-gray-600 max-w-sm mx-auto">
+          <p>Video resolution: {videoInfo.width} × {videoInfo.height}</p>
+          <p>Video duration: {videoInfo.duration.toFixed(2)} seconds</p>
+          <p className="mt-2">Higher resolution and longer videos will take more time to process.</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Component for video playback
+const VideoPlayer = ({ processedFrames, videoInfo, outputCanvasRef, playbackState, setPlaybackState }) => {
+  // Animation frame request ID
+  const animationRef = useRef(null);
+  const lastFrameTimeRef = useRef(0);
+  
+  // Initialize canvas and start playback
+  useEffect(() => {
+    if (processedFrames.length === 0 || !outputCanvasRef.current) return;
+    
+    const canvas = outputCanvasRef.current;
+    const ctx = canvas.getContext('2d');
+    
+    // Set canvas dimensions
+    canvas.width = videoInfo.width;
+    canvas.height = videoInfo.height;
+    
+    // Function to render a specific frame
+    const renderFrame = (frameIndex) => {
+      if (frameIndex < 0 || frameIndex >= processedFrames.length) return;
+      
+      const frame = processedFrames[frameIndex];
+      ctx.putImageData(frame.imageData, 0, 0);
+    };
+    
+    // Animation loop
+    const animate = (timestamp) => {
+      // Calculate frame timing based on playback speed
+      const frameTime = 1000 / (videoInfo.fps * playbackState.speed); 
+      
+      if (playbackState.isPlaying && timestamp - lastFrameTimeRef.current > frameTime) {
+        lastFrameTimeRef.current = timestamp;
+        
+        // Calculate next frame index
+        let nextFrame = playbackState.currentFrame + playbackState.direction;
+        
+        // Handle loop boundaries
+        if (nextFrame >= processedFrames.length) {
+          nextFrame = 0;
+        } else if (nextFrame < 0) {
+          nextFrame = processedFrames.length - 1;
+        }
+        
+        // Update playback state
+        setPlaybackState(prev => ({
+          ...prev,
+          currentFrame: nextFrame
+        }));
+        
+        // Render the frame
+        renderFrame(nextFrame);
+      }
+      
+      // Continue animation loop
+      animationRef.current = requestAnimationFrame(animate);
+    };
+    
+    // Render initial frame
+    renderFrame(playbackState.currentFrame);
+    
+    // Start animation loop
+    animationRef.current = requestAnimationFrame(animate);
+    
+    // Cleanup on unmount
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [processedFrames, outputCanvasRef, videoInfo, playbackState.isPlaying, playbackState.currentFrame, playbackState.direction, playbackState.speed]);
+  
+  // Toggle play/pause
+  const togglePlayback = () => {
+    setPlaybackState(prev => ({
+      ...prev,
+      isPlaying: !prev.isPlaying
+    }));
+  };
+  
+  // Toggle playback direction
+  const toggleDirection = () => {
+    setPlaybackState(prev => ({
+      ...prev,
+      direction: prev.direction * -1
+    }));
+  };
+  
+  // Set playback speed
+  const setSpeed = (speed) => {
+    setPlaybackState(prev => ({
+      ...prev,
+      speed
+    }));
+  };
+  
+  // Handle scrubber change
+  const handleScrubberChange = (e) => {
+    const frameIndex = parseInt(e.target.value);
+    setPlaybackState(prev => ({
+      ...prev,
+      currentFrame: frameIndex
+    }));
+  };
+  
+  // Skip to start
+  const skipToStart = () => {
+    setPlaybackState(prev => ({
+      ...prev,
+      currentFrame: 0
+    }));
+  };
+  
+  // Skip to end
+  const skipToEnd = () => {
+    setPlaybackState(prev => ({
+      ...prev,
+      currentFrame: processedFrames.length - 1
+    }));
+  };
+  
+  return (
+    <div>
+      <h3 className="font-medium mb-3">Processed Video Playback</h3>
+      
+      <div className="bg-black rounded-lg overflow-hidden">
+        <canvas 
+          ref={outputCanvasRef}
+          className="w-full aspect-video object-contain"
+        />
+      </div>
+      
+      <div className="mt-4">
+        {/* Scrubber */}
+        <input
+          type="range"
+          min="0"
+          max={processedFrames.length - 1}
+          value={playbackState.currentFrame}
+          onChange={handleScrubberChange}
+          className="w-full"
+        />
+        
+        {/* Frame counter */}
+        <div className="text-sm text-gray-600 mb-2 text-center">
+          Frame {playbackState.currentFrame + 1} of {processedFrames.length}
+        </div>
+        
+        {/* Playback controls */}
+        <div className="flex justify-center items-center space-x-2">
+          <button
+            onClick={skipToStart}
+            className="p-2 rounded hover:bg-gray-100"
+          >
+            <SkipBack className="w-4 h-4" />
+          </button>
+          
+          <button
+            onClick={toggleDirection}
+            className={`p-2 rounded hover:bg-gray-100 ${playbackState.direction < 0 ? 'text-blue-500' : ''}`}
+          >
+            {playbackState.direction < 0 ? <ChevronLeft className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}
+          </button>
+          
+          <button
+            onClick={togglePlayback}
+            className="p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600"
+          >
+            {playbackState.isPlaying ? <Square className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+          </button>
+          
+          <button
+            onClick={skipToEnd}
+            className="p-2 rounded hover:bg-gray-100"
+          >
+            <FastForward className="w-4 h-4" />
+          </button>
+        </div>
+        
+        {/* Speed controls */}
+        <div className="flex justify-center mt-4 space-x-2">
+          <button
+            onClick={() => setSpeed(0.5)}
+            className={`px-2 py-1 rounded-md text-sm ${playbackState.speed === 0.5 ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+          >
+            0.5×
+          </button>
+          
+          <button
+            onClick={() => setSpeed(1)}
+            className={`px-2 py-1 rounded-md text-sm ${playbackState.speed === 1 ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+          >
+            1×
+          </button>
+          
+          <button
+            onClick={() => setSpeed(2)}
+            className={`px-2 py-1 rounded-md text-sm ${playbackState.speed === 2 ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+          >
+            2×
+          </button>
+          
+          <button
+            onClick={() => setSpeed(4)}
+            className={`px-2 py-1 rounded-md text-sm ${playbackState.speed === 4 ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+          >
+            4×
+          </button>
+        </div>
+      </div>
+      
+      <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+        <h4 className="font-medium text-sm mb-2">Analysis Notes</h4>
+        <p className="text-sm text-gray-600">
+          The processed video highlights motion patterns by amplifying pixel changes between frames. Subtle movements that 
+          may be invisible to the naked eye have been enhanced based on your selected parameters.
+        </p>
+        <p className="text-sm text-gray-600 mt-2">
+          Play the video forwards and backwards at different speeds to analyze the motion patterns. To further refine the 
+          results, you can return to the Preview tab and adjust the parameters.
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default MotionAmplification;
