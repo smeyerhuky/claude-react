@@ -8,7 +8,7 @@ import PendulumSimulation from './components/Pendulum'
 import VSCodeAnimation from './components/VSCodeAnimation'
 import ImageManipulator from './components/imaging/ImageManipulator'
 import ArticlePage from './components/WebArticle'
-import GitHubActionsMobileManager from './components/thehub/github-acrions-mobile-ui';
+import GitHubActionsMobileManager from './components/thehub/github-actions-mobile-ui';
 
 function App() {
   // State to track which component is active
