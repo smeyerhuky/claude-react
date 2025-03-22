@@ -305,7 +305,7 @@ npm start
       <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-100">
         <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-lg">
           <div className="flex flex-col items-center mb-8">
-            <GitHub className="w-16 h-16 mb-4 text-gray-800" />
+            <Github className="w-16 h-16 mb-4 text-gray-800" />
             <h1 className="text-2xl font-bold text-center">GitHub Actions Mobile Manager</h1>
             <p className="mt-2 text-center text-gray-600">Manage your repositories, files, and workflows on the go</p>
           </div>
@@ -318,7 +318,7 @@ npm start
             {authLoading ? (
               <RefreshCw className="w-5 h-5 mr-2 animate-spin" />
             ) : (
-              <GitHub className="w-5 h-5 mr-2" />
+              <Github className="w-5 h-5 mr-2" />
             )}
             {authLoading ? 'Connecting...' : 'Sign in with GitHub'}
           </button>
@@ -341,7 +341,7 @@ npm start
           </button>
         ) : (
           <div className="flex items-center">
-            <GitHub className="w-6 h-6 mr-2 text-gray-800" />
+            <Github className="w-6 h-6 mr-2 text-gray-800" />
             <span className="font-semibold">GitHub Mobile</span>
           </div>
         )}
@@ -597,7 +597,7 @@ npm start
             activeTab === 'repos' ? 'text-blue-500' : 'text-gray-500'
           }`}
         >
-          <GitHub className="w-6 h-6" />
+          <Github className="w-6 h-6" />
           <span className="mt-1 text-xs">Repos</span>
         </button>
         
