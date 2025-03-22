@@ -8,7 +8,7 @@ const __dirname = dirname(__filename);
 
 export default defineConfig({
   plugins: [react()],
-  base: '/claude-react/’,
+  base: '/claude-react/',
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
