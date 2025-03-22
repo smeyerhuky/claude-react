@@ -78,7 +78,7 @@ function App() {
             Animation Demo
           </button>
           <button
-            className={`py-2 px-4 font-medium ${activeComponent === 'animation-demo' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500'}`}
+            className={`py-2 px-4 font-medium ${activeComponent === 'pendulum-demo' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500'}`}
             onClick={() => setActiveComponent('pendulum-demo')}
           >
             Pendulum Demo
