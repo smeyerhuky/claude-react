@@ -11,7 +11,8 @@ import ArticlePage from './components/WebArticle'
 import GitHubActionsMobileManager from './components/thehub/github-actions-mobile-ui'
 import MotionAmplification from './components/vid/VideoDemo'
 import PulseDetectionVisualizer from './components/vid/PulseExample'
-import MobileFourierTransform from './components/MobileFourier'
+import ImageToFourierTransform from './components/MobileFourier'
+
 // Component keys enum
 const COMPONENTS = {
   FOURIER: 'fourier',
@@ -31,7 +32,7 @@ const navigationItems = [
  {
    id: COMPONENTS.FOURIER,
    label: 'Drawing With Fourier',
-   component: MobileFourierTransform
+   component: ImageToFourierTransform
  },
  { 
     id: COMPONENTS.PULSE, 
@@ -92,13 +93,13 @@ const NavItem = ({ id, label, isActive, onClick }) => (
 
 function App() {
   // State to track which component is active
-  const [activeComponent, setActiveComponent] = useState(COMPONENTS.PULSE)
+  const [activeComponent, setActiveComponent] = useState(COMPONENTS.FOURIER)
   const [isNavOpen, setIsNavOpen] = useState(false)
 
   // Get active component from configuration
   const getActiveComponent = () => {
     const item = navigationItems.find(item => item.id === activeComponent)
-    return item ? <item.component /> : <MotionAmplification />
+    return item ? <item.component /> : <ImageToFourierTransform />
   }
 
   // Find the active navigation item
