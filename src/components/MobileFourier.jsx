@@ -259,7 +259,7 @@ const useImageProcessing = () => {
     const edgeData = findEdges(thresholdedData);
     
     return edgeData;
-  }, []);
+  }}, []);
   
   // Apply a simple box blur
   const applyBoxBlur = (imageData, radius) => {
