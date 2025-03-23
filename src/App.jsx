@@ -9,9 +9,10 @@ import VSCodeAnimation from './components/VSCodeAnimation'
 import ImageManipulator from './components/imaging/ImageManipulator'
 import ArticlePage from './components/WebArticle'
 import GitHubActionsMobileManager from './components/thehub/github-actions-mobile-ui'
-import MotionAmplification from './components/vid/VideoDemo'
+// import MotionAmplification from './components/vid/VideoDemo'
 import PulseDetectionVisualizer from './components/vid/PulseExample'
 import ImageToFourierTransform from './components/MobileFourier'
+import EnhancedMotionAmplification from './components/fourier/MobileDemo'
 
 // Component keys enum
 const COMPONENTS = {
@@ -77,7 +78,7 @@ const navigationItems = [
   {
     id: COMPONENTS.AMPLIFY_DEMO,
     label: 'Motion Amp Demo',
-    component: MotionAmplification
+    component: EnhancedMotionAmplification
   }
 ]
 
