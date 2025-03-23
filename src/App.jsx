@@ -11,9 +11,10 @@ import ArticlePage from './components/WebArticle'
 import GitHubActionsMobileManager from './components/thehub/github-actions-mobile-ui'
 import MotionAmplification from './components/vid/VideoDemo'
 import PulseDetectionVisualizer from './components/vid/PulseExample'
-
+import MobileFourierTransform from './components/MobileFourier'
 // Component keys enum
 const COMPONENTS = {
+  FOURIER: 'fourier',
   PULSE: 'pulse-demo',
   GH_DEMO: 'gh-demo',
   IMAGE_DEMO: 'image-demo',
@@ -27,6 +28,11 @@ const COMPONENTS = {
 
 // Navigation items configuration
 const navigationItems = [
+ {
+   id: COMPONENTS.FOURIER,
+   label: 'Drawing With Fourier',
+   component: MobileFourierTransform
+ },
  { 
     id: COMPONENTS.PULSE, 
     label: 'Pulse Demo', 
