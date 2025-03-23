@@ -1,250 +1,205 @@
-import React, { useState, useEffect, useRef, useCallback, useContext, createContext, useMemo } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as math from 'mathjs';
 
-// Create context for app-wide state management
-const FourierContext = createContext();
-
-// Custom hook for accessing camera
-const useCamera = () => {
-  const [stream, setStream] = useState(null);
-  const [error, setError] = useState(null);
-  const videoRef = useRef(null);
-  const [facingMode, setFacingMode] = useState('environment'); // 'environment' for back camera, 'user' for front
+const ImageToFourierTransform = () => {
+  // Canvas references
+  const imageCanvasRef = useRef(null);
+  const processedCanvasRef = useRef(null);
+  const drawingCanvasRef = useRef(null);
   
-  // Toggle between front and back camera
-  const toggleCamera = useCallback(() => {
-    if (stream) {
-      // Stop current stream
-      stream.getTracks().forEach(track => track.stop());
-      // Switch camera type
-      setFacingMode(prevMode => prevMode === 'environment' ? 'user' : 'environment');
-    }
-  }, [stream]);
+  // File and image state
+  const [imageFile, setImageFile] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
   
-  // Start camera stream
-  const startCamera = useCallback(async () => {
-    try {
-      const constraints = {
-        video: { facingMode },
-        audio: false
-      };
-      
-      const mediaStream = await navigator.mediaDevices.getUserMedia(constraints);
-      setStream(mediaStream);
-      
-      if (videoRef.current) {
-        videoRef.current.srcObject = mediaStream;
-      }
-      
-      setError(null);
-    } catch (err) {
-      console.error('Error accessing camera:', err);
-      setError(err.message || 'Could not access camera');
-    }
-  }, [facingMode]);
-  
-  // Stop camera stream
-  const stopCamera = useCallback(() => {
-    if (stream) {
-      stream.getTracks().forEach(track => track.stop());
-      setStream(null);
-      if (videoRef.current) {
-        videoRef.current.srcObject = null;
-      }
-    }
-  }, [stream]);
-  
-  // Take a snapshot from the current video feed
-  const takeSnapshot = useCallback(() => {
-    if (!videoRef.current || !stream) {
-      return null;
-    }
-    
-    const video = videoRef.current;
-    const canvas = document.createElement('canvas');
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    
-    const ctx = canvas.getContext('2d');
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    
-    return {
-      dataUrl: canvas.toDataURL('image/png'),
-      blob: canvas.toBlob(blob => blob, 'image/png'),
-      dimensions: { width: canvas.width, height: canvas.height }
-    };
-  }, [stream]);
-  
-  // Check if the device has a camera
-  const checkCameraAvailability = useCallback(async () => {
-    try {
-      const devices = await navigator.mediaDevices.enumerateDevices();
-      return devices.some(device => device.kind === 'videoinput');
-    } catch (err) {
-      console.error('Error checking camera availability:', err);
-      return false;
-    }
-  }, []);
-  
-  // Clean up on unmount
-  useEffect(() => {
-    return () => {
-      if (stream) {
-        stream.getTracks().forEach(track => track.stop());
-      }
-    };
-  }, [stream]);
-  
-  return {
-    videoRef,
-    stream,
-    error,
-    facingMode,
-    startCamera,
-    stopCamera,
-    toggleCamera,
-    takeSnapshot,
-    checkCameraAvailability
-  };
-};
-
-// Custom hook for file input handling
-const useFileInput = () => {
-  const [file, setFile] = useState(null);
-  const [preview, setPreview] = useState(null);
-  const fileInputRef = useRef(null);
-  
-  const handleFileChange = useCallback((event) => {
-    const selectedFile = event.target.files[0];
-    if (selectedFile) {
-      setFile(selectedFile);
-      
-      // Create a preview URL for the file
-      const fileUrl = URL.createObjectURL(selectedFile);
-      setPreview(fileUrl);
-    }
-  }, []);
-  
-  const clearFile = useCallback(() => {
-    if (preview) {
-      URL.revokeObjectURL(preview);
-    }
-    setFile(null);
-    setPreview(null);
-    if (fileInputRef.current) {
-      fileInputRef.current.value = '';
-    }
-  }, [preview]);
-  
-  const triggerFileInput = useCallback(() => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
-    }
-  }, []);
-  
-  // Clean up URL objects when component unmounts
-  useEffect(() => {
-    return () => {
-      if (preview) {
-        URL.revokeObjectURL(preview);
-      }
-    };
-  }, [preview]);
-  
-  return {
-    file,
-    preview,
-    fileInputRef,
-    handleFileChange,
-    clearFile,
-    triggerFileInput
-  };
-};
-
-// Custom hook for image processing
-const useImageProcessing = () => {
-  const [processing, setProcessing] = useState(false);
-  const [contours, setContours] = useState([]);
+  // Processing parameters
   const [thresholdValue, setThresholdValue] = useState(128);
   const [blurRadius, setBlurRadius] = useState(2);
+  const [contourSimplification, setContourSimplification] = useState(5);
+  const [fourierTerms, setFourierTerms] = useState(50);
   
-  // Apply various image processing steps
-  // FIX: Properly define applyImageProcessing as a regular function, not inside useCallback
-  const applyImageProcessing = useCallback((imageData, threshold, blur) => {
-    // Convert to grayscale
-    const grayscaleData = new ImageData(
-      new Uint8ClampedArray(imageData.data),
-      imageData.width,
-      imageData.height
-    );
+  // Animation state
+  const [contours, setContours] = useState([]);
+  const [fourierCoefficients, setFourierCoefficients] = useState([]);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [processingStep, setProcessingStep] = useState('');
+  const [time, setTime] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [speed, setSpeed] = useState(1);
+  const [drawingPath, setDrawingPath] = useState([]);
+  const [currentContourIndex, setCurrentContourIndex] = useState(0);
+  
+  // Setup animation loop
+  const animationFrameRef = useRef(null);
+  
+  // Canvas dimensions
+  const canvasWidth = 400;
+  const canvasHeight = 400;
+  
+  // Handle file selection
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
     
-    for (let i = 0; i < grayscaleData.data.length; i += 4) {
-      const r = grayscaleData.data[i];
-      const g = grayscaleData.data[i + 1];
-      const b = grayscaleData.data[i + 2];
+    if (file.type.match('image.*')) {
+      setImageFile(file);
+      const imageUrl = URL.createObjectURL(file);
+      setImageUrl(imageUrl);
+      
+      // Reset state when a new image is selected
+      setContours([]);
+      setFourierCoefficients([]);
+      setDrawingPath([]);
+      setIsPlaying(false);
+      setTime(0);
+    } else {
+      alert('Please select an image file');
+    }
+  };
+  
+  // Draw the original image to canvas when loaded
+  useEffect(() => {
+    if (!imageUrl || !imageCanvasRef.current) return;
+    
+    const canvas = imageCanvasRef.current;
+    const ctx = canvas.getContext('2d');
+    
+    const img = new Image();
+    img.onload = () => {
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Calculate scaling to fit canvas while maintaining aspect ratio
+      const scale = Math.min(
+        canvas.width / img.width,
+        canvas.height / img.height
+      );
+      
+      const scaledWidth = img.width * scale;
+      const scaledHeight = img.height * scale;
+      
+      // Center the image
+      const x = (canvas.width - scaledWidth) / 2;
+      const y = (canvas.height - scaledHeight) / 2;
+      
+      // Draw image
+      ctx.drawImage(img, x, y, scaledWidth, scaledHeight);
+    };
+    
+    img.src = imageUrl;
+  }, [imageUrl]);
+  
+  // Process the image to extract contours
+  const processImage = async () => {
+    if (!imageCanvasRef.current || !processedCanvasRef.current) return;
+    
+    setIsProcessing(true);
+    setProcessingStep('Preparing image...');
+    
+    // Get image data from canvas
+    const imageCanvas = imageCanvasRef.current;
+    const imageCtx = imageCanvas.getContext('2d');
+    const imageData = imageCtx.getImageData(0, 0, imageCanvas.width, imageCanvas.height);
+    
+    // Create a worker or use setTimeout to avoid UI freezing
+    setTimeout(() => {
+      // Step 1: Convert to grayscale and apply blur
+      setProcessingStep('Converting to grayscale...');
+      const grayscaleData = convertToGrayscale(imageData);
+      
+      setProcessingStep('Applying Gaussian blur...');
+      const blurredData = applyGaussianBlur(grayscaleData, blurRadius);
+      
+      // Step 2: Apply threshold
+      setProcessingStep('Applying threshold...');
+      const thresholdedData = applyThreshold(blurredData, thresholdValue);
+      
+      // Step 3: Find edges
+      setProcessingStep('Finding edges...');
+      const edgeData = findEdges(thresholdedData);
+      
+      // Draw processed image
+      const processedCanvas = processedCanvasRef.current;
+      const processedCtx = processedCanvas.getContext('2d');
+      processedCtx.putImageData(edgeData, 0, 0);
+      
+      // Step 4: Extract contours
+      setProcessingStep('Extracting contours...');
+      const extractedContours = extractContours(edgeData);
+      
+      // Step 5: Simplify contours
+      setProcessingStep('Simplifying contours...');
+      const simplifiedContours = simplifyContours(extractedContours, contourSimplification);
+      setContours(simplifiedContours);
+      
+      // Step 6: Calculate Fourier coefficients
+      setProcessingStep('Calculating Fourier coefficients...');
+      const allCoefficients = [];
+      
+      for (const contour of simplifiedContours) {
+        const coeffs = calculateFourierCoefficients(contour, fourierTerms);
+        allCoefficients.push(coeffs);
+      }
+      
+      setFourierCoefficients(allCoefficients);
+      setIsProcessing(false);
+      setProcessingStep('');
+    }, 100);
+  };
+  
+  // Image processing functions
+  
+  // Convert image to grayscale
+  const convertToGrayscale = (imageData) => {
+    const data = new Uint8ClampedArray(imageData.data);
+    
+    for (let i = 0; i < data.length; i += 4) {
+      const r = data[i];
+      const g = data[i + 1];
+      const b = data[i + 2];
       
       // Luminance formula
       const gray = 0.299 * r + 0.587 * g + 0.114 * b;
       
-      grayscaleData.data[i] = gray;
-      grayscaleData.data[i + 1] = gray;
-      grayscaleData.data[i + 2] = gray;
+      data[i] = gray;
+      data[i + 1] = gray;
+      data[i + 2] = gray;
     }
     
-    // Apply blur (simplified box blur)
-    let blurredData = grayscaleData;
-    if (blur > 0) {
-      blurredData = applyBoxBlur(grayscaleData, blur);
-    }
-    
-    // Apply threshold
-    const thresholdedData = new ImageData(
-      new Uint8ClampedArray(blurredData.data),
-      blurredData.width,
-      blurredData.height
-    );
-    
-    for (let i = 0; i < thresholdedData.data.length; i += 4) {
-      const v = thresholdedData.data[i] < threshold ? 0 : 255;
-      
-      thresholdedData.data[i] = v;
-      thresholdedData.data[i + 1] = v;
-      thresholdedData.data[i + 2] = v;
-    }
-    
-    // Find edges (simple edge detection)
-    const edgeData = findEdges(thresholdedData);
-    
-    return edgeData;
-  }, []);
+    return new ImageData(data, imageData.width, imageData.height);
+  };
   
-  // Apply a simple box blur
-  const applyBoxBlur = useCallback((imageData, radius) => {
-    const { width, height, data } = imageData;
-    const result = new Uint8ClampedArray(data.length);
+  // Apply Gaussian blur
+  const applyGaussianBlur = (imageData, radius) => {
+    // Simple box blur as an approximation for this demo
+    const data = new Uint8ClampedArray(imageData.data);
+    const width = imageData.width;
+    const height = imageData.height;
+    const result = new Uint8ClampedArray(data);
     
-    // Copy the original data
-    result.set(data);
+    // Skip blur if radius is 0
+    if (radius <= 0) return imageData;
     
     // Horizontal pass
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
-        let r = 0, g = 0, b = 0, count = 0;
+        let r = 0, g = 0, b = 0, a = 0, count = 0;
         
-        for (let dx = -radius; dx <= radius; dx++) {
-          const nx = Math.min(width - 1, Math.max(0, x + dx));
-          const i = (y * width + nx) * 4;
+        for (let i = -radius; i <= radius; i++) {
+          const cx = Math.min(width - 1, Math.max(0, x + i));
+          const idx = (y * width + cx) * 4;
           
-          r += data[i];
-          g += data[i + 1];
-          b += data[i + 2];
+          r += data[idx];
+          g += data[idx + 1];
+          b += data[idx + 2];
+          a += data[idx + 3];
           count++;
         }
         
-        const i = (y * width + x) * 4;
-        result[i] = r / count;
-        result[i + 1] = g / count;
-        result[i + 2] = b / count;
+        const idx = (y * width + x) * 4;
+        result[idx] = r / count;
+        result[idx + 1] = g / count;
+        result[idx + 2] = b / count;
+        result[idx + 3] = a / count;
       }
     }
     
@@ -253,31 +208,50 @@ const useImageProcessing = () => {
     
     for (let x = 0; x < width; x++) {
       for (let y = 0; y < height; y++) {
-        let r = 0, g = 0, b = 0, count = 0;
+        let r = 0, g = 0, b = 0, a = 0, count = 0;
         
-        for (let dy = -radius; dy <= radius; dy++) {
-          const ny = Math.min(height - 1, Math.max(0, y + dy));
-          const i = (ny * width + x) * 4;
+        for (let i = -radius; i <= radius; i++) {
+          const cy = Math.min(height - 1, Math.max(0, y + i));
+          const idx = (cy * width + x) * 4;
           
-          r += temp[i];
-          g += temp[i + 1];
-          b += temp[i + 2];
+          r += temp[idx];
+          g += temp[idx + 1];
+          b += temp[idx + 2];
+          a += temp[idx + 3];
           count++;
         }
         
-        const i = (y * width + x) * 4;
-        result[i] = r / count;
-        result[i + 1] = g / count;
-        result[i + 2] = b / count;
+        const idx = (y * width + x) * 4;
+        result[idx] = r / count;
+        result[idx + 1] = g / count;
+        result[idx + 2] = b / count;
+        result[idx + 3] = a / count;
       }
     }
     
     return new ImageData(result, width, height);
-  }, []);
+  };
+  
+  // Apply threshold to create binary image
+  const applyThreshold = (imageData, threshold) => {
+    const data = new Uint8ClampedArray(imageData.data);
+    
+    for (let i = 0; i < data.length; i += 4) {
+      const v = data[i] < threshold ? 0 : 255;
+      
+      data[i] = v;
+      data[i + 1] = v;
+      data[i + 2] = v;
+    }
+    
+    return new ImageData(data, imageData.width, imageData.height);
+  };
   
   // Simple edge detection
-  const findEdges = useCallback((imageData) => {
-    const { width, height, data } = imageData;
+  const findEdges = (imageData) => {
+    const width = imageData.width;
+    const height = imageData.height;
+    const data = imageData.data;
     const result = new Uint8ClampedArray(data.length);
     
     // Initialize with black
@@ -316,11 +290,13 @@ const useImageProcessing = () => {
     }
     
     return new ImageData(result, width, height);
-  }, []);
+  };
   
   // Extract contours from the edge image
-  const extractContours = useCallback((edgeData) => {
-    const { width, height, data } = edgeData;
+  const extractContours = (edgeData) => {
+    const width = edgeData.width;
+    const height = edgeData.height;
+    const data = edgeData.data;
     
     // Create a grid to track visited pixels
     const visited = Array(height).fill().map(() => Array(width).fill(false));
@@ -350,7 +326,7 @@ const useImageProcessing = () => {
           let foundNext = true;
           while (foundNext && contour.length < 5000) { // Safety limit
             visited[cy][cx] = true;
-            contour.push({ x: cx - width/2, y: cy - height/2 }); // Center the contour
+            contour.push({ x: cx, y: cy });
             
             foundNext = false;
             for (let dir = 0; dir < 8; dir++) {
@@ -368,90 +344,40 @@ const useImageProcessing = () => {
           
           // Only keep contours with sufficient points
           if (contour.length > 10) {
-            // Simplify contour by keeping only every Nth point
-            const simplifiedContour = [];
-            const step = Math.max(1, Math.floor(contour.length / 100)); // Limit to ~100 points
-            
-            for (let i = 0; i < contour.length; i += step) {
-              simplifiedContour.push(contour[i]);
-            }
-            
-            contours.push(simplifiedContour);
+            contours.push(contour);
           }
         }
       }
     }
     
     return contours;
-  }, []);
-  
-  // Process image to extract contours
-  const processImage = useCallback(async (imageUrl) => {
-    if (!imageUrl) return;
-    
-    setProcessing(true);
-    
-    try {
-      // Load the image
-      const img = new Image();
-      img.crossOrigin = 'Anonymous';
-      
-      await new Promise((resolve, reject) => {
-        img.onload = resolve;
-        img.onerror = reject;
-        img.src = imageUrl;
-      });
-      
-      // Create a canvas to process the image
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      
-      canvas.width = img.width;
-      canvas.height = img.height;
-      ctx.drawImage(img, 0, 0);
-      
-      // Get image data
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      
-      // Process the image (convert to grayscale, apply threshold, find edges)
-      const processedData = applyImageProcessing(imageData, thresholdValue, blurRadius);
-      
-      // Extract contours from the processed image
-      const extractedContours = extractContours(processedData);
-      setContours(extractedContours);
-      
-      setProcessing(false);
-      return extractedContours;
-    } catch (err) {
-      console.error('Error processing image:', err);
-      setProcessing(false);
-      return [];
-    }
-  }, [thresholdValue, blurRadius, applyImageProcessing, extractContours]);
-  
-  return {
-    processing,
-    contours,
-    thresholdValue,
-    setThresholdValue,
-    blurRadius,
-    setBlurRadius,
-    processImage
   };
-};
-
-// Custom hook for Fourier transform
-const useFourierTransform = () => {
-  const [fourierTerms, setFourierTerms] = useState(20);
-  const [fourierCoefficients, setFourierCoefficients] = useState([]);
+  
+  // Simplify contours by removing redundant points
+  const simplifyContours = (contours, tolerance) => {
+    return contours.map(contour => {
+      // Simple point reduction strategy - keep every nth point
+      const simplified = [];
+      for (let i = 0; i < contour.length; i += tolerance) {
+        simplified.push(contour[i]);
+      }
+      
+      // Ensure the contour is closed
+      if (simplified.length > 0 && 
+          (simplified[0].x !== simplified[simplified.length - 1].x || 
+           simplified[0].y !== simplified[simplified.length - 1].y)) {
+        simplified.push(simplified[0]);
+      }
+      
+      return simplified;
+    });
+  };
   
   // Calculate Fourier coefficients for a contour
-  const calculateFourierCoefficients = useCallback((contour, numTerms = fourierTerms) => {
-    if (!contour || contour.length === 0) return [];
-    
+  const calculateFourierCoefficients = (contour, numTerms) => {
     // Convert (x,y) contour points to complex numbers
     const complexPoints = contour.map(point => 
-      math.complex(point.x, point.y)
+      math.complex(point.x - canvasWidth/2, point.y - canvasHeight/2)
     );
     
     const N = complexPoints.length;
@@ -486,255 +412,10 @@ const useFourierTransform = () => {
     
     // Sort by amplitude (highest first)
     return coefficients.sort((a, b) => b.amplitude - a.amplitude);
-  }, [fourierTerms]);
-  
-  // Process contours and calculate Fourier coefficients
-  const processFourierTransform = useCallback((contours) => {
-    if (!contours || contours.length === 0) return [];
-    
-    const allCoefficients = contours.map(contour => 
-      calculateFourierCoefficients(contour, fourierTerms)
-    );
-    
-    setFourierCoefficients(allCoefficients);
-    return allCoefficients;
-  }, [calculateFourierCoefficients, fourierTerms]);
-  
-  return {
-    fourierTerms,
-    setFourierTerms,
-    fourierCoefficients,
-    setFourierCoefficients,
-    calculateFourierCoefficients,
-    processFourierTransform
   };
-};
-
-// Main provider component for app-wide state
-const FourierProvider = ({ children }) => {
-  const camera = useCamera();
-  const fileInput = useFileInput();
-  const imageProcessing = useImageProcessing();
-  const fourierTransform = useFourierTransform();
-  
-  // Combined state and methods
-  const value = useMemo(() => ({
-    ...camera,
-    ...fileInput,
-    ...imageProcessing,
-    ...fourierTransform
-  }), [camera, fileInput, imageProcessing, fourierTransform]);
-  
-  return (
-    <FourierContext.Provider value={value}>
-      {children}
-    </FourierContext.Provider>
-  );
-};
-
-// Custom hook to access the Fourier context
-const useFourier = () => {
-  const context = useContext(FourierContext);
-  if (!context) {
-    throw new Error('useFourier must be used within a FourierProvider');
-  }
-  return context;
-};
-
-// Component for camera input view
-const CameraView = () => {
-  const { 
-    videoRef, startCamera, stopCamera, toggleCamera, 
-    takeSnapshot, stream, error, facingMode 
-  } = useFourier();
-  
-  // Start camera on mount
-  useEffect(() => {
-    startCamera();
-    
-    // Clean up on unmount
-    return () => {
-      stopCamera();
-    };
-  }, [startCamera, stopCamera]);
-  
-  return (
-    <div className="camera-container">
-      {error && <div className="error-message">{error}</div>}
-      
-      <div className="video-container">
-        <video
-          ref={videoRef}
-          autoPlay
-          playsInline
-          muted
-          className="camera-video"
-        />
-      </div>
-      
-      <div className="camera-controls">
-        <button 
-          className="camera-button toggle-camera"
-          onClick={toggleCamera}
-          disabled={!stream}
-        >
-          {facingMode === 'environment' ? 'Front Camera' : 'Back Camera'}
-        </button>
-        
-        <button 
-          className="camera-button capture"
-          onClick={takeSnapshot}
-          disabled={!stream}
-        >
-          Capture
-        </button>
-      </div>
-    </div>
-  );
-};
-
-// Component for file input view
-const FileInputView = () => {
-  const { 
-    fileInputRef, handleFileChange, triggerFileInput,
-    clearFile, preview, file 
-  } = useFourier();
-  
-  return (
-    <div className="file-input-container">
-      <input 
-        type="file"
-        ref={fileInputRef}
-        onChange={handleFileChange}
-        accept="image/*"
-        className="hidden-file-input"
-        style={{ display: 'none' }}
-      />
-      
-      <div className="file-input-controls">
-        <button 
-          className="file-button select-file"
-          onClick={triggerFileInput}
-        >
-          Select Image
-        </button>
-        
-        {file && (
-          <button
-            className="file-button clear-file"
-            onClick={clearFile}
-          >
-            Clear
-          </button>
-        )}
-      </div>
-      
-      {preview && (
-        <div className="file-preview">
-          <img 
-            src={preview} 
-            alt="Selected"
-            className="preview-image"
-          />
-        </div>
-      )}
-    </div>
-  );
-};
-
-// Component for displaying image processing controls
-const ProcessingControls = () => {
-  const { 
-    thresholdValue, setThresholdValue,
-    blurRadius, setBlurRadius,
-    fourierTerms, setFourierTerms,
-    processImage, preview, processing,
-    processFourierTransform, contours
-  } = useFourier();
-  
-  const handleProcess = useCallback(async () => {
-    if (!preview) return;
-    
-    const extractedContours = await processImage(preview);
-    if (extractedContours && extractedContours.length > 0) {
-      processFourierTransform(extractedContours);
-    }
-  }, [preview, processImage, processFourierTransform]);
-  
-  return (
-    <div className="processing-controls">
-      <h3>Image Processing Settings</h3>
-      
-      <div className="control-group">
-        <label htmlFor="threshold">Threshold: {thresholdValue}</label>
-        <input 
-          type="range"
-          id="threshold"
-          min="0"
-          max="255"
-          value={thresholdValue}
-          onChange={(e) => setThresholdValue(parseInt(e.target.value))}
-          className="slider"
-        />
-      </div>
-      
-      <div className="control-group">
-        <label htmlFor="blur">Blur: {blurRadius}</label>
-        <input 
-          type="range"
-          id="blur"
-          min="0"
-          max="10"
-          value={blurRadius}
-          onChange={(e) => setBlurRadius(parseInt(e.target.value))}
-          className="slider"
-        />
-      </div>
-      
-      <div className="control-group">
-        <label htmlFor="terms">Fourier Terms: {fourierTerms}</label>
-        <input 
-          type="range"
-          id="terms"
-          min="5"
-          max="50"
-          value={fourierTerms}
-          onChange={(e) => setFourierTerms(parseInt(e.target.value))}
-          className="slider"
-        />
-      </div>
-      
-      <button 
-        className="process-button"
-        onClick={handleProcess}
-        disabled={!preview || processing}
-      >
-        {processing ? 'Processing...' : 'Process Image'}
-      </button>
-      
-      {contours.length > 0 && (
-        <div className="contour-info">
-          <p>Found {contours.length} contours</p>
-        </div>
-      )}
-    </div>
-  );
-};
-
-// Component for displaying Fourier drawing
-const FourierDrawing = () => {
-  const { fourierCoefficients } = useFourier();
-  const canvasRef = useRef(null);
-  const [time, setTime] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [currentContourIndex, setCurrentContourIndex] = useState(0);
-  const [path, setPath] = useState([]);
-  const animationRef = useRef(null);
   
   // Calculate position from Fourier series at time t
-  const calculatePosition = useCallback((coefficients, t) => {
-    if (!coefficients || coefficients.length === 0) return { x: 0, y: 0 };
-    
+  const calculatePosition = (coefficients, t) => {
     let x = 0;
     let y = 0;
     
@@ -747,29 +428,35 @@ const FourierDrawing = () => {
     }
     
     return { x, y };
-  }, []);
+  };
   
-  // Animation loop
+  // Animation loop for drawing the contour using Fourier series
   useEffect(() => {
-    if (!isPlaying || !fourierCoefficients.length) return;
+    if (!isPlaying || !drawingCanvasRef.current || fourierCoefficients.length === 0) return;
     
+    // Get the current contour's coefficients
     const currentCoeffs = fourierCoefficients[currentContourIndex];
     if (!currentCoeffs) return;
     
     const animate = () => {
       setTime(prevTime => {
-        const newTime = prevTime + 0.01;
+        const newTime = prevTime + 0.01 * speed;
         
         // Calculate the new position
         const pos = calculatePosition(currentCoeffs, newTime);
         
-        // Update the path
-        setPath(prevPath => {
-          const newPath = [...prevPath, pos];
-          // Limit path length to prevent memory issues
-          if (newPath.length > 500) {
-            return newPath.slice(-500);
+        // Update the drawing path
+        setDrawingPath(prevPath => {
+          const newPath = [...prevPath, { 
+            x: pos.x + canvasWidth/2, 
+            y: pos.y + canvasHeight/2 
+          }];
+          
+          // Limit path length to prevent performance issues
+          if (newPath.length > 2000) {
+            return newPath.slice(-2000);
           }
+          
           return newPath;
         });
         
@@ -781,39 +468,35 @@ const FourierDrawing = () => {
         return newTime;
       });
       
-      animationRef.current = requestAnimationFrame(animate);
+      animationFrameRef.current = requestAnimationFrame(animate);
     };
     
-    animationRef.current = requestAnimationFrame(animate);
+    animationFrameRef.current = requestAnimationFrame(animate);
     
     return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [isPlaying, fourierCoefficients, currentContourIndex, calculatePosition]);
+  }, [isPlaying, fourierCoefficients, currentContourIndex, speed]);
   
-  // Draw on canvas
+  // Draw the path on the canvas
   useEffect(() => {
-    if (!canvasRef.current || !fourierCoefficients.length) return;
+    if (!drawingCanvasRef.current) return;
     
-    const canvas = canvasRef.current;
+    const canvas = drawingCanvasRef.current;
     const ctx = canvas.getContext('2d');
-    const width = canvas.width;
-    const height = canvas.height;
-    const centerX = width / 2;
-    const centerY = height / 2;
     
     // Clear canvas
-    ctx.clearRect(0, 0, width, height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     // Draw path
-    if (path.length > 1) {
+    if (drawingPath.length > 0) {
       ctx.beginPath();
-      ctx.moveTo(centerX + path[0].x, centerY + path[0].y);
+      ctx.moveTo(drawingPath[0].x, drawingPath[0].y);
       
-      for (let i = 1; i < path.length; i++) {
-        ctx.lineTo(centerX + path[i].x, centerY + path[i].y);
+      for (let i = 1; i < drawingPath.length; i++) {
+        ctx.lineTo(drawingPath[i].x, drawingPath[i].y);
       }
       
       ctx.strokeStyle = '#3498db';
@@ -821,13 +504,13 @@ const FourierDrawing = () => {
       ctx.stroke();
     }
     
-    // Draw epicycles if time > 0
+    // Draw the epicycles if time > 0
     if (time > 0 && fourierCoefficients.length > 0) {
       const currentCoeffs = fourierCoefficients[currentContourIndex];
       if (!currentCoeffs) return;
       
-      let x = centerX;
-      let y = centerY;
+      let x = canvasWidth/2;
+      let y = canvasHeight/2;
       
       // Draw each circle (limited to first few for performance)
       const maxCircles = Math.min(20, currentCoeffs.length);
@@ -864,21 +547,16 @@ const FourierDrawing = () => {
       ctx.fillStyle = 'red';
       ctx.fill();
     }
-  }, [time, path, fourierCoefficients, currentContourIndex]);
+  }, [time, drawingPath, fourierCoefficients, currentContourIndex]);
   
   // Reset the drawing
-  const resetDrawing = useCallback(() => {
-    setPath([]);
+  const resetDrawing = () => {
+    setDrawingPath([]);
     setTime(0);
-  }, []);
-  
-  // Toggle play/pause
-  const togglePlayPause = useCallback(() => {
-    setIsPlaying(prev => !prev);
-  }, []);
+  };
   
   // Change the current contour
-  const changeContour = useCallback((direction) => {
+  const changeContour = (direction) => {
     setCurrentContourIndex(prev => {
       let newIndex = prev + direction;
       if (newIndex < 0) newIndex = fourierCoefficients.length - 1;
@@ -886,389 +564,217 @@ const FourierDrawing = () => {
       return newIndex;
     });
     resetDrawing();
-  }, [fourierCoefficients.length, resetDrawing]);
-  
-  if (!fourierCoefficients.length) {
-    return (
-      <div className="fourier-placeholder">
-        <p>Process an image to see Fourier drawing</p>
-      </div>
-    );
-  }
+  };
   
   return (
-    <div className="fourier-container">
-      <canvas
-        ref={canvasRef}
-        width={300}
-        height={300}
-        className="fourier-canvas"
-      />
+    <div className="flex flex-col p-4 max-w-6xl mx-auto">
+      <h1 className="text-2xl font-bold mb-4">Image to Fourier Transform Drawing</h1>
       
-      <div className="fourier-controls">
-        <button
-          className="control-button"
-          onClick={togglePlayPause}
-        >
-          {isPlaying ? 'Pause' : 'Play'}
-        </button>
-        
-        <button
-          className="control-button"
-          onClick={resetDrawing}
-        >
-          Reset
-        </button>
-        
-        {fourierCoefficients.length > 1 && (
-          <div className="contour-navigation">
-            <button
-              className="control-button"
-              onClick={() => changeContour(-1)}
-            >
-              Prev
-            </button>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Left side - Image Input and Controls */}
+        <div className="space-y-4">
+          <div className="bg-white p-4 rounded-lg shadow-md">
+            <h2 className="text-lg font-semibold mb-2">Input Image</h2>
+            <div className="mb-4">
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                className="w-full p-2 border rounded"
+              />
+            </div>
             
-            <span className="contour-info">
-              {currentContourIndex + 1} / {fourierCoefficients.length}
-            </span>
-            
-            <button
-              className="control-button"
-              onClick={() => changeContour(1)}
-            >
-              Next
-            </button>
+            <div className="border rounded overflow-hidden bg-gray-100">
+              <canvas
+                ref={imageCanvasRef}
+                width={canvasWidth}
+                height={canvasHeight}
+                className="max-w-full mx-auto"
+              />
+            </div>
           </div>
-        )}
-      </div>
-    </div>
-  );
-};
-
-// Tabs component
-const Tabs = ({ children, activeTab, setActiveTab }) => {
-  return (
-    <div className="tabs-container">
-      <div className="tabs-header">
-        {React.Children.map(children, (child, index) => (
-          <button
-            key={index}
-            className={`tab-button ${activeTab === index ? 'active' : ''}`}
-            onClick={() => setActiveTab(index)}
-          >
-            {child.props.label}
-          </button>
-        ))}
-      </div>
-      <div className="tab-content">
-        {React.Children.toArray(children)[activeTab]}
-      </div>
-    </div>
-  );
-};
-
-// Tab panel component
-const TabPanel = ({ children, label }) => {
-  return (
-    <div className="tab-panel">
-      {children}
-    </div>
-  );
-};
-
-// Main app component
-const MobileFourierTransform = () => {
-  const [activeTab, setActiveTab] = useState(0);
-  
-  return (
-    <FourierProvider>
-      <div className="mobile-fourier-app">
-        <header className="app-header">
-          <h1>Fourier Transform Drawing</h1>
-        </header>
+          
+          <div className="bg-white p-4 rounded-lg shadow-md">
+            <h2 className="text-lg font-semibold mb-2">Contour Extraction Settings</h2>
+            
+            <div className="space-y-3">
+              <div>
+                <label className="block text-sm font-medium mb-1">Threshold: {thresholdValue}</label>
+                <input
+                  type="range"
+                  min="0"
+                  max="255"
+                  value={thresholdValue}
+                  onChange={(e) => setThresholdValue(parseInt(e.target.value))}
+                  className="w-full"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-1">Blur Radius: {blurRadius}</label>
+                <input
+                  type="range"
+                  min="0"
+                  max="10"
+                  value={blurRadius}
+                  onChange={(e) => setBlurRadius(parseInt(e.target.value))}
+                  className="w-full"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-1">Contour Simplification: {contourSimplification}</label>
+                <input
+                  type="range"
+                  min="1"
+                  max="20"
+                  value={contourSimplification}
+                  onChange={(e) => setContourSimplification(parseInt(e.target.value))}
+                  className="w-full"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-1">Fourier Terms: {fourierTerms}</label>
+                <input
+                  type="range"
+                  min="10"
+                  max="200"
+                  value={fourierTerms}
+                  onChange={(e) => setFourierTerms(parseInt(e.target.value))}
+                  className="w-full"
+                />
+              </div>
+              
+              <button
+                onClick={processImage}
+                disabled={!imageUrl || isProcessing}
+                className={`w-full py-2 rounded ${
+                  !imageUrl || isProcessing
+                    ? 'bg-gray-300 cursor-not-allowed'
+                    : 'bg-blue-500 text-white hover:bg-blue-600'
+                }`}
+              >
+                {isProcessing ? processingStep : 'Process Image'}
+              </button>
+            </div>
+          </div>
+        </div>
         
-        <main className="app-content">
-          <Tabs activeTab={activeTab} setActiveTab={setActiveTab}>
-            <TabPanel label="Camera">
-              <CameraView />
-            </TabPanel>
+        {/* Right side - Processed Image and Drawing */}
+        <div className="space-y-4">
+          <div className="bg-white p-4 rounded-lg shadow-md">
+            <h2 className="text-lg font-semibold mb-2">Processed Image (Edges)</h2>
+            <div className="border rounded overflow-hidden bg-gray-100">
+              <canvas
+                ref={processedCanvasRef}
+                width={canvasWidth}
+                height={canvasHeight}
+                className="max-w-full mx-auto"
+              />
+            </div>
             
-            <TabPanel label="File">
-              <FileInputView />
-            </TabPanel>
+            {contours.length > 0 && (
+              <div className="mt-2 text-sm text-gray-600">
+                {contours.length} contours extracted
+              </div>
+            )}
+          </div>
+          
+          <div className="bg-white p-4 rounded-lg shadow-md">
+            <h2 className="text-lg font-semibold mb-2">Fourier Drawing</h2>
+            <div className="border rounded overflow-hidden bg-gray-100">
+              <canvas
+                ref={drawingCanvasRef}
+                width={canvasWidth}
+                height={canvasHeight}
+                className="max-w-full mx-auto"
+              />
+            </div>
             
-            <TabPanel label="Process">
-              <ProcessingControls />
-            </TabPanel>
-            
-            <TabPanel label="Draw">
-              <FourierDrawing />
-            </TabPanel>
-          </Tabs>
-        </main>
-        
-        <style jsx>{`
-          .mobile-fourier-app {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            max-width: 100%;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            min-height: 100vh;
-          }
-          
-          .app-header {
-            background-color: #3498db;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-          }
-          
-          .app-header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-          }
-          
-          .app-content {
-            padding: 1rem;
-          }
-          
-          /* Tabs styling */
-          .tabs-container {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-          }
-          
-          .tabs-header {
-            display: flex;
-            background-color: #f1f1f1;
-          }
-          
-          .tab-button {
-            flex: 1;
-            padding: 0.75rem 0;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-weight: 500;
-            color: #666;
-            transition: 0.3s;
-          }
-          
-          .tab-button.active {
-            background-color: #3498db;
-            color: white;
-          }
-          
-          .tab-content {
-            padding: 1rem;
-          }
-          
-          /* Camera view styling */
-          .camera-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          }
-          
-          .video-container {
-            width: 100%;
-            aspect-ratio: 4/3;
-            background-color: #000;
-            overflow: hidden;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-          }
-          
-          .camera-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-          
-          .camera-controls {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-          }
-          
-          .camera-button {
-            padding: 0.75rem 1rem;
-            border: none;
-            border-radius: 6px;
-            background-color: #3498db;
-            color: white;
-            font-weight: 500;
-            cursor: pointer;
-          }
-          
-          .camera-button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-          }
-          
-          .camera-button.capture {
-            background-color: #2ecc71;
-          }
-          
-          .error-message {
-            color: #e74c3c;
-            margin-bottom: 1rem;
-            text-align: center;
-          }
-          
-          /* File input styling */
-          .file-input-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          }
-          
-          .file-input-controls {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            width: 100%;
-          }
-          
-          .file-button {
-            padding: 0.75rem 1rem;
-            border: none;
-            border-radius: 6px;
-            background-color: #3498db;
-            color: white;
-            font-weight: 500;
-            cursor: pointer;
-            flex: 1;
-            max-width: 150px;
-          }
-          
-          .file-button.clear-file {
-            background-color: #e74c3c;
-          }
-          
-          .file-preview {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-top: 1rem;
-          }
-          
-          .preview-image {
-            max-width: 100%;
-            max-height: 300px;
-            border-radius: 8px;
-          }
-          
-          /* Processing controls styling */
-          .processing-controls {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-          }
-          
-          .control-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-          }
-          
-          .slider {
-            width: 100%;
-            -webkit-appearance: none;
-            height: 8px;
-            border-radius: 4px;
-            background: #ddd;
-            outline: none;
-          }
-          
-          .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #3498db;
-            cursor: pointer;
-          }
-          
-          .process-button {
-            padding: 0.75rem 1rem;
-            border: none;
-            border-radius: 6px;
-            background-color: #2ecc71;
-            color: white;
-            font-weight: 500;
-            cursor: pointer;
-            margin-top: 1rem;
-          }
-          
-          .process-button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-          }
-          
-          /* Fourier drawing styling */
-          .fourier-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-          }
-          
-          .fourier-canvas {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: white;
-            max-width: 100%;
-            touch-action: none;
-          }
-          
-          .fourier-controls {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.5rem;
-            width: 100%;
-          }
-          
-          .control-button {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 6px;
-            background-color: #3498db;
-            color: white;
-            font-weight: 500;
-            cursor: pointer;
-          }
-          
-          .contour-navigation {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-          }
-          
-          .contour-info {
-            font-size: 0.875rem;
-          }
-          
-          .fourier-placeholder {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 300px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            color: #666;
-          }
-        `}</style>
+            {fourierCoefficients.length > 0 && (
+              <div className="mt-4 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex space-x-2">
+                    <button
+                      onClick={() => setIsPlaying(!isPlaying)}
+                      className={`px-4 py-2 rounded ${
+                        isPlaying ? 'bg-red-500 text-white' : 'bg-green-500 text-white'
+                      }`}
+                    >
+                      {isPlaying ? 'Pause' : 'Draw'}
+                    </button>
+                    
+                    <button
+                      onClick={resetDrawing}
+                      className="px-4 py-2 bg-gray-200 rounded"
+                    >
+                      Clear
+                    </button>
+                  </div>
+                  
+                  <div className="flex items-center space-x-2">
+                    <button
+                      onClick={() => changeContour(-1)}
+                      className="px-2 py-1 bg-gray-200 rounded"
+                      disabled={fourierCoefficients.length <= 1}
+                    >
+                      ←
+                    </button>
+                    
+                    <span className="text-sm">
+                      Contour {currentContourIndex + 1}/{fourierCoefficients.length}
+                    </span>
+                    
+                    <button
+                      onClick={() => changeContour(1)}
+                      className="px-2 py-1 bg-gray-200 rounded"
+                      disabled={fourierCoefficients.length <= 1}
+                    >
+                      →
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-2">
+                  <span className="text-sm">Speed:</span>
+                  <input
+                    type="range"
+                    min="0.1"
+                    max="5"
+                    step="0.1"
+                    value={speed}
+                    onChange={(e) => setSpeed(parseFloat(e.target.value))}
+                    className="flex-grow"
+                  />
+                  <span className="text-sm">{speed.toFixed(1)}x</span>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-    </FourierProvider>
+      
+      {/* Explanation */}
+      <div className="mt-6 bg-blue-50 p-4 rounded-lg text-sm">
+        <h2 className="font-semibold mb-2">How It Works</h2>
+        <p className="mb-3">
+          This tool converts images to line drawings using Fourier transforms. The process works in several steps:
+        </p>
+        <ol className="list-decimal list-inside space-y-1 ml-4">
+          <li>The image is converted to grayscale and blurred to reduce noise</li>
+          <li>A threshold is applied to create a black and white image</li>
+          <li>Edge detection finds the outlines in the image</li>
+          <li>Contours are extracted by tracing the edges</li>
+          <li>Each contour is simplified and converted to a Fourier series</li>
+          <li>The Fourier coefficients control rotating circles (epicycles) that trace the drawing</li>
+        </ol>
+        <p className="mt-3">
+          You can adjust the parameters to optimize for different images. More Fourier terms produces a more accurate drawing but runs slower.
+        </p>
+      </div>
+    </div>
   );
 };
 
-export default MobileFourierTransform;
+export default ImageToFourierTransform;
