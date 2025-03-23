@@ -11,7 +11,7 @@ import ArticlePage from './components/WebArticle'
 import GitHubActionsMobileManager from './components/thehub/github-actions-mobile-ui'
 import MotionAmplification from './components/vid/VideoDemo'
 import PulseDetectionVisualizer from './components/vid/PulseExample'
-import // ImageToFourierTransform from './components/MobileFourier'
+// import ImageToFourierTransform from './components/MobileFourier'
 import ImageToFourierTransform from './components/fourier/MobileDemo'
 
 // Component keys enum
