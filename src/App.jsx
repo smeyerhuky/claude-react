@@ -11,8 +11,7 @@ import ArticlePage from './components/WebArticle'
 import GitHubActionsMobileManager from './components/thehub/github-actions-mobile-ui'
 import MotionAmplification from './components/vid/VideoDemo'
 import PulseDetectionVisualizer from './components/vid/PulseExample'
-// import ImageToFourierTransform from './components/MobileFourier'
-import ImageToFourierTransform from './components/fourier/MobileDemo'
+import FourierSeriesExplorer from './components/fourier/MobileDemo'
 
 // Component keys enum
 const COMPONENTS = {
@@ -33,7 +32,7 @@ const navigationItems = [
  {
    id: COMPONENTS.FOURIER,
    label: 'Drawing With Fourier',
-   component: ImageToFourierTransform
+   component: FourierSeriesExplorer
  },
  { 
     id: COMPONENTS.PULSE, 
@@ -76,7 +75,7 @@ const navigationItems = [
     component: PendulumSimulation 
   },
   {
-    id: COMPONENTS.AMPLIFY_DEMO,
+    id: COMPONENTS.FOURIER,
     label: 'Motion Amp Demo',
     component: MotionAmplification
   }

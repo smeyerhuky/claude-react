@@ -1,1600 +1,1629 @@
-import React, { createContext, useContext, useReducer, useCallback, useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as math from 'mathjs';
 
-// =============================================
-// Context and State Management
-// =============================================
-
-// Initial state for the Fourier processing
-const initialState = {
-  // Image state
-  originalImage: null,
-  imageUrl: null,
+const FourierSeriesExplorer = () => {
+  // Canvas refs
+  const mainCanvasRef = useRef(null);
+  const componentCanvasRef = useRef(null);
+  const drawingCanvasRef = useRef(null);
+  const epicycleCanvasRef = useRef(null);
+  const coefficientCanvasRef = useRef(null);
+  const errorCanvasRef = useRef(null);
   
-  // Processing state
-  processingStep: 'upload', // 'upload', 'preprocess', 'edges', 'contours', 'fourier', 'animation'
-  isProcessing: false,
+  // Function parameters
+  const [targetFunction, setTargetFunction] = useState('square');
+  const [numTerms, setNumTerms] = useState(5);
+  const [customEquation, setCustomEquation] = useState('x^2 - PI^2/3');
+  const [customCoefficients, setCustomCoefficients] = useState([]);
   
-  // Processing parameters
-  params: {
-    blurRadius: 2,
-    contourSimplification: 5,
-    fourierTerms: 50,
-    // Removed manual threshold - will be auto-calculated
-  },
+  // Display options
+  const [showComponents, setShowComponents] = useState(false);
+  const [showEpicycles, setShowEpicycles] = useState(false);
+  const [showCoefficients, setShowCoefficients] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [showTermControls, setShowTermControls] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   
-  // Result state
-  preprocessedImageData: null,
-  edgeImageData: null,
-  contours: [],
-  fourierCoefficients: [],
+  // Animation controls
+  const [animateTerms, setAnimateTerms] = useState(false);
+  const [animationFrame, setAnimationFrame] = useState(0);
+  const [animationSpeed, setAnimationSpeed] = useState(1);
   
-  // Animation state
-  isPlaying: false,
-  animationSpeed: 1,
-  currentContourIndex: 0,
-  drawingPath: []
-};
-
-// Action types
-const actionTypes = {
-  SET_IMAGE: 'SET_IMAGE',
-  SET_PROCESSING_STEP: 'SET_PROCESSING_STEP',
-  SET_PROCESSING_STATUS: 'SET_PROCESSING_STATUS',
-  UPDATE_PARAMETER: 'UPDATE_PARAMETER',
-  SET_PREPROCESSED_IMAGE: 'SET_PREPROCESSED_IMAGE',
-  SET_EDGE_IMAGE: 'SET_EDGE_IMAGE',
-  SET_CONTOURS: 'SET_CONTOURS',
-  SET_FOURIER_COEFFICIENTS: 'SET_FOURIER_COEFFICIENTS',
-  UPDATE_ANIMATION_STATE: 'UPDATE_ANIMATION_STATE',
-  RESET_DRAWING: 'RESET_DRAWING',
-  UPDATE_DRAWING_PATH: 'UPDATE_DRAWING_PATH'
-};
-
-// Reducer function
-function fourierReducer(state, action) {
-  switch (action.type) {
-    case actionTypes.SET_IMAGE:
-      return {
-        ...state,
-        originalImage: action.payload.image,
-        imageUrl: action.payload.url,
-        processingStep: 'preprocess',
-        // Reset results when changing image
-        preprocessedImageData: null,
-        edgeImageData: null,
-        contours: [],
-        fourierCoefficients: [],
-        drawingPath: []
-      };
-      
-    case actionTypes.SET_PROCESSING_STEP:
-      return {
-        ...state,
-        processingStep: action.payload
-      };
-      
-    case actionTypes.SET_PROCESSING_STATUS:
-      return {
-        ...state,
-        isProcessing: action.payload
-      };
-      
-    case actionTypes.UPDATE_PARAMETER:
-      return {
-        ...state,
-        params: {
-          ...state.params,
-          [action.payload.name]: action.payload.value
+  // Drawing mode
+  const [isDrawingMode, setIsDrawingMode] = useState(false);
+  const [isDrawing, setIsDrawing] = useState(false);
+  const [drawingPoints, setDrawingPoints] = useState([]);
+  
+  // Audio
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [audioContext, setAudioContext] = useState(null);
+  const [audioNode, setAudioNode] = useState(null);
+  
+  // Zoom and pan
+  const [zoom, setZoom] = useState(1);
+  const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
+  const [isPanning, setIsPanning] = useState(false);
+  const [startPanPoint, setStartPanPoint] = useState({ x: 0, y: 0 });
+  
+  // Interactive coefficients
+  const [manualCoefficients, setManualCoefficients] = useState([]);
+  const [useManualCoefficients, setUseManualCoefficients] = useState(false);
+  
+  // Animation refs
+  const animationRef = useRef(null);
+  const epicycleAnimationRef = useRef(null);
+  
+  // Constants for drawing
+  const width = 800;
+  const height = 400;
+  const xScale = width / (2 * Math.PI);
+  const yScale = height / 4;
+  const xOffset = 0;
+  const yOffset = height / 2;
+  
+  // Available target functions
+  const targetFunctions = [
+    { id: 'square', name: 'Square Wave' },
+    { id: 'sawtooth', name: 'Sawtooth Wave' },
+    { id: 'triangle', name: 'Triangle Wave' },
+    { id: 'custom', name: 'Custom Function' },
+    { id: 'drawing', name: 'Draw Your Own' }
+  ];
+  
+  // Parse custom function
+  const parseCustomFunction = (expression) => {
+    try {
+      const parsedExpr = math.parse(expression);
+      return (x) => {
+        try {
+          const scope = { x, PI: Math.PI };
+          return parsedExpr.evaluate(scope);
+        } catch (error) {
+          console.error("Error evaluating expression:", error);
+          return 0;
         }
       };
-      
-    case actionTypes.SET_PREPROCESSED_IMAGE:
-      return {
-        ...state,
-        preprocessedImageData: action.payload
-      };
-      
-    case actionTypes.SET_EDGE_IMAGE:
-      return {
-        ...state,
-        edgeImageData: action.payload
-      };
-      
-    case actionTypes.SET_CONTOURS:
-      return {
-        ...state,
-        contours: action.payload
-      };
-      
-    case actionTypes.SET_FOURIER_COEFFICIENTS:
-      return {
-        ...state,
-        fourierCoefficients: action.payload,
-        currentContourIndex: 0
-      };
-      
-    case actionTypes.UPDATE_ANIMATION_STATE:
-      return {
-        ...state,
-        isPlaying: action.payload.isPlaying !== undefined ? action.payload.isPlaying : state.isPlaying,
-        animationSpeed: action.payload.speed !== undefined ? action.payload.speed : state.animationSpeed,
-        currentContourIndex: action.payload.contourIndex !== undefined ? action.payload.contourIndex : state.currentContourIndex
-      };
-      
-    case actionTypes.RESET_DRAWING:
-      return {
-        ...state,
-        drawingPath: []
-      };
-      
-    case actionTypes.UPDATE_DRAWING_PATH:
-      return {
-        ...state,
-        drawingPath: action.payload
-      };
-      
-    default:
-      return state;
-  }
-}
-
-// Create context
-const FourierContext = createContext();
-
-// Custom hook for using the Fourier context
-function useFourier() {
-  const context = useContext(FourierContext);
-  if (!context) {
-    throw new Error('useFourier must be used within a FourierProvider');
-  }
-  return context;
-}
-
-// =============================================
-// Custom Hooks
-// =============================================
-
-// Hook for image loading and manipulation
-function useImageLoader() {
-  const { state, dispatch } = useFourier();
+    } catch (error) {
+      console.error("Error parsing expression:", error);
+      return () => 0;
+    }
+  };
   
-  // Load image from file
-  const loadImage = useCallback((file) => {
-    if (!file || !file.type.match('image.*')) return;
-    
-    const imageUrl = URL.createObjectURL(file);
-    
-    const image = new Image();
-    image.onload = () => {
-      dispatch({
-        type: actionTypes.SET_IMAGE,
-        payload: { image, url: imageUrl }
-      });
-    };
-    image.src = imageUrl;
-  }, [dispatch]);
-  
-  // Load demo image
-  const loadDemoImage = useCallback((demoName) => {
-    // In a real implementation, we would load predefined demo images
-    alert(`Loading demo: ${demoName}`);
+  // Initialize theme
+  useEffect(() => {
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setIsDarkMode(prefersDark);
   }, []);
   
-  return { loadImage, loadDemoImage };
-}
-
-// Hook for image processing operations
-function useFourierProcessing() {
-  const { state, dispatch } = useFourier();
-  const canvasRef = useRef(null);
-  
-  // Process the image through the pipeline
-  const processImage = useCallback(async () => {
-    // Set processing flag
-    dispatch({ type: actionTypes.SET_PROCESSING_STATUS, payload: true });
+  // Initialize audio context
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.AudioContext) {
+      const ctx = new AudioContext();
+      setAudioContext(ctx);
+    }
     
-    try {
-      // Preprocess step - convert to grayscale, blur, etc.
-      const preprocessed = await preprocessImage(state.originalImage, state.params);
-      dispatch({ type: actionTypes.SET_PREPROCESSED_IMAGE, payload: preprocessed });
-      
-      // Auto-threshold and edge detection
-      const edgeData = await detectEdges(preprocessed);
-      dispatch({ type: actionTypes.SET_EDGE_IMAGE, payload: edgeData });
-      
-      // Extract contours
-      const contours = await extractContours(edgeData);
-      
-      // Simplify contours
-      const simplifiedContours = simplifyContours(contours, state.params.contourSimplification);
-      dispatch({ type: actionTypes.SET_CONTOURS, payload: simplifiedContours });
-      
-      // Calculate Fourier coefficients
-      const coefficients = [];
-      for (const contour of simplifiedContours) {
-        if (contour.length > 10) { // Only process meaningful contours
-          const coeffs = calculateFourierCoefficients(contour, state.params.fourierTerms);
-          coefficients.push(coeffs);
-        }
+    return () => {
+      if (audioNode) {
+        audioNode.disconnect();
       }
-      
-      dispatch({ type: actionTypes.SET_FOURIER_COEFFICIENTS, payload: coefficients });
-      
-      // Move to fourier step
-      dispatch({ type: actionTypes.SET_PROCESSING_STEP, payload: 'fourier' });
-    } catch (error) {
-      console.error('Error processing image:', error);
-    }
-    
-    // Clear processing flag
-    dispatch({ type: actionTypes.SET_PROCESSING_STATUS, payload: false });
-  }, [state.originalImage, state.params, dispatch]);
-  
-  // Preprocess image (grayscale, blur)
-  const preprocessImage = async (image, params) => {
-    return new Promise(resolve => {
-      // Create temporary canvas for processing
-      const canvas = document.createElement('canvas');
-      canvas.width = image.width;
-      canvas.height = image.height;
-      const ctx = canvas.getContext('2d');
-      
-      // Draw image to canvas
-      ctx.drawImage(image, 0, 0);
-      
-      // Get image data
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      
-      // Convert to grayscale
-      const grayscaleData = convertToGrayscale(imageData);
-      
-      // Apply blur
-      const blurredData = applyGaussianBlur(grayscaleData, params.blurRadius);
-      
-      // Resolve with processed data
-      setTimeout(() => resolve(blurredData), 50); // Small delay for UI responsiveness
-    });
-  };
-  
-  // Convert image to grayscale
-  const convertToGrayscale = (imageData) => {
-    const data = new Uint8ClampedArray(imageData.data);
-    
-    for (let i = 0; i < data.length; i += 4) {
-      const r = data[i];
-      const g = data[i + 1];
-      const b = data[i + 2];
-      
-      // Luminance formula
-      const gray = 0.299 * r + 0.587 * g + 0.114 * b;
-      
-      data[i] = gray;
-      data[i + 1] = gray;
-      data[i + 2] = gray;
-    }
-    
-    return new ImageData(data, imageData.width, imageData.height);
-  };
-  
-  // Apply Gaussian blur
-  const applyGaussianBlur = (imageData, radius) => {
-    // Simple box blur as an approximation
-    const data = new Uint8ClampedArray(imageData.data);
-    const width = imageData.width;
-    const height = imageData.height;
-    const result = new Uint8ClampedArray(data);
-    
-    // Skip blur if radius is 0
-    if (radius <= 0) return imageData;
-    
-    // Horizontal pass
-    for (let y = 0; y < height; y++) {
-      for (let x = 0; x < width; x++) {
-        let r = 0, g = 0, b = 0, a = 0, count = 0;
-        
-        for (let i = -radius; i <= radius; i++) {
-          const cx = Math.min(width - 1, Math.max(0, x + i));
-          const idx = (y * width + cx) * 4;
-          
-          r += data[idx];
-          g += data[idx + 1];
-          b += data[idx + 2];
-          a += data[idx + 3];
-          count++;
-        }
-        
-        const idx = (y * width + x) * 4;
-        result[idx] = r / count;
-        result[idx + 1] = g / count;
-        result[idx + 2] = b / count;
-        result[idx + 3] = a / count;
+      if (audioContext) {
+        audioContext.close();
       }
-    }
-    
-    // Vertical pass
-    const temp = new Uint8ClampedArray(result);
-    
-    for (let x = 0; x < width; x++) {
-      for (let y = 0; y < height; y++) {
-        let r = 0, g = 0, b = 0, a = 0, count = 0;
-        
-        for (let i = -radius; i <= radius; i++) {
-          const cy = Math.min(height - 1, Math.max(0, y + i));
-          const idx = (cy * width + x) * 4;
-          
-          r += temp[idx];
-          g += temp[idx + 1];
-          b += temp[idx + 2];
-          a += temp[idx + 3];
-          count++;
-        }
-        
-        const idx = (y * width + x) * 4;
-        result[idx] = r / count;
-        result[idx + 1] = g / count;
-        result[idx + 2] = b / count;
-        result[idx + 3] = a / count;
-      }
-    }
-    
-    return new ImageData(result, width, height);
-  };
+    };
+  }, []);
   
-  // Auto threshold and edge detection
-  const detectEdges = async (imageData) => {
-    return new Promise(resolve => {
-      // Auto-calculate threshold using Otsu's method
-      const threshold = calculateOtsuThreshold(imageData);
-      
-      // Apply threshold
-      const thresholdedData = applyThreshold(imageData, threshold);
-      
-      // Detect edges
-      const edgeData = findEdges(thresholdedData);
-      
-      setTimeout(() => resolve(edgeData), 50); // Small delay for UI responsiveness
-    });
-  };
-  
-  // Calculate optimal threshold using Otsu's method
-  const calculateOtsuThreshold = (imageData) => {
-    const data = imageData.data;
-    const histogram = new Array(256).fill(0);
-    
-    // Build histogram
-    for (let i = 0; i < data.length; i += 4) {
-      histogram[data[i]]++;
-    }
-    
-    const total = data.length / 4;
-    let sum = 0;
-    for (let i = 0; i < 256; i++) {
-      sum += i * histogram[i];
-    }
-    
-    let sumB = 0;
-    let wB = 0;
-    let wF = 0;
-    let maxVariance = 0;
-    let threshold = 0;
-    
-    for (let t = 0; t < 256; t++) {
-      wB += histogram[t];
-      if (wB === 0) continue;
-      
-      wF = total - wB;
-      if (wF === 0) break;
-      
-      sumB += t * histogram[t];
-      
-      const mB = sumB / wB;
-      const mF = (sum - sumB) / wF;
-      
-      const variance = wB * wF * (mB - mF) * (mB - mF);
-      
-      if (variance > maxVariance) {
-        maxVariance = variance;
-        threshold = t;
-      }
-    }
-    
-    return threshold;
-  };
-  
-  // Apply threshold
-  const applyThreshold = (imageData, threshold) => {
-    const data = new Uint8ClampedArray(imageData.data);
-    
-    for (let i = 0; i < data.length; i += 4) {
-      const v = data[i] < threshold ? 0 : 255;
-      
-      data[i] = v;
-      data[i + 1] = v;
-      data[i + 2] = v;
-    }
-    
-    return new ImageData(data, imageData.width, imageData.height);
-  };
-  
-  // Edge detection
-  const findEdges = (imageData) => {
-    const width = imageData.width;
-    const height = imageData.height;
-    const data = imageData.data;
-    const result = new Uint8ClampedArray(data.length);
-    
-    // Initialize with black
-    for (let i = 0; i < result.length; i++) {
-      result[i] = 0;
-      // Set alpha channel
-      if ((i + 1) % 4 === 0) {
-        result[i] = 255;
-      }
-    }
-    
-    // Simple edge detection
-    for (let y = 1; y < height - 1; y++) {
-      for (let x = 1; x < width - 1; x++) {
-        const idx = (y * width + x) * 4;
-        
-        // Check neighbors
-        const top = data[((y - 1) * width + x) * 4];
-        const bottom = data[((y + 1) * width + x) * 4];
-        const left = data[(y * width + (x - 1)) * 4];
-        const right = data[(y * width + (x + 1)) * 4];
-        const current = data[idx];
-        
-        // If there's a difference between any neighbors, it's an edge
-        if (
-          Math.abs(current - top) > 50 ||
-          Math.abs(current - bottom) > 50 ||
-          Math.abs(current - left) > 50 ||
-          Math.abs(current - right) > 50
-        ) {
-          result[idx] = 255;
-          result[idx + 1] = 255;
-          result[idx + 2] = 255;
-        }
-      }
-    }
-    
-    return new ImageData(result, width, height);
-  };
-  
-  // Extract contours from edge image
-  const extractContours = async (edgeData) => {
-    return new Promise(resolve => {
-      const width = edgeData.width;
-      const height = edgeData.height;
-      const data = edgeData.data;
-      
-      // Create a grid to track visited pixels
-      const visited = Array(height).fill().map(() => Array(width).fill(false));
-      const contours = [];
-      
-      // Helper function to check if a pixel is white (edge)
-      const isEdge = (x, y) => {
-        if (x < 0 || x >= width || y < 0 || y >= height) return false;
-        const idx = (y * width + x) * 4;
-        return data[idx] > 128;
-      };
-      
-      // Find starting points for contours
-      for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width; x++) {
-          if (isEdge(x, y) && !visited[y][x]) {
-            // Start a new contour
-            const contour = [];
-            let cx = x;
-            let cy = y;
-            
-            // Direction vectors for 8-way search
-            const dx = [1, 1, 0, -1, -1, -1, 0, 1];
-            const dy = [0, 1, 1, 1, 0, -1, -1, -1];
-            
-            // Simple boundary following
-            let foundNext = true;
-            while (foundNext && contour.length < 5000) { // Safety limit
-              visited[cy][cx] = true;
-              contour.push({ x: cx, y: cy });
-              
-              foundNext = false;
-              for (let dir = 0; dir < 8; dir++) {
-                const nx = cx + dx[dir];
-                const ny = cy + dy[dir];
-                
-                if (isEdge(nx, ny) && !visited[ny][nx]) {
-                  cx = nx;
-                  cy = ny;
-                  foundNext = true;
-                  break;
-                }
-              }
-            }
-            
-            // Only keep contours with sufficient points
-            if (contour.length > 10) {
-              contours.push(contour);
-            }
-          }
-        }
-      }
-      
-      setTimeout(() => resolve(contours), 50); // Small delay for UI responsiveness
-    });
-  };
-  
-  // Simplify contours by removing redundant points
-  const simplifyContours = (contours, tolerance) => {
-    return contours.map(contour => {
-      // Simple point reduction strategy - keep every nth point
-      const simplified = [];
-      for (let i = 0; i < contour.length; i += tolerance) {
-        simplified.push(contour[i]);
-      }
-      
-      // Ensure the contour is closed
-      if (simplified.length > 0 && 
-          (simplified[0].x !== simplified[simplified.length - 1].x || 
-           simplified[0].y !== simplified[simplified.length - 1].y)) {
-        simplified.push(simplified[0]);
-      }
-      
-      return simplified;
-    });
-  };
-  
-  // Calculate Fourier coefficients for a contour
-  const calculateFourierCoefficients = (contour, numTerms) => {
-    // Canvas dimensions for centering
-    const canvasWidth = 400; // Default width
-    const canvasHeight = 400; // Default height
-    
-    // Convert (x,y) contour points to complex numbers
-    const complexPoints = contour.map(point => 
-      math.complex(point.x - canvasWidth/2, point.y - canvasHeight/2)
-    );
-    
-    const N = complexPoints.length;
+  // Function to calculate Fourier coefficients
+  const calculateFourierCoefficients = (func, n) => {
     const coefficients = [];
     
-    // Calculate coefficients for different frequencies
-    for (let k = -numTerms/2; k <= numTerms/2; k++) {
-      let sum = math.complex(0, 0);
-      
-      for (let n = 0; n < N; n++) {
-        // e^(-i2πkn/N)
-        const angle = -2 * Math.PI * k * n / N;
-        const term = math.multiply(
-          complexPoints[n],
-          math.complex(Math.cos(angle), Math.sin(angle))
-        );
+    // Calculate coefficients based on the function type
+    switch(func) {
+      case 'square':
+        // For square wave: a_n = 0, b_n = 4/(nπ) for odd n, 0 for even n
+        for (let i = 1; i <= n; i++) {
+          if (i % 2 === 1) {
+            coefficients.push({ a: 0, b: 4 / (i * Math.PI) });
+          } else {
+            coefficients.push({ a: 0, b: 0 });
+          }
+        }
+        break;
         
-        sum = math.add(sum, term);
-      }
-      
-      // Normalize
-      sum = math.divide(sum, N);
-      
-      coefficients.push({
-        frequency: k,
-        amplitude: math.abs(sum),
-        phase: math.arg(sum),
-        real: sum.re,
-        imag: sum.im
-      });
+      case 'sawtooth':
+        // For sawtooth wave: a_n = 0, b_n = 2/nπ * (-1)^(n+1)
+        for (let i = 1; i <= n; i++) {
+          const sign = Math.pow(-1, i+1);
+          coefficients.push({ a: 0, b: 2 / (i * Math.PI) * sign });
+        }
+        break;
+        
+      case 'triangle':
+        // For triangle wave: a_n = 0, b_n = 8/(n^2 * π^2) for odd n, 0 for even n
+        for (let i = 1; i <= n; i++) {
+          if (i % 2 === 1) {
+            coefficients.push({ a: 0, b: 8 / (i * i * Math.PI * Math.PI) });
+          } else {
+            coefficients.push({ a: 0, b: 0 });
+          }
+        }
+        break;
+        
+      case 'custom':
+        // For custom function: Use numerical integration
+        const customFunc = parseCustomFunction(customEquation);
+        for (let i = 1; i <= n; i++) {
+          // Numerical integration to find a_n and b_n
+          let a = 0, b = 0;
+          const steps = 100;
+          const dx = 2 * Math.PI / steps;
+          
+          for (let j = 0; j < steps; j++) {
+            const x = j * dx - Math.PI;
+            const fx = customFunc(x);
+            
+            a += fx * Math.cos(i * x) * dx / Math.PI;
+            b += fx * Math.sin(i * x) * dx / Math.PI;
+          }
+          
+          coefficients.push({ a, b });
+        }
+        break;
+        
+      case 'drawing':
+        // Use the drawn points to calculate Fourier coefficients
+        if (drawingPoints.length > 0) {
+          // Convert drawing points to complex numbers
+          const points = drawingPoints.map(p => {
+            // Center and scale the points to fit in [-π, π]
+            const x = ((p.x / width) * 2 * Math.PI) - Math.PI;
+            const y = -((p.y / height - 0.5) * 2); // Invert y since canvas y is top-down
+            return { x, y };
+          });
+          
+          // Calculate coefficients using DFT
+          for (let k = 1; k <= n; k++) {
+            let a = 0, b = 0;
+            const N = points.length;
+            
+            for (let i = 0; i < N; i++) {
+              const t = (i / N) * 2 * Math.PI - Math.PI;
+              const angle = k * t;
+              a += points[i].y * Math.cos(angle) / N;
+              b += points[i].y * Math.sin(angle) / N;
+            }
+            
+            coefficients.push({ a, b });
+          }
+        } else {
+          // If no drawing, use zeros
+          for (let i = 1; i <= n; i++) {
+            coefficients.push({ a: 0, b: 0 });
+          }
+        }
+        break;
     }
     
-    // Sort by amplitude (highest first)
-    return coefficients.sort((a, b) => b.amplitude - a.amplitude);
+    return coefficients;
   };
   
-  // Reset to a previous step
-  const resetToStep = useCallback((step) => {
-    dispatch({ type: actionTypes.SET_PROCESSING_STEP, payload: step });
+  // Function to evaluate the target function at a point
+  const evaluateTargetFunction = (func, x) => {
+    // Normalize x to range [-π, π]
+    const normalizedX = ((x % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+    const mappedX = normalizedX > Math.PI ? normalizedX - 2 * Math.PI : normalizedX;
     
-    // Reset data based on the step
-    if (step === 'upload') {
-      dispatch({ type: actionTypes.SET_IMAGE, payload: { image: null, url: null } });
-    } else if (step === 'preprocess') {
-      dispatch({ type: actionTypes.SET_EDGE_IMAGE, payload: null });
-      dispatch({ type: actionTypes.SET_CONTOURS, payload: [] });
-      dispatch({ type: actionTypes.SET_FOURIER_COEFFICIENTS, payload: [] });
-    } else if (step === 'edges') {
-      dispatch({ type: actionTypes.SET_CONTOURS, payload: [] });
-      dispatch({ type: actionTypes.SET_FOURIER_COEFFICIENTS, payload: [] });
-    } else if (step === 'contours') {
-      dispatch({ type: actionTypes.SET_FOURIER_COEFFICIENTS, payload: [] });
+    switch(func) {
+      case 'square':
+        return mappedX >= 0 ? 1 : -1;
+        
+      case 'sawtooth':
+        return mappedX / Math.PI;
+        
+      case 'triangle':
+        const normalizedY = 2 * Math.abs(2 * (normalizedX / (2 * Math.PI) - Math.floor(normalizedX / (2 * Math.PI) + 0.5)));
+        return 2 * normalizedY - 1;
+        
+      case 'custom':
+        return parseCustomFunction(customEquation)(mappedX);
+        
+      case 'drawing':
+        if (drawingPoints.length > 0) {
+          // Interpolate between drawn points
+          const pointIndex = ((normalizedX + Math.PI) / (2 * Math.PI)) * drawingPoints.length;
+          const i = Math.floor(pointIndex) % drawingPoints.length;
+          const t = pointIndex - i;
+          const nextI = (i + 1) % drawingPoints.length;
+          
+          const y1 = -((drawingPoints[i].y / height - 0.5) * 2);
+          const y2 = -((drawingPoints[nextI].y / height - 0.5) * 2);
+          
+          return y1 * (1 - t) + y2 * t;
+        }
+        return 0;
+        
+      default:
+        return 0;
     }
-    
-    // Reset drawing path
-    dispatch({ type: actionTypes.RESET_DRAWING });
-  }, [dispatch]);
-  
-  return { 
-    canvasRef,
-    processImage,
-    resetToStep
-  };
-}
-
-// Hook for animation controls
-function useAnimationControls() {
-  const { state, dispatch } = useFourier();
-  const animationRef = useRef(null);
-  const drawingCanvasRef = useRef(null);
-  
-  // Toggle play/pause
-  const togglePlayback = useCallback(() => {
-    dispatch({
-      type: actionTypes.UPDATE_ANIMATION_STATE,
-      payload: { isPlaying: !state.isPlaying }
-    });
-  }, [state.isPlaying, dispatch]);
-  
-  // Set playback speed
-  const setPlaybackSpeed = useCallback((speed) => {
-    dispatch({
-      type: actionTypes.UPDATE_ANIMATION_STATE,
-      payload: { speed }
-    });
-  }, [dispatch]);
-  
-  // Change contour
-  const changeContour = useCallback((direction) => {
-    const currentIndex = state.currentContourIndex;
-    const count = state.fourierCoefficients.length;
-    
-    if (count === 0) return;
-    
-    let newIndex = (currentIndex + direction) % count;
-    if (newIndex < 0) newIndex = count - 1;
-    
-    dispatch({
-      type: actionTypes.UPDATE_ANIMATION_STATE,
-      payload: { contourIndex: newIndex }
-    });
-    
-    // Reset drawing
-    dispatch({ type: actionTypes.RESET_DRAWING });
-  }, [state.currentContourIndex, state.fourierCoefficients.length, dispatch]);
-  
-  // Reset drawing
-  const resetDrawing = useCallback(() => {
-    dispatch({ type: actionTypes.RESET_DRAWING });
-  }, [dispatch]);
-  
-  // Animation loop for drawing
-  useEffect(() => {
-    if (!state.isPlaying || !drawingCanvasRef.current || state.fourierCoefficients.length === 0) {
-      // Clear animation frame when not playing
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-        animationRef.current = null;
-      }
-      return;
-    }
-    
-    // Get the current contour's coefficients
-    const currentCoeffs = state.fourierCoefficients[state.currentContourIndex];
-    if (!currentCoeffs) return;
-    
-    let time = 0;
-    const canvasWidth = 400; // Default width
-    const canvasHeight = 400; // Default height
-    
-    const animate = () => {
-      time += 0.01 * state.animationSpeed;
-      
-      // Calculate the new position
-      const pos = calculatePosition(currentCoeffs, time);
-      
-      // Update the drawing path
-      const newPath = [...state.drawingPath, { 
-        x: pos.x + canvasWidth/2, 
-        y: pos.y + canvasHeight/2 
-      }];
-      
-      // Limit path length to prevent performance issues
-      const limitedPath = newPath.length > 2000 ? newPath.slice(-2000) : newPath;
-      
-      dispatch({ 
-        type: actionTypes.UPDATE_DRAWING_PATH, 
-        payload: limitedPath 
-      });
-      
-      // Complete one cycle
-      if (time >= 2 * Math.PI) {
-        time = 0;
-      }
-      
-      animationRef.current = requestAnimationFrame(animate);
-    };
-    
-    animationRef.current = requestAnimationFrame(animate);
-    
-    // Cleanup on unmount
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, [
-    state.isPlaying, 
-    state.fourierCoefficients, 
-    state.currentContourIndex, 
-    state.animationSpeed,
-    state.drawingPath,
-    dispatch
-  ]);
-  
-  // Function to calculate position from Fourier series at time t
-  const calculatePosition = (coefficients, t) => {
-    let x = 0;
-    let y = 0;
-    
-    for (const coef of coefficients) {
-      const { frequency, amplitude, phase } = coef;
-      const angle = frequency * t + phase;
-      
-      x += amplitude * Math.cos(angle);
-      y += amplitude * Math.sin(angle);
-    }
-    
-    return { x, y };
   };
   
-  // Drawing effect
-  useEffect(() => {
+  // Function to evaluate the Fourier series at a point
+  const evaluateFourierSeries = (coefficients, x, activeTerms = coefficients.length) => {
+    let sum = 0;
+    
+    const coeffsToUse = useManualCoefficients && manualCoefficients.length > 0
+      ? manualCoefficients.slice(0, activeTerms)
+      : coefficients.slice(0, activeTerms);
+    
+    for (let i = 0; i < activeTerms; i++) {
+      const n = i + 1;
+      const { a, b } = coeffsToUse[i] || { a: 0, b: 0 };
+      sum += a * Math.cos(n * x) + b * Math.sin(n * x);
+    }
+    
+    return sum;
+  };
+  
+  // Draw function on main canvas
+  const drawFunctions = () => {
+    if (!mainCanvasRef.current) return;
+    
+    const canvas = mainCanvasRef.current;
+    const ctx = canvas.getContext('2d');
+    
+    // Clear canvas
+    ctx.clearRect(0, 0, width, height);
+    
+    // Apply theme
+    const bgColor = isDarkMode ? '#222' : '#fff';
+    const gridColor = isDarkMode ? '#444' : '#e5e5e5';
+    const axisColor = isDarkMode ? '#666' : '#aaa';
+    const textColor = isDarkMode ? '#ccc' : '#666';
+    const targetColor = isDarkMode ? '#aaa' : '#999';
+    const seriesColor = isDarkMode ? '#f55' : '#f00';
+    
+    // Fill background
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, width, height);
+    
+    // Calculate Fourier coefficients
+    const coefficients = calculateFourierCoefficients(targetFunction, numTerms);
+    
+    // Update manual coefficients if needed
+    if (manualCoefficients.length === 0 || manualCoefficients.length !== numTerms) {
+      setManualCoefficients(coefficients.slice());
+    }
+    
+    // Active terms based on animation state
+    let activeTerms = numTerms;
+    if (animateTerms) {
+      activeTerms = Math.max(1, Math.min(numTerms, Math.floor(1 + animationFrame / (20 / animationSpeed)) % (numTerms + 1)));
+      if (activeTerms === 0) activeTerms = 1;
+    }
+    
+    // Draw grid with zoom and pan
+    ctx.strokeStyle = gridColor;
+    ctx.lineWidth = 1;
+    
+    // Apply zoom and pan transformations
+    ctx.save();
+    ctx.translate(width / 2 + panOffset.x, height / 2 + panOffset.y);
+    ctx.scale(zoom, zoom);
+    ctx.translate(-width / 2, -height / 2);
+    
+    // Horizontal lines
+    for (let y = -2; y <= 2; y += 0.5) {
+      ctx.beginPath();
+      ctx.moveTo(0, yOffset - y * yScale);
+      ctx.lineTo(width, yOffset - y * yScale);
+      
+      if (y === 0) {
+        ctx.strokeStyle = axisColor;
+      } else {
+        ctx.strokeStyle = gridColor;
+      }
+      
+      ctx.stroke();
+      
+      // Add y-axis labels
+      if (Number.isInteger(y)) {
+        ctx.fillStyle = textColor;
+        ctx.textAlign = 'right';
+        ctx.fillText(y.toString(), 25, yOffset - y * yScale + 4);
+      }
+    }
+    
+    // Vertical lines (x-axis)
+    for (let x = -Math.PI; x <= Math.PI; x += Math.PI / 2) {
+      ctx.beginPath();
+      ctx.moveTo(xOffset + (x + Math.PI) * xScale, 0);
+      ctx.lineTo(xOffset + (x + Math.PI) * xScale, height);
+      
+      if (x === 0) {
+        ctx.strokeStyle = axisColor;
+      } else {
+        ctx.strokeStyle = gridColor;
+      }
+      
+      ctx.stroke();
+      
+      // Add x-axis labels
+      ctx.fillStyle = textColor;
+      ctx.textAlign = 'center';
+      let label = '';
+      if (x === -Math.PI) label = '-π';
+      else if (x === -Math.PI/2) label = '-π/2';
+      else if (x === 0) label = '0';
+      else if (x === Math.PI/2) label = 'π/2';
+      else if (x === Math.PI) label = 'π';
+      
+      ctx.fillText(label, xOffset + (x + Math.PI) * xScale, yOffset + 20);
+    }
+    
+    // Draw target function
+    ctx.beginPath();
+    ctx.strokeStyle = targetColor;
+    ctx.lineWidth = 1;
+    
+    for (let i = 0; i <= width; i++) {
+      const x = (i / xScale) - Math.PI;
+      const y = evaluateTargetFunction(targetFunction, x);
+      
+      if (i === 0) {
+        ctx.moveTo(i, yOffset - y * yScale);
+      } else {
+        ctx.lineTo(i, yOffset - y * yScale);
+      }
+    }
+    
+    ctx.stroke();
+    
+    // Draw Fourier approximation
+    ctx.beginPath();
+    ctx.strokeStyle = seriesColor;
+    ctx.lineWidth = 2;
+    
+    for (let i = 0; i <= width; i++) {
+      const x = (i / xScale) - Math.PI;
+      const y = evaluateFourierSeries(coefficients, x, activeTerms);
+      
+      if (i === 0) {
+        ctx.moveTo(i, yOffset - y * yScale);
+      } else {
+        ctx.lineTo(i, yOffset - y * yScale);
+      }
+    }
+    
+    ctx.stroke();
+    
+    // Restore canvas state
+    ctx.restore();
+    
+    // Show active terms info
+    ctx.fillStyle = textColor;
+    ctx.textAlign = 'left';
+    ctx.font = '14px Arial';
+    ctx.fillText(`Active terms: ${activeTerms} of ${numTerms}`, 10, 30);
+    
+    // Draw legend
+    ctx.fillStyle = targetColor;
+    ctx.fillRect(width - 140, 15, 15, 2);
+    ctx.fillStyle = textColor;
+    ctx.fillText('Target Function', width - 120, 20);
+    
+    ctx.fillStyle = seriesColor;
+    ctx.fillRect(width - 140, 35, 15, 2);
+    ctx.fillStyle = textColor;
+    ctx.fillText('Fourier Series', width - 120, 40);
+    
+    // Update other visualizations
+    if (showComponents) {
+      drawComponents(coefficients, activeTerms);
+    }
+    
+    if (showCoefficients) {
+      drawCoefficientBars(coefficients, activeTerms);
+    }
+    
+    if (showError) {
+      drawErrorGraph(coefficients, activeTerms);
+    }
+    
+    if (showEpicycles) {
+      drawEpicycles(coefficients, activeTerms);
+    }
+  };
+  
+  // Draw individual Fourier components
+  const drawComponents = (coefficients, activeTerms) => {
+    if (!componentCanvasRef.current) return;
+    
+    const canvas = componentCanvasRef.current;
+    const ctx = canvas.getContext('2d');
+    
+    // Apply theme
+    const bgColor = isDarkMode ? '#222' : '#fff';
+    const gridColor = isDarkMode ? '#444' : '#e5e5e5';
+    const textColor = isDarkMode ? '#ccc' : '#666';
+    
+    // Clear canvas
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, width, height);
+    
+    // Draw grid
+    ctx.strokeStyle = gridColor;
+    ctx.lineWidth = 1;
+    
+    // Horizontal line at y=0
+    ctx.beginPath();
+    ctx.moveTo(0, yOffset);
+    ctx.lineTo(width, yOffset);
+    ctx.stroke();
+    
+    // Get coefficients to use
+    const coeffsToUse = useManualCoefficients && manualCoefficients.length > 0
+      ? manualCoefficients.slice(0, activeTerms)
+      : coefficients.slice(0, activeTerms);
+    
+    // Draw each component
+    for (let i = 0; i < activeTerms; i++) {
+      const n = i + 1;
+      const { a, b } = coeffsToUse[i];
+      
+      // Skip terms with zero coefficients
+      if (Math.abs(a) < 1e-6 && Math.abs(b) < 1e-6) continue;
+      
+      // Calculate amplitude and phase
+      const amplitude = Math.sqrt(a*a + b*b);
+      
+      // Skip very small terms
+      if (amplitude < 0.01) continue;
+      
+      // Generate color based on term number
+      const hue = (i * 137.5) % 360;
+      const color = `hsl(${hue}, 70%, ${isDarkMode ? '60%' : '50%'})`;
+      
+      // Draw component
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.5;
+      
+      for (let j = 0; j <= width; j++) {
+        const x = (j / xScale) - Math.PI;
+        const y = a * Math.cos(n * x) + b * Math.sin(n * x);
+        
+        if (j === 0) {
+          ctx.moveTo(j, yOffset - y * yScale);
+        } else {
+          ctx.lineTo(j, yOffset - y * yScale);
+        }
+      }
+      
+      ctx.stroke();
+      
+      // Add label for component
+      ctx.fillStyle = color;
+      ctx.textAlign = 'left';
+      ctx.font = '12px Arial';
+      ctx.fillText(`n=${n}: a=${a.toFixed(2)}, b=${b.toFixed(2)}`, 10, 20 + i * 20);
+    }
+  };
+  
+  // Draw coefficient bar chart
+  const drawCoefficientBars = (coefficients, activeTerms) => {
+    if (!coefficientCanvasRef.current) return;
+    
+    const canvas = coefficientCanvasRef.current;
+    const ctx = canvas.getContext('2d');
+    
+    // Apply theme
+    const bgColor = isDarkMode ? '#222' : '#fff';
+    const gridColor = isDarkMode ? '#444' : '#e5e5e5';
+    const textColor = isDarkMode ? '#ccc' : '#666';
+    
+    // Clear canvas
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, width, height);
+    
+    // Draw grid
+    ctx.strokeStyle = gridColor;
+    ctx.lineWidth = 1;
+    
+    // Horizontal line at y=0
+    ctx.beginPath();
+    ctx.moveTo(0, yOffset);
+    ctx.lineTo(width, yOffset);
+    ctx.stroke();
+    
+    // Get coefficients to use
+    const coeffsToUse = useManualCoefficients && manualCoefficients.length > 0
+      ? manualCoefficients.slice(0, activeTerms)
+      : coefficients.slice(0, activeTerms);
+    
+    // Find max amplitude for scaling
+    let maxAmplitude = 0;
+    for (let i = 0; i < activeTerms; i++) {
+      const { a, b } = coeffsToUse[i];
+      const amplitude = Math.sqrt(a*a + b*b);
+      if (amplitude > maxAmplitude) {
+        maxAmplitude = amplitude;
+      }
+    }
+    
+    // Scale factor for bars
+    const scaleFactor = (height / 2) / (maxAmplitude || 1);
+    
+    // Bar width
+    const barWidth = Math.min(20, width / (activeTerms * 2));
+    
+    // Draw bars for each coefficient
+    for (let i = 0; i < activeTerms; i++) {
+      const n = i + 1;
+      const { a, b } = coeffsToUse[i];
+      
+      // Calculate amplitudes
+      const aAmp = Math.abs(a);
+      const bAmp = Math.abs(b);
+      
+      // Generate colors based on term number
+      const hue = (i * 137.5) % 360;
+      const aColor = `hsl(${hue}, 70%, ${isDarkMode ? '60%' : '50%'})`;
+      const bColor = `hsl(${hue}, 50%, ${isDarkMode ? '80%' : '70%'})`;
+      
+      // X position
+      const x = 50 + i * barWidth * 3;
+      
+      // Draw a coefficient bar
+      if (aAmp > 0.001) {
+        const height = aAmp * scaleFactor;
+        ctx.fillStyle = aColor;
+        ctx.fillRect(x, yOffset - (a > 0 ? height : 0), barWidth, height * (a > 0 ? 1 : -1));
+        
+        // Label
+        ctx.fillStyle = textColor;
+        ctx.textAlign = 'center';
+        ctx.font = '10px Arial';
+        ctx.fillText('a', x + barWidth / 2, yOffset + 20);
+      }
+      
+      // Draw b coefficient bar
+      if (bAmp > 0.001) {
+        const height = bAmp * scaleFactor;
+        ctx.fillStyle = bColor;
+        ctx.fillRect(x + barWidth, yOffset - (b > 0 ? height : 0), barWidth, height * (b > 0 ? 1 : -1));
+        
+        // Label
+        ctx.fillStyle = textColor;
+        ctx.textAlign = 'center';
+        ctx.font = '10px Arial';
+        ctx.fillText('b', x + barWidth * 1.5, yOffset + 20);
+      }
+      
+      // Term number
+      ctx.fillStyle = textColor;
+      ctx.textAlign = 'center';
+      ctx.font = '10px Arial';
+      ctx.fillText(`n=${n}`, x + barWidth, yOffset + 35);
+    }
+    
+    // Legend
+    ctx.fillStyle = textColor;
+    ctx.textAlign = 'left';
+    ctx.font = '12px Arial';
+    ctx.fillText('Coefficient Magnitudes', 10, 20);
+  };
+  
+  // Draw error visualization
+  const drawErrorGraph = (coefficients, activeTerms) => {
+    if (!errorCanvasRef.current) return;
+    
+    const canvas = errorCanvasRef.current;
+    const ctx = canvas.getContext('2d');
+    
+    // Apply theme
+    const bgColor = isDarkMode ? '#222' : '#fff';
+    const gridColor = isDarkMode ? '#444' : '#e5e5e5';
+    const textColor = isDarkMode ? '#ccc' : '#666';
+    const errorColor = isDarkMode ? '#f55' : '#f00';
+    
+    // Clear canvas
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, width, height);
+    
+    // Draw grid
+    ctx.strokeStyle = gridColor;
+    ctx.lineWidth = 1;
+    
+    // Horizontal line at y=0
+    ctx.beginPath();
+    ctx.moveTo(0, yOffset);
+    ctx.lineTo(width, yOffset);
+    ctx.stroke();
+    
+    // Draw error function
+    ctx.beginPath();
+    ctx.strokeStyle = errorColor;
+    ctx.lineWidth = 1.5;
+    
+    // Calculate average error
+    let totalError = 0;
+    let errorCount = 0;
+    
+    for (let i = 0; i <= width; i++) {
+      const x = (i / xScale) - Math.PI;
+      const targetY = evaluateTargetFunction(targetFunction, x);
+      const approximationY = evaluateFourierSeries(coefficients, x, activeTerms);
+      const error = targetY - approximationY;
+      
+      totalError += Math.abs(error);
+      errorCount++;
+      
+      if (i === 0) {
+        ctx.moveTo(i, yOffset - error * yScale);
+      } else {
+        ctx.lineTo(i, yOffset - error * yScale);
+      }
+    }
+    
+    ctx.stroke();
+    
+    // Calculate average error
+    const avgError = totalError / errorCount;
+    
+    // Fill area under the error curve
+    ctx.beginPath();
+    ctx.strokeStyle = 'rgba(0,0,0,0)';
+    ctx.fillStyle = `${errorColor}33`;
+    
+    // Start at left edge
+    ctx.moveTo(0, yOffset);
+    
+    // Draw the top of the fill area (same as the error curve)
+    for (let i = 0; i <= width; i++) {
+      const x = (i / xScale) - Math.PI;
+      const targetY = evaluateTargetFunction(targetFunction, x);
+      const approximationY = evaluateFourierSeries(coefficients, x, activeTerms);
+      const error = targetY - approximationY;
+      
+      ctx.lineTo(i, yOffset - error * yScale);
+    }
+    
+    // Close the path back to the start
+    ctx.lineTo(width, yOffset);
+    ctx.lineTo(0, yOffset);
+    
+    ctx.fill();
+    
+    // Show average error
+    ctx.fillStyle = textColor;
+    ctx.textAlign = 'left';
+    ctx.font = '12px Arial';
+    ctx.fillText(`Mean Absolute Error: ${avgError.toFixed(4)}`, 10, 20);
+    ctx.fillText(`RMS Error: ${Math.sqrt(totalError * totalError / errorCount).toFixed(4)}`, 10, 40);
+  };
+  
+  // Draw epicycle visualization
+  const drawEpicycles = (coefficients, activeTerms) => {
+    if (!epicycleCanvasRef.current) return;
+    
+    const canvas = epicycleCanvasRef.current;
+    const ctx = canvas.getContext('2d');
+    
+    // Apply theme
+    const bgColor = isDarkMode ? '#222' : '#fff';
+    const textColor = isDarkMode ? '#ccc' : '#666';
+    
+    // Clear canvas
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, width, height);
+    
+    // Get time from animation frame
+    const time = (animationFrame % 200) / 100 * Math.PI;
+    
+    // Center point for epicycles
+    const centerX = width / 2;
+    const centerY = height / 2;
+    
+    // Get coefficients to use
+    const coeffsToUse = useManualCoefficients && manualCoefficients.length > 0
+      ? manualCoefficients.slice(0, activeTerms)
+      : coefficients.slice(0, activeTerms);
+    
+    // Draw epicycles
+    let x = centerX;
+    let y = centerY;
+    
+    // Sort coefficients by amplitude
+    const sortedCoeffs = coeffsToUse.map((coeff, idx) => ({
+      ...coeff,
+      n: idx + 1,
+      amplitude: Math.sqrt(coeff.a * coeff.a + coeff.b * coeff.b)
+    })).sort((a, b) => b.amplitude - a.amplitude);
+    
+    // Path for trace
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    
+    // Draw each circle
+    for (let i = 0; i < sortedCoeffs.length; i++) {
+      const { a, b, n, amplitude } = sortedCoeffs[i];
+      
+      // Skip very small amplitudes
+      if (amplitude < 0.01) continue;
+      
+      // Calculate angle
+      const angle = n * time;
+      
+      // Draw circle
+      ctx.beginPath();
+      ctx.strokeStyle = isDarkMode ? '#555' : '#ddd';
+      ctx.lineWidth = 1;
+      ctx.arc(x, y, amplitude * yScale, 0, 2 * Math.PI);
+      ctx.stroke();
+      
+      // Calculate next point
+      const dx = amplitude * Math.cos(angle + Math.atan2(b, a)) * yScale;
+      const dy = amplitude * Math.sin(angle + Math.atan2(b, a)) * yScale;
+      
+      // Draw radius
+      ctx.beginPath();
+      ctx.strokeStyle = isDarkMode ? '#aaa' : '#999';
+      ctx.lineWidth = 1;
+      ctx.moveTo(x, y);
+      ctx.lineTo(x + dx, y + dy);
+      ctx.stroke();
+      
+      // Update current point
+      x += dx;
+      y += dy;
+    }
+    
+    // Draw final point
+    ctx.beginPath();
+    ctx.fillStyle = isDarkMode ? '#f55' : '#f00';
+    ctx.arc(x, y, 4, 0, 2 * Math.PI);
+    ctx.fill();
+    
+    // Title
+    ctx.fillStyle = textColor;
+    ctx.textAlign = 'left';
+    ctx.font = '12px Arial';
+    ctx.fillText('Epicycle Visualization', 10, 20);
+    
+    // Explanation
+    ctx.fillText('Each circle represents a term in the Fourier series', 10, height - 30);
+    ctx.fillText('The red dot traces the approximated curve', 10, height - 10);
+  };
+  
+  // Initialize drawing canvas
+  const initDrawingCanvas = () => {
     if (!drawingCanvasRef.current) return;
     
     const canvas = drawingCanvasRef.current;
     const ctx = canvas.getContext('2d');
     
-    // Clear canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Apply theme
+    const bgColor = isDarkMode ? '#222' : '#fff';
+    const gridColor = isDarkMode ? '#444' : '#e5e5e5';
     
-    // Draw path
-    if (state.drawingPath.length > 0) {
+    // Clear canvas
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, width, height);
+    
+    // Draw grid
+    ctx.strokeStyle = gridColor;
+    ctx.lineWidth = 1;
+    
+    // Draw horizontal lines
+    for (let y = 0; y < height; y += height / 8) {
       ctx.beginPath();
-      ctx.moveTo(state.drawingPath[0].x, state.drawingPath[0].y);
-      
-      for (let i = 1; i < state.drawingPath.length; i++) {
-        ctx.lineTo(state.drawingPath[i].x, state.drawingPath[i].y);
-      }
-      
-      ctx.strokeStyle = '#3498db';
-      ctx.lineWidth = 2;
+      ctx.moveTo(0, y);
+      ctx.lineTo(width, y);
       ctx.stroke();
     }
     
-    // Draw the epicycles if drawing is active
-    if (state.isPlaying && state.fourierCoefficients.length > 0) {
-      const currentCoeffs = state.fourierCoefficients[state.currentContourIndex];
-      if (!currentCoeffs) return;
-      
-      let x = canvas.width / 2;
-      let y = canvas.height / 2;
-      
-      // Draw each circle (limited to first few for performance)
-      const maxCircles = Math.min(20, currentCoeffs.length);
-      
-      for (let i = 0; i < maxCircles; i++) {
-        const coef = currentCoeffs[i];
-        const { frequency, amplitude, phase } = coef;
-        
-        // Calculate current time based on the position of the last point in the path
-        const time = state.drawingPath.length === 0 ? 0 : 
-          Math.atan2(
-            state.drawingPath[state.drawingPath.length - 1].y - canvas.height / 2,
-            state.drawingPath[state.drawingPath.length - 1].x - canvas.width / 2
-          ) / frequency - phase;
-          
-        const angle = frequency * time + phase;
-        
-        // Draw the circle
-        ctx.beginPath();
-        ctx.arc(x, y, amplitude, 0, 2 * Math.PI);
-        ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
-        ctx.stroke();
-        
-        // Calculate next center point
-        const dx = amplitude * Math.cos(angle);
-        const dy = amplitude * Math.sin(angle);
-        
-        // Draw the radius
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-        ctx.lineTo(x + dx, y + dy);
-        ctx.strokeStyle = 'rgba(255, 0, 0, 0.5)';
-        ctx.stroke();
-        
-        x += dx;
-        y += dy;
-      }
-      
-      // Draw a dot at the end
+    // Draw vertical lines
+    for (let x = 0; x < width; x += width / 16) {
       ctx.beginPath();
-      ctx.arc(x, y, 4, 0, 2 * Math.PI);
-      ctx.fillStyle = 'red';
-      ctx.fill();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, height);
+      ctx.stroke();
     }
-  }, [state.drawingPath, state.isPlaying, state.fourierCoefficients, state.currentContourIndex]);
-  
-  return {
-    drawingCanvasRef,
-    togglePlayback,
-    setPlaybackSpeed,
-    changeContour,
-    resetDrawing
-  };
-}
-
-// =============================================
-// UI Components
-// =============================================
-
-// Help tooltip component
-const HelpTooltip = ({ text }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  
-  return (
-    <div className="relative inline-block">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-5 h-5 rounded-full bg-blue-100 text-blue-800 flex items-center justify-center text-xs focus:outline-none"
-        aria-label="Help"
-      >
-        ?
-      </button>
-      
-      {isOpen && (
-        <div className="absolute z-10 bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-64 p-2 bg-white rounded shadow-lg text-sm text-gray-800 border border-gray-200">
-          {text}
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-2 h-2 bg-white border-r border-b border-gray-200"></div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-// Parameter control component with help tooltip
-const ParameterControl = ({ 
-  label, 
-  value, 
-  min, 
-  max, 
-  step, 
-  onChange, 
-  helpText,
-  unit = "" 
-}) => {
-  return (
-    <div className="mb-3">
-      <div className="flex items-center justify-between mb-1">
-        <label className="text-sm font-medium text-gray-700 flex items-center">
-          {label}: {value}{unit}
-          {helpText && (
-            <span className="ml-2">
-              <HelpTooltip text={helpText} />
-            </span>
-          )}
-        </label>
-      </div>
-      
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        onChange={(e) => onChange(parseFloat(e.target.value))}
-        className="w-full"
-      />
-    </div>
-  );
-};
-
-// Processing step component
-const ProcessingStep = ({
-  stepId,
-  title,
-  icon,
-  isActive,
-  isComplete,
-  onActivate,
-  onReset,
-  children,
-}) => {
-  return (
-    <div className={`mb-4 rounded-lg overflow-hidden border 
-      ${isActive ? 'border-blue-500 shadow-md' : 'border-gray-200'}`}
-    >
-      <div 
-        className={`p-3 flex items-center justify-between cursor-pointer
-          ${isActive ? 'bg-blue-50' : isComplete ? 'bg-gray-50' : 'bg-white'}`}
-        onClick={onActivate}
-      >
-        <div className="flex items-center">
-          <span className={`mr-3 ${isActive ? 'text-blue-500' : 'text-gray-400'}`}>
-            {icon}
-          </span>
-          <h3 className={`font-medium ${isActive ? 'text-blue-700' : 'text-gray-700'}`}>
-            {title}
-          </h3>
-        </div>
-        
-        <div className="flex items-center">
-          {isComplete && !isActive && (
-            <span className="text-green-500 mr-2">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-              </svg>
-            </span>
-          )}
-          
-          {isComplete && (
-            <button 
-              onClick={(e) => { 
-                e.stopPropagation(); 
-                onReset(stepId); 
-              }}
-              className="p-1 text-xs text-gray-500 hover:text-red-500"
-              title="Reset this step"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
-              </svg>
-            </button>
-          )}
-          
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            className={`h-5 w-5 ml-1 transition-transform ${isActive ? 'transform rotate-180' : ''}`} 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
-      </div>
-      
-      {isActive && (
-        <div className="p-4 bg-white border-t border-gray-100">
-          {children}
-        </div>
-      )}
-    </div>
-  );
-};
-
-// Comparison slider component
-const ComparisonSlider = ({ originalData, processedData, width, height }) => {
-  const [sliderPosition, setSliderPosition] = useState(50);
-  const containerRef = useRef(null);
-  const canvasRef = useRef(null);
-  
-  // Handle slider position change
-  const updateSliderPosition = (clientX) => {
-    if (!containerRef.current) return;
-    
-    const rect = containerRef.current.getBoundingClientRect();
-    const position = ((clientX - rect.left) / rect.width) * 100;
-    setSliderPosition(Math.max(0, Math.min(100, position)));
   };
   
-  // Mouse event handlers
-  const handleMouseDown = (e) => {
-    updateSliderPosition(e.clientX);
+  // Draw the current points on the drawing canvas
+  const drawDrawingPoints = () => {
+    if (!drawingCanvasRef.current || drawingPoints.length === 0) return;
     
-    const handleMouseMove = (e) => {
-      updateSliderPosition(e.clientX);
-    };
-    
-    const handleMouseUp = () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-    };
-    
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
-  };
-  
-  // Touch event handlers
-  const handleTouchStart = (e) => {
-    const touch = e.touches[0];
-    updateSliderPosition(touch.clientX);
-    
-    const handleTouchMove = (e) => {
-      const touch = e.touches[0];
-      updateSliderPosition(touch.clientX);
-    };
-    
-    const handleTouchEnd = () => {
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleTouchEnd);
-    };
-    
-    document.addEventListener('touchmove', handleTouchMove);
-    document.addEventListener('touchend', handleTouchEnd);
-  };
-  
-  // Draw comparison view
-  useEffect(() => {
-    if (!canvasRef.current || !originalData || !processedData) return;
-    
-    const canvas = canvasRef.current;
+    const canvas = drawingCanvasRef.current;
     const ctx = canvas.getContext('2d');
     
-    // Clear canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Apply theme
+    const lineColor = isDarkMode ? '#3af' : '#06c';
     
-    // Create temporary canvases for both images
-    const originalCanvas = document.createElement('canvas');
-    originalCanvas.width = originalData.width;
-    originalCanvas.height = originalData.height;
-    const originalCtx = originalCanvas.getContext('2d');
-    originalCtx.putImageData(originalData, 0, 0);
-    
-    const processedCanvas = document.createElement('canvas');
-    processedCanvas.width = processedData.width;
-    processedCanvas.height = processedData.height;
-    const processedCtx = processedCanvas.getContext('2d');
-    processedCtx.putImageData(processedData, 0, 0);
-    
-    // Calculate the clip position
-    const clipPosition = Math.floor((canvas.width * sliderPosition) / 100);
-    
-    // Draw original on the left side
-    ctx.drawImage(
-      originalCanvas,
-      0, 0, clipPosition, canvas.height,
-      0, 0, clipPosition, canvas.height
-    );
-    
-    // Draw processed on the right side
-    ctx.drawImage(
-      processedCanvas,
-      clipPosition, 0, canvas.width - clipPosition, canvas.height,
-      clipPosition, 0, canvas.width - clipPosition, canvas.height
-    );
-    
-    // Draw slider line
+    // Draw path
     ctx.beginPath();
-    ctx.moveTo(clipPosition, 0);
-    ctx.lineTo(clipPosition, canvas.height);
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
-    ctx.lineWidth = 2;
+    ctx.strokeStyle = lineColor;
+    ctx.lineWidth = 3;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    
+    // Draw each segment
+    for (let i = 0; i < drawingPoints.length; i++) {
+      const point = drawingPoints[i];
+      if (i === 0) {
+        ctx.moveTo(point.x, point.y);
+      } else {
+        ctx.lineTo(point.x, point.y);
+      }
+    }
+    
+    // Close the path if there are enough points
+    if (drawingPoints.length > 2) {
+      ctx.closePath();
+    }
+    
     ctx.stroke();
-    
-    // Draw slider handle
-    ctx.beginPath();
-    ctx.arc(clipPosition, canvas.height / 2, 15, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(0, 0, 0, 0.5)';
-    ctx.lineWidth = 2;
-    ctx.stroke();
-    
-    // Draw arrows inside the handle
-    ctx.beginPath();
-    ctx.moveTo(clipPosition - 5, canvas.height / 2);
-    ctx.lineTo(clipPosition - 2, canvas.height / 2 - 3);
-    ctx.lineTo(clipPosition - 2, canvas.height / 2 + 3);
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-    ctx.fill();
-    
-    ctx.beginPath();
-    ctx.moveTo(clipPosition + 5, canvas.height / 2);
-    ctx.lineTo(clipPosition + 2, canvas.height / 2 - 3);
-    ctx.lineTo(clipPosition + 2, canvas.height / 2 + 3);
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-    ctx.fill();
-    
-    // Draw labels
-    ctx.font = '14px sans-serif';
-    ctx.fillStyle = 'white';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'top';
-    ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
-    ctx.shadowBlur = 4;
-    
-    ctx.fillText('Original', clipPosition / 2, 10);
-    ctx.fillText('Processed', clipPosition + (canvas.width - clipPosition) / 2, 10);
-    
-    ctx.shadowBlur = 0;
-    
-  }, [originalData, processedData, sliderPosition]);
+  };
   
-  return (
-    <div 
-      ref={containerRef}
-      className="comparison-slider relative w-full max-w-md mx-auto overflow-hidden rounded-lg cursor-col-resize"
-      onMouseDown={handleMouseDown}
-      onTouchStart={handleTouchStart}
-    >
-      <canvas
-        ref={canvasRef}
-        width={width || 400}
-        height={height || 400}
-        className="w-full bg-gray-900"
-      />
-      
-      <div className="absolute bottom-2 left-0 right-0 text-center text-white text-xs text-shadow">
-        Drag the slider to compare
-      </div>
-    </div>
-  );
-};
-
-// =============================================
-// Main Component
-// =============================================
-
-// Fourier provider component
-const FourierProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(fourierReducer, initialState);
+  // Handle mouse events for drawing
+  const handleDrawingMouseDown = (e) => {
+    if (!isDrawingMode) return;
+    
+    setIsDrawing(true);
+    
+    const canvas = drawingCanvasRef.current;
+    if (!canvas) return;
+    
+    const rect = canvas.getBoundingClientRect();
+    const x = (e.clientX - rect.left) * (canvas.width / rect.width);
+    const y = (e.clientY - rect.top) * (canvas.height / rect.height);
+    
+    setDrawingPoints([{ x, y }]);
+  };
   
-  return (
-    <FourierContext.Provider value={{ state, dispatch }}>
-      {children}
-    </FourierContext.Provider>
-  );
-};
-
-// Main component
-const ImageToFourierTransform = () => {
-  return (
-    <FourierProvider>
-      <FourierTransformApp />
-    </FourierProvider>
-  );
-};
-
-// Main application component
-const FourierTransformApp = () => {
-  const { state, dispatch } = useFourier();
-  const { loadImage, loadDemoImage } = useImageLoader();
-  const { processImage, resetToStep } = useFourierProcessing();
-  const { drawingCanvasRef, togglePlayback, setPlaybackSpeed, changeContour, resetDrawing } = useAnimationControls();
+  const handleDrawingMouseMove = (e) => {
+    if (!isDrawing || !isDrawingMode) return;
+    
+    const canvas = drawingCanvasRef.current;
+    if (!canvas) return;
+    
+    const rect = canvas.getBoundingClientRect();
+    const x = (e.clientX - rect.left) * (canvas.width / rect.width);
+    const y = (e.clientY - rect.top) * (canvas.height / rect.height);
+    
+    setDrawingPoints(prevPoints => [...prevPoints, { x, y }]);
+  };
   
-  const fileInputRef = useRef(null);
-  
-  // Handle file selection
-  const handleFileSelect = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      loadImage(file);
+  const handleDrawingMouseUp = () => {
+    setIsDrawing(false);
+    
+    // If we just finished drawing, switch to the drawing function
+    if (isDrawingMode && drawingPoints.length > 0) {
+      setTargetFunction('drawing');
     }
   };
   
-  // Update a parameter
-  const handleParameterChange = (name, value) => {
-    dispatch({
-      type: actionTypes.UPDATE_PARAMETER,
-      payload: { name, value }
+  // Handle touch events for drawing (mobile)
+  const handleDrawingTouchStart = (e) => {
+    if (!isDrawingMode) return;
+    
+    e.preventDefault();
+    setIsDrawing(true);
+    
+    const canvas = drawingCanvasRef.current;
+    if (!canvas) return;
+    
+    const rect = canvas.getBoundingClientRect();
+    const touch = e.touches[0];
+    const x = (touch.clientX - rect.left) * (canvas.width / rect.width);
+    const y = (touch.clientY - rect.top) * (canvas.height / rect.height);
+    
+    setDrawingPoints([{ x, y }]);
+  };
+  
+  const handleDrawingTouchMove = (e) => {
+    if (!isDrawing || !isDrawingMode) return;
+    
+    e.preventDefault();
+    
+    const canvas = drawingCanvasRef.current;
+    if (!canvas) return;
+    
+    const rect = canvas.getBoundingClientRect();
+    const touch = e.touches[0];
+    const x = (touch.clientX - rect.left) * (canvas.width / rect.width);
+    const y = (touch.clientY - rect.top) * (canvas.height / rect.height);
+    
+    setDrawingPoints(prevPoints => [...prevPoints, { x, y }]);
+  };
+  
+  const handleDrawingTouchEnd = () => {
+    setIsDrawing(false);
+    
+    // If we just finished drawing, switch to the drawing function
+    if (isDrawingMode && drawingPoints.length > 0) {
+      setTargetFunction('drawing');
+    }
+  };
+  
+  // Handle mouse events for panning
+  const handlePanStart = (e) => {
+    if (isDrawingMode) return;
+    
+    setIsPanning(true);
+    setStartPanPoint({
+      x: e.clientX,
+      y: e.clientY
     });
   };
   
-  // Move to a specific step
-  const activateStep = (step) => {
-    dispatch({ type: actionTypes.SET_PROCESSING_STEP, payload: step });
+  const handlePanMove = (e) => {
+    if (!isPanning || isDrawingMode) return;
+    
+    const dx = e.clientX - startPanPoint.x;
+    const dy = e.clientY - startPanPoint.y;
+    
+    setPanOffset(prev => ({
+      x: prev.x + dx,
+      y: prev.y + dy
+    }));
+    
+    setStartPanPoint({
+      x: e.clientX,
+      y: e.clientY
+    });
   };
   
-  // Check if a step is active
-  const isStepActive = (step) => state.processingStep === step;
-  
-  // Check if a step is complete
-  const isStepComplete = (step) => {
-    if (step === 'upload') return !!state.originalImage;
-    if (step === 'preprocess') return !!state.preprocessedImageData;
-    if (step === 'edges') return !!state.edgeImageData;
-    if (step === 'contours') return state.contours.length > 0;
-    if (step === 'fourier') return state.fourierCoefficients.length > 0;
-    return false;
+  const handlePanEnd = () => {
+    setIsPanning(false);
   };
   
-  // Render the upload step
-  const renderUploadStep = () => (
-    <div className="space-y-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <button
-          onClick={() => fileInputRef.current?.click()}
-          className="p-4 border-2 border-dashed border-blue-300 rounded-lg text-center hover:bg-blue-50 transition duration-150"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mx-auto text-blue-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
-          <p className="text-blue-600 font-medium">Upload Image</p>
-          <p className="text-xs text-gray-500 mt-1">JPG, PNG, or GIF</p>
-        </button>
-        
-        <input
-          type="file"
-          ref={fileInputRef}
-          onChange={handleFileSelect}
-          accept="image/*"
-          className="hidden"
-        />
-        
-        <button
-          onClick={() => loadDemoImage('geometric')}
-          className="p-4 border border-gray-200 rounded-lg bg-gray-50 text-center hover:bg-gray-100 transition duration-150"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mx-auto text-gray-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-          </svg>
-          <p className="text-gray-700 font-medium">Use Demo Image</p>
-          <p className="text-xs text-gray-500 mt-1">Try with a pre-loaded image</p>
-        </button>
-      </div>
-      
-      {state.imageUrl && (
-        <div className="mt-4">
-          <p className="text-sm text-gray-600 mb-2">Selected image:</p>
-          <div className="border rounded-lg overflow-hidden">
-            <img 
-              src={state.imageUrl} 
-              alt="Selected" 
-              className="max-w-full mx-auto max-h-64 object-contain" 
-            />
-          </div>
-          
-          <button
-            onClick={() => activateStep('preprocess')}
-            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 w-full"
-          >
-            Continue to Processing
-          </button>
-        </div>
-      )}
-    </div>
-  );
+  // Handle zoom with mouse wheel
+  const handleZoom = (e) => {
+    if (isDrawingMode) return;
+    
+    e.preventDefault();
+    
+    const delta = e.deltaY;
+    const zoomFactor = delta > 0 ? 0.9 : 1.1;
+    
+    setZoom(prev => Math.max(0.1, Math.min(5, prev * zoomFactor)));
+  };
   
-  // Render the preprocessing step
-  const renderPreprocessStep = () => (
-    <div className="space-y-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div>
-          <h4 className="font-medium mb-2">Original Image</h4>
-          <div className="border rounded-lg overflow-hidden bg-gray-50">
-            <img 
-              src={state.imageUrl} 
-              alt="Original" 
-              className="max-w-full mx-auto max-h-64 object-contain" 
-            />
-          </div>
-        </div>
-        
-        <div>
-          <h4 className="font-medium mb-2">Processing Parameters</h4>
-          <div className="bg-gray-50 p-3 rounded-lg">
-            <ParameterControl
-              label="Blur Radius"
-              value={state.params.blurRadius}
-              min={0}
-              max={10}
-              step={1}
-              onChange={(val) => handleParameterChange('blurRadius', val)}
-              helpText="Applies Gaussian blur to reduce noise. Higher values create smoother edges but may lose detail."
-            />
-            
-            <ParameterControl
-              label="Contour Simplification"
-              value={state.params.contourSimplification}
-              min={1}
-              max={20}
-              step={1}
-              onChange={(val) => handleParameterChange('contourSimplification', val)}
-              helpText="Reduces the number of points in each contour. Higher values improve performance but may reduce accuracy."
-            />
-            
-            <ParameterControl
-              label="Fourier Terms"
-              value={state.params.fourierTerms}
-              min={10}
-              max={200}
-              step={10}
-              onChange={(val) => handleParameterChange('fourierTerms', val)}
-              helpText="Number of terms in the Fourier series. More terms means more detail but slower performance."
-            />
-          </div>
-        </div>
-      </div>
-      
-      <div className="flex justify-center mt-2">
-        <button
-          onClick={processImage}
-          disabled={state.isProcessing}
-          className={`px-4 py-2 rounded-lg text-white ${
-            state.isProcessing ? 'bg-blue-300' : 'bg-blue-500 hover:bg-blue-600'
-          }`}
-        >
-          {state.isProcessing ? (
-            <span className="flex items-center">
-              <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              Processing...
-            </span>
-          ) : (
-            'Process Image'
-          )}
-        </button>
-      </div>
-    </div>
-  );
+  // Play audio representation of the Fourier series
+  const playAudio = () => {
+    if (!audioContext) return;
+    
+    if (isPlaying) {
+      // Stop current playback
+      if (audioNode) {
+        audioNode.stop();
+        audioNode.disconnect();
+      }
+      setIsPlaying(false);
+      return;
+    }
+    
+    // Get coefficients
+    const coefficients = useManualCoefficients ? manualCoefficients : calculateFourierCoefficients(targetFunction, numTerms);
+    
+    // Create oscillator
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    // Connect nodes
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    // Set initial volume
+    gainNode.gain.value = 0.3;
+    
+    // Fundamental frequency (C4 = 261.63 Hz)
+    const fundamental = 261.63;
+    
+    // Create wave
+    const real = new Float32Array(numTerms + 1);
+    const imag = new Float32Array(numTerms + 1);
+    
+    // DC offset (a₀/2)
+    real[0] = 0;
+    imag[0] = 0;
+    
+    // Set harmonics from Fourier coefficients
+    for (let i = 0; i < coefficients.length; i++) {
+      const { a, b } = coefficients[i];
+      real[i + 1] = a;
+      imag[i + 1] = b;
+    }
+    
+    // Create and set periodic wave
+    const wave = audioContext.createPeriodicWave(real, imag);
+    oscillator.setPeriodicWave(wave);
+    
+    // Set frequency
+    oscillator.frequency.value = fundamental;
+    
+    // Start oscillator
+    oscillator.start();
+    
+    // Store audio node for later cleanup
+    setAudioNode(oscillator);
+    setIsPlaying(true);
+    
+    // Stop after 2 seconds
+    setTimeout(() => {
+      oscillator.stop();
+      oscillator.disconnect();
+      setIsPlaying(false);
+    }, 2000);
+  };
   
-  // Render the edges step
-  const renderEdgesStep = () => (
-    <div className="space-y-4">
-      <p className="text-sm text-gray-600 mb-2">
-        The image has been processed to extract edges using adaptive thresholding - no manual adjustment needed!
-      </p>
-      
-      {state.preprocessedImageData && state.edgeImageData && (
-        <ComparisonSlider
-          originalData={state.preprocessedImageData}
-          processedData={state.edgeImageData}
-          width={400}
-          height={400}
-        />
-      )}
-      
-      <div className="flex justify-center mt-2">
-        <button
-          onClick={() => activateStep('contours')}
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-        >
-          Continue to Contours
-        </button>
-      </div>
-    </div>
-  );
+  // Export the current view as an image
+  const exportImage = () => {
+    // Create a composite canvas with all visible elements
+    const exportCanvas = document.createElement('canvas');
+    exportCanvas.width = width;
+    exportCanvas.height = height;
+    const ctx = exportCanvas.getContext('2d');
+    
+    // Fill background
+    ctx.fillStyle = isDarkMode ? '#222' : '#fff';
+    ctx.fillRect(0, 0, width, height);
+    
+    // Copy main canvas
+    if (mainCanvasRef.current) {
+      ctx.drawImage(mainCanvasRef.current, 0, 0);
+    }
+    
+    // Create a download link
+    const link = document.createElement('a');
+    link.download = 'fourier-series.png';
+    link.href = exportCanvas.toDataURL('image/png');
+    link.click();
+  };
   
-  // Render the contours step
-  const renderContoursStep = () => (
-    <div className="space-y-4">
-      <p className="text-sm text-gray-600 mb-2">
-        {state.contours.length} contours have been extracted from the image edges.
-      </p>
-      
-      {state.edgeImageData && (
-        <div className="border rounded-lg overflow-hidden bg-gray-50">
-          <canvas
-            width={state.edgeImageData.width}
-            height={state.edgeImageData.height}
-            className="max-w-full mx-auto"
-            ref={(canvas) => {
-              if (canvas && state.edgeImageData) {
-                const ctx = canvas.getContext('2d');
-                ctx.putImageData(state.edgeImageData, 0, 0);
-                
-                // Draw contours on top
-                ctx.strokeStyle = 'rgba(255, 0, 0, 0.5)';
-                ctx.lineWidth = 1;
-                
-                state.contours.forEach(contour => {
-                  ctx.beginPath();
-                  contour.forEach((point, i) => {
-                    if (i === 0) {
-                      ctx.moveTo(point.x, point.y);
-                    } else {
-                      ctx.lineTo(point.x, point.y);
-                    }
-                  });
-                  ctx.stroke();
-                });
-              }
-            }}
-          />
-        </div>
-      )}
-      
-      <div className="flex justify-center mt-2">
-        <button
-          onClick={() => activateStep('fourier')}
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-        >
-          Continue to Fourier Drawing
-        </button>
-      </div>
-    </div>
-  );
+  // Generate a shareable URL
+  const generateShareableUrl = () => {
+    // Create URL parameters
+    const params = new URLSearchParams({
+      func: targetFunction,
+      terms: numTerms,
+      dark: isDarkMode ? '1' : '0'
+    });
+    
+    if (targetFunction === 'custom') {
+      params.append('eq', encodeURIComponent(customEquation));
+    }
+    
+    // Create and copy URL
+    const url = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+    
+    // Copy to clipboard
+    navigator.clipboard.writeText(url).then(() => {
+      alert('Shareable URL copied to clipboard!');
+    }).catch(() => {
+      alert('URL generated! Use this link to share: ' + url);
+    });
+  };
   
-  // Render the Fourier animation step
-  const renderFourierStep = () => (
-    <div className="space-y-4">
-      <div className="flex flex-col items-center">
-        <canvas
-          ref={drawingCanvasRef}
-          width={400}
-          height={400}
-          className="border rounded-lg bg-gray-50"
-        />
-        
-        <div className="flex items-center justify-between w-full mt-4">
-          <button
-            onClick={resetDrawing}
-            className="px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300"
-          >
-            Clear
-          </button>
-          
-          <div className="flex items-center space-x-2">
-            <button
-              onClick={() => changeContour(-1)}
-              className="p-1 rounded bg-gray-200 hover:bg-gray-300"
-              disabled={state.fourierCoefficients.length <= 1}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
-              </svg>
-            </button>
-            
-            <span className="text-sm">
-              Contour {state.currentContourIndex + 1}/{state.fourierCoefficients.length}
-            </span>
-            
-            <button
-              onClick={() => changeContour(1)}
-              className="p-1 rounded bg-gray-200 hover:bg-gray-300"
-              disabled={state.fourierCoefficients.length <= 1}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-              </svg>
-            </button>
-          </div>
-          
-          <button
-            onClick={togglePlayback}
-            className={`px-3 py-1 rounded text-white ${
-              state.isPlaying ? 'bg-red-500 hover:bg-red-600' : 'bg-green-500 hover:bg-green-600'
-            }`}
-          >
-            {state.isPlaying ? 'Pause' : 'Play'}
-          </button>
-        </div>
-        
-        <div className="w-full mt-3">
-          <div className="flex items-center justify-between mb-1">
-            <span className="text-sm text-gray-600">Speed:</span>
-            <span className="text-sm font-medium">{state.animationSpeed.toFixed(1)}x</span>
-          </div>
-          <input
-            type="range"
-            min="0.1"
-            max="5"
-            step="0.1"
-            value={state.animationSpeed}
-            onChange={(e) => setPlaybackSpeed(parseFloat(e.target.value))}
-            className="w-full"
-          />
-        </div>
-      </div>
+  // Load parameters from URL
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
       
-      <div className="bg-blue-50 p-3 rounded-lg">
-        <h4 className="font-medium text-blue-800 mb-2">How It Works</h4>
-        <p className="text-sm text-blue-900">
-          The image contours are transformed into a sum of rotating circles (epicycles) using Fourier transforms. 
-          Each epicycle rotates at a different frequency and together they trace the original shape.
-        </p>
-        
-        <div className="mt-2 text-xs text-blue-800">
-          <div>• Total Circles: {state.fourierCoefficients[state.currentContourIndex]?.length || 0}</div>
-          <div>• Displayed Epicycles: {Math.min(20, state.fourierCoefficients[state.currentContourIndex]?.length || 0)}</div>
-          <div>• Drawing Points: {state.drawingPath.length}</div>
-        </div>
-      </div>
-    </div>
-  );
+      // Load function type
+      const func = params.get('func');
+      if (func && targetFunctions.find(f => f.id === func)) {
+        setTargetFunction(func);
+      }
+      
+      // Load number of terms
+      const terms = params.get('terms');
+      if (terms && !isNaN(parseInt(terms))) {
+        setNumTerms(Math.min(50, Math.max(1, parseInt(terms))));
+      }
+      
+      // Load dark mode setting
+      const dark = params.get('dark');
+      if (dark) {
+        setIsDarkMode(dark === '1');
+      }
+      
+      // Load custom equation
+      const eq = params.get('eq');
+      if (eq) {
+        setCustomEquation(decodeURIComponent(eq));
+      }
+    }
+  }, []);
+  
+  // Animation loop for visualizing terms being added
+  useEffect(() => {
+    if (animateTerms || showEpicycles) {
+      const animate = () => {
+        setAnimationFrame(prev => prev + animationSpeed);
+        animationRef.current = requestAnimationFrame(animate);
+      };
+      
+      animationRef.current = requestAnimationFrame(animate);
+      
+      return () => {
+        if (animationRef.current) {
+          cancelAnimationFrame(animationRef.current);
+        }
+      };
+    }
+  }, [animateTerms, showEpicycles, animationSpeed]);
+  
+  // Initialize drawing canvas when drawing mode changes
+  useEffect(() => {
+    if (isDrawingMode) {
+      initDrawingCanvas();
+    }
+  }, [isDrawingMode, isDarkMode]);
+  
+  // Draw points when they change
+  useEffect(() => {
+    if (isDrawingMode && drawingPoints.length > 0) {
+      initDrawingCanvas();
+      drawDrawingPoints();
+    }
+  }, [drawingPoints, isDrawingMode]);
+  
+  // Redraw when parameters change
+  useEffect(() => {
+    drawFunctions();
+  }, [
+    targetFunction, 
+    numTerms, 
+    animationFrame, 
+    showComponents, 
+    showCoefficients, 
+    showError, 
+    showEpicycles, 
+    customEquation,
+    isDarkMode,
+    zoom,
+    panOffset,
+    manualCoefficients,
+    useManualCoefficients,
+    drawingPoints
+  ]);
+  
+  // Theme-based classes
+  const containerClass = isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-800';
+  const cardClass = isDarkMode ? 'bg-gray-800 shadow-lg' : 'bg-white shadow-md';
+  const buttonClass = isDarkMode 
+    ? 'bg-blue-600 hover:bg-blue-700 text-white' 
+    : 'bg-blue-500 hover:bg-blue-600 text-white';
+  const buttonSecondaryClass = isDarkMode
+    ? 'bg-gray-700 hover:bg-gray-600 text-gray-100'
+    : 'bg-gray-200 hover:bg-gray-300 text-gray-800';
+  const inputClass = isDarkMode
+    ? 'bg-gray-700 text-white border-gray-600'
+    : 'bg-white text-gray-800 border-gray-300';
   
   return (
-    <div className="p-4 max-w-4xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4 text-center">Image to Fourier Transform Drawing</h1>
+    <div className={`min-h-screen p-4 ${containerClass} transition-colors duration-300`}>
+      <h1 className="text-2xl font-bold mb-4 text-center">Fourier Series Explorer</h1>
       
-      {/* Processing Steps */}
-      <ProcessingStep
-        stepId="upload"
-        title="Upload Image"
-        icon={
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clipRule="evenodd" />
-          </svg>
-        }
-        isActive={isStepActive('upload')}
-        isComplete={isStepComplete('upload')}
-        onActivate={() => activateStep('upload')}
-        onReset={resetToStep}
-      >
-        {renderUploadStep()}
-      </ProcessingStep>
+      <div className={`p-4 rounded-lg mb-6 ${cardClass} transition-colors duration-300`}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div>
+            <label className="block text-sm font-medium mb-1">Target Function:</label>
+            <select
+              value={targetFunction}
+              onChange={(e) => setTargetFunction(e.target.value)}
+              className={`w-full p-2 border rounded ${inputClass}`}
+            >
+              {targetFunctions.map(func => (
+                <option key={func.id} value={func.id}>{func.name}</option>
+              ))}
+            </select>
+            
+            {targetFunction === 'custom' && (
+              <div className="mt-2">
+                <label className="block text-sm font-medium mb-1">Custom Equation:</label>
+                <input
+                  type="text"
+                  value={customEquation}
+                  onChange={(e) => setCustomEquation(e.target.value)}
+                  placeholder="e.g., x^2 - PI^2/3"
+                  className={`w-full p-2 border rounded ${inputClass}`}
+                />
+                <p className="text-xs mt-1 opacity-70">
+                  Use 'x' as the variable and 'PI' for π
+                </p>
+              </div>
+            )}
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium mb-1">Number of Terms: {numTerms}</label>
+            <input
+              type="range"
+              min="1"
+              max="50"
+              value={numTerms}
+              onChange={(e) => setNumTerms(parseInt(e.target.value))}
+              className="w-full"
+            />
+            
+            <div className="mt-2">
+              <label className="block text-sm font-medium mb-1">
+                Animation Speed: {animationSpeed.toFixed(1)}x
+              </label>
+              <input
+                type="range"
+                min="0.1"
+                max="3"
+                step="0.1"
+                value={animationSpeed}
+                onChange={(e) => setAnimationSpeed(parseFloat(e.target.value))}
+                className="w-full"
+              />
+            </div>
+          </div>
+          
+          <div className="flex flex-col justify-between">
+            <div className="grid grid-cols-2 gap-2">
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  id="animateTerms"
+                  checked={animateTerms}
+                  onChange={() => setAnimateTerms(!animateTerms)}
+                  className="mr-2"
+                />
+                <label htmlFor="animateTerms" className="text-sm">Animate Terms</label>
+              </div>
+              
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  id="showComponents"
+                  checked={showComponents}
+                  onChange={() => setShowComponents(!showComponents)}
+                  className="mr-2"
+                />
+                <label htmlFor="showComponents" className="text-sm">Show Components</label>
+              </div>
+              
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  id="showCoefficients"
+                  checked={showCoefficients}
+                  onChange={() => setShowCoefficients(!showCoefficients)}
+                  className="mr-2"
+                />
+                <label htmlFor="showCoefficients" className="text-sm">Show Coefficients</label>
+              </div>
+              
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  id="showError"
+                  checked={showError}
+                  onChange={() => setShowError(!showError)}
+                  className="mr-2"
+                />
+                <label htmlFor="showError" className="text-sm">Show Error</label>
+              </div>
+              
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  id="showEpicycles"
+                  checked={showEpicycles}
+                  onChange={() => setShowEpicycles(!showEpicycles)}
+                  className="mr-2"
+                />
+                <label htmlFor="showEpicycles" className="text-sm">Show Epicycles</label>
+              </div>
+              
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  id="showTermControls"
+                  checked={showTermControls}
+                  onChange={() => setShowTermControls(!showTermControls)}
+                  className="mr-2"
+                />
+                <label htmlFor="showTermControls" className="text-sm">Edit Coefficients</label>
+              </div>
+            </div>
+            
+            <div className="flex justify-between mt-2">
+              <button
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                className={`px-3 py-1 text-sm rounded ${buttonSecondaryClass}`}
+              >
+                {isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
+              </button>
+              
+              <button
+                onClick={playAudio}
+                className={`px-3 py-1 text-sm rounded ${buttonSecondaryClass}`}
+              >
+                {isPlaying ? '🔇 Stop Audio' : '🔊 Play Sound'}
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        {/* Drawing mode UI */}
+        {targetFunction === 'drawing' && (
+          <div className="mb-4 p-3 border rounded">
+            <h3 className="text-lg font-medium mb-2">Drawing Mode</h3>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setIsDrawingMode(true)}
+                className={`px-3 py-1 text-sm rounded ${isDrawingMode ? buttonClass : buttonSecondaryClass}`}
+              >
+                Draw Function
+              </button>
+              
+              <button
+                onClick={() => {
+                  setDrawingPoints([]);
+                  initDrawingCanvas();
+                }}
+                className={`px-3 py-1 text-sm rounded ${buttonSecondaryClass}`}
+                disabled={!isDrawingMode}
+              >
+                Clear Drawing
+              </button>
+              
+              <button
+                onClick={() => setIsDrawingMode(false)}
+                className={`px-3 py-1 text-sm rounded ${!isDrawingMode ? buttonClass : buttonSecondaryClass}`}
+              >
+                View Result
+              </button>
+            </div>
+            <p className="text-xs mt-2 opacity-70">
+              Draw a shape in the canvas below, then click "View Result" to see the Fourier representation.
+            </p>
+          </div>
+        )}
+        
+        {/* Export and share buttons */}
+        <div className="flex justify-end gap-2 mt-3">
+          <button
+            onClick={exportImage}
+            className={`px-3 py-1 text-sm rounded ${buttonSecondaryClass}`}
+          >
+            📥 Export Image
+          </button>
+          
+          <button
+            onClick={generateShareableUrl}
+            className={`px-3 py-1 text-sm rounded ${buttonSecondaryClass}`}
+          >
+            🔗 Share URL
+          </button>
+        </div>
+      </div>
       
-      <ProcessingStep
-        stepId="preprocess"
-        title="Image Processing"
-        icon={
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
-          </svg>
-        }
-        isActive={isStepActive('preprocess')}
-        isComplete={isStepComplete('preprocess')}
-        onActivate={() => state.originalImage && activateStep('preprocess')}
-        onReset={resetToStep}
-      >
-        {renderPreprocessStep()}
-      </ProcessingStep>
+      {/* Main visualization */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className={`p-4 rounded-lg ${cardClass} transition-colors duration-300`}>
+          <h2 className="text-lg font-medium mb-2">Fourier Series Visualization</h2>
+          
+          {isDrawingMode && targetFunction === 'drawing' ? (
+            <canvas
+              ref={drawingCanvasRef}
+              width={width}
+              height={height}
+              className="w-full border rounded cursor-crosshair"
+              onMouseDown={handleDrawingMouseDown}
+              onMouseMove={handleDrawingMouseMove}
+              onMouseUp={handleDrawingMouseUp}
+              onMouseLeave={handleDrawingMouseUp}
+              onTouchStart={handleDrawingTouchStart}
+              onTouchMove={handleDrawingTouchMove}
+              onTouchEnd={handleDrawingTouchEnd}
+            />
+          ) : (
+            <canvas
+              ref={mainCanvasRef}
+              width={width}
+              height={height}
+              className="w-full border rounded cursor-grab"
+              onMouseDown={handlePanStart}
+              onMouseMove={handlePanMove}
+              onMouseUp={handlePanEnd}
+              onMouseLeave={handlePanEnd}
+              onWheel={handleZoom}
+            />
+          )}
+          
+          <div className="flex justify-between mt-2">
+            <div className="text-sm opacity-70">
+              {!isDrawingMode && <>
+                <button
+                  onClick={() => {
+                    setZoom(1);
+                    setPanOffset({ x: 0, y: 0 });
+                  }}
+                  className={`px-2 py-1 text-xs rounded mr-2 ${buttonSecondaryClass}`}
+                >
+                  Reset View
+                </button>
+                Zoom: {zoom.toFixed(1)}x
+              </>}
+            </div>
+            <div className="text-sm opacity-70">
+              {isDrawingMode && targetFunction === 'drawing' && 
+                `Points: ${drawingPoints.length}`
+              }
+            </div>
+          </div>
+        </div>
+        
+        <div className="flex flex-col gap-6">
+          {/* Component visualization */}
+          {showComponents && (
+            <div className={`p-4 rounded-lg ${cardClass} transition-colors duration-300`}>
+              <h2 className="text-lg font-medium mb-2">Individual Components</h2>
+              <canvas
+                ref={componentCanvasRef}
+                width={width}
+                height={height}
+                className="w-full border rounded"
+              />
+            </div>
+          )}
+          
+          {/* Coefficient visualization */}
+          {showCoefficients && (
+            <div className={`p-4 rounded-lg ${cardClass} transition-colors duration-300`}>
+              <h2 className="text-lg font-medium mb-2">Coefficient Magnitudes</h2>
+              <canvas
+                ref={coefficientCanvasRef}
+                width={width}
+                height={height}
+                className="w-full border rounded"
+              />
+            </div>
+          )}
+          
+          {/* Error visualization */}
+          {showError && (
+            <div className={`p-4 rounded-lg ${cardClass} transition-colors duration-300`}>
+              <h2 className="text-lg font-medium mb-2">Error Visualization</h2>
+              <canvas
+                ref={errorCanvasRef}
+                width={width}
+                height={height}
+                className="w-full border rounded"
+              />
+            </div>
+          )}
+          
+          {/* Epicycle visualization */}
+          {showEpicycles && (
+            <div className={`p-4 rounded-lg ${cardClass} transition-colors duration-300`}>
+              <h2 className="text-lg font-medium mb-2">Epicycle Visualization</h2>
+              <canvas
+                ref={epicycleCanvasRef}
+                width={width}
+                height={height}
+                className="w-full border rounded"
+              />
+            </div>
+          )}
+          
+          {/* Interactive coefficient editor */}
+          {showTermControls && (
+            <div className={`p-4 rounded-lg ${cardClass} transition-colors duration-300`}>
+              <div className="flex justify-between items-center mb-2">
+                <h2 className="text-lg font-medium">Interactive Coefficients</h2>
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="useManualCoefficients"
+                    checked={useManualCoefficients}
+                    onChange={() => setUseManualCoefficients(!useManualCoefficients)}
+                    className="mr-2"
+                  />
+                  <label htmlFor="useManualCoefficients" className="text-sm">Enable Manual Mode</label>
+                </div>
+              </div>
+              
+              <div className="max-h-60 overflow-y-auto">
+                {manualCoefficients.slice(0, 10).map((coeff, idx) => (
+                  <div key={idx} className="grid grid-cols-2 gap-2 mb-2">
+                    <div>
+                      <label className="block text-xs mb-1">a₍{idx+1}₎: {coeff.a.toFixed(2)}</label>
+                      <input
+                        type="range"
+                        min="-2"
+                        max="2"
+                        step="0.01"
+                        value={coeff.a}
+                        disabled={!useManualCoefficients}
+                        onChange={(e) => {
+                          const newValue = parseFloat(e.target.value);
+                          setManualCoefficients(prev => {
+                            const newCoeffs = [...prev];
+                            newCoeffs[idx] = { ...newCoeffs[idx], a: newValue };
+                            return newCoeffs;
+                          });
+                        }}
+                        className="w-full"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs mb-1">b₍{idx+1}₎: {coeff.b.toFixed(2)}</label>
+                      <input
+                        type="range"
+                        min="-2"
+                        max="2"
+                        step="0.01"
+                        value={coeff.b}
+                        disabled={!useManualCoefficients}
+                        onChange={(e) => {
+                          const newValue = parseFloat(e.target.value);
+                          setManualCoefficients(prev => {
+                            const newCoeffs = [...prev];
+                            newCoeffs[idx] = { ...newCoeffs[idx], b: newValue };
+                            return newCoeffs;
+                          });
+                        }}
+                        className="w-full"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              {useManualCoefficients && (
+                <div className="flex justify-end mt-2">
+                  <button
+                    onClick={() => {
+                      const coeffs = calculateFourierCoefficients(targetFunction, numTerms);
+                      setManualCoefficients(coeffs);
+                    }}
+                    className={`px-3 py-1 text-sm rounded ${buttonSecondaryClass}`}
+                  >
+                    Reset to Calculated Values
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
       
-      <ProcessingStep
-        stepId="edges"
-        title="Edge Detection"
-        icon={
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-          </svg>
-        }
-        isActive={isStepActive('edges')}
-        isComplete={isStepComplete('edges')}
-        onActivate={() => state.preprocessedImageData && activateStep('edges')}
-        onReset={resetToStep}
-      >
-        {renderEdgesStep()}
-      </ProcessingStep>
-      
-      <ProcessingStep
-        stepId="contours"
-        title="Contour Extraction"
-        icon={
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 005 10a1 1 0 10-2 0 8 8 0 0016 0 1 1 0 10-2 0 5.986 5.986 0 00-.454 2.916A5 5 0 008 11z" clipRule="evenodd" />
-          </svg>
-        }
-        isActive={isStepActive('contours')}
-        isComplete={isStepComplete('contours')}
-        onActivate={() => state.edgeImageData && activateStep('contours')}
-        onReset={resetToStep}
-      >
-        {renderContoursStep()}
-      </ProcessingStep>
-      
-      <ProcessingStep
-        stepId="fourier"
-        title="Fourier Drawing"
-        icon={
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
-          </svg>
-        }
-        isActive={isStepActive('fourier')}
-        isComplete={isStepComplete('fourier')}
-        onActivate={() => state.contours.length > 0 && activateStep('fourier')}
-        onReset={resetToStep}
-      >
-        {renderFourierStep()}
-      </ProcessingStep>
-      
-      {/* Explanation */}
-      <div className="mt-6 bg-gray-50 p-4 rounded-lg text-sm border border-gray-200">
-        <h2 className="font-semibold mb-2">How This Works</h2>
-        <p className="mb-3">
-          This application converts images to animated line drawings using Fourier transforms - a mathematical technique that breaks down complex signals into simpler components.
+      <div className={`mt-6 p-4 rounded-lg ${cardClass} transition-colors duration-300`}>
+        <h2 className="text-lg font-medium mb-2">About Fourier Series</h2>
+        <p className="mb-2">
+          A Fourier series represents a periodic function as a sum of sine and cosine terms.
+          The general form is:
         </p>
-        <ol className="list-decimal list-inside space-y-1 ml-4">
-          <li>The image is processed to find edges and contours</li>
-          <li>Each contour is converted to a Fourier series (rotating circles)</li>
-          <li>The epicycles (rotating circles) trace the drawing automatically</li>
-        </ol>
-        <p className="mt-3 text-gray-600">
-          This demonstrates the powerful concept behind all signal processing - complex patterns can be broken down into simpler circular motions.
+        <div className={`p-2 rounded mb-2 text-center italic ${isDarkMode ? 'bg-gray-700' : 'bg-gray-100'}`}>
+          f(x) = a₀/2 + Σ[aₙ·cos(nx) + bₙ·sin(nx)]
+        </div>
+        <p className="mb-2">
+          The more terms you include, the better the approximation. Each function has a unique 
+          set of Fourier coefficients that determine how much each frequency contributes to the overall shape.
         </p>
+        <p>
+          Try the different visualizations to understand how Fourier series work:
+        </p>
+        <ul className="list-disc list-inside mt-2 space-y-1">
+          <li>Use the <b>Components</b> view to see individual frequency contributions</li>
+          <li>Use the <b>Coefficients</b> view to see the magnitude of each frequency</li>
+          <li>Use the <b>Error</b> view to see how the approximation improves with more terms</li>
+          <li>Use the <b>Epicycles</b> view to see how rotating vectors create the function</li>
+          <li>Try <b>Drawing</b> your own function to see how it's represented in frequency space</li>
+          <li>Use <b>Interactive Coefficients</b> to manually adjust the frequency components</li>
+        </ul>
       </div>
     </div>
   );
 };
 
-export default ImageToFourierTransform;
+export default FourierSeriesExplorer;
