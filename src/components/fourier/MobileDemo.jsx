@@ -1243,7 +1243,7 @@ const FourierSeriesExplorer = () => {
             <input
               type="range"
               min="1"
-              max="50"
+              max="500"
               value={numTerms}
               onChange={(e) => setNumTerms(parseInt(e.target.value))}
               className="w-full"

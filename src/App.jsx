@@ -12,10 +12,12 @@ import GitHubActionsMobileManager from './components/thehub/github-actions-mobil
 import MotionAmplification from './components/vid/VideoDemo'
 import PulseDetectionVisualizer from './components/vid/PulseExample'
 import FourierSeriesExplorer from './components/fourier/MobileDemo'
+import FourierSeriesTeacher from './components/fourier/Teacher'
 
 // Component keys enum
 const COMPONENTS = {
   FOURIER: 'fourier',
+  FOURIER_TEACHER: 'fourier-teacher',
   PULSE: 'pulse-demo',
   GH_DEMO: 'gh-demo',
   IMAGE_DEMO: 'image-demo',
@@ -29,50 +31,55 @@ const COMPONENTS = {
 
 // Navigation items configuration
 const navigationItems = [
- {
-   id: COMPONENTS.FOURIER,
-   label: 'Drawing With Fourier',
-   component: FourierSeriesExplorer
- },
- { 
-    id: COMPONENTS.PULSE, 
-    label: 'Pulse Demo', 
-    component: PulseDetectionVisualizer 
+  {
+    id: COMPONENTS.FOURIER,
+    label: 'Drawing With Fourier',
+    component: FourierSeriesExplorer
   },
-  { 
-    id: COMPONENTS.GH_DEMO, 
-    label: 'GH Demo', 
-    component: GitHubActionsMobileManager 
+  {
+    id: COMPONENTS.FOURIER_TEACHER,
+    label: 'Teaching Fouriers',
+    component: FourierSeriesTeacher
   },
-  { 
-    id: COMPONENTS.IMAGE_DEMO, 
-    label: 'Image Manipulation Demo', 
-    component: ImageManipulator 
+  {
+    id: COMPONENTS.PULSE,
+    label: 'Pulse Demo',
+    component: PulseDetectionVisualizer
   },
-  { 
-    id: COMPONENTS.ARTICLE_DEMO, 
-    label: 'Tau - XIAO ESP32S3 Sense Article', 
-    component: ArticlePage 
+  {
+    id: COMPONENTS.GH_DEMO,
+    label: 'GH Demo',
+    component: GitHubActionsMobileManager
   },
-  { 
-    id: COMPONENTS.CODE_DEMO, 
-    label: 'VSCode Demo', 
-    component: VSCodeAnimation 
+  {
+    id: COMPONENTS.IMAGE_DEMO,
+    label: 'Image Manipulation Demo',
+    component: ImageManipulator
   },
-  { 
-    id: COMPONENTS.RECHARTS_DEMO, 
-    label: 'Recharts Demo', 
-    component: RechartsExample 
+  {
+    id: COMPONENTS.ARTICLE_DEMO,
+    label: 'Tau - XIAO ESP32S3 Sense Article',
+    component: ArticlePage
   },
-  { 
-    id: COMPONENTS.ANIMATION_DEMO, 
-    label: 'Animation Demo', 
-    component: AnimationExample 
+  {
+    id: COMPONENTS.CODE_DEMO,
+    label: 'VSCode Demo',
+    component: VSCodeAnimation
   },
-  { 
-    id: COMPONENTS.PENDULUM_DEMO, 
-    label: 'Pendulum Demo', 
-    component: PendulumSimulation 
+  {
+    id: COMPONENTS.RECHARTS_DEMO,
+    label: 'Recharts Demo',
+    component: RechartsExample
+  },
+  {
+    id: COMPONENTS.ANIMATION_DEMO,
+    label: 'Animation Demo',
+    component: AnimationExample
+  },
+  {
+    id: COMPONENTS.PENDULUM_DEMO,
+    label: 'Pendulum Demo',
+    component: PendulumSimulation
   },
   {
     id: COMPONENTS.FOURIER,
@@ -124,22 +131,22 @@ function App() {
 
         {/* Mobile navigation - dropdown */}
         <div className="md:hidden relative">
-          <button 
+          <button
             onClick={() => setIsNavOpen(!isNavOpen)}
             className="w-full py-2 px-4 flex justify-between items-center bg-white border-b"
           >
             <span className="font-medium">{activeNavItem?.label || 'Select Component'}</span>
-            <svg 
-              className={`w-5 h-5 transition-transform ${isNavOpen ? 'rotate-180' : ''}`} 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24" 
+            <svg
+              className={`w-5 h-5 transition-transform ${isNavOpen ? 'rotate-180' : ''}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          
+
           {isNavOpen && (
             <div className="absolute top-full left-0 right-0 bg-white border shadow-lg z-10">
               {navigationItems.map(item => (
