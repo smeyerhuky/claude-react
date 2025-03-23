@@ -1,500 +1,717 @@
-import React, { useState, useEffect, useRef, useCallback, useReducer, createContext, useContext, memo } from 'react';
-import { 
-  Play, Upload, Settings, Film, RefreshCw, ChevronRight, 
-  ChevronLeft, FastForward, SkipBack, Square, Pause,
-  RotateCcw, Info, AlertCircle, Eye, Sliders, Maximize,
-  ArrowLeft, ArrowRight, Layers
-} from 'lucide-react';
+import React, { createContext, useContext, useReducer, useCallback, useRef, useState, useEffect } from 'react';
 import * as math from 'mathjs';
 
-// -----------------------------------------------------
-// Context & State Management
-// -----------------------------------------------------
+// =============================================
+// Context and State Management
+// =============================================
 
-// Initial state for video processing
+// Initial state for the Fourier processing
 const initialState = {
-  videoFile: null,
-  videoUrl: null,
-  videoFrames: [],
-  processedFrames: [],
-  frequencyData: [], // Frequency domain data for visualization
-  motionVectors: [], // Motion vector data for visualization
-  videoInfo: { width: 0, height: 0, duration: 0, fps: 30 },
-  processingProgress: 0,
-  processingState: 'idle', // idle, extracting, processing, completed
-  activeView: 'upload', // upload, preview, processing, playback
-  playbackState: {
-    isPlaying: false,
-    currentFrame: 0,
-    direction: 1, // 1 for forward, -1 for reverse
-    speed: 1,
+  // Image state
+  originalImage: null,
+  imageUrl: null,
+  
+  // Processing state
+  processingStep: 'upload', // 'upload', 'preprocess', 'edges', 'contours', 'fourier', 'animation'
+  isProcessing: false,
+  
+  // Processing parameters
+  params: {
+    blurRadius: 2,
+    contourSimplification: 5,
+    fourierTerms: 50,
+    // Removed manual threshold - will be auto-calculated
   },
-  // Parameters for processing
-  processingParams: {
-    amplificationFactor: 2.0,
-    lowFrequencyCutoff: 0.1,
-    highFrequencyCutoff: 0.5,
-    colorAmplification: true,
-    motionBlur: 0,
-    framesToAnalyze: 10,
-  }
+  
+  // Result state
+  preprocessedImageData: null,
+  edgeImageData: null,
+  contours: [],
+  fourierCoefficients: [],
+  
+  // Animation state
+  isPlaying: false,
+  animationSpeed: 1,
+  currentContourIndex: 0,
+  drawingPath: []
 };
 
-// Reducer for managing video processing state
-function videoProcessingReducer(state, action) {
+// Action types
+const actionTypes = {
+  SET_IMAGE: 'SET_IMAGE',
+  SET_PROCESSING_STEP: 'SET_PROCESSING_STEP',
+  SET_PROCESSING_STATUS: 'SET_PROCESSING_STATUS',
+  UPDATE_PARAMETER: 'UPDATE_PARAMETER',
+  SET_PREPROCESSED_IMAGE: 'SET_PREPROCESSED_IMAGE',
+  SET_EDGE_IMAGE: 'SET_EDGE_IMAGE',
+  SET_CONTOURS: 'SET_CONTOURS',
+  SET_FOURIER_COEFFICIENTS: 'SET_FOURIER_COEFFICIENTS',
+  UPDATE_ANIMATION_STATE: 'UPDATE_ANIMATION_STATE',
+  RESET_DRAWING: 'RESET_DRAWING',
+  UPDATE_DRAWING_PATH: 'UPDATE_DRAWING_PATH'
+};
+
+// Reducer function
+function fourierReducer(state, action) {
   switch (action.type) {
-    case 'SET_VIDEO':
-      return { 
-        ...state, 
-        videoFile: action.payload.file,
-        videoUrl: action.payload.url,
-        activeView: 'preview'
+    case actionTypes.SET_IMAGE:
+      return {
+        ...state,
+        originalImage: action.payload.image,
+        imageUrl: action.payload.url,
+        processingStep: 'preprocess',
+        // Reset results when changing image
+        preprocessedImageData: null,
+        edgeImageData: null,
+        contours: [],
+        fourierCoefficients: [],
+        drawingPath: []
       };
-    case 'SET_VIDEO_INFO':
-      return { ...state, videoInfo: action.payload };
-    case 'SET_FRAMES':
-      return { ...state, videoFrames: action.payload };
-    case 'SET_PROCESSED_FRAMES':
-      return { ...state, processedFrames: action.payload };
-    case 'SET_FREQUENCY_DATA':
-      return { ...state, frequencyData: action.payload };
-    case 'SET_MOTION_VECTORS':
-      return { ...state, motionVectors: action.payload };
-    case 'SET_PROCESSING_PROGRESS':
-      return { ...state, processingProgress: action.payload };
-    case 'SET_PROCESSING_STATE':
-      return { ...state, processingState: action.payload };
-    case 'SET_ACTIVE_VIEW':
-      return { ...state, activeView: action.payload };
-    case 'SET_PLAYBACK_STATE':
-      return { 
-        ...state, 
-        playbackState: {
-          ...state.playbackState,
-          ...action.payload
+      
+    case actionTypes.SET_PROCESSING_STEP:
+      return {
+        ...state,
+        processingStep: action.payload
+      };
+      
+    case actionTypes.SET_PROCESSING_STATUS:
+      return {
+        ...state,
+        isProcessing: action.payload
+      };
+      
+    case actionTypes.UPDATE_PARAMETER:
+      return {
+        ...state,
+        params: {
+          ...state.params,
+          [action.payload.name]: action.payload.value
         }
       };
-    case 'UPDATE_PROCESSING_PARAM':
-      return { 
-        ...state, 
-        processingParams: {
-          ...state.processingParams,
-          [action.payload.param]: action.payload.value
-        }
+      
+    case actionTypes.SET_PREPROCESSED_IMAGE:
+      return {
+        ...state,
+        preprocessedImageData: action.payload
       };
-    case 'RESET_PROCESSING_PARAMS':
-      return { 
-        ...state, 
-        processingParams: initialState.processingParams
+      
+    case actionTypes.SET_EDGE_IMAGE:
+      return {
+        ...state,
+        edgeImageData: action.payload
       };
+      
+    case actionTypes.SET_CONTOURS:
+      return {
+        ...state,
+        contours: action.payload
+      };
+      
+    case actionTypes.SET_FOURIER_COEFFICIENTS:
+      return {
+        ...state,
+        fourierCoefficients: action.payload,
+        currentContourIndex: 0
+      };
+      
+    case actionTypes.UPDATE_ANIMATION_STATE:
+      return {
+        ...state,
+        isPlaying: action.payload.isPlaying !== undefined ? action.payload.isPlaying : state.isPlaying,
+        animationSpeed: action.payload.speed !== undefined ? action.payload.speed : state.animationSpeed,
+        currentContourIndex: action.payload.contourIndex !== undefined ? action.payload.contourIndex : state.currentContourIndex
+      };
+      
+    case actionTypes.RESET_DRAWING:
+      return {
+        ...state,
+        drawingPath: []
+      };
+      
+    case actionTypes.UPDATE_DRAWING_PATH:
+      return {
+        ...state,
+        drawingPath: action.payload
+      };
+      
     default:
       return state;
   }
 }
 
-// Create context for video processing
-const VideoProcessingContext = createContext();
+// Create context
+const FourierContext = createContext();
 
-// Custom hook for using video processing context
-function useVideoProcessing() {
-  const context = useContext(VideoProcessingContext);
+// Custom hook for using the Fourier context
+function useFourier() {
+  const context = useContext(FourierContext);
   if (!context) {
-    throw new Error('useVideoProcessing must be used within a VideoProcessingProvider');
+    throw new Error('useFourier must be used within a FourierProvider');
   }
   return context;
 }
 
-// Provider component for video processing context
-function VideoProcessingProvider({ children }) {
-  const [state, dispatch] = useReducer(videoProcessingReducer, initialState);
-  const videoRef = useRef(null);
-  const canvasRef = useRef(null);
-  const outputCanvasRef = useRef(null);
-  const beforeCanvasRef = useRef(null);
-  const afterCanvasRef = useRef(null);
-  const animationRef = useRef(null);
-  const lastFrameTimeRef = useRef(0);
+// =============================================
+// Custom Hooks
+// =============================================
+
+// Hook for image loading and manipulation
+function useImageLoader() {
+  const { state, dispatch } = useFourier();
   
-  // Handle video file upload
-  const handleVideoUpload = useCallback((file) => {
-    if (file) {
-      const url = URL.createObjectURL(file);
-      dispatch({ 
-        type: 'SET_VIDEO', 
-        payload: { file, url } 
+  // Load image from file
+  const loadImage = useCallback((file) => {
+    if (!file || !file.type.match('image.*')) return;
+    
+    const imageUrl = URL.createObjectURL(file);
+    
+    const image = new Image();
+    image.onload = () => {
+      dispatch({
+        type: actionTypes.SET_IMAGE,
+        payload: { image, url: imageUrl }
       });
-    }
+    };
+    image.src = imageUrl;
+  }, [dispatch]);
+  
+  // Load demo image
+  const loadDemoImage = useCallback((demoName) => {
+    // In a real implementation, we would load predefined demo images
+    alert(`Loading demo: ${demoName}`);
   }, []);
   
-  // Extract video information when a video is loaded
-  useEffect(() => {
-    if (state.videoUrl && videoRef.current) {
-      const video = videoRef.current;
-      
-      video.onloadedmetadata = () => {
-        dispatch({
-          type: 'SET_VIDEO_INFO',
-          payload: {
-            width: video.videoWidth,
-            height: video.videoHeight,
-            duration: video.duration,
-            fps: 30, // Assume 30 fps initially
-          }
-        });
-      };
-    }
-  }, [state.videoUrl]);
+  return { loadImage, loadDemoImage };
+}
+
+// Hook for image processing operations
+function useFourierProcessing() {
+  const { state, dispatch } = useFourier();
+  const canvasRef = useRef(null);
   
-  // Extract frames from video
-  const extractFrames = useCallback(async () => {
-    if (!videoRef.current || !state.videoUrl) return [];
+  // Process the image through the pipeline
+  const processImage = useCallback(async () => {
+    // Set processing flag
+    dispatch({ type: actionTypes.SET_PROCESSING_STATUS, payload: true });
     
-    dispatch({ type: 'SET_PROCESSING_STATE', payload: 'extracting' });
-    
-    const video = videoRef.current;
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    
-    // Set canvas dimensions to match video
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    
-    // Calculate frame extraction points
-    const framesCount = state.processingParams.framesToAnalyze;
-    const frames = [];
-    
-    // Wait for video to be ready
-    await new Promise(resolve => {
-      video.onloadeddata = resolve;
-      if (video.readyState >= 2) resolve(); // Already loaded
-    });
-    
-    // Extract frames at regular intervals
-    for (let i = 0; i < framesCount; i++) {
-      const time = (video.duration / framesCount) * i;
-      video.currentTime = time;
+    try {
+      // Preprocess step - convert to grayscale, blur, etc.
+      const preprocessed = await preprocessImage(state.originalImage, state.params);
+      dispatch({ type: actionTypes.SET_PREPROCESSED_IMAGE, payload: preprocessed });
       
-      // Update progress
-      dispatch({ 
-        type: 'SET_PROCESSING_PROGRESS', 
-        payload: (i / framesCount) * 100 
-      });
+      // Auto-threshold and edge detection
+      const edgeData = await detectEdges(preprocessed);
+      dispatch({ type: actionTypes.SET_EDGE_IMAGE, payload: edgeData });
       
-      // Wait for seek to complete
-      await new Promise(resolve => {
-        const onSeeked = () => {
-          video.removeEventListener('seeked', onSeeked);
-          resolve();
-        };
-        video.addEventListener('seeked', onSeeked);
-      });
+      // Extract contours
+      const contours = await extractContours(edgeData);
       
-      // Draw video frame to canvas
-      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      // Simplify contours
+      const simplifiedContours = simplifyContours(contours, state.params.contourSimplification);
+      dispatch({ type: actionTypes.SET_CONTOURS, payload: simplifiedContours });
+      
+      // Calculate Fourier coefficients
+      const coefficients = [];
+      for (const contour of simplifiedContours) {
+        if (contour.length > 10) { // Only process meaningful contours
+          const coeffs = calculateFourierCoefficients(contour, state.params.fourierTerms);
+          coefficients.push(coeffs);
+        }
+      }
+      
+      dispatch({ type: actionTypes.SET_FOURIER_COEFFICIENTS, payload: coefficients });
+      
+      // Move to fourier step
+      dispatch({ type: actionTypes.SET_PROCESSING_STEP, payload: 'fourier' });
+    } catch (error) {
+      console.error('Error processing image:', error);
+    }
+    
+    // Clear processing flag
+    dispatch({ type: actionTypes.SET_PROCESSING_STATUS, payload: false });
+  }, [state.originalImage, state.params, dispatch]);
+  
+  // Preprocess image (grayscale, blur)
+  const preprocessImage = async (image, params) => {
+    return new Promise(resolve => {
+      // Create temporary canvas for processing
+      const canvas = document.createElement('canvas');
+      canvas.width = image.width;
+      canvas.height = image.height;
+      const ctx = canvas.getContext('2d');
+      
+      // Draw image to canvas
+      ctx.drawImage(image, 0, 0);
       
       // Get image data
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       
-      frames.push({
-        time,
-        imageData,
-      });
-    }
-    
-    dispatch({ type: 'SET_FRAMES', payload: frames });
-    dispatch({ type: 'SET_PROCESSING_STATE', payload: 'ready' });
-    
-    return frames;
-  }, [state.videoUrl, state.processingParams.framesToAnalyze]);
+      // Convert to grayscale
+      const grayscaleData = convertToGrayscale(imageData);
+      
+      // Apply blur
+      const blurredData = applyGaussianBlur(grayscaleData, params.blurRadius);
+      
+      // Resolve with processed data
+      setTimeout(() => resolve(blurredData), 50); // Small delay for UI responsiveness
+    });
+  };
   
-  // Process frames using Fourier transform
-  const processFrames = useCallback(async () => {
-    let frames = state.videoFrames;
-    if (frames.length === 0) {
-      frames = await extractFrames();
+  // Convert image to grayscale
+  const convertToGrayscale = (imageData) => {
+    const data = new Uint8ClampedArray(imageData.data);
+    
+    for (let i = 0; i < data.length; i += 4) {
+      const r = data[i];
+      const g = data[i + 1];
+      const b = data[i + 2];
+      
+      // Luminance formula
+      const gray = 0.299 * r + 0.587 * g + 0.114 * b;
+      
+      data[i] = gray;
+      data[i + 1] = gray;
+      data[i + 2] = gray;
     }
     
-    if (frames.length < 2) return;
-    
-    dispatch({ type: 'SET_PROCESSING_STATE', payload: 'processing' });
-    dispatch({ type: 'SET_ACTIVE_VIEW', payload: 'processing' });
-    
-    const processed = [];
-    const frequencyDataArray = [];
-    const motionVectorsArray = [];
-    
-    // Process each frame
-    for (let i = 0; i < frames.length - 1; i++) {
-      // Update progress
-      dispatch({ 
-        type: 'SET_PROCESSING_PROGRESS', 
-        payload: (i / (frames.length - 1)) * 100 
-      });
-      
-      // Get current and next frame
-      const currentFrame = frames[i].imageData;
-      const nextFrame = frames[i + 1].imageData;
-      
-      // Process frame pair using Fourier transform
-      const { processedFrame, frequencyData, motionVectors } = await processFramePairWithFourier(
-        currentFrame, 
-        nextFrame, 
-        state.processingParams
-      );
-      
-      processed.push({
-        time: frames[i].time,
-        imageData: processedFrame,
-      });
-      
-      frequencyDataArray.push(frequencyData);
-      motionVectorsArray.push(motionVectors);
-      
-      // Small delay to keep UI responsive
-      await new Promise(resolve => setTimeout(resolve, 10));
-    }
-    
-    dispatch({ type: 'SET_PROCESSED_FRAMES', payload: processed });
-    dispatch({ type: 'SET_FREQUENCY_DATA', payload: frequencyDataArray });
-    dispatch({ type: 'SET_MOTION_VECTORS', payload: motionVectorsArray });
-    dispatch({ type: 'SET_PROCESSING_PROGRESS', payload: 100 });
-    
-    // Move to playback view after a delay
-    setTimeout(() => {
-      dispatch({ type: 'SET_PROCESSING_STATE', payload: 'completed' });
-      dispatch({ type: 'SET_ACTIVE_VIEW', payload: 'playback' });
-    }, 500);
-  }, [state.videoFrames, state.processingParams, extractFrames]);
+    return new ImageData(data, imageData.width, imageData.height);
+  };
   
-  // Fourier transform processing implementation
-  const processFramePairWithFourier = useCallback(async (frame1, frame2, params) => {
-    const { amplificationFactor, lowFrequencyCutoff, highFrequencyCutoff, colorAmplification } = params;
+  // Apply Gaussian blur
+  const applyGaussianBlur = (imageData, radius) => {
+    // Simple box blur as an approximation
+    const data = new Uint8ClampedArray(imageData.data);
+    const width = imageData.width;
+    const height = imageData.height;
+    const result = new Uint8ClampedArray(data);
     
-    // Create new ImageData for the processed frame
-    const processedFrame = new ImageData(
-      new Uint8ClampedArray(frame1.data.length),
-      frame1.width,
-      frame1.height
+    // Skip blur if radius is 0
+    if (radius <= 0) return imageData;
+    
+    // Horizontal pass
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        let r = 0, g = 0, b = 0, a = 0, count = 0;
+        
+        for (let i = -radius; i <= radius; i++) {
+          const cx = Math.min(width - 1, Math.max(0, x + i));
+          const idx = (y * width + cx) * 4;
+          
+          r += data[idx];
+          g += data[idx + 1];
+          b += data[idx + 2];
+          a += data[idx + 3];
+          count++;
+        }
+        
+        const idx = (y * width + x) * 4;
+        result[idx] = r / count;
+        result[idx + 1] = g / count;
+        result[idx + 2] = b / count;
+        result[idx + 3] = a / count;
+      }
+    }
+    
+    // Vertical pass
+    const temp = new Uint8ClampedArray(result);
+    
+    for (let x = 0; x < width; x++) {
+      for (let y = 0; y < height; y++) {
+        let r = 0, g = 0, b = 0, a = 0, count = 0;
+        
+        for (let i = -radius; i <= radius; i++) {
+          const cy = Math.min(height - 1, Math.max(0, y + i));
+          const idx = (cy * width + x) * 4;
+          
+          r += temp[idx];
+          g += temp[idx + 1];
+          b += temp[idx + 2];
+          a += temp[idx + 3];
+          count++;
+        }
+        
+        const idx = (y * width + x) * 4;
+        result[idx] = r / count;
+        result[idx + 1] = g / count;
+        result[idx + 2] = b / count;
+        result[idx + 3] = a / count;
+      }
+    }
+    
+    return new ImageData(result, width, height);
+  };
+  
+  // Auto threshold and edge detection
+  const detectEdges = async (imageData) => {
+    return new Promise(resolve => {
+      // Auto-calculate threshold using Otsu's method
+      const threshold = calculateOtsuThreshold(imageData);
+      
+      // Apply threshold
+      const thresholdedData = applyThreshold(imageData, threshold);
+      
+      // Detect edges
+      const edgeData = findEdges(thresholdedData);
+      
+      setTimeout(() => resolve(edgeData), 50); // Small delay for UI responsiveness
+    });
+  };
+  
+  // Calculate optimal threshold using Otsu's method
+  const calculateOtsuThreshold = (imageData) => {
+    const data = imageData.data;
+    const histogram = new Array(256).fill(0);
+    
+    // Build histogram
+    for (let i = 0; i < data.length; i += 4) {
+      histogram[data[i]]++;
+    }
+    
+    const total = data.length / 4;
+    let sum = 0;
+    for (let i = 0; i < 256; i++) {
+      sum += i * histogram[i];
+    }
+    
+    let sumB = 0;
+    let wB = 0;
+    let wF = 0;
+    let maxVariance = 0;
+    let threshold = 0;
+    
+    for (let t = 0; t < 256; t++) {
+      wB += histogram[t];
+      if (wB === 0) continue;
+      
+      wF = total - wB;
+      if (wF === 0) break;
+      
+      sumB += t * histogram[t];
+      
+      const mB = sumB / wB;
+      const mF = (sum - sumB) / wF;
+      
+      const variance = wB * wF * (mB - mF) * (mB - mF);
+      
+      if (variance > maxVariance) {
+        maxVariance = variance;
+        threshold = t;
+      }
+    }
+    
+    return threshold;
+  };
+  
+  // Apply threshold
+  const applyThreshold = (imageData, threshold) => {
+    const data = new Uint8ClampedArray(imageData.data);
+    
+    for (let i = 0; i < data.length; i += 4) {
+      const v = data[i] < threshold ? 0 : 255;
+      
+      data[i] = v;
+      data[i + 1] = v;
+      data[i + 2] = v;
+    }
+    
+    return new ImageData(data, imageData.width, imageData.height);
+  };
+  
+  // Edge detection
+  const findEdges = (imageData) => {
+    const width = imageData.width;
+    const height = imageData.height;
+    const data = imageData.data;
+    const result = new Uint8ClampedArray(data.length);
+    
+    // Initialize with black
+    for (let i = 0; i < result.length; i++) {
+      result[i] = 0;
+      // Set alpha channel
+      if ((i + 1) % 4 === 0) {
+        result[i] = 255;
+      }
+    }
+    
+    // Simple edge detection
+    for (let y = 1; y < height - 1; y++) {
+      for (let x = 1; x < width - 1; x++) {
+        const idx = (y * width + x) * 4;
+        
+        // Check neighbors
+        const top = data[((y - 1) * width + x) * 4];
+        const bottom = data[((y + 1) * width + x) * 4];
+        const left = data[(y * width + (x - 1)) * 4];
+        const right = data[(y * width + (x + 1)) * 4];
+        const current = data[idx];
+        
+        // If there's a difference between any neighbors, it's an edge
+        if (
+          Math.abs(current - top) > 50 ||
+          Math.abs(current - bottom) > 50 ||
+          Math.abs(current - left) > 50 ||
+          Math.abs(current - right) > 50
+        ) {
+          result[idx] = 255;
+          result[idx + 1] = 255;
+          result[idx + 2] = 255;
+        }
+      }
+    }
+    
+    return new ImageData(result, width, height);
+  };
+  
+  // Extract contours from edge image
+  const extractContours = async (edgeData) => {
+    return new Promise(resolve => {
+      const width = edgeData.width;
+      const height = edgeData.height;
+      const data = edgeData.data;
+      
+      // Create a grid to track visited pixels
+      const visited = Array(height).fill().map(() => Array(width).fill(false));
+      const contours = [];
+      
+      // Helper function to check if a pixel is white (edge)
+      const isEdge = (x, y) => {
+        if (x < 0 || x >= width || y < 0 || y >= height) return false;
+        const idx = (y * width + x) * 4;
+        return data[idx] > 128;
+      };
+      
+      // Find starting points for contours
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          if (isEdge(x, y) && !visited[y][x]) {
+            // Start a new contour
+            const contour = [];
+            let cx = x;
+            let cy = y;
+            
+            // Direction vectors for 8-way search
+            const dx = [1, 1, 0, -1, -1, -1, 0, 1];
+            const dy = [0, 1, 1, 1, 0, -1, -1, -1];
+            
+            // Simple boundary following
+            let foundNext = true;
+            while (foundNext && contour.length < 5000) { // Safety limit
+              visited[cy][cx] = true;
+              contour.push({ x: cx, y: cy });
+              
+              foundNext = false;
+              for (let dir = 0; dir < 8; dir++) {
+                const nx = cx + dx[dir];
+                const ny = cy + dy[dir];
+                
+                if (isEdge(nx, ny) && !visited[ny][nx]) {
+                  cx = nx;
+                  cy = ny;
+                  foundNext = true;
+                  break;
+                }
+              }
+            }
+            
+            // Only keep contours with sufficient points
+            if (contour.length > 10) {
+              contours.push(contour);
+            }
+          }
+        }
+      }
+      
+      setTimeout(() => resolve(contours), 50); // Small delay for UI responsiveness
+    });
+  };
+  
+  // Simplify contours by removing redundant points
+  const simplifyContours = (contours, tolerance) => {
+    return contours.map(contour => {
+      // Simple point reduction strategy - keep every nth point
+      const simplified = [];
+      for (let i = 0; i < contour.length; i += tolerance) {
+        simplified.push(contour[i]);
+      }
+      
+      // Ensure the contour is closed
+      if (simplified.length > 0 && 
+          (simplified[0].x !== simplified[simplified.length - 1].x || 
+           simplified[0].y !== simplified[simplified.length - 1].y)) {
+        simplified.push(simplified[0]);
+      }
+      
+      return simplified;
+    });
+  };
+  
+  // Calculate Fourier coefficients for a contour
+  const calculateFourierCoefficients = (contour, numTerms) => {
+    // Canvas dimensions for centering
+    const canvasWidth = 400; // Default width
+    const canvasHeight = 400; // Default height
+    
+    // Convert (x,y) contour points to complex numbers
+    const complexPoints = contour.map(point => 
+      math.complex(point.x - canvasWidth/2, point.y - canvasHeight/2)
     );
     
-    // Convert frames to frequency domain (simplified simulation)
-    // Note: In a real implementation, this would use a proper 2D FFT library
-    const frequencyData = simulateFourierTransform(frame1, frame2);
+    const N = complexPoints.length;
+    const coefficients = [];
     
-    // Apply band-pass filtering in frequency domain
-    const filteredData = applyBandPassFilter(frequencyData, lowFrequencyCutoff, highFrequencyCutoff);
-    
-    // Amplify motion in frequency domain
-    const amplifiedData = amplifyMotionInFrequencyDomain(filteredData, amplificationFactor);
-    
-    // Convert back to spatial domain and create processed frame
-    // In a real implementation, this would involve inverse FFT
-    const motionVectors = simulateMotionVectors(frame1, frame2, params);
-    
-    // Simulate processed frame based on motion vectors
-    for (let y = 0; y < frame1.height; y++) {
-      for (let x = 0; x < frame1.width; x++) {
-        const i = (y * frame1.width + x) * 4;
+    // Calculate coefficients for different frequencies
+    for (let k = -numTerms/2; k <= numTerms/2; k++) {
+      let sum = math.complex(0, 0);
+      
+      for (let n = 0; n < N; n++) {
+        // e^(-i2πkn/N)
+        const angle = -2 * Math.PI * k * n / N;
+        const term = math.multiply(
+          complexPoints[n],
+          math.complex(Math.cos(angle), Math.sin(angle))
+        );
         
-        // Get motion vector at this position
-        const vector = motionVectors[y][x];
-        const magnitude = Math.sqrt(vector.dx * vector.dx + vector.dy * vector.dy);
-        
-        // Apply amplification if motion is in the right frequency range
-        if (magnitude > lowFrequencyCutoff && magnitude < highFrequencyCutoff) {
-          // Calculate temporal gradient (frame difference)
-          const dtR = frame2.data[i] - frame1.data[i];
-          const dtG = frame2.data[i + 1] - frame1.data[i + 1];
-          const dtB = frame2.data[i + 2] - frame1.data[i + 2];
-          
-          // Apply amplification
-          if (colorAmplification) {
-            processedFrame.data[i] = Math.min(255, Math.max(0, 
-              frame1.data[i] + dtR * amplificationFactor * magnitude
-            ));
-            processedFrame.data[i + 1] = Math.min(255, Math.max(0, 
-              frame1.data[i + 1] + dtG * amplificationFactor * magnitude
-            ));
-            processedFrame.data[i + 2] = Math.min(255, Math.max(0, 
-              frame1.data[i + 2] + dtB * amplificationFactor * magnitude
-            ));
-          } else {
-            // Luminance-only amplification
-            const luminance = (0.299 * dtR + 0.587 * dtG + 0.114 * dtB) * amplificationFactor * magnitude;
-            processedFrame.data[i] = Math.min(255, Math.max(0, frame1.data[i] + luminance));
-            processedFrame.data[i + 1] = Math.min(255, Math.max(0, frame1.data[i + 1] + luminance));
-            processedFrame.data[i + 2] = Math.min(255, Math.max(0, frame1.data[i + 2] + luminance));
-          }
-        } else {
-          // Keep original pixel
-          processedFrame.data[i] = frame1.data[i];
-          processedFrame.data[i + 1] = frame1.data[i + 1];
-          processedFrame.data[i + 2] = frame1.data[i + 2];
-        }
-        
-        // Alpha channel
-        processedFrame.data[i + 3] = 255;
+        sum = math.add(sum, term);
       }
+      
+      // Normalize
+      sum = math.divide(sum, N);
+      
+      coefficients.push({
+        frequency: k,
+        amplitude: math.abs(sum),
+        phase: math.arg(sum),
+        real: sum.re,
+        imag: sum.im
+      });
     }
     
-    return { processedFrame, frequencyData, motionVectors };
-  }, []);
-  
-  // Simulate Fourier transform for demonstration
-  const simulateFourierTransform = (frame1, frame2) => {
-    // In a real implementation, this would be a 2D FFT
-    // For the prototype, we'll just create a placeholder object
-    return {
-      magnitude: [], // Would contain magnitude spectrum
-      phase: [],     // Would contain phase spectrum
-      width: frame1.width,
-      height: frame1.height
-    };
+    // Sort by amplitude (highest first)
+    return coefficients.sort((a, b) => b.amplitude - a.amplitude);
   };
   
-  // Apply band-pass filter in frequency domain
-  const applyBandPassFilter = (frequencyData, lowCutoff, highCutoff) => {
-    // In a real implementation, this would filter frequencies
-    // For the prototype, we'll just return the input
-    return frequencyData;
-  };
-  
-  // Amplify motion in frequency domain
-  const amplifyMotionInFrequencyDomain = (frequencyData, factor) => {
-    // In a real implementation, this would amplify phase changes
-    // For the prototype, we'll just return the input
-    return frequencyData;
-  };
-  
-  // Simulate motion vector calculation
-  const simulateMotionVectors = (frame1, frame2, params) => {
-    const width = frame1.width;
-    const height = frame1.height;
-    const blockSize = 16; // Size of blocks for motion estimation
+  // Reset to a previous step
+  const resetToStep = useCallback((step) => {
+    dispatch({ type: actionTypes.SET_PROCESSING_STEP, payload: step });
     
-    // Create a 2D array to store motion vectors
-    const vectors = Array(height).fill().map(() => Array(width).fill().map(() => ({ dx: 0, dy: 0 })));
-    
-    // Calculate motion vectors for each block
-    for (let y = 0; y < height; y += blockSize) {
-      for (let x = 0; x < width; x += blockSize) {
-        // Calculate motion for current block (simplified)
-        const dx = Math.random() * 2 - 1; // Random motion for demonstration
-        const dy = Math.random() * 2 - 1;
-        
-        // Fill the block with this motion vector
-        for (let by = 0; by < blockSize && y + by < height; by++) {
-          for (let bx = 0; bx < blockSize && x + bx < width; bx++) {
-            vectors[y + by][x + bx] = { dx, dy };
-          }
-        }
-      }
+    // Reset data based on the step
+    if (step === 'upload') {
+      dispatch({ type: actionTypes.SET_IMAGE, payload: { image: null, url: null } });
+    } else if (step === 'preprocess') {
+      dispatch({ type: actionTypes.SET_EDGE_IMAGE, payload: null });
+      dispatch({ type: actionTypes.SET_CONTOURS, payload: [] });
+      dispatch({ type: actionTypes.SET_FOURIER_COEFFICIENTS, payload: [] });
+    } else if (step === 'edges') {
+      dispatch({ type: actionTypes.SET_CONTOURS, payload: [] });
+      dispatch({ type: actionTypes.SET_FOURIER_COEFFICIENTS, payload: [] });
+    } else if (step === 'contours') {
+      dispatch({ type: actionTypes.SET_FOURIER_COEFFICIENTS, payload: [] });
     }
     
-    return vectors;
-  };
+    // Reset drawing path
+    dispatch({ type: actionTypes.RESET_DRAWING });
+  }, [dispatch]);
   
-  // Playback control functions
+  return { 
+    canvasRef,
+    processImage,
+    resetToStep
+  };
+}
+
+// Hook for animation controls
+function useAnimationControls() {
+  const { state, dispatch } = useFourier();
+  const animationRef = useRef(null);
+  const drawingCanvasRef = useRef(null);
+  
+  // Toggle play/pause
   const togglePlayback = useCallback(() => {
     dispatch({
-      type: 'SET_PLAYBACK_STATE',
-      payload: { isPlaying: !state.playbackState.isPlaying }
+      type: actionTypes.UPDATE_ANIMATION_STATE,
+      payload: { isPlaying: !state.isPlaying }
     });
-  }, [state.playbackState.isPlaying]);
+  }, [state.isPlaying, dispatch]);
   
-  const toggleDirection = useCallback(() => {
-    dispatch({
-      type: 'SET_PLAYBACK_STATE',
-      payload: { direction: state.playbackState.direction * -1 }
-    });
-  }, [state.playbackState.direction]);
-  
+  // Set playback speed
   const setPlaybackSpeed = useCallback((speed) => {
     dispatch({
-      type: 'SET_PLAYBACK_STATE',
+      type: actionTypes.UPDATE_ANIMATION_STATE,
       payload: { speed }
     });
-  }, []);
+  }, [dispatch]);
   
-  const setCurrentFrame = useCallback((frameIndex) => {
+  // Change contour
+  const changeContour = useCallback((direction) => {
+    const currentIndex = state.currentContourIndex;
+    const count = state.fourierCoefficients.length;
+    
+    if (count === 0) return;
+    
+    let newIndex = (currentIndex + direction) % count;
+    if (newIndex < 0) newIndex = count - 1;
+    
     dispatch({
-      type: 'SET_PLAYBACK_STATE',
-      payload: { currentFrame: frameIndex }
+      type: actionTypes.UPDATE_ANIMATION_STATE,
+      payload: { contourIndex: newIndex }
     });
-  }, []);
+    
+    // Reset drawing
+    dispatch({ type: actionTypes.RESET_DRAWING });
+  }, [state.currentContourIndex, state.fourierCoefficients.length, dispatch]);
   
-  // Update processing parameters
-  const updateProcessingParam = useCallback((param, value) => {
-    dispatch({
-      type: 'UPDATE_PROCESSING_PARAM',
-      payload: { param, value }
-    });
-  }, []);
+  // Reset drawing
+  const resetDrawing = useCallback(() => {
+    dispatch({ type: actionTypes.RESET_DRAWING });
+  }, [dispatch]);
   
-  const resetProcessingParams = useCallback(() => {
-    dispatch({ type: 'RESET_PROCESSING_PARAMS' });
-  }, []);
-  
-  // Change view
-  const setActiveView = useCallback((view) => {
-    dispatch({ type: 'SET_ACTIVE_VIEW', payload: view });
-  }, []);
-  
-  // Playback animation
+  // Animation loop for drawing
   useEffect(() => {
-    if (state.processedFrames.length === 0 || !outputCanvasRef.current) return;
+    if (!state.isPlaying || !drawingCanvasRef.current || state.fourierCoefficients.length === 0) {
+      // Clear animation frame when not playing
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+        animationRef.current = null;
+      }
+      return;
+    }
     
-    const canvas = outputCanvasRef.current;
-    const ctx = canvas.getContext('2d');
+    // Get the current contour's coefficients
+    const currentCoeffs = state.fourierCoefficients[state.currentContourIndex];
+    if (!currentCoeffs) return;
     
-    // Set canvas dimensions
-    canvas.width = state.videoInfo.width;
-    canvas.height = state.videoInfo.height;
+    let time = 0;
+    const canvasWidth = 400; // Default width
+    const canvasHeight = 400; // Default height
     
-    // Function to render a specific frame
-    const renderFrame = (frameIndex) => {
-      if (frameIndex < 0 || frameIndex >= state.processedFrames.length) return;
+    const animate = () => {
+      time += 0.01 * state.animationSpeed;
       
-      const frame = state.processedFrames[frameIndex];
-      ctx.putImageData(frame.imageData, 0, 0);
-    };
-    
-    // Animation loop
-    const animate = (timestamp) => {
-      // Calculate frame timing based on playback speed
-      const frameTime = 1000 / (state.videoInfo.fps * state.playbackState.speed); 
+      // Calculate the new position
+      const pos = calculatePosition(currentCoeffs, time);
       
-      if (state.playbackState.isPlaying && timestamp - lastFrameTimeRef.current > frameTime) {
-        lastFrameTimeRef.current = timestamp;
-        
-        // Calculate next frame index
-        let nextFrame = state.playbackState.currentFrame + state.playbackState.direction;
-        
-        // Handle loop boundaries
-        if (nextFrame >= state.processedFrames.length) {
-          nextFrame = 0;
-        } else if (nextFrame < 0) {
-          nextFrame = state.processedFrames.length - 1;
-        }
-        
-        // Update playback state
-        dispatch({
-          type: 'SET_PLAYBACK_STATE',
-          payload: { currentFrame: nextFrame }
-        });
-        
-        // Render the frame
-        renderFrame(nextFrame);
+      // Update the drawing path
+      const newPath = [...state.drawingPath, { 
+        x: pos.x + canvasWidth/2, 
+        y: pos.y + canvasHeight/2 
+      }];
+      
+      // Limit path length to prevent performance issues
+      const limitedPath = newPath.length > 2000 ? newPath.slice(-2000) : newPath;
+      
+      dispatch({ 
+        type: actionTypes.UPDATE_DRAWING_PATH, 
+        payload: limitedPath 
+      });
+      
+      // Complete one cycle
+      if (time >= 2 * Math.PI) {
+        time = 0;
       }
       
-      // Continue animation loop
       animationRef.current = requestAnimationFrame(animate);
     };
     
-    // Render initial frame
-    renderFrame(state.playbackState.currentFrame);
-    
-    // Start animation loop
     animationRef.current = requestAnimationFrame(animate);
     
     // Cleanup on unmount
@@ -504,1063 +721,880 @@ function VideoProcessingProvider({ children }) {
       }
     };
   }, [
-    state.processedFrames, 
-    state.videoInfo, 
-    state.playbackState.isPlaying, 
-    state.playbackState.currentFrame, 
-    state.playbackState.direction, 
-    state.playbackState.speed
+    state.isPlaying, 
+    state.fourierCoefficients, 
+    state.currentContourIndex, 
+    state.animationSpeed,
+    state.drawingPath,
+    dispatch
   ]);
   
-  // Provide context value
-  const value = {
-    state,
-    videoRef,
-    canvasRef,
-    outputCanvasRef,
-    beforeCanvasRef,
-    afterCanvasRef,
-    handleVideoUpload,
-    extractFrames,
-    processFrames,
-    togglePlayback,
-    toggleDirection,
-    setPlaybackSpeed,
-    setCurrentFrame,
-    updateProcessingParam,
-    resetProcessingParams,
-    setActiveView
+  // Function to calculate position from Fourier series at time t
+  const calculatePosition = (coefficients, t) => {
+    let x = 0;
+    let y = 0;
+    
+    for (const coef of coefficients) {
+      const { frequency, amplitude, phase } = coef;
+      const angle = frequency * t + phase;
+      
+      x += amplitude * Math.cos(angle);
+      y += amplitude * Math.sin(angle);
+    }
+    
+    return { x, y };
   };
   
-  return (
-    <VideoProcessingContext.Provider value={value}>
-      {children}
-    </VideoProcessingContext.Provider>
-  );
+  // Drawing effect
+  useEffect(() => {
+    if (!drawingCanvasRef.current) return;
+    
+    const canvas = drawingCanvasRef.current;
+    const ctx = canvas.getContext('2d');
+    
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Draw path
+    if (state.drawingPath.length > 0) {
+      ctx.beginPath();
+      ctx.moveTo(state.drawingPath[0].x, state.drawingPath[0].y);
+      
+      for (let i = 1; i < state.drawingPath.length; i++) {
+        ctx.lineTo(state.drawingPath[i].x, state.drawingPath[i].y);
+      }
+      
+      ctx.strokeStyle = '#3498db';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+    
+    // Draw the epicycles if drawing is active
+    if (state.isPlaying && state.fourierCoefficients.length > 0) {
+      const currentCoeffs = state.fourierCoefficients[state.currentContourIndex];
+      if (!currentCoeffs) return;
+      
+      let x = canvas.width / 2;
+      let y = canvas.height / 2;
+      
+      // Draw each circle (limited to first few for performance)
+      const maxCircles = Math.min(20, currentCoeffs.length);
+      
+      for (let i = 0; i < maxCircles; i++) {
+        const coef = currentCoeffs[i];
+        const { frequency, amplitude, phase } = coef;
+        
+        // Calculate current time based on the position of the last point in the path
+        const time = state.drawingPath.length === 0 ? 0 : 
+          Math.atan2(
+            state.drawingPath[state.drawingPath.length - 1].y - canvas.height / 2,
+            state.drawingPath[state.drawingPath.length - 1].x - canvas.width / 2
+          ) / frequency - phase;
+          
+        const angle = frequency * time + phase;
+        
+        // Draw the circle
+        ctx.beginPath();
+        ctx.arc(x, y, amplitude, 0, 2 * Math.PI);
+        ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
+        ctx.stroke();
+        
+        // Calculate next center point
+        const dx = amplitude * Math.cos(angle);
+        const dy = amplitude * Math.sin(angle);
+        
+        // Draw the radius
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x + dx, y + dy);
+        ctx.strokeStyle = 'rgba(255, 0, 0, 0.5)';
+        ctx.stroke();
+        
+        x += dx;
+        y += dy;
+      }
+      
+      // Draw a dot at the end
+      ctx.beginPath();
+      ctx.arc(x, y, 4, 0, 2 * Math.PI);
+      ctx.fillStyle = 'red';
+      ctx.fill();
+    }
+  }, [state.drawingPath, state.isPlaying, state.fourierCoefficients, state.currentContourIndex]);
+  
+  return {
+    drawingCanvasRef,
+    togglePlayback,
+    setPlaybackSpeed,
+    changeContour,
+    resetDrawing
+  };
 }
 
-// -----------------------------------------------------
-// Main Component
-// -----------------------------------------------------
+// =============================================
+// UI Components
+// =============================================
 
-const EnhancedMotionAmplification = () => {
-  const [fullscreenPreview, setFullscreenPreview] = useState(false);
-  
-  const toggleFullscreen = () => {
-    setFullscreenPreview(!fullscreenPreview);
-  };
+// Help tooltip component
+const HelpTooltip = ({ text }) => {
+  const [isOpen, setIsOpen] = useState(false);
   
   return (
-    <VideoProcessingProvider>
-      <div className="bg-gray-100 min-h-screen">
-        <div className={`transition-all duration-300 ${fullscreenPreview ? 'p-0' : 'p-4'}`}>
-          <h1 className={`text-2xl font-bold mb-6 text-center ${fullscreenPreview ? 'hidden' : 'block'}`}>
-            Enhanced Motion Analysis & Amplification
-          </h1>
-          
-          <MainContent 
-            fullscreenPreview={fullscreenPreview}
-            toggleFullscreen={toggleFullscreen}
-          />
+    <div className="relative inline-block">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-5 h-5 rounded-full bg-blue-100 text-blue-800 flex items-center justify-center text-xs focus:outline-none"
+        aria-label="Help"
+      >
+        ?
+      </button>
+      
+      {isOpen && (
+        <div className="absolute z-10 bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-64 p-2 bg-white rounded shadow-lg text-sm text-gray-800 border border-gray-200">
+          {text}
+          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-2 h-2 bg-white border-r border-b border-gray-200"></div>
         </div>
-      </div>
-    </VideoProcessingProvider>
+      )}
+    </div>
   );
 };
 
-// -----------------------------------------------------
-// Main Content Component
-// -----------------------------------------------------
+// Parameter control component with help tooltip
+const ParameterControl = ({ 
+  label, 
+  value, 
+  min, 
+  max, 
+  step, 
+  onChange, 
+  helpText,
+  unit = "" 
+}) => {
+  return (
+    <div className="mb-3">
+      <div className="flex items-center justify-between mb-1">
+        <label className="text-sm font-medium text-gray-700 flex items-center">
+          {label}: {value}{unit}
+          {helpText && (
+            <span className="ml-2">
+              <HelpTooltip text={helpText} />
+            </span>
+          )}
+        </label>
+      </div>
+      
+      <input
+        type="range"
+        min={min}
+        max={max}
+        step={step}
+        value={value}
+        onChange={(e) => onChange(parseFloat(e.target.value))}
+        className="w-full"
+      />
+    </div>
+  );
+};
 
-const MainContent = ({ fullscreenPreview, toggleFullscreen }) => {
-  const { state, setActiveView } = useVideoProcessing();
+// Processing step component
+const ProcessingStep = ({
+  stepId,
+  title,
+  icon,
+  isActive,
+  isComplete,
+  onActivate,
+  onReset,
+  children,
+}) => {
+  return (
+    <div className={`mb-4 rounded-lg overflow-hidden border 
+      ${isActive ? 'border-blue-500 shadow-md' : 'border-gray-200'}`}
+    >
+      <div 
+        className={`p-3 flex items-center justify-between cursor-pointer
+          ${isActive ? 'bg-blue-50' : isComplete ? 'bg-gray-50' : 'bg-white'}`}
+        onClick={onActivate}
+      >
+        <div className="flex items-center">
+          <span className={`mr-3 ${isActive ? 'text-blue-500' : 'text-gray-400'}`}>
+            {icon}
+          </span>
+          <h3 className={`font-medium ${isActive ? 'text-blue-700' : 'text-gray-700'}`}>
+            {title}
+          </h3>
+        </div>
+        
+        <div className="flex items-center">
+          {isComplete && !isActive && (
+            <span className="text-green-500 mr-2">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+            </span>
+          )}
+          
+          {isComplete && (
+            <button 
+              onClick={(e) => { 
+                e.stopPropagation(); 
+                onReset(stepId); 
+              }}
+              className="p-1 text-xs text-gray-500 hover:text-red-500"
+              title="Reset this step"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
+              </svg>
+            </button>
+          )}
+          
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            className={`h-5 w-5 ml-1 transition-transform ${isActive ? 'transform rotate-180' : ''}`} 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </div>
+      
+      {isActive && (
+        <div className="p-4 bg-white border-t border-gray-100">
+          {children}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Comparison slider component
+const ComparisonSlider = ({ originalData, processedData, width, height }) => {
+  const [sliderPosition, setSliderPosition] = useState(50);
+  const containerRef = useRef(null);
+  const canvasRef = useRef(null);
   
-  // Render tabs navigation
-  const renderTabs = () => (
-    <div className={`flex justify-center mb-6 ${fullscreenPreview ? 'hidden' : 'block'}`}>
-      <div className="flex bg-white rounded-lg shadow overflow-hidden">
-        <button 
-          className={`flex items-center px-4 py-2 ${state.activeView === 'upload' ? 'bg-blue-500 text-white' : 'text-gray-700'}`}
-          onClick={() => setActiveView('upload')}
-        >
-          <Upload className="w-4 h-4 mr-2" />
-          Upload
-        </button>
-        <button 
-          className={`flex items-center px-4 py-2 ${state.activeView === 'preview' ? 'bg-blue-500 text-white' : 'text-gray-700'}`}
-          onClick={() => state.videoUrl && setActiveView('preview')}
-          disabled={!state.videoUrl}
-        >
-          <Settings className="w-4 h-4 mr-2" />
-          Preview
-        </button>
-        <button 
-          className={`flex items-center px-4 py-2 ${state.activeView === 'processing' ? 'bg-blue-500 text-white' : 'text-gray-700'}`}
-          disabled={true}
-        >
-          <RefreshCw className="w-4 h-4 mr-2" />
-          Processing
-        </button>
-        <button 
-          className={`flex items-center px-4 py-2 ${state.activeView === 'playback' ? 'bg-blue-500 text-white' : 'text-gray-700'}`}
-          onClick={() => state.processedFrames.length > 0 && setActiveView('playback')}
-          disabled={state.processedFrames.length === 0}
-        >
-          <Film className="w-4 h-4 mr-2" />
-          Playback
-        </button>
+  // Handle slider position change
+  const updateSliderPosition = (clientX) => {
+    if (!containerRef.current) return;
+    
+    const rect = containerRef.current.getBoundingClientRect();
+    const position = ((clientX - rect.left) / rect.width) * 100;
+    setSliderPosition(Math.max(0, Math.min(100, position)));
+  };
+  
+  // Mouse event handlers
+  const handleMouseDown = (e) => {
+    updateSliderPosition(e.clientX);
+    
+    const handleMouseMove = (e) => {
+      updateSliderPosition(e.clientX);
+    };
+    
+    const handleMouseUp = () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+    
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+  };
+  
+  // Touch event handlers
+  const handleTouchStart = (e) => {
+    const touch = e.touches[0];
+    updateSliderPosition(touch.clientX);
+    
+    const handleTouchMove = (e) => {
+      const touch = e.touches[0];
+      updateSliderPosition(touch.clientX);
+    };
+    
+    const handleTouchEnd = () => {
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+    
+    document.addEventListener('touchmove', handleTouchMove);
+    document.addEventListener('touchend', handleTouchEnd);
+  };
+  
+  // Draw comparison view
+  useEffect(() => {
+    if (!canvasRef.current || !originalData || !processedData) return;
+    
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Create temporary canvases for both images
+    const originalCanvas = document.createElement('canvas');
+    originalCanvas.width = originalData.width;
+    originalCanvas.height = originalData.height;
+    const originalCtx = originalCanvas.getContext('2d');
+    originalCtx.putImageData(originalData, 0, 0);
+    
+    const processedCanvas = document.createElement('canvas');
+    processedCanvas.width = processedData.width;
+    processedCanvas.height = processedData.height;
+    const processedCtx = processedCanvas.getContext('2d');
+    processedCtx.putImageData(processedData, 0, 0);
+    
+    // Calculate the clip position
+    const clipPosition = Math.floor((canvas.width * sliderPosition) / 100);
+    
+    // Draw original on the left side
+    ctx.drawImage(
+      originalCanvas,
+      0, 0, clipPosition, canvas.height,
+      0, 0, clipPosition, canvas.height
+    );
+    
+    // Draw processed on the right side
+    ctx.drawImage(
+      processedCanvas,
+      clipPosition, 0, canvas.width - clipPosition, canvas.height,
+      clipPosition, 0, canvas.width - clipPosition, canvas.height
+    );
+    
+    // Draw slider line
+    ctx.beginPath();
+    ctx.moveTo(clipPosition, 0);
+    ctx.lineTo(clipPosition, canvas.height);
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    
+    // Draw slider handle
+    ctx.beginPath();
+    ctx.arc(clipPosition, canvas.height / 2, 15, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(0, 0, 0, 0.5)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    
+    // Draw arrows inside the handle
+    ctx.beginPath();
+    ctx.moveTo(clipPosition - 5, canvas.height / 2);
+    ctx.lineTo(clipPosition - 2, canvas.height / 2 - 3);
+    ctx.lineTo(clipPosition - 2, canvas.height / 2 + 3);
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.moveTo(clipPosition + 5, canvas.height / 2);
+    ctx.lineTo(clipPosition + 2, canvas.height / 2 - 3);
+    ctx.lineTo(clipPosition + 2, canvas.height / 2 + 3);
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+    ctx.fill();
+    
+    // Draw labels
+    ctx.font = '14px sans-serif';
+    ctx.fillStyle = 'white';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+    ctx.shadowBlur = 4;
+    
+    ctx.fillText('Original', clipPosition / 2, 10);
+    ctx.fillText('Processed', clipPosition + (canvas.width - clipPosition) / 2, 10);
+    
+    ctx.shadowBlur = 0;
+    
+  }, [originalData, processedData, sliderPosition]);
+  
+  return (
+    <div 
+      ref={containerRef}
+      className="comparison-slider relative w-full max-w-md mx-auto overflow-hidden rounded-lg cursor-col-resize"
+      onMouseDown={handleMouseDown}
+      onTouchStart={handleTouchStart}
+    >
+      <canvas
+        ref={canvasRef}
+        width={width || 400}
+        height={height || 400}
+        className="w-full bg-gray-900"
+      />
+      
+      <div className="absolute bottom-2 left-0 right-0 text-center text-white text-xs text-shadow">
+        Drag the slider to compare
       </div>
     </div>
   );
-  
-  // Render main content area based on active view
-  const renderContent = () => {
-    const contentClass = `mx-auto bg-white rounded-lg shadow ${fullscreenPreview ? 'p-0' : 'p-6'} ${fullscreenPreview ? 'max-w-none' : 'max-w-4xl'}`;
-    
-    switch (state.activeView) {
-      case 'upload':
-        return (
-          <div className={contentClass}>
-            <VideoUploader />
-          </div>
-        );
-      case 'preview':
-        return (
-          <div className={contentClass}>
-            <VideoPreview 
-              fullscreenPreview={fullscreenPreview}
-              toggleFullscreen={toggleFullscreen}
-            />
-          </div>
-        );
-      case 'processing':
-        return (
-          <div className={contentClass}>
-            <ProcessingView />
-          </div>
-        );
-      case 'playback':
-        return (
-          <div className={contentClass}>
-            <VideoPlayer 
-              fullscreenPreview={fullscreenPreview}
-              toggleFullscreen={toggleFullscreen}
-            />
-          </div>
-        );
-      default:
-        return null;
-    }
-  };
+};
+
+// =============================================
+// Main Component
+// =============================================
+
+// Fourier provider component
+const FourierProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(fourierReducer, initialState);
   
   return (
-    <>
-      {renderTabs()}
-      {renderContent()}
-    </>
+    <FourierContext.Provider value={{ state, dispatch }}>
+      {children}
+    </FourierContext.Provider>
   );
 };
 
-// -----------------------------------------------------
-// Video Uploader Component
-// -----------------------------------------------------
-
-const VideoUploader = () => {
-  const { handleVideoUpload } = useVideoProcessing();
-  const fileInputRef = useRef(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragCounter, setDragCounter] = useState(0);
-  
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file && file.type.startsWith('video/')) {
-      handleVideoUpload(file);
-    }
-  };
-  
-  const handleDragEnter = (e) => {
-    e.preventDefault();
-    setDragCounter(prev => prev + 1);
-    setIsDragging(true);
-  };
-  
-  const handleDragLeave = (e) => {
-    e.preventDefault();
-    setDragCounter(prev => prev - 1);
-    if (dragCounter - 1 === 0) {
-      setIsDragging(false);
-    }
-  };
-  
-  const handleDragOver = (e) => {
-    e.preventDefault();
-  };
-  
-  const handleDrop = (e) => {
-    e.preventDefault();
-    setIsDragging(false);
-    setDragCounter(0);
-    
-    const file = e.dataTransfer.files[0];
-    if (file && file.type.startsWith('video/')) {
-      handleVideoUpload(file);
-    }
-  };
-  
-  const demoVideos = [
-    { name: "Hand Movement", size: "2.3 MB", duration: "4 sec" },
-    { name: "Machinery Vibration", size: "3.8 MB", duration: "6 sec" },
-    { name: "Building Sway", size: "5.1 MB", duration: "8 sec" },
-  ];
-  
+// Main component
+const ImageToFourierTransform = () => {
   return (
-    <div className="space-y-6">
-      <div 
-        className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
-          isDragging ? 'border-blue-500 bg-blue-50' : 'border-gray-300'
-        }`}
-        onDragEnter={handleDragEnter}
-        onDragLeave={handleDragLeave}
-        onDragOver={handleDragOver}
-        onDrop={handleDrop}
-      >
-        <Upload className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-        <h2 className="text-xl font-medium mb-2">Upload a Video</h2>
-        <p className="text-gray-500 mb-4">Drag and drop a video file here, or click to select</p>
+    <FourierProvider>
+      <FourierTransformApp />
+    </FourierProvider>
+  );
+};
+
+// Main application component
+const FourierTransformApp = () => {
+  const { state, dispatch } = useFourier();
+  const { loadImage, loadDemoImage } = useImageLoader();
+  const { processImage, resetToStep } = useFourierProcessing();
+  const { drawingCanvasRef, togglePlayback, setPlaybackSpeed, changeContour, resetDrawing } = useAnimationControls();
+  
+  const fileInputRef = useRef(null);
+  
+  // Handle file selection
+  const handleFileSelect = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      loadImage(file);
+    }
+  };
+  
+  // Update a parameter
+  const handleParameterChange = (name, value) => {
+    dispatch({
+      type: actionTypes.UPDATE_PARAMETER,
+      payload: { name, value }
+    });
+  };
+  
+  // Move to a specific step
+  const activateStep = (step) => {
+    dispatch({ type: actionTypes.SET_PROCESSING_STEP, payload: step });
+  };
+  
+  // Check if a step is active
+  const isStepActive = (step) => state.processingStep === step;
+  
+  // Check if a step is complete
+  const isStepComplete = (step) => {
+    if (step === 'upload') return !!state.originalImage;
+    if (step === 'preprocess') return !!state.preprocessedImageData;
+    if (step === 'edges') return !!state.edgeImageData;
+    if (step === 'contours') return state.contours.length > 0;
+    if (step === 'fourier') return state.fourierCoefficients.length > 0;
+    return false;
+  };
+  
+  // Render the upload step
+  const renderUploadStep = () => (
+    <div className="space-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <button
+          onClick={() => fileInputRef.current?.click()}
+          className="p-4 border-2 border-dashed border-blue-300 rounded-lg text-center hover:bg-blue-50 transition duration-150"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mx-auto text-blue-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <p className="text-blue-600 font-medium">Upload Image</p>
+          <p className="text-xs text-gray-500 mt-1">JPG, PNG, or GIF</p>
+        </button>
         
-        <input 
-          type="file" 
+        <input
+          type="file"
           ref={fileInputRef}
-          onChange={handleFileChange}
-          accept="video/*"
+          onChange={handleFileSelect}
+          accept="image/*"
           className="hidden"
         />
         
         <button
-          onClick={() => fileInputRef.current.click()}
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+          onClick={() => loadDemoImage('geometric')}
+          className="p-4 border border-gray-200 rounded-lg bg-gray-50 text-center hover:bg-gray-100 transition duration-150"
         >
-          Select Video
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mx-auto text-gray-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+          </svg>
+          <p className="text-gray-700 font-medium">Use Demo Image</p>
+          <p className="text-xs text-gray-500 mt-1">Try with a pre-loaded image</p>
         </button>
       </div>
       
-      <div className="bg-gray-50 rounded-lg p-4">
-        <h3 className="font-medium mb-3 flex items-center">
-          <Info className="w-4 h-4 mr-2 text-blue-500" />
-          Sample Videos
-        </h3>
-        <p className="text-sm text-gray-600 mb-4">Try one of these sample videos to see how motion amplification works:</p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-          {demoVideos.map((video, index) => (
-            <button
-              key={index}
-              className="p-3 bg-white rounded-lg shadow-sm border border-gray-200 text-left hover:border-blue-300 transition-colors"
-              // This would load a sample video in a real application
-              onClick={() => alert(`Sample video would load: ${video.name}`)}
-            >
-              <div className="flex items-center text-gray-800 font-medium mb-1">
-                <Film className="w-4 h-4 mr-2 text-blue-500" />
-                {video.name}
-              </div>
-              <div className="text-xs text-gray-500">
-                {video.size} • {video.duration}
-              </div>
-            </button>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// -----------------------------------------------------
-// Video Preview Component
-// -----------------------------------------------------
-
-const VideoPreview = ({ fullscreenPreview, toggleFullscreen }) => {
-  const { 
-    state, 
-    videoRef, 
-    canvasRef, 
-    extractFrames, 
-    processFrames,
-    updateProcessingParam,
-    resetProcessingParams
-  } = useVideoProcessing();
-  
-  const [isExtracting, setIsExtracting] = useState(false);
-  const [selectedFrame, setSelectedFrame] = useState(null);
-  const [activeTab, setActiveTab] = useState('video'); // video, parameters, analysis
-  
-  const handleExtractFrames = async () => {
-    setIsExtracting(true);
-    await extractFrames();
-    setIsExtracting(false);
-  };
-  
-  // Display a preview frame when available
-  useEffect(() => {
-    if (state.videoFrames.length > 0 && canvasRef.current) {
-      const frameIndex = Math.min(1, state.videoFrames.length - 1);
-      setSelectedFrame(frameIndex);
-      
-      const canvas = canvasRef.current;
-      const ctx = canvas.getContext('2d');
-      
-      canvas.width = state.videoFrames[frameIndex].imageData.width;
-      canvas.height = state.videoFrames[frameIndex].imageData.height;
-      
-      ctx.putImageData(state.videoFrames[frameIndex].imageData, 0, 0);
-    }
-  }, [state.videoFrames]);
-  
-  // Render video preview content
-  const renderVideoPreview = () => (
-    <div className={`${fullscreenPreview ? '' : 'bg-gray-50 p-4 rounded-lg'}`}>
-      <div className="flex justify-between items-center mb-3">
-        <h3 className="font-medium">Video Preview</h3>
-        <button
-          onClick={toggleFullscreen}
-          className="p-1 text-gray-500 hover:text-blue-500 rounded-full"
-          title={fullscreenPreview ? "Exit Fullscreen" : "Fullscreen Mode"}
-        >
-          <Maximize className="w-5 h-5" />
-        </button>
-      </div>
-      
-      <div className="aspect-video bg-black rounded relative overflow-hidden">
-        {state.videoFrames.length > 0 && selectedFrame !== null ? (
-          <canvas
-            ref={canvasRef}
-            className="w-full h-full object-contain"
-          />
-        ) : (
-          <video 
-            ref={videoRef}
-            src={state.videoUrl}
-            className="w-full h-full"
-            controls
-          />
-        )}
-      </div>
-      
-      {state.videoInfo.width > 0 && (
-        <div className="mt-3 text-sm text-gray-600">
-          <p>Resolution: {state.videoInfo.width} × {state.videoInfo.height}</p>
-          <p>Duration: {state.videoInfo.duration.toFixed(2)} seconds</p>
+      {state.imageUrl && (
+        <div className="mt-4">
+          <p className="text-sm text-gray-600 mb-2">Selected image:</p>
+          <div className="border rounded-lg overflow-hidden">
+            <img 
+              src={state.imageUrl} 
+              alt="Selected" 
+              className="max-w-full mx-auto max-h-64 object-contain" 
+            />
+          </div>
+          
+          <button
+            onClick={() => activateStep('preprocess')}
+            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 w-full"
+          >
+            Continue to Processing
+          </button>
         </div>
       )}
-      
-      <div className="mt-4">
-        {state.videoFrames.length === 0 ? (
-          <button
-            onClick={handleExtractFrames}
-            className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 flex items-center"
-            disabled={isExtracting}
-          >
-            {isExtracting ? (
-              <>
-                <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
-                Extracting Frames...
-              </>
-            ) : (
-              <>
-                <RefreshCw className="w-4 h-4 mr-2" />
-                Extract Preview Frames
-              </>
-            )}
-          </button>
-        ) : (
-          <div className="space-y-2">
-            <p className="text-sm text-gray-600">
-              {state.videoFrames.length} frames extracted. Use the processor to analyze motion patterns.
-            </p>
-            <div className="flex gap-2">
-              <button
-                onClick={() => setSelectedFrame(prev => Math.max(0, prev - 1))}
-                disabled={selectedFrame <= 0}
-                className="p-1 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <span className="text-sm text-gray-600 flex-1 text-center">
-                Frame {selectedFrame !== null ? selectedFrame + 1 : 0} of {state.videoFrames.length}
-              </span>
-              <button
-                onClick={() => setSelectedFrame(prev => Math.min(state.videoFrames.length - 1, prev + 1))}
-                disabled={selectedFrame >= state.videoFrames.length - 1}
-                className="p-1 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-        )}
-      </div>
     </div>
   );
   
-  // Render processing parameters
-  const renderParameters = () => (
-    <div className="space-y-4 bg-gray-50 p-4 rounded-lg">
-      <div>
-        <div className="flex justify-between items-center mb-1">
-          <label className="text-sm font-medium text-gray-700">
-            Amplification Factor: {state.processingParams.amplificationFactor.toFixed(1)}×
-          </label>
-          <button
-            onClick={() => updateProcessingParam('amplificationFactor', 2.0)}
-            className="text-xs text-gray-500 hover:text-blue-500"
-            title={`Reset to 2.0`}
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-          </button>
-        </div>
-        <input
-          type="range"
-          min="1"
-          max="10"
-          step="0.1"
-          value={state.processingParams.amplificationFactor}
-          onChange={(e) => updateProcessingParam('amplificationFactor', parseFloat(e.target.value))}
-          className="w-full"
-        />
-        <p className="text-xs text-gray-500 mt-1">
-          How much to amplify detected movements
-        </p>
-      </div>
-      
-      <div>
-        <div className="flex justify-between items-center mb-1">
-          <label className="text-sm font-medium text-gray-700">
-            Low Frequency Cutoff: {state.processingParams.lowFrequencyCutoff.toFixed(2)}
-          </label>
-          <button
-            onClick={() => updateProcessingParam('lowFrequencyCutoff', 0.1)}
-            className="text-xs text-gray-500 hover:text-blue-500"
-            title={`Reset to 0.1`}
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-          </button>
-        </div>
-        <input
-          type="range"
-          min="0.05"
-          max="0.5"
-          step="0.01"
-          value={state.processingParams.lowFrequencyCutoff}
-          onChange={(e) => updateProcessingParam('lowFrequencyCutoff', parseFloat(e.target.value))}
-          className="w-full"
-        />
-        <p className="text-xs text-gray-500 mt-1">
-          Lower bound for frequencies to amplify
-        </p>
-      </div>
-      
-      <div>
-        <div className="flex justify-between items-center mb-1">
-          <label className="text-sm font-medium text-gray-700">
-            High Frequency Cutoff: {state.processingParams.highFrequencyCutoff.toFixed(2)}
-          </label>
-          <button
-            onClick={() => updateProcessingParam('highFrequencyCutoff', 0.5)}
-            className="text-xs text-gray-500 hover:text-blue-500"
-            title={`Reset to 0.5`}
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-          </button>
-        </div>
-        <input
-          type="range"
-          min="0.5"
-          max="1.0"
-          step="0.01"
-          value={state.processingParams.highFrequencyCutoff}
-          onChange={(e) => updateProcessingParam('highFrequencyCutoff', parseFloat(e.target.value))}
-          className="w-full"
-        />
-        <p className="text-xs text-gray-500 mt-1">
-          Upper bound for frequencies to amplify
-        </p>
-      </div>
-      
-      <div>
-        <div className="flex justify-between items-center mb-1">
-          <label className="text-sm font-medium text-gray-700">
-            <span>Color Amplification</span>
-          </label>
-          <button
-            onClick={() => updateProcessingParam('colorAmplification', true)}
-            className="text-xs text-gray-500 hover:text-blue-500"
-            title={`Reset to enabled`}
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-          </button>
-        </div>
-        <div className="flex items-center">
-          <input
-            type="checkbox"
-            checked={state.processingParams.colorAmplification}
-            onChange={(e) => updateProcessingParam('colorAmplification', e.target.checked)}
-            className="mr-2"
-          />
-          <span className="text-sm text-gray-700">
-            {state.processingParams.colorAmplification ? 'Enabled' : 'Disabled'}
-          </span>
-        </div>
-        <p className="text-xs text-gray-500 mt-1">
-          Amplify color changes in addition to movement
-        </p>
-      </div>
-      
-      <div>
-        <div className="flex justify-between items-center mb-1">
-          <label className="text-sm font-medium text-gray-700">
-            Motion Blur: {state.processingParams.motionBlur}
-          </label>
-          <button
-            onClick={() => updateProcessingParam('motionBlur', 0)}
-            className="text-xs text-gray-500 hover:text-blue-500"
-            title={`Reset to 0`}
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-          </button>
-        </div>
-        <input
-          type="range"
-          min="0"
-          max="5"
-          step="1"
-          value={state.processingParams.motionBlur}
-          onChange={(e) => updateProcessingParam('motionBlur', parseInt(e.target.value))}
-          className="w-full"
-        />
-        <p className="text-xs text-gray-500 mt-1">
-          Smoothing applied to motion trails
-        </p>
-      </div>
-      
-      <div>
-        <div className="flex justify-between items-center mb-1">
-          <label className="text-sm font-medium text-gray-700">
-            Preview Frames: {state.processingParams.framesToAnalyze}
-          </label>
-          <button
-            onClick={() => updateProcessingParam('framesToAnalyze', 10)}
-            className="text-xs text-gray-500 hover:text-blue-500"
-            title={`Reset to 10`}
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-          </button>
-        </div>
-        <input
-          type="range"
-          min="2"
-          max="30"
-          step="1"
-          value={state.processingParams.framesToAnalyze}
-          onChange={(e) => updateProcessingParam('framesToAnalyze', parseInt(e.target.value))}
-          className="w-full"
-        />
-        <p className="text-xs text-gray-500 mt-1">
-          Number of frames to extract for preview
-        </p>
-      </div>
-      
-      <div className="pt-2">
-        <button
-          onClick={resetProcessingParams}
-          className="w-full px-3 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 flex items-center justify-center"
-        >
-          <RotateCcw className="w-4 h-4 mr-2" />
-          Reset All Parameters
-        </button>
-      </div>
-    </div>
-  );
-  
-  // Render analysis information
-  const renderAnalysis = () => (
-    <div className="bg-gray-50 p-4 rounded-lg space-y-4">
-      <div>
-        <h3 className="font-medium mb-2">Motion Amplification Technique</h3>
-        <p className="text-sm text-gray-700">
-          This tool uses Fourier transforms to isolate and amplify subtle movements in videos that would otherwise be invisible to the naked eye. By analyzing changes in the frequency domain, we can selectively enhance specific types of motion.
-        </p>
-      </div>
-      
-      <div className="border-t border-gray-200 pt-4">
-        <h3 className="font-medium mb-2">How It Works</h3>
-        <ol className="list-decimal list-inside text-sm text-gray-700 space-y-1">
-          <li>
-            <strong>Convert to Frequency Domain:</strong> Each frame is transformed to reveal motion patterns at different frequencies
-          </li>
-          <li>
-            <strong>Band-Pass Filtering:</strong> Only frequencies within your specified range are selected for amplification
-          </li>
-          <li>
-            <strong>Amplification:</strong> Motion is enhanced based on your amplification factor
-          </li>
-          <li>
-            <strong>Reconstruction:</strong> Frames are converted back to the spatial domain to create the final video
-          </li>
-        </ol>
-      </div>
-      
-      <div className="border-t border-gray-200 pt-4">
-        <h3 className="font-medium mb-2">Tips for Best Results</h3>
-        <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
-          <li>Use a stable camera to minimize unwanted movement</li>
-          <li>Start with low amplification factors (2-3x) and gradually increase</li>
-          <li>Adjust frequency cutoffs to isolate the motion of interest</li>
-          <li>For structural vibrations, set a lower frequency range (0.1-0.3)</li>
-          <li>For faster movements, use a higher frequency range (0.3-0.8)</li>
-        </ul>
-      </div>
-    </div>
-  );
-  
-  if (fullscreenPreview) {
-    return renderVideoPreview();
-  }
-  
-  return (
-    <div>
-      <div className="flex flex-col md:flex-row gap-6">
-        <div className="md:w-2/3">
-          {/* Tabs for mobile */}
-          <div className="md:hidden mb-4">
-            <div className="flex rounded-lg overflow-hidden border border-gray-300">
-              <button
-                className={`flex-1 py-2 px-3 text-sm ${activeTab === 'video' ? 'bg-blue-500 text-white' : 'bg-white'}`}
-                onClick={() => setActiveTab('video')}
-              >
-                Preview
-              </button>
-              <button
-                className={`flex-1 py-2 px-3 text-sm ${activeTab === 'parameters' ? 'bg-blue-500 text-white' : 'bg-white'}`}
-                onClick={() => setActiveTab('parameters')}
-              >
-                Controls
-              </button>
-              <button
-                className={`flex-1 py-2 px-3 text-sm ${activeTab === 'analysis' ? 'bg-blue-500 text-white' : 'bg-white'}`}
-                onClick={() => setActiveTab('analysis')}
-              >
-                Info
-              </button>
-            </div>
-          </div>
-          
-          {/* Video preview (always visible on desktop, conditionally on mobile) */}
-          <div className={`${activeTab === 'video' ? 'block' : 'hidden md:block'}`}>
-            {renderVideoPreview()}
+  // Render the preprocessing step
+  const renderPreprocessStep = () => (
+    <div className="space-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+          <h4 className="font-medium mb-2">Original Image</h4>
+          <div className="border rounded-lg overflow-hidden bg-gray-50">
+            <img 
+              src={state.imageUrl} 
+              alt="Original" 
+              className="max-w-full mx-auto max-h-64 object-contain" 
+            />
           </div>
         </div>
         
-        <div className="md:w-1/3">
-          {/* Parameters and Analysis (tabs on mobile, stacked on desktop) */}
-          <div className="hidden md:block space-y-4">
-            <h3 className="font-medium">Processing Parameters</h3>
-            {renderParameters()}
+        <div>
+          <h4 className="font-medium mb-2">Processing Parameters</h4>
+          <div className="bg-gray-50 p-3 rounded-lg">
+            <ParameterControl
+              label="Blur Radius"
+              value={state.params.blurRadius}
+              min={0}
+              max={10}
+              step={1}
+              onChange={(val) => handleParameterChange('blurRadius', val)}
+              helpText="Applies Gaussian blur to reduce noise. Higher values create smoother edges but may lose detail."
+            />
             
-            <h3 className="font-medium mt-6">Analysis Information</h3>
-            {renderAnalysis()}
-          </div>
-          
-          {/* Mobile-only tab contents */}
-          <div className="md:hidden">
-            {activeTab === 'parameters' && (
-              <div>
-                <h3 className="font-medium mb-3">Processing Parameters</h3>
-                {renderParameters()}
-              </div>
-            )}
+            <ParameterControl
+              label="Contour Simplification"
+              value={state.params.contourSimplification}
+              min={1}
+              max={20}
+              step={1}
+              onChange={(val) => handleParameterChange('contourSimplification', val)}
+              helpText="Reduces the number of points in each contour. Higher values improve performance but may reduce accuracy."
+            />
             
-            {activeTab === 'analysis' && (
-              <div>
-                <h3 className="font-medium mb-3">Analysis Information</h3>
-                {renderAnalysis()}
-              </div>
-            )}
+            <ParameterControl
+              label="Fourier Terms"
+              value={state.params.fourierTerms}
+              min={10}
+              max={200}
+              step={10}
+              onChange={(val) => handleParameterChange('fourierTerms', val)}
+              helpText="Number of terms in the Fourier series. More terms means more detail but slower performance."
+            />
           </div>
         </div>
       </div>
       
-      <div className="mt-6 flex justify-center">
-        <button 
-          onClick={processFrames}
-          className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 flex items-center"
-          disabled={state.videoFrames.length === 0}
+      <div className="flex justify-center mt-2">
+        <button
+          onClick={processImage}
+          disabled={state.isProcessing}
+          className={`px-4 py-2 rounded-lg text-white ${
+            state.isProcessing ? 'bg-blue-300' : 'bg-blue-500 hover:bg-blue-600'
+          }`}
         >
-          <Play className="w-4 h-4 mr-2" />
-          Process Video
+          {state.isProcessing ? (
+            <span className="flex items-center">
+              <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Processing...
+            </span>
+          ) : (
+            'Process Image'
+          )}
         </button>
       </div>
     </div>
   );
-};
-
-// -----------------------------------------------------
-// Processing View Component
-// -----------------------------------------------------
-
-const ProcessingView = () => {
-  const { state } = useVideoProcessing();
   
-  // Processing stages
-  const stages = [
-    { name: "Extracting frames", complete: state.processingProgress >= 20 },
-    { name: "Frequency domain conversion", complete: state.processingProgress >= 40 },
-    { name: "Applying band-pass filter", complete: state.processingProgress >= 60 },
-    { name: "Amplifying motion", complete: state.processingProgress >= 80 },
-    { name: "Reconstructing frames", complete: state.processingProgress >= 95 }
-  ];
-  
-  // Current stage
-  const currentStage = Math.min(4, Math.floor(state.processingProgress / 20));
-  
-  return (
-    <div className="text-center py-8">
-      <RefreshCw className="mx-auto h-12 w-12 text-blue-500 animate-spin mb-4" />
-      <h3 className="text-xl font-medium mb-2">Processing Video</h3>
-      <p className="text-gray-600 mb-4">Analyzing and amplifying motion patterns...</p>
-      
-      <div className="w-full bg-gray-200 rounded-full h-4 mb-4 max-w-md mx-auto">
-        <div 
-          className="bg-blue-500 h-4 rounded-full transition-all duration-300"
-          style={{ width: `${state.processingProgress}%` }}
-        ></div>
-      </div>
-      
-      <p className="text-gray-500 mb-6">
-        Processing {Math.round(state.processingProgress)}% complete
+  // Render the edges step
+  const renderEdgesStep = () => (
+    <div className="space-y-4">
+      <p className="text-sm text-gray-600 mb-2">
+        The image has been processed to extract edges using adaptive thresholding - no manual adjustment needed!
       </p>
       
-      {/* Processing stages */}
-      <div className="max-w-md mx-auto">
-        <ul className="space-y-2">
-          {stages.map((stage, index) => (
-            <li 
-              key={index} 
-              className={`flex items-center ${
-                currentStage === index ? 'text-blue-600 font-medium' : 
-                stage.complete ? 'text-gray-500' : 'text-gray-400'
-              }`}
-            >
-              <span className={`flex-shrink-0 w-5 h-5 flex items-center justify-center mr-2 rounded-full ${
-                stage.complete ? 'bg-blue-100 text-blue-500' : 
-                currentStage === index ? 'bg-blue-100 text-blue-500 animate-pulse' : 
-                'bg-gray-100 text-gray-400'
-              }`}>
-                {stage.complete ? '✓' : ''}
-              </span>
-              {stage.name}
-            </li>
-          ))}
-        </ul>
-      </div>
-      
-      {state.videoInfo.width > 0 && (
-        <div className="mt-8 text-sm text-gray-600 max-w-sm mx-auto p-4 bg-gray-50 rounded-lg">
-          <h4 className="font-medium mb-2">Video Information</h4>
-          <p>Resolution: {state.videoInfo.width} × {state.videoInfo.height}</p>
-          <p>Duration: {state.videoInfo.duration.toFixed(2)} seconds</p>
-          <p className="mt-2 text-xs text-gray-500">Processing using Fourier transformation for optimal motion detection.</p>
-        </div>
+      {state.preprocessedImageData && state.edgeImageData && (
+        <ComparisonSlider
+          originalData={state.preprocessedImageData}
+          processedData={state.edgeImageData}
+          width={400}
+          height={400}
+        />
       )}
+      
+      <div className="flex justify-center mt-2">
+        <button
+          onClick={() => activateStep('contours')}
+          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+        >
+          Continue to Contours
+        </button>
+      </div>
     </div>
   );
-};
-
-// -----------------------------------------------------
-// Video Player Component with Before/After Comparison
-// -----------------------------------------------------
-
-const VideoPlayer = ({ fullscreenPreview, toggleFullscreen }) => {
-  const { 
-    state, 
-    outputCanvasRef,
-    beforeCanvasRef,
-    afterCanvasRef,
-    togglePlayback, 
-    toggleDirection, 
-    setPlaybackSpeed,
-    setCurrentFrame
-  } = useVideoProcessing();
   
-  const [comparisonMode, setComparisonMode] = useState(false);
-  const [sliderPosition, setSliderPosition] = useState(50);
-  const [visualizationMode, setVisualizationMode] = useState('playback'); // playback, compare, frequency, motion
-  const containerRef = useRef(null);
-  
-  // Handle slider position change
-  const handleSliderChange = (e) => {
-    if (!containerRef.current) return;
-    
-    const rect = containerRef.current.getBoundingClientRect();
-    const position = ((e.clientX - rect.left) / rect.width) * 100;
-    setSliderPosition(Math.max(0, Math.min(100, position)));
-  };
-  
-  // Render comparison slider
-  const renderComparisonSlider = () => {
-    // In a real implementation, we would draw the original and processed frames
-    // For this prototype, we'll just show the UI structure
-    return (
-      <div 
-        ref={containerRef}
-        className="relative aspect-video bg-black rounded overflow-hidden cursor-col-resize"
-        onMouseMove={handleSliderChange}
-        onTouchMove={(e) => {
-          const touch = e.touches[0];
-          handleSliderChange({ clientX: touch.clientX });
-        }}
-      >
-        {/* Original video (shown on left side of slider) */}
-        <div 
-          className="absolute inset-0 overflow-hidden" 
-          style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-        >
-          <canvas
-            ref={beforeCanvasRef}
-            className="w-full h-full object-contain"
-          />
-          <div className="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">
-            Original
-          </div>
-        </div>
-        
-        {/* Processed video (shown on right side of slider) */}
-        <div 
-          className="absolute inset-0 overflow-hidden" 
-          style={{ clipPath: `inset(0 0 0 ${sliderPosition}%)` }}
-        >
-          <canvas
-            ref={afterCanvasRef}
-            className="w-full h-full object-contain"
-          />
-          <div className="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">
-            Processed
-          </div>
-        </div>
-        
-        {/* Slider handle */}
-        <div
-          className="absolute inset-y-0 w-1 bg-white cursor-col-resize"
-          style={{ left: `${sliderPosition}%` }}
-        >
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full flex items-center justify-center">
-            <div className="flex flex-col gap-1">
-              <ArrowLeft className="w-3 h-3" />
-              <ArrowRight className="w-3 h-3" />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-  
-  // Render visualization tabs
-  const renderVisualizationTabs = () => {
-    if (fullscreenPreview) return null;
-    
-    return (
-      <div className="flex rounded-lg overflow-hidden border border-gray-300 mb-4">
-        <button
-          className={`flex items-center py-2 px-4 text-sm ${visualizationMode === 'playback' ? 'bg-blue-500 text-white' : 'bg-white'}`}
-          onClick={() => setVisualizationMode('playback')}
-        >
-          <Film className="w-4 h-4 mr-2" />
-          Playback
-        </button>
-        <button
-          className={`flex items-center py-2 px-4 text-sm ${visualizationMode === 'compare' ? 'bg-blue-500 text-white' : 'bg-white'}`}
-          onClick={() => setVisualizationMode('compare')}
-        >
-          <Sliders className="w-4 h-4 mr-2" />
-          Compare
-        </button>
-        <button
-          className={`flex items-center py-2 px-4 text-sm ${visualizationMode === 'frequency' ? 'bg-blue-500 text-white' : 'bg-white'}`}
-          onClick={() => setVisualizationMode('frequency')}
-        >
-          <Layers className="w-4 h-4 mr-2" />
-          Frequency
-        </button>
-        <button
-          className={`flex items-center py-2 px-4 text-sm ${visualizationMode === 'motion' ? 'bg-blue-500 text-white' : 'bg-white'}`}
-          onClick={() => setVisualizationMode('motion')}
-        >
-          <ArrowRight className="w-4 h-4 mr-2" />
-          Motion
-        </button>
-      </div>
-    );
-  };
-  
-  // Render playback controls
-  const renderPlaybackControls = () => (
-    <div className="mt-4">
-      {/* Scrubber */}
-      <input
-        type="range"
-        min="0"
-        max={state.processedFrames.length - 1}
-        value={state.playbackState.currentFrame}
-        onChange={(e) => setCurrentFrame(parseInt(e.target.value))}
-        className="w-full"
-      />
+  // Render the contours step
+  const renderContoursStep = () => (
+    <div className="space-y-4">
+      <p className="text-sm text-gray-600 mb-2">
+        {state.contours.length} contours have been extracted from the image edges.
+      </p>
       
-      {/* Frame counter */}
-      <div className="text-sm text-gray-600 mb-2 text-center">
-        Frame {state.playbackState.currentFrame + 1} of {state.processedFrames.length}
-      </div>
+      {state.edgeImageData && (
+        <div className="border rounded-lg overflow-hidden bg-gray-50">
+          <canvas
+            width={state.edgeImageData.width}
+            height={state.edgeImageData.height}
+            className="max-w-full mx-auto"
+            ref={(canvas) => {
+              if (canvas && state.edgeImageData) {
+                const ctx = canvas.getContext('2d');
+                ctx.putImageData(state.edgeImageData, 0, 0);
+                
+                // Draw contours on top
+                ctx.strokeStyle = 'rgba(255, 0, 0, 0.5)';
+                ctx.lineWidth = 1;
+                
+                state.contours.forEach(contour => {
+                  ctx.beginPath();
+                  contour.forEach((point, i) => {
+                    if (i === 0) {
+                      ctx.moveTo(point.x, point.y);
+                    } else {
+                      ctx.lineTo(point.x, point.y);
+                    }
+                  });
+                  ctx.stroke();
+                });
+              }
+            }}
+          />
+        </div>
+      )}
       
-      {/* Playback controls */}
-      <div className="flex flex-wrap justify-center items-center gap-2">
-        <div className="flex items-center space-x-2">
+      <div className="flex justify-center mt-2">
+        <button
+          onClick={() => activateStep('fourier')}
+          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+        >
+          Continue to Fourier Drawing
+        </button>
+      </div>
+    </div>
+  );
+  
+  // Render the Fourier animation step
+  const renderFourierStep = () => (
+    <div className="space-y-4">
+      <div className="flex flex-col items-center">
+        <canvas
+          ref={drawingCanvasRef}
+          width={400}
+          height={400}
+          className="border rounded-lg bg-gray-50"
+        />
+        
+        <div className="flex items-center justify-between w-full mt-4">
           <button
-            onClick={() => setCurrentFrame(0)}
-            className="p-2 rounded hover:bg-gray-100"
-            title="Skip to Start"
+            onClick={resetDrawing}
+            className="px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300"
           >
-            <SkipBack className="w-4 h-4" />
+            Clear
           </button>
           
-          <button
-            onClick={toggleDirection}
-            className={`p-2 rounded hover:bg-gray-100 ${state.playbackState.direction < 0 ? 'text-blue-500' : ''}`}
-            title={state.playbackState.direction < 0 ? "Playing Backwards" : "Playing Forwards"}
-          >
-            {state.playbackState.direction < 0 ? <ChevronLeft className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}
-          </button>
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={() => changeContour(-1)}
+              className="p-1 rounded bg-gray-200 hover:bg-gray-300"
+              disabled={state.fourierCoefficients.length <= 1}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+            </button>
+            
+            <span className="text-sm">
+              Contour {state.currentContourIndex + 1}/{state.fourierCoefficients.length}
+            </span>
+            
+            <button
+              onClick={() => changeContour(1)}
+              className="p-1 rounded bg-gray-200 hover:bg-gray-300"
+              disabled={state.fourierCoefficients.length <= 1}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+              </svg>
+            </button>
+          </div>
           
           <button
             onClick={togglePlayback}
-            className="p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600"
-            title={state.playbackState.isPlaying ? "Pause" : "Play"}
+            className={`px-3 py-1 rounded text-white ${
+              state.isPlaying ? 'bg-red-500 hover:bg-red-600' : 'bg-green-500 hover:bg-green-600'
+            }`}
           >
-            {state.playbackState.isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+            {state.isPlaying ? 'Pause' : 'Play'}
           </button>
-          
-          <button
-            onClick={() => setCurrentFrame(state.processedFrames.length - 1)}
-            className="p-2 rounded hover:bg-gray-100"
-            title="Skip to End"
-          >
-            <FastForward className="w-4 h-4" />
-          </button>
+        </div>
+        
+        <div className="w-full mt-3">
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-sm text-gray-600">Speed:</span>
+            <span className="text-sm font-medium">{state.animationSpeed.toFixed(1)}x</span>
+          </div>
+          <input
+            type="range"
+            min="0.1"
+            max="5"
+            step="0.1"
+            value={state.animationSpeed}
+            onChange={(e) => setPlaybackSpeed(parseFloat(e.target.value))}
+            className="w-full"
+          />
         </div>
       </div>
       
-      {/* Speed controls */}
-      <div className="flex justify-center mt-4 space-x-2">
-        {[0.25, 0.5, 1, 2, 4].map(speed => (
-          <button
-            key={speed}
-            onClick={() => setPlaybackSpeed(speed)}
-            className={`px-2 py-1 rounded-md text-sm ${state.playbackState.speed === speed ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
-            title={`${speed}x Speed`}
-          >
-            {speed}×
-          </button>
-        ))}
+      <div className="bg-blue-50 p-3 rounded-lg">
+        <h4 className="font-medium text-blue-800 mb-2">How It Works</h4>
+        <p className="text-sm text-blue-900">
+          The image contours are transformed into a sum of rotating circles (epicycles) using Fourier transforms. 
+          Each epicycle rotates at a different frequency and together they trace the original shape.
+        </p>
+        
+        <div className="mt-2 text-xs text-blue-800">
+          <div>• Total Circles: {state.fourierCoefficients[state.currentContourIndex]?.length || 0}</div>
+          <div>• Displayed Epicycles: {Math.min(20, state.fourierCoefficients[state.currentContourIndex]?.length || 0)}</div>
+          <div>• Drawing Points: {state.drawingPath.length}</div>
+        </div>
       </div>
     </div>
   );
   
-  // Render frequency visualization
-  const renderFrequencyVisualization = () => (
-    <div className="bg-gray-50 p-4 rounded-lg">
-      <h3 className="font-medium mb-3">Frequency Domain Visualization</h3>
-      <div className="aspect-video bg-gray-800 rounded relative flex items-center justify-center">
-        <p className="text-white">This would show the frequency spectrum of the current frame</p>
-      </div>
-      <p className="mt-2 text-sm text-gray-600">
-        Showing frequency components that were amplified during processing. Brighter areas represent frequencies with more motion.
-      </p>
-    </div>
-  );
-  
-  // Render motion vector visualization
-  const renderMotionVisualization = () => (
-    <div className="bg-gray-50 p-4 rounded-lg">
-      <h3 className="font-medium mb-3">Motion Vector Visualization</h3>
-      <div className="aspect-video bg-gray-800 rounded relative flex items-center justify-center">
-        <p className="text-white">This would show motion vectors overlaid on the frame</p>
-      </div>
-      <p className="mt-2 text-sm text-gray-600">
-        Arrows indicate direction and magnitude of detected motion. Color indicates amplification strength.
-      </p>
-    </div>
-  );
-  
-  // Render main content based on visualization mode
-  const renderMainContent = () => {
-    switch (visualizationMode) {
-      case 'playback':
-        return (
-          <div className="bg-black rounded-lg overflow-hidden">
-            <canvas 
-              ref={outputCanvasRef}
-              className="w-full aspect-video object-contain"
-            />
-          </div>
-        );
-      case 'compare':
-        return renderComparisonSlider();
-      case 'frequency':
-        return renderFrequencyVisualization();
-      case 'motion':
-        return renderMotionVisualization();
-      default:
-        return null;
-    }
-  };
-  
-  // Main component render
   return (
-    <div className={isNaN(fullscreenPreview) ? 'space-y-4' : ''}>
-      <div className="flex justify-between items-center mb-3">
-        <h3 className="font-medium">Processed Video</h3>
-        <button
-          onClick={toggleFullscreen}
-          className="p-1 text-gray-500 hover:text-blue-500 rounded-full"
-          title={fullscreenPreview ? "Exit Fullscreen" : "Fullscreen Mode"}
-        >
-          <Maximize className="w-5 h-5" />
-        </button>
+    <div className="p-4 max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold mb-4 text-center">Image to Fourier Transform Drawing</h1>
+      
+      {/* Processing Steps */}
+      <ProcessingStep
+        stepId="upload"
+        title="Upload Image"
+        icon={
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clipRule="evenodd" />
+          </svg>
+        }
+        isActive={isStepActive('upload')}
+        isComplete={isStepComplete('upload')}
+        onActivate={() => activateStep('upload')}
+        onReset={resetToStep}
+      >
+        {renderUploadStep()}
+      </ProcessingStep>
+      
+      <ProcessingStep
+        stepId="preprocess"
+        title="Image Processing"
+        icon={
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+          </svg>
+        }
+        isActive={isStepActive('preprocess')}
+        isComplete={isStepComplete('preprocess')}
+        onActivate={() => state.originalImage && activateStep('preprocess')}
+        onReset={resetToStep}
+      >
+        {renderPreprocessStep()}
+      </ProcessingStep>
+      
+      <ProcessingStep
+        stepId="edges"
+        title="Edge Detection"
+        icon={
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+          </svg>
+        }
+        isActive={isStepActive('edges')}
+        isComplete={isStepComplete('edges')}
+        onActivate={() => state.preprocessedImageData && activateStep('edges')}
+        onReset={resetToStep}
+      >
+        {renderEdgesStep()}
+      </ProcessingStep>
+      
+      <ProcessingStep
+        stepId="contours"
+        title="Contour Extraction"
+        icon={
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 005 10a1 1 0 10-2 0 8 8 0 0016 0 1 1 0 10-2 0 5.986 5.986 0 00-.454 2.916A5 5 0 008 11z" clipRule="evenodd" />
+          </svg>
+        }
+        isActive={isStepActive('contours')}
+        isComplete={isStepComplete('contours')}
+        onActivate={() => state.edgeImageData && activateStep('contours')}
+        onReset={resetToStep}
+      >
+        {renderContoursStep()}
+      </ProcessingStep>
+      
+      <ProcessingStep
+        stepId="fourier"
+        title="Fourier Drawing"
+        icon={
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+          </svg>
+        }
+        isActive={isStepActive('fourier')}
+        isComplete={isStepComplete('fourier')}
+        onActivate={() => state.contours.length > 0 && activateStep('fourier')}
+        onReset={resetToStep}
+      >
+        {renderFourierStep()}
+      </ProcessingStep>
+      
+      {/* Explanation */}
+      <div className="mt-6 bg-gray-50 p-4 rounded-lg text-sm border border-gray-200">
+        <h2 className="font-semibold mb-2">How This Works</h2>
+        <p className="mb-3">
+          This application converts images to animated line drawings using Fourier transforms - a mathematical technique that breaks down complex signals into simpler components.
+        </p>
+        <ol className="list-decimal list-inside space-y-1 ml-4">
+          <li>The image is processed to find edges and contours</li>
+          <li>Each contour is converted to a Fourier series (rotating circles)</li>
+          <li>The epicycles (rotating circles) trace the drawing automatically</li>
+        </ol>
+        <p className="mt-3 text-gray-600">
+          This demonstrates the powerful concept behind all signal processing - complex patterns can be broken down into simpler circular motions.
+        </p>
       </div>
-      
-      {renderVisualizationTabs()}
-      {renderMainContent()}
-      {renderPlaybackControls()}
-      
-      {!fullscreenPreview && (
-        <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-          <div className="flex items-start">
-            <AlertCircle className="w-5 h-5 text-amber-500 mr-2 mt-0.5" />
-            <div>
-              <h4 className="font-medium text-sm mb-2">Analysis Notes</h4>
-              <p className="text-sm text-gray-600">
-                The processed video highlights motion patterns by amplifying frequency components between
-                {` ${state.processingParams.lowFrequencyCutoff.toFixed(2)}`} and
-                {` ${state.processingParams.highFrequencyCutoff.toFixed(2)}`}. 
-                Subtle movements that may be invisible to the naked eye have been enhanced by
-                {` ${state.processingParams.amplificationFactor.toFixed(1)}×`}.
-              </p>
-              <p className="text-sm text-gray-600 mt-2">
-                Use the comparison view to see the original vs. processed video side by side. The frequency
-                and motion vector views provide additional insights into what's being amplified.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
 
-export default EnhancedMotionAmplification;
+export default ImageToFourierTransform;
