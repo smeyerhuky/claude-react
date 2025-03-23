@@ -168,52 +168,9 @@ const useImageProcessing = () => {
   const [thresholdValue, setThresholdValue] = useState(128);
   const [blurRadius, setBlurRadius] = useState(2);
   
-  // Process image to extract contours
-  const processImage = useCallback(async (imageUrl) => {
-    if (!imageUrl) return;
-    
-    setProcessing(true);
-    
-    try {
-      // Load the image
-      const img = new Image();
-      img.crossOrigin = 'Anonymous';
-      
-      await new Promise((resolve, reject) => {
-        img.onload = resolve;
-        img.onerror = reject;
-        img.src = imageUrl;
-      });
-      
-      // Create a canvas to process the image
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      
-      canvas.width = img.width;
-      canvas.height = img.height;
-      ctx.drawImage(img, 0, 0);
-      
-      // Get image data
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      
-      // Process the image (convert to grayscale, apply threshold, find edges)
-      const processedData = applyImageProcessing(imageData, thresholdValue, blurRadius);
-      
-      // Extract contours from the processed image
-      const extractedContours = extractContours(processedData);
-      setContours(extractedContours);
-      
-      setProcessing(false);
-      return extractedContours;
-    } catch (err) {
-      console.error('Error processing image:', err);
-      setProcessing(false);
-      return [];
-    }
-  }, [thresholdValue, blurRadius]);
-  
   // Apply various image processing steps
-  const applyImageProcessing = (imageData, threshold, blur) => {
+  // FIX: Properly define applyImageProcessing as a regular function, not inside useCallback
+  const applyImageProcessing = useCallback((imageData, threshold, blur) => {
     // Convert to grayscale
     const grayscaleData = new ImageData(
       new Uint8ClampedArray(imageData.data),
@@ -259,10 +216,10 @@ const useImageProcessing = () => {
     const edgeData = findEdges(thresholdedData);
     
     return edgeData;
-  }}, []);
+  }, []);
   
   // Apply a simple box blur
-  const applyBoxBlur = (imageData, radius) => {
+  const applyBoxBlur = useCallback((imageData, radius) => {
     const { width, height, data } = imageData;
     const result = new Uint8ClampedArray(data.length);
     
@@ -319,7 +276,7 @@ const useImageProcessing = () => {
   }, []);
   
   // Simple edge detection
-  const findEdges = (imageData) => {
+  const findEdges = useCallback((imageData) => {
     const { width, height, data } = imageData;
     const result = new Uint8ClampedArray(data.length);
     
@@ -362,7 +319,7 @@ const useImageProcessing = () => {
   }, []);
   
   // Extract contours from the edge image
-  const extractContours = (edgeData) => {
+  const extractContours = useCallback((edgeData) => {
     const { width, height, data } = edgeData;
     
     // Create a grid to track visited pixels
@@ -427,6 +384,50 @@ const useImageProcessing = () => {
     
     return contours;
   }, []);
+  
+  // Process image to extract contours
+  const processImage = useCallback(async (imageUrl) => {
+    if (!imageUrl) return;
+    
+    setProcessing(true);
+    
+    try {
+      // Load the image
+      const img = new Image();
+      img.crossOrigin = 'Anonymous';
+      
+      await new Promise((resolve, reject) => {
+        img.onload = resolve;
+        img.onerror = reject;
+        img.src = imageUrl;
+      });
+      
+      // Create a canvas to process the image
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0);
+      
+      // Get image data
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      
+      // Process the image (convert to grayscale, apply threshold, find edges)
+      const processedData = applyImageProcessing(imageData, thresholdValue, blurRadius);
+      
+      // Extract contours from the processed image
+      const extractedContours = extractContours(processedData);
+      setContours(extractedContours);
+      
+      setProcessing(false);
+      return extractedContours;
+    } catch (err) {
+      console.error('Error processing image:', err);
+      setProcessing(false);
+      return [];
+    }
+  }, [thresholdValue, blurRadius, applyImageProcessing, extractContours]);
   
   return {
     processing,
@@ -1007,7 +1008,7 @@ const MobileFourierTransform = () => {
           </Tabs>
         </main>
         
-        <style jsx="true">{`
+        <style jsx>{`
           .mobile-fourier-app {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             max-width: 100%;
