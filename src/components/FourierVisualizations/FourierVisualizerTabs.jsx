@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import FourierSeriesDemo from './FourierSeriesDemo';
 import FourierTransformDemo from './FourierTransformDemo';
 import ExplanationPanel from './components/ExplanationPanel';
+import FourierPresetDemo from './components/PresetsDemo';
 
 /**
  * Main container component with tabs for different Fourier visualizations
@@ -16,6 +17,7 @@ const FourierVisualizerTabs = () => {
   const tabs = [
     { id: 'series', label: 'Fourier Series', component: FourierSeriesDemo },
     { id: 'transform', label: 'Fourier Transform', component: FourierTransformDemo },
+    { id: 'presets', label: 'Presets Demo', component: FourierPresetDemo }
   ];
 
   // Get the active component based on the current tab
