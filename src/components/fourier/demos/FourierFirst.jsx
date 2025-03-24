@@ -1320,10 +1320,8 @@ const FourierSeriesExplorer = () => {
                 className={`w-full p-2 border rounded ${inputClass}`}
               >
                 <option value="combined">Combined View</option>
-              </select>
-               <option value="epicycles">Epicycle View</option>
-              </select>
-               <option value="trace">Trace View</option>
+                <option value="epicycles">Epicycle View</option>
+                <option value="trace">Trace View</option>
               </select>
             </div>
             
