@@ -11,15 +11,15 @@ import ArticlePage from './components/WebArticle'
 import GitHubActionsMobileManager from './components/thehub/github-actions-mobile-ui'
 import MotionAmplification from './components/vid/VideoDemo'
 import PulseDetectionVisualizer from './components/vid/PulseExample'
-// import FourierSeriesExplorer from './components/fourier/demos/MobileDemo'
-// import FourierSeriesTeacher from './components/fourier/demos/Teacher'
+import FourierSeriesExplorer from './components/fourier/demos/MobileDemo'
+import FourierSeriesTeacher from './components/fourier/demos/Teacher'
 import { FourierVisualizerTabs } from './components/FourierVisualizations';
 
 // Component keys enum
 const COMPONENTS = {
   FOURIER_TABS: 'fouriter-tabs',
-  // FOURIER: 'fourier',
-  // FOURIER_TEACHER: 'fourier-teacher',
+  FOURIER: 'fourier',
+  FOURIER_TEACHER: 'fourier-teacher',
   PULSE: 'pulse-demo',
   GH_DEMO: 'gh-demo',
   IMAGE_DEMO: 'image-demo',
