@@ -33,7 +33,7 @@ const FourierSeriesExplorer = () => {
   const [startPanPoint, setStartPanPoint] = useState({ x: 0, y: 0 });
   
   // Show zoom/pan controls
-  const [showControls, setShowControls] = useState(true);
+  const [showControls, setShowControls] = useState(false);
   
   // Animation refs
   const animationRef = useRef(null);
@@ -69,10 +69,10 @@ const FourierSeriesExplorer = () => {
         return {
           showEpicycles: true,
           showTrace: true,
-          epicycleWidth: canvasWidth / 2,
-          traceWidth: canvasWidth / 2,
+          epicycleWidth: canvasWidth,
+          traceWidth: canvasWidth,
           epicycleStartX: 0,
-          traceStartX: canvasWidth / 2
+          traceStartX: canvasWidth
         };
     }
   };
@@ -620,7 +620,7 @@ const FourierSeriesExplorer = () => {
         // Draw line connecting trace points
         ctx.beginPath();
         ctx.strokeStyle = theme.dot;
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 1.25;
         
         let firstPoint = true;
         
@@ -642,14 +642,14 @@ const FourierSeriesExplorer = () => {
         visiblePoints.forEach((point, index) => {
           // Calculate opacity based on age of point (newer points are more opaque)
           const age = (currentTime - point.time) / windowWidth;
-          const opacity = 1 - Math.min(0.9, age); // Keep a minimum opacity of 0.1
+          const opacity = 1 - Math.min(0.75, age); // Keep a minimum opacity of 0.1
           
           const x = mapTimeToScreenX(point.time);
           const y = mapYToScreenY(point.y);
           
           ctx.beginPath();
           ctx.fillStyle = `rgba(255, 0, 0, ${opacity})`;
-          const dotSize = 3 * (opacity + 0.5); // Vary size with opacity
+          const dotSize = 2 * (opacity + 0.5); // Vary size with opacity
           ctx.arc(x, y, dotSize, 0, Math.PI * 2);
           ctx.fill();
         });
@@ -867,7 +867,7 @@ const FourierSeriesExplorer = () => {
       // Draw path
       ctx.beginPath();
       ctx.strokeStyle = theme.drawing;
-      ctx.lineWidth = 3;
+      ctx.lineWidth = 2;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
       
@@ -1289,7 +1289,7 @@ const FourierSeriesExplorer = () => {
             <input
               type="range"
               min="1"
-              max="1500"
+              max="150"
               value={numTerms}
               onChange={(e) => setNumTerms(parseInt(e.target.value))}
               className="w-full"
@@ -1302,8 +1302,8 @@ const FourierSeriesExplorer = () => {
               <input
                 type="range"
                 min="0.1"
-                max="2.5"
-                step="0.05"
+                max="3.5"
+                step="0.1"
                 value={animationSpeed}
                 onChange={(e) => setAnimationSpeed(parseFloat(e.target.value))}
                 className="w-full"
@@ -1328,7 +1328,7 @@ const FourierSeriesExplorer = () => {
                 onClick={() => setIsDarkMode(!isDarkMode)}
                 className={`px-3 py-1 text-sm rounded ${buttonSecondaryClass}`}
               >
-                {isDarkMode ? '☀️ Light' : '🌙 Dark'}
+                {isDarkMode ? '🌙 Dark' : '☀️ Light'}
               </button>
               
               <button
@@ -1336,13 +1336,6 @@ const FourierSeriesExplorer = () => {
                 className={`px-3 py-1 text-sm rounded ${buttonSecondaryClass}`}
               >
                 {isAnimating ? '⏸️ Pause' : '▶️ Play'}
-              </button>
-              
-              <button
-                onClick={() => setShowControls(!showControls)}
-                className={`px-3 py-1 text-sm rounded ${buttonSecondaryClass}`}
-              >
-                {showControls ? '🔍 Hide' : '🔍 Show'}
               </button>
             </div>
           </div>
@@ -1411,7 +1404,7 @@ const FourierSeriesExplorer = () => {
       
       {/* Main visualization */}
       <div className="mb-6">
-        <div className={`p-4 rounded-lg ${cardClass} transition-colors duration-300 relative`}>
+        <div className={`p-4 rounded-lg ${cardClass} transition-colors duration-600 relative`}>
           <h2 className="text-lg font-medium mb-2">
             {viewMode === 'combined' ? 'Combined Visualization' : 
              viewMode === 'epicycles' ? 'Epicycles Visualization' : 
