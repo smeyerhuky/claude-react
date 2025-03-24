@@ -867,7 +867,7 @@ const FourierSeriesExplorer = () => {
       // Draw path
       ctx.beginPath();
       ctx.strokeStyle = theme.drawing;
-      ctx.lineWidth = 2;
+      ctx.lineWidth = 1.3;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
       
@@ -1289,7 +1289,7 @@ const FourierSeriesExplorer = () => {
             <input
               type="range"
               min="1"
-              max="150"
+              max="50"
               value={numTerms}
               onChange={(e) => setNumTerms(parseInt(e.target.value))}
               className="w-full"
@@ -1301,9 +1301,9 @@ const FourierSeriesExplorer = () => {
               </label>
               <input
                 type="range"
-                min="0.1"
-                max="3.5"
-                step="0.1"
+                min="0.2"
+                max="3.0"
+                step="0.2"
                 value={animationSpeed}
                 onChange={(e) => setAnimationSpeed(parseFloat(e.target.value))}
                 className="w-full"
@@ -1320,6 +1320,10 @@ const FourierSeriesExplorer = () => {
                 className={`w-full p-2 border rounded ${inputClass}`}
               >
                 <option value="combined">Combined View</option>
+              </select>
+               <option value="epicycles">Epicycle View</option>
+              </select>
+               <option value="trace">Trace View</option>
               </select>
             </div>
             
