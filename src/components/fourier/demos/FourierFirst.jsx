@@ -1,12 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import * as math from 'mathjs';
 
 const FourierSeriesExplorer = () => {
-  // Canvas refs
-  const mainCanvasRef = useRef(null);
-  const epicycleCanvasRef = useRef(null);
-  const traceCanvasRef = useRef(null);
-  const drawingCanvasRef = useRef(null);
+  // Canvas ref for the main visualization
+  const canvasRef = useRef(null);
   
   // Function parameters
   const [targetFunction, setTargetFunction] = useState('square');
@@ -14,8 +11,7 @@ const FourierSeriesExplorer = () => {
   const [customEquation, setCustomEquation] = useState('x^2 - PI^2/3');
   
   // Display options
-  const [showEpicycles, setShowEpicycles] = useState(true);
-  const [showTrace, setShowTrace] = useState(true);
+  const [viewMode, setViewMode] = useState('combined'); // 'combined', 'epicycles', or 'trace'
   const [isDarkMode, setIsDarkMode] = useState(false);
   
   // Animation controls
@@ -24,8 +20,6 @@ const FourierSeriesExplorer = () => {
   const [isAnimating, setIsAnimating] = useState(true);
   const [tracePoints, setTracePoints] = useState([]);
   const [maxTracePoints, setMaxTracePoints] = useState(500);
-  const [traceMode, setTraceMode] = useState('animated'); // 'animated' or 'full'
-  const [viewWindow, setViewWindow] = useState({ start: 0, width: 2 * Math.PI });
   
   // Drawing mode
   const [isDrawingMode, setIsDrawingMode] = useState(false);
@@ -38,20 +32,54 @@ const FourierSeriesExplorer = () => {
   const [isPanning, setIsPanning] = useState(false);
   const [startPanPoint, setStartPanPoint] = useState({ x: 0, y: 0 });
   
+  // Show zoom/pan controls
+  const [showControls, setShowControls] = useState(true);
+  
   // Animation refs
   const animationRef = useRef(null);
+  const lastRenderTimeRef = useRef(0);
   
   // Constants for drawing
   const canvasWidth = 800;
   const canvasHeight = 400;
-  const epicycleWidth = canvasWidth / 2;
-  const traceWidth = canvasWidth / 2;
-  const xScale = traceWidth / (2 * Math.PI);
-  const yScale = canvasHeight / 4;
-  const xOffset = epicycleWidth;
-  const yOffset = canvasHeight / 2;
   
-  // Available target functions
+  // Layout constants based on view mode
+  const getLayout = () => {
+    switch (viewMode) {
+      case 'epicycles':
+        return {
+          showEpicycles: true,
+          showTrace: false,
+          epicycleWidth: canvasWidth,
+          traceWidth: 0,
+          epicycleStartX: 0,
+          traceStartX: 0
+        };
+      case 'trace':
+        return {
+          showEpicycles: false,
+          showTrace: true,
+          epicycleWidth: 0,
+          traceWidth: canvasWidth,
+          epicycleStartX: 0,
+          traceStartX: 0
+        };
+      case 'combined':
+      default:
+        return {
+          showEpicycles: true,
+          showTrace: true,
+          epicycleWidth: canvasWidth / 2,
+          traceWidth: canvasWidth / 2,
+          epicycleStartX: 0,
+          traceStartX: canvasWidth / 2
+        };
+    }
+  };
+  
+  const layout = getLayout();
+  
+  // Target functions
   const targetFunctions = [
     { id: 'square', name: 'Square Wave' },
     { id: 'sawtooth', name: 'Sawtooth Wave' },
@@ -60,7 +88,23 @@ const FourierSeriesExplorer = () => {
     { id: 'drawing', name: 'Draw Your Own' }
   ];
   
-  // Parse custom function
+  // Theme settings
+  const theme = {
+    bg: isDarkMode ? '#222' : '#fff',
+    text: isDarkMode ? '#ccc' : '#666',
+    grid: isDarkMode ? '#444' : '#e5e5e5',
+    axis: isDarkMode ? '#666' : '#aaa',
+    target: isDarkMode ? '#aaa' : '#999',
+    series: isDarkMode ? '#f55' : '#f00',
+    circle: isDarkMode ? '#555' : '#ddd',
+    line: isDarkMode ? '#aaa' : '#999',
+    dot: isDarkMode ? '#f55' : '#f00',
+    drawing: isDarkMode ? '#3af' : '#06c',
+    controlBg: isDarkMode ? 'rgba(0, 0, 0, 0.6)' : 'rgba(255, 255, 255, 0.6)',
+    overlayBg: isDarkMode ? 'rgba(34, 34, 34, 0.7)' : 'rgba(255, 255, 255, 0.7)'
+  };
+  
+  // Helper: Parse custom function
   const parseCustomFunction = (expression) => {
     try {
       const parsedExpr = math.parse(expression);
@@ -85,8 +129,8 @@ const FourierSeriesExplorer = () => {
     setIsDarkMode(prefersDark);
   }, []);
   
-  // Function to calculate Fourier coefficients
-  const calculateFourierCoefficients = (func, n) => {
+  // Calculate Fourier coefficients
+  const calculateFourierCoefficients = useCallback((func, n) => {
     const coefficients = [];
     
     // Calculate coefficients based on the function type
@@ -177,10 +221,10 @@ const FourierSeriesExplorer = () => {
     }
     
     return coefficients;
-  };
+  }, [customEquation, drawingPoints]);
   
-  // Function to evaluate the target function at a point
-  const evaluateTargetFunction = (func, x) => {
+  // Evaluate target function
+  const evaluateTargetFunction = useCallback((func, x) => {
     // Normalize x to range [-π, π]
     const normalizedX = ((x % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
     const mappedX = normalizedX > Math.PI ? normalizedX - 2 * Math.PI : normalizedX;
@@ -217,10 +261,10 @@ const FourierSeriesExplorer = () => {
       default:
         return 0;
     }
-  };
+  }, [customEquation, drawingPoints]);
   
-  // Function to evaluate the Fourier series at a point
-  const evaluateFourierSeries = (coefficients, x, activeTerms = coefficients.length) => {
+  // Evaluate Fourier series
+  const evaluateFourierSeries = useCallback((coefficients, x, activeTerms = coefficients.length) => {
     let sum = 0;
     
     const coeffsToUse = coefficients.slice(0, activeTerms);
@@ -232,184 +276,87 @@ const FourierSeriesExplorer = () => {
     }
     
     return sum;
-  };
+  }, []);
   
-  // Draw main visualization
-  const drawMainVisualization = () => {
-    if (!mainCanvasRef.current) return;
+  // Main drawing function
+  const drawVisualization = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
     
-    const canvas = mainCanvasRef.current;
     const ctx = canvas.getContext('2d');
-    
-    // Apply theme
-    const bgColor = isDarkMode ? '#222' : '#fff';
-    const gridColor = isDarkMode ? '#444' : '#e5e5e5';
-    const axisColor = isDarkMode ? '#666' : '#aaa';
-    const textColor = isDarkMode ? '#ccc' : '#666';
-    const targetColor = isDarkMode ? '#aaa' : '#999';
-    const seriesColor = isDarkMode ? '#f55' : '#f00';
+    const { showEpicycles, showTrace, epicycleWidth, traceWidth, epicycleStartX, traceStartX } = getLayout();
     
     // Clear canvas
-    ctx.fillStyle = bgColor;
+    ctx.fillStyle = theme.bg;
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+    
+    // Calculate current time
+    const time = (animationFrame % 200) / 100 * Math.PI;
     
     // Calculate Fourier coefficients
     const coefficients = calculateFourierCoefficients(targetFunction, numTerms);
     
-    // Active terms
-    const activeTerms = numTerms;
+    // Apply transformations for zoom and pan
+    ctx.save();
+    ctx.translate(panOffset.x, panOffset.y);
+    ctx.scale(zoom, zoom);
     
-    // Draw a dividing line between epicycles and trace sides
-    ctx.beginPath();
-    ctx.strokeStyle = axisColor;
-    ctx.lineWidth = 1;
-    ctx.moveTo(epicycleWidth, 0);
-    ctx.lineTo(epicycleWidth, canvasHeight);
-    ctx.stroke();
-    
-    // Draw grid and axes on trace side (right side)
-    ctx.strokeStyle = gridColor;
-    ctx.lineWidth = 1;
-    
-    // Horizontal lines (y-axis gridlines)
-    for (let y = -2; y <= 2; y += 0.5) {
+    // Draw dividing line if in combined mode
+    if (viewMode === 'combined') {
       ctx.beginPath();
-      ctx.moveTo(epicycleWidth, yOffset - y * yScale);
-      ctx.lineTo(canvasWidth, yOffset - y * yScale);
-      
-      if (y === 0) {
-        ctx.strokeStyle = axisColor;
-      } else {
-        ctx.strokeStyle = gridColor;
-      }
-      
+      ctx.strokeStyle = theme.axis;
+      ctx.lineWidth = 1;
+      ctx.moveTo(epicycleWidth, 0);
+      ctx.lineTo(epicycleWidth, canvasHeight);
       ctx.stroke();
-      
-      // Add y-axis labels on the right side
-      if (Number.isInteger(y)) {
-        ctx.fillStyle = textColor;
-        ctx.textAlign = 'left';
-        ctx.font = '12px Arial';
-        ctx.fillText(y.toString(), epicycleWidth + 5, yOffset - y * yScale + 4);
-      }
     }
-    
-    // Vertical lines (x-axis gridlines)
-    for (let x = 0; x <= 2 * Math.PI; x += Math.PI / 2) {
-      const xPos = epicycleWidth + (x / (2 * Math.PI)) * traceWidth;
-      
-      ctx.beginPath();
-      ctx.moveTo(xPos, 0);
-      ctx.lineTo(xPos, canvasHeight);
-      
-      if (Math.abs(x - Math.PI) < 0.01) {
-        ctx.strokeStyle = axisColor; // Highlight the middle (π)
-      } else {
-        ctx.strokeStyle = gridColor;
-      }
-      
-      ctx.stroke();
-      
-      // Add x-axis labels
-      ctx.fillStyle = textColor;
-      ctx.textAlign = 'center';
-      let label = '';
-      if (x === 0) label = '0';
-      else if (x === Math.PI/2) label = 'π/2';
-      else if (x === Math.PI) label = 'π';
-      else if (x === 3*Math.PI/2) label = '3π/2';
-      else if (x === 2*Math.PI) label = '2π';
-      
-      ctx.fillText(label, xPos, yOffset + 20);
-    }
-    
-    // Draw target function on trace side
-    ctx.beginPath();
-    ctx.strokeStyle = targetColor;
-    ctx.lineWidth = 1;
-    
-    for (let i = 0; i <= traceWidth; i++) {
-      const normalizedX = (i / traceWidth) * 2 * Math.PI; // 0 to 2π
-      const y = evaluateTargetFunction(targetFunction, normalizedX - Math.PI);
-      
-      if (i === 0) {
-        ctx.moveTo(i + epicycleWidth, yOffset - y * yScale);
-      } else {
-        ctx.lineTo(i + epicycleWidth, yOffset - y * yScale);
-      }
-    }
-    
-    ctx.stroke();
-    
-    // Draw Fourier approximation on trace side
-    ctx.beginPath();
-    ctx.strokeStyle = seriesColor;
-    ctx.lineWidth = 2;
-    
-    for (let i = 0; i <= traceWidth; i++) {
-      const normalizedX = (i / traceWidth) * 2 * Math.PI; // 0 to 2π
-      const y = evaluateFourierSeries(coefficients, normalizedX - Math.PI, activeTerms);
-      
-      if (i === 0) {
-        ctx.moveTo(i + epicycleWidth, yOffset - y * yScale);
-      } else {
-        ctx.lineTo(i + epicycleWidth, yOffset - y * yScale);
-      }
-    }
-    
-    ctx.stroke();
-    
-    // Show active terms info
-    ctx.fillStyle = textColor;
-    ctx.textAlign = 'left';
-    ctx.font = '14px Arial';
-    ctx.fillText(`Active terms: ${activeTerms} of ${numTerms}`, 10, 30);
-    
-    // Draw legend
-    ctx.fillStyle = targetColor;
-    ctx.fillRect(canvasWidth - 140, 15, 15, 2);
-    ctx.fillStyle = textColor;
-    ctx.fillText('Target Function', canvasWidth - 120, 20);
-    
-    ctx.fillStyle = seriesColor;
-    ctx.fillRect(canvasWidth - 140, 35, 15, 2);
-    ctx.fillStyle = textColor;
-    ctx.fillText('Fourier Series', canvasWidth - 120, 40);
     
     // Draw epicycles if enabled
     if (showEpicycles) {
-      drawEpicycles(coefficients, activeTerms);
+      drawEpicycles(ctx, coefficients, epicycleStartX, epicycleWidth, time);
     }
     
-    // Draw trace if enabled
+    // Draw trace area if enabled
     if (showTrace) {
-      drawTrace();
+      drawTraceArea(ctx, coefficients, traceStartX, traceWidth, time);
     }
-  };
+    
+    // Restore canvas state
+    ctx.restore();
+    
+    // Draw zoom and pan controls
+    if (showControls) {
+      drawZoomPanControls(ctx);
+    }
+    
+    // Store timestamp for animation timing
+    lastRenderTimeRef.current = Date.now();
+  }, [
+    viewMode, 
+    targetFunction, 
+    numTerms, 
+    animationFrame, 
+    isDarkMode, 
+    zoom, 
+    panOffset, 
+    drawingPoints, 
+    tracePoints,
+    showControls,
+    calculateFourierCoefficients,
+    evaluateTargetFunction,
+    evaluateFourierSeries
+  ]);
   
   // Draw epicycles visualization
-  const drawEpicycles = (coefficients, activeTerms) => {
-    if (!epicycleCanvasRef.current) return;
+  const drawEpicycles = useCallback((ctx, coefficients, startX, width, time) => {
+    if (width <= 0) return;
     
-    const canvas = epicycleCanvasRef.current;
-    const ctx = canvas.getContext('2d');
-    
-    // Apply theme
-    const bgColor = isDarkMode ? '#222' : '#fff';
-    const textColor = isDarkMode ? '#ccc' : '#666';
-    const circleColor = isDarkMode ? '#555' : '#ddd';
-    const lineColor = isDarkMode ? '#aaa' : '#999';
-    const dotColor = isDarkMode ? '#f55' : '#f00';
-    
-    // Clear canvas
-    ctx.clearRect(0, 0, epicycleWidth, canvasHeight);
-    
-    // Get time from animation frame
-    const time = (animationFrame % 200) / 100 * Math.PI;
+    const yScale = canvasHeight / 4;
+    const yOffset = canvasHeight / 2;
     
     // Center point for epicycles
-    const centerX = epicycleWidth / 2;
-    const centerY = canvasHeight / 2;
+    const centerX = startX + width / 2;
+    const centerY = yOffset;
     
     // Sort coefficients by amplitude
     const sortedCoeffs = coefficients.map((coeff, idx) => ({
@@ -421,10 +368,11 @@ const FourierSeriesExplorer = () => {
     // Draw epicycles
     let x = centerX;
     let y = centerY;
-    let finalY = 0; // Track the final Y position for the horizontal line
+    let finalX = x;
+    let finalY = y;
     
     // Draw each circle
-    for (let i = 0; i < Math.min(sortedCoeffs.length, activeTerms); i++) {
+    for (let i = 0; i < sortedCoeffs.length; i++) {
       const { a, b, n, amplitude } = sortedCoeffs[i];
       
       // Skip very small amplitudes
@@ -435,7 +383,7 @@ const FourierSeriesExplorer = () => {
       
       // Draw circle
       ctx.beginPath();
-      ctx.strokeStyle = circleColor;
+      ctx.strokeStyle = theme.circle;
       ctx.lineWidth = 1;
       ctx.arc(x, y, amplitude * yScale, 0, 2 * Math.PI);
       ctx.stroke();
@@ -446,7 +394,7 @@ const FourierSeriesExplorer = () => {
       
       // Draw radius
       ctx.beginPath();
-      ctx.strokeStyle = lineColor;
+      ctx.strokeStyle = theme.line;
       ctx.lineWidth = 1;
       ctx.moveTo(x, y);
       ctx.lineTo(x + dx, y + dy);
@@ -455,34 +403,36 @@ const FourierSeriesExplorer = () => {
       // Update current point
       x += dx;
       y += dy;
-      finalY = y; // Update final Y position
+      finalX = x;
+      finalY = y;
     }
     
-    // Draw final point
+    // Draw final point (red dot)
     ctx.beginPath();
-    ctx.fillStyle = dotColor;
-    ctx.arc(x, y, 4, 0, 2 * Math.PI);
+    ctx.fillStyle = theme.dot;
+    ctx.arc(finalX, finalY, 4, 0, 2 * Math.PI);
     ctx.fill();
     
-    // Draw horizontal line from final point to right edge
-    ctx.beginPath();
-    ctx.strokeStyle = dotColor;
-    ctx.lineWidth = 1;
-    ctx.setLineDash([5, 3]);
-    ctx.moveTo(x, finalY);
-    ctx.lineTo(canvasWidth, finalY);
-    ctx.stroke();
-    ctx.setLineDash([]);
+    // Draw horizontal line from final point to trace area
+    if (viewMode === 'combined') {
+      ctx.beginPath();
+      ctx.strokeStyle = theme.dot;
+      ctx.lineWidth = 1.5;
+      ctx.setLineDash([5, 3]);
+      ctx.moveTo(finalX, finalY);
+      ctx.lineTo(canvasWidth, finalY);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
     
     // Store the current point for tracing
     if (isAnimating) {
-      // Store the x value (0 to 2π) and the y value from our Fourier calculation
-      const traceX = time;
-      const traceY = evaluateFourierSeries(coefficients, time, activeTerms);
+      // Calculate the y-value at the current time
+      const traceY = evaluateFourierSeries(coefficients, time, coefficients.length);
       
       // Add point to trace points
       setTracePoints(prev => {
-        const newPoints = [...prev, { x: traceX, y: traceY }];
+        const newPoints = [...prev, { time, x: time, y: traceY }];
         // Limit number of points to avoid performance issues
         if (newPoints.length > maxTracePoints) {
           return newPoints.slice(newPoints.length - maxTracePoints);
@@ -490,260 +440,373 @@ const FourierSeriesExplorer = () => {
         return newPoints;
       });
     }
-  };
+    
+    // Draw info label
+    ctx.fillStyle = theme.text;
+    ctx.font = '14px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('Epicycles', centerX, 25);
+  }, [viewMode, theme, evaluateFourierSeries, isAnimating, maxTracePoints]);
   
-  // Draw trace visualization
-  const drawTrace = () => {
-    if (!traceCanvasRef.current) return;
+  // Draw trace area
+  const drawTraceArea = useCallback((ctx, coefficients, startX, width, currentTime) => {
+    if (width <= 0) return;
     
-    const canvas = traceCanvasRef.current;
-    const ctx = canvas.getContext('2d');
+    const yScale = canvasHeight / 4;
+    const yOffset = canvasHeight / 2;
     
-    // Apply theme
-    const traceColor = isDarkMode ? '#f55' : '#f00';
-    const bgColor = isDarkMode ? '#222' : '#fff';
+    // Draw grid and axes
+    drawGrid(ctx, startX, width, yOffset, yScale);
     
-    // Clear only the right side of the canvas
-    ctx.fillStyle = bgColor;
-    ctx.fillRect(epicycleWidth, 0, traceWidth, canvasHeight);
+    // The window shows a fixed width of time but slides as time progresses
+    const windowWidth = Math.PI * 2; // Show 2π of x-axis at any time
+    const windowStart = Math.max(0, currentTime - windowWidth);
     
-    // Get time from animation frame
-    const time = (animationFrame % 200) / 100 * Math.PI;
-    
-    // Calculate y-value at current time
-    const currentX = time;
-    const coefficients = calculateFourierCoefficients(targetFunction, numTerms);
-    const currentY = evaluateFourierSeries(coefficients, currentX, numTerms);
-    
-    // Map x position to screen coordinates
-    const mapXToScreen = (x) => {
-      // Map x from 0-2π to across the right side of the screen
-      return epicycleWidth + (x / (2 * Math.PI)) * traceWidth;
+    // Function to map time to screen x-coordinate
+    const mapTimeToScreenX = (t) => {
+      // Normalize time within the current window
+      const normalizedT = (t - windowStart) / windowWidth;
+      // Map to screen coordinates
+      return startX + normalizedT * width;
     };
     
-    // Map y position to screen coordinates
-    const mapYToScreen = (y) => {
-      // Map y to screen coordinates centered on yOffset
+    // Function to map y value to screen y-coordinate
+    const mapYToScreenY = (y) => {
       return yOffset - y * yScale;
     };
     
-    // Draw trace line
-    if (tracePoints.length > 1) {
+    // Draw target function
+    drawTargetFunction(ctx, startX, width, yOffset, yScale, windowStart, windowWidth);
+    
+    // Draw Fourier approximation
+    drawFourierApproximation(ctx, coefficients, startX, width, yOffset, yScale, windowStart, windowWidth);
+    
+    // Draw trace
+    drawTrace(ctx, startX, width, yOffset, yScale, windowStart, windowWidth, currentTime, coefficients);
+    
+    // Draw info label
+    ctx.fillStyle = theme.text;
+    ctx.font = '14px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('Function Trace', startX + width / 2, 25);
+  }, [theme, targetFunction, evaluateTargetFunction, evaluateFourierSeries]);
+  
+  // Draw grid and axes
+  const drawGrid = useCallback((ctx, startX, width, yOffset, yScale) => {
+    // Horizontal lines (y-axis gridlines)
+    for (let y = -2; y <= 2; y += 0.5) {
       ctx.beginPath();
-      ctx.strokeStyle = traceColor;
-      ctx.lineWidth = 2;
+      ctx.moveTo(startX, yOffset - y * yScale);
+      ctx.lineTo(startX + width, yOffset - y * yScale);
       
-      // Start at the first point
-      let firstX = mapXToScreen(tracePoints[0].x);
-      let firstY = mapYToScreen(tracePoints[0].y);
-      ctx.moveTo(firstX, firstY);
-      
-      // Draw each point
-      for (let i = 1; i < tracePoints.length; i++) {
-        const x = mapXToScreen(tracePoints[i].x);
-        const y = mapYToScreen(tracePoints[i].y);
-        ctx.lineTo(x, y);
+      if (y === 0) {
+        ctx.strokeStyle = theme.axis;
+      } else {
+        ctx.strokeStyle = theme.grid;
       }
       
       ctx.stroke();
+      
+      // Add y-axis labels
+      if (Number.isInteger(y)) {
+        ctx.fillStyle = theme.text;
+        ctx.textAlign = 'left';
+        ctx.font = '12px Arial';
+        ctx.fillText(y.toString(), startX + 5, yOffset - y * yScale + 4);
+      }
     }
-  };
+    
+    // Vertical lines (x-axis gridlines)
+    const xAxisLabels = ['0', 'π/2', 'π', '3π/2', '2π'];
+    const numXDivisions = xAxisLabels.length - 1;
+    
+    for (let i = 0; i <= numXDivisions; i++) {
+      const xPos = startX + (i / numXDivisions) * width;
+      
+      ctx.beginPath();
+      ctx.moveTo(xPos, 0);
+      ctx.lineTo(xPos, canvasHeight);
+      
+      if (i === Math.floor(numXDivisions / 2)) {
+        ctx.strokeStyle = theme.axis; // Highlight the middle (π)
+      } else {
+        ctx.strokeStyle = theme.grid;
+      }
+      
+      ctx.stroke();
+      
+      // Add x-axis labels
+      ctx.fillStyle = theme.text;
+      ctx.textAlign = 'center';
+      ctx.fillText(xAxisLabels[i], xPos, yOffset + 20);
+    }
+  }, [theme]);
   
-  // Initialize drawing canvas
-  const initDrawingCanvas = () => {
-    if (!drawingCanvasRef.current) return;
-    
-    const canvas = drawingCanvasRef.current;
-    const ctx = canvas.getContext('2d');
-    
-    // Apply theme
-    const bgColor = isDarkMode ? '#222' : '#fff';
-    const gridColor = isDarkMode ? '#444' : '#e5e5e5';
-    
-    // Clear canvas
-    ctx.fillStyle = bgColor;
-    ctx.fillRect(0, 0, canvasWidth, canvasHeight);
-    
-    // Draw grid
-    ctx.strokeStyle = gridColor;
+  // Draw target function
+  const drawTargetFunction = useCallback((ctx, startX, width, yOffset, yScale, windowStart, windowWidth) => {
+    ctx.beginPath();
+    ctx.strokeStyle = theme.target;
     ctx.lineWidth = 1;
     
-    // Draw horizontal lines
-    for (let y = 0; y < canvasHeight; y += canvasHeight / 8) {
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(canvasWidth, y);
-      ctx.stroke();
-    }
+    const resolution = width;
     
-    // Draw vertical lines
-    for (let x = 0; x < canvasWidth; x += canvasWidth / 16) {
-      ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, canvasHeight);
-      ctx.stroke();
-    }
-  };
-  
-  // Draw the current points on the drawing canvas
-  const drawDrawingPoints = () => {
-    if (!drawingCanvasRef.current || drawingPoints.length === 0) return;
-    
-    const canvas = drawingCanvasRef.current;
-    const ctx = canvas.getContext('2d');
-    
-    // Apply theme
-    const lineColor = isDarkMode ? '#3af' : '#06c';
-    
-    // Draw path
-    ctx.beginPath();
-    ctx.strokeStyle = lineColor;
-    ctx.lineWidth = 3;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    
-    // Draw each segment
-    for (let i = 0; i < drawingPoints.length; i++) {
-      const point = drawingPoints[i];
+    for (let i = 0; i <= resolution; i++) {
+      const t = windowStart + (i / resolution) * windowWidth;
+      const x = startX + (i / resolution) * width;
+      const y = evaluateTargetFunction(targetFunction, t);
+      
       if (i === 0) {
-        ctx.moveTo(point.x, point.y);
+        ctx.moveTo(x, yOffset - y * yScale);
       } else {
-        ctx.lineTo(point.x, point.y);
+        ctx.lineTo(x, yOffset - y * yScale);
       }
-    }
-    
-    // Close the path if there are enough points
-    if (drawingPoints.length > 2) {
-      ctx.closePath();
     }
     
     ctx.stroke();
-  };
+  }, [theme, targetFunction, evaluateTargetFunction]);
   
-  // Handle mouse events for drawing
-  const handleDrawingMouseDown = (e) => {
-    if (!isDrawingMode) return;
+  // Draw Fourier approximation
+  const drawFourierApproximation = useCallback((ctx, coefficients, startX, width, yOffset, yScale, windowStart, windowWidth) => {
+    ctx.beginPath();
+    ctx.strokeStyle = theme.series;
+    ctx.lineWidth = 2;
     
-    setIsDrawing(true);
+    const resolution = width;
     
-    const canvas = drawingCanvasRef.current;
-    if (!canvas) return;
-    
-    const rect = canvas.getBoundingClientRect();
-    const x = (e.clientX - rect.left) * (canvas.width / rect.width);
-    const y = (e.clientY - rect.top) * (canvas.height / rect.height);
-    
-    setDrawingPoints([{ x, y }]);
-  };
-  
-  const handleDrawingMouseMove = (e) => {
-    if (!isDrawing || !isDrawingMode) return;
-    
-    const canvas = drawingCanvasRef.current;
-    if (!canvas) return;
-    
-    const rect = canvas.getBoundingClientRect();
-    const x = (e.clientX - rect.left) * (canvas.width / rect.width);
-    const y = (e.clientY - rect.top) * (canvas.height / rect.height);
-    
-    setDrawingPoints(prevPoints => [...prevPoints, { x, y }]);
-  };
-  
-  const handleDrawingMouseUp = () => {
-    setIsDrawing(false);
-    
-    // If we just finished drawing, switch to the drawing function
-    if (isDrawingMode && drawingPoints.length > 0) {
-      setTargetFunction('drawing');
+    for (let i = 0; i <= resolution; i++) {
+      const t = windowStart + (i / resolution) * windowWidth;
+      const x = startX + (i / resolution) * width;
+      const y = evaluateFourierSeries(coefficients, t, coefficients.length);
+      
+      if (i === 0) {
+        ctx.moveTo(x, yOffset - y * yScale);
+      } else {
+        ctx.lineTo(x, yOffset - y * yScale);
+      }
     }
-  };
+    
+    ctx.stroke();
+  }, [theme, evaluateFourierSeries]);
   
-  // Handle touch events for drawing (mobile)
-  const handleDrawingTouchStart = (e) => {
-    if (!isDrawingMode) return;
+  // Draw trace
+  const drawTrace = useCallback((ctx, startX, width, yOffset, yScale, windowStart, windowWidth, currentTime, coefficients) => {
+    // Calculate the view window for the sliding trace
+    const mapTimeToScreenX = (t) => {
+      // Normalize time within the current window
+      const normalizedT = (t - windowStart) / windowWidth;
+      // Map to screen coordinates
+      return startX + normalizedT * width;
+    };
     
-    e.preventDefault();
-    setIsDrawing(true);
+    const mapYToScreenY = (y) => {
+      return yOffset - y * yScale;
+    };
     
-    const canvas = drawingCanvasRef.current;
-    if (!canvas) return;
+    // Draw vertical line at current time position
+    const currentX = mapTimeToScreenX(currentTime);
     
-    const rect = canvas.getBoundingClientRect();
-    const touch = e.touches[0];
-    const x = (touch.clientX - rect.left) * (canvas.width / rect.width);
-    const y = (touch.clientY - rect.top) * (canvas.height / rect.height);
+    ctx.beginPath();
+    ctx.strokeStyle = theme.dot;
+    ctx.lineWidth = 1;
+    ctx.setLineDash([5, 3]);
+    ctx.moveTo(currentX, 0);
+    ctx.lineTo(currentX, canvasHeight);
+    ctx.stroke();
+    ctx.setLineDash([]);
     
-    setDrawingPoints([{ x, y }]);
-  };
-  
-  const handleDrawingTouchMove = (e) => {
-    if (!isDrawing || !isDrawingMode) return;
-    
-    e.preventDefault();
-    
-    const canvas = drawingCanvasRef.current;
-    if (!canvas) return;
-    
-    const rect = canvas.getBoundingClientRect();
-    const touch = e.touches[0];
-    const x = (touch.clientX - rect.left) * (canvas.width / rect.width);
-    const y = (touch.clientY - rect.top) * (canvas.height / rect.height);
-    
-    setDrawingPoints(prevPoints => [...prevPoints, { x, y }]);
-  };
-  
-  const handleDrawingTouchEnd = () => {
-    setIsDrawing(false);
-    
-    // If we just finished drawing, switch to the drawing function
-    if (isDrawingMode && drawingPoints.length > 0) {
-      setTargetFunction('drawing');
+    // Draw trace dots with fading effect
+    if (tracePoints.length > 0) {
+      // Filter points that are within the view window
+      const visiblePoints = tracePoints.filter(point => 
+        point.time >= windowStart && point.time <= currentTime
+      );
+      
+      if (visiblePoints.length > 1) {
+        // Draw line connecting trace points
+        ctx.beginPath();
+        ctx.strokeStyle = theme.dot;
+        ctx.lineWidth = 2;
+        
+        let firstPoint = true;
+        
+        for (const point of visiblePoints) {
+          const x = mapTimeToScreenX(point.time);
+          const y = mapYToScreenY(point.y);
+          
+          if (firstPoint) {
+            ctx.moveTo(x, y);
+            firstPoint = false;
+          } else {
+            ctx.lineTo(x, y);
+          }
+        }
+        
+        ctx.stroke();
+        
+        // Draw fading dots for trace points
+        visiblePoints.forEach((point, index) => {
+          // Calculate opacity based on age of point (newer points are more opaque)
+          const age = (currentTime - point.time) / windowWidth;
+          const opacity = 1 - Math.min(0.9, age); // Keep a minimum opacity of 0.1
+          
+          const x = mapTimeToScreenX(point.time);
+          const y = mapYToScreenY(point.y);
+          
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(255, 0, 0, ${opacity})`;
+          const dotSize = 3 * (opacity + 0.5); // Vary size with opacity
+          ctx.arc(x, y, dotSize, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        
+        // Draw the current point larger
+        if (visiblePoints.length > 0) {
+          const latestPoint = visiblePoints[visiblePoints.length - 1];
+          const x = mapTimeToScreenX(latestPoint.time);
+          const y = mapYToScreenY(latestPoint.y);
+          
+          ctx.beginPath();
+          ctx.fillStyle = theme.dot;
+          ctx.arc(x, y, 5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
     }
-  };
+  }, [theme, tracePoints]);
   
-  // Handle mouse events for panning
-  const handlePanStart = (e) => {
-    if (isDrawingMode) return;
+  // Draw zoom and pan controls
+  const drawZoomPanControls = useCallback((ctx) => {
+    // Draw controls container
+    const controlsWidth = 120;
+    const controlsHeight = 140;
+    const padding = 10;
+    const buttonSize = 30;
+    const margin = 5;
     
-    setIsPanning(true);
-    setStartPanPoint({
-      x: e.clientX,
-      y: e.clientY
-    });
-  };
+    // Position in bottom right corner
+    const x = canvasWidth - controlsWidth - padding;
+    const y = canvasHeight - controlsHeight - padding;
+    
+    // Semi-transparent background
+    ctx.fillStyle = theme.controlBg;
+    ctx.roundRect(x, y, controlsWidth, controlsHeight, 8);
+    ctx.fill();
+    
+    // Draw zoom controls
+    // Zoom in button
+    ctx.fillStyle = isDarkMode ? '#444' : '#eee';
+    ctx.roundRect(x + margin, y + margin, buttonSize, buttonSize, 4);
+    ctx.fill();
+    ctx.fillStyle = theme.text;
+    ctx.font = 'bold 18px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('+', x + margin + buttonSize / 2, y + margin + buttonSize / 2);
+    
+    // Zoom out button
+    ctx.fillStyle = isDarkMode ? '#444' : '#eee';
+    ctx.roundRect(x + margin, y + margin + buttonSize + margin, buttonSize, buttonSize, 4);
+    ctx.fill();
+    ctx.fillStyle = theme.text;
+    ctx.fillText('-', x + margin + buttonSize / 2, y + margin + buttonSize + margin + buttonSize / 2);
+    
+    // Reset zoom/pan button
+    ctx.fillStyle = isDarkMode ? '#444' : '#eee';
+    ctx.roundRect(x + margin, y + margin + (buttonSize + margin) * 2, buttonSize, buttonSize, 4);
+    ctx.fill();
+    ctx.fillStyle = theme.text;
+    ctx.font = 'bold 12px Arial';
+    ctx.fillText('R', x + margin + buttonSize / 2, y + margin + (buttonSize + margin) * 2 + buttonSize / 2);
+    
+    // Draw pan controls (arrow buttons)
+    // Up arrow
+    ctx.fillStyle = isDarkMode ? '#444' : '#eee';
+    ctx.roundRect(x + margin * 2 + buttonSize + buttonSize / 2 - buttonSize / 2, y + margin, buttonSize, buttonSize, 4);
+    ctx.fill();
+    
+    // Draw arrow
+    ctx.beginPath();
+    ctx.moveTo(x + margin * 2 + buttonSize + buttonSize / 2, y + margin + 10);
+    ctx.lineTo(x + margin * 2 + buttonSize + buttonSize / 2 - 8, y + margin + 20);
+    ctx.lineTo(x + margin * 2 + buttonSize + buttonSize / 2 + 8, y + margin + 20);
+    ctx.closePath();
+    ctx.fillStyle = theme.text;
+    ctx.fill();
+    
+    // Left arrow
+    ctx.fillStyle = isDarkMode ? '#444' : '#eee';
+    ctx.roundRect(x + margin * 2 + buttonSize, y + margin + buttonSize + margin, buttonSize, buttonSize, 4);
+    ctx.fill();
+    
+    // Draw arrow
+    ctx.beginPath();
+    ctx.moveTo(x + margin * 2 + buttonSize + 10, y + margin + buttonSize + margin + buttonSize / 2);
+    ctx.lineTo(x + margin * 2 + buttonSize + 20, y + margin + buttonSize + margin + buttonSize / 2 - 8);
+    ctx.lineTo(x + margin * 2 + buttonSize + 20, y + margin + buttonSize + margin + buttonSize / 2 + 8);
+    ctx.closePath();
+    ctx.fillStyle = theme.text;
+    ctx.fill();
+    
+    // Right arrow
+    ctx.fillStyle = isDarkMode ? '#444' : '#eee';
+    ctx.roundRect(x + margin * 2 + buttonSize + buttonSize + margin, y + margin + buttonSize + margin, buttonSize, buttonSize, 4);
+    ctx.fill();
+    
+    // Draw arrow
+    ctx.beginPath();
+    ctx.moveTo(x + margin * 2 + buttonSize + buttonSize + margin + 20, y + margin + buttonSize + margin + buttonSize / 2);
+    ctx.lineTo(x + margin * 2 + buttonSize + buttonSize + margin + 10, y + margin + buttonSize + margin + buttonSize / 2 - 8);
+    ctx.lineTo(x + margin * 2 + buttonSize + buttonSize + margin + 10, y + margin + buttonSize + margin + buttonSize / 2 + 8);
+    ctx.closePath();
+    ctx.fillStyle = theme.text;
+    ctx.fill();
+    
+    // Down arrow
+    ctx.fillStyle = isDarkMode ? '#444' : '#eee';
+    ctx.roundRect(x + margin * 2 + buttonSize + buttonSize / 2 - buttonSize / 2, y + margin + (buttonSize + margin) * 2, buttonSize, buttonSize, 4);
+    ctx.fill();
+    
+    // Draw arrow
+    ctx.beginPath();
+    ctx.moveTo(x + margin * 2 + buttonSize + buttonSize / 2, y + margin + (buttonSize + margin) * 2 + 20);
+    ctx.lineTo(x + margin * 2 + buttonSize + buttonSize / 2 - 8, y + margin + (buttonSize + margin) * 2 + 10);
+    ctx.lineTo(x + margin * 2 + buttonSize + buttonSize / 2 + 8, y + margin + (buttonSize + margin) * 2 + 10);
+    ctx.closePath();
+    ctx.fillStyle = theme.text;
+    ctx.fill();
+    
+    // Store the control positions for hit testing
+    const controls = {
+      zoomIn: { x: x + margin, y: y + margin, width: buttonSize, height: buttonSize },
+      zoomOut: { x: x + margin, y: y + margin + buttonSize + margin, width: buttonSize, height: buttonSize },
+      reset: { x: x + margin, y: y + margin + (buttonSize + margin) * 2, width: buttonSize, height: buttonSize },
+      panUp: { x: x + margin * 2 + buttonSize + buttonSize / 2 - buttonSize / 2, y: y + margin, width: buttonSize, height: buttonSize },
+      panLeft: { x: x + margin * 2 + buttonSize, y: y + margin + buttonSize + margin, width: buttonSize, height: buttonSize },
+      panRight: { x: x + margin * 2 + buttonSize + buttonSize + margin, y: y + margin + buttonSize + margin, width: buttonSize, height: buttonSize },
+      panDown: { x: x + margin * 2 + buttonSize + buttonSize / 2 - buttonSize / 2, y: y + margin + (buttonSize + margin) * 2, width: buttonSize, height: buttonSize }
+    };
+    
+    // Store in ref for hit testing
+    window.controls = controls;
+  }, [theme, isDarkMode]);
   
-  const handlePanMove = (e) => {
-    if (!isPanning || isDrawingMode) return;
-    
-    const dx = e.clientX - startPanPoint.x;
-    const dy = e.clientY - startPanPoint.y;
-    
-    setPanOffset(prev => ({
-      x: prev.x + dx,
-      y: prev.y + dy
-    }));
-    
-    setStartPanPoint({
-      x: e.clientX,
-      y: e.clientY
-    });
-  };
-  
-  const handlePanEnd = () => {
-    setIsPanning(false);
-  };
-  
-  // Handle zoom with mouse wheel
-  const handleZoom = (e) => {
-    if (isDrawingMode) return;
-    
-    e.preventDefault();
-    
-    const delta = e.deltaY;
-    const zoomFactor = delta > 0 ? 0.9 : 1.1;
-    
-    setZoom(prev => Math.max(0.1, Math.min(5, prev * zoomFactor)));
-  };
+  // Add roundRect to canvas context if not supported
+  useEffect(() => {
+    if (!CanvasRenderingContext2D.prototype.roundRect) {
+      CanvasRenderingContext2D.prototype.roundRect = function(x, y, width, height, radius) {
+        if (width < 2 * radius) radius = width / 2;
+        if (height < 2 * radius) radius = height / 2;
+        this.beginPath();
+        this.moveTo(x + radius, y);
+        this.arcTo(x + width, y, x + width, y + height, radius);
+        this.arcTo(x + width, y + height, x, y + height, radius);
+        this.arcTo(x, y + height, x, y, radius);
+        this.arcTo(x, y, x + width, y, radius);
+        this.closePath();
+        return this;
+      };
+    }
+  }, []);
   
   // Animation loop
   useEffect(() => {
@@ -763,37 +826,373 @@ const FourierSeriesExplorer = () => {
     }
   }, [isAnimating, animationSpeed]);
   
-  // Initialize drawing canvas when drawing mode changes
+  // Draw visualization when parameters change
   useEffect(() => {
+    drawVisualization();
+  }, [drawVisualization]);
+  
+  // Initialize drawing mode
+  useEffect(() => {
+    if (isDrawingMode && drawingCanvasRef.current) {
+      const canvas = canvasRef.current;
+      const ctx = canvas.getContext('2d');
+      
+      // Clear canvas
+      ctx.fillStyle = theme.bg;
+      ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+      
+      // Draw grid
+      ctx.strokeStyle = theme.grid;
+      ctx.lineWidth = 1;
+      
+      // Draw horizontal lines
+      for (let y = 0; y < canvasHeight; y += canvasHeight / 8) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvasWidth, y);
+        ctx.stroke();
+      }
+      
+      // Draw vertical lines
+      for (let x = 0; x < canvasWidth; x += canvasWidth / 16) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvasHeight);
+        ctx.stroke();
+      }
+    }
+  }, [isDrawingMode, theme]);
+  
+  // Draw points when they change during drawing mode
+  useEffect(() => {
+    if (isDrawingMode && drawingPoints.length > 0 && canvasRef.current) {
+      const canvas = canvasRef.current;
+      const ctx = canvas.getContext('2d');
+      
+      // Draw path
+      ctx.beginPath();
+      ctx.strokeStyle = theme.drawing;
+      ctx.lineWidth = 3;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      
+      // Draw each segment
+      for (let i = 0; i < drawingPoints.length; i++) {
+        const point = drawingPoints[i];
+        if (i === 0) {
+          ctx.moveTo(point.x, point.y);
+        } else {
+          ctx.lineTo(point.x, point.y);
+        }
+      }
+      
+      // Close the path if there are enough points
+      if (drawingPoints.length > 2) {
+        ctx.closePath();
+      }
+      
+      ctx.stroke();
+    }
+  }, [drawingPoints, isDrawingMode, theme]);
+  
+  // Handle mouse events for drawing
+  const handleDrawingMouseDown = useCallback((e) => {
+    if (!isDrawingMode) return;
+    
+    setIsDrawing(true);
+    
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    
+    const x = (e.clientX - rect.left) * scaleX;
+    const y = (e.clientY - rect.top) * scaleY;
+    
+    setDrawingPoints([{ x, y }]);
+  }, [isDrawingMode]);
+  
+  const handleDrawingMouseMove = useCallback((e) => {
+    if (!isDrawing || !isDrawingMode) return;
+    
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    
+    const x = (e.clientX - rect.left) * scaleX;
+    const y = (e.clientY - rect.top) * scaleY;
+    
+    setDrawingPoints(prevPoints => [...prevPoints, { x, y }]);
+  }, [isDrawing, isDrawingMode]);
+  
+  const handleDrawingMouseUp = useCallback(() => {
     if (isDrawingMode) {
-      initDrawingCanvas();
+      setIsDrawing(false);
+      
+      // If we just finished drawing, switch to the drawing function
+      if (drawingPoints.length > 0) {
+        setTargetFunction('drawing');
+      }
     }
-  }, [isDrawingMode, isDarkMode]);
+  }, [isDrawingMode, drawingPoints]);
   
-  // Draw points when they change
-  useEffect(() => {
-    if (isDrawingMode && drawingPoints.length > 0) {
-      initDrawingCanvas();
-      drawDrawingPoints();
+  // Handle touch events for drawing
+  const handleDrawingTouchStart = useCallback((e) => {
+    if (!isDrawingMode) return;
+    
+    e.preventDefault();
+    setIsDrawing(true);
+    
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    
+    const touch = e.touches[0];
+    const x = (touch.clientX - rect.left) * scaleX;
+    const y = (touch.clientY - rect.top) * scaleY;
+    
+    setDrawingPoints([{ x, y }]);
+  }, [isDrawingMode]);
+  
+  const handleDrawingTouchMove = useCallback((e) => {
+    if (!isDrawing || !isDrawingMode) return;
+    
+    e.preventDefault();
+    
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    
+    const touch = e.touches[0];
+    const x = (touch.clientX - rect.left) * scaleX;
+    const y = (touch.clientY - rect.top) * scaleY;
+    
+    setDrawingPoints(prevPoints => [...prevPoints, { x, y }]);
+  }, [isDrawing, isDrawingMode]);
+  
+  const handleDrawingTouchEnd = useCallback(() => {
+    handleDrawingMouseUp();
+  }, [handleDrawingMouseUp]);
+  
+  // Handle clicks on zoom/pan controls
+  const handleCanvasClick = useCallback((e) => {
+    if (!window.controls) return;
+    
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    
+    const x = (e.clientX - rect.left) * scaleX;
+    const y = (e.clientY - rect.top) * scaleY;
+    
+    // Check if click is on any of the controls
+    for (const [name, control] of Object.entries(window.controls)) {
+      if (
+        x >= control.x && 
+        x <= control.x + control.width && 
+        y >= control.y && 
+        y <= control.y + control.height
+      ) {
+        // Handle control click
+        switch (name) {
+          case 'zoomIn':
+            setZoom(prev => Math.min(5, prev * 1.2));
+            return;
+          case 'zoomOut':
+            setZoom(prev => Math.max(0.5, prev / 1.2));
+            return;
+          case 'reset':
+            setZoom(1);
+            setPanOffset({ x: 0, y: 0 });
+            return;
+          case 'panUp':
+            setPanOffset(prev => ({ ...prev, y: prev.y + 20 }));
+            return;
+          case 'panLeft':
+            setPanOffset(prev => ({ ...prev, x: prev.x + 20 }));
+            return;
+          case 'panRight':
+            setPanOffset(prev => ({ ...prev, x: prev.x - 20 }));
+            return;
+          case 'panDown':
+            setPanOffset(prev => ({ ...prev, y: prev.y - 20 }));
+            return;
+        }
+      }
     }
-  }, [drawingPoints, isDrawingMode]);
+  }, []);
   
-  // Redraw when parameters change
-  useEffect(() => {
-    drawMainVisualization();
-  }, [
-    targetFunction,
-    numTerms,
-    animationFrame,
-    showEpicycles,
-    showTrace,
-    customEquation,
-    isDarkMode,
-    zoom,
-    panOffset,
-    drawingPoints,
-    tracePoints
-  ]);
+  // Handle normal pan/zoom with mouse events
+  const handleMouseDown = useCallback((e) => {
+    if (isDrawingMode) {
+      handleDrawingMouseDown(e);
+      return;
+    }
+    
+    setIsPanning(true);
+    setStartPanPoint({
+      x: e.clientX,
+      y: e.clientY
+    });
+  }, [isDrawingMode, handleDrawingMouseDown]);
+  
+  const handleMouseMove = useCallback((e) => {
+    if (isDrawingMode) {
+      handleDrawingMouseMove(e);
+      return;
+    }
+    
+    if (!isPanning) return;
+    
+    const dx = e.clientX - startPanPoint.x;
+    const dy = e.clientY - startPanPoint.y;
+    
+    setPanOffset(prev => ({
+      x: prev.x + dx,
+      y: prev.y + dy
+    }));
+    
+    setStartPanPoint({
+      x: e.clientX,
+      y: e.clientY
+    });
+  }, [isDrawingMode, isPanning, startPanPoint, handleDrawingMouseMove]);
+  
+  const handleMouseUp = useCallback((e) => {
+    if (isDrawingMode) {
+      handleDrawingMouseUp();
+      return;
+    }
+    
+    if (isPanning) {
+      setIsPanning(false);
+    } else {
+      // Regular click
+      handleCanvasClick(e);
+    }
+  }, [isDrawingMode, isPanning, handleDrawingMouseUp, handleCanvasClick]);
+  
+  const handleWheel = useCallback((e) => {
+    if (isDrawingMode) return;
+    
+    e.preventDefault();
+    
+    const delta = e.deltaY;
+    const zoomFactor = delta > 0 ? 0.9 : 1.1;
+    
+    setZoom(prev => Math.max(0.5, Math.min(5, prev * zoomFactor)));
+  }, [isDrawingMode]);
+  
+  // Pinch zoom for touch devices
+  const handleTouchStart = useCallback((e) => {
+    if (e.touches.length === 1) {
+      // Single touch - for drawing or panning
+      if (isDrawingMode) {
+        handleDrawingTouchStart(e);
+      } else {
+        // Start panning
+        setIsPanning(true);
+        setStartPanPoint({
+          x: e.touches[0].clientX,
+          y: e.touches[0].clientY
+        });
+      }
+    } else if (e.touches.length === 2) {
+      // Two touches - pinch to zoom
+      const touch1 = e.touches[0];
+      const touch2 = e.touches[1];
+      const distance = Math.hypot(
+        touch1.clientX - touch2.clientX,
+        touch1.clientY - touch2.clientY
+      );
+      
+      e.currentTarget.dataset.initialPinchDistance = distance;
+      e.currentTarget.dataset.initialZoom = zoom;
+    }
+  }, [isDrawingMode, zoom, handleDrawingTouchStart]);
+  
+  const handleTouchMove = useCallback((e) => {
+    if (e.touches.length === 1) {
+      // Single touch - for drawing or panning
+      if (isDrawingMode) {
+        handleDrawingTouchMove(e);
+      } else if (isPanning) {
+        // Panning
+        const dx = e.touches[0].clientX - startPanPoint.x;
+        const dy = e.touches[0].clientY - startPanPoint.y;
+        
+        setPanOffset(prev => ({
+          x: prev.x + dx,
+          y: prev.y + dy
+        }));
+        
+        setStartPanPoint({
+          x: e.touches[0].clientX,
+          y: e.touches[0].clientY
+        });
+      }
+    } else if (e.touches.length === 2) {
+      // Two touches - pinch to zoom
+      const touch1 = e.touches[0];
+      const touch2 = e.touches[1];
+      const distance = Math.hypot(
+        touch1.clientX - touch2.clientX,
+        touch1.clientY - touch2.clientY
+      );
+      
+      const initialDistance = parseFloat(e.currentTarget.dataset.initialPinchDistance);
+      const initialZoom = parseFloat(e.currentTarget.dataset.initialZoom);
+      
+      if (initialDistance && initialZoom) {
+        const zoomFactor = distance / initialDistance;
+        const newZoom = Math.max(0.5, Math.min(5, initialZoom * zoomFactor));
+        setZoom(newZoom);
+      }
+    }
+  }, [isDrawingMode, isPanning, startPanPoint, handleDrawingTouchMove]);
+  
+  const handleTouchEnd = useCallback((e) => {
+    if (isDrawingMode) {
+      handleDrawingTouchEnd();
+      return;
+    }
+    
+    setIsPanning(false);
+    
+    // If it's a tap (not a pan or zoom) and no touches left
+    if (e.touches.length === 0 && (
+      !startPanPoint.x || 
+      Math.abs(e.changedTouches[0].clientX - startPanPoint.x) < 5 && 
+      Math.abs(e.changedTouches[0].clientY - startPanPoint.y) < 5
+    )) {
+      // Handle tap on controls
+      const touchEvt = {
+        clientX: e.changedTouches[0].clientX,
+        clientY: e.changedTouches[0].clientY
+      };
+      handleCanvasClick(touchEvt);
+    }
+    
+    // Reset pinch zoom tracking
+    if (e.currentTarget) {
+      delete e.currentTarget.dataset.initialPinchDistance;
+      delete e.currentTarget.dataset.initialZoom;
+    }
+  }, [isDrawingMode, startPanPoint, handleDrawingTouchEnd, handleCanvasClick]);
   
   // Theme-based classes
   const containerClass = isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-800';
@@ -808,13 +1207,60 @@ const FourierSeriesExplorer = () => {
     ? 'bg-gray-700 text-white border-gray-600'
     : 'bg-white text-gray-800 border-gray-300';
   
+  // MOBILE-SPECIFIC STYLES
+  const mobileStyles = `
+    @media (max-width: 768px) {
+      .controls-container {
+        flex-direction: column;
+      }
+      
+      .control-group {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+      
+      .mobile-hint {
+        display: block;
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        opacity: 0.7;
+      }
+    }
+  `;
+  
+  // Canvas help overlay - shown when canvas is empty
+  const renderCanvasHelp = () => {
+    if (isDrawingMode && drawingPoints.length === 0) {
+      return (
+        <div className="absolute inset-0 flex items-center justify-center bg-opacity-60 bg-black text-white p-4 text-center pointer-events-none">
+          <div>
+            <h3 className="text-xl font-bold mb-2">Drawing Mode</h3>
+            <p>Draw a shape using your mouse or finger.<br/>The curve will be converted to Fourier series.</p>
+          </div>
+        </div>
+      );
+    }
+    
+    if (!isDrawingMode && zoom === 1 && panOffset.x === 0 && panOffset.y === 0 && showControls) {
+      return (
+        <div className="absolute bottom-36 right-6 bg-opacity-80 bg-black text-white p-2 rounded-lg text-sm pointer-events-none">
+          <p>Use the controls to zoom and pan</p>
+        </div>
+      );
+    }
+    
+    return null;
+  };
+  
   return (
     <div className={`min-h-screen p-4 ${containerClass} transition-colors duration-300`}>
-      <h1 className="text-2xl font-bold mb-4 text-center">Fourier Series Explorer (Split View)</h1>
+      <style>{mobileStyles}</style>
+      
+      <h1 className="text-2xl font-bold mb-4 text-center">Interactive Fourier Series Explorer</h1>
       
       <div className={`p-4 rounded-lg mb-6 ${cardClass} transition-colors duration-300`}>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-          <div>
+        <div className="controls-container grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div className="control-group">
             <label className="block text-sm font-medium mb-1">Target Function:</label>
             <select
               value={targetFunction}
@@ -843,7 +1289,7 @@ const FourierSeriesExplorer = () => {
             )}
           </div>
           
-          <div>
+          <div className="control-group">
             <label className="block text-sm font-medium mb-1">Number of Terms: {numTerms}</label>
             <input
               type="range"
@@ -870,29 +1316,18 @@ const FourierSeriesExplorer = () => {
             </div>
           </div>
           
-          <div className="flex flex-col justify-between">
-            <div className="grid grid-cols-2 gap-2">
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="showEpicycles"
-                  checked={showEpicycles}
-                  onChange={() => setShowEpicycles(!showEpicycles)}
-                  className="mr-2"
-                />
-                <label htmlFor="showEpicycles" className="text-sm">Show Epicycles</label>
-              </div>
-              
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="showTrace"
-                  checked={showTrace}
-                  onChange={() => setShowTrace(!showTrace)}
-                  className="mr-2"
-                />
-                <label htmlFor="showTrace" className="text-sm">Show Trace</label>
-              </div>
+          <div className="control-group flex flex-col justify-between">
+            <div className="mb-2">
+              <label className="block text-sm font-medium mb-1">View Mode:</label>
+              <select
+                value={viewMode}
+                onChange={(e) => setViewMode(e.target.value)}
+                className={`w-full p-2 border rounded ${inputClass}`}
+              >
+                <option value="combined">Combined View</option>
+                <option value="epicycles">Epicycles Only</option>
+                <option value="trace">Trace Only</option>
+              </select>
             </div>
             
             <div className="flex justify-between mt-2">
@@ -900,7 +1335,7 @@ const FourierSeriesExplorer = () => {
                 onClick={() => setIsDarkMode(!isDarkMode)}
                 className={`px-3 py-1 text-sm rounded ${buttonSecondaryClass}`}
               >
-                {isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
+                {isDarkMode ? '☀️ Light' : '🌙 Dark'}
               </button>
               
               <button
@@ -908,6 +1343,13 @@ const FourierSeriesExplorer = () => {
                 className={`px-3 py-1 text-sm rounded ${buttonSecondaryClass}`}
               >
                 {isAnimating ? '⏸️ Pause' : '▶️ Play'}
+              </button>
+              
+              <button
+                onClick={() => setShowControls(!showControls)}
+                className={`px-3 py-1 text-sm rounded ${buttonSecondaryClass}`}
+              >
+                {showControls ? '🔍 Hide' : '🔍 Show'}
               </button>
             </div>
           </div>
@@ -928,10 +1370,9 @@ const FourierSeriesExplorer = () => {
               <button
                 onClick={() => {
                   setDrawingPoints([]);
-                  initDrawingCanvas();
+                  setIsDrawingMode(true);
                 }}
                 className={`px-3 py-1 text-sm rounded ${buttonSecondaryClass}`}
-                disabled={!isDrawingMode}
               >
                 Clear Drawing
               </button>
@@ -943,13 +1384,13 @@ const FourierSeriesExplorer = () => {
                 View Result
               </button>
             </div>
-            <p className="text-xs mt-2 opacity-70">
-              Draw a shape in the canvas below, then click "View Result" to see the Fourier representation.
+            <p className="text-xs mt-2 opacity-70 mobile-hint">
+              Draw a shape, then click "View Result" to see the Fourier representation.
             </p>
           </div>
         )}
         
-        {/* Zoom and pan controls */}
+        {/* Zoom and pan indicators */}
         <div className="flex justify-between items-center mt-3">
           <div className="text-sm opacity-70">
             <span className="mr-2">Zoom: {zoom.toFixed(1)}x</span>
@@ -978,65 +1419,61 @@ const FourierSeriesExplorer = () => {
       {/* Main visualization */}
       <div className="mb-6">
         <div className={`p-4 rounded-lg ${cardClass} transition-colors duration-300 relative`}>
-          <h2 className="text-lg font-medium mb-2">Split View Visualization</h2>
+          <h2 className="text-lg font-medium mb-2">
+            {viewMode === 'combined' ? 'Combined Visualization' : 
+             viewMode === 'epicycles' ? 'Epicycles Visualization' : 
+             'Trace Visualization'}
+          </h2>
           
-          {/* Main canvas for overall layout */}
-          <canvas
-            ref={mainCanvasRef}
-            width={canvasWidth}
-            height={canvasHeight}
-            className="w-full border rounded relative z-10"
-            onMouseDown={handlePanStart}
-            onMouseMove={handlePanMove}
-            onMouseUp={handlePanEnd}
-            onMouseLeave={handlePanEnd}
-            onWheel={handleZoom}
-          />
-          
-          {/* Drawing canvas - only visible in drawing mode */}
-          {isDrawingMode && targetFunction === 'drawing' && (
+          {/* Main canvas */}
+          <div className="relative">
             <canvas
-              ref={drawingCanvasRef}
+              ref={canvasRef}
               width={canvasWidth}
               height={canvasHeight}
-              className="w-full border rounded absolute top-0 left-0 z-20 cursor-crosshair"
-              onMouseDown={handleDrawingMouseDown}
-              onMouseMove={handleDrawingMouseMove}
-              onMouseUp={handleDrawingMouseUp}
-              onMouseLeave={handleDrawingMouseUp}
-              onTouchStart={handleDrawingTouchStart}
-              onTouchMove={handleDrawingTouchMove}
-              onTouchEnd={handleDrawingTouchEnd}
+              className="w-full border rounded relative z-10"
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseUp}
+              onWheel={handleWheel}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              style={{ touchAction: 'none' }}
             />
-          )}
-          
-          {/* Epicycles canvas - positioned over the left side */}
-          <canvas
-            ref={epicycleCanvasRef}
-            width={epicycleWidth}
-            height={canvasHeight}
-            className="absolute top-0 left-0 z-30 pointer-events-none"
-          />
-          
-          {/* Trace canvas - positioned over the entire canvas */}
-          <canvas
-            ref={traceCanvasRef}
-            width={canvasWidth}
-            height={canvasHeight}
-            className="absolute top-0 left-0 z-20 pointer-events-none"
-          />
-          
-          <div className="flex justify-between mt-2">
-            <div className="text-sm opacity-70">
-              Left side: Epicycles visualization
-            </div>
-            <div className="text-sm opacity-70">
-              Right side: Function trace
-            </div>
+            
+            {/* Canvas help overlay */}
+            {renderCanvasHelp()}
           </div>
           
-          <div className="text-sm mt-1 opacity-70">
-            {!isDrawingMode && <span>Use mouse wheel to zoom and drag to pan</span>}
+          <div className="flex justify-between mt-2">
+            {viewMode === 'combined' && (
+              <>
+                <div className="text-sm opacity-70">
+                  Left side: Epicycles visualization
+                </div>
+                <div className="text-sm opacity-70">
+                  Right side: Function trace
+                </div>
+              </>
+            )}
+            
+            {viewMode === 'epicycles' && (
+              <div className="text-sm opacity-70 w-full text-center">
+                Epicycles show how rotating circles create complex patterns
+              </div>
+            )}
+            
+            {viewMode === 'trace' && (
+              <div className="text-sm opacity-70 w-full text-center">
+                Trace shows the function over time with fading history
+              </div>
+            )}
+          </div>
+          
+          <div className="text-sm mt-1 opacity-70 text-center mobile-hint">
+            {!isDrawingMode && <span>Use the on-screen controls to zoom and pan</span>}
           </div>
         </div>
       </div>
@@ -1044,17 +1481,16 @@ const FourierSeriesExplorer = () => {
       <div className={`mt-6 p-4 rounded-lg ${cardClass} transition-colors duration-300`}>
         <h2 className="text-lg font-medium mb-2">About This Visualization</h2>
         <p className="mb-2">
-          This split-view visualization shows the relationship between epicycles (rotating circles) and the function they represent.
+          This interactive visualization demonstrates how Fourier series decompose periodic functions into sums of sine and cosine waves.
         </p>
         <p className="mb-2">
-          <strong>Left Side:</strong> Shows the epicycles representation, where each circle represents a term in the Fourier series.
+          <strong>Epicycles View:</strong> Shows how each term in the Fourier series can be represented as a rotating circle. The circles combine to trace the approximated function.
         </p>
         <p className="mb-2">
-          <strong>Right Side:</strong> Shows the function being approximated and the trace produced by the epicycles.
+          <strong>Trace View:</strong> Shows the function being drawn over time as the epicycles rotate. The trace fades as it moves off-screen, creating a sense of motion.
         </p>
         <p>
-          The horizontal line connects the current position of the trace point to its corresponding position on the function curve.
-          Watch how the epicycles combine to perfectly trace out the target function!
+          The horizontal line connects the current position of the epicycles to the corresponding point on the trace, showing how the epicycles' motion translates to the function's shape.
         </p>
       </div>
     </div>
