@@ -6,7 +6,7 @@ import RechartsExample from './components/RechartsExample'
 import AnimationExample from './components/AnimationExample'
 import PendulumSimulation from './components/Pendulum'
 import VSCodeAnimation from './components/VSCodeAnimation'
-import ImageManipulator from './components/imaging/ImageManipulator'
+import ImageManipulator from './components/ImageManipulator/BeforeAfter'
 import ArticlePage from './components/WebArticle'
 import GitHubActionsMobileManager from './components/thehub/github-actions-mobile-ui'
 import MotionAmplification from './components/vid/VideoDemo'
@@ -59,7 +59,7 @@ const NavItem = ({ id, label, isActive, onClick }) => (
 
 function App() {
   // State to track which component is active
-  const [activeComponent, setActiveComponent] = useState(COMPONENTS.FOURIER)
+  const [activeComponent, setActiveComponent] = useState(COMPONENTS.IMAGE_DEMO)
   const [isNavOpen, setIsNavOpen] = useState(false)
 
   // Get active component from configuration
