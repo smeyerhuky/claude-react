@@ -11,8 +11,8 @@ import ArticlePage from './components/WebArticle'
 import GitHubActionsMobileManager from './components/thehub/github-actions-mobile-ui'
 import MotionAmplification from './components/vid/VideoDemo'
 import PulseDetectionVisualizer from './components/vid/PulseExample'
-import FourierSeriesExplorer from './components/fourier/MobileDemo'
-import FourierSeriesTeacher from './components/fourier/Teacher'
+import FourierSeriesExplorer from './components/fourier/demos/MobileDemo'
+import FourierSeriesTeacher from './components/fourier/demos/Teacher'
 
 // Component keys enum
 const COMPONENTS = {
