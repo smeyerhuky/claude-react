@@ -11,13 +11,15 @@ import ArticlePage from './components/WebArticle'
 import GitHubActionsMobileManager from './components/thehub/github-actions-mobile-ui'
 import MotionAmplification from './components/vid/VideoDemo'
 import PulseDetectionVisualizer from './components/vid/PulseExample'
-import FourierSeriesExplorer from './components/fourier/demos/MobileDemo'
-import FourierSeriesTeacher from './components/fourier/demos/Teacher'
+// import FourierSeriesExplorer from './components/fourier/demos/MobileDemo'
+// import FourierSeriesTeacher from './components/fourier/demos/Teacher'
+import { FourierVisualizerTabs } from './components/FourierVisualizations';
 
 // Component keys enum
 const COMPONENTS = {
-  FOURIER: 'fourier',
-  FOURIER_TEACHER: 'fourier-teacher',
+  FOURIER_TABS: 'fouriter-tabs',
+  // FOURIER: 'fourier',
+  // FOURIER_TEACHER: 'fourier-teacher',
   PULSE: 'pulse-demo',
   GH_DEMO: 'gh-demo',
   IMAGE_DEMO: 'image-demo',
@@ -31,61 +33,18 @@ const COMPONENTS = {
 
 // Navigation items configuration
 const navigationItems = [
-  {
-    id: COMPONENTS.FOURIER,
-    label: 'Drawing With Fourier',
-    component: FourierSeriesExplorer
-  },
-  {
-    id: COMPONENTS.FOURIER_TEACHER,
-    label: 'Teaching Fouriers',
-    component: FourierSeriesTeacher
-  },
-  {
-    id: COMPONENTS.PULSE,
-    label: 'Pulse Demo',
-    component: PulseDetectionVisualizer
-  },
-  {
-    id: COMPONENTS.GH_DEMO,
-    label: 'GH Demo',
-    component: GitHubActionsMobileManager
-  },
-  {
-    id: COMPONENTS.IMAGE_DEMO,
-    label: 'Image Manipulation Demo',
-    component: ImageManipulator
-  },
-  {
-    id: COMPONENTS.ARTICLE_DEMO,
-    label: 'Tau - XIAO ESP32S3 Sense Article',
-    component: ArticlePage
-  },
-  {
-    id: COMPONENTS.CODE_DEMO,
-    label: 'VSCode Demo',
-    component: VSCodeAnimation
-  },
-  {
-    id: COMPONENTS.RECHARTS_DEMO,
-    label: 'Recharts Demo',
-    component: RechartsExample
-  },
-  {
-    id: COMPONENTS.ANIMATION_DEMO,
-    label: 'Animation Demo',
-    component: AnimationExample
-  },
-  {
-    id: COMPONENTS.PENDULUM_DEMO,
-    label: 'Pendulum Demo',
-    component: PendulumSimulation
-  },
-  {
-    id: COMPONENTS.FOURIER,
-    label: 'Motion Amp Demo',
-    component: MotionAmplification
-  }
+  { id: COMPONENTS.FOURIER_TABS, label: 'FourierMain', component: FourierVisualizerTabs },
+  // { id: COMPONENTS.FOURIER, label: 'Drawing With Fourier', component: FourierSeriesExplorer },
+  // { id: COMPONENTS.FOURIER_TEACHER, label: 'Teaching Fouriers', component: FourierSeriesTeacher },
+  { id: COMPONENTS.PULSE, label: 'Pulse Demo', component: PulseDetectionVisualizer },
+  { id: COMPONENTS.GH_DEMO, label: 'GH Demo', component: GitHubActionsMobileManager },
+  { id: COMPONENTS.IMAGE_DEMO, label: 'Image Manipulation Demo', component: ImageManipulator },
+  { id: COMPONENTS.ARTICLE_DEMO, label: 'Tau - XIAO ESP32S3 Sense Article', component: ArticlePage },
+  { id: COMPONENTS.CODE_DEMO, label: 'VSCode Demo', component: VSCodeAnimation },
+  { id: COMPONENTS.RECHARTS_DEMO, label: 'Recharts Demo', component: RechartsExample },
+  { id: COMPONENTS.ANIMATION_DEMO, label: 'Animation Demo', component: AnimationExample },
+  { id: COMPONENTS.PENDULUM_DEMO, label: 'Pendulum Demo', component: PendulumSimulation },
+  { id: COMPONENTS.AMPLIFY_DEMO, label: 'Motion Amp Demo', component: MotionAmplification }
 ]
 
 // Navigation component
@@ -106,7 +65,7 @@ function App() {
   // Get active component from configuration
   const getActiveComponent = () => {
     const item = navigationItems.find(item => item.id === activeComponent)
-    return item ? <item.component /> : <ImageToFourierTransform />
+    return item ? <item.component /> : <ImageManipulator />
   }
 
   // Find the active navigation item
