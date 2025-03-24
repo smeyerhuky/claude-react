@@ -11,7 +11,7 @@ import ArticlePage from './components/WebArticle'
 import GitHubActionsMobileManager from './components/thehub/github-actions-mobile-ui'
 import MotionAmplification from './components/vid/VideoDemo'
 import PulseDetectionVisualizer from './components/vid/PulseExample'
-import FourierSeriesExplorer from './components/fourier/demos/MobileDemo'
+import FourierSeriesExplorer from './components/fourier/demos/FourierFirst'
 import FourierSeriesTeacher from './components/fourier/demos/Teacher'
 import { FourierVisualizerTabs } from './components/FourierVisualizations';
 
@@ -65,7 +65,7 @@ function App() {
   // Get active component from configuration
   const getActiveComponent = () => {
     const item = navigationItems.find(item => item.id === activeComponent)
-    return item ? <item.component /> : <ImageManipulator />
+    return item ? <item.component /> : <FourierSeriesExplorer />
   }
 
   // Find the active navigation item
