@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 
 // ComprehensiveImageManipulator component contains everything needed
-const ComprehensiveImageManipulator = () => {
+const ImageManipulator = () => {
   // ======== STATE MANAGEMENT ========
   // Image related state
   const [originalImage, setOriginalImage] = useState(null);
@@ -837,4 +837,4 @@ const ComprehensiveImageManipulator = () => {
   );
 };
 
-export default ComprehensiveImageManipulator;
+export default ImageManipulator;
