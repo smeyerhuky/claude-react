@@ -19,7 +19,7 @@ const FourierSeriesExplorer = () => {
   const [animationSpeed, setAnimationSpeed] = useState(1);
   const [isAnimating, setIsAnimating] = useState(true);
   const [tracePoints, setTracePoints] = useState([]);
-  const [maxTracePoints, setMaxTracePoints] = useState(1500);
+  const [maxTracePoints, setMaxTracePoints] = useState(100);
   
   // Drawing mode
   const [isDrawingMode, setIsDrawingMode] = useState(false);
@@ -40,8 +40,8 @@ const FourierSeriesExplorer = () => {
   const lastRenderTimeRef = useRef(0);
   
   // Constants for drawing
-  const canvasWidth = 800;
-  const canvasHeight = 400;
+  const canvasWidth = 1200;
+  const canvasHeight = 600;
   
   // Layout constants based on view mode
   const getLayout = () => {
