@@ -569,7 +569,7 @@ const FourierSeriesExplorer = () => {
   const drawFourierApproximation = useCallback((ctx, coefficients, startX, width, yOffset, yScale, windowStart, windowWidth) => {
     ctx.beginPath();
     ctx.strokeStyle = theme.series;
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 1.2;
     
     const resolution = width;
     
