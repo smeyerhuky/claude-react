@@ -34,8 +34,8 @@ const COMPONENTS = {
 // Navigation items configuration
 const navigationItems = [
   { id: COMPONENTS.FOURIER_TABS, label: 'FourierMain', component: FourierVisualizerTabs },
-  // { id: COMPONENTS.FOURIER, label: 'Drawing With Fourier', component: FourierSeriesExplorer },
-  // { id: COMPONENTS.FOURIER_TEACHER, label: 'Teaching Fouriers', component: FourierSeriesTeacher },
+  { id: COMPONENTS.FOURIER, label: 'Drawing With Fourier', component: FourierSeriesExplorer },
+  { id: COMPONENTS.FOURIER_TEACHER, label: 'Teaching Fouriers', component: FourierSeriesTeacher },
   { id: COMPONENTS.PULSE, label: 'Pulse Demo', component: PulseDetectionVisualizer },
   { id: COMPONENTS.GH_DEMO, label: 'GH Demo', component: GitHubActionsMobileManager },
   { id: COMPONENTS.IMAGE_DEMO, label: 'Image Manipulation Demo', component: ImageManipulator },
