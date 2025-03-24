@@ -6,45 +6,45 @@ import RechartsExample from './components/RechartsExample'
 import AnimationExample from './components/AnimationExample'
 import PendulumSimulation from './components/Pendulum'
 import VSCodeAnimation from './components/VSCodeAnimation'
-import ImageManipulator from './components/ImageManipulator/ImageManipulator'
-import ArticlePage from './components/WebArticle'
-import GitHubActionsMobileManager from './components/thehub/github-actions-mobile-ui'
-import MotionAmplification from './components/vid/VideoDemo'
-import PulseDetectionVisualizer from './components/vid/PulseExample'
+// import ImageManipulator from './components/ImageManipulator/ImageManipulator'
+// import ArticlePage from './components/WebArticle'
+// import GitHubActionsMobileManager from './components/thehub/github-actions-mobile-ui'
+// import MotionAmplification from './components/vid/VideoDemo'
+// import PulseDetectionVisualizer from './components/vid/PulseExample'
 import FourierSeriesExplorer from './components/fourier/demos/FourierFirst'
 import FourierSeriesTeacher from './components/fourier/demos/Teacher'
-import { FourierVisualizerTabs } from './components/FourierVisualizations';
+// import { FourierVisualizerTabs } from './components/FourierVisualizations';
 
 // Component keys enum
 const COMPONENTS = {
-  FOURIER_TABS: 'fouriter-tabs',
+  // FOURIER_TABS: 'fouriter-tabs',
   FOURIER: 'fourier',
   FOURIER_TEACHER: 'fourier-teacher',
-  PULSE: 'pulse-demo',
-  GH_DEMO: 'gh-demo',
-  IMAGE_DEMO: 'image-demo',
-  ARTICLE_DEMO: 'article-demo',
+  // PULSE: 'pulse-demo',
+  // GH_DEMO: 'gh-demo',
+  // IMAGE_DEMO: 'image-demo',
+  // ARTICLE_DEMO: 'article-demo',
   CODE_DEMO: 'code-demo',
   RECHARTS_DEMO: 'recharts-demo',
   ANIMATION_DEMO: 'animation-demo',
   PENDULUM_DEMO: 'pendulum-demo',
-  AMPLIFY_DEMO: 'motion-demo'
+  // AMPLIFY_DEMO: 'motion-demo'
 }
 
 // Navigation items configuration
 const navigationItems = [
-  { id: COMPONENTS.FOURIER_TABS, label: 'FourierMain', component: FourierVisualizerTabs },
+  // { id: COMPONENTS.FOURIER_TABS, label: 'FourierMain', component: FourierVisualizerTabs },
   { id: COMPONENTS.FOURIER, label: 'Drawing With Fourier', component: FourierSeriesExplorer },
   { id: COMPONENTS.FOURIER_TEACHER, label: 'Teaching Fouriers', component: FourierSeriesTeacher },
-  { id: COMPONENTS.PULSE, label: 'Pulse Demo', component: PulseDetectionVisualizer },
-  { id: COMPONENTS.GH_DEMO, label: 'GH Demo', component: GitHubActionsMobileManager },
-  { id: COMPONENTS.IMAGE_DEMO, label: 'Image Manipulation Demo', component: ImageManipulator },
-  { id: COMPONENTS.ARTICLE_DEMO, label: 'Tau - XIAO ESP32S3 Sense Article', component: ArticlePage },
+  // { id: COMPONENTS.PULSE, label: 'Pulse Demo', component: PulseDetectionVisualizer },
+  // { id: COMPONENTS.GH_DEMO, label: 'GH Demo', component: GitHubActionsMobileManager },
+  // { id: COMPONENTS.IMAGE_DEMO, label: 'Image Manipulation Demo', component: ImageManipulator },
+  // { id: COMPONENTS.ARTICLE_DEMO, label: 'Tau - XIAO ESP32S3 Sense Article', component: ArticlePage },
   { id: COMPONENTS.CODE_DEMO, label: 'VSCode Demo', component: VSCodeAnimation },
   { id: COMPONENTS.RECHARTS_DEMO, label: 'Recharts Demo', component: RechartsExample },
   { id: COMPONENTS.ANIMATION_DEMO, label: 'Animation Demo', component: AnimationExample },
   { id: COMPONENTS.PENDULUM_DEMO, label: 'Pendulum Demo', component: PendulumSimulation },
-  { id: COMPONENTS.AMPLIFY_DEMO, label: 'Motion Amp Demo', component: MotionAmplification }
+  // { id: COMPONENTS.AMPLIFY_DEMO, label: 'Motion Amp Demo', component: MotionAmplification }
 ]
 
 // Navigation component
@@ -59,7 +59,7 @@ const NavItem = ({ id, label, isActive, onClick }) => (
 
 function App() {
   // State to track which component is active
-  const [activeComponent, setActiveComponent] = useState(COMPONENTS.ANIMATION_DEMO)
+  const [activeComponent, setActiveComponent] = useState(COMPONENTS.FOURIER)
   const [isNavOpen, setIsNavOpen] = useState(false)
 
   // Get active component from configuration
