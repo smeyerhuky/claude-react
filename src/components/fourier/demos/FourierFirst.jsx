@@ -7,7 +7,7 @@ const FourierSeriesExplorer = () => {
   
   // Function parameters
   const [targetFunction, setTargetFunction] = useState('square');
-  const [numTerms, setNumTerms] = useState(5);
+  const [numTerms, setNumTerms] = useState(25);
   const [customEquation, setCustomEquation] = useState('x^2 - PI^2/3');
   
   // Display options
@@ -19,7 +19,7 @@ const FourierSeriesExplorer = () => {
   const [animationSpeed, setAnimationSpeed] = useState(1);
   const [isAnimating, setIsAnimating] = useState(true);
   const [tracePoints, setTracePoints] = useState([]);
-  const [maxTracePoints, setMaxTracePoints] = useState(500);
+  const [maxTracePoints, setMaxTracePoints] = useState(1500);
   
   // Drawing mode
   const [isDrawingMode, setIsDrawingMode] = useState(false);
@@ -324,11 +324,6 @@ const FourierSeriesExplorer = () => {
     // Restore canvas state
     ctx.restore();
     
-    // Draw zoom and pan controls
-    if (showControls) {
-      drawZoomPanControls(ctx);
-    }
-    
     // Store timestamp for animation timing
     lastRenderTimeRef.current = Date.now();
   }, [
@@ -417,7 +412,7 @@ const FourierSeriesExplorer = () => {
     if (viewMode === 'combined') {
       ctx.beginPath();
       ctx.strokeStyle = theme.dot;
-      ctx.lineWidth = 1.5;
+      ctx.lineWidth = 1.2;
       ctx.setLineDash([5, 3]);
       ctx.moveTo(finalX, finalY);
       ctx.lineTo(canvasWidth, finalY);
@@ -1294,7 +1289,7 @@ const FourierSeriesExplorer = () => {
             <input
               type="range"
               min="1"
-              max="50"
+              max="1500"
               value={numTerms}
               onChange={(e) => setNumTerms(parseInt(e.target.value))}
               className="w-full"
@@ -1307,8 +1302,8 @@ const FourierSeriesExplorer = () => {
               <input
                 type="range"
                 min="0.1"
-                max="3"
-                step="0.1"
+                max="2.5"
+                step="0.05"
                 value={animationSpeed}
                 onChange={(e) => setAnimationSpeed(parseFloat(e.target.value))}
                 className="w-full"
@@ -1325,8 +1320,6 @@ const FourierSeriesExplorer = () => {
                 className={`w-full p-2 border rounded ${inputClass}`}
               >
                 <option value="combined">Combined View</option>
-                <option value="epicycles">Epicycles Only</option>
-                <option value="trace">Trace Only</option>
               </select>
             </div>
             
