@@ -24,6 +24,8 @@ const FourierSeriesExplorer = () => {
   const [isAnimating, setIsAnimating] = useState(true);
   const [tracePoints, setTracePoints] = useState([]);
   const [maxTracePoints, setMaxTracePoints] = useState(500);
+  const [traceMode, setTraceMode] = useState('animated'); // 'animated' or 'full'
+  const [viewWindow, setViewWindow] = useState({ start: 0, width: 2 * Math.PI });
   
   // Drawing mode
   const [isDrawingMode, setIsDrawingMode] = useState(false);
@@ -265,17 +267,11 @@ const FourierSeriesExplorer = () => {
     ctx.lineTo(epicycleWidth, canvasHeight);
     ctx.stroke();
     
-    // Apply zoom and pan transformations for trace side
-    ctx.save();
-    ctx.translate(canvasWidth * 0.75 + panOffset.x, canvasHeight / 2 + panOffset.y);
-    ctx.scale(zoom, zoom);
-    ctx.translate(-canvasWidth * 0.75, -canvasHeight / 2);
-    
-    // Draw grid on trace side
+    // Draw grid and axes on trace side (right side)
     ctx.strokeStyle = gridColor;
     ctx.lineWidth = 1;
     
-    // Horizontal lines
+    // Horizontal lines (y-axis gridlines)
     for (let y = -2; y <= 2; y += 0.5) {
       ctx.beginPath();
       ctx.moveTo(epicycleWidth, yOffset - y * yScale);
@@ -288,6 +284,43 @@ const FourierSeriesExplorer = () => {
       }
       
       ctx.stroke();
+      
+      // Add y-axis labels on the right side
+      if (Number.isInteger(y)) {
+        ctx.fillStyle = textColor;
+        ctx.textAlign = 'left';
+        ctx.font = '12px Arial';
+        ctx.fillText(y.toString(), epicycleWidth + 5, yOffset - y * yScale + 4);
+      }
+    }
+    
+    // Vertical lines (x-axis gridlines)
+    for (let x = 0; x <= 2 * Math.PI; x += Math.PI / 2) {
+      const xPos = epicycleWidth + (x / (2 * Math.PI)) * traceWidth;
+      
+      ctx.beginPath();
+      ctx.moveTo(xPos, 0);
+      ctx.lineTo(xPos, canvasHeight);
+      
+      if (Math.abs(x - Math.PI) < 0.01) {
+        ctx.strokeStyle = axisColor; // Highlight the middle (π)
+      } else {
+        ctx.strokeStyle = gridColor;
+      }
+      
+      ctx.stroke();
+      
+      // Add x-axis labels
+      ctx.fillStyle = textColor;
+      ctx.textAlign = 'center';
+      let label = '';
+      if (x === 0) label = '0';
+      else if (x === Math.PI/2) label = 'π/2';
+      else if (x === Math.PI) label = 'π';
+      else if (x === 3*Math.PI/2) label = '3π/2';
+      else if (x === 2*Math.PI) label = '2π';
+      
+      ctx.fillText(label, xPos, yOffset + 20);
     }
     
     // Draw target function on trace side
@@ -296,8 +329,8 @@ const FourierSeriesExplorer = () => {
     ctx.lineWidth = 1;
     
     for (let i = 0; i <= traceWidth; i++) {
-      const x = (i / xScale) - Math.PI;
-      const y = evaluateTargetFunction(targetFunction, x);
+      const normalizedX = (i / traceWidth) * 2 * Math.PI; // 0 to 2π
+      const y = evaluateTargetFunction(targetFunction, normalizedX - Math.PI);
       
       if (i === 0) {
         ctx.moveTo(i + epicycleWidth, yOffset - y * yScale);
@@ -314,8 +347,8 @@ const FourierSeriesExplorer = () => {
     ctx.lineWidth = 2;
     
     for (let i = 0; i <= traceWidth; i++) {
-      const x = (i / xScale) - Math.PI;
-      const y = evaluateFourierSeries(coefficients, x, activeTerms);
+      const normalizedX = (i / traceWidth) * 2 * Math.PI; // 0 to 2π
+      const y = evaluateFourierSeries(coefficients, normalizedX - Math.PI, activeTerms);
       
       if (i === 0) {
         ctx.moveTo(i + epicycleWidth, yOffset - y * yScale);
@@ -325,9 +358,6 @@ const FourierSeriesExplorer = () => {
     }
     
     ctx.stroke();
-    
-    // Restore canvas state
-    ctx.restore();
     
     // Show active terms info
     ctx.fillStyle = textColor;
@@ -446,12 +476,13 @@ const FourierSeriesExplorer = () => {
     
     // Store the current point for tracing
     if (isAnimating) {
-      // Calculate the corresponding x position on the trace side
-      const traceX = epicycleWidth + (time / (2 * Math.PI)) * traceWidth;
+      // Store the x value (0 to 2π) and the y value from our Fourier calculation
+      const traceX = time;
+      const traceY = evaluateFourierSeries(coefficients, time, activeTerms);
       
       // Add point to trace points
       setTracePoints(prev => {
-        const newPoints = [...prev, { x: traceX, y: finalY }];
+        const newPoints = [...prev, { x: traceX, y: traceY }];
         // Limit number of points to avoid performance issues
         if (newPoints.length > maxTracePoints) {
           return newPoints.slice(newPoints.length - maxTracePoints);
@@ -470,9 +501,31 @@ const FourierSeriesExplorer = () => {
     
     // Apply theme
     const traceColor = isDarkMode ? '#f55' : '#f00';
+    const bgColor = isDarkMode ? '#222' : '#fff';
     
-    // Clear canvas
-    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    // Clear only the right side of the canvas
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(epicycleWidth, 0, traceWidth, canvasHeight);
+    
+    // Get time from animation frame
+    const time = (animationFrame % 200) / 100 * Math.PI;
+    
+    // Calculate y-value at current time
+    const currentX = time;
+    const coefficients = calculateFourierCoefficients(targetFunction, numTerms);
+    const currentY = evaluateFourierSeries(coefficients, currentX, numTerms);
+    
+    // Map x position to screen coordinates
+    const mapXToScreen = (x) => {
+      // Map x from 0-2π to across the right side of the screen
+      return epicycleWidth + (x / (2 * Math.PI)) * traceWidth;
+    };
+    
+    // Map y position to screen coordinates
+    const mapYToScreen = (y) => {
+      // Map y to screen coordinates centered on yOffset
+      return yOffset - y * yScale;
+    };
     
     // Draw trace line
     if (tracePoints.length > 1) {
@@ -480,9 +533,16 @@ const FourierSeriesExplorer = () => {
       ctx.strokeStyle = traceColor;
       ctx.lineWidth = 2;
       
-      ctx.moveTo(tracePoints[0].x, tracePoints[0].y);
+      // Start at the first point
+      let firstX = mapXToScreen(tracePoints[0].x);
+      let firstY = mapYToScreen(tracePoints[0].y);
+      ctx.moveTo(firstX, firstY);
+      
+      // Draw each point
       for (let i = 1; i < tracePoints.length; i++) {
-        ctx.lineTo(tracePoints[i].x, tracePoints[i].y);
+        const x = mapXToScreen(tracePoints[i].x);
+        const y = mapYToScreen(tracePoints[i].y);
+        ctx.lineTo(x, y);
       }
       
       ctx.stroke();
