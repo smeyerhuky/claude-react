@@ -14,9 +14,11 @@ import PulseDetectionVisualizer from './components/vid/PulseExample'
 import FourierSeriesExplorer from './components/fourier/demos/FourierFirst'
 import FourierSeriesTeacher from './components/fourier/demos/Teacher'
 import { FourierVisualizerTabs } from './components/FourierVisualizations';
+import EnhancedFourierExplorer from './components/fourier/demos/FourierSecond'
 
 // Component keys enum
 const COMPONENTS = {
+  FOURIER_DRAWING: 'drawing',
   FOURIER_TABS: 'fouriter-tabs',
   FOURIER: 'fourier',
   FOURIER_TEACHER: 'fourier-teacher',
@@ -33,6 +35,7 @@ const COMPONENTS = {
 
 // Navigation items configuration
 const navigationItems = [
+  { id: COMPONENTS.FOURIER_DRAWING, lavel: 'Fourier Drawing v2', component: EnhancedFourierExplorer},
   { id: COMPONENTS.FOURIER_TABS, label: 'FourierMain', component: FourierVisualizerTabs },
   { id: COMPONENTS.FOURIER, label: 'Drawing With Fourier', component: FourierSeriesExplorer },
   { id: COMPONENTS.FOURIER_TEACHER, label: 'Teaching Fouriers', component: FourierSeriesTeacher },
@@ -59,7 +62,7 @@ const NavItem = ({ id, label, isActive, onClick }) => (
 
 function App() {
   // State to track which component is active
-  const [activeComponent, setActiveComponent] = useState(COMPONENTS.FOURIER)
+  const [activeComponent, setActiveComponent] = useState(COMPONENTS.FOURIER_DRAWING)
   const [isNavOpen, setIsNavOpen] = useState(false)
 
   // Get active component from configuration
