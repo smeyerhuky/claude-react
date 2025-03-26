@@ -14,7 +14,7 @@ import VSCodeAnimation from './components/VSCodeAnimation'
 import FourierSeriesExplorer from './components/fourier/demos/FourierFirst'
 import FourierSeriesTeacher from './components/fourier/demos/Teacher'
 // import { FourierVisualizerTabs } from './components/FourierVisualizations';
-import NetworkQueuesBlog from './network-queues-blog'
+import NetworkQueuesBlog from './network-queue-blog-rendered'
 // Component keys enum
 const COMPONENTS = {
   NET: 'net',
