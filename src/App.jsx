@@ -7,7 +7,7 @@ import AnimationExample from './components/AnimationExample'
 import PendulumSimulation from './components/Pendulum'
 import VSCodeAnimation from './components/VSCodeAnimation'
 // import ImageManipulator from './components/ImageManipulator/ImageManipulator'
-// import ArticlePage from './components/WebArticle'
+import ArticlePage from './components/WebArticle'
 // import GitHubActionsMobileManager from './components/thehub/github-actions-mobile-ui'
 // import MotionAmplification from './components/vid/VideoDemo'
 // import PulseDetectionVisualizer from './components/vid/PulseExample'
@@ -16,21 +16,21 @@ import FourierSeriesTeacher from './components/fourier/demos/Teacher'
 // import { FourierVisualizerTabs } from './components/FourierVisualizations';
 import NetworkQueuesBlog from './network-queue-blog-rendered'
 import DistributedQueuesBlog from './DistributedArticlePart1'
-import DistributedQueuesBlogPart2 from './DistributedArticlePart2'
+// import DistributedQueuesBlogPart2 from './DistributedArticlePart2'
 
 
 // Component keys enum
 const COMPONENTS = {
   NET: 'net',
   Q1: 'dist-1',
-  Q2: 'dist-2',
+  // Q2: 'dist-2',
   // FOURIER_TABS: 'fouriter-tabs',
   FOURIER: 'fourier',
   FOURIER_TEACHER: 'fourier-teacher',
   // PULSE: 'pulse-demo',
   // GH_DEMO: 'gh-demo',
   // IMAGE_DEMO: 'image-demo',
-  // ARTICLE_DEMO: 'article-demo',
+  ARTICLE_DEMO: 'article-demo',
   CODE_DEMO: 'code-demo',
   RECHARTS_DEMO: 'recharts-demo',
   ANIMATION_DEMO: 'animation-demo',
@@ -41,7 +41,7 @@ const COMPONENTS = {
 // Navigation items configuration
 const navigationItems = [
   { id: COMPONENTS.Q1, label: "Distributed Part 1", component: DistributedQueuesBlog },
-  { id: COMPONENTS.Q2, label: "Distributed Part 2", component: DistributedQueuesBlogPart2 },
+  // { id: COMPONENTS.Q2, label: "Distributed Part 2", component: DistributedQueuesBlogPart2 },
   { id: COMPONENTS.NET, label: "Networks", component: NetworkQueuesBlog },
   // { id: COMPONENTS.FOURIER_TABS, label: 'FourierMain', component: FourierVisualizerTabs },
   { id: COMPONENTS.FOURIER, label: 'Drawing With Fourier', component: FourierSeriesExplorer },
@@ -49,7 +49,7 @@ const navigationItems = [
   // { id: COMPONENTS.PULSE, label: 'Pulse Demo', component: PulseDetectionVisualizer },
   // { id: COMPONENTS.GH_DEMO, label: 'GH Demo', component: GitHubActionsMobileManager },
   // { id: COMPONENTS.IMAGE_DEMO, label: 'Image Manipulation Demo', component: ImageManipulator },
-  // { id: COMPONENTS.ARTICLE_DEMO, label: 'Tau - XIAO ESP32S3 Sense Article', component: ArticlePage },
+  { id: COMPONENTS.ARTICLE_DEMO, label: 'Tau - XIAO ESP32S3 Sense Article', component: ArticlePage },
   { id: COMPONENTS.CODE_DEMO, label: 'VSCode Demo', component: VSCodeAnimation },
   { id: COMPONENTS.RECHARTS_DEMO, label: 'Recharts Demo', component: RechartsExample },
   { id: COMPONENTS.ANIMATION_DEMO, label: 'Animation Demo', component: AnimationExample },
