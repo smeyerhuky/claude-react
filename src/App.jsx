@@ -14,9 +14,10 @@ import VSCodeAnimation from './components/VSCodeAnimation'
 import FourierSeriesExplorer from './components/fourier/demos/FourierFirst'
 import FourierSeriesTeacher from './components/fourier/demos/Teacher'
 // import { FourierVisualizerTabs } from './components/FourierVisualizations';
-
+import NetworkQueuesBlog from './network-queues-blog'
 // Component keys enum
 const COMPONENTS = {
+  NET: 'net',
   // FOURIER_TABS: 'fouriter-tabs',
   FOURIER: 'fourier',
   FOURIER_TEACHER: 'fourier-teacher',
@@ -33,6 +34,7 @@ const COMPONENTS = {
 
 // Navigation items configuration
 const navigationItems = [
+  { id: COMPONENTS.NET, label: "Networks", component: NetworkQueuesBlog },
   // { id: COMPONENTS.FOURIER_TABS, label: 'FourierMain', component: FourierVisualizerTabs },
   { id: COMPONENTS.FOURIER, label: 'Drawing With Fourier', component: FourierSeriesExplorer },
   { id: COMPONENTS.FOURIER_TEACHER, label: 'Teaching Fouriers', component: FourierSeriesTeacher },
