@@ -23,7 +23,7 @@ import DistributedQueuesBlogPart2 from './DistributedArticlePart2'
 const COMPONENTS = {
   NET: 'net',
   Q1: 'dist-1',
-  Q2: 'dust-2,
+  Q2: 'dist-2',
   // FOURIER_TABS: 'fouriter-tabs',
   FOURIER: 'fourier',
   FOURIER_TEACHER: 'fourier-teacher',
