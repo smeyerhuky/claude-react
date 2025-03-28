@@ -17,7 +17,7 @@ import FourierSeriesTeacher from './components/fourier/demos/Teacher'
 import NetworkQueuesBlog from './network-queue-blog-rendered'
 import DistributedQueuesBlog from './DistributedArticlePart1'
 // import DistributedQueuesBlogPart2 from './DistributedArticlePart2'
-
+import ProjectTracker from './components/project-tracker.jsx
 
 // Component keys enum
 const COMPONENTS = {
@@ -35,11 +35,13 @@ const COMPONENTS = {
   RECHARTS_DEMO: 'recharts-demo',
   ANIMATION_DEMO: 'animation-demo',
   PENDULUM_DEMO: 'pendulum-demo',
-  // AMPLIFY_DEMO: 'motion-demo'
+  // AMPLIFY_DEMO: 'motion-demo',
+  RM: 'rm'
 }
 
 // Navigation items configuration
 const navigationItems = [
+  { id: COMPONENTS.RM, label: "PmRm", component: ProjectTracker },
   { id: COMPONENTS.Q1, label: "Distributed Part 1", component: DistributedQueuesBlog },
   // { id: COMPONENTS.Q2, label: "Distributed Part 2", component: DistributedQueuesBlogPart2 },
   { id: COMPONENTS.NET, label: "Networks", component: NetworkQueuesBlog },
@@ -69,7 +71,7 @@ const NavItem = ({ id, label, isActive, onClick }) => (
 
 function App() {
   // State to track which component is active
-  const [activeComponent, setActiveComponent] = useState(COMPONENTS.FOURIER)
+  const [activeComponent, setActiveComponent] = useState(COMPONENTS.RM)
   const [isNavOpen, setIsNavOpen] = useState(false)
 
   // Get active component from configuration
