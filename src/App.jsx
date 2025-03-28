@@ -17,7 +17,7 @@ import FourierSeriesTeacher from './components/fourier/demos/Teacher'
 import NetworkQueuesBlog from './network-queue-blog-rendered'
 import DistributedQueuesBlog from './DistributedArticlePart1'
 // import DistributedQueuesBlogPart2 from './DistributedArticlePart2'
-import ProjectTracker from './components/project-tracker.jsx
+import ProjectTracker from './components/project-tracker.jsx'
 
 // Component keys enum
 const COMPONENTS = {
