@@ -5,6 +5,7 @@ import './App.css'
 import RechartsExample from './components/RechartsExample'
 import AnimationExample from './components/AnimationExample'
 import PendulumSimulation from './components/Pendulum'
+import BlogPost from './components/newnewCV'
 import VSCodeAnimation from './components/VSCodeAnimation'
 // import ImageManipulator from './components/ImageManipulator/ImageManipulator'
 import ArticlePage from './components/WebArticle'
@@ -21,6 +22,7 @@ import ProjectTracker from './components/project-tracker.jsx'
 
 // Component keys enum
 const COMPONENTS = {
+  CV: 'CV',
   NET: 'net',
   Q1: 'dist-1',
   // Q2: 'dist-2',
@@ -41,6 +43,7 @@ const COMPONENTS = {
 
 // Navigation items configuration
 const navigationItems = [
+  { id: COMPONENTS.CV, label: 'CV Blog', component: BlogPost },
   { id: COMPONENTS.RM, label: "PmRm", component: ProjectTracker },
   { id: COMPONENTS.Q1, label: "Distributed Part 1", component: DistributedQueuesBlog },
   // { id: COMPONENTS.Q2, label: "Distributed Part 2", component: DistributedQueuesBlogPart2 },
