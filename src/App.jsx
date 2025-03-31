@@ -6,7 +6,7 @@ import TimeSeriesEPM from './components/TimeSeriesEPM'
 import NetworkQueuesBlog from './network-queue-blog-rendered'
 import DistributedQueuesBlog from './DistributedArticlePart1'
 import ProjectTracker from './components/project-tracker'
-import ProjectManagementMatrix from './components/pm/ProjectManagementMatrix’
+import ProjectManagementMatrix from './components/pm/ProjectManagementMatrix'
 import ProjectShift from './components/pm/ProjectShift'
 import ProjectShiftPro from './components/pm/ProjectShiftPro'
 
