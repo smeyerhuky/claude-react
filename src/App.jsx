@@ -12,10 +12,10 @@ import ProjectShiftPro from './components/pm/ProjectShiftPro'
 
 // Component keys enum
 const COMPONENTS = {
-  CV: 'cv',
-  NET: 'net',
-  D1: 'dist',
-  RM: 'rm',
+  cv: 'cv',
+  net: 'net',
+  dist: 'dist',
+  rn: 'rm',
   shift: 'shift',
   shiftpro: 'shiftpro',
   matrices: 'matrices',
@@ -29,7 +29,7 @@ const navigationItems = [
   { id: COMPONENTS.cv, label: "CV Concept", component: TimeSeriesEPM },
   { id: COMPONENTS.rm, label: "PM - RM", component: ProjectTracker },
   { id: COMPONENTS.dist, label: "Distributed Part 1", component: DistributedQueuesBlog },
-  { id: COMPONENTS.NET, label: "Networks", component: NetworkQueuesBlog },
+  { id: COMPONENTS.net, label: "Networks", component: NetworkQueuesBlog },
 ]
 
 // Navigation component
