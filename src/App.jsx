@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 
 // Component imports
-import TimeSeriesEPM feom './components/TimeSeriesEPM'
+import TimeSeriesEPM from './components/TimeSeriesEPM'
 import NetworkQueuesBlog from './network-queue-blog-rendered'
 import DistributedQueuesBlog from './DistributedArticlePart1'
 import ProjectTracker from './components/project-tracker'
