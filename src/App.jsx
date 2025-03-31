@@ -2,67 +2,25 @@ import { useState } from 'react'
 import './App.css'
 
 // Component imports
-import LLMAgentSystemPlanner from './components/BackyardScience'
-import RechartsExample from './components/RechartsExample'
-import AnimationExample from './components/AnimationExample'
-import PendulumSimulation from './components/Pendulum'
-import TimeSeriesEPM from './components/ReleaseArticle'
-import VSCodeAnimation from './components/VSCodeAnimation'
-// import ImageManipulator from './components/ImageManipulator/ImageManipulator'
-import ArticlePage from './components/WebArticle'
-// import GitHubActionsMobileManager from './components/thehub/github-actions-mobile-ui'
-// import MotionAmplification from './components/vid/VideoDemo'
-// import PulseDetectionVisualizer from './components/vid/PulseExample'
-import FourierSeriesExplorer from './components/fourier/demos/FourierFirst'
-import FourierSeriesTeacher from './components/fourier/demos/Teacher'
-// import { FourierVisualizerTabs } from './components/FourierVisualizations';
+import TimeSeriesEPM feom './components/TimeSeriesEPM'
 import NetworkQueuesBlog from './network-queue-blog-rendered'
 import DistributedQueuesBlog from './DistributedArticlePart1'
-// import DistributedQueuesBlogPart2 from './DistributedArticlePart2'
 import ProjectTracker from './components/project-tracker.jsx'
 
 // Component keys enum
 const COMPONENTS = {
-  BYSCI: 'bysci',
-  CV: 'CV',
+  CV: 'cv',
   NET: 'net',
-  Q1: 'dist-1',
-  // Q2: 'dist-2',
-  // FOURIER_TABS: 'fouriter-tabs',
-  FOURIER: 'fourier',
-  FOURIER_TEACHER: 'fourier-teacher',
-  // PULSE: 'pulse-demo',
-  // GH_DEMO: 'gh-demo',
-  // IMAGE_DEMO: 'image-demo',
-  ARTICLE_DEMO: 'article-demo',
-  CODE_DEMO: 'code-demo',
-  RECHARTS_DEMO: 'recharts-demo',
-  ANIMATION_DEMO: 'animation-demo',
-  PENDULUM_DEMO: 'pendulum-demo',
-  // AMPLIFY_DEMO: 'motion-demo',
-  RM: 'rm'
+  D1: 'dist',
+  RM: 'rm',
 }
 
 // Navigation items configuration
 const navigationItems = [
-  { id: COMPONENTS.CV, label: 'CV Blog', component: TimeSeriesEPM },
-  { id: COMPONENTS.BYSCI, label: 'Build Guide (BackyardScience)', component: LLMAgentSystemPlanner },
-  { id: COMPONENTS.RM, label: "PmRm", component: ProjectTracker },
-  { id: COMPONENTS.Q1, label: "Distributed Part 1", component: DistributedQueuesBlog },
-  // { id: COMPONENTS.Q2, label: "Distributed Part 2", component: DistributedQueuesBlogPart2 },
+  { id: COMPONENTS.cv, label: "CV Concept", component: TimeSeriesEPM },
+  { id: COMPONENTS.rm, label: "PM - RM", component: ProjectTracker },
+  { id: COMPONENTS.dist, label: "Distributed Part 1", component: DistributedQueuesBlog },
   { id: COMPONENTS.NET, label: "Networks", component: NetworkQueuesBlog },
-  // { id: COMPONENTS.FOURIER_TABS, label: 'FourierMain', component: FourierVisualizerTabs },
-  { id: COMPONENTS.FOURIER, label: 'Drawing With Fourier', component: FourierSeriesExplorer },
-  { id: COMPONENTS.FOURIER_TEACHER, label: 'Teaching Fouriers', component: FourierSeriesTeacher },
-  // { id: COMPONENTS.PULSE, label: 'Pulse Demo', component: PulseDetectionVisualizer },
-  // { id: COMPONENTS.GH_DEMO, label: 'GH Demo', component: GitHubActionsMobileManager },
-  // { id: COMPONENTS.IMAGE_DEMO, label: 'Image Manipulation Demo', component: ImageManipulator },
-  { id: COMPONENTS.ARTICLE_DEMO, label: 'Tau - XIAO ESP32S3 Sense Article', component: ArticlePage },
-  { id: COMPONENTS.CODE_DEMO, label: 'VSCode Demo', component: VSCodeAnimation },
-  { id: COMPONENTS.RECHARTS_DEMO, label: 'Recharts Demo', component: RechartsExample },
-  { id: COMPONENTS.ANIMATION_DEMO, label: 'Animation Demo', component: AnimationExample },
-  { id: COMPONENTS.PENDULUM_DEMO, label: 'Pendulum Demo', component: PendulumSimulation },
-  // { id: COMPONENTS.AMPLIFY_DEMO, label: 'Motion Amp Demo', component: MotionAmplification }
 ]
 
 // Navigation component
