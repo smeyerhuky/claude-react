@@ -5,7 +5,10 @@ import './App.css'
 import TimeSeriesEPM feom './components/TimeSeriesEPM'
 import NetworkQueuesBlog from './network-queue-blog-rendered'
 import DistributedQueuesBlog from './DistributedArticlePart1'
-import ProjectTracker from './components/project-tracker.jsx'
+import ProjectTracker from './components/project-tracker'
+import ProjectManagementMatrix from './components/pm/ProjectManagementMatrix’
+import ProjectShift from './components/pm/ProjectShift'
+import ProjectShiftPro from './components/pm/ProjectShiftPro'
 
 // Component keys enum
 const COMPONENTS = {
@@ -13,10 +16,16 @@ const COMPONENTS = {
   NET: 'net',
   D1: 'dist',
   RM: 'rm',
+  shift: 'shift',
+  shiftpro: 'shiftpro',
+  matrices: 'matrices',
 }
 
 // Navigation items configuration
-const navigationItems = [
+const navigationItems = [  
+  { id: COMPONENTS.shiftpro, label: "ProjectShift Pro", component: ProjectShiftPro },
+  { id: COMPONENTS.shift, label: "Shift (simplified)", component: ProjectShift },
+  { id: COMPONENTS.matrices, label: '"[The Matrix]"', component: ProjectManagementMatrix },
   { id: COMPONENTS.cv, label: "CV Concept", component: TimeSeriesEPM },
   { id: COMPONENTS.rm, label: "PM - RM", component: ProjectTracker },
   { id: COMPONENTS.dist, label: "Distributed Part 1", component: DistributedQueuesBlog },
@@ -35,7 +44,7 @@ const NavItem = ({ id, label, isActive, onClick }) => (
 
 function App() {
   // State to track which component is active
-  const [activeComponent, setActiveComponent] = useState(COMPONENTS.BYSCI)
+  const [activeComponent, setActiveComponent] = useState(COMPONENTS.matrices)
   const [isNavOpen, setIsNavOpen] = useState(false)
 
   // Get active component from configuration
