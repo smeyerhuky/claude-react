@@ -9,7 +9,6 @@ import ProjectTracker from './components/project-tracker'
 import ProjectManagementMatrix from './components/pm/ProjectManagementMatrix'
 import ProjectShift from './components/pm/ProjectShift'
 import ProjectShiftPro from './components/pm/ProjectShiftPro'
-import TimeSeriesApiService from './components/TimeSeriesApiService'
 
 // Component keys enum
 const COMPONENTS = {
@@ -20,12 +19,10 @@ const COMPONENTS = {
   shift: 'shift',
   shiftpro: 'shiftpro',
   matrices: 'matrices',
-  tsapi: 'tsapi',
 }
 
 // Navigation items configuration
 const navigationItems = [  
-  { id: COMPONENTS.tsapi, label: "Timeseries API Service", component: TimeSeriesApiService },
   { id: COMPONENTS.shiftpro, label: "ProjectShift Pro", component: ProjectShiftPro },
   { id: COMPONENTS.shift, label: "Shift (simplified)", component: ProjectShift },
   { id: COMPONENTS.matrices, label: '"[The Matrix]"', component: ProjectManagementMatrix },
