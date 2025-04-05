@@ -1,35 +1,13 @@
 import { useState } from 'react'
 import './App.css'
 
-// Component imports
-import TimeSeriesEPM from './components/TimeSeriesEPM'
-import NetworkQueuesBlog from './network-queue-blog-rendered'
-import DistributedQueuesBlog from './DistributedArticlePart1'
-import ProjectTracker from './components/project-tracker'
-import ProjectManagementMatrix from './components/pm/ProjectManagementMatrix'
-import ProjectShift from './components/pm/ProjectShift'
-import ProjectShiftPro from './components/pm/ProjectShiftPro'
-
-// Component keys enum
-const COMPONENTS = {
-  cv: 'cv',
-  net: 'net',
-  dist: 'dist',
-  rn: 'rm',
-  shift: 'shift',
-  shiftpro: 'shiftpro',
-  matrices: 'matrices',
-}
+import MonteCarloTutorial from './components/monte/MonteCarloTutorial’
+import MonteCarloProjectSimulator from './components/monte/MonteCarloProjectSimulator’
 
 // Navigation items configuration
 const navigationItems = [  
-  { id: COMPONENTS.shiftpro, label: "ProjectShift Pro", component: ProjectShiftPro },
-  { id: COMPONENTS.shift, label: "Shift (simplified)", component: ProjectShift },
-  { id: COMPONENTS.matrices, label: '"[The Matrix]"', component: ProjectManagementMatrix },
-  { id: COMPONENTS.cv, label: "CV Concept", component: TimeSeriesEPM },
-  { id: COMPONENTS.rm, label: "PM - RM", component: ProjectTracker },
-  { id: COMPONENTS.dist, label: "Distributed Part 1", component: DistributedQueuesBlog },
-  { id: COMPONENTS.net, label: "Networks", component: NetworkQueuesBlog },
+  { id:'sim', label: 'Simulator', component: MonteCarloProjectSimulator },
+  { id: 'tut', label: 'Tutorial', component: MonteCarloTutorial }, 
 ]
 
 // Navigation component
