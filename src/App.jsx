@@ -2,12 +2,14 @@ import { useState } from 'react'
 import './App.css'
 
 import MonteCarloTutorial from './components/monte/MonteCarloTutorial'
-import MonteCarloProjectSimulator from './components/monte/MonteCarloProjectSimulator'
+import MonteCarloProjectSimulator from './components/monte/MonteCarloProjectSimulator
+import MonteCarloAdvancedTutorial from './components/monte/MonteCarloAdvancedTutorial'
 
 // Navigation items configuration
 const navigationItems = [  
   { id:'sim', label: 'Simulator', component: MonteCarloProjectSimulator },
   { id: 'tut', label: 'Tutorial', component: MonteCarloTutorial }, 
+  { id: 'adv_tut', label: 'Advanced Monte Carlo Tutorial', component: MonteCarloAdvancedTutorial },
 ]
 
 // Navigation component
@@ -22,7 +24,7 @@ const NavItem = ({ id, label, isActive, onClick }) => (
 
 function App() {
   // State to track which component is active
-  const [activeComponent, setActiveComponent] = useState('tut')
+  const [activeComponent, setActiveComponent] = useState('adv_tut')
   const [isNavOpen, setIsNavOpen] = useState(false)
 
   // Get active component from configuration
