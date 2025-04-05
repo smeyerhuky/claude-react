@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 
-import MonteCarloTutorial from './components/monte/MonteCarloTutorial’
+import MonteCarloTutorial from './components/monte/MonteCarloTutorial'
 import MonteCarloProjectSimulator from './components/monte/MonteCarloProjectSimulator'
 
 // Navigation items configuration
