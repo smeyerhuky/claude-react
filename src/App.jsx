@@ -22,7 +22,7 @@ const NavItem = ({ id, label, isActive, onClick }) => (
 
 function App() {
   // State to track which component is active
-  const [activeComponent, setActiveComponent] = useState(COMPONENTS.matrices)
+  const [activeComponent, setActiveComponent] = useState('tut')
   const [isNavOpen, setIsNavOpen] = useState(false)
 
   // Get active component from configuration
