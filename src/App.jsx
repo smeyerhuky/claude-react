@@ -4,12 +4,13 @@ import './App.css'
 import MonteCarloTutorial from './components/monte/MonteCarloTutorial'
 import MonteCarloProjectSimulator from './components/monte/MonteCarloProjectSimulator'
 import MonteCarloAdvancedTutorial from './components/monte/MonteCarloAdvancedTutorial'
-
+import InteractivePMTensor from './components/monte/InteractivePMTensor'
 // Navigation items configuration
 const navigationItems = [  
   { id:'sim', label: 'Simulator', component: MonteCarloProjectSimulator },
   { id: 'tut', label: 'Tutorial', component: MonteCarloTutorial }, 
   { id: 'adv_tut', label: 'Advanced Monte Carlo Tutorial', component: MonteCarloAdvancedTutorial },
+  { id: 'tensors', label: 'An example of a tensor matrix', component: InteractivePMTensor },
 ]
 
 // Navigation component
