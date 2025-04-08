@@ -14,7 +14,7 @@ const navigationItems = [
   { id: 'tut', label: 'Tutorial', component: MonteCarloTutorial }, 
   { id: 'adv_tut', label: 'Advanced Monte Carlo Tutorial', component: MonteCarloAdvancedTutorial },
   { id: 'tensors', label: 'An example of a tensor matrix', component: InteractivePMTensor },
-  { I'd: 'cal', label: 'Calendar Demo', component: Calendar },
+  { id: 'cal', label: 'Calendar Demo', component: Calendar },
 ]
 
 // Navigation component
