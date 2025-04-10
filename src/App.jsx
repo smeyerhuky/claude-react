@@ -6,7 +6,7 @@ import MonteCarloProjectSimulator from './components/monte/MonteCarloProjectSimu
 import MonteCarloAdvancedTutorial from './components/monte/MonteCarloAdvancedTutorial'
 // import InteractivePMTensor from './components/monte/InteractivePMTensor'
 import Calendar from './components/Calendar'
-import AudioClassificationPipeline from './componentss/AudioClassificationPipeline'
+import AudioClassificationPipeline from './components/AudioClassificationPipeline'
 
 
 // Navigation items configuration
