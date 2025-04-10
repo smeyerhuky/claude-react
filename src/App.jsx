@@ -16,7 +16,7 @@ const navigationItems = [
   { id: 'adv_tut', label: 'Advanced Monte Carlo Tutorial', component: MonteCarloAdvancedTutorial },
 //  { id: 'tensors', label: 'An example of a tensor matrix', component: InteractivePMTensor },
   { id: 'cal', label: 'Calendar Demo', component: Calendar },
-  { id: 'classy', label, 'Audio Tools', component: AudioClassificationPipeline },
+  { id: 'classy', label: 'Audio Tools', component: AudioClassificationPipeline },
 ]
 
 // Navigation component
