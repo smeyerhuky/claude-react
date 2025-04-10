@@ -6,6 +6,7 @@ import MonteCarloProjectSimulator from './components/monte/MonteCarloProjectSimu
 import MonteCarloAdvancedTutorial from './components/monte/MonteCarloAdvancedTutorial'
 // import InteractivePMTensor from './components/monte/InteractivePMTensor'
 import Calendar from './components/Calendar'
+import AudioClassificationPipeline from './componentss/AudioClassificationPipeline'
 
 
 // Navigation items configuration
@@ -15,6 +16,7 @@ const navigationItems = [
   { id: 'adv_tut', label: 'Advanced Monte Carlo Tutorial', component: MonteCarloAdvancedTutorial },
 //  { id: 'tensors', label: 'An example of a tensor matrix', component: InteractivePMTensor },
   { id: 'cal', label: 'Calendar Demo', component: Calendar },
+  { id: 'classy', label, 'Audio Tools', component: AudioClassificationPipeline },
 ]
 
 // Navigation component
