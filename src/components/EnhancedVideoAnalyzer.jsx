@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import * as math from 'mathjs';
-import * as tf from 'tensorflow';
-import { Settings, ChevronDown, ChevronUp, Play, Pause, Camera, Upload, Link, Grid3X3, Eye } from 'lucide-react';
+import { Settings, ChevronDown, ChevronUp, Play, Pause, Camera, Upload, Link, Grid3X3, Eye, ChevronRight } from 'lucide-react';
 
 const EnhancedVideoAnalyzer = () => {
   // Refs for video and canvas elements
