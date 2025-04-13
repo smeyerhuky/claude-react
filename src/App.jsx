@@ -4,13 +4,14 @@ import './App.css'
 import MonteCarloProjectSimulator from './components/monte/MonteCarloProjectSimulator'
 import MonteCarloAdvancedTutorial from'./components/monte/MonteCarloAdvancedTutorial'
 import VideoToMusicApp from './components/VideoToMusicApp'
-
+import EnhancedVideoAnalyzer from './components/EnhancedVideoAnalyzer'
 
 // Navigation items configuration
 const navigationItems = [  
   { id:'sim', label: 'Simulator', component: MonteCarloProjectSimulator },
   { id: 'adv_tut', label: 'Advanced Monte Carlo Tutorial', component: MonteCarloAdvancedTutorial },
   { id: 'vids', label: "Video <> Music", component: VideoToMusicApp },
+  { id: 'vids_2', label: "Video Transformer", component: EnhancedVideoAnalyzer },
 ]
 
 // Navigation component
