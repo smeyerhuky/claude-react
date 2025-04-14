@@ -5,6 +5,7 @@ import MonteCarloProjectSimulator from './components/monte/MonteCarloProjectSimu
 import MonteCarloAdvancedTutorial from'./components/monte/MonteCarloAdvancedTutorial'
 import VideoToMusicApp from './components/VideoToMusicApp'
 import EnhancedVideoAnalyzer from './components/EnhancedVideoAnalyzer'
+import MatrixExplorer from './components/MatrixExplorer'
 
 // Navigation items configuration
 const navigationItems = [  
@@ -12,6 +13,7 @@ const navigationItems = [
   { id: 'adv_tut', label: 'Advanced Monte Carlo Tutorial', component: MonteCarloAdvancedTutorial },
   { id: 'vids', label: "Video <> Music", component: VideoToMusicApp },
   { id: 'vids_2', label: "Video Transformer", component: EnhancedVideoAnalyzer },
+  { id: 'matrices', label: "Matrix Transforms", component: MatrixExplorer },
 ]
 
 // Navigation component
