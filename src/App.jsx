@@ -7,6 +7,7 @@ import VideoToMusicApp from './components/VideoToMusicApp'
 import EnhancedVideoAnalyzer from './components/EnhancedVideoAnalyzer'
 import MatrixExplorer from './components/MatrixExplorer'
 import EnhancedMatrixExplorerV2 from './components/EnhancedMatrixExplorerV2'
+import TaubyteMeshPresentation from './components/TaubyteMeshPresentation'
 
 // Navigation items configuration
 const navigationItems = [  
@@ -16,6 +17,7 @@ const navigationItems = [
   { id: 'vids_2', label: "Video Transformer", component: EnhancedVideoAnalyzer },
   { id: 'matrices', label: "Matrix Transforms", component: MatrixExplorer },
   { id: 'mv2', label: "Matrix Transforms V2", component: EnhancedMatrixExplorerV2 },
+  { id: 'tau-mesh', label: "Tau Mesh Examples", component: TaubyteMeshPresentation },
 ]
 
 // Navigation component
