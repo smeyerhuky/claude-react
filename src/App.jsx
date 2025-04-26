@@ -8,6 +8,7 @@ import EnhancedVideoAnalyzer from './components/EnhancedVideoAnalyzer'
 import MatrixExplorer from './components/MatrixExplorer'
 import EnhancedMatrixExplorerV2 from './components/EnhancedMatrixExplorerV2'
 import TaubyteMeshPresentation from './components/TaubyteMeshPresentation'
+import CoSAEDemo from './components/CoSAEDemo'
 
 // Navigation items configuration
 const navigationItems = [  
@@ -18,6 +19,7 @@ const navigationItems = [
   { id: 'matrices', label: "Matrix Transforms", component: MatrixExplorer },
   { id: 'mv2', label: "Matrix Transforms V2", component: EnhancedMatrixExplorerV2 },
   { id: 'tau-mesh', label: "Tau Mesh Examples", component: TaubyteMeshPresentation },
+  { id: 'cosae', label: "CoSAE Demo", component: CoSAEDemo },
 ]
 
 // Navigation component
