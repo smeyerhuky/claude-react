@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Page Redirect</title>
+  <script type="text/javascript">
+    // Single Page Apps for GitHub Pages
+    // MIT License
+    // This script takes the current URL and redirects to the main app
+    // allowing client-side routing to handle the path
+    (function() {
+      // Get the current path and hash from the URL
+      var pathSegments = window.location.pathname.split('/');
+      var repoName = 'claude-react';
+      var route = '/';
+
+      // Extract the route (everything after the repo name)
+      var repoPathIndex = pathSegments.indexOf(repoName);
+      if (repoPathIndex !== -1 && repoPathIndex < pathSegments.length - 1) {
+        route = '/' + pathSegments.slice(repoPathIndex + 1).join('/');
+      }
+
+      // Redirect to the index.html with the path in the URL
+      window.location.href = '/' + repoName + '/#' + route;
+    })();
+  </script>
+</head>
+<body>
+  Redirecting...
+</body>
+</html>
