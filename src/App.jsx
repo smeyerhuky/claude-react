@@ -110,7 +110,7 @@ function App() {
       {/* Only show navigation on home page */}
       {isHomePage && (
         <header className="py-4 px-6 bg-white border-b">
-          <h1 className="text-2xl font-bold text-gray-800">Claude React Components</h1>
+          <h1 className="text-2xl font-bold text-gray-800">Shuky's Demos & Components</h1>
           <p className="text-gray-600">Select a component to view</p>
         </header>
       )}
