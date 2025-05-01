@@ -1115,8 +1115,51 @@ const ImageSonificationDJMixer = () => {
     return markers;
   };
   
-  // Render visualization of track events
-  const renderTrackEventVisualization = (track) => {
+  // State for timeline drawer height
+  const [timelineHeight, setTimelineHeight] = useState(200);
+  const [isResizingTimeline, setIsResizingTimeline] = useState(false);
+  const resizeStartYRef = useRef(0);
+  const initialHeightRef = useRef(0);
+  
+  // Handle timeline drawer resize
+  const handleTimelineResizeStart = (e) => {
+    setIsResizingTimeline(true);
+    resizeStartYRef.current = e.clientY;
+    initialHeightRef.current = timelineHeight;
+    
+    // Add event listeners for mouse move and up
+    document.addEventListener('mousemove', handleTimelineResizeMove);
+    document.addEventListener('mouseup', handleTimelineResizeEnd);
+  };
+  
+  const handleTimelineResizeMove = (e) => {
+    if (!isResizingTimeline) return;
+    
+    // Calculate new height (reverse direction since we're dragging from bottom)
+    const deltaY = resizeStartYRef.current - e.clientY;
+    const newHeight = Math.max(100, Math.min(600, initialHeightRef.current + deltaY));
+    
+    setTimelineHeight(newHeight);
+  };
+  
+  const handleTimelineResizeEnd = () => {
+    setIsResizingTimeline(false);
+    
+    // Remove event listeners
+    document.removeEventListener('mousemove', handleTimelineResizeMove);
+    document.removeEventListener('mouseup', handleTimelineResizeEnd);
+  };
+  
+  // Clean up event listeners on unmount
+  useEffect(() => {
+    return () => {
+      document.removeEventListener('mousemove', handleTimelineResizeMove);
+      document.removeEventListener('mouseup', handleTimelineResizeEnd);
+    };
+  }, []);
+  
+  // Render matrix/heatmap visualization of track events
+  const renderTrackMatrixVisualization = (track) => {
     // Get source image data
     const sourceImage = sourceImages.find(img => img.id === track.imageId);
     if (!sourceImage) return null;
@@ -1126,69 +1169,167 @@ const ImageSonificationDJMixer = () => {
     const endTime = track.parameters.endTime;
     const trackDuration = endTime - startTime;
     
-    // For visualization purposes, create simplified event markers
-    // This simulates what would happen during sonification
-    const events = [];
-    const { data: imageData, parameters } = sourceImage;
-    const resolution = track.parameters.resolution;
+    // Matrix dimensions
+    const numCols = 20; // Horizontal cells (time)
+    const numRows = 4;  // Vertical cells (values)
     
-    // Use a maximum of 100 events for visualization
-    const sampleStep = Math.max(1, Math.floor(imageData.length / 100));
+    // Create a matrix of values
+    const matrix = Array(numRows).fill().map(() => Array(numCols).fill(0));
     
-    for (let i = 0; i < imageData.length; i += sampleStep) {
-      const pixel = imageData[i];
-      if (!pixel) continue;
-      
-      // Calculate relative position within track
-      const relativePosition = i / imageData.length;
-      
-      // Map brightness to height
-      const height = 0.2 + pixel.brightness * 0.8;
-      
-      // Determine color based on track method
-      let color;
-      switch (track.method) {
-        case 'colorToPitch':
-          // Map hue to color
-          color = `hsl(${Math.round(pixel.hue * 360)}, 70%, 60%)`;
-          break;
-        case 'brightnessToRhythm':
+    // Get image data and parameters
+    const { data: imageData } = sourceImage;
+    const { method, parameters } = track;
+    const { resolution } = parameters;
+    
+    // Process data based on sonification method
+    switch (method) {
+      case 'colorToPitch': {
+        // Map pixels to matrix cells
+        imageData.forEach((pixel, index) => {
+          // Skip based on resolution for efficiency
+          if (index % Math.max(1, Math.floor(imageData.length / (numCols * 5))) !== 0) return;
+          
+          // Calculate column index (time)
+          const colIndex = Math.min(numCols - 1, Math.floor((index / imageData.length) * numCols));
+          
+          // Map hue to row (frequency)
+          const rowIndex = Math.min(numRows - 1, Math.floor(pixel.hue * numRows));
+          
           // Use brightness for intensity
-          color = `rgba(255, 255, 255, ${pixel.brightness})`;
-          break;
-        case 'spatialToArpeggio':
-          // Use position for color
-          color = `hsl(${Math.round(pixel.y * 360)}, 70%, 60%)`;
-          break;
-        case 'colorChords':
-          // Use a gradient based on hue
-          color = `hsl(${Math.round(pixel.hue * 360)}, 70%, 60%)`;
-          break;
-        default:
-          color = 'rgba(255, 255, 255, 0.5)';
+          const intensity = 0.2 + pixel.brightness * 0.8;
+          
+          // Update matrix value (use max for overlapping values)
+          matrix[rowIndex][colIndex] = Math.max(matrix[rowIndex][colIndex], intensity);
+        });
+        break;
       }
       
-      events.push({
-        position: relativePosition,
-        height,
-        color
-      });
+      case 'brightnessToRhythm': {
+        // Map brightness thresholds to matrix
+        imageData.forEach((pixel, index) => {
+          // Skip for efficiency
+          if (index % Math.max(1, Math.floor(imageData.length / (numCols * 5))) !== 0) return;
+          
+          // Calculate column (time)
+          const colIndex = Math.min(numCols - 1, Math.floor((index / imageData.length) * numCols));
+          
+          // Map brightness to row (where brighter = higher row)
+          const rowIndex = Math.min(numRows - 1, Math.floor(pixel.brightness * numRows));
+          
+          // Add to matrix
+          matrix[rowIndex][colIndex] = Math.max(matrix[rowIndex][colIndex], 0.7 + pixel.brightness * 0.3);
+        });
+        break;
+      }
+      
+      case 'spatialToArpeggio': {
+        // For arpeggio, use image y position
+        imageData.forEach((pixel, index) => {
+          // Skip for efficiency
+          if (index % Math.max(1, Math.floor(imageData.length / (numCols * numRows * 2))) !== 0) return;
+          
+          // Calculate column (time) based on x position
+          const colIndex = Math.min(numCols - 1, Math.floor(pixel.x * numCols));
+          
+          // Map y position to row (where higher in image = higher row)
+          const rowIndex = Math.min(numRows - 1, Math.floor((1 - pixel.y) * numRows));
+          
+          // Add to matrix with brightness as intensity
+          matrix[rowIndex][colIndex] = Math.max(matrix[rowIndex][colIndex], 0.3 + pixel.brightness * 0.7);
+        });
+        break;
+      }
+      
+      case 'colorChords': {
+        // Map hue ranges to chords
+        const hueRanges = [0, 0.2, 0.4, 0.6, 0.8];
+        
+        imageData.forEach((pixel, index) => {
+          // Skip for efficiency
+          if (index % Math.max(1, Math.floor(imageData.length / (numCols * numRows * 2))) !== 0) return;
+          
+          // Calculate column (time)
+          const colIndex = Math.min(numCols - 1, Math.floor((index / imageData.length) * numCols));
+          
+          // Determine chord type based on hue
+          const hueIndex = hueRanges.findIndex(h => pixel.hue <= h + 0.2);
+          if (hueIndex >= 0) {
+            // Generate chord pattern by filling multiple rows
+            const baseRow = Math.floor(hueIndex % numRows);
+            
+            // Fill 3 adjacent rows for chord (wrapping if needed)
+            [0, 1, 2].forEach(offset => {
+              const rowIndex = (baseRow + offset) % numRows;
+              matrix[rowIndex][colIndex] = Math.max(matrix[rowIndex][colIndex], 0.4 + pixel.brightness * 0.6);
+            });
+          }
+        });
+        break;
+      }
+      
+      default:
+        // Default simple visualization
+        imageData.forEach((pixel, index) => {
+          if (index % Math.max(1, Math.floor(imageData.length / (numCols * numRows))) !== 0) return;
+          
+          const colIndex = Math.min(numCols - 1, Math.floor((index / imageData.length) * numCols));
+          const rowIndex = Math.min(numRows - 1, Math.floor(pixel.brightness * numRows));
+          
+          matrix[rowIndex][colIndex] = Math.max(matrix[rowIndex][colIndex], 0.5);
+        });
     }
     
-    // Render events as bars
-    return events.map((event, index) => (
-      <div
-        key={index}
-        className="h-full w-1"
-        style={{
-          left: `${event.position * 100}%`,
-          height: `${event.height * 100}%`,
-          backgroundColor: event.color,
-          position: 'absolute',
-          bottom: 0
-        }}
-      />
-    ));
+    // Render matrix as a grid of cells
+    return (
+      <div className="grid h-full w-full" style={{ gridTemplateRows: `repeat(${numRows}, 1fr)`, gridTemplateColumns: `repeat(${numCols}, 1fr)` }}>
+        {matrix.map((row, rowIndex) => 
+          row.map((intensity, colIndex) => {
+            if (intensity <= 0) return null;
+            
+            // Determine cell color based on method and intensity
+            let color;
+            switch (method) {
+              case 'colorToPitch':
+                // Use a color based on row (frequency) with intensity
+                color = `rgba(${50 + Math.round(200 * (numRows - rowIndex) / numRows)}, 
+                           ${50 + Math.round(200 * rowIndex / numRows)}, 
+                           ${200 - Math.round(150 * rowIndex / numRows)}, 
+                           ${intensity})`;
+                break;
+              case 'brightnessToRhythm':
+                // Brighter cells for percussion
+                color = `rgba(255, 240, 180, ${intensity})`;
+                break;
+              case 'spatialToArpeggio':
+                // Green/cyan for arpeggios
+                color = `rgba(100, ${150 + Math.round(100 * rowIndex / numRows)}, 200, ${intensity})`;
+                break;
+              case 'colorChords':
+                // Purple/magenta for chords
+                color = `rgba(${180 + Math.round(75 * rowIndex / numRows)}, 
+                           120, 
+                           ${220 - Math.round(50 * rowIndex / numRows)}, 
+                           ${intensity})`;
+                break;
+              default:
+                color = `rgba(200, 200, 200, ${intensity})`;
+            }
+            
+            return (
+              <div
+                key={`${rowIndex}-${colIndex}`}
+                className="w-full h-full"
+                style={{ 
+                  backgroundColor: color,
+                  gridRow: numRows - rowIndex, // Invert so higher frequencies are at top
+                  gridColumn: colIndex + 1,
+                }}
+              />
+            );
+          })
+        )}
+      </div>
+    );
   };
   
   // Open export modal
@@ -2034,10 +2175,16 @@ const ImageSonificationDJMixer = () => {
       
       {/* Timeline View */}
       {showingTimeline && (
-        <div className="bg-gray-800 border-b border-gray-700 p-2">
-          <div className="relative overflow-auto">
+        <div className="bg-gray-800 border-b border-gray-700 p-2 relative" 
+              style={{ height: `${timelineHeight}px`, transition: 'height 0.2s ease-out' }}>
+          <div className="absolute bottom-0 left-0 right-0 h-5 flex justify-center items-center cursor-ns-resize bg-gray-700 hover:bg-gray-600"
+               onMouseDown={handleTimelineResizeStart}>
+            <div className="w-10 h-1 bg-gray-500 rounded-full"></div>
+          </div>
+          
+          <div className="relative overflow-y-auto overflow-x-auto" style={{ height: timelineHeight - 5 }}>
             <div 
-              className="relative h-auto bg-gray-700 rounded overflow-hidden min-h-48"
+              className="relative h-auto bg-gray-700 rounded overflow-hidden min-h-24"
               style={{ width: `${100 * zoomLevel}%` }}
             >
               {/* Time markers */}
@@ -2184,11 +2331,9 @@ const ImageSonificationDJMixer = () => {
                         {track.method}
                       </div>
                       
-                      {/* Visualization of track events */}
+                      {/* Matrix/Heatmap visualization of track events */}
                       <div className="absolute bottom-0 left-0 right-0 h-4 overflow-hidden">
-                        <div className="flex h-full">
-                          {renderTrackEventVisualization(track)}
-                        </div>
+                        {renderTrackMatrixVisualization(track)}
                       </div>
                     </div>
                   </div>
