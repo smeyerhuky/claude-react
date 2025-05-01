@@ -3,7 +3,18 @@ import { StandardMarkDown } from "@ant/chat/components/StandardMarkDown";
 import { ArrowRight, Code, Package, Globe, RefreshCw, Send } from 'lucide-react';
 
 // Color constants for consistent styling
-const COLORS = { 
+const COLORS = { <div class="grid-cols-1 grid gap-2.5 [&amp;_>_*]:min-w-0 py-2 px-4 flex flex-col gap-2 overflow-hidden research-report-content"><h1 class="text-2xl font-bold mt-1 text-text-100" level="1">DOM and Virtual DOM Explorer</h1>
+<h2 class="text-xl font-bold text-text-100 mt-1 -mb-0.5" level="2">Why This Matters for Backend Engineers</h2>
+<p class="whitespace-pre-wrap break-words">As a backend engineer, you're familiar with optimizing database operations and transaction planning. The Virtual DOM operates on similar principles: it creates an abstraction layer that minimizes expensive operations.</p>
+<p class="whitespace-pre-wrap break-words">Just as you wouldn't update a database row 5 times when you could batch changes in a single transaction, React avoids multiple expensive DOM manipulations by comparing a lightweight in-memory representation (Virtual DOM) against the previous state, then applying only the necessary changes to the actual DOM.</p>
+<p class="whitespace-pre-wrap break-words">This interactive demo shows you how React's reconciliation process works at a high level, comparing it with direct DOM manipulation techniques.</p></div><div class="grid-cols-1 grid gap-2.5 [&amp;_>_*]:min-w-0 py-2 px-4 flex flex-col gap-2 overflow-hidden research-report-content"><h2 class="text-xl font-bold text-text-100 mt-1 -mb-0.5" level="2">How the Reconciliation Process Works</h2>
+<ol class="[&amp;:not(:last-child)_ul]:pb-1 [&amp;:not(:last-child)_ol]:pb-1 list-decimal space-y-1.5 pl-7" depth="0">
+<li class="whitespace-normal break-words" index="0"><strong>Component State Changes</strong>: When state or props update, React creates a new Virtual DOM tree</li>
+<li class="whitespace-normal break-words" index="1"><strong>Diffing Algorithm</strong>: React compares the new Virtual DOM with the previous one</li>
+<li class="whitespace-normal break-words" index="2"><strong>Reconciliation</strong>: It identifies the minimum set of changes needed</li>
+<li class="whitespace-normal break-words" index="3"><strong>Batched Updates</strong>: React efficiently applies only the necessary changes to the real DOM</li>
+</ol>
+<p class="whitespace-pre-wrap break-words">Try changing values in the form below to see this process in action. Notice how only the affected parts of the Virtual DOM get highlighted, and how React renders more efficiently than direct DOM manipulation.</p></div>
   RED: '#B54369', 
   PURPLE: '#4D44AB', 
   BLUE: '#1B67B2', 
