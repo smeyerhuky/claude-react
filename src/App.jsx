@@ -10,6 +10,7 @@ import MatrixExplorer from './components/MatrixExplorer'
 import EnhancedMatrixExplorerV2 from './components/EnhancedMatrixExplorerV2'
 import TaubyteMeshPresentation from './components/TaubyteMeshPresentation'
 import CoSAEDemo from './components/CoSAEDemo'
+import FrontendConceptsGuide from '/./components/FrontendConceptsGuide'
 
 // Navigation items configuration
 const navigationItems = [  
@@ -21,6 +22,7 @@ const navigationItems = [
   { id: 'mv2', label: "Matrix Transforms V2", component: EnhancedMatrixExplorerV2 },
   { id: 'tau-mesh', label: "Tau Mesh Examples", component: TaubyteMeshPresentation },
   { id: 'cosae', label: "CoSAE Demo", component: CoSAEDemo },
+  { id: 'frontend', label: "Learning Frontend Systems", component: FrontendConceptsGuide },
 ]
 
 // Home page component showing all available components as cards
