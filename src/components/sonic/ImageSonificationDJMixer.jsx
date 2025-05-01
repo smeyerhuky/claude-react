@@ -36,7 +36,7 @@ const ImageSonificationDJMixer = () => {
   const recordedChunksRef = useRef([]);
   const resizeStartPositionRef = useRef(null);
   
-  // Initialize Tone.js
+  // Initialize Tone.js and handle setup
   useEffect(() => {
     try {
       // Initialize transport timeline
@@ -52,6 +52,55 @@ const ImageSonificationDJMixer = () => {
         } catch (e) {
           console.error("Error loading saved sessions:", e);
         }
+      }
+      
+      // Add CSS for better touch targets
+      if (typeof document !== 'undefined') {
+        const style = document.createElement('style');
+        style.textContent = `
+          .touch-target {
+            min-height: 44px; 
+            min-width: 44px;
+          }
+          
+          /* Ensure buttons and controls have proper z-index */
+          .control-buttons {
+            position: relative;
+            z-index: 40; 
+          }
+          
+          /* Ensure upload/webcam buttons stay above timeline */
+          .top-controls button, 
+          .top-controls label {
+            position: relative;
+            z-index: 50;
+          }
+          
+          /* Make timeline click area only activate within actual timeline */
+          .timeline-background-layer {
+            pointer-events: none;
+          }
+          
+          .timeline-container {
+            pointer-events: auto;
+          }
+          
+          /* Adjust track blocks for better touch handling */
+          .track-block {
+            touch-action: none;
+          }
+          
+          .resize-handle {
+            min-width: 12px;
+          }
+          
+          @media (max-width: 768px) {
+            .resize-handle {
+              min-width: 16px;
+            }
+          }
+        `;
+        document.head.appendChild(style);
       }
       
       // Clean up on unmount
@@ -1567,7 +1616,7 @@ const ImageSonificationDJMixer = () => {
           </div>
         </div>
         
-        <div className="flex gap-2">
+        <div className="flex gap-2 z-30">
           <input 
             type="file" 
             accept="image/*" 
@@ -1577,26 +1626,26 @@ const ImageSonificationDJMixer = () => {
           />
           <label 
             htmlFor="image-upload"
-            className="px-2 py-1 text-sm bg-blue-700 text-white rounded cursor-pointer hover:bg-blue-600"
+            className="px-2 py-1 text-sm bg-blue-700 text-white rounded cursor-pointer hover:bg-blue-600 relative z-50"
           >
             Upload Image
           </label>
           <button 
             onClick={startWebcam}
-            className="px-2 py-1 text-sm bg-purple-700 text-white rounded hover:bg-purple-600"
+            className="px-2 py-1 text-sm bg-purple-700 text-white rounded hover:bg-purple-600 relative z-50"
           >
             Webcam
           </button>
           <button 
             onClick={captureFromWebcam}
-            className="px-2 py-1 text-sm bg-green-700 text-white rounded hover:bg-green-600"
+            className="px-2 py-1 text-sm bg-green-700 text-white rounded hover:bg-green-600 relative z-50"
             disabled={!videoRef.current || !videoRef.current.srcObject}
           >
             Capture
           </button>
           <button 
             onClick={stopWebcam}
-            className="px-2 py-1 text-sm bg-red-700 text-white rounded hover:bg-red-600"
+            className="px-2 py-1 text-sm bg-red-700 text-white rounded hover:bg-red-600 relative z-50"
           >
             Stop Cam
           </button>
@@ -1679,7 +1728,7 @@ const ImageSonificationDJMixer = () => {
         <div className="bg-gray-800 border-b border-gray-700 p-2">
           <div className="overflow-auto">
             <div 
-              className="relative h-20 bg-gray-700 rounded overflow-hidden"
+              className="relative h-20 bg-gray-700 rounded overflow-hidden timeline-container"
               style={{ width: `${100 * zoomLevel}%`, minWidth: '100%' }}
             >
               {/* Time markers */}
@@ -1687,7 +1736,7 @@ const ImageSonificationDJMixer = () => {
               
               {/* Playhead */}
               <div 
-                className="absolute top-0 h-full w-px bg-red-500 z-20"
+                className="absolute top-0 h-full w-px bg-red-500 z-10"
                 style={{ left: `${(currentTime / duration) * 100}%` }}
               >
                 <div className="w-4 h-4 bg-red-500 rounded-full -ml-2 -mt-1"></div>
@@ -1704,7 +1753,7 @@ const ImageSonificationDJMixer = () => {
               {tracks.map((track, index) => (
                 <div 
                   key={track.id}
-                  className={`absolute rounded cursor-move ${
+                  className={`absolute rounded overflow-hidden ${
                     track.isMuted ? 'opacity-50' : ''
                   } ${track.isSoloed ? 'border-2 border-yellow-400' : 'border border-gray-600'} 
                     ${selectedTrack && selectedTrack.id === track.id ? 'ring-2 ring-blue-500' : ''}`}
@@ -1712,21 +1761,22 @@ const ImageSonificationDJMixer = () => {
                     ...getTrackPosition(track),
                     backgroundColor: track.color || '#4a5568',
                     top: `${index * 22}px`,
-                    height: '20px'
+                    height: '20px',
+                    touchAction: 'none' // Prevent browser handling of touch events
                   }}
                   onClick={(e) => {
                     e.stopPropagation();
                     setSelectedTrack(track);
                   }}
-                  draggable={true}
+                  draggable="true"
                   onDragStart={(e) => {
                     e.dataTransfer.setData('trackId', track.id);
                     e.dataTransfer.effectAllowed = 'move';
                     setSelectedTrack(track);
                   }}
-                  onDrag={(e) => e.preventDefault()}
+                  onTouchStart={(e) => handleTrackTouchStart(e, track.id)}
                 >
-                  <div className="h-full flex items-center justify-between px-2 overflow-hidden">
+                  <div className="h-full flex items-center justify-between px-2 overflow-hidden cursor-move">
                     <div className="text-xs truncate font-semibold">
                       {track.name}
                     </div>
@@ -1737,27 +1787,33 @@ const ImageSonificationDJMixer = () => {
                   
                   {/* Resize handles */}
                   <div 
-                    className="absolute left-0 top-0 h-full w-2 cursor-w-resize"
+                    className="absolute left-0 top-0 h-full w-4 cursor-w-resize z-20 bg-gradient-to-r from-black to-transparent opacity-30 hover:opacity-60"
                     onMouseDown={(e) => handleTrackResizeStart(e, track.id, 'start')}
+                    onTouchStart={(e) => handleTrackResizeTouchStart(e, track.id, 'start')}
                   />
                   <div 
-                    className="absolute right-0 top-0 h-full w-2 cursor-e-resize"
+                    className="absolute right-0 top-0 h-full w-4 cursor-e-resize z-20 bg-gradient-to-l from-black to-transparent opacity-30 hover:opacity-60"
                     onMouseDown={(e) => handleTrackResizeStart(e, track.id, 'end')}
+                    onTouchStart={(e) => handleTrackResizeTouchStart(e, track.id, 'end')}
                   />
                 </div>
               ))}
             </div>
           </div>
           
-          {/* Timeline background to catch drag events */}
+          {/* Timeline click area */}
           <div 
-            className="h-full w-full absolute top-0 left-0"
+            className="h-full w-full absolute top-0 left-0 timeline-background-layer"
+            style={{ pointerEvents: resizingTrack ? 'none' : 'auto' }}
             onDragOver={(e) => {
               e.preventDefault();
               e.dataTransfer.dropEffect = 'move';
             }}
             onDrop={handleTrackDrop}
             onClick={(e) => {
+              // Don't let clicks on the timeline interfere with other UI elements
+              if (!e.target.closest('.timeline-container')) return;
+              
               // Click on timeline to set playback position
               const rect = e.currentTarget.getBoundingClientRect();
               const clickPosition = (e.clientX - rect.left) / rect.width;
