@@ -8,7 +8,7 @@ import MatrixExplorer from './components/MatrixExplorer'
 import EnhancedMatrixExplorerV2 from './components/EnhancedMatrixExplorerV2'
 import TaubyteMeshPresentation from './components/TaubyteMeshPresentation'
 import FrontendConceptsGuide from './components/FrontendConceptsGuide'
-import ImageSonificationDJMixer from './components/onic/ImageSonificationDJMixer'
+import ImageSonificationDJMixer from './components/sonic/ImageSonificationDJMixer'
 
 // Navigation items configuration
 const navigationItems = [  
