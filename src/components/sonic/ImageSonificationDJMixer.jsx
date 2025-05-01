@@ -36,81 +36,48 @@ const ImageSonificationDJMixer = () => {
   const recordedChunksRef = useRef([]);
   const resizeStartPositionRef = useRef(null);
   
-  // Initialize Tone.js and handle setup
+  // Effect to handle touch and mouse interaction setup
   useEffect(() => {
-    try {
-      // Initialize transport timeline
-      transportRef.current = Tone.Transport;
-      transportRef.current.bpm.value = 120;
-      
-      // Load saved sessions from localStorage if available
-      const savedSessionsData = localStorage.getItem('sonificationSessions');
-      if (savedSessionsData) {
-        try {
-          const parsedData = JSON.parse(savedSessionsData);
-          setSavedSets(parsedData);
-        } catch (e) {
-          console.error("Error loading saved sessions:", e);
-        }
+    // Add document-level touch event handlers to ensure touches outside elements are captured
+    const handleGlobalTouchMove = (e) => {
+      // If we're currently resizing a track, prevent default to avoid browser behaviors
+      if (resizingTrack) {
+        e.preventDefault();
       }
+    };
+    
+    // Add touch event listeners with passive: false to allow preventDefault
+    document.addEventListener('touchmove', handleGlobalTouchMove, { passive: false });
+    
+    // Clean up
+    return () => {
+      document.removeEventListener('touchmove', handleGlobalTouchMove);
+    };
+  }, [resizingTrack]);
+  
+  // Detect if using mobile device
+  const isMobileDevice = useRef(typeof window !== 'undefined' && 
+    (navigator.maxTouchPoints > 0 || 
+     navigator.msMaxTouchPoints > 0 || 
+     'ontouchstart' in window || 
+     'ontouchstart' in document.documentElement));
+  
+  // Adjust element sizes based on device type
+  useEffect(() => {
+    if (isMobileDevice.current) {
+      // Increase touch target sizes for mobile
+      const resizeHandles = document.querySelectorAll('.resize-handle');
+      resizeHandles.forEach(handle => {
+        handle.style.width = '12px'; // Wider hit area for touch
+      });
       
-      // Add CSS for better touch targets
-      if (typeof document !== 'undefined') {
-        const style = document.createElement('style');
-        style.textContent = `
-          .touch-target {
-            min-height: 44px; 
-            min-width: 44px;
-          }
-          
-          /* Ensure buttons and controls have proper z-index */
-          .control-buttons {
-            position: relative;
-            z-index: 40; 
-          }
-          
-          /* Ensure upload/webcam buttons stay above timeline */
-          .top-controls button, 
-          .top-controls label {
-            position: relative;
-            z-index: 50;
-          }
-          
-          /* Make timeline click area only activate within actual timeline */
-          .timeline-background-layer {
-            pointer-events: none;
-          }
-          
-          .timeline-container {
-            pointer-events: auto;
-          }
-          
-          /* Adjust track blocks for better touch handling */
-          .track-block {
-            touch-action: none;
-          }
-          
-          .resize-handle {
-            min-width: 12px;
-          }
-          
-          @media (max-width: 768px) {
-            .resize-handle {
-              min-width: 16px;
-            }
-          }
-        `;
-        document.head.appendChild(style);
-      }
-      
-      // Clean up on unmount
-      return () => {
-        cleanupAllTracks();
-      };
-    } catch (err) {
-      console.error("Error initializing audio system:", err);
+      // Add extra padding to buttons for easier touch
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach(button => {
+        button.classList.add('touch-target');
+      });
     }
-  }, []);
+  }, [tracks.length]); // Re-run when tracks change
   
   const cleanupAllTracks = () => {
     // Stop transport
