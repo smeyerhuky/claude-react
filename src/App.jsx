@@ -10,7 +10,7 @@ import MatrixExplorer from './components/MatrixExplorer'
 import EnhancedMatrixExplorerV2 from './components/EnhancedMatrixExplorerV2'
 import TaubyteMeshPresentation from './components/TaubyteMeshPresentation'
 import CoSAEDemo from './components/CoSAEDemo'
-import FrontendConceptsGuide from '/./components/FrontendConceptsGuide'
+import FrontendConceptsGuide from './components/FrontendConceptsGuide'
 
 // Navigation items configuration
 const navigationItems = [  
