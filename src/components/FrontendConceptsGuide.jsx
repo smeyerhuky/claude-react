@@ -10,7 +10,7 @@ const COLORS = {
   ORANGE: '#C77F1A' 
 };
 
-const DomVirtualDomExplorer = () => {
+const FrontendConceptsGuide = () => {
   // Form state
   const [formData, setFormData] = useState({
     title: "My Product",
@@ -268,13 +268,36 @@ const DomVirtualDomExplorer = () => {
             comparing it with direct DOM manipulation techniques.
           </p>
 
-          <h2 className="text-xl font-bold mb-2">How the Reconciliation Process Works</h2>
-          <ol className="list-decimal ml-5 mb-4">
-            <li><strong>Component State Changes</strong>: When state or props update, React creates a new Virtual DOM tree</li>
-            <li><strong>Diffing Algorithm</strong>: React compares the new Virtual DOM with the previous one</li>
-            <li><strong>Reconciliation</strong>: It identifies the minimum set of changes needed</li>
-            <li><strong>Batched Updates</strong>: React efficiently applies only the necessary changes to the real DOM</li>
-          </ol>
+          <h2 className="text-xl font-bold mb-3">How the Reconciliation Process Works</h2>
+          <div className="flex flex-col space-y-2 mb-4">
+            <div className="flex items-center bg-white border border-gray-200 rounded-md p-2 shadow-sm">
+              <div className="bg-blue-100 text-blue-800 font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">1</div>
+              <div>
+                <span className="font-semibold">Component State Changes:</span> When state or props update, React creates a new Virtual DOM tree
+              </div>
+            </div>
+            
+            <div className="flex items-center bg-white border border-gray-200 rounded-md p-2 shadow-sm">
+              <div className="bg-blue-100 text-blue-800 font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">2</div>
+              <div>
+                <span className="font-semibold">Diffing Algorithm:</span> React compares the new Virtual DOM with the previous one
+              </div>
+            </div>
+            
+            <div className="flex items-center bg-white border border-gray-200 rounded-md p-2 shadow-sm">
+              <div className="bg-blue-100 text-blue-800 font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">3</div>
+              <div>
+                <span className="font-semibold">Reconciliation:</span> It identifies the minimum set of changes needed
+              </div>
+            </div>
+            
+            <div className="flex items-center bg-white border border-gray-200 rounded-md p-2 shadow-sm">
+              <div className="bg-blue-100 text-blue-800 font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">4</div>
+              <div>
+                <span className="font-semibold">Batched Updates:</span> React efficiently applies only the necessary changes to the real DOM
+              </div>
+            </div>
+          </div>
           <p className="mb-4">
             Try changing values in the form below to see this process in action. Notice how only the affected parts 
             of the Virtual DOM get highlighted, and how React renders more efficiently than direct DOM manipulation.
@@ -282,9 +305,9 @@ const DomVirtualDomExplorer = () => {
         </div>
 
         {/* Interactive Form */}
-        <div className="bg-gray-50 rounded-lg p-4 mx-4 mb-4 border border-gray-200">
+        <div className="bg-gray-50 rounded-lg p-3 mx-3 mb-3 border border-gray-200">
           <h3 className="text-lg font-semibold mb-2">Modify Product Details</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Product Title
@@ -422,15 +445,36 @@ const DomVirtualDomExplorer = () => {
         {showComparison && (
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mx-4 mb-4">
             <h3 className="text-lg font-semibold mb-2">What Just Happened?</h3>
-            <p className="mb-1">When you changed a value in the form:</p>
-            <ol className="list-decimal ml-4 mb-2 space-y-1">
-              <li>React created a new Virtual DOM tree with your updated values</li>
-              <li>It compared this new tree with the previous Virtual DOM</li>
-              <li>It identified only the highlighted elements needed to change</li>
-              <li>React updated only those specific DOM elements</li>
-              <li>The direct DOM approach required separate operations for each affected element</li>
-            </ol>
-            <p className="font-semibold text-sm">
+            <p className="mb-2">When you changed a value in the form:</p>
+            
+            <div className="flex flex-col space-y-1 mb-3">
+              <div className="flex items-center bg-white p-2 rounded border border-blue-100">
+                <div className="bg-blue-100 text-blue-800 font-bold rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0">1</div>
+                <span>React created a new Virtual DOM tree with your updated values</span>
+              </div>
+              
+              <div className="flex items-center bg-white p-2 rounded border border-blue-100">
+                <div className="bg-blue-100 text-blue-800 font-bold rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0">2</div>
+                <span>It compared this new tree with the previous Virtual DOM</span>
+              </div>
+              
+              <div className="flex items-center bg-white p-2 rounded border border-blue-100">
+                <div className="bg-blue-100 text-blue-800 font-bold rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0">3</div>
+                <span>It identified only the highlighted elements needed to change</span>
+              </div>
+              
+              <div className="flex items-center bg-white p-2 rounded border border-blue-100">
+                <div className="bg-blue-100 text-blue-800 font-bold rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0">4</div>
+                <span>React updated only those specific DOM elements</span>
+              </div>
+              
+              <div className="flex items-center bg-white p-2 rounded border border-blue-100">
+                <div className="bg-blue-100 text-blue-800 font-bold rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0">5</div>
+                <span>The direct DOM approach required separate operations for each affected element</span>
+              </div>
+            </div>
+            
+            <p className="font-semibold bg-white p-2 rounded border border-blue-100">
               Notice the difference in operation count: React's approach required fewer DOM operations,
               similar to how batched database transactions are more efficient than individual queries.
             </p>
@@ -439,35 +483,53 @@ const DomVirtualDomExplorer = () => {
 
         {/* Key Takeaways */}
         <div className="bg-gray-50 rounded-lg p-4 mx-4 mb-4 border border-gray-200">
-          <h3 className="text-lg font-semibold mb-2">Key Takeaways for Backend Engineers</h3>
-          <ul className="list-disc ml-4 space-y-1">
-            <li>
-              <span className="font-semibold">Conceptual Parallel:</span> Virtual DOM is to browser rendering what transaction planning is to database operations
-            </li>
-            <li>
-              <span className="font-semibold">Performance Pattern:</span> Batching and minimizing expensive operations is a universal optimization strategy
-            </li>
-            <li>
-              <span className="font-semibold">Abstraction Layer:</span> Just as ORMs abstract database operations, React abstracts DOM manipulation
-            </li>
-            <li>
-              <span className="font-semibold">System Trade-offs:</span> The additional memory usage of the Virtual DOM is worth the performance gain from reduced DOM operations
-            </li>
-          </ul>
+          <h3 className="text-lg font-semibold mb-3">Key Takeaways for Backend Engineers</h3>
+          <div className="space-y-2">
+            <div className="flex bg-white p-2 rounded-md border border-gray-200 shadow-sm">
+              <div className="font-semibold w-48 flex-shrink-0 border-r border-gray-200 pr-2">Conceptual Parallel</div>
+              <div className="pl-2">Virtual DOM is to browser rendering what transaction planning is to database operations</div>
+            </div>
+            
+            <div className="flex bg-white p-2 rounded-md border border-gray-200 shadow-sm">
+              <div className="font-semibold w-48 flex-shrink-0 border-r border-gray-200 pr-2">Performance Pattern</div>
+              <div className="pl-2">Batching and minimizing expensive operations is a universal optimization strategy</div>
+            </div>
+            
+            <div className="flex bg-white p-2 rounded-md border border-gray-200 shadow-sm">
+              <div className="font-semibold w-48 flex-shrink-0 border-r border-gray-200 pr-2">Abstraction Layer</div>
+              <div className="pl-2">Just as ORMs abstract database operations, React abstracts DOM manipulation</div>
+            </div>
+            
+            <div className="flex bg-white p-2 rounded-md border border-gray-200 shadow-sm">
+              <div className="font-semibold w-48 flex-shrink-0 border-r border-gray-200 pr-2">System Trade-offs</div>
+              <div className="pl-2">The additional memory usage of the Virtual DOM is worth the performance gain from reduced DOM operations</div>
+            </div>
+          </div>
         </div>
 
         {/* Further Reading */}
         <div className="p-4 mx-4 mb-4">
           <h3 className="text-lg font-semibold mb-2">Further Reading</h3>
-          <ul className="list-disc ml-4 space-y-1 text-sm">
-            <li><a href="https://reactjs.org/docs/reconciliation.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">React's Reconciliation Algorithm</a></li>
-            <li><a href="https://calendar.perfplanet.com/2013/diff/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Virtual DOM Diffing</a></li>
-            <li><a href="https://www.freecodecamp.org/news/how-virtual-dom-and-diffing-works-in-react-6fc805f9f84e/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">How Virtual DOM and Diffing Works in React</a></li>
-          </ul>
+          <div className="flex flex-col space-y-1">
+            <a href="https://reactjs.org/docs/reconciliation.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline flex items-center">
+              <div className="w-2 h-2 bg-blue-600 rounded-full mr-2"></div>
+              React's Reconciliation Algorithm
+            </a>
+            
+            <a href="https://calendar.perfplanet.com/2013/diff/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline flex items-center">
+              <div className="w-2 h-2 bg-blue-600 rounded-full mr-2"></div>
+              Virtual DOM Diffing
+            </a>
+            
+            <a href="https://www.freecodecamp.org/news/how-virtual-dom-and-diffing-works-in-react-6fc805f9f84e/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline flex items-center">
+              <div className="w-2 h-2 bg-blue-600 rounded-full mr-2"></div>
+              How Virtual DOM and Diffing Works in React
+            </a>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default DomVirtualDomExplorer;
+export default FrontendConceptsGuide;
