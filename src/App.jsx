@@ -4,24 +4,20 @@ import './App.css'
 
 import MonteCarloProjectSimulator from './components/monte/MonteCarloProjectSimulator'
 import MonteCarloAdvancedTutorial from'./components/monte/MonteCarloAdvancedTutorial'
-import VideoToMusicApp from './components/VideoToMusicApp'
-import EnhancedVideoAnalyzer from './components/EnhancedVideoAnalyzer'
 import MatrixExplorer from './components/MatrixExplorer'
 import EnhancedMatrixExplorerV2 from './components/EnhancedMatrixExplorerV2'
 import TaubyteMeshPresentation from './components/TaubyteMeshPresentation'
-import CoSAEDemo from './components/CoSAEDemo'
 import FrontendConceptsGuide from './components/FrontendConceptsGuide'
+import ImageSonificationDJMixer from './components/onic/ImageSonificationDJMixer'
 
 // Navigation items configuration
 const navigationItems = [  
+  { id: 'dj-sonic', label: "DJ Sonification Sampler", component: ImageSonificationDJMixer },
   { id:'sim', label: 'Simulator', component: MonteCarloProjectSimulator },
   { id: 'adv_tut', label: 'Advanced Monte Carlo Tutorial', component: MonteCarloAdvancedTutorial },
-  { id: 'vids', label: "Video <> Music", component: VideoToMusicApp },
-  { id: 'vids_2', label: "Video Transformer", component: EnhancedVideoAnalyzer },
   { id: 'matrices', label: "Matrix Transforms", component: MatrixExplorer },
   { id: 'mv2', label: "Matrix Transforms V2", component: EnhancedMatrixExplorerV2 },
   { id: 'tau-mesh', label: "Tau Mesh Examples", component: TaubyteMeshPresentation },
-  { id: 'cosae', label: "CoSAE Demo", component: CoSAEDemo },
   { id: 'frontend', label: "Learning Frontend Systems", component: FrontendConceptsGuide },
 ]
 
