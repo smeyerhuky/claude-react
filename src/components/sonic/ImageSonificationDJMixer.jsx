@@ -1,6 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import * as Tone from 'tone';
 
+// Detect browser support for audio export
+const hasMediaRecorderSupport = typeof window !== 'undefined' && 
+                              window.MediaRecorder && 
+                              typeof window.MediaRecorder.isTypeSupported === 'function';
+
 const ImageSonificationDJMixer = () => {
   // State management
   const [tracks, setTracks] = useState([]);
@@ -15,6 +20,10 @@ const ImageSonificationDJMixer = () => {
   const [mixerMode, setMixerMode] = useState("tracks"); // "tracks" or "fx"
   const [zoomLevel, setZoomLevel] = useState(1);
   const [showingTimeline, setShowingTimeline] = useState(true);
+  const [isRecording, setIsRecording] = useState(false);
+  const [resizingTrack, setResizingTrack] = useState(null); // {id, edge: 'start' or 'end'}
+  const [exportProgress, setExportProgress] = useState(0);
+  const [exportUrl, setExportUrl] = useState(null);
   
   // Refs
   const imageCanvasRef = useRef(null);
@@ -23,6 +32,9 @@ const ImageSonificationDJMixer = () => {
   const transportRef = useRef(null);
   const synthsRef = useRef({});
   const trackSchedulesRef = useRef({});
+  const mediaRecorderRef = useRef(null);
+  const recordedChunksRef = useRef([]);
+  const resizeStartPositionRef = useRef(null);
   
   // Initialize Tone.js
   useEffect(() => {
@@ -1077,6 +1089,359 @@ const ImageSonificationDJMixer = () => {
     };
   };
   
+  // Handle track drag and drop repositioning
+  const handleTrackDrop = (e) => {
+    e.preventDefault();
+    const trackId = e.dataTransfer.getData('trackId');
+    if (!trackId) return;
+    
+    // Get track element dimensions and container
+    const container = e.currentTarget.getBoundingClientRect();
+    
+    // Calculate new position based on drop position
+    const dropPositionX = e.clientX - container.left;
+    const dropPositionPercent = dropPositionX / container.width;
+    const newStartTime = dropPositionPercent * duration;
+    
+    // Get the track and calculate the duration
+    const track = tracks.find(t => t.id === trackId);
+    if (track) {
+      const trackDuration = track.parameters.endTime - track.parameters.startTime;
+      const newEndTime = Math.min(newStartTime + trackDuration, duration);
+      
+      // Update track position
+      updateTrackParameters(trackId, 'startTime', newStartTime);
+      updateTrackParameters(trackId, 'endTime', newEndTime);
+    }
+  };
+  
+  // Handle track position change via touch
+  const handleTrackTouchStart = (e, trackId) => {
+    e.stopPropagation();
+    
+    // Store the initial touch position and track info
+    const touch = e.touches[0];
+    const trackElement = e.currentTarget;
+    const trackRect = trackElement.getBoundingClientRect();
+    const container = trackElement.parentElement.getBoundingClientRect();
+    
+    // Calculate offset from the left edge of the track
+    const touchOffsetX = touch.clientX - trackRect.left;
+    
+    // Add touch move and end listeners
+    const handleTouchMove = (moveEvent) => {
+      moveEvent.preventDefault();
+      const moveTouch = moveEvent.touches[0];
+      
+      // Calculate new position
+      const newLeft = moveTouch.clientX - container.left - touchOffsetX;
+      const containerWidth = container.width;
+      const positionPercent = Math.max(0, Math.min(newLeft / containerWidth, 1));
+      
+      // Get the track
+      const track = tracks.find(t => t.id === trackId);
+      if (track) {
+        const trackDuration = track.parameters.endTime - track.parameters.startTime;
+        const newStartTime = positionPercent * duration;
+        const newEndTime = Math.min(newStartTime + trackDuration, duration);
+        
+        // Update track position
+        updateTrackParameters(trackId, 'startTime', newStartTime);
+        updateTrackParameters(trackId, 'endTime', newEndTime);
+      }
+    };
+    
+    const handleTouchEnd = () => {
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+    
+    document.addEventListener('touchmove', handleTouchMove, { passive: false });
+    document.addEventListener('touchend', handleTouchEnd);
+  };
+  
+  // Handle track resizing
+  const handleTrackResizeStart = (e, trackId, edge) => {
+    e.stopPropagation();
+    
+    // Store initial mouse position and track info
+    setResizingTrack({ id: trackId, edge });
+    resizeStartPositionRef.current = {
+      mouseX: e.clientX,
+      track: tracks.find(t => t.id === trackId)
+    };
+    
+    // Add mouse move and up listeners
+    document.addEventListener('mousemove', handleTrackResize);
+    document.addEventListener('mouseup', handleTrackResizeEnd);
+  };
+  
+  // Handle track resizing via touch
+  const handleTrackResizeTouchStart = (e, trackId, edge) => {
+    e.stopPropagation();
+    
+    // Store initial touch position and track info
+    const touch = e.touches[0];
+    setResizingTrack({ id: trackId, edge });
+    resizeStartPositionRef.current = {
+      mouseX: touch.clientX,
+      track: tracks.find(t => t.id === trackId)
+    };
+    
+    // Add touch move and end listeners
+    const handleTouchMove = (moveEvent) => {
+      moveEvent.preventDefault();
+      
+      const moveTouch = moveEvent.touches[0];
+      const { mouseX, track } = resizeStartPositionRef.current;
+      const container = document.querySelector('.timeline-container');
+      if (!container) return;
+      
+      const containerRect = container.getBoundingClientRect();
+      const deltaPixels = moveTouch.clientX - mouseX;
+      const deltaPct = deltaPixels / containerRect.width;
+      const deltaTime = deltaPct * duration;
+      
+      if (resizingTrack.edge === 'start') {
+        const newStartTime = Math.max(0, Math.min(track.parameters.startTime + deltaTime, track.parameters.endTime - 0.5));
+        updateTrackParameters(resizingTrack.id, 'startTime', newStartTime);
+      } else {
+        const newEndTime = Math.max(track.parameters.startTime + 0.5, Math.min(track.parameters.endTime + deltaTime, duration));
+        updateTrackParameters(resizingTrack.id, 'endTime', newEndTime);
+      }
+    };
+    
+    const handleTouchEnd = () => {
+      setResizingTrack(null);
+      resizeStartPositionRef.current = null;
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+    
+    document.addEventListener('touchmove', handleTouchMove, { passive: false });
+    document.addEventListener('touchend', handleTouchEnd);
+  };
+  
+  const handleTrackResize = (e) => {
+    if (!resizingTrack || !resizeStartPositionRef.current) return;
+    
+    const { mouseX, track } = resizeStartPositionRef.current;
+    const container = document.querySelector('.timeline-container');
+    if (!container) return;
+    
+    const containerRect = container.getBoundingClientRect();
+    const deltaPixels = e.clientX - mouseX;
+    const deltaPct = deltaPixels / containerRect.width;
+    const deltaTime = deltaPct * duration;
+    
+    if (resizingTrack.edge === 'start') {
+      const newStartTime = Math.max(0, Math.min(track.parameters.startTime + deltaTime, track.parameters.endTime - 0.5));
+      updateTrackParameters(resizingTrack.id, 'startTime', newStartTime);
+    } else {
+      const newEndTime = Math.max(track.parameters.startTime + 0.5, Math.min(track.parameters.endTime + deltaTime, duration));
+      updateTrackParameters(resizingTrack.id, 'endTime', newEndTime);
+    }
+  };
+  
+  const handleTrackResizeEnd = () => {
+    setResizingTrack(null);
+    resizeStartPositionRef.current = null;
+    document.removeEventListener('mousemove', handleTrackResize);
+    document.removeEventListener('mouseup', handleTrackResizeEnd);
+  };
+  
+  // Export audio
+  const startRecording = async () => {
+    try {
+      if (!hasMediaRecorderSupport) {
+        alert("Your browser doesn't support audio recording. Try using Chrome or Firefox.");
+        return;
+      }
+      
+      // Initialize audio context
+      if (Tone.context.state !== 'running') {
+        await Tone.start();
+      }
+      
+      // Create a MediaStream destination node
+      const dest = Tone.context.createMediaStreamDestination();
+      
+      // Connect master output to the destination
+      Tone.getDestination().connect(dest);
+      
+      // Create MediaRecorder
+      const recorder = new MediaRecorder(dest.stream, { mimeType: 'audio/webm' });
+      
+      // Set up recorder events
+      recorder.ondataavailable = (e) => {
+        if (e.data.size > 0) {
+          recordedChunksRef.current.push(e.data);
+        }
+      };
+      
+      recorder.onstop = () => {
+        // Create a blob from the recorded chunks
+        const blob = new Blob(recordedChunksRef.current, { type: 'audio/webm' });
+        const url = URL.createObjectURL(blob);
+        setExportUrl(url);
+        setExportProgress(100);
+        
+        // Reset recorder
+        recordedChunksRef.current = [];
+      };
+      
+      // Store recorder reference
+      mediaRecorderRef.current = recorder;
+      
+      // Start recording
+      recorder.start();
+      setIsRecording(true);
+      setExportProgress(0);
+      
+      // Reset and start playback
+      transportRef.current.seconds = 0;
+      setCurrentTime(0);
+      transportRef.current.start();
+      setIsPlaying(true);
+      
+      // Set up progress updates
+      const updateProgress = () => {
+        const progress = (transportRef.current.seconds / duration) * 100;
+        setExportProgress(progress);
+        
+        if (progress < 100 && isRecording) {
+          requestAnimationFrame(updateProgress);
+        }
+      };
+      requestAnimationFrame(updateProgress);
+      
+      // Stop recording when playback ends
+      transportRef.current.schedule(() => {
+        stopRecording();
+      }, duration);
+      
+    } catch (err) {
+      console.error("Error starting recording:", err);
+      alert("Error starting recording: " + err.message);
+    }
+  };
+  
+  const stopRecording = () => {
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
+      mediaRecorderRef.current.stop();
+      setIsRecording(false);
+      
+      // Disconnect media stream destination
+      Tone.getDestination().disconnect();
+    }
+  };
+  
+  const downloadRecording = () => {
+    if (!exportUrl) return;
+    
+    const a = document.createElement('a');
+    a.href = exportUrl;
+    a.download = `${currentSetName || 'sonification'}.webm`;
+    a.click();
+  };
+  
+  // Export project as JSON
+  const exportProject = () => {
+    try {
+      // Create project data
+      const projectData = {
+        name: currentSetName || 'Untitled Project',
+        date: new Date().toISOString(),
+        duration,
+        images: sourceImages.map(img => ({
+          id: img.id,
+          name: img.name,
+          previewUrl: img.previewUrl,
+          data: img.data
+        })),
+        tracks
+      };
+      
+      // Convert to JSON and create download link
+      const dataStr = JSON.stringify(projectData);
+      const dataBlob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(dataBlob);
+      
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${currentSetName || 'sonification-project'}.json`;
+      a.click();
+      
+      // Clean up
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error("Error exporting project:", err);
+      alert("Error exporting project: " + err.message);
+    }
+  };
+  
+  // Import project from JSON file
+  const importProject = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const projectData = JSON.parse(event.target.result);
+        
+        // Validate project data
+        if (!projectData.images || !projectData.tracks) {
+          throw new Error("Invalid project file format");
+        }
+        
+        // Confirm if current state will be lost
+        if (tracks.length > 0 && !confirm("Loading this project will replace your current work. Continue?")) {
+          return;
+        }
+        
+        // Clean up current state
+        cleanupAllTracks();
+        
+        // Set duration
+        setDuration(projectData.duration || 10);
+        
+        // Load images
+        setSourceImages(projectData.images || []);
+        
+        // Load tracks
+        setTracks([]);
+        setTimeout(() => {
+          if (projectData.tracks && projectData.tracks.length > 0) {
+            setTracks(projectData.tracks);
+            
+            // Setup synths for all tracks
+            projectData.tracks.forEach(track => {
+              setupTrackSynth(track.id, track);
+            });
+            
+            // Set first track as selected
+            setSelectedTrack(projectData.tracks[0]);
+          }
+        }, 100);
+        
+        // Set name
+        setCurrentSetName(projectData.name || "Imported Project");
+        
+        // Select first image
+        if (projectData.images && projectData.images.length > 0) {
+          setSelectedImage(projectData.images[0]);
+        }
+        
+        alert(`Project "${projectData.name || 'Untitled'}" loaded successfully`);
+      } catch (err) {
+        console.error("Error importing project:", err);
+        alert("Error importing project: " + err.message);
+      }
+    };
+    reader.readAsText(file);
+  };
+  
   // Render time markers for timeline
   const renderTimeMarkers = () => {
     const markers = [];
@@ -1134,6 +1499,71 @@ const ImageSonificationDJMixer = () => {
                 </option>
               ))}
             </select>
+            
+            {/* Export/Share menu */}
+            <div className="relative ml-2 group">
+              <button
+                className="px-2 py-1 text-sm bg-indigo-700 text-white rounded hover:bg-indigo-600"
+              >
+                Export
+              </button>
+              <div className="absolute left-0 top-full mt-1 w-48 bg-gray-800 rounded shadow-lg border border-gray-700 hidden group-hover:block z-50">
+                <button
+                  onClick={startRecording}
+                  disabled={isRecording}
+                  className="w-full text-left px-3 py-2 hover:bg-gray-700 text-sm border-b border-gray-700"
+                >
+                  {isRecording ? 'Recording...' : 'Export Audio (WebM)'}
+                </button>
+                
+                <button
+                  onClick={exportProject}
+                  className="w-full text-left px-3 py-2 hover:bg-gray-700 text-sm border-b border-gray-700"
+                >
+                  Export Project (JSON)
+                </button>
+                
+                <div className="px-3 py-2 text-sm">
+                  <label className="flex items-center hover:bg-gray-700 px-2 py-1 rounded cursor-pointer">
+                    <span>Import Project</span>
+                    <input
+                      type="file"
+                      accept=".json"
+                      className="hidden"
+                      onChange={importProject}
+                    />
+                  </label>
+                </div>
+                
+                {exportUrl && (
+                  <button
+                    onClick={downloadRecording}
+                    className="w-full text-left px-3 py-2 hover:bg-gray-700 text-sm text-green-400"
+                  >
+                    Download Recorded Audio
+                  </button>
+                )}
+              </div>
+            </div>
+            
+            {/* Recording progress */}
+            {isRecording && (
+              <div className="ml-2 flex items-center">
+                <div className="w-16 h-2 bg-gray-700 rounded overflow-hidden">
+                  <div 
+                    className="h-full bg-red-600"
+                    style={{ width: `${exportProgress}%` }}
+                  />
+                </div>
+                <button
+                  onClick={stopRecording}
+                  className="ml-1 px-1 text-xs bg-red-700 rounded"
+                  title="Stop recording"
+                >
+                  ◼
+                </button>
+              </div>
+            )}
           </div>
         </div>
         
@@ -1244,45 +1674,98 @@ const ImageSonificationDJMixer = () => {
         </div>
       </div>
       
-      {/* Timeline View */}
+      {/* Timeline View with DAW-style interface */}
       {showingTimeline && (
         <div className="bg-gray-800 border-b border-gray-700 p-2">
-          <div 
-            className="relative h-16 bg-gray-700 rounded overflow-hidden"
-            style={{ width: `${100 * zoomLevel}%` }}
-          >
-            {/* Time markers */}
-            {renderTimeMarkers()}
-            
-            {/* Playhead */}
+          <div className="overflow-auto">
             <div 
-              className="absolute top-0 h-full w-px bg-red-500 z-20"
-              style={{ left: `${(currentTime / duration) * 100}%` }}
-            />
-            
-            {/* Track blocks */}
-            {tracks.map(track => (
+              className="relative h-20 bg-gray-700 rounded overflow-hidden"
+              style={{ width: `${100 * zoomLevel}%`, minWidth: '100%' }}
+            >
+              {/* Time markers */}
+              {renderTimeMarkers()}
+              
+              {/* Playhead */}
               <div 
-                key={track.id}
-                className={`absolute h-12 mt-2 rounded cursor-move ${
-                  track.isMuted ? 'opacity-50' : ''
-                } ${track.isSoloed ? 'border-2 border-yellow-400' : 'border border-gray-600'}`}
-                style={{
-                  ...getTrackPosition(track),
-                  backgroundColor: track.color || '#4a5568',
-                  top: 0
-                }}
-                onClick={() => setSelectedTrack(track)}
+                className="absolute top-0 h-full w-px bg-red-500 z-20"
+                style={{ left: `${(currentTime / duration) * 100}%` }}
               >
-                <div className="text-xs truncate px-2 pt-1 font-semibold">
-                  {track.name}
-                </div>
-                <div className="text-xs px-2">
-                  {track.method}
-                </div>
+                <div className="w-4 h-4 bg-red-500 rounded-full -ml-2 -mt-1"></div>
               </div>
-            ))}
+              
+              {/* Grid lines */}
+              <div className="absolute w-full h-full grid grid-cols-8 pointer-events-none">
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <div key={i} className="border-l border-gray-600 h-full"></div>
+                ))}
+              </div>
+              
+              {/* Track blocks */}
+              {tracks.map((track, index) => (
+                <div 
+                  key={track.id}
+                  className={`absolute rounded cursor-move ${
+                    track.isMuted ? 'opacity-50' : ''
+                  } ${track.isSoloed ? 'border-2 border-yellow-400' : 'border border-gray-600'} 
+                    ${selectedTrack && selectedTrack.id === track.id ? 'ring-2 ring-blue-500' : ''}`}
+                  style={{
+                    ...getTrackPosition(track),
+                    backgroundColor: track.color || '#4a5568',
+                    top: `${index * 22}px`,
+                    height: '20px'
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedTrack(track);
+                  }}
+                  draggable={true}
+                  onDragStart={(e) => {
+                    e.dataTransfer.setData('trackId', track.id);
+                    e.dataTransfer.effectAllowed = 'move';
+                    setSelectedTrack(track);
+                  }}
+                  onDrag={(e) => e.preventDefault()}
+                >
+                  <div className="h-full flex items-center justify-between px-2 overflow-hidden">
+                    <div className="text-xs truncate font-semibold">
+                      {track.name}
+                    </div>
+                    <div className="text-xs truncate hidden md:block">
+                      {track.method}
+                    </div>
+                  </div>
+                  
+                  {/* Resize handles */}
+                  <div 
+                    className="absolute left-0 top-0 h-full w-2 cursor-w-resize"
+                    onMouseDown={(e) => handleTrackResizeStart(e, track.id, 'start')}
+                  />
+                  <div 
+                    className="absolute right-0 top-0 h-full w-2 cursor-e-resize"
+                    onMouseDown={(e) => handleTrackResizeStart(e, track.id, 'end')}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
+          
+          {/* Timeline background to catch drag events */}
+          <div 
+            className="h-full w-full absolute top-0 left-0"
+            onDragOver={(e) => {
+              e.preventDefault();
+              e.dataTransfer.dropEffect = 'move';
+            }}
+            onDrop={handleTrackDrop}
+            onClick={(e) => {
+              // Click on timeline to set playback position
+              const rect = e.currentTarget.getBoundingClientRect();
+              const clickPosition = (e.clientX - rect.left) / rect.width;
+              const newTime = clickPosition * duration;
+              transportRef.current.seconds = newTime;
+              setCurrentTime(newTime);
+            }}
+          />
         </div>
       )}
       
