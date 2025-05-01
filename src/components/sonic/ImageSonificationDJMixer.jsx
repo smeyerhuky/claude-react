@@ -1,11 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import * as Tone from 'tone';
 
-// Detect browser support for audio export
-const hasMediaRecorderSupport = typeof window !== 'undefined' && 
-                              window.MediaRecorder && 
-                              typeof window.MediaRecorder.isTypeSupported === 'function';
-
 const ImageSonificationDJMixer = () => {
   // State management
   const [tracks, setTracks] = useState([]);
@@ -20,10 +15,6 @@ const ImageSonificationDJMixer = () => {
   const [mixerMode, setMixerMode] = useState("tracks"); // "tracks" or "fx"
   const [zoomLevel, setZoomLevel] = useState(1);
   const [showingTimeline, setShowingTimeline] = useState(true);
-  const [isRecording, setIsRecording] = useState(false);
-  const [resizingTrack, setResizingTrack] = useState(null); // {id, edge: 'start' or 'end'}
-  const [exportProgress, setExportProgress] = useState(0);
-  const [exportUrl, setExportUrl] = useState(null);
   
   // Refs
   const imageCanvasRef = useRef(null);
@@ -32,52 +23,33 @@ const ImageSonificationDJMixer = () => {
   const transportRef = useRef(null);
   const synthsRef = useRef({});
   const trackSchedulesRef = useRef({});
-  const mediaRecorderRef = useRef(null);
-  const recordedChunksRef = useRef([]);
-  const resizeStartPositionRef = useRef(null);
   
-  // Effect to handle touch and mouse interaction setup
+  // Initialize Tone.js
   useEffect(() => {
-    // Add document-level touch event handlers to ensure touches outside elements are captured
-    const handleGlobalTouchMove = (e) => {
-      // If we're currently resizing a track, prevent default to avoid browser behaviors
-      if (resizingTrack) {
-        e.preventDefault();
-      }
-    };
-    
-    // Add touch event listeners with passive: false to allow preventDefault
-    document.addEventListener('touchmove', handleGlobalTouchMove, { passive: false });
-    
-    // Clean up
-    return () => {
-      document.removeEventListener('touchmove', handleGlobalTouchMove);
-    };
-  }, [resizingTrack]);
-  
-  // Detect if using mobile device
-  const isMobileDevice = useRef(typeof window !== 'undefined' && 
-    (navigator.maxTouchPoints > 0 || 
-     navigator.msMaxTouchPoints > 0 || 
-     'ontouchstart' in window || 
-     'ontouchstart' in document.documentElement));
-  
-  // Adjust element sizes based on device type
-  useEffect(() => {
-    if (isMobileDevice.current) {
-      // Increase touch target sizes for mobile
-      const resizeHandles = document.querySelectorAll('.resize-handle');
-      resizeHandles.forEach(handle => {
-        handle.style.width = '12px'; // Wider hit area for touch
-      });
+    try {
+      // Initialize transport timeline
+      transportRef.current = Tone.Transport;
+      transportRef.current.bpm.value = 120;
       
-      // Add extra padding to buttons for easier touch
-      const buttons = document.querySelectorAll('button');
-      buttons.forEach(button => {
-        button.classList.add('touch-target');
-      });
+      // Load saved sessions from localStorage if available
+      const savedSessionsData = localStorage.getItem('sonificationSessions');
+      if (savedSessionsData) {
+        try {
+          const parsedData = JSON.parse(savedSessionsData);
+          setSavedSets(parsedData);
+        } catch (e) {
+          console.error("Error loading saved sessions:", e);
+        }
+      }
+      
+      // Clean up on unmount
+      return () => {
+        cleanupAllTracks();
+      };
+    } catch (err) {
+      console.error("Error initializing audio system:", err);
     }
-  }, [tracks.length]); // Re-run when tracks change
+  }, []);
   
   const cleanupAllTracks = () => {
     // Stop transport
@@ -1086,6 +1058,21 @@ const ImageSonificationDJMixer = () => {
     }
   };
   
+  // Export/Share state
+  const [exportModalVisible, setExportModalVisible] = useState(false);
+  const [shareModalVisible, setShareModalVisible] = useState(false);
+  const [exportFormat, setExportFormat] = useState('wav');
+  const [exportQuality, setExportQuality] = useState('high');
+  const [exportAllTracks, setExportAllTracks] = useState(true);
+  const [isExporting, setIsExporting] = useState(false);
+  const [exportStatus, setExportStatus] = useState('');
+  const [exportComplete, setExportComplete] = useState(false);
+  const [exportedUrl, setExportedUrl] = useState(null);
+  
+  // Audio recorder
+  const recorderRef = useRef(null);
+  const audioChunksRef = useRef([]);
+  
   // Format time display (seconds to MM:SS)
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
@@ -1103,359 +1090,6 @@ const ImageSonificationDJMixer = () => {
       left: `${startPercent}%`,
       width: `${width}%`
     };
-  };
-  
-  // Handle track drag and drop repositioning
-  const handleTrackDrop = (e) => {
-    e.preventDefault();
-    const trackId = e.dataTransfer.getData('trackId');
-    if (!trackId) return;
-    
-    // Get track element dimensions and container
-    const container = e.currentTarget.getBoundingClientRect();
-    
-    // Calculate new position based on drop position
-    const dropPositionX = e.clientX - container.left;
-    const dropPositionPercent = dropPositionX / container.width;
-    const newStartTime = dropPositionPercent * duration;
-    
-    // Get the track and calculate the duration
-    const track = tracks.find(t => t.id === trackId);
-    if (track) {
-      const trackDuration = track.parameters.endTime - track.parameters.startTime;
-      const newEndTime = Math.min(newStartTime + trackDuration, duration);
-      
-      // Update track position
-      updateTrackParameters(trackId, 'startTime', newStartTime);
-      updateTrackParameters(trackId, 'endTime', newEndTime);
-    }
-  };
-  
-  // Handle track position change via touch
-  const handleTrackTouchStart = (e, trackId) => {
-    e.stopPropagation();
-    
-    // Store the initial touch position and track info
-    const touch = e.touches[0];
-    const trackElement = e.currentTarget;
-    const trackRect = trackElement.getBoundingClientRect();
-    const container = trackElement.parentElement.getBoundingClientRect();
-    
-    // Calculate offset from the left edge of the track
-    const touchOffsetX = touch.clientX - trackRect.left;
-    
-    // Add touch move and end listeners
-    const handleTouchMove = (moveEvent) => {
-      moveEvent.preventDefault();
-      const moveTouch = moveEvent.touches[0];
-      
-      // Calculate new position
-      const newLeft = moveTouch.clientX - container.left - touchOffsetX;
-      const containerWidth = container.width;
-      const positionPercent = Math.max(0, Math.min(newLeft / containerWidth, 1));
-      
-      // Get the track
-      const track = tracks.find(t => t.id === trackId);
-      if (track) {
-        const trackDuration = track.parameters.endTime - track.parameters.startTime;
-        const newStartTime = positionPercent * duration;
-        const newEndTime = Math.min(newStartTime + trackDuration, duration);
-        
-        // Update track position
-        updateTrackParameters(trackId, 'startTime', newStartTime);
-        updateTrackParameters(trackId, 'endTime', newEndTime);
-      }
-    };
-    
-    const handleTouchEnd = () => {
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleTouchEnd);
-    };
-    
-    document.addEventListener('touchmove', handleTouchMove, { passive: false });
-    document.addEventListener('touchend', handleTouchEnd);
-  };
-  
-  // Handle track resizing
-  const handleTrackResizeStart = (e, trackId, edge) => {
-    e.stopPropagation();
-    
-    // Store initial mouse position and track info
-    setResizingTrack({ id: trackId, edge });
-    resizeStartPositionRef.current = {
-      mouseX: e.clientX,
-      track: tracks.find(t => t.id === trackId)
-    };
-    
-    // Add mouse move and up listeners
-    document.addEventListener('mousemove', handleTrackResize);
-    document.addEventListener('mouseup', handleTrackResizeEnd);
-  };
-  
-  // Handle track resizing via touch
-  const handleTrackResizeTouchStart = (e, trackId, edge) => {
-    e.stopPropagation();
-    
-    // Store initial touch position and track info
-    const touch = e.touches[0];
-    setResizingTrack({ id: trackId, edge });
-    resizeStartPositionRef.current = {
-      mouseX: touch.clientX,
-      track: tracks.find(t => t.id === trackId)
-    };
-    
-    // Add touch move and end listeners
-    const handleTouchMove = (moveEvent) => {
-      moveEvent.preventDefault();
-      
-      const moveTouch = moveEvent.touches[0];
-      const { mouseX, track } = resizeStartPositionRef.current;
-      const container = document.querySelector('.timeline-container');
-      if (!container) return;
-      
-      const containerRect = container.getBoundingClientRect();
-      const deltaPixels = moveTouch.clientX - mouseX;
-      const deltaPct = deltaPixels / containerRect.width;
-      const deltaTime = deltaPct * duration;
-      
-      if (resizingTrack.edge === 'start') {
-        const newStartTime = Math.max(0, Math.min(track.parameters.startTime + deltaTime, track.parameters.endTime - 0.5));
-        updateTrackParameters(resizingTrack.id, 'startTime', newStartTime);
-      } else {
-        const newEndTime = Math.max(track.parameters.startTime + 0.5, Math.min(track.parameters.endTime + deltaTime, duration));
-        updateTrackParameters(resizingTrack.id, 'endTime', newEndTime);
-      }
-    };
-    
-    const handleTouchEnd = () => {
-      setResizingTrack(null);
-      resizeStartPositionRef.current = null;
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleTouchEnd);
-    };
-    
-    document.addEventListener('touchmove', handleTouchMove, { passive: false });
-    document.addEventListener('touchend', handleTouchEnd);
-  };
-  
-  const handleTrackResize = (e) => {
-    if (!resizingTrack || !resizeStartPositionRef.current) return;
-    
-    const { mouseX, track } = resizeStartPositionRef.current;
-    const container = document.querySelector('.timeline-container');
-    if (!container) return;
-    
-    const containerRect = container.getBoundingClientRect();
-    const deltaPixels = e.clientX - mouseX;
-    const deltaPct = deltaPixels / containerRect.width;
-    const deltaTime = deltaPct * duration;
-    
-    if (resizingTrack.edge === 'start') {
-      const newStartTime = Math.max(0, Math.min(track.parameters.startTime + deltaTime, track.parameters.endTime - 0.5));
-      updateTrackParameters(resizingTrack.id, 'startTime', newStartTime);
-    } else {
-      const newEndTime = Math.max(track.parameters.startTime + 0.5, Math.min(track.parameters.endTime + deltaTime, duration));
-      updateTrackParameters(resizingTrack.id, 'endTime', newEndTime);
-    }
-  };
-  
-  const handleTrackResizeEnd = () => {
-    setResizingTrack(null);
-    resizeStartPositionRef.current = null;
-    document.removeEventListener('mousemove', handleTrackResize);
-    document.removeEventListener('mouseup', handleTrackResizeEnd);
-  };
-  
-  // Export audio
-  const startRecording = async () => {
-    try {
-      if (!hasMediaRecorderSupport) {
-        alert("Your browser doesn't support audio recording. Try using Chrome or Firefox.");
-        return;
-      }
-      
-      // Initialize audio context
-      if (Tone.context.state !== 'running') {
-        await Tone.start();
-      }
-      
-      // Create a MediaStream destination node
-      const dest = Tone.context.createMediaStreamDestination();
-      
-      // Connect master output to the destination
-      Tone.getDestination().connect(dest);
-      
-      // Create MediaRecorder
-      const recorder = new MediaRecorder(dest.stream, { mimeType: 'audio/webm' });
-      
-      // Set up recorder events
-      recorder.ondataavailable = (e) => {
-        if (e.data.size > 0) {
-          recordedChunksRef.current.push(e.data);
-        }
-      };
-      
-      recorder.onstop = () => {
-        // Create a blob from the recorded chunks
-        const blob = new Blob(recordedChunksRef.current, { type: 'audio/webm' });
-        const url = URL.createObjectURL(blob);
-        setExportUrl(url);
-        setExportProgress(100);
-        
-        // Reset recorder
-        recordedChunksRef.current = [];
-      };
-      
-      // Store recorder reference
-      mediaRecorderRef.current = recorder;
-      
-      // Start recording
-      recorder.start();
-      setIsRecording(true);
-      setExportProgress(0);
-      
-      // Reset and start playback
-      transportRef.current.seconds = 0;
-      setCurrentTime(0);
-      transportRef.current.start();
-      setIsPlaying(true);
-      
-      // Set up progress updates
-      const updateProgress = () => {
-        const progress = (transportRef.current.seconds / duration) * 100;
-        setExportProgress(progress);
-        
-        if (progress < 100 && isRecording) {
-          requestAnimationFrame(updateProgress);
-        }
-      };
-      requestAnimationFrame(updateProgress);
-      
-      // Stop recording when playback ends
-      transportRef.current.schedule(() => {
-        stopRecording();
-      }, duration);
-      
-    } catch (err) {
-      console.error("Error starting recording:", err);
-      alert("Error starting recording: " + err.message);
-    }
-  };
-  
-  const stopRecording = () => {
-    if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
-      mediaRecorderRef.current.stop();
-      setIsRecording(false);
-      
-      // Disconnect media stream destination
-      Tone.getDestination().disconnect();
-    }
-  };
-  
-  const downloadRecording = () => {
-    if (!exportUrl) return;
-    
-    const a = document.createElement('a');
-    a.href = exportUrl;
-    a.download = `${currentSetName || 'sonification'}.webm`;
-    a.click();
-  };
-  
-  // Export project as JSON
-  const exportProject = () => {
-    try {
-      // Create project data
-      const projectData = {
-        name: currentSetName || 'Untitled Project',
-        date: new Date().toISOString(),
-        duration,
-        images: sourceImages.map(img => ({
-          id: img.id,
-          name: img.name,
-          previewUrl: img.previewUrl,
-          data: img.data
-        })),
-        tracks
-      };
-      
-      // Convert to JSON and create download link
-      const dataStr = JSON.stringify(projectData);
-      const dataBlob = new Blob([dataStr], { type: 'application/json' });
-      const url = URL.createObjectURL(dataBlob);
-      
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${currentSetName || 'sonification-project'}.json`;
-      a.click();
-      
-      // Clean up
-      URL.revokeObjectURL(url);
-    } catch (err) {
-      console.error("Error exporting project:", err);
-      alert("Error exporting project: " + err.message);
-    }
-  };
-  
-  // Import project from JSON file
-  const importProject = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      try {
-        const projectData = JSON.parse(event.target.result);
-        
-        // Validate project data
-        if (!projectData.images || !projectData.tracks) {
-          throw new Error("Invalid project file format");
-        }
-        
-        // Confirm if current state will be lost
-        if (tracks.length > 0 && !confirm("Loading this project will replace your current work. Continue?")) {
-          return;
-        }
-        
-        // Clean up current state
-        cleanupAllTracks();
-        
-        // Set duration
-        setDuration(projectData.duration || 10);
-        
-        // Load images
-        setSourceImages(projectData.images || []);
-        
-        // Load tracks
-        setTracks([]);
-        setTimeout(() => {
-          if (projectData.tracks && projectData.tracks.length > 0) {
-            setTracks(projectData.tracks);
-            
-            // Setup synths for all tracks
-            projectData.tracks.forEach(track => {
-              setupTrackSynth(track.id, track);
-            });
-            
-            // Set first track as selected
-            setSelectedTrack(projectData.tracks[0]);
-          }
-        }, 100);
-        
-        // Set name
-        setCurrentSetName(projectData.name || "Imported Project");
-        
-        // Select first image
-        if (projectData.images && projectData.images.length > 0) {
-          setSelectedImage(projectData.images[0]);
-        }
-        
-        alert(`Project "${projectData.name || 'Untitled'}" loaded successfully`);
-      } catch (err) {
-        console.error("Error importing project:", err);
-        alert("Error importing project: " + err.message);
-      }
-    };
-    reader.readAsText(file);
   };
   
   // Render time markers for timeline
@@ -1479,6 +1113,587 @@ const ImageSonificationDJMixer = () => {
     }
     
     return markers;
+  };
+  
+  // Render visualization of track events
+  const renderTrackEventVisualization = (track) => {
+    // Get source image data
+    const sourceImage = sourceImages.find(img => img.id === track.imageId);
+    if (!sourceImage) return null;
+    
+    // Get track timing info
+    const startTime = track.parameters.startTime;
+    const endTime = track.parameters.endTime;
+    const trackDuration = endTime - startTime;
+    
+    // For visualization purposes, create simplified event markers
+    // This simulates what would happen during sonification
+    const events = [];
+    const { data: imageData, parameters } = sourceImage;
+    const resolution = track.parameters.resolution;
+    
+    // Use a maximum of 100 events for visualization
+    const sampleStep = Math.max(1, Math.floor(imageData.length / 100));
+    
+    for (let i = 0; i < imageData.length; i += sampleStep) {
+      const pixel = imageData[i];
+      if (!pixel) continue;
+      
+      // Calculate relative position within track
+      const relativePosition = i / imageData.length;
+      
+      // Map brightness to height
+      const height = 0.2 + pixel.brightness * 0.8;
+      
+      // Determine color based on track method
+      let color;
+      switch (track.method) {
+        case 'colorToPitch':
+          // Map hue to color
+          color = `hsl(${Math.round(pixel.hue * 360)}, 70%, 60%)`;
+          break;
+        case 'brightnessToRhythm':
+          // Use brightness for intensity
+          color = `rgba(255, 255, 255, ${pixel.brightness})`;
+          break;
+        case 'spatialToArpeggio':
+          // Use position for color
+          color = `hsl(${Math.round(pixel.y * 360)}, 70%, 60%)`;
+          break;
+        case 'colorChords':
+          // Use a gradient based on hue
+          color = `hsl(${Math.round(pixel.hue * 360)}, 70%, 60%)`;
+          break;
+        default:
+          color = 'rgba(255, 255, 255, 0.5)';
+      }
+      
+      events.push({
+        position: relativePosition,
+        height,
+        color
+      });
+    }
+    
+    // Render events as bars
+    return events.map((event, index) => (
+      <div
+        key={index}
+        className="h-full w-1"
+        style={{
+          left: `${event.position * 100}%`,
+          height: `${event.height * 100}%`,
+          backgroundColor: event.color,
+          position: 'absolute',
+          bottom: 0
+        }}
+      />
+    ));
+  };
+  
+  // Open export modal
+  const exportAudio = () => {
+    setExportModalVisible(true);
+    setExportComplete(false);
+    setExportedUrl(null);
+  };
+  
+  // Open share modal
+  const shareProject = () => {
+    setShareModalVisible(true);
+  };
+  
+  // Start export process
+  const startExport = async () => {
+    setIsExporting(true);
+    setExportStatus('Preparing for export...');
+    
+    try {
+      if (exportFormat === 'wav') {
+        await exportAudioToWav();
+      } else {
+        exportProjectToJson();
+      }
+    } catch (err) {
+      console.error("Export error:", err);
+      setExportStatus('Export failed: ' + err.message);
+      setIsExporting(false);
+    }
+  };
+  
+  // Export audio to WAV file
+  const exportAudioToWav = async () => {
+    try {
+      // Stop any ongoing playback
+      if (isPlaying) {
+        transportRef.current.pause();
+        setIsPlaying(false);
+      }
+      
+      // Reset playback position
+      transportRef.current.seconds = 0;
+      setCurrentTime(0);
+      
+      // Create a new audio context for recording
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      const recordingContext = new AudioContext();
+      
+      // Set up sample rate based on quality
+      let sampleRate;
+      let channels;
+      
+      switch (exportQuality) {
+        case 'high':
+          sampleRate = 48000;
+          channels = 2;
+          break;
+        case 'medium':
+          sampleRate = 44100;
+          channels = 2;
+          break;
+        case 'low':
+          sampleRate = 22050;
+          channels = 1;
+          break;
+        default:
+          sampleRate = 44100;
+          channels = 2;
+      }
+      
+      // Create destination node
+      const destination = recordingContext.createMediaStreamDestination();
+      
+      // Set up audio recorder
+      const recorder = new MediaRecorder(destination.stream);
+      recorderRef.current = recorder;
+      audioChunksRef.current = [];
+      
+      // Set up recorder events
+      recorder.ondataavailable = (e) => {
+        if (e.data.size > 0) {
+          audioChunksRef.current.push(e.data);
+        }
+      };
+      
+      recorder.onstop = () => {
+        // Create blob from chunks
+        const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/wav' });
+        const audioUrl = URL.createObjectURL(audioBlob);
+        
+        // Update state
+        setExportedUrl(audioUrl);
+        setExportComplete(true);
+        setIsExporting(false);
+        setExportStatus('Export complete!');
+      };
+      
+      // Start recording
+      recorder.start();
+      
+      // Create temporary synths for each track
+      setExportStatus('Setting up audio engine...');
+      
+      const exportSynths = {};
+      const activeTracks = exportAllTracks 
+        ? tracks 
+        : tracks.filter(track => !track.isMuted);
+      
+      // Create synths for each track
+      for (const track of activeTracks) {
+        // Create synth
+        let synth;
+        
+        switch (track.synthType) {
+          case 'FMSynth':
+            synth = new Tone.FMSynth();
+            break;
+          case 'AMSynth':
+            synth = new Tone.AMSynth();
+            break;
+          case 'MembraneSynth':
+            synth = new Tone.MembraneSynth();
+            break;
+          case 'PluckSynth':
+            synth = new Tone.PluckSynth();
+            break;
+          default:
+            synth = new Tone.Synth();
+        }
+        
+        // Create effect
+        let effect;
+        
+        switch (track.parameters.effect) {
+          case 'reverb':
+            effect = new Tone.Reverb({
+              decay: 2,
+              wet: track.parameters.effectMix
+            });
+            break;
+          case 'delay':
+            effect = new Tone.FeedbackDelay({
+              delayTime: 0.25,
+              feedback: 0.3,
+              wet: track.parameters.effectMix
+            });
+            break;
+          case 'distortion':
+            effect = new Tone.Distortion({
+              distortion: 0.4,
+              wet: track.parameters.effectMix
+            });
+            break;
+          default:
+            effect = new Tone.Volume(0);
+        }
+        
+        // Connect synth to effect
+        synth.connect(effect);
+        
+        // Connect effect to destination
+        effect.connect(destination);
+        
+        // Set volume
+        synth.volume.value = Tone.gainToDb(track.volume);
+        
+        // Store synth
+        exportSynths[track.id] = {
+          synth,
+          effect
+        };
+      }
+      
+      // Schedule all events
+      setExportStatus('Scheduling audio events...');
+      
+      // Create a temporary timeline for export
+      const exportTimeline = [];
+      
+      // Schedule events for each track
+      for (const track of activeTracks) {
+        // Get source image
+        const sourceImage = sourceImages.find(img => img.id === track.imageId);
+        if (!sourceImage) continue;
+        
+        const { data: imageData } = sourceImage;
+        const { parameters } = track;
+        const { pitchRange, speed, startTime, endTime } = parameters;
+        
+        // Track duration
+        const trackDuration = endTime - startTime;
+        
+        // Schedule events based on method
+        switch (track.method) {
+          case 'colorToPitch': {
+            imageData.forEach((pixel, index) => {
+              // Skip based on resolution
+              if (index % Math.round(1 / parameters.resolution) !== 0) return;
+              
+              // Calculate time
+              const relativeTime = (index / imageData.length) * trackDuration / speed;
+              const absoluteTime = startTime + relativeTime;
+              
+              // Skip if outside track bounds
+              if (absoluteTime > endTime) return;
+              
+              // Map hue to pitch
+              const pitch = pitchRange[0] + pixel.hue * (pitchRange[1] - pitchRange[0]);
+              
+              // Map brightness to velocity
+              const velocity = 0.3 + pixel.brightness * 0.7;
+              
+              // Add event to timeline
+              exportTimeline.push({
+                time: absoluteTime,
+                trackId: track.id,
+                note: pitch,
+                duration: parameters.attack + parameters.release,
+                velocity
+              });
+            });
+            break;
+          }
+          
+          case 'brightnessToRhythm': {
+            const rhythmThresholds = [0.2, 0.4, 0.6, 0.8];
+            const pitches = ['C3', 'E3', 'G3', 'B3', 'C4'];
+            
+            imageData.forEach((pixel, index) => {
+              // Skip based on resolution
+              if (index % Math.round(1 / parameters.resolution) !== 0) return;
+              
+              // Calculate time
+              const relativeTime = (index / imageData.length) * trackDuration / speed;
+              const absoluteTime = startTime + relativeTime;
+              
+              // Skip if outside track bounds
+              if (absoluteTime > endTime) return;
+              
+              // Determine if we trigger based on brightness
+              const thresholdIndex = rhythmThresholds.findIndex(t => pixel.brightness <= t);
+              if (thresholdIndex >= 0) {
+                const pitch = pitches[thresholdIndex];
+                const velocity = 0.3 + pixel.brightness * 0.7;
+                
+                // Add event to timeline
+                exportTimeline.push({
+                  time: absoluteTime,
+                  trackId: track.id,
+                  note: pitch,
+                  duration: parameters.attack + parameters.release,
+                  velocity
+                });
+              }
+            });
+            break;
+          }
+          
+          case 'spatialToArpeggio': {
+            // Group pixels by row
+            const rows = {};
+            imageData.forEach(pixel => {
+              const rowKey = Math.floor(pixel.y * 10) / 10;
+              if (!rows[rowKey]) rows[rowKey] = [];
+              rows[rowKey].push(pixel);
+            });
+            
+            // Create arpeggios for each row
+            Object.entries(rows).forEach(([rowKey, pixels], rowIndex) => {
+              // Sort pixels
+              pixels.sort((a, b) => a.x - b.x);
+              
+              // Map row to chord
+              const baseNote = 48 + (rowIndex * 5);
+              const chord = [baseNote, baseNote + 4, baseNote + 7];
+              
+              // Schedule notes
+              pixels.forEach((pixel, pixelIndex) => {
+                // Skip based on resolution
+                if (pixelIndex % Math.round(1 / parameters.resolution) !== 0) return;
+                
+                // Calculate time
+                const rowOffset = rowIndex * 0.5;
+                const pixelPosition = pixelIndex / pixels.length * 1.5;
+                const relativeTime = (rowOffset + pixelPosition) * trackDuration / speed;
+                const absoluteTime = startTime + relativeTime;
+                
+                // Skip if outside track bounds
+                if (absoluteTime > endTime) return;
+                
+                const noteIndex = pixelIndex % chord.length;
+                const note = Tone.Frequency(chord[noteIndex], "midi");
+                const velocity = 0.3 + pixel.brightness * 0.7;
+                
+                // Add event to timeline
+                exportTimeline.push({
+                  time: absoluteTime,
+                  trackId: track.id,
+                  note,
+                  duration: parameters.attack + parameters.release,
+                  velocity
+                });
+              });
+            });
+            break;
+          }
+          
+          case 'colorChords': {
+            // Group by hue ranges
+            const hueRanges = [0, 0.2, 0.4, 0.6, 0.8];
+            const chordTypes = [
+              [0, 4, 7], // Major
+              [0, 3, 7], // Minor
+              [0, 4, 7, 11], // Major 7th
+              [0, 3, 7, 10], // Minor 7th
+              [0, 4, 8] // Augmented
+            ];
+            
+            // Root note based on brightness
+            const avgBrightness = imageData.reduce((sum, pixel) => sum + pixel.brightness, 0) / imageData.length;
+            const rootNote = 36 + Math.floor(avgBrightness * 24);
+            
+            imageData.forEach((pixel, index) => {
+              // Skip based on resolution
+              if (index % Math.round(1 / parameters.resolution) !== 0) return;
+              
+              // Calculate time
+              const relativeTime = (index / imageData.length) * trackDuration / speed;
+              const absoluteTime = startTime + relativeTime;
+              
+              // Skip if outside track bounds
+              if (absoluteTime > endTime) return;
+              
+              // Select chord based on hue
+              const hueIndex = hueRanges.findIndex(h => pixel.hue <= h + 0.2);
+              if (hueIndex >= 0) {
+                const chordType = chordTypes[Math.min(hueIndex, chordTypes.length - 1)];
+                const chord = chordType.map(interval => Tone.Frequency(rootNote + interval, "midi"));
+                const velocity = 0.3 + pixel.brightness * 0.7;
+                
+                // Arpeggio or chord
+                const isArpeggio = index % 3 === 0;
+                
+                if (isArpeggio) {
+                  // Arpeggio
+                  chord.forEach((note, noteIndex) => {
+                    const noteDelay = noteIndex * 0.1;
+                    
+                    // Add event to timeline
+                    exportTimeline.push({
+                      time: absoluteTime + noteDelay,
+                      trackId: track.id,
+                      note,
+                      duration: parameters.attack + parameters.release,
+                      velocity
+                    });
+                  });
+                } else {
+                  // Single note from chord
+                  const note = chord[index % chord.length];
+                  
+                  // Add event to timeline
+                  exportTimeline.push({
+                    time: absoluteTime,
+                    trackId: track.id,
+                    note,
+                    duration: parameters.attack + parameters.release,
+                    velocity
+                  });
+                }
+              }
+            });
+            break;
+          }
+        }
+      }
+      
+      // Sort timeline by time
+      exportTimeline.sort((a, b) => a.time - b.time);
+      
+      // Play all events
+      setExportStatus('Generating audio...');
+      
+      // Start audio context
+      await Tone.start();
+      
+      // Create a loop to play events in real time
+      let currentIndex = 0;
+      const startTime = Date.now();
+      
+      const playEvents = async () => {
+        const currentTime = (Date.now() - startTime) / 1000;
+        
+        // Play all events up to current time
+        while (currentIndex < exportTimeline.length && 
+               exportTimeline[currentIndex].time <= currentTime) {
+          const event = exportTimeline[currentIndex];
+          
+          // Get synth
+          const synth = exportSynths[event.trackId]?.synth;
+          if (synth) {
+            // Play note
+            synth.triggerAttackRelease(
+              event.note,
+              event.duration,
+              undefined,
+              event.velocity
+            );
+          }
+          
+          currentIndex++;
+        }
+        
+        // Update status
+        setExportStatus(`Generating audio (${Math.round(currentTime / duration * 100)}%)...`);
+        
+        // Continue if not done
+        if (currentIndex < exportTimeline.length && currentTime < duration) {
+          setTimeout(playEvents, 10);
+        } else {
+          // All events played or time exceeded
+          
+          // Wait a bit to let reverb tails finish
+          await new Promise(resolve => setTimeout(resolve, 2000));
+          
+          // Stop recording
+          recorder.stop();
+          
+          // Clean up synths
+          Object.values(exportSynths).forEach(({ synth, effect }) => {
+            synth.dispose();
+            effect.dispose();
+          });
+        }
+      };
+      
+      // Start playback loop
+      playEvents();
+      
+    } catch (err) {
+      console.error("Error exporting audio:", err);
+      setExportStatus("Export failed: " + err.message);
+      setIsExporting(false);
+    }
+  };
+  
+  // Export project to JSON
+  const exportProjectToJson = () => {
+    try {
+      // Prepare project data
+      const projectData = exportProjectData();
+      
+      // Convert to JSON
+      const jsonData = JSON.stringify(projectData, null, 2);
+      
+      // Create download link
+      const dataUri = `data:application/json;charset=utf-8,${encodeURIComponent(jsonData)}`;
+      const downloadLink = document.createElement('a');
+      downloadLink.setAttribute('href', dataUri);
+      downloadLink.setAttribute('download', `sonification-project-${Date.now()}.json`);
+      
+      // Trigger download
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+      
+      // Update state
+      setExportComplete(true);
+      setIsExporting(false);
+      setExportStatus('Project exported successfully!');
+      
+    } catch (err) {
+      console.error("Error exporting project:", err);
+      setExportStatus("Export failed: " + err.message);
+      setIsExporting(false);
+    }
+  };
+  
+  // Prepare project data for export
+  const exportProjectData = () => {
+    return {
+      name: currentSetName || "Sonification Project",
+      date: new Date().toISOString(),
+      duration,
+      images: sourceImages.map(img => ({
+        id: img.id,
+        name: img.name,
+        previewUrl: img.previewUrl,
+        data: img.data
+      })),
+      tracks: tracks.map(track => ({
+        id: track.id,
+        name: track.name,
+        imageId: track.imageId,
+        method: track.method,
+        synthType: track.synthType,
+        volume: track.volume,
+        parameters: track.parameters,
+        color: track.color,
+        isMuted: track.isMuted,
+        isSoloed: track.isSoloed
+      })),
+      version: "1.0"
+    };
   };
   
   return (
@@ -1515,75 +1730,10 @@ const ImageSonificationDJMixer = () => {
                 </option>
               ))}
             </select>
-            
-            {/* Export/Share menu */}
-            <div className="relative ml-2 group">
-              <button
-                className="px-2 py-1 text-sm bg-indigo-700 text-white rounded hover:bg-indigo-600"
-              >
-                Export
-              </button>
-              <div className="absolute left-0 top-full mt-1 w-48 bg-gray-800 rounded shadow-lg border border-gray-700 hidden group-hover:block z-50">
-                <button
-                  onClick={startRecording}
-                  disabled={isRecording}
-                  className="w-full text-left px-3 py-2 hover:bg-gray-700 text-sm border-b border-gray-700"
-                >
-                  {isRecording ? 'Recording...' : 'Export Audio (WebM)'}
-                </button>
-                
-                <button
-                  onClick={exportProject}
-                  className="w-full text-left px-3 py-2 hover:bg-gray-700 text-sm border-b border-gray-700"
-                >
-                  Export Project (JSON)
-                </button>
-                
-                <div className="px-3 py-2 text-sm">
-                  <label className="flex items-center hover:bg-gray-700 px-2 py-1 rounded cursor-pointer">
-                    <span>Import Project</span>
-                    <input
-                      type="file"
-                      accept=".json"
-                      className="hidden"
-                      onChange={importProject}
-                    />
-                  </label>
-                </div>
-                
-                {exportUrl && (
-                  <button
-                    onClick={downloadRecording}
-                    className="w-full text-left px-3 py-2 hover:bg-gray-700 text-sm text-green-400"
-                  >
-                    Download Recorded Audio
-                  </button>
-                )}
-              </div>
-            </div>
-            
-            {/* Recording progress */}
-            {isRecording && (
-              <div className="ml-2 flex items-center">
-                <div className="w-16 h-2 bg-gray-700 rounded overflow-hidden">
-                  <div 
-                    className="h-full bg-red-600"
-                    style={{ width: `${exportProgress}%` }}
-                  />
-                </div>
-                <button
-                  onClick={stopRecording}
-                  className="ml-1 px-1 text-xs bg-red-700 rounded"
-                  title="Stop recording"
-                >
-                  ◼
-                </button>
-              </div>
-            )}
           </div>
         </div>
         
-        <div className="flex gap-2 z-30">
+        <div className="flex gap-2">
           <input 
             type="file" 
             accept="image/*" 
@@ -1593,26 +1743,26 @@ const ImageSonificationDJMixer = () => {
           />
           <label 
             htmlFor="image-upload"
-            className="px-2 py-1 text-sm bg-blue-700 text-white rounded cursor-pointer hover:bg-blue-600 relative z-50"
+            className="px-2 py-1 text-sm bg-blue-700 text-white rounded cursor-pointer hover:bg-blue-600"
           >
             Upload Image
           </label>
           <button 
             onClick={startWebcam}
-            className="px-2 py-1 text-sm bg-purple-700 text-white rounded hover:bg-purple-600 relative z-50"
+            className="px-2 py-1 text-sm bg-purple-700 text-white rounded hover:bg-purple-600"
           >
             Webcam
           </button>
           <button 
             onClick={captureFromWebcam}
-            className="px-2 py-1 text-sm bg-green-700 text-white rounded hover:bg-green-600 relative z-50"
+            className="px-2 py-1 text-sm bg-green-700 text-white rounded hover:bg-green-600"
             disabled={!videoRef.current || !videoRef.current.srcObject}
           >
             Capture
           </button>
           <button 
             onClick={stopWebcam}
-            className="px-2 py-1 text-sm bg-red-700 text-white rounded hover:bg-red-600 relative z-50"
+            className="px-2 py-1 text-sm bg-red-700 text-white rounded hover:bg-red-600"
           >
             Stop Cam
           </button>
@@ -1640,6 +1790,24 @@ const ImageSonificationDJMixer = () => {
         </div>
         
         <div className="flex items-center gap-2">
+          <button
+            onClick={exportAudio}
+            className="px-2 py-1 bg-green-700 text-white rounded hover:bg-green-600 flex items-center gap-1"
+            title="Export audio as WAV file"
+          >
+            <span>Export</span>
+          </button>
+          
+          <button
+            onClick={shareProject}
+            className="px-2 py-1 bg-purple-700 text-white rounded hover:bg-purple-600 flex items-center gap-1" 
+            title="Share this project"
+          >
+            <span>Share</span>
+          </button>
+          
+          <div className="h-4 border-l border-gray-600 mx-1"></div>
+          
           <label className="text-sm">Duration:</label>
           <input
             type="number"
@@ -1651,7 +1819,9 @@ const ImageSonificationDJMixer = () => {
           />
           <span className="text-sm">sec</span>
           
-          <div className="ml-4 flex items-center gap-2">
+          <div className="h-4 border-l border-gray-600 mx-1"></div>
+          
+          <div className="flex items-center gap-2">
             <button
               onClick={() => setMixerMode("tracks")}
               className={`px-2 py-1 text-sm rounded ${
@@ -1690,105 +1860,379 @@ const ImageSonificationDJMixer = () => {
         </div>
       </div>
       
-      {/* Timeline View with DAW-style interface */}
+      {/* Export/Share Modal */}
+      {exportModalVisible && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+          <div className="bg-gray-800 rounded-lg p-4 max-w-lg w-full">
+            <h2 className="text-xl font-bold mb-4">Export Project</h2>
+            
+            {isExporting ? (
+              <div className="text-center py-8">
+                <div className="animate-spin w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full mx-auto mb-4"></div>
+                <p>{exportStatus}</p>
+              </div>
+            ) : exportComplete ? (
+              <div className="text-center py-4">
+                <div className="text-green-500 text-4xl mb-2">✓</div>
+                <p className="mb-4">Export complete!</p>
+                {exportedUrl && (
+                  <div className="mb-4">
+                    <a 
+                      href={exportedUrl} 
+                      download={`sonification-${Date.now()}.wav`}
+                      className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                    >
+                      Download Audio
+                    </a>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div>
+                <div className="mb-4">
+                  <label className="block mb-2">Export Format</label>
+                  <select 
+                    value={exportFormat} 
+                    onChange={(e) => setExportFormat(e.target.value)}
+                    className="w-full p-2 bg-gray-700 border border-gray-600 rounded"
+                  >
+                    <option value="wav">WAV Audio</option>
+                    <option value="json">Project File (JSON)</option>
+                  </select>
+                </div>
+                
+                <div className="mb-4">
+                  <label className="block mb-2">Quality</label>
+                  <select 
+                    value={exportQuality} 
+                    onChange={(e) => setExportQuality(e.target.value)}
+                    className="w-full p-2 bg-gray-700 border border-gray-600 rounded"
+                    disabled={exportFormat !== 'wav'}
+                  >
+                    <option value="high">High (48kHz, Stereo)</option>
+                    <option value="medium">Medium (44.1kHz, Stereo)</option>
+                    <option value="low">Low (22kHz, Mono)</option>
+                  </select>
+                </div>
+                
+                <div className="mb-4">
+                  <label className="block mb-2">Export Options</label>
+                  <div className="flex items-center mb-2">
+                    <input 
+                      type="checkbox" 
+                      id="export-all-tracks" 
+                      checked={exportAllTracks}
+                      onChange={(e) => setExportAllTracks(e.target.checked)}
+                      className="mr-2"
+                    />
+                    <label htmlFor="export-all-tracks">Export all tracks (uncheck to export only unmuted tracks)</label>
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            <div className="flex justify-end mt-4">
+              {!isExporting && !exportComplete && (
+                <button
+                  onClick={startExport}
+                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 mr-2"
+                >
+                  Export
+                </button>
+              )}
+              <button
+                onClick={() => {
+                  setExportModalVisible(false);
+                  setExportComplete(false);
+                  setExportedUrl(null);
+                }}
+                className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700"
+              >
+                {exportComplete ? 'Close' : 'Cancel'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      {/* Share Modal */}
+      {shareModalVisible && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+          <div className="bg-gray-800 rounded-lg p-4 max-w-lg w-full">
+            <h2 className="text-xl font-bold mb-4">Share Project</h2>
+            
+            <div className="mb-4">
+              <p className="mb-4">Share your project with others:</p>
+              
+              <div className="mb-4">
+                <label className="block mb-2">Project Link</label>
+                <div className="flex">
+                  <input
+                    type="text"
+                    value={window.location.href}
+                    readOnly
+                    className="flex-1 p-2 bg-gray-700 border border-gray-600 rounded-l"
+                  />
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(window.location.href);
+                      alert("Link copied to clipboard!");
+                    }}
+                    className="px-4 py-2 bg-blue-600 text-white rounded-r hover:bg-blue-700"
+                  >
+                    Copy
+                  </button>
+                </div>
+              </div>
+              
+              <div className="mb-4">
+                <label className="block mb-2">Export Options</label>
+                <button
+                  onClick={() => {
+                    setShareModalVisible(false);
+                    setExportModalVisible(true);
+                  }}
+                  className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                >
+                  Export Audio File
+                </button>
+              </div>
+              
+              <div className="mb-4">
+                <label className="block mb-2">Project Data</label>
+                <button
+                  onClick={() => {
+                    const projectData = exportProjectData();
+                    const dataStr = JSON.stringify(projectData);
+                    const dataUri = `data:application/json;charset=utf-8,${encodeURIComponent(dataStr)}`;
+                    
+                    const exportLink = document.createElement('a');
+                    exportLink.setAttribute('href', dataUri);
+                    exportLink.setAttribute('download', `sonification-project-${Date.now()}.json`);
+                    document.body.appendChild(exportLink);
+                    exportLink.click();
+                    document.body.removeChild(exportLink);
+                  }}
+                  className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
+                >
+                  Download Project File
+                </button>
+              </div>
+            </div>
+            
+            <div className="flex justify-end mt-4">
+              <button
+                onClick={() => setShareModalVisible(false)}
+                className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      {/* Timeline View */}
       {showingTimeline && (
         <div className="bg-gray-800 border-b border-gray-700 p-2">
-          <div className="overflow-auto">
+          <div className="relative overflow-auto">
             <div 
-              className="relative h-20 bg-gray-700 rounded overflow-hidden timeline-container"
-              style={{ width: `${100 * zoomLevel}%`, minWidth: '100%' }}
+              className="relative h-auto bg-gray-700 rounded overflow-hidden min-h-48"
+              style={{ width: `${100 * zoomLevel}%` }}
             >
               {/* Time markers */}
               {renderTimeMarkers()}
               
               {/* Playhead */}
               <div 
-                className="absolute top-0 h-full w-px bg-red-500 z-10"
+                className="absolute top-0 h-full w-px bg-red-500 z-20"
                 style={{ left: `${(currentTime / duration) * 100}%` }}
-              >
-                <div className="w-4 h-4 bg-red-500 rounded-full -ml-2 -mt-1"></div>
-              </div>
+              />
               
-              {/* Grid lines */}
-              <div className="absolute w-full h-full grid grid-cols-8 pointer-events-none">
-                {Array.from({ length: 8 }).map((_, i) => (
-                  <div key={i} className="border-l border-gray-600 h-full"></div>
-                ))}
-              </div>
-              
-              {/* Track blocks */}
-              {tracks.map((track, index) => (
-                <div 
-                  key={track.id}
-                  className={`absolute rounded overflow-hidden ${
-                    track.isMuted ? 'opacity-50' : ''
-                  } ${track.isSoloed ? 'border-2 border-yellow-400' : 'border border-gray-600'} 
-                    ${selectedTrack && selectedTrack.id === track.id ? 'ring-2 ring-blue-500' : ''}`}
-                  style={{
-                    ...getTrackPosition(track),
-                    backgroundColor: track.color || '#4a5568',
-                    top: `${index * 22}px`,
-                    height: '20px',
-                    touchAction: 'none' // Prevent browser handling of touch events
-                  }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedTrack(track);
-                  }}
-                  draggable="true"
-                  onDragStart={(e) => {
-                    e.dataTransfer.setData('trackId', track.id);
-                    e.dataTransfer.effectAllowed = 'move';
-                    setSelectedTrack(track);
-                  }}
-                  onTouchStart={(e) => handleTrackTouchStart(e, track.id)}
-                >
-                  <div className="h-full flex items-center justify-between px-2 overflow-hidden cursor-move">
-                    <div className="text-xs truncate font-semibold">
-                      {track.name}
+              {/* Track lanes */}
+              <div className="relative pt-6">
+                {tracks.map((track, index) => (
+                  <div 
+                    key={track.id}
+                    className="relative h-16 border-t border-gray-600 flex items-center px-2"
+                  >
+                    <div className="absolute left-0 top-0 h-full w-16 flex items-center justify-center bg-gray-800 border-r border-gray-600 z-10">
+                      <div 
+                        className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs"
+                        style={{ backgroundColor: track.color || '#4a5568' }}
+                      >
+                        {index + 1}
+                      </div>
                     </div>
-                    <div className="text-xs truncate hidden md:block">
-                      {track.method}
+                    
+                    {/* Track block */}
+                    <div 
+                      className={`absolute h-12 rounded cursor-move ${
+                        track.isMuted ? 'opacity-50' : ''
+                      } ${track.isSoloed ? 'border-2 border-yellow-400' : 'border border-gray-600'}`}
+                      style={{
+                        ...getTrackPosition(track),
+                        backgroundColor: track.color || '#4a5568',
+                        left: `calc(${getTrackPosition(track).left} + 16px)`,
+                        zIndex: 5
+                      }}
+                      onClick={() => setSelectedTrack(track)}
+                      draggable={true}
+                      onDragStart={(e) => {
+                        e.dataTransfer.setData('text/plain', track.id);
+                        e.dataTransfer.effectAllowed = 'move';
+                      }}
+                      onDrag={(e) => {
+                        // Track current drag position for visual feedback
+                        if (e.clientX === 0 && e.clientY === 0) return; // Ignore invalid positions
+                        
+                        const trackElement = e.target;
+                        const timelineElement = trackElement.parentElement;
+                        const timelineRect = timelineElement.getBoundingClientRect();
+                        
+                        // Calculate position as percentage of timeline width
+                        const positionPercent = Math.max(0, Math.min(100, 
+                          ((e.clientX - timelineRect.left) / timelineRect.width) * 100));
+                        
+                        // Store position for visualization
+                        trackElement.dataset.dragPosition = positionPercent;
+                      }}
+                    >
+                      {/* Resize handle - left */}
+                      <div 
+                        className="absolute left-0 top-0 bottom-0 w-2 cursor-w-resize"
+                        onMouseDown={(e) => {
+                          e.stopPropagation();
+                          const startX = e.clientX;
+                          const startTime = track.parameters.startTime;
+                          const trackDuration = track.parameters.endTime - track.parameters.startTime;
+                          
+                          // Handle mouse move for resizing
+                          const handleMouseMove = (moveEvent) => {
+                            const deltaX = moveEvent.clientX - startX;
+                            const containerWidth = e.target.parentElement.parentElement.clientWidth;
+                            const timelineDuration = duration;
+                            
+                            // Convert pixel delta to time delta
+                            const timeDelta = (deltaX / containerWidth) * timelineDuration;
+                            
+                            // Calculate new start time (bounded)
+                            const newStartTime = Math.max(0, Math.min(
+                              track.parameters.endTime - 0.5, // Ensure minimum track length
+                              startTime + timeDelta
+                            ));
+                            
+                            // Update track
+                            updateTrackParameters(track.id, 'startTime', newStartTime);
+                          };
+                          
+                          // Handle mouse up to stop resizing
+                          const handleMouseUp = () => {
+                            document.removeEventListener('mousemove', handleMouseMove);
+                            document.removeEventListener('mouseup', handleMouseUp);
+                          };
+                          
+                          // Add event listeners
+                          document.addEventListener('mousemove', handleMouseMove);
+                          document.addEventListener('mouseup', handleMouseUp);
+                        }}
+                      />
+                      
+                      {/* Resize handle - right */}
+                      <div 
+                        className="absolute right-0 top-0 bottom-0 w-2 cursor-e-resize"
+                        onMouseDown={(e) => {
+                          e.stopPropagation();
+                          const startX = e.clientX;
+                          const startEndTime = track.parameters.endTime;
+                          
+                          // Handle mouse move for resizing
+                          const handleMouseMove = (moveEvent) => {
+                            const deltaX = moveEvent.clientX - startX;
+                            const containerWidth = e.target.parentElement.parentElement.clientWidth;
+                            const timelineDuration = duration;
+                            
+                            // Convert pixel delta to time delta
+                            const timeDelta = (deltaX / containerWidth) * timelineDuration;
+                            
+                            // Calculate new end time (bounded)
+                            const newEndTime = Math.max(
+                              track.parameters.startTime + 0.5, // Ensure minimum track length
+                              Math.min(duration, startEndTime + timeDelta)
+                            );
+                            
+                            // Update track
+                            updateTrackParameters(track.id, 'endTime', newEndTime);
+                          };
+                          
+                          // Handle mouse up to stop resizing
+                          const handleMouseUp = () => {
+                            document.removeEventListener('mousemove', handleMouseMove);
+                            document.removeEventListener('mouseup', handleMouseUp);
+                          };
+                          
+                          // Add event listeners
+                          document.addEventListener('mousemove', handleMouseMove);
+                          document.addEventListener('mouseup', handleMouseUp);
+                        }}
+                      />
+                      
+                      <div className="text-xs truncate px-2 pt-1 font-semibold">
+                        {track.name}
+                      </div>
+                      <div className="text-xs px-2">
+                        {track.method}
+                      </div>
+                      
+                      {/* Visualization of track events */}
+                      <div className="absolute bottom-0 left-0 right-0 h-4 overflow-hidden">
+                        <div className="flex h-full">
+                          {renderTrackEventVisualization(track)}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  
-                  {/* Resize handles */}
-                  <div 
-                    className="absolute left-0 top-0 h-full w-4 cursor-w-resize z-20 bg-gradient-to-r from-black to-transparent opacity-30 hover:opacity-60"
-                    onMouseDown={(e) => handleTrackResizeStart(e, track.id, 'start')}
-                    onTouchStart={(e) => handleTrackResizeTouchStart(e, track.id, 'start')}
-                  />
-                  <div 
-                    className="absolute right-0 top-0 h-full w-4 cursor-e-resize z-20 bg-gradient-to-l from-black to-transparent opacity-30 hover:opacity-60"
-                    onMouseDown={(e) => handleTrackResizeStart(e, track.id, 'end')}
-                    onTouchStart={(e) => handleTrackResizeTouchStart(e, track.id, 'end')}
-                  />
-                </div>
-              ))}
+                ))}
+                
+                {/* Drop zone for track positioning */}
+                <div 
+                  className="absolute top-0 left-0 w-full h-full"
+                  onDragOver={(e) => {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                  }}
+                  onDrop={(e) => {
+                    e.preventDefault();
+                    const trackId = e.dataTransfer.getData('text/plain');
+                    if (!trackId) return;
+                    
+                    // Calculate drop position in timeline
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    const offsetX = e.clientX - rect.left;
+                    const positionPercent = offsetX / rect.width;
+                    
+                    // Convert to time
+                    const dropTime = positionPercent * duration;
+                    
+                    // Get track
+                    const track = tracks.find(t => t.id === trackId);
+                    if (!track) return;
+                    
+                    // Calculate track duration
+                    const trackDuration = track.parameters.endTime - track.parameters.startTime;
+                    
+                    // Update track position
+                    const newStartTime = Math.max(0, Math.min(duration - trackDuration, dropTime));
+                    const newEndTime = Math.min(duration, newStartTime + trackDuration);
+                    
+                    // Update track parameters
+                    updateTrackParameters(track.id, 'startTime', newStartTime);
+                    updateTrackParameters(track.id, 'endTime', newEndTime);
+                  }}
+                />
+              </div>
             </div>
           </div>
-          
-          {/* Timeline click area */}
-          <div 
-            className="h-full w-full absolute top-0 left-0 timeline-background-layer"
-            style={{ pointerEvents: resizingTrack ? 'none' : 'auto' }}
-            onDragOver={(e) => {
-              e.preventDefault();
-              e.dataTransfer.dropEffect = 'move';
-            }}
-            onDrop={handleTrackDrop}
-            onClick={(e) => {
-              // Don't let clicks on the timeline interfere with other UI elements
-              if (!e.target.closest('.timeline-container')) return;
-              
-              // Click on timeline to set playback position
-              const rect = e.currentTarget.getBoundingClientRect();
-              const clickPosition = (e.clientX - rect.left) / rect.width;
-              const newTime = clickPosition * duration;
-              transportRef.current.seconds = newTime;
-              setCurrentTime(newTime);
-            }}
-          />
         </div>
       )}
       
