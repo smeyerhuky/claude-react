@@ -101,7 +101,7 @@ const FrontendConceptsGuide = () => {
   const [showAddDialog, setShowAddDialog] = useState(false);
   const [newComponentType, setNewComponentType] = useState('div');
   const [newComponentName, setNewComponentName] = useState('');
-  const [activeTab, setActiveTab] = useState('explorer'); // 'explorer', 'performance', 'code'
+  const [activeTab, setActiveTab] = useState('explorer'); // 'explorer', 'performance', 'code', 'rendered'
   
   // State for performance metrics
   const [renderMetrics, setRenderMetrics] = useState({
@@ -635,6 +635,41 @@ const FrontendConceptsGuide = () => {
     );
   };
   
+  // Generate a React element tree from the virtual DOM structure
+  const generateRealDOM = (node) => {
+    if (!node) return null;
+    
+    // Extract props from the node
+    const { id, type, props, content, children } = node;
+    
+    // Create props object for the element
+    const elementProps = { 
+      key: id, 
+      id,
+      ...props,
+      className: `${props?.className || ''} ${selectedNodeId === id ? 'rendered-selected' : ''}`
+    };
+    
+    // Create child elements
+    let childElements = [];
+    
+    // Add content as a child if it exists
+    if (content) {
+      childElements.push(content);
+    }
+    
+    // Add children if they exist
+    if (children && children.length > 0) {
+      childElements = [
+        ...childElements,
+        ...children.map(child => generateRealDOM(child))
+      ];
+    }
+    
+    // Create the element
+    return React.createElement(type, elementProps, ...childElements);
+  };
+  
   // Render the virtual DOM explorer view
   const renderExplorerView = () => {
     return (
@@ -1026,6 +1061,126 @@ export default MyComponent;`;
       </div>
     );
   };
+
+  // Render the preview of the actual DOM
+  const renderRenderedView = () => {
+    // Generate a real DOM element from our virtual DOM
+    const renderedElement = generateRealDOM(currentTree);
+    
+    // CSS for the rendered preview
+    const previewStyles = `
+      .rendered-preview {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        border: 1px solid #e5e7eb;
+        background-color: white;
+        padding: 1rem;
+        margin-top: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      }
+      
+      .rendered-preview .container {
+        margin: 0 auto;
+        max-width: 100%;
+      }
+      
+      .rendered-preview .header {
+        padding: 1rem 0;
+        border-bottom: 1px solid #e5e7eb;
+        margin-bottom: 1rem;
+      }
+      
+      .rendered-preview .navigation {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .rendered-preview .nav-link {
+        color: #3b82f6;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      
+      .rendered-preview .title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0.5rem 0;
+      }
+      
+      .rendered-preview .main-content {
+        padding: 1rem 0;
+      }
+      
+      .rendered-preview .article {
+        margin-bottom: 1rem;
+      }
+      
+      .rendered-preview .article-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin: 0.5rem 0;
+      }
+      
+      .rendered-preview .paragraph {
+        margin: 0.5rem 0;
+        line-height: 1.5;
+      }
+      
+      .rendered-preview .footer {
+        padding-top: 1rem;
+        border-top: 1px solid #e5e7eb;
+        margin-top: 1rem;
+        font-size: 0.875rem;
+        color: #6b7280;
+      }
+      
+      .rendered-preview .copyright {
+        margin: 0;
+      }
+      
+      .rendered-selected {
+        outline: 2px solid #3b82f6;
+        background-color: rgba(59, 130, 246, 0.1);
+        transition: all 0.2s ease-in-out;
+      }
+      
+      .rendered-preview .new-node {
+        padding: 0.5rem;
+        border: 1px dashed #3b82f6;
+        border-radius: 0.25rem;
+        margin: 0.5rem 0;
+      }
+      
+      .rendered-preview .updated {
+        background-color: rgba(245, 158, 11, 0.1);
+        outline: 2px solid #f59e0b;
+      }
+    `;
+    
+    return (
+      <div className="bg-white border rounded-lg p-4 overflow-auto" style={{ maxHeight: '600px' }}>
+        <h3 className="text-lg font-semibold mb-4 flex items-center">
+          <Eye size={18} className="mr-2" />
+          Rendered DOM Preview
+        </h3>
+        
+        <div className="bg-gray-50 p-4 rounded mb-4">
+          <p className="text-sm">
+            This preview shows how the current Virtual DOM structure would render in the browser. 
+            The selected node is highlighted with a blue outline. Try selecting nodes in the explorer 
+            view to see them highlighted here, or modify the DOM to see the changes reflected in real-time.
+          </p>
+        </div>
+        
+        <style>{previewStyles}</style>
+        
+        <div className="rendered-preview">
+          {renderedElement}
+        </div>
+      </div>
+    );
+  };
   
   // Render add component dialog
   const renderAddDialog = () => {
@@ -1133,6 +1288,16 @@ export default MyComponent;`;
           </button>
           
           <button
+            className={`pb-2 px-1 ${activeTab === 'rendered' ? 'border-b-2 border-blue-500 text-blue-600 font-medium' : 'text-gray-500'}`}
+            onClick={() => setActiveTab('rendered')}
+          >
+            <span className="flex items-center">
+              <Eye size={16} className="mr-2" />
+              Rendered Preview
+            </span>
+          </button>
+          
+          <button
             className={`pb-2 px-1 ${activeTab === 'performance' ? 'border-b-2 border-blue-500 text-blue-600 font-medium' : 'text-gray-500'}`}
             onClick={() => setActiveTab('performance')}
           >
@@ -1157,6 +1322,7 @@ export default MyComponent;`;
       {/* Main content */}
       <div className="main-content">
         {activeTab === 'explorer' && renderExplorerView()}
+        {activeTab === 'rendered' && renderRenderedView()}
         {activeTab === 'performance' && renderPerformanceView()}
         {activeTab === 'code' && renderCodeView()}
       </div>
@@ -1230,4 +1396,3 @@ export default MyComponent;`;
 };
 
 export default FrontendConceptsGuide;
-
