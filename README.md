@@ -13,7 +13,7 @@ A simple framework for showcasing different React components and visualizations 
 ### Clone the Repository
 
 ```bash
-git clone git@git.lab.smartsheet.com:shuky.meyer/react-showcase.git
+git clone git@github.com/smeyerhuky/claude-react/
 cd react-showcase
 ```
 
