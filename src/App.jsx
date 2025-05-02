@@ -10,6 +10,7 @@ import TaubyteMeshPresentation from './components/TaubyteMeshPresentation'
 import FrontendConceptsGuide from './components/FrontendConceptsGuide'
 import ImageSonificationDJMixer from './components/sonic/ImageSonificationDJMixer'
 import ImageSonificationDJMixerEnhanced from './components/sonic/ImageSonificationDJMixerEnhanced'
+import DJSonificationTool from './components/sonic/DJSonificationTool'
 
 // Navigation items configuration
 const navigationItems = [  
@@ -21,6 +22,8 @@ const navigationItems = [
   { id: 'tau-mesh', label: "Tau Mesh Examples", component: TaubyteMeshPresentation },
   { id: 'frontend', label: "Learning Frontend Systems", component: FrontendConceptsGuide },
   { id: 'SoniQ', label: "Digital SoniQ", component: ImageSonificationDJMixerEnhanced },
+  { id: 'SoniQToo', label: "Digital SoniQ V2", component: DJSonificationTool },
+  
 ]
 
 // Home page component showing all available components as cards
