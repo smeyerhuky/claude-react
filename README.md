@@ -13,7 +13,7 @@ A simple framework for showcasing different React components and visualizations 
 ### Clone the Repository
 
 ```bash
-git clone git@github.com/smeyerhuky/claude-react/
+git clone git@github.com:smeyerhuky/claude-react.git
 cd react-showcase
 ```
 
