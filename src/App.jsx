@@ -9,6 +9,7 @@ import EnhancedMatrixExplorerV2 from './components/EnhancedMatrixExplorerV2'
 import TaubyteMeshPresentation from './components/TaubyteMeshPresentation'
 import FrontendConceptsGuide from './components/FrontendConceptsGuide'
 import ImageSonificationDJMixer from './components/sonic/ImageSonificationDJMixer'
+import ImageSonificationDJMixerEnhanced from './components/ImageSonificationDJMixerEnhanced'
 
 // Navigation items configuration
 const navigationItems = [  
@@ -19,6 +20,7 @@ const navigationItems = [
   { id: 'mv2', label: "Matrix Transforms V2", component: EnhancedMatrixExplorerV2 },
   { id: 'tau-mesh', label: "Tau Mesh Examples", component: TaubyteMeshPresentation },
   { id: 'frontend', label: "Learning Frontend Systems", component: FrontendConceptsGuide },
+  { id: 'SoniQ', label: "Digital SoniQ", component: ImageSonificationDJMixerEnhanced },
 ]
 
 // Home page component showing all available components as cards
