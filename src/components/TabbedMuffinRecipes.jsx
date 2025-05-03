@@ -1,145 +1,160 @@
 import React, { useState } from 'react';
-import { Info, ChefHat, Clock, Users, Check, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Info, ChefHat, Clock, Users, Check, ChevronRight, ChevronLeft, Mountain, Droplets, Recycle } from 'lucide-react';
 
 const TabbedMuffinRecipes = () => {
-  // State for managing active tab
   const [activeTab, setActiveTab] = useState('original');
-  // State for tracking checked ingredients
   const [checkedItems, setCheckedItems] = useState({});
-  // State for current step in instructions
   const [currentStep, setCurrentStep] = useState(0);
+  const [altitudeAdjustment, setAltitudeAdjustment] = useState(true);
+  const [milkChoice, setMilkChoice] = useState('oat');
 
-  // Recipe data
+  // High altitude adjustments
+  const getAltitudeAdjustedTemp = (baseTemp) => altitudeAdjustment ? baseTemp + 25 : baseTemp;
+  const getAltitudeAdjustedBakingPowder = (baseAmount) => {
+    if (!altitudeAdjustment) return baseAmount;
+    // Reduce by 1/8 teaspoon for each teaspoon at high altitude
+    const [amount, unit] = baseAmount.split(' ');
+    const numericAmount = eval(amount); // Handle fractions like "1/2"
+    const reducedAmount = numericAmount * 0.875;
+    return `${reducedAmount} ${unit}`;
+  };
+
   const recipes = {
     original: {
-      title: "Gluten-Free Carrot Muffins",
-      subtitle: "Dairy-Free & Nut-Free",
-      description: "Deliciously moist carrot muffins that everyone can enjoy - perfect for those with dietary restrictions!",
+      title: "Carrot Pulp Muffins",
+      subtitle: "Using Juice Pulp - Dairy-Free & Nut-Free",
+      description: "Transform your carrot juice pulp into incredibly moist muffins! This zero-waste recipe is perfect for those with dietary restrictions and works beautifully at high altitudes.",
       stats: {
         yield: "12 muffins",
-        time: "25 minutes",
+        time: `${altitudeAdjustment ? '20-23' : '23-28'} minutes`,
         difficulty: "Easy"
       },
       ingredients: {
         "Dry Ingredients": [
           "1½ cups gluten-free 1:1 baking flour",
           "½ cup oat flour",
-          "1 teaspoon baking powder",
+          `${getAltitudeAdjustedBakingPowder('1 teaspoon')} baking powder`,
           "1 teaspoon baking soda",
           "½ teaspoon salt",
           "1½ teaspoons ground cinnamon",
           "¼ teaspoon ground nutmeg (optional)",
-          "¼ teaspoon ground ginger (optional)"
-        ],
+          "¼ teaspoon ground ginger (optional)",
+          altitudeAdjustment && "2 tablespoons additional gluten-free flour (for high altitude)"
+        ].filter(Boolean),
         "Wet Ingredients": [
           "¾ cup coconut oil, melted",
           "¾ cup brown sugar, packed",
           "¼ cup granulated sugar",
-          "3 large eggs, room temperature",
+          `${altitudeAdjustment ? '4' : '3'} large eggs, room temperature`,
           "2 teaspoons vanilla extract",
-          "¼ cup dairy-free milk"
-        ],
+          `⅓ cup ${milkChoice} milk (increased for pulp)`,
+          altitudeAdjustment && "2 tablespoons additional milk (for high altitude)"
+        ].filter(Boolean),
         "Add-ins": [
-          "2 cups finely grated carrots",
+          "1¾ cups carrot pulp (from juicing, lightly packed)",
           "½ cup raisins (optional)",
-          "½ cup unsweetened shredded coconut (optional)"
+          "½ cup unsweetened shredded coconut (optional)",
+          "1 tablespoon fresh carrot juice (optional, for extra moisture)"
         ]
       },
       instructions: [
         {
           title: "Prepare for Baking",
-          content: "Preheat oven to 350°F (175°C). Line a 12-cup muffin tin with paper liners. Grate carrots finely."
+          content: `Preheat oven to ${getAltitudeAdjustedTemp(350)}°F. Line a 12-cup muffin tin with paper liners. Fluff the carrot pulp with a fork to separate any clumps. Measure 1¾ cups lightly packed pulp.`
         },
         {
           title: "Mix Dry Ingredients",
-          content: "In a large bowl, whisk together all dry ingredients until well combined."
+          content: `In a large bowl, whisk together all dry ingredients until well combined. ${altitudeAdjustment ? 'The extra flour helps provide structure at high altitude.' : ''}`
         },
         {
           title: "Combine Wet Ingredients",
-          content: "In a separate bowl, whisk melted coconut oil with sugars. Add eggs one at a time, then vanilla and milk."
+          content: `In a separate bowl, whisk melted coconut oil with sugars. Add eggs one at a time (${altitudeAdjustment ? 'using 4 eggs for high altitude' : 'using 3 eggs'}), then vanilla and ${milkChoice} milk. The extra liquid compensates for the drier carrot pulp.`
         },
         {
           title: "Combine Wet and Dry",
-          content: "Pour wet ingredients into dry. Fold gently until just combined. Don't overmix."
+          content: "Pour wet ingredients into dry. Fold gently until just combined. The batter will be thicker than traditional muffin batter."
         },
         {
-          title: "Add Carrots",
-          content: "Fold in grated carrots and any optional add-ins until evenly distributed."
+          title: "Add Carrot Pulp",
+          content: "Fold in the carrot pulp and any optional add-ins. If the batter seems too thick, add the optional tablespoon of fresh carrot juice."
         },
         {
           title: "Fill and Bake",
-          content: "Fill muffin cups ¾ full. Bake for 20-25 minutes until a toothpick comes out clean."
+          content: `Fill muffin cups ¾ full. Bake for ${altitudeAdjustment ? '20-23' : '23-28'} minutes. High altitude muffins bake faster. They're done when a toothpick comes out with just a few moist crumbs.`
         },
         {
           title: "Cool and Serve",
-          content: "Cool in pan for 5 minutes, then transfer to a wire rack. Store in an airtight container."
+          content: "Cool in pan for 5 minutes, then transfer to a wire rack. These muffins are especially moist from the carrot pulp and perfect for breakfast or snacks."
         }
       ]
     },
     skyr: {
-      title: "High-Protein Carrot Skyr Muffins",
-      subtitle: "With Protein-Rich Yogurt",
-      description: "Enhanced version featuring skyr for extra protein and incredible moisture. Perfect for a nutritious breakfast or post-workout snack!",
+      title: "High-Protein Carrot Pulp Muffins",
+      subtitle: "With Skyr & Juice Pulp",
+      description: "Elevate your carrot pulp muffins with protein-rich skyr! This recipe creates incredibly moist, nutritious muffins that work perfectly at high altitudes and use every bit of your juiced carrots.",
       stats: {
         yield: "12 muffins",
-        time: "27 minutes",
+        time: `${altitudeAdjustment ? '22-25' : '25-30'} minutes`,
         difficulty: "Easy"
       },
       ingredients: {
         "Dry Ingredients": [
           "1½ cups gluten-free 1:1 baking flour",
           "½ cup oat flour",
-          "1 teaspoon baking powder",
+          `${getAltitudeAdjustedBakingPowder('1 teaspoon')} baking powder`,
           "1 teaspoon baking soda",
           "½ teaspoon salt",
           "1½ teaspoons ground cinnamon",
           "¼ teaspoon ground nutmeg (optional)",
-          "¼ teaspoon ground ginger (optional)"
-        ],
+          "¼ teaspoon ground ginger (optional)",
+          altitudeAdjustment && "2 tablespoons additional gluten-free flour (for high altitude)"
+        ].filter(Boolean),
         "Wet Ingredients": [
           "½ cup coconut oil, melted",
           "½ cup plain skyr (high-protein yogurt)",
           "¾ cup brown sugar, packed",
           "¼ cup granulated sugar",
-          "3 large eggs, room temperature",
+          `${altitudeAdjustment ? '4' : '3'} large eggs, room temperature`,
           "2 teaspoons vanilla extract",
-          "2 tablespoons dairy-free milk"
-        ],
+          `3 tablespoons ${milkChoice} milk`,
+          altitudeAdjustment && "2 tablespoons additional milk (for high altitude)",
+          "1 tablespoon fresh carrot juice (optional)"
+        ].filter(Boolean),
         "Add-ins": [
-          "2 cups finely grated carrots",
+          "1¾ cups carrot pulp (from juicing, lightly packed)",
           "½ cup raisins (optional)",
           "½ cup unsweetened shredded coconut (optional)",
-          "1 tablespoon orange zest (optional)"
+          "1 tablespoon orange zest (optional - pairs well with skyr)"
         ]
       },
       instructions: [
         {
           title: "Prepare Ingredients",
-          content: "Preheat oven to 350°F (175°C). Line muffin tin. Bring skyr and eggs to room temperature. Grate carrots."
+          content: `Preheat oven to ${getAltitudeAdjustedTemp(350)}°F. Line muffin tin. Bring skyr and eggs to room temperature. Fluff carrot pulp with a fork before measuring.`
         },
         {
           title: "Mix Dry Ingredients",
-          content: "Whisk together all dry ingredients, breaking up any lumps in the flours."
+          content: `Whisk together all dry ingredients. ${altitudeAdjustment ? 'The additional flour helps at high altitude where structure is crucial.' : ''}`
         },
         {
           title: "Prepare Wet Ingredients",
-          content: "Whisk melted coconut oil with sugars. Add skyr and whisk until smooth. Beat in eggs one at a time, then vanilla and milk."
+          content: `Whisk melted coconut oil with sugars. Add skyr and whisk until smooth. Beat in eggs one at a time (${altitudeAdjustment ? '4 for high altitude' : '3 eggs'}), then vanilla and ${milkChoice} milk.`
         },
         {
           title: "Combine Mixtures",
-          content: "Create a well in dry ingredients. Pour in wet mixture and fold gently until just combined. Batter will be thicker than original."
+          content: "Create a well in dry ingredients. Pour in wet mixture and fold gently until just combined. The skyr makes the batter quite thick."
         },
         {
-          title: "Add Mix-ins",
-          content: "Fold in carrots first, then any optional ingredients. Orange zest adds brightness that complements skyr."
+          title: "Add Carrot Pulp",
+          content: "Fold in carrot pulp and any optional ingredients. If using fresh carrot juice, add it now for extra moisture."
         },
         {
           title: "Fill and Bake",
-          content: "Fill muffin cups ¾ full. Bake 22-27 minutes until toothpick comes out with few moist crumbs."
+          content: `Fill muffin cups ¾ full. Bake ${altitudeAdjustment ? '22-25' : '25-30'} minutes until a toothpick comes out with few moist crumbs.`
         },
         {
           title: "Cool Properly",
-          content: "Cool in pan 5 minutes, then transfer to wire rack. These are more delicate when warm but firm up nicely."
+          content: "Cool in pan 5 minutes, then transfer to wire rack. The skyr makes these extra moist and they'll firm up as they cool."
         }
       ]
     }
@@ -156,6 +171,35 @@ const TabbedMuffinRecipes = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6">
+      {/* Settings Bar */}
+      <div className="bg-blue-50 rounded-lg p-4 mb-6 flex flex-wrap gap-4 items-center justify-center">
+        <div className="flex items-center gap-2">
+          <Mountain className="w-5 h-5 text-blue-600" />
+          <label className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={altitudeAdjustment}
+              onChange={(e) => setAltitudeAdjustment(e.target.checked)}
+              className="rounded border-gray-300"
+            />
+            <span className="text-sm font-medium">High Altitude Adjustments</span>
+          </label>
+        </div>
+        
+        <div className="flex items-center gap-2">
+          <Droplets className="w-5 h-5 text-blue-600" />
+          <select
+            value={milkChoice}
+            onChange={(e) => setMilkChoice(e.target.value)}
+            className="text-sm border rounded px-2 py-1"
+          >
+            <option value="oat">Oat Milk</option>
+            <option value="flax">Flax Milk</option>
+            <option value="any plant-based">Any Plant-Based Milk</option>
+          </select>
+        </div>
+      </div>
+
       {/* Header with Tabs */}
       <div className="mb-8">
         <div className="flex flex-wrap gap-4 justify-center mb-6">
@@ -167,7 +211,7 @@ const TabbedMuffinRecipes = () => {
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
-            Original Recipe
+            Original Carrot Pulp Recipe
           </button>
           <button
             onClick={() => setActiveTab('skyr')}
@@ -177,7 +221,7 @@ const TabbedMuffinRecipes = () => {
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
-            Skyr-Enhanced Recipe
+            Skyr-Enhanced Pulp Recipe
           </button>
         </div>
 
@@ -215,7 +259,10 @@ const TabbedMuffinRecipes = () => {
       <div className="grid md:grid-cols-2 gap-8">
         {/* Ingredients Section */}
         <div className="bg-white rounded-xl shadow-lg p-6">
-          <h3 className="text-2xl font-bold text-gray-800 mb-6">Ingredients</h3>
+          <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+            Ingredients 
+            <Recycle className="w-6 h-6 text-green-600" />
+          </h3>
           
           {Object.entries(activeRecipe.ingredients).map(([category, items]) => (
             <div key={category} className="mb-6">
@@ -308,22 +355,20 @@ const TabbedMuffinRecipes = () => {
               <Info className="w-5 h-5 text-orange-500 mt-1" />
               <div>
                 <h5 className="font-semibold text-orange-700 mb-2">
-                  Baking Tips
+                  Special Tips for Carrot Pulp & High Altitude
                 </h5>
                 <ul className="text-sm text-orange-900 space-y-1">
-                  {activeTab === 'original' ? (
+                  <li>• Carrot pulp is drier than fresh carrots, so extra liquid is crucial</li>
+                  <li>• Fluff the pulp before measuring to avoid dense muffins</li>
+                  <li>• {milkChoice === 'flax' ? 'Flax milk is thinner, so you might need slightly less' : 'Oat milk adds natural sweetness that complements carrots'}</li>
+                  {altitudeAdjustment && (
                     <>
-                      <li>• Grate carrots finely for even distribution</li>
-                      <li>• Don't overmix - gluten-free batters can become gummy</li>
-                      <li>• Check that oat flour is from a nut-free facility</li>
-                    </>
-                  ) : (
-                    <>
-                      <li>• Bring skyr to room temperature to prevent oil clumping</li>
-                      <li>• These muffins improve in flavor after the first day</li>
-                      <li>• Orange zest complements the skyr's tanginess beautifully</li>
+                      <li>• At high altitude, liquids evaporate faster, requiring more moisture</li>
+                      <li>• The higher temperature helps set the structure before over-rising</li>
+                      <li>• Extra egg provides stability in thin mountain air</li>
                     </>
                   )}
+                  <li>• Save some fresh carrot juice to add if batter seems too thick</li>
                 </ul>
               </div>
             </div>
@@ -331,25 +376,62 @@ const TabbedMuffinRecipes = () => {
         </div>
       </div>
 
-      {/* Comparison Banner */}
-      <div className="mt-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl p-6 text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h3 className="text-2xl font-bold mb-4">Why Choose This Recipe?</h3>
-          {activeTab === 'original' ? (
-            <p>
-              Our original recipe is perfect for those who need strict dairy-free compliance. 
-              It's lighter, uses readily available ingredients, and has been tested for reliable results. 
-              The coconut oil keeps these muffins moist for days!
-            </p>
-          ) : (
-            <p>
-              The skyr version adds a protein boost with 6-8g more protein per muffin. 
-              The yogurt creates an incredibly tender crumb and adds beneficial probiotics. 
-              Perfect for athletes or anyone wanting a more nutritious breakfast option!
-            </p>
-          )}
+      {/* Educational Section */}
+      <div className="mt-12 bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-6 text-white">
+        <div className="max-w-3xl mx-auto">
+          <h3 className="text-2xl font-bold mb-4 text-center">Why Carrot Pulp Makes Better Muffins</h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 className="font-semibold mb-2">Nutritional Benefits:</h4>
+              <ul className="text-sm space-y-1">
+                <li>• Concentrated fiber content</li>
+                <li>• Higher vitamin density</li>
+                <li>• Natural sweetness without excess moisture</li>
+                <li>• Zero waste from juicing</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-2">Baking Advantages:</h4>
+              <ul className="text-sm space-y-1">
+                <li>• More consistent texture than grated carrots</li>
+                <li>• No excess water to throw off ratios</li>
+                <li>• Intensified carrot flavor</li>
+                <li>• Finer consistency distributes evenly</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
+
+      {/* High Altitude Information */}
+      {altitudeAdjustment && (
+        <div className="mt-8 bg-blue-50 rounded-xl p-6">
+          <div className="max-w-3xl mx-auto">
+            <h3 className="text-xl font-bold mb-4 text-blue-800 flex items-center gap-2">
+              <Mountain className="w-6 h-6" />
+              High Altitude Baking Science
+            </h3>
+            <p className="text-blue-900 mb-4">
+              At elevations above 3,000 feet, the lower air pressure affects how baked goods rise and retain moisture. 
+              Our adjustments compensate for these changes:
+            </p>
+            <div className="grid md:grid-cols-3 gap-4">
+              <div className="bg-white p-4 rounded-lg">
+                <h4 className="font-semibold text-blue-800">Temperature +25°F</h4>
+                <p className="text-sm text-blue-700">Sets structure faster before over-expansion</p>
+              </div>
+              <div className="bg-white p-4 rounded-lg">
+                <h4 className="font-semibold text-blue-800">Less Leavening</h4>
+                <p className="text-sm text-blue-700">Prevents excessive rise and collapse</p>
+              </div>
+              <div className="bg-white p-4 rounded-lg">
+                <h4 className="font-semibold text-blue-800">More Liquid & Eggs</h4>
+                <p className="text-sm text-blue-700">Combats rapid moisture loss</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
