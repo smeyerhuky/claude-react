@@ -11,9 +11,11 @@ import FrontendConceptsGuide from './components/FrontendConceptsGuide'
 import ImageSonificationDJMixer from './components/sonic/ImageSonificationDJMixer'
 import ImageSonificationDJMixerEnhanced from './components/sonic/ImageSonificationDJMixerEnhanced'
 import DJSonificationTool from './components/sonic/DJSonificationTool'
+import TabbedMuffinRecipes from './components/TabbedMuffinRecipes'
 
 // Navigation items configuration
-const navigationItems = [  
+const navigationItems = [
+  { id: 'muffins', label: "Muffins GF/DF/NF", component: TabbedMuffinRecipes },
   { id: 'dj-sonic', label: "DJ Sonification Sampler", component: ImageSonificationDJMixer },
   { id:'sim', label: 'Simulator', component: MonteCarloProjectSimulator },
   { id: 'adv_tut', label: 'Advanced Monte Carlo Tutorial', component: MonteCarloAdvancedTutorial },
