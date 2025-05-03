@@ -11,7 +11,6 @@ import FrontendConceptsGuide from './components/FrontendConceptsGuide'
 import ImageSonificationDJMixer from './components/sonic/ImageSonificationDJMixer'
 import ImageSonificationDJMixerEnhanced from './components/sonic/ImageSonificationDJMixerEnhanced'
 import DJSonificationTool from './components/sonic/DJSonificationTool'
-import DigiSoniq2 from './components/sonic/DigiSoniq2'
 
 // Navigation items configuration
 const navigationItems = [  
@@ -24,7 +23,6 @@ const navigationItems = [
   { id: 'frontend', label: "Learning Frontend Systems", component: FrontendConceptsGuide },
   { id: 'Sonify', label: "Digital Sonification", component: ImageSonificationDJMixerEnhanced },
   { id: 'SoniQToo', label: "SoniQ", component: DJSonificationTool },
-  { id: 'TODO', label: "DJ SoniQ", component: DigiSoniq2 },
 ]
 
 // Home page component showing all available components as cards
