@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { Routes, Route, useParams, useNavigate, NavLink, useLocation, Link, Navigate } from 'react-router-dom'
+// import { useState, useEffect } from 'react'
+import { Routes, Route, useParams, useNavigate, useLocation, Link, Navigate } from 'react-router-dom'
 import './App.css'
 
 import MonteCarloProjectSimulator from './components/monte/MonteCarloProjectSimulator'
@@ -12,12 +12,19 @@ import ImageSonificationDJMixer from './components/sonic/ImageSonificationDJMixe
 import ImageSonificationDJMixerEnhanced from './components/sonic/ImageSonificationDJMixerEnhanced'
 import DJSonificationTool from './components/sonic/DJSonificationTool'
 import TabbedMuffinRecipes from './components/TabbedMuffinRecipes'
+import UnifiedDashboard from './components/UnifiedDashboard'
+import BackyardScience from './components/BackyardScience'
+import MeshEdLanding from './components/MeshEdLanding'
+import MeshEdAnnouncement from './components/MeshEdAnnouncement'
 
 // Navigation items configuration
 const navigationItems = [
   { id: 'muffins', label: "Muffins GF/DF/NF", component: TabbedMuffinRecipes },
+  { id: 'mesh-ed', label: "MeshEd", component: MeshEdLanding },
+  { id: 'meshed-announcement', label: "MeshEd Announcement", component: MeshEdAnnouncement },
   { id: 'dj-sonic', label: "DJ Sonification Sampler", component: ImageSonificationDJMixer },
-  { id:'sim', label: 'Simulator', component: MonteCarloProjectSimulator },
+  { id: 'sim', label: 'Simulator', component: MonteCarloProjectSimulator },
+  { id: 'gear-sim', label: 'Gear Simulator', component: UnifiedDashboard },
   { id: 'adv_tut', label: 'Advanced Monte Carlo Tutorial', component: MonteCarloAdvancedTutorial },
   { id: 'matrices', label: "Matrix Transforms", component: MatrixExplorer },
   { id: 'mv2', label: "Matrix Transforms V2", component: EnhancedMatrixExplorerV2 },
@@ -25,6 +32,8 @@ const navigationItems = [
   { id: 'frontend', label: "Learning Frontend Systems", component: FrontendConceptsGuide },
   { id: 'Sonify', label: "Digital Sonification", component: ImageSonificationDJMixerEnhanced },
   { id: 'SoniQToo', label: "SoniQ", component: DJSonificationTool },
+  { id: 'backyard-science', label: "Backyard Science", component: BackyardScience },
+
 ]
 
 // Home page component showing all available components as cards
@@ -114,7 +123,7 @@ function App() {
       {/* Only show navigation on home page */}
       {isHomePage && (
         <header className="py-4 px-6 bg-white border-b">
-          <h1 className="text-2xl font-bold text-gray-800">Shuky's Demos & Components</h1>
+          <h1 className="text-2xl font-bold text-gray-800">Shuky&apos;s Demos & Components</h1>
           <p className="text-gray-600">Select a component to view</p>
         </header>
       )}
