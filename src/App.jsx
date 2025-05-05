@@ -15,12 +15,14 @@ import TabbedMuffinRecipes from './components/TabbedMuffinRecipes'
 import UnifiedDashboard from './components/UnifiedDashboard'
 import BackyardScience from './components/BackyardScience'
 import MeshEdLanding from './components/MeshEdLanding'
+import SVGMeshNetworkSimulator from './components/SVGMeshNetworkSimulator'
 import MeshEdAnnouncement from './components/MeshEdAnnouncement'
 
 // Navigation items configuration
 const navigationItems = [
   { id: 'muffins', label: "Muffins GF/DF/NF", component: TabbedMuffinRecipes },
   { id: 'mesh-ed', label: "MeshEd", component: MeshEdLanding },
+  { id: 'mesh-network', label: "Mesh Network Simulator", component: SVGMeshNetworkSimulator },
   { id: 'meshed-announcement', label: "MeshEd Announcement", component: MeshEdAnnouncement },
   { id: 'dj-sonic', label: "DJ Sonification Sampler", component: ImageSonificationDJMixer },
   { id: 'sim', label: 'Simulator', component: MonteCarloProjectSimulator },
