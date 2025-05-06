@@ -68,6 +68,7 @@
     "tailwindcss-animate": "^1.0.7",
     "tone": "^15.1.22",
     "victory": "^37.3.6",
+    "vis-network": "^9.1.9",
     "wavesurfer.js": "^7.9.4",
     "zod": "^3.24.3"
   },
