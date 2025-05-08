@@ -56,6 +56,7 @@ const DistributedFrameworkAnalysis = () => {
                     <tr>
                       <th className="py-2 px-4 bg-indigo-100 text-left text-indigo-800">Specification</th>
                       <th className="py-2 px-4 bg-indigo-100 text-left text-indigo-800">1x High-End</th>
+                      <th className="py-2 px-4 bg-indigo-100 text-left text-indigo-800">1x Maxed-Out</th>
                       <th className="py-2 px-4 bg-indigo-100 text-left text-indigo-800">2x Mid-Range</th>
                     </tr>
                   </thead>
@@ -63,47 +64,80 @@ const DistributedFrameworkAnalysis = () => {
                     <tr>
                       <td className="py-2 px-4 border-b font-medium">Configuration</td>
                       <td className="py-2 px-4 border-b">Ryzen AI Max+ 395, 128GB</td>
+                      <td className="py-2 px-4 border-b">Ryzen AI Max+ 395, 128GB<br/><span className="text-xs text-indigo-600">Premium options</span></td>
                       <td className="py-2 px-4 border-b">2× Ryzen AI Max+ 395, 64GB each</td>
                     </tr>
                     <tr>
                       <td className="py-2 px-4 border-b font-medium">Base Price</td>
                       <td className="py-2 px-4 border-b">$1,999</td>
+                      <td className="py-2 px-4 border-b">$1,999</td>
                       <td className="py-2 px-4 border-b">$3,198 ($1,599 × 2)</td>
                     </tr>
                     <tr>
-                      <td className="py-2 px-4 border-b font-medium">Additional Costs</td>
-                      <td className="py-2 px-4 border-b">~$322 (storage, fan, OS)</td>
-                      <td className="py-2 px-4 border-b">~$644 (2× storage, fans, OS)</td>
+                      <td className="py-2 px-4 border-b font-medium">Storage</td>
+                      <td className="py-2 px-4 border-b">1TB NVMe SSD<br/>($120)</td>
+                      <td className="py-2 px-4 border-b">4TB NVMe SSD<br/>($350)</td>
+                      <td className="py-2 px-4 border-b">2× 1TB NVMe SSD<br/>($240)</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 px-4 border-b font-medium">Cooling Solution</td>
+                      <td className="py-2 px-4 border-b">Standard Fan<br/>($20)</td>
+                      <td className="py-2 px-4 border-b">Noctua Premium Fan<br/>($33)</td>
+                      <td className="py-2 px-4 border-b">2× Standard Fans<br/>($40)</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 px-4 border-b font-medium">Operating System</td>
+                      <td className="py-2 px-4 border-b">Windows 11 Home<br/>($139)</td>
+                      <td className="py-2 px-4 border-b">Windows 11 Pro<br/>($199)</td>
+                      <td className="py-2 px-4 border-b">2× Windows 11 Home<br/>($278)</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 px-4 border-b font-medium">Expansion Cards</td>
+                      <td className="py-2 px-4 border-b">Standard Set<br/>($43)</td>
+                      <td className="py-2 px-4 border-b">Premium Set<br/>($86)</td>
+                      <td className="py-2 px-4 border-b">2× Standard Sets<br/>($86)</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 px-4 border-b font-medium">Networking</td>
+                      <td className="py-2 px-4 border-b">Basic<br/>($0)</td>
+                      <td className="py-2 px-4 border-b">10Gbit Network Card<br/>($99)</td>
+                      <td className="py-2 px-4 border-b">5GbE Switch<br/>($199)</td>
                     </tr>
                     <tr>
                       <td className="py-2 px-4 border-b font-medium">Total Cores</td>
+                      <td className="py-2 px-4 border-b">16 cores / 32 threads</td>
                       <td className="py-2 px-4 border-b">16 cores / 32 threads</td>
                       <td className="py-2 px-4 border-b">32 cores / 64 threads</td>
                     </tr>
                     <tr>
                       <td className="py-2 px-4 border-b font-medium">Total GPU Compute</td>
                       <td className="py-2 px-4 border-b">40 CUs (Radeon 8060S)</td>
+                      <td className="py-2 px-4 border-b">40 CUs (Radeon 8060S)</td>
                       <td className="py-2 px-4 border-b">80 CUs (2× Radeon 8060S)</td>
                     </tr>
                     <tr>
                       <td className="py-2 px-4 border-b font-medium">Total Memory</td>
+                      <td className="py-2 px-4 border-b">128GB unified</td>
                       <td className="py-2 px-4 border-b">128GB unified</td>
                       <td className="py-2 px-4 border-b">128GB (64GB per system)</td>
                     </tr>
                     <tr>
                       <td className="py-2 px-4 border-b font-medium">Power Consumption</td>
                       <td className="py-2 px-4 border-b">~140W peak</td>
+                      <td className="py-2 px-4 border-b">~140W peak</td>
                       <td className="py-2 px-4 border-b">~280W peak (140W × 2)</td>
                     </tr>
                     <tr className="bg-indigo-50">
                       <td className="py-2 px-4 border-b font-bold">Approximate Total Cost</td>
                       <td className="py-2 px-4 border-b font-bold">$2,321</td>
-                      <td className="py-2 px-4 border-b font-bold">$3,842</td>
+                      <td className="py-2 px-4 border-b font-bold">$2,766</td>
+                      <td className="py-2 px-4 border-b font-bold">$4,041</td>
                     </tr>
                     <tr className="bg-indigo-50">
-                      <td className="py-2 px-4 border-b font-bold">Cost Difference</td>
+                      <td className="py-2 px-4 border-b font-bold">Cost Difference vs High-End</td>
                       <td className="py-2 px-4 border-b font-bold">Baseline</td>
-                      <td className="py-2 px-4 border-b font-bold">+$1,521 (66% more)</td>
+                      <td className="py-2 px-4 border-b font-bold">+$445 (19% more)</td>
+                      <td className="py-2 px-4 border-b font-bold">+$1,720 (74% more)</td>
                     </tr>
                   </tbody>
                 </table>
@@ -157,40 +191,79 @@ const DistributedFrameworkAnalysis = () => {
             </div>
             {expandedSections.valueProp && (
               <div className="p-4">
-                <p className="mb-4 text-gray-700">When evaluating the value proposition of two mid-range systems vs. one high-end system, consider these key factors:</p>
+                <p className="mb-4 text-gray-700">Let's analyze the value proposition across all three configurations:</p>
                 
                 <div className="mb-4">
                   <h4 className="font-bold text-indigo-700 mb-2">Performance per Dollar</h4>
-                  <p className="text-gray-700">For raw computational power, two mid-range systems offer approximately:</p>
+                  <p className="text-gray-700">For raw computational power comparison:</p>
                   <ul className="list-disc pl-5 text-gray-700 mt-2">
-                    <li>2× the CPU cores and threads</li>
-                    <li>2× the GPU compute units</li>
-                    <li>But at 1.66× the cost</li>
+                    <li>Two mid-range systems offer 2× the CPU cores and GPU compute units at 1.74× the cost of a high-end system</li>
+                    <li>The maxed-out configuration offers only 19% higher cost than the base high-end system with significant quality-of-life improvements</li>
+                    <li>The maxed-out configuration is still 46% cheaper than the dual mid-range approach</li>
                   </ul>
-                  <p className="text-gray-700 mt-2">This means you're getting about 20% more raw performance per dollar with the distributed approach, but only if you can fully utilize both systems efficiently.</p>
+                  <p className="text-gray-700 mt-2">The maxed-out single system offers substantially better value than dual systems, providing premium components without the networking overhead.</p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                  <div className="bg-indigo-50 p-3 rounded-lg">
+                    <h4 className="font-bold text-indigo-700 mb-2">Standard High-End</h4>
+                    <ul className="list-disc pl-5 text-gray-700 mt-2">
+                      <li>1TB storage (limited for multiple projects)</li>
+                      <li>Standard cooling (adequate)</li>
+                      <li>Windows 11 Home (consumer features)</li>
+                      <li>Basic expansion cards</li>
+                      <li>No enhanced networking</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-green-50 p-3 rounded-lg">
+                    <h4 className="font-bold text-green-700 mb-2">Maxed-Out Value Adds</h4>
+                    <ul className="list-disc pl-5 text-gray-700 mt-2">
+                      <li>4× more storage capacity</li>
+                      <li>Premium cooling for sustained loads</li>
+                      <li>Windows Pro with remote management</li>
+                      <li>Enhanced expansion capabilities</li>
+                      <li>10Gbit networking support</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-red-50 p-3 rounded-lg">
+                    <h4 className="font-bold text-red-700 mb-2">Dual System Drawbacks</h4>
+                    <ul className="list-disc pl-5 text-gray-700 mt-2">
+                      <li>74% higher cost than high-end</li>
+                      <li>Network bottlenecks</li>
+                      <li>Double the maintenance</li>
+                      <li>Double the physical space</li>
+                      <li>Double the power consumption</li>
+                    </ul>
+                  </div>
                 </div>
                 
                 <div className="mb-4">
                   <h4 className="font-bold text-indigo-700 mb-2">Memory Utilization</h4>
                   <p className="text-gray-700">For memory-intensive workloads like large AI models:</p>
                   <ul className="list-disc pl-5 text-gray-700 mt-2">
-                    <li>The high-end system can run models requiring up to 128GB in a single instance</li>
+                    <li>Both single-system configurations can run models requiring up to 128GB in a single instance</li>
+                    <li>The maxed-out configuration adds better I/O throughput with faster storage and networking</li>
                     <li>The distributed systems are limited to 64GB per instance unless using distributed inference</li>
                     <li>Distributed inference adds networking overhead that reduces efficiency</li>
                   </ul>
                 </div>
                 
                 <div className="bg-amber-50 p-3 rounded-lg border border-amber-200 mb-4">
-                  <h4 className="font-bold text-amber-800 mb-2">Use Case Dependent Value</h4>
-                  <p className="text-gray-700">The value proposition heavily depends on your specific use case:</p>
+                  <h4 className="font-bold text-amber-800 mb-2">Maxed-Out Configuration Value</h4>
+                  <p className="text-gray-700">The value added by the premium components:</p>
                   <ul className="list-disc pl-5 text-gray-700 mt-2">
-                    <li><span className="font-semibold">For large, unified AI models:</span> The high-end system offers better value</li>
-                    <li><span className="font-semibold">For multiple independent workloads:</span> Two mid-range systems may offer better value</li>
-                    <li><span className="font-semibold">For distributed AI inference:</span> Two mid-range systems could potentially offer better throughput (but not lower latency)</li>
+                    <li><span className="font-semibold">Quadrupled Storage:</span> Critical for managing multiple projects, large datasets, and ML models</li>
+                    <li><span className="font-semibold">Premium Cooling:</span> Better thermal management for sustained workloads</li>
+                    <li><span className="font-semibold">Windows Pro:</span> Remote desktop, BitLocker, and virtualization capabilities</li>
+                    <li><span className="font-semibold">Enhanced Networking:</span> 10Gbit card enables future expansion without bottlenecks</li>
+                    <li><span className="font-semibold">Better Expansion:</span> Premium expansion cards provide more flexibility</li>
                   </ul>
+                  <p className="text-gray-700 mt-2">These improvements address key pain points in a development environment without the complexity of managing multiple systems.</p>
                 </div>
                 
-                <p className="text-gray-700">Overall, the 66% price premium for two systems makes it difficult to justify purely on a value basis unless you have specific workloads that benefit from physical separation or redundancy.</p>
+                <p className="text-gray-700">Overall, the maxed-out configuration represents the sweet spot for value, providing meaningful upgrades with only a 19% price increase over the standard high-end system, while still being substantially more cost-effective than the dual system approach.</p>
               </div>
             )}
           </div>
@@ -849,10 +922,11 @@ const DistributedFrameworkAnalysis = () => {
                   <h4 className="font-bold text-amber-800 mb-2">Final Recommendation</h4>
                   <p className="text-gray-700">Based on the comprehensive analysis of cost, performance, and maintenance considerations:</p>
                   <ul className="list-disc pl-5 text-gray-700 mt-2">
-                    <li>For your ESP32S3 camera pipeline and general-purpose computing needs, the single high-end system (128GB) offers the best value.</li>
-                    <li>The dual system approach would cost approximately 75% more over three years while introducing additional complexity.</li>
+                    <li>For your ESP32S3 camera pipeline and general-purpose computing needs, the single maxed-out system provides the best balance of performance and value for demanding workloads.</li>
+                    <li>The premium components provide meaningful upgrades with only a 19% cost increase over the standard high-end setup.</li>
+                    <li>The dual system approach would cost approximately 74% more over three years while introducing additional complexity.</li>
                     <li>Unless you specifically need physical separation or redundancy, the single system approach is recommended.</li>
-                    <li>Consider starting with the single high-end system now, and if your needs expand beyond its capabilities, you can add a second system later.</li>
+                    <li>The maxed-out configuration with 4TB storage, premium cooling, and better expansion cards offers more headroom for your multi-project pipeline without unnecessary complexity.</li>
                   </ul>
                 </div>
               </div>
