@@ -18,11 +18,13 @@ import MeshEdLanding from './components/MeshEdLanding'
 import SVGMeshNetworkSimulator from './components/SVGMeshNetworkSimulator'
 import MeshEdAnnouncement from './components/MeshEdAnnouncement'
 import PromptEngineeringStateMachine from './components/PromptEngineeringStateMachine'
+import SimplifiedNeuralVisualizer from './components/nn/SimplifiedNeuralVisualizer'
 
 // Navigation items configuration
 const navigationItems = [
   { id: 'muffins', label: "Muffins GF/DF/NF", component: TabbedMuffinRecipes },
   {id: 'prompt-engineering', label: "Prompt Engineering Tutorial", component: PromptEngineeringStateMachine },
+  {id: 'nn-visual', label: "Prompt Engineering Visualization", component: SimplifiedNeuralVisualizer },
   { id: 'mesh-ed', label: "MeshEd", component: MeshEdLanding },
   { id: 'mesh-network', label: "Mesh Network Simulator", component: SVGMeshNetworkSimulator },
   { id: 'meshed-announcement', label: "MeshEd Announcement", component: MeshEdAnnouncement },
