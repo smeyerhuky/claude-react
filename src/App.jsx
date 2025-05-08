@@ -20,11 +20,14 @@ import MeshEdAnnouncement from './components/MeshEdAnnouncement'
 import PromptEngineeringStateMachine from './components/PromptEngineeringStateMachine'
 import SimplifiedNeuralVisualizer from './components/nn/SimplifiedNeuralVisualizer'
 
+import DistributedFrameworkAnalysis from './DistributedArticlePart2'
+
 // Navigation items configuration
 const navigationItems = [
+  { id: 'server', label: "Server Spec Proposal", component: DistributedFrameworkAnalysis },
   { id: 'muffins', label: "Muffins GF/DF/NF", component: TabbedMuffinRecipes },
-  {id: 'prompt-engineering', label: "Prompt Engineering Tutorial", component: PromptEngineeringStateMachine },
-  {id: 'nn-visual', label: "Prompt Engineering Visualization", component: SimplifiedNeuralVisualizer },
+  { id: 'prompt-engineering', label: "Prompt Engineering Tutorial", component: PromptEngineeringStateMachine },
+  { id: 'nn-visual', label: "Prompt Engineering Visualization", component: SimplifiedNeuralVisualizer },
   { id: 'mesh-ed', label: "MeshEd", component: MeshEdLanding },
   { id: 'mesh-network', label: "Mesh Network Simulator", component: SVGMeshNetworkSimulator },
   { id: 'meshed-announcement', label: "MeshEd Announcement", component: MeshEdAnnouncement },
