@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, CalculatorIcon } from 'recharts';
 
+const MatricesIcon = ( {className} ) => (
+  <svg
+    className={className}
+    xmlns='http://www.w3.org/2000/svg'
+    viewBox='0 0 24 24'
+    width='24'
+    height='24'
+  >
+    <path d='M20 2H4C2.9 2 2 2.9 2 4V20C2 21.1 2.9 22 4 22H20C21.1 22 22 21.1 22 20V4C22 2.9 21.1 2 20 2ZM8 20H4V16H8V20ZM8 14H4V10H8V14ZM8 8H4V4H8V8ZM14 20H10V16H14V20ZM14 14H10V10H14V14ZM14 8H10V4H14V8ZM20 20H16V16H20V20ZM20 14H16V10H20V14ZM20 8H16V4H20V8Z' />
+  </svg>
+);
 
 const LogarithmBaseConversion = () => {
   // State for interactive inputs
@@ -9,8 +20,6 @@ const LogarithmBaseConversion = () => {
   const [targetBase, setTargetBase] = useState(2);
   const [showSteps, setShowSteps] = useState(true);
   const [showGraph, setShowGraph] = useState(true);
-  const [showExamples, setShowExamples] = useState(false);
-  const [showCalculator, setShowCalculator] = useState(false);
   const [activeTab, setActiveTab] = useState('converter');
   
   // For logarithm tutorial section
@@ -89,17 +98,6 @@ const LogarithmBaseConversion = () => {
     return `log₍${formatBase(base)}₎(${x})`;
   };
   
-  // Helper function for special subscript characters
-  const getSubscript = (num) => {
-    const subscripts = {
-      '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄',
-      '5': '₅', '6': '₆', '7': '₇', '8': '₈', '9': '₉',
-      'e': 'ₑ'
-    };
-    
-    return String(num).split('').map(char => subscripts[char] || char).join('');
-  };
-  
   return (
     <div className="p-6 max-w-6xl mx-auto bg-white rounded-lg shadow-md">
       <h1 className="text-2xl font-bold mb-4 text-center text-blue-700">Logarithm Base Conversion Explorer</h1>
@@ -135,10 +133,7 @@ const LogarithmBaseConversion = () => {
           onClick={() => setActiveTab('theory')}
         >
           {/* Add a calculator/math icon from lucide  and "TI-30xs Guide" */}
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 2v20m10-10H2" />
-          </svg>
-          TI-30xs Guide
+          <MatricesIcon /> TI-30xs Guide
         </button>
       </div>
       
