@@ -1,18 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, CalculatorIcon } from 'recharts';
 
-const MatricesIcon = ( {className} ) => (
-  <svg
-    className={className}
-    xmlns='http://www.w3.org/2000/svg'
-    viewBox='0 0 24 24'
-    width='24'
-    height='24'
-  >
-    <path d='M20 2H4C2.9 2 2 2.9 2 4V20C2 21.1 2.9 22 4 22H20C21.1 22 22 21.1 22 20V4C22 2.9 21.1 2 20 2ZM8 20H4V16H8V20ZM8 14H4V10H8V14ZM8 8H4V4H8V8ZM14 20H10V16H14V20ZM14 14H10V10H14V14ZM14 8H10V4H14V8ZM20 20H16V16H20V20ZM20 14H16V10H20V14ZM20 8H16V4H20V8Z' />
-  </svg>
-);
-
 const LogarithmBaseConversion = () => {
   // State for interactive inputs
   const [value, setValue] = useState(8);
@@ -132,8 +120,7 @@ const LogarithmBaseConversion = () => {
           className={`px-4 py-2 ${activeTab === 'theory' ? 'bg-blue-500 text-white' : 'bg-gray-200'} rounded-t-lg mr-1`}
           onClick={() => setActiveTab('theory')}
         >
-          {/* Add a calculator/math icon from lucide  and "TI-30xs Guide" */}
-          <span><MatricesIcon /> TI-30xs Guide</span>
+          TI-30XS Mulitview Example
         </button>
       </div>
       
