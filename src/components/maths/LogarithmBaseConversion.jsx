@@ -133,7 +133,7 @@ const LogarithmBaseConversion = () => {
           onClick={() => setActiveTab('theory')}
         >
           {/* Add a calculator/math icon from lucide  and "TI-30xs Guide" */}
-          <MatricesIcon /> TI-30xs Guide
+          <span><MatricesIcon /> TI-30xs Guide</span>
         </button>
       </div>
       
