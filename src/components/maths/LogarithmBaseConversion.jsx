@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
-import * as math from 'mathjs';
+
 
 const LogarithmBaseConversion = () => {
   // State for interactive inputs
@@ -129,6 +129,16 @@ const LogarithmBaseConversion = () => {
           onClick={() => setActiveTab('theory')}
         >
           Theory
+        </button>
+        <button 
+          className={`px-4 py-2 ${activeTab === 'theory' ? 'bg-blue-500 text-white' : 'bg-gray-200'} rounded-t-lg mr-1`}
+          onClick={() => setActiveTab('theory')}
+        >
+          {/* Add a calculator/math icon from lucide  and "TI-30xs Guide" */}
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 2v20m10-10H2" />
+          </svg>
+          TI-30xs Guide
         </button>
       </div>
       
@@ -909,6 +919,63 @@ const LogarithmBaseConversion = () => {
               Understanding how to convert between bases allows you to apply logarithmic concepts 
               across different domains and use available calculator functions for any base.
             </p>
+          </div>
+        </div>
+      )}
+      
+      {/* Calculator Tab */}
+      {activeTab === 'calculator' && (
+        <div>
+          <h2 className="text-xl font-semibold mb-3">TIlculator Guide</h2>
+          
+          <div className="bg-white border rounded p-4 mb-4">
+            <h3 className="font-medium mb-2">Using Built-in Logarithm Functions</h3>
+            <p className="mb-2">
+              The TI-30xs MultiView calculator has built-in functions for calculating 
+              logarithms in base 10 and base e:
+            </p>
+            <ul className="list-disc pl-6">
+              <li className="mb-1">
+                <strong>Base 10 logarithm:</strong> Press the [LOG] button
+              </li>
+              <li>
+                <strong>Natural logarithm (base e):</strong> Press the [LN] button
+              </li>
+            </ul>
+          </div>
+          
+          <div className="bg-white border rounded p-4 mb-4">
+            <h3 className="font-medium mb-2">Method 1: Using the Change of Base Formula</h3>
+            <p className="mb-2">
+              To calculate a logarithm in a base other than 10 or e, use the change of base formula:
+            </p>
+            <div className="bg-blue-50 p-3 rounded mb-3">
+              <p className="font-medium">log<sub>b</sub>(x) = log<sub>10</sub>(x) ÷ log<sub>10</sub>(b)</p>
+            </div>
+            
+            <div className="border-l-4 border-green-500 pl-3 py-1 mb-3">
+              <strong>Example:</strong> Calculate log<sub>2</sub>(8)
+            </div>
+            
+            <ol className="list-decimal pl-6 mb-3">
+              <li className="mb-1">Press [LOG] button</li>
+              <li className="mb-1">Enter 8</li>
+              <li className="mb-1">Press [)]</li>
+              <li className="mb-1">Press [÷]</li>
+              <li className="mb-1">Press [LOG] button</li>
+              <li className="mb-1">Enter 2</li>
+              <li className="mb-1">Press [)]</li>
+              <li>Press [=]</li>
+            </ol>
+            
+            <p className="mb-2">The display should show 3, since 2<sup>3</sup> = 8.</p>
+            
+            <div className="bg-yellow-50 p-2 rounded">
+              <p className="text-sm">
+                <strong>Note:</strong> You can use [LN] instead of [LOG] in the above steps to use natural logarithms:
+                log<sub>b</sub>(x) = ln(x) ÷ ln(b)
+              </p>
+            </div>
           </div>
         </div>
       )}
