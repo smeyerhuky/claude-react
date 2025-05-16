@@ -19,11 +19,12 @@ import SVGMeshNetworkSimulator from './components/SVGMeshNetworkSimulator'
 import MeshEdAnnouncement from './components/MeshEdAnnouncement'
 import PromptEngineeringStateMachine from './components/PromptEngineeringStateMachine'
 import SimplifiedNeuralVisualizer from './components/nn/SimplifiedNeuralVisualizer'
-
+import LogarithmBaseConversion from './components/maths/LogarithmBaseConversion'
 import DistributedFrameworkAnalysis from './DistributedArticlePart2'
 
 // Navigation items configuration
 const navigationItems = [
+  { id: 'logarithms', label: "Learning Log Maths", component: LogarithmBaseConversion },
   { id: 'server', label: "Server Spec Proposal", component: DistributedFrameworkAnalysis },
   { id: 'muffins', label: "Muffins GF/DF/NF", component: TabbedMuffinRecipes },
   { id: 'prompt-engineering', label: "Prompt Engineering Tutorial", component: PromptEngineeringStateMachine },
