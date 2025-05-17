@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import 'katex/dist/katex.min.css';
+import { InlineMath, BlockMath } from 'react-katex';
 
+/**
+ * LogarithmBaseConversion - An interactive educational component for exploring logarithm base conversions
+ *
+ * This component demonstrates:
+ * - Interactive mathematical visualization
+ * - React state management for educational tools
+ * - Conditional rendering for different educational content
+ * - Mathematical typesetting using KaTeX
+ */
 const LogarithmBaseConversion = () => {
   // State for interactive inputs
   const [value, setValue] = useState(8);
@@ -73,6 +84,21 @@ const LogarithmBaseConversion = () => {
     return `log${getSubscript(base)}(${x})`;
   };
 
+  // Format the logarithm expression for KaTeX rendering
+  const formatLogForKaTeX = (x, base) => {
+    if (base === Math.E) return `\\ln(${x})`;
+    return `\\log_{${base}}(${x})`;
+  };
+
+  // Render a math formula using KaTeX
+  const MathFormula = ({ formula, display = false }) => {
+    return display ? (
+      <BlockMath math={formula} />
+    ) : (
+      <InlineMath math={formula} />
+    );
+  };
+
   // Calculate results
   const result = calculateLog(value, sourceBase);
   const convertedResult = calculateLog(value, targetBase);
@@ -140,7 +166,7 @@ const LogarithmBaseConversion = () => {
         borderBottom: '1px solid #ddd',
         background: '#f0f4f8'
       }}>
-        {['Converter', 'Examples', 'Tutorial', 'Theory', 'Calculator'].map(tab => (
+        {['Converter', 'Examples', 'Tutorial', 'Theory', 'Calculator', 'Real-world Examples'].map(tab => (
           <button
             key={tab}
             onClick={(e) => handleButtonClick(e, () => handleTabChange(tab.toLowerCase()))}
@@ -483,13 +509,14 @@ const LogarithmBaseConversion = () => {
                 <div style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '12px',
+                  gap: '2rem',
                   marginBottom: '15px'
                 }}>
                   <div style={{
                     background: '#fffcf0',
                     border: '2px solid #ff9900',
                     borderRadius: '5px',
+                    marginTop: '35px',
                     padding: '10px',
                     display: 'flex',
                     flexDirection: 'column'
@@ -503,7 +530,7 @@ const LogarithmBaseConversion = () => {
                       color: '#ff9900',
                       padding: '5px 0'
                     }}>
-                      {formatLogWithSubscript(value, sourceBase)} = {result.toFixed(6)}
+                      <MathFormula formula={`${formatLogForKaTeX(value, sourceBase)} = ${result.toFixed(6)}`} />
                     </span>
                   </div>
 
@@ -524,7 +551,7 @@ const LogarithmBaseConversion = () => {
                       color: '#4dbd74',
                       padding: '5px 0'
                     }}>
-                      {formatLogWithSubscript(value, targetBase)} = {convertedResult.toFixed(6)}
+                      <MathFormula formula={`${formatLogForKaTeX(value, targetBase)} = ${convertedResult.toFixed(6)}`} />
                     </span>
                   </div>
                 </div>
@@ -595,8 +622,10 @@ const LogarithmBaseConversion = () => {
                       fontSize: '16px',
                       fontWeight: 'bold'
                     }}>
-                      log{getSubscript(targetBase)}(x) =
-                      log{getSubscript(10)}(x) ÷ log{getSubscript(10)}({formatBase(targetBase)})
+                      <MathFormula
+                        formula={`\\log_{${targetBase}}(x) = \\frac{\\log_{10}(x)}{\\log_{10}(${formatBase(targetBase)})}`}
+                        display={true}
+                      />
                     </div>
 
                     <div style={{
@@ -624,7 +653,7 @@ const LogarithmBaseConversion = () => {
                             fontSize: '14px',
                             marginRight: '10px'
                           }}>2</span>
-                          <span>Calculate log<sub>10</sub>({value}):</span>
+                          <span>Calculate <MathFormula formula={`\\log_{10}(${value})`} />:</span>
                         </div>
                         <div style={{
                           background: '#efffef',
@@ -633,7 +662,7 @@ const LogarithmBaseConversion = () => {
                           padding: '8px',
                           fontWeight: 'bold'
                         }}>
-                          log{getSubscript(10)}({value}) = {Math.log10(value).toFixed(6)}
+                          <MathFormula formula={`\\log_{10}(${value}) = ${Math.log10(value).toFixed(6)}`} />
                         </div>
                       </div>
 
@@ -656,7 +685,7 @@ const LogarithmBaseConversion = () => {
                             fontSize: '14px',
                             marginRight: '10px'
                           }}>3</span>
-                          <span>Calculate log<sub>10</sub>({formatBase(targetBase)}):</span>
+                          <span>Calculate <MathFormula formula={`\\log_{10}(${formatBase(targetBase)})`} />:</span>
                         </div>
                         <div style={{
                           background: '#efffef',
@@ -665,7 +694,7 @@ const LogarithmBaseConversion = () => {
                           padding: '8px',
                           fontWeight: 'bold'
                         }}>
-                          log<sub>10</sub>({formatBase(targetBase)}) = {Math.log10(targetBase).toFixed(6)}
+                          <MathFormula formula={`\\log_{10}(${formatBase(targetBase)}) = ${Math.log10(targetBase).toFixed(6)}`} />
                         </div>
                       </div>
                     </div>
@@ -698,7 +727,7 @@ const LogarithmBaseConversion = () => {
                       fontWeight: 'bold',
                       marginBottom: '12px'
                     }}>
-                      {Math.log10(value).toFixed(6)} ÷ {Math.log10(targetBase).toFixed(6)} = {convertedResult.toFixed(6)}
+                      <MathFormula formula={`\\frac{${Math.log10(value).toFixed(6)}}{${Math.log10(targetBase).toFixed(6)}} = ${convertedResult.toFixed(6)}`} />
                     </div>
 
                     <div style={{
@@ -709,7 +738,7 @@ const LogarithmBaseConversion = () => {
                       textAlign: 'center',
                       fontWeight: 'bold'
                     }}>
-                      Therefore, {formatLogWithSubscript(value, sourceBase)} = {formatLogWithSubscript(value, targetBase)} = {convertedResult.toFixed(6)}
+                      Therefore, <MathFormula formula={`${formatLogForKaTeX(value, sourceBase)} = ${formatLogForKaTeX(value, targetBase)} = ${convertedResult.toFixed(6)}`} />
                     </div>
                   </div>
                 </div>
@@ -1060,25 +1089,25 @@ const LogarithmBaseConversion = () => {
 
                   <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 text-center mb-4">
                     <span className="text-lg font-bold">
-                      log{getSubscript(sourceBase)}({value}) = {result.toFixed(4)}
+                      <MathFormula formula={`\\log_{${sourceBase}}(${value}) = ${result.toFixed(4)}`} />
                     </span>
                   </div>
 
                   <div className="bg-gray-50 rounded-lg p-3">
                     <p className="font-bold text-sm mb-1">Step-by-Step:</p>
                     <ol className="ml-5 text-sm space-y-1">
-                      <li>Use formula: log{getSubscript(sourceBase)}({value}) = log{getSubscript(10)}({value}) ÷ log{getSubscript(10)}({sourceBase})</li>
-                      <li>Numerator: log{getSubscript(10)}({value}) = {Math.log10(value).toFixed(4)}</li>
-                      <li>Denominator: log{getSubscript(10)}({sourceBase}) = {Math.log10(sourceBase).toFixed(4)}</li>
-                      <li>Result: {Math.log10(value).toFixed(4)} ÷ {Math.log10(sourceBase).toFixed(4)} = {result.toFixed(4)}</li>
+                      <li>Use formula: <MathFormula formula={`\\log_{${sourceBase}}(${value}) = \\frac{\\log_{10}(${value})}{\\log_{10}(${sourceBase})}`} /></li>
+                      <li>Numerator: <MathFormula formula={`\\log_{10}(${value}) = ${Math.log10(value).toFixed(4)}`} /></li>
+                      <li>Denominator: <MathFormula formula={`\\log_{10}(${sourceBase}) = ${Math.log10(sourceBase).toFixed(4)}`} /></li>
+                      <li>Result: <MathFormula formula={`\\frac{${Math.log10(value).toFixed(4)}}{${Math.log10(sourceBase).toFixed(4)}} = ${result.toFixed(4)}`} /></li>
                     </ol>
                   </div>
 
                   {/* Verification for simple exponents */}
                   {Number.isInteger(result) && result > 0 && result < 5 && (
                     <div className="mt-3 bg-green-50 border border-green-200 rounded-lg p-3 text-sm">
-                      <span className="font-bold">Notice:</span> {sourceBase}<sup>{result}</sup> = {Math.pow(sourceBase, result)}<br />
-                      This confirms that log{getSubscript(sourceBase)}({value}) = {result} exactly.
+                      <span className="font-bold">Notice:</span> <MathFormula formula={`${sourceBase}^{${result}} = ${Math.pow(sourceBase, result)}`} /><br />
+                      This confirms that <MathFormula formula={`\\log_{${sourceBase}}(${value}) = ${result}`} /> exactly.
                     </div>
                   )}
                 </div>
@@ -1129,7 +1158,7 @@ const LogarithmBaseConversion = () => {
 
                   <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 text-center mb-4">
                     <p className="font-medium mb-1">
-                      If log{getSubscript(sourceBase)}(x) = {solveForYValue}, then:
+                      If <MathFormula formula={`\\log_{${sourceBase}}(x) = ${solveForYValue}`} />, then:
                     </p>
                     <span className="text-lg font-bold">
                       x = {xValue}
@@ -1139,17 +1168,17 @@ const LogarithmBaseConversion = () => {
                   <div className="bg-gray-50 rounded-lg p-3">
                     <p className="font-bold text-sm mb-1">Step-by-Step Solution:</p>
                     <ol className="ml-5 text-sm space-y-1">
-                      <li>Start with: log{getSubscript(sourceBase)}(x) = {solveForYValue}</li>
-                      <li>If log<sub>b</sub>(x) = y, then x = b<sup>y</sup></li>
-                      <li>Substitute: x = {sourceBase}<sup>{solveForYValue}</sup></li>
-                      <li>Calculate: x = {sourceBase}<sup>{solveForYValue}</sup> = {xValue}</li>
+                      <li>Start with: <MathFormula formula={`\\log_{${sourceBase}}(x) = ${solveForYValue}`} /></li>
+                      <li>If <MathFormula formula={`\\log_b(x) = y`} />, then <MathFormula formula={`x = b^y`} /></li>
+                      <li>Substitute: <MathFormula formula={`x = ${sourceBase}^{${solveForYValue}}`} /></li>
+                      <li>Calculate: <MathFormula formula={`x = ${sourceBase}^{${solveForYValue}} = ${xValue}`} /></li>
                     </ol>
                   </div>
 
                   <div className="mt-3 bg-yellow-50 border border-yellow-200 rounded-lg p-3 text-sm">
                     <span className="font-bold">Verification:</span><br />
-                    log{getSubscript(sourceBase)}({xValue}) = {solveForYValue}<br />
-                    Because {sourceBase}<sup>{solveForYValue}</sup> = {xValue}
+                    <MathFormula formula={`\\log_{${sourceBase}}(${xValue}) = ${solveForYValue}`} /><br />
+                    Because <MathFormula formula={`${sourceBase}^{${solveForYValue}} = ${xValue}`} />
                   </div>
                 </div>
               </div>
@@ -1166,12 +1195,6 @@ const LogarithmBaseConversion = () => {
                   </svg>
                   <span className="font-bold">Logarithm Visualization</span>
                 </div>
-                <button
-                  onClick={() => setShowGraph(!showGraph)}
-                  className="text-xs bg-blue-400 hover:bg-blue-600 text-white px-2 py-1 rounded"
-                >
-                  {showGraph ? 'Hide Graph' : 'Show Graph'}
-                </button>
               </div>
 
               {showGraph && (
@@ -1245,7 +1268,7 @@ const LogarithmBaseConversion = () => {
                     Product Rule
                   </h4>
                   <div className="bg-white p-2 rounded text-center mb-1 font-bold">
-                    log<sub>b</sub>(x × y) = log<sub>b</sub>(x) + log<sub>b</sub>(y)
+                    <MathFormula formula={`\\log_b(x \\times y) = \\log_b(x) + \\log_b(y)`} />
                   </div>
                   <p className="text-xs text-gray-600 text-center italic">
                     Multiplying inside = adding outside
@@ -1260,7 +1283,7 @@ const LogarithmBaseConversion = () => {
                     Quotient Rule
                   </h4>
                   <div className="bg-white p-2 rounded text-center mb-1 font-bold">
-                    log<sub>b</sub>(x ÷ y) = log<sub>b</sub>(x) - log<sub>b</sub>(y)
+                    <MathFormula formula={`\\log_b(x \\div y) = \\log_b(x) - \\log_b(y)`} />
                   </div>
                   <p className="text-xs text-gray-600 text-center italic">
                     Dividing inside = subtracting outside
@@ -1274,8 +1297,8 @@ const LogarithmBaseConversion = () => {
                     </svg>
                     Power Rule
                   </h4>
-                  <div className="bg-white p-2 rounded text-center mb-1 font-bold">
-                    log<sub>b</sub>(x<sup>n</sup>) = n × log<sub>b</sub>(x)
+                  <div className="bg-white rounded text-center mb-1 font-bold">
+                    <MathFormula formula={`\\log_b(x^n) = n \\times \\log_b(x)`} />
                   </div>
                   <p className="text-xs text-gray-600 text-center italic">
                     Exponents inside = multiplying outside
@@ -1290,7 +1313,7 @@ const LogarithmBaseConversion = () => {
                     Change of Base
                   </h4>
                   <div className="bg-white p-2 rounded text-center mb-1 font-bold">
-                    log<sub>b</sub>(x) = log<sub>c</sub>(x) ÷ log<sub>c</sub>(b)
+                    <MathFormula formula={`\\log_b(x) = \\frac{\\log_c(x)}{\\log_c(b)}`} />
                   </div>
                   <p className="text-xs text-gray-600 text-center italic">
                     Change base using any base c
@@ -1532,7 +1555,7 @@ const LogarithmBaseConversion = () => {
                   fontWeight: 'bold',
                   fontSize: '18px'
                 }}>
-                  log<sub>b</sub>(x) = log<sub>10</sub>(x) ÷ log<sub>10</sub>(b)
+                  <MathFormula formula={`\\log_b(x) = \\frac{\\log_{10}(x)}{\\log_{10}(b)}`} display={true} />
                 </div>
 
                 <div style={{
@@ -1550,7 +1573,7 @@ const LogarithmBaseConversion = () => {
                     color: '#ff9900',
                     fontSize: '16px'
                   }}>
-                    Example: Calculate log<sub>2</sub>(8)
+                    Example: Calculate <MathFormula formula={`\\log_2(8)`} />
                   </div>
 
                   <div style={{
@@ -1579,10 +1602,10 @@ const LogarithmBaseConversion = () => {
                       boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
                     }}>
                       <ol style={{ margin: '0', paddingLeft: '20px', listStyleType: 'none' }}>
-                        <li>5. Press [LOG]</li>
-                        <li>6. Enter 2</li>
-                        <li>7. Press [)]</li>
-                        <li>8. Press [=]</li>
+                        <li>Press [LOG]</li>
+                        <li>Enter 2</li>
+                        <li>Press [)]</li>
+                        <li>Press [=]</li>
                       </ol>
                     </div>
                   </div>
@@ -1596,7 +1619,7 @@ const LogarithmBaseConversion = () => {
                     textAlign: 'center',
                     fontWeight: 'bold'
                   }}>
-                    The display should show 3, since 2<sup>3</sup> = 8
+                    The display should show 3, since <MathFormula formula={`2^3 = 8`} />
                   </div>
                 </div>
 
@@ -1608,7 +1631,7 @@ const LogarithmBaseConversion = () => {
                   fontSize: '14px'
                 }}>
                   <strong>Note:</strong> You can use [LN] instead of [LOG] in the above steps to use natural logarithms:
-                  log<sub>b</sub>(x) = ln(x) ÷ ln(b)
+                  <MathFormula formula={`\\log_b(x) = \\frac{\\ln(x)}{\\ln(b)}`} />
                 </div>
               </div>
             </div>
@@ -1839,8 +1862,8 @@ const LogarithmBaseConversion = () => {
                       Understanding the Formula
                     </h3>
                     <p style={{ margin: '0', fontSize: '14px' }}>
-                      When we write log<sub>b</sub>(x), we're asking: "To what power must I raise b to get x?"
-                      The formula log<sub>b</sub>(x) = log<sub>10</sub>(x) ÷ log<sub>10</sub>(b) works through a clever mathematical substitution.
+                      When we write <MathFormula formula={`\\log_b(x)`} />, we're asking: "To what power must I raise b to get x?"
+                      The formula <MathFormula formula={`\\log_b(x) = \\frac{\\log_{10}(x)}{\\log_{10}(b)}`} /> works through a clever mathematical substitution.
                     </p>
                   </div>
 
@@ -1857,12 +1880,12 @@ const LogarithmBaseConversion = () => {
                       The Elegant Proof
                     </h3>
                     <div style={{ fontSize: '14px' }}>
-                      <p style={{ margin: '0 0 5px 0' }}>Let y = log<sub>b</sub>(x)</p>
-                      <p style={{ margin: '0 0 5px 0' }}>Then b<sup>y</sup> = x</p>
-                      <p style={{ margin: '0 0 5px 0' }}>Taking log<sub>10</sub> of both sides:</p>
-                      <p style={{ margin: '0 0 5px 0' }}>log<sub>10</sub>(b<sup>y</sup>) = log<sub>10</sub>(x)</p>
-                      <p style={{ margin: '0 0 5px 0' }}>Using power rule: y × log<sub>10</sub>(b) = log<sub>10</sub>(x)</p>
-                      <p style={{ margin: '0' }}>Solving for y: y = log<sub>10</sub>(x) ÷ log<sub>10</sub>(b)</p>
+                      <p style={{ margin: '0 0 5px 0' }}>Let <MathFormula formula={`y = \\log_b(x)`} /></p>
+                      <p style={{ margin: '0 0 5px 0' }}>Then <MathFormula formula={`b^y = x`} /></p>
+                      <p style={{ margin: '0 0 5px 0' }}>Taking <MathFormula formula={`\\log_{10}`} /> of both sides:</p>
+                      <p style={{ margin: '0 0 5px 0' }}><MathFormula formula={`\\log_{10}(b^y) = \\log_{10}(x)`} /></p>
+                      <p style={{ margin: '0 0 5px 0' }}>Using power rule: <MathFormula formula={`y \\times \\log_{10}(b) = \\log_{10}(x)`} /></p>
+                      <p style={{ margin: '0' }}>Solving for y: <MathFormula formula={`y = \\frac{\\log_{10}(x)}{\\log_{10}(b)}`} /></p>
                     </div>
                   </div>
 
@@ -1961,11 +1984,11 @@ const LogarithmBaseConversion = () => {
                       marginBottom: '15px'
                     }}>
                       <span style={{ fontSize: '18px', fontWeight: 'bold' }}>
-                        If y = log<sub>b</sub>(x), then b<sup>y</sup> = x
+                        <MathFormula formula={`\\text{If } y = \\log_b(x), \\text{ then } b^y = x`} display={true} />
                       </span>
                     </div>
                     <p style={{ margin: '0' }}>
-                      For example, log<sub>10</sub>(100) = 2 because 10<sup>2</sup> = 100.
+                      For example, <MathFormula formula={`\\log_{10}(100) = 2`} /> because <MathFormula formula={`10^2 = 100`} />.
                     </p>
                   </div>
 
@@ -2152,7 +2175,7 @@ const LogarithmBaseConversion = () => {
                     Key Formula
                   </div>
                   <span style={{ fontSize: '20px', fontWeight: 'bold' }}>
-                    log<sub>b</sub>(x) = log<sub>c</sub>(x) ÷ log<sub>c</sub>(b)
+                    <MathFormula formula={`\\log_b(x) = \\frac{\\log_c(x)}{\\log_c(b)}`} display={true} />
                   </span>
                 </div>
 
@@ -2315,10 +2338,10 @@ const LogarithmBaseConversion = () => {
                         padding: '5px',
                         borderRadius: '5px'
                       }}>
-                        ln(x) = log<sub>10</sub>(x) × ln(10)
+                        <MathFormula formula={`\\ln(x) = \\log_{10}(x) \\times \\ln(10)`} />
                       </div>
                       <div style={{ fontSize: '14px', marginTop: '5px', color: '#666' }}>
-                        ln(10) ≈ 2.303
+                        <MathFormula formula={`\\ln(10) \\approx 2.303`} />
                       </div>
                     </div>
 
@@ -2335,10 +2358,10 @@ const LogarithmBaseConversion = () => {
                         padding: '5px',
                         borderRadius: '5px'
                       }}>
-                        log<sub>10</sub>(x) = ln(x) ÷ ln(10)
+                        <MathFormula formula={`\\log_{10}(x) = \\frac{\\ln(x)}{\\ln(10)}`} />
                       </div>
                       <div style={{ fontSize: '14px', marginTop: '5px', color: '#666' }}>
-                        1 ÷ ln(10) ≈ 0.434
+                        <MathFormula formula={`\\frac{1}{\\ln(10)} \\approx 0.434`} />
                       </div>
                     </div>
 
@@ -2355,10 +2378,10 @@ const LogarithmBaseConversion = () => {
                         padding: '5px',
                         borderRadius: '5px'
                       }}>
-                        log<sub>2</sub>(x) = log<sub>10</sub>(x) ÷ log<sub>10</sub>(2)
+                        <MathFormula formula={`\\log_2(x) = \\frac{\\log_{10}(x)}{\\log_{10}(2)}`} />
                       </div>
                       <div style={{ fontSize: '14px', marginTop: '5px', color: '#666' }}>
-                        1 ÷ log<sub>10</sub>(2) ≈ 3.32
+                        <MathFormula formula={`\\frac{1}{\\log_{10}(2)} \\approx 3.32`} />
                       </div>
                     </div>
 
@@ -2375,10 +2398,10 @@ const LogarithmBaseConversion = () => {
                         padding: '5px',
                         borderRadius: '5px'
                       }}>
-                        log<sub>10</sub>(x) = log<sub>2</sub>(x) × log<sub>10</sub>(2)
+                        <MathFormula formula={`\\log_{10}(x) = \\log_2(x) \\times \\log_{10}(2)`} />
                       </div>
                       <div style={{ fontSize: '14px', marginTop: '5px', color: '#666' }}>
-                        log<sub>10</sub>(2) ≈ 0.301
+                        <MathFormula formula={`\\log_{10}(2) \\approx 0.301`} />
                       </div>
                     </div>
                   </div>
@@ -2574,11 +2597,11 @@ const LogarithmBaseConversion = () => {
                       }}>
                         Power Rule
                       </div>
-                      <div style={{ padding: '10px' }}>
+                      <div style={{ padding: '8px' }}>
                         <div style={{
                           background: 'white',
                           borderRadius: '5px',
-                          padding: '8px',
+                          padding: '4px',
                           textAlign: 'center',
                           marginBottom: '10px',
                           fontWeight: 'bold'
@@ -2677,7 +2700,7 @@ const LogarithmBaseConversion = () => {
                           </div>
                         </div>
                         <div style={{ fontSize: '14px', color: '#666' }}>
-                          Example: log<sub>2</sub>(8) = log<sub>10</sub>(8) ÷ log<sub>10</sub>(2) = 0.9031 ÷ 0.3010 = 3
+                          Example: <MathFormula formula={`\\log_2(8) = \\frac{\\log_{10}(8)}{\\log_{10}(2)} = \\frac{0.9031}{0.3010} = 3`} />
                         </div>
                       </div>
                     </div>
@@ -2710,10 +2733,10 @@ const LogarithmBaseConversion = () => {
                       textAlign: 'center'
                     }}>
                       <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>
-                        log<sub>b</sub>(1) = 0
+                        <MathFormula formula={`\\log_b(1) = 0`} />
                       </div>
                       <div style={{ fontSize: '14px', color: '#666' }}>
-                        For any base b: b<sup>0</sup> = 1
+                        For any base b: <MathFormula formula={`b^0 = 1`} />
                       </div>
                     </div>
 
@@ -2724,10 +2747,10 @@ const LogarithmBaseConversion = () => {
                       textAlign: 'center'
                     }}>
                       <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>
-                        log<sub>b</sub>(b) = 1
+                        <MathFormula formula={`\\log_b(b) = 1`} />
                       </div>
                       <div style={{ fontSize: '14px', color: '#666' }}>
-                        For any base b: b<sup>1</sup> = b
+                        For any base b: <MathFormula formula={`b^1 = b`} />
                       </div>
                     </div>
 
@@ -2738,7 +2761,7 @@ const LogarithmBaseConversion = () => {
                       textAlign: 'center'
                     }}>
                       <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>
-                        log<sub>b</sub>(b<sup>n</sup>) = n
+                        <MathFormula formula={`\\log_b(b^n) = n`} />
                       </div>
                       <div style={{ fontSize: '14px', color: '#666' }}>
                         For any base b and number n
@@ -2988,115 +3011,261 @@ const LogarithmBaseConversion = () => {
                     They allow us to see patterns in both very large and very small values on the same graph.
                   </p>
 
+                  {/* Interactive Scale Comparison */}
                   <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                    gap: '15px'
+                    background: 'white',
+                    borderRadius: '8px',
+                    border: '1px solid #ddd',
+                    padding: '15px',
+                    marginBottom: '15px'
                   }}>
-                    <div style={{
-                      background: 'white',
-                      borderRadius: '5px',
-                      padding: '10px',
-                      border: '1px solid #ddd'
-                    }}>
-                      <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>
-                        On a linear scale:
-                      </div>
-                      <div style={{ fontSize: '14px' }}>
-                        Values: 1, 10, 100, 1000, 10000
-                      </div>
-                      <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        marginTop: '5px'
-                      }}>
-                        <div style={{
-                          width: '10px',
-                          height: '10px',
-                          background: '#999',
-                          marginRight: '5px'
-                        }}></div>
-                        <div style={{
-                          width: '10px',
-                          height: '10px',
-                          background: '#999',
-                          marginRight: '85px'
-                        }}></div>
-                        <div style={{
-                          width: '10px',
-                          height: '10px',
-                          background: '#999',
-                          marginRight: '85px'
-                        }}></div>
-                        <div style={{
-                          width: '10px',
-                          height: '10px',
-                          background: '#999',
-                          marginRight: '85px'
-                        }}></div>
-                        <div style={{
-                          width: '10px',
-                          height: '10px',
-                          background: '#999'
-                        }}></div>
-                      </div>
-                      <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>
-                        Small values are crowded together and hard to distinguish
-                      </div>
+                    <h4 style={{ margin: '0 0 15px 0', fontSize: '16px', textAlign: 'center' }}>
+                      Comparing Linear vs. Logarithmic Scales
+                    </h4>
+
+                    <div style={{ height: '300px', marginBottom: '20px' }}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <LineChart
+                          margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+                        >
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis
+                            type="number"
+                            dataKey="value"
+                            domain={[1, 10000]}
+                            scale="log"
+                            ticks={[1, 10, 100, 1000, 10000]}
+                            tickFormatter={(value) => value.toString()}
+                            label={{ value: 'Value (logarithmic scale)', position: 'bottom', offset: 0 }}
+                          />
+                          <YAxis
+                            label={{ value: 'Position', angle: -90, position: 'left' }}
+                            domain={[0, 100]}
+                            ticks={[0, 25, 50, 75, 100]}
+                          />
+                          <Tooltip
+                            formatter={(value, name) => [value, name]}
+                            labelFormatter={(value) => `Value: ${value}`}
+                          />
+                          <Legend verticalAlign="top" />
+
+                          {/* Linear Scale Points */}
+                          <Line
+                            name="Linear Scale Position"
+                            data={[
+                              { value: 1, position: 0.01 },
+                              { value: 10, position: 0.1 },
+                              { value: 100, position: 1 },
+                              { value: 1000, position: 10 },
+                              { value: 10000, position: 100 }
+                            ]}
+                            type="monotone"
+                            dataKey="position"
+                            stroke="#ff9900"
+                            strokeWidth={3}
+                            dot={{ r: 6 }}
+                            activeDot={{ r: 8 }}
+                          />
+
+                          {/* Log Scale Points */}
+                          <Line
+                            name="Logarithmic Scale Position"
+                            data={[
+                              { value: 1, position: 0 },
+                              { value: 10, position: 25 },
+                              { value: 100, position: 50 },
+                              { value: 1000, position: 75 },
+                              { value: 10000, position: 100 }
+                            ]}
+                            type="monotone"
+                            dataKey="position"
+                            stroke="#4a98e2"
+                            strokeWidth={3}
+                            dot={{ r: 6 }}
+                            activeDot={{ r: 8 }}
+                          />
+                        </LineChart>
+                      </ResponsiveContainer>
                     </div>
 
-                    <div style={{
-                      background: 'white',
-                      borderRadius: '5px',
-                      padding: '10px',
-                      border: '1px solid #ddd'
-                    }}>
-                      <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>
-                        On a log scale:
-                      </div>
-                      <div style={{ fontSize: '14px' }}>
-                        Values: 1, 10, 100, 1000, 10000
-                      </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
                       <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        marginTop: '5px'
+                        background: '#fff8f0',
+                        borderRadius: '5px',
+                        padding: '10px',
+                        border: '1px solid #ffb74d'
                       }}>
-                        <div style={{
-                          width: '10px',
-                          height: '10px',
-                          background: '#4a98e2',
-                          marginRight: '45px'
-                        }}></div>
-                        <div style={{
-                          width: '10px',
-                          height: '10px',
-                          background: '#4a98e2',
-                          marginRight: '45px'
-                        }}></div>
-                        <div style={{
-                          width: '10px',
-                          height: '10px',
-                          background: '#4a98e2',
-                          marginRight: '45px'
-                        }}></div>
-                        <div style={{
-                          width: '10px',
-                          height: '10px',
-                          background: '#4a98e2',
-                          marginRight: '45px'
-                        }}></div>
-                        <div style={{
-                          width: '10px',
-                          height: '10px',
-                          background: '#4a98e2'
-                        }}></div>
+                        <div style={{ fontWeight: 'bold', marginBottom: '5px', color: '#e65100' }}>
+                          Linear Scale <MathFormula formula={`(y = x)`} />
+                        </div>
+                        <div style={{ fontSize: '14px' }}>
+                          <ul style={{ margin: '0', paddingLeft: '20px' }}>
+                            <li>Equal increments have equal visual spacing</li>
+                            <li>Small values are crowded together</li>
+                            <li>Large values dominate the visualization</li>
+                            <li>Good for linear relationships</li>
+                          </ul>
+                        </div>
                       </div>
-                      <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>
-                        All values are equally spaced and visible
+
+                      <div style={{
+                        background: '#e3f2fd',
+                        borderRadius: '5px',
+                        padding: '10px',
+                        border: '1px solid #64b5f6'
+                      }}>
+                        <div style={{ fontWeight: 'bold', marginBottom: '5px', color: '#0d47a1' }}>
+                          Logarithmic Scale <MathFormula formula={`(y = \\log(x))`} />
+                        </div>
+                        <div style={{ fontSize: '14px' }}>
+                          <ul style={{ margin: '0', paddingLeft: '20px' }}>
+                            <li>Equal ratios have equal visual spacing</li>
+                            <li>All values are clearly visible</li>
+                            <li>Spans many orders of magnitude</li>
+                            <li>Good for exponential relationships</li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   </div>
+
+                  <div style={{ fontSize: '14px', background: '#f0f4f8', padding: '10px', borderRadius: '5px', marginTop: '10px' }}>
+                    <strong>Key Insight:</strong> On a logarithmic scale, multiplying by a constant factor (like 10)
+                    corresponds to adding a constant distance. This is why <MathFormula formula={`\\log(a \\times b) = \\log(a) + \\log(b)`} />.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Real-world Examples Tab */}
+        {activeTab === 'real-world examples' && (
+          <div>
+            <h2 style={{
+              color: '#4a98e2',
+              fontSize: '20px',
+              margin: '0 0 15px 0',
+              display: 'flex',
+              alignItems: 'center'
+            }}>
+              <span style={{
+                background: '#4a98e2',
+                color: 'white',
+                width: '28px',
+                height: '28px',
+                borderRadius: '50%',
+                display: 'inline-flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginRight: '10px',
+                fontSize: '16px'
+              }}>🌍</span>
+              Logarithms in the Real World
+            </h2>
+
+            {/* Real-world Applications Section */}
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+              <h3 className="text-green-600 text-lg font-bold mb-3 flex items-center">
+                <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+                Real-world Applications
+              </h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-white rounded-lg p-3 shadow-sm">
+                  <h4 className="font-bold text-green-700 mb-2">Richter Scale</h4>
+                  <p className="text-sm">
+                    The Richter scale measures earthquake magnitude using logarithms.
+                    An increase of 1 on the scale represents a 10× increase in amplitude.
+                  </p>
+                  <p className="text-sm mt-2">
+                    <span className="font-bold">Formula:</span> <MathFormula formula={`M = \\log_{10}(A) + C`} />
+                  </p>
+                  <p className="text-xs text-gray-600 mt-1">
+                    Where A is amplitude and C is a correction factor
+                  </p>
+                </div>
+
+                <div className="bg-white rounded-lg p-3 shadow-sm">
+                  <h4 className="font-bold text-green-700 mb-2">pH Scale</h4>
+                  <p className="text-sm">
+                    The pH scale measures acidity using logarithms.
+                    Each decrease of 1 pH unit represents a 10× increase in acidity.
+                  </p>
+                  <p className="text-sm mt-2">
+                    <span className="font-bold">Formula:</span> <MathFormula formula={`\\text{pH} = -\\log_{10}[\\text{H}^{+}]`} />
+                  </p>
+                  <p className="text-xs text-gray-600 mt-1">
+                    Where <MathFormula formula={`[\\text{H}^{+}]`} /> is hydrogen ion concentration
+                  </p>
+                </div>
+
+                <div className="bg-white rounded-lg p-3 shadow-sm">
+                  <h4 className="font-bold text-green-700 mb-2">Sound Intensity</h4>
+                  <p className="text-sm">
+                    Decibels measure sound intensity using logarithms.
+                    An increase of 10 dB represents a 10× increase in intensity.
+                  </p>
+                  <p className="text-sm mt-2">
+                    <span className="font-bold">Formula:</span> <MathFormula formula={`\\text{dB} = 10 \\times \\log_{10}(I/I_0)`} />
+                  </p>
+                  <p className="text-xs text-gray-600 mt-1">
+                    Where <MathFormula formula={`I`} /> is intensity and <MathFormula formula={`I_0`} /> is reference intensity
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Common Mistakes Section */}
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-6">
+              <h3 className="text-yellow-600 text-lg font-bold mb-3 flex items-center">
+                <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                Common Mistakes to Avoid
+              </h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-white rounded-lg p-3 shadow-sm border-l-4 border-red-400">
+                  <p className="font-bold text-red-600 mb-2">❌ Incorrect: <MathFormula formula={`\\log(a + b) = \\log(a) + \\log(b)`} /></p>
+                  <p className="text-sm">
+                    The product rule applies to multiplication, not addition.
+                  </p>
+                  <p className="text-sm font-bold mt-2">
+                    ✅ Correct: <MathFormula formula={`\\log(a \\times b) = \\log(a) + \\log(b)`} />
+                  </p>
+                </div>
+
+                <div className="bg-white rounded-lg p-3 shadow-sm border-l-4 border-red-400">
+                  <p className="font-bold text-red-600 mb-2">❌ Incorrect: <MathFormula formula={`\\log(a^b) = b \\times \\log(a^b)`} /></p>
+                  <p className="text-sm">
+                    This creates a circular reference. The power rule simplifies the expression.
+                  </p>
+                  <p className="text-sm font-bold mt-2">
+                    ✅ Correct: <MathFormula formula={`\\log(a^b) = b \\times \\log(a)`} />
+                  </p>
+                </div>
+
+                <div className="bg-white rounded-lg p-3 shadow-sm border-l-4 border-red-400">
+                  <p className="font-bold text-red-600 mb-2">❌ Incorrect: <MathFormula formula={`\\log_a(b) = \\log_b(a)`} /></p>
+                  <p className="text-sm">
+                    Logarithms with different bases are not generally equal.
+                  </p>
+                  <p className="text-sm font-bold mt-2">
+                    ✅ Correct: <MathFormula formula={`\\log_a(b) \\neq \\log_b(a)`} />. Use the change of base formula to convert between bases.
+                  </p>
+                </div>
+
+                <div className="bg-white rounded-lg p-3 shadow-sm border-l-4 border-red-400">
+                  <p className="font-bold text-red-600 mb-2">❌ Incorrect: <MathFormula formula={`\\log(0) = 0`} /></p>
+                  <p className="text-sm">
+                    The logarithm of 0 is undefined. Logarithms are only defined for positive numbers.
+                  </p>
+                  <p className="text-sm font-bold mt-2">
+                    ✅ Correct: <MathFormula formula={`\\log(x) \\text{ is only defined for } x > 0`} />
+                  </p>
                 </div>
               </div>
             </div>
