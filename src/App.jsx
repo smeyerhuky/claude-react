@@ -2,7 +2,7 @@
 import { Routes, Route, useParams, useNavigate, useLocation, Link, Navigate } from 'react-router-dom'
 import './App.css'
 
-import MediterraneanMealPlanner from './components/medi/MediterraneanMealPlanner'
+import MediterraneanMealPlanner from './components/meid/MediterraneanMealPlanner'
 import MonteCarloProjectSimulator from './components/monte/MonteCarloProjectSimulator'
 import MonteCarloAdvancedTutorial from'./components/monte/MonteCarloAdvancedTutorial'
 import MatrixExplorer from './components/MatrixExplorer'
