@@ -60,7 +60,7 @@ const LogEntry = memo(({ entry, index }) => {
 
 LogEntry.displayName = 'LogEntry';
 
-export const ConsoleDrawer = memo(({ logs, onClear, isOpen, onToggle, onClose }) => {
+export const ConsoleDrawer = memo(({ logs, onClear, isOpen, onToggle, onClose, embedded = false }) => {
   const [isMinimized, setIsMinimized] = useState(false);
   const scrollAreaRef = useRef(null);
   const endRef = useRef(null);
@@ -101,7 +101,69 @@ export const ConsoleDrawer = memo(({ logs, onClear, isOpen, onToggle, onClose })
     }
   }, [logs.length, isMinimized]);
 
-  if (!isOpen) return null;
+  if (!isOpen && !embedded) return null;
+
+  if (embedded) {
+    return (
+      <div className="h-full flex flex-col bg-gray-900/50 rounded-lg border border-gray-700">
+        {/* Embedded Header */}
+        <div className="p-3 border-b border-gray-700">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Terminal className="w-4 h-4 text-green-400" />
+              <span className="text-sm font-medium text-green-400">Console Logs</span>
+              <Badge variant="secondary" className="text-xs">
+                {logs.length}
+              </Badge>
+            </div>
+            <div className="flex items-center gap-1">
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={copyLogs}
+                className="w-6 h-6 p-0 text-blue-400 hover:text-blue-300"
+                title="Copy logs to clipboard"
+              >
+                <Copy className="w-3 h-3" />
+              </Button>
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={onClear}
+                className="w-6 h-6 p-0 text-yellow-400 hover:text-yellow-300"
+                title="Clear logs"
+              >
+                <Trash2 className="w-3 h-3" />
+              </Button>
+            </div>
+          </div>
+        </div>
+        
+        {/* Embedded Content */}
+        <div className="flex-1 min-h-0">
+          <ScrollArea 
+            ref={scrollAreaRef}
+            className="h-full p-2"
+          >
+            {logs.length === 0 ? (
+              <div className="text-center text-gray-500 py-8">
+                <Terminal className="w-8 h-8 mx-auto mb-2 opacity-50" />
+                <p>No console logs yet</p>
+                <p className="text-xs">Upload a file to see logs</p>
+              </div>
+            ) : (
+              <>
+                {logs.map((entry, index) => (
+                  <LogEntry key={`${entry.timestamp}-${index}`} entry={entry} index={index} />
+                ))}
+                <div ref={endRef} />
+              </>
+            )}
+          </ScrollArea>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed bottom-4 right-4 z-50 w-80 max-w-[45vw]">

@@ -75,24 +75,29 @@ function TabComponent() {
   const { activeTab } = useParams();
   const navigate = useNavigate();
   
+  // Check if this is a full-screen component
+  const isFullScreenComponent = activeTab === 'edm-mixer';
+  
   // Get component for the active tab
   const getActiveComponent = () => {
     const item = navigationItems.find(item => item.id === activeTab);
     return item ? (
-      <div>
-        <div className="flex items-center mb-4 p-2 bg-gray-50 border-b">
-          <button 
-            onClick={() => navigate('/')}
-            className="px-4 py-2 mr-4 flex items-center text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
-          >
-            <svg className="w-4 h-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
-            </svg>
-            Back to Home
-          </button>
-          <h2 className="text-lg font-semibold">{item.label}</h2>
-        </div>
-        <div className="px-4">
+      <div className={isFullScreenComponent ? "h-screen w-screen overflow-hidden" : ""}>
+        {!isFullScreenComponent && (
+          <div className="flex items-center mb-4 p-2 bg-gray-50 border-b">
+            <button 
+              onClick={() => navigate('/')}
+              className="px-4 py-2 mr-4 flex items-center text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+            >
+              <svg className="w-4 h-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
+              </svg>
+              Back to Home
+            </button>
+            <h2 className="text-lg font-semibold">{item.label}</h2>
+          </div>
+        )}
+        <div className={isFullScreenComponent ? "" : "px-4"}>
           <item.component />
         </div>
       </div>
@@ -109,21 +114,27 @@ function ActiveComponentHandler() {
   
   // Find the component by ID
   const item = navigationItems.find(item => item.id === active_component);
+  
+  // Check if this is a full-screen component that needs special handling
+  const isFullScreenComponent = active_component === 'edm-mixer';
+  
   return item ? (
-    <div>
-      <div className="flex items-center mb-4 p-2 bg-gray-50 border-b">
-        <button 
-          onClick={() => navigate('/')}
-          className="px-4 py-2 mr-4 flex items-center text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
-        >
-          <svg className="w-4 h-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
-          </svg>
-          Back to Home
-        </button>
-        <h2 className="text-lg font-semibold">{item.label}</h2>
-      </div>
-      <div className="px-4">
+    <div className={isFullScreenComponent ? "h-screen w-screen overflow-hidden" : ""}>
+      {!isFullScreenComponent && (
+        <div className="flex items-center mb-4 p-2 bg-gray-50 border-b">
+          <button 
+            onClick={() => navigate('/')}
+            className="px-4 py-2 mr-4 flex items-center text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+          >
+            <svg className="w-4 h-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
+            </svg>
+            Back to Home
+          </button>
+          <h2 className="text-lg font-semibold">{item.label}</h2>
+        </div>
+      )}
+      <div className={isFullScreenComponent ? "" : "px-4"}>
         <item.component />
       </div>
     </div>
@@ -133,9 +144,10 @@ function ActiveComponentHandler() {
 function App() {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const isEDMMixer = location.pathname === '/edm-mixer' || location.pathname === '/s/edm-mixer';
 
   return (
-    <div className="app-container">
+    <div className={isEDMMixer ? "h-screen w-screen overflow-hidden" : "app-container"}>
       {/* Only show navigation on home page */}
       {isHomePage && (
         <header className="py-4 px-6 bg-white border-b">
@@ -145,7 +157,7 @@ function App() {
       )}
 
       {/* Content Area with Routes */}
-      <div className="content-area">
+      <div className={isEDMMixer ? "h-full w-full" : "content-area"}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/:activeTab" element={<TabComponent />} />

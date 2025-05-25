@@ -114,3 +114,26 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Full-screen component overrides - highest priority */
+.full-screen-app,
+.full-screen-app body,
+.full-screen-app #root {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+  text-align: initial !important;
+}
+
+/* Ensure the EDM mixer takes full viewport */
+.edm-full-screen {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 1000 !important;
+}

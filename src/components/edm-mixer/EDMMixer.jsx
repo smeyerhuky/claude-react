@@ -1,7 +1,10 @@
-import React, { Suspense, lazy, useCallback, useEffect } from 'react';
+import React, { Suspense, lazy, useCallback, useEffect, useState } from 'react';
 import { Toaster } from '@/components/ui/toaster';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, Terminal } from 'lucide-react';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Button } from '@/components/ui/button';
+import { Loader2, Terminal, Music, BarChart3, Settings, Monitor, ChevronLeft, ChevronRight, PanelLeft, PanelRight } from 'lucide-react';
 
 // Lazy load components for better performance
 const TrackLibrary = lazy(() => import('./components/TrackLibrary').then(m => ({ default: m.TrackLibrary })));
@@ -26,6 +29,8 @@ const LoadingSpinner = () => (
 
 export const EDMMixer = () => {
   const { toast } = useToast();
+  const [rightPanelOpen, setRightPanelOpen] = useState(false);
+  const [activeRightTab, setActiveRightTab] = useState('analysis');
   
   // Initialize console logger
   const logger = useConsoleLogger();
@@ -82,6 +87,17 @@ export const EDMMixer = () => {
       description: "Upload audio files or interact with controls to start mixing. Check Console for details.",
     });
   }, []); // Empty dependency array to run only once
+  
+  // Add full-screen class to document for CSS override fallback
+  useEffect(() => {
+    document.documentElement.classList.add('full-screen-app');
+    document.body.classList.add('full-screen-app');
+    
+    return () => {
+      document.documentElement.classList.remove('full-screen-app');
+      document.body.classList.remove('full-screen-app');
+    };
+  }, []);
 
   // Initialize audio on first user interaction
   const handleFirstInteraction = useCallback(async () => {
@@ -293,32 +309,45 @@ export const EDMMixer = () => {
   }, [registerCanvas]);
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900/10 to-gray-900">
+    <div className="edm-full-screen h-screen w-screen bg-gradient-to-br from-gray-900 via-purple-900/10 to-gray-900 flex flex-col overflow-hidden">
       <Toaster />
       
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-indigo-600 shadow-lg">
-        <div className="container mx-auto px-3 py-2">
+      <div className="bg-gradient-to-r from-purple-600 to-indigo-600 shadow-lg border-b border-gray-700 flex-shrink-0">
+        <div className="px-4 py-2">
           <div className="flex items-center justify-between">
             <h1 className="text-lg font-bold text-white flex items-center gap-2">
               🎧 EDM Chain Builder Pro
             </h1>
-            <button
-              onClick={logger.toggle}
-              className="px-2 py-1 bg-white/20 hover:bg-white/30 rounded text-white text-xs font-medium transition-colors flex items-center gap-1"
-            >
-              <Terminal className="w-3 h-3" />
-              Console {logger.isOpen ? '▼' : '▶'}
-            </button>
+            
+            <div className="flex items-center gap-2">
+              {/* Right Panel Toggle */}
+              <Button
+                onClick={() => setRightPanelOpen(!rightPanelOpen)}
+                variant="ghost"
+                size="sm"
+                className="text-white hover:bg-white/20 p-2"
+              >
+                {rightPanelOpen ? <ChevronRight className="w-3 h-3 mr-1" /> : <ChevronLeft className="w-3 h-3 mr-1" />}
+                <span className="hidden sm:inline">Analysis</span>
+                <PanelRight className="w-4 h-4 sm:ml-1" />
+              </Button>
+            </div>
           </div>
         </div>
       </div>
       
-      {/* Main Grid Layout */}
-      <div className="container mx-auto p-2">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 h-[calc(100vh-100px)]">
-          {/* Left Panel - Track Library */}
-          <div className="lg:col-span-3 h-full overflow-hidden">
+      {/* Main Content Area */}
+      <div className="flex-1 flex min-h-0 w-full">
+        {/* Left Nav - Track Library (Always Visible) */}
+        <div className="w-80 bg-gray-900/95 border-r border-gray-700 flex-shrink-0 flex flex-col">
+          <div className="p-3 border-b border-gray-700">
+            <div className="flex items-center gap-2 mb-2">
+              <Music className="w-4 h-4 text-green-400" />
+              <span className="text-sm font-medium text-green-400">Track Library</span>
+            </div>
+          </div>
+          <div className="flex-1 min-h-0 relative z-10">
             <Suspense fallback={<LoadingSpinner />}>
               <TrackLibrary
                 tracks={tracks}
@@ -328,9 +357,11 @@ export const EDMMixer = () => {
               />
             </Suspense>
           </div>
-          
-          {/* Main Workspace - Chain Builder */}
-          <div className="lg:col-span-6 h-full overflow-hidden">
+        </div>
+
+        {/* Center - Chain Builder */}
+        <div className="flex-1 min-w-0 flex flex-col relative z-20">
+          <div className="flex-1 min-h-0">
             <Suspense fallback={<LoadingSpinner />}>
               <ChainBuilder
                 chain={chain}
@@ -341,60 +372,111 @@ export const EDMMixer = () => {
                 onTransitionChange={updateTransition}
                 onWaveformReady={handleWaveformReady}
                 onSpectrogramReady={handleSpectrogramReady}
+                isPlaying={isPlaying}
+                currentTime={currentTime}
               />
             </Suspense>
           </div>
-          
-          {/* Right Panel - Analysis & Debug */}
-          <div className="lg:col-span-3 h-full overflow-hidden">
-            <div className="h-full overflow-y-auto space-y-4">
-              <Suspense fallback={<LoadingSpinner />}>
-                <AnalysisPanel
-                  chain={chain}
-                  compatibility={calculateChainCompatibility()}
-                  onFrequencyCanvasReady={handleFrequencyCanvasReady}
-                />
-                <DebugMonitor
-                  isPlaying={isPlaying}
-                  currentTime={currentTime}
-                  chain={chain}
-                  audioEngine={audioEngine}
-                  getMeterValue={getMeterValue}
-                />
-              </Suspense>
+        </div>
+
+        {/* Right Panel - Analysis & Debug */}
+        <Sheet open={rightPanelOpen} onOpenChange={setRightPanelOpen}>
+          <SheetContent side="right" className="w-96 max-w-[90vw] p-0 bg-gray-900/95 border-gray-700 z-30">
+            <SheetHeader className="p-4 border-b border-gray-700">
+              <SheetTitle className="text-purple-400 flex items-center gap-2">
+                <BarChart3 className="w-5 h-5" />
+                Analysis & Debug
+              </SheetTitle>
+            </SheetHeader>
+            <div className="h-full flex flex-col">
+              <Tabs value={activeRightTab} onValueChange={setActiveRightTab} className="h-full flex flex-col">
+                <TabsList className="grid w-full grid-cols-3 bg-gray-800 m-4 mb-0">
+                  <TabsTrigger value="analysis" className="text-xs data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600">
+                    <BarChart3 className="w-3 h-3 sm:mr-1" />
+                    <span className="hidden sm:inline">Analysis</span>
+                  </TabsTrigger>
+                  <TabsTrigger value="debug" className="text-xs data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600">
+                    <Monitor className="w-3 h-3 sm:mr-1" />
+                    <span className="hidden sm:inline">Debug</span>
+                  </TabsTrigger>
+                  <TabsTrigger value="console" className="text-xs data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600">
+                    <Terminal className="w-3 h-3 sm:mr-1" />
+                    <span className="hidden sm:inline">Console</span>
+                  </TabsTrigger>
+                </TabsList>
+                
+                <div className="flex-1 p-4 min-h-0 overflow-hidden">
+                  <TabsContent value="analysis" className="h-full m-0 overflow-y-auto">
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <AnalysisPanel
+                        chain={chain}
+                        compatibility={calculateChainCompatibility()}
+                        onFrequencyCanvasReady={handleFrequencyCanvasReady}
+                      />
+                    </Suspense>
+                  </TabsContent>
+                  
+                  <TabsContent value="debug" className="h-full m-0 overflow-y-auto">
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <DebugMonitor
+                        isPlaying={isPlaying}
+                        currentTime={currentTime}
+                        chain={chain}
+                        audioEngine={audioEngine}
+                        getMeterValue={getMeterValue}
+                      />
+                    </Suspense>
+                  </TabsContent>
+                  
+                  <TabsContent value="console" className="h-full m-0">
+                    <div className="h-full">
+                      <Suspense fallback={<LoadingSpinner />}>
+                        <ConsoleDrawer
+                          logs={logger.logs}
+                          isOpen={true}
+                          onClear={logger.clear}
+                          onToggle={() => {}}
+                          onClose={() => {}}
+                          embedded={true}
+                        />
+                      </Suspense>
+                    </div>
+                  </TabsContent>
+                </div>
+              </Tabs>
             </div>
-          </div>
-        </div>
+          </SheetContent>
+        </Sheet>
       </div>
       
-      {/* Transport Controls */}
-      <div className="fixed bottom-0 left-0 right-0 bg-gray-900/95 backdrop-blur-sm border-t border-gray-700 p-2">
-        <div className="container mx-auto">
-          <Suspense fallback={<LoadingSpinner />}>
-            <TransportControls
-              isPlaying={isPlaying}
-              currentTime={currentTime}
-              totalDuration={calculateChainDuration()}
-              onPlay={handleTogglePlayback}
-              onStop={handleStop}
-              onPreview={handlePreviewTransition}
-              onExportChain={handleExportChain}
-              onRenderMix={handleRenderMix}
-            />
-          </Suspense>
-        </div>
+      {/* Transport Controls - Fixed Footer */}
+      <div className="bg-gray-900/95 backdrop-blur-sm border-t border-gray-700 flex-shrink-0">
+        <Suspense fallback={<LoadingSpinner />}>
+          <TransportControls
+            isPlaying={isPlaying}
+            currentTime={currentTime}
+            totalDuration={calculateChainDuration()}
+            onPlay={handleTogglePlayback}
+            onStop={handleStop}
+            onPreview={handlePreviewTransition}
+            onExportChain={handleExportChain}
+            onRenderMix={handleRenderMix}
+            onSeek={(time) => {
+              // TODO: Implement seek functionality
+              toast({ title: "Seek", description: `Seeking to ${Math.round(time)}s` });
+            }}
+            onNextTrack={() => {
+              // TODO: Implement next track functionality
+              toast({ title: "Next Track", description: "Next track functionality coming soon!" });
+            }}
+            onPrevTrack={() => {
+              // TODO: Implement previous track functionality  
+              toast({ title: "Previous Track", description: "Previous track functionality coming soon!" });
+            }}
+            chain={chain}
+          />
+        </Suspense>
       </div>
-      
-      {/* Console Drawer */}
-      <Suspense fallback={null}>
-        <ConsoleDrawer
-          logs={logger.logs}
-          isOpen={logger.isOpen}
-          onClear={logger.clear}
-          onToggle={logger.toggle}
-          onClose={logger.close}
-        />
-      </Suspense>
     </div>
   );
 };

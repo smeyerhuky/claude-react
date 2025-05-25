@@ -95,71 +95,70 @@ export const TrackLibrary = memo(({ tracks, onTrackDoubleClick, onTrackStop, onF
   );
   
   return (
-    <Card className="h-full bg-gray-900/95 border-gray-700">
-      <CardContent className="p-0 h-full flex flex-col">
-        <div className="p-4 border-b border-gray-700">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-bold text-green-400">Track Library</h3>
-            <label htmlFor="file-upload">
-              <Button 
-                size="sm" 
-                className="bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-black font-bold"
-                asChild
-              >
-                <span>➕ Add Tracks</span>
-              </Button>
-              <input
-                id="file-upload"
-                type="file"
-                accept="audio/*"
-                multiple
-                onChange={handleFileChange}
-                className="hidden"
-              />
-            </label>
-          </div>
-          
-          <Tabs value={selectedCategory} onValueChange={setSelectedCategory}>
-            <TabsList className="grid grid-cols-2 lg:grid-cols-4 bg-gray-800">
-              <TabsTrigger value="all" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600">
-                All
-              </TabsTrigger>
-              <TabsTrigger value="major" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600">
-                Major
-              </TabsTrigger>
-              <TabsTrigger value="filler" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600">
-                Filler
-              </TabsTrigger>
-              <TabsTrigger value="sample" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600">
-                Sample
-              </TabsTrigger>
-            </TabsList>
-          </Tabs>
+    <div className="h-full flex flex-col">
+      <div className="p-3 border-b border-gray-700 flex-shrink-0">
+        <div className="mb-3">
+          <label htmlFor="file-upload">
+            <Button 
+              size="sm" 
+              className="w-full bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-black font-bold"
+              asChild
+            >
+              <span>➕ Add Tracks</span>
+            </Button>
+            <input
+              id="file-upload"
+              type="file"
+              accept="audio/*"
+              multiple
+              onChange={handleFileChange}
+              className="hidden"
+            />
+          </label>
         </div>
         
-        <ScrollArea className="flex-1 p-4">
-          {filteredTracks.length === 0 ? (
-            <div className="text-center py-12 text-gray-500">
-              <div className="text-4xl mb-4">🎵</div>
-              <p>No {selectedCategory === 'all' ? '' : selectedCategory} tracks found</p>
-              <p className="text-sm mt-2">Drop audio files to get started!</p>
-            </div>
-          ) : (
-            <div className="space-y-2">
-              {filteredTracks.map(track => (
-                <TrackItem
-                  key={track.id}
-                  track={track}
-                  onDoubleClick={onTrackDoubleClick}
-                  onStop={onTrackStop}
-                  onDragStart={() => {}}
-                />
-              ))}
-            </div>
-          )}
-        </ScrollArea>
-      </CardContent>
-    </Card>
+        <Tabs value={selectedCategory} onValueChange={setSelectedCategory}>
+          <TabsList className="grid grid-cols-2 bg-gray-800 w-full">
+            <TabsTrigger value="all" className="text-xs data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600">
+              All
+            </TabsTrigger>
+            <TabsTrigger value="major" className="text-xs data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600">
+              Major
+            </TabsTrigger>
+          </TabsList>
+          <TabsList className="grid grid-cols-2 bg-gray-800 w-full mt-1">
+            <TabsTrigger value="filler" className="text-xs data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600">
+              Filler
+            </TabsTrigger>
+            <TabsTrigger value="sample" className="text-xs data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600">
+              Sample
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </div>
+      
+      <div className="flex-1 p-3 overflow-y-auto">
+        {filteredTracks.length === 0 ? (
+          <div className="text-center py-8 text-gray-500">
+            <div className="text-3xl mb-3">🎵</div>
+            <p className="text-sm">No {selectedCategory === 'all' ? '' : selectedCategory} tracks found</p>
+            <p className="text-xs mt-1">Click Add Tracks to get started!</p>
+          </div>
+        ) : (
+          <div className="space-y-2">
+            {filteredTracks.map(track => (
+              <TrackItem
+                key={track.id}
+                track={track}
+                onDoubleClick={onTrackDoubleClick}
+                onStop={onTrackStop}
+                onDragStart={() => {}}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
   );
 });
 
