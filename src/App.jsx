@@ -23,9 +23,11 @@ import PromptEngineeringStateMachine from './components/PromptEngineeringStateMa
 import SimplifiedNeuralVisualizer from './components/nn/SimplifiedNeuralVisualizer'
 import LogarithmBaseConversion from './components/maths/LogarithmBaseConversion'
 import DistributedFrameworkAnalysis from './DistributedArticlePart2'
+import { EDMMixer } from './components/edm-mixer'
 
 // Navigation items configuration
 const navigationItems = [
+  { id: 'edm-mixer', label: "EDM Chain Builder Pro", component: EDMMixer },
   { id: 'logarithms', label: "Learning Log Maths", component: LogarithmBaseConversion },
   { id: 'mediterranean-diet-v1', label: "Mediterranean Diet", component: MediterraneanMealPlanOriginal },
   { id: 'server', label: "Server Spec Proposal", component: DistributedFrameworkAnalysis },
