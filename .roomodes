@@ -1,0 +1,475 @@
+customModes:
+  - slug: music-coding-team
+    name: music-coding-team
+    roleDefinition: >-
+      # Modern Best Practices for Music Production React Components and Web
+      Audio Applications (2024-2025)
+
+
+      ## Executive Overview
+
+
+      The landscape of web-based music production has undergone significant
+      transformation in 2024-2025, with mature APIs, professional-grade
+      frameworks, and sophisticated architectural patterns enabling
+      browser-based DAWs that rival desktop applications. This comprehensive
+      report synthesizes current best practices across 15 critical areas,
+      providing actionable guidance for developing modern music production
+      applications.
+
+
+      ## Core Web Audio and React Architecture
+
+
+      ### Web Audio API Implementation Standards
+
+
+      The Web Audio API has reached **92% cross-browser compatibility** with the
+      recent 1.1 specification (November 2024). Modern implementations require
+      careful AudioContext management, with **mandatory user gesture
+      requirements** for audio playback across all browsers. The recommended
+      pattern involves a single AudioContext per application with proper state
+      management:
+
+
+      ```javascript
+
+      const createAudioContext = () => {
+        const audioCtx = new AudioContext();
+        if (audioCtx.state === 'suspended') {
+          document.addEventListener('click', () => {
+            if (audioCtx.state === 'suspended') {
+              audioCtx.resume();
+            }
+          }, { once: true });
+        }
+        return audioCtx;
+      };
+
+      ```
+
+
+      **AudioWorklet has emerged as the standard** for custom audio processing,
+      replacing ScriptProcessorNode. With full browser support since April 2021,
+      it enables sample-accurate processing in a dedicated audio thread with
+      **fixed 128-sample frames (3ms at 44.1kHz)**, crucial for maintaining low
+      latency in professional applications.
+
+
+      ### React Performance Optimization Strategies
+
+
+      Modern React audio applications require separation of concerns between UI
+      rendering and audio processing. Key optimization techniques include:
+
+
+      - **Debounced parameter updates** (10ms recommended) to prevent audio
+      glitches
+
+      - **React.memo** for visualization components to minimize re-renders
+
+      - **useRef for audio contexts** rather than useState to avoid unnecessary
+      component updates
+
+      - **Custom hooks** for encapsulating audio logic, such as useAudioContext
+      and useAudioParam
+
+
+      Performance benchmarks indicate target latency of **3-12ms** with buffer
+      sizes between 128-512 samples, while maintaining under 5ms processing time
+      per render quantum.
+
+
+      ### Modern React Hooks for Audio
+
+
+      The ecosystem has evolved specific patterns for audio applications:
+
+
+      ```javascript
+
+      const useAudioVisualization = (audioElement) => {
+        const [analyser, setAnalyser] = useState(null);
+        const animationRef = useRef();
+
+        useEffect(() => {
+          if (!audioElement) return;
+          
+          const audioContext = new AudioContext();
+          const analyserNode = audioContext.createAnalyser();
+          const source = audioContext.createMediaElementSource(audioElement);
+          
+          source.connect(analyserNode);
+          analyserNode.connect(audioContext.destination);
+          
+          setAnalyser(analyserNode);
+          
+          return () => {
+            audioContext.close();
+            if (animationRef.current) {
+              cancelAnimationFrame(animationRef.current);
+            }
+          };
+        }, [audioElement]);
+
+        return { analyser };
+      };
+
+      ```
+
+
+      ## Audio Visualization Excellence
+
+
+      ### Canvas vs WebGL Performance Analysis
+
+
+      Research reveals distinct performance characteristics:
+
+
+      - **Canvas 2D**: Faster initial load (15ms vs 40ms), ideal for simple
+      visualizations under 1000 data points
+
+      - **WebGL**: Superior for complex visualizations, maintains 60fps with
+      large datasets, 371.8ms faster for transformations
+
+      - **Hybrid approach**: Load with Canvas 2D for immediate display, switch
+      to WebGL for interaction
+
+
+      ### Modern Visualization Libraries
+
+
+      **WaveSurfer.js v7** leads the market with comprehensive React integration
+      via @wavesurfer/react. Features include declarative components, plugin
+      architecture, and TypeScript support. **react-audio-visualize** offers a
+      lightweight alternative with separate components for static and real-time
+      visualization.
+
+
+      For 3D visualizations, **react-three-fiber** integration with Three.js
+      enables sophisticated audio-reactive experiences, particularly valuable
+      for immersive music applications.
+
+
+      ### 60fps Rendering Techniques
+
+
+      Achieving smooth visualization requires:
+
+      - **16.67ms frame budget** strict adherence
+
+      - **requestAnimationFrame** with proper cleanup in useEffect
+
+      - **TypedArray reuse** instead of creating new arrays each frame
+
+      - **Selective canvas clearing** rather than full redraws
+
+      - **Dirty rectangle rendering** for partial updates
+
+
+      ## State Management for Complex Audio Workflows
+
+
+      ### Emerging Architecture Patterns
+
+
+      **Zustand has emerged as the preferred solution** for audio applications
+      due to:
+
+      - Direct store access outside React components (crucial for audio engines)
+
+      - Minimal boilerplate compared to Redux
+
+      - Efficient selective subscriptions reducing re-renders
+
+      - Built-in async action support for audio file loading
+
+
+      The recommended pattern separates audio engine from React state:
+
+
+      ```javascript
+
+      class AudioEngine {
+        constructor() {
+          this.audioContext = new AudioContext();
+          this.nodes = new Map();
+        }
+        
+        setValue(nodeId, paramName, value) {
+          const node = this.nodes.get(nodeId);
+          if (node && node[paramName]) {
+            node[paramName].setValueAtTime(value, this.audioContext.currentTime);
+          }
+        }
+      }
+
+
+      const useAudioStore = create((set) => ({
+        routing: { tracks: [], effects: [], connections: [] },
+        updateRouting: (newRouting) => {
+          set({ routing: newRouting });
+          audioEngine.updateRouting(newRouting);
+        }
+      }));
+
+      ```
+
+
+      ### Memory Optimization Strategies
+
+
+      Professional applications implement:
+
+      - **AudioBuffer pooling** with LRU eviction (recommended cache size: 50
+      buffers)
+
+      - **Streaming for files over 45 seconds** using
+      MediaElementAudioSourceNode
+
+      - **WebAssembly integration** for CPU-intensive DSP operations
+
+      - **Object pooling** for frequently created/destroyed audio nodes
+
+
+      Memory consumption benchmarks show **~176KB per minute** of stereo 44.1kHz
+      audio, necessitating careful buffer management for large projects.
+
+
+      ## Accessibility and UI/UX Excellence
+
+
+      ### WCAG 2.2 Compliance Requirements
+
+
+      Music production interfaces must implement:
+
+      - **Comprehensive keyboard navigation** with industry-standard shortcuts
+      (spacebar for play/pause, arrow keys for navigation)
+
+      - **ARIA landmarks and live regions** for real-time parameter updates
+
+      - **Alternative representations** of audio information (numerical displays
+      alongside visual meters)
+
+      - **Screen reader compatibility** following patterns from REAPER+OSARA
+
+
+      ### Modern DAW UI Patterns
+
+
+      Industry analysis reveals consistent patterns:
+
+      - **Horizontal timeline** with vertical track layout
+
+      - **Canvas-based rendering** for performance over HTML tables
+
+      - **Drag-and-drop** with visual feedback and multi-file support
+
+      - **Touch optimization** with gesture recognition (pinch zoom, two-finger
+      pan)
+
+      - **Responsive design** adapting from mobile simplified views to desktop
+      full layouts
+
+
+      ### Drag-and-Drop Implementation
+
+
+      Modern file handling requires:
+
+      - **Format validation** supporting MP3, AAC, WAV, FLAC, OGG
+
+      - **Chunked uploads** (5MB for slow connections, 20MB for fast)
+
+      - **Progress indication** with cancel/retry capabilities
+
+      - **Cloud integration** with OAuth 2.0 for Google Drive, Dropbox, OneDrive
+
+
+      ## Audio Processing and Effects
+
+
+      ### Web Audio Effects Architecture
+
+
+      The platform provides comprehensive built-in nodes:
+
+      - **BiquadFilterNode** for various filter types
+
+      - **ConvolverNode** for reverb with impulse responses
+
+      - **DynamicsCompressorNode** for professional compression
+
+      - **WaveShaperNode** for distortion effects
+
+
+      Modern routing implements send/return architectures with gain nodes for
+      parallel processing, enabling professional mixing capabilities.
+
+
+      ### AudioWorklet for Custom DSP
+
+
+      Custom processing leverages AudioWorklet's dedicated thread:
+
+
+      ```javascript
+
+      class CustomProcessor extends AudioWorkletProcessor {
+        process(inputs, outputs, parameters) {
+          const input = inputs[0];
+          const output = outputs[0];
+          
+          for (let channel = 0; channel < output.length; ++channel) {
+            const inputChannel = input[channel];
+            const outputChannel = output[channel];
+            // Custom DSP processing
+          }
+          return true;
+        }
+      }
+
+      ```
+
+
+      ### Format Support and Compatibility
+
+
+      **Universal support (100%)**: MP3, AAC
+
+      **Good support (>85%)**: WAV/PCM, WebM/Opus, OGG/Vorbis
+
+      **Limited support**: FLAC (Chrome/Firefox), ALAC (Safari only)
+
+
+      Recommended strategy: MP3 for compatibility, AAC for quality, WebM/Opus
+      for modern browsers, with WAV as ultimate fallback.
+
+
+      ## Professional Frameworks and Libraries
+
+
+      ### Leading Solutions
+
+
+      **Superpowered Web Audio SDK** offers WebAssembly-based processing with
+      sub-500ms latency, supporting 32+ tracks with professional effects.
+      **Tone.js** (v14.8.49+) provides comprehensive music-focused abstractions
+      with excellent React integration.
+
+
+      For visualization, **WaveSurfer.js v7** leads with mature ecosystem
+      support, while **react-audio-visualize** offers lightweight alternatives.
+
+
+      ### Real-Time Collaboration Technologies
+
+
+      Modern platforms implement:
+
+      - **WebRTC** configured for music (up to 510 kbps stereo)
+
+      - **Operational Transformation** or CRDT for state synchronization
+
+      - **Cloud synchronization** with automatic conflict resolution
+
+      - **Latency compensation** targeting sub-200ms for professional use
+
+
+      Leading examples include **BandLab** (unlimited cloud storage),
+      **Soundtrap** (Spotify-owned with Google Docs-like collaboration), and
+      **Splice** (extensive sample library with collaboration tools).
+
+
+      ### Security and Performance for Large Files
+
+
+      Critical considerations include:
+
+      - **Client-side encryption** for audio assets
+
+      - **Chunked upload strategies** with resume capability
+
+      - **DRM integration** using Widevine or PlayReady for commercial samples
+
+      - **Progressive loading** for multi-GB projects
+
+      - **Memory pooling** and streaming architectures for efficient resource
+      usage
+
+
+      ## Implementation Recommendations
+
+
+      ### Architecture Decision Matrix
+
+
+      **For applications under 50 tracks**: Zustand + Custom Hooks
+
+      **For complex routing (50+ tracks)**: Redux Toolkit + Normalized State
+
+      **For real-time critical**: Separate audio engine with minimal state sync
+
+
+      ### Performance Targets
+
+
+      - **Latency**: 3-12ms (128-512 sample buffers)
+
+      - **Frame rate**: Consistent 60fps for visualizations
+
+      - **Memory**: Implement pooling for >50MB projects
+
+      - **Network**: Sub-200ms collaboration latency
+
+
+      ### Testing Strategy
+
+
+      Comprehensive testing requires:
+
+      - **Automated audio quality testing** using specialized frameworks
+
+      - **Cross-browser validation** (Chrome, Firefox, Safari, Edge)
+
+      - **Network condition simulation** for collaboration features
+
+      - **Accessibility audits** with screen reader testing
+
+
+      ## Future Outlook
+
+
+      The ecosystem continues evolving with:
+
+      - **WebGPU adoption** for enhanced visualization performance
+
+      - **WebTransport** for next-generation low-latency streaming
+
+      - **AI integration** for intelligent compression and automated mixing
+
+      - **Enhanced WebAssembly** tooling for easier native plugin porting
+
+
+      ## Conclusion
+
+
+      Modern web-based music production has achieved professional parity with
+      desktop applications through mature APIs, sophisticated frameworks, and
+      careful architecture. Success requires balancing performance optimization,
+      accessibility compliance, and user experience while leveraging the unique
+      capabilities of web platforms for collaboration and distribution. The
+      comprehensive patterns and practices outlined provide a foundation for
+      building next-generation music production applications that meet
+      professional standards while remaining accessible to broader audiences.
+    whenToUse: used for working with musical and audio architecture and coding
+      tasks. Don't forget musical edm production or debugging of sound or
+      timeseries based data.
+    groups:
+      - read
+      - edit
+      - browser
+      - command
+    source: project
