@@ -196,6 +196,11 @@ export const useTrackManager = (masterGain, logger = null, setIsPlaying = null) 
       startTime: calculateChainDuration(),
       effects: [],
       transitionType: TRANSITION_TYPES.CROSSFADE,
+      crossfadeDuration: 2.0, // Default 2 second crossfade
+      mixPoint: 75, // Default mix at 75% of track
+      cuePoint: null, // No cue point set by default
+      keySync: false, // Auto key sync disabled
+      bpmSync: false, // Auto BPM sync disabled
       volume: 1.0
     };
     
@@ -254,6 +259,19 @@ export const useTrackManager = (masterGain, logger = null, setIsPlaying = null) 
       setIsPlaying(false);
     }
   }, [setIsPlaying]);
+  
+  // Seek to position in a track
+  const seekTrack = useCallback((trackId, timeInSeconds) => {
+    const player = playersRef.current[trackId];
+    if (player && player.state === 'started') {
+      // Stop current playback
+      player.stop();
+      
+      // Start from new position
+      player.start(0, timeInSeconds);
+      logger?.info(`Seeking track ${trackId} to ${timeInSeconds.toFixed(2)}s`, 'PLAYER');
+    }
+  }, [logger]);
 
   // Stop all playback
   const stopAllTracks = useCallback(() => {
@@ -276,6 +294,33 @@ export const useTrackManager = (masterGain, logger = null, setIsPlaying = null) 
     setChain(prev => prev.map(track => 
       track.chainId === chainId 
         ? { ...track, transitionType }
+        : track
+    ));
+  }, []);
+  
+  // Update crossfade duration
+  const updateCrossfadeDuration = useCallback((chainId, duration) => {
+    setChain(prev => prev.map(track => 
+      track.chainId === chainId 
+        ? { ...track, crossfadeDuration: parseFloat(duration) }
+        : track
+    ));
+  }, []);
+  
+  // Update mix point
+  const updateMixPoint = useCallback((chainId, mixPoint) => {
+    setChain(prev => prev.map(track => 
+      track.chainId === chainId 
+        ? { ...track, mixPoint: parseInt(mixPoint) }
+        : track
+    ));
+  }, []);
+  
+  // Set cue point
+  const setCuePoint = useCallback((chainId, timeInSeconds) => {
+    setChain(prev => prev.map(track => 
+      track.chainId === chainId 
+        ? { ...track, cuePoint: timeInSeconds }
         : track
     ));
   }, []);
@@ -314,11 +359,15 @@ export const useTrackManager = (masterGain, logger = null, setIsPlaying = null) 
     addToChain,
     removeFromChain,
     updateTransition,
+    updateCrossfadeDuration,
+    updateMixPoint,
+    setCuePoint,
     calculateChainDuration,
     calculateChainCompatibility,
     playTrack,
     stopTrack,
     stopAllTracks,
+    seekTrack,
     setSelectedTrackId
   };
 };

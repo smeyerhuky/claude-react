@@ -60,11 +60,15 @@ export const EDMMixer = () => {
     addToChain,
     removeFromChain,
     updateTransition,
+    updateCrossfadeDuration,
+    updateMixPoint,
+    setCuePoint,
     calculateChainDuration,
     calculateChainCompatibility,
     playTrack,
     stopTrack,
-    stopAllTracks
+    stopAllTracks,
+    seekTrack
   } = trackManager;
   
   // Initialize visualization
@@ -370,8 +374,12 @@ export const EDMMixer = () => {
                 onTrackEdit={(_chainId) => toast({ title: "Edit", description: "Track editing coming soon!" })}
                 onTrackRemove={handleTrackRemove}
                 onTransitionChange={updateTransition}
+                onCrossfadeDurationChange={updateCrossfadeDuration}
+                onMixPointChange={updateMixPoint}
+                onSetCuePoint={setCuePoint}
                 onWaveformReady={handleWaveformReady}
                 onSpectrogramReady={handleSpectrogramReady}
+                onSeekTrack={seekTrack}
                 isPlaying={isPlaying}
                 currentTime={currentTime}
               />

@@ -137,3 +137,133 @@
   height: 100vh !important;
   z-index: 1000 !important;
 }
+
+/* EDM Mixer specific styles */
+/* Fix Select dropdown styling */
+[data-radix-popper-content-wrapper] {
+  z-index: 9999 !important;
+}
+
+/* Ensure Select content has proper background */
+[role="listbox"] {
+  background-color: rgb(31 41 55) !important; /* gray-800 */
+  border: 1px solid rgb(75 85 99) !important; /* gray-600 */
+  backdrop-filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Select item styling */
+[role="option"] {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+[role="option"]:hover,
+[role="option"]:focus,
+[role="option"][data-highlighted] {
+  background-color: rgb(55 65 81) !important; /* gray-700 */
+  outline: none !important;
+}
+
+/* Ensure playhead is visible above other elements */
+.group\/playhead {
+  z-index: 20;
+}
+
+/* Enhance playhead grab indicator on hover */
+.group\/playhead:hover {
+  filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.5));
+}
+
+/* Waveform and spectrogram hover effects */
+.group:hover canvas {
+  filter: brightness(1.1);
+}
+
+/* Smooth cursor transitions for waveform */
+.cursor-pointer canvas {
+  cursor: crosshair;
+}
+
+/* Playhead drag cursor */
+.cursor-ew-resize {
+  cursor: ew-resize !important;
+}
+
+/* Better visual feedback for clickable areas */
+.group:hover .border-gray-700 {
+  border-color: rgb(107 114 128); /* gray-600 */
+}
+
+/* Playhead hit area visual feedback */
+.group\/playhead::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -8px;
+  right: -8px;
+  background: transparent;
+  cursor: ew-resize;
+}
+
+/* Show playhead hit area on hover */
+.group\/playhead:hover::before {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Smooth transitions for seeking */
+.group canvas {
+  transition: filter 0.2s ease;
+}
+
+/* Custom range slider styling for EDM mixer */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+
+input[type="range"]::-webkit-slider-track {
+  background: rgb(55 65 81); /* gray-700 */
+  height: 4px;
+  border-radius: 2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: rgb(147 51 234); /* purple-600 */
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -4px;
+  transition: all 0.2s;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+  background: rgb(168 85 247); /* purple-500 */
+  transform: scale(1.2);
+}
+
+input[type="range"]::-moz-range-track {
+  background: rgb(55 65 81); /* gray-700 */
+  height: 4px;
+  border-radius: 2px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: rgb(147 51 234); /* purple-600 */
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+input[type="range"]:hover::-moz-range-thumb {
+  background: rgb(168 85 247); /* purple-500 */
+  transform: scale(1.2);
+}
