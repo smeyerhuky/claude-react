@@ -28,6 +28,7 @@ import MotionExtractionStudio from './components/motion/MotionExtractionStudio'
 import VideoMotionToolkit from './components/motion/VideoMotionToolkit'
 import MotionStudio from './components/motion/MotionStudio'
 import StreamlinedMotionStudio from './components/motion/StreamlinedMotionStudio'
+import HighPerformanceMotionStudio from './components/motion/HighPerformanceMotionStudio'
 
 // Navigation items configuration
 const navigationItems = [
@@ -57,7 +58,7 @@ const navigationItems = [
   { id: 'video-motion-toolkit', label: "Video Motion Toolkit", component: VideoMotionToolkit },
   { id: 'motion-studio', label: "Motion Studio", component: MotionStudio },
   { id: 'streamlined-motion-studio', label: "Streamlined Motion Studio", component: StreamlinedMotionStudio },
-
+  { id: 'high-performance-motion-studio', label: "High Performance Motion Studio", component: HighPerformanceMotionStudio },
 ]
 
 // Home page component showing all available components as cards
