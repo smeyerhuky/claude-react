@@ -24,6 +24,8 @@ import SimplifiedNeuralVisualizer from './components/nn/SimplifiedNeuralVisualiz
 import LogarithmBaseConversion from './components/maths/LogarithmBaseConversion'
 import DistributedFrameworkAnalysis from './DistributedArticlePart2'
 import { EDMMixer } from './components/edm-mixer'
+import MotionExtractionStudio from './components/motion/MotionExtractionStudio'
+import VideoMotionToolkit from './components/motion/VideoMotionToolkit'
 
 // Navigation items configuration
 const navigationItems = [
@@ -49,6 +51,8 @@ const navigationItems = [
   { id: 'Sonify', label: "Digital Sonification", component: ImageSonificationDJMixerEnhanced },
   { id: 'SoniQToo', label: "SoniQ", component: DJSonificationTool },
   { id: 'backyard-science', label: "Backyard Science", component: BackyardScience },
+  { id: 'motion-extraction', label: "Motion Extraction Studio", component: MotionExtractionStudio },
+  { id: 'video-motion-toolkit', label: "Video Motion Toolkit", component: VideoMotionToolkit },
 
 ]
 
