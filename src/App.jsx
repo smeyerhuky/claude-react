@@ -30,9 +30,11 @@ import MotionStudio from './components/motion/MotionStudio'
 import StreamlinedMotionStudio from './components/motion/StreamlinedMotionStudio'
 import HighPerformanceMotionStudio from './components/motion/HighPerformanceMotionStudio'
 import UltraOptimizedMotionStudio from './components/motion/UltraOptimizedMotionStudio'
+import SmoothMotionStudio from './components/motion/SmoothMotionStudio'
 
 // Navigation items configuration
 const navigationItems = [
+  { id: 'smooth-motion-studio', label: "Smooth Motion Studio", component: SmoothMotionStudio },
   { id: 'ultra-optimized-motion-studio', label: "Ultra Optimized Motion Studio", component: UltraOptimizedMotionStudio },
   { id: 'edm-mixer', label: "EDM Chain Builder Pro", component: EDMMixer },
   { id: 'logarithms', label: "Learning Log Maths", component: LogarithmBaseConversion },
