@@ -26,7 +26,8 @@ import DistributedFrameworkAnalysis from './DistributedArticlePart2'
 import { EDMMixer } from './components/edm-mixer'
 import MotionExtractionStudio from './components/motion/MotionExtractionStudio'
 import VideoMotionToolkit from './components/motion/VideoMotionToolkit'
-// import MotionStudio from './components/motion/MotionStudio'
+import MotionStudio from './components/motion/MotionStudio'
+import StreamlinedMotionStudio from './components/motion/StreamlinedMotionStudio'
 
 // Navigation items configuration
 const navigationItems = [
@@ -54,7 +55,8 @@ const navigationItems = [
   { id: 'backyard-science', label: "Backyard Science", component: BackyardScience },
   { id: 'motion-extraction', label: "Motion Extraction Studio", component: MotionExtractionStudio },
   { id: 'video-motion-toolkit', label: "Video Motion Toolkit", component: VideoMotionToolkit },
- // { id: 'motion-studio', label: "Motion Studio", component: MotionStudio },
+  { id: 'motion-studio', label: "Motion Studio", component: MotionStudio },
+  { id: 'streamlined-motion-studio', label: "Streamlined Motion Studio", component: StreamlinedMotionStudio },
 
 ]
 
