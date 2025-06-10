@@ -9,7 +9,7 @@ import UniversalWaveformExtractor from './components/wavez/Comp.jsx'
 // Navigation items configuration
 const start = [
   { id: 'wave-studio', label: "Smooth Waves Studio", component: UniversalWaveformExtractor },
-  { id: 'wave-studio', label: "Smooth Waves Studio", component: UniversalWaveformExtractor }
+  { id: 'wave-studioz', label: "SmoothDDuuplicate", component: UniversalWaveformExtractor }
 ]
 
 // Home page component showing all available components as cards
@@ -36,7 +36,7 @@ function TabComponent() {
   const navigate = useNavigate();
   
   // Check if this is a full-screen component
-  const isFullScreenComponent = activeTab === 'wave-studio';
+  const isFullScreenComponent = activeTab === 'edm-mixer';
   
   // Get component for the active tab
   const getActiveComponent = () => {
