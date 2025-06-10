@@ -3,41 +3,14 @@ import { Routes, Route, useParams, useNavigate, useLocation, Link, Navigate } fr
 import './App.css'
 
 import MediterraneanMealPlanner from './components/medi/MediterraneanMealPlanner'
-import MediterraneanMealPlanOriginal from './components/medi/MediterraneanMealPlanOriginal'
-import MonteCarloProjectSimulator from './components/monte/MonteCarloProjectSimulator'
-import MonteCarloAdvancedTutorial from'./components/monte/MonteCarloAdvancedTutorial'
-import MatrixExplorer from './components/MatrixExplorer'
-import EnhancedMatrixExplorerV2 from './components/EnhancedMatrixExplorerV2'
-import TaubyteMeshPresentation from './components/TaubyteMeshPresentation'
-import FrontendConceptsGuide from './components/FrontendConceptsGuide'
-import ImageSonificationDJMixer from './components/sonic/ImageSonificationDJMixer'
-import ImageSonificationDJMixerEnhanced from './components/sonic/ImageSonificationDJMixerEnhanced'
-import DJSonificationTool from './components/sonic/DJSonificationTool'
-import TabbedMuffinRecipes from './components/TabbedMuffinRecipes'
-import UnifiedDashboard from './components/UnifiedDashboard'
-import BackyardScience from './components/BackyardScience'
-import MeshEdLanding from './components/MeshEdLanding'
-import SVGMeshNetworkSimulator from './components/SVGMeshNetworkSimulator'
-import MeshEdAnnouncement from './components/MeshEdAnnouncement'
-import PromptEngineeringStateMachine from './components/PromptEngineeringStateMachine'
-import SimplifiedNeuralVisualizer from './components/nn/SimplifiedNeuralVisualizer'
-import LogarithmBaseConversion from './components/maths/LogarithmBaseConversion'
-import DistributedFrameworkAnalysis from './DistributedArticlePart2'
-import { EDMMixer } from './components/edm-mixer'
-import MotionExtractionStudio from './components/motion/MotionExtractionStudio'
-import VideoMotionToolkit from './components/motion/VideoMotionToolkit'
-import MotionStudio from './components/motion/MotionStudio'
-import StreamlinedMotionStudio from './components/motion/StreamlinedMotionStudio'
-import HighPerformanceMotionStudio from './components/motion/HighPerformanceMotionStudio'
-import UltraOptimizedMotionStudio from './components/motion/UltraOptimizedMotionStudio'
-import SmoothMotionStudio from './components/motion/SmoothMotionStudio'
+import MediterraneanMealPlanOriginal from './components/medi
 
 import UniversalWaveformExtractor from './components/wavez/Comp.jsx
 
 // main content
 
 // Navigation items configuration
-const navigationItems = [
+const start = [
   { id: 'smooth-motion-studio', label: "Smooth Motion Studio", component: SmoothMotionStudio }
 ]
 
