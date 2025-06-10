@@ -2,7 +2,7 @@
 import { Routes, Route, useParams, useNavigate, useLocation, Link, Navigate } from 'react-router-dom'
 import './App.css' 
 
-import UniversalWaveformExtractor from './components/wavez/Comp.jsx
+import UniversalWaveformExtractor from './components/wavez/Comp.jsx'
 
 // main content
 
