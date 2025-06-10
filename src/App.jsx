@@ -1,9 +1,6 @@
 // import { useState, useEffect } from 'react'
 import { Routes, Route, useParams, useNavigate, useLocation, Link, Navigate } from 'react-router-dom'
-import './App.css'
-
-import MediterraneanMealPlanner from './components/medi/MediterraneanMealPlanner'
-import MediterraneanMealPlanOriginal from './components/medi
+import './App.css' 
 
 import UniversalWaveformExtractor from './components/wavez/Comp.jsx
 
@@ -11,7 +8,7 @@ import UniversalWaveformExtractor from './components/wavez/Comp.jsx
 
 // Navigation items configuration
 const start = [
-  { id: 'smooth-motion-studio', label: "Smooth Motion Studio", component: SmoothMotionStudio }
+  { id: 'wave-studio', label: "Smooth Waves Studio", component: UniversalWaveformExtractor }
 ]
 
 // Home page component showing all available components as cards
