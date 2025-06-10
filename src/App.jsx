@@ -1,4 +1,4 @@
-// import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useParams, useNavigate, useLocation, Link, Navigate } from 'react-router-dom'
 import './App.css' 
 
@@ -8,6 +8,7 @@ import UniversalWaveformExtractor from './components/wavez/Comp.jsx'
 
 // Navigation items configuration
 const start = [
+  { id: 'wave-studio', label: "Smooth Waves Studio", component: UniversalWaveformExtractor },
   { id: 'wave-studio', label: "Smooth Waves Studio", component: UniversalWaveformExtractor }
 ]
 
