@@ -35,7 +35,7 @@ function TabComponent() {
   const navigate = useNavigate();
   
   // Check if this is a full-screen component
-  const isFullScreenComponent = activeTab === 'edm-mixer';
+  const isFullScreenComponent = activeTab === 'wave-studio';
   
   // Get component for the active tab
   const getActiveComponent = () => {
