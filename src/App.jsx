@@ -32,41 +32,13 @@ import HighPerformanceMotionStudio from './components/motion/HighPerformanceMoti
 import UltraOptimizedMotionStudio from './components/motion/UltraOptimizedMotionStudio'
 import SmoothMotionStudio from './components/motion/SmoothMotionStudio'
 
-import UniversalWaveformExtractor from './components/wavez/Comp.jsc
+import UniversalWaveformExtractor from './components/wavez/Comp.jsx
 
 // main content
 
 // Navigation items configuration
 const navigationItems = [
-  { id: 'smooth-motion-studio', label: "Smooth Motion Studio", component: SmoothMotionStudio },
-  { id: 'ultra-optimized-motion-studio', label: "Ultra Optimized Motion Studio", component: UltraOptimizedMotionStudio },
-  { id: 'edm-mixer', label: "EDM Chain Builder Pro", component: EDMMixer },
-  { id: 'logarithms', label: "Learning Log Maths", component: LogarithmBaseConversion },
-  { id: 'mediterranean-diet-v1', label: "Mediterranean Diet", component: MediterraneanMealPlanOriginal },
-  { id: 'server', label: "Server Spec Proposal", component: DistributedFrameworkAnalysis },
-  { id: 'muffins', label: "Muffins GF/DF/NF", component: TabbedMuffinRecipes },
-  { id: 'prompt-engineering', label: "Prompt Engineering Tutorial", component: PromptEngineeringStateMachine },
-  { id: 'nn-visual', label: "Prompt Engineering Visualization", component: SimplifiedNeuralVisualizer },
-  { id: 'mesh-ed', label: "MeshEd", component: MeshEdLanding },
-  { id: 'mesh-network', label: "Mesh Network Simulator", component: SVGMeshNetworkSimulator },
-  { id: 'meshed-announcement', label: "MeshEd Announcement", component: MeshEdAnnouncement },
-  { id: 'dj-sonic', label: "DJ Sonification Sampler", component: ImageSonificationDJMixer },
-  { id: 'mediterranean-diet', label: "Mediterranean Diet Starter Kit", component: MediterraneanMealPlanner },
-  { id: 'sim', label: 'Simulator', component: MonteCarloProjectSimulator },
-  { id: 'gear-sim', label: 'Gear Simulator', component: UnifiedDashboard },
-  { id: 'adv_tut', label: 'Advanced Monte Carlo Tutorial', component: MonteCarloAdvancedTutorial },
-  { id: 'matrices', label: "Matrix Transforms", component: MatrixExplorer },
-  { id: 'mv2', label: "Matrix Transforms V2", component: EnhancedMatrixExplorerV2 },
-  { id: 'tau-mesh', label: "Tau Mesh Examples", component: TaubyteMeshPresentation },
-  { id: 'frontend', label: "Learning Frontend Systems", component: FrontendConceptsGuide },
-  { id: 'Sonify', label: "Digital Sonification", component: ImageSonificationDJMixerEnhanced },
-  { id: 'SoniQToo', label: "SoniQ", component: DJSonificationTool },
-  { id: 'backyard-science', label: "Backyard Science", component: BackyardScience },
-  { id: 'motion-extraction', label: "Motion Extraction Studio", component: MotionExtractionStudio },
-  { id: 'video-motion-toolkit', label: "Video Motion Toolkit", component: VideoMotionToolkit },
-  { id: 'motion-studio', label: "Motion Studio", component: MotionStudio },
-  { id: 'streamlined-motion-studio', label: "Streamlined Motion Studio", component: StreamlinedMotionStudio },
-  { id: 'high-performance-motion-studio', label: "High Performance Motion Studio", component: HighPerformanceMotionStudio },
+  { id: 'smooth-motion-studio', label: "Smooth Motion Studio", component: SmoothMotionStudio }
 ]
 
 // Home page component showing all available components as cards
