@@ -32,6 +32,10 @@ import HighPerformanceMotionStudio from './components/motion/HighPerformanceMoti
 import UltraOptimizedMotionStudio from './components/motion/UltraOptimizedMotionStudio'
 import SmoothMotionStudio from './components/motion/SmoothMotionStudio'
 
+import UniversalWaveformExtractor from './components/wavez/Comp.jsc
+
+// main content
+
 // Navigation items configuration
 const navigationItems = [
   { id: 'smooth-motion-studio', label: "Smooth Motion Studio", component: SmoothMotionStudio },
