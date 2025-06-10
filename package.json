@@ -50,6 +50,7 @@
     "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.6.0",
     "gh-pages": "^6.1.1",
+    "howler": "^2.2.4",
     "katex": "^0.16.22",
     "lucide-react": "^0.507.0",
     "mathjs": "^14.3.1",
