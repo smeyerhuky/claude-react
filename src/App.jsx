@@ -2,10 +2,12 @@ import { Routes, Route, useParams, useNavigate, Link, Navigate } from 'react-rou
 import './App.css' 
 
 import HungarianLearningApp from './components/languages/HungarianLearningApp'
+import MediterraneanLatinoRecipesEnglish from './components/diet/MediterraneanLatinoRecipesEnglish'
 
 // Navigation items configuration
 const navigationItems = [
-  { id: 'languages-hu', label: 'Hungarian Language Learning', component: HungarianLearningApp }
+  { id: 'languages-hu', label: 'Hungarian Language Learning', component: HungarianLearningApp },
+  { id: 'diet-med-lat', label: 'MediterraneanLatino Recipes', component: MediterraneanLatinoRecipesEnglish }
 ]
 
 // Home page component showing all available components as cards
