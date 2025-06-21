@@ -3,11 +3,13 @@ import './App.css'
 
 import HungarianLearningApp from './components/languages/HungarianLearningApp'
 import MediterraneanLatinoRecipesEnglish from './components/diet/MediterraneanLatinoRecipesEnglish'
+import ImageSonificationDJMixerEnhanced from './components/sonic/ImageSonificationDJMixerEnhanced'
 
 // Navigation items configuration
 const navigationItems = [
   { id: 'languages-hu', label: 'Hungarian Language Learning', component: HungarianLearningApp },
-  { id: 'diet-med-lat', label: 'MediterraneanLatino Recipes', component: MediterraneanLatinoRecipesEnglish }
+  { id: 'diet-med-lat', label: 'MediterraneanLatino Recipes', component: MediterraneanLatinoRecipesEnglish },
+  { id: 'sonique', label: 'DJ Sonique', component: ImageSonificationDJMixerEnhanced }
 ]
 
 // Home page component showing all available components as cards
