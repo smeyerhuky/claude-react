@@ -1,15 +1,15 @@
 import { Routes, Route, useParams, useNavigate, Link, Navigate } from 'react-router-dom'
 import './App.css' 
 
-import HungarianLearningApp from './components/languages/HungarianLearningApp'
+import MagyarSoundGarden from './components/languages/MagyarSoundGarden'
 import MediterraneanLatinoRecipesEnglish from './components/diet/MediterraneanLatinoRecipesEnglish'
 import ImageSonificationDJMixer from './components/sonic/ImageSonificationDJMixer'
 
 // Navigation items configuration
 const navigationItems = [
-  { id: 'languages-hu', label: 'Hungarian Language Learning', component: HungarianLearningApp },
   { id: 'diet-med-lat', label: 'MediterraneanLatino Recipes', component: MediterraneanLatinoRecipesEnglish },
-  { id: 'sonique', label: 'DJ Sonique', component: ImageSonificationDJMixer }
+  { id: 'sonique', label: 'DJ Sonique', component: ImageSonificationDJMixer },
+  { id: 'languages-hu', label: 'Magyar Soundgarden', component: MagyarSoundGarden },
 ]
 
 // Home page component showing all available components as cards
