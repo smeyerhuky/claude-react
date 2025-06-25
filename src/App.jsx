@@ -4,12 +4,14 @@ import './App.css'
 import MagyarSoundGarden from './components/languages/MagyarSoundGarden'
 import MediterraneanLatinoRecipesEnglish from './components/diet/MediterraneanLatinoRecipesEnglish'
 import ImageSonificationDJMixer from './components/sonic/ImageSonificationDJMixer'
+import MSG from './components/languages/MSG'
 
 // Navigation items configuration
 const navigationItems = [
   { id: 'diet-med-lat', label: 'MediterraneanLatino Recipes', component: MediterraneanLatinoRecipesEnglish },
   { id: 'sonique', label: 'DJ Sonique', component: ImageSonificationDJMixer },
   { id: 'languages-hu', label: 'Magyar Soundgarden', component: MagyarSoundGarden },
+  { id: 'msg', label: "MSG - Magyar Sound Garden", component: MSG }
 ]
 
 // Home page component showing all available components as cards
