@@ -5,13 +5,18 @@ import MagyarSoundGarden from './components/languages/MagyarSoundGarden'
 import MediterraneanLatinoRecipesEnglish from './components/diet/MediterraneanLatinoRecipesEnglish'
 import ImageSonificationDJMixer from './components/sonic/ImageSonificationDJMixer'
 import MSG from './components/languages/MSG'
+import MagyarCore100 from './components/languages/MagyarCore100'
+import Hungarian100WordsV1 from './components/languages/Hungarian100WordsV1'
 
 // Navigation items configuration
 const navigationItems = [
   { id: 'diet-med-lat', label: 'MediterraneanLatino Recipes', component: MediterraneanLatinoRecipesEnglish },
   { id: 'sonique', label: 'DJ Sonique', component: ImageSonificationDJMixer },
   { id: 'languages-hu', label: 'Magyar Soundgarden', component: MagyarSoundGarden },
-  { id: 'msg', label: "MSG - Magyar Sound Garden", component: MSG }
+  { id: 'msg', label: "MSG - Magyar Sound Garden", component: MSG },
+  { id: '100-words-v1', label: "Magyar - 100 Words (v1)", component: Hungarian100WordsV1 }
+  { id: '100-words-final', label: "Magyar - 100 Words (final)", component: MagyarCore100 },
+  
 ]
 
 // Home page component showing all available components as cards
