@@ -14,7 +14,7 @@ const navigationItems = [
   { id: 'sonique', label: 'DJ Sonique', component: ImageSonificationDJMixer },
   { id: 'languages-hu', label: 'Magyar Soundgarden', component: MagyarSoundGarden },
   { id: 'msg', label: "MSG - Magyar Sound Garden", component: MSG },
-  { id: '100-words-v1', label: "Magyar - 100 Words (v1)", component: Hungarian100WordsV1 }
+  { id: '100-words-v1', label: "Magyar - 100 Words (v1)", component: Hungarian100WordsV1 },
   { id: '100-words-final', label: "Magyar - 100 Words (final)", component: MagyarCore100 },
   
 ]
