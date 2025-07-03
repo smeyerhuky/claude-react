@@ -1,29 +1,29 @@
 import { Routes, Route, useParams, useNavigate, Link, Navigate } from 'react-router-dom'
 import './App.css' 
 
-import MagyarSoundGarden from './components/languages/MagyarSoundGarden'
-import MediterraneanLatinoRecipesEnglish from './components/diet/MediterraneanLatinoRecipesEnglish'
-import ImageSonificationDJMixer from './components/sonic/ImageSonificationDJMixer'
-import MSG from './components/languages/MSG'
-import MagyarCore100 from './components/languages/MagyarCore100'
-import Hungarian100WordsV1 from './components/languages/Hungarian100WordsV1'
+// import MagyarSoundGarden from './components/languages/MagyarSoundGarden'
+// import MediterraneanLatinoRecipesEnglish from './components/diet/MediterraneanLatinoRecipesEnglish'
+// import MSG from './components/languages/MSG'
+// import MagyarCore100 from './components/languages/MagyarCore100'
+// import Hungarian100WordsV1 from './components/languages/Hungarian100WordsV1'
+
 import ESP32ThereminInterface from './components/sonic/ESP32ThereminInterface'
 import ConcertSpectogram from './components/sonic/ConcertSpectogram'
 import EDMSpectrogram from './components/sonic/EDMSpectrogram'
-
+import ImageSonificationDJMixer from './components/sonic/ImageSonificationDJMixer'
 
 
 // Navigation items configuration
 const navigationItems = [
   { id: 'esp-muse', label: "ESP 32 Music", component: ESP32ThereminInterface },
-  { id: 'diet-med-lat', label: 'MediterraneanLatino Recipes', component: MediterraneanLatinoRecipesEnglish },
   { id: 'sonique', label: 'DJ Sonique', component: ImageSonificationDJMixer },
-  { id: 'languages-hu', label: 'Magyar Soundgarden', component: MagyarSoundGarden },
-  { id: 'msg', label: "MSG - Magyar Sound Garden", component: MSG },
-  { id: '100-words-v1', label: "Magyar - 100 Words (v1)", component: Hungarian100WordsV1 },
-  { id: '100-words-final', label: "Magyar - 100 Words (final)", component: MagyarCore100 },
   { id: 'concert-spectrogram', label: "Concert Spectrogram", component: ConcertSpectogram },
   { id: 'edm-spectrogram', label: "EDM Spectrogram", component: EDMSpectrogram },
+  // { id: 'diet-med-lat', label: 'MediterraneanLatino Recipes', component: MediterraneanLatinoRecipesEnglish },
+  // { id: 'languages-hu', label: 'Magyar Soundgarden', component: MagyarSoundGarden },
+  // { id: 'msg', label: "MSG - Magyar Sound Garden", component: MSG },
+  // { id: '100-words-v1', label: "Magyar - 100 Words (v1)", component: Hungarian100WordsV1 },
+  // { id: '100-words-final', label: "Magyar - 100 Words (final)", component: MagyarCore100 },
 ]
 
 // Home page component showing all available components as cards
