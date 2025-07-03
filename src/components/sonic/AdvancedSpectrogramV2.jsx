@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { 
   Play, Square, Download, Settings, Camera, Video, 
   Upload, Maximize2, Minimize2,
-  Music, Waves, Box, Grid3x3, Zap
+  Music, Waves, Box, Grid3x3, Zap, Activity, Sparkles
 } from 'lucide-react';
 
 const AdvancedSpectrogramV2 = () => {
@@ -66,6 +66,15 @@ const AdvancedSpectrogramV2 = () => {
     waveform: {
       trailLength: 0.8,
       sensitivity: 1.5
+    },
+    
+    // Particle field optimized settings
+    particleField: {
+      particleDensity: 8, // Grid spacing (lower = more particles)
+      particleSize: 4,
+      movementIntensity: 3,
+      colorSaturation: 70,
+      trailLength: 0.9
     }
   }), []);
 
@@ -94,6 +103,12 @@ const AdvancedSpectrogramV2 = () => {
     bassPosition: defaultSettings.stringTheory.bassPosition,
     enableParticles: defaultSettings.stringTheory.enableParticles,
     particleCount: defaultSettings.spectrogram3d.particleCount,
+    
+    // Particle field settings
+    particleDensity: defaultSettings.particleField.particleDensity,
+    particleSize: defaultSettings.particleField.particleSize,
+    movementIntensity: defaultSettings.particleField.movementIntensity,
+    colorSaturation: defaultSettings.particleField.colorSaturation,
     
     // Legacy settings for backward compatibility
     bloomStrength: 1.5,
@@ -227,6 +242,12 @@ const AdvancedSpectrogramV2 = () => {
         bassPosition: defaultSettings.stringTheory.bassPosition,
         enableParticles: defaultSettings.stringTheory.enableParticles,
         particleCount: defaultSettings.spectrogram3d.particleCount,
+        
+        // Particle field settings
+        particleDensity: defaultSettings.particleField.particleDensity,
+        particleSize: defaultSettings.particleField.particleSize,
+        movementIntensity: defaultSettings.particleField.movementIntensity,
+        colorSaturation: defaultSettings.particleField.colorSaturation,
         
         // Legacy settings for backward compatibility
         bloomStrength: 1.5,
@@ -1790,6 +1811,60 @@ const AdvancedSpectrogramV2 = () => {
     }
   }, [initializeStrings]);
 
+  // Spectral Field Particles visualization
+  const drawParticleField = useCallback((ctx, width, height, frequencyData, time) => {
+    const currentSettings = settingsRef.current;
+    const colors = colorSchemes[colorSchemeRef.current];
+    
+    // Convert time to seconds for consistent animation
+    const timeInSeconds = time * 0.001;
+    
+    // Grid spacing based on particle density setting
+    const spacing = currentSettings.particleDensity;
+    const particleSize = currentSettings.particleSize;
+    const movementIntensity = currentSettings.movementIntensity;
+    const saturation = currentSettings.colorSaturation;
+    
+    // Calculate amplitude data for particle intensity
+    const amplitudes = [];
+    for (let i = 0; i < frequencyData.length; i++) {
+      amplitudes[i] = (frequencyData[i] / 255) * currentSettings.sensitivity;
+    }
+    
+    // Draw particle grid
+    for (let x = 0; x < width; x += spacing) {
+      for (let y = 0; y < height; y += spacing) {
+        // Map X position to frequency bin
+        const freqIndex = Math.floor((x / width) * frequencyData.length);
+        const intensity = (frequencyData[freqIndex] / 255) * amplitudes[freqIndex] * currentSettings.sensitivity;
+        
+        // Skip particles with very low intensity to improve performance
+        if (intensity < 0.1) continue;
+        
+        // Color mapping: frequency to hue
+        const hue = (freqIndex / frequencyData.length) * 360;
+        const brightness = Math.min(intensity * 100, 90); // Cap brightness to prevent white-out
+        
+        // Add sinusoidal movement for organic feel
+        const offsetX = Math.sin(timeInSeconds * 0.01 + x * 0.01) * movementIntensity;
+        const offsetY = Math.cos(timeInSeconds * 0.01 + y * 0.01) * movementIntensity;
+        
+        // Particle position with movement
+        const particleX = x + offsetX;
+        const particleY = y + offsetY;
+        
+        // Dynamic particle size based on audio intensity
+        const dynamicSize = particleSize * (0.5 + intensity * 1.5);
+        
+        // Draw particle
+        ctx.fillStyle = `hsl(${hue}, ${saturation}%, ${brightness}%)`;
+        ctx.beginPath();
+        ctx.arc(particleX, particleY, dynamicSize, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }, []);
+
   // 2D visualization
   const draw2DVisualization = useCallback((frequencyData) => {
     const canvas = canvas2DRef.current;
@@ -1857,6 +1932,9 @@ const AdvancedSpectrogramV2 = () => {
       }
       
       ctx.stroke();
+    } else if (currentMode === 'particleField') {
+      // Spectral Field Particles
+      drawParticleField(ctx, scaledWidth, scaledHeight, frequencyData, performance.now());
     } else {
       // Standard spectrogram
       const barWidth = scaledWidth / frequencyData.length * 2;
@@ -2230,7 +2308,8 @@ const AdvancedSpectrogramV2 = () => {
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-2">
               {[
                 { id: 'spectrogram3d', icon: Box, label: '3D Blob' },
-                { id: 'stringTheory', icon: Zap, label: 'String Theory' },
+                { id: 'stringTheory', icon: Activity, label: 'String Theory' },
+                { id: 'particleField', icon: Sparkles, label: 'Particle Field' },
                 { id: 'spectrogram', icon: Grid3x3, label: 'Spectrogram' },
                 { id: 'melSpectrogram', icon: Waves, label: 'Mel-Spectrogram' },
                 { id: 'waveform', icon: Music, label: 'Waveform' }
@@ -2601,6 +2680,83 @@ const AdvancedSpectrogramV2 = () => {
                   )}
                 </div>
               </details>
+            </div>
+          )}
+
+          {/* Particle Field Settings */}
+          {visualMode === 'particleField' && (
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-white">Particle Field</h3>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="flex justify-between text-sm text-gray-300 mb-1">
+                    <span>Particle Density</span>
+                    <span>{settings.particleDensity}px</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="4"
+                    max="16"
+                    step="2"
+                    value={settings.particleDensity}
+                    onChange={(e) => setSettings({ ...settings, particleDensity: parseInt(e.target.value) })}
+                    className="w-full"
+                  />
+                  <div className="text-xs text-gray-400 mt-1">Lower = more particles</div>
+                </div>
+
+                <div>
+                  <label className="flex justify-between text-sm text-gray-300 mb-1">
+                    <span>Particle Size</span>
+                    <span>{settings.particleSize.toFixed(1)}</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="1"
+                    max="8"
+                    step="0.5"
+                    value={settings.particleSize}
+                    onChange={(e) => setSettings({ ...settings, particleSize: parseFloat(e.target.value) })}
+                    className="w-full"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="flex justify-between text-sm text-gray-300 mb-1">
+                    <span>Movement</span>
+                    <span>{settings.movementIntensity.toFixed(1)}</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="10"
+                    step="0.5"
+                    value={settings.movementIntensity}
+                    onChange={(e) => setSettings({ ...settings, movementIntensity: parseFloat(e.target.value) })}
+                    className="w-full"
+                  />
+                  <div className="text-xs text-gray-400 mt-1">Organic particle motion</div>
+                </div>
+
+                <div>
+                  <label className="flex justify-between text-sm text-gray-300 mb-1">
+                    <span>Color Saturation</span>
+                    <span>{settings.colorSaturation}%</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="30"
+                    max="100"
+                    step="5"
+                    value={settings.colorSaturation}
+                    onChange={(e) => setSettings({ ...settings, colorSaturation: parseInt(e.target.value) })}
+                    className="w-full"
+                  />
+                </div>
+              </div>
             </div>
           )}
 
