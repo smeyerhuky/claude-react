@@ -14,6 +14,8 @@ import AdvancedSpectrogram from './components/sonic/AdvancedSpectrogramV2'
 import ImageSonificationDJMixer from './components/sonic/ImageSonificationDJMixer'
 import GuitarSynthesizer from './components/sonic/GuitarSynthesizer'
 import MusicVisualizationToolkit from './components/sonic/MusicVisualizationToolkit'
+import QuantumSpectrogramV2 from './components/sonic/AdvancedSpectrogramV3'
+
 
 // Navigation items configuration
 const navigationItems = [
@@ -21,6 +23,7 @@ const navigationItems = [
   { id: 'sonique', label: 'DJ Sonique', component: ImageSonificationDJMixer },
   { id: 'concert-spectrogram', label: "Concert Spectrogram", component: ConcertSpectogram },
   { id: 'edm-spectrogram', label: "EDM Spectrogram", component: EDMSpectrogram },
+  { id: 'quantum', label: "Quantum Spectrogram", component: QuantumSpectrogramV2 },
   { id: 'advanced-spectrogram', label: "Advanced Spectrogram", component: AdvancedSpectrogram },
   { id: 'music-visualization-toolkit', label: "Music Visualization Toolkit", component: MusicVisualizationToolkit },
   { id: 'guitar-synthesizer', label: "Guitar Synthesizer", component: GuitarSynthesizer },
