@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import * as THREE from 'three';
 import { 
   Play, Square, Download, Settings, Camera, Video, 
@@ -25,7 +25,6 @@ const AdvancedSpectrogramV2 = () => {
     minFreq: 20,
     maxFreq: 20000,
     blobTension: 0.5,
-    particleCount: 1000,
     trailLength: 0.9,
     bloomStrength: 1.5,
     windowFunction: 'hann',
@@ -33,7 +32,11 @@ const AdvancedSpectrogramV2 = () => {
     stringTension: 0.7,
     stringDamping: 0.88,
     stringThickness: 3,
-    stringSegments: 25
+    stringSegments: 25,
+    stringLayout: 'horizontal', // horizontal, vertical, centered, mirrored
+    bassPosition: 'top', // top, bottom, center
+    enableParticles: true,
+    particleCount: 20
   });
   
   // Audio analysis state
@@ -83,8 +86,8 @@ const AdvancedSpectrogramV2 = () => {
     visualModeRef.current = visualMode;
   }, [visualMode]);
   
-  // Color schemes
-  const colorSchemes = {
+  // Color schemes - memoized to prevent dependency changes
+  const colorSchemes = useMemo(() => ({
     cyberpunk: {
       bass: [255, 0, 128],
       mid: [0, 255, 255],
@@ -113,19 +116,22 @@ const AdvancedSpectrogramV2 = () => {
       background: '#190134',
       accent: '#ff47e9'
     }
-  };
+  }), []);
 
   // String physics simulation class
   class StringPhysics {
-    constructor(segments, tension, damping) {
+    constructor(segments, tension, damping, frequency = 82.41) {
       this.segments = segments;
       this.tension = tension;
       this.damping = damping;
+      this.frequency = frequency; // Musical frequency for this string
       this.points = [];
       this.velocities = [];
       this.forces = [];
       this.isActive = false;
       this.lastPlucked = 0;
+      this.sustainedEnergy = 0; // Track sustained energy for thickness
+      this.particles = []; // Particle trail system
       
       // Initialize string points
       for (let i = 0; i <= segments; i++) {
@@ -221,15 +227,32 @@ const AdvancedSpectrogramV2 = () => {
     }
   }
 
+  // Guitar string frequencies (low to high)
+  const guitarFrequencies = [82.41, 110.00, 146.83, 196.00, 246.94, 329.63]; // E-A-D-G-B-E
+  
+  // Frequency-based colors
+  const getStringColor = (stringIndex) => {
+    const frequencyColors = {
+      0: [255, 68, 68],   // Red for bass (E)
+      1: [255, 136, 68],  // Orange for low-mid (A)
+      2: [255, 221, 68],  // Yellow for mid (D)
+      3: [68, 255, 136],  // Green for high-mid (G)
+      4: [68, 136, 255],  // Blue for treble (B)
+      5: [136, 68, 255]   // Purple for high treble (E)
+    };
+    return frequencyColors[stringIndex] || [255, 255, 255];
+  };
+
   // Initialize string physics systems
   const initializeStrings = useCallback((stringCount, segments, tension, damping) => {
     const strings = [];
     for (let i = 0; i < stringCount; i++) {
-      strings.push(new StringPhysics(segments, tension, damping));
+      const frequency = guitarFrequencies[i] || guitarFrequencies[guitarFrequencies.length - 1];
+      strings.push(new StringPhysics(segments, tension, damping, frequency));
     }
     stringsRef.current = strings;
     stringPhysicsRef.current = { StringPhysics };
-  }, []);
+  }, [guitarFrequencies]);
 
   // Initialize mobile detection
   useEffect(() => {
@@ -241,36 +264,70 @@ const AdvancedSpectrogramV2 = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Clean up 3D scene
+  const cleanup3DScene = useCallback(() => {
+    if (rendererRef.current) {
+      if (rendererRef.current.domElement.parentNode) {
+        rendererRef.current.domElement.parentNode.removeChild(rendererRef.current.domElement);
+      }
+      rendererRef.current.dispose();
+      rendererRef.current = null;
+    }
+    
+    if (sceneRef.current) {
+      // Dispose of all objects in the scene
+      sceneRef.current.traverse((object) => {
+        if (object.geometry) object.geometry.dispose();
+        if (object.material) {
+          if (Array.isArray(object.material)) {
+            object.material.forEach(material => material.dispose());
+          } else {
+            object.material.dispose();
+          }
+        }
+      });
+      sceneRef.current = null;
+    }
+    
+    blobMeshRef.current = null;
+    particlesRef.current = null;
+    cameraRef.current = null;
+  }, []);
+
   // Initialize 3D scene
   const init3DScene = useCallback(() => {
     if (!containerRef.current || rendererRef.current) return;
 
-    // Scene setup
-    const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0x000000, 1, 100);
-    sceneRef.current = scene;
+    try {
+      // Clean up any existing scene first
+      cleanup3DScene();
+      
+      // Scene setup
+      const scene = new THREE.Scene();
+      scene.fog = new THREE.Fog(0x000000, 1, 100);
+      sceneRef.current = scene;
 
-    // Camera
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      containerRef.current.clientWidth / containerRef.current.clientHeight,
-      0.1,
-      1000
-    );
-    camera.position.set(0, 5, 20);
-    camera.lookAt(0, 0, 0);
-    cameraRef.current = camera;
+      // Camera
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        containerRef.current.clientWidth / containerRef.current.clientHeight,
+        0.1,
+        1000
+      );
+      camera.position.set(0, 5, 20);
+      camera.lookAt(0, 0, 0);
+      cameraRef.current = camera;
 
-    // Renderer
-    const renderer = new THREE.WebGLRenderer({ 
-      antialias: true, 
-      alpha: true,
-      preserveDrawingBuffer: true 
-    });
-    renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-    rendererRef.current = renderer;
-    containerRef.current.appendChild(renderer.domElement);
+      // Renderer
+      const renderer = new THREE.WebGLRenderer({ 
+        antialias: true, 
+        alpha: true,
+        preserveDrawingBuffer: true 
+      });
+      renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      rendererRef.current = renderer;
+      containerRef.current.appendChild(renderer.domElement);
 
     // Lighting
     const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
@@ -280,21 +337,80 @@ const AdvancedSpectrogramV2 = () => {
     pointLight.position.set(10, 10, 10);
     scene.add(pointLight);
 
-    // Create blob mesh
-    const geometry = new THREE.IcosahedronGeometry(5, 4);
-    const material = new THREE.MeshPhongMaterial({
-      color: 0xff0080,
-      emissive: 0xff0080,
-      emissiveIntensity: 0.2,
-      shininess: 100,
-      wireframe: false
+    // Create pulsing area field instead of blob
+    const fieldGeometry = new THREE.PlaneGeometry(20, 20, 32, 32);
+    const fieldMaterial = new THREE.ShaderMaterial({
+      uniforms: {
+        time: { value: 0 },
+        bassLevel: { value: 0 },
+        midLevel: { value: 0 },
+        highLevel: { value: 0 },
+        colorScheme: { value: new THREE.Vector3(1, 0, 0.5) }
+      },
+      vertexShader: `
+        uniform float time;
+        uniform float bassLevel;
+        uniform float midLevel;
+        uniform float highLevel;
+        varying vec2 vUv;
+        varying float vElevation;
+        
+        void main() {
+          vUv = uv;
+          
+          // Create ripple effect based on audio
+          vec3 newPosition = position;
+          float distance = length(uv - 0.5);
+          float ripple = sin(distance * 20.0 - time * 2.0) * bassLevel * 2.0;
+          float wave = sin(uv.x * 10.0 + time) * midLevel * 1.0;
+          float pulse = sin(time * 3.0 + distance * 15.0) * highLevel * 0.5;
+          
+          newPosition.z += ripple + wave + pulse;
+          vElevation = newPosition.z;
+          
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
+        }
+      `,
+      fragmentShader: `
+        uniform float time;
+        uniform float bassLevel;
+        uniform float midLevel;
+        uniform float highLevel;
+        uniform vec3 colorScheme;
+        varying vec2 vUv;
+        varying float vElevation;
+        
+        void main() {
+          float distance = length(vUv - 0.5);
+          
+          // Create pulsing color based on elevation and audio
+          vec3 baseColor = colorScheme;
+          vec3 bassColor = vec3(1.0, 0.2, 0.5);
+          vec3 midColor = vec3(0.2, 1.0, 1.0);
+          vec3 highColor = vec3(1.0, 1.0, 0.2);
+          
+          vec3 finalColor = baseColor + 
+                           bassColor * bassLevel * 0.8 + 
+                           midColor * midLevel * 0.6 + 
+                           highColor * highLevel * 0.4;
+          
+          float alpha = 1.0 - distance * 1.5;
+          alpha += abs(vElevation) * 0.3;
+          alpha = clamp(alpha, 0.0, 0.9);
+          
+          gl_FragColor = vec4(finalColor, alpha);
+        }
+      `,
+      transparent: true,
+      side: THREE.DoubleSide
     });
-    const blob = new THREE.Mesh(geometry, material);
-    scene.add(blob);
-    blobMeshRef.current = blob;
+    
+    const pulsingField = new THREE.Mesh(fieldGeometry, fieldMaterial);
+    pulsingField.rotation.x = -Math.PI / 2;
+    scene.add(pulsingField);
+    blobMeshRef.current = pulsingField;
 
-    // Create initial particle system
-    createParticleSystem(settingsRef.current.particleCount);
+    // Particle system will be initialized after createParticleSystem is defined
 
     // Handle resize
     const handleResize = () => {
@@ -308,7 +424,12 @@ const AdvancedSpectrogramV2 = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+    } catch (err) {
+      console.error('Error initializing 3D scene:', err);
+      // Fallback to 2D mode if 3D fails
+      setVisualMode('stringTheory');
+    }
+  }, [cleanup3DScene]);
 
   // Create/update particle system
   const createParticleSystem = useCallback((particleCount) => {
@@ -347,36 +468,14 @@ const AdvancedSpectrogramV2 = () => {
     sceneRef.current.add(particleSystem);
     particlesRef.current = particleSystem;
   }, []);
+  
+  // Initialize particle system when 3D scene is ready
+  useEffect(() => {
+    if (sceneRef.current && settingsRef.current.particleCount) {
+      createParticleSystem(settingsRef.current.particleCount);
+    }
+  }, [createParticleSystem]);
 
-  // Clean up 3D scene
-  const cleanup3DScene = useCallback(() => {
-    if (rendererRef.current) {
-      if (rendererRef.current.domElement.parentNode) {
-        rendererRef.current.domElement.parentNode.removeChild(rendererRef.current.domElement);
-      }
-      rendererRef.current.dispose();
-      rendererRef.current = null;
-    }
-    
-    if (sceneRef.current) {
-      // Dispose of all objects in the scene
-      sceneRef.current.traverse((object) => {
-        if (object.geometry) object.geometry.dispose();
-        if (object.material) {
-          if (Array.isArray(object.material)) {
-            object.material.forEach(material => material.dispose());
-          } else {
-            object.material.dispose();
-          }
-        }
-      });
-      sceneRef.current = null;
-    }
-    
-    blobMeshRef.current = null;
-    particlesRef.current = null;
-    cameraRef.current = null;
-  }, []);
 
   // Initialize audio
   const initializeAudio = async () => {
@@ -391,7 +490,15 @@ const AdvancedSpectrogramV2 = () => {
       });
       
       streamRef.current = stream;
+      
+      // Create AudioContext and ensure it's resumed after user gesture
       audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+      
+      // Resume AudioContext if it's suspended
+      if (audioContextRef.current.state === 'suspended') {
+        await audioContextRef.current.resume();
+      }
+      
       const source = audioContextRef.current.createMediaStreamSource(stream);
       
       analyserRef.current = audioContextRef.current.createAnalyser();
@@ -464,29 +571,30 @@ const AdvancedSpectrogramV2 = () => {
     return bassEnergy > threshold && bassEnergy > average * 1.3;
   };
 
-  // Update blob deformation
-  const updateBlobGeometry = useCallback((audioData) => {
-    if (!blobMeshRef.current) return;
+  // Update pulsing field instead of blob
+  const updatePulsingField = useCallback((audioData, bassAvg, midAvg, highAvg) => {
+    if (!blobMeshRef.current || !blobMeshRef.current.material.uniforms) return;
     
-    const geometry = blobMeshRef.current.geometry;
-    const positions = geometry.attributes.position;
-    const vertex = new THREE.Vector3();
+    const uniforms = blobMeshRef.current.material.uniforms;
     
-    for (let i = 0; i < positions.count; i++) {
-      vertex.fromBufferAttribute(positions, i);
-      vertex.normalize();
-      
-      const frequency = Math.floor((i / positions.count) * audioData.length);
-      const amplitude = audioData[frequency] / 255 * settingsRef.current.sensitivity;
-      const scale = 5 + amplitude * settingsRef.current.blobTension * 3;
-      
-      vertex.multiplyScalar(scale);
-      positions.setXYZ(i, vertex.x, vertex.y, vertex.z);
-    }
+    // Update time for animation
+    uniforms.time.value += 0.016;
     
-    positions.needsUpdate = true;
-    geometry.computeVertexNormals();
-  }, []);
+    // Update audio levels
+    uniforms.bassLevel.value = bassAvg;
+    uniforms.midLevel.value = midAvg;
+    uniforms.highLevel.value = highAvg;
+    
+    // Update color scheme based on current scheme
+    const colors = colorSchemes[colorSchemeRef.current];
+    
+    // Fix: Use set() method instead of setRGB for Vector3
+    uniforms.colorScheme.value.set(
+      colors.accent === '#ff0080' ? 1 : colors.bass[0] / 255,
+      colors.accent === '#ff0080' ? 0 : colors.bass[1] / 255,
+      colors.accent === '#ff0080' ? 0.5 : colors.bass[2] / 255
+    );
+  }, [colorSchemes]);
 
   // Main animation loop
   const animate = useCallback(() => {
@@ -551,25 +659,11 @@ const AdvancedSpectrogramV2 = () => {
     
     // Update visualizations based on current mode
     if (visualModeRef.current === 'spectrogram3d' && sceneRef.current) {
-      updateBlobGeometry(dataArray);
+      updatePulsingField(dataArray, bassAvg, midAvg, highAvg);
       
-      // Rotate blob
+      // Gentle rotation for the pulsing field
       if (blobMeshRef.current) {
-        blobMeshRef.current.rotation.x += 0.01;
-        blobMeshRef.current.rotation.y += 0.005;
-        
-        // Color based on frequency and color scheme
-        const colors = colorSchemes[colorSchemeRef.current];
-        const color = new THREE.Color();
-        const intensity = (bassAvg + midAvg + highAvg) / 3;
-        color.setRGB(
-          (colors.bass[0] * bassAvg + colors.mid[0] * midAvg + colors.high[0] * highAvg) / 3 / 255,
-          (colors.bass[1] * bassAvg + colors.mid[1] * midAvg + colors.high[1] * highAvg) / 3 / 255,
-          (colors.bass[2] * bassAvg + colors.mid[2] * midAvg + colors.high[2] * highAvg) / 3 / 255
-        );
-        blobMeshRef.current.material.color = color;
-        blobMeshRef.current.material.emissive = color;
-        blobMeshRef.current.material.emissiveIntensity = 0.2 + intensity * 0.3;
+        blobMeshRef.current.rotation.z += 0.002;
       }
       
       // Update particles
@@ -597,17 +691,126 @@ const AdvancedSpectrogramV2 = () => {
     }
     
     animationRef.current = requestAnimationFrame(animate);
-  }, [calculateMelSpectrogram, updateBlobGeometry]);
+  }, [calculateMelSpectrogram, updatePulsingField]);
+
+  // Particle system for string trails
+  const updateStringParticles = (string, stringIndex) => {
+    const currentSettings = settingsRef.current;
+    if (!currentSettings.enableParticles) return;
+    
+    // Add new particles at active vibration points
+    for (let i = 1; i < string.points.length - 1; i++) {
+      const velocity = Math.abs(string.velocities[i].y);
+      if (velocity > 0.1 && Math.random() > 0.7) {
+        string.particles.push({
+          x: string.points[i].x,
+          y: string.points[i].y,
+          vx: (Math.random() - 0.5) * 2,
+          vy: string.velocities[i].y * 0.5,
+          life: 1.0,
+          maxLife: 60 + Math.random() * 40,
+          size: 1 + velocity * 2,
+          color: getStringColor(stringIndex, settingsRef.current.stringCount)
+        });
+      }
+    }
+    
+    // Update existing particles
+    string.particles = string.particles.filter(particle => {
+      particle.x += particle.vx;
+      particle.y += particle.vy;
+      particle.vy += 0.1; // gravity
+      particle.life -= 1;
+      return particle.life > 0;
+    });
+    
+    // Limit particle count
+    if (string.particles.length > currentSettings.particleCount) {
+      string.particles = string.particles.slice(-currentSettings.particleCount);
+    }
+  };
+
+  // Calculate string layout positions
+  const getStringLayout = (stringIndex, stringCount, width, height, layout, bassPosition) => {
+    const margin = width * 0.1;
+    let stringY, startX, endX;
+    
+    switch (layout) {
+      case 'vertical': {
+        stringY = height * 0.2 + stringIndex * (height * 0.6 / (stringCount - 1));
+        startX = width * 0.2;
+        endX = width * 0.8;
+        break;
+      }
+      case 'centered': {
+        const centerY = height / 2;
+        const spread = height * 0.3;
+        stringY = centerY + (stringIndex - (stringCount - 1) / 2) * (spread / (stringCount - 1));
+        startX = margin;
+        endX = width - margin;
+        break;
+      }
+      case 'mirrored': {
+        if (bassPosition === 'center') {
+          const centerY = height / 2;
+          const spread = height * 0.4;
+          stringY = centerY + (stringIndex - (stringCount - 1) / 2) * (spread / (stringCount - 1));
+        } else {
+          const reverseIndex = bassPosition === 'bottom' ? (stringCount - 1 - stringIndex) : stringIndex;
+          stringY = (height / (stringCount + 1)) * (reverseIndex + 1);
+        }
+        startX = margin;
+        endX = width - margin;
+        break;
+      }
+      default: { // horizontal
+        if (bassPosition === 'bottom') {
+          stringY = (height / (stringCount + 1)) * (stringCount - stringIndex);
+        } else {
+          stringY = (height / (stringCount + 1)) * (stringIndex + 1);
+        }
+        startX = margin;
+        endX = width - margin;
+      }
+    }
+    
+    return { stringY, startX, endX };
+  };
 
   // Draw vibrating strings
   const drawStrings = useCallback((ctx, width, height, frequencyData) => {
     // Width and height are already scaled from the calling function
-    const colors = colorSchemes[colorSchemeRef.current];
     const currentSettings = settingsRef.current;
     const stringCount = currentSettings.stringCount;
     
     if (stringsRef.current.length !== stringCount) {
       initializeStrings(stringCount, currentSettings.stringSegments, currentSettings.stringTension, currentSettings.stringDamping);
+    }
+    
+    // Draw reactive background areas where interaction occurs
+    const colors = colorSchemes[colorSchemeRef.current];
+    
+    // Create audio reactive background pulses
+    const totalEnergy = frequencyData.reduce((sum, val) => sum + val, 0) / frequencyData.length / 255;
+    if (totalEnergy > 0.1) {
+      const pulseCount = Math.floor(totalEnergy * 5) + 1;
+      for (let p = 0; p < pulseCount; p++) {
+        const centerX = width * (0.2 + Math.random() * 0.6);
+        const centerY = height * (0.2 + Math.random() * 0.6);
+        const radius = totalEnergy * 100 * (1 + Math.random());
+        
+        const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
+        gradient.addColorStop(0, `rgba(${colors.accent === '#ff0080' ? '255,0,128' : colors.bass.join(',')}, ${totalEnergy * 0.3})`);
+        gradient.addColorStop(0.5, `rgba(${colors.mid.join(',')}, ${totalEnergy * 0.15})`);
+        gradient.addColorStop(1, 'rgba(0,0,0,0)');
+        
+        ctx.save();
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
     }
     
     // Divide frequency data into bands for each string
@@ -617,12 +820,14 @@ const AdvancedSpectrogramV2 = () => {
       const string = stringsRef.current[stringIndex];
       if (!string) continue;
       
-      // Calculate string position (vertical spacing)
-      const stringY = (height / (stringCount + 1)) * (stringIndex + 1);
-      const margin = width * 0.1;
+      // Calculate string layout position
+      const { stringY, startX, endX } = getStringLayout(
+        stringIndex, stringCount, width, height, 
+        currentSettings.stringLayout, currentSettings.bassPosition
+      );
       
       // Set string endpoints
-      string.setEndpoints(margin, stringY, width - margin, stringY);
+      string.setEndpoints(startX, stringY, endX, stringY);
       
       // Calculate frequency band energy for this string with enhanced sensitivity
       const startBand = stringIndex * bandsPerString;
@@ -638,7 +843,10 @@ const AdvancedSpectrogramV2 = () => {
       // Use balanced energy calculation optimized for EDM
       const avgEnergy = (bandEnergy / (endBand - startBand)) / 255;
       const normalizedPeak = peakEnergy / 255;
-      bandEnergy = Math.max(avgEnergy, normalizedPeak * 0.3) * currentSettings.sensitivity * 0.8; // Much less sensitive
+      bandEnergy = Math.max(avgEnergy, normalizedPeak * 0.3) * currentSettings.sensitivity * 0.8;
+      
+      // Update sustained energy for dynamic thickness (smooth decay)
+      string.sustainedEnergy = string.sustainedEnergy * 0.95 + bandEnergy * 0.05;
       
       // Apply gentle plucks based on frequency analysis (EDM-friendly)
       if (bandEnergy > 0.4) { // Much higher threshold for EDM
@@ -662,18 +870,43 @@ const AdvancedSpectrogramV2 = () => {
       // Update string physics
       string.update();
       
-      // Draw the string
+      // Draw interaction areas around active string segments
       const points = string.getPoints();
       
-      // String color based on energy and string index
-      const stringColorIndex = stringIndex % 3;
-      const stringColors = [colors.bass, colors.mid, colors.high];
-      const baseColor = stringColors[stringColorIndex];
+      // Draw reactive field around string when active
+      if (bandEnergy > 0.3) {
+        for (let i = 1; i < points.length - 1; i += 3) {
+          const segmentEnergy = Math.abs(string.velocities[i].y);
+          if (segmentEnergy > 0.05) {
+            const areaSize = 20 + segmentEnergy * 30;
+            const areaAlpha = Math.min(segmentEnergy * 0.4, 0.2);
+            
+            const gradient = ctx.createRadialGradient(
+              points[i].x, points[i].y, 0,
+              points[i].x, points[i].y, areaSize
+            );
+            gradient.addColorStop(0, `rgba(${getStringColor(stringIndex, stringCount).join(',')}, ${areaAlpha})`);
+            gradient.addColorStop(1, 'rgba(0,0,0,0)');
+            
+            ctx.save();
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(points[i].x, points[i].y, areaSize, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+          }
+        }
+      }
+      
+      // Frequency-based string color
+      const baseColor = getStringColor(stringIndex, stringCount);
       const intensity = Math.min(1, bandEnergy * 1.5);
       
-      // Variable thickness based on string index (thicker for bass strings)
+      // Dynamic thickness: base + string index + sustained energy
       const baseThickness = currentSettings.stringThickness;
-      const thickness = baseThickness + (stringCount - stringIndex - 1) * 0.8;
+      const stringIndexThickness = (stringCount - stringIndex - 1) * 0.8; // Bass thicker
+      const sustainedThickness = string.sustainedEnergy * 4; // Energy-based thickness
+      const thickness = baseThickness + stringIndexThickness + sustainedThickness;
       
       // Different colors for active vs inactive strings (EDM-friendly threshold)
       const isStringActive = string.isActive || intensity > 0.35;
@@ -693,18 +926,45 @@ const AdvancedSpectrogramV2 = () => {
         ctx.shadowBlur = 0;
       }
       
-      // Draw the string with Bezier curves for smooth appearance
+      // Draw the string with dynamic morphing based on frequency bands
       ctx.beginPath();
       ctx.moveTo(points[0].x, points[0].y);
       
+      // Calculate frequency-based morphing
+      const bassEnergy = bassLevel || 0;
+      const midEnergy = midLevel || 0;
+      const highEnergy = highLevel || 0;
+      
       for (let i = 1; i < points.length; i++) {
-        // Create control points for bezier curve
-        const cp1x = points[i-1].x + (points[i].x - points[i-1].x) / 3;
-        const cp1y = points[i-1].y;
-        const cp2x = points[i].x - (points[i].x - points[i-1].x) / 3;
-        const cp2y = points[i].y;
+        const segmentRatio = i / points.length;
         
-        // Draw bezier curve
+        // Create control points with frequency-based morphing
+        let cp1x = points[i-1].x + (points[i].x - points[i-1].x) / 3;
+        let cp1y = points[i-1].y;
+        let cp2x = points[i].x - (points[i].x - points[i-1].x) / 3;
+        let cp2y = points[i].y;
+        
+        // Morph based on frequency bands
+        if (segmentRatio < 0.33) {
+          // Bass region - square-like segments
+          const bassInfluence = bassEnergy * 5;
+          cp1y += Math.sin(segmentRatio * Math.PI * 2) * bassInfluence;
+          cp2y += Math.cos(segmentRatio * Math.PI * 2) * bassInfluence;
+        } else if (segmentRatio < 0.66) {
+          // Mid region - triangular waves
+          const midInfluence = midEnergy * 3;
+          const triangleWave = Math.abs((segmentRatio - 0.33) * 6 - 1) * 2 - 1;
+          cp1y += triangleWave * midInfluence;
+          cp2y += triangleWave * midInfluence * 0.5;
+        } else {
+          // High region - sharp, jagged morphing
+          const highInfluence = highEnergy * 2;
+          const jaggedWave = Math.sign(Math.sin(segmentRatio * Math.PI * 8)) * (segmentRatio - 0.66) * 3;
+          cp1y += jaggedWave * highInfluence;
+          cp2y += jaggedWave * highInfluence * 0.7;
+        }
+        
+        // Draw morphed bezier curve
         ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, points[i].x, points[i].y);
       }
       
@@ -715,54 +975,155 @@ const AdvancedSpectrogramV2 = () => {
         ctx.restore();
       }
       
-      // Draw active vibration points with enhanced visibility
+      // Update and draw particle trails
+      updateStringParticles(string, stringIndex);
+      
+      // Draw particle trails with different shapes
+      string.particles.forEach((particle, index) => {
+        const alpha = particle.life / particle.maxLife;
+        const size = particle.size * alpha;
+        const shapeType = index % 4; // Cycle through 4 different shapes
+        
+        ctx.save();
+        ctx.translate(particle.x, particle.y);
+        ctx.fillStyle = `rgba(${particle.color[0]}, ${particle.color[1]}, ${particle.color[2]}, ${alpha * 0.6})`;
+        ctx.strokeStyle = `rgba(${particle.color[0]}, ${particle.color[1]}, ${particle.color[2]}, ${alpha * 0.8})`;
+        ctx.lineWidth = 1;
+        
+        switch(shapeType) {
+          case 0: // Square
+            ctx.fillRect(-size/2, -size/2, size, size);
+            break;
+          case 1: // Triangle
+            ctx.beginPath();
+            ctx.moveTo(0, -size/2);
+            ctx.lineTo(-size/2, size/2);
+            ctx.lineTo(size/2, size/2);
+            ctx.closePath();
+            ctx.fill();
+            break;
+          case 2: // Diamond
+            ctx.beginPath();
+            ctx.moveTo(0, -size/2);
+            ctx.lineTo(size/2, 0);
+            ctx.lineTo(0, size/2);
+            ctx.lineTo(-size/2, 0);
+            ctx.closePath();
+            ctx.fill();
+            break;
+          case 3: // Line streak
+            ctx.beginPath();
+            ctx.moveTo(-size, 0);
+            ctx.lineTo(size, 0);
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            break;
+        }
+        ctx.restore();
+      });
+      
+      // Draw active vibration points with different shapes
       if (isStringActive) {
         for (let i = 1; i < points.length - 1; i++) {
           const velocity = Math.abs(string.velocities[i].y);
-          if (velocity > 0.02) { // Lower threshold for more visible points
+          if (velocity > 0.02) {
             const opacity = Math.min(velocity / 2, 0.9);
-            const size = 2 + velocity * 3; // Bigger vibration points
-            
-            ctx.beginPath();
-            ctx.arc(points[i].x, points[i].y, size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${opacity})`;
+            const size = 2 + velocity * 3;
             
             ctx.save();
+            ctx.translate(points[i].x, points[i].y);
+            ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${opacity})`;
             ctx.shadowColor = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, 0.9)`;
             ctx.shadowBlur = 8 + velocity * 5;
-            ctx.fill();
+            
+            // Different vibration indicators based on string index
+            const shapeType = stringIndex % 3;
+            switch(shapeType) {
+              case 0: // Pulsing hexagon for bass strings
+                ctx.beginPath();
+                for (let angle = 0; angle < Math.PI * 2; angle += Math.PI / 3) {
+                  const x = Math.cos(angle) * size;
+                  const y = Math.sin(angle) * size;
+                  if (angle === 0) ctx.moveTo(x, y);
+                  else ctx.lineTo(x, y);
+                }
+                ctx.closePath();
+                ctx.fill();
+                break;
+              case 1: // Rotating square for mid strings
+                ctx.rotate(velocity * 10);
+                ctx.fillRect(-size/2, -size/2, size, size);
+                break;
+              case 2: // Star burst for high strings
+                ctx.beginPath();
+                for (let angle = 0; angle < Math.PI * 2; angle += Math.PI / 4) {
+                  const radius = (angle % (Math.PI / 2) === 0) ? size : size * 0.5;
+                  const x = Math.cos(angle) * radius;
+                  const y = Math.sin(angle) * radius;
+                  if (angle === 0) ctx.moveTo(x, y);
+                  else ctx.lineTo(x, y);
+                }
+                ctx.closePath();
+                ctx.fill();
+                break;
+            }
             ctx.restore();
           }
         }
       }
       
-      // Draw string endpoints (tuning pegs)
+      // Draw morphing string endpoints based on frequency content
       ctx.fillStyle = `rgb(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]})`;
       ctx.shadowBlur = 5;
-      ctx.beginPath();
-      ctx.arc(points[0].x, points[0].y, 6, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.beginPath();
-      ctx.arc(points[points.length - 1].x, points[points.length - 1].y, 6, 0, Math.PI * 2);
-      ctx.fill();
+      
+      // Left endpoint - morphs based on bass
+      const leftSize = 6 + (bassLevel || 0) * 4;
+      const leftMorph = (bassLevel || 0) > 0.3 ? 'square' : 'circle';
+      
+      if (leftMorph === 'square') {
+        ctx.fillRect(points[0].x - leftSize/2, points[0].y - leftSize/2, leftSize, leftSize);
+      } else {
+        ctx.beginPath();
+        ctx.arc(points[0].x, points[0].y, leftSize, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      
+      // Right endpoint - morphs based on highs
+      const rightSize = 6 + (highLevel || 0) * 3;
+      const rightMorph = (highLevel || 0) > 0.4 ? 'diamond' : 'circle';
+      
+      if (rightMorph === 'diamond') {
+        ctx.save();
+        ctx.translate(points[points.length - 1].x, points[points.length - 1].y);
+        ctx.rotate(Math.PI / 4);
+        ctx.fillRect(-rightSize/2, -rightSize/2, rightSize, rightSize);
+        ctx.restore();
+      } else {
+        ctx.beginPath();
+        ctx.arc(points[points.length - 1].x, points[points.length - 1].y, rightSize, 0, Math.PI * 2);
+        ctx.fill();
+      }
       
       // Reset shadow
       ctx.shadowBlur = 0;
       
-      // Draw frequency band label
+      // Draw frequency band label with musical note
       ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, 0.7)`;
       ctx.font = '12px monospace';
       ctx.textAlign = 'left';
-      const freqLabel = stringIndex === 0 ? 'BASS' : stringIndex === 1 ? 'LOW-MID' : stringIndex === 2 ? 'MID' : stringIndex === 3 ? 'HIGH-MID' : 'HIGH';
-      ctx.fillText(freqLabel, margin - 60, stringY + 4);
+      const noteNames = ['E2', 'A2', 'D3', 'G3', 'B3', 'E4'];
+      const freqLabel = noteNames[stringIndex] || `S${stringIndex + 1}`;
+      const labelX = currentSettings.stringLayout === 'vertical' ? startX - 40 : startX - 60;
+      ctx.fillText(freqLabel, labelX, stringY + 4);
       
       // Draw energy level indicator
       const indicatorWidth = 40;
       const indicatorHeight = 4;
+      const indicatorX = currentSettings.stringLayout === 'vertical' ? startX - 50 : startX - 50;
       ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
-      ctx.fillRect(margin - 50, stringY + 10, indicatorWidth, indicatorHeight);
+      ctx.fillRect(indicatorX, stringY + 10, indicatorWidth, indicatorHeight);
       ctx.fillStyle = `rgb(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]})`;
-      ctx.fillRect(margin - 50, stringY + 10, indicatorWidth * intensity, indicatorHeight);
+      ctx.fillRect(indicatorX, stringY + 10, indicatorWidth * intensity, indicatorHeight);
     }
   }, [initializeStrings]);
 
@@ -894,7 +1255,7 @@ const AdvancedSpectrogramV2 = () => {
         }
       }
     }
-  }, [visualMode, isRecording, init3DScene, cleanup3DScene, colorScheme, settings.stringCount, settings.stringSegments, settings.stringTension, settings.stringDamping, initializeStrings]);
+  }, [visualMode, isRecording, init3DScene, cleanup3DScene, colorScheme, settings.stringCount, settings.stringSegments, settings.stringTension, settings.stringDamping, initializeStrings, colorSchemes]);
 
   // Update particle count when setting changes
   useEffect(() => {
@@ -956,28 +1317,57 @@ const AdvancedSpectrogramV2 = () => {
 
   // Start/stop recording
   const startRecording = async () => {
-    if (!isAnalyzing) {
-      const success = await initializeAudio();
-      if (!success) return;
+    try {
+      if (!isAnalyzing) {
+        const success = await initializeAudio();
+        if (!success) return;
+      }
+      
+      // Double-check AudioContext state
+      if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
+        await audioContextRef.current.resume();
+      }
+      
+      setRecordedChunks([]);
+      mediaRecorderRef.current?.start();
+      setIsRecording(true);
+      
+      if (visualMode === 'spectrogram3d') {
+        init3DScene();
+      }
+      
+      animate();
+    } catch (err) {
+      console.error('Error starting recording:', err);
+      // Reset states on error
+      setIsRecording(false);
+      setIsAnalyzing(false);
     }
-    
-    setRecordedChunks([]);
-    mediaRecorderRef.current?.start();
-    setIsRecording(true);
-    
-    if (visualMode === 'spectrogram3d') {
-      init3DScene();
-    }
-    
-    animate();
   };
 
   const stopRecording = () => {
-    mediaRecorderRef.current?.stop();
-    setIsRecording(false);
-    
-    if (animationRef.current) {
-      cancelAnimationFrame(animationRef.current);
+    try {
+      mediaRecorderRef.current?.stop();
+      setIsRecording(false);
+      
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+      
+      // Stop audio stream
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach(track => track.stop());
+      }
+      
+      // Close audio context
+      if (audioContextRef.current && audioContextRef.current.state !== 'closed') {
+        audioContextRef.current.close();
+        audioContextRef.current = null;
+      }
+      
+      setIsAnalyzing(false);
+    } catch (err) {
+      console.error('Error stopping recording:', err);
     }
   };
 
@@ -1418,6 +1808,67 @@ const AdvancedSpectrogramV2 = () => {
                   className="w-full"
                 />
               </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  String Layout
+                </label>
+                <select
+                  value={settings.stringLayout}
+                  onChange={(e) => setSettings({ ...settings, stringLayout: e.target.value })}
+                  className="w-full bg-gray-800 text-white rounded px-2 py-1 mb-3"
+                >
+                  <option value="horizontal">Horizontal</option>
+                  <option value="vertical">Vertical</option>
+                  <option value="centered">Centered</option>
+                  <option value="mirrored">Mirrored</option>
+                </select>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Bass Position
+                </label>
+                <select
+                  value={settings.bassPosition}
+                  onChange={(e) => setSettings({ ...settings, bassPosition: e.target.value })}
+                  className="w-full bg-gray-800 text-white rounded px-2 py-1 mb-3"
+                >
+                  <option value="top">Top</option>
+                  <option value="bottom">Bottom</option>
+                  <option value="center">Center</option>
+                </select>
+              </div>
+              
+              <div>
+                <label className="flex justify-between text-sm text-gray-300 mb-1">
+                  <span>Enable Particles</span>
+                  <input
+                    type="checkbox"
+                    checked={settings.enableParticles}
+                    onChange={(e) => setSettings({ ...settings, enableParticles: e.target.checked })}
+                    className="ml-2"
+                  />
+                </label>
+              </div>
+              
+              {settings.enableParticles && (
+                <div>
+                  <label className="flex justify-between text-sm text-gray-300 mb-1">
+                    <span>Particle Count</span>
+                    <span>{settings.particleCount}</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="5"
+                    max="50"
+                    step="5"
+                    value={settings.particleCount}
+                    onChange={(e) => setSettings({ ...settings, particleCount: parseInt(e.target.value) })}
+                    className="w-full"
+                  />
+                </div>
+              )}
             </div>
           )}
 
