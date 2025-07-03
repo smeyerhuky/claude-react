@@ -8,8 +8,13 @@ import MSG from './components/languages/MSG'
 import MagyarCore100 from './components/languages/MagyarCore100'
 import Hungarian100WordsV1 from './components/languages/Hungarian100WordsV1'
 import ESP32ThereminInterface from './components/sonic/ESP32ThereminInterface'
+import ConcertSpectrogram from './components/sonic/ConcertSpectrogram'
+
+
+
 // Navigation items configuration
 const navigationItems = [
+  { id: 'ConcertSpectrogram', label: 'ConcertSpectrogram', component: ConcertSpectrogram },
   { id: 'esp-muse', label: "ESP 32 Music", component: ESP32ThereminInterface },
   { id: 'diet-med-lat', label: 'MediterraneanLatino Recipes', component: MediterraneanLatinoRecipesEnglish },
   { id: 'sonique', label: 'DJ Sonique', component: ImageSonificationDJMixer },
