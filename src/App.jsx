@@ -8,13 +8,13 @@ import MSG from './components/languages/MSG'
 import MagyarCore100 from './components/languages/MagyarCore100'
 import Hungarian100WordsV1 from './components/languages/Hungarian100WordsV1'
 import ESP32ThereminInterface from './components/sonic/ESP32ThereminInterface'
-import ConcertSpectrogram from './components/sonic/ConcertSpectrogram'
+import ConcertSpectogram from './components/sonic/ConcertSpectogram'
+import EDMSpectrogram from './components/sonic/EDMSpectrogram'
 
 
 
 // Navigation items configuration
 const navigationItems = [
-  { id: 'ConcertSpectrogram', label: 'ConcertSpectrogram', component: ConcertSpectrogram },
   { id: 'esp-muse', label: "ESP 32 Music", component: ESP32ThereminInterface },
   { id: 'diet-med-lat', label: 'MediterraneanLatino Recipes', component: MediterraneanLatinoRecipesEnglish },
   { id: 'sonique', label: 'DJ Sonique', component: ImageSonificationDJMixer },
@@ -22,7 +22,8 @@ const navigationItems = [
   { id: 'msg', label: "MSG - Magyar Sound Garden", component: MSG },
   { id: '100-words-v1', label: "Magyar - 100 Words (v1)", component: Hungarian100WordsV1 },
   { id: '100-words-final', label: "Magyar - 100 Words (final)", component: MagyarCore100 },
-  
+  { id: 'concert-spectrogram', label: "Concert Spectrogram", component: ConcertSpectogram },
+  { id: 'edm-spectrogram', label: "EDM Spectrogram", component: EDMSpectrogram },
 ]
 
 // Home page component showing all available components as cards

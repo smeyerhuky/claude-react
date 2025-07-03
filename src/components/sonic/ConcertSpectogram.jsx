@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Mic, MicOff, Play, Pause, Volume2, Settings } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Mic, MicOff, Volume2, Settings } from 'lucide-react';
 
 const ConcertSpectrogram = () => {
   const [isRecording, setIsRecording] = useState(false);
