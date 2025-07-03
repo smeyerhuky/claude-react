@@ -17,32 +17,93 @@ const AdvancedSpectrogramV2 = () => {
   // Visualization state
   const [visualMode, setVisualMode] = useState('spectrogram3d');
   const [colorScheme, setColorScheme] = useState('cyberpunk');
-  const [settings, setSettings] = useState({
-    sensitivity: 1.5,
+  // Optimized default settings for each visualization mode
+  const defaultSettings = useMemo(() => ({
+    // Universal audio settings (good for all modes)
+    sensitivity: 1.2,
     fftSize: 2048,
-    smoothing: 0.8,
-    melBins: 128,
-    minFreq: 20,
-    maxFreq: 20000,
-    blobTension: 0.5,
-    trailLength: 0.9,
-    bloomStrength: 1.5,
-    windowFunction: 'hann',
-    stringCount: 5,
-    stringTension: 0.7,
-    stringDamping: 0.88,
-    stringThickness: 3,
-    stringSegments: 25,
-    stringLayout: 'horizontal', // horizontal, vertical, centered, mirrored
-    bassPosition: 'top', // top, bottom, center
-    enableParticles: true,
-    particleCount: 20,
+    smoothing: 0.75,
+    
+    // Blob/3D mode optimized settings
+    spectrogram3d: {
+      blobCount: 3,
+      blobVariants: ['pulsing', 'ripple', 'spiral'],
+      blobDanceMode: 'orbit',
+      blobInteraction: true,
+      blobSize: 1.0,
+      blobTension: 0.5,
+      particleCount: 1500,
+      trailLength: 0.85
+    },
+    
+    // String theory optimized settings
+    stringTheory: {
+      stringCount: 6,
+      stringTension: 0.8,
+      stringDamping: 0.9,
+      stringThickness: 4,
+      stringSegments: 30,
+      stringLayout: 'horizontal',
+      bassPosition: 'bottom',
+      enableParticles: true,
+      particleCount: 25,
+      trailLength: 0.92
+    },
+    
+    // Mel-spectrogram optimized settings
+    melSpectrogram: {
+      melBins: 128,
+      minFreq: 20,
+      maxFreq: 16000,
+      trailLength: 0.95,
+      sensitivity: 1.0
+    },
+    
+    // Standard spectrogram optimized settings
+    spectrogram: {
+      trailLength: 0.88,
+      sensitivity: 1.3
+    },
+    
+    // Waveform optimized settings
+    waveform: {
+      trailLength: 0.8,
+      sensitivity: 1.5
+    }
+  }), []);
+
+  const [settings, setSettings] = useState({
+    // Universal settings
+    sensitivity: defaultSettings.sensitivity,
+    fftSize: defaultSettings.fftSize,
+    smoothing: defaultSettings.smoothing,
+    melBins: defaultSettings.melSpectrogram.melBins,
+    minFreq: defaultSettings.melSpectrogram.minFreq,
+    maxFreq: defaultSettings.melSpectrogram.maxFreq,
+    trailLength: defaultSettings.spectrogram3d.trailLength,
+    
     // Blob settings
-    blobCount: 3,
-    blobVariants: ['pulsing', 'ripple', 'spiral'], // pulsing, ripple, spiral, tornado, wave
-    blobDanceMode: 'orbit', // orbit, follow, scatter, sync
-    blobInteraction: true,
-    blobSize: 1.0
+    blobCount: defaultSettings.spectrogram3d.blobCount,
+    blobVariants: defaultSettings.spectrogram3d.blobVariants,
+    blobDanceMode: defaultSettings.spectrogram3d.blobDanceMode,
+    blobInteraction: defaultSettings.spectrogram3d.blobInteraction,
+    blobSize: defaultSettings.spectrogram3d.blobSize,
+    blobTension: defaultSettings.spectrogram3d.blobTension,
+    
+    // String settings
+    stringCount: defaultSettings.stringTheory.stringCount,
+    stringTension: defaultSettings.stringTheory.stringTension,
+    stringDamping: defaultSettings.stringTheory.stringDamping,
+    stringThickness: defaultSettings.stringTheory.stringThickness,
+    stringSegments: defaultSettings.stringTheory.stringSegments,
+    stringLayout: defaultSettings.stringTheory.stringLayout,
+    bassPosition: defaultSettings.stringTheory.bassPosition,
+    enableParticles: defaultSettings.stringTheory.enableParticles,
+    particleCount: defaultSettings.spectrogram3d.particleCount,
+    
+    // Legacy settings for backward compatibility
+    bloomStrength: 1.5,
+    windowFunction: 'hann'
   });
   
   // Audio analysis state
@@ -92,6 +153,21 @@ const AdvancedSpectrogramV2 = () => {
   useEffect(() => {
     visualModeRef.current = visualMode;
   }, [visualMode]);
+
+  // Auto-optimize settings when switching visualization modes
+  const applyModeOptimizedSettings = useCallback((mode) => {
+    const modeDefaults = defaultSettings[mode];
+    if (modeDefaults) {
+      setSettings(prev => ({
+        ...prev,
+        ...modeDefaults,
+        // Keep universal audio settings
+        sensitivity: modeDefaults.sensitivity || defaultSettings.sensitivity,
+        fftSize: prev.fftSize, // Keep user's FFT preference
+        smoothing: prev.smoothing // Keep user's smoothing preference
+      }));
+    }
+  }, [defaultSettings]);
   
   // Color schemes - memoized to prevent dependency changes
   const colorSchemes = useMemo(() => ({
@@ -1798,12 +1874,21 @@ const AdvancedSpectrogramV2 = () => {
         <div className="p-6 space-y-6">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-bold text-white">Settings</h2>
-            <button
-              onClick={() => setShowSettings(false)}
-              className="text-gray-400 hover:text-white"
-            >
-              ✕
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => applyModeOptimizedSettings(visualMode)}
+                className="text-xs bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded transition-colors"
+                title="Reset to optimal defaults for current mode"
+              >
+                Optimize
+              </button>
+              <button
+                onClick={() => setShowSettings(false)}
+                className="text-gray-400 hover:text-white"
+              >
+                ✕
+              </button>
+            </div>
           </div>
 
           {/* Visualization Mode */}
@@ -1821,7 +1906,11 @@ const AdvancedSpectrogramV2 = () => {
               ].map(({ id, icon: Icon, label }) => (
                 <button
                   key={id}
-                  onClick={() => setVisualMode(id)}
+                  onClick={() => {
+                    setVisualMode(id);
+                    // Auto-apply optimized settings after a short delay
+                    setTimeout(() => applyModeOptimizedSettings(id), 100);
+                  }}
                   className={`flex items-center justify-center gap-2 p-3 rounded-lg transition-colors ${
                     visualMode === id
                       ? 'bg-blue-600 text-white'
@@ -1853,135 +1942,167 @@ const AdvancedSpectrogramV2 = () => {
             </select>
           </div>
 
-          {/* Audio Settings */}
+          {/* Core Audio Settings - Always visible */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white">Audio Analysis</h3>
+            <h3 className="text-lg font-semibold text-white">Audio</h3>
             
-            <div>
-              <label className="flex justify-between text-sm text-gray-300 mb-1">
-                <span>Sensitivity</span>
-                <span>{settings.sensitivity.toFixed(1)}</span>
-              </label>
-              <input
-                type="range"
-                min="0.5"
-                max="3"
-                step="0.1"
-                value={settings.sensitivity}
-                onChange={(e) => setSettings({ ...settings, sensitivity: parseFloat(e.target.value) })}
-                className="w-full"
-              />
-            </div>
-
-            <div>
-              <label className="flex justify-between text-sm text-gray-300 mb-1">
-                <span>FFT Size</span>
-                <span>{settings.fftSize}</span>
-              </label>
-              <select
-                value={settings.fftSize}
-                onChange={(e) => setSettings({ ...settings, fftSize: parseInt(e.target.value) })}
-                className="w-full bg-gray-800 text-white rounded px-2 py-1"
-              >
-                {[512, 1024, 2048, 4096, 8192].map(size => (
-                  <option key={size} value={size}>{size}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="flex justify-between text-sm text-gray-300 mb-1">
-                <span>Smoothing</span>
-                <span>{settings.smoothing.toFixed(2)}</span>
-              </label>
-              <input
-                type="range"
-                min="0"
-                max="0.99"
-                step="0.01"
-                value={settings.smoothing}
-                onChange={(e) => setSettings({ ...settings, smoothing: parseFloat(e.target.value) })}
-                className="w-full"
-              />
-            </div>
-
-            {visualMode === 'melSpectrogram' && (
-              <>
-                <div>
-                  <label className="flex justify-between text-sm text-gray-300 mb-1">
-                    <span>Mel Bins</span>
-                    <span>{settings.melBins}</span>
-                  </label>
-                  <input
-                    type="range"
-                    min="32"
-                    max="256"
-                    step="32"
-                    value={settings.melBins}
-                    onChange={(e) => setSettings({ ...settings, melBins: parseInt(e.target.value) })}
-                    className="w-full"
-                  />
-                </div>
-                
-                <div className="grid grid-cols-2 gap-2">
-                  <div>
-                    <label className="text-sm text-gray-300">Min Freq (Hz)</label>
-                    <input
-                      type="number"
-                      value={settings.minFreq}
-                      onChange={(e) => setSettings({ ...settings, minFreq: parseInt(e.target.value) })}
-                      className="w-full bg-gray-800 text-white rounded px-2 py-1 mt-1"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-sm text-gray-300">Max Freq (Hz)</label>
-                    <input
-                      type="number"
-                      value={settings.maxFreq}
-                      onChange={(e) => setSettings({ ...settings, maxFreq: parseInt(e.target.value) })}
-                      className="w-full bg-gray-800 text-white rounded px-2 py-1 mt-1"
-                    />
-                  </div>
-                </div>
-              </>
-            )}
-
-            <div>
-              <label className="flex justify-between text-sm text-gray-300 mb-1">
-                <span>Trail Effect</span>
-                <span>{settings.trailLength.toFixed(2)}</span>
-              </label>
-              <input
-                type="range"
-                min="0"
-                max="0.99"
-                step="0.01"
-                value={settings.trailLength}
-                onChange={(e) => setSettings({ ...settings, trailLength: parseFloat(e.target.value) })}
-                className="w-full"
-              />
-            </div>
-          </div>
-
-          {/* Visual Effects */}
-          {visualMode === 'spectrogram3d' && (
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-white">3D Effects</h3>
-              
+            <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="flex justify-between text-sm text-gray-300 mb-1">
-                  <span>Blob Count</span>
-                  <span>{settings.blobCount}</span>
+                  <span>Sensitivity</span>
+                  <span>{settings.sensitivity.toFixed(1)}</span>
                 </label>
                 <input
                   type="range"
-                  min="1"
-                  max="6"
-                  step="1"
-                  value={settings.blobCount}
-                  onChange={(e) => setSettings({ ...settings, blobCount: parseInt(e.target.value) })}
+                  min="0.5"
+                  max="3"
+                  step="0.1"
+                  value={settings.sensitivity}
+                  onChange={(e) => setSettings({ ...settings, sensitivity: parseFloat(e.target.value) })}
                   className="w-full"
                 />
+              </div>
+
+              <div>
+                <label className="flex justify-between text-sm text-gray-300 mb-1">
+                  <span>Smoothing</span>
+                  <span>{settings.smoothing.toFixed(2)}</span>
+                </label>
+                <input
+                  type="range"
+                  min="0"
+                  max="0.99"
+                  step="0.01"
+                  value={settings.smoothing}
+                  onChange={(e) => setSettings({ ...settings, smoothing: parseFloat(e.target.value) })}
+                  className="w-full"
+                />
+              </div>
+            </div>
+
+            <details className="group">
+              <summary className="text-sm text-gray-400 cursor-pointer hover:text-gray-300 select-none">
+                Advanced Audio Settings ▼
+              </summary>
+              <div className="mt-3 space-y-3 pl-2 border-l-2 border-gray-700">
+                <div>
+                  <label className="flex justify-between text-sm text-gray-300 mb-1">
+                    <span>FFT Size</span>
+                    <span>{settings.fftSize}</span>
+                  </label>
+                  <select
+                    value={settings.fftSize}
+                    onChange={(e) => setSettings({ ...settings, fftSize: parseInt(e.target.value) })}
+                    className="w-full bg-gray-800 text-white rounded px-2 py-1"
+                  >
+                    {[512, 1024, 2048, 4096, 8192].map(size => (
+                      <option key={size} value={size}>{size}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="flex justify-between text-sm text-gray-300 mb-1">
+                    <span>Trail Effect</span>
+                    <span>{settings.trailLength.toFixed(2)}</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="0.99"
+                    step="0.01"
+                    value={settings.trailLength}
+                    onChange={(e) => setSettings({ ...settings, trailLength: parseFloat(e.target.value) })}
+                    className="w-full"
+                  />
+                </div>
+              </div>
+            </details>
+
+            {visualMode === 'melSpectrogram' && (
+              <details className="group">
+                <summary className="text-sm text-gray-400 cursor-pointer hover:text-gray-300 select-none">
+                  Mel-Spectrogram Settings ▼
+                </summary>
+                <div className="mt-3 space-y-3 pl-2 border-l-2 border-gray-700">
+                  <div>
+                    <label className="flex justify-between text-sm text-gray-300 mb-1">
+                      <span>Mel Bins</span>
+                      <span>{settings.melBins}</span>
+                    </label>
+                    <input
+                      type="range"
+                      min="32"
+                      max="256"
+                      step="32"
+                      value={settings.melBins}
+                      onChange={(e) => setSettings({ ...settings, melBins: parseInt(e.target.value) })}
+                      className="w-full"
+                    />
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <label className="text-sm text-gray-300">Min Freq (Hz)</label>
+                      <input
+                        type="number"
+                        value={settings.minFreq}
+                        onChange={(e) => setSettings({ ...settings, minFreq: parseInt(e.target.value) })}
+                        className="w-full bg-gray-800 text-white rounded px-2 py-1 mt-1"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-sm text-gray-300">Max Freq (Hz)</label>
+                      <input
+                        type="number"
+                        value={settings.maxFreq}
+                        onChange={(e) => setSettings({ ...settings, maxFreq: parseInt(e.target.value) })}
+                        className="w-full bg-gray-800 text-white rounded px-2 py-1 mt-1"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </details>
+            )}
+          </div>
+
+          {/* Dancing Blobs Settings */}
+          {visualMode === 'spectrogram3d' && (
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-white">Dancing Blobs</h3>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="flex justify-between text-sm text-gray-300 mb-1">
+                    <span>Count</span>
+                    <span>{settings.blobCount}</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="1"
+                    max="6"
+                    step="1"
+                    value={settings.blobCount}
+                    onChange={(e) => setSettings({ ...settings, blobCount: parseInt(e.target.value) })}
+                    className="w-full"
+                  />
+                </div>
+
+                <div>
+                  <label className="flex justify-between text-sm text-gray-300 mb-1">
+                    <span>Size</span>
+                    <span>{settings.blobSize.toFixed(1)}</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="0.3"
+                    max="2.0"
+                    step="0.1"
+                    value={settings.blobSize}
+                    onChange={(e) => setSettings({ ...settings, blobSize: parseFloat(e.target.value) })}
+                    className="w-full"
+                  />
+                </div>
               </div>
 
               <div>
@@ -1991,48 +2112,20 @@ const AdvancedSpectrogramV2 = () => {
                 <select
                   value={settings.blobDanceMode}
                   onChange={(e) => setSettings({ ...settings, blobDanceMode: e.target.value })}
-                  className="w-full bg-gray-800 text-white rounded px-2 py-1 mb-3"
+                  className="w-full bg-gray-800 text-white rounded px-2 py-1"
                 >
-                  <option value="orbit">Orbit (circle around center)</option>
-                  <option value="follow">Follow the Leader</option>
-                  <option value="scatter">Scattered Movement</option>
-                  <option value="sync">Synchronized Dance</option>
+                  <option value="orbit">Orbit</option>
+                  <option value="follow">Follow Leader</option>
+                  <option value="scatter">Scatter</option>
+                  <option value="sync">Synchronized</option>
                 </select>
               </div>
 
               <div>
-                <label className="flex justify-between text-sm text-gray-300 mb-1">
-                  <span>Blob Size</span>
-                  <span>{settings.blobSize.toFixed(1)}</span>
-                </label>
-                <input
-                  type="range"
-                  min="0.3"
-                  max="2.0"
-                  step="0.1"
-                  value={settings.blobSize}
-                  onChange={(e) => setSettings({ ...settings, blobSize: parseFloat(e.target.value) })}
-                  className="w-full"
-                />
-              </div>
-
-              <div>
-                <label className="flex justify-between text-sm text-gray-300 mb-1">
-                  <span>Blob Interaction</span>
-                  <input
-                    type="checkbox"
-                    checked={settings.blobInteraction}
-                    onChange={(e) => setSettings({ ...settings, blobInteraction: e.target.checked })}
-                    className="ml-2"
-                  />
-                </label>
-              </div>
-
-              <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Blob Variants
+                  Blob Types
                 </label>
-                <div className="grid grid-cols-3 gap-2 mb-2">
+                <div className="grid grid-cols-3 gap-2">
                   {['pulsing', 'ripple', 'spiral'].map(variant => (
                     <button
                       key={variant}
@@ -2056,185 +2149,211 @@ const AdvancedSpectrogramV2 = () => {
                 </div>
               </div>
 
-              <div>
-                <label className="flex justify-between text-sm text-gray-300 mb-1">
-                  <span>Blob Tension</span>
-                  <span>{settings.blobTension.toFixed(2)}</span>
-                </label>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-300">Blob Interaction</span>
                 <input
-                  type="range"
-                  min="0"
-                  max="2"
-                  step="0.1"
-                  value={settings.blobTension}
-                  onChange={(e) => setSettings({ ...settings, blobTension: parseFloat(e.target.value) })}
-                  className="w-full"
+                  type="checkbox"
+                  checked={settings.blobInteraction}
+                  onChange={(e) => setSettings({ ...settings, blobInteraction: e.target.checked })}
+                  className="w-4 h-4"
                 />
               </div>
 
-              <div>
-                <label className="flex justify-between text-sm text-gray-300 mb-1">
-                  <span>Particle Count</span>
-                  <span>{settings.particleCount}</span>
-                </label>
-                <input
-                  type="range"
-                  min="100"
-                  max="5000"
-                  step="100"
-                  value={settings.particleCount}
-                  onChange={(e) => setSettings({ ...settings, particleCount: parseInt(e.target.value) })}
-                  className="w-full"
-                />
-              </div>
+              <details className="group">
+                <summary className="text-sm text-gray-400 cursor-pointer hover:text-gray-300 select-none">
+                  Advanced 3D Settings ▼
+                </summary>
+                <div className="mt-3 space-y-3 pl-2 border-l-2 border-gray-700">
+                  <div>
+                    <label className="flex justify-between text-sm text-gray-300 mb-1">
+                      <span>Blob Tension</span>
+                      <span>{settings.blobTension.toFixed(2)}</span>
+                    </label>
+                    <input
+                      type="range"
+                      min="0"
+                      max="2"
+                      step="0.1"
+                      value={settings.blobTension}
+                      onChange={(e) => setSettings({ ...settings, blobTension: parseFloat(e.target.value) })}
+                      className="w-full"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="flex justify-between text-sm text-gray-300 mb-1">
+                      <span>Particle Count</span>
+                      <span>{settings.particleCount}</span>
+                    </label>
+                    <input
+                      type="range"
+                      min="500"
+                      max="3000"
+                      step="100"
+                      value={settings.particleCount}
+                      onChange={(e) => setSettings({ ...settings, particleCount: parseInt(e.target.value) })}
+                      className="w-full"
+                    />
+                  </div>
+                </div>
+              </details>
             </div>
           )}
 
-          {/* String Theory Effects */}
+          {/* String Theory Settings */}
           {visualMode === 'stringTheory' && (
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-white">String Physics</h3>
               
-              <div>
-                <label className="flex justify-between text-sm text-gray-300 mb-1">
-                  <span>String Count</span>
-                  <span>{settings.stringCount}</span>
-                </label>
-                <input
-                  type="range"
-                  min="2"
-                  max="10"
-                  step="1"
-                  value={settings.stringCount}
-                  onChange={(e) => setSettings({ ...settings, stringCount: parseInt(e.target.value) })}
-                  className="w-full"
-                />
-              </div>
-
-              <div>
-                <label className="flex justify-between text-sm text-gray-300 mb-1">
-                  <span>String Tension</span>
-                  <span>{settings.stringTension.toFixed(2)}</span>
-                </label>
-                <input
-                  type="range"
-                  min="0.1"
-                  max="2"
-                  step="0.1"
-                  value={settings.stringTension}
-                  onChange={(e) => setSettings({ ...settings, stringTension: parseFloat(e.target.value) })}
-                  className="w-full"
-                />
-              </div>
-
-              <div>
-                <label className="flex justify-between text-sm text-gray-300 mb-1">
-                  <span>String Damping</span>
-                  <span>{settings.stringDamping.toFixed(2)}</span>
-                </label>
-                <input
-                  type="range"
-                  min="0.8"
-                  max="0.99"
-                  step="0.01"
-                  value={settings.stringDamping}
-                  onChange={(e) => setSettings({ ...settings, stringDamping: parseFloat(e.target.value) })}
-                  className="w-full"
-                />
-              </div>
-
-              <div>
-                <label className="flex justify-between text-sm text-gray-300 mb-1">
-                  <span>String Thickness</span>
-                  <span>{settings.stringThickness}</span>
-                </label>
-                <input
-                  type="range"
-                  min="1"
-                  max="8"
-                  step="1"
-                  value={settings.stringThickness}
-                  onChange={(e) => setSettings({ ...settings, stringThickness: parseInt(e.target.value) })}
-                  className="w-full"
-                />
-              </div>
-
-              <div>
-                <label className="flex justify-between text-sm text-gray-300 mb-1">
-                  <span>String Segments</span>
-                  <span>{settings.stringSegments}</span>
-                </label>
-                <input
-                  type="range"
-                  min="20"
-                  max="100"
-                  step="10"
-                  value={settings.stringSegments}
-                  onChange={(e) => setSettings({ ...settings, stringSegments: parseInt(e.target.value) })}
-                  className="w-full"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  String Layout
-                </label>
-                <select
-                  value={settings.stringLayout}
-                  onChange={(e) => setSettings({ ...settings, stringLayout: e.target.value })}
-                  className="w-full bg-gray-800 text-white rounded px-2 py-1 mb-3"
-                >
-                  <option value="horizontal">Horizontal</option>
-                  <option value="vertical">Vertical</option>
-                  <option value="centered">Centered</option>
-                  <option value="mirrored">Mirrored</option>
-                </select>
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Bass Position
-                </label>
-                <select
-                  value={settings.bassPosition}
-                  onChange={(e) => setSettings({ ...settings, bassPosition: e.target.value })}
-                  className="w-full bg-gray-800 text-white rounded px-2 py-1 mb-3"
-                >
-                  <option value="top">Top</option>
-                  <option value="bottom">Bottom</option>
-                  <option value="center">Center</option>
-                </select>
-              </div>
-              
-              <div>
-                <label className="flex justify-between text-sm text-gray-300 mb-1">
-                  <span>Enable Particles</span>
-                  <input
-                    type="checkbox"
-                    checked={settings.enableParticles}
-                    onChange={(e) => setSettings({ ...settings, enableParticles: e.target.checked })}
-                    className="ml-2"
-                  />
-                </label>
-              </div>
-              
-              {settings.enableParticles && (
+              <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="flex justify-between text-sm text-gray-300 mb-1">
-                    <span>Particle Count</span>
-                    <span>{settings.particleCount}</span>
+                    <span>Count</span>
+                    <span>{settings.stringCount}</span>
                   </label>
                   <input
                     type="range"
-                    min="5"
-                    max="50"
-                    step="5"
-                    value={settings.particleCount}
-                    onChange={(e) => setSettings({ ...settings, particleCount: parseInt(e.target.value) })}
+                    min="3"
+                    max="8"
+                    step="1"
+                    value={settings.stringCount}
+                    onChange={(e) => setSettings({ ...settings, stringCount: parseInt(e.target.value) })}
                     className="w-full"
                   />
                 </div>
-              )}
+
+                <div>
+                  <label className="flex justify-between text-sm text-gray-300 mb-1">
+                    <span>Thickness</span>
+                    <span>{settings.stringThickness}</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="2"
+                    max="8"
+                    step="1"
+                    value={settings.stringThickness}
+                    onChange={(e) => setSettings({ ...settings, stringThickness: parseInt(e.target.value) })}
+                    className="w-full"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Layout
+                  </label>
+                  <select
+                    value={settings.stringLayout}
+                    onChange={(e) => setSettings({ ...settings, stringLayout: e.target.value })}
+                    className="w-full bg-gray-800 text-white rounded px-2 py-1"
+                  >
+                    <option value="horizontal">Horizontal</option>
+                    <option value="vertical">Vertical</option>
+                    <option value="centered">Centered</option>
+                    <option value="mirrored">Mirrored</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Bass Position
+                  </label>
+                  <select
+                    value={settings.bassPosition}
+                    onChange={(e) => setSettings({ ...settings, bassPosition: e.target.value })}
+                    className="w-full bg-gray-800 text-white rounded px-2 py-1"
+                  >
+                    <option value="top">Top</option>
+                    <option value="bottom">Bottom</option>
+                    <option value="center">Center</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-300">String Particles</span>
+                <input
+                  type="checkbox"
+                  checked={settings.enableParticles}
+                  onChange={(e) => setSettings({ ...settings, enableParticles: e.target.checked })}
+                  className="w-4 h-4"
+                />
+              </div>
+              
+              <details className="group">
+                <summary className="text-sm text-gray-400 cursor-pointer hover:text-gray-300 select-none">
+                  Advanced Physics Settings ▼
+                </summary>
+                <div className="mt-3 space-y-3 pl-2 border-l-2 border-gray-700">
+                  <div>
+                    <label className="flex justify-between text-sm text-gray-300 mb-1">
+                      <span>String Tension</span>
+                      <span>{settings.stringTension.toFixed(2)}</span>
+                    </label>
+                    <input
+                      type="range"
+                      min="0.3"
+                      max="1.5"
+                      step="0.1"
+                      value={settings.stringTension}
+                      onChange={(e) => setSettings({ ...settings, stringTension: parseFloat(e.target.value) })}
+                      className="w-full"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="flex justify-between text-sm text-gray-300 mb-1">
+                      <span>String Damping</span>
+                      <span>{settings.stringDamping.toFixed(2)}</span>
+                    </label>
+                    <input
+                      type="range"
+                      min="0.85"
+                      max="0.95"
+                      step="0.01"
+                      value={settings.stringDamping}
+                      onChange={(e) => setSettings({ ...settings, stringDamping: parseFloat(e.target.value) })}
+                      className="w-full"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="flex justify-between text-sm text-gray-300 mb-1">
+                      <span>String Segments</span>
+                      <span>{settings.stringSegments}</span>
+                    </label>
+                    <input
+                      type="range"
+                      min="20"
+                      max="50"
+                      step="5"
+                      value={settings.stringSegments}
+                      onChange={(e) => setSettings({ ...settings, stringSegments: parseInt(e.target.value) })}
+                      className="w-full"
+                    />
+                  </div>
+
+                  {settings.enableParticles && (
+                    <div>
+                      <label className="flex justify-between text-sm text-gray-300 mb-1">
+                        <span>Particle Count</span>
+                        <span>{settings.particleCount}</span>
+                      </label>
+                      <input
+                        type="range"
+                        min="10"
+                        max="40"
+                        step="5"
+                        value={settings.particleCount}
+                        onChange={(e) => setSettings({ ...settings, particleCount: parseInt(e.target.value) })}
+                        className="w-full"
+                      />
+                    </div>
+                  )}
+                </div>
+              </details>
             </div>
           )}
 
