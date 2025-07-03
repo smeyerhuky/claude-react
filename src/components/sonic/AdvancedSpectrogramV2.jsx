@@ -33,7 +33,10 @@ const AdvancedSpectrogramV2 = () => {
       blobSize: 1.0,
       blobTension: 0.5,
       particleCount: 1500,
-      trailLength: 0.85
+      trailLength: 0.85,
+      blobElasticity: 0.7,
+      internalForces: 8,
+      ferroFluidMode: true
     },
     
     // String theory optimized settings
@@ -89,6 +92,9 @@ const AdvancedSpectrogramV2 = () => {
     blobInteraction: defaultSettings.spectrogram3d.blobInteraction,
     blobSize: defaultSettings.spectrogram3d.blobSize,
     blobTension: defaultSettings.spectrogram3d.blobTension,
+    blobElasticity: defaultSettings.spectrogram3d.blobElasticity,
+    internalForces: defaultSettings.spectrogram3d.internalForces,
+    ferroFluidMode: defaultSettings.spectrogram3d.ferroFluidMode,
     
     // String settings
     stringCount: defaultSettings.stringTheory.stringCount,
@@ -166,6 +172,48 @@ const AdvancedSpectrogramV2 = () => {
         fftSize: prev.fftSize, // Keep user's FFT preference
         smoothing: prev.smoothing // Keep user's smoothing preference
       }));
+    }
+  }, [defaultSettings]);
+
+  // Reset all settings to optimal defaults
+  const resetToDefaults = useCallback(() => {
+    if (window.confirm('Reset all settings to factory defaults? This will override all your custom configurations.')) {
+      setSettings({
+        // Universal settings
+        sensitivity: defaultSettings.sensitivity,
+        fftSize: defaultSettings.fftSize,
+        smoothing: defaultSettings.smoothing,
+        melBins: defaultSettings.melSpectrogram.melBins,
+        minFreq: defaultSettings.melSpectrogram.minFreq,
+        maxFreq: defaultSettings.melSpectrogram.maxFreq,
+        trailLength: defaultSettings.spectrogram3d.trailLength,
+        
+        // Blob settings
+        blobCount: defaultSettings.spectrogram3d.blobCount,
+        blobVariants: defaultSettings.spectrogram3d.blobVariants,
+        blobDanceMode: defaultSettings.spectrogram3d.blobDanceMode,
+        blobInteraction: defaultSettings.spectrogram3d.blobInteraction,
+        blobSize: defaultSettings.spectrogram3d.blobSize,
+        blobTension: defaultSettings.spectrogram3d.blobTension,
+        blobElasticity: defaultSettings.spectrogram3d.blobElasticity,
+        internalForces: defaultSettings.spectrogram3d.internalForces,
+        ferroFluidMode: defaultSettings.spectrogram3d.ferroFluidMode,
+        
+        // String settings
+        stringCount: defaultSettings.stringTheory.stringCount,
+        stringTension: defaultSettings.stringTheory.stringTension,
+        stringDamping: defaultSettings.stringTheory.stringDamping,
+        stringThickness: defaultSettings.stringTheory.stringThickness,
+        stringSegments: defaultSettings.stringTheory.stringSegments,
+        stringLayout: defaultSettings.stringTheory.stringLayout,
+        bassPosition: defaultSettings.stringTheory.bassPosition,
+        enableParticles: defaultSettings.stringTheory.enableParticles,
+        particleCount: defaultSettings.spectrogram3d.particleCount,
+        
+        // Legacy settings for backward compatibility
+        bloomStrength: 1.5,
+        windowFunction: 'hann'
+      });
     }
   }, [defaultSettings]);
   
@@ -347,31 +395,75 @@ const AdvancedSpectrogramV2 = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Create blob shader materials with different variants
-  const createBlobMaterial = useCallback((variant, blobIndex) => {
+  // Create 3D spheroid blob materials with internal force fields (ferro-fluid like)
+  const createSpheroidBlobMaterial = useCallback((variant, blobIndex) => {
     const shaders = {
-      pulsing: {
+      ferroFluid: {
         vertex: `
           uniform float time;
           uniform float bassLevel;
           uniform float midLevel;
           uniform float highLevel;
           uniform float blobIndex;
-          varying vec2 vUv;
-          varying float vElevation;
+          uniform vec3 internalForces[8]; // Multiple internal force points
+          uniform float elasticity;
+          uniform float jitterAmount;
+          
+          varying vec3 vNormal;
+          varying vec3 vPosition;
+          varying float vDistortion;
+          
+          // Noise function for jitter
+          float noise(vec3 p) {
+            return fract(sin(dot(p, vec3(12.9898, 78.233, 45.164))) * 43758.5453);
+          }
           
           void main() {
-            vUv = uv;
+            vNormal = normalize(normalMatrix * normal);
+            
             vec3 newPosition = position;
-            float distance = length(uv - 0.5);
+            float totalForce = 0.0;
             
-            // Pulsing blob - concentric rings
-            float pulse = sin(time * 2.0 + blobIndex) * bassLevel * 2.0;
-            float rings = sin(distance * 15.0 - time * 3.0) * midLevel * 1.5;
-            float heartbeat = sin(time * 4.0 + blobIndex * 2.0) * highLevel * 0.8;
+            // Apply internal forces from multiple points (like internal magnetic fields)
+            for(int i = 0; i < 8; i++) {
+              vec3 forcePoint = internalForces[i];
+              float distance = length(position - forcePoint);
+              
+              // Different frequency bands affect different force points
+              float forceStrength = 0.0;
+              if(i < 3) {
+                forceStrength = bassLevel * (2.0 + sin(time + float(i)));
+              } else if(i < 6) {
+                forceStrength = midLevel * (1.5 + cos(time * 1.3 + float(i)));
+              } else {
+                forceStrength = highLevel * (1.0 + sin(time * 2.0 + float(i)));
+              }
+              
+              // Inverse square law for realistic force falloff
+              float forceMagnitude = forceStrength / (distance * distance + 0.1);
+              
+              // Direction from force point to surface (outward push)
+              vec3 forceDirection = normalize(position - forcePoint);
+              
+              // Apply force with distance attenuation
+              newPosition += forceDirection * forceMagnitude * elasticity;
+              totalForce += forceMagnitude;
+            }
             
-            newPosition.z += pulse + rings + heartbeat;
-            vElevation = newPosition.z;
+            // Add elastic jitter for organic feel
+            float jitter = noise(position * 10.0 + time) * jitterAmount;
+            newPosition += normal * jitter * (0.5 + 0.5 * sin(time * 3.0 + blobIndex));
+            
+            // Add breathing motion
+            float breathing = sin(time * 1.5 + blobIndex) * 0.3;
+            newPosition += normal * breathing;
+            
+            // Surface tension effects - pull vertices toward sphere when calm
+            float tension = 1.0 - totalForce * 0.5;
+            newPosition = mix(newPosition, normalize(position) * length(position), tension * 0.2);
+            
+            vPosition = newPosition;
+            vDistortion = totalForce;
             
             gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
           }
@@ -383,46 +475,94 @@ const AdvancedSpectrogramV2 = () => {
           uniform float highLevel;
           uniform vec3 colorScheme;
           uniform float blobIndex;
-          varying vec2 vUv;
-          varying float vElevation;
+          
+          varying vec3 vNormal;
+          varying vec3 vPosition;
+          varying float vDistortion;
           
           void main() {
-            float distance = length(vUv - 0.5);
-            
+            // Dynamic color based on internal forces
             vec3 baseColor = colorScheme;
-            vec3 pulseColor = vec3(1.0, 0.3, 0.7) * sin(time + blobIndex) * 0.5 + 0.5;
-            vec3 finalColor = mix(baseColor, pulseColor, bassLevel);
             
-            float alpha = 1.0 - distance * 1.2;
-            alpha += abs(vElevation) * 0.4;
-            alpha = clamp(alpha, 0.0, 0.9);
+            // Color shifts based on distortion (ferro-fluid effect)
+            vec3 distortionColor = vec3(
+              0.8 + 0.4 * sin(time + vDistortion * 5.0),
+              0.6 + 0.4 * cos(time * 1.2 + vDistortion * 3.0),
+              0.9 + 0.3 * sin(time * 0.8 + vDistortion * 7.0)
+            );
+            
+            // Mix colors based on audio levels
+            vec3 finalColor = mix(baseColor, distortionColor, vDistortion * 0.7);
+            
+            // Add internal glow effect
+            float glow = 1.0 - dot(vNormal, vec3(0.0, 0.0, 1.0));
+            finalColor += vec3(bassLevel, midLevel, highLevel) * glow * 0.3;
+            
+            // Fresnel-like effect for translucency
+            float fresnel = pow(1.0 - abs(dot(vNormal, vec3(0.0, 0.0, 1.0))), 2.0);
+            float alpha = 0.6 + fresnel * 0.4 + vDistortion * 0.2;
             
             gl_FragColor = vec4(finalColor, alpha);
           }
         `
       },
-      ripple: {
+      elasticBubble: {
         vertex: `
           uniform float time;
           uniform float bassLevel;
           uniform float midLevel;
           uniform float highLevel;
           uniform float blobIndex;
-          varying vec2 vUv;
-          varying float vElevation;
+          uniform vec3 internalForces[8];
+          uniform float elasticity;
+          uniform float jitterAmount;
+          
+          varying vec3 vNormal;
+          varying vec3 vPosition;
+          varying float vDistortion;
+          
+          float noise(vec3 p) {
+            return fract(sin(dot(p, vec3(12.9898, 78.233, 45.164))) * 43758.5453);
+          }
           
           void main() {
-            vUv = uv;
+            vNormal = normalize(normalMatrix * normal);
             vec3 newPosition = position;
-            float distance = length(uv - 0.5);
             
-            // Ripple blob - water-like waves
-            float ripple1 = sin(distance * 20.0 - time * 2.0 + blobIndex) * bassLevel * 1.5;
-            float ripple2 = sin(distance * 35.0 - time * 1.5 + blobIndex * 1.5) * midLevel * 1.0;
-            float ripple3 = sin(distance * 50.0 - time * 3.0 + blobIndex * 0.5) * highLevel * 0.5;
+            // Bubble-like internal pressure
+            float internalPressure = (bassLevel + midLevel + highLevel) * 0.5;
             
-            newPosition.z += ripple1 + ripple2 + ripple3;
-            vElevation = newPosition.z;
+            // Multiple pressure points creating organic bulges
+            float totalDistortion = 0.0;
+            for(int i = 0; i < 8; i++) {
+              vec3 pressurePoint = internalForces[i];
+              float distance = length(position - pressurePoint);
+              
+              float pressure = 0.0;
+              if(i < 4) {
+                pressure = bassLevel * sin(time * 2.0 + float(i) + blobIndex);
+              } else {
+                pressure = (midLevel + highLevel) * cos(time * 1.5 + float(i) * 2.0);
+              }
+              
+              // Bubble expansion from internal points
+              float expansion = pressure / (distance + 0.5);
+              vec3 expansionDir = normalize(position - pressurePoint);
+              
+              newPosition += expansionDir * expansion * elasticity;
+              totalDistortion += abs(expansion);
+            }
+            
+            // Elastic surface oscillations
+            float elasticWave = sin(time * 4.0 + length(position) * 3.0 + blobIndex) * 0.2;
+            newPosition += normal * elasticWave * elasticity;
+            
+            // Surface jitter
+            float surfaceJitter = noise(position * 8.0 + time * 2.0) * jitterAmount;
+            newPosition += normal * surfaceJitter;
+            
+            vPosition = newPosition;
+            vDistortion = totalDistortion;
             
             gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
           }
@@ -434,48 +574,92 @@ const AdvancedSpectrogramV2 = () => {
           uniform float highLevel;
           uniform vec3 colorScheme;
           uniform float blobIndex;
-          varying vec2 vUv;
-          varying float vElevation;
+          
+          varying vec3 vNormal;
+          varying vec3 vPosition;
+          varying float vDistortion;
           
           void main() {
-            float distance = length(vUv - 0.5);
-            
             vec3 baseColor = colorScheme;
-            vec3 waveColor = vec3(0.2, 0.8, 1.0) * (sin(time * 2.0 + blobIndex) * 0.3 + 0.7);
-            vec3 finalColor = mix(baseColor, waveColor, midLevel * 0.8);
             
-            float alpha = 1.0 - distance * 1.4;
-            alpha += abs(vElevation) * 0.3;
-            alpha = clamp(alpha, 0.0, 0.85);
+            // Iridescent bubble effect
+            float iridescence = sin(time + vDistortion * 10.0 + dot(vNormal, vec3(1.0, 0.5, 0.3))) * 0.5 + 0.5;
+            vec3 bubbleColor = vec3(
+              0.7 + 0.3 * iridescence,
+              0.8 + 0.2 * sin(iridescence * 3.14159),
+              0.9 + 0.1 * cos(iridescence * 6.28318)
+            );
+            
+            vec3 finalColor = mix(baseColor, bubbleColor, 0.6);
+            
+            // Transparency with bubble-like qualities
+            float fresnel = pow(1.0 - abs(dot(vNormal, vec3(0.0, 0.0, 1.0))), 1.5);
+            float alpha = 0.4 + fresnel * 0.5 + vDistortion * 0.1;
             
             gl_FragColor = vec4(finalColor, alpha);
           }
         `
       },
-      spiral: {
+      morphicBlob: {
         vertex: `
           uniform float time;
           uniform float bassLevel;
           uniform float midLevel;
           uniform float highLevel;
           uniform float blobIndex;
-          varying vec2 vUv;
-          varying float vElevation;
+          uniform vec3 internalForces[8];
+          uniform float elasticity;
+          uniform float jitterAmount;
+          
+          varying vec3 vNormal;
+          varying vec3 vPosition;
+          varying float vDistortion;
+          
+          float noise(vec3 p) {
+            return fract(sin(dot(p, vec3(12.9898, 78.233, 45.164))) * 43758.5453);
+          }
           
           void main() {
-            vUv = uv;
+            vNormal = normalize(normalMatrix * normal);
             vec3 newPosition = position;
-            vec2 center = uv - 0.5;
-            float distance = length(center);
-            float angle = atan(center.y, center.x);
             
-            // Spiral blob - rotating waves
-            float spiral = sin(angle * 6.0 + distance * 15.0 - time * 2.0 + blobIndex) * bassLevel * 1.8;
-            float twist = sin(angle * 3.0 + time * 1.5 + blobIndex * 2.0) * midLevel * 1.2;
-            float vortex = sin(distance * 25.0 - time * 4.0 + angle * 2.0) * highLevel * 0.6;
+            // Morphic transformation based on audio
+            float morphFactor = (bassLevel * 2.0 + midLevel + highLevel * 0.5) / 3.5;
             
-            newPosition.z += spiral + twist + vortex;
-            vElevation = newPosition.z;
+            // Multiple deformation centers
+            float totalMorph = 0.0;
+            for(int i = 0; i < 8; i++) {
+              vec3 morphCenter = internalForces[i];
+              float distance = length(position - morphCenter);
+              
+              float morphStrength = 0.0;
+              if(i % 3 == 0) {
+                morphStrength = bassLevel * sin(time + float(i));
+              } else if(i % 3 == 1) {
+                morphStrength = midLevel * cos(time * 1.3 + float(i) * 2.0);
+              } else {
+                morphStrength = highLevel * sin(time * 2.0 + float(i) * 0.5);
+              }
+              
+              // Organic morphing effect
+              float morphInfluence = morphStrength * exp(-distance * 2.0);
+              vec3 morphDirection = normalize(position - morphCenter);
+              
+              newPosition += morphDirection * morphInfluence * elasticity;
+              totalMorph += abs(morphInfluence);
+            }
+            
+            // Chaotic jitter for organic feel
+            vec3 chaosOffset = vec3(
+              noise(position + time) - 0.5,
+              noise(position.yzx + time * 1.1) - 0.5,
+              noise(position.zxy + time * 0.9) - 0.5
+            ) * jitterAmount * (1.0 + morphFactor);
+            
+            newPosition += chaosOffset;
+            
+            vPosition = newPosition;
+            vDistortion = totalMorph;
             
             gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
           }
@@ -487,21 +671,26 @@ const AdvancedSpectrogramV2 = () => {
           uniform float highLevel;
           uniform vec3 colorScheme;
           uniform float blobIndex;
-          varying vec2 vUv;
-          varying float vElevation;
+          
+          varying vec3 vNormal;
+          varying vec3 vPosition;
+          varying float vDistortion;
           
           void main() {
-            vec2 center = vUv - 0.5;
-            float distance = length(center);
-            float angle = atan(center.y, center.x);
-            
             vec3 baseColor = colorScheme;
-            vec3 spiralColor = vec3(0.8, 0.4, 1.0) * (sin(angle + time + blobIndex) * 0.4 + 0.6);
-            vec3 finalColor = mix(baseColor, spiralColor, highLevel * 0.9);
             
-            float alpha = 1.0 - distance * 1.3;
-            alpha += abs(vElevation) * 0.35;
-            alpha = clamp(alpha, 0.0, 0.88);
+            // Morphic color shifting
+            vec3 morphColor = vec3(
+              0.5 + 0.5 * sin(time + vDistortion * 8.0),
+              0.6 + 0.4 * cos(time * 1.2 + vDistortion * 6.0),
+              0.7 + 0.3 * sin(time * 1.5 + vDistortion * 4.0)
+            );
+            
+            vec3 finalColor = mix(baseColor, morphColor, vDistortion * 0.8);
+            
+            // Dynamic transparency
+            float alpha = 0.5 + vDistortion * 0.3 + abs(sin(time + blobIndex)) * 0.2;
+            alpha = clamp(alpha, 0.3, 0.9);
             
             gl_FragColor = vec4(finalColor, alpha);
           }
@@ -509,7 +698,19 @@ const AdvancedSpectrogramV2 = () => {
       }
     };
     
-    const shader = shaders[variant] || shaders.pulsing;
+    const shaderType = variant === 'pulsing' ? 'ferroFluid' : 
+                      variant === 'ripple' ? 'elasticBubble' : 'morphicBlob';
+    const shader = shaders[shaderType];
+    
+    // Generate random internal force points
+    const internalForces = [];
+    for(let i = 0; i < 8; i++) {
+      internalForces.push(new THREE.Vector3(
+        (Math.random() - 0.5) * 1.5,
+        (Math.random() - 0.5) * 1.5,
+        (Math.random() - 0.5) * 1.5
+      ));
+    }
     
     return new THREE.ShaderMaterial({
       uniforms: {
@@ -518,7 +719,10 @@ const AdvancedSpectrogramV2 = () => {
         midLevel: { value: 0 },
         highLevel: { value: 0 },
         colorScheme: { value: new THREE.Vector3(1, 0, 0.5) },
-        blobIndex: { value: blobIndex }
+        blobIndex: { value: blobIndex },
+        internalForces: { value: internalForces },
+        elasticity: { value: 0.5 + Math.random() * 0.5 }, // Varying elasticity per blob
+        jitterAmount: { value: 0.1 + Math.random() * 0.1 }
       },
       vertexShader: shader.vertex,
       fragmentShader: shader.fragment,
@@ -527,7 +731,7 @@ const AdvancedSpectrogramV2 = () => {
     });
   }, []);
 
-  // Create multiple dancing blobs
+  // Create multiple 3D spheroid dancing blobs
   const createDancingBlobs = useCallback((scene) => {
     // Clear existing blobs
     blobsRef.current.forEach(blob => {
@@ -543,35 +747,69 @@ const AdvancedSpectrogramV2 = () => {
     
     for (let i = 0; i < blobCount; i++) {
       const variant = variants[i % variants.length];
-      const geometry = new THREE.PlaneGeometry(
-        15 * currentSettings.blobSize, 
-        15 * currentSettings.blobSize, 
-        32, 32
+      
+      // Create 3D spheroid geometry with high detail for smooth deformation
+      const radius = 3 * currentSettings.blobSize * (0.8 + Math.random() * 0.4); // Varying sizes
+      const geometry = new THREE.SphereGeometry(
+        radius,
+        64, // High subdivision for smooth deformation
+        32
       );
-      const material = createBlobMaterial(variant, i);
+      
+      const material = createSpheroidBlobMaterial(variant, i);
       const mesh = new THREE.Mesh(geometry, material);
       
-      // Position blobs in different locations
+      // Position blobs in 3D space with varying depths
       const angle = (i / blobCount) * Math.PI * 2;
-      const radius = 5 + i * 2;
-      mesh.position.set(
-        Math.cos(angle) * radius,
-        Math.sin(angle) * radius * 0.5,
-        -i * 2
-      );
-      mesh.rotation.x = -Math.PI / 2;
+      const radiusPos = 8 + Math.random() * 5;
+      const height = (Math.random() - 0.5) * 6;
+      const depth = (Math.random() - 0.5) * 8;
       
-      // Store blob data
+      mesh.position.set(
+        Math.cos(angle) * radiusPos,
+        height,
+        Math.sin(angle) * radiusPos * 0.7 + depth
+      );
+      
+      // Random initial rotation
+      mesh.rotation.set(
+        Math.random() * Math.PI,
+        Math.random() * Math.PI,
+        Math.random() * Math.PI
+      );
+      
+      // Store blob data with enhanced 3D properties
       const blobData = {
         mesh,
         material,
         geometry,
         variant,
         index: i,
-        basePosition: { x: mesh.position.x, y: mesh.position.y, z: mesh.position.z },
+        basePosition: { 
+          x: mesh.position.x, 
+          y: mesh.position.y, 
+          z: mesh.position.z 
+        },
+        baseRotation: {
+          x: mesh.rotation.x,
+          y: mesh.rotation.y,
+          z: mesh.rotation.z
+        },
         dancePhase: Math.random() * Math.PI * 2,
-        danceSpeed: 0.5 + Math.random() * 1.0,
-        danceRadius: 2 + Math.random() * 3
+        danceSpeed: 0.3 + Math.random() * 0.7,
+        danceRadius: 3 + Math.random() * 4,
+        rotationSpeed: {
+          x: (Math.random() - 0.5) * 0.02,
+          y: (Math.random() - 0.5) * 0.02,
+          z: (Math.random() - 0.5) * 0.02
+        },
+        depthOscillation: {
+          amplitude: 5 + Math.random() * 5,
+          frequency: 0.5 + Math.random() * 1.0,
+          phase: Math.random() * Math.PI * 2
+        },
+        size: radius,
+        elasticity: 0.5 + Math.random() * 0.5
       };
       
       blobsRef.current.push(blobData);
@@ -582,7 +820,7 @@ const AdvancedSpectrogramV2 = () => {
     if (blobsRef.current.length > 0) {
       blobMeshRef.current = blobsRef.current[0].mesh;
     }
-  }, [createBlobMaterial]);
+  }, [createSpheroidBlobMaterial]);
 
   // Clean up 3D scene
   const cleanup3DScene = useCallback(() => {
@@ -841,7 +1079,7 @@ const AdvancedSpectrogramV2 = () => {
     return bassEnergy > threshold && bassEnergy > average * 1.3;
   };
 
-  // Update multiple dancing blobs
+  // Update multiple 3D spheroid dancing blobs with internal force fields
   const updateDancingBlobs = useCallback((audioData, bassAvg, midAvg, highAvg) => {
     if (blobsRef.current.length === 0) return;
     
@@ -857,14 +1095,15 @@ const AdvancedSpectrogramV2 = () => {
       // Update time for animation
       uniforms.time.value = time;
       
-      // Update audio levels with slight variations per blob
-      const bassVariation = 1 + Math.sin(time + index) * 0.2;
-      const midVariation = 1 + Math.cos(time + index * 1.5) * 0.2;
-      const highVariation = 1 + Math.sin(time * 1.3 + index * 0.7) * 0.2;
+      // Update audio levels with variations per blob type
+      const bassVariation = 1 + Math.sin(time * 0.7 + index * 2.1) * 0.3;
+      const midVariation = 1 + Math.cos(time * 1.1 + index * 1.7) * 0.3;
+      const highVariation = 1 + Math.sin(time * 1.5 + index * 0.9) * 0.3;
       
-      uniforms.bassLevel.value = bassAvg * bassVariation;
-      uniforms.midLevel.value = midAvg * midVariation;
-      uniforms.highLevel.value = highAvg * highVariation;
+      // Enhanced audio responsiveness
+      uniforms.bassLevel.value = Math.min(bassAvg * bassVariation * 1.2, 2.0);
+      uniforms.midLevel.value = Math.min(midAvg * midVariation * 1.1, 2.0);
+      uniforms.highLevel.value = Math.min(highAvg * highVariation * 1.0, 2.0);
       
       // Update color scheme
       uniforms.colorScheme.value.set(
@@ -873,70 +1112,112 @@ const AdvancedSpectrogramV2 = () => {
         colors.accent === '#ff0080' ? 0.5 : colors.bass[2] / 255
       );
       
-      // Dance choreography based on mode
-      const danceMode = currentSettings.blobDanceMode;
-      blob.dancePhase += blob.danceSpeed * 0.02;
+      // Update internal force fields dynamically
+      if (uniforms.internalForces) {
+        uniforms.internalForces.value.forEach((force, i) => {
+          // Animate internal force points based on audio
+          const forceTime = time * (0.5 + i * 0.1);
+          const audioInfluence = (bassAvg + midAvg + highAvg) / 3;
+          
+          force.x += Math.sin(forceTime * 2 + i) * audioInfluence * 0.02;
+          force.y += Math.cos(forceTime * 1.5 + i * 2) * audioInfluence * 0.02;
+          force.z += Math.sin(forceTime * 1.8 + i * 1.3) * audioInfluence * 0.02;
+          
+          // Keep forces within reasonable bounds
+          force.clampLength(0, 2.0);
+        });
+      }
       
+      // Advanced 3D choreography
+      const danceMode = currentSettings.blobDanceMode;
+      blob.dancePhase += blob.danceSpeed * 0.015;
+      
+      // Enhanced 3D movement patterns
       switch (danceMode) {
         case 'orbit':
-          // Orbit around center
-          const orbitRadius = blob.danceRadius + bassAvg * 5;
+          // Complex orbital patterns with depth changes
+          const orbitRadius = blob.danceRadius + bassAvg * 4;
           const orbitAngle = blob.dancePhase + index * (Math.PI * 2 / blobsRef.current.length);
+          const heightOscillation = Math.sin(time * blob.depthOscillation.frequency + blob.depthOscillation.phase);
+          
           blob.mesh.position.x = Math.cos(orbitAngle) * orbitRadius;
-          blob.mesh.position.z = Math.sin(orbitAngle) * orbitRadius * 0.5;
-          blob.mesh.position.y = Math.sin(orbitAngle * 2) * 2 + blob.basePosition.y;
+          blob.mesh.position.z = Math.sin(orbitAngle) * orbitRadius * 0.7;
+          blob.mesh.position.y = blob.basePosition.y + heightOscillation * blob.depthOscillation.amplitude + midAvg * 3;
           break;
           
         case 'follow':
-          // Follow the leader (first blob leads)
+          // 3D follow-the-leader with spiral movement
           if (index === 0) {
-            blob.mesh.position.x = Math.cos(blob.dancePhase) * (3 + bassAvg * 4);
-            blob.mesh.position.z = Math.sin(blob.dancePhase * 0.7) * (3 + midAvg * 4);
-            blob.mesh.position.y = Math.sin(blob.dancePhase * 1.3) * (1 + highAvg * 2);
+            const spiralRadius = 5 + bassAvg * 3;
+            blob.mesh.position.x = Math.cos(blob.dancePhase) * spiralRadius;
+            blob.mesh.position.z = Math.sin(blob.dancePhase * 0.8) * spiralRadius;
+            blob.mesh.position.y = Math.sin(blob.dancePhase * 0.6) * 4 + highAvg * 2;
           } else {
-            // Other blobs follow with delay
+            // Follow with 3D offset and lag
             const leader = blobsRef.current[index - 1];
-            const followDelay = 0.5;
-            blob.mesh.position.x = leader.mesh.position.x + Math.cos(blob.dancePhase - followDelay) * 2;
-            blob.mesh.position.z = leader.mesh.position.z + Math.sin(blob.dancePhase - followDelay) * 2;
-            blob.mesh.position.y = leader.mesh.position.y + Math.sin(blob.dancePhase * 2 - followDelay) * 1;
+            const followDelay = 0.3 + index * 0.1;
+            const offset = index * 2;
+            
+            blob.mesh.position.x = leader.mesh.position.x + Math.cos(blob.dancePhase - followDelay) * offset;
+            blob.mesh.position.z = leader.mesh.position.z + Math.sin(blob.dancePhase - followDelay) * offset;
+            blob.mesh.position.y = leader.mesh.position.y + Math.sin(blob.dancePhase * 2 - followDelay) * 2;
           }
           break;
           
         case 'scatter':
-          // Random scattered movement
-          blob.mesh.position.x = blob.basePosition.x + Math.cos(blob.dancePhase) * (blob.danceRadius + bassAvg * 3);
-          blob.mesh.position.z = blob.basePosition.z + Math.sin(blob.dancePhase * 1.3) * (blob.danceRadius + midAvg * 3);
-          blob.mesh.position.y = blob.basePosition.y + Math.sin(blob.dancePhase * 0.8) * (1 + highAvg * 2);
+          // Chaotic 3D movement with audio-reactive bounds
+          const scatterIntensity = (bassAvg + midAvg + highAvg) / 3;
+          blob.mesh.position.x = blob.basePosition.x + Math.cos(blob.dancePhase) * (blob.danceRadius + scatterIntensity * 4);
+          blob.mesh.position.z = blob.basePosition.z + Math.sin(blob.dancePhase * 1.4) * (blob.danceRadius + scatterIntensity * 4);
+          blob.mesh.position.y = blob.basePosition.y + Math.sin(blob.dancePhase * 0.9) * (3 + scatterIntensity * 3);
           break;
           
         case 'sync':
-          // Synchronized movement
-          const syncPhase = time + index * 0.2;
-          blob.mesh.position.x = Math.cos(syncPhase) * (4 + bassAvg * 3);
-          blob.mesh.position.z = Math.sin(syncPhase * 0.8) * (4 + midAvg * 3);
-          blob.mesh.position.y = Math.sin(syncPhase * 1.5) * (1 + highAvg * 2);
+          // Synchronized 3D formations
+          const syncPhase = time * 0.8 + index * 0.15;
+          const formationRadius = 6 + (bassAvg + midAvg + highAvg) * 2;
+          
+          blob.mesh.position.x = Math.cos(syncPhase) * formationRadius;
+          blob.mesh.position.z = Math.sin(syncPhase * 0.7) * formationRadius;
+          blob.mesh.position.y = Math.sin(syncPhase * 1.2) * 3 + index * 1.5;
           break;
       }
       
-      // Add some rotation for extra movement
-      blob.mesh.rotation.z += 0.002 + bassAvg * 0.01;
+      // Full 3D rotation with audio responsiveness
+      blob.mesh.rotation.x += blob.rotationSpeed.x * (1 + bassAvg);
+      blob.mesh.rotation.y += blob.rotationSpeed.y * (1 + midAvg);
+      blob.mesh.rotation.z += blob.rotationSpeed.z * (1 + highAvg);
       
-      // Blob interaction - attract/repel based on audio
+      // Enhanced blob interaction with 3D forces
       if (currentSettings.blobInteraction && blobsRef.current.length > 1) {
         blobsRef.current.forEach((otherBlob, otherIndex) => {
           if (index !== otherIndex) {
             const distance = blob.mesh.position.distanceTo(otherBlob.mesh.position);
-            const force = (bassAvg + midAvg + highAvg) * 0.1;
+            const audioForce = (bassAvg + midAvg + highAvg) * 0.15;
             
-            if (distance < 10 && distance > 0.1) {
-              // Gentle repulsion when too close
+            if (distance < 12 && distance > 0.1) {
+              // Complex 3D interaction forces
               const direction = blob.mesh.position.clone().sub(otherBlob.mesh.position).normalize();
-              blob.mesh.position.add(direction.multiplyScalar(force * 0.5));
+              
+              // Repulsion force
+              if (distance < 8) {
+                blob.mesh.position.add(direction.multiplyScalar(audioForce * 0.8));
+              }
+              
+              // Orbital attraction at medium distance
+              if (distance > 6 && distance < 10) {
+                const tangent = new THREE.Vector3(-direction.z, 0, direction.x);
+                blob.mesh.position.add(tangent.multiplyScalar(audioForce * 0.3));
+              }
             }
           }
         });
       }
+      
+      // Dynamic scaling based on internal forces
+      const totalAudio = bassAvg + midAvg + highAvg;
+      const scaleVariation = 1 + totalAudio * 0.2 + Math.sin(time * 2 + index) * 0.1;
+      blob.mesh.scale.setScalar(scaleVariation);
     });
   }, [colorSchemes]);
 
@@ -1883,6 +2164,13 @@ const AdvancedSpectrogramV2 = () => {
                 Optimize
               </button>
               <button
+                onClick={resetToDefaults}
+                className="text-xs bg-gray-600 hover:bg-gray-700 text-white px-3 py-1 rounded transition-colors"
+                title="Reset all settings to factory defaults"
+              >
+                Defaults
+              </button>
+              <button
                 onClick={() => setShowSettings(false)}
                 className="text-gray-400 hover:text-white"
               >
@@ -2149,24 +2437,68 @@ const AdvancedSpectrogramV2 = () => {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-300">Blob Interaction</span>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-300">Blob Interaction</span>
+                  <input
+                    type="checkbox"
+                    checked={settings.blobInteraction}
+                    onChange={(e) => setSettings({ ...settings, blobInteraction: e.target.checked })}
+                    className="w-4 h-4"
+                  />
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-300">Ferro-Fluid Mode</span>
+                  <input
+                    type="checkbox"
+                    checked={settings.ferroFluidMode}
+                    onChange={(e) => setSettings({ ...settings, ferroFluidMode: e.target.checked })}
+                    className="w-4 h-4"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="flex justify-between text-sm text-gray-300 mb-1">
+                  <span>Elasticity</span>
+                  <span>{settings.blobElasticity.toFixed(2)}</span>
+                </label>
                 <input
-                  type="checkbox"
-                  checked={settings.blobInteraction}
-                  onChange={(e) => setSettings({ ...settings, blobInteraction: e.target.checked })}
-                  className="w-4 h-4"
+                  type="range"
+                  min="0.2"
+                  max="1.5"
+                  step="0.1"
+                  value={settings.blobElasticity}
+                  onChange={(e) => setSettings({ ...settings, blobElasticity: parseFloat(e.target.value) })}
+                  className="w-full"
                 />
               </div>
 
               <details className="group">
                 <summary className="text-sm text-gray-400 cursor-pointer hover:text-gray-300 select-none">
-                  Advanced 3D Settings ▼
+                  Advanced Physics Settings ▼
                 </summary>
                 <div className="mt-3 space-y-3 pl-2 border-l-2 border-gray-700">
                   <div>
                     <label className="flex justify-between text-sm text-gray-300 mb-1">
-                      <span>Blob Tension</span>
+                      <span>Internal Force Points</span>
+                      <span>{settings.internalForces}</span>
+                    </label>
+                    <input
+                      type="range"
+                      min="4"
+                      max="12"
+                      step="1"
+                      value={settings.internalForces}
+                      onChange={(e) => setSettings({ ...settings, internalForces: parseInt(e.target.value) })}
+                      className="w-full"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="flex justify-between text-sm text-gray-300 mb-1">
+                      <span>Surface Tension</span>
                       <span>{settings.blobTension.toFixed(2)}</span>
                     </label>
                     <input
@@ -2357,9 +2689,29 @@ const AdvancedSpectrogramV2 = () => {
             </div>
           )}
 
-          {/* Export/Import */}
+          {/* Settings Management */}
           <div className="space-y-2">
             <h3 className="text-lg font-semibold text-white mb-2">Settings Management</h3>
+            
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                onClick={resetToDefaults}
+                className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white rounded-lg px-4 py-2 transition-colors"
+                title="Reset all settings to factory defaults"
+              >
+                <Settings className="w-4 h-4" />
+                Reset Defaults
+              </button>
+              <button
+                onClick={() => applyModeOptimizedSettings(visualMode)}
+                className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-4 py-2 transition-colors"
+                title="Optimize for current visualization mode"
+              >
+                <Zap className="w-4 h-4" />
+                Optimize Mode
+              </button>
+            </div>
+            
             <button
               onClick={exportSettings}
               className="w-full flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 text-white rounded-lg px-4 py-2 transition-colors"
