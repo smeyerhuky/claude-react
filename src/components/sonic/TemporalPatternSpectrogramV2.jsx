@@ -679,6 +679,27 @@ const TemporalPatternSpectrogramV2 = () => {
     return () => window.removeEventListener('resize', updateCanvasSize);
   }, [visualMode]);
 
+  // Fullscreen functionality
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      containerRef.current?.requestFullscreen();
+      setIsFullscreen(true);
+    } else {
+      document.exitFullscreen();
+      setIsFullscreen(false);
+    }
+  };
+
+  // Listen for fullscreen changes
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
+
   // Cleanup
   useEffect(() => {
     return () => {
@@ -912,6 +933,32 @@ const TemporalPatternSpectrogramV2 = () => {
               title="Take pattern snapshot"
             >
               <Camera className="w-5 h-5" />
+            </button>
+
+            {recordedChunks.length > 0 && (
+              <button
+                onClick={() => {
+                  const blob = new Blob(recordedChunks, { type: 'audio/webm' });
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement('a');
+                  a.href = url;
+                  a.download = `pattern-analysis-${Date.now()}.webm`;
+                  a.click();
+                  URL.revokeObjectURL(url);
+                }}
+                className="p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+                title="Download pattern recording"
+              >
+                <Download className="w-5 h-5" />
+              </button>
+            )}
+
+            <button
+              onClick={toggleFullscreen}
+              className="p-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
+              title="Toggle fullscreen"
+            >
+              {isFullscreen ? <Minimize2 className="w-5 h-5" /> : <Maximize2 className="w-5 h-5" />}
             </button>
           </div>
         </div>
