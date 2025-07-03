@@ -10,6 +10,7 @@ import './App.css'
 import ESP32ThereminInterface from './components/sonic/ESP32ThereminInterface'
 import ConcertSpectogram from './components/sonic/ConcertSpectogram'
 import EDMSpectrogram from './components/sonic/EDMSpectrogram'
+import AdvancedSpectrogram from './components/sonic/AdvancedSpectrogramV2'
 import ImageSonificationDJMixer from './components/sonic/ImageSonificationDJMixer'
 
 
@@ -19,6 +20,7 @@ const navigationItems = [
   { id: 'sonique', label: 'DJ Sonique', component: ImageSonificationDJMixer },
   { id: 'concert-spectrogram', label: "Concert Spectrogram", component: ConcertSpectogram },
   { id: 'edm-spectrogram', label: "EDM Spectrogram", component: EDMSpectrogram },
+  { id: 'advanced-spectrogram', label: "Advanced Spectrogram", component: AdvancedSpectrogram },
   // { id: 'diet-med-lat', label: 'MediterraneanLatino Recipes', component: MediterraneanLatinoRecipesEnglish },
   // { id: 'languages-hu', label: 'Magyar Soundgarden', component: MagyarSoundGarden },
   // { id: 'msg', label: "MSG - Magyar Sound Garden", component: MSG },
