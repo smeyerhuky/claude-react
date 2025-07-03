@@ -30,10 +30,10 @@ const AdvancedSpectrogramV2 = () => {
     bloomStrength: 1.5,
     windowFunction: 'hann',
     stringCount: 5,
-    stringTension: 0.8,
-    stringDamping: 0.95,
+    stringTension: 0.7,
+    stringDamping: 0.88,
     stringThickness: 3,
-    stringSegments: 50
+    stringSegments: 25
   });
   
   // Audio analysis state
@@ -124,21 +124,23 @@ const AdvancedSpectrogramV2 = () => {
       this.points = [];
       this.velocities = [];
       this.forces = [];
+      this.isActive = false;
+      this.lastPlucked = 0;
       
       // Initialize string points
       for (let i = 0; i <= segments; i++) {
-        this.points.push({ x: 0, y: 0 });
+        this.points.push({ x: 0, y: 0, baseY: 0 });
         this.velocities.push({ x: 0, y: 0 });
         this.forces.push({ x: 0, y: 0 });
       }
     }
 
     setEndpoints(x1, y1, x2, y2) {
-      const segmentLength = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2) / this.segments;
       for (let i = 0; i <= this.segments; i++) {
         const t = i / this.segments;
         this.points[i].x = x1 + (x2 - x1) * t;
         this.points[i].y = y1 + (y2 - y1) * t;
+        this.points[i].baseY = y1 + (y2 - y1) * t; // Store original Y position
       }
     }
 
@@ -151,50 +153,64 @@ const AdvancedSpectrogramV2 = () => {
 
     pluck(position, strength) {
       const segmentIndex = Math.floor(position * this.segments);
-      this.applyForce(segmentIndex, 0, strength);
+      const displacement = strength * 10;
+      const direction = Math.random() > 0.5 ? 1 : -1;
+      
+      // Apply displacement to nearby points with falloff
+      const halfWidth = Math.floor(this.segments / 8);
+      for (let i = Math.max(1, segmentIndex - halfWidth); 
+           i <= Math.min(this.segments - 1, segmentIndex + halfWidth); 
+           i++) {
+        const distanceFactor = 1 - (Math.abs(i - segmentIndex) / halfWidth);
+        const pointDisplacement = displacement * distanceFactor;
+        this.points[i].y = this.points[i].baseY + (direction * pointDisplacement);
+        this.velocities[i].y = -direction * (strength * distanceFactor * 2);
+      }
     }
 
     update() {
       // Calculate spring forces between adjacent points
-      for (let i = 1; i < this.segments; i++) {
-        const curr = this.points[i];
-        const prev = this.points[i - 1];
-        const next = this.points[i + 1];
+      for (let i = 0; i < this.points.length; i++) {
+        let force = 0;
         
-        // Spring force to previous point
-        const dx1 = prev.x - curr.x;
-        const dy1 = prev.y - curr.y;
-        const dist1 = Math.sqrt(dx1 * dx1 + dy1 * dy1);
+        // Force from left neighbor
+        if (i > 0) {
+          force += (this.points[i-1].y - this.points[i].y) * this.tension;
+        }
         
-        // Spring force to next point
-        const dx2 = next.x - curr.x;
-        const dy2 = next.y - curr.y;
-        const dist2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+        // Force from right neighbor
+        if (i < this.points.length - 1) {
+          force += (this.points[i+1].y - this.points[i].y) * this.tension;
+        }
         
-        // Apply spring forces
-        const springForce = this.tension * 0.1;
-        this.forces[i].x += (dx1 + dx2) * springForce;
-        this.forces[i].y += (dy1 + dy2) * springForce;
+        // Add force towards rest position
+        force += (this.points[i].baseY - this.points[i].y) * (this.tension * 0.1);
+        
+        // Store force
+        this.forces[i].y = force;
       }
 
       // Update velocities and positions (except endpoints)
-      for (let i = 1; i < this.segments; i++) {
-        // Apply forces to velocity
-        this.velocities[i].x += this.forces[i].x;
-        this.velocities[i].y += this.forces[i].y;
-        
-        // Apply damping
-        this.velocities[i].x *= this.damping;
-        this.velocities[i].y *= this.damping;
+      for (let i = 1; i < this.points.length - 1; i++) {
+        // Update velocity with damping
+        this.velocities[i].y = this.velocities[i].y * this.damping + this.forces[i].y;
         
         // Update position
-        this.points[i].x += this.velocities[i].x;
         this.points[i].y += this.velocities[i].y;
         
         // Clear forces
-        this.forces[i].x = 0;
         this.forces[i].y = 0;
       }
+
+      // Check if string is active (has movement)
+      let isActive = false;
+      for (let i = 1; i < this.points.length - 1; i++) {
+        if (Math.abs(this.velocities[i].y) > 0.05) {
+          isActive = true;
+          break;
+        }
+      }
+      this.isActive = isActive;
 
       // Keep endpoints fixed (they don't move)
       // First and last points remain at their original positions
@@ -501,16 +517,29 @@ const AdvancedSpectrogramV2 = () => {
     const beat = detectBeat(bassAvg);
     setBeatDetected(beat);
     
-    // Apply beat-based string plucking
+    // Apply very controlled beat-based string plucking (EDM bass-friendly)
     if (beat && visualModeRef.current === 'stringTheory' && stringsRef.current.length > 0) {
-      stringsRef.current.forEach((string, index) => {
-        if (string) {
-          // Pluck strings at random positions on beat
-          const pluckPosition = 0.3 + Math.random() * 0.4; // Middle area
-          const pluckStrength = bassAvg * 20;
-          string.pluck(pluckPosition, pluckStrength);
-        }
-      });
+      const beatIntensity = (bassAvg + midAvg + highAvg) / 3;
+      
+      // Only respond to significant beats to avoid EDM bass overload
+      if (beatIntensity > 0.5) {
+        // Select only 2-3 strings for each beat to reduce chaos
+        const activeStrings = Math.floor(Math.random() * 2) + 2; // 2-3 strings
+        const stringIndices = Array.from({length: stringsRef.current.length}, (_, i) => i)
+          .sort(() => Math.random() - 0.5)
+          .slice(0, activeStrings);
+        
+        stringIndices.forEach((stringIndex, i) => {
+          const string = stringsRef.current[stringIndex];
+          if (string) {
+            setTimeout(() => {
+              const pluckPosition = 0.35 + Math.random() * 0.3;
+              const pluckStrength = beatIntensity * (8 + Math.random() * 6); // Much gentler
+              string.pluck(pluckPosition, pluckStrength);
+            }, i * 50); // Slower stagger
+          }
+        });
+      }
     }
     
     // Update mel-spectrogram
@@ -595,22 +624,39 @@ const AdvancedSpectrogramV2 = () => {
       // Set string endpoints
       string.setEndpoints(margin, stringY, width - margin, stringY);
       
-      // Calculate frequency band energy for this string
+      // Calculate frequency band energy for this string with enhanced sensitivity
       const startBand = stringIndex * bandsPerString;
       const endBand = Math.min((stringIndex + 1) * bandsPerString, frequencyData.length);
       let bandEnergy = 0;
+      let peakEnergy = 0;
       
       for (let i = startBand; i < endBand; i++) {
         bandEnergy += frequencyData[i];
+        peakEnergy = Math.max(peakEnergy, frequencyData[i]);
       }
-      bandEnergy = (bandEnergy / (endBand - startBand)) / 255 * currentSettings.sensitivity;
       
-      // Apply forces based on frequency energy
-      const numForcePoints = 5;
-      for (let i = 0; i < numForcePoints; i++) {
-        const position = (i + 1) / (numForcePoints + 1);
-        const forceStrength = bandEnergy * (Math.random() * 0.5 + 0.5) * 10;
-        string.pluck(position, forceStrength * (Math.random() - 0.5));
+      // Use balanced energy calculation optimized for EDM
+      const avgEnergy = (bandEnergy / (endBand - startBand)) / 255;
+      const normalizedPeak = peakEnergy / 255;
+      bandEnergy = Math.max(avgEnergy, normalizedPeak * 0.3) * currentSettings.sensitivity * 0.8; // Much less sensitive
+      
+      // Apply gentle plucks based on frequency analysis (EDM-friendly)
+      if (bandEnergy > 0.4) { // Much higher threshold for EDM
+        const numPlucks = Math.min(Math.floor(bandEnergy * 2), 2); // Max 2 plucks, less frequent
+        for (let i = 0; i < numPlucks; i++) {
+          const position = 0.35 + Math.random() * 0.3; // Smaller pluck area
+          const pluckStrength = bandEnergy * (0.4 + Math.random() * 0.2) * 8; // Much gentler
+          string.pluck(position, pluckStrength);
+        }
+      }
+      
+      // Very subtle continuous vibration only for high energy
+      if (bandEnergy > 0.6) { // Only for very high energy
+        const vibrateStrength = bandEnergy * 3; // Much reduced
+        for (let i = 1; i < string.points.length - 1; i += 6) { // Even less frequent
+          const randomForce = (Math.random() - 0.5) * vibrateStrength;
+          string.velocities[i].y += randomForce;
+        }
       }
       
       // Update string physics
@@ -623,31 +669,72 @@ const AdvancedSpectrogramV2 = () => {
       const stringColorIndex = stringIndex % 3;
       const stringColors = [colors.bass, colors.mid, colors.high];
       const baseColor = stringColors[stringColorIndex];
-      const intensity = Math.min(1, bandEnergy * 2);
+      const intensity = Math.min(1, bandEnergy * 1.5);
       
-      // Draw string with glow effect
-      ctx.strokeStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${0.8 + intensity * 0.2})`;
-      ctx.lineWidth = currentSettings.stringThickness + intensity * 2;
+      // Variable thickness based on string index (thicker for bass strings)
+      const baseThickness = currentSettings.stringThickness;
+      const thickness = baseThickness + (stringCount - stringIndex - 1) * 0.8;
+      
+      // Different colors for active vs inactive strings (EDM-friendly threshold)
+      const isStringActive = string.isActive || intensity > 0.35;
+      ctx.strokeStyle = isStringActive 
+        ? `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${0.9 + intensity * 0.1})` 
+        : `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${0.6 + intensity * 0.2})`;
+      ctx.lineWidth = thickness + intensity * 2;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
       
-      // Add glow effect for high energy
-      if (intensity > 0.5) {
+      // Add glow effect to active strings
+      if (isStringActive) {
+        ctx.save();
         ctx.shadowColor = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, 0.8)`;
         ctx.shadowBlur = 10 + intensity * 20;
       } else {
         ctx.shadowBlur = 0;
       }
       
-      // Draw the string curve
+      // Draw the string with Bezier curves for smooth appearance
       ctx.beginPath();
       ctx.moveTo(points[0].x, points[0].y);
       
       for (let i = 1; i < points.length; i++) {
-        ctx.lineTo(points[i].x, points[i].y);
+        // Create control points for bezier curve
+        const cp1x = points[i-1].x + (points[i].x - points[i-1].x) / 3;
+        const cp1y = points[i-1].y;
+        const cp2x = points[i].x - (points[i].x - points[i-1].x) / 3;
+        const cp2y = points[i].y;
+        
+        // Draw bezier curve
+        ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, points[i].x, points[i].y);
       }
       
       ctx.stroke();
+      
+      // Restore context if glow was applied
+      if (isStringActive) {
+        ctx.restore();
+      }
+      
+      // Draw active vibration points with enhanced visibility
+      if (isStringActive) {
+        for (let i = 1; i < points.length - 1; i++) {
+          const velocity = Math.abs(string.velocities[i].y);
+          if (velocity > 0.02) { // Lower threshold for more visible points
+            const opacity = Math.min(velocity / 2, 0.9);
+            const size = 2 + velocity * 3; // Bigger vibration points
+            
+            ctx.beginPath();
+            ctx.arc(points[i].x, points[i].y, size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${opacity})`;
+            
+            ctx.save();
+            ctx.shadowColor = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, 0.9)`;
+            ctx.shadowBlur = 8 + velocity * 5;
+            ctx.fill();
+            ctx.restore();
+          }
+        }
+      }
       
       // Draw string endpoints (tuning pegs)
       ctx.fillStyle = `rgb(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]})`;
