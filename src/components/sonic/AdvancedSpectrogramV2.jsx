@@ -24,19 +24,13 @@ const AdvancedSpectrogramV2 = () => {
     fftSize: 2048,
     smoothing: 0.75,
     
-    // Blob/3D mode optimized settings
+    // Blob/3D mode optimized settings with intelligent presets
     spectrogram3d: {
-      blobCount: 3,
-      blobVariants: ['pulsing', 'ripple', 'spiral'],
-      blobDanceMode: 'orbit',
+      blobCount: 4,
+      blobDanceStyle: 'balanced', // balanced, energetic, chill, chaotic
       blobInteraction: true,
-      blobSize: 1.0,
-      blobTension: 0.5,
       particleCount: 1500,
-      trailLength: 0.85,
-      blobElasticity: 0.7,
-      internalForces: 8,
-      ferroFluidMode: true
+      trailLength: 0.85
     },
     
     // String theory optimized settings
@@ -85,16 +79,10 @@ const AdvancedSpectrogramV2 = () => {
     maxFreq: defaultSettings.melSpectrogram.maxFreq,
     trailLength: defaultSettings.spectrogram3d.trailLength,
     
-    // Blob settings
+    // Simplified blob settings
     blobCount: defaultSettings.spectrogram3d.blobCount,
-    blobVariants: defaultSettings.spectrogram3d.blobVariants,
-    blobDanceMode: defaultSettings.spectrogram3d.blobDanceMode,
+    blobDanceStyle: defaultSettings.spectrogram3d.blobDanceStyle,
     blobInteraction: defaultSettings.spectrogram3d.blobInteraction,
-    blobSize: defaultSettings.spectrogram3d.blobSize,
-    blobTension: defaultSettings.spectrogram3d.blobTension,
-    blobElasticity: defaultSettings.spectrogram3d.blobElasticity,
-    internalForces: defaultSettings.spectrogram3d.internalForces,
-    ferroFluidMode: defaultSettings.spectrogram3d.ferroFluidMode,
     
     // String settings
     stringCount: defaultSettings.stringTheory.stringCount,
@@ -175,6 +163,42 @@ const AdvancedSpectrogramV2 = () => {
     }
   }, [defaultSettings]);
 
+  // Define intelligent dance style presets
+  const danceStylePresets = useMemo(() => ({
+    balanced: {
+      elasticity: 0.6,
+      internalForces: 6,
+      movementSpeed: 0.5,
+      interactionStrength: 0.4,
+      physicsLimits: { max: 1.5, tension: 0.7 },
+      description: 'Smooth, balanced movements with gentle interactions'
+    },
+    energetic: {
+      elasticity: 0.8,
+      internalForces: 8,
+      movementSpeed: 0.8,
+      interactionStrength: 0.7,
+      physicsLimits: { max: 1.2, tension: 0.5 },
+      description: 'High-energy dancing with strong beat response'
+    },
+    chill: {
+      elasticity: 0.4,
+      internalForces: 4,
+      movementSpeed: 0.3,
+      interactionStrength: 0.2,
+      physicsLimits: { max: 0.8, tension: 0.9 },
+      description: 'Relaxed, flowing movements with minimal interactions'
+    },
+    chaotic: {
+      elasticity: 1.0,
+      internalForces: 10,
+      movementSpeed: 1.0,
+      interactionStrength: 0.9,
+      physicsLimits: { max: 1.0, tension: 0.3 },
+      description: 'Wild, unpredictable movements with complex interactions'
+    }
+  }), []);
+
   // Reset all settings to optimal defaults
   const resetToDefaults = useCallback(() => {
     if (window.confirm('Reset all settings to factory defaults? This will override all your custom configurations.')) {
@@ -188,16 +212,10 @@ const AdvancedSpectrogramV2 = () => {
         maxFreq: defaultSettings.melSpectrogram.maxFreq,
         trailLength: defaultSettings.spectrogram3d.trailLength,
         
-        // Blob settings
+        // Simplified blob settings
         blobCount: defaultSettings.spectrogram3d.blobCount,
-        blobVariants: defaultSettings.spectrogram3d.blobVariants,
-        blobDanceMode: defaultSettings.spectrogram3d.blobDanceMode,
+        blobDanceStyle: defaultSettings.spectrogram3d.blobDanceStyle,
         blobInteraction: defaultSettings.spectrogram3d.blobInteraction,
-        blobSize: defaultSettings.spectrogram3d.blobSize,
-        blobTension: defaultSettings.spectrogram3d.blobTension,
-        blobElasticity: defaultSettings.spectrogram3d.blobElasticity,
-        internalForces: defaultSettings.spectrogram3d.internalForces,
-        ferroFluidMode: defaultSettings.spectrogram3d.ferroFluidMode,
         
         // String settings
         stringCount: defaultSettings.stringTheory.stringCount,
@@ -395,8 +413,8 @@ const AdvancedSpectrogramV2 = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Create 3D spheroid blob materials with internal force fields (ferro-fluid like)
-  const createSpheroidBlobMaterial = useCallback((variant, blobIndex) => {
+  // Create 3D spheroid blob materials with spectrum mapping and controlled physics
+  const createSpheroidBlobMaterial = useCallback((spectrumRange, blobIndex) => {
     const shaders = {
       ferroFluid: {
         vertex: `
@@ -445,22 +463,23 @@ const AdvancedSpectrogramV2 = () => {
               // Direction from force point to surface (outward push)
               vec3 forceDirection = normalize(position - forcePoint);
               
-              // Apply force with distance attenuation
-              newPosition += forceDirection * forceMagnitude * elasticity;
-              totalForce += forceMagnitude;
+              // Apply force with distance attenuation and physics limits
+              float limitedMagnitude = clamp(forceMagnitude * elasticity, 0.0, 0.8);
+              newPosition += forceDirection * limitedMagnitude;
+              totalForce += limitedMagnitude;
             }
             
-            // Add elastic jitter for organic feel
-            float jitter = noise(position * 10.0 + time) * jitterAmount;
-            newPosition += normal * jitter * (0.5 + 0.5 * sin(time * 3.0 + blobIndex));
+            // Add controlled elastic jitter
+            float jitter = noise(position * 10.0 + time) * jitterAmount * 0.3; // Reduced jitter
+            newPosition += normal * clamp(jitter * (0.5 + 0.5 * sin(time * 3.0 + blobIndex)), -0.2, 0.2);
             
-            // Add breathing motion
-            float breathing = sin(time * 1.5 + blobIndex) * 0.3;
-            newPosition += normal * breathing;
+            // Add gentle breathing motion
+            float breathing = sin(time * 1.5 + blobIndex) * 0.15; // Reduced breathing
+            newPosition += normal * clamp(breathing, -0.3, 0.3);
             
-            // Surface tension effects - pull vertices toward sphere when calm
-            float tension = 1.0 - totalForce * 0.5;
-            newPosition = mix(newPosition, normalize(position) * length(position), tension * 0.2);
+            // Strong surface tension to prevent explosions
+            float tension = 1.0 - totalForce * 0.3;
+            newPosition = mix(newPosition, normalize(position) * length(position), max(tension * 0.4, 0.2));
             
             vPosition = newPosition;
             vDistortion = totalForce;
@@ -698,8 +717,8 @@ const AdvancedSpectrogramV2 = () => {
       }
     };
     
-    const shaderType = variant === 'pulsing' ? 'ferroFluid' : 
-                      variant === 'ripple' ? 'elasticBubble' : 'morphicBlob';
+    const shaderType = spectrumRange === 'bass' ? 'ferroFluid' : 
+                      spectrumRange === 'mid' ? 'elasticBubble' : 'morphicBlob';
     const shader = shaders[shaderType];
     
     // Generate random internal force points
@@ -731,7 +750,7 @@ const AdvancedSpectrogramV2 = () => {
     });
   }, []);
 
-  // Create multiple 3D spheroid dancing blobs
+  // Create spectrum-mapped dancing blobs with intelligent presets
   const createDancingBlobs = useCallback((scene) => {
     // Clear existing blobs
     blobsRef.current.forEach(blob => {
@@ -743,47 +762,59 @@ const AdvancedSpectrogramV2 = () => {
     
     const currentSettings = settingsRef.current;
     const blobCount = currentSettings.blobCount;
-    const variants = currentSettings.blobVariants;
+    const danceStyle = danceStylePresets[currentSettings.blobDanceStyle] || danceStylePresets.balanced;
     
-    for (let i = 0; i < blobCount; i++) {
-      const variant = variants[i % variants.length];
+    // Define frequency ranges and colors for each blob
+    const spectrumMapping = [
+      { range: 'bass', color: [1.0, 0.2, 0.3], name: 'Bass' },      // Red - Bass (20-250 Hz)
+      { range: 'lowMid', color: [1.0, 0.6, 0.1], name: 'Low-Mid' }, // Orange - Low-mid (250-500 Hz)
+      { range: 'mid', color: [0.3, 1.0, 0.3], name: 'Mid' },        // Green - Mid (500-2000 Hz)
+      { range: 'highMid', color: [0.1, 0.7, 1.0], name: 'High-Mid' }, // Blue - High-mid (2000-4000 Hz)
+      { range: 'presence', color: [0.7, 0.3, 1.0], name: 'Presence' }, // Purple - Presence (4000-8000 Hz)
+      { range: 'brilliance', color: [1.0, 1.0, 0.3], name: 'Brilliance' } // Yellow - Brilliance (8000+ Hz)
+    ];
+    
+    for (let i = 0; i < Math.min(blobCount, 6); i++) {
+      const spectrumData = spectrumMapping[i];
       
-      // Create 3D spheroid geometry with high detail for smooth deformation
-      const radius = 3 * currentSettings.blobSize * (0.8 + Math.random() * 0.4); // Varying sizes
+      // Create 3D spheroid geometry with controlled detail for performance
+      const baseSize = 2.5 + (i * 0.3); // Different sizes based on frequency range
       const geometry = new THREE.SphereGeometry(
-        radius,
-        64, // High subdivision for smooth deformation
-        32
+        baseSize,
+        48, // Optimized subdivision for performance vs quality
+        24
       );
       
-      const material = createSpheroidBlobMaterial(variant, i);
+      const material = createSpheroidBlobMaterial(spectrumData.range, i);
       const mesh = new THREE.Mesh(geometry, material);
       
-      // Position blobs in 3D space with varying depths
+      // Position blobs in spectrum-based arrangement
       const angle = (i / blobCount) * Math.PI * 2;
-      const radiusPos = 8 + Math.random() * 5;
-      const height = (Math.random() - 0.5) * 6;
-      const depth = (Math.random() - 0.5) * 8;
+      const radiusPos = 6 + i * 1.5; // Spread based on frequency
+      const height = Math.sin(angle) * 2;
+      const depth = Math.cos(angle * 0.7) * 3;
       
       mesh.position.set(
         Math.cos(angle) * radiusPos,
         height,
-        Math.sin(angle) * radiusPos * 0.7 + depth
+        Math.sin(angle) * radiusPos * 0.6 + depth
       );
       
-      // Random initial rotation
+      // Controlled initial rotation
       mesh.rotation.set(
-        Math.random() * Math.PI,
-        Math.random() * Math.PI,
-        Math.random() * Math.PI
+        (Math.random() - 0.5) * 0.5,
+        (Math.random() - 0.5) * 0.5,
+        (Math.random() - 0.5) * 0.5
       );
       
-      // Store blob data with enhanced 3D properties
+      // Store blob data with spectrum mapping and style presets
       const blobData = {
         mesh,
         material,
         geometry,
-        variant,
+        spectrumRange: spectrumData.range,
+        spectrumColor: spectrumData.color,
+        spectrumName: spectrumData.name,
         index: i,
         basePosition: { 
           x: mesh.position.x, 
@@ -796,20 +827,22 @@ const AdvancedSpectrogramV2 = () => {
           z: mesh.rotation.z
         },
         dancePhase: Math.random() * Math.PI * 2,
-        danceSpeed: 0.3 + Math.random() * 0.7,
-        danceRadius: 3 + Math.random() * 4,
+        danceSpeed: danceStyle.movementSpeed * (0.8 + Math.random() * 0.4),
+        danceRadius: 2 + i * 0.5,
         rotationSpeed: {
-          x: (Math.random() - 0.5) * 0.02,
-          y: (Math.random() - 0.5) * 0.02,
-          z: (Math.random() - 0.5) * 0.02
+          x: (Math.random() - 0.5) * 0.01 * danceStyle.movementSpeed,
+          y: (Math.random() - 0.5) * 0.01 * danceStyle.movementSpeed,
+          z: (Math.random() - 0.5) * 0.01 * danceStyle.movementSpeed
         },
         depthOscillation: {
-          amplitude: 5 + Math.random() * 5,
-          frequency: 0.5 + Math.random() * 1.0,
+          amplitude: 2 + i * 0.5,
+          frequency: danceStyle.movementSpeed * (0.5 + Math.random() * 0.5),
           phase: Math.random() * Math.PI * 2
         },
-        size: radius,
-        elasticity: 0.5 + Math.random() * 0.5
+        size: baseSize,
+        elasticity: danceStyle.elasticity,
+        interactionStrength: danceStyle.interactionStrength,
+        physicsLimits: danceStyle.physicsLimits
       };
       
       blobsRef.current.push(blobData);
@@ -820,7 +853,7 @@ const AdvancedSpectrogramV2 = () => {
     if (blobsRef.current.length > 0) {
       blobMeshRef.current = blobsRef.current[0].mesh;
     }
-  }, [createSpheroidBlobMaterial]);
+  }, [createSpheroidBlobMaterial, danceStylePresets]);
 
   // Clean up 3D scene
   const cleanup3DScene = useCallback(() => {
@@ -1079,13 +1112,66 @@ const AdvancedSpectrogramV2 = () => {
     return bassEnergy > threshold && bassEnergy > average * 1.3;
   };
 
-  // Update multiple 3D spheroid dancing blobs with internal force fields
+  // Analyze frequency spectrum for individual blob ranges
+  const analyzeSpectrumForBlob = useCallback((audioData, spectrumRange) => {
+    const bufferLength = audioData.length;
+    let startBin, endBin;
+    
+    // Map frequency ranges to FFT bins (assuming 48kHz sample rate)
+    switch (spectrumRange) {
+      case 'bass':
+        startBin = 0;
+        endBin = Math.floor(bufferLength * 0.05); // ~20-250 Hz
+        break;
+      case 'lowMid':
+        startBin = Math.floor(bufferLength * 0.05);
+        endBin = Math.floor(bufferLength * 0.1); // ~250-500 Hz
+        break;
+      case 'mid':
+        startBin = Math.floor(bufferLength * 0.1);
+        endBin = Math.floor(bufferLength * 0.3); // ~500-2000 Hz
+        break;
+      case 'highMid':
+        startBin = Math.floor(bufferLength * 0.3);
+        endBin = Math.floor(bufferLength * 0.5); // ~2000-4000 Hz
+        break;
+      case 'presence':
+        startBin = Math.floor(bufferLength * 0.5);
+        endBin = Math.floor(bufferLength * 0.7); // ~4000-8000 Hz
+        break;
+      case 'brilliance':
+        startBin = Math.floor(bufferLength * 0.7);
+        endBin = bufferLength; // ~8000+ Hz
+        break;
+      default:
+        startBin = 0;
+        endBin = bufferLength;
+    }
+    
+    let sum = 0;
+    let peak = 0;
+    for (let i = startBin; i < endBin; i++) {
+      sum += audioData[i];
+      peak = Math.max(peak, audioData[i]);
+    }
+    
+    const avg = sum / (endBin - startBin) / 255;
+    const peakNorm = peak / 255;
+    
+    return {
+      average: avg,
+      peak: peakNorm,
+      energy: Math.max(avg, peakNorm * 0.7) // Blend average and peak
+    };
+  }, []);
+
+  // Update spectrum-mapped dancing blobs with beat-reactive interactions
   const updateDancingBlobs = useCallback((audioData, bassAvg, midAvg, highAvg) => {
     if (blobsRef.current.length === 0) return;
     
     const currentSettings = settingsRef.current;
-    const colors = colorSchemes[colorSchemeRef.current];
     const time = performance.now() * 0.001;
+    const beatIntensity = beatDetected ? 1.0 : 0.0;
     
     blobsRef.current.forEach((blob, index) => {
       if (!blob.material.uniforms) return;
@@ -1095,21 +1181,20 @@ const AdvancedSpectrogramV2 = () => {
       // Update time for animation
       uniforms.time.value = time;
       
-      // Update audio levels with variations per blob type
-      const bassVariation = 1 + Math.sin(time * 0.7 + index * 2.1) * 0.3;
-      const midVariation = 1 + Math.cos(time * 1.1 + index * 1.7) * 0.3;
-      const highVariation = 1 + Math.sin(time * 1.5 + index * 0.9) * 0.3;
+      // Get spectrum-specific audio data for this blob
+      const spectrumData = analyzeSpectrumForBlob(audioData, blob.spectrumRange);
       
-      // Enhanced audio responsiveness
-      uniforms.bassLevel.value = Math.min(bassAvg * bassVariation * 1.2, 2.0);
-      uniforms.midLevel.value = Math.min(midAvg * midVariation * 1.1, 2.0);
-      uniforms.highLevel.value = Math.min(highAvg * highVariation * 1.0, 2.0);
+      // Apply physics limits to prevent explosions
+      const maxLevel = blob.physicsLimits.max;
+      uniforms.bassLevel.value = Math.min(spectrumData.energy * 1.2, maxLevel);
+      uniforms.midLevel.value = Math.min(spectrumData.average * 1.1, maxLevel);
+      uniforms.highLevel.value = Math.min(spectrumData.peak * 1.0, maxLevel);
       
-      // Update color scheme
+      // Use spectrum-specific colors
       uniforms.colorScheme.value.set(
-        colors.accent === '#ff0080' ? 1 : colors.bass[0] / 255,
-        colors.accent === '#ff0080' ? 0 : colors.bass[1] / 255,
-        colors.accent === '#ff0080' ? 0.5 : colors.bass[2] / 255
+        blob.spectrumColor[0],
+        blob.spectrumColor[1],
+        blob.spectrumColor[2]
       );
       
       // Update internal force fields dynamically
@@ -1132,92 +1217,50 @@ const AdvancedSpectrogramV2 = () => {
       const danceMode = currentSettings.blobDanceMode;
       blob.dancePhase += blob.danceSpeed * 0.015;
       
-      // Enhanced 3D movement patterns
-      switch (danceMode) {
-        case 'orbit':
-          // Complex orbital patterns with depth changes
-          const orbitRadius = blob.danceRadius + bassAvg * 4;
-          const orbitAngle = blob.dancePhase + index * (Math.PI * 2 / blobsRef.current.length);
-          const heightOscillation = Math.sin(time * blob.depthOscillation.frequency + blob.depthOscillation.phase);
-          
-          blob.mesh.position.x = Math.cos(orbitAngle) * orbitRadius;
-          blob.mesh.position.z = Math.sin(orbitAngle) * orbitRadius * 0.7;
-          blob.mesh.position.y = blob.basePosition.y + heightOscillation * blob.depthOscillation.amplitude + midAvg * 3;
-          break;
-          
-        case 'follow':
-          // 3D follow-the-leader with spiral movement
-          if (index === 0) {
-            const spiralRadius = 5 + bassAvg * 3;
-            blob.mesh.position.x = Math.cos(blob.dancePhase) * spiralRadius;
-            blob.mesh.position.z = Math.sin(blob.dancePhase * 0.8) * spiralRadius;
-            blob.mesh.position.y = Math.sin(blob.dancePhase * 0.6) * 4 + highAvg * 2;
-          } else {
-            // Follow with 3D offset and lag
-            const leader = blobsRef.current[index - 1];
-            const followDelay = 0.3 + index * 0.1;
-            const offset = index * 2;
-            
-            blob.mesh.position.x = leader.mesh.position.x + Math.cos(blob.dancePhase - followDelay) * offset;
-            blob.mesh.position.z = leader.mesh.position.z + Math.sin(blob.dancePhase - followDelay) * offset;
-            blob.mesh.position.y = leader.mesh.position.y + Math.sin(blob.dancePhase * 2 - followDelay) * 2;
-          }
-          break;
-          
-        case 'scatter':
-          // Chaotic 3D movement with audio-reactive bounds
-          const scatterIntensity = (bassAvg + midAvg + highAvg) / 3;
-          blob.mesh.position.x = blob.basePosition.x + Math.cos(blob.dancePhase) * (blob.danceRadius + scatterIntensity * 4);
-          blob.mesh.position.z = blob.basePosition.z + Math.sin(blob.dancePhase * 1.4) * (blob.danceRadius + scatterIntensity * 4);
-          blob.mesh.position.y = blob.basePosition.y + Math.sin(blob.dancePhase * 0.9) * (3 + scatterIntensity * 3);
-          break;
-          
-        case 'sync':
-          // Synchronized 3D formations
-          const syncPhase = time * 0.8 + index * 0.15;
-          const formationRadius = 6 + (bassAvg + midAvg + highAvg) * 2;
-          
-          blob.mesh.position.x = Math.cos(syncPhase) * formationRadius;
-          blob.mesh.position.z = Math.sin(syncPhase * 0.7) * formationRadius;
-          blob.mesh.position.y = Math.sin(syncPhase * 1.2) * 3 + index * 1.5;
-          break;
-      }
+      // Independent blob movement with spectrum-based behavior
+      const spectrumIntensity = spectrumData.energy;
+      const beatBoost = beatIntensity * blob.interactionStrength;
       
-      // Full 3D rotation with audio responsiveness
-      blob.mesh.rotation.x += blob.rotationSpeed.x * (1 + bassAvg);
-      blob.mesh.rotation.y += blob.rotationSpeed.y * (1 + midAvg);
-      blob.mesh.rotation.z += blob.rotationSpeed.z * (1 + highAvg);
+      // Each blob dances independently to its frequency range
+      const movementRadius = blob.danceRadius + spectrumIntensity * 3 + beatBoost * 2;
+      const heightOscillation = Math.sin(time * blob.depthOscillation.frequency + blob.depthOscillation.phase);
       
-      // Enhanced blob interaction with 3D forces
+      blob.mesh.position.x = blob.basePosition.x + Math.cos(blob.dancePhase) * movementRadius;
+      blob.mesh.position.z = blob.basePosition.z + Math.sin(blob.dancePhase * 0.8) * movementRadius * 0.7;
+      blob.mesh.position.y = blob.basePosition.y + heightOscillation * blob.depthOscillation.amplitude + spectrumIntensity * 2;
+      
+      // Spectrum-responsive rotation
+      blob.mesh.rotation.x += blob.rotationSpeed.x * (1 + spectrumIntensity);
+      blob.mesh.rotation.y += blob.rotationSpeed.y * (1 + spectrumIntensity);
+      blob.mesh.rotation.z += blob.rotationSpeed.z * (1 + spectrumIntensity);
+      
+      // Beat-reactive blob interactions
       if (currentSettings.blobInteraction && blobsRef.current.length > 1) {
         blobsRef.current.forEach((otherBlob, otherIndex) => {
           if (index !== otherIndex) {
             const distance = blob.mesh.position.distanceTo(otherBlob.mesh.position);
-            const audioForce = (bassAvg + midAvg + highAvg) * 0.15;
+            const interactionForce = (spectrumIntensity + beatIntensity) * blob.interactionStrength * 0.1;
             
-            if (distance < 12 && distance > 0.1) {
-              // Complex 3D interaction forces
+            if (distance < 10 && distance > 0.5) {
               const direction = blob.mesh.position.clone().sub(otherBlob.mesh.position).normalize();
               
-              // Repulsion force
-              if (distance < 8) {
-                blob.mesh.position.add(direction.multiplyScalar(audioForce * 0.8));
+              // Gentle repulsion when close
+              if (distance < 6) {
+                blob.mesh.position.add(direction.multiplyScalar(interactionForce * 0.5));
               }
               
-              // Orbital attraction at medium distance
-              if (distance > 6 && distance < 10) {
-                const tangent = new THREE.Vector3(-direction.z, 0, direction.x);
-                blob.mesh.position.add(tangent.multiplyScalar(audioForce * 0.3));
+              // Attraction during beats at medium distance
+              if (distance > 4 && distance < 8 && beatIntensity > 0.5) {
+                blob.mesh.position.add(direction.multiplyScalar(-interactionForce * 0.2));
               }
             }
           }
         });
       }
       
-      // Dynamic scaling based on internal forces
-      const totalAudio = bassAvg + midAvg + highAvg;
-      const scaleVariation = 1 + totalAudio * 0.2 + Math.sin(time * 2 + index) * 0.1;
-      blob.mesh.scale.setScalar(scaleVariation);
+      // Controlled scaling based on spectrum energy
+      const scaleVariation = 1 + spectrumIntensity * 0.15 + beatIntensity * 0.1;
+      blob.mesh.scale.setScalar(Math.min(scaleVariation, 1.4)); // Prevent excessive scaling
     });
   }, [colorSchemes]);
 
@@ -2354,181 +2397,53 @@ const AdvancedSpectrogramV2 = () => {
             )}
           </div>
 
-          {/* Dancing Blobs Settings */}
+          {/* Simplified Dancing Blobs Settings */}
           {visualMode === 'spectrogram3d' && (
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-white">Dancing Blobs</h3>
               
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="flex justify-between text-sm text-gray-300 mb-1">
-                    <span>Count</span>
-                    <span>{settings.blobCount}</span>
-                  </label>
-                  <input
-                    type="range"
-                    min="1"
-                    max="6"
-                    step="1"
-                    value={settings.blobCount}
-                    onChange={(e) => setSettings({ ...settings, blobCount: parseInt(e.target.value) })}
-                    className="w-full"
-                  />
-                </div>
-
-                <div>
-                  <label className="flex justify-between text-sm text-gray-300 mb-1">
-                    <span>Size</span>
-                    <span>{settings.blobSize.toFixed(1)}</span>
-                  </label>
-                  <input
-                    type="range"
-                    min="0.3"
-                    max="2.0"
-                    step="0.1"
-                    value={settings.blobSize}
-                    onChange={(e) => setSettings({ ...settings, blobSize: parseFloat(e.target.value) })}
-                    className="w-full"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Dance Mode
-                </label>
-                <select
-                  value={settings.blobDanceMode}
-                  onChange={(e) => setSettings({ ...settings, blobDanceMode: e.target.value })}
-                  className="w-full bg-gray-800 text-white rounded px-2 py-1"
-                >
-                  <option value="orbit">Orbit</option>
-                  <option value="follow">Follow Leader</option>
-                  <option value="scatter">Scatter</option>
-                  <option value="sync">Synchronized</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Blob Types
-                </label>
-                <div className="grid grid-cols-3 gap-2">
-                  {['pulsing', 'ripple', 'spiral'].map(variant => (
-                    <button
-                      key={variant}
-                      onClick={() => {
-                        const variants = settings.blobVariants.includes(variant)
-                          ? settings.blobVariants.filter(v => v !== variant)
-                          : [...settings.blobVariants, variant];
-                        if (variants.length > 0) {
-                          setSettings({ ...settings, blobVariants: variants });
-                        }
-                      }}
-                      className={`p-2 rounded text-xs transition-colors ${
-                        settings.blobVariants.includes(variant)
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                      }`}
-                    >
-                      {variant.charAt(0).toUpperCase() + variant.slice(1)}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-300">Blob Interaction</span>
-                  <input
-                    type="checkbox"
-                    checked={settings.blobInteraction}
-                    onChange={(e) => setSettings({ ...settings, blobInteraction: e.target.checked })}
-                    className="w-4 h-4"
-                  />
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-300">Ferro-Fluid Mode</span>
-                  <input
-                    type="checkbox"
-                    checked={settings.ferroFluidMode}
-                    onChange={(e) => setSettings({ ...settings, ferroFluidMode: e.target.checked })}
-                    className="w-4 h-4"
-                  />
-                </div>
-              </div>
-
               <div>
                 <label className="flex justify-between text-sm text-gray-300 mb-1">
-                  <span>Elasticity</span>
-                  <span>{settings.blobElasticity.toFixed(2)}</span>
+                  <span>Blob Count</span>
+                  <span>{settings.blobCount}</span>
                 </label>
                 <input
                   type="range"
-                  min="0.2"
-                  max="1.5"
-                  step="0.1"
-                  value={settings.blobElasticity}
-                  onChange={(e) => setSettings({ ...settings, blobElasticity: parseFloat(e.target.value) })}
+                  min="1"
+                  max="6"
+                  step="1"
+                  value={settings.blobCount}
+                  onChange={(e) => setSettings({ ...settings, blobCount: parseInt(e.target.value) })}
                   className="w-full"
                 />
               </div>
 
-              <details className="group">
-                <summary className="text-sm text-gray-400 cursor-pointer hover:text-gray-300 select-none">
-                  Advanced Physics Settings ▼
-                </summary>
-                <div className="mt-3 space-y-3 pl-2 border-l-2 border-gray-700">
-                  <div>
-                    <label className="flex justify-between text-sm text-gray-300 mb-1">
-                      <span>Internal Force Points</span>
-                      <span>{settings.internalForces}</span>
-                    </label>
-                    <input
-                      type="range"
-                      min="4"
-                      max="12"
-                      step="1"
-                      value={settings.internalForces}
-                      onChange={(e) => setSettings({ ...settings, internalForces: parseInt(e.target.value) })}
-                      className="w-full"
-                    />
-                  </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Dance Style
+                </label>
+                <select
+                  value={settings.blobDanceStyle}
+                  onChange={(e) => setSettings({ ...settings, blobDanceStyle: e.target.value })}
+                  className="w-full bg-gray-800 text-white rounded px-2 py-1"
+                >
+                  <option value="balanced">Balanced - Smooth, balanced movements</option>
+                  <option value="energetic">Energetic - Fast, dynamic dancing</option>
+                  <option value="chill">Chill - Slow, flowing movements</option>
+                  <option value="chaotic">Chaotic - Wild, unpredictable motion</option>
+                </select>
+              </div>
 
-                  <div>
-                    <label className="flex justify-between text-sm text-gray-300 mb-1">
-                      <span>Surface Tension</span>
-                      <span>{settings.blobTension.toFixed(2)}</span>
-                    </label>
-                    <input
-                      type="range"
-                      min="0"
-                      max="2"
-                      step="0.1"
-                      value={settings.blobTension}
-                      onChange={(e) => setSettings({ ...settings, blobTension: parseFloat(e.target.value) })}
-                      className="w-full"
-                    />
-                  </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-300">Blob Interactions</span>
+                <input
+                  type="checkbox"
+                  checked={settings.blobInteraction}
+                  onChange={(e) => setSettings({ ...settings, blobInteraction: e.target.checked })}
+                  className="w-4 h-4"
+                />
+              </div>
 
-                  <div>
-                    <label className="flex justify-between text-sm text-gray-300 mb-1">
-                      <span>Particle Count</span>
-                      <span>{settings.particleCount}</span>
-                    </label>
-                    <input
-                      type="range"
-                      min="500"
-                      max="3000"
-                      step="100"
-                      value={settings.particleCount}
-                      onChange={(e) => setSettings({ ...settings, particleCount: parseInt(e.target.value) })}
-                      className="w-full"
-                    />
-                  </div>
-                </div>
-              </details>
             </div>
           )}
 
