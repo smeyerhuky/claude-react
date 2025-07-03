@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { 
   Play, Square, Download, Settings, Camera, Video, 
   Upload, Maximize2, Minimize2,
-  Music, Waves, Box, Grid3x3
+  Music, Waves, Box, Grid3x3, Zap
 } from 'lucide-react';
 
 const AdvancedSpectrogramV2 = () => {
@@ -28,7 +28,12 @@ const AdvancedSpectrogramV2 = () => {
     particleCount: 1000,
     trailLength: 0.9,
     bloomStrength: 1.5,
-    windowFunction: 'hann'
+    windowFunction: 'hann',
+    stringCount: 5,
+    stringTension: 0.8,
+    stringDamping: 0.95,
+    stringThickness: 3,
+    stringSegments: 50
   });
   
   // Audio analysis state
@@ -62,6 +67,8 @@ const AdvancedSpectrogramV2 = () => {
   const settingsRef = useRef(settings);
   const colorSchemeRef = useRef(colorScheme);
   const visualModeRef = useRef(visualMode);
+  const stringsRef = useRef([]);
+  const stringPhysicsRef = useRef(null);
   
   // Update refs when state changes
   useEffect(() => {
@@ -107,6 +114,106 @@ const AdvancedSpectrogramV2 = () => {
       accent: '#ff47e9'
     }
   };
+
+  // String physics simulation class
+  class StringPhysics {
+    constructor(segments, tension, damping) {
+      this.segments = segments;
+      this.tension = tension;
+      this.damping = damping;
+      this.points = [];
+      this.velocities = [];
+      this.forces = [];
+      
+      // Initialize string points
+      for (let i = 0; i <= segments; i++) {
+        this.points.push({ x: 0, y: 0 });
+        this.velocities.push({ x: 0, y: 0 });
+        this.forces.push({ x: 0, y: 0 });
+      }
+    }
+
+    setEndpoints(x1, y1, x2, y2) {
+      const segmentLength = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2) / this.segments;
+      for (let i = 0; i <= this.segments; i++) {
+        const t = i / this.segments;
+        this.points[i].x = x1 + (x2 - x1) * t;
+        this.points[i].y = y1 + (y2 - y1) * t;
+      }
+    }
+
+    applyForce(segmentIndex, forceX, forceY) {
+      if (segmentIndex >= 0 && segmentIndex < this.forces.length) {
+        this.forces[segmentIndex].x += forceX;
+        this.forces[segmentIndex].y += forceY;
+      }
+    }
+
+    pluck(position, strength) {
+      const segmentIndex = Math.floor(position * this.segments);
+      this.applyForce(segmentIndex, 0, strength);
+    }
+
+    update() {
+      // Calculate spring forces between adjacent points
+      for (let i = 1; i < this.segments; i++) {
+        const curr = this.points[i];
+        const prev = this.points[i - 1];
+        const next = this.points[i + 1];
+        
+        // Spring force to previous point
+        const dx1 = prev.x - curr.x;
+        const dy1 = prev.y - curr.y;
+        const dist1 = Math.sqrt(dx1 * dx1 + dy1 * dy1);
+        
+        // Spring force to next point
+        const dx2 = next.x - curr.x;
+        const dy2 = next.y - curr.y;
+        const dist2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+        
+        // Apply spring forces
+        const springForce = this.tension * 0.1;
+        this.forces[i].x += (dx1 + dx2) * springForce;
+        this.forces[i].y += (dy1 + dy2) * springForce;
+      }
+
+      // Update velocities and positions (except endpoints)
+      for (let i = 1; i < this.segments; i++) {
+        // Apply forces to velocity
+        this.velocities[i].x += this.forces[i].x;
+        this.velocities[i].y += this.forces[i].y;
+        
+        // Apply damping
+        this.velocities[i].x *= this.damping;
+        this.velocities[i].y *= this.damping;
+        
+        // Update position
+        this.points[i].x += this.velocities[i].x;
+        this.points[i].y += this.velocities[i].y;
+        
+        // Clear forces
+        this.forces[i].x = 0;
+        this.forces[i].y = 0;
+      }
+
+      // Keep endpoints fixed (they don't move)
+      // First and last points remain at their original positions
+    }
+
+    getPoints() {
+      return this.points;
+    }
+  }
+
+  // Initialize string physics systems
+  const initializeStrings = useCallback((stringCount, segments, tension, damping) => {
+    const strings = [];
+    for (let i = 0; i < stringCount; i++) {
+      strings.push(new StringPhysics(segments, tension, damping));
+    }
+    stringsRef.current = strings;
+    stringPhysicsRef.current = { StringPhysics };
+  }, []);
 
   // Initialize mobile detection
   useEffect(() => {
@@ -394,6 +501,18 @@ const AdvancedSpectrogramV2 = () => {
     const beat = detectBeat(bassAvg);
     setBeatDetected(beat);
     
+    // Apply beat-based string plucking
+    if (beat && visualModeRef.current === 'stringTheory' && stringsRef.current.length > 0) {
+      stringsRef.current.forEach((string, index) => {
+        if (string) {
+          // Pluck strings at random positions on beat
+          const pluckPosition = 0.3 + Math.random() * 0.4; // Middle area
+          const pluckStrength = bassAvg * 20;
+          string.pluck(pluckPosition, pluckStrength);
+        }
+      });
+    }
+    
     // Update mel-spectrogram
     const melData = calculateMelSpectrogram(dataArray);
     melSpectrogramRef.current.push(melData);
@@ -451,6 +570,115 @@ const AdvancedSpectrogramV2 = () => {
     animationRef.current = requestAnimationFrame(animate);
   }, [calculateMelSpectrogram, updateBlobGeometry]);
 
+  // Draw vibrating strings
+  const drawStrings = useCallback((ctx, width, height, frequencyData) => {
+    // Width and height are already scaled from the calling function
+    const colors = colorSchemes[colorSchemeRef.current];
+    const currentSettings = settingsRef.current;
+    const stringCount = currentSettings.stringCount;
+    
+    if (stringsRef.current.length !== stringCount) {
+      initializeStrings(stringCount, currentSettings.stringSegments, currentSettings.stringTension, currentSettings.stringDamping);
+    }
+    
+    // Divide frequency data into bands for each string
+    const bandsPerString = Math.floor(frequencyData.length / stringCount);
+    
+    for (let stringIndex = 0; stringIndex < stringCount; stringIndex++) {
+      const string = stringsRef.current[stringIndex];
+      if (!string) continue;
+      
+      // Calculate string position (vertical spacing)
+      const stringY = (height / (stringCount + 1)) * (stringIndex + 1);
+      const margin = width * 0.1;
+      
+      // Set string endpoints
+      string.setEndpoints(margin, stringY, width - margin, stringY);
+      
+      // Calculate frequency band energy for this string
+      const startBand = stringIndex * bandsPerString;
+      const endBand = Math.min((stringIndex + 1) * bandsPerString, frequencyData.length);
+      let bandEnergy = 0;
+      
+      for (let i = startBand; i < endBand; i++) {
+        bandEnergy += frequencyData[i];
+      }
+      bandEnergy = (bandEnergy / (endBand - startBand)) / 255 * currentSettings.sensitivity;
+      
+      // Apply forces based on frequency energy
+      const numForcePoints = 5;
+      for (let i = 0; i < numForcePoints; i++) {
+        const position = (i + 1) / (numForcePoints + 1);
+        const forceStrength = bandEnergy * (Math.random() * 0.5 + 0.5) * 10;
+        string.pluck(position, forceStrength * (Math.random() - 0.5));
+      }
+      
+      // Update string physics
+      string.update();
+      
+      // Draw the string
+      const points = string.getPoints();
+      
+      // String color based on energy and string index
+      const stringColorIndex = stringIndex % 3;
+      const stringColors = [colors.bass, colors.mid, colors.high];
+      const baseColor = stringColors[stringColorIndex];
+      const intensity = Math.min(1, bandEnergy * 2);
+      
+      // Draw string with glow effect
+      ctx.strokeStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${0.8 + intensity * 0.2})`;
+      ctx.lineWidth = currentSettings.stringThickness + intensity * 2;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      
+      // Add glow effect for high energy
+      if (intensity > 0.5) {
+        ctx.shadowColor = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, 0.8)`;
+        ctx.shadowBlur = 10 + intensity * 20;
+      } else {
+        ctx.shadowBlur = 0;
+      }
+      
+      // Draw the string curve
+      ctx.beginPath();
+      ctx.moveTo(points[0].x, points[0].y);
+      
+      for (let i = 1; i < points.length; i++) {
+        ctx.lineTo(points[i].x, points[i].y);
+      }
+      
+      ctx.stroke();
+      
+      // Draw string endpoints (tuning pegs)
+      ctx.fillStyle = `rgb(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]})`;
+      ctx.shadowBlur = 5;
+      ctx.beginPath();
+      ctx.arc(points[0].x, points[0].y, 6, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(points[points.length - 1].x, points[points.length - 1].y, 6, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Reset shadow
+      ctx.shadowBlur = 0;
+      
+      // Draw frequency band label
+      ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, 0.7)`;
+      ctx.font = '12px monospace';
+      ctx.textAlign = 'left';
+      const freqLabel = stringIndex === 0 ? 'BASS' : stringIndex === 1 ? 'LOW-MID' : stringIndex === 2 ? 'MID' : stringIndex === 3 ? 'HIGH-MID' : 'HIGH';
+      ctx.fillText(freqLabel, margin - 60, stringY + 4);
+      
+      // Draw energy level indicator
+      const indicatorWidth = 40;
+      const indicatorHeight = 4;
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+      ctx.fillRect(margin - 50, stringY + 10, indicatorWidth, indicatorHeight);
+      ctx.fillStyle = `rgb(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]})`;
+      ctx.fillRect(margin - 50, stringY + 10, indicatorWidth * intensity, indicatorHeight);
+    }
+  }, [initializeStrings]);
+
   // 2D visualization
   const draw2DVisualization = useCallback((frequencyData) => {
     const canvas = canvas2DRef.current;
@@ -460,18 +688,28 @@ const AdvancedSpectrogramV2 = () => {
     const width = canvas.width;
     const height = canvas.height;
     
+    // Ensure proper scaling
+    const scale = window.devicePixelRatio || 1;
+    ctx.setTransform(scale, 0, 0, scale, 0, 0);
+    
+    const scaledWidth = width / scale;
+    const scaledHeight = height / scale;
+    
     // Clear with trail effect
     ctx.fillStyle = `rgba(0, 0, 0, ${1 - settingsRef.current.trailLength})`;
-    ctx.fillRect(0, 0, width, height);
+    ctx.fillRect(0, 0, scaledWidth, scaledHeight);
     
     const colors = colorSchemes[colorSchemeRef.current];
     const currentMode = visualModeRef.current;
     const currentSettings = settingsRef.current;
     
-    if (currentMode === 'melSpectrogram') {
+    if (currentMode === 'stringTheory') {
+      // Draw vibrating strings
+      drawStrings(ctx, scaledWidth, scaledHeight, frequencyData);
+    } else if (currentMode === 'melSpectrogram') {
       // Draw mel-spectrogram heatmap
-      const spectrogramWidth = width / melSpectrogramRef.current.length;
-      const binHeight = height / currentSettings.melBins;
+      const spectrogramWidth = scaledWidth / melSpectrogramRef.current.length;
+      const binHeight = scaledHeight / currentSettings.melBins;
       
       melSpectrogramRef.current.forEach((column, x) => {
         column.forEach((value, y) => {
@@ -480,7 +718,7 @@ const AdvancedSpectrogramV2 = () => {
           ctx.fillStyle = `hsl(${hue}, 100%, ${intensity * 50}%)`;
           ctx.fillRect(
             x * spectrogramWidth,
-            height - (y + 1) * binHeight,
+            scaledHeight - (y + 1) * binHeight,
             spectrogramWidth,
             binHeight
           );
@@ -492,12 +730,12 @@ const AdvancedSpectrogramV2 = () => {
       ctx.lineWidth = 2;
       ctx.beginPath();
       
-      const sliceWidth = width / frequencyData.length;
+      const sliceWidth = scaledWidth / frequencyData.length;
       let x = 0;
       
       for (let i = 0; i < frequencyData.length; i++) {
         const v = frequencyData[i] / 255 * currentSettings.sensitivity;
-        const y = height - (v * height);
+        const y = scaledHeight - (v * scaledHeight);
         
         if (i === 0) {
           ctx.moveTo(x, y);
@@ -510,27 +748,27 @@ const AdvancedSpectrogramV2 = () => {
       ctx.stroke();
     } else {
       // Standard spectrogram
-      const barWidth = width / frequencyData.length * 2;
+      const barWidth = scaledWidth / frequencyData.length * 2;
       
       for (let i = 0; i < frequencyData.length; i++) {
-        const barHeight = (frequencyData[i] / 255) * height * currentSettings.sensitivity;
+        const barHeight = (frequencyData[i] / 255) * scaledHeight * currentSettings.sensitivity;
         const x = i * barWidth;
         
         // Gradient based on frequency
-        const gradient = ctx.createLinearGradient(0, height - barHeight, 0, height);
+        const gradient = ctx.createLinearGradient(0, scaledHeight - barHeight, 0, scaledHeight);
         gradient.addColorStop(0, `rgb(${colors.high.join(',')})`);
         gradient.addColorStop(0.5, `rgb(${colors.mid.join(',')})`);
         gradient.addColorStop(1, `rgb(${colors.bass.join(',')})`);
         
         ctx.fillStyle = gradient;
-        ctx.fillRect(x, height - barHeight, barWidth - 1, barHeight);
+        ctx.fillRect(x, scaledHeight - barHeight, barWidth - 1, barHeight);
       }
     }
     
     // Draw beat indicator
     if (beatDetected) {
       ctx.fillStyle = `rgba(${colors.bass.join(',')}, 0.3)`;
-      ctx.fillRect(0, 0, width, height);
+      ctx.fillRect(0, 0, scaledWidth, scaledHeight);
     }
   }, [beatDetected]);
 
@@ -542,8 +780,34 @@ const AdvancedSpectrogramV2 = () => {
       init3DScene();
     } else {
       cleanup3DScene();
+      
+      // Force canvas refresh for 2D modes
+      if (canvas2DRef.current) {
+        const canvas = canvas2DRef.current;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * window.devicePixelRatio;
+        canvas.height = rect.height * window.devicePixelRatio;
+        
+        // Clear the canvas completely
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Reset the background
+        const colors = colorSchemes[colorScheme];
+        canvas.style.backgroundColor = colors.background;
+        
+        // Initialize strings immediately if switching to string mode
+        if (visualMode === 'stringTheory') {
+          initializeStrings(
+            settings.stringCount, 
+            settings.stringSegments, 
+            settings.stringTension, 
+            settings.stringDamping
+          );
+        }
+      }
     }
-  }, [visualMode, isRecording, init3DScene, cleanup3DScene]);
+  }, [visualMode, isRecording, init3DScene, cleanup3DScene, colorScheme, settings.stringCount, settings.stringSegments, settings.stringTension, settings.stringDamping, initializeStrings]);
 
   // Update particle count when setting changes
   useEffect(() => {
@@ -551,6 +815,26 @@ const AdvancedSpectrogramV2 = () => {
       createParticleSystem(settings.particleCount);
     }
   }, [settings.particleCount, isRecording, visualMode, createParticleSystem]);
+
+  // Update string physics when string settings change
+  useEffect(() => {
+    if (isRecording && visualMode === 'stringTheory') {
+      initializeStrings(
+        settings.stringCount, 
+        settings.stringSegments, 
+        settings.stringTension, 
+        settings.stringDamping
+      );
+    }
+  }, [
+    settings.stringCount, 
+    settings.stringSegments, 
+    settings.stringTension, 
+    settings.stringDamping, 
+    isRecording, 
+    visualMode, 
+    initializeStrings
+  ]);
 
   // Update analyser settings when they change
   useEffect(() => {
@@ -571,13 +855,17 @@ const AdvancedSpectrogramV2 = () => {
       const rect = canvas.getBoundingClientRect();
       canvas.width = rect.width * window.devicePixelRatio;
       canvas.height = rect.height * window.devicePixelRatio;
+      
+      // Clear the canvas when resizing/mode switching
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
     };
     
     updateCanvasSize();
     window.addEventListener('resize', updateCanvasSize);
     
     return () => window.removeEventListener('resize', updateCanvasSize);
-  }, []);
+  }, [visualMode]); // Add visualMode as dependency to trigger on mode change
 
   // Start/stop recording
   const startRecording = async () => {
@@ -720,6 +1008,7 @@ const AdvancedSpectrogramV2 = () => {
       {/* Main visualization container */}
       <div className="absolute inset-0">
         <canvas
+          key={`canvas-${visualMode}-${colorScheme}`}
           ref={canvas2DRef}
           className={`absolute inset-0 w-full h-full ${visualMode !== 'spectrogram3d' ? 'block' : 'hidden'}`}
           style={{ backgroundColor: colorSchemes[colorScheme].background }}
@@ -767,9 +1056,10 @@ const AdvancedSpectrogramV2 = () => {
             <label className="block text-sm font-medium text-gray-300 mb-2">
               Visualization Mode
             </label>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-2">
               {[
                 { id: 'spectrogram3d', icon: Box, label: '3D Blob' },
+                { id: 'stringTheory', icon: Zap, label: 'String Theory' },
                 { id: 'spectrogram', icon: Grid3x3, label: 'Spectrogram' },
                 { id: 'melSpectrogram', icon: Waves, label: 'Mel-Spectrogram' },
                 { id: 'waveform', icon: Music, label: 'Waveform' }
@@ -951,6 +1241,93 @@ const AdvancedSpectrogramV2 = () => {
                   step="100"
                   value={settings.particleCount}
                   onChange={(e) => setSettings({ ...settings, particleCount: parseInt(e.target.value) })}
+                  className="w-full"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* String Theory Effects */}
+          {visualMode === 'stringTheory' && (
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-white">String Physics</h3>
+              
+              <div>
+                <label className="flex justify-between text-sm text-gray-300 mb-1">
+                  <span>String Count</span>
+                  <span>{settings.stringCount}</span>
+                </label>
+                <input
+                  type="range"
+                  min="2"
+                  max="10"
+                  step="1"
+                  value={settings.stringCount}
+                  onChange={(e) => setSettings({ ...settings, stringCount: parseInt(e.target.value) })}
+                  className="w-full"
+                />
+              </div>
+
+              <div>
+                <label className="flex justify-between text-sm text-gray-300 mb-1">
+                  <span>String Tension</span>
+                  <span>{settings.stringTension.toFixed(2)}</span>
+                </label>
+                <input
+                  type="range"
+                  min="0.1"
+                  max="2"
+                  step="0.1"
+                  value={settings.stringTension}
+                  onChange={(e) => setSettings({ ...settings, stringTension: parseFloat(e.target.value) })}
+                  className="w-full"
+                />
+              </div>
+
+              <div>
+                <label className="flex justify-between text-sm text-gray-300 mb-1">
+                  <span>String Damping</span>
+                  <span>{settings.stringDamping.toFixed(2)}</span>
+                </label>
+                <input
+                  type="range"
+                  min="0.8"
+                  max="0.99"
+                  step="0.01"
+                  value={settings.stringDamping}
+                  onChange={(e) => setSettings({ ...settings, stringDamping: parseFloat(e.target.value) })}
+                  className="w-full"
+                />
+              </div>
+
+              <div>
+                <label className="flex justify-between text-sm text-gray-300 mb-1">
+                  <span>String Thickness</span>
+                  <span>{settings.stringThickness}</span>
+                </label>
+                <input
+                  type="range"
+                  min="1"
+                  max="8"
+                  step="1"
+                  value={settings.stringThickness}
+                  onChange={(e) => setSettings({ ...settings, stringThickness: parseInt(e.target.value) })}
+                  className="w-full"
+                />
+              </div>
+
+              <div>
+                <label className="flex justify-between text-sm text-gray-300 mb-1">
+                  <span>String Segments</span>
+                  <span>{settings.stringSegments}</span>
+                </label>
+                <input
+                  type="range"
+                  min="20"
+                  max="100"
+                  step="10"
+                  value={settings.stringSegments}
+                  onChange={(e) => setSettings({ ...settings, stringSegments: parseInt(e.target.value) })}
                   className="w-full"
                 />
               </div>
