@@ -36,7 +36,13 @@ const AdvancedSpectrogramV2 = () => {
     stringLayout: 'horizontal', // horizontal, vertical, centered, mirrored
     bassPosition: 'top', // top, bottom, center
     enableParticles: true,
-    particleCount: 20
+    particleCount: 20,
+    // Blob settings
+    blobCount: 3,
+    blobVariants: ['pulsing', 'ripple', 'spiral'], // pulsing, ripple, spiral, tornado, wave
+    blobDanceMode: 'orbit', // orbit, follow, scatter, sync
+    blobInteraction: true,
+    blobSize: 1.0
   });
   
   // Audio analysis state
@@ -64,6 +70,7 @@ const AdvancedSpectrogramV2 = () => {
   const rendererRef = useRef(null);
   const cameraRef = useRef(null);
   const blobMeshRef = useRef(null);
+  const blobsRef = useRef([]); // Array to store multiple blobs
   const particlesRef = useRef(null);
   const melSpectrogramRef = useRef([]);
   const beatHistoryRef = useRef([]);
@@ -264,6 +271,243 @@ const AdvancedSpectrogramV2 = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Create blob shader materials with different variants
+  const createBlobMaterial = useCallback((variant, blobIndex) => {
+    const shaders = {
+      pulsing: {
+        vertex: `
+          uniform float time;
+          uniform float bassLevel;
+          uniform float midLevel;
+          uniform float highLevel;
+          uniform float blobIndex;
+          varying vec2 vUv;
+          varying float vElevation;
+          
+          void main() {
+            vUv = uv;
+            vec3 newPosition = position;
+            float distance = length(uv - 0.5);
+            
+            // Pulsing blob - concentric rings
+            float pulse = sin(time * 2.0 + blobIndex) * bassLevel * 2.0;
+            float rings = sin(distance * 15.0 - time * 3.0) * midLevel * 1.5;
+            float heartbeat = sin(time * 4.0 + blobIndex * 2.0) * highLevel * 0.8;
+            
+            newPosition.z += pulse + rings + heartbeat;
+            vElevation = newPosition.z;
+            
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
+          }
+        `,
+        fragment: `
+          uniform float time;
+          uniform float bassLevel;
+          uniform float midLevel;
+          uniform float highLevel;
+          uniform vec3 colorScheme;
+          uniform float blobIndex;
+          varying vec2 vUv;
+          varying float vElevation;
+          
+          void main() {
+            float distance = length(vUv - 0.5);
+            
+            vec3 baseColor = colorScheme;
+            vec3 pulseColor = vec3(1.0, 0.3, 0.7) * sin(time + blobIndex) * 0.5 + 0.5;
+            vec3 finalColor = mix(baseColor, pulseColor, bassLevel);
+            
+            float alpha = 1.0 - distance * 1.2;
+            alpha += abs(vElevation) * 0.4;
+            alpha = clamp(alpha, 0.0, 0.9);
+            
+            gl_FragColor = vec4(finalColor, alpha);
+          }
+        `
+      },
+      ripple: {
+        vertex: `
+          uniform float time;
+          uniform float bassLevel;
+          uniform float midLevel;
+          uniform float highLevel;
+          uniform float blobIndex;
+          varying vec2 vUv;
+          varying float vElevation;
+          
+          void main() {
+            vUv = uv;
+            vec3 newPosition = position;
+            float distance = length(uv - 0.5);
+            
+            // Ripple blob - water-like waves
+            float ripple1 = sin(distance * 20.0 - time * 2.0 + blobIndex) * bassLevel * 1.5;
+            float ripple2 = sin(distance * 35.0 - time * 1.5 + blobIndex * 1.5) * midLevel * 1.0;
+            float ripple3 = sin(distance * 50.0 - time * 3.0 + blobIndex * 0.5) * highLevel * 0.5;
+            
+            newPosition.z += ripple1 + ripple2 + ripple3;
+            vElevation = newPosition.z;
+            
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
+          }
+        `,
+        fragment: `
+          uniform float time;
+          uniform float bassLevel;
+          uniform float midLevel;
+          uniform float highLevel;
+          uniform vec3 colorScheme;
+          uniform float blobIndex;
+          varying vec2 vUv;
+          varying float vElevation;
+          
+          void main() {
+            float distance = length(vUv - 0.5);
+            
+            vec3 baseColor = colorScheme;
+            vec3 waveColor = vec3(0.2, 0.8, 1.0) * (sin(time * 2.0 + blobIndex) * 0.3 + 0.7);
+            vec3 finalColor = mix(baseColor, waveColor, midLevel * 0.8);
+            
+            float alpha = 1.0 - distance * 1.4;
+            alpha += abs(vElevation) * 0.3;
+            alpha = clamp(alpha, 0.0, 0.85);
+            
+            gl_FragColor = vec4(finalColor, alpha);
+          }
+        `
+      },
+      spiral: {
+        vertex: `
+          uniform float time;
+          uniform float bassLevel;
+          uniform float midLevel;
+          uniform float highLevel;
+          uniform float blobIndex;
+          varying vec2 vUv;
+          varying float vElevation;
+          
+          void main() {
+            vUv = uv;
+            vec3 newPosition = position;
+            vec2 center = uv - 0.5;
+            float distance = length(center);
+            float angle = atan(center.y, center.x);
+            
+            // Spiral blob - rotating waves
+            float spiral = sin(angle * 6.0 + distance * 15.0 - time * 2.0 + blobIndex) * bassLevel * 1.8;
+            float twist = sin(angle * 3.0 + time * 1.5 + blobIndex * 2.0) * midLevel * 1.2;
+            float vortex = sin(distance * 25.0 - time * 4.0 + angle * 2.0) * highLevel * 0.6;
+            
+            newPosition.z += spiral + twist + vortex;
+            vElevation = newPosition.z;
+            
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
+          }
+        `,
+        fragment: `
+          uniform float time;
+          uniform float bassLevel;
+          uniform float midLevel;
+          uniform float highLevel;
+          uniform vec3 colorScheme;
+          uniform float blobIndex;
+          varying vec2 vUv;
+          varying float vElevation;
+          
+          void main() {
+            vec2 center = vUv - 0.5;
+            float distance = length(center);
+            float angle = atan(center.y, center.x);
+            
+            vec3 baseColor = colorScheme;
+            vec3 spiralColor = vec3(0.8, 0.4, 1.0) * (sin(angle + time + blobIndex) * 0.4 + 0.6);
+            vec3 finalColor = mix(baseColor, spiralColor, highLevel * 0.9);
+            
+            float alpha = 1.0 - distance * 1.3;
+            alpha += abs(vElevation) * 0.35;
+            alpha = clamp(alpha, 0.0, 0.88);
+            
+            gl_FragColor = vec4(finalColor, alpha);
+          }
+        `
+      }
+    };
+    
+    const shader = shaders[variant] || shaders.pulsing;
+    
+    return new THREE.ShaderMaterial({
+      uniforms: {
+        time: { value: 0 },
+        bassLevel: { value: 0 },
+        midLevel: { value: 0 },
+        highLevel: { value: 0 },
+        colorScheme: { value: new THREE.Vector3(1, 0, 0.5) },
+        blobIndex: { value: blobIndex }
+      },
+      vertexShader: shader.vertex,
+      fragmentShader: shader.fragment,
+      transparent: true,
+      side: THREE.DoubleSide
+    });
+  }, []);
+
+  // Create multiple dancing blobs
+  const createDancingBlobs = useCallback((scene) => {
+    // Clear existing blobs
+    blobsRef.current.forEach(blob => {
+      scene.remove(blob.mesh);
+      blob.material.dispose();
+      blob.geometry.dispose();
+    });
+    blobsRef.current = [];
+    
+    const currentSettings = settingsRef.current;
+    const blobCount = currentSettings.blobCount;
+    const variants = currentSettings.blobVariants;
+    
+    for (let i = 0; i < blobCount; i++) {
+      const variant = variants[i % variants.length];
+      const geometry = new THREE.PlaneGeometry(
+        15 * currentSettings.blobSize, 
+        15 * currentSettings.blobSize, 
+        32, 32
+      );
+      const material = createBlobMaterial(variant, i);
+      const mesh = new THREE.Mesh(geometry, material);
+      
+      // Position blobs in different locations
+      const angle = (i / blobCount) * Math.PI * 2;
+      const radius = 5 + i * 2;
+      mesh.position.set(
+        Math.cos(angle) * radius,
+        Math.sin(angle) * radius * 0.5,
+        -i * 2
+      );
+      mesh.rotation.x = -Math.PI / 2;
+      
+      // Store blob data
+      const blobData = {
+        mesh,
+        material,
+        geometry,
+        variant,
+        index: i,
+        basePosition: { x: mesh.position.x, y: mesh.position.y, z: mesh.position.z },
+        dancePhase: Math.random() * Math.PI * 2,
+        danceSpeed: 0.5 + Math.random() * 1.0,
+        danceRadius: 2 + Math.random() * 3
+      };
+      
+      blobsRef.current.push(blobData);
+      scene.add(mesh);
+    }
+    
+    // Keep reference to first blob for backward compatibility
+    if (blobsRef.current.length > 0) {
+      blobMeshRef.current = blobsRef.current[0].mesh;
+    }
+  }, [createBlobMaterial]);
+
   // Clean up 3D scene
   const cleanup3DScene = useCallback(() => {
     if (rendererRef.current) {
@@ -289,6 +533,8 @@ const AdvancedSpectrogramV2 = () => {
       sceneRef.current = null;
     }
     
+    // Clean up blob references
+    blobsRef.current = [];
     blobMeshRef.current = null;
     particlesRef.current = null;
     cameraRef.current = null;
@@ -353,78 +599,8 @@ const AdvancedSpectrogramV2 = () => {
     pointLight.position.set(10, 10, 10);
     scene.add(pointLight);
 
-    // Create pulsing area field instead of blob
-    const fieldGeometry = new THREE.PlaneGeometry(20, 20, 32, 32);
-    const fieldMaterial = new THREE.ShaderMaterial({
-      uniforms: {
-        time: { value: 0 },
-        bassLevel: { value: 0 },
-        midLevel: { value: 0 },
-        highLevel: { value: 0 },
-        colorScheme: { value: new THREE.Vector3(1, 0, 0.5) }
-      },
-      vertexShader: `
-        uniform float time;
-        uniform float bassLevel;
-        uniform float midLevel;
-        uniform float highLevel;
-        varying vec2 vUv;
-        varying float vElevation;
-        
-        void main() {
-          vUv = uv;
-          
-          // Create ripple effect based on audio
-          vec3 newPosition = position;
-          float distance = length(uv - 0.5);
-          float ripple = sin(distance * 20.0 - time * 2.0) * bassLevel * 2.0;
-          float wave = sin(uv.x * 10.0 + time) * midLevel * 1.0;
-          float pulse = sin(time * 3.0 + distance * 15.0) * highLevel * 0.5;
-          
-          newPosition.z += ripple + wave + pulse;
-          vElevation = newPosition.z;
-          
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
-        }
-      `,
-      fragmentShader: `
-        uniform float time;
-        uniform float bassLevel;
-        uniform float midLevel;
-        uniform float highLevel;
-        uniform vec3 colorScheme;
-        varying vec2 vUv;
-        varying float vElevation;
-        
-        void main() {
-          float distance = length(vUv - 0.5);
-          
-          // Create pulsing color based on elevation and audio
-          vec3 baseColor = colorScheme;
-          vec3 bassColor = vec3(1.0, 0.2, 0.5);
-          vec3 midColor = vec3(0.2, 1.0, 1.0);
-          vec3 highColor = vec3(1.0, 1.0, 0.2);
-          
-          vec3 finalColor = baseColor + 
-                           bassColor * bassLevel * 0.8 + 
-                           midColor * midLevel * 0.6 + 
-                           highColor * highLevel * 0.4;
-          
-          float alpha = 1.0 - distance * 1.5;
-          alpha += abs(vElevation) * 0.3;
-          alpha = clamp(alpha, 0.0, 0.9);
-          
-          gl_FragColor = vec4(finalColor, alpha);
-        }
-      `,
-      transparent: true,
-      side: THREE.DoubleSide
-    });
-    
-    const pulsingField = new THREE.Mesh(fieldGeometry, fieldMaterial);
-    pulsingField.rotation.x = -Math.PI / 2;
-    scene.add(pulsingField);
-    blobMeshRef.current = pulsingField;
+    // Create multiple dancing blobs
+    createDancingBlobs(scene);
 
     // Particle system will be initialized after createParticleSystem is defined
 
@@ -589,29 +765,103 @@ const AdvancedSpectrogramV2 = () => {
     return bassEnergy > threshold && bassEnergy > average * 1.3;
   };
 
-  // Update pulsing field instead of blob
-  const updatePulsingField = useCallback((audioData, bassAvg, midAvg, highAvg) => {
-    if (!blobMeshRef.current || !blobMeshRef.current.material.uniforms) return;
+  // Update multiple dancing blobs
+  const updateDancingBlobs = useCallback((audioData, bassAvg, midAvg, highAvg) => {
+    if (blobsRef.current.length === 0) return;
     
-    const uniforms = blobMeshRef.current.material.uniforms;
-    
-    // Update time for animation
-    uniforms.time.value += 0.016;
-    
-    // Update audio levels
-    uniforms.bassLevel.value = bassAvg;
-    uniforms.midLevel.value = midAvg;
-    uniforms.highLevel.value = highAvg;
-    
-    // Update color scheme based on current scheme
+    const currentSettings = settingsRef.current;
     const colors = colorSchemes[colorSchemeRef.current];
+    const time = performance.now() * 0.001;
     
-    // Fix: Use set() method instead of setRGB for Vector3
-    uniforms.colorScheme.value.set(
-      colors.accent === '#ff0080' ? 1 : colors.bass[0] / 255,
-      colors.accent === '#ff0080' ? 0 : colors.bass[1] / 255,
-      colors.accent === '#ff0080' ? 0.5 : colors.bass[2] / 255
-    );
+    blobsRef.current.forEach((blob, index) => {
+      if (!blob.material.uniforms) return;
+      
+      const uniforms = blob.material.uniforms;
+      
+      // Update time for animation
+      uniforms.time.value = time;
+      
+      // Update audio levels with slight variations per blob
+      const bassVariation = 1 + Math.sin(time + index) * 0.2;
+      const midVariation = 1 + Math.cos(time + index * 1.5) * 0.2;
+      const highVariation = 1 + Math.sin(time * 1.3 + index * 0.7) * 0.2;
+      
+      uniforms.bassLevel.value = bassAvg * bassVariation;
+      uniforms.midLevel.value = midAvg * midVariation;
+      uniforms.highLevel.value = highAvg * highVariation;
+      
+      // Update color scheme
+      uniforms.colorScheme.value.set(
+        colors.accent === '#ff0080' ? 1 : colors.bass[0] / 255,
+        colors.accent === '#ff0080' ? 0 : colors.bass[1] / 255,
+        colors.accent === '#ff0080' ? 0.5 : colors.bass[2] / 255
+      );
+      
+      // Dance choreography based on mode
+      const danceMode = currentSettings.blobDanceMode;
+      blob.dancePhase += blob.danceSpeed * 0.02;
+      
+      switch (danceMode) {
+        case 'orbit':
+          // Orbit around center
+          const orbitRadius = blob.danceRadius + bassAvg * 5;
+          const orbitAngle = blob.dancePhase + index * (Math.PI * 2 / blobsRef.current.length);
+          blob.mesh.position.x = Math.cos(orbitAngle) * orbitRadius;
+          blob.mesh.position.z = Math.sin(orbitAngle) * orbitRadius * 0.5;
+          blob.mesh.position.y = Math.sin(orbitAngle * 2) * 2 + blob.basePosition.y;
+          break;
+          
+        case 'follow':
+          // Follow the leader (first blob leads)
+          if (index === 0) {
+            blob.mesh.position.x = Math.cos(blob.dancePhase) * (3 + bassAvg * 4);
+            blob.mesh.position.z = Math.sin(blob.dancePhase * 0.7) * (3 + midAvg * 4);
+            blob.mesh.position.y = Math.sin(blob.dancePhase * 1.3) * (1 + highAvg * 2);
+          } else {
+            // Other blobs follow with delay
+            const leader = blobsRef.current[index - 1];
+            const followDelay = 0.5;
+            blob.mesh.position.x = leader.mesh.position.x + Math.cos(blob.dancePhase - followDelay) * 2;
+            blob.mesh.position.z = leader.mesh.position.z + Math.sin(blob.dancePhase - followDelay) * 2;
+            blob.mesh.position.y = leader.mesh.position.y + Math.sin(blob.dancePhase * 2 - followDelay) * 1;
+          }
+          break;
+          
+        case 'scatter':
+          // Random scattered movement
+          blob.mesh.position.x = blob.basePosition.x + Math.cos(blob.dancePhase) * (blob.danceRadius + bassAvg * 3);
+          blob.mesh.position.z = blob.basePosition.z + Math.sin(blob.dancePhase * 1.3) * (blob.danceRadius + midAvg * 3);
+          blob.mesh.position.y = blob.basePosition.y + Math.sin(blob.dancePhase * 0.8) * (1 + highAvg * 2);
+          break;
+          
+        case 'sync':
+          // Synchronized movement
+          const syncPhase = time + index * 0.2;
+          blob.mesh.position.x = Math.cos(syncPhase) * (4 + bassAvg * 3);
+          blob.mesh.position.z = Math.sin(syncPhase * 0.8) * (4 + midAvg * 3);
+          blob.mesh.position.y = Math.sin(syncPhase * 1.5) * (1 + highAvg * 2);
+          break;
+      }
+      
+      // Add some rotation for extra movement
+      blob.mesh.rotation.z += 0.002 + bassAvg * 0.01;
+      
+      // Blob interaction - attract/repel based on audio
+      if (currentSettings.blobInteraction && blobsRef.current.length > 1) {
+        blobsRef.current.forEach((otherBlob, otherIndex) => {
+          if (index !== otherIndex) {
+            const distance = blob.mesh.position.distanceTo(otherBlob.mesh.position);
+            const force = (bassAvg + midAvg + highAvg) * 0.1;
+            
+            if (distance < 10 && distance > 0.1) {
+              // Gentle repulsion when too close
+              const direction = blob.mesh.position.clone().sub(otherBlob.mesh.position).normalize();
+              blob.mesh.position.add(direction.multiplyScalar(force * 0.5));
+            }
+          }
+        });
+      }
+    });
   }, [colorSchemes]);
 
   // Main animation loop
@@ -677,12 +927,7 @@ const AdvancedSpectrogramV2 = () => {
     
     // Update visualizations based on current mode
     if (visualModeRef.current === 'spectrogram3d' && sceneRef.current) {
-      updatePulsingField(dataArray, bassAvg, midAvg, highAvg);
-      
-      // Gentle rotation for the pulsing field
-      if (blobMeshRef.current) {
-        blobMeshRef.current.rotation.z += 0.002;
-      }
+      updateDancingBlobs(dataArray, bassAvg, midAvg, highAvg);
       
       // Update particles
       if (particlesRef.current) {
@@ -709,7 +954,7 @@ const AdvancedSpectrogramV2 = () => {
     }
     
     animationRef.current = requestAnimationFrame(animate);
-  }, [calculateMelSpectrogram, updatePulsingField]);
+  }, [calculateMelSpectrogram, updateDancingBlobs]);
 
   // Particle system for string trails
   const updateStringParticles = (string, stringIndex) => {
@@ -1282,6 +1527,20 @@ const AdvancedSpectrogramV2 = () => {
     }
   }, [settings.particleCount, isRecording, visualMode, createParticleSystem]);
 
+  // Update blobs when blob settings change
+  useEffect(() => {
+    if (isRecording && visualMode === 'spectrogram3d' && sceneRef.current) {
+      createDancingBlobs(sceneRef.current);
+    }
+  }, [
+    settings.blobCount, 
+    settings.blobVariants, 
+    settings.blobSize,
+    isRecording, 
+    visualMode, 
+    createDancingBlobs
+  ]);
+
   // Update string physics when string settings change
   useEffect(() => {
     if (isRecording && visualMode === 'stringTheory') {
@@ -1709,6 +1968,94 @@ const AdvancedSpectrogramV2 = () => {
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-white">3D Effects</h3>
               
+              <div>
+                <label className="flex justify-between text-sm text-gray-300 mb-1">
+                  <span>Blob Count</span>
+                  <span>{settings.blobCount}</span>
+                </label>
+                <input
+                  type="range"
+                  min="1"
+                  max="6"
+                  step="1"
+                  value={settings.blobCount}
+                  onChange={(e) => setSettings({ ...settings, blobCount: parseInt(e.target.value) })}
+                  className="w-full"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Dance Mode
+                </label>
+                <select
+                  value={settings.blobDanceMode}
+                  onChange={(e) => setSettings({ ...settings, blobDanceMode: e.target.value })}
+                  className="w-full bg-gray-800 text-white rounded px-2 py-1 mb-3"
+                >
+                  <option value="orbit">Orbit (circle around center)</option>
+                  <option value="follow">Follow the Leader</option>
+                  <option value="scatter">Scattered Movement</option>
+                  <option value="sync">Synchronized Dance</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="flex justify-between text-sm text-gray-300 mb-1">
+                  <span>Blob Size</span>
+                  <span>{settings.blobSize.toFixed(1)}</span>
+                </label>
+                <input
+                  type="range"
+                  min="0.3"
+                  max="2.0"
+                  step="0.1"
+                  value={settings.blobSize}
+                  onChange={(e) => setSettings({ ...settings, blobSize: parseFloat(e.target.value) })}
+                  className="w-full"
+                />
+              </div>
+
+              <div>
+                <label className="flex justify-between text-sm text-gray-300 mb-1">
+                  <span>Blob Interaction</span>
+                  <input
+                    type="checkbox"
+                    checked={settings.blobInteraction}
+                    onChange={(e) => setSettings({ ...settings, blobInteraction: e.target.checked })}
+                    className="ml-2"
+                  />
+                </label>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Blob Variants
+                </label>
+                <div className="grid grid-cols-3 gap-2 mb-2">
+                  {['pulsing', 'ripple', 'spiral'].map(variant => (
+                    <button
+                      key={variant}
+                      onClick={() => {
+                        const variants = settings.blobVariants.includes(variant)
+                          ? settings.blobVariants.filter(v => v !== variant)
+                          : [...settings.blobVariants, variant];
+                        if (variants.length > 0) {
+                          setSettings({ ...settings, blobVariants: variants });
+                        }
+                      }}
+                      className={`p-2 rounded text-xs transition-colors ${
+                        settings.blobVariants.includes(variant)
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                      }`}
+                    >
+                      {variant.charAt(0).toUpperCase() + variant.slice(1)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <div>
                 <label className="flex justify-between text-sm text-gray-300 mb-1">
                   <span>Blob Tension</span>
