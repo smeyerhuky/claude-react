@@ -307,10 +307,15 @@ const AdvancedSpectrogramV2 = () => {
       scene.fog = new THREE.Fog(0x000000, 1, 100);
       sceneRef.current = scene;
 
-      // Camera
+      // Camera - calculate aspect ratio based on the padded visualization area dimensions
+      const visualizationArea = containerRef.current.querySelector('div');
+      const aspectRatio = visualizationArea ? 
+        visualizationArea.clientWidth / visualizationArea.clientHeight :
+        (containerRef.current.clientWidth - 32) / (containerRef.current.clientHeight - 256); // 32px = left/right padding, 256px = top/bottom safe zones
+      
       const camera = new THREE.PerspectiveCamera(
         75,
-        containerRef.current.clientWidth / containerRef.current.clientHeight,
+        aspectRatio,
         0.1,
         1000
       );
@@ -324,10 +329,21 @@ const AdvancedSpectrogramV2 = () => {
         alpha: true,
         preserveDrawingBuffer: true 
       });
-      renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
+      
+      // Set renderer size to match the padded visualization area
+      const visualWidth = containerRef.current.clientWidth - 32; // 32px = left/right padding
+      const visualHeight = containerRef.current.clientHeight - 256; // 256px = top/bottom safe zones
+      renderer.setSize(visualWidth, visualHeight);
       renderer.setPixelRatio(window.devicePixelRatio);
       rendererRef.current = renderer;
-      containerRef.current.appendChild(renderer.domElement);
+      
+      // Append to the visualization container, not the main container
+      const visualizationContainer = containerRef.current.querySelector('div');
+      if (visualizationContainer) {
+        visualizationContainer.appendChild(renderer.domElement);
+      } else {
+        containerRef.current.appendChild(renderer.domElement);
+      }
 
     // Lighting
     const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
@@ -415,9 +431,11 @@ const AdvancedSpectrogramV2 = () => {
     // Handle resize
     const handleResize = () => {
       if (!containerRef.current) return;
-      camera.aspect = containerRef.current.clientWidth / containerRef.current.clientHeight;
+      const visualWidth = containerRef.current.clientWidth - 32; // 32px = left/right padding
+      const visualHeight = containerRef.current.clientHeight - 256; // 256px = top/bottom safe zones
+      camera.aspect = visualWidth / visualHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
+      renderer.setSize(visualWidth, visualHeight);
     };
     window.addEventListener('resize', handleResize);
 
@@ -1300,6 +1318,7 @@ const AdvancedSpectrogramV2 = () => {
       const canvas = canvas2DRef.current;
       if (!canvas) return;
       
+      // Use the constrained visualization area bounds
       const rect = canvas.getBoundingClientRect();
       canvas.width = rect.width * window.devicePixelRatio;
       canvas.height = rect.height * window.devicePixelRatio;
@@ -1482,8 +1501,8 @@ const AdvancedSpectrogramV2 = () => {
 
   return (
     <div className="relative w-full h-screen bg-black overflow-hidden" ref={containerRef}>
-      {/* Main visualization container */}
-      <div className="absolute inset-0">
+      {/* Main visualization container - with safe zone padding */}
+      <div className="absolute top-24 bottom-40 left-4 right-4 border border-gray-800/30 rounded-lg overflow-hidden">
         <canvas
           key={`canvas-${visualMode}-${colorScheme}`}
           ref={canvas2DRef}
