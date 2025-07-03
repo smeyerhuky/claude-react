@@ -14,7 +14,7 @@ import AdvancedSpectrogram from './components/sonic/AdvancedSpectrogramV2'
 import ImageSonificationDJMixer from './components/sonic/ImageSonificationDJMixer'
 import GuitarSynthesizer from './components/sonic/GuitarSynthesizer'
 import MusicVisualizationToolkit from './components/sonic/MusicVisualizationToolkit'
-import TemporalPatternSpectrogramV2 from './components/sonicTemporalPatternSpectrogramV2'
+import TemporalPatternSpectrogramV2 from './components/sonic/TemporalPatternSpectrogramV2'
 
 
 // Navigation items configuration
