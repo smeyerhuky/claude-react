@@ -15,6 +15,7 @@ import ImageSonificationDJMixer from './components/sonic/ImageSonificationDJMixe
 import GuitarSynthesizer from './components/sonic/GuitarSynthesizer'
 import MusicVisualizationToolkit from './components/sonic/MusicVisualizationToolkit'
 import TemporalPatternSpectrogramV2 from './components/sonic/TemporalPatternSpectrogramV2'
+import RiNoMusicCalendar from './componenets/concerts/RiNoMusicCalendar'
 
 
 // Navigation items configuration
@@ -27,6 +28,7 @@ const navigationItems = [
   { id: 'advanced-spectrogram', label: "Advanced Spectrogram", component: AdvancedSpectrogram },
   { id: 'music-visualization-toolkit', label: "Music Visualization Toolkit", component: MusicVisualizationToolkit },
   { id: 'guitar-synthesizer', label: "Guitar Synthesizer", component: GuitarSynthesizer },
+  { id: 'concerts-rino', label: "Concerts in RiNo", component: RiNoMusicCalendar },
   // { id: 'diet-med-lat', label: 'MediterraneanLatino Recipes', component: MediterraneanLatinoRecipesEnglish },
   // { id: 'languages-hu', label: 'Magyar Soundgarden', component: MagyarSoundGarden },
   // { id: 'msg', label: "MSG - Magyar Sound Garden", component: MSG },
