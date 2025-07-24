@@ -15,7 +15,7 @@ import ImageSonificationDJMixer from './components/sonic/ImageSonificationDJMixe
 import GuitarSynthesizer from './components/sonic/GuitarSynthesizer'
 import MusicVisualizationToolkit from './components/sonic/MusicVisualizationToolkit'
 import TemporalPatternSpectrogramV2 from './components/sonic/TemporalPatternSpectrogramV2'
-import RiNoMusicCalendar from './componenets/concerts/RiNoMusicCalendar'
+import RiNoMusicCalendar from './components/concerts/RiNoMusicCalendar'
 
 
 // Navigation items configuration
