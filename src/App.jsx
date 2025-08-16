@@ -17,6 +17,7 @@ import MusicVisualizationToolkit from './components/sonic/MusicVisualizationTool
 import TemporalPatternSpectrogramV2 from './components/sonic/TemporalPatternSpectrogramV2'
 import RiNoMusicCalendar from './components/concerts/RiNoMusicCalendar'
 import DenverMusicNight from './components/concerts/DenverMusicNight'
+import AIWritingAnalyzer from './components/llm-tools/AIWritingAnalyzer'
 
 
 // Navigation items configuration
@@ -31,6 +32,7 @@ const navigationItems = [
   { id: 'guitar-synthesizer', label: "Guitar Synthesizer", component: GuitarSynthesizer },
   { id: 'concerts-rino', label: "Concerts in RiNo", component: RiNoMusicCalendar },
   { id: 'concerts-all', label: "Concerts in Denver", component: DenverMusicNight },
+  { id: 'ai-writing-analyzer', label: 'AI Writing Analyzer', component: AIWritingAnalyzer },
   // { id: 'diet-med-lat', label: 'MediterraneanLatino Recipes', component: MediterraneanLatinoRecipesEnglish },
   // { id: 'languages-hu', label: 'Magyar Soundgarden', component: MagyarSoundGarden },
   // { id: 'msg', label: "MSG - Magyar Sound Garden", component: MSG },
