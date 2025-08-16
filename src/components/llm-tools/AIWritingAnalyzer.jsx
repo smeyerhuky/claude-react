@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo } from 'react';
 import { AlertCircle, BarChart, TrendingUp, Hash, Type, Layers } from 'lucide-react';
 
 const AIWritingAnalyzer = () => {
@@ -6,7 +6,7 @@ const AIWritingAnalyzer = () => {
   const [activeTab, setActiveTab] = useState('overview');
 
   // Core computational linguistics functions
-  const computeNGrams = useCallback((text, n) => {
+  const computeNGrams = (text, n) => {
     // Extract n-grams from text for pattern detection
     const words = text.toLowerCase().match(/\b[\w']+\b/g) || [];
     const ngrams = {};
@@ -17,9 +17,9 @@ const AIWritingAnalyzer = () => {
     }
     
     return ngrams;
-  }, []);
+  };
 
-  const calculateLexicalDiversity = useCallback((text) => {
+  const calculateLexicalDiversity = (text) => {
     // Type-token ratio: unique words / total words
     const words = text.toLowerCase().match(/\b[\w']+\b/g) || [];
     const uniqueWords = new Set(words);
@@ -45,14 +45,14 @@ const AIWritingAnalyzer = () => {
       vocabularySize: uniqueWords.size,
       totalWords: words.length
     };
-  }, []);
+  };
 
-  const detectTransitionPatterns = useCallback((text) => {
+  const detectTransitionPatterns = (text) => {
     // Common AI transition phrases with weights
     const transitions = {
       'moreover': 3, 'furthermore': 3, 'additionally': 3,
       'however': 2, 'therefore': 2, 'consequently': 3,
-      'more importantly': 4, 'building on': 4, "it's worth noting": 4,
+      'more importantly': 4, 'building on': 4, 'it\'s worth noting': 4,
       'in conclusion': 3, 'to summarize': 3, 'in summary': 3,
       'first': 2, 'second': 2, 'third': 2, 'finally': 2,
       'on the other hand': 3, 'for instance': 2, 'for example': 2,
@@ -80,9 +80,9 @@ const AIWritingAnalyzer = () => {
       density: sentences.length > 0 ? transitionCount / sentences.length : 0,
       weightedScore: weightedScore
     };
-  }, []);
+  };
 
-  const analyzeSentenceComplexity = useCallback((text) => {
+  const analyzeSentenceComplexity = (text) => {
     // Flesch reading ease and sentence structure analysis
     const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
     const words = text.match(/\b[\w']+\b/g) || [];
@@ -112,13 +112,13 @@ const AIWritingAnalyzer = () => {
       sentenceVariation: coefficientOfVariation.toFixed(3),
       totalSentences: sentences.length
     };
-  }, []);
+  };
 
-  const detectAIPhrases = useCallback((text) => {
+  const detectAIPhrases = (text) => {
     // Common AI-favored phrases and their frequencies
     const aiPhrases = [
       'delve into', 'tapestry', 'testament to', 'in summary', 'in conclusion',
-      "it's important to note", "it's worth noting", "let's explore",
+      'it\'s important to note', 'it\'s worth noting', 'let\'s explore',
       'dive into', 'powerful tool', 'game-changer', 'transform',
       'leverage', 'utilize', 'implement', 'enhance', 'optimize',
       'force multiplier', 'paradigm', 'synergy', 'ecosystem',
@@ -148,9 +148,9 @@ const AIWritingAnalyzer = () => {
       totalOccurrences,
       density: wordCount > 0 ? (totalOccurrences / wordCount) * 100 : 0
     };
-  }, []);
+  };
 
-  const detectHedgingLanguage = useCallback((text) => {
+  const detectHedgingLanguage = (text) => {
     // Hedging words that AI often overuses
     const hedgeWords = [
       'might', 'could', 'perhaps', 'possibly', 'potentially',
@@ -174,16 +174,20 @@ const AIWritingAnalyzer = () => {
       count: hedgeCount,
       perSentence: sentences.length > 0 ? (hedgeCount / sentences.length).toFixed(2) : 0
     };
-  }, []);
+  };
 
-  const calculateRepetitionScore = useCallback((text) => {
+  const calculateRepetitionScore = (text) => {
     // Analyze repetitive patterns using bigrams and trigrams
     const bigrams = computeNGrams(text, 2);
     const trigrams = computeNGrams(text, 3);
     
     // Count repeated phrases (appearing more than once)
-    const repeatedBigrams = Object.entries(bigrams).filter(([, count]) => count > 1);
-    const repeatedTrigrams = Object.entries(trigrams).filter(([, count]) => count > 1);
+    const repeatedBigrams = Object.entries(bigrams).filter(([_, count]) => count > 1);
+    const repeatedTrigrams = Object.entries(trigrams).filter(([_, count]) => count > 1);
+    
+    // Calculate repetition intensity
+    const totalBigrams = Object.values(bigrams).reduce((a, b) => a + b, 0);
+    const totalTrigrams = Object.values(trigrams).reduce((a, b) => a + b, 0);
     
     const bigramRepetitionRate = repeatedBigrams.length / Math.max(Object.keys(bigrams).length, 1);
     const trigramRepetitionRate = repeatedTrigrams.length / Math.max(Object.keys(trigrams).length, 1);
@@ -196,7 +200,7 @@ const AIWritingAnalyzer = () => {
         .slice(0, 5)
         .map(([phrase, count]) => ({ phrase, count }))
     };
-  }, [computeNGrams]);
+  };
 
   // Main analysis computation
   const analysis = useMemo(() => {
@@ -254,7 +258,7 @@ const AIWritingAnalyzer = () => {
       hedging,
       repetition
     };
-  }, [inputText, calculateLexicalDiversity, detectTransitionPatterns, analyzeSentenceComplexity, detectAIPhrases, detectHedgingLanguage, calculateRepetitionScore]);
+  }, [inputText]);
 
   const getScoreColor = (score) => {
     if (score < 30) return 'text-green-600';
@@ -300,13 +304,13 @@ const AIWritingAnalyzer = () => {
           <div className="bg-white rounded-lg shadow-lg p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-bold">Overall AI Score</h2>
-              <div className={`text-4xl font-bold ${getScoreColor(analysis.aiScore)}`}>
+              <div className={`text-4xl font-bold ${getScoreColor(analysis.aiScore)}`}> 
                 {analysis.aiScore}%
               </div>
             </div>
             
             <div className="flex items-center justify-between">
-              <span className={`text-lg font-semibold ${getScoreColor(analysis.aiScore)}`}>
+              <span className={`text-lg font-semibold ${getScoreColor(analysis.aiScore)}`}> 
                 {getScoreLabel(analysis.aiScore)}
               </span>
               <div className="w-64 bg-gray-200 rounded-full h-4">
@@ -461,7 +465,7 @@ const AIWritingAnalyzer = () => {
                         <span className="font-mono">{(analysis.lexicalDiversity.ttr * 100).toFixed(2)}%</span>
                       </div>
                       <div className="flex justify-between">
-                        <span>Yule&apos;s K (Diversity):</span>
+                        <span>Yule's K (Diversity):</span>
                         <span className="font-mono">{analysis.lexicalDiversity.yulesK.toFixed(2)}</span>
                       </div>
                     </div>
