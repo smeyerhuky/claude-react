@@ -18,7 +18,8 @@ import TemporalPatternSpectrogramV2 from './components/sonic/TemporalPatternSpec
 import RiNoMusicCalendar from './components/concerts/RiNoMusicCalendar'
 import DenverMusicNight from './components/concerts/DenverMusicNight'
 import AIWritingAnalyzer from './components/llm-tools/AIWritingAnalyzer'
-
+import AWSReadOnlyPackage from './components/AWSReadOnlyPackage'
+import MarkdownCommentSystem from './components/MarkdownCommentSystem'
 
 // Navigation items configuration
 const navigationItems = [
@@ -33,6 +34,8 @@ const navigationItems = [
   { id: 'concerts-rino', label: "Concerts in RiNo", component: RiNoMusicCalendar },
   { id: 'concerts-all', label: "Concerts in Denver", component: DenverMusicNight },
   { id: 'ai-writing-analyzer', label: 'AI Writing Analyzer', component: AIWritingAnalyzer },
+  { id: 'aws-ro', label: 'AWS Read Only', component: AWSReadOnlyPackage },
+  { id: 'markdown-comment', label: 'Markdown Comments', component: MarkdownCommentSystem}
   // { id: 'diet-med-lat', label: 'MediterraneanLatino Recipes', component: MediterraneanLatinoRecipesEnglish },
   // { id: 'languages-hu', label: 'Magyar Soundgarden', component: MagyarSoundGarden },
   // { id: 'msg', label: "MSG - Magyar Sound Garden", component: MSG },
