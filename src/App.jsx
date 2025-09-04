@@ -20,6 +20,7 @@ import DenverMusicNight from './components/concerts/DenverMusicNight'
 import AIWritingAnalyzer from './components/llm-tools/AIWritingAnalyzer'
 import AWSReadOnlyPackage from './components/AWSReadOnlyPackage'
 import MarkdownCommentSystem from './components/MarkdownCommentSystem'
+import AdvancedSpackleDashboard from './components/AdvancedSpackleDashboard'
 
 // Navigation items configuration
 const navigationItems = [
@@ -35,7 +36,9 @@ const navigationItems = [
   { id: 'concerts-all', label: "Concerts in Denver", component: DenverMusicNight },
   { id: 'ai-writing-analyzer', label: 'AI Writing Analyzer', component: AIWritingAnalyzer },
   { id: 'aws-ro', label: 'AWS Read Only', component: AWSReadOnlyPackage },
-  { id: 'markdown-comment', label: 'Markdown Comments', component: MarkdownCommentSystem}
+  { id: 'markdown-comment', label: 'Markdown Comments', component: MarkdownCommentSystem},
+  { id: 'spackle-dashboard', label: 'Spackle Dashboard', component: AdvancedSpackleDashboard},
+  
   // { id: 'diet-med-lat', label: 'MediterraneanLatino Recipes', component: MediterraneanLatinoRecipesEnglish },
   // { id: 'languages-hu', label: 'Magyar Soundgarden', component: MagyarSoundGarden },
   // { id: 'msg', label: "MSG - Magyar Sound Garden", component: MSG },
