@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef, useMemo, useEffect } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, LineChart, Line, PieChart, Pie, Cell, ScatterPlot, Scatter } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, LineChart, Line, PieChart, Pie, Cell, Scatter } from 'recharts';
 import { Settings, X, Zap, ArrowRight, Maximize2, Minimize2, Copy, Download } from 'lucide-react';
 
 const AdvancedSpackleDashboard = () => {
