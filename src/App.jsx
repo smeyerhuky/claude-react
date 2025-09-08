@@ -1,49 +1,27 @@
 import { Routes, Route, useParams, useNavigate, Link, Navigate } from 'react-router-dom'
 import './App.css' 
 
-// import MagyarSoundGarden from './components/languages/MagyarSoundGarden'
-// import MediterraneanLatinoRecipesEnglish from './components/diet/MediterraneanLatinoRecipesEnglish'
-// import MSG from './components/languages/MSG'
-// import MagyarCore100 from './components/languages/MagyarCore100'
-// import Hungarian100WordsV1 from './components/languages/Hungarian100WordsV1'
-
-import ESP32ThereminInterface from './components/sonic/ESP32ThereminInterface'
-import ConcertSpectogram from './components/sonic/ConcertSpectogram'
-import EDMSpectrogram from './components/sonic/EDMSpectrogram'
 import AdvancedSpectrogram from './components/sonic/AdvancedSpectrogramV2'
-import ImageSonificationDJMixer from './components/sonic/ImageSonificationDJMixer'
 import GuitarSynthesizer from './components/sonic/GuitarSynthesizer'
 import MusicVisualizationToolkit from './components/sonic/MusicVisualizationToolkit'
-import TemporalPatternSpectrogramV2 from './components/sonic/TemporalPatternSpectrogramV2'
-import RiNoMusicCalendar from './components/concerts/RiNoMusicCalendar'
-import DenverMusicNight from './components/concerts/DenverMusicNight'
 import AIWritingAnalyzer from './components/llm-tools/AIWritingAnalyzer'
 import AWSReadOnlyPackage from './components/AWSReadOnlyPackage'
 import MarkdownCommentSystem from './components/MarkdownCommentSystem'
 import AdvancedSpackleDashboard from './components/AdvancedSpackleDashboard'
+import MitosisDemo from './components/MitosisAnimation'
+import ActiveUsersIndicatorDemo from './components/ActiveUsersIndicator'
 
 // Navigation items configuration
 const navigationItems = [
-  { id: 'esp-muse', label: "ESP 32 Music", component: ESP32ThereminInterface },
-  { id: 'sonique', label: 'DJ Sonique', component: ImageSonificationDJMixer },
-  { id: 'concert-spectrogram', label: "Concert Spectrogram", component: ConcertSpectogram },
-  { id: 'edm-spectrogram', label: "EDM Spectrogram", component: EDMSpectrogram },
-  { id: 'quantum', label: "Temporal Pattern Spectrogram", component: TemporalPatternSpectrogramV2 },
   { id: 'advanced-spectrogram', label: "Advanced Spectrogram", component: AdvancedSpectrogram },
   { id: 'music-visualization-toolkit', label: "Music Visualization Toolkit", component: MusicVisualizationToolkit },
   { id: 'guitar-synthesizer', label: "Guitar Synthesizer", component: GuitarSynthesizer },
-  { id: 'concerts-rino', label: "Concerts in RiNo", component: RiNoMusicCalendar },
-  { id: 'concerts-all', label: "Concerts in Denver", component: DenverMusicNight },
   { id: 'ai-writing-analyzer', label: 'AI Writing Analyzer', component: AIWritingAnalyzer },
   { id: 'aws-ro', label: 'AWS Read Only', component: AWSReadOnlyPackage },
   { id: 'markdown-comment', label: 'Markdown Comments', component: MarkdownCommentSystem},
   { id: 'spackle-dashboard', label: 'Spackle Dashboard', component: AdvancedSpackleDashboard},
-  
-  // { id: 'diet-med-lat', label: 'MediterraneanLatino Recipes', component: MediterraneanLatinoRecipesEnglish },
-  // { id: 'languages-hu', label: 'Magyar Soundgarden', component: MagyarSoundGarden },
-  // { id: 'msg', label: "MSG - Magyar Sound Garden", component: MSG },
-  // { id: '100-words-v1', label: "Magyar - 100 Words (v1)", component: Hungarian100WordsV1 },
-  // { id: '100-words-final', label: "Magyar - 100 Words (final)", component: MagyarCore100 },
+  { id: 'mitosis-animation', label: 'Mitosis Animation', component: MitosisDemo},
+  { id: 'active-users-indicator', label: 'Active Users Indicator', component: ActiveUsersIndicatorDemo},
 ]
 
 // Home page component showing all available components as cards
