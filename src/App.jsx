@@ -10,6 +10,7 @@ import MarkdownCommentSystem from './components/MarkdownCommentSystem'
 import AdvancedSpackleDashboard from './components/AdvancedSpackleDashboard'
 import MitosisDemo from './components/MitosisAnimation'
 import ActiveUsersIndicatorDemo from './components/ActiveUsersIndicator'
+import EnhancedTextBufferProcessor from './components/EnhancedTextBufferProcessor'
 
 // Navigation items configuration
 const navigationItems = [
@@ -22,6 +23,7 @@ const navigationItems = [
   { id: 'spackle-dashboard', label: 'Spackle Dashboard', component: AdvancedSpackleDashboard},
   { id: 'mitosis-animation', label: 'Mitosis Animation', component: MitosisDemo},
   { id: 'active-users-indicator', label: 'Active Users Indicator', component: ActiveUsersIndicatorDemo},
+  { id: 'text-buffer-processor', label: 'Text Buffer Processor', component: EnhancedTextBufferProcessor},
 ]
 
 // Home page component showing all available components as cards
