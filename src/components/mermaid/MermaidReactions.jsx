@@ -15,23 +15,23 @@ const MermaidReactions = () => {
   const [selectionEnd, setSelectionEnd] = useState(null);
   const [showBulkActions, setShowBulkActions] = useState(false);
   const [diagramText, setDiagramText] = useState(`flowchart TD
-    Start([Start Process]) --> Check{Check Input}
-    Check -->|Valid| Process[Process Data]
-    Check -->|Invalid| Error[Show Error]
-    Process --> Save[(Save to DB)]
-    Save --> Success([Success!])
-    Error --> End([End])
-    Success --> End
-    
+    A([Start Process]) --> B{Check Input}
+    B -->|Valid| C[Process Data]
+    B -->|Invalid| D[Show Error]
+    C --> E[(Save to DB)]
+    E --> F([Success!])
+    D --> G([End])
+    F --> G
+
     classDef startEnd fill:#e1f5fe
     classDef process fill:#f3e5f5
     classDef decision fill:#fff3e0
-    classDef error fill:#ffebee
-    
-    class Start,Success,End startEnd
-    class Process,Save process
-    class Check decision
-    class Error error`);
+    classDef errorStyle fill:#ffebee
+
+    class A,F,G startEnd
+    class C,E process
+    class B decision
+    class D errorStyle`);
   
   const containerRef = useRef(null);
   const diagramRef = useRef(null);
@@ -202,33 +202,40 @@ const MermaidReactions = () => {
 
   // Initialize Mermaid
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js';
-    script.onload = () => {
-      window.mermaid.initialize({ 
-        startOnLoad: false,
-        securityLevel: 'loose', // Allow click handlers
-        theme: 'default'
-      });
-      renderDiagram();
-    };
-    document.head.appendChild(script);
-    
-    return () => {
-      if (document.head.contains(script)) {
-        document.head.removeChild(script);
-      }
-    };
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: 'loose', // Allow click handlers
+      theme: 'default'
+    });
+    renderDiagram();
   }, []);
 
   const renderDiagram = () => {
-    if (window.mermaid && diagramRef.current) {
-      diagramRef.current.innerHTML = diagramText;
-      diagramRef.current.removeAttribute('data-processed');
-      window.mermaid.init(undefined, diagramRef.current).then(() => {
-        // Add additional click handlers after Mermaid renders
-        addClickHandlers();
-      });
+    if (mermaid && diagramRef.current) {
+      try {
+        // Clear previous content
+        diagramRef.current.innerHTML = '';
+        diagramRef.current.removeAttribute('data-processed');
+
+        // Create a unique ID for this diagram
+        const diagramId = `mermaid-${Date.now()}`;
+
+        // Render the diagram
+        mermaid.render(diagramId, diagramText).then((result) => {
+          if (diagramRef.current) {
+            diagramRef.current.innerHTML = result.svg;
+            // Add click handlers after rendering
+            setTimeout(() => addClickHandlers(), 100);
+          }
+        }).catch((error) => {
+          console.error('Mermaid rendering error:', error);
+          if (diagramRef.current) {
+            diagramRef.current.innerHTML = '<div style="color: red; padding: 20px;">Error rendering diagram. Please check your syntax.</div>';
+          }
+        });
+      } catch (error) {
+        console.error('Mermaid initialization error:', error);
+      }
     }
   };
 
@@ -247,18 +254,22 @@ const MermaidReactions = () => {
       node.setAttribute('data-element-id', elementId);
       
       node.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (!wasClickRef.current) {
-          const isMultiSelect = e.ctrlKey || e.metaKey;
-          const textContent = node.querySelector('span')?.textContent || node.textContent || `Node ${index}`;
-          
-          if (isMultiSelect) {
-            toggleElementSelection(elementId, true);
-          } else {
-            const elementData = { id: elementId, type: 'node', content: textContent };
-            setClickedElementWithPosition(elementData, node, e);
-            toggleElementSelection(elementId, false);
+        try {
+          e.stopPropagation();
+          if (!wasClickRef.current) {
+            const isMultiSelect = e.ctrlKey || e.metaKey;
+            const textContent = node.querySelector('span')?.textContent || node.textContent || `Node ${index}`;
+
+            if (isMultiSelect) {
+              toggleElementSelection(elementId, true);
+            } else {
+              const elementData = { id: elementId, type: 'node', content: textContent };
+              setClickedElementWithPosition(elementData, node, e);
+              toggleElementSelection(elementId, false);
+            }
           }
+        } catch (error) {
+          console.error('Error in node click handler:', error);
         }
       });
       
@@ -278,12 +289,20 @@ const MermaidReactions = () => {
       updateNodeStyle();
       
       node.addEventListener('mouseenter', () => {
-        if (!isDragging && !isSelecting) {
-          node.style.opacity = '0.8';
+        try {
+          if (!isDragging && !isSelecting) {
+            node.style.opacity = '0.8';
+          }
+        } catch (error) {
+          console.error('Error in node mouseenter:', error);
         }
       });
       node.addEventListener('mouseleave', () => {
-        node.style.opacity = selectedElements.has(elementId) ? '0.9' : '1';
+        try {
+          node.style.opacity = selectedElements.has(elementId) ? '0.9' : '1';
+        } catch (error) {
+          console.error('Error in node mouseleave:', error);
+        }
       });
     });
 
@@ -295,17 +314,21 @@ const MermaidReactions = () => {
       edge.setAttribute('data-element-id', elementId);
       
       edge.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (!wasClickRef.current) {
-          const isMultiSelect = e.ctrlKey || e.metaKey;
-          
-          if (isMultiSelect) {
-            toggleElementSelection(elementId, true);
-          } else {
-            const elementData = { id: elementId, type: 'edge', content: `Edge ${index}` };
-            setClickedElementWithPosition(elementData, edge, e);
-            toggleElementSelection(elementId, false);
+        try {
+          e.stopPropagation();
+          if (!wasClickRef.current) {
+            const isMultiSelect = e.ctrlKey || e.metaKey;
+
+            if (isMultiSelect) {
+              toggleElementSelection(elementId, true);
+            } else {
+              const elementData = { id: elementId, type: 'edge', content: `Edge ${index}` };
+              setClickedElementWithPosition(elementData, edge, e);
+              toggleElementSelection(elementId, false);
+            }
           }
+        } catch (error) {
+          console.error('Error in edge click handler:', error);
         }
       });
       
@@ -328,24 +351,32 @@ const MermaidReactions = () => {
       updateEdgeStyle();
       
       edge.addEventListener('mouseenter', () => {
-        if (!isDragging && !isSelecting) {
-          const path = edge.querySelector('path');
-          if (path && !selectedElements.has(elementId)) {
-            path.style.strokeWidth = '2.5px';
+        try {
+          if (!isDragging && !isSelecting) {
+            const path = edge.querySelector('path');
+            if (path && !selectedElements.has(elementId)) {
+              path.style.strokeWidth = '2.5px';
+            }
           }
+        } catch (error) {
+          console.error('Error in edge mouseenter:', error);
         }
       });
       edge.addEventListener('mouseleave', () => {
-        const path = edge.querySelector('path');
-        if (path && !selectedElements.has(elementId)) {
-          path.style.strokeWidth = '1.5px';
+        try {
+          const path = edge.querySelector('path');
+          if (path && !selectedElements.has(elementId)) {
+            path.style.strokeWidth = '1.5px';
+          }
+        } catch (error) {
+          console.error('Error in edge mouseleave:', error);
         }
       });
     });
   };
 
   useEffect(() => {
-    if (window.mermaid) {
+    if (mermaid) {
       renderDiagram();
     }
   }, [diagramText]);
@@ -769,7 +800,7 @@ const MermaidReactions = () => {
               <p><strong>Diagram Syntax:</strong> Use standard Mermaid syntax</p>
               <div className="bg-gray-50 p-2 rounded text-xs mt-1">
                 <code>flowchart TD</code><br/>
-                <code>A[Node] --&gt; B{Decision}</code><br/>
+                <code>A[Node] --&gt; B&#123;Decision&#125;</code><br/>
                 <code>B --&gt;|Yes| C[Action]</code>
               </div>
               <p className="mt-2"><strong>Selection Controls:</strong></p>
