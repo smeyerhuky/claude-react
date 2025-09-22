@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import mermaid from 'mermaid';
 
 const MermaidReactions = () => {
   const [scale, setScale] = useState(1);
@@ -65,7 +66,7 @@ const MermaidReactions = () => {
     setShowBulkActions(false);
   };
 
-  const calculatePopoverPosition = (element, event) => {
+  const calculatePopoverPosition = (element) => {
     if (!containerRef.current) return { x: 0, y: 0 };
     
     const containerRect = containerRef.current.getBoundingClientRect();
@@ -598,14 +599,6 @@ const MermaidReactions = () => {
 
   return (
     <div className="w-full h-screen overflow-hidden border border-gray-300 relative bg-gray-50">
-      {/* Title Header */}
-      <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 z-40 shadow-lg">
-        <h1 className="text-2xl font-bold tracking-wider">
-          MERM<span className="text-yellow-300">AI</span>D
-        </h1>
-        <p className="text-blue-100 text-sm">Interactive Diagram Editor</p>
-      </div>
-
       <div
         ref={containerRef}
         className={`w-full overflow-hidden ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
