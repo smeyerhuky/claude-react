@@ -11,6 +11,7 @@ import AdvancedSpackleDashboard from './components/AdvancedSpackleDashboard'
 import MitosisDemo from './components/MitosisAnimation'
 import ActiveUsersIndicatorDemo from './components/ActiveUsersIndicator'
 import EnhancedTextBufferProcessor from './components/EnhancedTextBufferProcessor'
+import MermaidReactions from './components/MermaidDiagram'
 
 // Navigation items configuration
 const navigationItems = [
@@ -24,6 +25,7 @@ const navigationItems = [
   { id: 'mitosis-animation', label: 'Mitosis Animation', component: MitosisDemo},
   { id: 'active-users-indicator', label: 'Active Users Indicator', component: ActiveUsersIndicatorDemo},
   { id: 'text-buffer-processor', label: 'Text Buffer Processor', component: EnhancedTextBufferProcessor},
+  { id: 'mermaid-diagram', label: 'Mermaid Diagram', component: MermaidReactions},
 ]
 
 // Home page component showing all available components as cards
