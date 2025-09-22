@@ -3,27 +3,21 @@ import './App.css'
 
 import AdvancedSpectrogram from './components/sonic/AdvancedSpectrogramV2'
 import GuitarSynthesizer from './components/sonic/GuitarSynthesizer'
-import MusicVisualizationToolkit from './components/sonic/MusicVisualizationToolkit'
 import AIWritingAnalyzer from './components/llm-tools/AIWritingAnalyzer'
-import AWSReadOnlyPackage from './components/AWSReadOnlyPackage'
 import MarkdownCommentSystem from './components/MarkdownCommentSystem'
 import AdvancedSpackleDashboard from './components/AdvancedSpackleDashboard'
 import MitosisDemo from './components/MitosisAnimation'
-import ActiveUsersIndicatorDemo from './components/ActiveUsersIndicator'
 import EnhancedTextBufferProcessor from './components/EnhancedTextBufferProcessor'
-import MermaidReactions from './components/MermaidDiagram'
+import MermaidReactions from './components/mermaid/MermaidReactions'
 
 // Navigation items configuration
 const navigationItems = [
   { id: 'advanced-spectrogram', label: "Advanced Spectrogram", component: AdvancedSpectrogram },
-  { id: 'music-visualization-toolkit', label: "Music Visualization Toolkit", component: MusicVisualizationToolkit },
   { id: 'guitar-synthesizer', label: "Guitar Synthesizer", component: GuitarSynthesizer },
   { id: 'ai-writing-analyzer', label: 'AI Writing Analyzer', component: AIWritingAnalyzer },
-  { id: 'aws-ro', label: 'AWS Read Only', component: AWSReadOnlyPackage },
   { id: 'markdown-comment', label: 'Markdown Comments', component: MarkdownCommentSystem},
   { id: 'spackle-dashboard', label: 'Spackle Dashboard', component: AdvancedSpackleDashboard},
   { id: 'mitosis-animation', label: 'Mitosis Animation', component: MitosisDemo},
-  { id: 'active-users-indicator', label: 'Active Users Indicator', component: ActiveUsersIndicatorDemo},
   { id: 'text-buffer-processor', label: 'Text Buffer Processor', component: EnhancedTextBufferProcessor},
   { id: 'mermaid-diagram', label: 'Mermaid Diagram', component: MermaidReactions},
 ]
