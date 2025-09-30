@@ -629,11 +629,10 @@ const MermaidReactions = () => {
   }, []);
 
   return (
-    <div className="w-full h-screen overflow-hidden border border-gray-300 relative bg-gray-50">
+    <div className="w-full h-screen overflow-hidden relative bg-gray-50">
       <div
         ref={containerRef}
-        className={`w-full overflow-hidden ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
-        style={{ height: 'calc(100vh - 80px)', marginTop: '80px' }}
+        className={`w-full h-full overflow-hidden ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
         onWheel={handleWheel}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
@@ -668,40 +667,40 @@ const MermaidReactions = () => {
           )}
         </div>
         
-        <div className="absolute top-4 right-4 flex gap-2 z-10 controls">
-          <button 
-            className="bg-gray-100 border border-gray-300 rounded px-2 py-1 text-xs hover:bg-gray-200"
+        <div className="absolute top-2 right-2 md:top-4 md:right-4 flex gap-1 md:gap-2 z-10 controls">
+          <button
+            className="bg-gray-100 border border-gray-300 rounded px-2 py-2 md:px-2 md:py-1 text-sm md:text-xs hover:bg-gray-200 touch-manipulation"
             onClick={zoomIn}
           >
             🔍+
           </button>
-          <button 
-            className="bg-gray-100 border border-gray-300 rounded px-2 py-1 text-xs hover:bg-gray-200"
+          <button
+            className="bg-gray-100 border border-gray-300 rounded px-2 py-2 md:px-2 md:py-1 text-sm md:text-xs hover:bg-gray-200 touch-manipulation"
             onClick={zoomOut}
           >
             🔍-
           </button>
-          <button 
-            className="bg-gray-100 border border-gray-300 rounded px-2 py-1 text-xs hover:bg-gray-200"
+          <button
+            className="bg-gray-100 border border-gray-300 rounded px-2 py-2 md:px-2 md:py-1 text-sm md:text-xs hover:bg-gray-200 touch-manipulation"
             onClick={resetView}
           >
             🎯
           </button>
-          <button 
-            className="bg-gray-100 border border-gray-300 rounded px-2 py-1 text-xs hover:bg-gray-200"
+          <button
+            className="bg-gray-100 border border-gray-300 rounded px-2 py-2 md:px-2 md:py-1 text-sm md:text-xs hover:bg-gray-200 touch-manipulation"
             onClick={() => setShowModal(true)}
           >
             ✏️
           </button>
         </div>
         
-        <div className="absolute bottom-4 right-4 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-xs">
+        <div className="absolute bottom-2 right-2 md:bottom-4 md:right-4 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-xs md:text-xs">
           {Math.round(scale * 100)}%
         </div>
 
         {/* Bulk Actions Panel */}
         {showBulkActions && (
-          <div className="absolute top-4 left-4 bg-white border border-gray-300 rounded-lg p-3 shadow-lg bulk-actions">
+          <div className="absolute top-2 left-2 md:top-4 md:left-4 bg-white border border-gray-300 rounded-lg p-2 md:p-3 shadow-lg bulk-actions max-w-xs">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-sm font-semibold text-gray-700">
                 {selectedElements.size} selected
@@ -713,28 +712,28 @@ const MermaidReactions = () => {
                 ✕
               </button>
             </div>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-1 md:gap-2">
               <button
                 onClick={bulkHighlight}
-                className="px-2 py-1 text-xs bg-yellow-100 text-yellow-800 rounded hover:bg-yellow-200"
+                className="px-2 py-1 text-xs bg-yellow-100 text-yellow-800 rounded hover:bg-yellow-200 touch-manipulation"
               >
                 ✨ Highlight
               </button>
               <button
                 onClick={bulkRemoveHighlight}
-                className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded hover:bg-gray-200"
+                className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded hover:bg-gray-200 touch-manipulation"
               >
                 🧹 Clear
               </button>
               <button
                 onClick={bulkGroup}
-                className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded hover:bg-blue-200"
+                className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded hover:bg-blue-200 touch-manipulation"
               >
                 🔗 Group
               </button>
               <button
                 onClick={bulkDelete}
-                className="px-2 py-1 text-xs bg-red-100 text-red-800 rounded hover:bg-red-200"
+                className="px-2 py-1 text-xs bg-red-100 text-red-800 rounded hover:bg-red-200 touch-manipulation"
               >
                 🗑️ Delete
               </button>
@@ -744,11 +743,11 @@ const MermaidReactions = () => {
 
         {/* Selection Info */}
         {selectedElements.size > 0 && !showBulkActions && (
-          <div className="absolute top-4 left-4 bg-blue-50 border border-blue-200 rounded-lg p-2 text-sm">
+          <div className="absolute top-2 left-2 md:top-4 md:left-4 bg-blue-50 border border-blue-200 rounded-lg p-2 text-sm max-w-xs">
             <span className="text-blue-800">
               {selectedElements.size} element{selectedElements.size !== 1 ? 's' : ''} selected
             </span>
-            <div className="text-xs text-blue-600 mt-1">
+            <div className="text-xs text-blue-600 mt-1 hidden md:block">
               Ctrl+Click for more • Shift+Drag to select area
             </div>
           </div>
@@ -790,11 +789,11 @@ const MermaidReactions = () => {
       </div>
 
       {showModal && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 modal"
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 modal p-2 md:p-4"
           onClick={(e) => e.target === e.currentTarget && setShowModal(false)}
         >
-          <div className="bg-white p-6 rounded-lg w-4/5 max-w-2xl">
+          <div className="bg-white p-4 md:p-6 rounded-lg w-full max-w-2xl max-h-full overflow-y-auto">
             <h3 className="text-lg font-semibold mb-4">Edit Mermaid Diagram</h3>
             <div className="mb-4 text-sm text-gray-600">
               <p><strong>Diagram Syntax:</strong> Use standard Mermaid syntax</p>
@@ -812,19 +811,19 @@ const MermaidReactions = () => {
               </ul>
             </div>
             <textarea
-              className="w-full h-48 p-2 border border-gray-300 rounded font-mono text-sm"
+              className="w-full h-48 md:h-48 p-2 border border-gray-300 rounded font-mono text-sm resize-none"
               value={diagramText}
               onChange={(e) => setDiagramText(e.target.value)}
             />
-            <div className="flex gap-2 mt-4">
-              <button 
-                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            <div className="flex flex-col sm:flex-row gap-2 mt-4">
+              <button
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 touch-manipulation"
                 onClick={updateDiagram}
               >
                 Update
               </button>
-              <button 
-                className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+              <button
+                className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 touch-manipulation"
                 onClick={() => setShowModal(false)}
               >
                 Cancel

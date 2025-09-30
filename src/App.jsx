@@ -9,6 +9,7 @@ import AdvancedSpackleDashboard from './components/AdvancedSpackleDashboard'
 import MitosisDemo from './components/MitosisAnimation'
 import EnhancedTextBufferProcessor from './components/EnhancedTextBufferProcessor'
 import MermaidReactions from './components/mermaid/MermaidReactions'
+import AWSWars from './components/AWSWars'
 
 // Navigation items configuration
 const navigationItems = [
@@ -20,6 +21,7 @@ const navigationItems = [
   { id: 'mitosis-animation', label: 'Mitosis Animation', component: MitosisDemo},
   { id: 'text-buffer-processor', label: 'Text Buffer Processor', component: EnhancedTextBufferProcessor},
   { id: 'mermaid-diagram', label: 'Mermaid Diagram', component: MermaidReactions},
+  { id: 'aws-wars', label: 'AWS Wars Game', component: AWSWars},
 ]
 
 // Home page component showing all available components as cards
