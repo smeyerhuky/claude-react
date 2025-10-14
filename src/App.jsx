@@ -11,6 +11,7 @@ import EnhancedTextBufferProcessor from './components/EnhancedTextBufferProcesso
 import MermaidReactions from './components/mermaid/MermaidReactions'
 import AWSWars from './components/AWSWars'
 import SyncAudioMesh from './components/SyncAudioMesh'
+import MarkdownViewer from './components/markdown/MarkdownViewer'
 
 // Navigation items configuration
 const navigationItems = [
@@ -18,6 +19,7 @@ const navigationItems = [
   { id: 'guitar-synthesizer', label: "Guitar Synthesizer", component: GuitarSynthesizer },
   { id: 'ai-writing-analyzer', label: 'AI Writing Analyzer', component: AIWritingAnalyzer },
   { id: 'markdown-comment', label: 'Markdown Comments', component: MarkdownCommentSystem},
+  { id: 'markdown-viewer', label: 'Markdown Viewer', component: MarkdownViewer},
   { id: 'spackle-dashboard', label: 'Spackle Dashboard', component: AdvancedSpackleDashboard},
   { id: 'mitosis-animation', label: 'Mitosis Animation', component: MitosisDemo},
   { id: 'text-buffer-processor', label: 'Text Buffer Processor', component: EnhancedTextBufferProcessor},
