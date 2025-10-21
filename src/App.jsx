@@ -12,6 +12,7 @@ import MermaidReactions from './components/mermaid/MermaidReactions'
 import AWSWars from './components/AWSWars'
 import SyncAudioMesh from './components/SyncAudioMesh'
 import MarkdownViewer from './components/markdown/MarkdownViewer'
+import ShiftBiddingSimulator from './components/ShiftBiddingSimulator'
 
 // Navigation items configuration
 const navigationItems = [
@@ -26,6 +27,7 @@ const navigationItems = [
   { id: 'mermaid-diagram', label: 'Mermaid Diagram', component: MermaidReactions},
   { id: 'aws-wars', label: 'AWS Wars Game', component: AWSWars},
   { id: 'audio', label: 'Audio Mesh', component: SyncAudioMesh },
+  { id: 'shift-bidding-app', label: 'Shift Bidding App', component: ShiftBiddingSimulator },
 ]
 
 // Home page component showing all available components as cards
