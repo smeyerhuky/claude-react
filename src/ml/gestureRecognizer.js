@@ -22,12 +22,15 @@ const RING_MCP = 13;
 const PINKY_MCP = 17;
 
 export class GestureRecognizer {
-  constructor(bufferSize = 5) {
+  constructor(bufferSize = 8) {
     this.bufferSize = bufferSize;
     this.gestureBuffer = [];
     this.holdTimers = {};
     this.lastGesture = null;
     this.gestureStartTime = null;
+    this.stableGesture = 'none';
+    this.stableCount = 0;
+    this.requiredStableFrames = 4; // Must be stable for 4 frames
   }
 
   detectGesture(hand) {
@@ -107,24 +110,21 @@ export class GestureRecognizer {
   _classifyGesture(fingers, landmarks) {
     const { thumb, index, middle, ring, pinky } = fingers;
 
-    // Pinch: thumb and index tips close together
+    // Pinch: thumb and index tips VERY close together (stricter threshold)
     const thumbIndexDist = this._getDistance(landmarks[THUMB_TIP], landmarks[INDEX_TIP]);
-    if (thumbIndexDist < 0.06 && !middle && !ring && !pinky) {
+
+    // Strict pinch - tips must be very close
+    if (thumbIndexDist < 0.035) {
       return { gesture: 'pinch', confidence: 0.95 };
     }
 
-    // Pinch with any finger state (more lenient)
-    if (thumbIndexDist < 0.05) {
-      return { gesture: 'pinch', confidence: 0.9 };
-    }
-
-    // Grab: all fingers curled toward palm (simplified from fist)
+    // Grab: all fingers curled toward palm
     const allCurled = !index && !middle && !ring && !pinky;
-    if (allCurled) {
+    if (allCurled && !thumb) {
       return { gesture: 'grab', confidence: 0.9 };
     }
 
-    // Point: only index extended
+    // Point: only index extended (thumb can be any state)
     if (index && !middle && !ring && !pinky) {
       return { gesture: 'point', confidence: 0.9 };
     }
@@ -134,8 +134,8 @@ export class GestureRecognizer {
       return { gesture: 'open_palm', confidence: 0.9 };
     }
 
-    // Spread: fingers extended but spread apart
-    if (index && middle && ring && pinky) {
+    // Spread: fingers extended but thumb relaxed
+    if (index && middle && ring && pinky && !thumb) {
       return { gesture: 'spread', confidence: 0.85 };
     }
 
@@ -168,11 +168,30 @@ export class GestureRecognizer {
     }
 
     const confidence = maxCount / this.gestureBuffer.length;
+
+    // Require high confidence (60%+ of buffer) to report non-none gesture
+    // This prevents flickering between gestures
+    if (confidence < 0.6 && dominantGesture !== 'none') {
+      dominantGesture = this.stableGesture; // Keep previous stable gesture
+    }
+
+    // Update stable gesture tracking
+    if (dominantGesture === this.stableGesture) {
+      this.stableCount++;
+    } else {
+      this.stableCount = 1;
+      this.stableGesture = dominantGesture;
+    }
+
+    // Only report gesture if it's been stable for enough frames
+    const isStable = this.stableCount >= this.requiredStableFrames;
+
     return {
-      gesture: dominantGesture,
-      confidence,
-      held: totalHoldDuration > 500,
-      holdDuration: totalHoldDuration,
+      gesture: isStable ? dominantGesture : 'none',
+      confidence: isStable ? confidence : 0,
+      held: totalHoldDuration > 500 && isStable,
+      holdDuration: isStable ? totalHoldDuration : 0,
+      raw: dominantGesture, // Raw detection for debugging
     };
   }
 
@@ -181,6 +200,8 @@ export class GestureRecognizer {
     this.holdTimers = {};
     this.lastGesture = null;
     this.gestureStartTime = null;
+    this.stableGesture = 'none';
+    this.stableCount = 0;
   }
 }
 
