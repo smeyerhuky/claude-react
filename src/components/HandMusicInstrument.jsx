@@ -4,241 +4,274 @@ import { GestureRecognizer } from '../ml/gestureRecognizer';
 
 // Musical scales - intervals from root (in semitones)
 const SCALES = {
-  pentatonic: { name: 'Pentatonic Major', intervals: [0, 2, 4, 7, 9, 12, 14, 16] },
-  pentatonicMinor: { name: 'Pentatonic Minor', intervals: [0, 3, 5, 7, 10, 12, 15, 17] },
-  major: { name: 'Major', intervals: [0, 2, 4, 5, 7, 9, 11, 12] },
+  major: { name: 'Major (Ionian)', intervals: [0, 2, 4, 5, 7, 9, 11, 12] },
   minor: { name: 'Natural Minor', intervals: [0, 2, 3, 5, 7, 8, 10, 12] },
-  blues: { name: 'Blues', intervals: [0, 3, 5, 6, 7, 10, 12, 15] },
+  pentatonic: { name: 'Pentatonic Major', intervals: [0, 2, 4, 7, 9, 12] },
+  pentatonicMinor: { name: 'Pentatonic Minor', intervals: [0, 3, 5, 7, 10, 12] },
+  blues: { name: 'Blues', intervals: [0, 3, 5, 6, 7, 10, 12] },
   dorian: { name: 'Dorian', intervals: [0, 2, 3, 5, 7, 9, 10, 12] },
+  mixolydian: { name: 'Mixolydian', intervals: [0, 2, 4, 5, 7, 9, 10, 12] },
+  phrygian: { name: 'Phrygian', intervals: [0, 1, 3, 5, 7, 8, 10, 12] },
+  wholeTone: { name: 'Whole Tone', intervals: [0, 2, 4, 6, 8, 10, 12] },
+  chromatic: { name: 'Chromatic', intervals: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] },
 };
 
 const ROOT_NOTES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 const NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 
+// Voice types with different timbres
 const VOICES = {
-  warm: { name: 'Warm Pad', type: 'sine', harmonics: [0.4, 0.2] },
-  pure: { name: 'Pure Sine', type: 'sine', harmonics: [] },
-  bright: { name: 'Bright', type: 'sawtooth', harmonics: [] },
-  soft: { name: 'Soft Square', type: 'triangle', harmonics: [0.2] },
+  sine: { name: 'Pure Tone', type: 'sine', harmonics: [] },
+  warm: { name: 'Warm Pad', type: 'sine', harmonics: [0.5, 0.25, 0.125] },
+  bright: { name: 'Bright Lead', type: 'sawtooth', harmonics: [] },
+  hollow: { name: 'Hollow', type: 'square', harmonics: [] },
+  ethereal: { name: 'Ethereal', type: 'triangle', harmonics: [0.3, 0.15] },
 };
 
+// Convert MIDI note to frequency
 const midiToFreq = (midi) => 440 * Math.pow(2, (midi - 69) / 12);
-const midiToNoteName = (midi) => `${NOTE_NAMES[midi % 12]}${Math.floor(midi / 12) - 1}`;
+
+// Get note name from MIDI
+const midiToNoteName = (midi) => {
+  const octave = Math.floor(midi / 12) - 1;
+  const note = NOTE_NAMES[midi % 12];
+  return `${note}${octave}`;
+};
 
 export default function HandMusicInstrument() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const trackerRef = useRef(null);
   const recognizersRef = useRef([null, null]);
-
-  // Audio refs
-  const audioCtxRef = useRef(null);
+  const audioContextRef = useRef(null);
   const masterGainRef = useRef(null);
   const voicesRef = useRef({});
-  const currentNotesRef = useRef({ left: null, right: null });
+  const lastNotesRef = useRef({ left: null, right: null });
 
   const [status, setStatus] = useState('idle');
   const [stats, setStats] = useState({ fps: 0, handsDetected: 0 });
   const [handStates, setHandStates] = useState([null, null]);
-  const [audioReady, setAudioReady] = useState(false);
 
-  // Config
+  // Music configuration
   const [config, setConfig] = useState({
     rootNote: 'C',
     octave: 4,
     scale: 'pentatonic',
     voice: 'warm',
+    // Conductor mode - music only plays when enabled
     musicEnabled: false,
-    masterVolume: 0.3,
+    // Which hand controls what
+    leftHandMode: 'bass', // bass, chord, or off
+    rightHandMode: 'melody', // melody, lead, or off
+    // Dynamics
+    volumeSensitivity: 0.8,
+    pitchRange: 2, // octaves
+    vibratoAmount: 0.3,
+    attackTime: 0.05,
+    releaseTime: 0.3,
   });
 
-  // Active notes display
-  const [activeNotes, setActiveNotes] = useState([]);
+  // Current musical state
+  const [musicState, setMusicState] = useState({
+    activeNotes: [],
+    currentChord: null,
+    dynamics: 0.5,
+    isPlaying: false,
+  });
 
-  // Initialize audio on user click
-  const initAudio = useCallback(async () => {
-    if (audioCtxRef.current) {
-      if (audioCtxRef.current.state === 'suspended') {
-        await audioCtxRef.current.resume();
-      }
-      setAudioReady(true);
-      return;
-    }
+  // Initialize Web Audio
+  const initAudio = useCallback(() => {
+    if (audioContextRef.current) return;
 
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    audioCtxRef.current = ctx;
+    audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+    masterGainRef.current = audioContextRef.current.createGain();
+    masterGainRef.current.gain.value = 0;
+    masterGainRef.current.connect(audioContextRef.current.destination);
+  }, []);
 
-    // Master gain with limiter
-    const master = ctx.createGain();
-    master.gain.value = config.masterVolume;
+  // Create a voice (oscillator + gain)
+  const createVoice = useCallback((frequency, voiceType, handId) => {
+    if (!audioContextRef.current) return null;
 
-    // Simple compressor to prevent clipping
-    const compressor = ctx.createDynamicsCompressor();
-    compressor.threshold.value = -20;
-    compressor.ratio.value = 4;
-
-    master.connect(compressor);
-    compressor.connect(ctx.destination);
-    masterGainRef.current = master;
-
-    setAudioReady(true);
-  }, [config.masterVolume]);
-
-  // Create oscillator voice
-  const createVoice = useCallback((frequency, voiceType) => {
-    const ctx = audioCtxRef.current;
-    if (!ctx) return null;
-
+    const ctx = audioContextRef.current;
     const voiceConfig = VOICES[voiceType];
-    const now = ctx.currentTime;
 
-    // Main oscillator
-    const osc = ctx.createOscillator();
-    osc.type = voiceConfig.type;
-    osc.frequency.value = frequency;
+    const oscillator = ctx.createOscillator();
+    const gainNode = ctx.createGain();
+    const vibratoOsc = ctx.createOscillator();
+    const vibratoGain = ctx.createGain();
 
-    // Gain envelope
-    const gain = ctx.createGain();
-    gain.gain.value = 0;
+    oscillator.type = voiceConfig.type;
+    oscillator.frequency.value = frequency;
 
     // Vibrato LFO
-    const vibrato = ctx.createOscillator();
-    const vibratoGain = ctx.createGain();
-    vibrato.frequency.value = 5;
-    vibratoGain.gain.value = 0; // Start with no vibrato
-    vibrato.connect(vibratoGain);
-    vibratoGain.connect(osc.frequency);
+    vibratoOsc.frequency.value = 5;
+    vibratoGain.gain.value = frequency * config.vibratoAmount * 0.02;
+    vibratoOsc.connect(vibratoGain);
+    vibratoGain.connect(oscillator.frequency);
+    vibratoOsc.start();
 
-    // Harmonics
-    const harmonics = voiceConfig.harmonics.map((amp, i) => {
+    // Additional harmonics for richer sound
+    const harmonicOscs = voiceConfig.harmonics.map((amp, i) => {
       const harmOsc = ctx.createOscillator();
       const harmGain = ctx.createGain();
       harmOsc.type = voiceConfig.type;
       harmOsc.frequency.value = frequency * (i + 2);
-      harmGain.gain.value = 0;
+      harmGain.gain.value = amp;
       harmOsc.connect(harmGain);
-      harmGain.connect(masterGainRef.current);
-      harmOsc.start(now);
-      return { osc: harmOsc, gain: harmGain, amp };
+      harmGain.connect(gainNode);
+      harmOsc.start();
+      return { osc: harmOsc, gain: harmGain };
     });
 
-    osc.connect(gain);
-    gain.connect(masterGainRef.current);
+    gainNode.gain.value = 0;
+    oscillator.connect(gainNode);
+    gainNode.connect(masterGainRef.current);
+    oscillator.start();
 
-    osc.start(now);
-    vibrato.start(now);
+    return {
+      oscillator,
+      gainNode,
+      vibratoOsc,
+      vibratoGain,
+      harmonicOscs,
+      frequency,
+    };
+  }, [config.vibratoAmount]);
 
-    return { osc, gain, vibrato, vibratoGain, harmonics, frequency };
-  }, []);
-
-  // Play note with envelope
+  // Play a note with attack envelope
   const playNote = useCallback((midiNote, velocity, handId) => {
-    const ctx = audioCtxRef.current;
-    if (!ctx || !config.musicEnabled) return;
+    if (!audioContextRef.current || !config.musicEnabled) return;
 
-    const freq = midiToFreq(midiNote);
+    const frequency = midiToFreq(midiNote);
+    const ctx = audioContextRef.current;
     const now = ctx.currentTime;
 
-    // Stop existing note smoothly
-    const existing = voicesRef.current[handId];
-    if (existing) {
-      existing.gain.gain.cancelScheduledValues(now);
-      existing.gain.gain.setTargetAtTime(0, now, 0.1);
-      existing.harmonics.forEach(h => h.gain.gain.setTargetAtTime(0, now, 0.1));
+    // Stop existing voice for this hand
+    if (voicesRef.current[handId]) {
+      const oldVoice = voicesRef.current[handId];
+      oldVoice.gainNode.gain.cancelScheduledValues(now);
+      oldVoice.gainNode.gain.setValueAtTime(oldVoice.gainNode.gain.value, now);
+      oldVoice.gainNode.gain.exponentialApproachValueAtTime(0.001, now, config.releaseTime / 2);
       setTimeout(() => {
-        try {
-          existing.osc.stop();
-          existing.vibrato.stop();
-          existing.harmonics.forEach(h => h.osc.stop());
-        } catch (e) { /* already stopped */ }
-      }, 200);
+        oldVoice.oscillator.stop();
+        oldVoice.vibratoOsc.stop();
+        oldVoice.harmonicOscs.forEach(h => h.osc.stop());
+      }, config.releaseTime * 1000);
     }
 
-    const voice = createVoice(freq, config.voice);
+    const voice = createVoice(frequency, config.voice, handId);
     if (!voice) return;
 
     voicesRef.current[handId] = voice;
 
-    // Attack envelope - smooth fade in
-    const targetGain = Math.min(0.4, velocity * 0.5);
-    voice.gain.gain.setTargetAtTime(targetGain, now, 0.08);
-    voice.harmonics.forEach(h => {
-      h.gain.gain.setTargetAtTime(targetGain * h.amp, now, 0.08);
-    });
+    // Attack envelope
+    const targetGain = velocity * config.volumeSensitivity;
+    voice.gainNode.gain.setValueAtTime(0.001, now);
+    voice.gainNode.gain.exponentialApproachValueAtTime(targetGain, now, config.attackTime);
 
-    currentNotesRef.current[handId] = midiNote;
-    setActiveNotes(prev => [...prev.filter(n => n.handId !== handId), { handId, midiNote, name: midiToNoteName(midiNote) }]);
-  }, [config.musicEnabled, config.voice, createVoice]);
+    lastNotesRef.current[handId] = midiNote;
 
-  // Update playing note
-  const updateNote = useCallback((midiNote, velocity, vibratoAmt, handId) => {
-    const ctx = audioCtxRef.current;
+    setMusicState(prev => ({
+      ...prev,
+      activeNotes: [...prev.activeNotes.filter(n => n.handId !== handId), { handId, midiNote, frequency }],
+      isPlaying: true,
+    }));
+  }, [config, createVoice]);
+
+  // Update note (pitch bend / modulation)
+  const updateNote = useCallback((midiNote, velocity, vibrato, handId) => {
     const voice = voicesRef.current[handId];
-    if (!ctx || !voice) return;
+    if (!voice || !audioContextRef.current) return;
 
-    const freq = midiToFreq(midiNote);
+    const ctx = audioContextRef.current;
     const now = ctx.currentTime;
+    const frequency = midiToFreq(midiNote);
 
-    // Smooth pitch change
-    voice.osc.frequency.setTargetAtTime(freq, now, 0.05);
-    voice.harmonics.forEach((h, i) => {
-      h.osc.frequency.setTargetAtTime(freq * (i + 2), now, 0.05);
+    // Smooth pitch transition
+    voice.oscillator.frequency.cancelScheduledValues(now);
+    voice.oscillator.frequency.setValueAtTime(voice.oscillator.frequency.value, now);
+    voice.oscillator.frequency.exponentialApproachValueAtTime(frequency, now, 0.05);
+
+    // Update harmonics
+    voice.harmonicOscs.forEach((h, i) => {
+      h.osc.frequency.cancelScheduledValues(now);
+      h.osc.frequency.exponentialApproachValueAtTime(frequency * (i + 2), now, 0.05);
     });
 
-    // Update vibrato
-    voice.vibratoGain.gain.setTargetAtTime(freq * vibratoAmt * 0.01, now, 0.1);
+    // Update vibrato intensity
+    voice.vibratoGain.gain.value = frequency * vibrato * 0.02;
 
     // Update volume
-    const targetGain = Math.min(0.4, velocity * 0.5);
-    voice.gain.gain.setTargetAtTime(targetGain, now, 0.05);
+    const targetGain = velocity * config.volumeSensitivity;
+    voice.gainNode.gain.cancelScheduledValues(now);
+    voice.gainNode.gain.setValueAtTime(voice.gainNode.gain.value, now);
+    voice.gainNode.gain.exponentialApproachValueAtTime(Math.max(0.001, targetGain), now, 0.05);
 
-    if (currentNotesRef.current[handId] !== midiNote) {
-      currentNotesRef.current[handId] = midiNote;
-      setActiveNotes(prev => prev.map(n => n.handId === handId ? { ...n, midiNote, name: midiToNoteName(midiNote) } : n));
-    }
-  }, []);
+    lastNotesRef.current[handId] = midiNote;
+  }, [config.volumeSensitivity]);
 
-  // Stop note with release
+  // Stop a note with release envelope
   const stopNote = useCallback((handId) => {
-    const ctx = audioCtxRef.current;
     const voice = voicesRef.current[handId];
-    if (!ctx || !voice) return;
+    if (!voice || !audioContextRef.current) return;
 
+    const ctx = audioContextRef.current;
     const now = ctx.currentTime;
 
-    // Release envelope
-    voice.gain.gain.cancelScheduledValues(now);
-    voice.gain.gain.setTargetAtTime(0, now, 0.15);
-    voice.harmonics.forEach(h => {
-      h.gain.gain.setTargetAtTime(0, now, 0.15);
-    });
+    voice.gainNode.gain.cancelScheduledValues(now);
+    voice.gainNode.gain.setValueAtTime(voice.gainNode.gain.value, now);
+    voice.gainNode.gain.exponentialApproachValueAtTime(0.001, now, config.releaseTime);
 
     setTimeout(() => {
-      try {
-        voice.osc.stop();
-        voice.vibrato.stop();
-        voice.harmonics.forEach(h => h.osc.stop());
-      } catch (e) { /* already stopped */ }
+      voice.oscillator.stop();
+      voice.vibratoOsc.stop();
+      voice.harmonicOscs.forEach(h => h.osc.stop());
       delete voicesRef.current[handId];
-    }, 300);
+    }, config.releaseTime * 1000 + 100);
 
-    currentNotesRef.current[handId] = null;
-    setActiveNotes(prev => prev.filter(n => n.handId !== handId));
-  }, []);
+    lastNotesRef.current[handId] = null;
 
-  // Map Y position to MIDI note
+    setMusicState(prev => ({
+      ...prev,
+      activeNotes: prev.activeNotes.filter(n => n.handId !== handId),
+      isPlaying: prev.activeNotes.length > 1,
+    }));
+  }, [config.releaseTime]);
+
+  // Map hand Y position to MIDI note in current scale
   const yToMidi = useCallback((y, isLeftHand) => {
     const scale = SCALES[config.scale];
     const rootMidi = ROOT_NOTES.indexOf(config.rootNote) + (config.octave + (isLeftHand ? -1 : 0)) * 12 + 12;
 
-    // Invert Y (0=top=high, 1=bottom=low)
-    const normalizedY = 1 - Math.max(0.05, Math.min(0.95, y));
-    const noteIndex = Math.floor(normalizedY * scale.intervals.length);
+    // Y from 0 (top) to 1 (bottom) - invert so higher hand = higher pitch
+    const normalizedY = 1 - Math.max(0, Math.min(1, y));
 
-    return rootMidi + scale.intervals[Math.min(noteIndex, scale.intervals.length - 1)];
+    // Map to scale degrees across pitch range
+    const totalNotes = scale.intervals.length * config.pitchRange;
+    const noteIndex = Math.floor(normalizedY * totalNotes);
+
+    const octaveOffset = Math.floor(noteIndex / scale.intervals.length);
+    const scaleIndex = noteIndex % scale.intervals.length;
+
+    return rootMidi + scale.intervals[scaleIndex] + (octaveOffset * 12);
+  }, [config.scale, config.rootNote, config.octave, config.pitchRange]);
+
+  // Get scale notes for display
+  const getScaleNotes = useCallback(() => {
+    const scale = SCALES[config.scale];
+    const rootMidi = ROOT_NOTES.indexOf(config.rootNote) + config.octave * 12 + 12;
+
+    return scale.intervals.map(interval => {
+      const midi = rootMidi + interval;
+      return {
+        midi,
+        name: midiToNoteName(midi),
+        frequency: midiToFreq(midi),
+      };
+    });
   }, [config.scale, config.rootNote, config.octave]);
 
-  // Handle hand tracking data
   const handleHandData = useCallback((handData) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -247,20 +280,14 @@ export default function HandMusicInstrument() {
     const { width, height } = canvas;
     ctx.clearRect(0, 0, width, height);
 
-    // Draw scale lanes
-    const scale = SCALES[config.scale];
-    const laneHeight = height / scale.intervals.length;
-    scale.intervals.forEach((_, i) => {
-      const y = height - (i + 1) * laneHeight;
-      ctx.fillStyle = i % 2 === 0 ? 'rgba(55, 65, 81, 0.3)' : 'rgba(75, 85, 99, 0.3)';
-      ctx.fillRect(0, y, width, laneHeight);
-    });
+    // Draw scale visualization
+    drawScaleVisualization(ctx, width, height);
 
     const newHandStates = [null, null];
 
     handData.forEach((hand, idx) => {
       if (!recognizersRef.current[idx]) {
-        recognizersRef.current[idx] = new GestureRecognizer(8);
+        recognizersRef.current[idx] = new GestureRecognizer(3);
       }
 
       recognizersRef.current[idx].detectGesture(hand);
@@ -268,108 +295,201 @@ export default function HandMusicInstrument() {
 
       const isLeftHand = hand.handedness === 'Right'; // Mirrored
       const handId = isLeftHand ? 'left' : 'right';
+      const handMode = isLeftHand ? config.leftHandMode : config.rightHandMode;
 
-      newHandStates[idx] = { ...hand, gesture, side: handId };
+      newHandStates[idx] = {
+        ...hand,
+        gesture,
+        side: handId,
+        mode: handMode,
+      };
 
       // Draw hand
-      const palmX = (1 - hand.palmCenter.x) * width;
-      const palmY = hand.palmCenter.y * height;
-      const isPlaying = (gesture.gesture === 'pinch' || gesture.gesture === 'grab') && gesture.held;
+      drawHand(ctx, hand, width, height, gesture, handId);
 
-      // Palm glow
-      const gradient = ctx.createRadialGradient(palmX, palmY, 0, palmX, palmY, 50);
-      if (isPlaying && config.musicEnabled) {
-        gradient.addColorStop(0, 'rgba(34, 197, 94, 0.7)');
-        gradient.addColorStop(1, 'rgba(34, 197, 94, 0)');
-      } else if (gesture.gesture === 'open_palm') {
-        gradient.addColorStop(0, 'rgba(239, 68, 68, 0.5)');
-        gradient.addColorStop(1, 'rgba(239, 68, 68, 0)');
-      } else {
-        gradient.addColorStop(0, 'rgba(59, 130, 246, 0.4)');
-        gradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
-      }
-      ctx.fillStyle = gradient;
-      ctx.beginPath();
-      ctx.arc(palmX, palmY, 50, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Finger tips
-      [4, 8, 12, 16, 20].forEach((tipIdx) => {
-        const pt = hand.landmarks[tipIdx];
-        ctx.beginPath();
-        ctx.arc((1 - pt.x) * width, pt.y * height, 8, 0, Math.PI * 2);
-        ctx.fillStyle = isPlaying ? '#22c55e' : '#3b82f6';
-        ctx.fill();
-      });
-
-      // Music logic - ONLY play when held
-      if (config.musicEnabled && audioReady) {
+      // Process music based on gesture and mode
+      if (config.musicEnabled && handMode !== 'off') {
         const y = hand.palmCenter.y;
-        const depth = hand.depth?.normalized || 0.5;
-        const spread = hand.fingerSpread || 0;
+        const x = 1 - hand.palmCenter.x; // Mirror
+        const depth = hand.depth.normalized;
+        const spread = hand.fingerSpread;
 
         const midiNote = yToMidi(y, isLeftHand);
-        const velocity = 0.3 + depth * 0.5;
-        const vibrato = spread * 0.3;
+        const velocity = 0.3 + depth * 0.7; // Depth controls volume
+        const vibrato = spread * config.vibratoAmount; // Spread controls vibrato
 
-        // Only play when gesture is HELD (deliberate)
-        if (isPlaying) {
-          if (currentNotesRef.current[handId] === null) {
+        if (gesture.gesture === 'pinch' || gesture.gesture === 'grab') {
+          // Playing - pinch or grab triggers/sustains notes
+          if (lastNotesRef.current[handId] !== midiNote) {
             playNote(midiNote, velocity, handId);
           } else {
             updateNote(midiNote, velocity, vibrato, handId);
           }
 
-          // Show note
-          ctx.fillStyle = '#22c55e';
-          ctx.font = 'bold 16px system-ui';
-          ctx.textAlign = 'center';
-          ctx.fillText(midiToNoteName(midiNote), palmX, palmY - 60);
+          // Draw note indicator
+          drawNoteIndicator(ctx, x * width, y * height, midiNote, true);
+        } else if (gesture.gesture === 'point') {
+          // Pointing - preview note without sustain
+          if (lastNotesRef.current[handId] !== midiNote) {
+            playNote(midiNote, velocity * 0.5, handId);
+          }
+          drawNoteIndicator(ctx, x * width, y * height, midiNote, false);
+        } else if (gesture.gesture === 'open_palm') {
+          // Open palm - stop note (conductor cut)
+          if (lastNotesRef.current[handId] !== null) {
+            stopNote(handId);
+          }
         } else {
-          // Stop if not playing gesture
-          if (currentNotesRef.current[handId] !== null) {
+          // Other gestures - gentle fade
+          if (lastNotesRef.current[handId] !== null && gesture.gesture === 'none') {
             stopNote(handId);
           }
         }
-      } else if (currentNotesRef.current[handId] !== null) {
+      } else if (lastNotesRef.current[handId] !== null) {
         stopNote(handId);
       }
-
-      // Hand label
-      ctx.fillStyle = '#fff';
-      ctx.font = '12px system-ui';
-      ctx.textAlign = 'center';
-      ctx.fillText(`${handId} - ${gesture.gesture}${gesture.held ? ' (held)' : ''}`, palmX, palmY + 60);
     });
 
-    // Stop notes for missing hands
-    if (handData.length < 2 && currentNotesRef.current.left !== null && !handData.some(h => h.handedness === 'Right')) {
-      stopNote('left');
-    }
-    if (handData.length < 2 && currentNotesRef.current.right !== null && !handData.some(h => h.handedness === 'Left')) {
-      stopNote('right');
+    // Check for conductor gestures (two hands)
+    if (handData.length === 2) {
+      const gesture1 = newHandStates[0]?.gesture;
+      const gesture2 = newHandStates[1]?.gesture;
+
+      // Both open palms held = toggle music
+      if (gesture1?.gesture === 'open_palm' && gesture2?.gesture === 'open_palm' &&
+          gesture1.held && gesture2.held && gesture1.holdDuration > 1000 && gesture2.holdDuration > 1000) {
+        // Toggle on first detection
+        if (!config._togglePending) {
+          setConfig(prev => ({ ...prev, musicEnabled: !prev.musicEnabled, _togglePending: true }));
+        }
+      } else {
+        setConfig(prev => ({ ...prev, _togglePending: false }));
+      }
     }
 
     setHandStates(newHandStates);
-    if (trackerRef.current) setStats(trackerRef.current.getPerformanceStats());
-  }, [config, audioReady, yToMidi, playNote, updateNote, stopNote]);
+
+    if (trackerRef.current) {
+      setStats(trackerRef.current.getPerformanceStats());
+    }
+  }, [config, yToMidi, playNote, updateNote, stopNote]);
+
+  const drawScaleVisualization = (ctx, width, height) => {
+    const scaleNotes = getScaleNotes();
+    const noteHeight = height / (scaleNotes.length + 1);
+
+    ctx.globalAlpha = 0.3;
+    scaleNotes.forEach((note, i) => {
+      const y = height - (i + 1) * noteHeight;
+      const isActive = musicState.activeNotes.some(n => n.midiNote % 12 === note.midi % 12);
+
+      // Note lane
+      ctx.fillStyle = isActive ? '#22c55e' : '#374151';
+      ctx.fillRect(0, y - noteHeight / 2, width, noteHeight - 2);
+
+      // Note label
+      ctx.fillStyle = isActive ? '#fff' : '#9ca3af';
+      ctx.font = 'bold 12px system-ui';
+      ctx.textAlign = 'left';
+      ctx.fillText(note.name, 10, y + 4);
+    });
+    ctx.globalAlpha = 1;
+  };
+
+  const drawHand = (ctx, hand, width, height, gesture, handId) => {
+    const { landmarks, depth } = hand;
+    const isPlaying = gesture.gesture === 'pinch' || gesture.gesture === 'grab';
+
+    // Palm glow based on state
+    const palmX = (1 - hand.palmCenter.x) * width;
+    const palmY = hand.palmCenter.y * height;
+    const glowRadius = 40 + depth.normalized * 30;
+
+    const gradient = ctx.createRadialGradient(palmX, palmY, 0, palmX, palmY, glowRadius);
+    if (isPlaying && config.musicEnabled) {
+      gradient.addColorStop(0, 'rgba(34, 197, 94, 0.6)');
+      gradient.addColorStop(1, 'rgba(34, 197, 94, 0)');
+    } else if (gesture.gesture === 'open_palm') {
+      gradient.addColorStop(0, 'rgba(239, 68, 68, 0.4)');
+      gradient.addColorStop(1, 'rgba(239, 68, 68, 0)');
+    } else {
+      gradient.addColorStop(0, 'rgba(59, 130, 246, 0.3)');
+      gradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
+    }
+
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(palmX, palmY, glowRadius, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Finger tips
+    const fingerTips = [4, 8, 12, 16, 20];
+    fingerTips.forEach((tipIdx) => {
+      const point = landmarks[tipIdx];
+      const x = (1 - point.x) * width;
+      const y = point.y * height;
+      const size = 6 + depth.normalized * 6;
+
+      ctx.beginPath();
+      ctx.arc(x, y, size, 0, Math.PI * 2);
+      ctx.fillStyle = isPlaying ? '#22c55e' : '#3b82f6';
+      ctx.fill();
+    });
+
+    // Hand label
+    ctx.font = 'bold 11px system-ui';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#fff';
+    ctx.fillText(
+      `${handId.toUpperCase()} - ${gesture.gesture}`,
+      palmX,
+      palmY - glowRadius - 10
+    );
+  };
+
+  const drawNoteIndicator = (ctx, x, y, midiNote, isPlaying) => {
+    const noteName = midiToNoteName(midiNote);
+
+    // Note bubble
+    ctx.beginPath();
+    ctx.roundRect(x - 25, y - 35, 50, 25, 8);
+    ctx.fillStyle = isPlaying ? '#22c55e' : '#6b7280';
+    ctx.fill();
+
+    ctx.font = 'bold 14px system-ui';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#fff';
+    ctx.fillText(noteName, x, y - 18);
+
+    // Frequency
+    ctx.font = '10px system-ui';
+    ctx.fillStyle = 'rgba(255,255,255,0.7)';
+    ctx.fillText(`${Math.round(midiToFreq(midiNote))}Hz`, x, y - 6);
+  };
 
   const startTracking = useCallback(async () => {
     if (!videoRef.current) return;
-    setStatus('loading');
 
-    await initAudio();
+    setStatus('loading');
+    initAudio();
 
     try {
       trackerRef.current = new HandTrackingService(videoRef.current, {
         maxNumHands: 2,
-        minDetectionConfidence: 0.7,
-        minTrackingConfidence: 0.6,
+        minDetectionConfidence: 0.6,
+        minTrackingConfidence: 0.5,
       });
 
-      recognizersRef.current = [new GestureRecognizer(8), new GestureRecognizer(8)];
+      recognizersRef.current = [new GestureRecognizer(3), new GestureRecognizer(3)];
+
       await trackerRef.current.initialize();
       trackerRef.current.subscribe(handleHandData);
+
+      // Enable master volume
+      if (masterGainRef.current) {
+        masterGainRef.current.gain.value = 0.5;
+      }
+
       setStatus('running');
     } catch (error) {
       console.error('Failed to initialize:', error);
@@ -378,46 +498,68 @@ export default function HandMusicInstrument() {
   }, [handleHandData, initAudio]);
 
   const stopTracking = useCallback(() => {
+    // Stop all notes
     Object.keys(voicesRef.current).forEach(stopNote);
+
     if (trackerRef.current) {
       trackerRef.current.destroy();
       trackerRef.current = null;
     }
+    recognizersRef.current = [null, null];
     setStatus('idle');
     setHandStates([null, null]);
-    setActiveNotes([]);
+    setMusicState({ activeNotes: [], currentChord: null, dynamics: 0.5, isPlaying: false });
   }, [stopNote]);
 
   useEffect(() => {
     return () => {
-      Object.values(voicesRef.current).forEach(v => {
-        try { v.osc.stop(); v.vibrato.stop(); } catch (e) {}
+      Object.keys(voicesRef.current).forEach(id => {
+        const voice = voicesRef.current[id];
+        if (voice) {
+          voice.oscillator.stop();
+          voice.vibratoOsc.stop();
+        }
       });
-      trackerRef.current?.destroy();
-      audioCtxRef.current?.close();
+      if (trackerRef.current) {
+        trackerRef.current.destroy();
+      }
+      if (audioContextRef.current) {
+        audioContextRef.current.close();
+      }
     };
   }, []);
 
-  const scaleNotes = SCALES[config.scale].intervals.map((interval, i) => {
-    const midi = ROOT_NOTES.indexOf(config.rootNote) + config.octave * 12 + 12 + interval;
-    return midiToNoteName(midi);
-  });
+  const scaleNotes = getScaleNotes();
 
   return (
-    <div className="max-w-5xl mx-auto p-4">
+    <div className="max-w-6xl mx-auto p-4">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        {/* Main view */}
-        <div className="lg:col-span-2 bg-gray-900 rounded-xl overflow-hidden">
+        {/* Camera/Performance view */}
+        <div className="lg:col-span-2 bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
           <div className="relative aspect-[4/3] bg-black">
-            <video ref={videoRef} autoPlay playsInline muted className="absolute inset-0 w-full h-full object-cover scale-x-[-1] opacity-30" />
-            <canvas ref={canvasRef} width={640} height={480} className="absolute inset-0 w-full h-full" />
+            <video
+              ref={videoRef}
+              autoPlay
+              playsInline
+              muted
+              className="absolute inset-0 w-full h-full object-cover scale-x-[-1] opacity-30"
+            />
+            <canvas
+              ref={canvasRef}
+              width={640}
+              height={480}
+              className="absolute inset-0 w-full h-full"
+            />
 
             {status === 'idle' && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gray-900/90">
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-900/80">
                 <div className="text-center">
-                  <div className="text-6xl mb-4">🎵</div>
+                  <div className="text-6xl mb-4">🎵🖐️</div>
                   <p className="text-gray-300 mb-4">Hand Music Instrument</p>
-                  <button onClick={startTracking} className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700">
+                  <button
+                    onClick={startTracking}
+                    className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700"
+                  >
                     Start
                   </button>
                 </div>
@@ -425,106 +567,197 @@ export default function HandMusicInstrument() {
             )}
 
             {status === 'loading' && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gray-900/90">
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-900/80">
                 <div className="animate-spin text-4xl">⏳</div>
               </div>
             )}
 
+            {/* Music status indicator */}
             {status === 'running' && (
               <>
-                <div className="absolute top-3 left-3 bg-black/70 px-3 py-2 rounded text-sm">
+                <div className="absolute top-3 left-3 bg-black/60 px-3 py-2 rounded-lg text-sm">
                   <div className="text-green-400">{stats.fps} FPS</div>
+                  <div className="text-gray-400">{stats.handsDetected} hands</div>
                 </div>
-                <div className={`absolute top-3 right-3 px-4 py-2 rounded-full text-sm font-bold ${config.musicEnabled ? 'bg-green-500 text-white' : 'bg-gray-700 text-gray-300'}`}>
-                  {config.musicEnabled ? '🎵 ON' : '🔇 OFF'}
+
+                <div className={`absolute top-3 right-3 px-4 py-2 rounded-full text-sm font-medium ${
+                  config.musicEnabled ? 'bg-green-500 text-white' : 'bg-gray-600 text-gray-300'
+                }`}>
+                  {config.musicEnabled ? '🎵 MUSIC ON' : '🔇 MUSIC OFF'}
                 </div>
-                {activeNotes.length > 0 && (
-                  <div className="absolute bottom-3 left-3 flex gap-2">
-                    {activeNotes.map((n, i) => (
-                      <span key={i} className="px-3 py-1 bg-green-600 text-white rounded font-mono text-lg">{n.name}</span>
-                    ))}
+
+                {/* Active notes display */}
+                {musicState.activeNotes.length > 0 && (
+                  <div className="absolute bottom-3 left-3 bg-black/60 px-3 py-2 rounded-lg">
+                    <div className="text-xs text-gray-400 mb-1">Playing:</div>
+                    <div className="flex gap-2">
+                      {musicState.activeNotes.map((note, i) => (
+                        <span key={i} className="px-2 py-1 bg-green-600 text-white rounded text-sm font-mono">
+                          {midiToNoteName(note.midiNote)}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 )}
               </>
             )}
           </div>
 
-          <div className="p-3 bg-gray-800 flex justify-between items-center">
-            <span className="text-gray-400 text-sm">{config.rootNote} {SCALES[config.scale].name}</span>
+          {/* Controls bar */}
+          <div className="p-3 bg-gray-800 flex items-center justify-between">
+            <div className="flex gap-4 text-sm">
+              <span className="text-gray-400">
+                {config.rootNote} {SCALES[config.scale].name}
+              </span>
+              <span className="text-gray-500">|</span>
+              <span className="text-gray-400">{VOICES[config.voice].name}</span>
+            </div>
             {status === 'running' && (
-              <button onClick={stopTracking} className="px-3 py-1 bg-red-600 text-white rounded text-sm">Stop</button>
+              <button
+                onClick={stopTracking}
+                className="px-3 py-1 bg-red-600 text-white rounded text-sm hover:bg-red-700"
+              >
+                Stop
+              </button>
             )}
           </div>
         </div>
 
-        {/* Config */}
+        {/* Configuration panel */}
         <div className="space-y-4">
           {/* Music toggle */}
-          <div className="bg-white rounded-xl p-4 shadow">
+          <div className="bg-white rounded-xl p-4 shadow-lg">
+            <h3 className="font-semibold text-gray-800 mb-3">Conductor Control</h3>
             <button
-              onClick={() => setConfig(p => ({ ...p, musicEnabled: !p.musicEnabled }))}
-              className={`w-full py-4 rounded-lg font-bold text-lg ${config.musicEnabled ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+              onClick={() => setConfig(prev => ({ ...prev, musicEnabled: !prev.musicEnabled }))}
+              className={`w-full py-3 rounded-lg font-medium transition-colors ${
+                config.musicEnabled
+                  ? 'bg-green-500 hover:bg-green-600 text-white'
+                  : 'bg-gray-200 hover:bg-gray-300 text-gray-700'
+              }`}
             >
-              {config.musicEnabled ? '🎵 Music ON' : '🔇 Music OFF'}
+              {config.musicEnabled ? '🎵 Music Playing' : '🔇 Music Off'}
             </button>
+            <p className="text-xs text-gray-500 mt-2 text-center">
+              Or hold both palms open for 1s to toggle
+            </p>
           </div>
 
-          {/* Scale */}
-          <div className="bg-white rounded-xl p-4 shadow">
-            <h3 className="font-semibold mb-2">Scale</h3>
-            <select
-              value={config.scale}
-              onChange={(e) => setConfig(p => ({ ...p, scale: e.target.value }))}
-              className="w-full p-2 border rounded"
-            >
-              {Object.entries(SCALES).map(([k, v]) => (
-                <option key={k} value={k}>{v.name}</option>
-              ))}
-            </select>
+          {/* Scale & Key */}
+          <div className="bg-white rounded-xl p-4 shadow-lg">
+            <h3 className="font-semibold text-gray-800 mb-3">Scale & Key</h3>
+            <div className="space-y-3">
+              <div>
+                <label className="text-xs text-gray-500 block mb-1">Root Note</label>
+                <div className="grid grid-cols-6 gap-1">
+                  {ROOT_NOTES.map(note => (
+                    <button
+                      key={note}
+                      onClick={() => setConfig(prev => ({ ...prev, rootNote: note }))}
+                      className={`py-1 text-xs font-medium rounded ${
+                        config.rootNote === note
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-gray-100 hover:bg-gray-200'
+                      }`}
+                    >
+                      {note}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-            <h3 className="font-semibold mt-4 mb-2">Root Note</h3>
-            <div className="grid grid-cols-6 gap-1">
-              {ROOT_NOTES.map(n => (
-                <button
-                  key={n}
-                  onClick={() => setConfig(p => ({ ...p, rootNote: n }))}
-                  className={`py-1 text-xs rounded ${config.rootNote === n ? 'bg-blue-500 text-white' : 'bg-gray-100'}`}
+              <div>
+                <label className="text-xs text-gray-500 block mb-1">Scale</label>
+                <select
+                  value={config.scale}
+                  onChange={(e) => setConfig(prev => ({ ...prev, scale: e.target.value }))}
+                  className="w-full p-2 border rounded text-sm"
                 >
-                  {n}
-                </button>
-              ))}
-            </div>
+                  {Object.entries(SCALES).map(([key, { name }]) => (
+                    <option key={key} value={key}>{name}</option>
+                  ))}
+                </select>
+              </div>
 
-            <h3 className="font-semibold mt-4 mb-2">Octave: {config.octave}</h3>
-            <input
-              type="range" min="2" max="6" value={config.octave}
-              onChange={(e) => setConfig(p => ({ ...p, octave: +e.target.value }))}
-              className="w-full"
-            />
+              <div>
+                <label className="text-xs text-gray-500 block mb-1">Octave: {config.octave}</label>
+                <input
+                  type="range"
+                  min="2"
+                  max="6"
+                  value={config.octave}
+                  onChange={(e) => setConfig(prev => ({ ...prev, octave: parseInt(e.target.value) }))}
+                  className="w-full"
+                />
+              </div>
+            </div>
           </div>
 
           {/* Voice */}
-          <div className="bg-white rounded-xl p-4 shadow">
-            <h3 className="font-semibold mb-2">Voice</h3>
+          <div className="bg-white rounded-xl p-4 shadow-lg">
+            <h3 className="font-semibold text-gray-800 mb-3">Voice</h3>
             <div className="grid grid-cols-2 gap-2">
-              {Object.entries(VOICES).map(([k, v]) => (
+              {Object.entries(VOICES).map(([key, { name }]) => (
                 <button
-                  key={k}
-                  onClick={() => setConfig(p => ({ ...p, voice: k }))}
-                  className={`py-2 text-sm rounded ${config.voice === k ? 'bg-purple-500 text-white' : 'bg-gray-100'}`}
+                  key={key}
+                  onClick={() => setConfig(prev => ({ ...prev, voice: key }))}
+                  className={`py-2 text-xs font-medium rounded ${
+                    config.voice === key
+                      ? 'bg-purple-500 text-white'
+                      : 'bg-gray-100 hover:bg-gray-200'
+                  }`}
                 >
-                  {v.name}
+                  {name}
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Scale notes */}
+          {/* Hand modes */}
+          <div className="bg-white rounded-xl p-4 shadow-lg">
+            <h3 className="font-semibold text-gray-800 mb-3">Hand Modes</h3>
+            <div className="space-y-2">
+              {['left', 'right'].map(hand => (
+                <div key={hand} className="flex items-center gap-2">
+                  <span className="text-xs text-gray-500 w-12 capitalize">{hand}:</span>
+                  <div className="flex gap-1 flex-1">
+                    {['melody', 'bass', 'off'].map(mode => (
+                      <button
+                        key={mode}
+                        onClick={() => setConfig(prev => ({
+                          ...prev,
+                          [`${hand}HandMode`]: mode
+                        }))}
+                        className={`flex-1 py-1 text-xs rounded ${
+                          config[`${hand}HandMode`] === mode
+                            ? 'bg-blue-500 text-white'
+                            : 'bg-gray-100 hover:bg-gray-200'
+                        }`}
+                      >
+                        {mode}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Current scale notes */}
           <div className="bg-gray-100 rounded-xl p-4">
-            <h3 className="text-sm font-medium text-gray-700 mb-2">Notes in Scale</h3>
+            <h3 className="text-sm font-medium text-gray-700 mb-2">Scale Notes</h3>
             <div className="flex flex-wrap gap-1">
-              {scaleNotes.map((n, i) => (
-                <span key={i} className={`px-2 py-1 text-xs rounded ${activeNotes.some(a => a.name === n) ? 'bg-green-500 text-white' : 'bg-white'}`}>{n}</span>
+              {scaleNotes.map((note, i) => (
+                <span
+                  key={i}
+                  className={`px-2 py-1 text-xs rounded ${
+                    musicState.activeNotes.some(n => n.midiNote % 12 === note.midi % 12)
+                      ? 'bg-green-500 text-white'
+                      : 'bg-white text-gray-700'
+                  }`}
+                >
+                  {note.name}
+                </span>
               ))}
             </div>
           </div>
@@ -533,22 +766,23 @@ export default function HandMusicInstrument() {
 
       {/* Instructions */}
       <div className="mt-4 p-4 bg-gray-100 rounded-lg">
-        <h3 className="font-semibold mb-2">How to Play</h3>
+        <h3 className="font-semibold text-gray-800 mb-2">How to Play</h3>
         <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-600">
           <div>
-            <h4 className="font-medium text-gray-700">Gestures (must HOLD)</h4>
-            <ul className="mt-1 space-y-1">
-              <li><b>Pinch + Hold:</b> Play note</li>
-              <li><b>Grab + Hold:</b> Play note</li>
-              <li><b>Open Palm:</b> Stop/mute</li>
+            <h4 className="font-medium text-gray-700 mb-1">Gestures</h4>
+            <ul className="space-y-1">
+              <li><span className="font-medium">Pinch/Grab:</span> Play & sustain notes</li>
+              <li><span className="font-medium">Point:</span> Preview notes (softer)</li>
+              <li><span className="font-medium">Open Palm:</span> Stop/mute (conductor cut)</li>
+              <li><span className="font-medium">Both Palms (1s):</span> Toggle music on/off</li>
             </ul>
           </div>
           <div>
-            <h4 className="font-medium text-gray-700">Expression</h4>
-            <ul className="mt-1 space-y-1">
-              <li><b>Hand Height:</b> Pitch (high = high note)</li>
-              <li><b>Depth:</b> Volume</li>
-              <li><b>Finger Spread:</b> Vibrato</li>
+            <h4 className="font-medium text-gray-700 mb-1">Expression</h4>
+            <ul className="space-y-1">
+              <li><span className="font-medium">Hand Height:</span> Pitch (higher = higher notes)</li>
+              <li><span className="font-medium">Depth (Z):</span> Volume/dynamics</li>
+              <li><span className="font-medium">Finger Spread:</span> Vibrato intensity</li>
             </ul>
           </div>
         </div>
