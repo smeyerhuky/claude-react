@@ -14,7 +14,7 @@ import SyncAudioMesh from './components/SyncAudioMesh'
 import MarkdownViewer from './components/markdown/MarkdownViewer'
 import ShiftBiddingSimulator from './components/ShiftBiddingSimulator'
 import HandGestureTracker from './components/HandGestureTracker'
-import GestureTestGame from './components/GestureTestGame'
+import HandMusicInstrument from './components/HandMusicInstrument'
 
 // Navigation items configuration
 const navigationItems = [
@@ -31,7 +31,7 @@ const navigationItems = [
   { id: 'audio', label: 'Audio Mesh', component: SyncAudioMesh },
   { id: 'shift-bidding-app', label: 'Shift Bidding App', component: ShiftBiddingSimulator },
   { id: 'hand-gesture-tracker', label: 'Hand Gesture Tracker', component: HandGestureTracker },
-  { id: 'gesture-test-game', label: 'Gesture Test Game', component: GestureTestGame },
+  { id: 'hand-music', label: 'Hand Music Instrument', component: HandMusicInstrument },
 ]
 
 // Home page component showing all available components as cards
