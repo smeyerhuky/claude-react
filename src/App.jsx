@@ -13,6 +13,7 @@ import AWSWars from './components/AWSWars'
 import SyncAudioMesh from './components/SyncAudioMesh'
 import MarkdownViewer from './components/markdown/MarkdownViewer'
 import ShiftBiddingSimulator from './components/ShiftBiddingSimulator'
+import HandGestureTracker from './components/HandGestureTracker'
 
 // Navigation items configuration
 const navigationItems = [
@@ -28,6 +29,7 @@ const navigationItems = [
   { id: 'aws-wars', label: 'AWS Wars Game', component: AWSWars},
   { id: 'audio', label: 'Audio Mesh', component: SyncAudioMesh },
   { id: 'shift-bidding-app', label: 'Shift Bidding App', component: ShiftBiddingSimulator },
+  { id: 'hand-gesture-tracker', label: 'Hand Gesture Tracker', component: HandGestureTracker },
 ]
 
 // Home page component showing all available components as cards
