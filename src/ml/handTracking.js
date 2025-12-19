@@ -1,8 +1,18 @@
 /**
- * HandTrackingService - MediaPipe Hands wrapper for real-time hand detection
+ * HandTrackingService - MediaPipe Hands wrapper with depth analysis
  */
 
 const CDN_BASE = 'https://cdn.jsdelivr.net/npm/@mediapipe';
+
+// Landmark indices for reference
+const WRIST = 0;
+const THUMB_TIP = 4;
+const INDEX_TIP = 8;
+const MIDDLE_TIP = 12;
+const RING_TIP = 16;
+const PINKY_TIP = 20;
+const INDEX_MCP = 5;
+const MIDDLE_MCP = 9;
 
 export class HandTrackingService {
   constructor(videoElement, config = {}) {
@@ -82,19 +92,99 @@ export class HandTrackingService {
     await this.camera.start();
   }
 
+  _calculatePalmCenter(landmarks) {
+    // Calculate palm center from wrist and MCP joints
+    const wrist = landmarks[WRIST];
+    const indexMcp = landmarks[INDEX_MCP];
+    const middleMcp = landmarks[MIDDLE_MCP];
+
+    return {
+      x: (wrist.x + indexMcp.x + middleMcp.x) / 3,
+      y: (wrist.y + indexMcp.y + middleMcp.y) / 3,
+      z: (wrist.z + indexMcp.z + middleMcp.z) / 3,
+    };
+  }
+
+  _calculateHandSize(landmarks) {
+    // Estimate hand size from wrist to middle fingertip distance
+    const wrist = landmarks[WRIST];
+    const middleTip = landmarks[MIDDLE_TIP];
+
+    const dx = middleTip.x - wrist.x;
+    const dy = middleTip.y - wrist.y;
+    const dz = middleTip.z - wrist.z;
+
+    return Math.sqrt(dx * dx + dy * dy + dz * dz);
+  }
+
+  _calculateDepthInfo(landmarks) {
+    // Analyze depth (z-coordinate) for hand positioning
+    const zValues = landmarks.map((l) => l.z);
+    const avgZ = zValues.reduce((a, b) => a + b, 0) / zValues.length;
+    const minZ = Math.min(...zValues);
+    const maxZ = Math.max(...zValues);
+
+    // Normalize depth: negative z means closer to camera
+    // Convert to 0-1 range where 1 is closest
+    const normalizedDepth = Math.max(0, Math.min(1, 1 + avgZ * 5));
+
+    return {
+      raw: avgZ,
+      normalized: normalizedDepth,
+      range: maxZ - minZ,
+      isClose: avgZ < -0.1,
+      isFar: avgZ > 0.05,
+    };
+  }
+
+  _calculateFingerSpread(landmarks) {
+    // Calculate spread between fingers
+    const tips = [THUMB_TIP, INDEX_TIP, MIDDLE_TIP, RING_TIP, PINKY_TIP];
+    let totalSpread = 0;
+
+    for (let i = 0; i < tips.length - 1; i++) {
+      const tip1 = landmarks[tips[i]];
+      const tip2 = landmarks[tips[i + 1]];
+      const dx = tip2.x - tip1.x;
+      const dy = tip2.y - tip1.y;
+      totalSpread += Math.sqrt(dx * dx + dy * dy);
+    }
+
+    return totalSpread / (tips.length - 1);
+  }
+
   _onResults(results) {
     const handData = [];
 
     if (results.multiHandLandmarks && results.multiHandedness) {
       results.multiHandLandmarks.forEach((landmarks, idx) => {
         const handedness = results.multiHandedness[idx];
-        const indexTip = landmarks[8];
+        const palmCenter = this._calculatePalmCenter(landmarks);
+        const depth = this._calculateDepthInfo(landmarks);
+        const handSize = this._calculateHandSize(landmarks);
+        const fingerSpread = this._calculateFingerSpread(landmarks);
 
         handData.push({
           landmarks,
           handedness: handedness.label,
           confidence: handedness.score,
-          position: { x: indexTip.x, y: indexTip.y },
+          // Position tracking points
+          position: {
+            x: landmarks[INDEX_TIP].x,
+            y: landmarks[INDEX_TIP].y,
+            z: landmarks[INDEX_TIP].z,
+          },
+          palmCenter,
+          pinchPoint: {
+            x: (landmarks[THUMB_TIP].x + landmarks[INDEX_TIP].x) / 2,
+            y: (landmarks[THUMB_TIP].y + landmarks[INDEX_TIP].y) / 2,
+            z: (landmarks[THUMB_TIP].z + landmarks[INDEX_TIP].z) / 2,
+          },
+          // Depth analysis
+          depth,
+          // Hand metrics
+          handSize,
+          fingerSpread,
         });
       });
     }

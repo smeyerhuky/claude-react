@@ -5,13 +5,10 @@ import { GestureRecognizer } from '../ml/gestureRecognizer';
 const GESTURE_ICONS = {
   open_palm: '🖐️',
   point: '👆',
-  peace: '✌️',
-  ok: '👌',
   pinch: '🤏',
-  fist: '✊',
-  wave: '👋',
-  rock: '🤘',
-  unknown: '❓',
+  grab: '✊',
+  spread: '🖐️',
+  none: '⚪',
 };
 
 const FINGER_TIPS = [4, 8, 12, 16, 20];
@@ -24,7 +21,7 @@ export default function HandGestureTracker() {
   const recognizerRef = useRef(null);
 
   const [status, setStatus] = useState('idle');
-  const [gesture, setGesture] = useState({ gesture: 'unknown', confidence: 0 });
+  const [gesture, setGesture] = useState({ gesture: 'none', confidence: 0, held: false, holdDuration: 0 });
   const [stats, setStats] = useState({ fps: 0, handsDetected: 0 });
 
   const drawHands = useCallback((handData) => {
@@ -86,7 +83,7 @@ export default function HandGestureTracker() {
       const smoothed = recognizerRef.current.getSmoothedPrediction();
       setGesture(smoothed);
     } else {
-      setGesture({ gesture: 'unknown', confidence: 0 });
+      setGesture({ gesture: 'none', confidence: 0, held: false, holdDuration: 0 });
     }
 
     if (trackerRef.current) {
@@ -127,7 +124,7 @@ export default function HandGestureTracker() {
       recognizerRef.current.reset();
     }
     setStatus('idle');
-    setGesture({ gesture: 'unknown', confidence: 0 });
+    setGesture({ gesture: 'none', confidence: 0, held: false, holdDuration: 0 });
   }, []);
 
   useEffect(() => {
@@ -212,13 +209,17 @@ export default function HandGestureTracker() {
         <div className="p-4 bg-gray-800">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <span className="text-4xl">{GESTURE_ICONS[gesture.gesture]}</span>
+              <span className="text-4xl">{GESTURE_ICONS[gesture.gesture] || '⚪'}</span>
               <div>
                 <div className="text-white font-medium capitalize">
                   {gesture.gesture.replace('_', ' ')}
+                  {gesture.held && <span className="ml-2 text-green-400 text-sm">(held)</span>}
                 </div>
                 <div className="text-gray-400 text-sm">
-                  {Math.round(gesture.confidence * 100)}% confidence
+                  {Math.round(gesture.confidence * 100)}% conf
+                  {gesture.holdDuration > 0 && (
+                    <span className="ml-2">• {(gesture.holdDuration / 1000).toFixed(1)}s</span>
+                  )}
                 </div>
               </div>
             </div>
@@ -240,7 +241,7 @@ export default function HandGestureTracker() {
         <h3 className="text-sm font-medium text-gray-700 mb-2">Supported Gestures</h3>
         <div className="flex flex-wrap gap-3">
           {Object.entries(GESTURE_ICONS)
-            .filter(([key]) => key !== 'unknown')
+            .filter(([key]) => key !== 'none')
             .map(([key, icon]) => (
               <div
                 key={key}
