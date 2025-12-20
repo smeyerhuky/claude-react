@@ -15,6 +15,7 @@ import MarkdownViewer from './components/markdown/MarkdownViewer'
 import ShiftBiddingSimulator from './components/ShiftBiddingSimulator'
 import HandGestureTracker from './components/HandGestureTracker'
 import HandMusicInstrument from './components/HandMusicInstrument'
+import HandGesturePlayground from './components/HandGesturePlayground'
 
 // Navigation items configuration
 const navigationItems = [
@@ -32,6 +33,7 @@ const navigationItems = [
   { id: 'shift-bidding-app', label: 'Shift Bidding App', component: ShiftBiddingSimulator },
   { id: 'hand-gesture-tracker', label: 'Hand Gesture Tracker', component: HandGestureTracker },
   { id: 'hand-music', label: 'Hand Music Instrument', component: HandMusicInstrument },
+  { id: 'hand-gesture-playground', label: 'Hand-Gesture Playground', component: HandGesturePlayground },
 ]
 
 // Home page component showing all available components as cards
