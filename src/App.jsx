@@ -16,6 +16,7 @@ import ShiftBiddingSimulator from './components/ShiftBiddingSimulator'
 import HandGestureTracker from './components/HandGestureTracker'
 import HandMusicInstrument from './components/HandMusicInstrument'
 import HandGesturePlayground from './components/HandGesturePlayground'
+import StargateFederationPitch from './components/StargateFederationPitch'
 
 // Navigation items configuration
 const navigationItems = [
@@ -34,6 +35,7 @@ const navigationItems = [
   { id: 'hand-gesture-tracker', label: 'Hand Gesture Tracker', component: HandGestureTracker },
   { id: 'hand-music', label: 'Hand Music Instrument', component: HandMusicInstrument },
   { id: 'hand-gesture-playground', label: 'Hand-Gesture Playground', component: HandGesturePlayground },
+  { id: 'stargate-federation', label: 'Stargate: The Federation', component: StargateFederationPitch },
 ]
 
 // Home page component showing all available components as cards
