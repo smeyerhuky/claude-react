@@ -36,8 +36,8 @@ const navigationItems = [
   { id: 'hand-gesture-tracker', label: 'Hand Gesture Tracker', component: HandGestureTracker },
   { id: 'hand-music', label: 'Hand Music Instrument', component: HandMusicInstrument },
   { id: 'hand-gesture-playground', label: 'Hand-Gesture Playground', component: HandGesturePlayground },
-  { id: 'stargate-federation', label: 'Stargate: The Federation', component: StargateFederationPitch },
-  { id: 'stargate-prologue', label: 'Stargate Prologue: Pattern in the Static', component: PatternInTheStatic },
+  { id: 'stargate-federation', label: 'Stargate: The Federation', component: StargateFederationPitch, fullscreen: true },
+  { id: 'stargate-prologue', label: 'Stargate Prologue: Pattern in the Static', component: PatternInTheStatic, fullscreen: true },
 ]
 
 // Home page component showing all available components as cards
@@ -62,18 +62,36 @@ function HomePage() {
 function ComponentView() {
   const { componentId } = useParams();
   const navigate = useNavigate();
-  
+
   // Find the component by ID
   const item = navigationItems.find(item => item.id === componentId);
-  
+
   if (!item) {
     return <Navigate to="/" />;
   }
-  
+
+  // Fullscreen components get no wrapper, just a floating back button
+  if (item.fullscreen) {
+    return (
+      <div className="fixed inset-0 w-screen h-screen overflow-auto">
+        <button
+          onClick={() => navigate('/')}
+          className="fixed top-4 left-4 z-50 px-3 py-2 flex items-center text-sm font-medium text-white bg-black/50 backdrop-blur-sm border border-white/20 rounded-md hover:bg-black/70 transition-colors"
+        >
+          <svg className="w-4 h-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
+          </svg>
+          Back
+        </button>
+        <item.component />
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className="flex items-center mb-4 p-2 bg-gray-50 border-b">
-        <button 
+        <button
           onClick={() => navigate('/')}
           className="px-4 py-2 mr-4 flex items-center text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
         >
