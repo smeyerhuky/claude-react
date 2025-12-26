@@ -17,6 +17,7 @@ import HandGestureTracker from './components/HandGestureTracker'
 import HandMusicInstrument from './components/HandMusicInstrument'
 import HandGesturePlayground from './components/HandGesturePlayground'
 import StargateFederationPitch from './components/StargateFederationPitch'
+import PatternInTheStatic from './components/PatternInTheStatic'
 
 // Navigation items configuration
 const navigationItems = [
@@ -36,6 +37,7 @@ const navigationItems = [
   { id: 'hand-music', label: 'Hand Music Instrument', component: HandMusicInstrument },
   { id: 'hand-gesture-playground', label: 'Hand-Gesture Playground', component: HandGesturePlayground },
   { id: 'stargate-federation', label: 'Stargate: The Federation', component: StargateFederationPitch },
+  { id: 'stargate-prologue', label: 'Stargate Prologue: Pattern in the Static', component: PatternInTheStatic },
 ]
 
 // Home page component showing all available components as cards
