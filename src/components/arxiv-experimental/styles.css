@@ -420,6 +420,72 @@
   }
 }
 
+/* Formation selector */
+.formation-selector {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.formation-category {
+  margin-bottom: 1rem;
+}
+
+.formation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 0.5rem;
+}
+
+.formation-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 0.5rem;
+  background: rgba(55, 65, 81, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #d1d5db;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-height: 80px;
+}
+
+.formation-btn:active {
+  transform: scale(0.95);
+}
+
+.formation-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.formation-icon {
+  font-size: 1.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.formation-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.animated-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 0.75rem;
+}
+
 /* High contrast mode */
 @media (prefers-contrast: high) {
   .mobile-controls-panel {
@@ -427,11 +493,13 @@
   }
 
   .mode-btn,
-  .preset-grid button {
+  .preset-grid button,
+  .formation-btn {
     border: 2px solid rgba(255, 255, 255, 0.3);
   }
 
-  .mode-btn.active {
+  .mode-btn.active,
+  .formation-btn.active {
     border: 2px solid #fff;
   }
 }

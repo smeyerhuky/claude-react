@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { PhysicsEngine, MotionAnimator } from './PhysicsEngine';
 import { NeuralMotionSimulator } from './NeuralMotionSimulator';
+import { formations, getFormationsByCategory } from './Formations';
 import './styles.css';
 
 /**
@@ -24,6 +25,8 @@ function NeuralProceduralAnimation() {
   const [enableGlow, setEnableGlow] = useState(true);
   const [colorCycling, setColorCycling] = useState(true);
   const [autoCycleMode, setAutoCycleMode] = useState(false);
+  const [currentFormation, setCurrentFormation] = useState('heart');
+  const [formationTargets, setFormationTargets] = useState([]);
 
   // Store refs for animation loop
   const particlesRef = useRef([]);
@@ -102,16 +105,49 @@ function NeuralProceduralAnimation() {
   useEffect(() => {
     if (!autoCycleMode) return;
 
-    const modes = ['follow', 'attract', 'repel', 'orbit', 'explode', 'draw'];
+    const modes = ['follow', 'attract', 'repel', 'orbit', 'explode', 'draw', 'formation'];
     let currentIndex = modes.indexOf(interactionMode);
 
     const interval = setInterval(() => {
       currentIndex = (currentIndex + 1) % modes.length;
       setInteractionMode(modes[currentIndex]);
+
+      // If switching to formation mode, pick a random formation
+      if (modes[currentIndex] === 'formation') {
+        const formationKeys = Object.keys(formations);
+        const randomFormation = formationKeys[Math.floor(Math.random() * formationKeys.length)];
+        setCurrentFormation(randomFormation);
+      }
     }, 5000);
 
     return () => clearInterval(interval);
   }, [autoCycleMode, interactionMode]);
+
+  // Update formation targets when formation changes or for animated formations
+  useEffect(() => {
+    if (interactionMode !== 'formation') return;
+
+    const formation = formations[currentFormation];
+    if (!formation) return;
+
+    const updateFormation = () => {
+      const targets = formation.generate(
+        particleCount,
+        canvasSize.width,
+        canvasSize.height,
+        formation.animated ? timeRef.current : 0
+      );
+      setFormationTargets(targets);
+    };
+
+    updateFormation();
+
+    // For animated formations, update continuously
+    if (formation.animated) {
+      const interval = setInterval(updateFormation, 1000 / 30); // 30fps for formation updates
+      return () => clearInterval(interval);
+    }
+  }, [interactionMode, currentFormation, particleCount, canvasSize]);
 
   // Handle pointer move (mouse or touch)
   const handlePointerMove = useCallback((e) => {
@@ -288,10 +324,19 @@ function NeuralProceduralAnimation() {
         }
         return explodeTarget;
 
+      case 'formation':
+        // Each particle has a designated formation position
+        if (formationTargets.length === 0) {
+          return { x: canvasSize.width / 2, y: canvasSize.height / 2 };
+        }
+        // Map particle to its formation position
+        const formationIndex = particle.id % formationTargets.length;
+        return formationTargets[formationIndex];
+
       default:
         return targets[0] || { x: canvasSize.width / 2, y: canvasSize.height / 2 };
     }
-  }, [interactionMode, targets, energy, canvasSize]);
+  }, [interactionMode, targets, energy, canvasSize, formationTargets]);
 
   // Animation loop
   useEffect(() => {
@@ -545,7 +590,10 @@ function NeuralProceduralAnimation() {
     { id: 'orbit', label: 'Orbit', icon: '⟳', description: 'Particles orbit around touch' },
     { id: 'explode', label: 'Explode', icon: '✹', description: 'Tap to create shockwaves' },
     { id: 'draw', label: 'Draw', icon: '✎', description: 'Draw paths for particles' },
+    { id: 'formation', label: 'Shapes', icon: '🎨', description: 'Form preset shapes and animations' },
   ];
+
+  const formationsByCategory = getFormationsByCategory();
 
   return (
     <div className="neural-animation-fullscreen" ref={containerRef}>
@@ -591,6 +639,31 @@ function NeuralProceduralAnimation() {
             </button>
           ))}
         </div>
+
+        {/* Formation selector - show when in formation mode */}
+        {interactionMode === 'formation' && (
+          <div className="formation-selector">
+            <h3 className="section-title">Choose Shape</h3>
+            {Object.entries(formationsByCategory).map(([category, formationList]) => (
+              <div key={category} className="formation-category">
+                <div className="formation-grid">
+                  {formationList.map(formation => (
+                    <button
+                      key={formation.key}
+                      className={`formation-btn ${currentFormation === formation.key ? 'active' : ''}`}
+                      onClick={() => setCurrentFormation(formation.key)}
+                      title={formation.name}
+                    >
+                      <span className="formation-icon">{formation.icon}</span>
+                      <span className="formation-label">{formation.name}</span>
+                      {formation.animated && <span className="animated-badge">✨</span>}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Mood and Energy controls */}
         <div className="param-controls">
