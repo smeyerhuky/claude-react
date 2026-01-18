@@ -18,6 +18,7 @@ import HandMusicInstrument from './components/HandMusicInstrument'
 import HandGesturePlayground from './components/HandGesturePlayground'
 import StargateFederationPitch from './components/StargateFederationPitch'
 import PatternInTheStatic from './components/PatternInTheStatic'
+import NeuralProceduralAnimation from './components/arxiv-experimental'
 
 // Navigation items configuration
 const navigationItems = [
@@ -36,6 +37,7 @@ const navigationItems = [
   { id: 'hand-gesture-tracker', label: 'Hand Gesture Tracker', component: HandGestureTracker },
   { id: 'hand-music', label: 'Hand Music Instrument', component: HandMusicInstrument },
   { id: 'hand-gesture-playground', label: 'Hand-Gesture Playground', component: HandGesturePlayground },
+  { id: 'neural-procedural-animation', label: 'Neural Procedural Animation', component: NeuralProceduralAnimation },
   { id: 'stargate-federation', label: 'Stargate: The Federation', component: StargateFederationPitch, fullscreen: true },
   { id: 'stargate-prologue', label: 'Stargate Prologue: Pattern in the Static', component: PatternInTheStatic, fullscreen: true },
 ]
