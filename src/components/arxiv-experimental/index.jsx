@@ -5,7 +5,7 @@ import './styles.css';
 
 /**
  * Neural Procedural Animation System
- * Enhanced for mobile with multiple interaction modes
+ * Enhanced for mobile with multiple interaction modes and visual effects
  */
 function NeuralProceduralAnimation() {
   const canvasRef = useRef(null);
@@ -14,12 +14,16 @@ function NeuralProceduralAnimation() {
   const [energy, setEnergy] = useState(0.5);
   const [targets, setTargets] = useState([{ x: 0, y: 0, id: 0 }]);
   const [isInitialized, setIsInitialized] = useState(false);
-  const [particleCount, setParticleCount] = useState(100);
+  const [particleCount, setParticleCount] = useState(150);
   const [showTrails, setShowTrails] = useState(true);
   const [showStats, setShowStats] = useState(false);
   const [showControls, setShowControls] = useState(true);
-  const [interactionMode, setInteractionMode] = useState('follow'); // follow, attract, repel, explode, orbit, draw
+  const [interactionMode, setInteractionMode] = useState('follow');
   const [canvasSize, setCanvasSize] = useState({ width: 800, height: 600 });
+  const [enableConnections, setEnableConnections] = useState(true);
+  const [enableGlow, setEnableGlow] = useState(true);
+  const [colorCycling, setColorCycling] = useState(true);
+  const [autoCycleMode, setAutoCycleMode] = useState(false);
 
   // Store refs for animation loop
   const particlesRef = useRef([]);
@@ -30,6 +34,10 @@ function NeuralProceduralAnimation() {
   const touchPointsRef = useRef(new Map());
   const explosionsRef = useRef([]);
   const drawPathRef = useRef([]);
+  const gravityWellsRef = useRef([]);
+  const timeRef = useRef(0);
+  const screenShakeRef = useRef({ x: 0, y: 0, intensity: 0 });
+  const modeCycleTimerRef = useRef(0);
 
   // Update canvas size on mount and resize
   useEffect(() => {
@@ -37,7 +45,6 @@ function NeuralProceduralAnimation() {
       const width = window.innerWidth;
       const height = window.innerHeight;
       setCanvasSize({ width, height });
-      // Initialize target to center
       setTargets([{ x: width / 2, y: height / 2, id: 0 }]);
     };
 
@@ -51,19 +58,22 @@ function NeuralProceduralAnimation() {
     const simulator = neuralSimulatorRef.current;
     const physics = physicsEngineRef.current;
 
-    // Get initial physics parameters
     const physicsParams = simulator.getPhysicsParameters({ mood, energy });
 
-    // Create particles
     const particles = Array(particleCount)
       .fill(null)
       .map((_, i) => ({
         animator: new MotionAnimator(physicsParams, physics),
+        baseHue: (i / particleCount) * 360,
         hue: (i / particleCount) * 360,
         id: i,
         size: 2 + Math.random() * 3,
+        baseSize: 2 + Math.random() * 3,
         orbitAngle: Math.random() * Math.PI * 2,
         orbitRadius: 50 + Math.random() * 100,
+        life: 1,
+        maxLife: 1,
+        pulsePhase: Math.random() * Math.PI * 2,
       }));
 
     // Randomize initial positions
@@ -83,11 +93,25 @@ function NeuralProceduralAnimation() {
     const simulator = neuralSimulatorRef.current;
     const newParams = simulator.getPhysicsParameters({ mood, energy });
 
-    // Update all particle animators with new parameters
     particlesRef.current.forEach((particle) => {
       particle.animator.updateParams(newParams);
     });
   }, [mood, energy, isInitialized]);
+
+  // Auto-cycle modes
+  useEffect(() => {
+    if (!autoCycleMode) return;
+
+    const modes = ['follow', 'attract', 'repel', 'orbit', 'explode', 'draw'];
+    let currentIndex = modes.indexOf(interactionMode);
+
+    const interval = setInterval(() => {
+      currentIndex = (currentIndex + 1) % modes.length;
+      setInteractionMode(modes[currentIndex]);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [autoCycleMode, interactionMode]);
 
   // Handle pointer move (mouse or touch)
   const handlePointerMove = useCallback((e) => {
@@ -95,45 +119,41 @@ function NeuralProceduralAnimation() {
     const rect = canvasRef.current.getBoundingClientRect();
 
     if (e.touches) {
-      // Multi-touch support
       const newTargets = Array.from(e.touches).map((touch, i) => ({
         x: touch.clientX - rect.left,
         y: touch.clientY - rect.top,
-        id: touch.identifier
+        id: touch.identifier,
+        age: 0
       }));
       setTargets(newTargets);
 
-      // Store touch points for reference
       newTargets.forEach(target => {
         touchPointsRef.current.set(target.id, target);
       });
 
-      // Add to draw path in draw mode
       if (interactionMode === 'draw') {
         newTargets.forEach(target => {
           drawPathRef.current.push({ ...target, time: Date.now() });
         });
-        // Keep path limited
-        if (drawPathRef.current.length > 100) {
-          drawPathRef.current = drawPathRef.current.slice(-100);
+        if (drawPathRef.current.length > 150) {
+          drawPathRef.current = drawPathRef.current.slice(-150);
         }
       }
     } else {
-      // Mouse
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      setTargets([{ x, y, id: 0 }]);
+      setTargets([{ x, y, id: 0, age: 0 }]);
 
       if (interactionMode === 'draw') {
         drawPathRef.current.push({ x, y, time: Date.now() });
-        if (drawPathRef.current.length > 100) {
-          drawPathRef.current = drawPathRef.current.slice(-100);
+        if (drawPathRef.current.length > 150) {
+          drawPathRef.current = drawPathRef.current.slice(-150);
         }
       }
     }
   }, [interactionMode]);
 
-  // Handle tap/click for explode mode
+  // Handle tap/click
   const handlePointerDown = useCallback((e) => {
     e.preventDefault();
     const rect = canvasRef.current.getBoundingClientRect();
@@ -146,35 +166,37 @@ function NeuralProceduralAnimation() {
         explosionsRef.current.push({
           x, y,
           radius: 0,
-          maxRadius: 200,
-          strength: 500,
+          maxRadius: 250,
+          strength: 800,
           time: Date.now()
         });
+
+        // Add screen shake
+        screenShakeRef.current.intensity = 10;
       });
     }
 
     handlePointerMove(e);
   }, [interactionMode, handlePointerMove]);
 
-  // Clean up touch points on touch end
+  // Clean up touch points
   const handlePointerUp = useCallback((e) => {
     if (e.changedTouches) {
       Array.from(e.changedTouches).forEach(touch => {
         touchPointsRef.current.delete(touch.identifier);
       });
-      // Update targets to remaining touches
       if (e.touches.length > 0) {
         const rect = canvasRef.current.getBoundingClientRect();
         const newTargets = Array.from(e.touches).map(touch => ({
           x: touch.clientX - rect.left,
           y: touch.clientY - rect.top,
-          id: touch.identifier
+          id: touch.identifier,
+          age: 0
         }));
         setTargets(newTargets);
       }
     }
 
-    // Clear draw path after a delay
     if (interactionMode === 'draw') {
       setTimeout(() => {
         drawPathRef.current = [];
@@ -188,12 +210,9 @@ function NeuralProceduralAnimation() {
 
     switch (interactionMode) {
       case 'follow':
-        // Follow closest target
         if (targets.length === 0) return { x: canvasSize.width / 2, y: canvasSize.height / 2 };
-
         let closestTarget = targets[0];
         let minDist = Infinity;
-
         targets.forEach(target => {
           const dist = Math.hypot(particle.animator.state.x - target.x, particle.animator.state.y - target.y);
           if (dist < minDist) {
@@ -201,24 +220,18 @@ function NeuralProceduralAnimation() {
             closestTarget = target;
           }
         });
-
         return closestTarget;
 
       case 'attract':
-        // Average of all targets
         if (targets.length === 0) return { x: canvasSize.width / 2, y: canvasSize.height / 2 };
-
         const avgX = targets.reduce((sum, t) => sum + t.x, 0) / targets.length;
         const avgY = targets.reduce((sum, t) => sum + t.y, 0) / targets.length;
         return { x: avgX, y: avgY };
 
       case 'repel':
-        // Opposite direction from closest target
         if (targets.length === 0) return particle.animator.state;
-
         let closestRepel = targets[0];
         let minRepelDist = Infinity;
-
         targets.forEach(target => {
           const dist = Math.hypot(particle.animator.state.x - target.x, particle.animator.state.y - target.y);
           if (dist < minRepelDist) {
@@ -226,23 +239,18 @@ function NeuralProceduralAnimation() {
             closestRepel = target;
           }
         });
-
         const dx = particle.animator.state.x - closestRepel.x;
         const dy = particle.animator.state.y - closestRepel.y;
         const dist = Math.hypot(dx, dy) || 1;
-
         return {
           x: particle.animator.state.x + (dx / dist) * 300,
           y: particle.animator.state.y + (dy / dist) * 300
         };
 
       case 'orbit':
-        // Orbit around closest target
         if (targets.length === 0) return { x: canvasSize.width / 2, y: canvasSize.height / 2 };
-
         let orbitTarget = targets[0];
         let minOrbitDist = Infinity;
-
         targets.forEach(target => {
           const dist = Math.hypot(particle.animator.state.x - target.x, particle.animator.state.y - target.y);
           if (dist < minOrbitDist) {
@@ -250,46 +258,34 @@ function NeuralProceduralAnimation() {
             orbitTarget = target;
           }
         });
-
-        particle.orbitAngle += 0.02 * (1 + energy);
+        particle.orbitAngle += 0.03 * (1 + energy);
         const orbitX = orbitTarget.x + Math.cos(particle.orbitAngle) * particle.orbitRadius;
         const orbitY = orbitTarget.y + Math.sin(particle.orbitAngle) * particle.orbitRadius;
-
         return { x: orbitX, y: orbitY };
 
       case 'draw':
-        // Follow draw path
         if (drawPathRef.current.length === 0) {
           return { x: canvasSize.width / 2, y: canvasSize.height / 2 };
         }
-
-        // Each particle follows a different point in the path
         const pathIndex = Math.floor((particle.id / particles.length) * drawPathRef.current.length);
         const pathPoint = drawPathRef.current[Math.min(pathIndex, drawPathRef.current.length - 1)];
-
         return { x: pathPoint.x, y: pathPoint.y };
 
       case 'explode':
-        // Apply explosion forces
         let explodeTarget = { ...particle.animator.state };
-
         explosionsRef.current.forEach(explosion => {
           const dx = particle.animator.state.x - explosion.x;
           const dy = particle.animator.state.y - explosion.y;
           const dist = Math.hypot(dx, dy);
-
           if (dist < explosion.radius) {
             const force = (1 - dist / explosion.radius) * explosion.strength;
-            explodeTarget.x += (dx / (dist || 1)) * force * 0.1;
-            explodeTarget.y += (dy / (dist || 1)) * force * 0.1;
+            explodeTarget.x += (dx / (dist || 1)) * force * 0.15;
+            explodeTarget.y += (dy / (dist || 1)) * force * 0.15;
           }
         });
-
-        // Also follow targets when not exploding
         if (targets.length > 0 && explosionsRef.current.length === 0) {
           return targets[0];
         }
-
         return explodeTarget;
 
       default:
@@ -310,6 +306,7 @@ function NeuralProceduralAnimation() {
     function animate(currentTime) {
       const deltaTime = currentTime - lastFrameTime;
       lastFrameTime = currentTime;
+      timeRef.current += deltaTime / 1000;
 
       // Calculate FPS
       statsRef.current.frameCount++;
@@ -319,9 +316,20 @@ function NeuralProceduralAnimation() {
         statsRef.current.lastTime = currentTime;
       }
 
+      // Update screen shake
+      if (screenShakeRef.current.intensity > 0) {
+        screenShakeRef.current.x = (Math.random() - 0.5) * screenShakeRef.current.intensity;
+        screenShakeRef.current.y = (Math.random() - 0.5) * screenShakeRef.current.intensity;
+        screenShakeRef.current.intensity *= 0.9;
+        if (screenShakeRef.current.intensity < 0.1) screenShakeRef.current.intensity = 0;
+      }
+
+      ctx.save();
+      ctx.translate(screenShakeRef.current.x, screenShakeRef.current.y);
+
       // Clear canvas with trail effect
       if (showTrails) {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.12)';
       } else {
         ctx.fillStyle = 'rgba(0, 0, 0, 1)';
       }
@@ -329,24 +337,31 @@ function NeuralProceduralAnimation() {
 
       // Update explosions
       explosionsRef.current = explosionsRef.current.filter(explosion => {
-        explosion.radius += 5;
+        explosion.radius += 8;
         return explosion.radius < explosion.maxRadius;
       });
 
-      // Draw explosions
+      // Draw explosions with multiple rings
       explosionsRef.current.forEach(explosion => {
         const alpha = 1 - (explosion.radius / explosion.maxRadius);
-        ctx.strokeStyle = `rgba(255, 100, 50, ${alpha * 0.5})`;
-        ctx.lineWidth = 3;
-        ctx.beginPath();
-        ctx.arc(explosion.x, explosion.y, explosion.radius, 0, Math.PI * 2);
-        ctx.stroke();
+        for (let i = 0; i < 3; i++) {
+          const r = explosion.radius - i * 20;
+          if (r > 0) {
+            ctx.strokeStyle = `rgba(${255 - i * 50}, ${100 + i * 30}, 50, ${alpha * 0.4})`;
+            ctx.lineWidth = 4 - i;
+            ctx.beginPath();
+            ctx.arc(explosion.x, explosion.y, r, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+        }
       });
 
       // Draw path in draw mode
       if (interactionMode === 'draw' && drawPathRef.current.length > 1) {
-        ctx.strokeStyle = 'rgba(100, 150, 255, 0.3)';
-        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'rgba(100, 150, 255, 0.4)';
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
         ctx.beginPath();
         drawPathRef.current.forEach((point, i) => {
           if (i === 0) {
@@ -358,13 +373,50 @@ function NeuralProceduralAnimation() {
         ctx.stroke();
       }
 
+      // Update gravity wells (stationary touch points become gravity wells)
+      targets.forEach(target => {
+        target.age = (target.age || 0) + deltaTime;
+        if (target.age > 500) {
+          gravityWellsRef.current.push({
+            x: target.x,
+            y: target.y,
+            strength: 0.5,
+            radius: 150
+          });
+        }
+      });
+      gravityWellsRef.current = gravityWellsRef.current.slice(-3);
+
+      // Draw gravity wells
+      gravityWellsRef.current.forEach(well => {
+        ctx.strokeStyle = 'rgba(150, 100, 255, 0.2)';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(well.x, well.y, well.radius, 0, Math.PI * 2);
+        ctx.stroke();
+      });
+
       // Update and draw particles
-      particlesRef.current.forEach((particle) => {
+      const particles = particlesRef.current;
+
+      particles.forEach((particle) => {
         const target = calculateTarget(particle, currentTime);
 
         particle.animator.setTarget(target.x, target.y);
         const state = particle.animator.update();
         const velocity = particle.animator.getVelocity();
+
+        // Apply gravity wells
+        gravityWellsRef.current.forEach(well => {
+          const dx = well.x - state.x;
+          const dy = well.y - state.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < well.radius) {
+            const force = well.strength * (1 - dist / well.radius);
+            particle.animator.state.vx += (dx / (dist || 1)) * force;
+            particle.animator.state.vy += (dy / (dist || 1)) * force;
+          }
+        });
 
         // Wrap around edges
         if (state.x < 0) state.x = canvas.width;
@@ -372,35 +424,84 @@ function NeuralProceduralAnimation() {
         if (state.y < 0) state.y = canvas.height;
         if (state.y > canvas.height) state.y = 0;
 
-        // Calculate speed for visual effects
         const speed = Math.hypot(velocity.vx, velocity.vy);
 
-        // Draw particle
-        const size = particle.size + Math.min(speed / 100, 2);
+        // Update particle hue (color cycling)
+        if (colorCycling) {
+          particle.hue = (particle.baseHue + timeRef.current * 50 + speed * 2) % 360;
+        } else {
+          particle.hue = particle.baseHue;
+        }
+
+        // Pulsing size based on energy
+        particle.pulsePhase += 0.05 + energy * 0.1;
+        const pulse = Math.sin(particle.pulsePhase) * 0.5 + 0.5;
+        particle.size = particle.baseSize * (1 + pulse * energy * 0.5);
+
+        // Draw particle with glow
+        if (enableGlow) {
+          ctx.shadowBlur = 10 + speed * 0.3;
+          ctx.shadowColor = `hsl(${particle.hue}, 70%, 60%)`;
+        } else {
+          ctx.shadowBlur = 0;
+        }
+
+        const size = particle.size + Math.min(speed / 80, 3);
         ctx.fillStyle = `hsl(${particle.hue}, 70%, 60%)`;
         ctx.beginPath();
         ctx.arc(state.x, state.y, size, 0, Math.PI * 2);
         ctx.fill();
 
-        // Draw motion trail based on velocity
-        if (showTrails && speed > 1) {
-          const alpha = Math.min(speed / 200, 0.8);
+        // Draw motion trail
+        if (showTrails && speed > 2) {
+          const alpha = Math.min(speed / 200, 0.9);
+          ctx.shadowBlur = 5;
           ctx.strokeStyle = `hsla(${particle.hue}, 70%, 60%, ${alpha})`;
-          ctx.lineWidth = 2;
+          ctx.lineWidth = 2.5;
+          ctx.lineCap = 'round';
           ctx.beginPath();
           ctx.moveTo(state.x, state.y);
-          ctx.lineTo(state.x - velocity.vx * 0.5, state.y - velocity.vy * 0.5);
+          ctx.lineTo(state.x - velocity.vx * 0.6, state.y - velocity.vy * 0.6);
           ctx.stroke();
         }
+
+        ctx.shadowBlur = 0;
       });
+
+      // Draw connections between nearby particles
+      if (enableConnections) {
+        const maxConnectionDist = 100;
+        ctx.lineWidth = 1;
+
+        for (let i = 0; i < particles.length; i++) {
+          const p1 = particles[i].animator.state;
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j].animator.state;
+            const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
+
+            if (dist < maxConnectionDist) {
+              const alpha = (1 - dist / maxConnectionDist) * 0.3;
+              const avgHue = (particles[i].hue + particles[j].hue) / 2;
+              ctx.strokeStyle = `hsla(${avgHue}, 70%, 60%, ${alpha})`;
+              ctx.beginPath();
+              ctx.moveTo(p1.x, p1.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.stroke();
+            }
+          }
+        }
+      }
 
       // Draw target indicators
       targets.forEach(target => {
-        const style = interactionMode === 'repel' ? 'rgba(255, 100, 100, 0.4)' : 'rgba(100, 150, 255, 0.4)';
+        const style = interactionMode === 'repel'
+          ? 'rgba(255, 100, 100, 0.5)'
+          : `hsla(${(timeRef.current * 100) % 360}, 70%, 60%, 0.5)`;
         ctx.strokeStyle = style;
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 3;
         ctx.beginPath();
-        ctx.arc(target.x, target.y, 20, 0, Math.PI * 2);
+        ctx.arc(target.x, target.y, 25 + Math.sin(timeRef.current * 3) * 5, 0, Math.PI * 2);
         ctx.stroke();
 
         if (interactionMode === 'orbit') {
@@ -413,13 +514,17 @@ function NeuralProceduralAnimation() {
 
       // Draw stats
       if (showStats) {
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
         ctx.font = '14px monospace';
+        ctx.shadowBlur = 0;
         ctx.fillText(`FPS: ${statsRef.current.fps}`, 10, 20);
         ctx.fillText(`Particles: ${particleCount}`, 10, 40);
         ctx.fillText(`Mode: ${interactionMode}`, 10, 60);
         ctx.fillText(`Targets: ${targets.length}`, 10, 80);
+        ctx.fillText(`Connections: ${enableConnections ? 'ON' : 'OFF'}`, 10, 100);
       }
+
+      ctx.restore();
 
       animationIdRef.current = requestAnimationFrame(animate);
     }
@@ -431,14 +536,14 @@ function NeuralProceduralAnimation() {
         cancelAnimationFrame(animationIdRef.current);
       }
     };
-  }, [isInitialized, targets, particleCount, showTrails, showStats, interactionMode, calculateTarget, canvasSize]);
+  }, [isInitialized, targets, particleCount, showTrails, showStats, interactionMode, calculateTarget, canvasSize, enableConnections, enableGlow, colorCycling]);
 
   const modes = [
-    { id: 'follow', label: 'Follow', icon: '→', description: 'Particles follow your touch' },
+    { id: 'follow', label: 'Follow', icon: '→', description: 'Particles chase your touch' },
     { id: 'attract', label: 'Attract', icon: '◎', description: 'Particles gather at touch points' },
     { id: 'repel', label: 'Repel', icon: '✳', description: 'Particles flee from touch' },
     { id: 'orbit', label: 'Orbit', icon: '⟳', description: 'Particles orbit around touch' },
-    { id: 'explode', label: 'Explode', icon: '✹', description: 'Tap to create explosions' },
+    { id: 'explode', label: 'Explode', icon: '✹', description: 'Tap to create shockwaves' },
     { id: 'draw', label: 'Draw', icon: '✎', description: 'Draw paths for particles' },
   ];
 
@@ -538,8 +643,53 @@ function NeuralProceduralAnimation() {
           <button onClick={() => { setMood(0.2); setEnergy(0.9); }}>Floaty</button>
         </div>
 
+        {/* Visual effects */}
+        <div className="settings-group">
+          <h3 className="section-title">Visual Effects</h3>
+
+          <div className="setting-row checkbox-row">
+            <label>
+              <input
+                type="checkbox"
+                checked={enableConnections}
+                onChange={(e) => setEnableConnections(e.target.checked)}
+              />
+              <span>Connections</span>
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                checked={enableGlow}
+                onChange={(e) => setEnableGlow(e.target.checked)}
+              />
+              <span>Glow</span>
+            </label>
+          </div>
+
+          <div className="setting-row checkbox-row">
+            <label>
+              <input
+                type="checkbox"
+                checked={colorCycling}
+                onChange={(e) => setColorCycling(e.target.checked)}
+              />
+              <span>Color Cycle</span>
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                checked={autoCycleMode}
+                onChange={(e) => setAutoCycleMode(e.target.checked)}
+              />
+              <span>Auto Mode</span>
+            </label>
+          </div>
+        </div>
+
         {/* Additional settings */}
         <div className="settings-group">
+          <h3 className="section-title">Settings</h3>
+
           <div className="setting-row">
             <label>
               <span>Particles</span>
@@ -547,8 +697,8 @@ function NeuralProceduralAnimation() {
             </label>
             <input
               type="range"
-              min="20"
-              max="300"
+              min="50"
+              max="400"
               step="10"
               value={particleCount}
               onChange={(e) => setParticleCount(parseInt(e.target.value))}
