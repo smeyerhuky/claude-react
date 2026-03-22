@@ -19,6 +19,7 @@ import HandGesturePlayground from './components/HandGesturePlayground'
 import StargateFederationPitch from './components/StargateFederationPitch'
 import PatternInTheStatic from './components/PatternInTheStatic'
 import NeuralProceduralAnimation from './components/arxiv-experimental'
+import TrieViz from './components/trie_viz'
 
 // Navigation items configuration
 const navigationItems = [
@@ -40,6 +41,7 @@ const navigationItems = [
   { id: 'neural-procedural-animation', label: 'Neural Procedural Animation', component: NeuralProceduralAnimation, fullscreen: true },
   { id: 'stargate-federation', label: 'Stargate: The Federation', component: StargateFederationPitch, fullscreen: true },
   { id: 'stargate-prologue', label: 'Stargate Prologue: Pattern in the Static', component: PatternInTheStatic, fullscreen: true },
+  { id: 'trie-viz', label: 'Trie Visualizer', component: TrieViz },
 ]
 
 // Home page component showing all available components as cards
