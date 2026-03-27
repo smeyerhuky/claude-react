@@ -213,15 +213,19 @@ export default function CSUVisitGuide() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex-1 flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5
-                py-2.5 sm:py-3 text-xs sm:text-sm font-medium transition-all border-b-2
+              className={`flex-1 flex items-center justify-center py-3 transition-all border-b-2 min-h-[48px]
                 ${activeTab === tab.id
                   ? 'border-purple-600 text-purple-700 bg-purple-50'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50'
                 }`}
             >
-              <span className="text-base sm:text-sm leading-none">{tab.icon}</span>
-              <span className="leading-none">{tab.label}</span>
+              {/* Mobile: icon only */}
+              <span className="sm:hidden text-xl leading-none">{tab.icon}</span>
+              {/* Desktop: icon + label */}
+              <span className="hidden sm:flex items-center gap-1.5 text-sm font-medium">
+                <span>{tab.icon}</span>
+                <span>{tab.label}</span>
+              </span>
             </button>
           ))}
         </div>
