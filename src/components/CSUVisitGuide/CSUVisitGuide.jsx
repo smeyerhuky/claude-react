@@ -1,364 +1,336 @@
 import React, { useState } from 'react';
 
-export default function CSUVisitGuide() {
-  const [expandedSession, setExpandedSession] = useState(null);
-  const [activeTab, setActiveTab] = useState('timeline');
+// ─── Sub-components ──────────────────────────────────────────────────────────
 
-  const sessions = [
-    {
-      id: 'checkin',
-      time: '7:30-9:00 AM',
-      title: 'Early Check-In',
-      value: 'High Priority',
-      description: 'Beat the crowds at Moby Arena. Get your college grouping assignment and grab complimentary snacks.',
-      details: [
-        'Arrive by 7:45 AM (early is better than on-time)',
-        'Check in at Moby Arena',
-        'Spanish language family social available',
-        'Get orientation materials and college assignment'
-      ],
-      questions: [],
-      tips: 'Skip the last-minute rush—early arrivals avoid long lines and get better parking.',
-    },
-    {
-      id: 'welcome',
-      time: '9:00-9:30 AM',
-      title: 'Welcome Session',
-      value: 'Moderate',
-      description: 'Opening remarks and orientation. Groups separate by college.',
-      details: [
-        'Listen to opening remarks about the day',
-        'Get oriented to the event flow',
-        'Benny\'s group separates toward School of Theatre & Dance',
-        'Brief overview of activities and logistics'
-      ],
-      questions: [],
-      tips: 'Use this time to mentally prepare for the academic session and decide on your strategy.',
-    },
-    {
-      id: 'academic',
-      time: '10:00-11:30 AM',
-      title: 'Academic Experience (School of Theatre & Dance)',
-      value: 'CRITICAL – Main Event',
-      description: 'Tour of theater facilities, meet faculty, connect with current lighting students, learn about the program.',
-      details: [
-        'Tour of theater facilities (stages, lighting booths, technical spaces)',
-        'Meet faculty advisors for lighting/tech track',
-        'See current lighting students\' work and hear about their path',
-        'Learn about equipment and production opportunities',
-        'Q&A with current students and faculty'
-      ],
-      questions: [
-        'What shows run each semester and when does tech crew get involved?',
-        'What lighting equipment and systems are available?',
-        'Are there mentorship opportunities with upper-level techs?',
-        'What is the career outcome for lighting designers/technicians?',
-        'How many shows per year? What\'s the technical calendar?',
-        'What internship opportunities exist locally or regionally?',
-        'How much autonomous responsibility do first-year techs have?',
-        'What\'s the typical load (rehearsals, tech hours per week)?'
-      ],
-      tips: 'This is the heart of the visit. Benny should take notes, ask specifics about first-year experience, and get contact info of student mentors.',
-      parentStrategy: 'You can either attend with Benny (great for context) or split up to explore a different college—you\'ll reconnect at lunch.'
-    },
-    {
-      id: 'lunch',
-      time: '11:30 AM-2:00 PM',
-      title: 'Lunch & Residence Hall Tours',
-      value: 'High – Informal Learning',
-      description: 'Experience campus dining and see where students actually live.',
-      details: [
-        'Eat at actual student dining centers (best way to experience real dining)',
-        'Alternative: Lory Student Center food court',
-        'Residence hall tours: 11:30 AM-1:00 PM slot (pick this one)',
-        'Informal time to debrief and process',
-        'Benny gets feel for dorm life and community'
-      ],
-      questions: [
-        'What\'s the dining plan like? How many meals included?',
-        'Do theater/performance students tend to live together?',
-        'How safe is the area around campus?',
-        'What dorms are closest to the theater facilities?'
-      ],
-      tips: 'This is your debrief moment. Ask Benny what excited him, what surprised him, and what he still has questions about.',
-      parentStrategy: 'Grab lunch together (Benny should try the actual dining), then do the residence hall tour. This builds context for the resource fair.'
-    },
-    {
-      id: 'resourcefair',
-      time: '1:00-2:30 PM',
-      title: 'Resource Fair (Lory Student Center)',
-      value: 'Moderate-High – Informal Connections',
-      description: 'Meet 40+ organizations. Connect with student groups, theater-specific resources, and support services.',
-      details: [
-        '40+ organizations with tables',
-        'School of Theatre & Dance-specific student orgs',
-        'Technical theater clubs or production organizations',
-        'Housing/residential college options',
-        'Support services (mental health, academic support, etc.)',
-        'Informal conversations with current students'
-      ],
-      questions: [
-        'What\'s the main tech theater student org? (ask about meetings, projects)',
-        'Are there clubs specifically for lighting designers?',
-        'What housing options exist for performance students?',
-        'What mental health support is available? (performance programs can be high-stress)',
-        'Are there peer mentoring programs?'
-      ],
-      tips: 'This is where you meet current students informally and ask unfiltered questions. Target theater-specific booths first.',
-      parentStrategy: 'Attend together. You can introduce yourself to theater faculty and ask parent-focused questions (program structure, safety, support systems).'
-    },
-    {
-      id: 'breakout1',
-      time: '2:40-3:10 PM',
-      title: 'Breakout Session (Slot 1)',
-      value: 'Medium – Context-Dependent',
-      description: 'Choose ONE focused session on a topic relevant to unanswered questions.',
-      details: [
-        'Theater-specific sessions (if offered): production pipeline, design process',
-        '"Student Life in Theater/Performance" – what the community is like',
-        'Internship/career pathways specific to technical theater',
-        'Study abroad opportunities (if theater tours internationally)',
-        'Mental health/wellness in high-stress performance programs',
-        'Technical skills training or certifications'
-      ],
-      questions: [
-        'Based on the academic session, what\'s still unclear?',
-        'Which breakout directly addresses those gaps?'
-      ],
-      tips: 'Pick ONE breakout that fills gaps from the morning academic session. Skip if you\'re satisfied with what you learned.',
-      parentStrategy: 'Benny should attend solo. You can visit CSU Bookstore, take RAMGO photos, or grab last questions with admissions.'
-    }
-  ];
+function SectionHeading({ children }) {
+  return (
+    <h2 className="text-lg sm:text-xl font-bold text-purple-700 mb-4">{children}</h2>
+  );
+}
 
-  const strategies = [
-    {
-      id: 'benny',
-      title: 'Benny\'s Strategy',
-      color: 'from-pink-100 to-pink-50',
-      borderColor: 'border-pink-400',
-      items: [
-        {
-          title: 'Don\'t miss the morning academic session',
-          details: 'School of Theatre & Dance session (10:00-11:30 AM) is where Benny learns about the program, meets faculty, sees facilities, and connects with current lighting students.'
-        },
-        {
-          title: 'Prioritize conversations with current lighting students',
-          details: 'Ask about first semester experience, what they wish they\'d known, job placement post-graduation, and whether they have contact info for future questions.'
-        },
-        {
-          title: 'Ask about mentorship',
-          details: 'Are there upper-level techs who guide newbies? Is there a formal or informal mentorship structure?'
-        },
-        {
-          title: 'Get contact info',
-          details: 'Collect email/Slack handles from faculty and student mentors for follow-up questions after the visit.'
-        },
-        {
-          title: 'Take detailed notes',
-          details: 'Jot down key details about shows, tech calendar, equipment, and opportunities so he can compare with other programs.'
-        }
-      ]
-    },
-    {
-      id: 'parent',
-      title: 'Parent Strategy',
-      color: 'from-blue-100 to-blue-50',
-      borderColor: 'border-blue-400',
-      items: [
-        {
-          title: 'Decide early on splitting up',
-          details: 'During the 10:00-11:30 AM academic session, you can either stay with Benny (good for context) or explore a different college (Agricultural Sciences, Business, Engineering, etc.) to see campus breadth.'
-        },
-        {
-          title: 'Attend resource fair together',
-          details: 'This is where you can introduce yourself to theater faculty and ask parent-focused questions about program structure, safety, support systems, and community.'
-        },
-        {
-          title: 'Use lunch for debrief',
-          details: 'Ask Benny what excited him, what surprised him, and what questions remain. This helps you both synthesize and prepare for the resource fair.'
-        },
-        {
-          title: 'Ask parent-specific questions',
-          details: 'Housing safety, mental health support for high-stress programs, academic support resources, financial aid details, community among performing arts students.'
-        },
-        {
-          title: 'Gather logistics info',
-          details: 'Move-in dates, required materials for tech students, parking for families, communication channels, emergency contacts.'
-        }
-      ]
-    }
-  ];
+function CheckItem({ label }) {
+  return (
+    <label className="flex items-start gap-3 p-3 rounded-lg hover:bg-purple-50 active:bg-purple-100 cursor-pointer min-h-[48px] border border-transparent hover:border-purple-100 transition-colors">
+      <input type="checkbox" className="mt-0.5 w-5 h-5 accent-purple-600 flex-shrink-0" />
+      <span className="text-sm text-gray-700 leading-snug">{label}</span>
+    </label>
+  );
+}
 
-  const timeline = [
-    { time: '7:45 AM', action: 'Arrive early at Moby Arena for check-in' },
-    { time: '7:30-9:00 AM', action: 'Check-in, grab snacks, get orientation' },
-    { time: '9:00-9:30 AM', action: 'Welcome session (groups separate)' },
-    { time: '10:00-11:30 AM', action: '🎭 MAIN: Academic Experience - School of Theatre & Dance' },
-    { time: '11:30 AM-1:00 PM', action: 'Lunch at dining center + residence hall tour' },
-    { time: '1:00-2:30 PM', action: 'Resource fair (find theater-specific booths)' },
-    { time: '2:40-3:10 PM', action: 'Choose ONE breakout session (if questions remain)' },
-    { time: '3:10-4:00 PM', action: 'Meet CAM, bookstore, final questions, wrap up' }
-  ];
+function TipBox({ children }) {
+  return (
+    <div className="bg-purple-50 border-l-4 border-purple-500 p-3 rounded-r-lg text-sm text-gray-800">
+      <strong>💡 Tip:</strong> {children}
+    </div>
+  );
+}
 
-  const essentialQuestions = {
-    forBenny: [
-      'Can I speak with current first-year lighting students about their experience?',
-      'What\'s a typical week like in terms of rehearsals and tech hours?',
-      'How much equipment access do first-year students have?',
-      'What shows are coming up that I could work on?',
-      'Is there a formal mentorship program or do upper-level techs help newbies?',
-      'What technical skills do I need to start, and what will I learn here?'
-    ],
-    forParents: [
-      'What support systems exist for students in high-stress performance programs?',
-      'How is the community among technical theater students?',
-      'What is the career outcome for graduates in this track?',
-      'How does the program balance academics with performance commitments?',
-      'What resources are available if Benny struggles academically or emotionally?',
-      'How often do families come visit? What\'s the campus culture for families?'
-    ]
-  };
+function ParentBox({ children }) {
+  return (
+    <div className="bg-blue-50 border-l-4 border-blue-400 p-3 rounded-r-lg text-sm text-gray-800">
+      <strong>👨‍👩‍👦 Parent:</strong> {children}
+    </div>
+  );
+}
 
-  const getBadgeStyle = (value) => {
-    const lowerValue = value.toLowerCase();
-    if (lowerValue.includes('critical')) return 'bg-red-100 text-red-700';
-    if (lowerValue.includes('high') && !lowerValue.includes('moderate')) return 'bg-yellow-100 text-yellow-700';
-    if (lowerValue.includes('moderate')) return 'bg-gray-100 text-gray-700';
+function BadgePill({ value }) {
+  const style = (() => {
+    const v = value.toLowerCase();
+    if (v.includes('critical')) return 'bg-red-100 text-red-700';
+    if (v.includes('high') && !v.includes('moderate')) return 'bg-yellow-100 text-yellow-700';
+    if (v.includes('moderate')) return 'bg-gray-100 text-gray-600';
     return 'bg-blue-100 text-blue-700';
-  };
+  })();
+  return (
+    <span className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold ${style}`}>
+      {value}
+    </span>
+  );
+}
 
-  const tabs = [
-    { id: 'timeline', label: '📅 Timeline', icon: '📅' },
-    { id: 'strategies', label: '🎯 Strategies', icon: '🎯' },
-    { id: 'sessions', label: '📍 Sessions', icon: '📍' },
-    { id: 'questions', label: '❓ Questions', icon: '❓' },
-    { id: 'prep', label: '✅ Prep', icon: '✅' },
-    { id: 'takeaways', label: '🎯 Takeaways', icon: '🎯' }
-  ];
+// ─── Data ────────────────────────────────────────────────────────────────────
+
+const SESSIONS = [
+  {
+    id: 'checkin', time: '7:30–9:00 AM', title: 'Early Check-In', value: 'High Priority',
+    description: 'Beat the crowds at Moby Arena. Get your college grouping assignment and grab complimentary snacks.',
+    details: ['Arrive by 7:45 AM — early beats the lines', 'Check in at Moby Arena', 'Spanish language family social available', 'Get orientation materials and college assignment'],
+    questions: [],
+    tips: 'Early arrivals avoid long lines and get better parking.',
+  },
+  {
+    id: 'welcome', time: '9:00–9:30 AM', title: 'Welcome Session', value: 'Moderate',
+    description: 'Opening remarks and orientation. Groups separate by college.',
+    details: ["Listen to opening remarks about the day", "Get oriented to the event flow", "Benny's group heads toward School of Theatre & Dance", 'Brief overview of activities and logistics'],
+    questions: [],
+    tips: 'Use this time to decide: split up during academic session or stay together?',
+  },
+  {
+    id: 'academic', time: '10:00–11:30 AM', title: 'Academic Experience — Theatre & Dance', value: 'CRITICAL – Main Event',
+    description: 'Tour of theater facilities, meet faculty, connect with current lighting students, learn about the program.',
+    details: ['Tour stages, lighting booths, and technical spaces', 'Meet faculty advisors for lighting/tech track', "See current students' work and hear about their path", 'Learn about equipment and production opportunities', 'Q&A with current students and faculty'],
+    questions: ['What shows run each semester and when does tech crew get involved?', 'What lighting equipment and systems are available?', 'Are there mentorship opportunities with upper-level techs?', 'What is the career outcome for lighting designers/technicians?', "How many shows per year? What's the technical calendar?", 'What internship opportunities exist locally or regionally?', 'How much autonomous responsibility do first-year techs have?', "What's the typical load (rehearsals, tech hours per week)?"],
+    tips: "Heart of the visit. Take notes, ask about first-year experience, get contact info from student mentors.",
+    parentStrategy: "Stay with Benny for context, or split to explore another college — you'll reconvene at lunch.",
+  },
+  {
+    id: 'lunch', time: '11:30 AM–2:00 PM', title: 'Lunch & Residence Hall Tours', value: 'High – Informal Learning',
+    description: 'Experience campus dining and see where students actually live.',
+    details: ['Eat at actual student dining centers', 'Alternative: Lory Student Center food court', 'Residence hall tours: 11:30 AM–1:00 PM slot', 'Informal debrief time — process the morning', 'Benny gets feel for dorm life and community'],
+    questions: ["What's the dining plan like? How many meals included?", 'Do theater/performance students tend to live together?', 'How safe is the area around campus?', 'What dorms are closest to the theater facilities?'],
+    tips: 'Debrief over lunch — ask Benny what excited him, what surprised him, what questions remain.',
+    parentStrategy: 'Grab lunch together, then do the residence hall tour. This context primes the resource fair.',
+  },
+  {
+    id: 'resourcefair', time: '1:00–2:30 PM', title: 'Resource Fair (Lory Student Center)', value: 'Moderate-High – Informal Connections',
+    description: 'Meet 40+ organizations. Connect with theater-specific resources, student groups, and support services.',
+    details: ['40+ organizations with tables', 'School of Theatre & Dance student orgs', 'Technical theater clubs and production groups', 'Housing and residential college options', 'Mental health, academic support, and more', 'Informal conversations with current students'],
+    questions: ['What is the main tech theater student org? When do they meet?', 'Are there clubs specifically for lighting designers?', 'What housing options exist for performance students?', 'What mental health support is available for high-stress programs?', 'Are there peer mentoring programs?'],
+    tips: 'Target theater-specific booths first — this is where you get unfiltered student perspectives.',
+    parentStrategy: 'Attend together. Introduce yourself to theater faculty and ask parent-focused questions.',
+  },
+  {
+    id: 'breakout', time: '2:40–3:10 PM', title: 'Breakout Session', value: 'Medium – Context-Dependent',
+    description: 'Choose ONE focused session targeting unanswered questions from the morning.',
+    details: ['Theater-specific sessions: production pipeline, design process', '"Student Life in Theater/Performance"', 'Internship/career pathways in technical theater', 'Study abroad and touring opportunities', 'Wellness in high-stress performance programs'],
+    questions: ["Based on the morning: what's still unclear?", 'Which breakout directly fills that gap?'],
+    tips: 'One well-chosen breakout beats attending two unfocused ones. Skip if the morning answered everything.',
+    parentStrategy: 'Benny should attend solo. Use this time for bookstore, RAMGO photos, or a last chat with admissions.',
+  },
+];
+
+const STRATEGIES = [
+  {
+    id: 'benny', title: "Benny's Strategy",
+    bg: 'from-pink-50 to-purple-50', border: 'border-pink-400',
+    items: [
+      { title: "Don't miss the academic session", body: 'School of Theatre & Dance (10:00–11:30 AM) is where Benny meets faculty, sees facilities, and connects with current lighting students.' },
+      { title: 'Talk to current lighting students', body: "Ask about first semester, what they wish they'd known, job placement, and whether you can stay in touch." },
+      { title: 'Ask about mentorship', body: 'Are there upper-level techs who guide newbies? Formal or informal structure?' },
+      { title: 'Collect contact info', body: 'Email or social handles from faculty and student mentors for follow-up after the visit.' },
+      { title: 'Take notes', body: 'Shows, tech calendar, equipment, opportunities — details that help compare programs later.' },
+    ],
+  },
+  {
+    id: 'parent', title: 'Parent Strategy',
+    bg: 'from-blue-50 to-indigo-50', border: 'border-blue-400',
+    items: [
+      { title: 'Decide early on splitting up', body: 'Stay with Benny (context) or explore another college (breadth). Decide before 10:00 AM.' },
+      { title: 'Work the resource fair together', body: 'Introduce yourself to theater faculty. Ask about program structure, safety, and support systems.' },
+      { title: 'Use lunch as a debrief', body: "Ask Benny what excited him and what questions remain. This shapes how you use the afternoon." },
+      { title: 'Ask parent-specific questions', body: 'Housing safety, mental health support, academic resources, financial aid, family communication.' },
+      { title: 'Gather logistics', body: 'Move-in dates, required materials for tech students, parking for families, emergency contacts.' },
+    ],
+  },
+];
+
+const TIMELINE = [
+  { time: '7:45 AM',          action: 'Arrive early — beat the check-in lines at Moby Arena' },
+  { time: '7:30–9:00 AM',     action: 'Check-in, snacks, get orientation materials' },
+  { time: '9:00–9:30 AM',     action: 'Welcome session — groups split by college' },
+  { time: '10:00–11:30 AM',   action: '🎭  MAIN EVENT — School of Theatre & Dance academic session' },
+  { time: '11:30 AM–1:00 PM', action: 'Lunch at dining center + residence hall tour' },
+  { time: '1:00–2:30 PM',     action: 'Resource fair — target theater-specific booths first' },
+  { time: '2:40–3:10 PM',     action: 'One focused breakout session (if questions remain)' },
+  { time: '3:10–4:00 PM',     action: 'Meet CAM, bookstore, wrap up and head out' },
+];
+
+const QUESTIONS = {
+  benny: [
+    'Can I speak with current first-year lighting students?',
+    "What's a typical week — rehearsals and tech hours?",
+    'How much equipment access do first-year students have?',
+    'What shows are coming up that I could work on?',
+    'Is there a formal mentorship program for new techs?',
+    'What technical skills do I need to start, and what will I learn here?',
+  ],
+  parent: [
+    'What support systems exist for students in high-stress performance programs?',
+    'How is the community among technical theater students?',
+    'What is the career outcome for graduates in this track?',
+    'How does the program balance academics and performance commitments?',
+    'What resources are available if Benny struggles academically or emotionally?',
+    "What's the campus culture for families visiting?",
+  ],
+};
+
+const PREP_ITEMS = [
+  'Charge phone — bring a portable charger',
+  'Comfortable walking shoes (lots of campus terrain)',
+  'Small notebook for Benny to take notes',
+  'Snacks and water bottle (long day)',
+  'Plan parking/route to Moby Arena',
+  'Valid ID for both of you',
+  'Review the event program if available online beforehand',
+  'Decide: split during academic session or stay together?',
+  'Camera ready for CAM meet & greet photos',
+  'Cards or paper to collect contact info from students/faculty',
+];
+
+const TAKEAWAYS = [
+  {
+    title: 'The Main Event',
+    body: 'The 10:00–11:30 AM Theatre & Dance academic session is non-negotiable. Facilities, faculty, and real student conversations all happen here.',
+  },
+  {
+    title: 'Connection Over Coverage',
+    body: "One meaningful conversation with a current tech student beats five skimmed sessions. Depth wins.",
+  },
+  {
+    title: 'Debrief Over Lunch',
+    body: "Synthesize over food. What excited Benny? What surprised him? What's still unanswered? This primes the afternoon.",
+  },
+  {
+    title: 'Stay Flexible',
+    body: "If a session runs long and something great is happening — stay. If you're satisfied by 2 PM, it's fine to leave early.",
+  },
+];
+
+// ─── Tabs config ─────────────────────────────────────────────────────────────
+
+const TABS = [
+  { id: 'overview',   icon: '🎓', label: 'Overview'   },
+  { id: 'timeline',   icon: '📅', label: 'Timeline'   },
+  { id: 'sessions',   icon: '📍', label: 'Sessions'   },
+  { id: 'strategies', icon: '🎯', label: 'Strategies' },
+  { id: 'questions',  icon: '❓', label: 'Questions'  },
+  { id: 'prep',       icon: '✅', label: 'Prep'       },
+];
+
+// ─── Main component ───────────────────────────────────────────────────────────
+
+export default function CSUVisitGuide() {
+  const [activeTab, setActiveTab] = useState('overview');
+  const [expandedSession, setExpandedSession] = useState(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-blue-100">
-      {/* Header */}
-      <header className="bg-gradient-to-r from-purple-600 to-purple-800 text-white px-4 sm:px-6 py-6 sm:py-8 rounded-b-xl shadow-lg mb-2">
-        <div className="max-w-5xl mx-auto">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 leading-tight">🎓 CSU Choose Event Guide</h1>
-          <p className="text-sm sm:text-base opacity-95">March 29, 2026 — Comprehensive Visit Prep for Benny (Lighting Technical Theater)</p>
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-purple-50 to-blue-50 flex flex-col">
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-6">
-            {[
-              { label: 'Date:', value: 'Saturday, March 29' },
-              { label: 'Time:', value: '~7:30 AM - 4:00 PM' },
-              { label: 'Check-in:', value: 'Moby Arena' },
-              { label: 'Expected:', value: '~3,000 students' }
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white/20 backdrop-blur-sm rounded-lg p-3 border border-white/30">
-                <div className="text-xs opacity-90 mb-1">{item.label}</div>
-                <div className="text-sm sm:text-base font-semibold">{item.value}</div>
-              </div>
-            ))}
-          </div>
+      {/* ── Sticky tab bar ── */}
+      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+        <div className="max-w-5xl mx-auto flex">
+          {TABS.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex-1 flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5
+                py-2.5 sm:py-3 text-xs sm:text-sm font-medium transition-all border-b-2
+                ${activeTab === tab.id
+                  ? 'border-purple-600 text-purple-700 bg-purple-50'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                }`}
+            >
+              <span className="text-base sm:text-sm leading-none">{tab.icon}</span>
+              <span className="leading-none">{tab.label}</span>
+            </button>
+          ))}
         </div>
-      </header>
+      </nav>
 
-      {/* Sticky Tab Navigation */}
-      <div className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="overflow-x-auto scrollbar-hide">
-            <div className="flex gap-1 sm:gap-2 min-w-max sm:min-w-0">
-              {tabs.map((tab) => (
+      {/* ── Tab content ── */}
+      <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-5 sm:py-8 pb-12">
+
+        {/* OVERVIEW */}
+        {activeTab === 'overview' && (
+          <div className="space-y-4">
+            {/* Hero card */}
+            <div className="bg-gradient-to-br from-purple-600 to-purple-800 text-white rounded-xl p-5 sm:p-8 shadow-lg">
+              <h1 className="text-2xl sm:text-3xl font-bold mb-1 leading-tight">🎓 CSU Choose Day</h1>
+              <p className="text-purple-100 text-sm sm:text-base mb-5">
+                March 29, 2026 — Visit prep for Benny (Lighting / Technical Theater)
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+                {[
+                  { label: 'Date',     value: 'Sat Mar 29' },
+                  { label: 'Hours',    value: '7:30 AM – 4 PM' },
+                  { label: 'Check-in', value: 'Moby Arena' },
+                  { label: 'Crowd',    value: '~3,000 students' },
+                ].map((item) => (
+                  <div key={item.label} className="bg-white/20 backdrop-blur rounded-lg p-2.5 sm:p-3 border border-white/25">
+                    <div className="text-purple-200 text-xs mb-0.5">{item.label}</div>
+                    <div className="text-white font-semibold text-xs sm:text-sm">{item.value}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Key takeaways */}
+            <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
+              <SectionHeading>🎯 Key Takeaways</SectionHeading>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {TAKEAWAYS.map((t) => (
+                  <div key={t.title} className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg p-3.5 border-l-4 border-purple-500">
+                    <div className="font-semibold text-sm text-gray-800 mb-1">{t.title}</div>
+                    <p className="text-xs text-gray-600 leading-relaxed">{t.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Quick nav prompts */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {TABS.filter(t => t.id !== 'overview').map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-3 sm:px-4 py-3 sm:py-4 text-xs sm:text-sm font-medium whitespace-nowrap transition-all border-b-2 ${
-                    activeTab === tab.id
-                      ? 'border-purple-600 text-purple-600'
-                      : 'border-transparent text-gray-600 hover:text-gray-800 hover:border-gray-300'
-                  }`}
+                  className="bg-white rounded-lg p-3 text-center shadow-sm border border-gray-100
+                    hover:border-purple-300 hover:bg-purple-50 active:bg-purple-100 transition-colors"
                 >
-                  <span className="hidden sm:inline">{tab.label}</span>
-                  <span className="sm:hidden">{tab.icon}</span>
+                  <div className="text-xl mb-1">{tab.icon}</div>
+                  <div className="text-xs font-medium text-gray-700">{tab.label}</div>
                 </button>
               ))}
             </div>
           </div>
-        </div>
-      </div>
+        )}
 
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 pb-8 sm:pb-12">
-        {/* Timeline Tab */}
+        {/* TIMELINE */}
         {activeTab === 'timeline' && (
-          <section className="bg-white rounded-lg shadow-md p-4 sm:p-6 my-6 sm:my-8">
-            <h2 className="text-xl sm:text-2xl font-bold text-purple-700 mb-4 sm:mb-6">📅 At-a-Glance Timeline</h2>
-            <div className="space-y-4">
-              {timeline.map((item, idx) => (
-                <div key={idx} className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-                  <div className="text-purple-600 font-semibold text-xs sm:text-sm sm:min-w-32 flex-shrink-0">{item.time}</div>
-                  <div className="flex-1 text-xs sm:text-sm text-gray-700 flex items-start gap-2">
-                    <span className="inline-block w-2 h-2 bg-purple-600 rounded-full flex-shrink-0 mt-1"></span>
-                    <span>{item.action}</span>
-                  </div>
-                </div>
+          <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
+            <SectionHeading>📅 Day Schedule</SectionHeading>
+            <ol className="relative border-l-2 border-purple-200 ml-2 space-y-0">
+              {TIMELINE.map((item, idx) => (
+                <li key={idx} className="pl-5 pb-5 relative last:pb-0">
+                  <span className="absolute -left-[9px] top-0.5 w-4 h-4 rounded-full bg-purple-600 border-2 border-white shadow-sm" />
+                  <div className="text-purple-600 font-semibold text-xs mb-0.5">{item.time}</div>
+                  <div className="text-sm text-gray-800">{item.action}</div>
+                </li>
               ))}
-            </div>
-          </section>
+            </ol>
+          </div>
         )}
 
-        {/* Strategies Tab */}
-        {activeTab === 'strategies' && (
-          <section className="my-6 sm:my-8">
-            <h2 className="text-xl sm:text-2xl font-bold text-purple-700 mb-4 sm:mb-6">🎯 Strategies for Success</h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-              {strategies.map((strategy) => (
-                <div key={strategy.id} className={`bg-gradient-to-br ${strategy.color} rounded-lg shadow-md p-4 sm:p-6 border-t-4 ${strategy.borderColor}`}>
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-4">{strategy.title}</h3>
-                  <div className="space-y-3 sm:space-y-4">
-                    {strategy.items.map((item, idx) => (
-                      <div key={idx}>
-                        <div className="font-semibold text-sm sm:text-base text-gray-800">{item.title}</div>
-                        <div className="text-xs sm:text-sm text-gray-700 mt-1">{item.details}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Sessions Tab */}
+        {/* SESSIONS */}
         {activeTab === 'sessions' && (
-          <section className="bg-white rounded-lg shadow-md p-4 sm:p-6 my-6 sm:my-8">
-            <h2 className="text-xl sm:text-2xl font-bold text-purple-700 mb-4 sm:mb-6">📍 Detailed Session Guide</h2>
-            <div className="space-y-3">
-              {sessions.map((session) => (
-                <div key={session.id} className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
+          <div className="space-y-3">
+            <SectionHeading>📍 Session Guide</SectionHeading>
+            {SESSIONS.map((session) => {
+              const open = expandedSession === session.id;
+              return (
+                <div key={session.id} className={`bg-white rounded-xl shadow-sm overflow-hidden border transition-all ${open ? 'border-purple-300' : 'border-gray-100'}`}>
                   <button
-                    onClick={() => setExpandedSession(expandedSession === session.id ? null : session.id)}
-                    className="w-full flex justify-between items-start gap-3 p-3 sm:p-4 bg-gradient-to-r from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-150 text-left"
+                    onClick={() => setExpandedSession(open ? null : session.id)}
+                    className="w-full text-left flex items-start gap-3 p-4 hover:bg-gray-50 active:bg-gray-100"
                   >
                     <div className="flex-1 min-w-0">
-                      <div className="text-xs sm:text-sm text-purple-600 font-semibold">{session.time}</div>
-                      <h3 className="text-sm sm:text-base font-bold text-gray-800 mt-1">{session.title}</h3>
-                      <span className={`inline-block mt-2 px-2 py-1 rounded-full text-xs font-semibold ${getBadgeStyle(session.value)}`}>
-                        {session.value}
-                      </span>
+                      <div className="text-purple-600 font-semibold text-xs mb-0.5">{session.time}</div>
+                      <div className="font-bold text-sm text-gray-800 leading-snug">{session.title}</div>
+                      <BadgePill value={session.value} />
                     </div>
-                    <div className="flex-shrink-0 text-lg text-purple-600 transition-transform">
-                      {expandedSession === session.id ? '▼' : '▶'}
-                    </div>
+                    <span className={`text-purple-500 mt-1 transition-transform duration-200 flex-shrink-0 ${open ? 'rotate-90' : ''}`}>▶</span>
                   </button>
 
-                  {expandedSession === session.id && (
-                    <div className="p-4 sm:p-6 border-t border-gray-200 space-y-4">
-                      <p className="text-sm sm:text-base text-gray-700">{session.description}</p>
+                  {open && (
+                    <div className="px-4 pb-4 space-y-3 border-t border-gray-100 pt-3">
+                      <p className="text-sm text-gray-700">{session.description}</p>
 
                       <div>
-                        <h4 className="font-bold text-sm sm:text-base text-gray-800 mb-2">What to Expect:</h4>
+                        <div className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">What to Expect</div>
                         <ul className="space-y-1">
-                          {session.details.map((detail, idx) => (
-                            <li key={idx} className="text-xs sm:text-sm text-gray-700 flex gap-2">
-                              <span className="text-purple-600 font-bold flex-shrink-0">✓</span>
-                              <span>{detail}</span>
+                          {session.details.map((d, i) => (
+                            <li key={i} className="flex gap-2 text-sm text-gray-700">
+                              <span className="text-purple-500 flex-shrink-0 font-bold">✓</span>
+                              <span>{d}</span>
                             </li>
                           ))}
                         </ul>
@@ -366,11 +338,11 @@ export default function CSUVisitGuide() {
 
                       {session.questions.length > 0 && (
                         <div>
-                          <h4 className="font-bold text-sm sm:text-base text-gray-800 mb-2">Key Questions to Ask:</h4>
+                          <div className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Questions to Ask</div>
                           <ul className="space-y-1">
-                            {session.questions.map((q, idx) => (
-                              <li key={idx} className="text-xs sm:text-sm text-gray-700 flex gap-2">
-                                <span className="text-purple-600 font-bold flex-shrink-0">?</span>
+                            {session.questions.map((q, i) => (
+                              <li key={i} className="flex gap-2 text-sm text-gray-700">
+                                <span className="text-blue-500 flex-shrink-0 font-bold">?</span>
                                 <span>{q}</span>
                               </li>
                             ))}
@@ -378,112 +350,72 @@ export default function CSUVisitGuide() {
                         </div>
                       )}
 
-                      <div className="bg-purple-50 border-l-4 border-purple-500 p-3 rounded text-xs sm:text-sm text-gray-800">
-                        <strong>💡 Tip:</strong> {session.tips}
-                      </div>
-
-                      {session.parentStrategy && (
-                        <div className="bg-blue-50 border-l-4 border-blue-500 p-3 rounded text-xs sm:text-sm text-gray-800">
-                          <strong>👨‍👩‍👦 Parent:</strong> {session.parentStrategy}
-                        </div>
-                      )}
+                      <TipBox>{session.tips}</TipBox>
+                      {session.parentStrategy && <ParentBox>{session.parentStrategy}</ParentBox>}
                     </div>
                   )}
                 </div>
-              ))}
-            </div>
-          </section>
+              );
+            })}
+          </div>
         )}
 
-        {/* Questions Tab */}
+        {/* STRATEGIES */}
+        {activeTab === 'strategies' && (
+          <div className="space-y-4">
+            <SectionHeading>🎯 Strategies for Success</SectionHeading>
+            {STRATEGIES.map((s) => (
+              <div key={s.id} className={`bg-gradient-to-br ${s.bg} rounded-xl shadow-sm p-4 sm:p-5 border-t-4 ${s.border}`}>
+                <h3 className="font-bold text-base sm:text-lg text-gray-800 mb-3">{s.title}</h3>
+                <div className="space-y-3">
+                  {s.items.map((item, idx) => (
+                    <div key={idx} className="flex gap-3">
+                      <span className="mt-0.5 w-5 h-5 rounded-full bg-white/70 flex items-center justify-center text-xs font-bold text-purple-700 flex-shrink-0 shadow-sm">
+                        {idx + 1}
+                      </span>
+                      <div>
+                        <div className="font-semibold text-sm text-gray-800">{item.title}</div>
+                        <div className="text-xs text-gray-600 mt-0.5 leading-relaxed">{item.body}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* QUESTIONS */}
         {activeTab === 'questions' && (
-          <section className="bg-white rounded-lg shadow-md p-4 sm:p-6 my-6 sm:my-8">
-            <h2 className="text-xl sm:text-2xl font-bold text-purple-700 mb-4 sm:mb-6">❓ Essential Questions Checklist</h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {[
-                { title: 'For Benny to Ask:', questions: essentialQuestions.forBenny },
-                { title: 'For Parents to Ask:', questions: essentialQuestions.forParents }
-              ].map((block, idx) => (
-                <div key={idx}>
-                  <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-3">{block.title}</h3>
-                  <div className="space-y-2">
-                    {block.questions.map((q, qIdx) => (
-                      <label key={qIdx} className="flex items-start gap-3 p-2 hover:bg-purple-50 rounded cursor-pointer min-h-12">
-                        <input type="checkbox" className="mt-1 w-5 h-5 rounded accent-purple-600 flex-shrink-0" />
-                        <span className="text-xs sm:text-sm text-gray-700">{q}</span>
-                      </label>
-                    ))}
-                  </div>
+          <div className="space-y-4">
+            <SectionHeading>❓ Questions Checklist</SectionHeading>
+            {[
+              { title: "Benny's Questions", items: QUESTIONS.benny, accent: 'border-pink-400 bg-pink-50' },
+              { title: "Parent's Questions", items: QUESTIONS.parent, accent: 'border-blue-400 bg-blue-50' },
+            ].map((block) => (
+              <div key={block.title} className={`rounded-xl shadow-sm overflow-hidden border-t-4 ${block.accent} bg-white`}>
+                <div className={`px-4 pt-4 pb-2 ${block.accent.includes('pink') ? 'bg-pink-50' : 'bg-blue-50'}`}>
+                  <h3 className="font-bold text-sm text-gray-800">{block.title}</h3>
                 </div>
-              ))}
-            </div>
-          </section>
+                <div className="p-3 space-y-1">
+                  {block.items.map((q, i) => <CheckItem key={i} label={q} />)}
+                </div>
+              </div>
+            ))}
+          </div>
         )}
 
-        {/* Prep Tab */}
+        {/* PREP */}
         {activeTab === 'prep' && (
-          <section className="bg-white rounded-lg shadow-md p-4 sm:p-6 my-6 sm:my-8">
-            <h2 className="text-xl sm:text-2xl font-bold text-purple-700 mb-4 sm:mb-6">✅ Pre-Visit Preparation Checklist</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {[
-                'Charge phone and bring portable charger',
-                'Wear comfortable walking shoes (lots of campus terrain)',
-                'Bring a small notebook for Benny to take notes',
-                'Pack snacks/water (long day, lines at dining)',
-                'Plan parking/driving route to Moby Arena',
-                'Bring valid ID (student ID or driver\'s license)',
-                'Have Benny review the program ahead of time if available online',
-                'Decide ahead: will you split during academic session or stay together?',
-                'Camera or phone ready for photos at CAM meet & greet',
-                'Bring business cards or paper for collecting contact info'
-              ].map((item, idx) => (
-                <label key={idx} className="flex items-start gap-3 p-2 hover:bg-purple-50 rounded cursor-pointer min-h-12">
-                  <input type="checkbox" className="mt-1 w-5 h-5 rounded accent-purple-600 flex-shrink-0" />
-                  <span className="text-xs sm:text-sm text-gray-700">{item}</span>
-                </label>
-              ))}
+          <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
+            <SectionHeading>✅ Pre-Visit Checklist</SectionHeading>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+              {PREP_ITEMS.map((item, i) => <CheckItem key={i} label={item} />)}
             </div>
-          </section>
+          </div>
         )}
 
-        {/* Takeaways Tab */}
-        {activeTab === 'takeaways' && (
-          <section className="bg-white rounded-lg shadow-md p-4 sm:p-6 my-6 sm:my-8">
-            <h2 className="text-xl sm:text-2xl font-bold text-purple-700 mb-4 sm:mb-6">🎯 Key Takeaways</h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-              {[
-                {
-                  title: 'The Main Event',
-                  text: 'The 10:00-11:30 AM School of Theatre & Dance academic session is non-negotiable and worth the entire trip. This is where Benny meets faculty, sees facilities, and talks to current lighting students about their real experience.'
-                },
-                {
-                  title: 'Connection Over Coverage',
-                  text: 'Don\'t try to hit every session. Focus on depth: get contact info, ask real questions, and build relationships. One meaningful conversation with a current tech student is worth more than skimming five sessions.'
-                },
-                {
-                  title: 'Debrief Matters',
-                  text: 'Use lunch and the resource fair to debrief with Benny about what he learned. Help him synthesize, celebrate wins, and identify remaining questions. This is how the visit solidifies into real understanding.'
-                },
-                {
-                  title: 'Trust the Schedule, But Stay Flexible',
-                  text: 'The event is designed for flexibility. If a session runs long or something amazing happens, stay with it. If you\'ve learned enough by 2:00 PM, it\'s fine to leave—there\'s no penalty for heading out early.'
-                }
-              ].map((takeaway, idx) => (
-                <div key={idx} className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg p-4 border-l-4 border-purple-500">
-                  <h4 className="font-bold text-sm sm:text-base text-gray-800 mb-2">{takeaway.title}</h4>
-                  <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">{takeaway.text}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
       </main>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 py-6 sm:py-8 text-center text-xs sm:text-sm text-gray-600">
-        <p className="mb-1">Created for Benny's CSU Visit • March 29, 2026</p>
-        <p className="italic text-gray-500">This guide is a framework, not a rigid schedule. Adjust based on what excites Benny and what questions emerge during the day.</p>
-      </footer>
     </div>
   );
 }
