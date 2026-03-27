@@ -254,13 +254,13 @@ export default function CSUVisitGuide() {
         {/* Timeline */}
         <section className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-6 sm:mb-8">
           <h2 className="text-xl sm:text-2xl font-bold text-purple-700 mb-4 sm:mb-6">📅 At-a-Glance Timeline</h2>
-          <div className="space-y-3">
+          <div className="space-y-4">
             {timeline.map((item, idx) => (
-              <div key={idx} className="flex gap-3 sm:gap-4">
-                <div className="text-purple-600 font-semibold text-xs sm:text-sm min-w-max">{item.time}</div>
-                <div className="flex-1 text-sm sm:text-base text-gray-700 flex items-center">
-                  <span className="inline-block w-2 h-2 bg-purple-600 rounded-full mr-3"></span>
-                  {item.action}
+              <div key={idx} className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                <div className="text-purple-600 font-semibold text-xs sm:text-sm sm:min-w-32 flex-shrink-0">{item.time}</div>
+                <div className="flex-1 text-xs sm:text-sm text-gray-700 flex items-start gap-2">
+                  <span className="inline-block w-2 h-2 bg-purple-600 rounded-full flex-shrink-0 mt-1"></span>
+                  <span>{item.action}</span>
                 </div>
               </div>
             ))}
