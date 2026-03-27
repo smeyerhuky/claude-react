@@ -426,7 +426,7 @@ export default function App() {
             </div>
           ))}
           <div style={{marginTop:10,fontSize:10,color:"#303050",lineHeight:1.6}}>
-            Outliers (>120ns) occur when words happen to share
+            Outliers ({'>'}120ns) occur when words happen to share
             a Python dict hash bucket or cause a cache miss.
             The anomaly at "reo"→265ns, "vis"→249ns, "of"→236ns
             reveals specific collision clusters.
