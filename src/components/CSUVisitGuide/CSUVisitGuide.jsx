@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 export default function CSUVisitGuide() {
   const [expandedSession, setExpandedSession] = useState(null);
+  const [activeTab, setActiveTab] = useState('timeline');
 
   const sessions = [
     {
@@ -226,10 +227,19 @@ export default function CSUVisitGuide() {
     return 'bg-blue-100 text-blue-700';
   };
 
+  const tabs = [
+    { id: 'timeline', label: '📅 Timeline', icon: '📅' },
+    { id: 'strategies', label: '🎯 Strategies', icon: '🎯' },
+    { id: 'sessions', label: '📍 Sessions', icon: '📍' },
+    { id: 'questions', label: '❓ Questions', icon: '❓' },
+    { id: 'prep', label: '✅ Prep', icon: '✅' },
+    { id: 'takeaways', label: '🎯 Takeaways', icon: '🎯' }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-blue-100">
       {/* Header */}
-      <header className="bg-gradient-to-r from-purple-600 to-purple-800 text-white px-4 sm:px-6 py-6 sm:py-8 rounded-b-xl shadow-lg mb-6 sm:mb-8">
+      <header className="bg-gradient-to-r from-purple-600 to-purple-800 text-white px-4 sm:px-6 py-6 sm:py-8 rounded-b-xl shadow-lg mb-2">
         <div className="max-w-5xl mx-auto">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 leading-tight">🎓 CSU Choose Event Guide</h1>
           <p className="text-sm sm:text-base opacity-95">March 29, 2026 — Comprehensive Visit Prep for Benny (Lighting Technical Theater)</p>
@@ -250,187 +260,223 @@ export default function CSUVisitGuide() {
         </div>
       </header>
 
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 pb-8 sm:pb-12">
-        {/* Timeline */}
-        <section className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-6 sm:mb-8">
-          <h2 className="text-xl sm:text-2xl font-bold text-purple-700 mb-4 sm:mb-6">📅 At-a-Glance Timeline</h2>
-          <div className="space-y-4">
-            {timeline.map((item, idx) => (
-              <div key={idx} className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-                <div className="text-purple-600 font-semibold text-xs sm:text-sm sm:min-w-32 flex-shrink-0">{item.time}</div>
-                <div className="flex-1 text-xs sm:text-sm text-gray-700 flex items-start gap-2">
-                  <span className="inline-block w-2 h-2 bg-purple-600 rounded-full flex-shrink-0 mt-1"></span>
-                  <span>{item.action}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Strategies */}
-        <section className="mb-6 sm:mb-8">
-          <h2 className="text-xl sm:text-2xl font-bold text-purple-700 mb-4 sm:mb-6">🎯 Strategies for Success</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-            {strategies.map((strategy) => (
-              <div key={strategy.id} className={`bg-gradient-to-br ${strategy.color} rounded-lg shadow-md p-4 sm:p-6 border-t-4 ${strategy.borderColor}`}>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-4">{strategy.title}</h3>
-                <div className="space-y-3 sm:space-y-4">
-                  {strategy.items.map((item, idx) => (
-                    <div key={idx}>
-                      <div className="font-semibold text-sm sm:text-base text-gray-800">{item.title}</div>
-                      <div className="text-xs sm:text-sm text-gray-700 mt-1">{item.details}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Sessions */}
-        <section className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-6 sm:mb-8">
-          <h2 className="text-xl sm:text-2xl font-bold text-purple-700 mb-4 sm:mb-6">📍 Detailed Session Guide</h2>
-          <div className="space-y-3">
-            {sessions.map((session) => (
-              <div key={session.id} className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
+      {/* Sticky Tab Navigation */}
+      <div className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="overflow-x-auto scrollbar-hide">
+            <div className="flex gap-1 sm:gap-2 min-w-max sm:min-w-0">
+              {tabs.map((tab) => (
                 <button
-                  onClick={() => setExpandedSession(expandedSession === session.id ? null : session.id)}
-                  className="w-full flex justify-between items-start gap-3 p-3 sm:p-4 bg-gradient-to-r from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-150 text-left"
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-3 sm:px-4 py-3 sm:py-4 text-xs sm:text-sm font-medium whitespace-nowrap transition-all border-b-2 ${
+                    activeTab === tab.id
+                      ? 'border-purple-600 text-purple-600'
+                      : 'border-transparent text-gray-600 hover:text-gray-800 hover:border-gray-300'
+                  }`}
                 >
-                  <div className="flex-1 min-w-0">
-                    <div className="text-xs sm:text-sm text-purple-600 font-semibold">{session.time}</div>
-                    <h3 className="text-sm sm:text-base font-bold text-gray-800 mt-1">{session.title}</h3>
-                    <span className={`inline-block mt-2 px-2 py-1 rounded-full text-xs font-semibold ${getBadgeStyle(session.value)}`}>
-                      {session.value}
-                    </span>
-                  </div>
-                  <div className="flex-shrink-0 text-lg text-purple-600 transition-transform">
-                    {expandedSession === session.id ? '▼' : '▶'}
-                  </div>
+                  <span className="hidden sm:inline">{tab.label}</span>
+                  <span className="sm:hidden">{tab.icon}</span>
                 </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
 
-                {expandedSession === session.id && (
-                  <div className="p-4 sm:p-6 border-t border-gray-200 space-y-4">
-                    <p className="text-sm sm:text-base text-gray-700">{session.description}</p>
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 pb-8 sm:pb-12">
+        {/* Timeline Tab */}
+        {activeTab === 'timeline' && (
+          <section className="bg-white rounded-lg shadow-md p-4 sm:p-6 my-6 sm:my-8">
+            <h2 className="text-xl sm:text-2xl font-bold text-purple-700 mb-4 sm:mb-6">📅 At-a-Glance Timeline</h2>
+            <div className="space-y-4">
+              {timeline.map((item, idx) => (
+                <div key={idx} className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                  <div className="text-purple-600 font-semibold text-xs sm:text-sm sm:min-w-32 flex-shrink-0">{item.time}</div>
+                  <div className="flex-1 text-xs sm:text-sm text-gray-700 flex items-start gap-2">
+                    <span className="inline-block w-2 h-2 bg-purple-600 rounded-full flex-shrink-0 mt-1"></span>
+                    <span>{item.action}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
-                    <div>
-                      <h4 className="font-bold text-sm sm:text-base text-gray-800 mb-2">What to Expect:</h4>
-                      <ul className="space-y-1">
-                        {session.details.map((detail, idx) => (
-                          <li key={idx} className="text-xs sm:text-sm text-gray-700 flex gap-2">
-                            <span className="text-purple-600 font-bold flex-shrink-0">✓</span>
-                            <span>{detail}</span>
-                          </li>
-                        ))}
-                      </ul>
+        {/* Strategies Tab */}
+        {activeTab === 'strategies' && (
+          <section className="my-6 sm:my-8">
+            <h2 className="text-xl sm:text-2xl font-bold text-purple-700 mb-4 sm:mb-6">🎯 Strategies for Success</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+              {strategies.map((strategy) => (
+                <div key={strategy.id} className={`bg-gradient-to-br ${strategy.color} rounded-lg shadow-md p-4 sm:p-6 border-t-4 ${strategy.borderColor}`}>
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-4">{strategy.title}</h3>
+                  <div className="space-y-3 sm:space-y-4">
+                    {strategy.items.map((item, idx) => (
+                      <div key={idx}>
+                        <div className="font-semibold text-sm sm:text-base text-gray-800">{item.title}</div>
+                        <div className="text-xs sm:text-sm text-gray-700 mt-1">{item.details}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Sessions Tab */}
+        {activeTab === 'sessions' && (
+          <section className="bg-white rounded-lg shadow-md p-4 sm:p-6 my-6 sm:my-8">
+            <h2 className="text-xl sm:text-2xl font-bold text-purple-700 mb-4 sm:mb-6">📍 Detailed Session Guide</h2>
+            <div className="space-y-3">
+              {sessions.map((session) => (
+                <div key={session.id} className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
+                  <button
+                    onClick={() => setExpandedSession(expandedSession === session.id ? null : session.id)}
+                    className="w-full flex justify-between items-start gap-3 p-3 sm:p-4 bg-gradient-to-r from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-150 text-left"
+                  >
+                    <div className="flex-1 min-w-0">
+                      <div className="text-xs sm:text-sm text-purple-600 font-semibold">{session.time}</div>
+                      <h3 className="text-sm sm:text-base font-bold text-gray-800 mt-1">{session.title}</h3>
+                      <span className={`inline-block mt-2 px-2 py-1 rounded-full text-xs font-semibold ${getBadgeStyle(session.value)}`}>
+                        {session.value}
+                      </span>
                     </div>
+                    <div className="flex-shrink-0 text-lg text-purple-600 transition-transform">
+                      {expandedSession === session.id ? '▼' : '▶'}
+                    </div>
+                  </button>
 
-                    {session.questions.length > 0 && (
+                  {expandedSession === session.id && (
+                    <div className="p-4 sm:p-6 border-t border-gray-200 space-y-4">
+                      <p className="text-sm sm:text-base text-gray-700">{session.description}</p>
+
                       <div>
-                        <h4 className="font-bold text-sm sm:text-base text-gray-800 mb-2">Key Questions to Ask:</h4>
+                        <h4 className="font-bold text-sm sm:text-base text-gray-800 mb-2">What to Expect:</h4>
                         <ul className="space-y-1">
-                          {session.questions.map((q, idx) => (
+                          {session.details.map((detail, idx) => (
                             <li key={idx} className="text-xs sm:text-sm text-gray-700 flex gap-2">
-                              <span className="text-purple-600 font-bold flex-shrink-0">?</span>
-                              <span>{q}</span>
+                              <span className="text-purple-600 font-bold flex-shrink-0">✓</span>
+                              <span>{detail}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
-                    )}
 
-                    <div className="bg-purple-50 border-l-4 border-purple-500 p-3 rounded text-xs sm:text-sm text-gray-800">
-                      <strong>💡 Tip:</strong> {session.tips}
-                    </div>
+                      {session.questions.length > 0 && (
+                        <div>
+                          <h4 className="font-bold text-sm sm:text-base text-gray-800 mb-2">Key Questions to Ask:</h4>
+                          <ul className="space-y-1">
+                            {session.questions.map((q, idx) => (
+                              <li key={idx} className="text-xs sm:text-sm text-gray-700 flex gap-2">
+                                <span className="text-purple-600 font-bold flex-shrink-0">?</span>
+                                <span>{q}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
 
-                    {session.parentStrategy && (
-                      <div className="bg-blue-50 border-l-4 border-blue-500 p-3 rounded text-xs sm:text-sm text-gray-800">
-                        <strong>👨‍👩‍👦 Parent:</strong> {session.parentStrategy}
+                      <div className="bg-purple-50 border-l-4 border-purple-500 p-3 rounded text-xs sm:text-sm text-gray-800">
+                        <strong>💡 Tip:</strong> {session.tips}
                       </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
 
-        {/* Essential Questions */}
-        <section className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-6 sm:mb-8">
-          <h2 className="text-xl sm:text-2xl font-bold text-purple-700 mb-4 sm:mb-6">❓ Essential Questions Checklist</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {[
-              { title: 'For Benny to Ask:', questions: essentialQuestions.forBenny },
-              { title: 'For Parents to Ask:', questions: essentialQuestions.forParents }
-            ].map((block, idx) => (
-              <div key={idx}>
-                <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-3">{block.title}</h3>
-                <div className="space-y-2">
-                  {block.questions.map((q, qIdx) => (
-                    <label key={qIdx} className="flex items-start gap-3 p-2 hover:bg-purple-50 rounded cursor-pointer min-h-12">
-                      <input type="checkbox" className="mt-1 w-5 h-5 rounded accent-purple-600 flex-shrink-0" />
-                      <span className="text-xs sm:text-sm text-gray-700">{q}</span>
-                    </label>
-                  ))}
+                      {session.parentStrategy && (
+                        <div className="bg-blue-50 border-l-4 border-blue-500 p-3 rounded text-xs sm:text-sm text-gray-800">
+                          <strong>👨‍👩‍👦 Parent:</strong> {session.parentStrategy}
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
-              </div>
-            ))}
-          </div>
-        </section>
+              ))}
+            </div>
+          </section>
+        )}
 
-        {/* Prep Checklist */}
-        <section className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-6 sm:mb-8">
-          <h2 className="text-xl sm:text-2xl font-bold text-purple-700 mb-4 sm:mb-6">✅ Pre-Visit Preparation Checklist</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {[
-              'Charge phone and bring portable charger',
-              'Wear comfortable walking shoes (lots of campus terrain)',
-              'Bring a small notebook for Benny to take notes',
-              'Pack snacks/water (long day, lines at dining)',
-              'Plan parking/driving route to Moby Arena',
-              'Bring valid ID (student ID or driver\'s license)',
-              'Have Benny review the program ahead of time if available online',
-              'Decide ahead: will you split during academic session or stay together?',
-              'Camera or phone ready for photos at CAM meet & greet',
-              'Bring business cards or paper for collecting contact info'
-            ].map((item, idx) => (
-              <label key={idx} className="flex items-start gap-3 p-2 hover:bg-purple-50 rounded cursor-pointer min-h-12">
-                <input type="checkbox" className="mt-1 w-5 h-5 rounded accent-purple-600 flex-shrink-0" />
-                <span className="text-xs sm:text-sm text-gray-700">{item}</span>
-              </label>
-            ))}
-          </div>
-        </section>
+        {/* Questions Tab */}
+        {activeTab === 'questions' && (
+          <section className="bg-white rounded-lg shadow-md p-4 sm:p-6 my-6 sm:my-8">
+            <h2 className="text-xl sm:text-2xl font-bold text-purple-700 mb-4 sm:mb-6">❓ Essential Questions Checklist</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {[
+                { title: 'For Benny to Ask:', questions: essentialQuestions.forBenny },
+                { title: 'For Parents to Ask:', questions: essentialQuestions.forParents }
+              ].map((block, idx) => (
+                <div key={idx}>
+                  <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-3">{block.title}</h3>
+                  <div className="space-y-2">
+                    {block.questions.map((q, qIdx) => (
+                      <label key={qIdx} className="flex items-start gap-3 p-2 hover:bg-purple-50 rounded cursor-pointer min-h-12">
+                        <input type="checkbox" className="mt-1 w-5 h-5 rounded accent-purple-600 flex-shrink-0" />
+                        <span className="text-xs sm:text-sm text-gray-700">{q}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
-        {/* Key Takeaways */}
-        <section className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-8">
-          <h2 className="text-xl sm:text-2xl font-bold text-purple-700 mb-4 sm:mb-6">🎯 Key Takeaways</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-            {[
-              {
-                title: 'The Main Event',
-                text: 'The 10:00-11:30 AM School of Theatre & Dance academic session is non-negotiable and worth the entire trip. This is where Benny meets faculty, sees facilities, and talks to current lighting students about their real experience.'
-              },
-              {
-                title: 'Connection Over Coverage',
-                text: 'Don\'t try to hit every session. Focus on depth: get contact info, ask real questions, and build relationships. One meaningful conversation with a current tech student is worth more than skimming five sessions.'
-              },
-              {
-                title: 'Debrief Matters',
-                text: 'Use lunch and the resource fair to debrief with Benny about what he learned. Help him synthesize, celebrate wins, and identify remaining questions. This is how the visit solidifies into real understanding.'
-              },
-              {
-                title: 'Trust the Schedule, But Stay Flexible',
-                text: 'The event is designed for flexibility. If a session runs long or something amazing happens, stay with it. If you\'ve learned enough by 2:00 PM, it\'s fine to leave—there\'s no penalty for heading out early.'
-              }
-            ].map((takeaway, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg p-4 border-l-4 border-purple-500">
-                <h4 className="font-bold text-sm sm:text-base text-gray-800 mb-2">{takeaway.title}</h4>
-                <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">{takeaway.text}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        {/* Prep Tab */}
+        {activeTab === 'prep' && (
+          <section className="bg-white rounded-lg shadow-md p-4 sm:p-6 my-6 sm:my-8">
+            <h2 className="text-xl sm:text-2xl font-bold text-purple-700 mb-4 sm:mb-6">✅ Pre-Visit Preparation Checklist</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                'Charge phone and bring portable charger',
+                'Wear comfortable walking shoes (lots of campus terrain)',
+                'Bring a small notebook for Benny to take notes',
+                'Pack snacks/water (long day, lines at dining)',
+                'Plan parking/driving route to Moby Arena',
+                'Bring valid ID (student ID or driver\'s license)',
+                'Have Benny review the program ahead of time if available online',
+                'Decide ahead: will you split during academic session or stay together?',
+                'Camera or phone ready for photos at CAM meet & greet',
+                'Bring business cards or paper for collecting contact info'
+              ].map((item, idx) => (
+                <label key={idx} className="flex items-start gap-3 p-2 hover:bg-purple-50 rounded cursor-pointer min-h-12">
+                  <input type="checkbox" className="mt-1 w-5 h-5 rounded accent-purple-600 flex-shrink-0" />
+                  <span className="text-xs sm:text-sm text-gray-700">{item}</span>
+                </label>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Takeaways Tab */}
+        {activeTab === 'takeaways' && (
+          <section className="bg-white rounded-lg shadow-md p-4 sm:p-6 my-6 sm:my-8">
+            <h2 className="text-xl sm:text-2xl font-bold text-purple-700 mb-4 sm:mb-6">🎯 Key Takeaways</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+              {[
+                {
+                  title: 'The Main Event',
+                  text: 'The 10:00-11:30 AM School of Theatre & Dance academic session is non-negotiable and worth the entire trip. This is where Benny meets faculty, sees facilities, and talks to current lighting students about their real experience.'
+                },
+                {
+                  title: 'Connection Over Coverage',
+                  text: 'Don\'t try to hit every session. Focus on depth: get contact info, ask real questions, and build relationships. One meaningful conversation with a current tech student is worth more than skimming five sessions.'
+                },
+                {
+                  title: 'Debrief Matters',
+                  text: 'Use lunch and the resource fair to debrief with Benny about what he learned. Help him synthesize, celebrate wins, and identify remaining questions. This is how the visit solidifies into real understanding.'
+                },
+                {
+                  title: 'Trust the Schedule, But Stay Flexible',
+                  text: 'The event is designed for flexibility. If a session runs long or something amazing happens, stay with it. If you\'ve learned enough by 2:00 PM, it\'s fine to leave—there\'s no penalty for heading out early.'
+                }
+              ].map((takeaway, idx) => (
+                <div key={idx} className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg p-4 border-l-4 border-purple-500">
+                  <h4 className="font-bold text-sm sm:text-base text-gray-800 mb-2">{takeaway.title}</h4>
+                  <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">{takeaway.text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
       </main>
 
       {/* Footer */}
