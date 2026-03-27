@@ -736,7 +736,7 @@ const EnhancedTextBufferProcessor = () => {
                   <div>
                     <div className="font-semibold text-gray-700 mb-1">Function Signature:</div>
                     <code className="text-xs bg-white px-2 py-1 rounded">
-                      (char: string, context: Object) {`=>`} {'{'}{ result: string, metadata?: any {'}'}
+                      {'(char: string, context: Object) => { result: string, metadata?: any }'}
                     </code>
                   </div>
                   
