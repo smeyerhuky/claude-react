@@ -58,10 +58,29 @@ export default function useAsciiEngine() {
 
   // Refs
   const outputRef = useRef(null), sampleRef = useRef(null), videoRef = useRef(null);
+  const containerRef = useRef(null);
   const streamRef = useRef(null), fileUrlRef = useRef(null);
   const rafRef    = useRef(null), tRef       = useRef(0);
   const fpsAcc    = useRef({frames:0, last:performance.now()});
   const sr        = useRef({});
+  const containerSizeRef = useRef({ w: 1024, h: 1024 });
+  const [containerSize, setContainerSize] = useState({ w: 1024, h: 1024 });
+
+  // Track container size for full-resolution rendering
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const obs = new ResizeObserver(entries => {
+      const { width, height } = entries[0].contentRect;
+      if (width > 0 && height > 0) {
+        const w = Math.floor(width), h = Math.floor(height);
+        containerSizeRef.current = { w, h };
+        setContainerSize({ w, h });
+      }
+    });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
   useEffect(()=>{
     sr.current={cols,rows,csKey,inv,colorMode,warpMode,warpAmt,source,animating,animTarget,animSpeed};
   },[cols,rows,csKey,inv,colorMode,warpMode,warpAmt,source,animating,animTarget,animSpeed]);
@@ -77,7 +96,7 @@ export default function useAsciiEngine() {
       const{cols:C,rows:R,csKey:cs,inv:i,colorMode:cm,warpMode:wm,warpAmt:wa,source:src,animating:anim,animTarget:at,animSpeed:asp}=sr.current;
       const charset=CHARSETS[cs], lut=LUTS[cs];
       const sW=C*4, sH=R*4;
-      const{cW,cH,fS}=cellDims(C,R);
+      const{cW,cH,fS}=cellDims(C,R,containerSizeRef.current.w,containerSizeRef.current.h);
       const t0=performance.now();
       if(sc.width!==sW||sc.height!==sH){sc.width=sW; sc.height=sH;}
       if(oc.width!==C*cW||oc.height!==R*cH){oc.width=C*cW; oc.height=R*cH;}
@@ -196,14 +215,14 @@ export default function useAsciiEngine() {
     cols, rows, lockAspect, csKey, inv, colorMode,
     matVals, animating, animTarget, animSpeed,
     activeTx, txParam, warpMode, warpAmt,
-    source, statusMsg, camError, fps, renderMs, tab, hovCell,
+    source, statusMsg, camError, fps, renderMs, tab, hovCell, containerSize,
     // Setters
     setCols, setRows,
     setCsKey, setInv, setColorMode, setMatVals,
     setAnimating, setAnimTarget, setAnimSpeed,
     setActiveTx, setTxParam, setWarpMode, setWarpAmt, setTab, setHovCell,
     // Refs
-    outputRef, sampleRef, videoRef,
+    outputRef, sampleRef, videoRef, containerRef,
     // Callbacks
     adjCols, adjRows, toggleLock,
     applyPreset, applyTx, editCell, snapMatrix,

@@ -132,11 +132,11 @@ export function paintGrid(ctx,grid,cols,rows,cW,cH,fS,colorMode) {
 }
 
 // ─── CELL DIMS ────────────────────────────────────────────────────────────────
-export const CANVAS_SIZE = 1024;
-export function cellDims(cols,rows){
-  const cW=Math.max(5,Math.floor(CANVAS_SIZE/cols));
-  const cH=Math.max(6,Math.floor(CANVAS_SIZE/rows));
-  return { cW, cH, fS:Math.max(4,cH-2) };
+export const CANVAS_SIZE = 1024; // fallback when container size is not yet known
+export function cellDims(cols, rows, containerW = CANVAS_SIZE, containerH = CANVAS_SIZE) {
+  const cW = Math.max(5, Math.floor(containerW / cols));
+  const cH = Math.max(6, Math.floor(containerH / rows));
+  return { cW, cH, fS: Math.max(4, cH - 2) };
 }
 
 // ─── ANIM TARGETS ────────────────────────────────────────────────────────────

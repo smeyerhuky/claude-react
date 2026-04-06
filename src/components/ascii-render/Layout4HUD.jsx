@@ -33,22 +33,22 @@ export default function Layout4HUD() {
     warpMode, setWarpMode, warpAmt, setWarpAmt,
     source, goDemo, startCamera, handleFile, camError,
     csKey, setCsKey, colorMode, setColorMode, inv, setInv,
-    outputRef, sampleRef, videoRef,
+    outputRef, sampleRef, videoRef, containerRef, containerSize,
   } = e;
 
-  const {cW, cH} = cellDims(cols, rows);
+  const {cW, cH} = cellDims(cols, rows, containerSize.w, containerSize.h);
   const canvasW = cols * cW, canvasH = rows * cH;
 
   return (
-    <div style={{position:'relative', width:'100vw', height:'100vh', overflow:'hidden',
+    <div ref={containerRef} style={{position:'relative', width:'100vw', height:'100vh', overflow:'hidden',
       background:'#000', fontFamily:"'Courier New',monospace"}}>
       <canvas ref={sampleRef} width={128} height={128} style={{display:'none'}} />
       <video ref={videoRef} playsInline muted style={{display:'none'}} />
 
-      {/* Canvas — fills entire viewport */}
+      {/* Canvas — fills entire viewport at full resolution */}
       <canvas ref={outputRef} width={canvasW} height={canvasH}
         style={{position:'absolute', top:0, left:0, width:'100%', height:'100%',
-          objectFit:'contain', background:'#000'}}/>
+          background:'#000'}}/>
 
       {/* Title overlay */}
       <div style={{...overlay, top:8, left:'50%', transform:'translateX(-50%)',
