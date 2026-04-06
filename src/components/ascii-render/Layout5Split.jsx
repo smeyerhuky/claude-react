@@ -30,6 +30,7 @@ export default function Layout5Split() {
     animating, setAnimating, animTarget, setAnimTarget, animSpeed, setAnimSpeed,
     adjCols, adjRows, setCols, setRows, lockAspect, toggleLock, fitToContainer,
     warpMode, setWarpMode, warpAmt, setWarpAmt,
+    asciiMode, setAsciiMode,
     source, goDemo, startCamera, handleFile, camError,
     csKey, setCsKey, colorMode, setColorMode, inv, setInv,
     outputRef, sampleRef, videoRef, containerRef, containerSize,
@@ -49,7 +50,14 @@ export default function Layout5Split() {
         padding:'6px 12px', borderBottom:`1px solid ${BORDER}`, flexShrink:0, color:G}}>
         <span style={{fontSize:10, letterSpacing:4, opacity:.4}}>▓▒░ ASCII RENDERER ░▒▓</span>
         <span style={{fontSize:9, letterSpacing:2}}>◆ {statusMsg} · {cols}×{rows}</span>
-        <span style={{fontSize:9, color:fps>=28?G:fps>=15?'#aaff00':'#ff6600', letterSpacing:1}}>{fps}fps · {renderMs}ms</span>
+        <div style={{display:'flex', gap:8, alignItems:'center'}}>
+          <button onClick={()=>setAsciiMode(a=>!a)} style={{
+            background:!asciiMode?G:'transparent', color:!asciiMode?BG:G,
+            border:`1px solid ${!asciiMode?G:BORDER}`, padding:'2px 6px',
+            fontFamily:'monospace', fontSize:8, cursor:'pointer', letterSpacing:1,
+          }}>{asciiMode?'⌨ ASCII':'📹 RAW'}</button>
+          <span style={{fontSize:9, color:fps>=28?G:fps>=15?'#aaff00':'#ff6600', letterSpacing:1}}>{fps}fps · {renderMs}ms</span>
+        </div>
       </div>
 
       {/* Middle row */}

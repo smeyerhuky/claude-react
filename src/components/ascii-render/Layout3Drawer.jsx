@@ -31,6 +31,7 @@ export default function Layout3Drawer() {
     animating, setAnimating, animTarget, setAnimTarget, animSpeed, setAnimSpeed,
     adjCols, adjRows, setCols, setRows, lockAspect, toggleLock,
     warpMode, setWarpMode, warpAmt, setWarpAmt,
+    asciiMode, setAsciiMode,
     source, goDemo, startCamera, handleFile, camError,
     csKey, setCsKey, colorMode, setColorMode, inv, setInv,
     outputRef, sampleRef, videoRef, containerRef, containerSize,
@@ -188,7 +189,12 @@ export default function Layout3Drawer() {
         display:'flex', justifyContent:'space-between', alignItems:'center', flexShrink:0}}>
         <span style={{color:G, fontSize:10, letterSpacing:4, opacity:.4}}>▓▒░ ASCII RENDERER ░▒▓</span>
         <span style={{fontSize:9, color:G, letterSpacing:2}}>◆ {statusMsg} · {cols}×{rows}</span>
-        <span style={{fontSize:9, color:fps>=28?G:fps>=15?'#aaff00':'#ff6600', letterSpacing:1}}>{fps}fps · {renderMs}ms</span>
+        <div style={{display:'flex', gap:8, alignItems:'center'}}>
+          <Btn active={!asciiMode} onClick={()=>setAsciiMode(a=>!a)} s={{padding:'2px 6px', fontSize:8}}>
+            {asciiMode?'⌨ ASCII':'📹 RAW'}
+          </Btn>
+          <span style={{fontSize:9, color:fps>=28?G:fps>=15?'#aaff00':'#ff6600', letterSpacing:1}}>{fps}fps · {renderMs}ms</span>
+        </div>
       </div>
 
       {/* Body */}

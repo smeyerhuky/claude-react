@@ -31,6 +31,7 @@ export default function Layout4HUD() {
     animating, setAnimating, animTarget, setAnimTarget, animSpeed, setAnimSpeed,
     adjCols, adjRows, setCols, setRows, lockAspect, toggleLock, fitToContainer,
     warpMode, setWarpMode, warpAmt, setWarpAmt,
+    asciiMode, setAsciiMode,
     source, goDemo, startCamera, handleFile, camError,
     csKey, setCsKey, colorMode, setColorMode, inv, setInv,
     outputRef, sampleRef, videoRef, containerRef, containerSize,
@@ -73,13 +74,18 @@ export default function Layout4HUD() {
         {camError&&<div style={{color:'#ff4444', fontSize:8, marginTop:4}}>⚠ {camError}</div>}
       </div>
 
-      {/* Top-right: Stats */}
+      {/* Stats */}
       <div style={{...overlay, top:32, right:8, textAlign:'right'}}>
         <div style={{fontSize:8, color:DG, letterSpacing:2, marginBottom:4}}>STATS</div>
         <div style={{fontSize:10, color:fps>=28?G:fps>=15?'#aaff00':'#ff6600',
           letterSpacing:2, marginBottom:2}}>{fps}fps · {renderMs}ms</div>
         <div style={{fontSize:9, color:G, letterSpacing:1}}>◆ {statusMsg}</div>
         <div style={{fontSize:9, color:DG}}>{cols}×{rows}</div>
+        <div style={{marginTop:4}}>
+          <Btn active={!asciiMode} onClick={()=>setAsciiMode(a=>!a)} s={{padding:'2px 6px', fontSize:8}}>
+            {asciiMode?'⌨ ASCII':'📹 RAW'}
+          </Btn>
+        </div>
       </div>
 
       {/* Bottom-left: WARP */}

@@ -46,8 +46,8 @@ const navigationItems = [
   { id: 'stargate-prologue', label: 'Stargate Prologue: Pattern in the Static', component: PatternInTheStatic, fullscreen: true },
   { id: 'trie-viz', label: 'Trie Visualizer', component: TrieViz },
   { id: 'csu-visit-guide', label: 'CSU Visit Guide (Benny)', component: CSUVisitGuide },
-  { id: 'ascii-landing', label: 'ASCII Renderer — Layout Selector', component: AsciiLanding },
-  { id: 'ascii-renderer', label: 'ASCII Renderer', component: AsciiRenderer },
+  { id: 'ascii-landing', label: 'ASCII Renderer — Layout Selector', component: AsciiLanding, fullscreen: true },
+  { id: 'ascii-renderer', label: 'ASCII Renderer', component: AsciiRenderer, fullscreen: true },
 ]
 
 // Home page component showing all available components as cards
