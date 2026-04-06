@@ -1,4 +1,4 @@
-import { CHARSETS, PRESETS, ANIM_TARGETS, TX_TARGETS, MAT_LABELS, MAT_DESC, ID9, G, DG, BG, BORDER } from './engine';
+import { CHARSETS, PRESETS, ANIM_TARGETS, TX_TARGETS, MAT_LABELS, MAT_DESC, ID9, GRID_PRESETS, G, DG, BG, BORDER } from './engine';
 
 /* eslint-disable react/prop-types */
 export const Btn = ({active, onClick, children, title, s={}}) => (
@@ -120,7 +120,7 @@ export function GridPanel({ e }) {
         {lockAspect&&<span style={{color:DG, fontSize:9}}>ratio {(cols/rows).toFixed(3)}</span>}
       </div>
       <div style={{display:'flex', gap:3, flexWrap:'wrap'}}>
-        {[[8,8],[16,16],[24,24],[32,32],[48,48],[64,64],[96,96],[128,128],[32,16],[64,32],[64,16],[128,64],[256,128]].map(([c,r])=>(
+        {GRID_PRESETS.map(([c,r])=>(
           <Btn key={`${c}x${r}`} active={cols===c&&rows===r} onClick={()=>{setCols(c); setRows(r);}}>{c}×{r}</Btn>
         ))}
       </div>

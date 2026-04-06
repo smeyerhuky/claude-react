@@ -1,5 +1,5 @@
 import useAsciiEngine from './useAsciiEngine';
-import { cellDims, G, DG, BG, BORDER, CHARSETS, PRESETS, ANIM_TARGETS, TX_TARGETS, MAT_LABELS, MAT_DESC, ID9 } from './engine';
+import { cellDims, G, DG, BG, BORDER, CHARSETS, PRESETS, ANIM_TARGETS, TX_TARGETS, MAT_LABELS, MAT_DESC, ID9, GRID_PRESETS } from './engine';
 
 /* eslint-disable react/prop-types */
 const Btn = ({active, onClick, children, title, s={}}) => (
@@ -163,7 +163,7 @@ export default function Layout5Split() {
           </div>
           <div style={{display:'flex', gap:2, flexWrap:'wrap'}}>
             <Btn active={lockAspect} onClick={toggleLock} s={{fontSize:8}}>{lockAspect?'🔒':'🔓 LOCK'}</Btn>
-            {[[16,16],[32,32],[64,64],[32,16],[64,32]].map(([c,r])=>(
+            {GRID_PRESETS.filter(([c])=>c<=64).slice(0,5).map(([c,r])=>(
               <Btn key={`${c}x${r}`} active={cols===c&&rows===r} onClick={()=>{setCols(c); setRows(r);}} s={{padding:'1px 4px', fontSize:7}}>{c}×{r}</Btn>
             ))}
           </div>

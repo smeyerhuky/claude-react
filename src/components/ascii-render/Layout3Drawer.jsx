@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import useAsciiEngine from './useAsciiEngine';
-import { cellDims, G, DG, BG, BORDER, CHARSETS, PRESETS, ANIM_TARGETS, TX_TARGETS, MAT_LABELS, MAT_DESC, ID9 } from './engine';
+import { cellDims, G, DG, BG, BORDER, CHARSETS, PRESETS, ANIM_TARGETS, TX_TARGETS, MAT_LABELS, MAT_DESC, ID9, GRID_PRESETS } from './engine';
 
 /* eslint-disable react/prop-types */
 const Btn = ({active, onClick, children, title, s={}}) => (
@@ -119,7 +119,7 @@ export default function Layout3Drawer() {
             {lockAspect&&<span style={{color:DG, fontSize:8, marginLeft:4}}>ratio {(cols/rows).toFixed(3)}</span>}
           </div>
           <div style={{display:'flex', gap:2, flexWrap:'wrap'}}>
-            {[[8,8],[16,16],[24,24],[32,32],[48,48],[64,64],[32,16],[64,32],[64,16],[128,64]].map(([c,r])=>(
+            {GRID_PRESETS.filter(([c])=>c<=128).map(([c,r])=>(
               <Btn key={`${c}x${r}`} active={cols===c&&rows===r} onClick={()=>{setCols(c); setRows(r);}}>{c}×{r}</Btn>
             ))}
           </div>

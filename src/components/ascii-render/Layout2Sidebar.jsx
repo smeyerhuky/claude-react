@@ -1,5 +1,5 @@
 import useAsciiEngine from './useAsciiEngine';
-import { cellDims, G, DG, BG, BORDER, CHARSETS, PRESETS, ANIM_TARGETS, TX_TARGETS, MAT_LABELS, MAT_DESC, ID9 } from './engine';
+import { cellDims, G, DG, BG, BORDER, CHARSETS, PRESETS, ANIM_TARGETS, TX_TARGETS, MAT_LABELS, MAT_DESC, ID9, GRID_PRESETS } from './engine';
 
 /* eslint-disable react/prop-types */
 const Btn = ({active, onClick, children, title, s={}}) => (
@@ -153,7 +153,7 @@ export default function Layout2Sidebar() {
             <Btn active={lockAspect} onClick={toggleLock}>{lockAspect?'🔒':'🔓 LOCK'}</Btn>
           </div>
           <div style={{display:'flex', gap:2, flexWrap:'wrap'}}>
-            {[[16,16],[32,32],[48,48],[64,64],[32,16],[64,32]].map(([c,r])=>(
+            {GRID_PRESETS.filter(([c])=>c<=64).map(([c,r])=>(
               <Btn key={`${c}x${r}`} active={cols===c&&rows===r} onClick={()=>{setCols(c); setRows(r);}}>{c}×{r}</Btn>
             ))}
           </div>
