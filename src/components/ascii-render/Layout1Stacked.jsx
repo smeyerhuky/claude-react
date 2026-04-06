@@ -16,11 +16,10 @@ const Btn = ({active, onClick, children, title, s={}}) => (
 export default function Layout1Stacked() {
   const e = useAsciiEngine();
   const { cols, rows, fps, renderMs, statusMsg, tab, setTab,
-          outputRef, sampleRef, videoRef } = e;
+          outputRef, sampleRef, videoRef, containerRef, containerSize } = e;
 
-  const {cW, cH} = cellDims(cols, rows);
+  const {cW, cH} = cellDims(cols, rows, containerSize.w, containerSize.h);
   const canvasW = cols * cW, canvasH = rows * cH;
-  const panelW = Math.max(canvasW, 320);
 
   /* eslint-disable react/prop-types */
   const TabBtn = ({k, label}) => (
@@ -47,20 +46,25 @@ export default function Layout1Stacked() {
         <div style={{fontSize:10, letterSpacing:5, opacity:.3}}>▓▒░ ASCII RENDERER ░▒▓</div>
       </div>
 
-      <div style={{width:panelW, display:'flex', justifyContent:'space-between', fontSize:9,
+      <div style={{width:'100%', maxWidth:'100vw', display:'flex', justifyContent:'space-between', fontSize:9,
         color:G, letterSpacing:2, borderBottom:`1px solid ${BORDER}`,
         paddingBottom:3, marginBottom:4}}>
         <span>◆ {statusMsg} · {cols}×{rows}</span>
         <span style={{color:fps>=28?G:fps>=15?'#aaff00':'#ff6600'}}>{fps}fps · {renderMs}ms</span>
       </div>
 
-      <div style={{overflowX:'auto', maxWidth:'100vw'}}>
+      {/* Canvas fills available width, maintains grid aspect ratio */}
+      <div ref={containerRef} style={{
+        width:'100%', maxWidth:'100vw', position:'relative',
+        aspectRatio:`${cols}/${rows}`, maxHeight:'70vh',
+        boxShadow:'0 0 24px #00ff410d',
+      }}>
         <canvas ref={outputRef} width={canvasW} height={canvasH}
-          style={{display:'block', background:'#000', boxShadow:'0 0 24px #00ff410d',
-            maxWidth:'100vw', maxHeight:'80vh', objectFit:'contain'}}/>
+          style={{position:'absolute', top:0, left:0, width:'100%', height:'100%',
+            display:'block', background:'#000'}}/>
       </div>
 
-      <div style={{width:panelW, marginTop:6}}>
+      <div style={{width:'100%', maxWidth:'100vw', marginTop:6}}>
         <div style={{display:'flex', borderBottom:`1px solid ${BORDER}`, marginBottom:6}}>
           <TabBtn k='matrix' label='MATRIX'/>
           <TabBtn k='grid'   label='GRID'/>

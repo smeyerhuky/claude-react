@@ -32,10 +32,10 @@ export default function Layout5Split() {
     warpMode, setWarpMode, warpAmt, setWarpAmt,
     source, goDemo, startCamera, handleFile, camError,
     csKey, setCsKey, colorMode, setColorMode, inv, setInv,
-    outputRef, sampleRef, videoRef,
+    outputRef, sampleRef, videoRef, containerRef, containerSize,
   } = e;
 
-  const {cW, cH} = cellDims(cols, rows);
+  const {cW, cH} = cellDims(cols, rows, containerSize.w, containerSize.h);
   const canvasW = cols * cW, canvasH = rows * cH;
 
   return (
@@ -54,11 +54,11 @@ export default function Layout5Split() {
 
       {/* Middle row */}
       <div style={{flex:1, display:'flex', overflow:'hidden'}}>
-        {/* Canvas */}
-        <div style={{flex:1.5, display:'flex', alignItems:'center', justifyContent:'center',
-          overflow:'auto', padding:8, position:'relative'}}>
+        {/* Canvas — fills remaining space at full resolution */}
+        <div ref={containerRef} style={{flex:1.5, position:'relative', overflow:'hidden'}}>
           <canvas ref={outputRef} width={canvasW} height={canvasH}
-            style={{display:'block', background:'#000', maxWidth:'100%', maxHeight:'100%', objectFit:'contain'}}/>
+            style={{position:'absolute', top:0, left:0, width:'100%', height:'100%',
+              background:'#000'}}/>
         </div>
 
         {/* Right panel: Matrix + Live Param + Animate + Presets */}
