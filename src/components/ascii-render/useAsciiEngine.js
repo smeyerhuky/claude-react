@@ -95,7 +95,7 @@ export default function useAsciiEngine() {
       if(!alive) return;
       const{cols:C,rows:R,csKey:cs,inv:i,colorMode:cm,warpMode:wm,warpAmt:wa,source:src,animating:anim,animTarget:at,animSpeed:asp}=sr.current;
       const charset=CHARSETS[cs], lut=LUTS[cs];
-      const sW=C*4, sH=R*4;
+      const sW=C, sH=R;
       const{cW,cH,fS}=cellDims(C,R,containerSizeRef.current.w,containerSizeRef.current.h);
       const t0=performance.now();
       if(sc.width!==sW||sc.height!==sH){sc.width=sW; sc.height=sH;}
