@@ -22,6 +22,7 @@ import NeuralProceduralAnimation from './components/arxiv-experimental'
 import TrieViz from './components/trie_viz'
 import CSUVisitGuide from './components/CSUVisitGuide/CSUVisitGuide'
 import AsciiRenderer from './components/ascii-render'
+import AsciiLanding from './components/ascii-landing'
 
 // Navigation items configuration
 const navigationItems = [
@@ -45,6 +46,7 @@ const navigationItems = [
   { id: 'stargate-prologue', label: 'Stargate Prologue: Pattern in the Static', component: PatternInTheStatic, fullscreen: true },
   { id: 'trie-viz', label: 'Trie Visualizer', component: TrieViz },
   { id: 'csu-visit-guide', label: 'CSU Visit Guide (Benny)', component: CSUVisitGuide },
+  { id: 'ascii-landing', label: 'ASCII Renderer — Layout Selector', component: AsciiLanding },
   { id: 'ascii-renderer', label: 'ASCII Renderer', component: AsciiRenderer },
 ]
 
