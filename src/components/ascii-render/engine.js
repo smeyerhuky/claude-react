@@ -110,9 +110,9 @@ export function renderChunks(pixels, sW, sH, cols, rows, cs, lut, inv, uvT, colo
       let pR = 0, pG = 0, pB = 0;
       if (px >= 0 && px < sW && py >= 0 && py < sH) {
         const pi = (py * sW + px) * 4;
-        pR = Math.max(0, Math.min(255, (pixels[pi]   * rs * br - 128) * co + 128));
-        pG = Math.max(0, Math.min(255, (pixels[pi+1] * gs * br - 128) * co + 128));
-        pB = Math.max(0, Math.min(255, (pixels[pi+2] * bs * br - 128) * co + 128));
+        pR = Math.max(0, Math.min(255, ((pixels[pi]   * rs - 128) * co + 128) * br));
+        pG = Math.max(0, Math.min(255, ((pixels[pi+1] * gs - 128) * co + 128) * br));
+        pB = Math.max(0, Math.min(255, ((pixels[pi+2] * bs - 128) * co + 128) * br));
       }
       const lum = Math.min(255, Math.round(0.299 * pR + 0.587 * pG + 0.114 * pB));
       charCodes[idx] = inv ? (cs.length - 1 - lut[lum]) : lut[lum];
