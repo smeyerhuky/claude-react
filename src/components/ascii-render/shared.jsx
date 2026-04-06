@@ -30,7 +30,7 @@ export function MatrixPanel({ e }) {
                 onMouseEnter={()=>setHovCell(idx)} onMouseLeave={()=>setHovCell(-1)}>
                 <span style={{fontSize:7, color:onDiag?'#007700':DG, letterSpacing:1, marginBottom:1}}>{MAT_LABELS[idx]}</span>
                 <input type='number' step='0.01'
-                  value={parseFloat(v.toFixed(4))}
+                  value={v}
                   onChange={ev=>editCell(idx, ev.target.value)}
                   style={{width:'100%', background:hovCell===idx?'#001a00':'#000',
                     color:onDiag?'#88ff88':G,

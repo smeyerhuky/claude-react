@@ -8,7 +8,7 @@ export const CHARSETS = {
 };
 export function buildLUT(cs) {
   const lut = new Uint8Array(256);
-  for (let i = 0; i < 256; i++) lut[i] = Math.min(cs.length-1, Math.floor(i/255*cs.length));
+  for (let i = 0; i < 256; i++) lut[i] = Math.floor(i * (cs.length - 1) / 255);
   return lut;
 }
 export const LUTS = Object.fromEntries(Object.entries(CHARSETS).map(([k,v])=>[k,buildLUT(v)]));
