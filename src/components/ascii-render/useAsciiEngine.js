@@ -152,6 +152,12 @@ export default function useAsciiEngine() {
   const adjRows=useCallback((d)=>{
     setRows(r=>{const nr=Math.max(4,Math.min(256,r+d)); if(lockRef.current)setCols(()=>Math.max(4,Math.min(256,Math.round(nr*aspectRef.current)))); return nr;});
   },[]);
+  const fitToContainer=useCallback(()=>{
+    const{w,h}=containerSizeRef.current;
+    const nc=Math.max(4,Math.min(256,Math.floor(w/5)));
+    const nr=Math.max(4,Math.min(256,Math.floor(h/6)));
+    setCols(nc); setRows(nr);
+  },[]);
   const toggleLock=useCallback(()=>{
     setLockAspect(l=>{if(!l)aspectRef.current=colsRef.current/rowsRef.current; return!l;});
   },[]);
@@ -224,7 +230,7 @@ export default function useAsciiEngine() {
     // Refs
     outputRef, sampleRef, videoRef, containerRef,
     // Callbacks
-    adjCols, adjRows, toggleLock,
+    adjCols, adjRows, toggleLock, fitToContainer,
     applyPreset, applyTx, editCell, snapMatrix,
     startCamera, handleFile, goDemo,
   };
