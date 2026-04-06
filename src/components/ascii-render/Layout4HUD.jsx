@@ -29,7 +29,7 @@ export default function Layout4HUD() {
     matVals, hovCell, setHovCell, editCell, applyPreset, snapMatrix,
     activeTx, setActiveTx, setTxParam, txParam, applyTx,
     animating, setAnimating, animTarget, setAnimTarget, animSpeed, setAnimSpeed,
-    adjCols, adjRows, setCols, setRows, lockAspect, toggleLock,
+    adjCols, adjRows, setCols, setRows, lockAspect, toggleLock, fitToContainer,
     warpMode, setWarpMode, warpAmt, setWarpAmt,
     source, goDemo, startCamera, handleFile, camError,
     csKey, setCsKey, colorMode, setColorMode, inv, setInv,
@@ -163,7 +163,8 @@ export default function Layout4HUD() {
           </div>
           <Btn active={lockAspect} onClick={toggleLock} s={{fontSize:8}}>{lockAspect?'🔒':'🔓 LOCK'}</Btn>
           <div style={{display:'flex', gap:2, flexWrap:'wrap', marginTop:2}}>
-            {GRID_PRESETS.filter(([c])=>c<=64).slice(0,5).map(([c,r])=>(
+            <Btn onClick={fitToContainer} s={{padding:'1px 3px', fontSize:7}}>FULL</Btn>
+            {GRID_PRESETS.map(([c,r])=>(
               <Btn key={`${c}x${r}`} active={cols===c&&rows===r} onClick={()=>{setCols(c); setRows(r);}} s={{padding:'1px 3px', fontSize:7}}>{c}×{r}</Btn>
             ))}
           </div>

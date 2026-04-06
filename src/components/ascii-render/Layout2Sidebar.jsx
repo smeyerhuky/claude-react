@@ -23,7 +23,7 @@ export default function Layout2Sidebar() {
     matVals, hovCell, setHovCell, editCell, applyPreset, snapMatrix,
     activeTx, setActiveTx, setTxParam, txParam, applyTx,
     animating, setAnimating, animTarget, setAnimTarget, animSpeed, setAnimSpeed,
-    adjCols, adjRows, setCols, setRows, lockAspect, toggleLock,
+    adjCols, adjRows, setCols, setRows, lockAspect, toggleLock, fitToContainer,
     warpMode, setWarpMode, warpAmt, setWarpAmt,
     source, goDemo, startCamera, handleFile, camError,
     csKey, setCsKey, colorMode, setColorMode, inv, setInv,
@@ -154,7 +154,8 @@ export default function Layout2Sidebar() {
             <Btn active={lockAspect} onClick={toggleLock}>{lockAspect?'🔒':'🔓 LOCK'}</Btn>
           </div>
           <div style={{display:'flex', gap:2, flexWrap:'wrap'}}>
-            {GRID_PRESETS.filter(([c])=>c<=64).map(([c,r])=>(
+            <Btn onClick={fitToContainer}>FULL</Btn>
+            {GRID_PRESETS.map(([c,r])=>(
               <Btn key={`${c}x${r}`} active={cols===c&&rows===r} onClick={()=>{setCols(c); setRows(r);}}>{c}×{r}</Btn>
             ))}
           </div>
