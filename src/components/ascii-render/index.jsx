@@ -96,7 +96,7 @@ function drawDemo(ctx,w,h,t) {
 }
 
 // ─── PARALLEL CHUNK RESOLVERS ─────────────────────────────────────────────────
-function renderChunks(pixels, sW, sH, cols, rows, cs, lut, inv, uvT) {
+function renderChunks(pixels, sW, sH, cols, rows, cs, lut, inv, uvT, colorMode) {
   const NC=Math.min(8,rows), rpc=Math.ceil(rows/NC);
   const results=new Array(rows);
   return Promise.all(Array.from({length:NC},(_,ci)=>new Promise(resolve=>{
@@ -106,9 +106,14 @@ function renderChunks(pixels, sW, sH, cols, rows, cs, lut, inv, uvT) {
       for(let c=0;c<cols;c++){
         const [tu,tv]=uvT(c/cols-.5, r/rows-.5);
         const px=Math.floor((tu+.5)*sW), py=Math.floor((tv+.5)*sH);
-        let lum=0;
-        if(px>=0&&px<sW&&py>=0&&py<sH){const i=(py*sW+px)*4;lum=Math.round(.299*pixels[i]+.587*pixels[i+1]+.114*pixels[i+2]);}
-        row[c]=cs[inv?(cs.length-1-lut[lum]):lut[lum]];
+        let lum=0, pR=0, pG=0, pB=0;
+        if(px>=0&&px<sW&&py>=0&&py<sH){
+          const i=(py*sW+px)*4;
+          pR=pixels[i]; pG=pixels[i+1]; pB=pixels[i+2];
+          lum=Math.round(.299*pR+.587*pG+.114*pB);
+        }
+        const ch=cs[inv?(cs.length-1-lut[lum]):lut[lum]];
+        row[c]=colorMode?{ch,r:pR,g:pG,b:pB}:ch;
       }
       results[r]=row;
     }
@@ -116,19 +121,24 @@ function renderChunks(pixels, sW, sH, cols, rows, cs, lut, inv, uvT) {
   }))).then(()=>results);
 }
 
-function paintGrid(ctx,grid,cols,rows,cW,cH,fS) {
+function paintGrid(ctx,grid,cols,rows,cW,cH,fS,colorMode) {
   ctx.fillStyle='#000'; ctx.fillRect(0,0,cols*cW,rows*cH);
-  ctx.fillStyle='#d8d8d8'; ctx.font=`${fS}px "Courier New",monospace`; ctx.textBaseline='top';
-  for(let r=0;r<rows;r++){if(!grid[r])continue; for(let c=0;c<cols;c++){const ch=grid[r][c];if(ch&&ch!==' ')ctx.fillText(ch,c*cW,r*cH);}}
+  ctx.font=`${fS}px "Courier New",monospace`; ctx.textBaseline='top';
+  if(colorMode){
+    for(let r=0;r<rows;r++){if(!grid[r])continue; for(let c=0;c<cols;c++){const cell=grid[r][c];if(!cell||cell.ch===' ')continue;ctx.fillStyle=`rgb(${cell.r},${cell.g},${cell.b})`;ctx.fillText(cell.ch,c*cW,r*cH);}}
+  } else {
+    ctx.fillStyle='#d8d8d8';
+    for(let r=0;r<rows;r++){if(!grid[r])continue; for(let c=0;c<cols;c++){const ch=grid[r][c];if(ch&&ch!==' ')ctx.fillText(ch,c*cW,r*cH);}}
+  }
   ctx.fillStyle='rgba(0,0,0,0.055)';
   for(let y=0;y<rows*cH;y+=2)ctx.fillRect(0,y,cols*cW,1);
 }
 
 // ─── CELL_W / CELL_H scale with grid size ─────────────────────────────────────
-const MAX_W=480, MAX_H=420;
+const CANVAS_SIZE=1024;
 function cellDims(cols,rows){
-  const cW=Math.max(5,Math.floor(MAX_W/cols));
-  const cH=Math.max(6,Math.floor(MAX_H/rows));
+  const cW=Math.max(5,Math.floor(CANVAS_SIZE/cols));
+  const cH=Math.max(6,Math.floor(CANVAS_SIZE/rows));
   return { cW, cH, fS:Math.max(4,cH-2) };
 }
 
@@ -179,9 +189,10 @@ export default function AsciiRenderer() {
   useEffect(()=>{colsRef.current=cols;rowsRef.current=rows;},[cols,rows]);
   useEffect(()=>{lockRef.current=lockAspect;},[lockAspect]);
 
-  // Charset / invert
+  // Charset / invert / color
   const [csKey, setCsKey] = useState('dense');
   const [inv,   setInv]   = useState(false);
+  const [colorMode, setColorMode] = useState(true);
 
   // Matrix
   const [matVals, setMatVals] = useState([...ID9]);
@@ -224,7 +235,7 @@ export default function AsciiRenderer() {
   const rafRef    = useRef(null), tRef      = useRef(0);
   const fpsAcc    = useRef({frames:0,last:performance.now()});
   const sr        = useRef({});
-  useEffect(()=>{sr.current={cols,rows,csKey,inv,warpMode,warpAmt,source,animating,animTarget,animSpeed};},[cols,rows,csKey,inv,warpMode,warpAmt,source,animating,animTarget,animSpeed]);
+  useEffect(()=>{sr.current={cols,rows,csKey,inv,colorMode,warpMode,warpAmt,source,animating,animTarget,animSpeed};},[cols,rows,csKey,inv,colorMode,warpMode,warpAmt,source,animating,animTarget,animSpeed]);
 
   // ── Main loop ──────────────────────────────────────────────────────────────
   useEffect(()=>{
@@ -234,7 +245,7 @@ export default function AsciiRenderer() {
 
     const loop=async()=>{
       if(!alive) return;
-      const{cols:C,rows:R,csKey:cs,inv:i,warpMode:wm,warpAmt:wa,source:src,animating:anim,animTarget:at,animSpeed:asp}=sr.current;
+      const{cols:C,rows:R,csKey:cs,inv:i,colorMode:cm,warpMode:wm,warpAmt:wa,source:src,animating:anim,animTarget:at,animSpeed:asp}=sr.current;
       const charset=CHARSETS[cs],lut=LUTS[cs];
       const sW=C*4,sH=R*4;
       const{cW,cH,fS}=cellDims(C,R);
@@ -271,8 +282,8 @@ export default function AsciiRenderer() {
         };
 
         const{data}=sCtx.getImageData(0,0,sW,sH);
-        const grid=await renderChunks(data,sW,sH,C,R,charset,lut,i,uvT);
-        paintGrid(oCtx,grid,C,R,cW,cH,fS);
+        const grid=await renderChunks(data,sW,sH,C,R,charset,lut,i,uvT,cm);
+        paintGrid(oCtx,grid,C,R,cW,cH,fS,cm);
       }catch(_){/* ignore frame errors */}
 
       const now=performance.now();
@@ -290,10 +301,10 @@ export default function AsciiRenderer() {
 
   // ── Grid controls ──────────────────────────────────────────────────────────
   const adjCols=useCallback((d)=>{
-    setCols(c=>{const nc=Math.max(4,Math.min(128,c+d));if(lockRef.current)setRows(()=>Math.max(4,Math.min(128,Math.round(nc/aspectRef.current))));return nc;});
+    setCols(c=>{const nc=Math.max(4,Math.min(256,c+d));if(lockRef.current)setRows(()=>Math.max(4,Math.min(256,Math.round(nc/aspectRef.current))));return nc;});
   },[]);
   const adjRows=useCallback((d)=>{
-    setRows(r=>{const nr=Math.max(4,Math.min(128,r+d));if(lockRef.current)setCols(()=>Math.max(4,Math.min(128,Math.round(nr*aspectRef.current))));return nr;});
+    setRows(r=>{const nr=Math.max(4,Math.min(256,r+d));if(lockRef.current)setCols(()=>Math.max(4,Math.min(256,Math.round(nr*aspectRef.current))));return nr;});
   },[]);
   const toggleLock=useCallback(()=>{
     setLockAspect(l=>{if(!l)aspectRef.current=colsRef.current/rowsRef.current;return!l;});
@@ -324,7 +335,7 @@ export default function AsciiRenderer() {
     setCamError('');
     try{
       if(streamRef.current)streamRef.current.getTracks().forEach(t=>t.stop());
-      const stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});
+      const stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment',width:{ideal:1920},height:{ideal:1080}}});
       streamRef.current=stream;
       const vid=videoRef.current;vid.srcObject=stream;vid.src='';await vid.play();
       setSource('camera');setStatusMsg('CAMERA LIVE');
@@ -392,7 +403,7 @@ export default function AsciiRenderer() {
 
       {/* Canvas */}
       <div style={{overflowX:'auto',maxWidth:'100vw'}}>
-        <canvas ref={outputRef} width={canvasW} height={canvasH} style={{display:'block',background:'#000',boxShadow:'0 0 24px #00ff410d'}}/>
+        <canvas ref={outputRef} width={canvasW} height={canvasH} style={{display:'block',background:'#000',boxShadow:'0 0 24px #00ff410d',maxWidth:'100vw',maxHeight:'80vh',objectFit:'contain'}}/>
       </div>
 
       {/* Panel */}
@@ -506,7 +517,7 @@ export default function AsciiRenderer() {
               {lockAspect&&<span style={{color:DG,fontSize:9}}>ratio {(cols/rows).toFixed(3)}</span>}
             </div>
             <div style={{display:'flex',gap:3,flexWrap:'wrap'}}>
-              {[[8,8],[16,16],[24,24],[32,32],[48,48],[64,64],[32,16],[64,32],[64,16]].map(([c,r])=>(
+              {[[8,8],[16,16],[24,24],[32,32],[48,48],[64,64],[96,96],[128,128],[32,16],[64,32],[64,16],[128,64],[256,128]].map(([c,r])=>(
                 <Btn key={`${c}x${r}`} active={cols===c&&rows===r} onClick={()=>{setCols(c);setRows(r);}}>{c}×{r}</Btn>
               ))}
             </div>
@@ -558,6 +569,7 @@ export default function AsciiRenderer() {
               </div>
             </div>
             <div style={{display:'flex',gap:6,alignItems:'center'}}>
+              <Btn active={colorMode} onClick={()=>setColorMode(c=>!c)}>{colorMode?'🎨 COLOR':'⬜ MONO'}</Btn>
               <Btn active={inv} onClick={()=>setInv(i=>!i)}>{inv?'◑ INVERTED':'◐ NORMAL'}</Btn>
             </div>
           </div>
