@@ -92,43 +92,90 @@ export function drawDemo(ctx,w,h,t) {
   ctx.putImageData(id,0,0);
 }
 
-// ─── PARALLEL CHUNK RESOLVERS ─────────────────────────────────────────────────
-export function renderChunks(pixels, sW, sH, cols, rows, cs, lut, inv, uvT, colorMode) {
-  const NC=Math.min(8,rows), rpc=Math.ceil(rows/NC);
-  const results=new Array(rows);
-  return Promise.all(Array.from({length:NC},(_,ci)=>new Promise(resolve=>{
-    const r0=ci*rpc, r1=Math.min(r0+rpc,rows);
-    for(let r=r0;r<r1;r++){
-      const row=new Array(cols);
-      for(let c=0;c<cols;c++){
-        const [tu,tv]=uvT(c/cols-.5, r/rows-.5);
-        const px=Math.floor((tu+.5)*sW), py=Math.floor((tv+.5)*sH);
-        let lum=0, pR=0, pG=0, pB=0;
-        if(px>=0&&px<sW&&py>=0&&py<sH){
-          const i=(py*sW+px)*4;
-          pR=pixels[i]; pG=pixels[i+1]; pB=pixels[i+2];
-          lum=Math.round(.299*pR+.587*pG+.114*pB);
-        }
-        const ch=cs[inv?(cs.length-1-lut[lum]):lut[lum]];
-        row[c]=colorMode?{ch,r:pR,g:pG,b:pB}:ch;
+// ─── RENDER CHUNKS (synchronous, typed arrays, image adjustments) ─────────────
+// Returns { charCodes: Uint8Array, rGrid: Uint8Array, gGrid: Uint8Array, bGrid: Uint8Array }
+export function renderChunks(pixels, sW, sH, cols, rows, cs, lut, inv, uvT, colorMode, brightness, contrast, rScale, gScale, bScale) {
+  const N = cols * rows;
+  const charCodes = new Uint8Array(N);
+  const rGrid = new Uint8Array(N);
+  const gGrid = new Uint8Array(N);
+  const bGrid = new Uint8Array(N);
+  const br = brightness ?? 1, co = contrast ?? 1, rs = rScale ?? 1, gs = gScale ?? 1, bs = bScale ?? 1;
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      const [tu, tv] = uvT(col / cols - 0.5, row / rows - 0.5);
+      const px = Math.floor((tu + 0.5) * sW);
+      const py = Math.floor((tv + 0.5) * sH);
+      const idx = row * cols + col;
+      let pR = 0, pG = 0, pB = 0;
+      if (px >= 0 && px < sW && py >= 0 && py < sH) {
+        const pi = (py * sW + px) * 4;
+        pR = Math.max(0, Math.min(255, (pixels[pi]   * rs * br - 128) * co + 128));
+        pG = Math.max(0, Math.min(255, (pixels[pi+1] * gs * br - 128) * co + 128));
+        pB = Math.max(0, Math.min(255, (pixels[pi+2] * bs * br - 128) * co + 128));
       }
-      results[r]=row;
+      const lum = Math.min(255, Math.round(0.299 * pR + 0.587 * pG + 0.114 * pB));
+      charCodes[idx] = inv ? (cs.length - 1 - lut[lum]) : lut[lum];
+      rGrid[idx] = pR; gGrid[idx] = pG; bGrid[idx] = pB;
     }
-    resolve();
-  }))).then(()=>results);
+  }
+  return { charCodes, rGrid, gGrid, bGrid };
 }
 
-export function paintGrid(ctx,grid,cols,rows,cW,cH,fS,colorMode) {
-  ctx.fillStyle='#000'; ctx.fillRect(0,0,cols*cW,rows*cH);
-  ctx.font=`${fS}px "Courier New",monospace`; ctx.textBaseline='top';
-  if(colorMode){
-    for(let r=0;r<rows;r++){if(!grid[r])continue; for(let c=0;c<cols;c++){const cell=grid[r][c];if(!cell||cell.ch===' ')continue;ctx.fillStyle=`rgb(${cell.r},${cell.g},${cell.b})`;ctx.fillText(cell.ch,c*cW,r*cH);}}
+// Scanline pattern cache (per canvas context)
+const _scanPatterns = new WeakMap();
+
+// ─── PAINT GRID (typed arrays, color-batched fillText) ────────────────────────
+export function paintGrid(ctx, { charCodes, rGrid, gGrid, bGrid }, cs, cols, rows, cW, cH, fS, colorMode) {
+  ctx.fillStyle = '#000';
+  ctx.fillRect(0, 0, cols * cW, rows * cH);
+  ctx.font = `${fS}px "Courier New",monospace`;
+  ctx.textBaseline = 'top';
+  if (colorMode) {
+    // Group cells by exact color key to batch fillStyle changes
+    const batches = new Map();
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const i = row * cols + col;
+        if (cs[charCodes[i]] === ' ') continue;
+        const key = (rGrid[i] << 16) | (gGrid[i] << 8) | bGrid[i];
+        let batch = batches.get(key);
+        if (!batch) {
+          batch = { r: rGrid[i], g: gGrid[i], b: bGrid[i], ch: [], x: [], y: [] };
+          batches.set(key, batch);
+        }
+        batch.ch.push(cs[charCodes[i]]);
+        batch.x.push(col * cW);
+        batch.y.push(row * cH);
+      }
+    }
+    for (const { r, g, b: bv, ch, x, y } of batches.values()) {
+      ctx.fillStyle = `rgb(${r},${g},${bv})`;
+      for (let i = 0; i < ch.length; i++) ctx.fillText(ch[i], x[i], y[i]);
+    }
   } else {
-    ctx.fillStyle='#d8d8d8';
-    for(let r=0;r<rows;r++){if(!grid[r])continue; for(let c=0;c<cols;c++){const ch=grid[r][c];if(ch&&ch!==' ')ctx.fillText(ch,c*cW,r*cH);}}
+    ctx.fillStyle = '#d8d8d8';
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const i = row * cols + col;
+        const ch = cs[charCodes[i]];
+        if (ch !== ' ') ctx.fillText(ch, col * cW, row * cH);
+      }
+    }
   }
-  ctx.fillStyle='rgba(0,0,0,0.055)';
-  for(let y=0;y<rows*cH;y+=2)ctx.fillRect(0,y,cols*cW,1);
+  // CRT scanline overlay via cached pattern (avoids O(rows) fillRect calls)
+  let pat = _scanPatterns.get(ctx);
+  if (!pat) {
+    const pc = document.createElement('canvas');
+    pc.width = 2; pc.height = 2;
+    const px = pc.getContext('2d');
+    px.fillStyle = 'rgba(0,0,0,0.08)';
+    px.fillRect(0, 0, 2, 1);
+    pat = ctx.createPattern(pc, 'repeat');
+    _scanPatterns.set(ctx, pat);
+  }
+  ctx.fillStyle = pat;
+  ctx.fillRect(0, 0, cols * cW, rows * cH);
 }
 
 // ─── CELL DIMS ────────────────────────────────────────────────────────────────

@@ -21,6 +21,16 @@ export default function useAsciiEngine() {
   const [inv,       setInv]       = useState(false);
   const [colorMode, setColorMode] = useState(true);
 
+  // ASCII / passthrough toggle
+  const [asciiMode, setAsciiMode] = useState(true);
+
+  // Image adjustments
+  const [brightness, setBrightness] = useState(1.0);
+  const [contrast,   setContrast]   = useState(1.0);
+  const [rScale,     setRScale]     = useState(1.0);
+  const [gScale,     setGScale]     = useState(1.0);
+  const [bScale,     setBScale]     = useState(1.0);
+
   // Matrix
   const [matVals, setMatVals] = useState([...ID9]);
   const matRef   = useRef([...ID9]);
@@ -81,19 +91,24 @@ export default function useAsciiEngine() {
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
-  useEffect(()=>{
-    sr.current={cols,rows,csKey,inv,colorMode,warpMode,warpAmt,source,animating,animTarget,animSpeed};
-  },[cols,rows,csKey,inv,colorMode,warpMode,warpAmt,source,animating,animTarget,animSpeed]);
 
-  // ── Main loop ──────────────────────────────────────────────────────────────
+  useEffect(()=>{
+    sr.current={cols,rows,csKey,inv,colorMode,warpMode,warpAmt,source,animating,animTarget,animSpeed,
+                asciiMode,brightness,contrast,rScale,gScale,bScale};
+  },[cols,rows,csKey,inv,colorMode,warpMode,warpAmt,source,animating,animTarget,animSpeed,
+     asciiMode,brightness,contrast,rScale,gScale,bScale]);
+
+  // ── Main loop (synchronous — no async/await overhead) ─────────────────────
   useEffect(()=>{
     const oc=outputRef.current, sc=sampleRef.current; if(!oc||!sc) return;
     const oCtx=oc.getContext('2d'), sCtx=sc.getContext('2d',{willReadFrequently:true});
     let alive=true;
 
-    const loop=async()=>{
+    const loop=()=>{
       if(!alive) return;
-      const{cols:C,rows:R,csKey:cs,inv:i,colorMode:cm,warpMode:wm,warpAmt:wa,source:src,animating:anim,animTarget:at,animSpeed:asp}=sr.current;
+      const{cols:C,rows:R,csKey:cs,inv:i,colorMode:cm,warpMode:wm,warpAmt:wa,
+            source:src,animating:anim,animTarget:at,animSpeed:asp,
+            asciiMode:am,brightness:br,contrast:co,rScale:rs,gScale:gs,bScale:bs}=sr.current;
       const charset=CHARSETS[cs], lut=LUTS[cs];
       const sW=C, sH=R;
       const{cW,cH,fS}=cellDims(C,R,containerSizeRef.current.w,containerSizeRef.current.h);
@@ -105,31 +120,37 @@ export default function useAsciiEngine() {
         if(src==='demo'){tRef.current+=0.018; drawDemo(sCtx,sW,sH,tRef.current);}
         else{const vid=videoRef.current; if(!vid||vid.readyState<2){rafRef.current=requestAnimationFrame(loop); return;} sCtx.drawImage(vid,0,0,sW,sH);}
 
-        let M;
-        const lrp=lerpRef.current;
-        if(lrp.t<1){
-          lrp.t=Math.min(1,lrp.t+0.07);
-          M=lerpM(lrp.from,lrp.to,easeIO(lrp.t));
-          matRef.current=[...M];
-          if(lrp.t>=1&&!lrp.settled){lrp.settled=true; setMatVals([...lrp.to]);}
+        if(!am){
+          // Passthrough mode: scale the sample canvas directly to the output canvas
+          oCtx.fillStyle='#000'; oCtx.fillRect(0,0,C*cW,R*cH);
+          oCtx.drawImage(sc,0,0,C*cW,R*cH);
         } else {
-          M=[...matRef.current];
+          let M;
+          const lrp=lerpRef.current;
+          if(lrp.t<1){
+            lrp.t=Math.min(1,lrp.t+0.07);
+            M=lerpM(lrp.from,lrp.to,easeIO(lrp.t));
+            matRef.current=[...M];
+            if(lrp.t>=1&&!lrp.settled){lrp.settled=true; setMatVals([...lrp.to]);}
+          } else {
+            M=[...matRef.current];
+          }
+
+          if(anim){
+            animPhase.current+=asp*0.025;
+            M=mm(animMatrix(at,animPhase.current),M);
+          }
+
+          const uvT=(u,v)=>{
+            let[u2,v2]=applyM(M,u,v);
+            if(wm!=='none')[u2,v2]=applyWarp(wm,wa,u2,v2,tRef.current);
+            return[u2,v2];
+          };
+
+          const{data}=sCtx.getImageData(0,0,sW,sH);
+          const grid=renderChunks(data,sW,sH,C,R,charset,lut,i,uvT,cm,br,co,rs,gs,bs);
+          paintGrid(oCtx,grid,charset,C,R,cW,cH,fS,cm);
         }
-
-        if(anim){
-          animPhase.current+=asp*0.025;
-          M=mm(animMatrix(at,animPhase.current),M);
-        }
-
-        const uvT=(u,v)=>{
-          let[u2,v2]=applyM(M,u,v);
-          if(wm!=='none')[u2,v2]=applyWarp(wm,wa,u2,v2,tRef.current);
-          return[u2,v2];
-        };
-
-        const{data}=sCtx.getImageData(0,0,sW,sH);
-        const grid=await renderChunks(data,sW,sH,C,R,charset,lut,i,uvT,cm);
-        paintGrid(oCtx,grid,C,R,cW,cH,fS,cm);
       }catch(_){/* ignore frame errors */}
 
       const now=performance.now();
@@ -219,12 +240,14 @@ export default function useAsciiEngine() {
   return {
     // State
     cols, rows, lockAspect, csKey, inv, colorMode,
+    asciiMode, brightness, contrast, rScale, gScale, bScale,
     matVals, animating, animTarget, animSpeed,
     activeTx, txParam, warpMode, warpAmt,
     source, statusMsg, camError, fps, renderMs, tab, hovCell, containerSize,
     // Setters
     setCols, setRows,
     setCsKey, setInv, setColorMode, setMatVals,
+    setAsciiMode, setBrightness, setContrast, setRScale, setGScale, setBScale,
     setAnimating, setAnimTarget, setAnimSpeed,
     setActiveTx, setTxParam, setWarpMode, setWarpAmt, setTab, setHovCell,
     // Refs

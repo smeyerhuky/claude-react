@@ -16,6 +16,7 @@ const Btn = ({active, onClick, children, title, s={}}) => (
 export default function Layout1Stacked() {
   const e = useAsciiEngine();
   const { cols, rows, fps, renderMs, statusMsg, tab, setTab,
+          asciiMode, setAsciiMode,
           outputRef, sampleRef, videoRef, containerRef, containerSize } = e;
 
   const {cW, cH} = cellDims(cols, rows, containerSize.w, containerSize.h);
@@ -50,7 +51,14 @@ export default function Layout1Stacked() {
         color:G, letterSpacing:2, borderBottom:`1px solid ${BORDER}`,
         paddingBottom:3, marginBottom:4}}>
         <span>◆ {statusMsg} · {cols}×{rows}</span>
-        <span style={{color:fps>=28?G:fps>=15?'#aaff00':'#ff6600'}}>{fps}fps · {renderMs}ms</span>
+        <div style={{display:'flex', gap:8, alignItems:'center'}}>
+          <button onClick={()=>setAsciiMode(a=>!a)} style={{
+            background:!asciiMode?G:'transparent', color:!asciiMode?BG:G,
+            border:`1px solid ${!asciiMode?G:BORDER}`, padding:'2px 6px',
+            fontFamily:'monospace', fontSize:8, cursor:'pointer', letterSpacing:1,
+          }}>{asciiMode?'⌨ ASCII':'📹 RAW'}</button>
+          <span style={{color:fps>=28?G:fps>=15?'#aaff00':'#ff6600'}}>{fps}fps · {renderMs}ms</span>
+        </div>
       </div>
 
       {/* Canvas fills available width, maintains grid aspect ratio */}
