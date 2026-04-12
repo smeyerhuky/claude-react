@@ -456,8 +456,6 @@ export default function SDLCCompiler() {
   const [busy, setBusy] = useState(false);
   const [lvF, setLvF] = useState("ALL");
   const [phF, setPhF] = useState("ALL");
-  const [scenarioOpen, setScenarioOpen] = useState(false);
-
   const run = useCallback(() => {
     setBusy(true);
     setResults(null);
@@ -470,7 +468,7 @@ export default function SDLCCompiler() {
 
   useEffect(() => {
     if (!custom) run();
-  }, [scenario]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [scenario, custom, run]); // re-run when scenario or custom mode changes
 
   const visible = (results?.diags || []).filter((d) => {
     if (lvF !== "ALL" && d.level !== lvF) return false;
