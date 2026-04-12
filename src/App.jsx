@@ -23,6 +23,7 @@ import TrieViz from './components/trie_viz'
 import CSUVisitGuide from './components/CSUVisitGuide/CSUVisitGuide'
 import AsciiRenderer from './components/ascii-render'
 import AsciiLanding from './components/ascii-landing'
+import SDLCCompiler from './components/SDLCCompiler'
 
 // Navigation items configuration
 const navigationItems = [
@@ -48,6 +49,7 @@ const navigationItems = [
   { id: 'csu-visit-guide', label: 'CSU Visit Guide (Benny)', component: CSUVisitGuide },
   { id: 'ascii-landing', label: 'ASCII Renderer — Layout Selector', component: AsciiLanding, fullscreen: true },
   { id: 'ascii-renderer', label: 'ASCII Renderer', component: AsciiRenderer, fullscreen: true },
+  { id: 'sdlc-compiler', label: 'SDLC Compiler — LLM Governance', component: SDLCCompiler, fullscreen: true },
 ]
 
 // Home page component showing all available components as cards
