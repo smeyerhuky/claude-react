@@ -24,6 +24,7 @@ import CSUVisitGuide from './components/CSUVisitGuide/CSUVisitGuide'
 import AsciiRenderer from './components/ascii-render'
 import AsciiLanding from './components/ascii-landing'
 import SDLCCompiler from './components/SDLCCompiler'
+import PdfMerger from './components/PdfMerger'
 
 // Navigation items configuration
 const navigationItems = [
@@ -50,6 +51,7 @@ const navigationItems = [
   { id: 'ascii-landing', label: 'ASCII Renderer — Layout Selector', component: AsciiLanding, fullscreen: true },
   { id: 'ascii-renderer', label: 'ASCII Renderer', component: AsciiRenderer, fullscreen: true },
   { id: 'sdlc-compiler', label: 'SDLC Compiler — LLM Governance', component: SDLCCompiler, fullscreen: true },
+  { id: 'pdf-merger', label: 'PDF Merger', component: PdfMerger },
 ]
 
 // Home page component showing all available components as cards
