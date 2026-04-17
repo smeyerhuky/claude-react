@@ -41,7 +41,9 @@ export function useThumbnailRenderQueue({ concurrency = 3, yieldInterval = 4 } =
     if (processingRef.current) return;
     processingRef.current = true;
 
-    let processedInBatch = 0;
+    let batchCount = 0;
+    let totalProcessed = 0;
+    const initialTotal = queueRef.current.length;
 
     while (queueRef.current.length > 0) {
       // Pick up to `concurrency` items
@@ -74,17 +76,18 @@ export function useThumbnailRenderQueue({ concurrency = 3, yieldInterval = 4 } =
         })
       );
 
-      processedInBatch += batch.length;
+      totalProcessed += batch.length;
+      batchCount++;
 
       // Yield to the event loop every yieldInterval batches
       // so the browser can paint & handle user input
-      if (processedInBatch % yieldInterval === 0) {
+      if (batchCount % yieldInterval === 0) {
         await new Promise((resolve) => setTimeout(resolve, 0));
       }
 
       setRenderProgress({
-        rendered: processedInBatch,
-        total: processedInBatch + queueRef.current.length,
+        rendered: totalProcessed,
+        total: Math.max(initialTotal, totalProcessed + queueRef.current.length),
       });
     }
 

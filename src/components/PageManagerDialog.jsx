@@ -40,7 +40,6 @@ export default function PageManagerDialog({ open, onOpenChange, file, onSave }) 
   const [pages, setPages] = useState([]);
   const [draggedIdx, setDraggedIdx] = useState(null);
   const [dragOverIdx, setDragOverIdx] = useState(null);
-  const scrollParentRef = useRef(null);
 
   // Use 5 columns (lg default) — a responsive approach would measure width
   const columnCount = COLUMNS.lg;
@@ -177,7 +176,6 @@ export default function PageManagerDialog({ open, onOpenChange, file, onSave }) 
 
         {/* Virtualized page grid */}
         <VirtualizedPageGrid
-          scrollParentRef={scrollParentRef}
           allPageIndices={allPageIndices}
           columnCount={columnCount}
           rowCount={rowCount}
@@ -261,7 +259,6 @@ export default function PageManagerDialog({ open, onOpenChange, file, onSave }) 
  * Only rows visible in the viewport (plus overscan) are rendered.
  */
 function VirtualizedPageGrid({
-  scrollParentRef,
   allPageIndices,
   columnCount,
   rowCount,
@@ -311,7 +308,10 @@ function VirtualizedPageGrid({
                 transform: `translateY(${virtualRow.start}px)`,
               }}
             >
-              <div className="grid grid-cols-5 gap-3 h-full">
+              <div
+                className="grid gap-3 h-full"
+                style={{ gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))` }}
+              >
                 {rowPageIndices.map((pageIdx) => {
                   const selected = isSelected(pageIdx);
                   const selectionOrder = pages.indexOf(pageIdx);

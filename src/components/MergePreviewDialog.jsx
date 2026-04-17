@@ -271,7 +271,10 @@ function VirtualizedMergeGrid({
                 transform: `translateY(${virtualRow.start}px)`,
               }}
             >
-              <div className="grid grid-cols-6 gap-3 h-full">
+              <div
+                className="grid gap-3 h-full"
+                style={{ gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))` }}
+              >
                 {rowItems.map((page, colIdx) => {
                   const idx = rowStartIdx + colIdx;
                   return (
