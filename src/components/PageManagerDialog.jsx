@@ -58,10 +58,11 @@ export default function PageManagerDialog({ open, onOpenChange, file, onSave }) 
     [file, onOpenChange]
   );
 
+  const selectedSet = useMemo(() => new Set(pages), [pages]);
+
   if (!file) return null;
 
   const allPageIndices = Array.from({ length: file.pageCount }, (_, i) => i);
-  const selectedSet = useMemo(() => new Set(pages), [pages]);
   const isSelected = (pageIdx) => selectedSet.has(pageIdx);
 
   const togglePage = (pageIdx) => {
