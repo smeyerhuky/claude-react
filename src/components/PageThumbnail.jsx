@@ -39,8 +39,11 @@ export default function PageThumbnail({ fileData, pageIndex, password, width = 1
 
         await page.render({ canvasContext: ctx, viewport: scaledViewport }).promise;
         await pdfDoc.destroy();
-      } catch {
-        if (!cancelled) setError(true);
+      } catch (err) {
+        if (!cancelled) {
+          console.error('PageThumbnail render error:', err);
+          setError(true);
+        }
         if (pdfDoc) { try { await pdfDoc.destroy(); } catch {} }
       } finally {
         renderingRef.current = false;

@@ -27,6 +27,7 @@ import {
   X,
   FileText,
   ScanSearch,
+  Pencil,
 } from 'lucide-react';
 
 // Configure PDF.js worker
@@ -588,7 +589,7 @@ export default function PdfMerger() {
                                 : file.pageCount}{' '}
                               page{(file.selectedPages ? file.selectedPages.length : file.pageCount) !== 1 ? 's' : ''}
                               {file.selectedPages && (
-                                <span className="ml-1 text-blue-600">✎</span>
+                                <Pencil className="h-3 w-3 ml-1 inline text-blue-600" />
                               )}
                             </Badge>
                           )}
