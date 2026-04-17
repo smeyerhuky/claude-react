@@ -6,6 +6,8 @@ import { Input } from './ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Progress } from './ui/progress';
+import PageManagerDialog from './PageManagerDialog';
+import MergePreviewDialog from './MergePreviewDialog';
 import {
   FileUp,
   Trash2,
@@ -23,6 +25,8 @@ import {
   EyeOff,
   Merge,
   X,
+  FileText,
+  ScanSearch,
 } from 'lucide-react';
 
 // Configure PDF.js worker
@@ -108,6 +112,13 @@ export default function PdfMerger() {
   const [draggedIndex, setDraggedIndex] = useState(null);
   const fileInputRef = useRef(null);
 
+  // Page manager dialog state
+  const [pageManagerFile, setPageManagerFile] = useState(null);
+  const [pageManagerOpen, setPageManagerOpen] = useState(false);
+
+  // Merge preview dialog state
+  const [mergePreviewOpen, setMergePreviewOpen] = useState(false);
+
   const addFiles = useCallback(async (fileList) => {
     setError('');
     const newFiles = [];
@@ -131,6 +142,7 @@ export default function PdfMerger() {
         showPassword: false,
         status: isEncrypted ? 'needs-password' : 'ready',
         pageCount: null,
+        selectedPages: null, // null = all pages, otherwise ordered array of 0-based indices
       });
     }
 
@@ -206,7 +218,7 @@ export default function PdfMerger() {
 
       setFiles((prev) =>
         prev.map((f) =>
-          f.id === id ? { ...f, status: 'ready', pageCount, errorMessage: undefined } : f
+          f.id === id ? { ...f, status: 'ready', pageCount, errorMessage: undefined, selectedPages: null } : f
         )
       );
     } catch (err) {
@@ -270,11 +282,33 @@ export default function PdfMerger() {
     setDragOverIndex(null);
   };
 
+  // Page manager handlers
+  const openPageManager = (file) => {
+    setPageManagerFile(file);
+    setPageManagerOpen(true);
+  };
+
+  const savePageSelection = (fileId, selectedPages) => {
+    setFiles((prev) =>
+      prev.map((f) =>
+        f.id === fileId
+          ? { ...f, selectedPages: selectedPages.length === f.pageCount ? null : selectedPages }
+          : f
+      )
+    );
+  };
+
+  // Get effective selected page count for a file
+  const getSelectedPageCount = (file) => {
+    if (!file.selectedPages) return file.pageCount || 0;
+    return file.selectedPages.length;
+  };
+
   const allReady =
     files.length > 0 && files.every((f) => f.status === 'ready');
 
   const totalPages = files.reduce(
-    (sum, f) => sum + (f.pageCount || 0),
+    (sum, f) => sum + getSelectedPageCount(f),
     0
   );
 
@@ -303,9 +337,81 @@ export default function PdfMerger() {
           });
         }
 
-        const pageIndices = sourcePdf.getPageIndices();
-        const copiedPages = await mergedPdf.copyPages(sourcePdf, pageIndices);
-        copiedPages.forEach((page) => mergedPdf.addPage(page));
+        // Use selectedPages if set, otherwise all pages
+        const pageIndices = file.selectedPages
+          ? file.selectedPages
+          : sourcePdf.getPageIndices();
+
+        if (pageIndices.length > 0) {
+          const copiedPages = await mergedPdf.copyPages(sourcePdf, pageIndices);
+          copiedPages.forEach((page) => mergedPdf.addPage(page));
+        }
+      }
+
+      setStatusMessage('Generating output PDF…');
+      setProgress(90);
+
+      const mergedBytes = await mergedPdf.save();
+      const blob = new Blob([mergedBytes], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'merged.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      setProgress(100);
+      setStatusMessage('Merge complete! Your download should start automatically.');
+    } catch (err) {
+      console.error('Merge error:', err);
+      setError(`Merge failed: ${err.message}`);
+      setStatusMessage('');
+    } finally {
+      setMerging(false);
+    }
+  };
+
+  /**
+   * Merge with a custom page order from the MergePreviewDialog.
+   * mergePages: array of { fileId, pageIndex }
+   */
+  const mergeWithCustomOrder = async (mergePages) => {
+    setMerging(true);
+    setProgress(0);
+    setError('');
+    setStatusMessage('Starting merge with custom page order…');
+
+    try {
+      const mergedPdf = await PDFDocument.create();
+      const total = mergePages.length;
+
+      // Cache loaded PDFs to avoid reloading the same file multiple times
+      const pdfCache = {};
+
+      for (let i = 0; i < total; i++) {
+        const { fileId, pageIndex } = mergePages[i];
+        setStatusMessage(`Processing page ${i + 1} of ${total}…`);
+        setProgress(Math.round((i / total) * 90));
+
+        const file = files.find((f) => f.id === fileId);
+        if (!file) continue;
+
+        if (!pdfCache[fileId]) {
+          if (file.isEncrypted) {
+            pdfCache[fileId] = await decryptPdf(file.data.slice(0), file.password);
+          } else {
+            pdfCache[fileId] = await PDFDocument.load(file.data.slice(0), {
+              ignoreEncryption: true,
+            });
+          }
+        }
+
+        const sourcePdf = pdfCache[fileId];
+        const [copiedPage] = await mergedPdf.copyPages(sourcePdf, [pageIndex]);
+        mergedPdf.addPage(copiedPage);
       }
 
       setStatusMessage('Generating output PDF…');
@@ -364,9 +470,11 @@ export default function PdfMerger() {
             PDF Merger
           </CardTitle>
           <CardDescription>
-            Upload multiple PDFs, reorder them, provide passwords for encrypted
-            files, and merge them into a single unprotected PDF. Everything
-            happens in your browser — no files are uploaded to any server.
+            Upload multiple PDFs, manage individual pages, reorder them,
+            provide passwords for encrypted files, and merge them into a
+            single PDF. Preview the merge result before downloading.
+            Everything happens in your browser — no files are uploaded to
+            any server.
           </CardDescription>
         </CardHeader>
 
@@ -475,7 +583,13 @@ export default function PdfMerger() {
                           </span>
                           {file.pageCount != null && (
                             <Badge variant="secondary" className="text-xs py-0">
-                              {file.pageCount} page{file.pageCount !== 1 ? 's' : ''}
+                              {file.selectedPages
+                                ? `${file.selectedPages.length}/${file.pageCount}`
+                                : file.pageCount}{' '}
+                              page{(file.selectedPages ? file.selectedPages.length : file.pageCount) !== 1 ? 's' : ''}
+                              {file.selectedPages && (
+                                <span className="ml-1 text-blue-600">✎</span>
+                              )}
                             </Badge>
                           )}
                           {file.isEncrypted && (
@@ -497,6 +611,17 @@ export default function PdfMerger() {
                           )}
                         </div>
                       </div>
+
+                      {/* Manage pages button */}
+                      {file.status === 'ready' && file.pageCount != null && (
+                        <button
+                          onClick={() => openPageManager(file)}
+                          className="p-1.5 rounded-md hover:bg-blue-50 text-gray-400 hover:text-blue-600 transition-colors"
+                          title="Manage pages"
+                        >
+                          <FileText className="h-4 w-4" />
+                        </button>
+                      )}
 
                       {/* Move buttons */}
                       <div className="flex flex-col gap-0.5">
@@ -607,7 +732,7 @@ export default function PdfMerger() {
 
           {/* Merge button */}
           {files.length > 0 && (
-            <div className="flex items-center justify-between pt-2">
+            <div className="flex items-center justify-between pt-2 gap-2 flex-wrap">
               <Button
                 variant="outline"
                 size="sm"
@@ -620,25 +745,39 @@ export default function PdfMerger() {
               >
                 Clear all
               </Button>
-              <Button
-                size="lg"
-                disabled={!allReady || merging}
-                onClick={mergePdfs}
-                className="gap-2"
-              >
-                {merging ? (
-                  <>
-                    <Loader2 className="h-5 w-5 animate-spin" />
-                    Merging…
-                  </>
-                ) : (
-                  <>
-                    <Download className="h-5 w-5" />
-                    Merge &amp; Download
-                    {files.length > 0 && ` (${files.length} files)`}
-                  </>
+              <div className="flex items-center gap-2">
+                {allReady && files.length > 0 && (
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    disabled={merging}
+                    onClick={() => setMergePreviewOpen(true)}
+                    className="gap-2"
+                  >
+                    <ScanSearch className="h-5 w-5" />
+                    Preview Merge
+                  </Button>
                 )}
-              </Button>
+                <Button
+                  size="lg"
+                  disabled={!allReady || merging}
+                  onClick={mergePdfs}
+                  className="gap-2"
+                >
+                  {merging ? (
+                    <>
+                      <Loader2 className="h-5 w-5 animate-spin" />
+                      Merging…
+                    </>
+                  ) : (
+                    <>
+                      <Download className="h-5 w-5" />
+                      Merge &amp; Download
+                      {totalPages > 0 && ` (${totalPages} pg)`}
+                    </>
+                  )}
+                </Button>
+              </div>
             </div>
           )}
 
@@ -650,6 +789,22 @@ export default function PdfMerger() {
           )}
         </CardContent>
       </Card>
+
+      {/* Page Manager Dialog — per-file page management */}
+      <PageManagerDialog
+        open={pageManagerOpen}
+        onOpenChange={setPageManagerOpen}
+        file={pageManagerFile}
+        onSave={savePageSelection}
+      />
+
+      {/* Merge Preview Dialog — preview & reorder all pages before merge */}
+      <MergePreviewDialog
+        open={mergePreviewOpen}
+        onOpenChange={setMergePreviewOpen}
+        files={files.filter((f) => f.status === 'ready')}
+        onMerge={mergeWithCustomOrder}
+      />
     </div>
   );
 }
