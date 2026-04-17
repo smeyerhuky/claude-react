@@ -83,7 +83,7 @@ async function loadPdfDocument(arrayBuffer, password) {
  */
 async function checkIfEncrypted(arrayBuffer) {
   try {
-    const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+    const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer.slice(0) });
     const doc = await loadingTask.promise;
     await doc.destroy();
     return false;
@@ -197,7 +197,7 @@ export default function PdfMerger() {
 
     try {
       const loadingTask = pdfjsLib.getDocument({
-        data: file.data,
+        data: file.data.slice(0),
         password: file.password,
       });
       const doc = await loadingTask.promise;
