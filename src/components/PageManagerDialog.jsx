@@ -1,4 +1,5 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef, useMemo } from 'react';
+import { useVirtualizer } from '@tanstack/react-virtual';
 import {
   Dialog,
   DialogContent,
@@ -10,7 +11,6 @@ import {
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Checkbox } from './ui/checkbox';
-import { ScrollArea } from './ui/scroll-area';
 import PageThumbnail from './PageThumbnail';
 import {
   GripVertical,
@@ -22,27 +22,32 @@ import {
   ArrowDown,
 } from 'lucide-react';
 
+const COLUMNS = { sm: 3, md: 4, lg: 5 };
+const ITEM_HEIGHT = 200; // approximate height of one page card in px
+
 /**
  * Dialog for managing individual pages within a single PDF file.
- * Allows selecting, deselecting, reordering, and removing pages.
+ * Now uses viewport virtualization via @tanstack/react-virtual so only
+ * visible rows mount PageThumbnail components.
  *
  * Props:
  *  - open: boolean
  *  - onOpenChange: (open) => void
  *  - file: { id, name, data, pageCount, password, selectedPages }
- *  - onSave: (fileId, selectedPages) => void   — selectedPages is ordered array of 0-based indices
+ *  - onSave: (fileId, selectedPages) => void
  */
 export default function PageManagerDialog({ open, onOpenChange, file, onSave }) {
-  // Local working copy of selected pages (ordered array of 0-based page indices)
   const [pages, setPages] = useState([]);
   const [draggedIdx, setDraggedIdx] = useState(null);
   const [dragOverIdx, setDragOverIdx] = useState(null);
+  const scrollParentRef = useRef(null);
 
-  // Initialize local state when dialog opens
+  // Use 5 columns (lg default) — a responsive approach would measure width
+  const columnCount = COLUMNS.lg;
+
   const handleOpenChange = useCallback(
     (isOpen) => {
       if (isOpen && file) {
-        // Start with whatever was previously selected, or all pages
         const initial =
           file.selectedPages && file.selectedPages.length > 0
             ? [...file.selectedPages]
@@ -57,7 +62,8 @@ export default function PageManagerDialog({ open, onOpenChange, file, onSave }) 
   if (!file) return null;
 
   const allPageIndices = Array.from({ length: file.pageCount }, (_, i) => i);
-  const isSelected = (pageIdx) => pages.includes(pageIdx);
+  const selectedSet = useMemo(() => new Set(pages), [pages]);
+  const isSelected = (pageIdx) => selectedSet.has(pageIdx);
 
   const togglePage = (pageIdx) => {
     setPages((prev) => {
@@ -71,7 +77,10 @@ export default function PageManagerDialog({ open, onOpenChange, file, onSave }) 
   const selectAll = () => setPages([...allPageIndices]);
   const selectNone = () => setPages([]);
   const invertSelection = () => {
-    setPages((prev) => allPageIndices.filter((p) => !prev.includes(p)));
+    setPages((prev) => {
+      const prevSet = new Set(prev);
+      return allPageIndices.filter((p) => !prevSet.has(p));
+    });
   };
 
   const movePageInSelection = (currentIdx, direction) => {
@@ -129,6 +138,9 @@ export default function PageManagerDialog({ open, onOpenChange, file, onSave }) 
     onOpenChange(false);
   };
 
+  // Virtualization: group page indices into rows
+  const rowCount = Math.ceil(allPageIndices.length / columnCount);
+
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="max-w-4xl max-h-[90vh] flex flex-col">
@@ -163,58 +175,17 @@ export default function PageManagerDialog({ open, onOpenChange, file, onSave }) 
           </div>
         </div>
 
-        {/* Page grid — all pages from the PDF */}
-        <ScrollArea className="flex-1 min-h-0 border rounded-lg p-3">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-            {allPageIndices.map((pageIdx) => {
-              const selected = isSelected(pageIdx);
-              const selectionOrder = pages.indexOf(pageIdx);
-              return (
-                <div
-                  key={pageIdx}
-                  className={`relative group rounded-lg border-2 p-2 transition-all cursor-pointer ${
-                    selected
-                      ? 'border-blue-400 bg-blue-50/50'
-                      : 'border-gray-200 bg-gray-50 opacity-50'
-                  }`}
-                  onClick={() => togglePage(pageIdx)}
-                >
-                  {/* Selection checkbox */}
-                  <div className="absolute top-1 left-1 z-10" onClick={(e) => e.stopPropagation()}>
-                    <Checkbox
-                      checked={selected}
-                      onCheckedChange={() => togglePage(pageIdx)}
-                    />
-                  </div>
-
-                  {/* Selection order badge */}
-                  {selected && (
-                    <div className="absolute top-1 right-1 z-10">
-                      <Badge className="text-[10px] px-1.5 py-0 h-5">
-                        #{selectionOrder + 1}
-                      </Badge>
-                    </div>
-                  )}
-
-                  {/* Thumbnail */}
-                  <div className="flex justify-center mt-4 mb-1">
-                    <PageThumbnail
-                      fileData={file.data}
-                      pageIndex={pageIdx}
-                      password={file.password}
-                      width={100}
-                    />
-                  </div>
-
-                  {/* Page label */}
-                  <p className="text-center text-xs text-gray-600 font-medium">
-                    Page {pageIdx + 1}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </ScrollArea>
+        {/* Virtualized page grid */}
+        <VirtualizedPageGrid
+          scrollParentRef={scrollParentRef}
+          allPageIndices={allPageIndices}
+          columnCount={columnCount}
+          rowCount={rowCount}
+          file={file}
+          isSelected={isSelected}
+          pages={pages}
+          togglePage={togglePage}
+        />
 
         {/* Selected pages order — compact reorder strip */}
         {pages.length > 0 && (
@@ -222,7 +193,7 @@ export default function PageManagerDialog({ open, onOpenChange, file, onSave }) 
             <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
               Merge Order (drag to reorder)
             </h4>
-            <ScrollArea className="border rounded-lg">
+            <div className="border rounded-lg overflow-x-auto">
               <div className="flex gap-1.5 p-2 min-w-0">
                 {pages.map((pageIdx, idx) => (
                   <div
@@ -268,7 +239,7 @@ export default function PageManagerDialog({ open, onOpenChange, file, onSave }) 
                   </div>
                 ))}
               </div>
-            </ScrollArea>
+            </div>
           </div>
         )}
 
@@ -282,5 +253,117 @@ export default function PageManagerDialog({ open, onOpenChange, file, onSave }) 
         </DialogFooter>
       </DialogContent>
     </Dialog>
+  );
+}
+
+/**
+ * Virtualized grid of page thumbnails.
+ * Only rows visible in the viewport (plus overscan) are rendered.
+ */
+function VirtualizedPageGrid({
+  scrollParentRef,
+  allPageIndices,
+  columnCount,
+  rowCount,
+  file,
+  isSelected,
+  pages,
+  togglePage,
+}) {
+  const parentRef = useRef(null);
+
+  const virtualizer = useVirtualizer({
+    count: rowCount,
+    getScrollElement: () => parentRef.current,
+    estimateSize: () => ITEM_HEIGHT,
+    overscan: 2,
+  });
+
+  return (
+    <div
+      ref={parentRef}
+      className="flex-1 min-h-0 border rounded-lg p-3 overflow-auto"
+      style={{ maxHeight: '50vh' }}
+    >
+      <div
+        style={{
+          height: `${virtualizer.getTotalSize()}px`,
+          width: '100%',
+          position: 'relative',
+        }}
+      >
+        {virtualizer.getVirtualItems().map((virtualRow) => {
+          const rowStartIdx = virtualRow.index * columnCount;
+          const rowPageIndices = allPageIndices.slice(
+            rowStartIdx,
+            rowStartIdx + columnCount
+          );
+
+          return (
+            <div
+              key={virtualRow.index}
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: `${virtualRow.size}px`,
+                transform: `translateY(${virtualRow.start}px)`,
+              }}
+            >
+              <div className="grid grid-cols-5 gap-3 h-full">
+                {rowPageIndices.map((pageIdx) => {
+                  const selected = isSelected(pageIdx);
+                  const selectionOrder = pages.indexOf(pageIdx);
+                  return (
+                    <div
+                      key={pageIdx}
+                      className={`relative group rounded-lg border-2 p-2 transition-all cursor-pointer ${
+                        selected
+                          ? 'border-blue-400 bg-blue-50/50'
+                          : 'border-gray-200 bg-gray-50 opacity-50'
+                      }`}
+                      onClick={() => togglePage(pageIdx)}
+                    >
+                      <div
+                        className="absolute top-1 left-1 z-10"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Checkbox
+                          checked={selected}
+                          onCheckedChange={() => togglePage(pageIdx)}
+                        />
+                      </div>
+
+                      {selected && (
+                        <div className="absolute top-1 right-1 z-10">
+                          <Badge className="text-[10px] px-1.5 py-0 h-5">
+                            #{selectionOrder + 1}
+                          </Badge>
+                        </div>
+                      )}
+
+                      <div className="flex justify-center mt-4 mb-1">
+                        <PageThumbnail
+                          cacheKey={String(file.id)}
+                          fileData={file.data}
+                          pageIndex={pageIdx}
+                          password={file.password}
+                          width={100}
+                        />
+                      </div>
+
+                      <p className="text-center text-xs text-gray-600 font-medium">
+                        Page {pageIdx + 1}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }

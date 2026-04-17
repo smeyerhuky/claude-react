@@ -6,6 +6,7 @@ import { Input } from './ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Progress } from './ui/progress';
+import { PdfRenderProvider } from './PdfRenderContext';
 import PageManagerDialog from './PageManagerDialog';
 import MergePreviewDialog from './MergePreviewDialog';
 import {
@@ -463,6 +464,7 @@ export default function PdfMerger() {
   };
 
   return (
+    <PdfRenderProvider>
     <div className="max-w-3xl mx-auto space-y-6 pb-8">
       <Card>
         <CardHeader>
@@ -807,5 +809,6 @@ export default function PdfMerger() {
         onMerge={mergeWithCustomOrder}
       />
     </div>
+    </PdfRenderProvider>
   );
 }
