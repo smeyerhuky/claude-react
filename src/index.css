@@ -267,3 +267,12 @@ input[type="range"]:hover::-moz-range-thumb {
   background: rgb(168 85 247); /* purple-500 */
   transform: scale(1.2);
 }
+
+/* Hide scrollbar while keeping scroll functionality (for horizontal tabs) */
+.scrollbar-hide {
+  scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* IE / Edge */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;              /* Chrome / Safari */
+}
