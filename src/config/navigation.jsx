@@ -22,6 +22,14 @@ import AsciiRenderer from '../components/ascii-render'
 import AsciiLanding from '../components/ascii-landing'
 import SDLCCompiler from '../components/SDLCCompiler'
 import PdfMerger from '../components/PdfMerger'
+import MonteCarloTutorial from '../components/monte/MonteCarloTutorial'
+import MonteCarloProjectSimulator from '../components/monte/MonteCarloProjectSimulator'
+import MonteCarloAdvancedTutorial from '../components/monte/MonteCarloAdvancedTutorial'
+import InteractivePMTensor from '../components/monte/InteractivePMTensor'
+import ProjectManagementMatrix from '../components/pm/ProjectManagementMatrix'
+import ProjectShift from '../components/pm/ProjectShift'
+import ProjectShiftEditor from '../components/pm/ProjectShiftEditor'
+import ProjectShiftPro from '../components/pm/ProjectShiftPro'
 
 /**
  * Navigation item shape:
@@ -40,6 +48,7 @@ export const CATEGORIES = [
   { id: 'tools',       label: '🔧 Tools' },
   { id: 'interactive', label: '🕹️ Interactive' },
   { id: 'immersive',   label: '🌌 Immersive' },
+  { id: 'pm',          label: '📋 Project Mgmt' },
 ]
 
 export const navigationItems = [
@@ -78,4 +87,14 @@ export const navigationItems = [
   // ── Immersive / Fullscreen ─────────────────────────────────────────────────
   { id: 'stargate-federation',        label: 'Stargate: The Federation',          component: StargateFederationPitch,   category: 'immersive', fullscreen: true },
   { id: 'stargate-prologue',          label: 'Stargate Prologue: Pattern in the Static', component: PatternInTheStatic, category: 'immersive', fullscreen: true },
+
+  // ── Project Mgmt / Monte Carlo / Constraint Engineering ───────────────────
+  { id: 'monte-carlo-tutorial',       label: 'Monte Carlo — Tutorial',            component: MonteCarloTutorial,        category: 'pm' },
+  { id: 'monte-carlo-simulator',      label: 'Monte Carlo — Project Simulator',   component: MonteCarloProjectSimulator, category: 'pm' },
+  { id: 'monte-carlo-advanced',       label: 'Monte Carlo — Advanced Tutorial',   component: MonteCarloAdvancedTutorial, category: 'pm' },
+  { id: 'pm-tensor',                  label: 'Interactive PM Tensor (3D)',         component: InteractivePMTensor,       category: 'pm' },
+  { id: 'pm-matrix',                  label: 'Project Management Matrix',          component: ProjectManagementMatrix,   category: 'pm' },
+  { id: 'project-shift',              label: 'ProjectShift — Resource Tracker',   component: ProjectShift,              category: 'pm' },
+  { id: 'project-shift-editor',       label: 'ProjectShift — Editor',             component: ProjectShiftEditor,        category: 'pm' },
+  { id: 'project-shift-pro',          label: 'ProjectShift Pro',                  component: ProjectShiftPro,           category: 'pm' },
 ]
