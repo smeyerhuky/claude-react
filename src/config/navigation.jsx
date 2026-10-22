@@ -1,3 +1,4 @@
+import MetroPopulationVoronoi from '../components/MetroPopulationVoronoi'
 import AdvancedSpectrogram from '../components/sonic/AdvancedSpectrogramV2'
 import GuitarSynthesizer from '../components/sonic/GuitarSynthesizer'
 import AIWritingAnalyzer from '../components/llm-tools/AIWritingAnalyzer'
@@ -65,6 +66,7 @@ export const navigationItems = [
   { id: 'hand-gesture-playground',    label: 'Hand-Gesture Playground',           component: HandGesturePlayground,     category: 'ai' },
 
   // ── Visualization ──────────────────────────────────────────────────────────
+  { id: 'metro-population-voronoi', label: 'Metro Population Regions — Interactive Map', component: MetroPopulationVoronoi, category: 'visualization' },
   { id: 'mermaid-diagram',            label: 'Mermaid Diagram',                   component: MermaidReactions,          category: 'visualization' },
   { id: 'mitosis-animation',          label: 'Mitosis Animation',                 component: MitosisDemo,               category: 'visualization' },
   { id: 'trie-viz',                   label: 'Trie Visualizer',                   component: TrieViz,                   category: 'visualization' },
