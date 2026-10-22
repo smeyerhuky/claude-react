@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useId, useMemo, useState } from 'react'
 import { Delaunay, geoAlbersUsa, geoPath } from 'd3'
 
 // Illustrative seed data, NOT a complete or validated 2025 Census CBSA inventory.
@@ -128,6 +128,10 @@ const points = ANCHORS.filter((row, i) => row[3] >= MIN && ANCHORS.findIndex(oth
 
 export default function MetroPopulationVoronoi() {
   const [states,setStates] = useState([])
+  // Unique SVG ids prevent references colliding with other mounted demo components.
+  const reactId = useId().replace(/:/g, '-')
+  const landClipId = `metro-land-clip-${reactId}`
+  const landMaskId = `metro-land-mask-${reactId}`
   const [loadError,setLoadError] = useState('')
   const [threshold,setThreshold] = useState(1200000)
   const [typed,setTyped] = useState('1200000')
@@ -149,6 +153,10 @@ export default function MetroPopulationVoronoi() {
     return qualifying.map((a,i)=>({a,polygon:vor.renderCell(i),color:`hsl(${(i*137.508)%360} 65% 73%)`}))
   },[qualifying])
   const countryPaths = useMemo(()=>states.map(f=>path(f)).filter(Boolean),[states])
+  // Regions are explicitly masked to U.S. land as well as clipped. The two
+  // independent SVG constraints prevent any Voronoi cell from painting water,
+  // Canada, Mexico or the rectangular viewport if clipping is unsupported.
+  const landPath = useMemo(()=>countryPaths.join(' '),[countryPaths])
   return (
     <div className="mx-auto max-w-[1400px] p-3 sm:p-6 space-y-4 text-slate-900">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -187,8 +195,19 @@ export default function MetroPopulationVoronoi() {
         {loadError ? <div role="alert" className="p-6 text-red-700">Unable to load state outlines: {loadError}. Check network access and retry.</div> : !states.length ? <p className="p-6">Loading U.S. geography…</p> : (
           <svg viewBox="0 0 1000 620" role="img" aria-label={`Map of ${qualifying.length} qualifying metro regions for population threshold ${threshold}`} className="w-full h-auto">
             <rect width="1000" height="620" fill="#f8fafc"/>
-            <defs><clipPath id="metro-conus-clip">{countryPaths.map((d,i)=><path key={i} d={d}/>)}</clipPath></defs>
-            <g clipPath="url(#metro-conus-clip)">{cells.map(({a,polygon,color})=><path key={a.id} d={polygon} fill={color} stroke="#ffffff" strokeWidth=".9"/>)}</g>
+            <defs>
+              <clipPath id={landClipId} clipPathUnits="userSpaceOnUse">
+                <path d={landPath}/>
+              </clipPath>
+              <mask id={landMaskId} maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse"
+                x="0" y="0" width="1000" height="620" style={{maskType:'luminance'}}>
+                <rect width="1000" height="620" fill="black"/>
+                <path d={landPath} fill="white"/>
+              </mask>
+            </defs>
+            <g clipPath={`url(#${landClipId})`} mask={`url(#${landMaskId})`}>
+              {cells.map(({a,polygon,color})=><path key={a.id} d={polygon} fill={color} stroke="#ffffff" strokeWidth=".9"/>)}
+            </g>
             <g fill="none" stroke="#64748b" strokeWidth="1.2" strokeLinejoin="round" pointerEvents="none">
               {countryPaths.map((d,i)=><path key={i} d={d}/>)}
             </g>
@@ -203,7 +222,7 @@ export default function MetroPopulationVoronoi() {
           <span><strong>{selected.name}</strong> · estimated population {selected.pop.toLocaleString()}</span>
           <button className="underline" onClick={()=>setSelected(null)}>Clear selection</button></div>}
       </div>
-      <p className="text-xs text-slate-600 leading-relaxed">Data caveat: This visualization ships with an approximate, non-exhaustive seed list of metropolitan anchors and estimated populations; it is NOT authoritative Census 2025 metropolitan statistical area data. Thresholds below about 1M are particularly incomplete. Metro cells are true 2D Voronoi assignments in the map projection, clipped to the lower 48 state polygons. State boundaries are drawn over region fills. Geography loads once and Voronoi recomputes only when the selected anchor set changes.</p>
+      <p className="text-xs text-slate-600 leading-relaxed">Data caveat: This visualization ships with an approximate, non-exhaustive seed list of metropolitan anchors and estimated populations; it is NOT authoritative Census 2025 metropolitan statistical area data. Thresholds below about 1M are particularly incomplete. Metro cells are true 2D Voronoi assignments in the map projection, clipped to the lower 48 state polygons. State boundaries are drawn over region fills, and each region is independently clipped and masked to the contiguous states. Geography loads once and Voronoi recomputes only when the selected anchor set changes.</p>
     </div>
   )
 }
