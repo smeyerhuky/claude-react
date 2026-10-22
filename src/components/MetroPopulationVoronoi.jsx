@@ -150,7 +150,7 @@ export default function MetroPopulationVoronoi() {
   const cells = useMemo(()=>{
     if(!qualifying.length)return []
     const vor = Delaunay.from(qualifying, a=>a.p[0],a=>a.p[1]).voronoi([0,0,1000,620])
-    return qualifying.map((a,i)=>({a,polygon:vor.renderCell(i),color:`hsl(${(i*137.508)%360} 65% 73%)`}))
+    return qualifying.map((a,i)=>({a,polygon:vor.renderCell(i),color:`hsl(${(a.id*137.508)%360} 65% 73%)`}))
   },[qualifying])
   const countryPaths = useMemo(()=>states.map(f=>path(f)).filter(Boolean),[states])
   // Regions are explicitly masked to U.S. land as well as clipped. The two
