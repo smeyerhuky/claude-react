@@ -276,3 +276,25 @@ input[type="range"]:hover::-moz-range-thumb {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;              /* Chrome / Safari */
 }
+
+/* Metro viewer: isolated, high-contrast light UI in both OS color schemes.
+   Do not affect the EDM mixer or other demos. */
+[data-testid="metro-app"] { color-scheme: light; background: #f1f5f9; color: #0f172a; }
+[data-testid="metro-app"] button,
+[data-testid="metro-app"] input { font: inherit; }
+[data-testid="metro-app"] button:not([class*="bg-blue-700"]):not([class*="bg-slate-900"]),
+[data-testid="metro-app"] input:not([type="checkbox"]):not([type="range"]) { color: #0f172a; }
+[data-testid="metro-app"] button:focus-visible,
+[data-testid="metro-app"] a:focus-visible,
+[data-testid="metro-app"] input:focus-visible,
+[data-testid="metro-app"] [role="button"]:focus-visible {
+  outline: 3px solid #1d4ed8;
+  outline-offset: 2px;
+}
+[data-testid="metro-app"] [role="listbox"] { background: #fff; color: #0f172a; }
+[data-testid="metro-app"] [role="option"] { color: #0f172a; background: #fff; }
+[data-testid="metro-app"] [role="option"]:hover,
+[data-testid="metro-app"] [role="option"]:focus-visible { color: #0f172a; background: #eff6ff; }
+@media (prefers-reduced-motion: reduce) {
+  [data-testid="metro-app"] * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
