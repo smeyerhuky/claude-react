@@ -237,7 +237,6 @@ export default function MetroPopulationVoronoi() {
     cellCache.current.set(key,result)
     return result
   },[qualifying,eligibleSignature])
-  const countryPaths = useMemo(()=>states.map(f=>path(f)).filter(Boolean),[states])
   // Build state SVG outlines from the same projected coordinate rings as Canvas;
   // geoPath's spherical winding interpretation previously produced Alaska/Hawaii-like inset boxes.
   const ringToSvg = ring => ring.length < 3 ? '' : `M${ring.map(p=>p.join(',')).join('L')}Z`
