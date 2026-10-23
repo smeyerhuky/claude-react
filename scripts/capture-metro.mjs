@@ -6,6 +6,9 @@ try {
   const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 })
   await page.goto('http://127.0.0.1:4173/#/', { waitUntil: 'domcontentloaded' })
   await page.getByText('Metro Population Regions — Interactive Map').first().click()
+  // This PR includes a verified official dataset; a silent demo fallback is a regression.
+  await page.getByText('U.S. Census Vintage 2025 · 359 lower-48 metros').first().waitFor({ state: 'visible' })
+  await page.getByText('Data: U.S. Census Bureau Vintage 2025').first().waitFor({ state: 'visible' })
   const canvas = page.locator('[data-testid="metro-shading-canvas"]')
   await canvas.waitFor({ state: 'visible' })
   await page.waitForFunction(() => {
