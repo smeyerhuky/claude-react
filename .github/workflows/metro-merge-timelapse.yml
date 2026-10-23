@@ -98,7 +98,7 @@ jobs:
           run_url = f"https://github.com/{repo}/actions/runs/{os.environ['GITHUB_RUN_ID']}"
           lines = [
               "### ✅ Merged into main — map timelapse",
-              f"**Merge commit:** \`{sha[:12]}\`",
+              f"**Merge commit:** `{sha[:12]}`",
               f"**PR commits:** {count} · **Commits with screenshot available:** {frames} · **Distinct screenshot versions:** {unique}",
               "**Video:** 24 fps, 0.5 seconds per commit frame.",
               (f"[▶ Watch/download the MP4 timelapse]({video_url})" if os.environ.get("PUBLISHED") == "true"
@@ -106,8 +106,9 @@ jobs:
               f"[Workflow run and artifacts]({run_url})",
           ]
           body = "\n\n".join(lines)
-          subprocess.run(["gh", "api", "-X", "POST", f"repos/{repo}/issues/{pr}/comments", "--input", "-"],
-                         input=json.dumps({"body": body}), text=True, check=True)
+          result = subprocess.run(["gh", "api", "-X", "POST", f"repos/{repo}/issues/{pr}/comments", "--input", "-"],
+                                  input=json.dumps({"body": body}), text=True, check=True, capture_output=True)
+          Path("/tmp/metro-merge-summary-comment.json").write_text(result.stdout)
           PY
 
       - name: Post collapsible native MP4 on merged PR
@@ -136,12 +137,20 @@ jobs:
           python3 - <<'PY'
           import json, os, re, subprocess
           from pathlib import Path
-          obj = json.loads(Path('/tmp/timelapse-comment.json').read_text())
-          match = re.search(r'https://github.com/user-attachments/assets/[a-f0-9-]+', obj['body'])
+          uploaded = json.loads(Path('/tmp/timelapse-comment.json').read_text())
+          original = json.loads(Path('/tmp/metro-merge-summary-comment.json').read_text())
+          match = re.search(r'https://github.com/user-attachments/assets/[a-f0-9-]+', uploaded['body'])
           if not match:
-              raise SystemExit('No native MP4 URL in uploaded comment; leaving link intact')
-          body = ('### Merge timelapse video\n\n<details>\n'
+              print('No native MP4 URL; keeping both comments to avoid losing the attachment')
+              raise SystemExit(0)
+          body = original['body'] + ('\n\n<details>\n'
                   '<summary>▶ Watch the timelapse inline</summary>\n\n'
                   + match.group(0) + '\n\n</details>\n')
-          subprocess.run(['gh','api','-X','PATCH',f"repos/{os.environ['GITHUB_REPOSITORY']}/issues/comments/{obj['id']}",'-f',f'body={body}'],check=True,stdout=subprocess.DEVNULL)
+          repo = os.environ['GITHUB_REPOSITORY']
+          # Patch the existing summary first. Never delete the temporary upload
+          # comment unless the final summary now contains the native video URL.
+          subprocess.run(['gh', 'api', '-X', 'PATCH', f"repos/{repo}/issues/comments/{original['id']}",
+                          '-f', f'body={body}'], check=True, stdout=subprocess.DEVNULL)
+          subprocess.run(['gh', 'api', '-X', 'DELETE', f"repos/{repo}/issues/comments/{uploaded['id']}"],
+                         check=True, stdout=subprocess.DEVNULL)
           PY
