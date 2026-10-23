@@ -157,6 +157,7 @@ const parseMetroCsv = csv => {
   ]
   if (indexes.some(i => i < 0)) throw Error('Required CSV columns: name, longitude, latitude, population')
   if (rows.length > 3000) throw Error('Maximum 3,000 metro rows')
+  const cbsaIndex = index(['cbsa','cbsa_code','geoid'])
   const found = new Set(), result = []
   rows.forEach((row,i) => {
     const name = row[indexes[0]]?.trim()
@@ -169,7 +170,7 @@ const parseMetroCsv = csv => {
     if (found.has(key)) throw Error(`Duplicate metro name: ${name}`)
     found.add(key)
     const p = projection([lon,lat])
-    if (p) result.push({id:key,name,lon,lat,pop,p})
+    if (p) result.push({id:key,name,lon,lat,pop,p,cbsa:cbsaIndex >= 0 ? (row[cbsaIndex] || '').trim() : ''})
   })
   if (!result.length) throw Error('No qualifying contiguous-U.S. locations in the CSV')
   return result
@@ -200,6 +201,7 @@ export default function MetroPopulationVoronoi() {
   const [step,setStep] = useState(10000)
   const [showLabels,setShowLabels] = useState(true)
   const [selected,setSelected] = useState(null)
+  const [search,setSearch] = useState('')
   useEffect(()=>{
     let alive=true
     fetch(STATE_SOURCE).then(r=>{if(!r.ok)throw Error(`HTTP ${r.status}`);return r.json()})
@@ -212,6 +214,17 @@ export default function MetroPopulationVoronoi() {
   // Reuse the *same* eligible-array identity between population breakpoints.
   const eligibleSignature = dataset.filter(a=>a.pop>=threshold).map(a=>a.id).join('|')
   const qualifying = useMemo(()=>dataset.filter(a=>a.pop>=threshold),[dataset,eligibleSignature])
+  const ranked = useMemo(() => [...dataset].sort((a,b) => b.pop-a.pop || a.name.localeCompare(b.name)), [dataset])
+  const searchMatches = useMemo(() => {
+    const q=search.trim().toLowerCase()
+    return q ? ranked.filter(a=>a.name.toLowerCase().includes(q) || a.cbsa?.includes(q)).slice(0,12) : []
+  }, [ranked, search])
+  const selectedRank = selected ? ranked.findIndex(a=>a.id===selected.id)+1 : 0
+  const isEligible = selected ? selected.pop >= threshold : false
+  const chooseMetro = a => {
+    setSelected(a)
+    setSearch(a.name)
+  }
   // Measure label widths with the browser's actual text metrics, then seek free space.
   // Lower population thresholds naturally show fewer labels when crowded.
   const labelLayout = useMemo(() => {
@@ -368,6 +381,33 @@ export default function MetroPopulationVoronoi() {
         </div>
         <label className="inline-flex items-center gap-2 mt-4 text-sm"><input type="checkbox" checked={showLabels} onChange={e=>setShowLabels(e.target.checked)}/>Show metro labels (crowded at low thresholds)</label>
       </section>
+      <section className="rounded-xl bg-white border border-slate-200 p-4 shadow-sm space-y-3" aria-label="Find metro area">
+        <label htmlFor="metro-search" className="block font-semibold">Find a metropolitan area</label>
+        <input id="metro-search" type="search" autoComplete="off" value={search}
+          onChange={e=>setSearch(e.target.value)} placeholder="Metro name, state, or CBSA code"
+          className="w-full rounded-lg border border-slate-300 px-3 py-2"
+          onKeyDown={e=>{if(e.key==='Enter' && searchMatches.length)chooseMetro(searchMatches[0])}}/>
+        {search.trim() && <div role="listbox" aria-label="Matching metro areas" className="max-h-56 overflow-y-auto rounded-lg border border-slate-200">
+          {searchMatches.length ? searchMatches.map(a=><button role="option" aria-selected={selected?.id===a.id} key={a.id}
+            onClick={()=>chooseMetro(a)} className="flex w-full items-center justify-between gap-3 px-3 py-2 text-left hover:bg-blue-50 focus:bg-blue-50">
+            <span>{a.name}</span><span className="tabular-nums whitespace-nowrap text-slate-500">{a.pop.toLocaleString()}</span>
+          </button>) : <p className="px-3 py-2 text-slate-500">No metros match that search.</p>}
+        </div>}
+        {selected && <div data-testid="metro-details" className="rounded-lg border border-blue-200 bg-blue-50 p-4 space-y-2">
+          <div className="flex justify-between gap-3 items-start">
+            <h2 className="text-lg font-semibold">{selected.name}</h2>
+            <button className="underline text-sm" onClick={()=>{setSelected(null);setSearch('')}}>Clear</button>
+          </div>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div><div className="text-xs text-slate-600">Population {sourceKind==='census'?'(2025)':''}</div><strong className="tabular-nums">{selected.pop.toLocaleString()}</strong></div>
+            <div><div className="text-xs text-slate-600">Population rank</div><strong>#{selectedRank} of {ranked.length}</strong></div>
+            <div><div className="text-xs text-slate-600">CBSA code</div><strong>{selected.cbsa || 'Not provided'}</strong></div>
+            <div><div className="text-xs text-slate-600">Current threshold</div><strong>{isEligible?'Qualifies':'Below minimum'}</strong></div>
+          </div>
+          <p className="text-xs text-slate-600">{sourceKind==='census'?'Source: U.S. Census Bureau 2025 metro population estimates; TIGER/Line CBSA representative point.':sourceKind==='upload'?'Source: uploaded CSV.':'Source: illustrative data.'} The marker is an area representative point, not an official city-center coordinate.</p>
+          {!isEligible && <button onClick={()=>choose(selected.pop)} className="rounded border border-blue-400 bg-white px-3 py-1.5">Include this metro in the map</button>}
+        </div>}
+      </section>
       <section className="rounded-xl border bg-white border-slate-200 p-3 text-sm space-y-2">
         <div className="flex flex-wrap items-center gap-3">
           <label className="font-semibold" htmlFor="metro-csv-import">Metro data source</label>
@@ -389,12 +429,12 @@ export default function MetroPopulationVoronoi() {
             <g pointerEvents="none">{labelLayout.filter(item=>item.leader).map(item=>
               <line key={item.a.id} x1={item.a.p[0]} y1={item.a.p[1]} x2={item.tx} y2={item.ty}
                 stroke="#64748b" strokeOpacity="0.52" strokeWidth="0.8" />)}</g>
-            <g>{qualifying.map(a=><g key={a.id} onClick={()=>setSelected(a)} style={{cursor:'pointer'}}>
+            <g>{qualifying.map(a=><g key={a.id} onClick={()=>chooseMetro(a)} style={{cursor:'pointer'}}>
               <circle cx={a.p[0]} cy={a.p[1]} r={selected?.id===a.id?4.8:3.2} fill="#0f172a" stroke="white" strokeWidth="1.2"/>
               <title>{a.name}: ~{a.pop.toLocaleString()} ({sourceKind === 'census' ? 'Census 2025 estimate' : importedPoints ? 'uploaded population' : 'illustrative estimate'})</title>
             </g>)}</g>
             <g>{labelLayout.map(item=><text key={item.a.id} x={item.x} y={item.y} fontSize={item.fontSize}
-              onClick={()=>setSelected(item.a)} style={{cursor:'pointer'}}
+              onClick={()=>chooseMetro(item.a)} style={{cursor:'pointer'}}
               fill="#0f172a" stroke="#fff" strokeWidth="2.5" paintOrder="stroke">{item.a.name}</text>)}</g>
           </svg></div>)}
         {selected && <div className="flex items-center justify-between px-4 py-2 border-t bg-slate-50 text-sm">

@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: metro-debug-screenshot
-          path: docs/screenshots/metro-default.png
+          path: docs/screenshots/*.png
           if-no-files-found: warn
       - name: Commit latest screenshot (pass or fail)
         id: screenshot_commit
@@ -50,7 +50,7 @@ jobs:
           if [ -f "$IMAGE" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add "$IMAGE"
+            git add docs/screenshots/*.png
             if ! git diff --cached --quiet; then
               git commit -m "test: update metro screenshot [skip ci]"
               git push

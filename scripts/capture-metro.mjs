@@ -9,6 +9,17 @@ try {
   // This PR includes a verified official dataset; a silent demo fallback is a regression.
   await page.getByText('U.S. Census Vintage 2025 · 359 lower-48 metros').first().waitFor({ state: 'visible' })
   await page.getByText('Data: U.S. Census Bureau Vintage 2025').first().waitFor({ state: 'visible' })
+  // Validate real Census search and detailed selection before capturing the map.
+  const search = page.getByRole('searchbox', { name: 'Find a metropolitan area' })
+  await search.fill('Denver')
+  await page.getByRole('option', { name: /Denver-Aurora/ }).first().click()
+  const details = page.getByTestId('metro-details')
+  await details.getByText('Population (2025)').waitFor()
+  await details.getByText('CBSA code').waitFor()
+  await details.getByText('19740').waitFor()
+  await mkdir('docs/screenshots', { recursive: true })
+  await page.screenshot({ path: 'docs/screenshots/metro-search-details.png', fullPage: true })
+  await details.getByRole('button', { name: 'Clear' }).click()
   const canvas = page.locator('[data-testid="metro-shading-canvas"]')
   await canvas.waitFor({ state: 'visible' })
   await page.waitForFunction(() => {
