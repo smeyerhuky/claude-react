@@ -567,7 +567,7 @@ export default function MetroPopulationVoronoi() {
           <div role="listbox" aria-label="Matching metro areas" className="max-h-[min(40dvh,260px)] overflow-y-auto mt-2 divide-y divide-slate-200 rounded-lg border border-slate-200 bg-white text-slate-900">
             {searchMatches.map(a=><div key={a.id} className="flex items-center gap-2 px-2 py-2 text-xs sm:text-sm bg-white text-slate-900 hover:bg-slate-50">
               <button role="option" aria-selected={selected?.id===a.id} onClick={()=>chooseMetro(a)} className="min-w-0 flex-1 min-h-10 truncate text-left text-slate-900 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded" style={{ color: "#0f172a", backgroundColor: "#ffffff" }}><span style={{color:'#0f172a'}}>{a.name}</span></button>
-              <button onClick={()=>togglePin(a)} className="shrink-0 min-h-10 rounded border border-slate-400 bg-white px-3 py-2 font-medium text-slate-900 hover:bg-blue-50 hover:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600" aria-label={`${pinnedIds.includes(a.id)?'Unpin':'Pin'} ${a.name}`}>{pinnedIds.includes(a.id)?'Unpin':'Pin'}</button>
+              <button onClick={()=>togglePin(a)} className="shrink-0 min-h-10 rounded border border-slate-400 bg-white px-3 py-2 font-medium text-slate-900 hover:bg-blue-50 hover:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600" aria-label={`${pinnedIds.includes(a.id)?'Unpin':'Pin'} ${a.name}`} title={pinnedIds.includes(a.id)?'Unpin city':'Pin city'}><span aria-hidden="true" className="text-xl leading-none">📌</span></button>
             </div>)}
             {search && !searchMatches.length && <p className="p-2 text-sm">No matching metros.</p>}
           </div>
@@ -659,7 +659,7 @@ export default function MetroPopulationVoronoi() {
                 <div><dt className="text-xs text-slate-500">Current threshold</dt><dd>{isEligible?'Qualifies':'Below minimum'}</dd></div>
               </dl>
               <div className="mt-3 flex gap-2">
-                <button className="rounded border px-3 py-2" onClick={()=>togglePin(selected)}>{pinnedIds.includes(selected.id)?'Unpin city':'Pin city'}</button>
+                <button type="button" className="min-h-11 min-w-11 rounded border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600" onClick={()=>togglePin(selected)} aria-label={`${pinnedIds.includes(selected.id)?'Unpin':'Pin'} ${selected.name}`} title={pinnedIds.includes(selected.id)?'Unpin city':'Pin city'}><span aria-hidden="true" className="text-xl leading-none">📌</span></button>
                 {!isEligible && <button className="rounded border px-3 py-2" onClick={()=>choose(selected.pop)}>Include this metro in the map</button>}
                 <button className="rounded border px-3 py-2" onClick={resetView}>Full map</button>
               </div>
