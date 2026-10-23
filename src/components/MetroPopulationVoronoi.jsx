@@ -411,22 +411,22 @@ export default function MetroPopulationVoronoi() {
           <a href="#/" aria-label="Home" title="Home" className="flex h-10 w-10 items-center justify-center rounded-lg hover:bg-slate-100 text-xl">⌂</a>
           {drawerOpen && <button aria-label="Collapse navigation" onClick={()=>setDrawerOpen(false)} className="rounded-lg px-2 py-2 hover:bg-slate-100">‹</button>}
         </div>
-        <button aria-label={drawerOpen?'Collapse controls':'Expand controls'} onClick={()=>setDrawerOpen(v=>!v)} className="mx-2 mt-3 rounded-lg p-2 text-center hover:bg-slate-100" title="Map controls">☷</button>
+        <button aria-label={drawerOpen?'Collapse controls':'Expand controls'} onClick={()=>setDrawerOpen(v=>!v)} className="mx-2 mt-3 min-h-11 rounded-lg p-2 text-center text-slate-900 hover:bg-slate-100" title="Map controls">☷</button>
         {drawerOpen && <div className="min-h-0 flex-1 overflow-y-auto p-3 text-sm space-y-5">
           <div><h2 className="font-bold text-lg">Map controls</h2><p className="text-xs text-slate-500">2025 Census metro areas</p></div>
           <section className="space-y-3">
             <label htmlFor="metro-range" className="font-semibold">Minimum metro population</label>
             <div className="flex gap-2 items-center">
-              <button aria-label="Decrease population" onClick={()=>choose(threshold-step)} className="border rounded-lg px-3 py-2">−</button>
+              <button aria-label="Decrease population" onClick={()=>choose(threshold-step)} className="min-h-11 border border-slate-300 bg-white text-slate-900 rounded-lg px-3 py-2">−</button>
               <input aria-label="Exact minimum population" type="number" min={MIN} max={MAX} step={1000} value={typed}
                 onChange={e=>setTyped(e.target.value)} onBlur={()=>choose(Number(typed))}
-                onKeyDown={e=>{if(e.key==='Enter')choose(Number(typed))}} className="w-full min-w-0 border rounded-lg p-2 text-right"/>
+                onKeyDown={e=>{if(e.key==='Enter')choose(Number(typed))}} className="w-full min-w-0 min-h-11 border border-slate-300 bg-white text-slate-900 rounded-lg p-2 text-right"/>
               <button aria-label="Increase population" onClick={()=>choose(threshold+step)} className="border rounded-lg px-3 py-2">+</button>
             </div>
             <input id="metro-range" aria-label="Minimum metro population slider" type="range" min={0} max={1000} value={toTrack(threshold)}
               onChange={e=>choose(fromTrack(e.target.value))} className="w-full accent-blue-700"/>
             <div className="flex flex-wrap gap-1">{PRESETS.map(n=><button key={n} onClick={()=>choose(n)}
-              className={`rounded-full border px-2 py-1 text-xs ${threshold===n?'bg-blue-700 text-white':'bg-white'}`}>{fmt(n)}</button>)}</div>
+              className={`min-h-9 rounded-full border border-slate-400 px-3 py-1 text-xs font-medium ${threshold===n?'bg-blue-700 text-white':'bg-white text-slate-900'}`}>{fmt(n)}</button>)}</div>
             <label className="flex items-center gap-2"><input type="checkbox" checked={showLabels} onChange={e=>setShowLabels(e.target.checked)}/> Show city labels</label>
           </section>
           <section aria-label="Pinned metros" className="space-y-2">
@@ -437,12 +437,12 @@ export default function MetroPopulationVoronoi() {
               <span aria-hidden="true" className="text-orange-700 font-bold tabular-nums">{index+1}.</span>
               <button className="min-w-0 flex-1 text-left" onClick={()=>chooseMetro(a)} title={a.name}>
                 <span className="block truncate font-semibold" style={{color:'#0f172a'}}>{shortNames.get(a.id)||a.name}</span>
-                <span className="block text-xs tabular-nums text-slate-700">{a.pop.toLocaleString()} residents</span>
+                <span className="block text-sm tabular-nums text-slate-700">{a.pop.toLocaleString()} residents</span>
               </button>
-              <button className="rounded px-2 py-1 text-slate-800 hover:bg-orange-100" aria-label={`Unpin ${a.name}`} onClick={()=>togglePin(a)}>✕</button>
+              <button className="min-h-10 min-w-10 rounded px-2 py-1 text-slate-800 hover:bg-orange-100" aria-label={`Unpin ${a.name}`} onClick={()=>togglePin(a)}>✕</button>
             </div>) : <p className="text-slate-600 text-xs">Search and pin several metros to compare population and locations.</p>}
           </section>
-          <button className="w-full rounded-lg border px-3 py-2" onClick={resetView}>Return to full map</button>
+          <button className="w-full min-h-11 rounded-lg border border-slate-300 bg-white text-slate-900 px-3 py-2" onClick={resetView}>Return to full map</button>
           <p className="text-xs text-slate-500">Census 2025 metro populations · Nearest-metro Voronoi regions (not official CBSA boundaries)</p>
         </div>}
       </aside>
@@ -454,7 +454,7 @@ export default function MetroPopulationVoronoi() {
           </div>
           <div className="relative flex min-w-0 items-center justify-end">
             <button aria-label={searchOpen?'Close metro search':'Open metro search'} title="Search metros" onClick={()=>{setSearchOpen(v=>!v);setSearch('')}}
-              className="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border bg-white shadow-sm">⌕</button>
+              className="z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border bg-white shadow-sm">⌕</button>
           </div>
         </div>
         {searchOpen && <section aria-label="Metro search" className="absolute z-40 right-2 sm:right-5 top-14 w-[min(420px,calc(100%-16px))] max-w-[calc(100%-16px)] rounded-xl border bg-white shadow-xl p-3">
@@ -465,12 +465,12 @@ export default function MetroPopulationVoronoi() {
               className="w-full rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-500 px-3 py-2 pr-12 focus:outline-none focus:ring-2 focus:ring-blue-600"/>
             <button type="button" aria-label={search?'Clear metro search':'Close metro search panel'} title={search?'Clear search':'Close search'}
               onClick={()=>{if(search){setSearch('');document.getElementById('metro-search')?.focus()}else{setSearchOpen(false)}}}
-              className="absolute right-1 top-1 flex h-8 w-8 items-center justify-center rounded-md text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-600">✕</button>
+              className="absolute right-0 top-0 flex h-11 w-11 items-center justify-center rounded-md text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-600">✕</button>
           </div>
           <div role="listbox" aria-label="Matching metro areas" className="max-h-[min(40dvh,260px)] overflow-y-auto mt-2 divide-y divide-slate-200 rounded-lg border border-slate-200 bg-white text-slate-900">
             {searchMatches.map(a=><div key={a.id} className="flex items-center gap-2 px-2 py-2 text-xs sm:text-sm bg-white text-slate-900 hover:bg-slate-50">
-              <button role="option" aria-selected={selected?.id===a.id} onClick={()=>chooseMetro(a)} className="min-w-0 flex-1 truncate text-left text-slate-900 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded" style={{ color: "#0f172a", backgroundColor: "#ffffff" }}><span style={{color:'#0f172a'}}>{a.name}</span></button>
-              <button onClick={()=>togglePin(a)} className="shrink-0 rounded border border-slate-400 bg-white px-2 py-1 font-medium text-slate-900 hover:bg-blue-50 hover:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600" aria-label={`${pinnedIds.includes(a.id)?'Unpin':'Pin'} ${a.name}`}>{pinnedIds.includes(a.id)?'Unpin':'Pin'}</button>
+              <button role="option" aria-selected={selected?.id===a.id} onClick={()=>chooseMetro(a)} className="min-w-0 flex-1 min-h-10 truncate text-left text-slate-900 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded" style={{ color: "#0f172a", backgroundColor: "#ffffff" }}><span style={{color:'#0f172a'}}>{a.name}</span></button>
+              <button onClick={()=>togglePin(a)} className="shrink-0 min-h-10 rounded border border-slate-400 bg-white px-3 py-2 font-medium text-slate-900 hover:bg-blue-50 hover:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600" aria-label={`${pinnedIds.includes(a.id)?'Unpin':'Pin'} ${a.name}`}>{pinnedIds.includes(a.id)?'Unpin':'Pin'}</button>
             </div>)}
             {search && !searchMatches.length && <p className="p-2 text-sm">No matching metros.</p>}
           </div>
@@ -488,7 +488,7 @@ export default function MetroPopulationVoronoi() {
             <g pointerEvents="none">{labelLayout.filter(item=>item.leader).map(item=>
               <line key={item.a.id} x1={item.a.p[0]} y1={item.a.p[1]} x2={item.tx} y2={item.ty}
                 stroke="#64748b" strokeOpacity="0.52" strokeWidth="0.8" />)}</g>
-            <g>{qualifying.map(a=><g key={a.id} onMouseEnter={()=>setHovered(a)} onFocus={()=>setHovered(a)} onClick={()=>{setHovered(null);chooseMetro(a)}} style={{cursor:'pointer'}}>
+            <g>{qualifying.map(a=><g key={a.id} role="button" tabIndex={0} aria-label={`View ${a.name} metro statistics`} onMouseEnter={()=>setHovered(a)} onFocus={()=>setHovered(a)} onClick={()=>{setHovered(null);chooseMetro(a)}} onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();chooseMetro(a)}}} style={{cursor:'pointer'}}>
               <circle cx={a.p[0]} cy={a.p[1]} r={pinnedIds.includes(a.id)?6:selected?.id===a.id?4.8:3.2} fill={pinnedIds.includes(a.id)?"#f97316":"#0f172a"} stroke="white" strokeWidth="1.2"/>
               <title>{a.name}: ~{a.pop.toLocaleString()} ({sourceKind === 'census' ? 'Census 2025 estimate' : importedPoints ? 'uploaded population' : 'illustrative estimate'})</title>
             </g>)}</g>
