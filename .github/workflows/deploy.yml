@@ -1,31 +1,42 @@
-# .github/workflows/deploy.yml
 name: gh-pages vite deploy
-
 on:
   push:
-    branches:
-      - main
-
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: metro-gh-pages-deploy
+  cancel-in-progress: false
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/checkout@v4
+      - name: Setup Node.js and Yarn cache
+        uses: actions/setup-node@v4
         with:
           node-version: '22'
-          
-      - name: Install dependencies
-        run: yarn install
-        
+          cache: yarn
+      - name: Install locked dependencies
+        run: |
+          corepack enable
+          yarn install --frozen-lockfile
       - name: Build
         run: yarn build
-        
+      - name: Validate deploy payload
+        run: |
+          test -s dist/index.html
+          test -s dist/data/metros-census-2025.csv
+          echo "Built site and official Census data verified" >> "$GITHUB_STEP_SUMMARY"
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
           branch: gh-pages
+      - name: Report deployment
+        run: |
+          echo "### GitHub Pages deployment" >> "$GITHUB_STEP_SUMMARY"
+          echo "Source commit: \`$GITHUB_SHA\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "Target branch: \`gh-pages\`" >> "$GITHUB_STEP_SUMMARY"
