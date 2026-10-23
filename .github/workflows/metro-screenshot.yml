@@ -2,8 +2,24 @@ name: Metro Map Screenshot
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - 'src/components/MetroPopulationVoronoi.jsx'
+      - 'public/data/metros-census-2025.csv'
+      - 'scripts/capture-metro.mjs'
+      - 'scripts/capture-app-states.mjs'
+      - 'scripts/build_metro_merge_timelapse.py'
+      - '.github/workflows/metro-screenshot.yml'
+      - '.github/workflows/metro-merge-timelapse.yml'
   push:
     branches: [main]
+    paths:
+      - 'src/components/MetroPopulationVoronoi.jsx'
+      - 'public/data/metros-census-2025.csv'
+      - 'scripts/capture-metro.mjs'
+      - 'scripts/capture-app-states.mjs'
+      - 'scripts/build_metro_merge_timelapse.py'
+      - '.github/workflows/metro-screenshot.yml'
+      - '.github/workflows/metro-merge-timelapse.yml'
   workflow_dispatch:
 concurrency:
   group: metro-visual-${{ github.event.pull_request.number || github.ref }}
