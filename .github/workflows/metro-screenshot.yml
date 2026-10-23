@@ -3,6 +3,9 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
+concurrency:
+  group: metro-visual-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: write
   pull-requests: write
@@ -24,7 +27,11 @@ jobs:
       - name: Allow Git operations in container checkout
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - run: corepack enable
-      - run: yarn install --frozen-lockfile
+      - name: Install locked dependencies with timing
+        run: |
+          start=$SECONDS
+          yarn install --frozen-lockfile --prefer-offline
+          echo "Dependency installation: $((SECONDS-start))s" >> "$GITHUB_STEP_SUMMARY"
       - run: yarn add --dev --ignore-scripts --no-lockfile playwright@1.56.1
       - run: npm run build
       - name: Serve preview

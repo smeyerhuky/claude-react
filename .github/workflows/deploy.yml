@@ -35,6 +35,14 @@ jobs:
         with:
           folder: dist
           branch: gh-pages
+      - name: Verify published gh-pages files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin gh-pages --depth=1
+          test "$(git show origin/gh-pages:index.html | sha256sum | cut -d' ' -f1)" = "$(sha256sum dist/index.html | cut -d' ' -f1)"
+          test "$(git show origin/gh-pages:data/metros-census-2025.csv | sha256sum | cut -d' ' -f1)" = "$(sha256sum dist/data/metros-census-2025.csv | cut -d' ' -f1)"
+          echo "Published HTML and Census CSV match the production build." >> "$GITHUB_STEP_SUMMARY"
       - name: Report deployment
         run: |
           echo "### GitHub Pages deployment" >> "$GITHUB_STEP_SUMMARY"
