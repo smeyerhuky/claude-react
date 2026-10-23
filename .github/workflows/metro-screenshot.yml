@@ -1,7 +1,25 @@
 name: Metro Map Screenshot
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - 'src/components/MetroPopulationVoronoi.jsx'
+      - 'public/data/metros-census-2025.csv'
+      - 'scripts/capture-metro.mjs'
+      - 'scripts/capture-app-states.mjs'
+      - 'scripts/build_metro_merge_timelapse.py'
+      - '.github/workflows/metro-screenshot.yml'
+      - '.github/workflows/metro-merge-timelapse.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/components/MetroPopulationVoronoi.jsx'
+      - 'public/data/metros-census-2025.csv'
+      - 'scripts/capture-metro.mjs'
+      - 'scripts/capture-app-states.mjs'
+      - 'scripts/build_metro_merge_timelapse.py'
+      - '.github/workflows/metro-screenshot.yml'
+      - '.github/workflows/metro-merge-timelapse.yml'
   workflow_dispatch:
 concurrency:
   group: metro-visual-${{ github.event.pull_request.number || github.ref }}
@@ -11,7 +29,7 @@ permissions:
   pull-requests: write
 jobs:
   screenshot:
-    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-24.04
     container:
       image: mcr.microsoft.com/playwright:v1.56.1-noble
@@ -41,7 +59,8 @@ jobs:
           yarn add --dev --ignore-scripts --no-lockfile playwright@1.56.1
           echo "Dependency installation (cache miss): $((SECONDS-start))s" >> "$GITHUB_STEP_SUMMARY"
       - name: Report dependency cache result
-        run: echo "Installed dependency cache: ${{ steps.modules.outputs.cache-hit == 'true' && 'HIT' || 'MISS' }}" >> "$GITHUB_STEP_SUMMARY"
+        run: |
+          echo "Installed dependency cache: ${{ steps.modules.outputs.cache-hit == 'true' && 'HIT' || 'MISS' }}" >> "$GITHUB_STEP_SUMMARY"
       - run: npm run build
       - name: Serve preview
         run: |
@@ -87,7 +106,7 @@ jobs:
           if-no-files-found: warn
       - name: Commit latest screenshot (pass or fail)
         id: screenshot_commit
-        if: always()
+        if: always() && github.event_name == 'pull_request'
         shell: bash
         run: |
           IMAGE=docs/screenshots/metro-default.png
