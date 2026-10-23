@@ -41,6 +41,21 @@ jobs:
             git commit -m "data: add validated Census 2025 metro population dataset [skip ci]"
             git push
           fi
+      - name: Test commit timelapse encoding on pull requests
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          command -v ffmpeg || { sudo apt-get update -qq; sudo apt-get install -y ffmpeg; }
+          python3 scripts/build_metro_merge_timelapse.py
+          test -s "metro-timelapse/metro-pr-${PR_NUMBER}-timelapse.mp4"
+      - name: Upload timelapse preview
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: metro-pr-timelapse-preview
+          path: metro-timelapse/
       - name: Propose updated Census dataset
         if: github.event_name != 'pull_request'
         env:
