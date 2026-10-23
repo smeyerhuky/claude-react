@@ -24,7 +24,7 @@ jobs:
           fi
       - name: Attempt native attachment using default Actions token
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.GH_MEDIA_UPLOAD_TOKEN }}
         shell: bash
         run: |
           set -uo pipefail
