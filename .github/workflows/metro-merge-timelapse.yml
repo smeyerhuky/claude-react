@@ -3,6 +3,14 @@ on:
   pull_request_target:
     types: [closed]
     branches: [main]
+    paths:
+      - 'src/components/MetroPopulationVoronoi.jsx'
+      - 'public/data/metros-census-2025.csv'
+      - 'scripts/capture-metro.mjs'
+      - 'scripts/capture-app-states.mjs'
+      - 'scripts/build_metro_merge_timelapse.py'
+      - '.github/workflows/metro-screenshot.yml'
+      - '.github/workflows/metro-merge-timelapse.yml'
   workflow_dispatch:
     inputs:
       pr_number:
