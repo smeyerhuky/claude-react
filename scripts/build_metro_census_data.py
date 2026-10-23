@@ -39,7 +39,7 @@ def gazetteer():
     archive = zipfile.ZipFile(io.BytesIO(get(GEO_URL)))
     dbf = next(n for n in archive.namelist() if n.lower().endswith(".dbf"))
     reader = shapefile.Reader(dbf=io.BytesIO(archive.read(dbf)), encoding="utf-8")
-    rows = [dict(record) for record in reader.records()]
+    rows = [record.as_dict() for record in reader.records()]
     metros = [r for r in rows if str(r.get("LSAD", "")).strip() == "M1"]
     if len(metros) < 350:
         raise ValueError(f"Expected >=350 metropolitan CBSA shapes, received {len(metros)}")
