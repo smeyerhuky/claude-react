@@ -21,6 +21,22 @@ try {
   await page.getByRole('button', { name: 'Open metro search' }).click()
   const search = page.getByRole('searchbox')
   await search.fill('Denver')
+  const searchPanel = page.getByRole('region', { name: 'Metro search' })
+  const result = page.getByRole('option', { name: /Denver-Aurora/ }).first()
+  await result.waitFor()
+  const colors = await result.evaluate(el => {
+    const row = el.closest('div')
+    const text = getComputedStyle(el.querySelector('span') || el).color
+    const background = getComputedStyle(row).backgroundColor
+    const pin = getComputedStyle(row.querySelector('button[aria-label^="Pin"]'))
+    return { text, background, pinText: pin.color, pinBackground: pin.backgroundColor }
+  })
+  if (colors.text !== 'rgb(15, 23, 42)' || colors.background !== 'rgb(255, 255, 255)' || colors.pinText !== 'rgb(15, 23, 42)') {
+    throw Error('Search contrast regression: ' + JSON.stringify(colors))
+  }
+  await searchPanel.getByRole('button', { name: 'Clear metro search' }).click()
+  if (await search.inputValue() !== '') throw Error('Search clear button failed')
+  await search.fill('Denver')
   await page.getByRole('option', { name: /Denver-Aurora/ }).first().click()
   const details = page.getByTestId('metro-details')
   await details.getByText('19740').waitFor()
