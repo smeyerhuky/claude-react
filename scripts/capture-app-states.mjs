@@ -18,6 +18,8 @@ try {
   ]) {
     const page = await browser.newPage({ viewport: { width: spec.width, height: spec.height }, deviceScaleFactor: 1, colorScheme: spec.dark ? 'dark' : 'light' })
     try {
+      const startedAt = performance.now()
+      let mapReadyMs = null
       await page.goto('http://127.0.0.1:4173/#/', { waitUntil: 'domcontentloaded' })
       await page.getByText('Metro Population Regions — Interactive Map').first().click()
       await page.getByTestId('metro-app').waitFor()
@@ -37,6 +39,7 @@ try {
         return ctx && ctx.getImageData(500, 310, 1, 1).data[3] > 0
       }, null, { timeout: 30000 })
 
+      mapReadyMs = Math.round(performance.now() - startedAt)
       if (spec.details) {
         await page.getByRole('button', { name: 'Open metro search' }).click()
         const search = page.getByRole('searchbox')
@@ -70,7 +73,7 @@ try {
       const path = `${directory}/${spec.name}.png`
       await page.screenshot({ path, fullPage: false, animations: 'disabled' })
       const sha256 = createHash('sha256').update(await readFile(path)).digest('hex')
-      manifest.states.push({ name: spec.name, ...dimensions, horizontalFit: dimensions.documentWidth <= spec.width + 1,
+      manifest.states.push({ name: spec.name, mapReadyMs, captureMs: Math.round(performance.now() - startedAt), ...dimensions, horizontalFit: dimensions.documentWidth <= spec.width + 1,
         verticalFit: dimensions.documentHeight <= spec.height + 1, sha256, path })
       if (dimensions.documentHeight > spec.height + 1) throw Error(`Vertical page overflow in ${spec.name}: ${dimensions.documentHeight} > ${spec.height}`)
       if (dimensions.documentWidth > spec.width + 1) {
@@ -84,4 +87,4 @@ try {
   await writeFile(`${directory}/visual-manifest.json`, JSON.stringify(manifest, null, 2) + '\n')
   await browser.close()
 }
-console.log(JSON.stringify(manifest.states.map(({name,horizontalFit,verticalFit})=>({name,horizontalFit,verticalFit}))))
+console.log(JSON.stringify(manifest.states.map(({name,mapReadyMs,captureMs,horizontalFit,verticalFit})=>({name,mapReadyMs,captureMs,horizontalFit,verticalFit}))))
