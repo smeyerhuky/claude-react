@@ -24,13 +24,17 @@ blob_shas = set()
 for sha in sha_list:
     if cmd("git", "cat-file", "-e", f"{sha}^{{commit}}", check=False).returncode:
         cmd("git", "fetch", "--quiet", "origin", sha, check=False)
-    rev = cmd("git", "rev-parse", f"{sha}:docs/screenshots/metro-default.png", check=False)
+    screenshot = "docs/screenshots/desktop-home.png"
+    rev = cmd("git", "rev-parse", f"{sha}:{screenshot}", check=False)
+    if rev.returncode:
+        screenshot = "docs/screenshots/metro-default.png"
+        rev = cmd("git", "rev-parse", f"{sha}:{screenshot}", check=False)
     if rev.returncode:
         continue
     # Images are binary: do not use text subprocess capture for extraction.
     path = output / f"frame-{len(frames):04d}.png"
     with path.open("wb") as fp:
-        result = subprocess.run(["git", "show", f"{sha}:docs/screenshots/metro-default.png"], stdout=fp, stderr=subprocess.DEVNULL)
+        result = subprocess.run(["git", "show", f"{sha}:{screenshot}"], stdout=fp, stderr=subprocess.DEVNULL)
     if result.returncode or path.stat().st_size < 100:
         path.unlink(missing_ok=True)
         continue
