@@ -144,8 +144,8 @@
   z-index: 9999 !important;
 }
 
-/* Ensure Select content has proper background */
-[role="listbox"] {
+/* EDM Mixer dropdowns only: do not override listboxes in other demos. */
+.edm-full-screen [role="listbox"] {
   background-color: rgb(31 41 55) !important; /* gray-800 */
   border: 1px solid rgb(75 85 99) !important; /* gray-600 */
   backdrop-filter: none !important;
@@ -153,14 +153,14 @@
 }
 
 /* Select item styling */
-[role="option"] {
+.edm-full-screen [role="option"] {
   background-color: transparent !important;
   color: white !important;
 }
 
-[role="option"]:hover,
-[role="option"]:focus,
-[role="option"][data-highlighted] {
+.edm-full-screen [role="option"]:hover,
+.edm-full-screen [role="option"]:focus,
+.edm-full-screen [role="option"][data-highlighted] {
   background-color: rgb(55 65 81) !important; /* gray-700 */
   outline: none !important;
 }

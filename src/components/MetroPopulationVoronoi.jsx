@@ -429,11 +429,18 @@ export default function MetroPopulationVoronoi() {
               className={`rounded-full border px-2 py-1 text-xs ${threshold===n?'bg-blue-700 text-white':'bg-white'}`}>{fmt(n)}</button>)}</div>
             <label className="flex items-center gap-2"><input type="checkbox" checked={showLabels} onChange={e=>setShowLabels(e.target.checked)}/> Show city labels</label>
           </section>
-          <section aria-label="Pinned metros" className="space-y-2"><h3 className="font-semibold">Pinned cities ({pinned.length})</h3>
-            {pinned.length ? pinned.map(a=><div key={a.id} className="flex items-center justify-between gap-2 rounded bg-orange-50 px-2 py-1">
-              <button className="truncate text-left underline" onClick={()=>chooseMetro(a)}>{shortNames.get(a.id)||a.name}</button>
-              <button aria-label={`Unpin ${a.name}`} onClick={()=>togglePin(a)}>×</button>
-            </div>) : <p className="text-slate-500 text-xs">Search and pin several metros to compare locations.</p>}
+          <section aria-label="Pinned metros" className="space-y-2">
+            <div className="flex items-center justify-between gap-2"><h3 className="font-semibold">Pinned cities ({pinned.length})</h3>
+              {pinned.length > 0 && <button onClick={()=>setPinnedIds([])} className="text-xs text-blue-800 underline" aria-label="Clear all pinned cities">Clear all</button>}
+            </div>
+            {pinned.length ? [...pinned].sort((a,b)=>b.pop-a.pop).map((a,index)=><div key={a.id} className="flex items-center gap-2 rounded-lg border border-orange-200 bg-orange-50 px-2 py-2 text-slate-900">
+              <span aria-hidden="true" className="text-orange-700 font-bold tabular-nums">{index+1}.</span>
+              <button className="min-w-0 flex-1 text-left" onClick={()=>chooseMetro(a)} title={a.name}>
+                <span className="block truncate font-semibold" style={{color:'#0f172a'}}>{shortNames.get(a.id)||a.name}</span>
+                <span className="block text-xs tabular-nums text-slate-700">{a.pop.toLocaleString()} residents</span>
+              </button>
+              <button className="rounded px-2 py-1 text-slate-800 hover:bg-orange-100" aria-label={`Unpin ${a.name}`} onClick={()=>togglePin(a)}>✕</button>
+            </div>) : <p className="text-slate-600 text-xs">Search and pin several metros to compare population and locations.</p>}
           </section>
           <button className="w-full rounded-lg border px-3 py-2" onClick={resetView}>Return to full map</button>
           <p className="text-xs text-slate-500">Census 2025 metro populations · Nearest-metro Voronoi regions (not official CBSA boundaries)</p>
