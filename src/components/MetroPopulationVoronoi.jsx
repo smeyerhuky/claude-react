@@ -234,6 +234,7 @@ export default function MetroPopulationVoronoi() {
   const [detailOpen,setDetailOpen] = useState(false)
   const [compareOpen,setCompareOpen] = useState(false)
   const [linkCopied,setLinkCopied] = useState(false)
+  const [legendOpen,setLegendOpen] = useState(false)
   const restoringUrl = useRef(false)
   const previousShare = useRef(null)
   useEffect(()=>{
@@ -521,7 +522,11 @@ export default function MetroPopulationVoronoi() {
             <h1 className="shrink-0 text-sm sm:text-lg font-bold">Nearest metro map</h1>
             <p data-testid="map-explainer" aria-live="polite" className="min-w-0 truncate text-xs sm:text-sm text-slate-700" title={explainer}>{explainer}</p>
           </div>
-          <button type="button" onClick={copyViewLink} aria-label="Copy map link"
+          <button type="button" onClick={()=>setLegendOpen(v=>!v)} aria-label={legendOpen?'Close map legend':'Open map legend'} aria-expanded={legendOpen} aria-controls="metro-legend"
+             className="shrink-0 min-h-11 rounded-xl border border-slate-300 bg-white px-3 text-xs sm:text-sm font-semibold text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
+             <span aria-hidden="true">ⓘ </span><span className="hidden sm:inline">Map </span>key
+           </button>
+           <button type="button" onClick={copyViewLink} aria-label="Copy map link"
             className="shrink-0 min-h-11 rounded-xl border border-slate-300 bg-white px-3 text-xs sm:text-sm font-semibold text-slate-900 shadow-sm">
             {linkCopied?'Copied!':'Copy link'}
           </button>
@@ -530,7 +535,21 @@ export default function MetroPopulationVoronoi() {
               className="z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border bg-white shadow-sm">⌕</button>
           </div>
         </div>
-        {searchOpen && <section aria-label="Metro search" className="absolute z-40 right-2 sm:right-5 top-14 w-[min(420px,calc(100%-16px))] max-w-[calc(100%-16px)] rounded-xl border bg-white shadow-xl p-3">
+        {legendOpen && <section id="metro-legend" data-testid="metro-legend" aria-label="Map legend and geography explanation"
+           className="absolute z-40 right-2 sm:right-5 top-14 w-[min(355px,calc(100%-16px))] max-h-[min(75dvh,520px)] overflow-y-auto rounded-xl border border-slate-300 bg-white p-4 shadow-xl text-slate-900">
+           <div className="flex items-start justify-between gap-3 mb-3">
+             <h2 className="font-semibold text-base">How to read this map</h2>
+             <button type="button" aria-label="Close map legend" onClick={()=>setLegendOpen(false)} className="min-h-10 min-w-10 rounded-lg border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600">✕</button>
+           </div>
+           <ul className="space-y-3 text-sm">
+             <li className="flex gap-3 items-start"><span aria-hidden="true" className="mt-1 inline-block h-5 w-7 shrink-0 rounded border border-slate-500 bg-emerald-200"/><span><strong>Colored regions</strong> show which qualifying metro center is nearest. Colors distinguish regions; they do not indicate population.</span></li>
+             <li className="flex gap-3 items-start"><span aria-hidden="true" className="mt-3 inline-block w-7 shrink-0 border-t-2 border-dotted border-slate-600"/><span><strong>Dotted borders</strong> divide nearest-metro regions, not government boundaries.</span></li>
+             <li className="flex gap-3 items-start"><span aria-hidden="true" className="mt-1 inline-block h-5 w-5 shrink-0 rounded-full border-[3px] border-blue-700 bg-blue-100"/><span><strong>Blue ring</strong> marks the currently selected metro.</span></li>
+             <li className="flex gap-3 items-start"><span aria-hidden="true" className="mt-1 inline-block h-5 w-5 shrink-0 rounded-full border-[3px] border-orange-700 bg-orange-100"/><span><strong>Orange ring</strong> marks a pinned metro for comparison.</span></li>
+           </ul>
+           <p className="mt-3 border-t border-slate-200 pt-3 text-xs leading-5 text-slate-700"><strong>Important:</strong> These are illustrative Voronoi regions clipped to the contiguous United States, <strong>not official Census CBSA boundaries</strong>. Metro population figures are Census Vintage 2025 estimates. The population threshold controls which metro centers qualify; it does not redefine Census metro areas.</p>
+         </section>}
+         {searchOpen && <section aria-label="Metro search" className="absolute z-40 right-2 sm:right-5 top-14 w-[min(420px,calc(100%-16px))] max-w-[calc(100%-16px)] rounded-xl border bg-white shadow-xl p-3">
           <label htmlFor="metro-search" className="block font-semibold text-sm mb-2">Find and pin cities</label>
           <div className="relative">
             <input id="metro-search" type="search" value={search} autoFocus placeholder="City, state, or CBSA code" onChange={e=>setSearch(e.target.value)}
