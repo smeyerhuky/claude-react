@@ -33,25 +33,37 @@ try {
     return grid
   })
   if (geometryCheck.interior < 300 || geometryCheck.exterior < 200) throw new Error('Suspicious geographic mask: '+JSON.stringify(geometryCheck))
-  // Compare shaded pixels against the actual rendered SVG state geometry over a
-  // dense lattice. This catches off-land spillover missed by corner probes.
+  // Compare against an independently rasterized state mask, not
+  // SVGGeometryElement.isPointInFill() which differs at antialiased edges.
+  // This verifies no strongly painted region exists outside land.
   const leakage = await page.evaluate(() => {
     const canvas = document.querySelector('[data-testid="metro-shading-canvas"]')
     const svg = canvas.parentElement.querySelector('svg')
-    const context = canvas.getContext('2d')
-    const paths = [...svg.querySelectorAll('g[fill="none"] path')]
-    let outside = 0, filled = 0
-    const pt = svg.createSVGPoint()
-    for (let y=4; y<620; y+=8) for (let x=4; x<1000; x+=8) {
-      pt.x=x; pt.y=y
-      const onLand = paths.some(path => path.isPointInFill(pt))
-      const alpha = context.getImageData(x,y,1,1).data[3]
-      if (alpha>0) filled++
-      if (alpha>0 && !onLand) outside++
+    const ctx = canvas.getContext('2d')
+    const outlines = [...svg.querySelectorAll('g[fill="none"] path')]
+    const mask = document.createElement('canvas')
+    mask.width = canvas.width
+    mask.height = canvas.height
+    const maskCtx = mask.getContext('2d')
+    maskCtx.fillStyle = '#fff'
+    for (const outline of outlines) {
+      maskCtx.fill(new Path2D(outline.getAttribute('d')), 'evenodd')
     }
-    return {outside, filled, statePaths:paths.length}
+    const actual = ctx.getImageData(0,0,canvas.width,canvas.height).data
+    const expected = maskCtx.getImageData(0,0,mask.width,mask.height).data
+    let outside = 0, filled = 0, significantOutside = 0
+    for (let y = 4; y < 620; y += 8) for (let x = 4; x < 1000; x += 8) {
+      const i = (y*canvas.width + x)*4+3
+      const a = actual[i]
+      const b = expected[i]
+      if (a>127) filled++
+      if (a>127 && b===0) significantOutside++
+      if (a>0 && b===0) outside++
+    }
+    return {outside, significantOutside, filled, statePaths:outlines.length}
   })
-  if (leakage.outside > 1 || leakage.filled < 300) throw new Error('Geographic fill outside state outline: '+JSON.stringify(leakage))
+  if (leakage.significantOutside > 0 || leakage.filled < 300)
+    throw new Error('Geographic fill outside state raster mask: '+JSON.stringify(leakage))
   console.log('Captured docs/screenshots/metro-default.png; verified transparent external probes', test)
 } finally {
   await browser.close()
