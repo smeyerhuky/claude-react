@@ -14,14 +14,12 @@ import json
 import re
 import urllib.request
 import zipfile
+import shapefile
 from pathlib import Path
 from openpyxl import load_workbook
 
 POP_URL = "https://www2.census.gov/programs-surveys/popest/tables/2020-2025/metro/totals/cbsa-met-est2025-pop.xlsx"
-GEO_URLS = [
-    "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_Gazetteer_cbsa_national.zip",
-    "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2024_Gazetteer/2024_Gazetteer_cbsa_national.zip",
-]
+GEO_URL = "https://www2.census.gov/geo/tiger/TIGER2025/CBSA/tl_2025_us_cbsa.zip"
 OUTPUT = Path("public/data/metros-census-2025.csv")
 REPORT = Path("public/data/metros-census-2025.report.json")
 
@@ -37,19 +35,15 @@ def norm(s):
 
 
 def gazetteer():
-    errors = []
-    for url in GEO_URLS:
-        try:
-            z = zipfile.ZipFile(io.BytesIO(get(url)))
-            txt = next(x for x in z.namelist() if x.lower().endswith(".txt"))
-            text = z.read(txt).decode("utf-8-sig")
-            rows = list(csv.DictReader(io.StringIO(text), delimiter="\t"))
-            if not rows:
-                raise ValueError("Gazetteer contains no rows")
-            return rows, url
-        except Exception as exc:
-            errors.append(f"{url}: {exc}")
-    raise RuntimeError("No official CBSA Gazetteer could be downloaded:\n" + "\n".join(errors))
+    """Use official TIGER CBSA geography; its DBF includes INTPTLAT/INTPTLON."""
+    archive = zipfile.ZipFile(io.BytesIO(get(GEO_URL)))
+    dbf = next(n for n in archive.namelist() if n.lower().endswith(".dbf"))
+    reader = shapefile.Reader(dbf=io.BytesIO(archive.read(dbf)), encoding="utf-8")
+    rows = [record.as_dict() for record in reader.records()]
+    metros = [r for r in rows if str(r.get("LSAD", "")).strip() == "M1"]
+    if len(metros) < 350:
+        raise ValueError(f"Expected >=350 metropolitan CBSA shapes, received {len(metros)}")
+    return metros, GEO_URL
 
 
 def poprows():
@@ -62,14 +56,12 @@ def poprows():
         raise ValueError("Could not locate Census Geographic Area header")
     header = [str(x).strip().lower() if x is not None else "" for x in rows[header_index]]
     area_col = next(i for i, x in enumerate(header) if "geographic area" in x)
-    year_cols = [i for i, x in enumerate(header) if "2025" in x]
+    # Census workbook has a two-row header: column titles followed by years.
+    year_cols = [i for j in range(max(0, header_index - 2), min(len(rows), header_index + 4))
+                 for i, val in enumerate(rows[j])
+                 if str(val).strip() == "2025"]
     if not year_cols:
-        # Census spreadsheets sometimes merge a 2025 year heading above 'Population Estimate'.
-        year_cols = [i for i in range(len(header)) if any(
-            "2025" in str(rows[j][i]) for j in range(max(0, header_index - 3), header_index + 1)
-            if i < len(rows[j]))]
-    if not year_cols:
-        raise ValueError("Cannot identify the July 1, 2025 population column")
+        raise ValueError("Cannot identify 2025 column; header rows: " + repr(rows[:header_index+4]))
     year_col = max(year_cols)
     code_cols = [i for i, x in enumerate(header) if "cbsa" in x or "geographic identifier" in x]
     result = []
@@ -80,7 +72,7 @@ def poprows():
             pop = int(str(raw).replace(",", ""))
         except (ValueError, TypeError):
             continue
-        if not name or pop < 100000:
+        if not name or pop < 100000 or "metro area" not in name.lower():
             continue
         code = ""
         if code_cols and code_cols[0] < len(row):
@@ -88,8 +80,8 @@ def poprows():
             if re.fullmatch(r"\d{5}(?:\.0)?", candidate):
                 code = candidate[:5]
         result.append((name.lstrip("."), code, pop))
-    if len(result) < 150:
-        raise ValueError(f"Only {len(result)} metro population records; refusing partial release")
+    if len(result) < 300:
+        raise ValueError(f"Only {len(result)} metro population records; headers={header!r}; selected_year_col={year_col}; sample_rows={rows[header_index+1:header_index+5]!r}")
     return result
 
 
@@ -97,10 +89,10 @@ def main():
     gaz, geo_url = gazetteer()
     by_code, by_name = {}, {}
     for row in gaz:
-        code = (row.get("GEOID") or row.get("GEOID2") or "").strip()
+        code = (row.get("GEOID") or row.get("CBSAFP") or "").strip()
         name = (row.get("NAME") or "").strip()
         lat = row.get("INTPTLAT") or row.get("INTPTLATITUDE")
-        lon = row.get("INTPTLONG") or row.get("INTPTLONGITUDE")
+        lon = row.get("INTPTLON") or row.get("INTPTLONG")
         try:
             point = (float(lon), float(lat))
         except (ValueError, TypeError):
@@ -124,7 +116,7 @@ def main():
             continue
         found.append((name, lon, lat, pop, code))
 
-    if len(found) < 150:
+    if len(found) < 300:
         raise ValueError(f"Only {len(found)} metros matched official coordinates; review join and input formats")
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     with OUTPUT.open("w", newline="") as f:
@@ -136,7 +128,7 @@ def main():
         "matched_conus_metros_at_least_100k": len(found),
         "unmatched_names": unmatched, "generated_from": "2025 Census population estimates",
         "matching": "5-digit CBSA ID first; exact normalized name only as fallback",
-        "anchor_definition": "Census Gazetteer representative point of CBSA geometry, not principal city center",
+        "anchor_definition": "TIGER/Line 2025 CBSA internal point, not principal city center",
     }, indent=2) + "\n")
     print(f"Wrote {len(found)} Census metros to {OUTPUT}; unmatched: {len(unmatched)}")
 
