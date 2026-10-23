@@ -17,6 +17,8 @@ try {
   await details.getByText('Population (2025)').waitFor()
   await details.getByText('CBSA code').waitFor()
   await details.getByText('19740').waitFor()
+  await mkdir('docs/screenshots', { recursive: true })
+  await page.screenshot({ path: 'docs/screenshots/metro-search-details.png', fullPage: true })
   await details.getByRole('button', { name: 'Clear' }).click()
   const canvas = page.locator('[data-testid="metro-shading-canvas"]')
   await canvas.waitFor({ state: 'visible' })
