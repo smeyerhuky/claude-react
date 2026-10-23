@@ -1,0 +1,28 @@
+import { chromium } from 'playwright'
+import { mkdir } from 'node:fs/promises'
+
+const browser = await chromium.launch({ headless: true })
+try {
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 })
+  await page.goto('http://127.0.0.1:4173/#/', { waitUntil: 'domcontentloaded' })
+  await page.getByText('Metro Population Regions — Interactive Map').first().click()
+  const canvas = page.locator('[data-testid="metro-shading-canvas"]')
+  await canvas.waitFor({ state: 'visible' })
+  await page.waitForFunction(() => {
+    const canvas = document.querySelector('[data-testid="metro-shading-canvas"]')
+    return canvas && canvas.getContext('2d').getImageData(500,310,1,1).data[3] > 0
+  }, null, { timeout: 20000 })
+  // The map's canvas must be fully transparent at locations outside the US.
+  const test = await canvas.evaluate(el => {
+    const ctx=el.getContext('2d')
+    const probes=[[10,10],[990,10],[10,600],[990,600],[500,20],[500,600],[25,310]]
+    return probes.map(([x,y])=>({x,y,alpha:ctx.getImageData(x,y,1,1).data[3]}))
+  })
+  if (test.some(p => p.alpha !== 0)) throw new Error('Canvas boundary spillover: '+JSON.stringify(test))
+  await mkdir('docs/screenshots', { recursive: true })
+  await page.locator('h1').first().screenshot({ path: '/tmp/metro-heading.png' })
+  await page.locator('[data-testid="metro-shading-canvas"]').screenshot({ path: 'docs/screenshots/metro-default.png' })
+  console.log('Captured docs/screenshots/metro-default.png; verified transparent external probes', test)
+} finally {
+  await browser.close()
+}
