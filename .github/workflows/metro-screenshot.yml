@@ -157,7 +157,7 @@ jobs:
               ? ['desktop-home', 'mobile-home', 'pins-one-expanded', 'pins-two-collapsed', 'pins-three-expanded', 'pins-four-scrolled', 'pins-six-scrolled-expanded'].map(name => `![${name}](https://raw.githubusercontent.com/${owner}/${repo}/${process.env.IMAGE_SHA}/docs/screenshots/${name}.png)`).join('\n\n')
               : 'Full-app screenshots unavailable; see artifact/logs.'
             const exportGallery = process.env.IMAGE_PRESENT === 'true' && process.env.EXPORT_RESULT === 'success'
-              ? ['metro-export-default', 'metro-export-denver-selected', 'metro-export-six-pins'].map(name => `![${name}](https://raw.githubusercontent.com/${owner}/${repo}/${process.env.IMAGE_SHA}/docs/screenshots/${name}.png)`).join('\\n\\n')
+              ? ['metro-export-default', 'metro-export-denver-selected', 'metro-export-six-pins'].map(name => `![${name}](https://raw.githubusercontent.com/${owner}/${repo}/${process.env.IMAGE_SHA}/docs/screenshots/${name}.png)`).join('\n\n')
               : 'Export images unavailable or visual checks failed; inspect artifact/logs.'
             const body = [
               `### Metro map screenshot — ${status}`,
