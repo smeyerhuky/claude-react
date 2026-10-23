@@ -1,14 +1,20 @@
 name: Metro map merge timelapse
 on:
-  pull_request:
+  pull_request_target:
     types: [closed]
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'Merged PR number to backfill (for example 65)'
+        required: true
+        type: number
 permissions:
   contents: write
   pull-requests: write
 jobs:
   merge-video:
-    if: github.event.pull_request.merged == true && github.event.pull_request.head.repo.full_name == github.repository
+    if: github.event_name == 'workflow_dispatch' || (github.event.pull_request.merged == true && github.event.pull_request.head.repo.full_name == github.repository)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout merged project
@@ -16,21 +22,32 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
+      - name: Verify this is a merged same-repository PR into main
+        id: validate
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REQUESTED_PR: ${{ github.event.pull_request.number || inputs.pr_number }}
+        run: |
+          PR="$REQUESTED_PR"
+          gh api "repos/$GITHUB_REPOSITORY/pulls/$PR" > /tmp/metro-merged-pr.json
+          jq -e --arg repo "$GITHUB_REPOSITORY" '.merged == true and .base.ref == "main" and .head.repo.full_name == $repo' /tmp/metro-merged-pr.json >/dev/null
+          echo "number=$PR" >> "$GITHUB_OUTPUT"
+          echo "merge_sha=$(jq -r .merge_commit_sha /tmp/metro-merged-pr.json)" >> "$GITHUB_OUTPUT"
       - name: Prepare dependencies
         run: |
           command -v ffmpeg || { sudo apt-get update -qq; sudo apt-get install -y ffmpeg; }
-          git fetch origin "refs/pull/${{ github.event.pull_request.number }}/head:refs/remotes/origin/merged-pr" || true
+          git fetch origin "refs/pull/${{ steps.validate.outputs.number }}/head:refs/remotes/origin/merged-pr" || true
       - name: Build video from every PR commit snapshot
         env:
           GH_TOKEN: ${{ github.token }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_NUMBER: ${{ steps.validate.outputs.number }}
         run: python3 scripts/build_metro_merge_timelapse.py
       - name: Publish MP4 as permanent GitHub release asset
         id: publish
         env:
           GH_TOKEN: ${{ github.token }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          MERGE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+          PR_NUMBER: ${{ steps.validate.outputs.number }}
+          MERGE_SHA: ${{ steps.validate.outputs.merge_sha }}
         run: |
           FILE="metro-timelapse/metro-pr-${PR_NUMBER}-timelapse.mp4"
           if [ ! -s "$FILE" ]; then
@@ -54,8 +71,8 @@ jobs:
         if: always()
         env:
           GH_TOKEN: ${{ github.token }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          MERGE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+          PR_NUMBER: ${{ steps.validate.outputs.number }}
+          MERGE_SHA: ${{ steps.validate.outputs.merge_sha }}
           PUBLISHED: ${{ steps.publish.outputs.published }}
         run: |
           python3 - <<'PY'
