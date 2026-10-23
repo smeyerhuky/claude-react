@@ -175,6 +175,31 @@ const parseMetroCsv = csv => {
   if (!result.length) throw Error('No qualifying contiguous-U.S. locations in the CSV')
   return result
 }
+// Keep official CBSA names for identity/details; map labels use principal city shorthand.
+// The few hyphenated principal-city names must not be split as metro divisions.
+const SHORT_NAME_OVERRIDES = {
+  'Winston-Salem': 'Winston-Salem',
+  'Wilkes-Barre': 'Wilkes-Barre',
+}
+const principalCity = name => {
+  const first = name.replace(/\s+(?:Metro Area|Metropolitan Statistical Area)$/i, '').split(',')[0].trim()
+  for (const city of Object.keys(SHORT_NAME_OVERRIDES)) {
+    if (first.startsWith(city)) return city
+  }
+  return first.split('-')[0].trim()
+}
+const mapShortNames = metros => {
+  const counts = new Map()
+  for (const a of metros) {
+    const city = principalCity(a.name)
+    counts.set(city, (counts.get(city) || 0) + 1)
+  }
+  return new Map(metros.map(a => {
+    const city = principalCity(a.name)
+    const state = a.name.match(/,\s*([A-Z]{2})(?:-[A-Z]{2})*(?:\s|$)/)?.[1]
+    return [a.id, counts.get(city) > 1 ? `${city}, ${state || a.cbsa || a.id}` : city]
+  }))
+}
 const points = ANCHORS.filter((row, i) => row[3] >= MIN && ANCHORS.findIndex(other => other[0] === row[0]) === i)
   .map(([name,lon,lat,pop],id) => ({id,name,lon,lat,pop,p:projection([lon,lat])})).filter(a=>a.p)
 
@@ -219,6 +244,7 @@ export default function MetroPopulationVoronoi() {
     const q=search.trim().toLowerCase()
     return q ? ranked.filter(a=>a.name.toLowerCase().includes(q) || a.cbsa?.includes(q)).slice(0,12) : []
   }, [ranked, search])
+  const shortNames = useMemo(() => mapShortNames(dataset), [dataset])
   const selectedRank = selected ? ranked.findIndex(a=>a.id===selected.id)+1 : 0
   const isEligible = selected ? selected.pop >= threshold : false
   const chooseMetro = a => {
@@ -237,7 +263,7 @@ export default function MetroPopulationVoronoi() {
     const dots = qualifying.map(a => a.p)
     for (const a of sorted) {
       const [px,py] = a.p
-      const width = Math.ceil((ctx?.measureText(a.name).width ?? a.name.length*fontSize*.57) + 5)
+      const width = Math.ceil((ctx?.measureText(shortNames.get(a.id) || a.name).width ?? (shortNames.get(a.id) || a.name).length*fontSize*.57) + 5)
       const height = fontSize + 5
       const options = []
       // Search clockwise around each anchor, from short offsets to longer leaders.
@@ -275,7 +301,7 @@ export default function MetroPopulationVoronoi() {
       placed[placed.length-1].render={a,x:rect.x+2,y:rect.y+fontSize+1,fontSize,leader,tx,ty}
     }
     return placed.map(p=>p.render)
-  }, [qualifying, showLabels, threshold])
+  }, [qualifying, showLabels, threshold, shortNames])
   const importCsv = async event => {
     const file = event.target.files?.[0]
     if (!file) return
@@ -435,7 +461,7 @@ export default function MetroPopulationVoronoi() {
             </g>)}</g>
             <g>{labelLayout.map(item=><text key={item.a.id} x={item.x} y={item.y} fontSize={item.fontSize}
               onClick={()=>chooseMetro(item.a)} style={{cursor:'pointer'}}
-              fill="#0f172a" stroke="#fff" strokeWidth="2.5" paintOrder="stroke">{item.a.name}</text>)}</g>
+              fill="#0f172a" stroke="#fff" strokeWidth="2.5" paintOrder="stroke">{shortNames.get(item.a.id) || item.a.name}</text>)}</g>
           </svg></div>)}
         {selected && <div className="flex items-center justify-between px-4 py-2 border-t bg-slate-50 text-sm">
           <span><strong>{selected.name}</strong> · estimated population {selected.pop.toLocaleString()}</span>
