@@ -1,0 +1,63 @@
+name: Probe native PR attachment with GITHUB_TOKEN
+on:
+  push:
+    branches: [pr-video-test]
+    paths: ['.github/workflows/test-native-media-attachment.yml']
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ensure gh CLI supports --attach
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh --version
+          if ! gh pr comment --help | grep -q -- '--attach'; then
+            VERSION="$(curl -fsSL https://api.github.com/repos/cli/cli/releases/latest | jq -r .tag_name)"
+            curl -fsSL "https://github.com/cli/cli/releases/download/${VERSION}/gh_${VERSION#v}_linux_amd64.tar.gz" -o /tmp/gh.tar.gz
+            tar -xzf /tmp/gh.tar.gz -C /tmp
+            echo "/tmp/gh_${VERSION#v}_linux_amd64/bin" >> "$GITHUB_PATH"
+          fi
+      - name: Attempt native attachment using default Actions token
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -uo pipefail
+          gh --version
+          if ! gh pr comment --help | grep -q -- '--attach'; then
+            echo "CLI still lacks --attach; experiment inconclusive" | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          printf '%s' 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/WswAAAAASUVORK5CYII=' | base64 -d > /tmp/metro-attachment-probe.png
+          cat > /tmp/probe-body.md <<'MD'
+          GITHUB_TOKEN native attachment experiment (automated):
+
+          <details>
+          <summary>Show upload probe image</summary>
+
+          ![1px test image](metro-attachment-probe.png)
+
+          </details>
+          MD
+          set +e
+          gh pr comment 87 --repo "$GITHUB_REPOSITORY" --body-file /tmp/probe-body.md --attach /tmp/metro-attachment-probe.png >/tmp/probe-stdout 2>/tmp/probe-stderr
+          CODE=$?
+          set -e
+          echo "### Native attachment experiment" >> "$GITHUB_STEP_SUMMARY"
+          echo "Exit code: $CODE" >> "$GITHUB_STEP_SUMMARY"
+          echo '#### stdout' >> "$GITHUB_STEP_SUMMARY"
+          echo '~~~' >> "$GITHUB_STEP_SUMMARY"
+          cat /tmp/probe-stdout >> "$GITHUB_STEP_SUMMARY"
+          echo '~~~' >> "$GITHUB_STEP_SUMMARY"
+          echo '#### stderr' >> "$GITHUB_STEP_SUMMARY"
+          echo '~~~' >> "$GITHUB_STEP_SUMMARY"
+          sed -E 's/(gh[ps]_[A-Za-z0-9_]+)/[REDACTED]/g' /tmp/probe-stderr >> "$GITHUB_STEP_SUMMARY"
+          echo '~~~' >> "$GITHUB_STEP_SUMMARY"
+          echo "Probe outcome: $CODE"
+          cat /tmp/probe-stderr
+          exit 0
