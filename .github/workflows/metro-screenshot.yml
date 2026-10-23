@@ -34,12 +34,18 @@ jobs:
       - name: Visual test and screenshot
         id: visual
         run: node scripts/capture-metro.mjs
+      - name: Capture full application visual states
+        id: app_visual
+        if: success()
+        run: node scripts/capture-app-states.mjs
       - name: Upload screenshot even when validation fails
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: metro-debug-screenshot
-          path: docs/screenshots/*.png
+          path: |
+            docs/screenshots/*.png
+            docs/screenshots/visual-manifest.json
           if-no-files-found: warn
       - name: Commit latest screenshot (pass or fail)
         id: screenshot_commit
@@ -68,6 +74,7 @@ jobs:
           VISUAL_RESULT: ${{ steps.visual.outcome }}
           IMAGE_PRESENT: ${{ steps.screenshot_commit.outputs.image_present }}
           IMAGE_SHA: ${{ steps.screenshot_commit.outputs.image_sha }}
+          APP_RESULT: ${{ steps.app_visual.outcome }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -80,11 +87,16 @@ jobs:
               ? `https://raw.githubusercontent.com/${owner}/${repo}/${process.env.IMAGE_SHA}/docs/screenshots/metro-default.png`
               : null
             const head = context.payload.pull_request.head.sha.slice(0, 12)
+            const gallery = process.env.IMAGE_PRESENT === 'true'
+              ? ['desktop-home', 'desktop-city-details', 'mobile-home', 'mobile-city-details'].map(name => `![${name}](https://raw.githubusercontent.com/${owner}/${repo}/${process.env.IMAGE_SHA}/docs/screenshots/${name}.png)`).join('\n\n')
+              : 'Full-app screenshots unavailable; see artifact/logs.'
             const body = [
               `### Metro map screenshot — ${status}`,
               `**Push:** \`${head}\` · **Run:** [#${context.runNumber}](${runUrl})`,
               '**Preset:** 1.2M population',
-              imageUrl ? `![Rendered metro map — ${status}](${imageUrl})` : 'No screenshot was captured (see workflow logs).',
+              `**Full-app visual capture:** ${process.env.APP_RESULT === 'success' ? '✅ PASS' : '❌ FAIL/NOT RUN'}`, 
+              gallery,
+              imageUrl ? `![Map-only regression — ${status}](${imageUrl})` : 'No map-only screenshot was captured.',
               `[Download workflow screenshot artifact](${runUrl}#artifacts)`,
               '_New comment for this push; previous screenshots remain in PR history._',
             ].join('\n\n')
