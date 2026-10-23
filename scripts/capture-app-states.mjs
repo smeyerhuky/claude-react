@@ -19,6 +19,12 @@ try {
       await page.goto('http://127.0.0.1:4173/#/', { waitUntil: 'domcontentloaded' })
       await page.getByText('Metro Population Regions — Interactive Map').first().click()
       await page.getByTestId('metro-app').waitFor()
+      const explainer = page.getByTestId('map-explainer')
+      await explainer.waitFor()
+      if (!spec.details && !(await explainer.textContent()).includes('shaded region')) {
+        throw new Error('Landing explainer must describe nearest-metro regions')
+      }
+
       // Wait for the official dataset, projected state outlines, and finished Canvas paint.
       await page.locator('[data-testid="metro-app"][data-source-kind="census"]').waitFor({ timeout: 30000 })
       await page.waitForFunction(() => {
@@ -35,6 +41,7 @@ try {
         await search.fill('Denver')
         await page.getByRole('option', { name: /Denver-Aurora/ }).first().click()
         await page.getByTestId('metro-details').getByText('19740').waitFor()
+        if (!(await explainer.textContent()).includes('Denver')) throw new Error('Explainer did not react to city selection')
       }
       await page.evaluate(() => document.fonts.ready)
       const dimensions = await page.evaluate(() => ({
