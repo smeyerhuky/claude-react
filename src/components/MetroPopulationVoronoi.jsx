@@ -269,7 +269,7 @@ export default function MetroPopulationVoronoi() {
           ? `Nearest-metro regions at ${fmt(threshold)} minimum. ${pinned.length} cities pinned: ${pinned.slice(0,2).map(a=>shortNames.get(a.id)||a.name).join(', ')}${pinned.length>2?'…':''}.`
           : `Each shaded region is closest to a qualifying metro, not an official metro boundary. ${qualifying.length} metros at ${fmt(threshold)} minimum.`
 
-  const resetView = () => { setSearchOpen(false);setDrawerOpen(false);setHovered(null);setSelected(null);setDetailOpen(false);setSearch('') }
+  const resetView = () => { setSearchOpen(false);setDrawerOpen(false);setHovered(null);setSelected(null);setDetailOpen(false);setSearch('');setPinnedIds([]) }
   // Measure label widths with the browser's actual text metrics, then seek free space.
   // Lower population thresholds naturally show fewer labels when crowded.
   const labelLayout = useMemo(() => {
@@ -477,6 +477,10 @@ export default function MetroPopulationVoronoi() {
           {pinned.length>0 && <p className="mt-2 text-xs text-slate-600">{pinned.length} cities pinned</p>}
         </section>}
         <div className="relative min-h-0 flex-1 overflow-hidden p-2 sm:p-4">
+          {(selected || pinnedIds.length > 0 || searchOpen || drawerOpen) && <button data-testid="full-map-reset" onClick={resetView}
+            className="absolute z-30 bottom-4 left-4 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-900 shadow-md hover:bg-slate-100">
+            ↺ Full map
+          </button>}
           <div data-testid="map-shell" className="relative h-full w-full flex items-center justify-center overflow-hidden rounded-2xl border bg-white shadow-sm">
             {loadError ? <p role="alert" className="p-4">Unable to load states: {loadError}</p> : !states.length ? <p>Loading U.S. geography…</p> :
               <div className="relative w-full max-w-full max-h-full" style={{aspectRatio:'1000/620',width:'min(100%, calc((100dvh - 100px) * 1000 / 620))'}}>
@@ -488,13 +492,28 @@ export default function MetroPopulationVoronoi() {
             <g pointerEvents="none">{labelLayout.filter(item=>item.leader).map(item=>
               <line key={item.a.id} x1={item.a.p[0]} y1={item.a.p[1]} x2={item.tx} y2={item.ty}
                 stroke="#64748b" strokeOpacity="0.52" strokeWidth="0.8" />)}</g>
-            <g>{qualifying.map(a=><g key={a.id} role="button" tabIndex={0} aria-label={`View ${a.name} metro statistics`} onMouseEnter={()=>setHovered(a)} onFocus={()=>setHovered(a)} onClick={()=>{setHovered(null);chooseMetro(a)}} onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();chooseMetro(a)}}} style={{cursor:'pointer'}}>
-              <circle cx={a.p[0]} cy={a.p[1]} r={pinnedIds.includes(a.id)?6:selected?.id===a.id?4.8:3.2} fill={pinnedIds.includes(a.id)?"#f97316":"#0f172a"} stroke="white" strokeWidth="1.2"/>
-              <title>{a.name}: ~{a.pop.toLocaleString()} ({sourceKind === 'census' ? 'Census 2025 estimate' : importedPoints ? 'uploaded population' : 'illustrative estimate'})</title>
-            </g>)}</g>
+            <g>{qualifying.map(a=>{
+              const pinnedCity = pinnedIds.includes(a.id)
+              const chosenCity = selected?.id === a.id
+              return <g key={a.id} role="button" tabIndex={0} aria-label={`View ${a.name} metro statistics`}
+                data-metro-marker={a.cbsa || a.id} data-pinned={pinnedCity} data-selected={chosenCity}
+                onMouseEnter={e=>{if(e.pointerType!=='touch')setHovered(a)}} onFocus={()=>setHovered(a)} onBlur={()=>setHovered(null)}
+                onClick={()=>{setHovered(null);chooseMetro(a)}}
+                onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();chooseMetro(a)}}} style={{cursor:'pointer'}}>
+                {(pinnedCity || chosenCity) && <circle cx={a.p[0]} cy={a.p[1]} r={chosenCity?11:9} fill="none" stroke={chosenCity?"#1d4ed8":"#9a3412"} strokeWidth="2.5"/>}
+                <circle cx={a.p[0]} cy={a.p[1]} r={pinnedCity||chosenCity?5.7:3.2}
+                  fill={chosenCity?"#1d4ed8":pinnedCity?"#c2410c":"#0f172a"} stroke="white" strokeWidth="1.5"/>
+                <circle cx={a.p[0]} cy={a.p[1]} r="11" fill="transparent" stroke="none"/>
+                <title>{a.name}: ~{a.pop.toLocaleString()} ({sourceKind === 'census' ? 'Census 2025 estimate' : importedPoints ? 'uploaded population' : 'illustrative estimate'})</title>
+              </g>})}</g>
             <g>{labelLayout.map(item=><text key={item.a.id} x={item.x} y={item.y} fontSize={item.fontSize}
               onClick={()=>chooseMetro(item.a)} style={{cursor:'pointer'}}
               fill="#0f172a" stroke="#fff" strokeWidth="2.5" paintOrder="stroke">{shortNames.get(item.a.id) || item.a.name}</text>)}</g>
+            <g pointerEvents="none">{qualifying.filter(a=>pinnedIds.includes(a.id)||selected?.id===a.id).map(a=>
+              <text key={a.id} x={a.p[0]+9} y={a.p[1]-11} fontSize="12" fontWeight="700"
+                fill={selected?.id===a.id?"#1e40af":"#9a3412"} stroke="#fff" strokeWidth="3.5" paintOrder="stroke">
+                {shortNames.get(a.id)||a.name}
+              </text>)}</g>
           </svg>
               </div>}
             {hovered && !detailOpen && <div role="tooltip" className="absolute z-20 bottom-3 right-3 max-w-[min(280px,85%)] rounded-xl border bg-white p-3 shadow-lg text-sm" onMouseEnter={()=>setHovered(hovered)} onMouseLeave={()=>setHovered(null)}>
