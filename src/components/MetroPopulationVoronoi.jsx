@@ -212,6 +212,57 @@ export default function MetroPopulationVoronoi() {
   // Reuse the *same* eligible-array identity between population breakpoints.
   const eligibleSignature = dataset.filter(a=>a.pop>=threshold).map(a=>a.id).join('|')
   const qualifying = useMemo(()=>dataset.filter(a=>a.pop>=threshold),[dataset,eligibleSignature])
+  // Measure label widths with the browser's actual text metrics, then seek free space.
+  // Lower population thresholds naturally show fewer labels when crowded.
+  const labelLayout = useMemo(() => {
+    if (!showLabels || !qualifying.length) return []
+    const fontSize = threshold < 500000 ? 7 : threshold < 1200000 ? 8 : 10
+    const ctx = typeof document !== 'undefined' ? document.createElement('canvas').getContext('2d') : null
+    if (ctx) ctx.font = `${fontSize}px Arial, sans-serif`
+    const sorted = [...qualifying].sort((a,b) => b.pop - a.pop)
+    const placed = []
+    const dots = qualifying.map(a => a.p)
+    for (const a of sorted) {
+      const [px,py] = a.p
+      const width = Math.ceil((ctx?.measureText(a.name).width ?? a.name.length*fontSize*.57) + 5)
+      const height = fontSize + 5
+      const options = []
+      // Search clockwise around each anchor, from short offsets to longer leaders.
+      for (const distance of [10, 18, 29, 43, 60, 82]) {
+        for (let sector=0;sector<16;sector++) {
+          const angle = (sector/16)*Math.PI*2
+          const vx=Math.cos(angle), vy=Math.sin(angle)
+          const x = px + vx*distance - (vx < -.22 ? width : vx > .22 ? 0 : width/2)
+          const y = py + vy*distance - height/2
+          const rect={x,y,w:width,h:height}
+          if (x<3 || y<3 || x+width>997 || y+height>617) continue
+          let collisions=0
+          for (const b of placed) {
+            const dx=Math.min(x+width,b.x+b.w)-Math.max(x,b.x)
+            const dy=Math.min(y+height,b.y+b.h)-Math.max(y,b.y)
+            if (dx>0 && dy>0) collisions+=dx*dy
+          }
+          for(const [dx,dy] of dots) {
+            if(dx===px && dy===py) continue
+            if(dx>x-4 && dx<x+width+4 && dy>y-4 && dy<y+height+4) collisions+=50
+          }
+          const distanceCost=distance*.12
+          options.push({rect,score:collisions*100+distanceCost,distance})
+        }
+      }
+      options.sort((a,b)=>a.score-b.score)
+      const best=options[0]
+      // At the densest thresholds prefer omitted labels over illegible overlaps.
+      if (!best || best.score>14) continue
+      const rect=best.rect
+      placed.push({...rect,id:a.id})
+      const tx=Math.max(rect.x,Math.min(px,rect.x+rect.w))
+      const ty=Math.max(rect.y,Math.min(py,rect.y+rect.h))
+      const leader=Math.hypot(tx-px,ty-py)>12
+      placed[placed.length-1].render={a,x:rect.x+2,y:rect.y+fontSize+1,fontSize,leader,tx,ty}
+    }
+    return placed.map(p=>p.render)
+  }, [qualifying, showLabels, threshold])
   const importCsv = async event => {
     const file = event.target.files?.[0]
     if (!file) return
@@ -335,12 +386,16 @@ export default function MetroPopulationVoronoi() {
             <g fill="none" fillRule="evenodd" stroke="#64748b" strokeWidth="1.2" strokeLinejoin="round" pointerEvents="none">
               {countryPaths.map((d,i)=><path key={i} d={d}/>)}
             </g>
+            <g pointerEvents="none">{labelLayout.filter(item=>item.leader).map(item=>
+              <line key={item.a.id} x1={item.a.p[0]} y1={item.a.p[1]} x2={item.tx} y2={item.ty}
+                stroke="#64748b" strokeOpacity="0.52" strokeWidth="0.8" />)}</g>
             <g>{qualifying.map(a=><g key={a.id} onClick={()=>setSelected(a)} style={{cursor:'pointer'}}>
               <circle cx={a.p[0]} cy={a.p[1]} r={selected?.id===a.id?4.8:3.2} fill="#0f172a" stroke="white" strokeWidth="1.2"/>
-              {showLabels && <text x={a.p[0]+5} y={a.p[1]-5} fontSize={threshold<500000?7:threshold<1200000?8:10}
-                fill="#0f172a" stroke="#fff" strokeWidth="2.5" paintOrder="stroke">{a.name}</text>}
               <title>{a.name}: ~{a.pop.toLocaleString()} ({sourceKind === 'census' ? 'Census 2025 estimate' : importedPoints ? 'uploaded population' : 'illustrative estimate'})</title>
             </g>)}</g>
+            <g>{labelLayout.map(item=><text key={item.a.id} x={item.x} y={item.y} fontSize={item.fontSize}
+              onClick={()=>setSelected(item.a)} style={{cursor:'pointer'}}
+              fill="#0f172a" stroke="#fff" strokeWidth="2.5" paintOrder="stroke">{item.a.name}</text>)}</g>
           </svg></div>)}
         {selected && <div className="flex items-center justify-between px-4 py-2 border-t bg-slate-50 text-sm">
           <span><strong>{selected.name}</strong> · estimated population {selected.pop.toLocaleString()}</span>
