@@ -18,9 +18,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npm install --no-save playwright@1.56.1
+          cache: yarn
+      - run: corepack enable
+      - run: yarn install --frozen-lockfile
+      - run: yarn add --dev --ignore-scripts --no-lockfile playwright@1.56.1
       - run: npx playwright install --with-deps chromium
       - run: npm run build
       - name: Serve preview
