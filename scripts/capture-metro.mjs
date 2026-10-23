@@ -33,6 +33,25 @@ try {
     return grid
   })
   if (geometryCheck.interior < 300 || geometryCheck.exterior < 200) throw new Error('Suspicious geographic mask: '+JSON.stringify(geometryCheck))
+  // Compare shaded pixels against the actual rendered SVG state geometry over a
+  // dense lattice. This catches off-land spillover missed by corner probes.
+  const leakage = await page.evaluate(() => {
+    const canvas = document.querySelector('[data-testid="metro-shading-canvas"]')
+    const svg = canvas.parentElement.querySelector('svg')
+    const context = canvas.getContext('2d')
+    const paths = [...svg.querySelectorAll('g[fill="none"] path')]
+    let outside = 0, filled = 0
+    const pt = svg.createSVGPoint()
+    for (let y=4; y<620; y+=8) for (let x=4; x<1000; x+=8) {
+      pt.x=x; pt.y=y
+      const onLand = paths.some(path => path.isPointInFill(pt))
+      const alpha = context.getImageData(x,y,1,1).data[3]
+      if (alpha>0) filled++
+      if (alpha>0 && !onLand) outside++
+    }
+    return {outside, filled, statePaths:paths.length}
+  })
+  if (leakage.outside > 1 || leakage.filled < 300) throw new Error('Geographic fill outside state outline: '+JSON.stringify(leakage))
   console.log('Captured docs/screenshots/metro-default.png; verified transparent external probes', test)
 } finally {
   await browser.close()
