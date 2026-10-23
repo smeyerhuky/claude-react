@@ -238,32 +238,48 @@ export default function MetroPopulationVoronoi() {
     return result
   },[qualifying,eligibleSignature])
   const countryPaths = useMemo(()=>states.map(f=>path(f)).filter(Boolean),[states])
+  // Use literal GeoJSON rings for Canvas. D3 geoPath treats winding as
+  // spherical interior/exterior: some state GeoJSON rings encode the inverse
+  // polygon, which rasterized nearly the whole viewport as U.S. land.
+  // Project raw vertices instead, so the clip can never contain a world box.
+  const landRings = useMemo(() => states.flatMap(feature => {
+    const geometry = feature.geometry
+    if (!geometry) return []
+    const polygons = geometry.type === 'Polygon' ? [geometry.coordinates]
+      : geometry.type === 'MultiPolygon' ? geometry.coordinates : []
+    return polygons.map(polygon => polygon.map(ring =>
+      ring.map(coordinate => projection(coordinate)).filter(Boolean)
+    )).filter(polygon => polygon[0]?.length >= 3)
+  }), [states])
   // Canvas Path2D clipping is applied by the rasterizer, rather than relying on
   // SVG fragment identifiers (which failed to clip in the deployed application).
   useEffect(() => {
     const canvas = canvasRef.current
-    if (!canvas || !countryPaths.length) return
+    if (!canvas || !landRings.length) return
     const ctx = canvas.getContext('2d', { alpha: true })
     if (!ctx) return
     ctx.clearRect(0, 0, 1000, 620)
-    // Each state is an independent clip region. Concatenating projected SVG
-    // geography into one Path2D can produce an inverted/even-odd winding,
-    // causing an opaque rectangle outside U.S. land in Chromium.
-    // Draw the same Voronoi cells once per independent land polygon instead.
     const cellPaths = cells.filter(cell => cell.polygon).map(cell => ({
       path: new Path2D(cell.polygon),
       color: cell.color,
     }))
-    for (const boundary of countryPaths) {
+    for (const polygon of landRings) {
+      const boundary = new Path2D()
+      for (const ring of polygon) {
+        if (ring.length < 3) continue
+        boundary.moveTo(ring[0][0], ring[0][1])
+        for (let i = 1; i < ring.length; i++) boundary.lineTo(ring[i][0], ring[i][1])
+        boundary.closePath()
+      }
       ctx.save()
-      ctx.clip(new Path2D(boundary), 'evenodd')
+      ctx.clip(boundary, 'evenodd')
       for (const cell of cellPaths) {
         ctx.fillStyle = cell.color
         ctx.fill(cell.path)
       }
       ctx.restore()
     }
-  }, [countryPaths, cells])
+  }, [landRings, cells])
   return (
     <div className="mx-auto max-w-[1400px] p-3 sm:p-6 space-y-4 text-slate-900">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
