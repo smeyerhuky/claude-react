@@ -26,7 +26,7 @@ try {
   await result.waitFor()
   const colors = await result.evaluate(el => {
     const row = el.closest('div')
-    const text = getComputedStyle(el).color
+    const text = getComputedStyle(el.querySelector('span') || el).color
     const background = getComputedStyle(row).backgroundColor
     const pin = getComputedStyle(row.querySelector('button[aria-label^="Pin"]'))
     return { text, background, pinText: pin.color, pinBackground: pin.backgroundColor }
