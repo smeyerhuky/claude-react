@@ -233,6 +233,9 @@ export default function MetroPopulationVoronoi() {
   const [pinnedIds,setPinnedIds] = useState([])
   const [detailOpen,setDetailOpen] = useState(false)
   const [compareOpen,setCompareOpen] = useState(false)
+  const [linkCopied,setLinkCopied] = useState(false)
+  const restoringUrl = useRef(false)
+  const previousShare = useRef(null)
   useEffect(()=>{
     let alive=true
     fetch(STATE_SOURCE).then(r=>{if(!r.ok)throw Error(`HTTP ${r.status}`);return r.json()})
@@ -251,6 +254,64 @@ export default function MetroPopulationVoronoi() {
     return q ? ranked.filter(a=>a.name.toLowerCase().includes(q) || a.cbsa?.includes(q)).slice(0,12) : []
   }, [ranked, search])
   const shortNames = useMemo(() => mapShortNames(dataset), [dataset])
+  // Keep URL state inside the existing hash-router route: #/metro-population-voronoi?threshold=...
+  // CBSA codes are stable across dataset sorting; no transient array indices in shared links.
+  const applySharedView = () => {
+    const routeQuery = window.location.hash.split('?')[1] || ''
+    const params = new URLSearchParams(routeQuery)
+    const t = Number(params.get('threshold'))
+    const validThreshold = params.has('threshold') && Number.isFinite(t) ? clamp(Math.round(t/1000)*1000) : 1200000
+    const findCode = code => dataset.find(a=>String(a.cbsa || '')===code)
+    const pins = (params.get('pins') || '').split(',').filter(Boolean).slice(0,25)
+      .map(findCode).filter(Boolean)
+    const active = findCode(params.get('city') || '')
+    restoringUrl.current = true
+    setThreshold(validThreshold)
+    setTyped(String(validThreshold))
+    setShowLabels(params.get('labels') !== '0')
+    setPinnedIds([...new Set(pins.map(a=>a.id))])
+    setSelected(active || null)
+    setDetailOpen(Boolean(active))
+    setCompareOpen(params.get('compare') === '1' && pins.length >= 2)
+    setHovered(null)
+    setSearch('')
+    setSearchOpen(false)
+    setLinkCopied(false)
+  }
+  useEffect(() => {
+    if (sourceKind !== 'census') return
+    applySharedView()
+    const restore = () => applySharedView()
+    window.addEventListener('hashchange', restore)
+    window.addEventListener('popstate', restore)
+    return () => {
+      window.removeEventListener('hashchange', restore)
+      window.removeEventListener('popstate', restore)
+    }
+  // Dataset must be loaded before matching codes; no per-render event listeners.
+  }, [sourceKind, dataset])
+  const shareQuery = new URLSearchParams()
+  if (threshold !== 1200000) shareQuery.set('threshold', String(threshold))
+  if (!showLabels) shareQuery.set('labels', '0')
+  if (selected?.cbsa && detailOpen) shareQuery.set('city', String(selected.cbsa))
+  const pinnedCodes = [...pinnedIds].map(id=>dataset.find(a=>a.id===id)?.cbsa).filter(Boolean).sort()
+  if (pinnedCodes.length) shareQuery.set('pins', pinnedCodes.join(','))
+  if (compareOpen && pinnedCodes.length>=2) shareQuery.set('compare', '1')
+  const shareSuffix = shareQuery.toString()
+  const shareHash = '#/metro-population-voronoi' + (shareSuffix ? '?' + shareSuffix : '')
+  useEffect(() => {
+    if (sourceKind !== 'census') return
+    if (restoringUrl.current) { restoringUrl.current = false; previousShare.current = shareHash; return }
+    if (previousShare.current === shareHash) return
+    previousShare.current = shareHash
+    window.history.pushState(null, '', window.location.pathname + window.location.search + shareHash)
+  }, [shareHash, sourceKind])
+  const copyViewLink = async () => {
+    const url = window.location.origin + window.location.pathname + window.location.search + shareHash
+    try { await navigator.clipboard.writeText(url);setLinkCopied(true) }
+    catch { setLinkCopied(false) }
+  }
+
   const selectedRank = selected ? ranked.findIndex(a=>a.id===selected.id)+1 : 0
   const isEligible = selected ? selected.pop >= threshold : false
   const chooseMetro = a => {
@@ -460,6 +521,10 @@ export default function MetroPopulationVoronoi() {
             <h1 className="shrink-0 text-sm sm:text-lg font-bold">Nearest metro map</h1>
             <p data-testid="map-explainer" aria-live="polite" className="min-w-0 truncate text-xs sm:text-sm text-slate-700" title={explainer}>{explainer}</p>
           </div>
+          <button type="button" onClick={copyViewLink} aria-label="Copy map link"
+            className="shrink-0 min-h-11 rounded-xl border border-slate-300 bg-white px-3 text-xs sm:text-sm font-semibold text-slate-900 shadow-sm">
+            {linkCopied?'Copied!':'Copy link'}
+          </button>
           <div className="relative flex min-w-0 items-center justify-end">
             <button aria-label={searchOpen?'Close metro search':'Open metro search'} title="Search metros" onClick={()=>{setSearchOpen(v=>!v);setSearch('')}}
               className="z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border bg-white shadow-sm">⌕</button>
