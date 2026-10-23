@@ -83,7 +83,7 @@ def poprows():
                 code = candidate[:5]
         result.append((name.lstrip("."), code, pop))
     if len(result) < 300:
-        raise ValueError(f"Only {len(result)} metro population records; refusing partial release")
+        raise ValueError(f"Only {len(result)} metro population records; headers={header!r}; selected_year_col={year_col}; sample_rows={rows[header_index+1:header_index+5]!r}")
     return result
 
 
