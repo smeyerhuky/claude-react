@@ -1,0 +1,86 @@
+name: Metro map merge timelapse
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  merge-video:
+    if: github.event.pull_request.merged == true && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout merged project
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Prepare dependencies
+        run: |
+          command -v ffmpeg || { sudo apt-get update -qq; sudo apt-get install -y ffmpeg; }
+          git fetch origin "refs/pull/${{ github.event.pull_request.number }}/head:refs/remotes/origin/merged-pr" || true
+      - name: Build video from every PR commit snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: python3 scripts/build_metro_merge_timelapse.py
+      - name: Publish MP4 as permanent GitHub release asset
+        id: publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          MERGE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+        run: |
+          FILE="metro-timelapse/metro-pr-${PR_NUMBER}-timelapse.mp4"
+          if [ ! -s "$FILE" ]; then
+            echo "published=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          TAG="metro-map-merge-pr-${PR_NUMBER}"
+          if ! gh release view "$TAG" >/dev/null 2>&1; then
+            gh release create "$TAG" --target "$MERGE_SHA" --title "Metro map merge timelapse PR #${PR_NUMBER}" --notes "Timelapse from screenshot snapshots of this repository's PR commits." --latest=false
+          fi
+          gh release upload "$TAG" "$FILE" --clobber
+          echo "published=true" >> "$GITHUB_OUTPUT"
+      - name: Upload video for CI inspection
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: metro-merge-timelapse
+          path: metro-timelapse/
+          if-no-files-found: warn
+      - name: Post closing merged-PR video comment
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          MERGE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+          PUBLISHED: ${{ steps.publish.outputs.published }}
+        run: |
+          python3 - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+          pr = os.environ["PR_NUMBER"]
+          repo = os.environ["GITHUB_REPOSITORY"]
+          sha = os.environ["MERGE_SHA"]
+          path = Path("metro-timelapse/manifest.json")
+          data = json.loads(path.read_text()) if path.exists() else {}
+          count = data.get("commits", "unknown")
+          frames = data.get("frames", 0)
+          unique = data.get("unique_screenshot_versions", 0)
+          video_url = f"https://github.com/{repo}/releases/download/metro-map-merge-pr-{pr}/metro-pr-{pr}-timelapse.mp4"
+          run_url = f"https://github.com/{repo}/actions/runs/{os.environ['GITHUB_RUN_ID']}"
+          lines = [
+              "### ✅ Merged into main — map timelapse",
+              f"**Merge commit:** \`{sha[:12]}\`",
+              f"**PR commits:** {count} · **Commits with screenshot available:** {frames} · **Distinct screenshot versions:** {unique}",
+              "**Video:** 24 fps, 0.5 seconds per commit frame.",
+              (f"[▶ Watch/download the MP4 timelapse]({video_url})" if os.environ.get("PUBLISHED") == "true"
+               else "Video could not be published; see workflow artifact and logs."),
+              f"[Workflow run and artifacts]({run_url})",
+          ]
+          body = "\\n\\n".join(lines)
+          subprocess.run(["gh", "api", "-X", "POST", f"repos/{repo}/issues/{pr}/comments", "--input", "-"],
+                         input=json.dumps({"body": body}), text=True, check=True)
+          PY
