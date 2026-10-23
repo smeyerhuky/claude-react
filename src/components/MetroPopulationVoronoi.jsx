@@ -232,6 +232,7 @@ export default function MetroPopulationVoronoi() {
   const [hovered,setHovered] = useState(null)
   const [pinnedIds,setPinnedIds] = useState([])
   const [detailOpen,setDetailOpen] = useState(false)
+  const [compareOpen,setCompareOpen] = useState(false)
   useEffect(()=>{
     let alive=true
     fetch(STATE_SOURCE).then(r=>{if(!r.ok)throw Error(`HTTP ${r.status}`);return r.json()})
@@ -259,6 +260,9 @@ export default function MetroPopulationVoronoi() {
   }
   const togglePin = a => setPinnedIds(ids => ids.includes(a.id) ? ids.filter(id=>id!==a.id) : [...ids,a.id])
   const pinned = dataset.filter(a=>pinnedIds.includes(a.id))
+  const compared = [...pinned].sort((a,b)=>b.pop-a.pop)
+  const biggest = compared[0]?.pop || 1
+  const smallest = compared[compared.length-1]?.pop || 0
   const explainer = detailOpen && selected
     ? `Viewing ${shortNames.get(selected.id) || selected.name}: ${selected.pop.toLocaleString()} residents (2025). ${pinned.length ? `${pinned.length} pinned.` : ''}`
     : searchOpen
@@ -269,7 +273,7 @@ export default function MetroPopulationVoronoi() {
           ? `Nearest-metro regions at ${fmt(threshold)} minimum. ${pinned.length} cities pinned: ${pinned.slice(0,2).map(a=>shortNames.get(a.id)||a.name).join(', ')}${pinned.length>2?'…':''}.`
           : `Each shaded region is closest to a qualifying metro, not an official metro boundary. ${qualifying.length} metros at ${fmt(threshold)} minimum.`
 
-  const resetView = () => { setSearchOpen(false);setDrawerOpen(false);setHovered(null);setSelected(null);setDetailOpen(false);setSearch('');setPinnedIds([]) }
+  const resetView = () => { setSearchOpen(false);setDrawerOpen(false);setHovered(null);setSelected(null);setDetailOpen(false);setCompareOpen(false);setSearch('');setPinnedIds([]) }
   // Measure label widths with the browser's actual text metrics, then seek free space.
   // Lower population thresholds naturally show fewer labels when crowded.
   const labelLayout = useMemo(() => {
@@ -429,6 +433,10 @@ export default function MetroPopulationVoronoi() {
               className={`min-h-9 rounded-full border border-slate-400 px-3 py-1 text-xs font-medium ${threshold===n?'bg-blue-700 text-white':'bg-white text-slate-900'}`}>{fmt(n)}</button>)}</div>
             <label className="flex items-center gap-2"><input type="checkbox" checked={showLabels} onChange={e=>setShowLabels(e.target.checked)}/> Show city labels</label>
           </section>
+          <button type="button" disabled={pinned.length<2} onClick={()=>{setCompareOpen(true);setDetailOpen(false)}} aria-label="Compare pinned cities"
+            className="w-full min-h-11 rounded-lg bg-blue-800 px-3 py-2 font-semibold text-white disabled:bg-slate-200 disabled:text-slate-600 disabled:cursor-not-allowed">
+            Compare pinned cities ({pinned.length})
+          </button>
           <section aria-label="Pinned metros" className="space-y-2">
             <div className="flex items-center justify-between gap-2"><h3 className="font-semibold">Pinned cities ({pinned.length})</h3>
               {pinned.length > 0 && <button onClick={()=>setPinnedIds([])} className="text-xs text-blue-800 underline" aria-label="Clear all pinned cities">Clear all</button>}
@@ -481,6 +489,38 @@ export default function MetroPopulationVoronoi() {
             className="absolute z-30 bottom-4 left-4 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-900 shadow-md hover:bg-slate-100">
             ↺ Full map
           </button>}
+          {compareOpen && <section data-testid="metro-comparison" aria-label="Pinned city population comparison"
+            className="absolute z-40 right-3 bottom-3 left-3 sm:left-auto sm:right-5 sm:bottom-5 sm:w-[min(450px,85%)] max-h-[min(72dvh,600px)] overflow-y-auto rounded-2xl border border-slate-300 bg-white p-4 shadow-xl text-slate-900">
+            <div className="flex items-center justify-between gap-3">
+              <div><h2 className="text-lg font-bold">Compare metro populations</h2>
+                <p className="text-xs text-slate-600">2025 Census estimates · {compared.length} pinned metros</p></div>
+              <button onClick={()=>setCompareOpen(false)} aria-label="Close city comparison" className="min-h-11 min-w-11 rounded-lg border border-slate-300 bg-white text-slate-900">✕</button>
+            </div>
+            {compared.length<2 ? <p className="mt-4 text-sm">Pin at least two cities to compare them.</p> : <>
+              <div className="mt-3 grid grid-cols-2 gap-2 rounded-lg bg-slate-100 p-3 text-sm">
+                <div><div className="text-xs text-slate-600">Largest–smallest gap</div><strong data-testid="comparison-gap">{(biggest-smallest).toLocaleString()}</strong></div>
+                <div><div className="text-xs text-slate-600">Population ratio</div><strong data-testid="comparison-ratio">{(biggest/smallest).toFixed(2)}×</strong></div>
+              </div>
+              <div className="mt-4 space-y-3">
+                {compared.map((a,index)=><div key={a.id} data-testid="comparison-row" className="text-sm">
+                  <div className="flex justify-between gap-2">
+                    <button onClick={()=>{chooseMetro(a);setCompareOpen(false)}} className="min-w-0 truncate text-left font-semibold text-blue-800 underline" title={a.name}>
+                      {index+1}. {shortNames.get(a.id)||a.name}
+                    </button>
+                    <span className="shrink-0 tabular-nums font-semibold">{a.pop.toLocaleString()}</span>
+                  </div>
+                  <div className="mt-1 h-3 overflow-hidden rounded-full bg-slate-200" role="img" aria-label={`${a.name}: ${a.pop.toLocaleString()} people`}>
+                    <div className="h-full rounded-full bg-blue-700" style={{width:`${100*a.pop/biggest}%`}}/>
+                  </div>
+                  <div className="mt-1 flex justify-between text-xs text-slate-600">
+                    <span>U.S. metro rank #{ranked.findIndex(m=>m.id===a.id)+1}</span>
+                    <span>{index===0?'Largest pinned':`${(biggest-a.pop).toLocaleString()} fewer than largest`}</span>
+                  </div>
+                </div>)}
+              </div>
+              <p className="mt-3 text-xs text-slate-600">Bars show relative 2025 metropolitan-area population, not region size or land area.</p>
+            </>}
+          </section>}
           <div data-testid="map-shell" className="relative h-full w-full flex items-center justify-center overflow-hidden rounded-2xl border bg-white shadow-sm">
             {loadError ? <p role="alert" className="p-4">Unable to load states: {loadError}</p> : !states.length ? <p>Loading U.S. geography…</p> :
               <div className="relative w-full max-w-full max-h-full" style={{aspectRatio:'1000/620',width:'min(100%, calc((100dvh - 100px) * 1000 / 620))'}}>
