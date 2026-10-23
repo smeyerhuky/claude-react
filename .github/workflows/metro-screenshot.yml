@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
-  pull-requests: read
+  pull-requests: write
 jobs:
   screenshot:
     if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
@@ -32,6 +32,7 @@ jobs:
             sleep 1
           done
       - name: Visual test and screenshot
+        id: visual
         run: node scripts/capture-metro.mjs
       - name: Upload screenshot even when validation fails
         if: always()
@@ -40,12 +41,53 @@ jobs:
           name: metro-debug-screenshot
           path: docs/screenshots/metro-default.png
           if-no-files-found: warn
-      - name: Commit latest baseline screenshot
+      - name: Commit latest screenshot (pass or fail)
+        id: screenshot_commit
+        if: always()
+        shell: bash
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/screenshots/metro-default.png
-          if ! git diff --cached --quiet; then
-            git commit -m "test: update metro default screenshot [skip ci]"
-            git push
+          IMAGE=docs/screenshots/metro-default.png
+          if [ -f "$IMAGE" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add "$IMAGE"
+            if ! git diff --cached --quiet; then
+              git commit -m "test: update metro screenshot [skip ci]"
+              git push
+            fi
+            echo "image_present=true" >> "$GITHUB_OUTPUT"
+            echo "image_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          else
+            echo "image_present=false" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Comment with screenshot on every PR push
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        env:
+          VISUAL_RESULT: ${{ steps.visual.outcome }}
+          IMAGE_PRESENT: ${{ steps.screenshot_commit.outputs.image_present }}
+          IMAGE_SHA: ${{ steps.screenshot_commit.outputs.image_sha }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { owner, repo } = context.repo
+            const issue_number = context.issue.number
+            const result = process.env.VISUAL_RESULT || 'not run'
+            const status = result === 'success' ? '✅ PASS' : '❌ FAIL'
+            const runUrl = `https://github.com/${owner}/${repo}/actions/runs/${context.runId}`
+            const imageUrl = process.env.IMAGE_PRESENT === 'true'
+              ? `https://raw.githubusercontent.com/${owner}/${repo}/${process.env.IMAGE_SHA}/docs/screenshots/metro-default.png`
+              : null
+            const head = context.payload.pull_request.head.sha.slice(0, 12)
+            const body = [
+              `### Metro map screenshot — ${status}`,
+              `**Push:** \`${head}\` · **Run:** [#${context.runNumber}](${runUrl})`,
+              '**Preset:** 1.2M population',
+              imageUrl ? `![Rendered metro map — ${status}](${imageUrl})` : 'No screenshot was captured (see workflow logs).',
+              `[Download workflow screenshot artifact](${runUrl}#artifacts)`,
+              '_New comment for this push; previous screenshots remain in PR history._',
+            ].join('\n\n')
+            await github.rest.issues.createComment({
+              owner, repo, issue_number, body,
+            })
