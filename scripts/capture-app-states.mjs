@@ -18,10 +18,20 @@ try {
     try {
       await page.goto('http://127.0.0.1:4173/#/', { waitUntil: 'domcontentloaded' })
       await page.getByText('Metro Population Regions — Interactive Map').first().click()
-      await page.getByText('U.S. Census Vintage 2025 · 359 lower-48 metros').first().waitFor()
-      await page.getByText('Data: U.S. Census Bureau Vintage 2025').first().waitFor()
+      await page.getByTestId('metro-app').waitFor()
+      // Wait for the official dataset, projected state outlines, and finished Canvas paint.
+      await page.locator('[data-testid="metro-app"][data-source-kind="census"]').waitFor({ timeout: 30000 })
+      await page.waitForFunction(() => {
+        const canvas = document.querySelector('[data-testid="metro-shading-canvas"]')
+        const svg = document.querySelector('svg[role="img"]')
+        if (!canvas || canvas.dataset.renderReady !== 'true' || !svg?.querySelector('path[d]')) return false
+        const ctx = canvas.getContext('2d')
+        return ctx && ctx.getImageData(500, 310, 1, 1).data[3] > 0
+      }, null, { timeout: 30000 })
+
       if (spec.details) {
-        const search = page.getByRole('searchbox', { name: 'Find a metropolitan area' })
+        await page.getByRole('button', { name: 'Open metro search' }).click()
+        const search = page.getByRole('searchbox')
         await search.fill('Denver')
         await page.getByRole('option', { name: /Denver-Aurora/ }).first().click()
         await page.getByTestId('metro-details').getByText('19740').waitFor()
@@ -33,13 +43,13 @@ try {
         viewportWidth: window.innerWidth,
         viewportHeight: window.innerHeight,
       }))
-      // Baseline current layout dimensions. Future redesign PR will enforce
-      // verticalFit=true and horizontalFit=true as blocking assertions.
+      // New full-viewport interface: neither document axis may overflow.
       const path = `${directory}/${spec.name}.png`
       await page.screenshot({ path, fullPage: false, animations: 'disabled' })
       const sha256 = createHash('sha256').update(await readFile(path)).digest('hex')
       manifest.states.push({ name: spec.name, ...dimensions, horizontalFit: dimensions.documentWidth <= spec.width + 1,
         verticalFit: dimensions.documentHeight <= spec.height + 1, sha256, path })
+      if (dimensions.documentHeight > spec.height + 1) throw Error(`Vertical page overflow in ${spec.name}: ${dimensions.documentHeight} > ${spec.height}`)
       if (dimensions.documentWidth > spec.width + 1) {
         throw Error(`Horizontal page overflow in ${spec.name}: ${dimensions.documentWidth} > ${spec.width}`)
       }

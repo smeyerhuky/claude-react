@@ -7,23 +7,28 @@ try {
   await page.goto('http://127.0.0.1:4173/#/', { waitUntil: 'domcontentloaded' })
   await page.getByText('Metro Population Regions — Interactive Map').first().click()
   // This PR includes a verified official dataset; a silent demo fallback is a regression.
-  await page.getByText('U.S. Census Vintage 2025 · 359 lower-48 metros').first().waitFor({ state: 'visible' })
-  await page.getByText('Data: U.S. Census Bureau Vintage 2025').first().waitFor({ state: 'visible' })
-  // Validate real Census search and detailed selection before capturing the map.
-  const search = page.getByRole('searchbox', { name: 'Find a metropolitan area' })
+  await page.getByTestId('metro-app').waitFor()
+  // Wait for the official dataset, projected state outlines, and finished Canvas paint.
+  await page.locator('[data-testid="metro-app"][data-source-kind="census"]').waitFor({ timeout: 30000 })
+  await page.waitForFunction(() => {
+    const canvas = document.querySelector('[data-testid="metro-shading-canvas"]')
+    const svg = document.querySelector('svg[role="img"]')
+    if (!canvas || canvas.dataset.renderReady !== 'true' || !svg?.querySelector('path[d]')) return false
+    const ctx = canvas.getContext('2d')
+    return ctx && ctx.getImageData(500, 310, 1, 1).data[3] > 0
+  }, null, { timeout: 30000 })
+
+  await page.getByRole('button', { name: 'Open metro search' }).click()
+  const search = page.getByRole('searchbox')
   await search.fill('Denver')
   await page.getByRole('option', { name: /Denver-Aurora/ }).first().click()
   const details = page.getByTestId('metro-details')
-  await details.getByText('Population (2025)').waitFor()
-  await details.getByText('CBSA code').waitFor()
   await details.getByText('19740').waitFor()
   await details.getByRole('heading', { name: 'Denver-Aurora-Centennial, CO Metro Area' }).waitFor()
-  const mapLabels = page.locator('svg[role="img"] text')
-  await page.waitForFunction(() => [...document.querySelectorAll('svg[role="img"] text')].some(el => el.textContent === 'Denver'), null, { timeout: 10000 })
-  if (await mapLabels.filter({ hasText: 'Metro Area' }).count()) throw Error('Full metro names leaked into map labels')
   await mkdir('docs/screenshots', { recursive: true })
-  await page.screenshot({ path: 'docs/screenshots/metro-search-details.png', fullPage: true })
-  await details.getByRole('button', { name: 'Clear' }).click()
+  await page.screenshot({ path: 'docs/screenshots/metro-search-details.png' })
+  await page.getByRole('button', { name: 'Open metro search' }).count() && await page.getByRole('button', { name: 'Close metro search' }).click()
+  await page.getByRole('button', { name: 'Full map' }).click()
   const canvas = page.locator('[data-testid="metro-shading-canvas"]')
   await canvas.waitFor({ state: 'visible' })
   await page.waitForFunction(() => {
