@@ -109,3 +109,39 @@ jobs:
           subprocess.run(["gh", "api", "-X", "POST", f"repos/{repo}/issues/{pr}/comments", "--input", "-"],
                          input=json.dumps({"body": body}), text=True, check=True)
           PY
+
+      - name: Post collapsible native MP4 on merged PR
+        if: steps.publish.outputs.published == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GH_MEDIA_UPLOAD_TOKEN }}
+          PR_NUMBER: ${{ steps.validate.outputs.number }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          VIDEO="metro-timelapse/metro-pr-${PR_NUMBER}-timelapse.mp4"
+          if [ -z "${GH_TOKEN:-}" ] || [ ! -s "$VIDEO" ]; then
+            echo "Native media unavailable; permanent Release link posted above."
+            exit 0
+          fi
+          echo "Metro merge timelapse native media attachment" > /tmp/timelapse-body.md
+          if ! gh pr comment "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file /tmp/timelapse-body.md --attach "$VIDEO" >/tmp/timelapse-comment-url 2>/tmp/timelapse-upload-error; then
+            echo "Native video upload failed; existing Release MP4 remains available."
+            cat /tmp/timelapse-upload-error
+            exit 0
+          fi
+          URL="$(tail -n 1 /tmp/timelapse-comment-url)"
+          ID="${URL##*issuecomment-}"
+          [[ "$ID" =~ ^[0-9]+$ ]] || exit 0
+          gh api "repos/$GITHUB_REPOSITORY/issues/comments/$ID" > /tmp/timelapse-comment.json
+          python3 - <<'PY'
+          import json, os, re, subprocess
+          from pathlib import Path
+          obj = json.loads(Path('/tmp/timelapse-comment.json').read_text())
+          match = re.search(r'https://github.com/user-attachments/assets/[a-f0-9-]+', obj['body'])
+          if not match:
+              raise SystemExit('No native MP4 URL in uploaded comment; leaving link intact')
+          body = ('### Merge timelapse video\n\n<details>\n'
+                  '<summary>▶ Watch the timelapse inline</summary>\n\n'
+                  + match.group(0) + '\n\n</details>\n')
+          subprocess.run(['gh','api','-X','PATCH',f"repos/{os.environ['GITHUB_REPOSITORY']}/issues/comments/{obj['id']}",'-f',f'body={body}'],check=True,stdout=subprocess.DEVNULL)
+          PY

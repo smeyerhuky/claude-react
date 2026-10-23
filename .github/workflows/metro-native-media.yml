@@ -1,0 +1,89 @@
+name: Metro native media PR gallery
+on:
+  workflow_run:
+    workflows: [Metro Map Screenshot]
+    types: [completed]
+permissions:
+  actions: read
+  pull-requests: read
+  issues: write
+jobs:
+  media:
+    # Trusted default-branch workflow; NEVER check out/execute pull request code here.
+    if: ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.head_repository.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish collapsed screenshots using native GitHub attachments
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MEDIA_TOKEN: ${{ secrets.GH_MEDIA_UPLOAD_TOKEN }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          PR_NUMBER: ${{ github.event.workflow_run.pull_requests[0].number }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          PR="$PR_NUMBER"
+          if [ -z "$PR" ]; then
+            PR="$(gh api "repos/$GITHUB_REPOSITORY/commits/$HEAD_SHA/pulls" --jq '.[0].number' 2>/dev/null || true)"
+          fi
+          if [ -z "$PR" ] || [ "$PR" = "null" ]; then
+            echo "No associated PR; skipping gallery."
+            exit 0
+          fi
+          RUN_URL="https://github.com/$GITHUB_REPOSITORY/actions/runs/$RUN_ID"
+          if [ -z "${MEDIA_TOKEN:-}" ]; then
+            echo "Media PAT unavailable, keeping original screenshot comment."
+            exit 0
+          fi
+          mkdir -p /tmp/metro-media
+          if ! gh run download "$RUN_ID" --repo "$GITHUB_REPOSITORY" --name metro-debug-screenshot --dir /tmp/metro-media; then
+            echo "No screenshot artifact available: $RUN_URL"
+            exit 0
+          fi
+          files=()
+          for file in desktop-home mobile-home mobile-narrow-320 pins-one-expanded pins-two-collapsed pins-three-expanded pins-four-scrolled pins-six-scrolled-expanded metro-export-default metro-export-denver-selected metro-export-six-pins; do
+            if [ -s "/tmp/metro-media/$file.png" ]; then files+=("/tmp/metro-media/$file.png"); fi
+          done
+          if [ "${#files[@]}" -eq 0 ]; then exit 0; fi
+          # The CLI appends native media refs outside <details>. After uploading,
+          # rewrite ONLY our newly-created comment, moving refs into the sections.
+          printf 'Metro native screenshot upload for [run #%s](%s).\n' "$RUN_ID" "$RUN_URL" > /tmp/body.md
+          if ! GH_TOKEN="$MEDIA_TOKEN" gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body-file /tmp/body.md --attach "${files[@]}" >/tmp/comment-url 2>/tmp/upload-error; then
+            echo "Native upload failed, ordinary screenshot comment remains available."
+            cat /tmp/upload-error
+            exit 0
+          fi
+          COMMENT_URL="$(tail -n 1 /tmp/comment-url)"
+          COMMENT_ID="${COMMENT_URL##*issuecomment-}"
+          if ! [[ "$COMMENT_ID" =~ ^[0-9]+$ ]]; then
+            echo "Native upload created a comment, but cannot identify it for collapsing."
+            exit 0
+          fi
+          GH_TOKEN="$MEDIA_TOKEN" gh api "repos/$GITHUB_REPOSITORY/issues/comments/$COMMENT_ID" > /tmp/uploaded-comment.json
+          GH_TOKEN="$MEDIA_TOKEN" python3 - <<'PY'
+          import json, os, re, subprocess
+          from pathlib import Path
+          data = json.loads(Path('/tmp/uploaded-comment.json').read_text())
+          refs = dict(re.findall(r'!\[([^]]+)\]\((https://github.com/user-attachments/assets/[^)]+)\)', data['body']))
+          if not refs:
+              print('No native image references found; preserving the original uploaded comment')
+              raise SystemExit(0)
+          groups = [
+              ('Desktop and mobile screenshots', ['desktop-home','mobile-home','mobile-narrow-320']),
+              ('Pinned-city scenarios', ['pins-one-expanded','pins-two-collapsed','pins-three-expanded','pins-four-scrolled','pins-six-scrolled-expanded']),
+              ('Exported PNGs', ['metro-export-default','metro-export-denver-selected','metro-export-six-pins']),
+          ]
+          lines = ['### Metro screenshot gallery · ' + os.environ['CONCLUSION'],
+                   f"[Run and downloadable artifacts](https://github.com/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['RUN_ID']})"]
+          for title, names in groups:
+              images = [f'![{name}]({refs[name]})' for name in names if name in refs]
+              if images:
+                  lines.extend(['', '<details>', f'<summary>{title} ({len(images)} images)</summary>', '', *sum(([im,''] for im in images), []), '</details>'])
+          missing = [name for name in (Path(p).stem for p in os.listdir('/tmp/metro-media') if p.endswith('.png')) if name not in refs]
+          if missing:
+              lines.extend(['', 'Some uploads could not be grouped: ' + ', '.join(missing)])
+          body = '\n'.join(lines)
+          subprocess.run(['gh','api','-X','PATCH', f"repos/{os.environ['GITHUB_REPOSITORY']}/issues/comments/{data['id']}",'-f',f'body={body}'],check=True,stdout=subprocess.DEVNULL)
+          PY
