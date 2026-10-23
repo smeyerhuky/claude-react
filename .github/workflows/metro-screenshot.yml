@@ -27,12 +27,21 @@ jobs:
       - name: Allow Git operations in container checkout
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - run: corepack enable
-      - name: Install locked dependencies with timing
+      - name: Restore installed dependency cache
+        id: modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: metro-node22-playwright1.56.1-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Install dependencies and screenshot driver on cache miss
+        if: steps.modules.outputs.cache-hit != 'true'
         run: |
           start=$SECONDS
           yarn install --frozen-lockfile --prefer-offline
-          echo "Dependency installation: $((SECONDS-start))s" >> "$GITHUB_STEP_SUMMARY"
-      - run: yarn add --dev --ignore-scripts --no-lockfile playwright@1.56.1
+          yarn add --dev --ignore-scripts --no-lockfile playwright@1.56.1
+          echo "Dependency installation (cache miss): $((SECONDS-start))s" >> "$GITHUB_STEP_SUMMARY"
+      - name: Report dependency cache result
+        run: echo "Installed dependency cache: ${{ steps.modules.outputs.cache-hit == 'true' && 'HIT' || 'MISS' }}" >> "$GITHUB_STEP_SUMMARY"
       - run: npm run build
       - name: Serve preview
         run: |
