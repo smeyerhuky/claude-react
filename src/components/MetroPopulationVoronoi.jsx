@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Delaunay, geoAlbersUsa, geoPath } from 'd3'
+import { Delaunay, geoAlbers } from 'd3'
 
 // Illustrative seed data, NOT a complete or validated 2025 Census CBSA inventory.
 // Each row: anchor name, longitude, latitude, approximate metro population.
@@ -117,8 +117,7 @@ const EXCLUDED = new Set(['Alaska', 'Hawaii', 'Puerto Rico'])
 const MIN = 100000
 const MAX = 20000000
 const PRESETS = [100000,250000,500000,1000000,1200000,2000000,5000000,10000000,20000000]
-const projection = geoAlbersUsa().scale(1260).translate([500,310])
-const path = geoPath(projection)
+const projection = geoAlbers().scale(1260).translate([500,310])
 const fmt = n => n >= 1000000 ? `${+(n/1000000).toFixed(2)}M` : `${Math.round(n/1000)}K`
 const clamp = n => Math.min(MAX,Math.max(MIN,Number.isFinite(n)?n:MIN))
 const toTrack = n => Math.round(1000*Math.log(clamp(n)/MIN)/Math.log(MAX/MIN))
@@ -237,7 +236,9 @@ export default function MetroPopulationVoronoi() {
     cellCache.current.set(key,result)
     return result
   },[qualifying,eligibleSignature])
-  const countryPaths = useMemo(()=>states.map(f=>path(f)).filter(Boolean),[states])
+  // Build state SVG outlines from the same projected coordinate rings as Canvas;
+  // geoPath's spherical winding interpretation previously produced Alaska/Hawaii-like inset boxes.
+  const ringToSvg = ring => ring.length < 3 ? '' : `M${ring.map(p=>p.join(',')).join('L')}Z`
   // Use literal GeoJSON rings for Canvas. D3 geoPath treats winding as
   // spherical interior/exterior: some state GeoJSON rings encode the inverse
   // polygon, which rasterized nearly the whole viewport as U.S. land.
@@ -251,6 +252,7 @@ export default function MetroPopulationVoronoi() {
       ring.map(coordinate => projection(coordinate)).filter(Boolean)
     )).filter(polygon => polygon[0]?.length >= 3)
   }), [states])
+  const countryPaths = useMemo(() => landRings.map(polygon => polygon.map(ringToSvg).join('')).filter(Boolean), [landRings])
   // Canvas Path2D clipping is applied by the rasterizer, rather than relying on
   // SVG fragment identifiers (which failed to clip in the deployed application).
   useEffect(() => {
@@ -329,7 +331,7 @@ export default function MetroPopulationVoronoi() {
             <canvas ref={canvasRef} width={1000} height={620} aria-hidden="true"
               data-testid="metro-shading-canvas" className="absolute inset-0 w-full h-full"/>
           <svg viewBox="0 0 1000 620" role="img" aria-label={`Map of ${qualifying.length} qualifying metro regions for population threshold ${threshold}`} className="absolute inset-0 w-full h-full">
-            <g fill="none" stroke="#64748b" strokeWidth="1.2" strokeLinejoin="round" pointerEvents="none">
+            <g fill="none" fillRule="evenodd" stroke="#64748b" strokeWidth="1.2" strokeLinejoin="round" pointerEvents="none">
               {countryPaths.map((d,i)=><path key={i} d={d}/>)}
             </g>
             <g>{qualifying.map(a=><g key={a.id} onClick={()=>setSelected(a)} style={{cursor:'pointer'}}>
