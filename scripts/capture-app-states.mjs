@@ -8,6 +8,34 @@ const directory = 'docs/screenshots'
 await mkdir(directory, { recursive: true })
 const manifest = { version: 1, generatedAt: new Date().toISOString(), states: [] }
 try {
+  // Capture pinned accordion use cases as dedicated, reviewable visual states.
+  const pinCases = [
+    { name: 'pins-one-expanded', codes: ['19740'], expanded: null },
+    { name: 'pins-two-collapsed', codes: ['19740','35620'], expanded: null },
+    { name: 'pins-three-expanded', codes: ['19740','35620','31080'], expanded: 1 },
+    { name: 'pins-four-scrolled', codes: ['19740','35620','31080','16980'], scroll: true },
+    { name: 'pins-six-scrolled-expanded', codes: ['19740','35620','31080','16980','19100','26420'], scroll: true, expanded: 2 },
+  ]
+  for (const spec of pinCases) {
+    const page = await browser.newPage({ viewport: { width: 820, height: 900 }, deviceScaleFactor: 1 })
+    try {
+      const link = 'http://127.0.0.1:4173/#/metro-population-voronoi?pins=' + spec.codes.join(',')
+      await page.goto(link, { waitUntil: 'domcontentloaded' })
+      await page.locator('[data-testid="metro-app"][data-source-kind="census"]').waitFor({ timeout: 30000 })
+      await page.waitForFunction(() => document.querySelector('[data-testid="metro-shading-canvas"]')?.dataset.renderReady === 'true')
+      await page.getByRole('button', { name: 'Expand controls' }).click()
+      const accordion = page.getByTestId('pinned-accordion')
+      await page.waitForFunction(expected => document.querySelectorAll('[data-testid="pinned-city-row"]').length === Math.min(expected,3), spec.codes.length)
+      if (spec.scroll) await accordion.getByRole('button', { name: 'Show next pinned cities' }).click()
+      if (spec.expanded !== undefined && spec.expanded !== null) {
+        await accordion.getByTestId('pinned-city-row').nth(spec.expanded).locator('button[aria-expanded]').click()
+      }
+      const expanded = await accordion.getByTestId('pinned-city-expanded').count()
+      if (expanded !== (spec.codes.length===1 || spec.expanded!=null ? 1 : 0)) throw Error('Incorrect accordion expansion for ' + spec.name)
+      await page.screenshot({ path: directory + '/' + spec.name + '.png' })
+      manifest.states.push({ name: spec.name, pinnedCount: spec.codes.length, expandedCount: expanded, screenshot: spec.name + '.png' })
+    } finally { await page.close() }
+  }
   for (const spec of [
     { name: 'desktop-home', width: 1440, height: 900, details: false },
     { name: 'desktop-city-details', width: 1440, height: 900, details: true },
