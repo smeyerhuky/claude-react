@@ -7,6 +7,7 @@ on:
       - 'public/data/metros-census-2025.csv'
       - 'scripts/capture-metro.mjs'
       - 'scripts/capture-app-states.mjs'
+      - 'scripts/verify-metro-export.mjs'
       - 'scripts/build_metro_merge_timelapse.py'
       - '.github/workflows/metro-screenshot.yml'
       - '.github/workflows/metro-merge-timelapse.yml'
@@ -17,6 +18,7 @@ on:
       - 'public/data/metros-census-2025.csv'
       - 'scripts/capture-metro.mjs'
       - 'scripts/capture-app-states.mjs'
+      - 'scripts/verify-metro-export.mjs'
       - 'scripts/build_metro_merge_timelapse.py'
       - '.github/workflows/metro-screenshot.yml'
       - '.github/workflows/metro-merge-timelapse.yml'
@@ -72,6 +74,10 @@ jobs:
       - name: Visual test and screenshot
         id: visual
         run: node scripts/capture-metro.mjs
+      - name: Verify exported PNG visual composition
+        id: export_visual
+        if: success()
+        run: node scripts/verify-metro-export.mjs
       - name: Capture full application visual states
         id: app_visual
         if: success()
@@ -82,6 +88,7 @@ jobs:
         run: |
           echo "### Metro visual test results" >> "$GITHUB_STEP_SUMMARY"
           echo "Map-only regression: ${{ steps.visual.outcome }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "Exported PNG composition: ${{ steps.export_visual.outcome }}" >> "$GITHUB_STEP_SUMMARY"
           echo "Full-app captures: ${{ steps.app_visual.outcome }}" >> "$GITHUB_STEP_SUMMARY"
           if [ -f docs/screenshots/visual-manifest.json ]; then
             node --input-type=module -e '
@@ -103,6 +110,7 @@ jobs:
           path: |
             docs/screenshots/*.png
             docs/screenshots/visual-manifest.json
+            docs/screenshots/export-visual-manifest.json
           if-no-files-found: warn
       - name: Commit latest screenshot (pass or fail)
         id: screenshot_commit
@@ -132,6 +140,7 @@ jobs:
           IMAGE_PRESENT: ${{ steps.screenshot_commit.outputs.image_present }}
           IMAGE_SHA: ${{ steps.screenshot_commit.outputs.image_sha }}
           APP_RESULT: ${{ steps.app_visual.outcome }}
+          EXPORT_RESULT: ${{ steps.export_visual.outcome }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -147,12 +156,17 @@ jobs:
             const gallery = process.env.IMAGE_PRESENT === 'true'
               ? ['desktop-home', 'mobile-home', 'pins-one-expanded', 'pins-two-collapsed', 'pins-three-expanded', 'pins-four-scrolled', 'pins-six-scrolled-expanded'].map(name => `![${name}](https://raw.githubusercontent.com/${owner}/${repo}/${process.env.IMAGE_SHA}/docs/screenshots/${name}.png)`).join('\n\n')
               : 'Full-app screenshots unavailable; see artifact/logs.'
+            const exportGallery = process.env.IMAGE_PRESENT === 'true' && process.env.EXPORT_RESULT === 'success'
+              ? ['metro-export-default', 'metro-export-denver-selected', 'metro-export-six-pins'].map(name => `![${name}](https://raw.githubusercontent.com/${owner}/${repo}/${process.env.IMAGE_SHA}/docs/screenshots/${name}.png)`).join('\\n\\n')
+              : 'Export images unavailable or visual checks failed; inspect artifact/logs.'
             const body = [
               `### Metro map screenshot — ${status}`,
               `**Push:** \`${head}\` · **Run:** [#${context.runNumber}](${runUrl})`,
               '**Preset:** 1.2M population',
               `**Full-app visual capture:** ${process.env.APP_RESULT === 'success' ? '✅ PASS' : '❌ FAIL/NOT RUN'}`, 
               gallery,
+              `**Exported PNG pixel inspection:** ${process.env.EXPORT_RESULT === 'success' ? '✅ PASS' : '❌ FAIL/NOT RUN'}`,
+              exportGallery,
               imageUrl ? `![Map-only regression — ${status}](${imageUrl})` : 'No map-only screenshot was captured.',
               `[Download workflow screenshot artifact](${runUrl}#artifacts)`,
               '_New comment for this push; previous screenshots remain in PR history._',
