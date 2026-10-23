@@ -8,6 +8,16 @@ try {
   await page.getByText('Metro Population Regions — Interactive Map').first().click()
   // This PR includes a verified official dataset; a silent demo fallback is a regression.
   await page.getByTestId('metro-app').waitFor()
+  // Wait for the official dataset, projected state outlines, and finished Canvas paint.
+  await page.locator('[data-testid="metro-app"][data-source-kind="census"]').waitFor({ timeout: 30000 })
+  await page.waitForFunction(() => {
+    const canvas = document.querySelector('[data-testid="metro-shading-canvas"]')
+    const svg = document.querySelector('svg[role="img"]')
+    if (!canvas || canvas.dataset.renderReady !== 'true' || !svg?.querySelector('path[d]')) return false
+    const ctx = canvas.getContext('2d')
+    return ctx && ctx.getImageData(500, 310, 1, 1).data[3] > 0
+  }, null, { timeout: 30000 })
+
   await page.getByRole('button', { name: 'Open metro search' }).click()
   const search = page.getByRole('searchbox')
   await search.fill('Denver')
