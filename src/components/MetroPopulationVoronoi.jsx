@@ -246,15 +246,23 @@ export default function MetroPopulationVoronoi() {
     const ctx = canvas.getContext('2d', { alpha: true })
     if (!ctx) return
     ctx.clearRect(0, 0, 1000, 620)
-    const land = new Path2D(countryPaths.join(' '))
-    ctx.save()
-    ctx.clip(land)
-    for (const cell of cells) {
-      if (!cell.polygon) continue
-      ctx.fillStyle = cell.color
-      ctx.fill(new Path2D(cell.polygon))
+    // Each state is an independent clip region. Concatenating projected SVG
+    // geography into one Path2D can produce an inverted/even-odd winding,
+    // causing an opaque rectangle outside U.S. land in Chromium.
+    // Draw the same Voronoi cells once per independent land polygon instead.
+    const cellPaths = cells.filter(cell => cell.polygon).map(cell => ({
+      path: new Path2D(cell.polygon),
+      color: cell.color,
+    }))
+    for (const boundary of countryPaths) {
+      ctx.save()
+      ctx.clip(new Path2D(boundary), 'evenodd')
+      for (const cell of cellPaths) {
+        ctx.fillStyle = cell.color
+        ctx.fill(cell.path)
+      }
+      ctx.restore()
     }
-    ctx.restore()
   }, [countryPaths, cells])
   return (
     <div className="mx-auto max-w-[1400px] p-3 sm:p-6 space-y-4 text-slate-900">
