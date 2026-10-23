@@ -95,6 +95,9 @@ try {
         await page.getByRole('button', { name: 'Expand controls' }).click()
         if (await page.getByRole('button', { name: 'Collapse navigation' }).count()) throw Error('Duplicate drawer collapse action')
         await page.getByRole('button', { name: 'Collapse controls' }).click()
+        // City-details captures leave the search overlay open; it would cover the legend.
+        const closeSearch = page.getByTestId('metro-header').getByRole('button', { name: 'Close metro search', exact: true })
+        if (await closeSearch.count()) await closeSearch.click()
         await page.getByRole('button', { name: 'Open map legend' }).click()
         await page.getByTestId('metro-legend').waitFor()
         await page.getByRole('button', { name: 'Close map legend' }).last().click()
