@@ -98,7 +98,7 @@ jobs:
           run_url = f"https://github.com/{repo}/actions/runs/{os.environ['GITHUB_RUN_ID']}"
           lines = [
               "### ✅ Merged into main — map timelapse",
-              f"**Merge commit:** \`{sha[:12]}\`",
+              f"**Merge commit:** `{sha[:12]}`",
               f"**PR commits:** {count} · **Commits with screenshot available:** {frames} · **Distinct screenshot versions:** {unique}",
               "**Video:** 24 fps, 0.5 seconds per commit frame.",
               (f"[▶ Watch/download the MP4 timelapse]({video_url})" if os.environ.get("PUBLISHED") == "true"
