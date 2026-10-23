@@ -542,7 +542,6 @@ export default function MetroPopulationVoronoi() {
       <aside aria-label="Map navigation" className={`relative z-30 flex shrink-0 flex-col border-r border-slate-200 bg-white shadow-sm transition-[width] duration-200 ${drawerOpen?'w-[min(76vw,288px)]':'w-14'}`}>
         <div className="flex h-14 shrink-0 items-center justify-between border-b border-slate-100 px-2">
           <a href="#/" aria-label="Home" title="Home" className="flex h-10 w-10 items-center justify-center rounded-lg hover:bg-slate-100 text-xl">⌂</a>
-          {drawerOpen && <button aria-label="Collapse navigation" onClick={()=>setDrawerOpen(false)} className="rounded-lg px-2 py-2 hover:bg-slate-100">‹</button>}
         </div>
         <button aria-label={drawerOpen?'Collapse controls':'Expand controls'} onClick={()=>setDrawerOpen(v=>!v)} className="mx-2 mt-3 min-h-11 rounded-lg p-2 text-center text-slate-900 hover:bg-slate-100" title="Map controls">☷</button>
         {drawerOpen && <div className="min-h-0 flex-1 overflow-y-auto p-3 text-sm space-y-5">
@@ -604,26 +603,26 @@ export default function MetroPopulationVoronoi() {
         </div>}
       </aside>
       <main className="relative min-w-0 flex-1 flex flex-col overflow-hidden">
-        <div className="z-20 flex h-14 shrink-0 items-center justify-between gap-2 px-3 sm:px-5">
+        <div data-testid="metro-header" className="z-20 flex h-14 shrink-0 items-center gap-1 px-1.5 sm:gap-2 sm:px-5">
           <div className="min-w-0 flex-1 flex items-center gap-3">
-            <h1 className="shrink-0 text-sm sm:text-lg font-bold">Nearest metro map</h1>
-            <p data-testid="map-explainer" aria-live="polite" className="min-w-0 truncate text-xs sm:text-sm text-slate-700" title={explainer}>{explainer}</p>
+            <h1 className="shrink-0 text-xs font-bold sm:text-lg"><span className="sm:hidden">Metro</span><span className="hidden sm:inline">Nearest metro map</span></h1>
+            <p data-testid="map-explainer" aria-live="polite" className="sr-only sm:not-sr-only sm:min-w-0 sm:truncate sm:text-sm text-slate-700" title={explainer}>{explainer}</p>
           </div>
           <button type="button" onClick={()=>setLegendOpen(v=>!v)} aria-label={legendOpen?'Close map legend':'Open map legend'} aria-expanded={legendOpen} aria-controls="metro-legend"
-             className="shrink-0 min-h-11 rounded-xl border border-slate-300 bg-white px-3 text-xs sm:text-sm font-semibold text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
+             className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-slate-300 bg-white text-xs font-semibold text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-500 sm:w-auto sm:rounded-xl sm:px-3 sm:text-sm">
              <span aria-hidden="true">ⓘ </span><span className="hidden sm:inline">Map </span>key
            </button>
            <button type="button" onClick={exportMapPng} aria-label="Download map PNG"
-             className="shrink-0 min-h-11 rounded-xl border border-slate-300 bg-white px-2 sm:px-3 text-xs sm:text-sm font-medium text-slate-800 shadow-sm hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-500">
+             className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-slate-300 bg-white text-xs font-medium text-slate-800 shadow-sm hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-500 sm:w-auto sm:rounded-xl sm:px-3 sm:text-sm">
              <span className="sm:hidden">PNG</span><span className="hidden sm:inline">Export PNG</span>
            </button>
            <button type="button" onClick={copyViewLink} aria-label="Copy map link"
-            className="shrink-0 min-h-11 rounded-xl border border-slate-300 bg-white px-3 text-xs sm:text-sm font-semibold text-slate-900 shadow-sm">
-            {linkCopied?'Copied!':'Copy link'}
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-slate-300 bg-white text-xs font-semibold text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-500 sm:w-auto sm:rounded-xl sm:px-3 sm:text-sm">
+            <span className="sm:hidden" aria-hidden="true">{linkCopied?'✓':'↗'}</span><span className="hidden sm:inline">{linkCopied?'Copied!':'Copy link'}</span>
           </button>
           <div className="relative flex min-w-0 items-center justify-end">
             <button aria-label={searchOpen?'Close metro search':'Open metro search'} title="Search metros" onClick={()=>{setSearchOpen(v=>!v);setSearch('')}}
-              className="z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-slate-300 bg-white text-slate-900 shadow-sm hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-600">
+              className="z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-slate-300 bg-white text-slate-900 shadow-sm hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-500 sm:h-12 sm:w-12 sm:rounded-xl">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
                 <circle cx="10.8" cy="10.8" r="6.8" />
                 <path d="m16 16 5 5" />
