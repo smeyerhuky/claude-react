@@ -331,7 +331,7 @@ export default function MetroPopulationVoronoi() {
             <canvas ref={canvasRef} width={1000} height={620} aria-hidden="true"
               data-testid="metro-shading-canvas" className="absolute inset-0 w-full h-full"/>
           <svg viewBox="0 0 1000 620" role="img" aria-label={`Map of ${qualifying.length} qualifying metro regions for population threshold ${threshold}`} className="absolute inset-0 w-full h-full">
-            <g fill="none" stroke="#64748b" strokeWidth="1.2" strokeLinejoin="round" pointerEvents="none">
+            <g fill="none" fillRule="evenodd" stroke="#64748b" strokeWidth="1.2" strokeLinejoin="round" pointerEvents="none">
               {countryPaths.map((d,i)=><path key={i} d={d}/>)}
             </g>
             <g>{qualifying.map(a=><g key={a.id} onClick={()=>setSelected(a)} style={{cursor:'pointer'}}>
