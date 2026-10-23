@@ -499,11 +499,11 @@ export default function MetroPopulationVoronoi() {
             <input id="metro-range" aria-label="Minimum metro population slider" type="range" min={0} max={1000} value={toTrack(threshold)}
               onChange={e=>choose(fromTrack(e.target.value))} className="w-full accent-blue-700"/>
             <div className="flex flex-wrap gap-1">{PRESETS.map(n=><button key={n} onClick={()=>choose(n)}
-              className={`min-h-9 rounded-full border border-slate-400 px-3 py-1 text-xs font-medium ${threshold===n?'bg-blue-700 text-white':'bg-white text-slate-900'}`}>{fmt(n)}</button>)}</div>
+              className={`min-h-9 rounded-full border border-slate-400 px-3 py-1 text-xs font-medium ${threshold===n?'border-slate-500 bg-slate-200 text-slate-900':'border-slate-300 bg-white text-slate-700 hover:bg-slate-100'}`}>{fmt(n)}</button>)}</div>
             <label className="flex items-center gap-2"><input type="checkbox" checked={showLabels} onChange={e=>setShowLabels(e.target.checked)}/> Show city labels</label>
           </section>
           <button type="button" disabled={pinned.length<2} onClick={()=>{setCompareOpen(true);setDetailOpen(false)}} aria-label="Compare pinned cities"
-            className="w-full min-h-11 rounded-lg bg-blue-800 px-3 py-2 font-semibold text-white disabled:bg-slate-200 disabled:text-slate-600 disabled:cursor-not-allowed">
+            className="w-full min-h-11 rounded-lg border border-slate-300 bg-slate-200 px-3 py-2 font-medium text-slate-900 hover:bg-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-500 disabled:bg-slate-100 disabled:text-slate-500 disabled:cursor-not-allowed">
             Compare pinned cities ({pinned.length})
           </button>
           <section aria-label="Pinned metros" data-testid="pinned-accordion" className="space-y-1.5">
