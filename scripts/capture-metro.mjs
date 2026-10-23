@@ -21,6 +21,18 @@ try {
   await mkdir('docs/screenshots', { recursive: true })
   await canvas.locator('xpath=..').screenshot({ path: 'docs/screenshots/metro-default.png' })
   if (test.some(p => p.alpha !== 0)) throw new Error('Canvas boundary spillover: '+JSON.stringify(test))
+  const geometryCheck = await canvas.evaluate(el => {
+    const ctx = el.getContext('2d')
+    const grid = { interior: 0, exterior: 0 }
+    // A completely transparent canvas is not a valid clipping fix.
+    for (let y = 50; y < 550; y += 10) for (let x = 50; x < 950; x += 10) {
+      const alpha = ctx.getImageData(x,y,1,1).data[3]
+      if (alpha > 0) grid.interior++
+      else grid.exterior++
+    }
+    return grid
+  })
+  if (geometryCheck.interior < 300 || geometryCheck.exterior < 200) throw new Error('Suspicious geographic mask: '+JSON.stringify(geometryCheck))
   console.log('Captured docs/screenshots/metro-default.png; verified transparent external probes', test)
 } finally {
   await browser.close()
