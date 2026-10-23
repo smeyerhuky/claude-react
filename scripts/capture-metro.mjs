@@ -72,6 +72,20 @@ try {
     await sharedPage.getByTestId('metro-details').getByText('19740').waitFor()
     await sharedPage.getByRole('button', { name: 'Expand controls' }).click()
     await sharedPage.getByRole('button', { name: 'Compare pinned cities' }).waitFor()
+    // Shareable-view changes must produce real browser history entries.
+    // Back and forward must restore settings without losing the pinned cities.
+    const labels = sharedPage.getByRole('checkbox', { name: 'Show city labels' })
+    await labels.uncheck()
+    await sharedPage.waitForFunction(() => location.hash.includes('labels=0'))
+    await sharedPage.goBack({ waitUntil: 'domcontentloaded' })
+    await sharedPage.waitForFunction(() => !location.hash.includes('labels=0'))
+    await labels.waitFor()
+    if (!await labels.isChecked()) throw Error('Browser Back did not restore enabled map labels')
+    await sharedPage.goForward({ waitUntil: 'domcontentloaded' })
+    await sharedPage.waitForFunction(() => location.hash.includes('labels=0'))
+    if (await labels.isChecked()) throw Error('Browser Forward did not restore disabled map labels')
+    await sharedPage.locator('[data-metro-marker="19740"][data-pinned="true"]').waitFor()
+
   } finally { await sharedPage.close() }
   await page.getByRole('button', { name: 'Open metro search' }).count() && await page.getByRole('button', { name: 'Close metro search' }).click()
   await page.getByTestId('full-map-reset').click()
