@@ -21,7 +21,7 @@ try {
   if (test.some(p => p.alpha !== 0)) throw new Error('Canvas boundary spillover: '+JSON.stringify(test))
   await mkdir('docs/screenshots', { recursive: true })
   await page.locator('h1').first().screenshot({ path: '/tmp/metro-heading.png' })
-  await page.locator('[data-testid="metro-shading-canvas"]').screenshot({ path: 'docs/screenshots/metro-default.png' })
+  await canvas.locator('xpath=..').screenshot({ path: 'docs/screenshots/metro-default.png' })
   console.log('Captured docs/screenshots/metro-default.png; verified transparent external probes', test)
 } finally {
   await browser.close()
