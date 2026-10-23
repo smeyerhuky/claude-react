@@ -312,6 +312,66 @@ export default function MetroPopulationVoronoi() {
     previousShare.current = shareHash
     window.history.pushState(null, '', window.location.pathname + window.location.search + shareHash)
   }, [shareHash, sourceKind])
+  const exportMapPng = async () => {
+    const canvas = canvasRef.current
+    const svg = document.querySelector('[data-testid="map-shell"] svg[role="img"]')
+    if (!canvas || !svg || canvas.dataset.renderReady !== 'true') return
+    const width = 1000
+    const rowHeight = 28
+    const footerHeight = 76 + pinned.length * rowHeight
+    const output = document.createElement('canvas')
+    output.width = width * 2
+    output.height = (620 + footerHeight) * 2
+    const context = output.getContext('2d')
+    if (!context) return
+    context.scale(2, 2)
+    context.fillStyle = '#ffffff'
+    context.fillRect(0, 0, width, 620 + footerHeight)
+    context.drawImage(canvas, 0, 0, width, 620)
+
+    // Rasterize SVG state outlines, labels, and pin markers over the Voronoi canvas.
+    const copy = svg.cloneNode(true)
+    copy.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    copy.setAttribute('width', String(width))
+    copy.setAttribute('height', '620')
+    copy.style.fontFamily = 'Arial, sans-serif'
+    const url = URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(copy)], { type: 'image/svg+xml;charset=utf-8' }))
+    try {
+      const image = new Image()
+      image.src = url
+      await image.decode()
+      context.drawImage(image, 0, 0, width, 620)
+    } finally { URL.revokeObjectURL(url) }
+
+    context.fillStyle = '#f8fafc'
+    context.fillRect(0, 620, width, footerHeight)
+    context.fillStyle = '#0f172a'
+    context.font = 'bold 19px Arial, sans-serif'
+    context.fillText('Nearest metropolitan area · Census Vintage 2025', 24, 651)
+    context.font = '14px Arial, sans-serif'
+    context.fillStyle = '#475569'
+    context.fillText(`Population threshold: ${fmt(threshold)} · ${qualifying.length} qualifying metros · Voronoi regions are not Census boundaries`, 24, 678)
+    pinned.forEach((a, i) => {
+      const y = 706 + i * rowHeight
+      context.fillStyle = '#c2410c'
+      context.beginPath()
+      context.arc(30, y - 4, 5, 0, Math.PI * 2)
+      context.fill()
+      context.fillStyle = '#334155'
+      context.font = '15px Arial, sans-serif'
+      context.fillText(`${shortNames.get(a.id) || a.name} — ${a.pop.toLocaleString()} residents`, 46, y, 910)
+    })
+    const blob = await new Promise(resolve => output.toBlob(resolve, 'image/png'))
+    if (!blob) return
+    const downloadUrl = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = downloadUrl
+    link.download = 'metro-population-map.png'
+    document.body.append(link)
+    link.click()
+    link.remove()
+    setTimeout(() => URL.revokeObjectURL(downloadUrl), 1000)
+  }
   const copyViewLink = async () => {
     const url = window.location.origin + window.location.pathname + window.location.search + shareHash
     try { await navigator.clipboard.writeText(url);setLinkCopied(true) }
@@ -552,6 +612,10 @@ export default function MetroPopulationVoronoi() {
           <button type="button" onClick={()=>setLegendOpen(v=>!v)} aria-label={legendOpen?'Close map legend':'Open map legend'} aria-expanded={legendOpen} aria-controls="metro-legend"
              className="shrink-0 min-h-11 rounded-xl border border-slate-300 bg-white px-3 text-xs sm:text-sm font-semibold text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
              <span aria-hidden="true">ⓘ </span><span className="hidden sm:inline">Map </span>key
+           </button>
+           <button type="button" onClick={exportMapPng} aria-label="Download map PNG"
+             className="shrink-0 min-h-11 rounded-xl border border-slate-300 bg-white px-2 sm:px-3 text-xs sm:text-sm font-medium text-slate-800 shadow-sm hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-500">
+             <span className="sm:hidden">PNG</span><span className="hidden sm:inline">Export PNG</span>
            </button>
            <button type="button" onClick={copyViewLink} aria-label="Copy map link"
             className="shrink-0 min-h-11 rounded-xl border border-slate-300 bg-white px-3 text-xs sm:text-sm font-semibold text-slate-900 shadow-sm">
