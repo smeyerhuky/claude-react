@@ -509,32 +509,32 @@ export default function MetroPopulationVoronoi() {
           <section aria-label="Pinned metros" data-testid="pinned-accordion" className="space-y-1.5">
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-sm font-semibold text-slate-800">Pinned cities <span className="font-normal text-slate-500">({pinned.length}/{MAX_PINNED_METROS})</span></h3>
-              {pinned.length > 0 && <button onClick={()=>{setPinnedIds([]);setExpandedPinId(null);setPinOffset(0)}} className="text-xs text-blue-700 underline focus:outline-none focus:ring-2 focus:ring-blue-600" aria-label="Clear all pinned cities">Clear all</button>}
+              {pinned.length > 0 && <button onClick={()=>{setPinnedIds([]);setExpandedPinId(null);setPinOffset(0)}} className="text-xs text-slate-600 underline decoration-slate-300 underline-offset-2 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-500" aria-label="Clear all pinned cities">Clear all</button>}
             </div>
             {pinned.length ? <>
               {pinned.length > VISIBLE_PIN_ROWS && <div className="flex justify-center">
-                <button type="button" aria-label="Show previous pinned cities" disabled={pinOffset===0} onClick={()=>setPinOffset(v=>Math.max(0,v-1))} className="flex h-7 w-12 items-center justify-center rounded-md text-slate-600 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-600 disabled:opacity-30" title="Previous pinned cities"><span aria-hidden="true" className="text-lg leading-none">⌃</span></button>
+                <button type="button" aria-label="Show previous pinned cities" disabled={pinOffset===0} onClick={()=>setPinOffset(v=>Math.max(0,v-1))} className="flex h-7 w-12 items-center justify-center rounded-md text-slate-600 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-500 disabled:opacity-30" title="Previous pinned cities"><span aria-hidden="true" className="text-lg leading-none">⌃</span></button>
               </div>}
               <div className="space-y-1">
-                {displayedPins.map(a=><article key={a.id} data-testid="pinned-city-row" className={`overflow-hidden rounded-md border ${expandedId===a.id?'border-blue-300 bg-blue-50/60':'border-slate-200 bg-slate-50'} text-slate-900`}>
+                {displayedPins.map(a=><article key={a.id} data-testid="pinned-city-row" className={`overflow-hidden rounded-md border ${expandedId===a.id?'border-slate-300 bg-slate-100':'border-slate-200 bg-white'} text-slate-900`}>
                   <div className="flex items-center gap-0.5 px-1">
-                    <button type="button" aria-expanded={expandedId===a.id} onClick={()=>setExpandedPinId(v=>v===a.id?null:a.id)} className="flex min-h-10 min-w-0 flex-1 items-center gap-1.5 px-1.5 text-left focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-600">
-                      <span className="min-w-0 flex-1 truncate text-xs font-semibold">{shortNames.get(a.id)||a.name} – {fmt(a.pop)}</span>
+                    <button type="button" aria-expanded={expandedId===a.id} onClick={()=>setExpandedPinId(v=>v===a.id?null:a.id)} className="flex min-h-10 min-w-0 flex-1 items-center gap-1.5 px-1.5 text-left focus:outline-none focus:ring-2 focus:ring-inset focus:ring-slate-500">
+                      <span className="min-w-0 flex-1 truncate text-xs font-medium">{shortNames.get(a.id)||a.name} – {fmt(a.pop)}</span>
                       <span aria-hidden="true" className="text-sm text-slate-500">{expandedId===a.id?'⌃':'⌄'}</span>
                     </button>
-                    <button type="button" className="min-h-10 min-w-9 rounded text-sm text-slate-500 hover:bg-slate-200 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600" aria-label={`Unpin ${a.name}`} onClick={()=>togglePin(a)}>✕</button>
+                    <button type="button" className="min-h-10 min-w-9 rounded text-sm text-slate-500 hover:bg-slate-200 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-500" aria-label={`Unpin ${a.name}`} onClick={()=>togglePin(a)}>✕</button>
                   </div>
-                  {expandedId===a.id && <div data-testid="pinned-city-expanded" className="border-t border-blue-100 px-2.5 py-2 text-xs text-slate-700">
+                  {expandedId===a.id && <div data-testid="pinned-city-expanded" className="border-t border-slate-200 px-2.5 py-2 text-xs text-slate-700">
                     <p className="truncate font-medium" title={a.name}>{a.name}</p>
                     <div className="mt-1 flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
                       <span className="tabular-nums">{a.pop.toLocaleString()} residents</span>
-                      <button type="button" onClick={()=>chooseMetro(a)} className="min-h-8 rounded-md px-2 font-semibold text-blue-800 underline underline-offset-2 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-600">View details →</button>
+                      <button type="button" onClick={()=>chooseMetro(a)} className="min-h-8 rounded-md px-2 font-medium text-slate-700 underline decoration-slate-400 underline-offset-2 hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-500">View details →</button>
                     </div>
                   </div>}
                 </article>)}
               </div>
               {pinned.length > VISIBLE_PIN_ROWS && <div className="flex justify-center">
-                <button type="button" aria-label="Show next pinned cities" disabled={pinOffset>=pinned.length-VISIBLE_PIN_ROWS} onClick={()=>setPinOffset(v=>Math.min(pinned.length-VISIBLE_PIN_ROWS,v+1))} className="flex h-7 w-12 items-center justify-center rounded-md text-slate-600 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-600 disabled:opacity-30" title="Next pinned cities"><span aria-hidden="true" className="text-lg leading-none">⌄</span></button>
+                <button type="button" aria-label="Show next pinned cities" disabled={pinOffset>=pinned.length-VISIBLE_PIN_ROWS} onClick={()=>setPinOffset(v=>Math.min(pinned.length-VISIBLE_PIN_ROWS,v+1))} className="flex h-7 w-12 items-center justify-center rounded-md text-slate-600 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-500 disabled:opacity-30" title="Next pinned cities"><span aria-hidden="true" className="text-lg leading-none">⌄</span></button>
               </div>}
             </> : <p className="text-slate-600 text-xs">Search and pin metros to compare them.</p>}
             {pinned.length>=MAX_PINNED_METROS && <p className="text-[11px] leading-tight text-slate-500">Limit reached · Unpin a city to add another.</p>}
