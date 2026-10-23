@@ -3,6 +3,9 @@ import { Delaunay, geoAlbers } from 'd3'
 
 // Illustrative seed data, NOT a complete or validated 2025 Census CBSA inventory.
 // Each row: anchor name, longitude, latitude, approximate metro population.
+const MAX_PINNED_METROS = 6
+const VISIBLE_PIN_ROWS = 3
+
 const ANCHORS = [
 ['New York',-74.006,40.713,20100000],['Los Angeles',-118.244,34.052,12900000],['Chicago',-87.630,41.878,9430000],
 ['Dallas–Fort Worth',-96.797,32.777,8340000],['Houston',-95.370,29.760,7790000],['Washington, DC',-77.037,38.907,6450000],
@@ -231,6 +234,8 @@ export default function MetroPopulationVoronoi() {
   const [searchOpen,setSearchOpen] = useState(false)
   const [hovered,setHovered] = useState(null)
   const [pinnedIds,setPinnedIds] = useState([])
+  const [expandedPinId,setExpandedPinId] = useState(null)
+  const [pinOffset,setPinOffset] = useState(0)
   const [detailOpen,setDetailOpen] = useState(false)
   const [compareOpen,setCompareOpen] = useState(false)
   const [linkCopied,setLinkCopied] = useState(false)
@@ -263,7 +268,7 @@ export default function MetroPopulationVoronoi() {
     const t = Number(params.get('threshold'))
     const validThreshold = params.has('threshold') && Number.isFinite(t) ? clamp(Math.round(t/1000)*1000) : 1200000
     const findCode = code => dataset.find(a=>String(a.cbsa || '')===code)
-    const pins = (params.get('pins') || '').split(',').filter(Boolean).slice(0,25)
+    const pins = (params.get('pins') || '').split(',').filter(Boolean).slice(0,MAX_PINNED_METROS)
       .map(findCode).filter(Boolean)
     const active = findCode(params.get('city') || '')
     restoringUrl.current = true
@@ -320,9 +325,11 @@ export default function MetroPopulationVoronoi() {
     setHovered(null)
     setDetailOpen(true)
   }
-  const togglePin = a => setPinnedIds(ids => ids.includes(a.id) ? ids.filter(id=>id!==a.id) : [...ids,a.id])
+  const togglePin = a => setPinnedIds(ids => ids.includes(a.id) ? ids.filter(id=>id!==a.id) : ids.length >= MAX_PINNED_METROS ? ids : [...ids,a.id])
   const pinned = dataset.filter(a=>pinnedIds.includes(a.id))
   const compared = [...pinned].sort((a,b)=>b.pop-a.pop)
+  const displayedPins = compared.slice(Math.min(pinOffset, Math.max(0, compared.length-VISIBLE_PIN_ROWS)), Math.min(pinOffset, Math.max(0, compared.length-VISIBLE_PIN_ROWS))+VISIBLE_PIN_ROWS)
+  const expandedId = pinned.length === 1 ? pinned[0].id : expandedPinId
   const biggest = compared[0]?.pop || 1
   const smallest = compared[compared.length-1]?.pop || 0
   const explainer = detailOpen && selected
@@ -335,7 +342,7 @@ export default function MetroPopulationVoronoi() {
           ? `Nearest-metro regions at ${fmt(threshold)} minimum. ${pinned.length} cities pinned: ${pinned.slice(0,2).map(a=>shortNames.get(a.id)||a.name).join(', ')}${pinned.length>2?'…':''}.`
           : `Each shaded region is closest to a qualifying metro, not an official metro boundary. ${qualifying.length} metros at ${fmt(threshold)} minimum.`
 
-  const resetView = () => { setSearchOpen(false);setDrawerOpen(false);setHovered(null);setSelected(null);setDetailOpen(false);setCompareOpen(false);setSearch('');setPinnedIds([]) }
+  const resetView = () => { setSearchOpen(false);setDrawerOpen(false);setHovered(null);setSelected(null);setDetailOpen(false);setCompareOpen(false);setSearch('');setPinnedIds([]);setExpandedPinId(null);setPinOffset(0) }
   // Measure label widths with the browser's actual text metrics, then seek free space.
   // Lower population thresholds naturally show fewer labels when crowded.
   const labelLayout = useMemo(() => {
@@ -499,18 +506,30 @@ export default function MetroPopulationVoronoi() {
             className="w-full min-h-11 rounded-lg bg-blue-800 px-3 py-2 font-semibold text-white disabled:bg-slate-200 disabled:text-slate-600 disabled:cursor-not-allowed">
             Compare pinned cities ({pinned.length})
           </button>
-          <section aria-label="Pinned metros" className="space-y-2">
-            <div className="flex items-center justify-between gap-2"><h3 className="font-semibold">Pinned cities ({pinned.length})</h3>
-              {pinned.length > 0 && <button onClick={()=>setPinnedIds([])} className="text-xs text-blue-800 underline" aria-label="Clear all pinned cities">Clear all</button>}
+          <section aria-label="Pinned metros" data-testid="pinned-accordion" className="space-y-2">
+            <div className="flex items-center justify-between gap-2">
+              <h3 className="font-semibold">Pinned cities ({pinned.length}/{MAX_PINNED_METROS})</h3>
+              {pinned.length > 0 && <button onClick={()=>{setPinnedIds([]);setExpandedPinId(null);setPinOffset(0)}} className="text-xs text-blue-800 underline" aria-label="Clear all pinned cities">Clear all</button>}
             </div>
-            {pinned.length ? [...pinned].sort((a,b)=>b.pop-a.pop).map((a,index)=><div key={a.id} className="flex items-center gap-2 rounded-lg border border-orange-200 bg-orange-50 px-2 py-2 text-slate-900">
-              <span aria-hidden="true" className="text-orange-700 font-bold tabular-nums">{index+1}.</span>
-              <button className="min-w-0 flex-1 text-left" onClick={()=>chooseMetro(a)} title={a.name}>
-                <span className="block truncate font-semibold" style={{color:'#0f172a'}}>{shortNames.get(a.id)||a.name}</span>
-                <span className="block text-sm tabular-nums text-slate-700">{a.pop.toLocaleString()} residents</span>
-              </button>
-              <button className="min-h-10 min-w-10 rounded px-2 py-1 text-slate-800 hover:bg-orange-100" aria-label={`Unpin ${a.name}`} onClick={()=>togglePin(a)}>✕</button>
-            </div>) : <p className="text-slate-600 text-xs">Search and pin several metros to compare population and locations.</p>}
+            {pinned.length ? <>
+              {pinned.length > VISIBLE_PIN_ROWS && <button type="button" aria-label="Show previous pinned cities" disabled={pinOffset===0} onClick={()=>setPinOffset(v=>Math.max(0,v-1))} className="w-full min-h-9 rounded-lg border border-slate-300 bg-white font-bold text-slate-900 disabled:opacity-40">⌃</button>}
+              {displayedPins.map(a=><article key={a.id} data-testid="pinned-city-row" className="rounded-lg border border-orange-200 bg-orange-50 text-slate-900">
+                <div className="flex items-center gap-1 px-2">
+                  <button type="button" aria-expanded={expandedId===a.id} onClick={()=>setExpandedPinId(v=>v===a.id?null:a.id)} className="flex min-h-11 min-w-0 flex-1 items-center gap-2 py-2 text-left focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    <span className="min-w-0 flex-1 truncate font-semibold">{shortNames.get(a.id)||a.name} – {fmt(a.pop)}</span>
+                    <span aria-hidden="true" className="text-orange-800">{expandedId===a.id?'⌃':'⌄'}</span>
+                  </button>
+                  <button type="button" className="min-h-10 min-w-10 rounded hover:bg-orange-100 focus:outline-none focus:ring-2 focus:ring-blue-600" aria-label={`Unpin ${a.name}`} onClick={()=>togglePin(a)}>✕</button>
+                </div>
+                {expandedId===a.id && <div data-testid="pinned-city-expanded" className="border-t border-orange-200 px-3 py-3 text-xs text-slate-800">
+                  <p className="font-medium">{a.name}</p>
+                  <p className="mt-1 tabular-nums">{a.pop.toLocaleString()} residents · Census 2025</p>
+                  <button type="button" onClick={()=>chooseMetro(a)} className="mt-2 min-h-10 rounded border border-orange-400 bg-white px-3 font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600">View metro details</button>
+                </div>}
+              </article>)}
+              {pinned.length > VISIBLE_PIN_ROWS && <button type="button" aria-label="Show next pinned cities" disabled={pinOffset>=pinned.length-VISIBLE_PIN_ROWS} onClick={()=>setPinOffset(v=>Math.min(pinned.length-VISIBLE_PIN_ROWS,v+1))} className="w-full min-h-9 rounded-lg border border-slate-300 bg-white font-bold text-slate-900 disabled:opacity-40">⌄</button>}
+            </> : <p className="text-slate-600 text-xs">Search and pin several metros to compare population and locations.</p>}
+            {pinned.length>=MAX_PINNED_METROS && <p className="text-xs text-orange-800">Maximum {MAX_PINNED_METROS} pinned cities. Unpin one to add another.</p>}
           </section>
           <button className="w-full min-h-11 rounded-lg border border-slate-300 bg-white text-slate-900 px-3 py-2" onClick={resetView}>Return to full map</button>
           <p className="text-xs text-slate-500">Census 2025 metro populations · Nearest-metro Voronoi regions (not official CBSA boundaries)</p>
@@ -567,7 +586,7 @@ export default function MetroPopulationVoronoi() {
           <div role="listbox" aria-label="Matching metro areas" className="max-h-[min(40dvh,260px)] overflow-y-auto mt-2 divide-y divide-slate-200 rounded-lg border border-slate-200 bg-white text-slate-900">
             {searchMatches.map(a=><div key={a.id} className="flex items-center gap-2 px-2 py-2 text-xs sm:text-sm bg-white text-slate-900 hover:bg-slate-50">
               <button role="option" aria-selected={selected?.id===a.id} onClick={()=>chooseMetro(a)} className="min-w-0 flex-1 min-h-10 truncate text-left text-slate-900 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded" style={{ color: "#0f172a", backgroundColor: "#ffffff" }}><span style={{color:'#0f172a'}}>{a.name}</span></button>
-              <button onClick={()=>togglePin(a)} className={`shrink-0 min-h-11 min-w-11 rounded border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 ${pinnedIds.includes(a.id)?'border-orange-600 bg-orange-100 text-orange-900':'border-slate-400 bg-white text-slate-900 hover:bg-blue-50'}`} aria-pressed={pinnedIds.includes(a.id)} aria-label={`${pinnedIds.includes(a.id)?'Unpin':'Pin'} ${a.name}`} title={pinnedIds.includes(a.id)?'Unpin city':'Pin city'}><span aria-hidden="true" className="text-xl leading-none">📌</span></button>
+              <button onClick={()=>togglePin(a)} disabled={!pinnedIds.includes(a.id) && pinnedIds.length>=MAX_PINNED_METROS} className={`shrink-0 min-h-11 min-w-11 rounded border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 ${pinnedIds.includes(a.id)?'border-orange-600 bg-orange-100 text-orange-900':'border-slate-400 bg-white text-slate-900 hover:bg-blue-50'}`} aria-pressed={pinnedIds.includes(a.id)} aria-label={`${pinnedIds.includes(a.id)?'Unpin':'Pin'} ${a.name}`} title={pinnedIds.includes(a.id)?'Unpin city':'Pin city'}><span aria-hidden="true" className="text-xl leading-none">📌</span></button>
             </div>)}
             {search && !searchMatches.length && <p className="p-2 text-sm">No matching metros.</p>}
           </div>
@@ -659,7 +678,7 @@ export default function MetroPopulationVoronoi() {
                 <div><dt className="text-xs text-slate-500">Current threshold</dt><dd>{isEligible?'Qualifies':'Below minimum'}</dd></div>
               </dl>
               <div className="mt-3 flex gap-2">
-                <button type="button" className={`min-h-11 min-w-11 rounded border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 ${pinnedIds.includes(selected.id)?'border-orange-600 bg-orange-100 text-orange-900':'border-slate-300 bg-white text-slate-900'}`} onClick={()=>togglePin(selected)} aria-pressed={pinnedIds.includes(selected.id)} aria-label={`${pinnedIds.includes(selected.id)?'Unpin':'Pin'} ${selected.name}`} title={pinnedIds.includes(selected.id)?'Unpin city':'Pin city'}><span aria-hidden="true" className="text-xl leading-none">📌</span></button>
+                <button type="button" className={`min-h-11 min-w-11 rounded border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 ${pinnedIds.includes(selected.id)?'border-orange-600 bg-orange-100 text-orange-900':'border-slate-300 bg-white text-slate-900'}`} onClick={()=>togglePin(selected)} disabled={!pinnedIds.includes(selected.id) && pinnedIds.length>=MAX_PINNED_METROS} aria-pressed={pinnedIds.includes(selected.id)} aria-label={`${pinnedIds.includes(selected.id)?'Unpin':'Pin'} ${selected.name}`} title={pinnedIds.includes(selected.id)?'Unpin city':'Pin city'}><span aria-hidden="true" className="text-xl leading-none">📌</span></button>
                 {!isEligible && <button className="rounded border px-3 py-2" onClick={()=>choose(selected.pop)}>Include this metro in the map</button>}
                 <button className="rounded border px-3 py-2" onClick={resetView}>Full map</button>
               </div>
