@@ -62,6 +62,17 @@ try {
   await details.getByRole('heading', { name: 'Denver-Aurora-Centennial, CO Metro Area' }).waitFor()
   await mkdir('docs/screenshots', { recursive: true })
   await page.screenshot({ path: 'docs/screenshots/metro-search-details.png' })
+  const sharedHash = await page.evaluate(() => window.location.hash)
+  if (!sharedHash.includes('city=19740') || !sharedHash.includes('pins=')) throw Error('Shared URL missing city or pinned metros: ' + sharedHash)
+  const sharedPage = await browser.newPage({ viewport: { width: 390, height: 844 } })
+  try {
+    await sharedPage.goto('http://127.0.0.1:4173/' + sharedHash, { waitUntil: 'domcontentloaded' })
+    await sharedPage.locator('[data-testid="metro-app"][data-source-kind="census"]').waitFor({ timeout: 30000 })
+    await sharedPage.locator('[data-metro-marker="19740"][data-pinned="true"][data-selected="true"]').waitFor({ timeout: 15000 })
+    await sharedPage.getByTestId('metro-details').getByText('19740').waitFor()
+    await sharedPage.getByRole('button', { name: 'Expand controls' }).click()
+    await sharedPage.getByRole('button', { name: 'Compare pinned cities' }).waitFor()
+  } finally { await sharedPage.close() }
   await page.getByRole('button', { name: 'Open metro search' }).count() && await page.getByRole('button', { name: 'Close metro search' }).click()
   await page.getByTestId('full-map-reset').click()
   if (await page.locator('[data-metro-marker="19740"][data-pinned="true"]').count()) throw Error('Full-map reset failed to clear pinned cities')
