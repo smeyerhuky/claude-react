@@ -56,14 +56,12 @@ def poprows():
         raise ValueError("Could not locate Census Geographic Area header")
     header = [str(x).strip().lower() if x is not None else "" for x in rows[header_index]]
     area_col = next(i for i, x in enumerate(header) if "geographic area" in x)
-    year_cols = [i for i, x in enumerate(header) if "2025" in x]
+    # Census workbook has a two-row header: column titles followed by years.
+    year_cols = [i for j in range(max(0, header_index - 2), min(len(rows), header_index + 4))
+                 for i, val in enumerate(rows[j])
+                 if str(val).strip() == "2025"]
     if not year_cols:
-        # Census spreadsheets sometimes merge a 2025 year heading above 'Population Estimate'.
-        year_cols = [i for i in range(len(header)) if any(
-            "2025" in str(rows[j][i]) for j in range(max(0, header_index - 3), header_index + 1)
-            if i < len(rows[j]))]
-    if not year_cols:
-        raise ValueError("Cannot identify the July 1, 2025 population column")
+        raise ValueError("Cannot identify 2025 column; header rows: " + repr(rows[:header_index+4]))
     year_col = max(year_cols)
     code_cols = [i for i, x in enumerate(header) if "cbsa" in x or "geographic identifier" in x]
     result = []
@@ -74,7 +72,7 @@ def poprows():
             pop = int(str(raw).replace(",", ""))
         except (ValueError, TypeError):
             continue
-        if not name or pop < 100000:
+        if not name or pop < 100000 or "metro area" not in name.lower():
             continue
         code = ""
         if code_cols and code_cols[0] < len(row):
