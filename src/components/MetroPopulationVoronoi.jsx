@@ -259,6 +259,16 @@ export default function MetroPopulationVoronoi() {
   }
   const togglePin = a => setPinnedIds(ids => ids.includes(a.id) ? ids.filter(id=>id!==a.id) : [...ids,a.id])
   const pinned = dataset.filter(a=>pinnedIds.includes(a.id))
+  const explainer = detailOpen && selected
+    ? `Viewing ${shortNames.get(selected.id) || selected.name}: ${selected.pop.toLocaleString()} residents (2025). ${pinned.length ? `${pinned.length} pinned.` : ''}`
+    : searchOpen
+      ? `Search Census metro areas and pin multiple cities. ${pinned.length} pinned · ${fmt(threshold)} minimum.`
+      : drawerOpen
+        ? `Adjust the population threshold and labels. ${qualifying.length} qualifying metros · ${pinned.length} pinned.`
+        : pinned.length
+          ? `Nearest-metro regions at ${fmt(threshold)} minimum. ${pinned.length} cities pinned: ${pinned.slice(0,2).map(a=>shortNames.get(a.id)||a.name).join(', ')}${pinned.length>2?'…':''}.`
+          : `Each shaded region is closest to a qualifying metro, not an official metro boundary. ${qualifying.length} metros at ${fmt(threshold)} minimum.`
+
   const resetView = () => { setSearchOpen(false);setDrawerOpen(false);setHovered(null);setSelected(null);setDetailOpen(false);setSearch('') }
   // Measure label widths with the browser's actual text metrics, then seek free space.
   // Lower population thresholds naturally show fewer labels when crowded.
@@ -421,20 +431,29 @@ export default function MetroPopulationVoronoi() {
       </aside>
       <main className="relative min-w-0 flex-1 flex flex-col overflow-hidden">
         <div className="z-20 flex h-14 shrink-0 items-center justify-between gap-2 px-3 sm:px-5">
-          <div className="min-w-0"><h1 className="truncate text-sm sm:text-lg font-bold">Nearest metro map</h1><p className="text-[10px] sm:text-xs text-slate-500">{fmt(threshold)} minimum · {qualifying.length} metros</p></div>
+          <div className="min-w-0 flex-1 flex items-center gap-3">
+            <h1 className="shrink-0 text-sm sm:text-lg font-bold">Nearest metro map</h1>
+            <p data-testid="map-explainer" aria-live="polite" className="min-w-0 truncate text-xs sm:text-sm text-slate-700" title={explainer}>{explainer}</p>
+          </div>
           <div className="relative flex min-w-0 items-center justify-end">
-            <button aria-label={searchOpen?'Close metro search':'Open metro search'} title="Search metros" onClick={()=>setSearchOpen(v=>!v)}
+            <button aria-label={searchOpen?'Close metro search':'Open metro search'} title="Search metros" onClick={()=>{setSearchOpen(v=>!v);setSearch('')}}
               className="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border bg-white shadow-sm">⌕</button>
           </div>
         </div>
         {searchOpen && <section aria-label="Metro search" className="absolute z-40 right-2 sm:right-5 top-14 w-[min(420px,calc(100%-16px))] max-w-[calc(100%-16px)] rounded-xl border bg-white shadow-xl p-3">
           <label htmlFor="metro-search" className="block font-semibold text-sm mb-2">Find and pin cities</label>
-          <input id="metro-search" type="search" value={search} autoFocus placeholder="City, state, or CBSA code" onChange={e=>setSearch(e.target.value)}
-            onKeyDown={e=>{if(e.key==='Enter'&&searchMatches.length)chooseMetro(searchMatches[0])}} className="w-full rounded-lg border px-3 py-2"/>
-          <div role="listbox" aria-label="Matching metro areas" className="max-h-[min(40dvh,260px)] overflow-y-auto mt-2 divide-y">
-            {searchMatches.map(a=><div key={a.id} className="flex items-center gap-2 py-2 text-xs sm:text-sm">
-              <button role="option" aria-selected={selected?.id===a.id} onClick={()=>chooseMetro(a)} className="min-w-0 flex-1 truncate text-left">{a.name}</button>
-              <button onClick={()=>togglePin(a)} className="shrink-0 rounded border px-2 py-1" aria-label={`${pinnedIds.includes(a.id)?'Unpin':'Pin'} ${a.name}`}>{pinnedIds.includes(a.id)?'Unpin':'Pin'}</button>
+          <div className="relative">
+            <input id="metro-search" type="search" value={search} autoFocus placeholder="City, state, or CBSA code" onChange={e=>setSearch(e.target.value)}
+              onKeyDown={e=>{if(e.key==='Enter'&&searchMatches.length)chooseMetro(searchMatches[0])}}
+              className="w-full rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-500 px-3 py-2 pr-12 focus:outline-none focus:ring-2 focus:ring-blue-600"/>
+            <button type="button" aria-label={search?'Clear metro search':'Close metro search panel'} title={search?'Clear search':'Close search'}
+              onClick={()=>{if(search){setSearch('');document.getElementById('metro-search')?.focus()}else{setSearchOpen(false)}}}
+              className="absolute right-1 top-1 flex h-8 w-8 items-center justify-center rounded-md text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-600">✕</button>
+          </div>
+          <div role="listbox" aria-label="Matching metro areas" className="max-h-[min(40dvh,260px)] overflow-y-auto mt-2 divide-y divide-slate-200 rounded-lg border border-slate-200 bg-white text-slate-900">
+            {searchMatches.map(a=><div key={a.id} className="flex items-center gap-2 px-2 py-2 text-xs sm:text-sm bg-white text-slate-900 hover:bg-slate-50">
+              <button role="option" aria-selected={selected?.id===a.id} onClick={()=>chooseMetro(a)} className="min-w-0 flex-1 truncate text-left text-slate-900 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded">{a.name}</button>
+              <button onClick={()=>togglePin(a)} className="shrink-0 rounded border border-slate-400 bg-white px-2 py-1 font-medium text-slate-900 hover:bg-blue-50 hover:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600" aria-label={`${pinnedIds.includes(a.id)?'Unpin':'Pin'} ${a.name}`}>{pinnedIds.includes(a.id)?'Unpin':'Pin'}</button>
             </div>)}
             {search && !searchMatches.length && <p className="p-2 text-sm">No matching metros.</p>}
           </div>
