@@ -24,7 +24,9 @@ try {
       await page.getByText('Metro Population Regions — Interactive Map').first().click()
       await page.getByTestId('metro-app').waitFor()
       const explainer = page.getByTestId('map-explainer')
-      await explainer.waitFor()
+      // On narrow viewports the descriptive header may be visually truncated/hidden;
+      // validate its accessible DOM content, not visibility, before checking Canvas readiness.
+      await explainer.waitFor({ state: 'attached' })
       if (!spec.details && !(await explainer.textContent()).includes('shaded region')) {
         throw new Error('Landing explainer must describe nearest-metro regions')
       }
