@@ -80,7 +80,7 @@ jobs:
                else "Video could not be published; see workflow artifact and logs."),
               f"[Workflow run and artifacts]({run_url})",
           ]
-          body = "\\n\\n".join(lines)
+          body = "\n\n".join(lines)
           subprocess.run(["gh", "api", "-X", "POST", f"repos/{repo}/issues/{pr}/comments", "--input", "-"],
                          input=json.dumps({"body": body}), text=True, check=True)
           PY
