@@ -31,6 +31,16 @@ jobs:
           path: |
             public/data/metros-census-2025.csv
             public/data/metros-census-2025.report.json
+      - name: Commit verified official dataset to this PR
+        if: github.event_name == 'pull_request'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/metros-census-2025.csv public/data/metros-census-2025.report.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: add validated Census 2025 metro population dataset [skip ci]"
+            git push
+          fi
       - name: Propose updated Census dataset
         if: github.event_name != 'pull_request'
         env:
