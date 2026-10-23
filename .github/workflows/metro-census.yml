@@ -1,5 +1,9 @@
 name: Refresh official Census metro data
 on:
+  pull_request:
+    paths:
+      - 'scripts/build_metro_census_data.py'
+      - '.github/workflows/metro-census.yml'
   workflow_dispatch:
   schedule:
     - cron: '15 9 1 * *'
@@ -8,16 +12,27 @@ permissions:
   pull-requests: write
 jobs:
   census:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: pip install openpyxl==3.1.5 pyshp==2.3.1
       - name: Download, join and validate official 2025 population estimates
         run: python scripts/build_metro_census_data.py
+      - name: Upload generated dataset for validation
+        uses: actions/upload-artifact@v4
+        with:
+          name: census-2025-metro-data
+          path: |
+            public/data/metros-census-2025.csv
+            public/data/metros-census-2025.report.json
       - name: Propose updated Census dataset
+        if: github.event_name != 'pull_request'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
