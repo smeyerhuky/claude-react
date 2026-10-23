@@ -185,12 +185,13 @@ export default function MetroPopulationVoronoi() {
   const [importLabel,setImportLabel] = useState('')
   const [importError,setImportError] = useState('')
   const [sourceKind,setSourceKind] = useState('demo')
+  const [officialPoints,setOfficialPoints] = useState(null)
   const cellCache = useRef(new Map())
   useEffect(() => {
     let active = true
     const url = `${import.meta.env.BASE_URL}data/metros-census-2025.csv`
     fetch(url).then(response => { if (!response.ok) throw Error('No generated Census data'); return response.text() })
-      .then(csv => { if (active) { const records = parseMetroCsv(csv); setImportedPoints(records); setImportLabel('Census 2025 generated'); setSourceKind('census') } })
+      .then(csv => { if (active) { const records = parseMetroCsv(csv); setImportedPoints(records); setOfficialPoints(records); setImportLabel(`U.S. Census Vintage 2025 · ${records.length} lower-48 metros`); setSourceKind('census') } })
       .catch(() => { /* Explicit demo fallback is identified in UI. */ })
     return () => { active = false }
   }, [])
@@ -318,7 +319,7 @@ export default function MetroPopulationVoronoi() {
         <div className="flex flex-wrap items-center gap-3">
           <label className="font-semibold" htmlFor="metro-csv-import">Metro data source</label>
           <input id="metro-csv-import" type="file" accept=".csv,text/csv" onChange={importCsv} className="text-sm max-w-full"/>
-          {importedPoints && <button className="rounded border px-3 py-1.5 hover:bg-slate-50" onClick={()=>{setImportedPoints(null);setImportLabel('');setSourceKind('demo');setSelected(null);cellCache.current.clear()}}>Reset to demo data</button>}
+          {importedPoints && <button className="rounded border px-3 py-1.5 hover:bg-slate-50" onClick={()=>{setImportedPoints(officialPoints);setImportLabel(officialPoints ? `U.S. Census Vintage 2025 · ${officialPoints.length} lower-48 metros` : '');setSourceKind(officialPoints ? 'census' : 'demo');setSelected(null);cellCache.current.clear()}}>{officialPoints ? 'Restore Census dataset' : 'Reset to demo data'}</button>}
         </div>
         <p className="text-slate-600">CSV columns: <code>name,longitude,latitude,population</code>. Each row represents one unique metro anchor. Import data already matched to official metro populations; the Census population workbook by itself does not include anchor coordinates. Data stays in this browser tab.</p>
         {importError && <p role="alert" className="text-red-700">{importError}</p>}
@@ -343,7 +344,16 @@ export default function MetroPopulationVoronoi() {
           <span><strong>{selected.name}</strong> · estimated population {selected.pop.toLocaleString()}</span>
           <button className="underline" onClick={()=>setSelected(null)}>Clear selection</button></div>}
       </div>
-      <p className="text-xs text-slate-600 leading-relaxed">Data caveat: Census 2025 mode requires a generated official-source CSV; when not present, built-in demo data is approximate and non-exhaustive, NOT verified Census 2025 metro data. For accurate thresholds, import a verified CSV containing metro populations and geographic anchor coordinates. Thresholds below about 1M are particularly incomplete in demo mode. Metro cells are true 2D Voronoi assignments in the map projection, clipped to the lower 48 state polygons. State boundaries are drawn over region fills, and every shading pixel is clipped to state paths in Canvas. Geography loads once and Voronoi recomputes only when the selected anchor set changes.</p>
+      <p className="text-xs text-slate-600 leading-relaxed">
+        {sourceKind === 'census' ? (
+          <>Data: U.S. Census Bureau Vintage 2025 metropolitan statistical area population estimates (July 1, 2025), matched to 2025 TIGER/Line CBSA internal points; {officialPoints?.length ?? dataset.length} lower-48 metros. <a className="underline" href="https://www.census.gov/data/datasets/time-series/demo/popest/2020s-total-metro-and-micro-statistical-areas.html" target="_blank" rel="noreferrer">Official population estimates</a> · <a className="underline" href="https://www2.census.gov/geo/tiger/TIGER2025/CBSA/" target="_blank" rel="noreferrer">Official geography</a>. </>
+        ) : sourceKind === 'demo' ? (
+          <>Illustrative demo data, not verified Census estimates. The official-source CSV was unavailable; thresholds may be incomplete. </>
+        ) : (
+          <>Using an uploaded CSV; population accuracy depends on the source supplied. </>
+        )}
+        Shaded regions are projected nearest-metro Voronoi assignments, not official metropolitan boundaries. Only metropolitan statistical areas with populations of at least 100,000 in the contiguous U.S. are represented.
+      </p>
     </div>
   )
 }
