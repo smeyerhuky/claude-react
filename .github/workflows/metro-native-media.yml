@@ -67,6 +67,9 @@ jobs:
           from pathlib import Path
           data = json.loads(Path('/tmp/uploaded-comment.json').read_text())
           refs = dict(re.findall(r'!\[([^]]+)\]\((https://github.com/user-attachments/assets/[^)]+)\)', data['body']))
+          if not refs:
+              print('No native image references found; preserving the original uploaded comment')
+              raise SystemExit(0)
           groups = [
               ('Desktop and mobile screenshots', ['desktop-home','mobile-home','mobile-narrow-320']),
               ('Pinned-city scenarios', ['pins-one-expanded','pins-two-collapsed','pins-three-expanded','pins-four-scrolled','pins-six-scrolled-expanded']),
@@ -78,6 +81,9 @@ jobs:
               images = [f'![{name}]({refs[name]})' for name in names if name in refs]
               if images:
                   lines.extend(['', '<details>', f'<summary>{title} ({len(images)} images)</summary>', '', *sum(([im,''] for im in images), []), '</details>'])
+          missing = [name for name in (Path(p).stem for p in os.listdir('/tmp/metro-media') if p.endswith('.png')) if name not in refs]
+          if missing:
+              lines.extend(['', 'Some uploads could not be grouped: ' + ', '.join(missing)])
           body = '\n'.join(lines)
           subprocess.run(['gh','api','-X','PATCH', f"repos/{os.environ['GITHUB_REPOSITORY']}/issues/comments/{data['id']}",'-f',f'body={body}'],check=True,stdout=subprocess.DEVNULL)
           PY
