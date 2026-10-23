@@ -1,0 +1,32 @@
+name: Refresh official Census metro data
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '15 9 1 * *'
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  census:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install openpyxl==3.1.5
+      - name: Download, join and validate official 2025 population estimates
+        run: python scripts/build_metro_census_data.py
+      - name: Propose updated Census dataset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -z "$(git status --porcelain public/data/metros-census-2025.csv public/data/metros-census-2025.report.json)" ]; then exit 0; fi
+          BRANCH="data/refresh-census-2025"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$BRANCH"
+          git add public/data/metros-census-2025.csv public/data/metros-census-2025.report.json
+          git commit -m "data: refresh authoritative Census 2025 metro data"
+          git push --force-with-lease origin "$BRANCH"
+          gh pr create --base main --head "$BRANCH" --title "Refresh 2025 Census metro populations" --body "Generated from official Census 2025 CBSA estimates and Gazetteer internal points. See public/data/metros-census-2025.report.json for unmatched records and source URLs." || true
