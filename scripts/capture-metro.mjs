@@ -56,7 +56,7 @@ try {
   if (await accordion.getByTestId('pinned-city-expanded').count() !== 0) throw Error('Multiple pins should start collapsed')
   await accordion.getByRole('button', { name: /Denver.*3.*m/i }).click()
   if (await accordion.getByTestId('pinned-city-expanded').count() !== 1) throw Error('Pinned row did not expand in place')
-  await accordion.getByRole('button', { name: /New York.*m/i }).click()
+  await accordion.getByRole('button', { name: /^New York.*m/i }).click()
   if (await accordion.getByTestId('pinned-city-expanded').count() !== 1) throw Error('Accordion should keep only one row expanded')
 
   await page.getByRole('button', { name: 'Compare pinned cities' }).click()
