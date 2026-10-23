@@ -450,7 +450,7 @@ export default function MetroPopulationVoronoi() {
             <g pointerEvents="none">{labelLayout.filter(item=>item.leader).map(item=>
               <line key={item.a.id} x1={item.a.p[0]} y1={item.a.p[1]} x2={item.tx} y2={item.ty}
                 stroke="#64748b" strokeOpacity="0.52" strokeWidth="0.8" />)}</g>
-            <g>{qualifying.map(a=><g key={a.id} onMouseEnter={()=>setHovered(a)} onMouseLeave={()=>setHovered(null)} onClick={()=>{setHovered(null);chooseMetro(a)}} style={{cursor:'pointer'}}>
+            <g>{qualifying.map(a=><g key={a.id} onMouseEnter={()=>setHovered(a)} onFocus={()=>setHovered(a)} onClick={()=>{setHovered(null);chooseMetro(a)}} style={{cursor:'pointer'}}>
               <circle cx={a.p[0]} cy={a.p[1]} r={pinnedIds.includes(a.id)?6:selected?.id===a.id?4.8:3.2} fill={pinnedIds.includes(a.id)?"#f97316":"#0f172a"} stroke="white" strokeWidth="1.2"/>
               <title>{a.name}: ~{a.pop.toLocaleString()} ({sourceKind === 'census' ? 'Census 2025 estimate' : importedPoints ? 'uploaded population' : 'illustrative estimate'})</title>
             </g>)}</g>
