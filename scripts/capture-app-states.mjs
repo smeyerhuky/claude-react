@@ -42,6 +42,7 @@ try {
     { name: 'tablet-home', width: 820, height: 1180, details: false },
     { name: 'mobile-dark-preference', width: 390, height: 844, details: false, dark: true },
     { name: 'mobile-home', width: 390, height: 844, details: false },
+    { name: 'mobile-narrow-320', width: 320, height: 700, details: false },
     { name: 'mobile-city-details', width: 390, height: 844, details: true },
   ]) {
     const page = await browser.newPage({ viewport: { width: spec.width, height: spec.height }, deviceScaleFactor: 1, colorScheme: spec.dark ? 'dark' : 'light' })
@@ -77,6 +78,32 @@ try {
         await page.getByRole('option', { name: /Denver-Aurora/ }).first().click()
         await page.getByTestId('metro-details').getByText('19740').waitFor()
         if (!(await explainer.textContent()).includes('Denver')) throw new Error('Explainer did not react to city selection')
+      }
+      if (spec.width <= 390) {
+        const header = page.getByTestId('metro-header')
+        const geometry = await header.evaluate(el => {
+          const bounds = el.getBoundingClientRect()
+          const controls = [...el.querySelectorAll('button')]
+          return { headerRight: bounds.right, controls: controls.map(button => {
+            const rect = button.getBoundingClientRect()
+            return { label: button.getAttribute('aria-label'), left: rect.left, right: rect.right, width: rect.width, height: rect.height }
+          }) }
+        })
+        if (geometry.controls.some(button => button.right > geometry.headerRight + 1 || button.width < 44 || button.height < 44)) {
+          throw Error('Mobile header control overflow or undersized touch target: ' + JSON.stringify(geometry))
+        }
+        await page.getByRole('button', { name: 'Expand controls' }).click()
+        if (await page.getByRole('button', { name: 'Collapse navigation' }).count()) throw Error('Duplicate drawer collapse action')
+        await page.getByRole('button', { name: 'Collapse controls' }).click()
+        // City-details captures leave the search overlay open; it would cover the legend.
+        const closeSearch = page.getByTestId('metro-header').getByRole('button', { name: 'Close metro search', exact: true })
+        if (await closeSearch.count()) await closeSearch.click()
+        await page.getByRole('button', { name: 'Open map legend' }).click()
+        await page.getByTestId('metro-legend').waitFor()
+        await page.getByRole('button', { name: 'Close map legend' }).last().click()
+        await page.getByRole('button', { name: 'Open metro search' }).click()
+        await page.getByRole('searchbox').waitFor()
+        await page.getByTestId('metro-header').getByRole('button', { name: 'Close metro search', exact: true }).click()
       }
       // Verify actual computed colors, including when the OS prefers dark mode.
       const contrast = await page.evaluate(() => {
