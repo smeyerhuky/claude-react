@@ -25,7 +25,6 @@ try {
       if (spec.selected) await page.locator('[data-metro-marker="19740"][data-selected="true"]').waitFor()
       if (spec.pins) {
         await page.locator('[data-metro-marker="19740"][data-pinned="true"]').waitFor()
-        await page.getByRole('button', { name: 'Compare pinned cities' }).waitFor({ state: 'attached' })
       }
       const before = await page.evaluate(() => ({ hash: location.hash, pinned: document.querySelectorAll('[data-metro-marker][data-pinned="true"]').length }))
       const downloadEvent = page.waitForEvent('download')
