@@ -1,4 +1,4 @@
-import { useEffect, useId, useMemo, useState } from 'react'
+import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import { Delaunay, geoAlbersUsa, geoPath } from 'd3'
 
 // Illustrative seed data, NOT a complete or validated 2025 Census CBSA inventory.
@@ -123,11 +123,67 @@ const fmt = n => n >= 1000000 ? `${+(n/1000000).toFixed(2)}M` : `${Math.round(n/
 const clamp = n => Math.min(MAX,Math.max(MIN,Number.isFinite(n)?n:MIN))
 const toTrack = n => Math.round(1000*Math.log(clamp(n)/MIN)/Math.log(MAX/MIN))
 const fromTrack = t => Math.round(MIN*Math.pow(MAX/MIN,Number(t)/1000)/1000)*1000
+// CSV import requires explicit geographic anchors because Census population workbooks
+// contain CBSA populations but not the longitude/latitude needed for Voronoi sites.
+const splitCsv = text => {
+  const rows = []
+  let field = '', row = [], quoted = false
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i]
+    if (quoted && ch === '"' && text[i + 1] === '"') { field += '"'; i++; continue }
+    if (ch === '"') { quoted = !quoted; continue }
+    if (!quoted && (ch === ',' || ch === '\n' || ch === '\r')) {
+      row.push(field.trim()); field = ''
+      if (ch !== ',') {
+        if (row.some(Boolean)) rows.push(row)
+        row = []
+        if (ch === '\r' && text[i + 1] === '\n') i++
+      }
+    } else field += ch
+  }
+  if (quoted) throw Error('Unclosed quoted CSV field')
+  row.push(field.trim())
+  if (row.some(Boolean)) rows.push(row)
+  return rows
+}
+const parseMetroCsv = csv => {
+  const rows = splitCsv(csv.replace(/^\uFEFF/, ''))
+  const hdr = rows.shift()?.map(v => v.toLowerCase()) || []
+  const index = names => names.map(n => hdr.indexOf(n)).find(i => i >= 0) ?? -1
+  const indexes = [
+    index(['name','metro','metro_name']),
+    index(['longitude','lon']),
+    index(['latitude','lat']),
+    index(['population','pop','population_2025','pop_2025'])
+  ]
+  if (indexes.some(i => i < 0)) throw Error('Required CSV columns: name, longitude, latitude, population')
+  if (rows.length > 3000) throw Error('Maximum 3,000 metro rows')
+  const found = new Set(), result = []
+  rows.forEach((row,i) => {
+    const name = row[indexes[0]]?.trim()
+    const lon = Number(row[indexes[1]]), lat = Number(row[indexes[2]])
+    const pop = Number(row[indexes[3]]?.replace(/,/g,''))
+    if (!name || !Number.isFinite(lon) || !Number.isFinite(lat) || !Number.isSafeInteger(pop) || pop <= 0)
+      throw Error(`Invalid metro on CSV data row ${i + 2}`)
+    if (lon < -125 || lon > -66 || lat < 24 || lat > 50) return
+    const key = name.toLowerCase()
+    if (found.has(key)) throw Error(`Duplicate metro name: ${name}`)
+    found.add(key)
+    const p = projection([lon,lat])
+    if (p) result.push({id:key,name,lon,lat,pop,p})
+  })
+  if (!result.length) throw Error('No qualifying contiguous-U.S. locations in the CSV')
+  return result
+}
 const points = ANCHORS.filter((row, i) => row[3] >= MIN && ANCHORS.findIndex(other => other[0] === row[0]) === i)
   .map(([name,lon,lat,pop],id) => ({id,name,lon,lat,pop,p:projection([lon,lat])})).filter(a=>a.p)
 
 export default function MetroPopulationVoronoi() {
   const [states,setStates] = useState([])
+  const [importedPoints,setImportedPoints] = useState(null)
+  const [importLabel,setImportLabel] = useState('')
+  const [importError,setImportError] = useState('')
+  const cellCache = useRef(new Map())
   // Unique SVG ids prevent references colliding with other mounted demo components.
   const reactId = useId().replace(/:/g, '-')
   const landClipId = `metro-land-clip-${reactId}`
@@ -146,12 +202,34 @@ export default function MetroPopulationVoronoi() {
     return ()=>{alive=false}
   },[])
   const choose = value => { const v=clamp(Math.round(value/1000)*1000);setThreshold(v);setTyped(String(v)) }
-  const qualifying = useMemo(()=>points.filter(a=>a.pop>=threshold),[threshold])
+  const dataset = importedPoints || points
+  // Reuse the *same* eligible-array identity between population breakpoints.
+  const eligibleSignature = dataset.filter(a=>a.pop>=threshold).map(a=>a.id).join('|')
+  const qualifying = useMemo(()=>dataset.filter(a=>a.pop>=threshold),[dataset,eligibleSignature])
+  const importCsv = async event => {
+    const file = event.target.files?.[0]
+    if (!file) return
+    try {
+      if (file.size > 1_000_000) throw Error('CSV must be smaller than 1MB')
+      const records = parseMetroCsv(await file.text())
+      setImportedPoints(records)
+      setImportLabel(file.name)
+      setImportError('')
+      setSelected(null)
+      cellCache.current.clear()
+    } catch (error) { setImportError(error.message) }
+    event.target.value = ''
+  }
   const cells = useMemo(()=>{
     if(!qualifying.length)return []
+    const key = eligibleSignature
+    if (cellCache.current.has(key)) return cellCache.current.get(key)
     const vor = Delaunay.from(qualifying, a=>a.p[0],a=>a.p[1]).voronoi([0,0,1000,620])
-    return qualifying.map((a,i)=>({a,polygon:vor.renderCell(i),color:`hsl(${(a.id*137.508)%360} 65% 73%)`}))
-  },[qualifying])
+    const result = qualifying.map((a,i)=>({a,polygon:vor.renderCell(i),color:`hsl(${((typeof a.id==='number' ? a.id : [...a.id].reduce((n,ch)=>n*31+ch.charCodeAt(0),0)) *137.508)%360} 65% 73%)`}))
+    if (cellCache.current.size > 50) cellCache.current.clear()
+    cellCache.current.set(key,result)
+    return result
+  },[qualifying,eligibleSignature])
   const countryPaths = useMemo(()=>states.map(f=>path(f)).filter(Boolean),[states])
   // Regions are explicitly masked to U.S. land as well as clipped. The two
   // independent SVG constraints prevent any Voronoi cell from painting water,
@@ -161,7 +239,7 @@ export default function MetroPopulationVoronoi() {
     <div className="mx-auto max-w-[1400px] p-3 sm:p-6 space-y-4 text-slate-900">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <div><h1 className="text-2xl font-bold">Nearest metro population map</h1>
-          <p className="text-sm text-slate-600">Contiguous 48 states · projected straight-line nearest metro · illustrative dataset</p></div>
+          <p className="text-sm text-slate-600">Contiguous 48 states · projected straight-line nearest metro · {importedPoints ? `imported CSV: ${importLabel}` : 'illustrative dataset'}</p></div>
         <div className="rounded-xl bg-slate-900 px-4 py-2 text-white"><strong>{fmt(threshold)}</strong> minimum · <strong>{qualifying.length}</strong> anchors</div>
       </div>
       <section className="rounded-xl bg-white border border-slate-200 p-4 shadow-sm">
@@ -191,6 +269,15 @@ export default function MetroPopulationVoronoi() {
         </div>
         <label className="inline-flex items-center gap-2 mt-4 text-sm"><input type="checkbox" checked={showLabels} onChange={e=>setShowLabels(e.target.checked)}/>Show metro labels (crowded at low thresholds)</label>
       </section>
+      <section className="rounded-xl border bg-white border-slate-200 p-3 text-sm space-y-2">
+        <div className="flex flex-wrap items-center gap-3">
+          <label className="font-semibold" htmlFor="metro-csv-import">Metro data source</label>
+          <input id="metro-csv-import" type="file" accept=".csv,text/csv" onChange={importCsv} className="text-sm max-w-full"/>
+          {importedPoints && <button className="rounded border px-3 py-1.5 hover:bg-slate-50" onClick={()=>{setImportedPoints(null);setImportLabel('');setSelected(null);cellCache.current.clear()}}>Reset to demo data</button>}
+        </div>
+        <p className="text-slate-600">CSV columns: <code>name,longitude,latitude,population</code>. Each row represents one unique metro anchor. Import data already matched to official metro populations; the Census population workbook by itself does not include anchor coordinates. Data stays in this browser tab.</p>
+        {importError && <p role="alert" className="text-red-700">{importError}</p>}
+      </section>
       <div className="rounded-xl bg-white border border-slate-200 shadow-sm overflow-hidden">
         {loadError ? <div role="alert" className="p-6 text-red-700">Unable to load state outlines: {loadError}. Check network access and retry.</div> : !states.length ? <p className="p-6">Loading U.S. geography…</p> : (
           <svg viewBox="0 0 1000 620" role="img" aria-label={`Map of ${qualifying.length} qualifying metro regions for population threshold ${threshold}`} className="w-full h-auto">
@@ -215,14 +302,14 @@ export default function MetroPopulationVoronoi() {
               <circle cx={a.p[0]} cy={a.p[1]} r={selected?.id===a.id?4.8:3.2} fill="#0f172a" stroke="white" strokeWidth="1.2"/>
               {showLabels && <text x={a.p[0]+5} y={a.p[1]-5} fontSize={threshold<500000?7:threshold<1200000?8:10}
                 fill="#0f172a" stroke="#fff" strokeWidth="2.5" paintOrder="stroke">{a.name}</text>}
-              <title>{a.name}: ~{a.pop.toLocaleString()} (illustrative estimate)</title>
+              <title>{a.name}: ~{a.pop.toLocaleString()} ({importedPoints ? 'imported population' : 'illustrative estimate'})</title>
             </g>)}</g>
           </svg>)}
         {selected && <div className="flex items-center justify-between px-4 py-2 border-t bg-slate-50 text-sm">
           <span><strong>{selected.name}</strong> · estimated population {selected.pop.toLocaleString()}</span>
           <button className="underline" onClick={()=>setSelected(null)}>Clear selection</button></div>}
       </div>
-      <p className="text-xs text-slate-600 leading-relaxed">Data caveat: This visualization ships with an approximate, non-exhaustive seed list of metropolitan anchors and estimated populations; it is NOT authoritative Census 2025 metropolitan statistical area data. Thresholds below about 1M are particularly incomplete. Metro cells are true 2D Voronoi assignments in the map projection, clipped to the lower 48 state polygons. State boundaries are drawn over region fills, and each region is independently clipped and masked to the contiguous states. Geography loads once and Voronoi recomputes only when the selected anchor set changes.</p>
+      <p className="text-xs text-slate-600 leading-relaxed">Data caveat: Built-in demo data is approximate and non-exhaustive, NOT verified Census 2025 metro data. For accurate thresholds, import a verified CSV containing metro populations and geographic anchor coordinates. Thresholds below about 1M are particularly incomplete in demo mode. Metro cells are true 2D Voronoi assignments in the map projection, clipped to the lower 48 state polygons. State boundaries are drawn over region fills, and each region is independently clipped and masked to the contiguous states. Geography loads once and Voronoi recomputes only when the selected anchor set changes.</p>
     </div>
   )
 }
