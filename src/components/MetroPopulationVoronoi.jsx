@@ -1,4 +1,4 @@
-import { useEffect, useId, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Delaunay, geoAlbersUsa, geoPath } from 'd3'
 
 // Illustrative seed data, NOT a complete or validated 2025 Census CBSA inventory.
@@ -179,15 +179,12 @@ const points = ANCHORS.filter((row, i) => row[3] >= MIN && ANCHORS.findIndex(oth
   .map(([name,lon,lat,pop],id) => ({id,name,lon,lat,pop,p:projection([lon,lat])})).filter(a=>a.p)
 
 export default function MetroPopulationVoronoi() {
+  const canvasRef = useRef(null)
   const [states,setStates] = useState([])
   const [importedPoints,setImportedPoints] = useState(null)
   const [importLabel,setImportLabel] = useState('')
   const [importError,setImportError] = useState('')
   const cellCache = useRef(new Map())
-  // Unique SVG ids prevent references colliding with other mounted demo components.
-  const reactId = useId().replace(/:/g, '-')
-  const landClipId = `metro-land-clip-${reactId}`
-  const landMaskId = `metro-land-mask-${reactId}`
   const [loadError,setLoadError] = useState('')
   const [threshold,setThreshold] = useState(1200000)
   const [typed,setTyped] = useState('1200000')
@@ -231,10 +228,24 @@ export default function MetroPopulationVoronoi() {
     return result
   },[qualifying,eligibleSignature])
   const countryPaths = useMemo(()=>states.map(f=>path(f)).filter(Boolean),[states])
-  // Regions are explicitly masked to U.S. land as well as clipped. The two
-  // independent SVG constraints prevent any Voronoi cell from painting water,
-  // Canada, Mexico or the rectangular viewport if clipping is unsupported.
-  const landPath = useMemo(()=>countryPaths.join(' '),[countryPaths])
+  // Canvas Path2D clipping is applied by the rasterizer, rather than relying on
+  // SVG fragment identifiers (which failed to clip in the deployed application).
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas || !countryPaths.length) return
+    const ctx = canvas.getContext('2d', { alpha: true })
+    if (!ctx) return
+    ctx.clearRect(0, 0, 1000, 620)
+    const land = new Path2D(countryPaths.join(' '))
+    ctx.save()
+    ctx.clip(land)
+    for (const cell of cells) {
+      if (!cell.polygon) continue
+      ctx.fillStyle = cell.color
+      ctx.fill(new Path2D(cell.polygon))
+    }
+    ctx.restore()
+  }, [countryPaths, cells])
   return (
     <div className="mx-auto max-w-[1400px] p-3 sm:p-6 space-y-4 text-slate-900">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -280,21 +291,10 @@ export default function MetroPopulationVoronoi() {
       </section>
       <div className="rounded-xl bg-white border border-slate-200 shadow-sm overflow-hidden">
         {loadError ? <div role="alert" className="p-6 text-red-700">Unable to load state outlines: {loadError}. Check network access and retry.</div> : !states.length ? <p className="p-6">Loading U.S. geography…</p> : (
-          <svg viewBox="0 0 1000 620" role="img" aria-label={`Map of ${qualifying.length} qualifying metro regions for population threshold ${threshold}`} className="w-full h-auto">
-            <rect width="1000" height="620" fill="#f8fafc"/>
-            <defs>
-              <clipPath id={landClipId} clipPathUnits="userSpaceOnUse">
-                <path d={landPath}/>
-              </clipPath>
-              <mask id={landMaskId} maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse"
-                x="0" y="0" width="1000" height="620" style={{maskType:'luminance'}}>
-                <rect width="1000" height="620" fill="black"/>
-                <path d={landPath} fill="white"/>
-              </mask>
-            </defs>
-            <g clipPath={`url(#${landClipId})`} mask={`url(#${landMaskId})`}>
-              {cells.map(({a,polygon,color})=><path key={a.id} d={polygon} fill={color} stroke="#ffffff" strokeWidth=".9"/>)}
-            </g>
+          <div className="relative w-full" style={{aspectRatio:'1000/620'}}>
+            <canvas ref={canvasRef} width={1000} height={620} aria-hidden="true"
+              data-testid="metro-shading-canvas" className="absolute inset-0 w-full h-full"/>
+          <svg viewBox="0 0 1000 620" role="img" aria-label={`Map of ${qualifying.length} qualifying metro regions for population threshold ${threshold}`} className="absolute inset-0 w-full h-full">
             <g fill="none" stroke="#64748b" strokeWidth="1.2" strokeLinejoin="round" pointerEvents="none">
               {countryPaths.map((d,i)=><path key={i} d={d}/>)}
             </g>
@@ -304,12 +304,12 @@ export default function MetroPopulationVoronoi() {
                 fill="#0f172a" stroke="#fff" strokeWidth="2.5" paintOrder="stroke">{a.name}</text>}
               <title>{a.name}: ~{a.pop.toLocaleString()} ({importedPoints ? 'imported population' : 'illustrative estimate'})</title>
             </g>)}</g>
-          </svg>)}
+          </svg></div>)}
         {selected && <div className="flex items-center justify-between px-4 py-2 border-t bg-slate-50 text-sm">
           <span><strong>{selected.name}</strong> · estimated population {selected.pop.toLocaleString()}</span>
           <button className="underline" onClick={()=>setSelected(null)}>Clear selection</button></div>}
       </div>
-      <p className="text-xs text-slate-600 leading-relaxed">Data caveat: Built-in demo data is approximate and non-exhaustive, NOT verified Census 2025 metro data. For accurate thresholds, import a verified CSV containing metro populations and geographic anchor coordinates. Thresholds below about 1M are particularly incomplete in demo mode. Metro cells are true 2D Voronoi assignments in the map projection, clipped to the lower 48 state polygons. State boundaries are drawn over region fills, and each region is independently clipped and masked to the contiguous states. Geography loads once and Voronoi recomputes only when the selected anchor set changes.</p>
+      <p className="text-xs text-slate-600 leading-relaxed">Data caveat: Built-in demo data is approximate and non-exhaustive, NOT verified Census 2025 metro data. For accurate thresholds, import a verified CSV containing metro populations and geographic anchor coordinates. Thresholds below about 1M are particularly incomplete in demo mode. Metro cells are true 2D Voronoi assignments in the map projection, clipped to the lower 48 state polygons. State boundaries are drawn over region fills, and every shading pixel is clipped to state paths in Canvas. Geography loads once and Voronoi recomputes only when the selected anchor set changes.</p>
     </div>
   )
 }
