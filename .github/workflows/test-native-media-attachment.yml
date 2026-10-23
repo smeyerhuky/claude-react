@@ -45,9 +45,9 @@ jobs:
           </details>
           MD
           command -v ffmpeg || { sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg; }
-          ffmpeg -hide_banner -loglevel error -f lavfi -i color=c=slategray:s=320x180:r=24 -t 1 -c:v libx264 -pix_fmt yuv420p -movflags +faststart /tmp/metro-attachment-probe.mp4
+          ffmpeg -hide_banner -loglevel error -f lavfi -i testsrc2=size=640x360:rate=24 -t 5 -c:v libx264 -pix_fmt yuv420p -crf 23 -movflags +faststart /tmp/metro-attachment-probe.mp4
           cat > /tmp/probe-body.md <<'MD'
-          Native MP4 attachment probe:
+          Native MP4 moving-color test pattern (5 seconds, H.264/yuv420p):
 
           <details>
           <summary>▶ Open inline video</summary>
