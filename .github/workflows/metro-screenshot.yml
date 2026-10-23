@@ -145,7 +145,7 @@ jobs:
               : null
             const head = context.payload.pull_request.head.sha.slice(0, 12)
             const gallery = process.env.IMAGE_PRESENT === 'true'
-              ? ['desktop-home', 'desktop-city-details', 'mobile-home', 'mobile-city-details'].map(name => `![${name}](https://raw.githubusercontent.com/${owner}/${repo}/${process.env.IMAGE_SHA}/docs/screenshots/${name}.png)`).join('\n\n')
+              ? ['desktop-home', 'mobile-home', 'pins-one-expanded', 'pins-two-collapsed', 'pins-three-expanded', 'pins-four-scrolled', 'pins-six-scrolled-expanded'].map(name => `![${name}](https://raw.githubusercontent.com/${owner}/${repo}/${process.env.IMAGE_SHA}/docs/screenshots/${name}.png)`).join('\n\n')
               : 'Full-app screenshots unavailable; see artifact/logs.'
             const body = [
               `### Metro map screenshot — ${status}`,
