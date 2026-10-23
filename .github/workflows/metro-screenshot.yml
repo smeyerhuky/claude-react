@@ -87,7 +87,7 @@ jobs:
               imageUrl ? `![Rendered metro map — ${status}](${imageUrl})` : 'No screenshot was captured (see workflow logs).',
               `[Download workflow screenshot artifact](${runUrl}#artifacts)`,
               '_New comment for this push; previous screenshots remain in PR history._',
-            ].join('\\n\\n')
+            ].join('\n\n')
             await github.rest.issues.createComment({
               owner, repo, issue_number, body,
             })
