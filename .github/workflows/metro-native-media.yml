@@ -15,7 +15,8 @@ jobs:
     steps:
       - name: Publish collapsed screenshots using native GitHub attachments
         env:
-          GH_TOKEN: ${{ secrets.GH_MEDIA_UPLOAD_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+          MEDIA_TOKEN: ${{ secrets.GH_MEDIA_UPLOAD_TOKEN }}
           RUN_ID: ${{ github.event.workflow_run.id }}
           CONCLUSION: ${{ github.event.workflow_run.conclusion }}
         shell: bash
@@ -27,7 +28,7 @@ jobs:
             exit 0
           fi
           RUN_URL="https://github.com/$GITHUB_REPOSITORY/actions/runs/$RUN_ID"
-          if [ -z "${GH_TOKEN:-}" ]; then
+          if [ -z "${MEDIA_TOKEN:-}" ]; then
             echo "Media PAT unavailable, keeping original screenshot comment."
             exit 0
           fi
@@ -44,7 +45,7 @@ jobs:
           # The CLI appends native media refs outside <details>. After uploading,
           # rewrite ONLY our newly-created comment, moving refs into the sections.
           printf 'Metro native screenshot upload for [run #%s](%s).\n' "$RUN_ID" "$RUN_URL" > /tmp/body.md
-          if ! gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body-file /tmp/body.md --attach "${files[@]}" >/tmp/comment-url 2>/tmp/upload-error; then
+          if ! GH_TOKEN="$MEDIA_TOKEN" gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body-file /tmp/body.md --attach "${files[@]}" >/tmp/comment-url 2>/tmp/upload-error; then
             echo "Native upload failed, ordinary screenshot comment remains available."
             cat /tmp/upload-error
             exit 0
@@ -55,8 +56,8 @@ jobs:
             echo "Native upload created a comment, but cannot identify it for collapsing."
             exit 0
           fi
-          gh api "repos/$GITHUB_REPOSITORY/issues/comments/$COMMENT_ID" > /tmp/uploaded-comment.json
-          python3 - <<'PY'
+          GH_TOKEN="$MEDIA_TOKEN" gh api "repos/$GITHUB_REPOSITORY/issues/comments/$COMMENT_ID" > /tmp/uploaded-comment.json
+          GH_TOKEN="$MEDIA_TOKEN" python3 - <<'PY'
           import json, os, re, subprocess
           from pathlib import Path
           data = json.loads(Path('/tmp/uploaded-comment.json').read_text())
