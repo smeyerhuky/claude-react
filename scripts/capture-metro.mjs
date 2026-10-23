@@ -51,6 +51,14 @@ try {
   await search.fill('New York')
   await page.getByRole('button', { name: /Pin New York-Newark/ }).first().click()
   await page.getByRole('button', { name: 'Expand controls' }).click()
+  const accordion = page.getByTestId('pinned-accordion')
+  if (await accordion.getByTestId('pinned-city-row').count() !== 2) throw Error('Expected two compact pinned rows')
+  if (await accordion.getByTestId('pinned-city-expanded').count() !== 0) throw Error('Multiple pins should start collapsed')
+  await accordion.getByRole('button', { name: /Denver.*3.*m/i }).click()
+  if (await accordion.getByTestId('pinned-city-expanded').count() !== 1) throw Error('Pinned row did not expand in place')
+  await accordion.getByRole('button', { name: /New York.*m/i }).click()
+  if (await accordion.getByTestId('pinned-city-expanded').count() !== 1) throw Error('Accordion should keep only one row expanded')
+
   await page.getByRole('button', { name: 'Compare pinned cities' }).click()
   const comparison = page.getByTestId('metro-comparison')
   await comparison.waitFor()
@@ -95,6 +103,20 @@ try {
     await sharedPage.locator('[data-metro-marker="19740"][data-pinned="true"]').waitFor()
 
   } finally { await sharedPage.close() }
+  // Four or more pins should expose three visible rows plus up/down navigation.
+  const fourPage = await browser.newPage({ viewport: { width: 390, height: 844 } })
+  try {
+    await fourPage.goto('http://127.0.0.1:4173/#/metro-population-voronoi?pins=19740,35620,31080,16980', { waitUntil: 'domcontentloaded' })
+    await fourPage.locator('[data-testid="metro-app"][data-source-kind="census"]').waitFor({ timeout: 30000 })
+    await fourPage.getByRole('button', { name: 'Expand controls' }).click()
+    const fourAccordion = fourPage.getByTestId('pinned-accordion')
+    await fourAccordion.getByTestId('pinned-city-row').first().waitFor()
+    if (await fourAccordion.getByTestId('pinned-city-row').count() !== 3) throw Error('Four pins should display three accordion rows')
+    await fourAccordion.getByRole('button', { name: 'Show next pinned cities' }).click()
+    if (await fourAccordion.getByTestId('pinned-city-row').count() !== 3) throw Error('Scrolling pins changed the visible row count')
+    await fourAccordion.getByRole('button', { name: 'Show previous pinned cities' }).click()
+    await fourPage.screenshot({ path: 'docs/screenshots/metro-four-pin-accordion.png' })
+  } finally { await fourPage.close() }
   await page.getByRole('button', { name: 'Open metro search' }).count() && await page.getByRole('button', { name: 'Close metro search' }).click()
   await page.getByTestId('full-map-reset').click()
   if (await page.locator('[data-metro-marker="19740"][data-pinned="true"]').count()) throw Error('Full-map reset failed to clear pinned cities')
