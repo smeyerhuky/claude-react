@@ -18,11 +18,16 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           MEDIA_TOKEN: ${{ secrets.GH_MEDIA_UPLOAD_TOKEN }}
           RUN_ID: ${{ github.event.workflow_run.id }}
+          PR_NUMBER: ${{ github.event.workflow_run.pull_requests[0].number }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
           CONCLUSION: ${{ github.event.workflow_run.conclusion }}
         shell: bash
         run: |
           set -euo pipefail
-          PR="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID/pulls" --jq '.[0].number' 2>/dev/null || true)"
+          PR="$PR_NUMBER"
+          if [ -z "$PR" ]; then
+            PR="$(gh api "repos/$GITHUB_REPOSITORY/commits/$HEAD_SHA/pulls" --jq '.[0].number' 2>/dev/null || true)"
+          fi
           if [ -z "$PR" ] || [ "$PR" = "null" ]; then
             echo "No associated PR; skipping gallery."
             exit 0
