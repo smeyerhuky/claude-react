@@ -28,10 +28,12 @@ try {
     const row = el.closest('div')
     const text = getComputedStyle(el.querySelector('span') || el).color
     const background = getComputedStyle(row).backgroundColor
+    const listboxBackground = getComputedStyle(row.closest('[role="listbox"]')).backgroundColor
+    const optionBackground = getComputedStyle(el).backgroundColor
     const pin = getComputedStyle(row.querySelector('button[aria-label^="Pin"]'))
-    return { text, background, pinText: pin.color, pinBackground: pin.backgroundColor }
+    return { text, background, listboxBackground, optionBackground, pinText: pin.color, pinBackground: pin.backgroundColor }
   })
-  if (colors.text !== 'rgb(15, 23, 42)' || colors.background !== 'rgb(255, 255, 255)' || colors.pinText !== 'rgb(15, 23, 42)') {
+  if (colors.text !== 'rgb(15, 23, 42)' || colors.background !== 'rgb(255, 255, 255)' || colors.listboxBackground !== 'rgb(255, 255, 255)' || colors.pinText !== 'rgb(15, 23, 42)') {
     throw Error('Search contrast regression: ' + JSON.stringify(colors))
   }
   await searchPanel.getByRole('button', { name: 'Clear metro search' }).click()
