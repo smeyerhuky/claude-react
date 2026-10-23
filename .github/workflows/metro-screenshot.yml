@@ -153,12 +153,6 @@ jobs:
               ? `https://raw.githubusercontent.com/${owner}/${repo}/${process.env.IMAGE_SHA}/docs/screenshots/metro-default.png`
               : null
             const head = context.payload.pull_request.head.sha.slice(0, 12)
-            const gallery = process.env.IMAGE_PRESENT === 'true'
-              ? ['desktop-home', 'mobile-home', 'pins-one-expanded', 'pins-two-collapsed', 'pins-three-expanded', 'pins-four-scrolled', 'pins-six-scrolled-expanded'].map(name => `![${name}](https://raw.githubusercontent.com/${owner}/${repo}/${process.env.IMAGE_SHA}/docs/screenshots/${name}.png)`).join('\n\n')
-              : 'Full-app screenshots unavailable; see artifact/logs.'
-            const exportGallery = process.env.IMAGE_PRESENT === 'true' && process.env.EXPORT_RESULT === 'success'
-              ? ['metro-export-default', 'metro-export-denver-selected', 'metro-export-six-pins'].map(name => `![${name}](https://raw.githubusercontent.com/${owner}/${repo}/${process.env.IMAGE_SHA}/docs/screenshots/${name}.png)`).join('\n\n')
-              : 'Export images unavailable or visual checks failed; inspect artifact/logs.'
             const body = [
               `### Metro map screenshot — ${status}`,
               `**Push:** \`${head}\` · **Run:** [#${context.runNumber}](${runUrl})`,
@@ -166,7 +160,7 @@ jobs:
               `**Full-app visual capture:** ${process.env.APP_RESULT === 'success' ? '✅ PASS' : '❌ FAIL/NOT RUN'}`, 
               '_Screenshots and native collapsed media are published in a separate trusted workflow after this run completes._',
               `**Exported PNG pixel inspection:** ${process.env.EXPORT_RESULT === 'success' ? '✅ PASS' : '❌ FAIL/NOT RUN'}`,
-              imageUrl ? `![Map-only regression — ${status}](${imageUrl})` : 'No map-only screenshot was captured.',
+              imageUrl ? `<details>\n<summary>Map-only regression screenshot</summary>\n\n![Map-only regression — ${status}](${imageUrl})\n\n</details>` : 'No map-only screenshot was captured.',
               `[Download workflow screenshot artifact](${runUrl}#artifacts)`,
               '_New comment for this push; previous screenshots remain in PR history._',
             ].join('\n\n')
