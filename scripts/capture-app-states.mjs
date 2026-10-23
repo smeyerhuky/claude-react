@@ -100,7 +100,7 @@ try {
         await page.getByRole('button', { name: 'Close map legend' }).last().click()
         await page.getByRole('button', { name: 'Open metro search' }).click()
         await page.getByRole('searchbox').waitFor()
-        await page.getByRole('button', { name: 'Close metro search' }).click()
+        await page.getByTestId('metro-header').getByRole('button', { name: 'Close metro search', exact: true }).click()
       }
       // Verify actual computed colors, including when the OS prefers dark mode.
       const contrast = await page.evaluate(() => {
