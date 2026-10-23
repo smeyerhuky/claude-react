@@ -41,6 +41,25 @@ jobs:
         id: app_visual
         if: success()
         run: node scripts/capture-app-states.mjs
+      - name: Report visual test timings
+        if: always()
+        shell: bash
+        run: |
+          echo "### Metro visual test results" >> "$GITHUB_STEP_SUMMARY"
+          echo "Map-only regression: \${{ steps.visual.outcome }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "Full-app captures: \${{ steps.app_visual.outcome }}" >> "$GITHUB_STEP_SUMMARY"
+          if [ -f docs/screenshots/visual-manifest.json ]; then
+            node --input-type=module -e '
+              import fs from "node:fs";
+              const states = JSON.parse(fs.readFileSync("docs/screenshots/visual-manifest.json")).states;
+              fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, [
+                "",
+                "| Viewport | Map ready | Capture | Fits viewport |",
+                "|---|---:|---:|---|",
+                ...states.map(s => `| ${s.name} | ${s.mapReadyMs ?? "—"} ms | ${s.captureMs ?? "—"} ms | ${s.horizontalFit && s.verticalFit ? "Yes" : "No"} |`),
+              ].join("\\n") + "\\n");
+            '
+          fi
       - name: Upload screenshot even when validation fails
         if: always()
         uses: actions/upload-artifact@v4
