@@ -462,7 +462,7 @@ export default function MetroPopulationVoronoi() {
           </div>
           <div role="listbox" aria-label="Matching metro areas" className="max-h-[min(40dvh,260px)] overflow-y-auto mt-2 divide-y divide-slate-200 rounded-lg border border-slate-200 bg-white text-slate-900">
             {searchMatches.map(a=><div key={a.id} className="flex items-center gap-2 px-2 py-2 text-xs sm:text-sm bg-white text-slate-900 hover:bg-slate-50">
-              <button role="option" aria-selected={selected?.id===a.id} onClick={()=>chooseMetro(a)} className="min-w-0 flex-1 truncate text-left text-slate-900 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded" style={{ color: "#0f172a", backgroundColor: "#ffffff" }}>{a.name}</button>
+              <button role="option" aria-selected={selected?.id===a.id} onClick={()=>chooseMetro(a)} className="min-w-0 flex-1 truncate text-left text-slate-900 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded" style={{ color: "#0f172a", backgroundColor: "#ffffff" }}><span style={{color:'#0f172a'}}>{a.name}</span></button>
               <button onClick={()=>togglePin(a)} className="shrink-0 rounded border border-slate-400 bg-white px-2 py-1 font-medium text-slate-900 hover:bg-blue-50 hover:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600" aria-label={`${pinnedIds.includes(a.id)?'Unpin':'Pin'} ${a.name}`}>{pinnedIds.includes(a.id)?'Unpin':'Pin'}</button>
             </div>)}
             {search && !searchMatches.length && <p className="p-2 text-sm">No matching metros.</p>}
