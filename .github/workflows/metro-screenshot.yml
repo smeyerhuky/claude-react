@@ -33,6 +33,13 @@ jobs:
           done
       - name: Visual test and screenshot
         run: node scripts/capture-metro.mjs
+      - name: Upload screenshot even when validation fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: metro-debug-screenshot
+          path: docs/screenshots/metro-default.png
+          if-no-files-found: warn
       - name: Commit latest baseline screenshot
         run: |
           git config user.name "github-actions[bot]"
