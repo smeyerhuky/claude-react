@@ -43,7 +43,7 @@ try {
   await search.fill('New York')
   await page.getByRole('button', { name: /Pin New York-Newark/ }).first().click()
   await page.getByRole('button', { name: 'Expand controls' }).click()
-  await page.getByRole('button', { name: 'Compare pinned cities (2)' }).click()
+  await page.getByRole('button', { name: 'Compare pinned cities' }).click()
   const comparison = page.getByTestId('metro-comparison')
   await comparison.waitFor()
   if (await comparison.getByTestId('comparison-row').count() !== 2) throw Error('Comparison should show both pinned metros')
