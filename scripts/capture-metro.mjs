@@ -18,10 +18,9 @@ try {
     const probes=[[10,10],[990,10],[10,600],[990,600],[500,20],[500,600],[25,310]]
     return probes.map(([x,y])=>({x,y,alpha:ctx.getImageData(x,y,1,1).data[3]}))
   })
-  if (test.some(p => p.alpha !== 0)) throw new Error('Canvas boundary spillover: '+JSON.stringify(test))
   await mkdir('docs/screenshots', { recursive: true })
-  await page.locator('h1').first().screenshot({ path: '/tmp/metro-heading.png' })
   await canvas.locator('xpath=..').screenshot({ path: 'docs/screenshots/metro-default.png' })
+  if (test.some(p => p.alpha !== 0)) throw new Error('Canvas boundary spillover: '+JSON.stringify(test))
   console.log('Captured docs/screenshots/metro-default.png; verified transparent external probes', test)
 } finally {
   await browser.close()
