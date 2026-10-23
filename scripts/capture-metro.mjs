@@ -54,7 +54,8 @@ try {
   await page.getByRole('button', { name: 'Download map PNG' }).click()
   const download = await downloadPromise
   if (download.suggestedFilename() !== 'metro-population-map.png') throw Error('Wrong exported PNG filename')
-  const pngBuffer = await import('node:fs/promises').then(fs => fs.readFile(await download.path()))
+  const pngPath = await download.path()
+  const pngBuffer = await import('node:fs/promises').then(fs => fs.readFile(pngPath))
   if (pngBuffer.toString('hex', 0, 8) !== '89504e470d0a1a0a') throw Error('Export is not a PNG')
   if (pngBuffer.readUInt32BE(16) !== 2000 || pngBuffer.readUInt32BE(20) < 1240) throw Error('Export dimensions are incorrect')
   await page.getByRole('button', { name: 'Expand controls' }).click()
