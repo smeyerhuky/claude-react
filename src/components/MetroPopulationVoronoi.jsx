@@ -227,6 +227,11 @@ export default function MetroPopulationVoronoi() {
   const [showLabels,setShowLabels] = useState(true)
   const [selected,setSelected] = useState(null)
   const [search,setSearch] = useState('')
+  const [drawerOpen,setDrawerOpen] = useState(false)
+  const [searchOpen,setSearchOpen] = useState(false)
+  const [hovered,setHovered] = useState(null)
+  const [pinnedIds,setPinnedIds] = useState([])
+  const [detailOpen,setDetailOpen] = useState(false)
   useEffect(()=>{
     let alive=true
     fetch(STATE_SOURCE).then(r=>{if(!r.ok)throw Error(`HTTP ${r.status}`);return r.json()})
@@ -249,8 +254,12 @@ export default function MetroPopulationVoronoi() {
   const isEligible = selected ? selected.pop >= threshold : false
   const chooseMetro = a => {
     setSelected(a)
-    setSearch(a.name)
+    setHovered(null)
+    setDetailOpen(true)
   }
+  const togglePin = a => setPinnedIds(ids => ids.includes(a.id) ? ids.filter(id=>id!==a.id) : [...ids,a.id])
+  const pinned = dataset.filter(a=>pinnedIds.includes(a.id))
+  const resetView = () => { setSearchOpen(false);setDrawerOpen(false);setHovered(null);setSelected(null);setDetailOpen(false);setSearch('') }
   // Measure label widths with the browser's actual text metrics, then seek free space.
   // Lower population thresholds naturally show fewer labels when crowded.
   const labelLayout = useMemo(() => {
@@ -374,80 +383,66 @@ export default function MetroPopulationVoronoi() {
     }
   }, [landRings, cells])
   return (
-    <div className="mx-auto max-w-[1400px] p-3 sm:p-6 space-y-4 text-slate-900">
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <div><h1 className="text-2xl font-bold">Nearest metro population map</h1>
-          <p className="text-sm text-slate-600">Contiguous 48 states · projected straight-line nearest metro · {importedPoints ? `imported CSV: ${importLabel}` : 'illustrative dataset'}</p></div>
-        <div className="rounded-xl bg-slate-900 px-4 py-2 text-white"><strong>{fmt(threshold)}</strong> minimum · <strong>{qualifying.length}</strong> anchors</div>
-      </div>
-      <section className="rounded-xl bg-white border border-slate-200 p-4 shadow-sm">
-        <div className="flex items-center justify-between gap-4 flex-wrap">
-          <label htmlFor="metro-range" className="font-semibold">Minimum metro population</label>
-          <div className="flex items-center gap-2">
-            <button aria-label="Decrease population" className="px-3 py-2 border rounded-lg" onClick={()=>choose(threshold-step)}>−</button>
-            <input aria-label="Exact minimum population" type="number" min={MIN} max={MAX} step={1000}
-              className="w-32 sm:w-40 px-2 py-2 border rounded-lg text-right tabular-nums"
-              value={typed} onChange={e=>setTyped(e.target.value)}
-              onBlur={()=>choose(Number(typed))}
-              onKeyDown={e=>{if(e.key==='Enter'){choose(Number(typed));e.currentTarget.blur()}}}/>
-            <button aria-label="Increase population" className="px-3 py-2 border rounded-lg" onClick={()=>choose(threshold+step)}>+</button>
-            <select aria-label="Increment size" className="border rounded-lg p-2" value={step} onChange={e=>setStep(Number(e.target.value))}>
-              <option value={1000}>±1K</option><option value={10000}>±10K</option><option value={50000}>±50K</option>
-              <option value={100000}>±100K</option><option value={1000000}>±1M</option>
-            </select>
-          </div>
+    <div data-testid="metro-app" className="fixed inset-0 flex overflow-hidden bg-slate-100 text-slate-900" style={{height:'100dvh'}}>
+      <aside aria-label="Map navigation" className={`relative z-30 flex shrink-0 flex-col border-r border-slate-200 bg-white shadow-sm transition-[width] duration-200 ${drawerOpen?'w-[min(76vw,288px)]':'w-14'}`}>
+        <div className="flex h-14 shrink-0 items-center justify-between border-b border-slate-100 px-2">
+          <a href="#/" aria-label="Home" title="Home" className="flex h-10 w-10 items-center justify-center rounded-lg hover:bg-slate-100 text-xl">⌂</a>
+          {drawerOpen && <button aria-label="Collapse navigation" onClick={()=>setDrawerOpen(false)} className="rounded-lg px-2 py-2 hover:bg-slate-100">‹</button>}
         </div>
-        <input id="metro-range" aria-label="Minimum metro population slider" type="range"
-          min={0} max={1000} value={toTrack(threshold)} onChange={e=>choose(fromTrack(e.target.value))}
-          className="w-full mt-5 accent-blue-700 cursor-pointer"/>
-        <div className="flex flex-wrap gap-1 mt-3">
-          {PRESETS.map(n=><button key={n} onClick={()=>choose(n)}
-            className={`text-xs rounded-full border px-3 py-1.5 ${threshold===n?'bg-blue-700 text-white border-blue-700':'bg-white hover:bg-slate-100 border-slate-300'}`}>
-            {fmt(n)}</button>)}
-        </div>
-        <label className="inline-flex items-center gap-2 mt-4 text-sm"><input type="checkbox" checked={showLabels} onChange={e=>setShowLabels(e.target.checked)}/>Show metro labels (crowded at low thresholds)</label>
-      </section>
-      <section className="rounded-xl bg-white border border-slate-200 p-4 shadow-sm space-y-3" aria-label="Find metro area">
-        <label htmlFor="metro-search" className="block font-semibold">Find a metropolitan area</label>
-        <input id="metro-search" type="search" autoComplete="off" value={search}
-          onChange={e=>setSearch(e.target.value)} placeholder="Metro name, state, or CBSA code"
-          className="w-full rounded-lg border border-slate-300 px-3 py-2"
-          onKeyDown={e=>{if(e.key==='Enter' && searchMatches.length)chooseMetro(searchMatches[0])}}/>
-        {search.trim() && <div role="listbox" aria-label="Matching metro areas" className="max-h-56 overflow-y-auto rounded-lg border border-slate-200">
-          {searchMatches.length ? searchMatches.map(a=><button role="option" aria-selected={selected?.id===a.id} key={a.id}
-            onClick={()=>chooseMetro(a)} className="flex w-full items-center justify-between gap-3 px-3 py-2 text-left hover:bg-blue-50 focus:bg-blue-50">
-            <span>{a.name}</span><span className="tabular-nums whitespace-nowrap text-slate-500">{a.pop.toLocaleString()}</span>
-          </button>) : <p className="px-3 py-2 text-slate-500">No metros match that search.</p>}
+        <button aria-label={drawerOpen?'Collapse controls':'Expand controls'} onClick={()=>setDrawerOpen(v=>!v)} className="mx-2 mt-3 rounded-lg p-2 text-center hover:bg-slate-100" title="Map controls">☷</button>
+        {drawerOpen && <div className="min-h-0 flex-1 overflow-y-auto p-3 text-sm space-y-5">
+          <div><h2 className="font-bold text-lg">Map controls</h2><p className="text-xs text-slate-500">2025 Census metro areas</p></div>
+          <section className="space-y-3">
+            <label htmlFor="metro-range" className="font-semibold">Minimum metro population</label>
+            <div className="flex gap-2 items-center">
+              <button aria-label="Decrease population" onClick={()=>choose(threshold-step)} className="border rounded-lg px-3 py-2">−</button>
+              <input aria-label="Exact minimum population" type="number" min={MIN} max={MAX} step={1000} value={typed}
+                onChange={e=>setTyped(e.target.value)} onBlur={()=>choose(Number(typed))}
+                onKeyDown={e=>{if(e.key==='Enter')choose(Number(typed))}} className="w-full min-w-0 border rounded-lg p-2 text-right"/>
+              <button aria-label="Increase population" onClick={()=>choose(threshold+step)} className="border rounded-lg px-3 py-2">+</button>
+            </div>
+            <input id="metro-range" aria-label="Minimum metro population slider" type="range" min={0} max={1000} value={toTrack(threshold)}
+              onChange={e=>choose(fromTrack(e.target.value))} className="w-full accent-blue-700"/>
+            <div className="flex flex-wrap gap-1">{PRESETS.map(n=><button key={n} onClick={()=>choose(n)}
+              className={`rounded-full border px-2 py-1 text-xs ${threshold===n?'bg-blue-700 text-white':'bg-white'}`}>{fmt(n)}</button>)}</div>
+            <label className="flex items-center gap-2"><input type="checkbox" checked={showLabels} onChange={e=>setShowLabels(e.target.checked)}/> Show city labels</label>
+          </section>
+          <section aria-label="Pinned metros" className="space-y-2"><h3 className="font-semibold">Pinned cities ({pinned.length})</h3>
+            {pinned.length ? pinned.map(a=><div key={a.id} className="flex items-center justify-between gap-2 rounded bg-orange-50 px-2 py-1">
+              <button className="truncate text-left underline" onClick={()=>chooseMetro(a)}>{shortNames.get(a.id)||a.name}</button>
+              <button aria-label={`Unpin ${a.name}`} onClick={()=>togglePin(a)}>×</button>
+            </div>) : <p className="text-slate-500 text-xs">Search and pin several metros to compare locations.</p>}
+          </section>
+          <button className="w-full rounded-lg border px-3 py-2" onClick={resetView}>Return to full map</button>
+          <p className="text-xs text-slate-500">Census 2025 metro populations · Nearest-metro Voronoi regions (not official CBSA boundaries)</p>
         </div>}
-        {selected && <div data-testid="metro-details" className="rounded-lg border border-blue-200 bg-blue-50 p-4 space-y-2">
-          <div className="flex justify-between gap-3 items-start">
-            <h2 className="text-lg font-semibold">{selected.name}</h2>
-            <button className="underline text-sm" onClick={()=>{setSelected(null);setSearch('')}}>Clear</button>
+      </aside>
+      <main className="relative min-w-0 flex-1 flex flex-col overflow-hidden">
+        <div className="z-20 flex h-14 shrink-0 items-center justify-between gap-2 px-3 sm:px-5">
+          <div className="min-w-0"><h1 className="truncate text-sm sm:text-lg font-bold">Nearest metro map</h1><p className="text-[10px] sm:text-xs text-slate-500">{fmt(threshold)} minimum · {qualifying.length} metros</p></div>
+          <div className="relative flex min-w-0 items-center justify-end">
+            <button aria-label={searchOpen?'Close metro search':'Open metro search'} title="Search metros" onClick={()=>setSearchOpen(v=>!v)}
+              className="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border bg-white shadow-sm">⌕</button>
           </div>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            <div><div className="text-xs text-slate-600">Population {sourceKind==='census'?'(2025)':''}</div><strong className="tabular-nums">{selected.pop.toLocaleString()}</strong></div>
-            <div><div className="text-xs text-slate-600">Population rank</div><strong>#{selectedRank} of {ranked.length}</strong></div>
-            <div><div className="text-xs text-slate-600">CBSA code</div><strong>{selected.cbsa || 'Not provided'}</strong></div>
-            <div><div className="text-xs text-slate-600">Current threshold</div><strong>{isEligible?'Qualifies':'Below minimum'}</strong></div>
-          </div>
-          <p className="text-xs text-slate-600">{sourceKind==='census'?'Source: U.S. Census Bureau 2025 metro population estimates; TIGER/Line CBSA representative point.':sourceKind==='upload'?'Source: uploaded CSV.':'Source: illustrative data.'} The marker is an area representative point, not an official city-center coordinate.</p>
-          {!isEligible && <button onClick={()=>choose(selected.pop)} className="rounded border border-blue-400 bg-white px-3 py-1.5">Include this metro in the map</button>}
-        </div>}
-      </section>
-      <section className="rounded-xl border bg-white border-slate-200 p-3 text-sm space-y-2">
-        <div className="flex flex-wrap items-center gap-3">
-          <label className="font-semibold" htmlFor="metro-csv-import">Metro data source</label>
-          <input id="metro-csv-import" type="file" accept=".csv,text/csv" onChange={importCsv} className="text-sm max-w-full"/>
-          {importedPoints && <button className="rounded border px-3 py-1.5 hover:bg-slate-50" onClick={()=>{setImportedPoints(officialPoints);setImportLabel(officialPoints ? `U.S. Census Vintage 2025 · ${officialPoints.length} lower-48 metros` : '');setSourceKind(officialPoints ? 'census' : 'demo');setSelected(null);cellCache.current.clear()}}>{officialPoints ? 'Restore Census dataset' : 'Reset to demo data'}</button>}
         </div>
-        <p className="text-slate-600">CSV columns: <code>name,longitude,latitude,population</code>. Each row represents one unique metro anchor. Import data already matched to official metro populations; the Census population workbook by itself does not include anchor coordinates. Data stays in this browser tab.</p>
-        {importError && <p role="alert" className="text-red-700">{importError}</p>}
-      </section>
-      <div className="rounded-xl bg-white border border-slate-200 shadow-sm overflow-hidden">
-        {loadError ? <div role="alert" className="p-6 text-red-700">Unable to load state outlines: {loadError}. Check network access and retry.</div> : !states.length ? <p className="p-6">Loading U.S. geography…</p> : (
-          <div className="relative w-full" style={{aspectRatio:'1000/620'}}>
-            <canvas ref={canvasRef} width={1000} height={620} aria-hidden="true"
-              data-testid="metro-shading-canvas" className="absolute inset-0 w-full h-full"/>
+        {searchOpen && <section aria-label="Metro search" className="absolute z-40 right-2 sm:right-5 top-14 w-[min(420px,calc(100%-16px))] max-w-[calc(100%-16px)] rounded-xl border bg-white shadow-xl p-3">
+          <label htmlFor="metro-search" className="block font-semibold text-sm mb-2">Find and pin cities</label>
+          <input id="metro-search" type="search" value={search} autoFocus placeholder="City, state, or CBSA code" onChange={e=>setSearch(e.target.value)}
+            onKeyDown={e=>{if(e.key==='Enter'&&searchMatches.length)chooseMetro(searchMatches[0])}} className="w-full rounded-lg border px-3 py-2"/>
+          <div role="listbox" aria-label="Matching metro areas" className="max-h-[min(40dvh,260px)] overflow-y-auto mt-2 divide-y">
+            {searchMatches.map(a=><div key={a.id} className="flex items-center gap-2 py-2 text-xs sm:text-sm">
+              <button role="option" aria-selected={selected?.id===a.id} onClick={()=>chooseMetro(a)} className="min-w-0 flex-1 truncate text-left">{a.name}</button>
+              <button onClick={()=>togglePin(a)} className="shrink-0 rounded border px-2 py-1" aria-label={`${pinnedIds.includes(a.id)?'Unpin':'Pin'} ${a.name}`}>{pinnedIds.includes(a.id)?'Unpin':'Pin'}</button>
+            </div>)}
+            {search && !searchMatches.length && <p className="p-2 text-sm">No matching metros.</p>}
+          </div>
+          {pinned.length>0 && <p className="mt-2 text-xs text-slate-600">{pinned.length} cities pinned</p>}
+        </section>}
+        <div className="relative min-h-0 flex-1 overflow-hidden p-2 sm:p-4">
+          <div data-testid="map-shell" className="relative h-full w-full flex items-center justify-center overflow-hidden rounded-2xl border bg-white shadow-sm">
+            {loadError ? <p role="alert" className="p-4">Unable to load states: {loadError}</p> : !states.length ? <p>Loading U.S. geography…</p> :
+              <div className="relative w-full max-w-full max-h-full" style={{aspectRatio:'1000/620',width:'min(100%, calc((100dvh - 100px) * 1000 / 620))'}}>
+                <canvas ref={canvasRef} width={1000} height={620} aria-hidden="true" data-testid="metro-shading-canvas" className="absolute inset-0 w-full h-full"/>
           <svg viewBox="0 0 1000 620" role="img" aria-label={`Map of ${qualifying.length} qualifying metro regions for population threshold ${threshold}`} className="absolute inset-0 w-full h-full">
             <g fill="none" fillRule="evenodd" stroke="#64748b" strokeWidth="1.2" strokeLinejoin="round" pointerEvents="none">
               {countryPaths.map((d,i)=><path key={i} d={d}/>)}
@@ -455,28 +450,38 @@ export default function MetroPopulationVoronoi() {
             <g pointerEvents="none">{labelLayout.filter(item=>item.leader).map(item=>
               <line key={item.a.id} x1={item.a.p[0]} y1={item.a.p[1]} x2={item.tx} y2={item.ty}
                 stroke="#64748b" strokeOpacity="0.52" strokeWidth="0.8" />)}</g>
-            <g>{qualifying.map(a=><g key={a.id} onClick={()=>chooseMetro(a)} style={{cursor:'pointer'}}>
-              <circle cx={a.p[0]} cy={a.p[1]} r={selected?.id===a.id?4.8:3.2} fill="#0f172a" stroke="white" strokeWidth="1.2"/>
+            <g>{qualifying.map(a=><g key={a.id} onMouseEnter={()=>setHovered(a)} onMouseLeave={()=>setHovered(null)} onClick={()=>{setHovered(null);chooseMetro(a)}} style={{cursor:'pointer'}}>
+              <circle cx={a.p[0]} cy={a.p[1]} r={pinnedIds.includes(a.id)?6:selected?.id===a.id?4.8:3.2} fill={pinnedIds.includes(a.id)?"#f97316":"#0f172a"} stroke="white" strokeWidth="1.2"/>
               <title>{a.name}: ~{a.pop.toLocaleString()} ({sourceKind === 'census' ? 'Census 2025 estimate' : importedPoints ? 'uploaded population' : 'illustrative estimate'})</title>
             </g>)}</g>
             <g>{labelLayout.map(item=><text key={item.a.id} x={item.x} y={item.y} fontSize={item.fontSize}
               onClick={()=>chooseMetro(item.a)} style={{cursor:'pointer'}}
               fill="#0f172a" stroke="#fff" strokeWidth="2.5" paintOrder="stroke">{shortNames.get(item.a.id) || item.a.name}</text>)}</g>
-          </svg></div>)}
-        {selected && <div className="flex items-center justify-between px-4 py-2 border-t bg-slate-50 text-sm">
-          <span><strong>{selected.name}</strong> · estimated population {selected.pop.toLocaleString()}</span>
-          <button className="underline" onClick={()=>setSelected(null)}>Clear selection</button></div>}
-      </div>
-      <p className="text-xs text-slate-600 leading-relaxed">
-        {sourceKind === 'census' ? (
-          <>Data: U.S. Census Bureau Vintage 2025 metropolitan statistical area population estimates (July 1, 2025), matched to 2025 TIGER/Line CBSA internal points; {officialPoints?.length ?? dataset.length} lower-48 metros. <a className="underline" href="https://www.census.gov/data/datasets/time-series/demo/popest/2020s-total-metro-and-micro-statistical-areas.html" target="_blank" rel="noreferrer">Official population estimates</a> · <a className="underline" href="https://www2.census.gov/geo/tiger/TIGER2025/CBSA/" target="_blank" rel="noreferrer">Official geography</a>. </>
-        ) : sourceKind === 'demo' ? (
-          <>Illustrative demo data, not verified Census estimates. The official-source CSV was unavailable; thresholds may be incomplete. </>
-        ) : (
-          <>Using an uploaded CSV; population accuracy depends on the source supplied. </>
-        )}
-        Shaded regions are projected nearest-metro Voronoi assignments, not official metropolitan boundaries. Only metropolitan statistical areas with populations of at least 100,000 in the contiguous U.S. are represented.
-      </p>
+          </svg>
+              </div>}
+            {hovered && !detailOpen && <div role="tooltip" className="absolute z-20 bottom-3 right-3 max-w-[min(280px,85%)] rounded-xl border bg-white p-3 shadow-lg text-sm" onMouseEnter={()=>setHovered(hovered)} onMouseLeave={()=>setHovered(null)}>
+              <div className="font-semibold">{hovered.name}</div>
+              <p>Population: {hovered.pop.toLocaleString()}</p><p>CBSA: {hovered.cbsa||'N/A'}</p>
+              <button onClick={()=>chooseMetro(hovered)} className="mt-2 rounded-lg bg-slate-900 px-3 py-2 text-white">Show full stats</button>
+            </div>}
+            {detailOpen && selected && <section data-testid="metro-details" aria-label="Full metro statistics" className="absolute z-30 bottom-2 right-2 left-2 sm:bottom-4 sm:right-4 sm:left-auto sm:w-[380px] max-h-[60dvh] overflow-y-auto rounded-xl border bg-white p-4 shadow-xl text-sm">
+              <div className="flex items-start justify-between gap-3"><h2 className="font-bold text-lg">{selected.name}</h2><button aria-label="Close full stats" onClick={()=>setDetailOpen(false)}>✕</button></div>
+              <dl className="mt-3 grid grid-cols-2 gap-3">
+                <div><dt className="text-xs text-slate-500">Population (2025)</dt><dd className="font-bold">{selected.pop.toLocaleString()}</dd></div>
+                <div><dt className="text-xs text-slate-500">Population rank</dt><dd>#{selectedRank} of {ranked.length}</dd></div>
+                <div><dt className="text-xs text-slate-500">CBSA code</dt><dd>{selected.cbsa||'Not provided'}</dd></div>
+                <div><dt className="text-xs text-slate-500">Current threshold</dt><dd>{isEligible?'Qualifies':'Below minimum'}</dd></div>
+              </dl>
+              <div className="mt-3 flex gap-2">
+                <button className="rounded border px-3 py-2" onClick={()=>togglePin(selected)}>{pinnedIds.includes(selected.id)?'Unpin city':'Pin city'}</button>
+                {!isEligible && <button className="rounded border px-3 py-2" onClick={()=>choose(selected.pop)}>Include this metro in the map</button>}
+                <button className="rounded border px-3 py-2" onClick={resetView}>Full map</button>
+              </div>
+              <p className="mt-2 text-xs text-slate-500">Source: {sourceKind==='census'?'U.S. Census Bureau 2025 population estimates and TIGER/Line CBSA point':sourceKind==='upload'?'Uploaded CSV':'Illustrative demo data'}. Voronoi region is not the official metro boundary.</p>
+            </section>}
+          </div>
+        </div>
+      </main>
     </div>
   )
 }
