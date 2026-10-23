@@ -360,6 +360,7 @@ export default function MetroPopulationVoronoi() {
     if (!canvas || !landRings.length) return
     const ctx = canvas.getContext('2d', { alpha: true })
     if (!ctx) return
+    canvas.dataset.renderReady = 'false'
     ctx.clearRect(0, 0, 1000, 620)
     const cellPaths = cells.filter(cell => cell.polygon).map(cell => ({
       path: new Path2D(cell.polygon),
@@ -381,9 +382,10 @@ export default function MetroPopulationVoronoi() {
       }
       ctx.restore()
     }
+    canvas.dataset.renderReady = cellPaths.length > 0 ? 'true' : 'false'
   }, [landRings, cells])
   return (
-    <div data-testid="metro-app" className="fixed inset-0 flex overflow-hidden bg-slate-100 text-slate-900" style={{height:'100dvh'}}>
+    <div data-testid="metro-app" data-source-kind={sourceKind} className="fixed inset-0 flex overflow-hidden bg-slate-100 text-slate-900" style={{height:'100dvh'}}>
       <aside aria-label="Map navigation" className={`relative z-30 flex shrink-0 flex-col border-r border-slate-200 bg-white shadow-sm transition-[width] duration-200 ${drawerOpen?'w-[min(76vw,288px)]':'w-14'}`}>
         <div className="flex h-14 shrink-0 items-center justify-between border-b border-slate-100 px-2">
           <a href="#/" aria-label="Home" title="Home" className="flex h-10 w-10 items-center justify-center rounded-lg hover:bg-slate-100 text-xl">⌂</a>
