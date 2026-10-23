@@ -390,6 +390,16 @@ export default function MetroPopulationVoronoi() {
         ctx.fillStyle = cell.color
         ctx.fill(cell.path)
       }
+      // Draw a dotted contrast edge between neighboring Voronoi regions.
+      // Keep edges inside the same lower-48 land clip as the colored fills.
+      // State outlines remain separate solid SVG strokes on top.
+      ctx.save()
+      ctx.strokeStyle = 'rgba(30, 41, 59, 0.75)'
+      ctx.lineWidth = 1.4
+      ctx.setLineDash([1.5, 4])
+      ctx.lineCap = 'round'
+      for (const cell of cellPaths) ctx.stroke(cell.path)
+      ctx.restore()
       ctx.restore()
     }
     canvas.dataset.renderReady = cellPaths.length > 0 ? 'true' : 'false'
