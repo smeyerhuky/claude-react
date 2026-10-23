@@ -86,6 +86,10 @@ export default function ComponentView() {
 
   const handleBack = () => navigate('/')
 
+  if (item.id === 'metro-population-voronoi') {
+    return <div className="fixed inset-0 overflow-hidden"><item.component /></div>
+  }
+
   if (item.fullscreen) {
     return <FullscreenView item={item} onBack={handleBack} />
   }
