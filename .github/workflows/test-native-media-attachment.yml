@@ -44,8 +44,19 @@ jobs:
 
           </details>
           MD
+          ffmpeg -hide_banner -loglevel error -f lavfi -i color=c=slategray:s=320x180:r=24 -t 1 -c:v libx264 -pix_fmt yuv420p -movflags +faststart /tmp/metro-attachment-probe.mp4
+          cat > /tmp/probe-body.md <<'MD'
+          Native MP4 attachment probe:
+
+          <details>
+          <summary>▶ Open inline video</summary>
+
+          ![Metro clip](metro-attachment-probe.mp4)
+
+          </details>
+          MD
           set +e
-          gh pr comment 87 --repo "$GITHUB_REPOSITORY" --body-file /tmp/probe-body.md --attach /tmp/metro-attachment-probe.png >/tmp/probe-stdout 2>/tmp/probe-stderr
+          gh pr comment 87 --repo "$GITHUB_REPOSITORY" --body-file /tmp/probe-body.md --attach /tmp/metro-attachment-probe.mp4 >/tmp/probe-stdout 2>/tmp/probe-stderr
           CODE=$?
           set -e
           echo "### Native attachment experiment" >> "$GITHUB_STEP_SUMMARY"
