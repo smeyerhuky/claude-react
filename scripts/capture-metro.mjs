@@ -8,6 +8,14 @@ try {
   await page.getByText('Metro Population Regions — Interactive Map').first().click()
   // This PR includes a verified official dataset; a silent demo fallback is a regression.
   await page.getByTestId('metro-app').waitFor()
+  // The map key must explain the geography and remain keyboard-accessible.
+  await page.getByRole('button', { name: 'Open map legend' }).click()
+  const legend = page.getByTestId('metro-legend')
+  await legend.getByText('not official Census CBSA boundaries', { exact: false }).waitFor()
+  await legend.getByText('Blue ring', { exact: false }).waitFor()
+  await page.getByRole('button', { name: 'Close map legend' }).last().click()
+  if (await legend.count()) throw Error('Map legend did not close')
+
   // Wait for the official dataset, projected state outlines, and finished Canvas paint.
   await page.locator('[data-testid="metro-app"][data-source-kind="census"]').waitFor({ timeout: 30000 })
   await page.waitForFunction(() => {
