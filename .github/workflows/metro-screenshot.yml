@@ -59,7 +59,8 @@ jobs:
           yarn add --dev --ignore-scripts --no-lockfile playwright@1.56.1
           echo "Dependency installation (cache miss): $((SECONDS-start))s" >> "$GITHUB_STEP_SUMMARY"
       - name: Report dependency cache result
-        run: echo "Installed dependency cache: ${{ steps.modules.outputs.cache-hit == 'true' && 'HIT' || 'MISS' }}" >> "$GITHUB_STEP_SUMMARY"
+        run: |
+          echo "Installed dependency cache: ${{ steps.modules.outputs.cache-hit == 'true' && 'HIT' || 'MISS' }}" >> "$GITHUB_STEP_SUMMARY"
       - run: npm run build
       - name: Serve preview
         run: |
