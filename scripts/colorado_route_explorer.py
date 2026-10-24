@@ -120,14 +120,14 @@ def main():
                 raise RuntimeError(f"No {metric} route for {origin} → {destination}")
             item["reference"][metric] = full
             item["compressed"][metric] = small
-        trips.append(item)
+        item["geometry"] = {metric: coordinates(reference, item["reference"][metric]["nodes"])\n                            for metric in ("length", "travel_time")}\n        trips.append(item)
     draw(reference, trips, args.output_dir / "colorado-routes.png")
     (args.output_dir / "routes.json").write_text(json.dumps({
         "status": "pass", "tolerance_m": TOLERANCE, "tolerance_s": TOLERANCE,
         "note": "Illustrated paths come from full OSM geometry. Compressed graph route costs are checked separately. Travel times are modeled, not live traffic.",
         "places": snaps, "trips": trips,
     }, indent=2) + "\n")
-    print(f"PASS: {len(trips)} city pairs, both metrics; map and JSON written")
+    from colorado_route_explorer_html import render_html\n    render_html(args.output_dir / "routes.json", args.output_dir / "interactive.html")\n    print(f"PASS: {len(trips)} city pairs, both metrics; map, JSON and interactive HTML written")
 
 
 if __name__ == "__main__":
