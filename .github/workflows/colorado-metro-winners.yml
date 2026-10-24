@@ -1,0 +1,43 @@
+name: Colorado multi-threshold metro winners (manual)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  allocation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install tooling
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y osmium-tool
+          python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2' 'matplotlib>=3.9,<4'
+      - name: Synthetic correctness regression tests
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s scripts -p 'test_colorado_metro_winners.py' -v
+          PYTHONPATH=scripts python -m unittest discover -s scripts -p 'test_road_spike.py' -v
+      - name: Download and filter Colorado OSM
+        run: |
+          set -euo pipefail
+          mkdir -p local-data
+          curl -fLSs --retry 3 --connect-timeout 20 --max-time 1200 -o local-data/colorado.osm.pbf https://download.geofabrik.de/north-america/us/colorado-latest.osm.pbf
+          sha256sum local-data/colorado.osm.pbf > local-data/source-sha256.txt
+          osmium extract --bbox=-106.1,38.65,-104.5,40.1 --strategy=complete_ways local-data/colorado.osm.pbf -o local-data/corridor.osm.pbf
+          osmium tags-filter local-data/corridor.osm.pbf w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,residential,unclassified,living_street,service -o local-data/roads.osm.pbf
+      - name: Generate allocation evidence
+        run: |
+          set -euo pipefail
+          mkdir -p colorado-metro-winners
+          /usr/bin/time -v -o colorado-metro-winners/resources.txt timeout --signal=TERM --kill-after=30s 25m python -u scripts/colorado_metro_winners.py --osm local-data/roads.osm.pbf --thresholds 100000 250000 2>&1 | tee colorado-metro-winners/processing.log
+          cp local-data/source-sha256.txt colorado-metro-winners/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: colorado-metro-winners
+          path: colorado-metro-winners/
+          retention-days: 14
