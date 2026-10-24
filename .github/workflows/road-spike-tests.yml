@@ -3,6 +3,9 @@ on:
   pull_request:
     paths:
       - 'scripts/road_spike.py'
+      - 'scripts/stream_osm_roads.py'
+      - 'scripts/visualize_colorado_roads.py'
+      - '.github/workflows/colorado-road-evidence.yml'
       - 'scripts/test_road_spike.py'
       - 'scripts/get_road_spike_graph.py'
       - '.github/workflows/road-spike-tests.yml'
@@ -18,6 +21,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install 'networkx>=3.4,<4'
+      - run: python -m py_compile scripts/stream_osm_roads.py scripts/visualize_colorado_roads.py
       - run: python -m unittest discover -s scripts -p test_road_spike.py -v
       # Deliberately no Overpass requests in CI. Actual road graph input is
       # a separately acquired, versioned research dataset.
