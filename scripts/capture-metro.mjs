@@ -59,10 +59,14 @@ try {
   if (pngBuffer.toString('hex', 0, 8) !== '89504e470d0a1a0a') throw Error('Export is not a PNG')
   if (pngBuffer.readUInt32BE(16) !== 2000 || pngBuffer.readUInt32BE(20) < 1400) throw Error('Export dimensions are incorrect')
   await page.getByTestId('png-export-status').getByText('Map PNG downloaded').waitFor()
-  await page.evaluate(() => { document.querySelector('[data-testid="metro-shading-canvas"]').dataset.renderReady = 'false' })
+  await page.evaluate(() => {
+    const original = HTMLCanvasElement.prototype.toBlob
+    window.__restoreExportBlob = () => { HTMLCanvasElement.prototype.toBlob = original }
+    HTMLCanvasElement.prototype.toBlob = function (callback) { callback(null) }
+  })
   await page.getByRole('button', { name: 'Download map PNG' }).click()
-  await page.getByTestId('png-export-error').getByText(/map is not ready to export/i).waitFor()
-  await page.evaluate(() => { document.querySelector('[data-testid="metro-shading-canvas"]').dataset.renderReady = 'true' })
+  await page.getByTestId('png-export-error').getByText(/could not encode the PNG/i).waitFor()
+  await page.evaluate(() => window.__restoreExportBlob())
   await page.getByRole('button', { name: 'Download map PNG' }).click()
   await page.getByTestId('png-export-error').waitFor({ state: 'hidden' })
   await page.getByRole('button', { name: 'Expand controls' }).click()
