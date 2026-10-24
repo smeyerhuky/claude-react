@@ -26,7 +26,7 @@ jobs:
           osmium tags-filter local-data/corridor.osm.pbf w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,residential,unclassified,living_street,service -o local-data/roads.osm.pbf
       - name: Synthetic route explorer regression tests
         run: PYTHONPATH=scripts python -m unittest discover -s scripts -p 'test_colorado_route_explorer.py' -v
-      - name: Render and validate real Colorado routes
+      - name: Offline interactive viewer regression tests\n        run: PYTHONPATH=scripts python -m unittest discover -s scripts -p 'test_colorado_route_explorer_html.py' -v\n      - name: Render and validate real Colorado routes
         run: |
           set -euo pipefail
           mkdir -p route-explorer
