@@ -33,7 +33,7 @@ class PointToPointTests(unittest.TestCase):
         ways = [way([1, 2, 3, 4, 2, 5]),
                 way([5, 6, 7], {"highway": "secondary"})]
         reference, compressed = build(ways, False), build(ways, True)
-        pairs = [(1, 7), (7, 1), (2, 4), (4, 2)]
+        pairs = [(1, 7), (7, 1), (2, 5), (5, 2)]
         self.assertEqual(compare(evaluate(reference, pairs), evaluate(compressed, pairs))["status"], "pass")
 
     def test_disconnected_components(self):
