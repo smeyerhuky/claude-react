@@ -39,8 +39,16 @@ class JunctionIndex(osmium.SimpleHandler):
         if len(ids) < 2: return
         self.ways += 1
         self.keep.update((ids[0], ids[-1]))
-        # Count an ID only once per way; intersections are shared by ways.
-        self.counts.update(set(ids))
+        # A node repeated within one way is also a junction: collapsing across
+        # it would erase a legal turn/shortcut at that repeated coordinate.
+        # Count each distinct node once per way for cross-way intersections.
+        unique = set(ids)
+        seen = set()
+        for node_id in ids:
+            if node_id in seen:
+                self.keep.add(node_id)
+            seen.add(node_id)
+        self.counts.update(unique)
 
     def junctions(self):
         return self.keep | {n for n, count in self.counts.items() if count > 1}
