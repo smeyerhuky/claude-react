@@ -13,7 +13,7 @@ class AllocatorTests(unittest.TestCase):
         g.add_edge("point", "external", length=2, travel_time=3)
         g.add_edge("point", "internal", length=12, travel_time=20)
         metros = [
-            {"cbsa": "E", "name": "Outside", "population": 300000, "lon": .01, "lat": 0},
+            {"cbsa": "E", "name": "Outside", "population": 300000, "lon": .0105, "lat": 0},
             {"cbsa": "I", "name": "Inside", "population": 350000, "lon": -.02, "lat": 0}]
         sources, rejected = snap_candidates(g, metros, 500)
         self.assertEqual(len(sources), 2)
