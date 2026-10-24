@@ -24,39 +24,34 @@ def metro_candidates(path, threshold):
 
 
 def assign(graph, sources, weight, nx):
-    """Reverse the directed graph to compute node→metro costs, NOT metro→node.
+    """Winner per node by node→metro directed shortest cost, O(V+E) memory.
 
-    Multiple CBSA origins can snap to the same vertex. Keep all origins together
-    with a synthetic zero-cost sink to get deterministic winners.
+    Run multi-source Dijkstra on REVERSED roads, carrying the winning CBSA
+    with each frontier item. This avoids storing a full route for every node.
     """
+    import heapq
+    frontier = []
+    best = {}
+    for metro in sorted(sources, key=lambda m: m["cbsa"]):
+        node, cbsa = metro["node"], metro["cbsa"]
+        heapq.heappush(frontier, (0.0, cbsa, node))
     reverse = graph.reverse(copy=False)
-    # Explicit origin winner tracking avoids treating shortest time as distance.
-    sink = object()
-    g = nx.DiGraph()
-    for u, v, data in reverse.edges(data=True):
-        cost = float(data[weight])
-        if not math.isfinite(cost) or cost < 0:
-            raise ValueError("Non-finite or negative edge cost")
-        if g.has_edge(u, v):
-            g[u][v]["cost"] = min(g[u][v]["cost"], cost)
-        else:
-            g.add_edge(u, v, cost=cost)
-    # Reversing edges and starting from each metro gives the desired node→metro costs.
-    # A super-source is used to retain CBSA provenance even with multiple metros.
-    start = object()
-    for metro in sources:
-        endpoint = ("origin", metro["cbsa"])
-        g.add_edge(start, endpoint, cost=0)
-        g.add_edge(endpoint, metro["node"], cost=0)
-    lengths, paths = nx.single_source_dijkstra(g, start, weight="cost")
-    result = {}
-    for node in graph.nodes:
-        if node not in lengths:
+    while frontier:
+        cost, cbsa, node = heapq.heappop(frontier)
+        if node in best:
             continue
-        path = paths[node]
-        winner = next((p[1] for p in path if isinstance(p, tuple) and p[0] == "origin"), None)
-        result[str(node)] = {"cbsa": winner, "cost": round(lengths[node], 3)}
-    return result
+        best[node] = {"cbsa": cbsa, "cost": round(cost, 3)}
+        for neighbor, edges in reverse.adj[node].items():
+            if neighbor in best:
+                continue
+            if graph.is_multigraph():
+                values = [float(data[weight]) for data in edges.values()]
+            else:
+                values = [float(edges[weight])]
+            if any(not math.isfinite(v) or v < 0 for v in values):
+                raise ValueError("Non-finite or negative edge cost")
+            heapq.heappush(frontier, (cost + min(values), cbsa, neighbor))
+    return {str(node): value for node, value in best.items()}
 
 
 def main():
