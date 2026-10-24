@@ -1,10 +1,10 @@
-"""Bounded streaming OSM PBF road graph for the Colorado feasibility experiment.
+"""Build a compact directed road graph from filtered OSM PBF (experimental).
 
-No XML conversion or OSMnx graph_from_xml. Uses pyosmium's on-demand
-location index and retains only drivable highway ways. Approximate free-flow
-speeds, directed oneway semantics; NOT production navigation routing.
+Two passes: find junctions (nodes shared by drivable ways) and way endpoints,
+then collapse interior geometry while preserving cumulative length/time.
 """
 import math
+from collections import Counter
 import osmium
 import networkx as nx
 
@@ -14,57 +14,84 @@ SPEED_KPH = {"motorway": 100, "motorway_link": 50, "trunk": 80, "trunk_link": 45
              "unclassified": 35, "living_street": 12, "service": 15}
 
 def meters(a, b):
-    lon1,lat1=a
-    lon2,lat2=b
-    p1,p2=math.radians(lat1),math.radians(lat2)
-    dlat=p2-p1
-    dlon=math.radians(lon2-lon1)
-    q=math.sin(dlat/2)**2+math.cos(p1)*math.cos(p2)*math.sin(dlon/2)**2
-    return 12742000*math.asin(min(1,math.sqrt(q)))
+    lon1, lat1 = a
+    lon2, lat2 = b
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    q = math.sin((p2-p1)/2)**2 + math.cos(p1)*math.cos(p2)*math.sin(math.radians(lon2-lon1)/2)**2
+    return 12742000*math.asin(min(1, math.sqrt(q)))
 
-class RoadHandler(osmium.SimpleHandler):
-    def __init__(self, max_nodes=900000):
+def drivable(w):
+    return (w.tags.get("highway") in SPEED_KPH
+            and w.tags.get("access") not in ("no", "private")
+            and w.tags.get("motor_vehicle") not in ("no", "private")
+            and w.tags.get("motorcar") not in ("no", "private"))
+
+class JunctionIndex(osmium.SimpleHandler):
+    def __init__(self):
         super().__init__()
-        self.graph=nx.MultiDiGraph()
-        self.ways=0
-        self.max_nodes=max_nodes
+        self.counts = Counter()
+        self.keep = set()
+        self.ways = 0
 
     def way(self, w):
-        highway=w.tags.get("highway")
-        if highway not in SPEED_KPH or w.tags.get("access") in ("no","private") or w.tags.get("motor_vehicle") in ("no","private") or w.tags.get("motorcar") in ("no","private"):
-            return
-        points=[]
-        for node in w.nodes:
-            if node.location.valid():
-                points.append((int(node.ref),float(node.location.lon),float(node.location.lat)))
-        if len(points)<2:
-            return
-        speed=SPEED_KPH[highway]
-        try:
-            posted=w.tags.get("maxspeed","").split(" ")[0]
-            if posted.isdecimal():
-                speed=max(5,min(140,int(posted)*(1.609344 if "mph" in w.tags.get("maxspeed","") else 1)))
-        except (ValueError, TypeError):
-            pass
-        oneway=w.tags.get("oneway","").lower()
-        forward=oneway!="-1"
-        backward=oneway not in ("yes","true","1") and w.tags.get("junction")!="roundabout"
-        for a,b in zip(points,points[1:]):
-            u,lon1,lat1=a
-            v,lon2,lat2=b
-            if u==v: continue
-            length=meters((lon1,lat1),(lon2,lat2))
-            if length<=0: continue
-            self.graph.add_node(u,x=lon1,y=lat1)
-            self.graph.add_node(v,x=lon2,y=lat2)
-            cost={"length":length,"travel_time":length/(speed*1000/3600)}
-            if forward:self.graph.add_edge(u,v,**cost)
-            if backward:self.graph.add_edge(v,u,**cost)
-        self.ways+=1
-        if self.graph.number_of_nodes()>self.max_nodes:
-            raise RuntimeError(f"Graph exceeded node limit {self.max_nodes:,}; use a smaller --bbox, not a larger runner.")
+        if not drivable(w): return
+        ids = [int(n.ref) for n in w.nodes]
+        if len(ids) < 2: return
+        self.ways += 1
+        self.keep.update((ids[0], ids[-1]))
+        # Count an ID only once per way; intersections are shared by ways.
+        self.counts.update(set(ids))
 
-def load_pbf(path,max_nodes=900000):
-    handler=RoadHandler(max_nodes=max_nodes)
-    handler.apply_file(str(path),locations=True,idx="sparse_mem_array")
-    return handler.graph,handler.ways
+    def junctions(self):
+        return self.keep | {n for n, count in self.counts.items() if count > 1}
+
+class RoadHandler(osmium.SimpleHandler):
+    def __init__(self, keep, max_nodes=900000):
+        super().__init__()
+        self.graph = nx.MultiDiGraph()
+        self.keep = keep
+        self.ways = 0
+        self.max_nodes = max_nodes
+
+    def way(self, w):
+        if not drivable(w): return
+        points = [(int(n.ref), float(n.location.lon), float(n.location.lat))
+                  for n in w.nodes if n.location.valid()]
+        if len(points) < 2: return
+        speed = SPEED_KPH[w.tags.get("highway")]
+        posted = w.tags.get("maxspeed", "").strip().lower()
+        part = posted.split(" ")[0] if posted else ""
+        if part.isdecimal():
+            speed = max(5, min(140, int(part)*(1.609344 if "mph" in posted else 1)))
+        oneway = w.tags.get("oneway", "").lower()
+        forward = oneway != "-1"
+        backward = oneway not in ("yes", "true", "1") and w.tags.get("junction") != "roundabout"
+        origin = points[0]
+        distance = 0.0
+        for a, b in zip(points, points[1:]):
+            distance += meters((a[1], a[2]), (b[1], b[2]))
+            if b[0] not in self.keep: continue
+            u, v = origin[0], b[0]
+            if u != v and distance > 0:
+                self.graph.add_node(u, x=origin[1], y=origin[2])
+                self.graph.add_node(v, x=b[1], y=b[2])
+                cost = {"length":distance, "travel_time":distance/(speed*1000/3600)}
+                if forward: self.graph.add_edge(u, v, **cost)
+                if backward: self.graph.add_edge(v, u, **cost)
+            origin = b
+            distance = 0.0
+        self.ways += 1
+        if self.graph.number_of_nodes() > self.max_nodes:
+            raise RuntimeError(f"Junction graph exceeded {self.max_nodes:,} nodes; reduce corridor bounds.")
+
+def load_pbf(path, max_nodes=900000):
+    print("[graph] Pass 1/2: identifying shared road junctions", flush=True)
+    index = JunctionIndex()
+    index.apply_file(str(path))
+    keep = index.junctions()
+    print(f"[graph] {index.ways:,} ways; {len(keep):,} junctions/endpoints; building contracted directed edges", flush=True)
+    del index
+    handler = RoadHandler(keep, max_nodes=max_nodes)
+    handler.apply_file(str(path), locations=True, idx="sparse_mem_array")
+    print(f"[graph] Pass 2/2: {handler.graph.number_of_nodes():,} nodes; {handler.graph.number_of_edges():,} edges", flush=True)
+    return handler.graph, handler.ways
