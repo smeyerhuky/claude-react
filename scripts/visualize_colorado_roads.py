@@ -9,6 +9,7 @@ import time
 from pathlib import Path
 
 from road_spike import assign
+from stream_osm_roads import load_pbf
 
 def progress(message):
     print(f'[{time.strftime("%Y-%m-%d %H:%M:%S UTC", time.gmtime())}] {message}', flush=True)
@@ -25,16 +26,15 @@ def main():
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     import networkx as nx
-    import osmnx as ox
+    from scipy.spatial import cKDTree
     start = time.monotonic()
     args.output_dir.mkdir(parents=True, exist_ok=True)
     # graph_from_xml honors highway/oneway tags and retains disconnected roads.
-    progress(f'Parsing OSM XML ({args.osm.stat().st_size / 1024**2:.1f} MiB)')
-    graph = ox.graph_from_xml(args.osm, simplify=True, retain_all=True)
-    progress(f'Parsed graph: {graph.number_of_nodes():,} nodes, {graph.number_of_edges():,} edges')
-    progress('Assigning modeled road speeds')
-    graph = ox.routing.add_edge_speeds(graph, fallback=40)
-    graph = ox.routing.add_edge_travel_times(graph)
+    progress(f'Streaming PBF road ways ({args.osm.stat().st_size / 1024**2:.1f} MiB)')
+    graph, way_count = load_pbf(args.osm)
+    progress(f'Built directed graph from {way_count:,} ways: {graph.number_of_nodes():,} nodes, {graph.number_of_edges():,} edges')
+    if graph.number_of_nodes() < 2:
+        raise SystemExit('No routable road nodes found in bounded PBF')
     bbox = [min(d["x"] for _,d in graph.nodes(data=True)),
             min(d["y"] for _,d in graph.nodes(data=True)),
             max(d["x"] for _,d in graph.nodes(data=True)),
@@ -44,8 +44,12 @@ def main():
                     "lat":float(r["latitude"]),"lon":float(r["longitude"])}
                   for r in csv.DictReader(handle) if int(r["population"]) >= args.threshold]
     metros = [m for m in metros if bbox[0]<=m["lon"]<=bbox[2] and bbox[1]<=m["lat"]<=bbox[3]]
+    graph_points = list(graph.nodes(data=True))
+    xy = [(attr["x"] * math.cos(math.radians(attr["y"])), attr["y"]) for _,attr in graph_points]
+    index = cKDTree(xy)
     for m in metros:
-        m["node"] = ox.distance.nearest_nodes(graph,X=m["lon"],Y=m["lat"])
+        _, nearest = index.query((m["lon"] * math.cos(math.radians(m["lat"])),m["lat"]))
+        m["node"] = graph_points[int(nearest)][0]
     if len(metros) < 2:
         raise SystemExit(f"Need ≥2 qualifying origins in bbox {bbox}; found {len(metros)}. Lower --threshold or enlarge corridor.")
     progress(f'Computing shortest-road-distance winners for {len(metros)} qualifying metros')
