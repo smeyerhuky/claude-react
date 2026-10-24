@@ -2,7 +2,7 @@
 """Small, explicitly bounded OSM data acquisition. Not for nationwide API use.
 
 Usage:
-  python scripts/get_road_spike_graph.py --bbox -105.45 38.5 -104.3 40.5 \
+  python scripts/get_road_spike_graph.py --bbox -105.03 39.70 -104.89 39.84 \
      --output local-data/front-range.graphml
 
 OSMnx/Overpass can be slow or refuse large requests. Prefer a local PBF extract
