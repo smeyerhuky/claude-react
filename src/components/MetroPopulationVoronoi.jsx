@@ -239,6 +239,8 @@ export default function MetroPopulationVoronoi() {
   const [detailOpen,setDetailOpen] = useState(false)
   const [compareOpen,setCompareOpen] = useState(false)
   const [linkCopied,setLinkCopied] = useState(false)
+  const [exportState,setExportState] = useState('idle')
+  const [exportError,setExportError] = useState('')
   const [legendOpen,setLegendOpen] = useState(false)
   const restoringUrl = useRef(false)
   const previousShare = useRef(null)
@@ -315,15 +317,19 @@ export default function MetroPopulationVoronoi() {
   const exportMapPng = async () => {
     const canvas = canvasRef.current
     const svg = document.querySelector('[data-testid="map-shell"] svg[role="img"]')
-    if (!canvas || !svg || canvas.dataset.renderReady !== 'true') return
+    if (exportState === 'working') return
+    setExportError('')
+    setExportState('working')
+    try {
+      if (!canvas || !svg || canvas.dataset.renderReady !== 'true') throw new Error('The map is not ready to export. Try again once it finishes loading.')
     const width = 1000
     const rowHeight = 28
-    const footerHeight = 76 + pinned.length * rowHeight
+    const footerHeight = 134 + pinned.length * rowHeight
     const output = document.createElement('canvas')
     output.width = width * 2
     output.height = (620 + footerHeight) * 2
     const context = output.getContext('2d')
-    if (!context) return
+    if (!context) throw new Error('Your browser could not create the export image.')
     context.scale(2, 2)
     context.fillStyle = '#ffffff'
     context.fillRect(0, 0, width, 620 + footerHeight)
@@ -345,14 +351,21 @@ export default function MetroPopulationVoronoi() {
 
     context.fillStyle = '#f8fafc'
     context.fillRect(0, 620, width, footerHeight)
+    context.fillStyle = '#cbd5e1'
+    context.fillRect(0, 620, width, 1)
     context.fillStyle = '#0f172a'
     context.font = 'bold 19px Arial, sans-serif'
-    context.fillText('Nearest metropolitan area · Census Vintage 2025', 24, 651)
+    context.fillText('Nearest metropolitan areas', 24, 652)
+    context.fillStyle = '#64748b'
+    context.font = '12px Arial, sans-serif'
+    context.fillText('U.S. Census Vintage 2025 population estimates', 24, 672)
     context.font = '14px Arial, sans-serif'
     context.fillStyle = '#475569'
-    context.fillText(`Population threshold: ${fmt(threshold)} · ${qualifying.length} qualifying metros · Voronoi regions are not Census boundaries`, 24, 678)
+    context.fillText(`Population threshold: ${fmt(threshold)}  ·  ${qualifying.length} qualifying metros`, 24, 697)
+    context.font = '12px Arial, sans-serif'
+    context.fillText('Shaded nearest-metro regions are not official Census metro boundaries.', 24, 720)
     pinned.forEach((a, i) => {
-      const y = 706 + i * rowHeight
+      const y = 748 + i * rowHeight
       context.fillStyle = '#c2410c'
       context.beginPath()
       context.arc(30, y - 4, 5, 0, Math.PI * 2)
@@ -362,7 +375,7 @@ export default function MetroPopulationVoronoi() {
       context.fillText(`${shortNames.get(a.id) || a.name} — ${a.pop.toLocaleString()} residents`, 46, y, 910)
     })
     const blob = await new Promise(resolve => output.toBlob(resolve, 'image/png'))
-    if (!blob) return
+    if (!blob) throw new Error('The browser could not encode the PNG image.')
     const downloadUrl = URL.createObjectURL(blob)
     const link = document.createElement('a')
     link.href = downloadUrl
@@ -371,6 +384,11 @@ export default function MetroPopulationVoronoi() {
     link.click()
     link.remove()
     setTimeout(() => URL.revokeObjectURL(downloadUrl), 1000)
+    setExportState('success')
+    } catch (error) {
+      setExportError(error instanceof Error ? error.message : 'Unable to export the map. Please try again.')
+      setExportState('error')
+    }
   }
   const copyViewLink = async () => {
     const url = window.location.origin + window.location.pathname + window.location.search + shareHash
@@ -614,10 +632,11 @@ export default function MetroPopulationVoronoi() {
              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-slate-300 bg-white text-xs font-semibold text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-500 sm:w-auto sm:rounded-xl sm:px-3 sm:text-sm">
              <span aria-hidden="true">ⓘ </span><span className="hidden sm:inline">Map </span>key
            </button>
-           <button type="button" onClick={exportMapPng} aria-label="Download map PNG"
+           <button type="button" onClick={exportMapPng} aria-label="Download map PNG" disabled={exportState === "working"}
              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-slate-300 bg-white text-xs font-medium text-slate-800 shadow-sm hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-500 sm:w-auto sm:rounded-xl sm:px-3 sm:text-sm">
-             <span className="sm:hidden">PNG</span><span className="hidden sm:inline">Export PNG</span>
+             <span className="sm:hidden">PNG</span><span className="hidden sm:inline">{exportState === "working" ? "Preparing PNG…" : "Export PNG"}</span>
            </button>
+           <span role="status" aria-live="polite" data-testid="png-export-status" className="sr-only">{exportState === "success" ? "Map PNG downloaded" : exportState === "working" ? "Preparing map PNG" : exportError}</span>
            <button type="button" onClick={copyViewLink} aria-label="Copy map link"
             className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-slate-300 bg-white text-xs font-semibold text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-500 sm:w-auto sm:rounded-xl sm:px-3 sm:text-sm">
             <span className="sm:hidden" aria-hidden="true">{linkCopied?'✓':'↗'}</span><span className="hidden sm:inline">{linkCopied?'Copied!':'Copy link'}</span>
