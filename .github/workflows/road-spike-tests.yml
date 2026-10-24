@@ -1,0 +1,23 @@
+name: Road allocation spike tests
+on:
+  pull_request:
+    paths:
+      - 'scripts/road_spike.py'
+      - 'scripts/test_road_spike.py'
+      - 'scripts/get_road_spike_graph.py'
+      - '.github/workflows/road-spike-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  directed-algorithm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx>=3.4,<4'
+      - run: python -m unittest discover -s scripts -p test_road_spike.py -v
+      # Deliberately no Overpass requests in CI. Actual road graph input is
+      # a separately acquired, versioned research dataset.
