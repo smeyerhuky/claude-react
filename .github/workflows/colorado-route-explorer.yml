@@ -22,7 +22,7 @@ jobs:
           mkdir -p local-data
           curl -fLSs --retry 3 --connect-timeout 20 --max-time 1200 -o local-data/colorado.osm.pbf 'https://download.geofabrik.de/north-america/us/colorado-latest.osm.pbf'
           sha256sum local-data/colorado.osm.pbf > local-data/source-sha256.txt
-          osmium extract --bbox=-105.35,38.65,-104.5,40.05 --strategy=complete_ways local-data/colorado.osm.pbf -o local-data/corridor.osm.pbf
+          osmium extract --bbox=-106.1,38.65,-104.5,40.1 --strategy=complete_ways local-data/colorado.osm.pbf -o local-data/corridor.osm.pbf
           osmium tags-filter local-data/corridor.osm.pbf w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,residential,unclassified,living_street,service -o local-data/roads.osm.pbf
       - name: Synthetic route explorer regression tests
         run: PYTHONPATH=scripts python -m unittest discover -s scripts -p 'test_colorado_route_explorer.py' -v
