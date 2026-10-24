@@ -22,7 +22,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y osmium-tool
-          python -m pip install 'networkx>=3.4,<4' 'osmnx>=2.1,<3' 'matplotlib>=3.9,<4'
+          python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2' 'matplotlib>=3.9,<4'
       - name: Download dated Colorado OpenStreetMap extract
         shell: bash
         run: |
@@ -40,13 +40,12 @@ jobs:
           set -euo pipefail
           # Includes Denver, Colorado Springs and Pueblo centers; corridor edge
           # routes may leave this box, so this is not production route truth.
-          osmium extract --bbox=-106.3,37.9,-104.1,40.4 \
+          osmium extract --bbox=-105.35,38.65,-104.5,40.05 \
             --strategy=complete_ways local-data/colorado.osm.pbf \
             -o local-data/corridor.osm.pbf --overwrite
           osmium tags-filter local-data/corridor.osm.pbf \
             w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,residential,unclassified,living_street,service \
             -o local-data/roads.osm.pbf --overwrite
-          osmium cat local-data/roads.osm.pbf -f osm -o local-data/roads.osm --overwrite
       - name: Run directed road-node comparison and metadata
         shell: bash
         run: |
@@ -54,7 +53,7 @@ jobs:
           mkdir -p road-proof
           echo "Starting graph processing at $(date -u +%FT%TZ)"
           /usr/bin/time -v -o road-proof/resource-usage.txt timeout --signal=TERM --kill-after=30s 15m \
-            python -u scripts/visualize_colorado_roads.py --osm local-data/roads.osm --threshold ${{ inputs.threshold }} --output-dir road-proof \
+            python -u scripts/visualize_colorado_roads.py --osm local-data/roads.osm.pbf --threshold ${{ inputs.threshold }} --output-dir road-proof \
             2>&1 | tee road-proof/processing.log
           echo "Graph comparison complete at $(date -u +%FT%TZ)"
           cp local-data/source-sha256.txt road-proof/
