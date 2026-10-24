@@ -57,7 +57,18 @@ try {
   const pngPath = await download.path()
   const pngBuffer = await import('node:fs/promises').then(fs => fs.readFile(pngPath))
   if (pngBuffer.toString('hex', 0, 8) !== '89504e470d0a1a0a') throw Error('Export is not a PNG')
-  if (pngBuffer.readUInt32BE(16) !== 2000 || pngBuffer.readUInt32BE(20) < 1240) throw Error('Export dimensions are incorrect')
+  if (pngBuffer.readUInt32BE(16) !== 2000 || pngBuffer.readUInt32BE(20) < 1400) throw Error('Export dimensions are incorrect')
+  await page.getByTestId('png-export-status').getByText('Map PNG downloaded').waitFor()
+  await page.evaluate(() => {
+    const original = HTMLCanvasElement.prototype.toBlob
+    window.__restoreExportBlob = () => { HTMLCanvasElement.prototype.toBlob = original }
+    HTMLCanvasElement.prototype.toBlob = function (callback) { callback(null) }
+  })
+  await page.getByRole('button', { name: 'Download map PNG' }).click()
+  await page.getByTestId('png-export-error').getByText(/could not encode the PNG/i).waitFor()
+  await page.evaluate(() => window.__restoreExportBlob())
+  await page.getByRole('button', { name: 'Download map PNG' }).click()
+  await page.getByTestId('png-export-error').waitFor({ state: 'hidden' })
   await page.getByRole('button', { name: 'Expand controls' }).click()
   const accordion = page.getByTestId('pinned-accordion')
   if (await accordion.getByTestId('pinned-city-row').count() !== 2) throw Error('Expected two compact pinned rows')
