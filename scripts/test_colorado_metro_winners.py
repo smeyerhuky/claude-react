@@ -1,7 +1,7 @@
 """Synthetic correctness checks; do not imply complete Colorado coverage."""
 import unittest
 import networkx as nx
-from colorado_metro_winners import allocate_thresholds, snap_candidates
+from colorado_metro_winners import allocate_thresholds, snap_candidates, winner_change_report, boundary_proximity
 
 
 class AllocatorTests(unittest.TestCase):
@@ -38,6 +38,30 @@ class AllocatorTests(unittest.TestCase):
         self.assertEqual(out["250000"]["distance"]["winners"]["point"]["cbsa"], "L")
         self.assertEqual(out["100000"]["distance"]["unreachable_nodes"], 1)
         self.assertNotIn("island", out["100000"]["time"]["winners"])
+
+    def test_real_threshold_difference_is_required(self):
+        g = nx.MultiDiGraph()
+        g.add_edge("point", "boulder", length=2, travel_time=2)
+        g.add_edge("point", "denver", length=10, travel_time=10)
+        sources = [
+            {"cbsa": "14500", "name": "Boulder", "population": 328560,
+             "node": "boulder", "snap_m": 0},
+            {"cbsa": "19740", "name": "Denver", "population": 3092037,
+             "node": "denver", "snap_m": 0},
+        ]
+        output = allocate_thresholds(g, sources, [100000, 400000])
+        report = winner_change_report(output, 100000, 400000)
+        self.assertEqual(report["distance"]["changed_winner_nodes"], 1)
+        self.assertEqual(report["time"]["changed_winner_nodes"], 1)
+        self.assertEqual(output["400000"]["distance"]["winners"]["point"]["cbsa"], "19740")
+
+    def test_boundary_proximity_is_only_a_diagnostic(self):
+        g = nx.MultiDiGraph()
+        g.add_node(1, x=-105.1, y=39.5)
+        g.add_node(2, x=-105.099, y=39.5)
+        report = boundary_proximity(g, radius_m=1000)
+        self.assertEqual(report["near_edge_nodes"], 2)
+        self.assertIn("bbox", report["interpretation"])
 
     def test_direction_and_rejected_external_candidate(self):
         g = nx.MultiDiGraph()

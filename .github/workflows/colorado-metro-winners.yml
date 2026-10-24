@@ -33,7 +33,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p colorado-metro-winners
-          /usr/bin/time -v -o colorado-metro-winners/resources.txt timeout --signal=TERM --kill-after=30s 25m python -u scripts/colorado_metro_winners.py --osm local-data/roads.osm.pbf --thresholds 100000 250000 2>&1 | tee colorado-metro-winners/processing.log
+          /usr/bin/time -v -o colorado-metro-winners/resources.txt timeout --signal=TERM --kill-after=30s 25m python -u scripts/colorado_metro_winners.py --osm local-data/roads.osm.pbf --thresholds 100000 250000 400000 --require-threshold-difference 2>&1 | tee colorado-metro-winners/processing.log
           cp local-data/source-sha256.txt colorado-metro-winners/
       - uses: actions/upload-artifact@v4
         if: always()
