@@ -1,5 +1,6 @@
 # Metro Population Voronoi Map — Project Handoff
 
+> **Roadmap update (2026-10-23):** The comprehensive proposed **By road** mode (driving-time and shortest-road-distance nearest qualifying metro allocation) is documented in [ROAD_NETWORK_REGIONS_PLAN.md](./ROAD_NETWORK_REGIONS_PLAN.md). This design supersedes the older *optional distance-hover enhancement* as the next major product capability. **Priority:** first a bounded Colorado/Front Range routing-data feasibility PR; then mode tabs/prototype; then national precomputed network data. Existing straight-line map remains the default. No implementation is merged or implied. PRs #86–#92 progressed quality work since this handoff's original baseline; update/reconcile the chronological shipped list after confirming post-merge CI.\n\n
 _Last updated: 2026-10-23 · Baseline: `main` after merged PR #84 (`a4ea40146b820b3b14166c843e97e57ef4585076`)._
 
 ## Purpose and working agreement
@@ -66,6 +67,12 @@ The map is a nearest-metro **Voronoi visualization**, **not official Census metr
 - The docs/README may be stale and contain unrelated showcase instructions; keep the metro handoff here.
 
 ## Recommended roadmap (in priority order)
+
+### NEW highest-priority strategic feature: road-network nearest-metro shading
+- **Next implementation milestone:** feasibility spike limited to Colorado/Front Range and mountain corridor; choose OSM routing graph, prove multi-source nearest-metro driving time and shortest-road-distance allocations, validate route direction/threshold semantics, measure bytes/compute and collect screenshots. See [full plan](./ROAD_NETWORK_REGIONS_PLAN.md).
+- **Follow-on:** switchable Straight-line / By road tabs; secondary Drive time / Drive distance mode; map attribution, legend, location inspector, pins, sharing, PNG export and accessibility. Do not ship road mode as complete until actual routable nationwide allocation data exists.
+- **Later:** static lower-48 data generation, tile delivery, tests/benchmarks, optional true isochrone contours. This outranks optional comparison export polish and general hover/tooltips; the PNG export reliability and current CI deployment verification remain release-critical cleanup.
+
 
 ### Next PR: PNG export visual assurance
 - In `scripts/capture-metro.mjs` (or a dedicated script) download PNG files for: (1) default map, (2) selected Denver, (3) two–six pins plus comparison if relevant. Save clear artifact names, e.g. `metro-export-default.png`, `metro-export-six-pins.png`.
