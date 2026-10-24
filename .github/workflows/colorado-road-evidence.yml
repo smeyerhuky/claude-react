@@ -12,7 +12,7 @@ permissions:
 jobs:
   road-evidence:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -50,7 +50,13 @@ jobs:
       - name: Run directed road-node comparison and metadata
         shell: bash
         run: |
-          python scripts/visualize_colorado_roads.py --osm local-data/roads.osm --threshold ${{ inputs.threshold }} --output-dir road-proof
+          set -euo pipefail
+          mkdir -p road-proof
+          echo "Starting graph processing at $(date -u +%FT%TZ)"
+          /usr/bin/time -v -o road-proof/resource-usage.txt timeout --signal=TERM --kill-after=30s 15m \
+            python -u scripts/visualize_colorado_roads.py --osm local-data/roads.osm --threshold ${{ inputs.threshold }} --output-dir road-proof \
+            2>&1 | tee road-proof/processing.log
+          echo "Graph comparison complete at $(date -u +%FT%TZ)"
           cp local-data/source-sha256.txt road-proof/
           cp local-data/source-metadata.txt road-proof/
       - name: Upload real-road evidence and metadata
@@ -58,6 +64,7 @@ jobs:
         if: always()
         with:
           name: colorado-real-road-experiment
+          include-hidden-files: true
           path: road-proof/
           if-no-files-found: warn
           retention-days: 14
