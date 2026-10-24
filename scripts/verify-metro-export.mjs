@@ -59,8 +59,8 @@ try {
           return { ...count, colors: unique.size }
         }
         const map = grid(60, 70, 1940, 1170, 18)
-        const header = grid(30, 1250, 1950, 1370, 4)
-        const footer = grid(25, 1390, 1850, 1390 + pinCount*56, 4)
+        const header = grid(30, 1250, 1950, 1450, 4)
+        const footer = grid(25, 1480, 1850, 1480 + pinCount*56, 4)
         // Detect overlay contributions by comparing exported pixels with the
         // original shading canvas. Differences imply SVG rasterization occurred.
         const mapCanvas = document.querySelector('[data-testid="metro-shading-canvas"]')
@@ -73,7 +73,7 @@ try {
           if (beneath[3] < 250) continue
           if (Math.max(...[0,1,2].map(i=>Math.abs(exported[i]-beneath[i]))) > 65) overlayDifferences++
         }
-        if (image.naturalWidth !== 2000 || image.naturalHeight !== 2*(620+76+pinCount*28)) throw Error('Export dimensions wrong')
+        if (image.naturalWidth !== 2000 || image.naturalHeight !== 2*(620+134+pinCount*28)) throw Error('Export dimensions wrong')
         if (map.colors < 12 || map.nonwhite < 500 || map.dark < 20) throw Error('Map shading appears blank: ' + JSON.stringify(map))
         if (overlayDifferences < 15) throw Error('SVG outlines/labels absent from export: differences=' + overlayDifferences)
         if (header.dark < 50) throw Error('Footer heading/metadata missing: ' + JSON.stringify(header))
