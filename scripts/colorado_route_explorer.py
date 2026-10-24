@@ -3,6 +3,8 @@
 import argparse
 import json
 import math
+import statistics
+import time
 from pathlib import Path
 
 import matplotlib
@@ -66,6 +68,20 @@ def validate_cost(reference, compressed, metric):
     return delta
 
 
+def benchmark_route(graph, source, target, metric, repetitions=3):
+    """Warm-cache sequential query timings; graph construction is excluded."""
+    if repetitions < 1:
+        raise ValueError("repetitions must be positive")
+    samples = []
+    for _ in range(repetitions):
+        start = time.perf_counter()
+        result = route(graph, source, target, metric)
+        samples.append((time.perf_counter() - start) * 1000)
+        if result is None:
+            raise RuntimeError("Benchmark route unexpectedly unreachable")
+    return {"samples_ms": samples, "median_ms": statistics.median(samples)}
+
+
 def coordinates(graph, path):
     return [(graph.nodes[node]["x"], graph.nodes[node]["y"]) for node in path]
 
@@ -115,6 +131,8 @@ def main():
             raise RuntimeError(f"{name}: nearest road node {snap_m:.1f} m away; exceeds limit")
         snaps[name] = {"node": node, "snap_m": snap_m}
     reference = full_graph(args.osm)
+    graph_sizes = {"full": {"nodes": reference.number_of_nodes(), "edges": reference.number_of_edges()},
+                   "compressed": {"nodes": compressed.number_of_nodes(), "edges": compressed.number_of_edges()}}
     trips = []
     for origin, destination, category in TRIPS:
         source, target = snaps[origin]["node"], snaps[destination]["node"]
@@ -122,7 +140,7 @@ def main():
                 "origin_node": source, "destination_node": target,
                 "origin_snap_m": snaps[origin]["snap_m"],
                 "destination_snap_m": snaps[destination]["snap_m"],
-                "reference": {}, "compressed": {}, "cost_deltas": {}}
+                "reference": {}, "compressed": {}, "cost_deltas": {}, "benchmark": {}}
         for metric in ("length", "travel_time"):
             full = route(reference, source, target, metric)
             small = route(compressed, source, target, metric)
@@ -131,6 +149,10 @@ def main():
                 raise RuntimeError(f"No {metric} route for {origin} → {destination}")
             item["reference"][metric] = full
             item["compressed"][metric] = small
+            item["benchmark"][metric] = {
+                "full": benchmark_route(reference, source, target, metric),
+                "compressed": benchmark_route(compressed, source, target, metric),
+            }
         item["geometry"] = {metric: coordinates(reference, item["reference"][metric]["nodes"])
                             for metric in ("length", "travel_time")}
         trips.append(item)
@@ -138,11 +160,14 @@ def main():
     (args.output_dir / "routes.json").write_text(json.dumps({
         "status": "pass", "tolerance_m": TOLERANCE, "tolerance_s": TOLERANCE,
         "note": "Illustrated paths come from full OSM geometry. Compressed graph route costs are checked separately. Travel times are modeled, not live traffic.",
-        "places": snaps, "trips": trips,
+        "places": snaps, "trips": trips, "graph_sizes": graph_sizes,
+        "benchmark_method": "3 sequential warm-cache bidirectional Dijkstra queries per graph, route and metric; wall-clock perf_counter; graph construction and snapping excluded; no memory measurement.",
     }, indent=2) + "\n")
     from colorado_route_explorer_html import render_html
     render_html(args.output_dir / "routes.json", args.output_dir / "interactive.html")
-    print(f"PASS: {len(trips)} city pairs across {len(set(t[2] for t in TRIPS))} categories, both metrics; map, JSON and interactive HTML written")
+    from colorado_route_performance_html import render_dashboard
+    render_dashboard(args.output_dir / "routes.json", args.output_dir / "performance.html")
+    print(f"PASS: {len(trips)} city pairs across {len(set(t[2] for t in TRIPS))} categories, both metrics; map, JSON, interactive HTML and performance dashboard written")
 
 
 if __name__ == "__main__":

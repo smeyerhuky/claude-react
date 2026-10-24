@@ -28,6 +28,8 @@ jobs:
         run: PYTHONPATH=scripts python -m unittest discover -s scripts -p 'test_colorado_route_explorer.py' -v
       - name: Offline interactive viewer regression tests
         run: PYTHONPATH=scripts python -m unittest discover -s scripts -p 'test_colorado_route_explorer_html.py' -v
+      - name: Offline performance dashboard regression tests
+        run: PYTHONPATH=scripts python -m unittest discover -s scripts -p 'test_colorado_route_performance_html.py' -v
       - name: Render and validate real Colorado routes
         run: |
           set -euo pipefail
