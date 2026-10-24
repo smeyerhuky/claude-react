@@ -21,6 +21,8 @@ class ViewerTests(unittest.TestCase):
         render_html(self.source, self.target)
         page = self.target.read_text()
         self.assertIn('id="trip"', page)
+        self.assertIn('id="region"', page)
+        self.assertIn("populateTrips()", page)
         self.assertIn('id="metric"', page)
         self.assertIn("[-105,39]", page)
         self.assertNotIn("__DATA__", page)

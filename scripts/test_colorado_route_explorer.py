@@ -1,10 +1,18 @@
 """Synthetic tests for route explorer geometry, snapping, and correctness."""
 import unittest
 import networkx as nx
-from colorado_route_explorer import nearest, route, validate_cost, coordinates
+from colorado_route_explorer import nearest, route, validate_cost, coordinates, PLACES, TRIPS
 
 
 class ExplorerTests(unittest.TestCase):
+    def test_v2_trips_cover_front_range_mountain_and_rural(self):
+        categories = {category for _, _, category in TRIPS}
+        self.assertEqual(categories, {"Front Range", "Mountain corridor", "Rural / mountain"})
+        self.assertGreaterEqual(len(TRIPS), 6)
+        self.assertTrue(all(origin in PLACES and destination in PLACES
+                            for origin, destination, _ in TRIPS))
+        self.assertEqual(len(TRIPS), len({(a, b) for a, b, _ in TRIPS}))
+
     def test_snap_selects_nearest_geographic_node(self):
         g = nx.MultiDiGraph()
         g.add_node(1, x=-105.0, y=39.0)

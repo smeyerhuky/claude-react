@@ -22,7 +22,7 @@ small{color:#b6c3d4}.legend{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0}
 @media(max-width:760px){main{grid-template-columns:1fr}}
 </style></head><body>
 <h1>Colorado Route Explorer</h1><p>Real OSM road geometry · offline experimental visualization · no live traffic or turn restrictions</p>
-<div class="controls"><label>Trip<select id="trip"></select></label><label>Route display<select id="metric">
+<div class="controls"><label>Region<select id="region"><option value="all">All regions</option></select></label><label>Trip<select id="trip"></select></label><label>Route display<select id="metric">
 <option value="both">Compare both</option><option value="length">Shortest distance</option><option value="travel_time">Fastest modeled time</option></select></label></div>
 <main><div><svg id="map" viewBox="0 0 900 620" role="img" aria-label="Geographic road route comparison">
 <path id="short" stroke="#58b7ff"></path><path id="fast" stroke="#ffab59"></path>
@@ -35,9 +35,11 @@ small{color:#b6c3d4}.legend{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0}
 <script>
 "use strict";
 const data=JSON.parse(document.getElementById("dataset").textContent);
-const trips=data.trips, tripSelect=document.getElementById("trip"),metricSelect=document.getElementById("metric");
+const trips=data.trips, tripSelect=document.getElementById("trip"),regionSelect=document.getElementById("region"),metricSelect=document.getElementById("metric");
 const svg=document.getElementById("map"),short=document.getElementById("short"),fast=document.getElementById("fast");
-trips.forEach((t,i)=>{const o=document.createElement("option");o.value=i;o.textContent=t.origin+" → "+t.destination;tripSelect.append(o)});
+const regions=[...new Set(trips.map(t=>t.category||"Other"))];
+regions.forEach(name=>{const o=document.createElement("option");o.value=name;o.textContent=name;regionSelect.append(o)});
+function populateTrips(){const previous=tripSelect.value;tripSelect.replaceChildren();trips.forEach((t,i)=>{if(regionSelect.value!=="all"&&(t.category||"Other")!==regionSelect.value)return;const o=document.createElement("option");o.value=String(i);o.textContent=t.origin+" → "+t.destination;tripSelect.append(o)});if([...tripSelect.options].some(o=>o.value===previous))tripSelect.value=previous;}
 let base=[0,0,900,620],view=base.slice(),drag=null;
 function setView(v){view=v;svg.setAttribute("viewBox",v.join(" "))}
 function render(){
@@ -54,7 +56,7 @@ short.style.display=m==="travel_time"?"none":"";fast.style.display=m==="length"?
 const a=project(t.geometry.length[0]),b=project(t.geometry.length.at(-1));
 for(const [id,p] of [["origin",a],["destination",b]]){const el=document.getElementById(id);el.setAttribute("cx",p[0]);el.setAttribute("cy",p[1])}
 document.getElementById("heading").textContent=t.origin+" → "+t.destination;
-const rows=[["Shortest distance",(t.reference.length.distance_m/1000).toFixed(1)+" km"],
+const rows=[["Region",t.category||"Other"],["Shortest distance",(t.reference.length.distance_m/1000).toFixed(1)+" km"],
 ["Shortest modeled duration",(t.reference.length.travel_time_s/60).toFixed(1)+" min"],
 ["Fastest modeled duration",(t.reference.travel_time.travel_time_s/60).toFixed(1)+" min"],
 ["Fastest-route distance",(t.reference.travel_time.distance_m/1000).toFixed(1)+" km"],
@@ -66,14 +68,14 @@ for(const [key,val] of rows){const dt=document.createElement("dt"),dd=document.c
 document.getElementById("status").textContent="Compressed graph equivalence: "+data.status.toUpperCase();
 setView(base.slice())
 }
-tripSelect.addEventListener("change",render);metricSelect.addEventListener("change",render);
+regionSelect.addEventListener("change",()=>{populateTrips();render()});tripSelect.addEventListener("change",render);metricSelect.addEventListener("change",render);
 svg.addEventListener("wheel",e=>{e.preventDefault();const rect=svg.getBoundingClientRect(),u=(e.clientX-rect.left)/rect.width,v=(e.clientY-rect.top)/rect.height;
 const f=e.deltaY>0?1.2:1/1.2,w=view[2]*f,h=view[3]*f;setView([view[0]+view[2]*u-w*u,view[1]+view[3]*v-h*v,w,h])},{passive:false});
 svg.addEventListener("pointerdown",e=>{drag=[e.clientX,e.clientY,...view];svg.setPointerCapture(e.pointerId)});
 svg.addEventListener("pointermove",e=>{if(!drag)return;const rect=svg.getBoundingClientRect();setView([drag[2]-(e.clientX-drag[0])*drag[4]/rect.width,drag[3]-(e.clientY-drag[1])*drag[5]/rect.height,drag[4],drag[5]])});
 svg.addEventListener("pointerup",()=>drag=null);svg.addEventListener("pointercancel",()=>drag=null);
 svg.addEventListener("dblclick",()=>setView(base.slice()));
-render();
+populateTrips();render();
 </script></body></html>
 """
 

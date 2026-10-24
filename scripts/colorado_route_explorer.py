@@ -17,8 +17,19 @@ PLACES = {
     "Denver": (-104.9903, 39.7392),
     "Boulder": (-105.2705, 40.0150),
     "Colorado Springs": (-104.8214, 38.8339),
+    "Idaho Springs": (-105.5136, 39.7425),
+    "Georgetown": (-105.6975, 39.7061),
+    "Nederland": (-105.5061, 39.9614),
+    "Fairplay": (-106.0028, 39.2247),
 }
-TRIPS = (("Denver", "Boulder"), ("Denver", "Colorado Springs"))
+TRIPS = (
+    ("Denver", "Boulder", "Front Range"),
+    ("Denver", "Colorado Springs", "Front Range"),
+    ("Denver", "Idaho Springs", "Mountain corridor"),
+    ("Idaho Springs", "Georgetown", "Mountain corridor"),
+    ("Boulder", "Nederland", "Mountain corridor"),
+    ("Colorado Springs", "Fairplay", "Rural / mountain"),
+)
 TOLERANCE = 0.001
 
 
@@ -60,7 +71,7 @@ def coordinates(graph, path):
 
 
 def draw(graph, trips, destination):
-    fig, axes = plt.subplots(len(trips), 1, figsize=(11, 6 * len(trips)), squeeze=False)
+    fig, axes = plt.subplots(len(trips), 1, figsize=(11, 5 * len(trips)), squeeze=False)
     for ax, trip in zip(axes[:, 0], trips):
         colors = {"length": "#1565c0", "travel_time": "#e65100"}
         for metric, label in (("length", "Shortest distance"), ("travel_time", "Fastest modeled time")):
@@ -105,9 +116,9 @@ def main():
         snaps[name] = {"node": node, "snap_m": snap_m}
     reference = full_graph(args.osm)
     trips = []
-    for origin, destination in TRIPS:
+    for origin, destination, category in TRIPS:
         source, target = snaps[origin]["node"], snaps[destination]["node"]
-        item = {"origin": origin, "destination": destination,
+        item = {"origin": origin, "destination": destination, "category": category,
                 "origin_node": source, "destination_node": target,
                 "origin_snap_m": snaps[origin]["snap_m"],
                 "destination_snap_m": snaps[destination]["snap_m"],
@@ -131,7 +142,7 @@ def main():
     }, indent=2) + "\n")
     from colorado_route_explorer_html import render_html
     render_html(args.output_dir / "routes.json", args.output_dir / "interactive.html")
-    print(f"PASS: {len(trips)} city pairs, both metrics; map, JSON and interactive HTML written")
+    print(f"PASS: {len(trips)} city pairs across {len(set(t[2] for t in TRIPS))} categories, both metrics; map, JSON and interactive HTML written")
 
 
 if __name__ == "__main__":
