@@ -1,0 +1,44 @@
+name: Colorado routing performance (manual)
+on:
+  workflow_dispatch:
+    inputs:
+      samples:
+        description: Deterministic origin count
+        default: '12'
+        required: true
+permissions:
+  contents: read
+jobs:
+  performance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y osmium-tool
+          python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5'
+      - name: Download and extract Colorado roads
+        run: |
+          set -euo pipefail
+          mkdir -p local-data
+          curl -fLSs --retry 3 --connect-timeout 20 --max-time 1200 -o local-data/colorado.osm.pbf 'https://download.geofabrik.de/north-america/us/colorado-latest.osm.pbf'
+          sha256sum local-data/colorado.osm.pbf > local-data/source-sha256.txt
+          osmium extract --bbox=-105.35,38.65,-104.5,40.05 --strategy=complete_ways local-data/colorado.osm.pbf -o local-data/corridor.osm.pbf
+          osmium tags-filter local-data/corridor.osm.pbf w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,residential,unclassified,living_street,service -o local-data/roads.osm.pbf
+      - name: Benchmark compressed and reference graphs independently
+        run: |
+          set -euo pipefail
+          mkdir -p road-benchmark
+          cp local-data/source-sha256.txt road-benchmark/
+          python -u scripts/benchmark_colorado_routing.py --osm local-data/roads.osm.pbf --mode compressed --samples ${{ inputs.samples }} --origins road-benchmark/origins.json --output road-benchmark/compressed.json 2>&1 | tee road-benchmark/compressed.log
+          python -u scripts/benchmark_colorado_routing.py --osm local-data/roads.osm.pbf --mode reference --samples ${{ inputs.samples }} --origins road-benchmark/origins.json --output road-benchmark/reference.json 2>&1 | tee road-benchmark/reference.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: colorado-routing-performance
+          path: road-benchmark/
+          retention-days: 14
