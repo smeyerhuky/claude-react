@@ -684,6 +684,7 @@ export default function MetroPopulationVoronoi() {
           </div>
           {pinned.length>0 && <p className="mt-2 text-xs text-slate-600">{pinned.length} cities pinned</p>}
         </section>}
+        {exportError && <div role="alert" data-testid="png-export-error" className="mx-2 rounded-md border border-rose-200 bg-rose-50 px-3 py-2 text-xs text-rose-900 sm:mx-4">PNG export failed: {exportError}</div>}
         <div className="relative min-h-0 flex-1 overflow-hidden p-2 sm:p-4">
           {(selected || pinnedIds.length > 0 || searchOpen || drawerOpen) && <button data-testid="full-map-reset" onClick={resetView}
             className="absolute z-30 bottom-4 left-4 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-900 shadow-md hover:bg-slate-100">
