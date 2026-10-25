@@ -68,6 +68,40 @@ Keep the current population-threshold nearest-metro map as the **Straight-line**
 - Offline generated inputs are pinned/reproducible and cite OSM attribution; users can read the date/profile caveats.
 - Normal first-load (Straight-line) cost is unaffected; road mode loads only on demand and meets an explicit, measured payload/performance budget.
 
+## Nationwide border-safe routing and state-focused maps (roadmap addition, October 2026)
+
+**Scope decision:** The lower-48 **national metro** mode must have one nationwide qualifying-CBSA destination set and a directed routable graph with cross-state connectivity. State boundaries and processing-tile boundaries are **display/partition boundaries only**, never barriers or automatic destination filters. Support legitimate detours that leave a state/partition and re-enter it. International border handling and excluded non-lower-48 coverage require explicit, documented policies.
+
+### N1 — Nation-scale reference and boundary correctness (before national tiles)
+- Produce an immutable/versioned contiguous lower-48 OSM extract or seamlessly stitched partitioned graph; keep global road-node identities and all directed interpartition arcs, turn/access policies and metro snaps. Independent shortest **length** and modeled **time**, location→metro.
+- Establish a full-network/reference-oracle run on representative cross-state origin/destination fixtures; validate border-adjacent cases, long detours leaving and reentering partitions, connected components, one-way bridges, source centers outside display regions and candidate metros across state lines. State-by-state independent Dijkstra or fixed border buffer **does not guarantee** correct winners.
+- Prototype scalable globally equivalent computation (partition boundary transfer costs, contraction/hierarchical routing, distributed multi-source graph processing), verify exact winner and cost equivalence against reference before optimizing. Explicitly reject any fixed-halo shortcut not proven sufficient.
+
+### N2 — Nation-scale geographic allocation and delivery
+- Sample lower-48 land at multi-resolution/adaptive density, snap with road-access tolerances, mark water/unreachable/no-data rather than silently painting; rasterize/cache only after global winner competition. Measure seam equality on overlapping tile samples and between states.
+- Store versioned compressed tiles with metric, supported threshold, location→metro routing profile, OSM/Census checksums, resolution, eligibility semantics and area coverage. Browser uses lazy loading; no nationwide graph in client bundle.
+- Support arbitrary population thresholds by a provably correct threshold-indexed winner representation, or explicitly scope By road to tested threshold presets with UI disclosure; **do not silently approximate** arbitrary thresholds from preset tiles.
+- Validate nontrivial cross-state winners, seam-free display, performance, build RAM, storage, hosting/CDN costs, legal attribution/ODbL and ability to refresh datasets.
+
+### S1 — State focus mode: same national metro universe (first state-map release)
+- Add state selection (dropdown, searchable state list or click-to-focus), zoom/fit and clip **display only** to the selected state, plus clear return-to-US action. Keep the national Census CBSA population filter, eligible metros across state borders, the same allocation layers, metric choice and selection/share/export state.
+- Allow metro winners headquartered outside the selected state when their driving cost is smallest; state-focus is **not** an independent network graph nor a state-only race. Surface out-of-state winner labels clearly.
+- Preserve national-to-state navigation/back/forward URLs and accessibility, pinned locations and existing default national view. Test small/narrow and noncontiguous states, DC handling and performance. Lower-48 launch scope; separately plan AK/HI if desired.
+
+### S2 — Optional state-local **places** Voronoi (separate dataset and semantics)
+- Distinguish the explicit product choice **State places** from **National metros (state view)**. State places uses incorporated places and Census-designated places (CDPs) as eligible facilities, and 2025 place-level population estimates linked by geographic identifiers to 2025 Gazetteer/TIGER place representative coordinates. The state-population threshold is independent of national CBSA thresholds and should default to an appropriate smaller, configurable number.
+- Census place population estimates and boundary/point geography are separate products; enforce vintage and geography compatibility, inclusion policy (CDPs versus incorporated), missing/suppressed values, geographic identifiers, duplicates/multi-state facilities and candidate accessibility. Do **not** relabel CBSA metropolitan populations as local city populations.
+- Define a transparent **facility eligibility** policy: either restrict candidate places to the selected state (purposeful state-only competition) or include nearby out-of-state places (border-realistic competition); the directed road graph always crosses the border under either policy. Recommend border-realistic by default with a clear optional state-only filter.
+- Reuse straight-line and By road algorithms, tile infrastructure, metrics, accessibility, inspector, legends, sharing and exports, but version state-local datasets and thresholds independently. Prototype Colorado plus a smaller state before rolling out all states.
+- Use official Census place-population estimates and official Gazetteer/TIGER coordinates, with traceable joins, display labels and explicit distinction between estimated place population and metro population.
+
+### Ordering and gates
+1. Finish A2 Colorado **geographic** layer and test snapping, gaps, raster seams and browser payload.
+2. N1 national-connected graph and inter-state winner equivalence; validate sample interstate crossings before claiming national correctness.
+3. N2 national tiles, CI goldens and performance budgets; add S1 state focus as a display-only reuse of the same national layers.
+4. S2 optional state-local places product after a small-state pilot, precise eligibility/data/vintage decision and measured tile/build cost.
+5. Extend outside lower 48 only as a separate scope decision. Existing straight-line national view remains the default until all gates pass.
+
 ## Decision log / open questions
 
 - **Drive time vs drive distance:** ship both, with time initially selected as the more actionable accessibility measure.
