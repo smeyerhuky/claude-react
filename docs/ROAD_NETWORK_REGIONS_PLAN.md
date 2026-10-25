@@ -83,12 +83,15 @@ Keep the current population-threshold nearest-metro map as the **Straight-line**
 - Support arbitrary population thresholds by a provably correct threshold-indexed winner representation, or explicitly scope By road to tested threshold presets with UI disclosure; **do not silently approximate** arbitrary thresholds from preset tiles.
 - Validate nontrivial cross-state winners, seam-free display, performance, build RAM, storage, hosting/CDN costs, legal attribution/ODbL and ability to refresh datasets.
 
-### S1 — State focus mode: same national metro universe (first state-map release)
+### S1 — State page and selectable map basis (national metros first)
+- The state page has an explicit **Map basis** setting with two choices: **National metros** (default on initial release) and **State places** (enabled once S2 data/validation ship). Both choices stay available on the same state page; users can switch without navigating to a different product. Do not present State places as an abandoned optional feature: it is a committed roadmap deliverable following the national-metro starting point.
+- On the state page preserve a second, independent **Distance method** setting: Straight-line / By road, and within By road, Drive time / Drive distance. Changing the map basis must not silently change the distance method; each basis has its own saved population threshold.
+- Before S2 is ready, display State places as clearly **Coming later** (disabled with explanation), not as a misleading functioning choice. Once ready, enable both options, restore their last-selected thresholds and maintain legend, pins, hover/inspection, colors, share link, browser history, export and state geography as appropriate to the active basis.
 - Add state selection (dropdown, searchable state list or click-to-focus), zoom/fit and clip **display only** to the selected state, plus clear return-to-US action. Keep the national Census CBSA population filter, eligible metros across state borders, the same allocation layers, metric choice and selection/share/export state.
 - Allow metro winners headquartered outside the selected state when their driving cost is smallest; state-focus is **not** an independent network graph nor a state-only race. Surface out-of-state winner labels clearly.
 - Preserve national-to-state navigation/back/forward URLs and accessibility, pinned locations and existing default national view. Test small/narrow and noncontiguous states, DC handling and performance. Lower-48 launch scope; separately plan AK/HI if desired.
 
-### S2 — Optional state-local **places** Voronoi (separate dataset and semantics)
+### S2 — State-local **places** Voronoi (second selectable state-page basis; planned)
 - Distinguish the explicit product choice **State places** from **National metros (state view)**. State places uses incorporated places and Census-designated places (CDPs) as eligible facilities, and 2025 place-level population estimates linked by geographic identifiers to 2025 Gazetteer/TIGER place representative coordinates. The state-population threshold is independent of national CBSA thresholds and should default to an appropriate smaller, configurable number.
 - Census place population estimates and boundary/point geography are separate products; enforce vintage and geography compatibility, inclusion policy (CDPs versus incorporated), missing/suppressed values, geographic identifiers, duplicates/multi-state facilities and candidate accessibility. Do **not** relabel CBSA metropolitan populations as local city populations.
 - Define a transparent **facility eligibility** policy: either restrict candidate places to the selected state (purposeful state-only competition) or include nearby out-of-state places (border-realistic competition); the directed road graph always crosses the border under either policy. Recommend border-realistic by default with a clear optional state-only filter.
@@ -99,7 +102,7 @@ Keep the current population-threshold nearest-metro map as the **Straight-line**
 1. Finish A2 Colorado **geographic** layer and test snapping, gaps, raster seams and browser payload.
 2. N1 national-connected graph and inter-state winner equivalence; validate sample interstate crossings before claiming national correctness.
 3. N2 national tiles, CI goldens and performance budgets; add S1 state focus as a display-only reuse of the same national layers.
-4. S2 optional state-local places product after a small-state pilot, precise eligibility/data/vintage decision and measured tile/build cost.
+4. S2 state-local places map as the second selectable state-page basis after a small-state pilot, precise eligibility/data/vintage decision and measured tile/build cost. Both state-page choices remain supported.
 5. Extend outside lower 48 only as a separate scope decision. Existing straight-line national view remains the default until all gates pass.
 
 ## Decision log / open questions
