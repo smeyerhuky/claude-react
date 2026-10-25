@@ -1,10 +1,31 @@
-name: Colorado geographic correctness validation (manual)
+name: Colorado geographic correctness validation
+# Set repository Actions variable COLORADO_GEO_VALIDATION_AUTO=false to
+# disable automatic checks. Manual workflow_dispatch always remains available.
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/colorado-geographic-validation.yml'
+      - 'scripts/validate_colorado_geography.py'
+      - 'scripts/colorado_metro_winners.py'
+      - 'scripts/road_spike.py'
+      - 'scripts/stream_osm_roads.py'
+      - 'public/data/metros-census-2025.csv'
+  pull_request:
+    paths:
+      - '.github/workflows/colorado-geographic-validation.yml'
+      - 'scripts/validate_colorado_geography.py'
+      - 'scripts/colorado_metro_winners.py'
+      - 'scripts/road_spike.py'
+      - 'scripts/stream_osm_roads.py'
+      - 'public/data/metros-census-2025.csv'
 permissions:
   contents: read
 jobs:
   validate:
+    # An unset variable defaults to enabled; explicit 'false' disables auto only.
+    if: ${{ github.event_name == 'workflow_dispatch' || vars.COLORADO_GEO_VALIDATION_AUTO != 'false' }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
