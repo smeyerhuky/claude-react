@@ -16,7 +16,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y osmium-tool
-          python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2' 'matplotlib>=3.9,<4'
+          python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2' 'matplotlib>=3.9,<4' 'shapely>=2.0,<3'
       - name: Synthetic correctness regression tests
         run: |
           PYTHONPATH=scripts python -m unittest discover -s scripts -p 'test_colorado_metro_winners.py' -v
