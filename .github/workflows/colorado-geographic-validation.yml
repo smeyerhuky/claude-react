@@ -18,6 +18,8 @@ on:
     paths:
       - '.github/workflows/colorado-geographic-validation.yml'
       - 'scripts/validate_colorado_geography.py'
+      - 'scripts/colorado_edge_midpoint_diagnostics.py'
+      - 'scripts/test_colorado_edge_midpoint_diagnostics.py'
       - 'scripts/colorado_metro_winners.py'
       - 'scripts/road_spike.py'
       - 'scripts/stream_osm_roads.py'
