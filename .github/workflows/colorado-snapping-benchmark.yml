@@ -1,0 +1,43 @@
+name: Colorado real OSM snapping benchmark
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/benchmark_real_road_snapping.py'
+      - 'scripts/road_edge_grid_index.py'
+      - 'scripts/road_segment_snapping.py'
+      - '.github/workflows/colorado-snapping-benchmark.yml'
+permissions:
+  contents: read
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install road tooling
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y osmium-tool
+          python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5'
+      - name: Download and filter real Colorado OSM roads
+        run: |
+          set -euo pipefail
+          mkdir -p local-data colorado-snapping-benchmark
+          curl -fLSs --retry 3 --connect-timeout 20 --max-time 1200 -o local-data/colorado.osm.pbf https://download.geofabrik.de/north-america/us/colorado-latest.osm.pbf
+          sha256sum local-data/colorado.osm.pbf > colorado-snapping-benchmark/source-sha256.txt
+          osmium extract --bbox=-106.1,38.65,-104.5,40.1 --strategy=complete_ways local-data/colorado.osm.pbf -o local-data/corridor.osm.pbf
+          osmium tags-filter local-data/corridor.osm.pbf w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,residential,unclassified,living_street,service -o local-data/roads.osm.pbf
+      - name: Benchmark indexed versus exhaustive snapping on real OSM
+        run: |
+          set -o pipefail
+          timeout --signal=TERM --kill-after=30s 12m python -u scripts/benchmark_real_road_snapping.py --osm local-data/roads.osm.pbf --queries 8 --output colorado-snapping-benchmark/results.json 2>&1 | tee colorado-snapping-benchmark/benchmark.log
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: colorado-snapping-benchmark
+          path: colorado-snapping-benchmark/
+          retention-days: 14
