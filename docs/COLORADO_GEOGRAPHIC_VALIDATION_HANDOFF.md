@@ -165,3 +165,120 @@ The `midpoint_vs_origin_vertex_disagreements` counter is **diagnostic**, not a f
 ## 10. Immediate next action
 
 Open a **separate implementation PR** for Phase A geometry-preserving edges and a small synthetic point-to-edge oracle, with fixtures first. Keep the existing successful road-node and midpoint checks as regressions. Only expand real-data CI sampling after resource budgets are measured. This handoff PR changes **documentation only** and should not be treated as validation evidence.
+
+
+---
+
+# Part II — Overall Metro Map / road-network allocation program
+
+> **This is the project-level destination and implementation roadmap.** Part I is only the current Colorado validation substage. The authoritative detailed product specification is [ROAD_NETWORK_REGIONS_PLAN.md](./ROAD_NETWORK_REGIONS_PLAN.md), complemented by [METRO_MAP_ROAD_ROUTING_HANDOFF.md](./METRO_MAP_ROAD_ROUTING_HANDOFF.md), [METRO_MAP_HANDOFF.md](./METRO_MAP_HANDOFF.md), and [GETTING_STARTED_METRO_MAP.md](./GETTING_STARTED_METRO_MAP.md). Some older documents describe earlier historical states; verify current `main` and workflow runs before interpreting them as present status.
+
+## 11. End product: national interactive metro population regions
+
+The actual product is the existing **Metro Population Regions interactive map**, not a Colorado-only route explorer. It currently presents straight-line, population-threshold nearest-Census-metro Voronoi regions. The strategic feature is a second **By road** map mode that allocates each eligible geographic location to the qualifying Census Vintage 2025 metro representative point reachable with the least **directed driving cost**.
+
+This is a **network nearest-facility / network Voronoi allocation**. It is *not* an official CBSA geographic boundary, and not merely a conventional isochrone: an isochrone is a single origin's equal-travel-time contour. Optional 30/60/90-minute contours are a separate, later overlay.
+
+The long-term application must support **lower-48 national geography**, **state-focused views**, and eventually a second state-level **State places** basis (incorporated places/CDPs), while keeping the current national **Straight-line** experience intact and fast.
+
+## 12. Product experience and invariants
+
+### National metro map
+
+- Preserve official Census Vintage 2025 CBSA IDs, representative coordinates and population thresholds. Do not replace official data with sample cities or call Voronoi regions official CBSA boundaries.
+- Keep the existing **Straight-line** map as the default; add **By road** as an explicit choice.
+- In By road, provide **Drive time** (fastest modeled travel time, recommended default) and **Drive distance** (shortest eligible road length), independently optimized. Do not substitute the distance traveled on the fastest-time path.
+- The population threshold controls *which metros can win*; a new threshold must recompute/select mathematically correct allocations. Never silently substitute a nearby precomputed threshold.
+- Preserve the current full-screen responsive map, compact gray controls, map labels/legend, city search, selected-city details, up to six pinned cities, pinned-population comparison, Copy link, browser Back/Forward, full-map reset, keyboard accessibility, and PNG export.
+- In By road, show the winning metro and modeled travel cost on point inspection, plus route profile/data vintage and explicit `no routable connection` / `off network` states. Avoid live-traffic or ETA promises.
+- Persist `mode`, `metric`, `threshold`, selected city, pins and comparison state in shareable URLs and browser history. Export must depict the selected mode/metric and include attribution/version/caveats.
+- Preserve national metro colors and stable CBSA identity across mode switches. Make loading, unavailable coverage, retry and cancellation visible, not a hidden switch to straight-line assignments.
+
+### State page: two distinct map bases
+
+**S1 — National metros (state focus):** choose a state and clip/zoom the *display* to its geography while using the **same nationwide graph and national eligible metro set**. An out-of-state metro can legitimately win within the displayed state. State lines are not routing barriers. Keep national/state navigation, share state, inspector, pins, export, and both distance methods.
+
+**S2 — State places (separate committed deliverable):** add a second **Map basis** control on the same state page, with **National metros** and **State places**. State places uses official Census incorporated places and CDPs with compatible population estimates and Gazetteer/TIGER geographic points; it has a **separate, smaller threshold** and facility eligibility policy. The road network must still permit cross-state travel. Recommend border-realistic nearby place competition, with any state-only facility restriction clearly disclosed. Save thresholds independently per basis. Before S2 data is ready, show it as disabled/coming later rather than pretending it works.
+
+## 13. Full system architecture: from source data to browser
+
+```text
+Census Vintage 2025 CBSA origins + later Census place origins
+              | provenance, joins, population eligibility
+Versioned nationwide OSM PBF / stitched connected road graph
+              | directed access, keyed parallel edges, turn policy, cost profiles
+Globally equivalent location -> qualifying facility allocation
+              | shortest time AND shortest distance, correct thresholds
+Verified point-to-road snapping + geographic sample classifications
+              | adaptive sampling near winner boundaries and road gaps
+Land/water mask + no-data/unreachable confidence
+              | global grid, seam checks, compressed versioned tiles
+Manifest / immutable CDN or Pages assets / on-demand viewport loader
+              | opt-in, cancel, progress, cache, mobile/browser budgets
+Existing React metro map + Straight-line / By road + state map bases
+              | legend, inspector, share URL, pins, export, accessibility
+```
+
+**Core algorithm:** For each metric, compute location→metro directed shortest-path costs, potentially via reversed-edge multi-source propagation where equivalent. The nationwide destination competition must be global. Partition/state boundaries are storage and display divisions, **not routing barriers**; detours may leave and re-enter partitions. A fixed geographic halo is not sufficient without proof.
+
+**Threshold strategy:** Precomputed winner rasters for a few presets are correct *only* for those presets. Either build a threshold-independent cost/candidate representation that provably answers arbitrary population thresholds, or explicitly limit the By road UI to supported tested presets. Make that product decision before national tile design.
+
+**Delivery strategy:** Prefer offline-generated, versioned, compressed static winner/cost tiles over a per-pixel browser route API. GitHub Pages serves actual published static files, not backend routes. A CDN/object store or paid routing service requires separate infrastructure, costs, CORS and operational review. Keep full PBF/graph outside the Vite bundle and ordinary first-load path.
+
+## 14. Complete roadmap and stage gates
+
+| Stage | Deliverable | Exit / evidence required | Current state |
+| --- | --- | --- | --- |
+| **Foundation — existing Metro Map** | Census 2025 straight-line map, search, threshold, pins, comparison, sharing, PNG export, responsive UI and screenshot CI | Preserve regression suite and deployed straight-line behavior | Existing application; verify latest deployed CI independently |
+| **A0 — routing feasibility** | Colorado road graph, directional/cost semantics, routing equivalence, six-route explorer, performance/dashboard research | Real-data logs/artifacts, independent sample routes, resource benchmarks | Research work exists; see prior routing handoff |
+| **A1 — winner field** | Colorado multi-threshold node allocations, independent distance/time, candidate/reachability diagnostics | Nontrivial threshold differences, independent node oracle | Implemented experimentally; 48 sampled node checks passed in known run |
+| **A2 — geographic correctness** | Geometry-preserving edges, arbitrary point-to-edge snapping, independent geographic oracle, adaptive boundary sampling, land/water mask, crop robustness, raster validation | Verified sample strata and crop comparisons; no fabricated coverage | **Current critical path**. Existing midpoint diagnostics are insufficient |
+| **A3 — browser road-mode prototype** | Scoped Colorado beta switch, time/distance tabs, inspector, attribution, transparent no-data, URL state, accessible loading | Visual screenshots, export checks, responsiveness, meaningful boundary evidence | Not production-ready; start only after A2 data gates |
+| **N1 — nationwide routing correctness** | Connected lower-48 graph, global eligible CBSA sources, border-safe routing/partition equivalence | Exact sample equivalence across state/partition boundaries and external detours | Future |
+| **N2 — nationwide geographic layers** | Land-masked adaptive winner/cost tiles, versioned manifests, threshold semantics, seam and payload validation | Cross-state goldens, refresh/provenance, storage/compute budgets | Future |
+| **B — national By road UI release** | Opt-in nationwide map with both metrics, loading/progress/cancel/cache, pins/share/export | CI functional + visual + accessibility, acceptable performance and clear coverage | Future |
+| **S1 — state-focused national metros** | State selector and display clipping, same national candidate competition | Out-of-state winner tests, URL/history/PNG and mobile QA | Future |
+| **S2 — state places basis** | Census place estimates and points, separate thresholds and state-page map basis | Colorado + smaller-state pilot, vintage/ID joins, cross-border policy tests | Future |
+| **D — optional overlays** | True 30/60/90-minute city isochrone contours, optional future traffic | Separate semantics, UX and hosting review | Optional later |
+
+Stages may overlap for prototypes, but **no national production claim** until N1/N2 correctness gates. S1 and S2 are both planned, not interchangeable.
+
+## 15. Nationwide cross-border correctness (non-negotiable)
+
+1. Build a versioned lower-48 directed graph or seamlessly stitched partitions with stable global road IDs, directed border arcs, and eligible metro origins across state lines.
+2. Establish a reference oracle with border-adjacent points, metro winners headquartered in other states, routes that exit/re-enter the selected state, one-way bridges, disconnected components, and long detours.
+3. Test global winner and cost equivalence for optimized partition/hierarchical/distributed approaches. Reject independent per-state routing and unproven fixed buffers.
+4. The state-focused UI may clip display, but must never filter the graph to the state or exclude out-of-state metro candidates when the basis is National metros.
+5. Document how international borders, AK/HI, ferries and noncontiguous geography are handled; the initial target is the contiguous lower 48.
+
+## 16. Opt-in loading, progressive rendering and budget
+
+The normal Straight-line map must remain lightweight. Road data is an **explicit opt-in** with an estimated download size for the current view, approximate-data notice, and **Load / Cancel** affordance.
+
+- After consent, fetch a small manifest, then coarse tiles intersecting the viewport; render verified partial coverage immediately, then refine. Prioritize visible tiles and cancel/reprioritize on view, state, metric or threshold changes.
+- Distinguish **downloading**, **decoding**, **indexing**, and **rendering**. Use byte-accurate progress when total bytes are known; provide retry, cancellation, and failure states.
+- Keep unloaded, unreachable, off-land and unsupported pixels distinct and transparent. Never paint unavailable road tiles with straight-line winners.
+- Publish immutable checksummed assets under a real static URL namespace or CDN, with appropriate caching, CORS and licensing. Browser caching may use standard HTTP cache and tested optional persistent storage.
+- Measure mobile bandwidth, decoding time, memory, GPU/canvas draw time, tile size, full lower-48 storage, regeneration time and hosting costs. Set concrete budgets from benchmarks rather than inventing numerical targets.
+
+## 17. Testing, release process and ownership
+
+**Correctness:** synthetic directed/keyed-edge and geometry fixtures; independent road-node and point-to-edge goldens; population threshold changes; unreachable classification; road/water masks; adaptive boundary strata; full-graph interstate and partition equivalence.
+
+**UI:** keyboard/tab behavior, mobile header fit, search, pin limit and comparisons, state-page basis/threshold persistence, Back/Forward, share links, legends, selected markers, export PNG **visual content** (not only PNG signature/dimensions), dark/light and low-bandwidth/cancel/retry states.
+
+**CI/release:** The Metro Map Screenshot workflow is scoped to metro-related paths; screenshot gallery and visual artifacts require review. Pages deploy and post-merge smoke/timelapse are distinct checks. Never treat a PR check as proof that Pages deployed correctly. Heavy Colorado workflows remain manual-capable and can be disabled for automatic execution via the documented variable.
+
+**Working agreement:** Create focused feature branch → commit code and tests → open PR → inspect exact GitHub Actions run, logs, artifacts, screenshots and performance → **leave PR for user review and merge** unless the user explicitly directs otherwise. Document both failures and successes, with run URLs and commit SHAs. No silent merge and no assertion of execution without a workflow run.
+
+## 18. What the next engineer should actually do
+
+1. Read [GETTING_STARTED_METRO_MAP.md](./GETTING_STARTED_METRO_MAP.md), [METRO_MAP_ROAD_ROUTING_HANDOFF.md](./METRO_MAP_ROAD_ROUTING_HANDOFF.md), [ROAD_NETWORK_REGIONS_PLAN.md](./ROAD_NETWORK_REGIONS_PLAN.md), and **Part I of this handoff**. Resolve stale chronology by inspecting `main` and real Actions runs.
+2. Confirm the production metro map still uses Straight-line and that PR #119's midpoint code is on `main`; verify latest workflow conclusions rather than relying on old summaries.
+3. Implement **A2 Phase A** in a small PR: geometry-preserving keyed road segments, segment spatial index and synthetic arbitrary-point snapping fixtures. Preserve A1 and midpoint regression behavior.
+4. Then add independent point-to-road route cost and boundary/crop sample tests; inspect real Colorado artifacts and resource costs before expanding.
+5. Only after A2 succeeds, prototype the opt-in By road UI and plan N1/N2 lower-48 data delivery. Keep S1 state focus and S2 State places visible in the roadmap; do not quietly drop them.
+
+### Resume prompt
+
+> Continue the **entire Metro Population Regions / By road program**, not only the Colorado midpoint experiment, in `smeyerhuky/claude-react`. Read `docs/COLORADO_GEOGRAPHIC_VALIDATION_HANDOFF.md` (Parts I and II), `docs/ROAD_NETWORK_REGIONS_PLAN.md`, `docs/METRO_MAP_ROAD_ROUTING_HANDOFF.md`, and `docs/GETTING_STARTED_METRO_MAP.md`. Confirm latest `main` and Actions conclusions. Preserve the current Census 2025 Straight-line map and existing UI. The next critical path is A2 independent geographic point-to-edge validation in Colorado; then a scoped opt-in road UI, nationally connected lower-48 routing/tiles, state-focused National metros, and separate State places basis. Use independently optimized directed driving time and shortest road distance, correct threshold eligibility, explicit no-data, global cross-state routing, versioned opt-in tiles, accessibility, share/export and measured performance. Open focused PRs for my review; do not merge without my instruction. Never claim an experiment ran without verified Actions evidence.
