@@ -4,6 +4,8 @@ on:
     paths:
       - 'scripts/road_spike.py'
       - 'scripts/stream_osm_roads.py'
+      - 'scripts/road_segment_snapping.py'
+      - 'scripts/test_road_segment_snapping.py'
       - 'scripts/test_stream_osm_roads.py'
       - 'scripts/visualize_colorado_roads.py'
       - '.github/workflows/colorado-road-evidence.yml'
@@ -21,7 +23,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5'
+      - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2' 'pillow>=11,<13' 'matplotlib>=3.9,<4' 'shapely>=2,<3'
       - run: python -m py_compile scripts/stream_osm_roads.py scripts/visualize_colorado_roads.py
       - run: python -m unittest discover -s scripts -p 'test_*.py' -v
       # Deliberately no Overpass requests in CI. Actual road graph input is

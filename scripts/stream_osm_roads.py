@@ -86,7 +86,7 @@ class RoadHandler(osmium.SimpleHandler):
                 self.graph.add_node(u, x=origin[1], y=origin[2])
                 self.graph.add_node(v, x=b[1], y=b[2])
                 cost = {"length":distance, "travel_time":distance/(speed*1000/3600),
-                        "osm_way_id": int(w.id), "highway": w.tags.get("highway"),
+                        "osm_way_id": int(w.id) if getattr(w, "id", None) is not None else None, "highway": w.tags.get("highway"),
                         "geometry": tuple((p[1], p[2]) for p in shape),
                         "osm_node_ids": tuple(p[0] for p in shape),
                         "access": w.tags.get("access", ""),
