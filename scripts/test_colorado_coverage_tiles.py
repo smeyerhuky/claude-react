@@ -7,7 +7,7 @@ from pathlib import Path
 import networkx as nx
 from PIL import Image
 
-from colorado_coverage_tiles import sample_grid, write_tiles
+from colorado_coverage_tiles import sample_grid, write_tiles, land_pixel_mask
 
 
 class CoverageTileTests(unittest.TestCase):
@@ -20,6 +20,31 @@ class CoverageTileTests(unittest.TestCase):
         self.assertEqual(grid, [["A", None, None]])
         with self.assertRaises(ValueError):
             sample_grid(graph, {}, bounds, 0, 1)
+
+    def test_land_polygon_holes_and_no_data_classes(self):
+        graph = nx.DiGraph()
+        graph.add_node(1, x=0.0, y=0.0)
+        graph.add_node(2, x=4.0, y=4.0)
+        results = {"100": {"sources": [{"cbsa": "A"}],
+                   "distance": {"winners": {"1": {"cbsa": "A"}}},
+                   "time": {"winners": {"1": {"cbsa": "A"}}}}}
+        # Outer square and interior hole; grid bounds come from road nodes.
+        geometry = {"type": "Polygon", "coordinates": [
+            [[0,0],[4,0],[4,4],[0,4],[0,0]],
+            [[1,1],[3,1],[3,3],[1,3],[1,1]]]}
+        with tempfile.TemporaryDirectory() as d:
+            maskfile = Path(d) / "land.geojson"
+            maskfile.write_text(json.dumps(geometry))
+            mask = land_pixel_mask(maskfile, [0,0,4,4], 4)
+            self.assertFalse(bool(mask[1,1]))
+            self.assertTrue(bool(mask[0,0]))
+            manifest = write_tiles(graph, results, Path(d) / "tiles",
+                                   pixels=4, tile_size=2, max_gap_m=100,
+                                   land_geojson=maskfile)
+            stats = manifest["datasets"]["100-distance"]
+            self.assertEqual(stats["covered_pixels"], 0)
+            self.assertEqual(stats["off_land_pixels"], 4)
+            self.assertEqual(stats["unassigned_land_pixels"], 12)
 
     def test_tiles_stitch_on_global_pixel_grid(self):
         graph = nx.DiGraph()

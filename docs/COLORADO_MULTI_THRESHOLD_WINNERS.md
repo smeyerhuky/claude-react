@@ -65,3 +65,20 @@ confidence and unreachable classes; compare sample winners against independently
 routed origins; test adaptive sampling at boundaries; measure aliasing and
 payload/build/browser budgets; finally generalize global-grid tiling to seamless
 national display after nationwide routing correctness is established.
+
+## Next A2 land geometry masking prototype
+
+The tile generator now supports an optional `--land-geojson FILE` when
+`--coverage-tiles` is enabled. The file must contain actual Polygon or
+MultiPolygon geometries (GeoJSON or FeatureCollection); holes are respected
+when classifying cell centers. Coverage summaries distinguish
+`off_land_pixels` from `unassigned_land_pixels`. Both classes remain
+transparent; unmasked builds explicitly report `land_mask: absent` and null
+counts rather than implying water exclusion.
+
+**No official land geometry has been selected or fetched yet.** The existing
+Colorado workflow remains **unmasked** intentionally and must not be used as
+proof of land/water completeness. Next: select and pin an authoritative land
+geometry snapshot, verify its resolution and licence, run the raster against
+it, and independently validate sampling near coastlines, lakes and roadless
+areas. A state boundary polygon alone does **not** exclude water.
