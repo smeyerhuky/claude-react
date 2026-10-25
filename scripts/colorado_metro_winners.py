@@ -39,6 +39,53 @@ def snap_candidates(graph, metros, max_snap_m=25000):
     return selected, rejected
 
 
+def winner_change_report(results, lower, upper):
+    """Measure actual per-node winner changes across two threshold levels.
+
+    Unreachable/missing assignments are accounted separately, never counted
+    as destination changes. Compare both metrics independently.
+    """
+    a, b = results[str(lower)], results[str(upper)]
+    report = {}
+    for metric in ("distance", "time"):
+        wa, wb = a[metric]["winners"], b[metric]["winners"]
+        common = wa.keys() & wb.keys()
+        changed = [n for n in common if wa[n]["cbsa"] != wb[n]["cbsa"]]
+        report[metric] = {
+            "comparable_nodes": len(common),
+            "changed_winner_nodes": len(changed),
+            "only_lower_reachable": len(wa.keys() - wb.keys()),
+            "only_upper_reachable": len(wb.keys() - wa.keys()),
+            "sample_changed_nodes": changed[:10],
+        }
+    return report
+
+
+def boundary_proximity(graph, radius_m=3000):
+    """Road vertices near the extracted graph's bbox edges (risk indicator only).
+
+    This is NOT certification of route closure or nearest global destinations.
+    """
+    attrs = [data for _, data in graph.nodes(data=True)]
+    if not attrs:
+        return {"radius_m": radius_m, "near_edge_nodes": 0, "graph_nodes": 0}
+    west = min(a["x"] for a in attrs)
+    east = max(a["x"] for a in attrs)
+    south = min(a["y"] for a in attrs)
+    north = max(a["y"] for a in attrs)
+    near = 0
+    for a in attrs:
+        lon, lat = a["x"], a["y"]
+        if min(meters((lon, lat), (west, lat)),
+               meters((lon, lat), (east, lat)),
+               meters((lon, lat), (lon, south)),
+               meters((lon, lat), (lon, north))) <= radius_m:
+            near += 1
+    return {"radius_m": radius_m, "near_edge_nodes": near,
+            "graph_nodes": len(attrs), "interpretation":
+            "bbox edge proximity only; paths can leave extract from interior nodes"}
+
+
 def allocate_thresholds(graph, snapped, thresholds):
     out = {}
     for threshold in thresholds:
@@ -102,8 +149,10 @@ def main():
     ap.add_argument("--osm", required=True, type=Path)
     ap.add_argument("--metros", type=Path, default=Path("public/data/metros-census-2025.csv"))
     ap.add_argument("--output-dir", type=Path, default=Path("colorado-metro-winners"))
-    ap.add_argument("--thresholds", type=int, nargs="+", default=[100000, 250000])
+    ap.add_argument("--thresholds", type=int, nargs="+", default=[100000, 250000, 400000])
     ap.add_argument("--max-snap-m", type=float, default=25000)
+    ap.add_argument("--require-threshold-difference", action="store_true",
+                    help="Fail when minimum and maximum thresholds produce no changed winners")
     args = ap.parse_args()
     if any(x < 0 for x in args.thresholds) or args.max_snap_m <= 0:
         ap.error("Invalid threshold or snap distance")
@@ -124,6 +173,17 @@ def main():
                 "candidate_count": len(snapped), "rejected_metro_snaps": rejected,
                 "coverage_warning": "Clipped road graph: exterior routes and unsnapped metros may change winners; road nodes are not geographic coverage.",
                 "summaries": {}}
+    low, high = min(results, key=int), max(results, key=int)
+    changes = winner_change_report(results, low, high)
+    manifest["threshold_winner_changes"] = {"lower": int(low), "upper": int(high), **changes}
+    manifest["boundary_proximity"] = boundary_proximity(graph)
+    manifest["excluded_qualifying_candidates"] = {
+        str(t): [m for m in rejected if next(
+            (c["population"] for c in read_metros(args.metros) if c["cbsa"] == m["cbsa"]), 0) >= t]
+        for t in sorted(set(args.thresholds))}
+    if args.require_threshold_difference and not any(
+            changes[k]["changed_winner_nodes"] > 0 for k in ("distance", "time")):
+        raise SystemExit("No observed winner changes across lowest/highest thresholds")
     for threshold, result in results.items():
         path = args.output_dir / f"threshold-{threshold}.json"
         path.write_text(json.dumps(result, separators=(",", ":")) + "\n")
