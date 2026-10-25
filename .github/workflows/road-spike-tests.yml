@@ -5,6 +5,8 @@ on:
       - 'scripts/road_spike.py'
       - 'scripts/stream_osm_roads.py'
       - 'scripts/road_segment_snapping.py'
+      - 'scripts/road_edge_grid_index.py'
+      - 'scripts/test_road_edge_grid_index.py'
       - 'scripts/test_road_segment_snapping.py'
       - 'scripts/test_stream_osm_roads.py'
       - 'scripts/visualize_colorado_roads.py'
