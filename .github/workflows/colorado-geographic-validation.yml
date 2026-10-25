@@ -1,0 +1,37 @@
+name: Colorado geographic correctness validation (manual)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install tooling
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y osmium-tool
+          python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2'
+      - name: Download and filter real Colorado roads
+        run: |
+          set -euo pipefail
+          mkdir -p local-data colorado-geographic-validation
+          curl -fLSs --retry 3 --connect-timeout 20 --max-time 1200 -o local-data/colorado.osm.pbf https://download.geofabrik.de/north-america/us/colorado-latest.osm.pbf
+          sha256sum local-data/colorado.osm.pbf > colorado-geographic-validation/source-sha256.txt
+          osmium extract --bbox=-106.1,38.65,-104.5,40.1 --strategy=complete_ways local-data/colorado.osm.pbf -o local-data/corridor.osm.pbf
+          osmium tags-filter local-data/corridor.osm.pbf w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,residential,unclassified,living_street,service -o local-data/roads.osm.pbf
+      - name: Independently check directed road-node winners
+        run: |
+          set -o pipefail
+          /usr/bin/time -v -o colorado-geographic-validation/resources.txt timeout --signal=TERM --kill-after=30s 25m python -u scripts/validate_colorado_geography.py --osm local-data/roads.osm.pbf --samples 8 --output colorado-geographic-validation/report.json 2>&1 | tee colorado-geographic-validation/processing.log
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: colorado-geographic-validation
+          path: colorado-geographic-validation/
+          retention-days: 14
