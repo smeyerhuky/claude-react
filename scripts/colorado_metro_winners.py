@@ -151,6 +151,8 @@ def main():
     ap.add_argument("--output-dir", type=Path, default=Path("colorado-metro-winners"))
     ap.add_argument("--thresholds", type=int, nargs="+", default=[100000, 250000, 400000])
     ap.add_argument("--max-snap-m", type=float, default=25000)
+    ap.add_argument("--land-geojson", type=Path,
+                    help="Optional externally supplied land polygon GeoJSON; do not infer from bbox")
     ap.add_argument("--coverage-tiles", action="store_true",
                     help="Generate experimental road-proximity transparent tiles")
     ap.add_argument("--require-threshold-difference", action="store_true",
@@ -198,11 +200,13 @@ def main():
             "json_bytes": path.stat().st_size}
     if args.coverage_tiles:
         from colorado_coverage_tiles import write_tiles
-        tiles = write_tiles(graph, results, args.output_dir / "coverage-tiles")
+        tiles = write_tiles(graph, results, args.output_dir / "coverage-tiles", land_geojson=args.land_geojson)
         manifest["coverage_tiles"] = {
             "status": tiles["status"],
             "datasets": {key: {"covered_fraction": value["covered_fraction"],
-                               "no_data_pixels": value["no_data_pixels"]}
+                               "no_data_pixels": value["no_data_pixels"],
+                               "off_land_pixels": value["off_land_pixels"],
+                               "unassigned_land_pixels": value["unassigned_land_pixels"]}
                          for key, value in tiles["datasets"].items()},
             "note": "Nearest road vertex, not independently routed geographic samples; water/land masks absent; boundary closure unverified."}
     (args.output_dir / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
