@@ -105,6 +105,27 @@ Keep the current population-threshold nearest-metro map as the **Straight-line**
 4. S2 state-local places map as the second selectable state-page basis after a small-state pilot, precise eligibility/data/vintage decision and measured tile/build cost. Both state-page choices remain supported.
 5. Extend outside lower 48 only as a separate scope decision. Existing straight-line national view remains the default until all gates pass.
 
+## Opt-in heavy-data delivery and progressive browser rendering (October 2026)
+
+**Product contract:** Ordinary page load must stay fast with only the existing straight-line metro map. Road mode is an explicit opt-in. Show an accessible **Load road data / Cancel** confirmation with an estimated download size for the current view and quality, a short approximate-data notice, and cache/storage information. No background bulk download before user consent.
+
+### Delivery architecture
+- Put versioned road allocation artifacts under a distinct **static asset URL namespace**, e.g. `<Vite BASE_URL>/road-data/<dataset-version>/manifest.json` plus `tiles/{basis}/{metric}/{threshold}/{z}/{x}/{y}.bin` or optimized PNG/WebP. **A React Router route is not a file server**; a client-side route alone cannot stream static blobs or add HTTP Range headers. For GitHub Pages, assets must actually be published as files; for larger collections use independent object storage/CDN under a dedicated URL path or origin, configured for CORS and caching.
+- Avoid shipping the road graph to the browser for standard use. Ship precomputed, spatially indexed **winner/cost tiles** with threshold semantics that are demonstrably correct. A graph download is a separate advanced/offline product, if ever required. Do not include datasets in Vite's eager imports/JS bundle.
+- Publish a small immutable, versioned index/manifest with geographic coverage, scale/zoom, eligible map basis (national metro/state places), metric, valid threshold set or correct arbitrary-threshold model, size **per tile**, checksums/integrity, compression, attribution, provenance and routing profile. Keep the current version pointer small.
+- After opt-in, first load the manifest and coarse tiles intersecting the visible viewport or selected state, render **verified partial results** as soon as available, then refine. Prioritize the current view and interaction over offscreen prefetch; throttle in-flight requests and decode work. Absent or not-yet-fetched tiles remain transparently marked loading/unavailable, **never silently filled with straight-line assignments**.
+- Use byte-accurate progress when lengths are known: downloaded / expected bytes for selected coverage, and distinguish **downloading, decoding, indexing, rendering**. On Cancel, abort pending requests via `AbortController`, stop any decode work where possible and preserve existing loaded tiles. Switching location, metric, threshold, or state cancels/reprioritizes irrelevant work.
+- Cache immutable assets through standard HTTP caching and, after testing, optional Cache Storage/IndexedDB with stable content hashes. Browser storage is **origin scoped and quota/eviction limited**, not durable or automatically secret/encrypted. Do not place credentials or personal data in tiles or caching keys. Add user-facing **Remove downloaded road data**, an approximate storage report, and safe version migration/garbage collection. Consider `navigator.storage.estimate()`, storage persistence only if justified, and private-browsing limitations.
+- **Start with individual tiles**, not a monolithic blob. A packed container with spatial index and byte ranges may improve very large deployments; benchmark before adopting. HTTP byte-range loading requires real server support (`Accept-Ranges: bytes`, `206 Partial Content`, `Content-Range`) and suitable content encoding. Validate behavior on the actual hosting/CDN (including compression, CORS and edge-cache behavior). Never assume client-side routing implements ranges.
+- Verify content integrity and schema version before displaying a tile; handle hash mismatches, partial responses, failed fetch, offline operation and corrupt caches without misrepresenting missing data as an allocation.
+
+### Acceptance gates and milestones
+1. **D1:** instrument current straight-line startup performance, JS/network budgets and zero unsolicited road-data bytes; add user consent dialog and small-manifest lazy loading behind opt-in.
+2. **D2:** progressive low-zoom + viewport-first tile loading with actual byte progress, cancellation, retry, concurrency limits and partial render state; validate mobile/slow-network accessibility.
+3. **D3:** version-aware cache, quota/eviction handling, remove-data control and checksum verification; compare cold/warm loads and memory/battery impact.
+4. **D4:** only if justified, benchmark packed indexes/byte-range transfer against independent compressed tiles, testing host support and correctness before shipping.
+5. Make the same delivery system work for national-metro view, state-focused national metros, and the separately versioned state-places view. Include map basis, metric and threshold in cache keys and share-state semantics.
+
 ## Decision log / open questions
 
 - **Drive time vs drive distance:** ship both, with time initially selected as the more actionable accessibility measure.
