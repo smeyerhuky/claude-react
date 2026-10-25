@@ -151,6 +151,8 @@ def main():
     ap.add_argument("--output-dir", type=Path, default=Path("colorado-metro-winners"))
     ap.add_argument("--thresholds", type=int, nargs="+", default=[100000, 250000, 400000])
     ap.add_argument("--max-snap-m", type=float, default=25000)
+    ap.add_argument("--coverage-tiles", action="store_true",
+                    help="Generate experimental road-proximity transparent tiles")
     ap.add_argument("--require-threshold-difference", action="store_true",
                     help="Fail when minimum and maximum thresholds produce no changed winners")
     args = ap.parse_args()
@@ -194,6 +196,15 @@ def main():
             "time_reachable": result["time"]["reachable_nodes"],
             "metric_disagreements": result["metric_disagreements"],
             "json_bytes": path.stat().st_size}
+    if args.coverage_tiles:
+        from colorado_coverage_tiles import write_tiles
+        tiles = write_tiles(graph, results, args.output_dir / "coverage-tiles")
+        manifest["coverage_tiles"] = {
+            "status": tiles["status"],
+            "datasets": {key: {"covered_fraction": value["covered_fraction"],
+                               "no_data_pixels": value["no_data_pixels"]}
+                         for key, value in tiles["datasets"].items()},
+            "note": "Nearest road vertex, not independently routed geographic samples; water/land masks absent; boundary closure unverified."}
     (args.output_dir / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     print(json.dumps(manifest, indent=2), flush=True)
 
