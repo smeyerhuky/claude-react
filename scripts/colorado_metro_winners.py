@@ -153,6 +153,8 @@ def main():
     ap.add_argument("--max-snap-m", type=float, default=25000)
     ap.add_argument("--land-geojson", type=Path,
                     help="Optional externally supplied land polygon GeoJSON; do not infer from bbox")
+    ap.add_argument("--validate-goldens", action="store_true",
+                    help="Cross-check dispersed sample nodes by independent forward directed Dijkstra")
     ap.add_argument("--coverage-tiles", action="store_true",
                     help="Generate experimental road-proximity transparent tiles")
     ap.add_argument("--require-threshold-difference", action="store_true",
@@ -198,6 +200,12 @@ def main():
             "time_reachable": result["time"]["reachable_nodes"],
             "metric_disagreements": result["metric_disagreements"],
             "json_bytes": path.stat().st_size}
+    if args.validate_goldens:
+        from validate_allocation_goldens import check_winners, sample_nodes
+        nodes = sample_nodes(graph)
+        manifest["independent_forward_goldens"] = {
+            str(t): check_winners(graph, result, nodes)
+            for t, result in results.items()}
     if args.coverage_tiles:
         from colorado_coverage_tiles import write_tiles
         tiles = write_tiles(graph, results, args.output_dir / "coverage-tiles", land_geojson=args.land_geojson)
