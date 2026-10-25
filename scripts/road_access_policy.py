@@ -10,7 +10,7 @@ import math
 def eligible_access_candidates(candidates, verified_connectors=None):
     """Return only independently verified candidates.
 
-    verified_connectors maps keyed directed edge tuples to evidence records:
+    verified_connectors maps (keyed directed edge tuple, snapped coordinate tuple)\n    to evidence records:
     {"connector_traversable": True, "legal_access": True,
      "grade_separation_checked": True, "origin_connected": True}.
     A caller must obtain these facts from independent source data; the snapping
@@ -20,7 +20,7 @@ def eligible_access_candidates(candidates, verified_connectors=None):
     approved = []
     for candidate in candidates:
         edge = tuple(candidate["edge"])
-        record = evidence.get(edge)
+        snapped = tuple(candidate["snapped"])\n        record = evidence.get((edge, snapped))
         if not isinstance(record, dict):
             continue
         if not all(record.get(field) is True for field in
