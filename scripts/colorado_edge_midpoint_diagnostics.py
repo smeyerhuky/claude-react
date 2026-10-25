@@ -18,10 +18,14 @@ from stream_osm_roads import load_pbf
 
 def midpoint_oracle(graph, edge, sources, weight):
     """Compute independent origin-to-source cost from a directed edge midpoint."""
-    u, v = edge
-    possibilities = [(v, graph[u][v][weight] / 2)]
+    u, v, key = edge
+    # OSM loads a MultiDiGraph: each parallel edge has its own key and cost.
+    possibilities = [(v, graph[u][v][key][weight] / 2)]
     if graph.has_edge(v, u):
-        possibilities.append((u, graph[v][u][weight] / 2))
+        # Reverse arcs can be parallel. Use the cheapest available reverse
+        # traversal as an approximation, not an assertion of matching geometry.
+        reverse = min(attrs[weight] for attrs in graph[v][u].values())
+        possibilities.append((u, reverse / 2))
     costs = []
     for start, offset in possibilities:
         lengths = nx.single_source_dijkstra_path_length(graph, start, weight=weight)
@@ -39,7 +43,7 @@ def midpoint_oracle(graph, edge, sources, weight):
 def diagnose(graph, results, count=4, seed=20261025):
     if count < 1:
         raise ValueError("count must be positive")
-    edges = list(graph.edges)
+    edges = list(graph.edges(keys=True))
     if not edges:
         raise ValueError("Empty graph")
     chosen = random.Random(seed).sample(edges, min(count, len(edges)))
@@ -53,14 +57,14 @@ def diagnose(graph, results, count=4, seed=20261025):
         for metric, weight in (("distance", "length"), ("time", "travel_time")):
             differences, unreachable, samples = 0, 0, []
             winners = result[metric]["winners"]
-            for u, v in chosen:
-                expected = midpoint_oracle(graph, (u, v), result["sources"], weight)
+            for u, v, key in chosen:
+                expected = midpoint_oracle(graph, (u, v, key), result["sources"], weight)
                 vertex_cbsa = winners.get(str(u), {}).get("cbsa")
                 if not expected:
                     unreachable += 1
                 elif vertex_cbsa not in expected:
                     differences += 1
-                samples.append({"edge": [str(u), str(v)],
+                samples.append({"edge": [str(u), str(v), str(key)],
                                 "edge_midpoint_cbsa": expected,
                                 "origin_vertex_cbsa": vertex_cbsa,
                                 "differs": bool(expected and vertex_cbsa not in expected)})
