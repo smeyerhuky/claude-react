@@ -23,7 +23,7 @@ class MidpointTests(unittest.TestCase):
                          "length"), ["A"])
 
     def test_unreachable_source(self):
-        self.assertEqual(midpoint_oracle(self.g, (2, 3),
+        self.assertEqual(midpoint_oracle(self.g, (2, 3, 0),
                          [{"node": "9", "cbsa": "X"}], "length"), [])
 
     def test_parallel_edges_have_distinct_keys(self):
