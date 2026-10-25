@@ -15,6 +15,25 @@ class SegmentSnapTests(unittest.TestCase):
         self.assertAlmostEqual(matches[0]["travel_time"], 50, delta=1)
         self.assertEqual(matches[0]["to_node"], 2)
 
+    def test_vertex_projection_deduplicated_per_directed_edge(self):
+        g = nx.MultiDiGraph()
+        g.add_edge(1, 2, geometry=((0, 0), (0.01, 0), (0.01, 0.01)),
+                   travel_time=200, length=2224)
+        matches = snap_point(g, 0.01, 0, max_gap_m=5)
+        self.assertEqual(len(matches), 1)
+        self.assertEqual(matches[0]["edge"], (1, 2, 0))
+        self.assertAlmostEqual(matches[0]["fraction"], 0.5, places=2)
+
+    def test_vertex_projection_keeps_distinct_directed_edges(self):
+        g = nx.MultiDiGraph()
+        g.add_edge(1, 2, geometry=((0, 0), (0.01, 0), (0.01, 0.01)),
+                   travel_time=200, length=2224)
+        g.add_edge(2, 1, geometry=((0.01, 0.01), (0.01, 0), (0, 0)),
+                   travel_time=200, length=2224)
+        matches = snap_point(g, 0.01, 0, max_gap_m=5)
+        self.assertEqual({m["edge"] for m in matches}, {(1, 2, 0), (2, 1, 0)})
+        self.assertEqual(len(matches), 2)
+
     def test_one_way_does_not_invent_reverse_access(self):
         g = nx.MultiDiGraph()
         g.add_edge(1, 2, geometry=((0, 0), (0.01, 0)),
