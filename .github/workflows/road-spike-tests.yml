@@ -6,6 +6,8 @@ on:
       - 'scripts/stream_osm_roads.py'
       - 'scripts/road_segment_snapping.py'
       - 'scripts/road_edge_grid_index.py'
+      - 'scripts/benchmark_road_snapping.py'
+      - 'scripts/test_benchmark_road_snapping.py'
       - 'scripts/test_road_edge_grid_index.py'
       - 'scripts/test_road_segment_snapping.py'
       - 'scripts/test_stream_osm_roads.py'
