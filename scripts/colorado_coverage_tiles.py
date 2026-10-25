@@ -44,7 +44,32 @@ def sample_grid(graph, winners, bounds, width, height, max_gap_m=1000):
     return result
 
 
-def write_tiles(graph, results, output_dir, pixels=512, tile_size=256, max_gap_m=1000):
+def land_pixel_mask(geojson_path, bounds, pixels):
+    """Pixel-center mask from supplied polygon land GeoJSON (holes preserved)."""
+    import numpy as np
+    from shapely.geometry import shape
+    from shapely.ops import unary_union
+    from shapely import contains_xy
+    data = json.loads(Path(geojson_path).read_text(encoding="utf-8"))
+    if data.get("type") == "FeatureCollection":
+        parts = [shape(f["geometry"]) for f in data["features"] if f.get("geometry")]
+    elif data.get("type") == "Feature":
+        parts = [shape(data["geometry"])]
+    else:
+        parts = [shape(data)]
+    if not parts or any(p.geom_type not in ("Polygon", "MultiPolygon") for p in parts):
+        raise ValueError("Land geometry must contain polygons")
+    land = unary_union(parts)
+    if land.is_empty or not land.is_valid:
+        raise ValueError("Invalid land polygon")
+    west, south, east, north = bounds
+    x = west + (np.arange(pixels) + 0.5) * (east - west) / pixels
+    y = north - (np.arange(pixels) + 0.5) * (north - south) / pixels
+    lon, lat = np.meshgrid(x, y)
+    return contains_xy(land, lon, lat)
+
+
+def write_tiles(graph, results, output_dir, pixels=512, tile_size=256, max_gap_m=1000, land_geojson=None):
     """Write transparent PNG tiles per threshold and metric, plus a tile manifest."""
     from PIL import Image
     import numpy as np
@@ -55,6 +80,7 @@ def write_tiles(graph, results, output_dir, pixels=512, tile_size=256, max_gap_m
     attrs = [a for _, a in graph.nodes(data=True)]
     bounds = [min(a["x"] for a in attrs), min(a["y"] for a in attrs),
               max(a["x"] for a in attrs), max(a["y"] for a in attrs)]
+    land = land_pixel_mask(land_geojson, bounds, pixels) if land_geojson else None
     # All datasets share the same stable CBSA to color mapping.
     cbsas = sorted({str(s["cbsa"]) for r in results.values() for s in r["sources"]})
     if len(cbsas) > 254:
@@ -64,7 +90,8 @@ def write_tiles(graph, results, output_dir, pixels=512, tile_size=256, max_gap_m
     manifest = {"status": "experimental-road-proximity-only", "bounds_lonlat": bounds,
                 "pixels_per_axis": pixels, "tile_size": tile_size,
                 "max_road_vertex_gap_m": max_gap_m, "index_0": "transparent no-data",
-                "cbsa_index": palette, "datasets": {}}
+                "cbsa_index": palette, "datasets": {},
+                "land_mask": "supplied-geojson" if land_geojson else "absent"}
     for threshold, result in results.items():
         for metric in ("distance", "time"):
             key = f"{threshold}-{metric}"
@@ -72,7 +99,11 @@ def write_tiles(graph, results, output_dir, pixels=512, tile_size=256, max_gap_m
                                pixels, pixels, max_gap_m)
             indexed = np.array([[palette.get(value, 0) for value in row]
                                 for row in grid], dtype=np.uint8)
+            off_land = int(np.count_nonzero(~land)) if land is not None else None
+            if land is not None:
+                indexed[~land] = 0
             covered = int(np.count_nonzero(indexed))
+            unassigned_land = int(np.count_nonzero((indexed == 0) & land)) if land is not None else None
             images = []
             for y in range(tiles_per_axis):
                 for x in range(tiles_per_axis):
@@ -94,6 +125,8 @@ def write_tiles(graph, results, output_dir, pixels=512, tile_size=256, max_gap_m
             manifest["datasets"][key] = {"covered_pixels": covered,
                 "no_data_pixels": pixels * pixels - covered,
                 "covered_fraction": round(covered / (pixels * pixels), 6),
+                "off_land_pixels": off_land,
+                "unassigned_land_pixels": unassigned_land,
                 "tiles": images}
     (output_dir / "tiles-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     return manifest
