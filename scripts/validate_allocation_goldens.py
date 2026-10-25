@@ -11,7 +11,9 @@ def check_winners(graph, result, nodes, tolerance=0.01):
     if tolerance < 0:
         raise ValueError("Negative cost tolerance")
     records = []
-    sources = result["sources"]
+    node_lookup = {str(n): n for n in graph.nodes}
+    sources = [{**source, "node": node_lookup[str(source["node"])]}
+               for source in result["sources"]]
     for node in nodes:
         for metric, weight in (("distance", "length"), ("time", "travel_time")):
             expected = result[metric]["winners"].get(str(node))
