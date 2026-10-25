@@ -82,3 +82,20 @@ proof of land/water completeness. Next: select and pin an authoritative land
 geometry snapshot, verify its resolution and licence, run the raster against
 it, and independently validate sampling near coastlines, lakes and roadless
 areas. A state boundary polygon alone does **not** exclude water.
+
+## A2 independent allocation goldens (forward traversal)
+
+The `--validate-goldens` workflow flag selects deterministic graph nodes
+near the four corridor bbox corners, its center, and east/west interior points.
+For each available population threshold and each independently optimized
+metric, it runs **forward directed single-origin Dijkstra** and checks every
+reachable eligible metro against the allocation produced by reverse
+multi-source propagation. It verifies winner optimality, reported cost, and
+unreachable status. Outcomes are saved in
+`manifest.json.independent_forward_goldens`; any discrepancy fails the workflow.
+
+This cross-check tests *within the same clipped road graph*. It does not
+prove routes that leave/reenter the bbox, omitted candidate metros, accurate
+geographic cell snapping, land/water correctness, or national routing. Follow-up:
+independent road-segment-snapped geographic sample origins and national graph
+cross-border oracles; expand and randomize golden fixtures with pinned seeds.
