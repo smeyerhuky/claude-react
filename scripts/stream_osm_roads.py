@@ -76,18 +76,30 @@ class RoadHandler(osmium.SimpleHandler):
         backward = oneway not in ("yes", "true", "1") and w.tags.get("junction") != "roundabout"
         origin = points[0]
         distance = 0.0
+        shape = [origin]
         for a, b in zip(points, points[1:]):
             distance += meters((a[1], a[2]), (b[1], b[2]))
+            shape.append(b)
             if b[0] not in self.keep: continue
             u, v = origin[0], b[0]
             if u != v and distance > 0:
                 self.graph.add_node(u, x=origin[1], y=origin[2])
                 self.graph.add_node(v, x=b[1], y=b[2])
-                cost = {"length":distance, "travel_time":distance/(speed*1000/3600)}
+                cost = {"length":distance, "travel_time":distance/(speed*1000/3600),
+                        "osm_way_id": int(w.id), "highway": w.tags.get("highway"),
+                        "geometry": tuple((p[1], p[2]) for p in shape),
+                        "osm_node_ids": tuple(p[0] for p in shape),
+                        "access": w.tags.get("access", ""),
+                        "motor_vehicle": w.tags.get("motor_vehicle", ""),
+                        "motorcar": w.tags.get("motorcar", ""),
+                        "oneway": oneway, "speed_kph": speed}
                 if forward: self.graph.add_edge(u, v, **cost)
-                if backward: self.graph.add_edge(v, u, **cost)
+                if backward: self.graph.add_edge(v, u, **{**cost,
+                    "geometry": tuple(reversed(cost["geometry"])),
+                    "osm_node_ids": tuple(reversed(cost["osm_node_ids"]))})
             origin = b
             distance = 0.0
+            shape = [b]
         self.ways += 1
         if self.graph.number_of_nodes() > self.max_nodes:
             raise RuntimeError(f"Junction graph exceeded {self.max_nodes:,} nodes; reduce corridor bounds.")
