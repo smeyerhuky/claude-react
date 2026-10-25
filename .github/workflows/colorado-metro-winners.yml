@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       - name: Install tooling
@@ -21,6 +21,7 @@ jobs:
         run: |
           PYTHONPATH=scripts python -m unittest discover -s scripts -p 'test_colorado_metro_winners.py' -v
           PYTHONPATH=scripts python -m unittest discover -s scripts -p 'test_road_spike.py' -v
+          PYTHONPATH=scripts python -m unittest discover -s scripts -p 'test_colorado_coverage_tiles.py' -v
       - name: Download and filter Colorado OSM
         run: |
           set -euo pipefail
@@ -33,9 +34,9 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p colorado-metro-winners
-          /usr/bin/time -v -o colorado-metro-winners/resources.txt timeout --signal=TERM --kill-after=30s 25m python -u scripts/colorado_metro_winners.py --osm local-data/roads.osm.pbf --thresholds 100000 250000 400000 --require-threshold-difference 2>&1 | tee colorado-metro-winners/processing.log
+          /usr/bin/time -v -o colorado-metro-winners/resources.txt timeout --signal=TERM --kill-after=30s 25m python -u scripts/colorado_metro_winners.py --osm local-data/roads.osm.pbf --thresholds 100000 250000 400000 --require-threshold-difference --coverage-tiles 2>&1 | tee colorado-metro-winners/processing.log
           cp local-data/source-sha256.txt colorado-metro-winners/
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         if: always()
         with:
           name: colorado-metro-winners

@@ -39,3 +39,29 @@ rejected by snapping. **Neither proves boundary completeness.**
 
 Inspect the resulting actual winner change counts and validate representative
 changed nodes manually before treating this as a successful real-data gate.
+
+## A2 experimental road-proximity geographic tiles (not production land regions)
+
+The Colorado workflow can now pass `--coverage-tiles` to create a globally aligned
+512 × 512 lon/lat preview grid split into 256 × 256 PNG tiles for each threshold
+and metric. `coverage-tiles/tiles-manifest.json` contains bounds, palette
+indices, no-data pixel counts, covered fractions, and tile paths.
+Pixel centers sample the *nearest road graph vertex*, using a 1 km maximum
+proximity. Vertices without a winner, and pixels farther from a vertex, remain
+**transparent**: there is no invented straight-line fallback.
+
+This is an **A2 diagnostic intermediate** rather than finished geographic
+coverage: no Census land/water polygon mask, no independent point-to-road edge
+routing, no guarantee that graph vertices approximate all nearby land, no
+semantic guarantee that nearest-vertex allocation matches that of the nearest
+routable road segment, and no exterior-route/bbox correctness proof. Tile
+seams use the same global pixel grid. Synthetic regression checks transparency
+and tile stitching, but real OSM artifacts must be visually inspected and
+covered/no-data fractions recorded before extending the renderer.
+
+**Next A2 gates:** clip to verified land polygons and identify water;
+sample or snap directly to eligible road segments (not just vertices) with
+confidence and unreachable classes; compare sample winners against independently
+routed origins; test adaptive sampling at boundaries; measure aliasing and
+payload/build/browser budgets; finally generalize global-grid tiling to seamless
+national display after nationwide routing correctness is established.
