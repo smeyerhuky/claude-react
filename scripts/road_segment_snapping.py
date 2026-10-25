@@ -38,16 +38,21 @@ def snap_point(graph, lon, lat, max_gap_m=1000, limit=8):
         if total <= 0:
             continue
         walked = 0.
+        best = None
         for i, (a, b) in enumerate(zip(shape, shape[1:])):
             projected, fraction = project_segment(point, a, b)
             gap = meters(point, projected)
             if gap <= max_gap_m:
                 remaining = max(0., total - walked - fraction * lengths[i])
-                matches.append({"edge": (u, v, key), "snapped": projected,
+                candidate = {"edge": (u, v, key), "snapped": projected,
                                 "gap_m": gap, "fraction": (walked + fraction * lengths[i]) / total,
                                 "to_node": v, "length": remaining,
                                 "travel_time": remaining / total * data["travel_time"],
-                                "osm_way_id": data.get("osm_way_id")})
+                                "osm_way_id": data.get("osm_way_id")}
+                if best is None or (candidate["gap_m"], candidate["length"]) < (best["gap_m"], best["length"]):
+                    best = candidate
             walked += lengths[i]
+        if best is not None:
+            matches.append(best)
     matches.sort(key=lambda m: (m["gap_m"], str(m["edge"])))
     return matches[:limit]
