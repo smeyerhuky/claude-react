@@ -19,17 +19,20 @@ def project_segment(point, a, b):
             a[1] + (b[1] - a[1]) * fraction), fraction
 
 
-def snap_point(graph, lon, lat, max_gap_m=1000, limit=8):
+def snap_point(graph, lon, lat, max_gap_m=1000, limit=8, index=None):
     """Return nearest keyed directed edge candidates, or [] if too far away.
 
     Offset costs are measured along the actual polyline to the downstream node.
     Opposite travel requires its own directed edge and independent candidate.
+    Supply a prebuilt RoadEdgeGridIndex for repeated indexed lookups; it must
+    be rebuilt after graph changes.
     """
-    if max_gap_m < 0 or limit < 1:
+    if not all(math.isfinite(x) for x in (lon, lat, max_gap_m)) or max_gap_m < 0 or limit < 1:
         raise ValueError("Invalid snapping bounds")
     point = (lon, lat)
     matches = []
-    for u, v, key, data in graph.edges(keys=True, data=True):
+    candidates = (((u, v, key), data) for u, v, key, data in graph.edges(keys=True, data=True)) if index is None else index.candidates(lon, lat, max_gap_m)
+    for (u, v, key), data in candidates:
         shape = data.get("geometry")
         if not shape or len(shape) < 2:
             raise ValueError("Road edge lacks preserved polyline geometry")
