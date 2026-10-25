@@ -10,6 +10,8 @@ on:
       - 'scripts/road_edge_grid_index.py'
       - 'scripts/benchmark_road_snapping.py'
       - 'scripts/benchmark_real_road_snapping.py'
+      - 'scripts/road_access_real_audit.py'
+      - 'scripts/test_road_access_real_audit.py'
       - 'scripts/test_benchmark_road_snapping.py'
       - 'scripts/test_road_edge_grid_index.py'
       - 'scripts/test_road_segment_snapping.py'

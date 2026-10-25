@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - 'scripts/benchmark_real_road_snapping.py'
+      - 'scripts/road_access_real_audit.py'
+      - 'scripts/test_road_access_real_audit.py'
       - 'scripts/road_edge_grid_index.py'
       - 'scripts/road_segment_snapping.py'
       - '.github/workflows/colorado-snapping-benchmark.yml'
