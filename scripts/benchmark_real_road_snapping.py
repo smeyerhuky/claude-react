@@ -11,6 +11,7 @@ import random
 import time
 from pathlib import Path
 
+from road_access_real_audit import audit_samples
 from road_edge_grid_index import RoadEdgeGridIndex
 from road_segment_snapping import snap_point
 from stream_osm_roads import load_pbf
@@ -47,7 +48,8 @@ def run(path, queries=30, seed=17, radius_m=150, cell_degrees=0.02):
         durations[mode] = time.perf_counter() - t0
     if matches["exhaustive"] != matches["indexed"]:
         raise AssertionError("Indexed snapping differs from exhaustive scan")
-    return {"dataset": str(path), "osm_ways": ways, "nodes": graph.number_of_nodes(),
+    access_audit = audit_samples(graph, samples, index, radius_m=radius_m)
+    return {"access_audit": access_audit, "dataset": str(path), "osm_ways": ways, "nodes": graph.number_of_nodes(),
             "directed_edges": graph.number_of_edges(), "queries": queries,
             "graph_load_s": load_s, "index_build_s": build_s,
             "exhaustive_query_s": durations["exhaustive"],
