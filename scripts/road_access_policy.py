@@ -20,7 +20,8 @@ def eligible_access_candidates(candidates, verified_connectors=None):
     approved = []
     for candidate in candidates:
         edge = tuple(candidate["edge"])
-        snapped = tuple(candidate["snapped"])\n        record = evidence.get((edge, snapped))
+        snapped = tuple(candidate["snapped"])
+        record = evidence.get((edge, snapped))
         if not isinstance(record, dict):
             continue
         if not all(record.get(field) is True for field in
