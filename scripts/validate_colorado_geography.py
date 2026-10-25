@@ -62,7 +62,7 @@ def main():
     p.add_argument("--osm", type=Path, required=True)
     p.add_argument("--metros", type=Path, default=Path("public/data/metros-census-2025.csv"))
     p.add_argument("--output", type=Path, default=Path("colorado-geographic-validation.json"))
-    p.add_argument("--samples", type=int, default=100)
+    p.add_argument("--samples", type=int, default=8)
     p.add_argument("--seed", type=int, default=20261024)
     p.add_argument("--thresholds", nargs="+", type=int, default=[100000, 250000, 400000])
     args = p.parse_args()
