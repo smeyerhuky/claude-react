@@ -55,7 +55,7 @@ jobs:
             --osm local-data/roads.osm.pbf --metros public/data/metros-census-2025.csv \
             --land-geojson colorado-real-road-preview/tiger2025/tiger2025-colorado-land.geojson \
             --water-geojson colorado-real-road-preview/tiger2025/tiger2025-colorado-areawater.geojson \
-            --bounds -105.025 39.725 -104.975 39.775 \
+            --bounds -105.060 39.732 -105.020 39.762 \
             --threshold 100000 --pixels 64 --max-gap-m 30 \
             --output-dir colorado-real-road-preview/routed-layers \
             2>&1 | tee colorado-real-road-preview/routed-preview.log
@@ -80,6 +80,9 @@ jobs:
               src / "tiger2025-colorado-land.geojson",
               src / "tiger2025-colorado-areawater.geojson",
               summary["bounds_lonlat"], 64, 64)
+          # Avoid a vacuous water test: the viewport includes Sloan's Lake.
+          assert mask["pixel_counts"]["water_excluded"] > 0, (
+              "No Census water pixels in preview; water-exclusion test would be vacuous")
           reports = {}
           for metric in ("distance", "time"):
               entry = summary["layers"][metric]
