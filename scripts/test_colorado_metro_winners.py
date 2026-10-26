@@ -65,9 +65,23 @@ class AllocatorTests(unittest.TestCase):
         self.assertEqual(research["100000"]["distance"]["winners"]["origin"]["cbsa"], "19740")
         with self.assertRaisesRegex(ValueError, "Unverified metro road access"):
             allocate_thresholds(g, [source], [100000], require_verified_access=True)
-        verified = {**source, "access_verified": True}
+        verified = {**source, "lon": -105.0, "lat": 39.7,
+                    "access_verified": True,
+                    "connector_evidence": {
+                        "cbsa": "19740", "node": "metro",
+                        "origin_lon": -105.0, "origin_lat": 39.7,
+                        "connector_traversable": True, "legal_access": True,
+                        "grade_separation_checked": True, "origin_connected": True}}
         release = allocate_thresholds(g, [verified], [100000],
                                       require_verified_access=True)
+        tampered = {**verified, "node": "origin"}
+        with self.assertRaisesRegex(ValueError, "Unverified metro road access"):
+            allocate_thresholds(g, [tampered], [100000],
+                                require_verified_access=True)
+        boolean_only = {**source, "access_verified": True}
+        with self.assertRaisesRegex(ValueError, "Unverified metro road access"):
+            allocate_thresholds(g, [boolean_only], [100000],
+                                require_verified_access=True)
         self.assertEqual(release["100000"]["time"]["winners"]["origin"]["cbsa"], "19740")
 
     def test_release_allocation_rejects_mixed_verification(self):
