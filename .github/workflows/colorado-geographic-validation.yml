@@ -10,6 +10,9 @@ on:
       - 'scripts/validate_colorado_geography.py'
       - 'scripts/colorado_edge_midpoint_diagnostics.py'
       - 'scripts/test_colorado_edge_midpoint_diagnostics.py'
+      - 'scripts/colorado_geographic_point_diagnostics.py'
+      - 'scripts/colorado_geographic_point_smoke.py'
+      - 'scripts/test_colorado_geographic_point_diagnostics.py'
       - 'scripts/colorado_metro_winners.py'
       - 'scripts/test_colorado_metro_winners.py'
       - 'scripts/colorado_connector_evidence.py'
@@ -23,6 +26,9 @@ on:
       - 'scripts/validate_colorado_geography.py'
       - 'scripts/colorado_edge_midpoint_diagnostics.py'
       - 'scripts/test_colorado_edge_midpoint_diagnostics.py'
+      - 'scripts/colorado_geographic_point_diagnostics.py'
+      - 'scripts/colorado_geographic_point_smoke.py'
+      - 'scripts/test_colorado_geographic_point_diagnostics.py'
       - 'scripts/colorado_metro_winners.py'
       - 'scripts/test_colorado_metro_winners.py'
       - 'scripts/colorado_connector_evidence.py'
@@ -52,6 +58,8 @@ jobs:
         run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_metro_winners.py -v
       - name: Connector evidence contract tests
         run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_connector_evidence.py -v
+      - name: Geographic polyline projection and access-ambiguity synthetic tests
+        run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_geographic_point_diagnostics.py -v
       - name: Directed fractional-edge synthetic tests
         run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_edge_midpoint_diagnostics.py -v
       - name: Download and filter real Colorado roads
@@ -70,6 +78,10 @@ jobs:
         run: |
           set -o pipefail
           timeout --signal=TERM --kill-after=30s 12m python -u scripts/colorado_edge_midpoint_diagnostics.py --osm local-data/roads.osm.pbf --samples 4 --output colorado-geographic-validation/edge-midpoints.json 2>&1 | tee colorado-geographic-validation/edge-midpoints.log
+      - name: Diagnostic arbitrary Colorado coordinate over full clipped road graph
+        run: |
+          set -o pipefail
+          timeout --signal=TERM --kill-after=30s 10m python -u scripts/colorado_geographic_point_smoke.py --osm local-data/roads.osm.pbf --lon=-104.9903 --lat=39.7392 --output colorado-geographic-validation/geographic-point-smoke.json 2>&1 | tee colorado-geographic-validation/geographic-point-smoke.log
       - uses: actions/upload-artifact@v6
         if: always()
         with:
