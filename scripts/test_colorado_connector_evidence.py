@@ -56,6 +56,15 @@ class EvidenceLoaderTests(unittest.TestCase):
             allocate_thresholds(graph, [rejected], [100000],
                                 require_verified_access=True)
 
+    def test_malformed_unused_records_are_rejected(self):
+        with self.assertRaisesRegex(ValueError, "assertions must be booleans"):
+            self.load([self.record, {**self.record, "cbsa": "other",
+                                     "legal_access": "true"}])
+        with self.assertRaisesRegex(ValueError, "node missing"):
+            self.load([{**self.record, "node": 123}])
+        with self.assertRaisesRegex(ValueError, "reviewer"):
+            self.load([self.record], reviewed_by=123)
+
     def test_duplicate_and_unreviewed_rejected(self):
         with self.assertRaisesRegex(ValueError, "Duplicate"):
             self.load([self.record, self.record])
