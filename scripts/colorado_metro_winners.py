@@ -189,6 +189,16 @@ def main():
     args = ap.parse_args()
     if any(x < 0 for x in args.thresholds) or args.max_snap_m <= 0:
         ap.error("Invalid threshold or snap distance")
+    # A supplied JSON with four true access assertions is never itself proof
+    # of an independent audit. Release mode additionally requires its *exact*
+    # bytes and both source files to be approved in the checked-in ledger.
+    approval = None
+    if args.require_verified_access:
+        if not args.connector_evidence:
+            ap.error("--require-verified-access needs --connector-evidence")
+        from colorado_release_approval import verify_release_approval
+        approval = verify_release_approval(
+            args.connector_evidence, args.osm, args.metros)
     graph, ways = load_pbf(args.osm)
     snapped, rejected = snap_candidates(graph, read_metros(args.metros), args.max_snap_m)
     if args.connector_evidence:
@@ -203,6 +213,9 @@ def main():
         metro_hash = hashlib.file_digest(f, "sha256").hexdigest()
     manifest = {"status": "experimental", "direction": "location-to-metro",
                 "access_verification": {
+                    "independent_approval": approval,
+                    "approval_required_for_release": True,
+                    "release_input_approved": approval is not None,
                     "evidence_file_sha256": (
                         hashlib.sha256(args.connector_evidence.read_bytes()).hexdigest()
                         if args.connector_evidence else None),
@@ -210,7 +223,7 @@ def main():
                     "verified_metro_count": sum(m.get("access_verified") is True for m in snapped),
                     "diagnostic_unverified_metro_count": sum(
                         m.get("access_verified") is not True for m in snapped),
-                    "warning": "Nearest road-node proximity is not independent connector validation; research allocations are not production eligible."},
+                    "warning": "A self-asserted connector JSON is not an independent audit. A checked-in approval ledger only pins reviewed input hashes, and does not prove legal/physical ground truth. Road-node output is research-only."},
                 "osm_sha256": road_hash, "metros_sha256": metro_hash,
                 "data": "2025 Census CBSA representative points",
                 "road_profile": "static imputed speeds, simplified access, no turn penalties or traffic",
