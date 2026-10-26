@@ -7,6 +7,7 @@ from colorado_geographic_point_diagnostics import (
     diagnose_geographic_point, diagnose_full_graph_point,
     scan_local_road_candidates, edge_origin_oracle, project_polyline,
 )
+from colorado_geographic_point_smoke import point_report
 from stream_osm_roads import meters
 
 
@@ -130,6 +131,20 @@ class GeographicPointDiagnosticTests(unittest.TestCase):
                         self.sources, "length", max_gap_m=20)
         self.assertEqual(result["reason"], "no_nearby_road")
         self.assertEqual(result["winners"], [])
+
+    def test_real_osm_smoke_report_contract_without_release_claim(self):
+        snapped = [{"node": 1, "cbsa": "A", "population": 150000},
+                   {"node": 2, "cbsa": "B", "population": 250000}]
+        report = point_report(self.g, snapped, 0.005, 0, threshold=100000)
+        self.assertFalse(report["release_eligible"])
+        self.assertEqual(report["candidate_metros"], 2)
+        self.assertEqual(report["metrics"]["road_distance"]["winners"], ["B"])
+        self.assertEqual(report["metrics"]["road_time"]["winners"], ["B"])
+        for metric in report["metrics"].values():
+            self.assertFalse(metric["access_certified"])
+            self.assertFalse(metric["extract_coverage_certified"])
+        with self.assertRaisesRegex(ValueError, "No qualifying"):
+            point_report(self.g, snapped, 0.005, 0, threshold=500000)
 
     def test_invalid_values_and_candidates_rejected(self):
         with self.assertRaisesRegex(ValueError, "Non-finite"):
