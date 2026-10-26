@@ -1,0 +1,29 @@
+name: Colorado connector human audit queue contracts
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/colorado-connector-review-queue.yml'
+      - 'scripts/colorado_connector_review_queue.py'
+      - 'scripts/test_colorado_connector_review_queue.py'
+      - 'scripts/colorado_connector_evidence.py'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/colorado-connector-review-queue.yml'
+      - 'scripts/colorado_connector_review_queue.py'
+      - 'scripts/test_colorado_connector_review_queue.py'
+permissions:
+  contents: read
+jobs:
+  review-queue-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install isolated OSM review test tooling
+        run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2'
+      - name: Check no source metro omission or falsely approved road connectors
+        run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_connector_review_queue.py -v
