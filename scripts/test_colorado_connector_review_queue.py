@@ -71,6 +71,53 @@ class HumanAuditQueueTests(unittest.TestCase):
         self.assertEqual(absent["candidate_roads"], [])
         self.assertFalse(absent["access_verified"])
 
+    def test_out_of_extract_metros_are_not_counted_as_local_access_failures(self):
+        result = self.make()
+        self.assertEqual(result["metros_without_geometric_candidates"], 1)
+        self.assertEqual(result["missing_metros_outside_road_index_envelope"], 1)
+        self.assertEqual(result["missing_metros_inside_road_index_envelope"], 0)
+        self.assertFalse(result["graph_envelope_certifies_route_coverage"])
+        near = next(m for m in result["candidates"] if m["cbsa"] == "19740")
+        far = next(m for m in result["candidates"] if m["cbsa"] == "99999")
+        self.assertEqual(near["graph_envelope_relation"],
+                         "inside_road_segment_index_envelope")
+        self.assertEqual(far["graph_envelope_relation"],
+                         "outside_road_segment_index_envelope")
+        self.assertFalse(near["urban_access_anchor_independently_verified"])
+        self.assertFalse(far["urban_access_anchor_independently_verified"])
+        self.assertIn("representative_point", near["origin_coordinate_kind"])
+
+    def test_inside_envelope_but_not_near_road_is_still_an_unverified_metro(self):
+        extra = {"cbsa": "12345", "name": "No nearby road",
+                 "population": 180000, "lon": -104.9995, "lat": 39.703}
+        result = self.make(metros=self.metros + [extra])
+        self.assertEqual(result["eligible_metros_including_missing_candidates"], 3)
+        self.assertEqual(result["metros_without_geometric_candidates"], 2)
+        self.assertEqual(result["missing_metros_outside_road_index_envelope"], 1)
+        self.assertEqual(result["missing_metros_inside_road_index_envelope"], 1)
+        local = next(m for m in result["candidates"] if m["cbsa"] == "12345")
+        self.assertEqual(local["graph_envelope_relation"],
+                         "inside_road_segment_index_envelope")
+        self.assertEqual(local["review_status"],
+                         "no_candidate_within_geometric_limit")
+        self.assertFalse(local["access_verified"])
+
+    def test_conservative_envelope_includes_curved_segments_beyond_endpoints(self):
+        # The segment's middle coordinate extends beyond both road nodes.
+        self.graph[1][2][0]["geometry"] = (
+            (-105.0, 39.7), (-105.01, 39.705), (-104.999, 39.7))
+        self.graph[1][2][0]["length"] = (
+            meters((-105.0, 39.7), (-105.01, 39.705)) +
+            meters((-105.01, 39.705), (-104.999, 39.7)))
+        self.graph[2][1][0]["geometry"] = tuple(
+            reversed(self.graph[1][2][0]["geometry"]))
+        self.graph[2][1][0]["length"] = self.graph[1][2][0]["length"]
+        result = self.make()
+        bounds = result["coarse_graph_road_envelope_lonlat"]
+        self.assertLessEqual(bounds[0], -105.01)
+        self.assertGreaterEqual(bounds[3], 39.705)
+        self.assertFalse(result["graph_envelope_certifies_route_coverage"])
+
     def test_queue_cannot_be_passed_as_connector_evidence(self):
         report = self.make()
         with tempfile.TemporaryDirectory() as temp:
