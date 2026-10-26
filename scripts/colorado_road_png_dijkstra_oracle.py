@@ -86,7 +86,9 @@ def validate_road_png_oracle(graph, snapped, preview_dir, max_samples=8):
             max_gap_m, (int, float)) or not 0 < max_gap_m <= 500:
         raise ValueError("Invalid preview metro threshold or road gap")
     sources = [m for m in snapped if m["population"] >= threshold]
-    if len(sources) != summary.get("source_cbsa_count"):
+    source_ids = sorted(str(m["cbsa"]) for m in sources)
+    if (len(sources) != summary.get("source_cbsa_count") or
+            source_ids != summary.get("source_cbsa_ids")):
         raise ValueError("Preview metro sources differ from independent audit inputs")
     graph_view, _ = geographic_edge_subset(graph, bounds, max_gap_m)
     index = SegmentGridIndex(graph_view)

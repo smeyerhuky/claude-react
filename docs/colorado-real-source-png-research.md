@@ -36,6 +36,9 @@ containing:
 - `connector-review-queue.json`: every threshold-qualifying Census metro,
   including metros with no local graph road candidate, and unapproved OSM
   road-way links for independent physical/legal access reviewers (#137).
+  The workflow checks exact qualifying CBSA identities (not just counts)
+  against the original Census CSV and binds preview source identities to
+  the independent oracle; no missing candidate is treated as certified.
 
 ## Do NOT deploy or interpret as a complete shaded road Voronoi map
 

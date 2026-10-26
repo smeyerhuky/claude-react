@@ -134,6 +134,7 @@ jobs:
       - name: Reject unapproved evidence and cross-source manifest mismatches
         run: |
           python - <<'PY'
+          import csv
           import json
           from pathlib import Path
           base = Path("colorado-real-road-preview")
@@ -148,7 +149,25 @@ jobs:
           assert queue["access_verified"] is False
           assert queue["approval_or_evidence"] is False
           assert all(entry["access_verified"] is False for entry in queue["candidates"])
-          assert queue["eligible_metros_including_missing_candidates"] >= png["source_cbsa_count"]
+          # Count-only checks cannot detect a substituted or omitted CBSA.
+          # Independently rebuild the full qualifying inventory from the exact CSV.
+          with Path("public/data/metros-census-2025.csv").open(
+                  newline="", encoding="utf-8") as handle:
+              eligible = [row["cbsa"] for row in csv.DictReader(handle)
+                          if int(row["population"]) >= png["source_population_threshold"]]
+          queue_ids = [entry["cbsa"] for entry in queue["candidates"]]
+          assert len(eligible) == len(set(eligible)), "Duplicate qualifying Census CBSA"
+          assert len(queue_ids) == len(set(queue_ids)), "Duplicate queued CBSA"
+          assert set(queue_ids) == set(eligible), "Incomplete or substituted CBSA audit queue"
+          assert queue["threshold_population"] == png["source_population_threshold"]
+          assert queue["eligible_metros_including_missing_candidates"] == len(eligible)
+          assert len(png["source_cbsa_ids"]) == png["source_cbsa_count"]
+          assert len(set(png["source_cbsa_ids"])) == png["source_cbsa_count"]
+          assert set(png["source_cbsa_ids"]).issubset(set(eligible))
+          assert queue["metros_with_geometric_candidates"] == sum(
+              entry["candidate_count_within_limit"] > 0 for entry in queue["candidates"])
+          assert queue["metros_without_geometric_candidates"] == sum(
+              entry["candidate_count_within_limit"] == 0 for entry in queue["candidates"])
           assert queue["osm_sha256"] == png["osm_sha256"]
           assert queue["metros_csv_sha256"] == png["metro_csv_sha256"]
           print(json.dumps({"dijkstra_samples": {
