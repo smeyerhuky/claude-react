@@ -12,11 +12,12 @@ workflow runs a **real-data** integration of the components merged in
 3. Computes metro-to-road graph-node winners separately for modeled
    **road distance** and **free-flow road time**.
 4. Renders 64×64 transparent RGBA PNGs over the bounded downtown
-   Denver research window `-105.025,39.725,-104.975,39.775`.
+   Sloan's Lake / west-Denver research window `-105.060,39.732,-105.020,39.762`.
 5. Independently checks every rendered pixel against the land/water
    exclusion mask: **all water and off-land pixels must be alpha=0**.
    A mixture of road-supported and unsupported/no-data pixels is
-   required. Both outputs are artifact-only and never served as site
+   required, and the real Census mask must identify at least one
+   **water-excluded** pixel (a zero-water test must fail). Both outputs are artifact-only and never served as site
    assets.
 
 ## The artifacts
