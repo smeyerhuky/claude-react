@@ -4,7 +4,8 @@ import unittest
 import networkx as nx
 
 from colorado_geographic_point_diagnostics import (
-    diagnose_geographic_point, edge_origin_oracle, project_polyline,
+    diagnose_geographic_point, diagnose_full_graph_point,
+    scan_local_road_candidates, edge_origin_oracle, project_polyline,
 )
 from stream_osm_roads import meters
 
@@ -89,6 +90,46 @@ class GeographicPointDiagnosticTests(unittest.TestCase):
         self.g[1][2][0]["length"] = 2
         with self.assertRaisesRegex(ValueError, "conflicts"):
             self.diagnose(0.005, 0)
+
+    def test_exhaustive_graph_scan_finds_non_vertex_road_position(self):
+        result = diagnose_full_graph_point(self.g, 0.005, 0,
+            self.sources, "length", max_gap_m=20)
+        self.assertEqual(result["winners"], ["B"])
+        self.assertEqual(result["graph_edges_scanned"], 1)
+        self.assertEqual(result["road_candidates"],
+                         "exhaustive_within_loaded_graph")
+        self.assertFalse(result["extract_coverage_certified"])
+        self.assertFalse(result["access_certified"])
+
+    def test_exhaustive_scan_includes_segment_when_endpoints_are_far(self):
+        # Both endpoints fall outside a 20m envelope around the test point,
+        # but the full road polyline passes directly through that envelope.
+        found, scanned = scan_local_road_candidates(self.g, 0.005, 0, 20)
+        self.assertEqual(scanned, 1)
+        self.assertEqual(found, [self.edge])
+
+    def test_exhaustive_scan_does_not_skip_unmodeled_road_geometry(self):
+        self.g.add_edge(2, 1, length=self.length, travel_time=10)
+        with self.assertRaisesRegex(ValueError, "road geometry missing"):
+            diagnose_full_graph_point(self.g, 0.005, 0,
+                                      self.sources, "length")
+
+    def test_exhaustive_scan_limit_fails_closed(self):
+        with self.assertRaisesRegex(ValueError, "safety limit"):
+            diagnose_full_graph_point(self.g, 0.005, 0,
+                self.sources, "length", max_scan_edges=0 + 0) if False else None
+        # The missing-geometry case above covers incomplete graph data;
+        # exceed the scan cap using two fully modeled edges.
+        self.add_reverse()
+        with self.assertRaisesRegex(ValueError, "safety limit"):
+            diagnose_full_graph_point(self.g, 0.005, 0,
+                self.sources, "length", max_scan_edges=1)
+
+    def test_exhaustive_scan_reports_no_road_without_fallback(self):
+        result = diagnose_full_graph_point(self.g, 0.005, 0.01,
+                        self.sources, "length", max_gap_m=20)
+        self.assertEqual(result["reason"], "no_nearby_road")
+        self.assertEqual(result["winners"], [])
 
     def test_invalid_values_and_candidates_rejected(self):
         with self.assertRaisesRegex(ValueError, "Non-finite"):
