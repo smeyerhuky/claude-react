@@ -52,7 +52,7 @@ jobs:
         run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_metro_winners.py -v
       - name: Connector evidence contract tests
         run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_connector_evidence.py -v
-      - name: Directed midpoint synthetic tests
+      - name: Directed fractional-edge synthetic tests
         run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_edge_midpoint_diagnostics.py -v
       - name: Download and filter real Colorado roads
         run: |
@@ -66,7 +66,7 @@ jobs:
         run: |
           set -o pipefail
           /usr/bin/time -v -o colorado-geographic-validation/resources.txt timeout --signal=TERM --kill-after=30s 25m python -u scripts/validate_colorado_geography.py --osm local-data/roads.osm.pbf --samples 8 --output colorado-geographic-validation/report.json 2>&1 | tee colorado-geographic-validation/processing.log
-      - name: Diagnostic road-edge midpoint checks
+      - name: Diagnostic directed fractional-edge checks
         run: |
           set -o pipefail
           timeout --signal=TERM --kill-after=30s 12m python -u scripts/colorado_edge_midpoint_diagnostics.py --osm local-data/roads.osm.pbf --samples 4 --output colorado-geographic-validation/edge-midpoints.json 2>&1 | tee colorado-geographic-validation/edge-midpoints.log
