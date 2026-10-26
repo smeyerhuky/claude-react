@@ -157,3 +157,64 @@ def diagnose_geographic_point(graph, lon, lat, candidate_edges, sources, weight,
     return {**base, "reason": "candidate_routed", "closest_gap_m": closest,
             "cost": cost, "winners": sorted({cbsa for c, winners, _ in choices
                  if abs(c - cost) <= tolerance for cbsa in winners})}
+
+
+def scan_local_road_candidates(graph, lon, lat, max_gap_m=30, max_scan_edges=3000000):
+    """Exhaustively scan an explicitly bounded graph for nearby road polylines.
+
+    Bounding boxes conservatively include any edge approaching within gap.
+    This is an O(E) *research* scan, not a scalable national spatial index.
+    Missing road geometry or an oversized input fails closed rather than
+    silently claiming that the candidate set is complete.
+    """
+    if not all(_finite(x) for x in (lon, lat, max_gap_m)) or max_gap_m <= 0:
+        raise ValueError("Invalid geographic scan parameters")
+    if not isinstance(max_scan_edges, int) or max_scan_edges < 1:
+        raise ValueError("Invalid graph scan limit")
+    if not (-90 < lat < 90) or not (-180 <= lon <= 180):
+        raise ValueError("Invalid geographic point")
+    # Inflate the search envelope to avoid discarding candidates near its
+    # edges due to the lon/lat local-meter approximation.
+    latitude_pad = max_gap_m * 1.2 / 110574
+    longitude_pad = max_gap_m * 1.2 / (
+        111000 * max(0.01, math.cos(math.radians(min(89.99, abs(lat) + latitude_pad)))))
+    west, east = lon - longitude_pad, lon + longitude_pad
+    south, north = lat - latitude_pad, lat + latitude_pad
+    selected = []
+    checked = 0
+    for u, v, key, attributes in graph.edges(keys=True, data=True):
+        checked += 1
+        if checked > max_scan_edges:
+            raise ValueError("Graph exceeds complete candidate scan safety limit")
+        geometry = attributes.get("geometry")
+        if not isinstance(geometry, (list, tuple)) or len(geometry) < 2:
+            raise ValueError("Cannot certify candidate completeness: road geometry missing")
+        if any(not isinstance(p, (list, tuple)) or len(p) != 2
+               or not all(_finite(x) for x in p) for p in geometry):
+            raise ValueError("Cannot certify candidate completeness: invalid road geometry")
+        xs = [p[0] for p in geometry]
+        ys = [p[1] for p in geometry]
+        if max(xs) >= west and min(xs) <= east and max(ys) >= south and min(ys) <= north:
+            selected.append((u, v, key))
+    return selected, checked
+
+
+def diagnose_full_graph_point(graph, lon, lat, sources, weight,
+                              max_gap_m=30, ambiguity_m=5, max_scan_edges=3000000):
+    """Evaluate an arbitrary coordinate against every road in a bounded extract.
+
+    A complete *extract* is not a complete physical travel network: external
+    paths, omitted metro origins, driveway legality, and water remain unknown.
+    """
+    candidates, scanned = scan_local_road_candidates(
+        graph, lon, lat, max_gap_m, max_scan_edges)
+    if not candidates:
+        result = {"status": "diagnostic-only", "access_certified": False,
+                  "reason": "no_nearby_road", "winners": [],
+                  "candidate_edges_examined": 0, "metric": weight}
+    else:
+        result = diagnose_geographic_point(
+            graph, lon, lat, candidates, sources, weight, max_gap_m,
+            ambiguity_m, max_candidate_edges=max_scan_edges)
+    return {**result, "road_candidates": "exhaustive_within_loaded_graph",
+            "graph_edges_scanned": scanned, "extract_coverage_certified": False}
