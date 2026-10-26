@@ -86,6 +86,23 @@ def boundary_proximity(graph, radius_m=3000):
             "bbox edge proximity only; paths can leave extract from interior nodes"}
 
 
+def require_complete_release_candidates(metros, snapped, thresholds):
+    """Reject excluded qualifying competitors, even when they are far outside the extract.
+
+    A nearest-global-metro allocation cannot certify winners if any eligible
+    competitor is absent. An OSM bounding box or snap-radius failure is not
+    proof that a metro cannot win. Research runs retain partial diagnostics.
+    """
+    floor = min(thresholds)
+    eligible = {m["cbsa"] for m in metros if m["population"] >= floor}
+    included = {m["cbsa"] for m in snapped}
+    missing = sorted(eligible - included)
+    if missing:
+        raise ValueError(
+            "Unrepresented qualifying metro candidates (fail closed): "
+            f"{len(missing)} missing; sample: {', '.join(missing[:10])}")
+
+
 def allocate_thresholds(graph, snapped, thresholds, require_verified_access=False):
     """Research allocations may use diagnostic snaps; release allocations may not.
 
@@ -189,8 +206,21 @@ def main():
     args = ap.parse_args()
     if any(x < 0 for x in args.thresholds) or args.max_snap_m <= 0:
         ap.error("Invalid threshold or snap distance")
+    # A supplied JSON with four true access assertions is never itself proof
+    # of an independent audit. Release mode additionally requires its *exact*
+    # bytes and both source files to be approved in the checked-in ledger.
+    approval = None
+    if args.require_verified_access:
+        if not args.connector_evidence:
+            ap.error("--require-verified-access needs --connector-evidence")
+        from colorado_release_approval import verify_release_approval
+        approval = verify_release_approval(
+            args.connector_evidence, args.osm, args.metros)
     graph, ways = load_pbf(args.osm)
-    snapped, rejected = snap_candidates(graph, read_metros(args.metros), args.max_snap_m)
+    metros = read_metros(args.metros)
+    snapped, rejected = snap_candidates(graph, metros, args.max_snap_m)
+    if args.require_verified_access:
+        require_complete_release_candidates(metros, snapped, args.thresholds)
     if args.connector_evidence:
         from colorado_connector_evidence import apply_connector_evidence
         snapped = apply_connector_evidence(snapped, args.connector_evidence)
@@ -203,6 +233,9 @@ def main():
         metro_hash = hashlib.file_digest(f, "sha256").hexdigest()
     manifest = {"status": "experimental", "direction": "location-to-metro",
                 "access_verification": {
+                    "independent_approval": approval,
+                    "approval_required_for_release": True,
+                    "release_input_approved": approval is not None,
                     "evidence_file_sha256": (
                         hashlib.sha256(args.connector_evidence.read_bytes()).hexdigest()
                         if args.connector_evidence else None),
@@ -210,7 +243,7 @@ def main():
                     "verified_metro_count": sum(m.get("access_verified") is True for m in snapped),
                     "diagnostic_unverified_metro_count": sum(
                         m.get("access_verified") is not True for m in snapped),
-                    "warning": "Nearest road-node proximity is not independent connector validation; research allocations are not production eligible."},
+                    "warning": "A self-asserted connector JSON is not an independent audit. A checked-in approval ledger only pins reviewed input hashes, and does not prove legal/physical ground truth. Road-node output is research-only."},
                 "osm_sha256": road_hash, "metros_sha256": metro_hash,
                 "data": "2025 Census CBSA representative points",
                 "road_profile": "static imputed speeds, simplified access, no turn penalties or traffic",
@@ -225,7 +258,7 @@ def main():
     manifest["boundary_proximity"] = boundary_proximity(graph)
     manifest["excluded_qualifying_candidates"] = {
         str(t): [m for m in rejected if next(
-            (c["population"] for c in read_metros(args.metros) if c["cbsa"] == m["cbsa"]), 0) >= t]
+            (c["population"] for c in metros if c["cbsa"] == m["cbsa"]), 0) >= t]
         for t in sorted(set(args.thresholds))}
     if args.require_threshold_difference and not any(
             changes[k]["changed_winner_nodes"] > 0 for k in ("distance", "time")):
