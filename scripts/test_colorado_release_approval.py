@@ -9,7 +9,7 @@ from unittest.mock import patch
 from colorado_release_approval import (
     PINNED_LEDGER, file_sha256, verify_release_approval,
 )
-from colorado_metro_winners import main
+from colorado_metro_winners import main, require_complete_release_candidates
 
 
 class ReleaseApprovalTests(unittest.TestCase):
@@ -112,6 +112,38 @@ class ReleaseApprovalTests(unittest.TestCase):
         self.ledger.write_text(json.dumps(ledger))
         with self.assertRaisesRegex(ValueError, "SHA-256"):
             self.verify()
+
+    def test_release_rejects_missing_eligible_competitors_across_thresholds(self):
+        metros = [{"cbsa": "A", "population": 450000},
+                  {"cbsa": "B", "population": 250000},
+                  {"cbsa": "C", "population": 90000}]
+        snapped = [metros[0]]
+        # B is eligible for the low threshold but absent from the extract.
+        with self.assertRaisesRegex(
+                ValueError, "Unrepresented qualifying metro candidates.*B"):
+            require_complete_release_candidates(metros, snapped, [100000, 400000])
+        # C is below the minimum threshold and does not block release.
+        require_complete_release_candidates(metros, snapped, [400000])
+        require_complete_release_candidates(metros, metros[:2], [100000, 400000])
+
+    def test_release_cli_blocks_missing_metro_before_allocation(self):
+        self.approve()
+        argv = ["colorado_metro_winners.py", "--osm", str(self.osm),
+                "--metros", str(self.metros),
+                "--connector-evidence", str(self.evidence),
+                "--require-verified-access"]
+        with patch.object(sys, "argv", argv), patch(
+                "colorado_release_approval.verify_release_approval",
+                return_value=self.verify()), patch(
+                "colorado_metro_winners.load_pbf",
+                return_value=(object(), 1)), patch(
+                "colorado_metro_winners.snap_candidates",
+                return_value=([], [{"cbsa": "19740", "snap_m": 100000}])), patch(
+                "colorado_metro_winners.allocate_thresholds",
+                side_effect=AssertionError("allocation must not run")):
+            with self.assertRaisesRegex(
+                    ValueError, "Unrepresented qualifying metro candidates"):
+                main()
 
     def test_release_cli_checks_repository_approval_before_loading_roads(self):
         argv = ["colorado_metro_winners.py", "--osm", str(self.osm),
