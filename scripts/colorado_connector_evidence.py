@@ -16,7 +16,7 @@ def apply_connector_evidence(snapped, path):
     document = json.loads(Path(path).read_text(encoding="utf-8"))
     if not isinstance(document, dict) or document.get("schema_version") != 1:
         raise ValueError("Unsupported connector evidence schema")
-    if not document.get("source") or not document.get("reviewed_by"):
+    if not all(isinstance(document.get(key), str) and document[key].strip()\n               for key in ("source", "reviewed_by")):
         raise ValueError("Connector evidence requires source and independent reviewer")
     records = document.get("connectors")
     if not isinstance(records, list):
@@ -30,7 +30,7 @@ def apply_connector_evidence(snapped, path):
             raise ValueError("Connector evidence CBSA missing")
         if cbsa in index:
             raise ValueError("Duplicate connector evidence for CBSA " + cbsa)
-        index[cbsa] = record
+        if not isinstance(record.get("node"), str) or not record["node"]:\n            raise ValueError("Connector evidence node missing or invalid")\n        if any(field in record and not isinstance(record[field], bool)\n               for field in FIELDS):\n            raise ValueError("Connector evidence assertions must be booleans")\n        index[cbsa] = record
     result = []
     for metro in snapped:
         record = index.get(metro["cbsa"])
