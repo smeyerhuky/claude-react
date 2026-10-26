@@ -115,9 +115,9 @@ class GeographicPointDiagnosticTests(unittest.TestCase):
                                       self.sources, "length")
 
     def test_exhaustive_scan_limit_fails_closed(self):
-        with self.assertRaisesRegex(ValueError, "safety limit"):
+        with self.assertRaisesRegex(ValueError, "scan limit"):
             diagnose_full_graph_point(self.g, 0.005, 0,
-                self.sources, "length", max_scan_edges=0 + 0) if False else None
+                self.sources, "length", max_scan_edges=0)
         # The missing-geometry case above covers incomplete graph data;
         # exceed the scan cap using two fully modeled edges.
         self.add_reverse()
