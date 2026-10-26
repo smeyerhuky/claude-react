@@ -174,6 +174,22 @@ def build_review_queue(graph, metros, threshold=100000, max_gap_m=100,
             for x in queue),
         "coarse_graph_road_envelope_lonlat": envelope,
         "graph_envelope_certifies_route_coverage": False,
+        # Make the actionable local exceptions visible in CI logs without
+        # downloading a private artifact. These are Census representative
+        # points, NOT certified road-entry coordinates.
+        "inside_envelope_missing_origin_triage": [
+            {
+                "cbsa": x["cbsa"],
+                "metro_name": x["metro_name"],
+                "origin_lonlat": x["origin_lonlat"],
+                "nearest_unapproved_triage_lead_within_500m":
+                    x["nearest_unapproved_triage_lead_within_500m"],
+                "access_verified": False,
+            }
+            for x in queue
+            if x["graph_envelope_relation"] == "inside_road_segment_index_envelope"
+            and not x["candidate_roads"]
+        ],
         "inside_envelope_missing_with_triage_lead": sum(
             x["graph_envelope_relation"] == "inside_road_segment_index_envelope"
             and not x["candidate_roads"]
