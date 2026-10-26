@@ -1,0 +1,116 @@
+name: Colorado real OSM and Census research road PNGs
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/colorado-real-road-png.yml'
+      - 'scripts/colorado_research_road_preview.py'
+      - 'scripts/colorado_tiger2025_geography.py'
+      - 'scripts/colorado_geographic_mask.py'
+      - 'scripts/colorado_routed_raster_diagnostics.py'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/colorado-real-road-png.yml'
+permissions:
+  contents: read
+jobs:
+  real-source-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install real-routing and geographic inputs tooling
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y osmium-tool
+          python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2' 'pyshp>=2.3,<3' 'shapely>=2,<3' 'numpy>=1.26,<3' 'pillow>=10,<13'
+      - uses: actions/cache@v4
+        with:
+          path: local-data/tiger2025
+          key: tiger2025-census-2025-denver-county-water-v1
+      - name: Download and filter genuine Colorado OpenStreetMap directed roads
+        run: |
+          set -euo pipefail
+          mkdir -p local-data colorado-real-road-preview
+          curl -fLSs --retry 3 --connect-timeout 20 --max-time 1200 -o local-data/colorado.osm.pbf https://download.geofabrik.de/north-america/us/colorado-latest.osm.pbf
+          sha256sum local-data/colorado.osm.pbf > colorado-real-road-preview/geofabrik-source-sha256.txt
+          osmium extract --bbox=-106.1,38.65,-104.5,40.1 --strategy=complete_ways local-data/colorado.osm.pbf -o local-data/corridor.osm.pbf
+          osmium tags-filter local-data/corridor.osm.pbf w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,residential,unclassified,living_street,service -o local-data/roads.osm.pbf
+          sha256sum local-data/roads.osm.pbf > colorado-real-road-preview/filtered-road-sha256.txt
+      - name: Prepare official Census TIGER2025 land and county water sources
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=30s 15m python -u scripts/colorado_tiger2025_geography.py \
+            --bbox -105.1 39.65 -104.85 39.90 \
+            --cache local-data/tiger2025 --output-dir colorado-real-road-preview/tiger2025 \
+            2>&1 | tee colorado-real-road-preview/tiger-source.log
+      - name: Generate research-only real-world distance and travel-time PNGs
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=30s 12m python -u scripts/colorado_research_road_preview.py \
+            --osm local-data/roads.osm.pbf --metros public/data/metros-census-2025.csv \
+            --land-geojson colorado-real-road-preview/tiger2025/tiger2025-colorado-land.geojson \
+            --water-geojson colorado-real-road-preview/tiger2025/tiger2025-colorado-areawater.geojson \
+            --bounds -105.025 39.725 -104.975 39.775 \
+            --threshold 100000 --pixels 64 --max-gap-m 30 \
+            --output-dir colorado-real-road-preview/routed-layers \
+            2>&1 | tee colorado-real-road-preview/routed-preview.log
+      - name: Independently check PNG alpha against real Census polygons
+        run: |
+          set -euo pipefail
+          PYTHONPATH=scripts python - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image
+          from colorado_geographic_mask import build_explicit_land_water_mask
+          base = Path("colorado-real-road-preview")
+          src = base / "tiger2025"
+          out = base / "routed-layers"
+          summary = json.loads((out / "preview-manifest.json").read_text())
+          assert summary["release_eligible"] is False
+          assert summary["access_certified"] is False
+          assert summary["extract_coverage_certified"] is False
+          assert summary["land_water_completeness_certified"] is False
+          assert summary["source_cbsa_count"] > 0
+          mask = build_explicit_land_water_mask(
+              src / "tiger2025-colorado-land.geojson",
+              src / "tiger2025-colorado-areawater.geojson",
+              summary["bounds_lonlat"], 64, 64)
+          reports = {}
+          for metric in ("distance", "time"):
+              entry = summary["layers"][metric]
+              with Image.open(out / entry["image"]) as image:
+                  image.load()
+                  assert image.size == (64, 64) and image.mode == "RGBA"
+                  nonzero = 0
+                  transparent = 0
+                  for y, row in enumerate(mask["land_mask"]):
+                      for x, is_land in enumerate(row):
+                          alpha = image.getpixel((x, y))[3]
+                          if not is_land:
+                              assert alpha == 0, "Water/off-land pixel incorrectly shaded"
+                          nonzero += alpha > 0
+                          transparent += alpha == 0
+              assert nonzero > 0, "Real-world road-region preview has no routed samples"
+              assert transparent > 0, "Real-world preview has no transparent unsupported samples"
+              assert entry["reason_counts"].get("routed_candidate", 0) == nonzero
+              reports[metric] = {"routed_pixels": nonzero,
+                                 "transparent_pixels": transparent}
+          (base / "alpha-verification.json").write_text(json.dumps({
+              "status": "research-only-verified-alpha-not-physical-access",
+              "release_eligible": False,
+              "geography_pixel_counts": mask["pixel_counts"],
+              "metrics": reports,
+          }, indent=2) + "\n")
+          print(json.dumps(reports, indent=2))
+          PY
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: colorado-real-source-road-region-pngs
+          path: colorado-real-road-preview/
+          retention-days: 14
