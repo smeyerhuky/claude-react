@@ -1,0 +1,30 @@
+name: Colorado masked road preview contract tests
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/colorado-road-preview.yml'
+      - 'scripts/colorado_research_road_preview.py'
+      - 'scripts/test_colorado_research_road_preview.py'
+      - 'scripts/colorado_geographic_mask.py'
+      - 'scripts/colorado_routed_raster_diagnostics.py'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/colorado-road-preview.yml'
+      - 'scripts/colorado_research_road_preview.py'
+      - 'scripts/test_colorado_research_road_preview.py'
+permissions:
+  contents: read
+jobs:
+  preview-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install raster and routing test tooling
+        run: python -m pip install 'numpy>=1.26,<3' 'shapely>=2,<3' 'pillow>=10,<13' 'networkx>=3.4,<4' 'scipy>=1.14,<2' 'osmium>=4,<5'
+      - name: Test release-ineligible road distance and time PNG layers
+        run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_research_road_preview.py -v
