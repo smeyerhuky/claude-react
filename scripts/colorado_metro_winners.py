@@ -93,8 +93,21 @@ def allocate_thresholds(graph, snapped, thresholds, require_verified_access=Fals
     This guard does not infer physical access from nearest-node proximity.
     """
     if require_verified_access:
-        unverified = [m["cbsa"] for m in snapped
-                      if m.get("access_verified") is not True]
+        # A caller-supplied boolean alone is not sufficient proof. Bind the
+        # evidence to the exact metro, snapped node and source coordinate.
+        # Independent verification of the physical connector remains upstream.
+        def verified(m):
+            e = m.get("connector_evidence")
+            if not isinstance(e, dict) or m.get("access_verified") is not True:
+                return False
+            if e.get("cbsa") != m.get("cbsa") or e.get("node") != str(m.get("node")):
+                return False
+            if e.get("origin_lon") != m.get("lon") or e.get("origin_lat") != m.get("lat"):
+                return False
+            return all(e.get(k) is True for k in (
+                "connector_traversable", "legal_access",
+                "grade_separation_checked", "origin_connected"))
+        unverified = [m["cbsa"] for m in snapped if not verified(m)]
         if unverified:
             raise ValueError(
                 "Unverified metro road access (fail closed): " +
