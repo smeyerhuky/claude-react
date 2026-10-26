@@ -85,6 +85,8 @@ class HumanAuditQueueTests(unittest.TestCase):
                          "outside_road_segment_index_envelope")
         self.assertFalse(near["urban_access_anchor_independently_verified"])
         self.assertFalse(far["urban_access_anchor_independently_verified"])
+        self.assertIsNone(far["nearest_unapproved_triage_lead_within_500m"])
+        self.assertIsNone(near["nearest_unapproved_triage_lead_within_500m"])
         self.assertIn("representative_point", near["origin_coordinate_kind"])
 
     def test_inside_envelope_but_not_near_road_is_still_an_unverified_metro(self):
@@ -101,6 +103,11 @@ class HumanAuditQueueTests(unittest.TestCase):
         self.assertEqual(local["review_status"],
                          "no_candidate_within_geometric_limit")
         self.assertFalse(local["access_verified"])
+        lead = local["nearest_unapproved_triage_lead_within_500m"]
+        self.assertIsNotNone(lead)
+        self.assertGreater(lead["distance_to_centerline_m"], 100)
+        self.assertFalse(lead["public_legal_motor_access_verified"])
+        self.assertEqual(result["inside_envelope_missing_with_triage_lead"], 1)
 
     def test_conservative_envelope_includes_curved_segments_beyond_endpoints(self):
         # The segment's middle coordinate extends beyond both road nodes.
