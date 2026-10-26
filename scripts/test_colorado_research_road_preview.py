@@ -97,7 +97,7 @@ class ResearchRoadPreviewTests(unittest.TestCase):
             self.render(water=None)
         with self.assertRaisesRegex(ValueError, "resolution"):
             self.render(pixels=1000)
-        with self.assertRaisesRegex(ValueError, "threshold"):
+        with self.assertRaisesRegex(ValueError, "[Tt]hreshold"):
             self.render(threshold=0)
 
     def test_bounded_viewport_uses_edges_not_only_endpoint_locations(self):
