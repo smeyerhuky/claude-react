@@ -10,6 +10,8 @@ on:
       - 'scripts/validate_colorado_geography.py'
       - 'scripts/colorado_edge_midpoint_diagnostics.py'
       - 'scripts/test_colorado_edge_midpoint_diagnostics.py'
+      - 'scripts/colorado_geographic_point_diagnostics.py'
+      - 'scripts/test_colorado_geographic_point_diagnostics.py'
       - 'scripts/colorado_metro_winners.py'
       - 'scripts/test_colorado_metro_winners.py'
       - 'scripts/colorado_connector_evidence.py'
@@ -23,6 +25,8 @@ on:
       - 'scripts/validate_colorado_geography.py'
       - 'scripts/colorado_edge_midpoint_diagnostics.py'
       - 'scripts/test_colorado_edge_midpoint_diagnostics.py'
+      - 'scripts/colorado_geographic_point_diagnostics.py'
+      - 'scripts/test_colorado_geographic_point_diagnostics.py'
       - 'scripts/colorado_metro_winners.py'
       - 'scripts/test_colorado_metro_winners.py'
       - 'scripts/colorado_connector_evidence.py'
@@ -52,6 +56,8 @@ jobs:
         run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_metro_winners.py -v
       - name: Connector evidence contract tests
         run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_connector_evidence.py -v
+      - name: Geographic polyline projection and access-ambiguity synthetic tests
+        run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_geographic_point_diagnostics.py -v
       - name: Directed midpoint synthetic tests
         run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_edge_midpoint_diagnostics.py -v
       - name: Download and filter real Colorado roads
