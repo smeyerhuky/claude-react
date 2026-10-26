@@ -22,6 +22,34 @@ coordinates and straight-line geometric gap. These are inspection
 leads, not proof of physical entrance, legal motor access, grade
 separation or globally correct routing.
 
+## National inventory versus local road extract
+
+The 2025 Census metropolitan inventory is national; the Colorado research
+road graph is clipped to a comparatively small corridor. A missing road
+candidate for a metro thousands of miles away is **not** an observed
+Colorado access failure. The queue preserves **every** population-qualifying
+CBSA but separates two *diagnostic* cases:
+
+- `missing_metros_outside_road_index_envelope`: origin is outside the
+  conservative bounding envelope of *all indexed road polyline segments*.
+  The graph extract cannot support a connector assessment there.
+- `missing_metros_inside_road_index_envelope`: origin is in that coarse
+  envelope but has no modeled road segment within the geometric search radius.
+  An inside-envelope result does **not** prove a road or legal connection.
+
+Both categories stay unverified, and their sum must equal
+`metros_without_geometric_candidates`. The envelope is based on spatial
+index cells and may extend beyond actual roads; it is **not** an accurate
+state boundary, route closure or geographic coverage certificate. No CBSA
+is removed by classification, even if clearly outside the extract.
+
+**Origin-coordinate limitation:** Census representative CBSA points
+can be well away from named downtown street networks or independently
+verified drivable urban access anchors. The queue explicitly labels
+origins as unverified representative points; proximity to an OSM way
+never authorizes converting them into the production By road destination.
+An independent anchor-definition and road-entry review is required.
+
 All entries deliberately carry `access_verified: false` and
 `has_approved_connector: false`. The top-level schema is
 `colorado-road-connector-review-queue-v1`, **incompatible** with the
