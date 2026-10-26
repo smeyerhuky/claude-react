@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Diagnostic directed road-edge midpoint samples, not geographic certification.
+"""Diagnostic directed road-edge fractional samples, not geographic certification.
 
 An edge is approximated as a straight segment between contracted graph nodes.
 Interior origins can travel toward v on u->v, and toward u only if v->u exists.
@@ -56,6 +56,7 @@ def fractional_edge_oracle(graph, edge, sources, weight, fraction):
 def midpoint_oracle(graph, edge, sources, weight):
     """Backward-compatible special case of fractional edge routing."""
     return fractional_edge_oracle(graph, edge, sources, weight, 0.5)
+
 
 def diagnose(graph, results, count=4, seed=20261025):
     if count < 1:
