@@ -67,6 +67,17 @@ class RoutedRasterTests(unittest.TestCase):
         self.assertIsNone(result["cbsa"])
         self.assertEqual(result["reason"], "ambiguous_centerlines")
 
+    def test_coincident_geometry_with_disconnected_osm_nodes_stays_unassigned(self):
+        # Same XY centerline is not proof of connectivity across grade levels.
+        self.g.add_node(5, x=0.0, y=0.0)
+        self.g.add_node(6, x=0.01, y=0.0)
+        self.g.add_edge(5, 6, length=self.length, travel_time=10,
+                        geometry=self.shape)
+        idx = SegmentGridIndex(self.g)
+        result = sample_road_point(idx, 0.005, 0, "length", self.winners)
+        self.assertEqual(result["reason"], "ambiguous_centerlines")
+        self.assertIsNone(result["cbsa"])
+
     def test_unreachable_and_offroad_are_not_filled(self):
         idx = SegmentGridIndex(self.g)
         self.assertEqual(sample_road_point(idx, 0.005, 0.01,
@@ -105,7 +116,7 @@ class RoutedRasterTests(unittest.TestCase):
         self.g.remove_edge(2, 1, 0)
         with self.assertRaisesRegex(ValueError, "posting safety limit"):
             SegmentGridIndex(self.g, max_postings=1)
-        with self.assertRaisesRegex(ValueError, "segment cell"):
+        with self.assertRaisesRegex(ValueError, "index cells"):
             SegmentGridIndex(self.g, cell_deg=0.00001, max_segment_cells=5)
 
     def test_bad_route_inputs_fail_closed(self):
