@@ -79,6 +79,12 @@ class IndependentRoadPixelOracleTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "metro sources differ"):
             self.check(sources=source)
 
+    def test_equal_count_but_different_source_identity_is_rejected(self):
+        changed = [dict(m) for m in self.sources]
+        changed[1]["cbsa"] = "C"
+        with self.assertRaisesRegex(ValueError, "metro sources differ"):
+            self.check(sources=changed)
+
     def test_nonresearch_or_incorrect_layer_metric_is_rejected(self):
         path = self.preview / "preview-manifest.json"
         payload = json.loads(path.read_text())

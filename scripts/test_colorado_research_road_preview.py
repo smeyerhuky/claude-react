@@ -64,6 +64,7 @@ class ResearchRoadPreviewTests(unittest.TestCase):
         self.assertFalse(result["extract_coverage_certified"])
         self.assertFalse(result["land_water_completeness_certified"])
         self.assertEqual(result["source_cbsa_count"], 2)
+        self.assertEqual(result["source_cbsa_ids"], ["A", "B"])
         self.assertEqual(result["mask_provenance"]["pixel_counts"]["water_excluded"], 1)
         for metric in ("time", "distance"):
             details = result["layers"][metric]
@@ -85,6 +86,7 @@ class ResearchRoadPreviewTests(unittest.TestCase):
     def test_population_threshold_changes_eligible_source_and_color(self):
         result = self.render(threshold=200000)
         self.assertEqual(result["source_cbsa_count"], 1)
+        self.assertEqual(result["source_cbsa_ids"], ["B"])
         self.assertEqual(sorted(result["layers"]["distance"]["palette_rgba"]), ["B"])
 
     def test_real_road_geometry_is_needed_even_outside_view(self):
