@@ -46,6 +46,16 @@ graph boundary completeness, coastline/water masking and independent
 point-by-point validation must pass [issue #138](https://github.com/smeyerhuky/claude-react/issues/138),
 and the feature-gated UI must pass [issue #139](https://github.com/smeyerhuky/claude-react/issues/139).
 
+## Missing metro competitors
+
+Release mode additionally refuses to allocate if **any** metro qualifying at
+the lowest requested population threshold was omitted by the road snap/extract,
+even if its Census representative point is outside the clipped graph. A missing
+candidate cannot be silently assumed irrelevant to nearest-global-metro
+routing. Research mode continues to report rejected snaps without asserting
+complete geographic coverage. This guard is necessary but not sufficient:
+exterior shortest paths and boundary closure remain unverified (#138).
+
 ## Rejection behavior
 
 Absent/malformed ledger entries, stale OSM or metro input hashes, changed
