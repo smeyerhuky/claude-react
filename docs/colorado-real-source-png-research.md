@@ -30,6 +30,12 @@ containing:
 - `tiger2025/tiger2025-geography-manifest.json`
 - Both clipping GeoJSONs, OSM source hashes, diagnostic logs and
   `alpha-verification.json` with pixel counts.
+- `dijkstra-oracle.json`: deterministic samples of actual colored pixels
+  cross-checked by independent NetworkX directed Dijkstra **within the same
+  clipped OSM graph**; zero reported winner disagreements required.
+- `connector-review-queue.json`: every threshold-qualifying Census metro,
+  including metros with no local graph road candidate, and unapproved OSM
+  road-way links for independent physical/legal access reviewers (#137).
 
 ## Do NOT deploy or interpret as a complete shaded road Voronoi map
 
