@@ -11,6 +11,7 @@ on:
       - 'scripts/colorado_edge_midpoint_diagnostics.py'
       - 'scripts/test_colorado_edge_midpoint_diagnostics.py'
       - 'scripts/colorado_metro_winners.py'
+      - 'scripts/test_colorado_metro_winners.py'
       - 'scripts/road_spike.py'
       - 'scripts/stream_osm_roads.py'
       - 'public/data/metros-census-2025.csv'
@@ -21,6 +22,7 @@ on:
       - 'scripts/colorado_edge_midpoint_diagnostics.py'
       - 'scripts/test_colorado_edge_midpoint_diagnostics.py'
       - 'scripts/colorado_metro_winners.py'
+      - 'scripts/test_colorado_metro_winners.py'
       - 'scripts/road_spike.py'
       - 'scripts/stream_osm_roads.py'
       - 'public/data/metros-census-2025.csv'
@@ -42,6 +44,8 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y osmium-tool
           python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2'
+      - name: Metro allocation access-gate and threshold synthetic tests
+        run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_metro_winners.py -v
       - name: Directed midpoint synthetic tests
         run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_edge_midpoint_diagnostics.py -v
       - name: Download and filter real Colorado roads
