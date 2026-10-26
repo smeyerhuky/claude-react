@@ -102,7 +102,7 @@ class RoutedRasterTests(unittest.TestCase):
         self.g.add_edge(2, 1, length=self.length, travel_time=10)
         with self.assertRaisesRegex(ValueError, "geometry missing"):
             SegmentGridIndex(self.g)
-        del self.g[2][1][0]
+        self.g.remove_edge(2, 1, 0)
         with self.assertRaisesRegex(ValueError, "posting safety limit"):
             SegmentGridIndex(self.g, max_postings=1)
         with self.assertRaisesRegex(ValueError, "segment cell"):
