@@ -1,0 +1,30 @@
+name: Colorado road PNG independent Dijkstra oracle contracts
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/colorado-road-png-oracle.yml'
+      - 'scripts/colorado_road_png_dijkstra_oracle.py'
+      - 'scripts/test_colorado_road_png_dijkstra_oracle.py'
+      - 'scripts/colorado_research_road_preview.py'
+      - 'scripts/colorado_geographic_point_diagnostics.py'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/colorado-road-png-oracle.yml'
+      - 'scripts/colorado_road_png_dijkstra_oracle.py'
+      - 'scripts/test_colorado_road_png_dijkstra_oracle.py'
+permissions:
+  contents: read
+jobs:
+  independent-algorithm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install independent directed routing and image tooling
+        run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2' 'numpy>=1.26,<3' 'shapely>=2,<3' 'pillow>=10,<13'
+      - name: Fail when a road PNG's CBSA disagrees with independent Dijkstra
+        run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_road_png_dijkstra_oracle.py -v
