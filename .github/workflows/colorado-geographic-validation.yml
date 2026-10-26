@@ -17,6 +17,9 @@ on:
       - 'scripts/test_colorado_metro_winners.py'
       - 'scripts/colorado_connector_evidence.py'
       - 'scripts/test_colorado_connector_evidence.py'
+      - 'scripts/colorado_release_approval.py'
+      - 'scripts/colorado_reviewed_connectors.json'
+      - 'scripts/test_colorado_release_approval.py'
       - 'scripts/road_spike.py'
       - 'scripts/stream_osm_roads.py'
       - 'public/data/metros-census-2025.csv'
@@ -33,6 +36,9 @@ on:
       - 'scripts/test_colorado_metro_winners.py'
       - 'scripts/colorado_connector_evidence.py'
       - 'scripts/test_colorado_connector_evidence.py'
+      - 'scripts/colorado_release_approval.py'
+      - 'scripts/colorado_reviewed_connectors.json'
+      - 'scripts/test_colorado_release_approval.py'
       - 'scripts/road_spike.py'
       - 'scripts/stream_osm_roads.py'
       - 'public/data/metros-census-2025.csv'
@@ -58,6 +64,8 @@ jobs:
         run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_metro_winners.py -v
       - name: Connector evidence contract tests
         run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_connector_evidence.py -v
+      - name: Independent connector release approval and tamper regression tests
+        run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_release_approval.py -v
       - name: Geographic polyline projection and access-ambiguity synthetic tests
         run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_geographic_point_diagnostics.py -v
       - name: Directed fractional-edge synthetic tests
