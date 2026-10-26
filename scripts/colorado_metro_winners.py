@@ -86,7 +86,32 @@ def boundary_proximity(graph, radius_m=3000):
             "bbox edge proximity only; paths can leave extract from interior nodes"}
 
 
-def allocate_thresholds(graph, snapped, thresholds):
+def allocate_thresholds(graph, snapped, thresholds, require_verified_access=False):
+    """Research allocations may use diagnostic snaps; release allocations may not.
+
+    Only an upstream independent connector validator may set access_verified.
+    This guard does not infer physical access from nearest-node proximity.
+    """
+    if require_verified_access:
+        # A caller-supplied boolean alone is not sufficient proof. Bind the
+        # evidence to the exact metro, snapped node and source coordinate.
+        # Independent verification of the physical connector remains upstream.
+        def verified(m):
+            e = m.get("connector_evidence")
+            if not isinstance(e, dict) or m.get("access_verified") is not True:
+                return False
+            if e.get("cbsa") != m.get("cbsa") or e.get("node") != str(m.get("node")):
+                return False
+            if e.get("origin_lon") != m.get("lon") or e.get("origin_lat") != m.get("lat"):
+                return False
+            return all(e.get(k) is True for k in (
+                "connector_traversable", "legal_access",
+                "grade_separation_checked", "origin_connected"))
+        unverified = [m["cbsa"] for m in snapped if not verified(m)]
+        if unverified:
+            raise ValueError(
+                "Unverified metro road access (fail closed): " +
+                ", ".join(sorted(set(unverified))))
     out = {}
     for threshold in thresholds:
         sources = [m for m in snapped if m["population"] >= threshold]
@@ -153,6 +178,8 @@ def main():
     ap.add_argument("--max-snap-m", type=float, default=25000)
     ap.add_argument("--land-geojson", type=Path,
                     help="Optional externally supplied land polygon GeoJSON; do not infer from bbox")
+    ap.add_argument("--require-verified-access", action="store_true",
+                    help="Fail closed unless every snapped metro has independently verified access")
     ap.add_argument("--coverage-tiles", action="store_true",
                     help="Generate experimental road-proximity transparent tiles")
     ap.add_argument("--require-threshold-difference", action="store_true",
@@ -162,13 +189,20 @@ def main():
         ap.error("Invalid threshold or snap distance")
     graph, ways = load_pbf(args.osm)
     snapped, rejected = snap_candidates(graph, read_metros(args.metros), args.max_snap_m)
-    results = allocate_thresholds(graph, snapped, sorted(set(args.thresholds)))
+    results = allocate_thresholds(graph, snapped, sorted(set(args.thresholds)),
+                                  require_verified_access=args.require_verified_access)
     args.output_dir.mkdir(parents=True, exist_ok=True)
     with args.osm.open("rb") as f:
         road_hash = hashlib.file_digest(f, "sha256").hexdigest()
     with args.metros.open("rb") as f:
         metro_hash = hashlib.file_digest(f, "sha256").hexdigest()
     manifest = {"status": "experimental", "direction": "location-to-metro",
+                "access_verification": {
+                    "required": args.require_verified_access,
+                    "verified_metro_count": sum(m.get("access_verified") is True for m in snapped),
+                    "diagnostic_unverified_metro_count": sum(
+                        m.get("access_verified") is not True for m in snapped),
+                    "warning": "Nearest road-node proximity is not independent connector validation; research allocations are not production eligible."},
                 "osm_sha256": road_hash, "metros_sha256": metro_hash,
                 "data": "2025 Census CBSA representative points",
                 "road_profile": "static imputed speeds, simplified access, no turn penalties or traffic",
