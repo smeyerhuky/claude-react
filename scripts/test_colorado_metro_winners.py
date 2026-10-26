@@ -55,6 +55,34 @@ class AllocatorTests(unittest.TestCase):
         self.assertEqual(report["time"]["changed_winner_nodes"], 1)
         self.assertEqual(output["400000"]["distance"]["winners"]["point"]["cbsa"], "19740")
 
+    def test_release_allocation_rejects_unverified_snaps(self):
+        g = nx.MultiDiGraph()
+        g.add_edge("origin", "metro", length=4, travel_time=7)
+        source = {"cbsa": "19740", "name": "Denver", "population": 300000,
+                  "node": "metro", "snap_m": 0}
+        # Diagnostic nearest-node snaps remain useful for research only.
+        research = allocate_thresholds(g, [source], [100000])
+        self.assertEqual(research["100000"]["distance"]["winners"]["origin"]["cbsa"], "19740")
+        with self.assertRaisesRegex(ValueError, "Unverified metro road access"):
+            allocate_thresholds(g, [source], [100000], require_verified_access=True)
+        verified = {**source, "access_verified": True}
+        release = allocate_thresholds(g, [verified], [100000],
+                                      require_verified_access=True)
+        self.assertEqual(release["100000"]["time"]["winners"]["origin"]["cbsa"], "19740")
+
+    def test_release_allocation_rejects_mixed_verification(self):
+        g = nx.MultiDiGraph()
+        g.add_edge("origin", "a", length=1, travel_time=1)
+        g.add_edge("origin", "b", length=2, travel_time=2)
+        sources = [
+            {"cbsa": "A", "name": "A", "population": 300000,
+             "node": "a", "snap_m": 0, "access_verified": True},
+            {"cbsa": "B", "name": "B", "population": 300000,
+             "node": "b", "snap_m": 0},
+        ]
+        with self.assertRaisesRegex(ValueError, "B"):
+            allocate_thresholds(g, sources, [100000], require_verified_access=True)
+
     def test_boundary_proximity_is_only_a_diagnostic(self):
         g = nx.MultiDiGraph()
         g.add_node(1, x=-105.1, y=39.5)
