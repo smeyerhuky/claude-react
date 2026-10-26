@@ -1,0 +1,30 @@
+name: Colorado land and water mask contract tests
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/colorado-land-water-mask.yml'
+      - 'scripts/colorado_geographic_mask.py'
+      - 'scripts/test_colorado_geographic_mask.py'
+      - 'scripts/colorado_routed_raster_diagnostics.py'
+      - 'scripts/colorado_geographic_point_diagnostics.py'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/colorado-land-water-mask.yml'
+      - 'scripts/colorado_geographic_mask.py'
+      - 'scripts/test_colorado_geographic_mask.py'
+permissions:
+  contents: read
+jobs:
+  mask-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install isolated mask-test dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'shapely>=2,<3' 'networkx>=3.4,<4' 'osmium>=4,<5'
+      - name: Check land/water exclusion and directed raster integration
+        run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_geographic_mask.py -v
