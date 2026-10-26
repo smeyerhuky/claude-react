@@ -156,7 +156,10 @@ def sample_road_point(index, lon, lat, weight, node_winners,
             continue
         geometry = tuple(tuple(p) for p in
                          index.graph[edge[0]][edge[1]][edge[2]]["geometry"])
-        physical = min(geometry, tuple(reversed(geometry)))
+        # Distinct OSM node identities sharing XY can indicate a bridge, tunnel
+        # or separate nonconnecting roadway: never collapse those into one.
+        physical = (min(geometry, tuple(reversed(geometry))),
+                    tuple(sorted((str(edge[0]), str(edge[1])))))
         candidates.append((edge, projected, physical))
     base = {"status": "diagnostic-only", "release_eligible": False,
             "access_certified": False, "extract_coverage_certified": False}
