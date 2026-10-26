@@ -206,6 +206,8 @@ def diagnose_full_graph_point(graph, lon, lat, sources, weight,
     A complete *extract* is not a complete physical travel network: external
     paths, omitted metro origins, driveway legality, and water remain unknown.
     """
+    if weight not in ("length", "travel_time"):
+        raise ValueError("Unsupported routing metric")
     candidates, scanned = scan_local_road_candidates(
         graph, lon, lat, max_gap_m, max_scan_edges)
     if not candidates:
