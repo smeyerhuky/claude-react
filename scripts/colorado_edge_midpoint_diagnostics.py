@@ -2,7 +2,7 @@
 """Diagnostic directed road-edge midpoint samples, not geographic certification.
 
 An edge is approximated as a straight segment between contracted graph nodes.
-Midpoint origins can travel toward v on u->v, and toward u only if v->u exists.
+Interior origins can travel toward v on u->v, and toward u only if v->u exists.
 This deliberately exposes differences from nearest-vertex raster assignments.
 """
 import argparse
@@ -16,16 +16,29 @@ from colorado_metro_winners import allocate_thresholds, read_metros, snap_candid
 from stream_osm_roads import load_pbf
 
 
-def midpoint_oracle(graph, edge, sources, weight):
-    """Compute independent origin-to-source cost from a directed edge midpoint."""
+def fractional_edge_oracle(graph, edge, sources, weight, fraction):
+    """Independent directed shortest-route oracle at a fraction of an edge.
+
+    An interior point on u->v can proceed to v, or return toward u only
+    when a reverse arc exists. Reverse arcs may have different costs.
+    This models coincident directed centerlines, NOT verified road geometry
+    or independently snapped arbitrary geographic coordinates.
+    """
+    import math
+    if not isinstance(fraction, (int, float)) or not math.isfinite(fraction) or not 0 <= fraction <= 1:
+        raise ValueError("fraction must be finite and in [0, 1]")
     u, v, key = edge
-    # OSM loads a MultiDiGraph: each parallel edge has its own key and cost.
-    possibilities = [(v, graph[u][v][key][weight] / 2)]
+    forward = float(graph[u][v][key][weight])
+    if not math.isfinite(forward) or forward < 0:
+        raise ValueError("Invalid forward road-edge cost")
+    possibilities = [(v, forward * (1 - fraction))]
     if graph.has_edge(v, u):
-        # Reverse arcs can be parallel. Use the cheapest available reverse
-        # traversal as an approximation, not an assertion of matching geometry.
-        reverse = min(attrs[weight] for attrs in graph[v][u].values())
-        possibilities.append((u, reverse / 2))
+        reverse = min(float(attrs[weight]) for attrs in graph[v][u].values())
+        if not math.isfinite(reverse) or reverse < 0:
+            raise ValueError("Invalid reverse road-edge cost")
+        possibilities.append((u, reverse * fraction))
+    elif fraction == 0:
+        possibilities.append((u, 0.0))
     costs = []
     for start, offset in possibilities:
         lengths = nx.single_source_dijkstra_path_length(graph, start, weight=weight)
@@ -40,6 +53,10 @@ def midpoint_oracle(graph, edge, sources, weight):
                    if abs(cost - best) <= max(1e-6, abs(best) * 1e-9)})
 
 
+def midpoint_oracle(graph, edge, sources, weight):
+    """Backward-compatible special case of fractional edge routing."""
+    return fractional_edge_oracle(graph, edge, sources, weight, 0.5)
+
 def diagnose(graph, results, count=4, seed=20261025):
     if count < 1:
         raise ValueError("count must be positive")
@@ -48,29 +65,34 @@ def diagnose(graph, results, count=4, seed=20261025):
         raise ValueError("Empty graph")
     chosen = random.Random(seed).sample(edges, min(count, len(edges)))
     report = {"status": "diagnostic-only", "seed": seed, "sampled_edges": len(chosen),
+              "fractional_positions": [0.25, 0.5, 0.75],
               "datasets": {}, "limitations": [
-                  "Only graph-edge midpoints, not independently snapped arbitrary coordinates",
+                  "Only 25%, 50%, and 75% positions on graph edges; not independently snapped arbitrary coordinates",
                   "Contracted edges approximated by straight lines; geometry not certified",
                   "Clipped network, incomplete metro sources, and land masking not certified",
                   "Nearest-vertex raster disagreement is diagnostic, not a routing failure"]}
+    fractions = (0.25, 0.5, 0.75)
     for threshold, result in results.items():
         for metric, weight in (("distance", "length"), ("time", "travel_time")):
             differences, unreachable, samples = 0, 0, []
             winners = result[metric]["winners"]
-            for u, v, key in chosen:
-                expected = midpoint_oracle(graph, (u, v, key), result["sources"], weight)
+            for index, (u, v, key) in enumerate(chosen):
+                fraction = fractions[index % len(fractions)]
+                expected = fractional_edge_oracle(
+                    graph, (u, v, key), result["sources"], weight, fraction)
                 vertex_cbsa = winners.get(str(u), {}).get("cbsa")
                 if not expected:
                     unreachable += 1
                 elif vertex_cbsa not in expected:
                     differences += 1
                 samples.append({"edge": [str(u), str(v), str(key)],
-                                "edge_midpoint_cbsa": expected,
+                                "fraction_from_u": fraction,
+                                "edge_fraction_cbsa": expected,
                                 "origin_vertex_cbsa": vertex_cbsa,
                                 "differs": bool(expected and vertex_cbsa not in expected)})
             report["datasets"][f"{threshold}-{metric}"] = {
-                "checked": len(chosen), "midpoint_unreachable": unreachable,
-                "midpoint_vs_origin_vertex_disagreements": differences,
+                "checked": len(chosen), "fractional_point_unreachable": unreachable,
+                "fractional_point_vs_origin_vertex_disagreements": differences,
                 "samples": samples}
     return report
 
