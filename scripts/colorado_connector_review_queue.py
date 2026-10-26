@@ -73,6 +73,18 @@ def build_review_queue(graph, metros, threshold=100000, max_gap_m=100,
     if not qualifying:
         raise ValueError("No metros qualify for connector review")
     index = SegmentGridIndex(graph)
+    # These coarse spatial-index cell bounds contain every indexed road
+    # segment, including curved geometry that leaves its endpoint bbox.
+    # They are an *overestimate*, NOT proof of spatial graph completeness.
+    cells = index.buckets
+    cell_size = index.cell_deg
+    envelope = [
+        min(cell[0] for cell in cells) * cell_size,
+        min(cell[1] for cell in cells) * cell_size,
+        (max(cell[0] for cell in cells) + 1) * cell_size,
+        (max(cell[1] for cell in cells) + 1) * cell_size,
+    ]
+    west, south, east, north = envelope
     queue = []
     for metro in qualifying:
         cbsa = metro["cbsa"]
@@ -82,6 +94,7 @@ def build_review_queue(graph, metros, threshold=100000, max_gap_m=100,
                     and math.isfinite(x) for x in (lon, lat)) or
             not -180 <= lon <= 180 or not -89 < lat < 89):
             raise ValueError("Malformed metro representative origin")
+        inside_envelope = west <= lon <= east and south <= lat <= north
         candidates = []
         seen_physical = set()
         for edge in index.candidates(lon, lat, max_gap_m):
@@ -105,6 +118,11 @@ def build_review_queue(graph, metros, threshold=100000, max_gap_m=100,
             "cbsa": cbsa, "metro_name": metro["name"],
             "population": metro["population"],
             "origin_lonlat": [lon, lat],
+            "origin_coordinate_kind": "2025_CBSA_representative_point_not_verified_urban_access_anchor",
+            "urban_access_anchor_independently_verified": False,
+            "graph_envelope_relation": ("inside_road_segment_index_envelope"
+                                         if inside_envelope else
+                                         "outside_road_segment_index_envelope"),
             "review_status": ("candidate_requires_independent_audit" if candidates
                               else "no_candidate_within_geometric_limit"),
             "access_verified": False,
@@ -130,11 +148,24 @@ def build_review_queue(graph, metros, threshold=100000, max_gap_m=100,
         "eligible_metros_including_missing_candidates": len(queue),
         "metros_with_geometric_candidates": sum(bool(x["candidate_roads"]) for x in queue),
         "metros_without_geometric_candidates": sum(not x["candidate_roads"] for x in queue),
+        "missing_metros_outside_road_index_envelope": sum(
+            not x["candidate_roads"] and
+            x["graph_envelope_relation"] == "outside_road_segment_index_envelope"
+            for x in queue),
+        "missing_metros_inside_road_index_envelope": sum(
+            not x["candidate_roads"] and
+            x["graph_envelope_relation"] == "inside_road_segment_index_envelope"
+            for x in queue),
+        "coarse_graph_road_envelope_lonlat": envelope,
+        "graph_envelope_certifies_route_coverage": False,
         "graph_nodes": graph.number_of_nodes(),
         "graph_edges": graph.number_of_edges(),
         "warning": ("Nearest OSM edge, tags and road geometry do not independently "
                     "establish physical or legal connector access. Out-of-graph "
-                    "metro competitors cannot be silently omitted from release."),
+                    "metro competitors cannot be silently omitted from release. "
+                    "The index-cell envelope is not a route or border closure "
+                    "certificate. Census representative points may be remote "
+                    "from drivable urban-center anchors."),
         "candidates": queue,
     }
 
