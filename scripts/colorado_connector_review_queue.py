@@ -114,6 +114,21 @@ def build_review_queue(graph, metros, threshold=100000, max_gap_m=100,
         candidates.sort(key=lambda c: (
             c["distance_to_centerline_m"],
             str(c["osm_way_id"]), c["road_from_node"], c["road_to_node"]))
+        # A wider, bounded search gives reviewers a concrete lead for origins
+        # inside the coarse envelope but outside the normal 100 m gate.
+        # It NEVER changes candidate eligibility or verifies access.
+        nearest_triage = None
+        if inside_envelope and not candidates:
+            leads = []
+            for edge in index.candidates(lon, lat, 500):
+                projection = _edge_projection(graph, edge, lon, lat)
+                if projection["gap_m"] <= 500:
+                    leads.append(_road_candidate(graph, edge, projection))
+            if leads:
+                nearest_triage = min(leads, key=lambda c: (
+                    c["distance_to_centerline_m"],
+                    str(c["osm_way_id"]), c["road_from_node"],
+                    c["road_to_node"], c["road_edge_key"]))
         queue.append({
             "cbsa": cbsa, "metro_name": metro["name"],
             "population": metro["population"],
@@ -129,6 +144,7 @@ def build_review_queue(graph, metros, threshold=100000, max_gap_m=100,
             "has_approved_connector": False,
             "candidate_count_within_limit": len(candidates),
             "candidate_roads": candidates[:per_metro],
+            "nearest_unapproved_triage_lead_within_500m": nearest_triage,
             "unresolved_obligations": [
                 "Independently verify a legal public motor-vehicle connection from the exact origin",
                 "Confirm vehicle direction, barriers, private access and grade separation",
@@ -158,6 +174,11 @@ def build_review_queue(graph, metros, threshold=100000, max_gap_m=100,
             for x in queue),
         "coarse_graph_road_envelope_lonlat": envelope,
         "graph_envelope_certifies_route_coverage": False,
+        "inside_envelope_missing_with_triage_lead": sum(
+            x["graph_envelope_relation"] == "inside_road_segment_index_envelope"
+            and not x["candidate_roads"]
+            and x["nearest_unapproved_triage_lead_within_500m"] is not None
+            for x in queue),
         "graph_nodes": graph.number_of_nodes(),
         "graph_edges": graph.number_of_edges(),
         "warning": ("Nearest OSM edge, tags and road geometry do not independently "
