@@ -1,0 +1,65 @@
+name: Colorado raw directed boundary interfaces from original OSM
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/colorado-raw-boundary-interfaces.yml'
+      - 'scripts/colorado_raw_boundary_interfaces.py'
+      - 'scripts/test_colorado_raw_boundary_interfaces.py'
+      - 'scripts/stream_osm_roads.py'
+permissions:
+  contents: read
+jobs:
+  parent-source-interfaces:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5'
+      - run: PYTHONPATH=scripts python -m unittest -v scripts/test_colorado_raw_boundary_interfaces.py
+      - name: Acquire genuine Colorado parent and reproduce both complete-way extracts
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y osmium-tool
+          mkdir -p local-data raw-boundary-interfaces
+          curl -fLSs --retry 3 --connect-timeout 20 --max-time 1200 -o local-data/colorado.osm.pbf https://download.geofabrik.de/north-america/us/colorado-latest.osm.pbf
+          osmium extract --bbox=-106.1,38.65,-104.5,40.1 --strategy=complete_ways local-data/colorado.osm.pbf -o local-data/baseline-corridor.osm.pbf
+          osmium extract --bbox=-106.5,38.3,-104.0,40.6 --strategy=complete_ways local-data/colorado.osm.pbf -o local-data/expanded-corridor.osm.pbf
+          osmium tags-filter local-data/baseline-corridor.osm.pbf w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,residential,unclassified,living_street,service -o local-data/baseline-roads.osm.pbf
+          osmium tags-filter local-data/expanded-corridor.osm.pbf w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,residential,unclassified,living_street,service -o local-data/expanded-roads.osm.pbf
+      - name: Verify parent-source lineage and directed raw interface inventory
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=30s 10m python -u scripts/colorado_raw_boundary_interfaces.py \
+            --parent-osm local-data/colorado.osm.pbf \
+            --extract-osm local-data/baseline-roads.osm.pbf local-data/expanded-roads.osm.pbf \
+            --output raw-boundary-interfaces/report.json \
+            2>&1 | tee raw-boundary-interfaces/scan.log
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          r = json.loads(Path("raw-boundary-interfaces/report.json").read_text())
+          assert r["release_eligible"] is False and r["access_certified"] is False
+          assert r["extract_coverage_certified"] is False and r["parent_exterior_coverage_certified"] is False
+          assert len(r["extracts"]) == 2 and r["parent_modeled_way_count"] > 0
+          with Path("local-data/colorado.osm.pbf").open("rb") as h:
+              assert r["parent_osm_sha256"] == hashlib.file_digest(h,"sha256").hexdigest()
+          for row in r["extracts"]:
+              assert row["way_reference_tag_coordinate_inclusion_verified"] is True
+              assert row["retained_modeled_ways"] > 0 and row["retained_raw_interface_node_count"] > 0
+              assert row["parent_raw_adjacency_interface_empty"] is False
+              assert row["directed_adjacency_counts"]["inbound"] > 0 and row["directed_adjacency_counts"]["outbound"] > 0
+              assert row["sample_directed_adjacencies"]
+              with (Path("local-data") / row["name"]).open("rb") as h:
+                  assert row["osm_sha256"] == hashlib.file_digest(h,"sha256").hexdigest()
+          PY
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: colorado-raw-boundary-interfaces
+          path: raw-boundary-interfaces/
+          retention-days: 14
