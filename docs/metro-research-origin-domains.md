@@ -58,7 +58,11 @@ the radius is `R*(22/7)*(longitude_span+latitude_span)/360`. A path along a
 meridian and then a parallel is no longer than this bound because `22/7 > pi`
 and a parallel's radius is no larger than `R`. Thus all points of the enclosing
 box are covered, including unknown candidate origins; exact rational values
-avoid rounding the enclosing radius inward. This does not choose a road origin,
+avoid rounding the enclosing radius inward. The source TIGER/GEOS bounding-box
+endpoints are interpreted as their exact stored IEEE-754 binary values, not
+nearby shortest-printable decimal strings; the exported floating radius is
+rounded outward. This is a numerical enclosure only, not a datum-alignment or
+road-access certificate. This does not choose a road origin,
 verify that an urban anchor actually exists inside the domain, or provide a
 feasible full-route incumbent. Those preconditions still block actual source
 exclusion and release. Independent vector-geometry tests check corners and
