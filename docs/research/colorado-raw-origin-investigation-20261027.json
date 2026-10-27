@@ -1,0 +1,214 @@
+{
+  "access_verified": false,
+  "extract_coverage_certified": false,
+  "highway_ways_with_missing_locations": 0,
+  "limitations": "Nearest geometry only within supplied PBF and search radius; OSM tags and modeled driving eligibility do not prove physical/legal entry; representative points are not verified urban access anchors",
+  "method": "Raw PBF highway-way scan; no contracted graph or SegmentGridIndex; local equirectangular projection with spherical gap distance",
+  "metros": [
+    {
+      "cbsa": "14500",
+      "name": "Boulder, CO Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 136.8205012127792,
+        "highway": "path",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Hill Climb Road",
+        "osm_way_id": 224445917,
+        "osm_way_url": "https://www.openstreetmap.org/way/224445917",
+        "projection_lonlat": [
+          -105.39620877237739,
+          40.09541221256668
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 1912.5012175584613,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 781731427,
+        "osm_way_url": "https://www.openstreetmap.org/way/781731427",
+        "projection_lonlat": [
+          -105.3798182,
+          40.0845569
+        ]
+      },
+      "origin_lonlat": [
+        -105.3977104,
+        40.0949712
+      ]
+    },
+    {
+      "cbsa": "17820",
+      "name": "Colorado Springs, CO Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 953.0278161430878,
+        "highway": "primary",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Highway 94",
+        "osm_way_id": 1264689876,
+        "osm_way_url": "https://www.openstreetmap.org/way/1264689876",
+        "projection_lonlat": [
+          -104.63405113494372,
+          38.837748940592334
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 953.0278161430878,
+        "highway": "primary",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Highway 94",
+        "osm_way_id": 1264689876,
+        "osm_way_url": "https://www.openstreetmap.org/way/1264689876",
+        "projection_lonlat": [
+          -104.63405113494372,
+          38.837748940592334
+        ]
+      },
+      "origin_lonlat": [
+        -104.6387277,
+        38.8455072
+      ]
+    },
+    {
+      "cbsa": "19740",
+      "name": "Denver-Aurora-Centennial, CO Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 32.51963212050145,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 678185599,
+        "osm_way_url": "https://www.openstreetmap.org/way/678185599",
+        "projection_lonlat": [
+          -104.9006949,
+          39.4347705
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 32.51963212050145,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 678185599,
+        "osm_way_url": "https://www.openstreetmap.org/way/678185599",
+        "projection_lonlat": [
+          -104.9006949,
+          39.4347705
+        ]
+      },
+      "origin_lonlat": [
+        -104.9010728,
+        39.434789
+      ]
+    },
+    {
+      "cbsa": "22660",
+      "name": "Fort Collins-Loveland, CO Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 448.2899712473061,
+        "highway": "track",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 846517141,
+        "osm_way_url": "https://www.openstreetmap.org/way/846517141",
+        "projection_lonlat": [
+          -105.491876,
+          40.6569919
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 1890.7111584242023,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 168219611,
+        "osm_way_url": "https://www.openstreetmap.org/way/168219611",
+        "projection_lonlat": [
+          -105.4780464,
+          40.6737585
+        ]
+      },
+      "origin_lonlat": [
+        -105.4867638,
+        40.6580933
+      ]
+    },
+    {
+      "cbsa": "24540",
+      "name": "Greeley, CO Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 843.2848514560662,
+        "highway": "secondary",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Highway 392",
+        "osm_way_id": 1550739361,
+        "osm_way_url": "https://www.openstreetmap.org/way/1550739361",
+        "projection_lonlat": [
+          -104.37599096786468,
+          40.55111244229446
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 843.2848514560662,
+        "highway": "secondary",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Highway 392",
+        "osm_way_id": 1550739361,
+        "osm_way_url": "https://www.openstreetmap.org/way/1550739361",
+        "projection_lonlat": [
+          -104.37599096786468,
+          40.55111244229446
+        ]
+      },
+      "origin_lonlat": [
+        -104.383666,
+        40.555961
+      ]
+    }
+  ],
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "osm_sha256": "7bd588e3c811eef3620dd3d4b4646252b238b2483c6c8463434c4ca021822c7c",
+  "release_eligible": false,
+  "scan_radius_m": 20000,
+  "schema_version": "colorado-raw-origin-investigation-v1"
+}
