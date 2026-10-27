@@ -3,6 +3,10 @@ on:
   pull_request:
     paths:
       - 'scripts/road_spike.py'
+      - 'scripts/colorado_geographic_mask.py'
+      - 'scripts/test_colorado_geographic_mask.py'
+      - 'scripts/colorado_png_geography_oracle.py'
+      - 'scripts/test_colorado_png_geography_oracle.py'
       - 'scripts/test_road_direction_budgets.py'
       - 'scripts/colorado_real_directed_competition.py'
       - 'scripts/test_colorado_real_directed_competition.py'

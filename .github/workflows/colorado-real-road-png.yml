@@ -7,6 +7,8 @@ on:
       - 'scripts/colorado_research_road_preview.py'
       - 'scripts/colorado_tiger2025_geography.py'
       - 'scripts/colorado_geographic_mask.py'
+      - 'scripts/colorado_png_geography_oracle.py'
+      - 'scripts/test_colorado_png_geography_oracle.py'
       - 'scripts/colorado_routed_raster_diagnostics.py'
       - 'scripts/colorado_road_png_dijkstra_oracle.py'
       - 'scripts/colorado_connector_review_queue.py'
@@ -107,9 +109,11 @@ jobs:
           set -euo pipefail
           PYTHONPATH=scripts python - <<'PY'
           import json
+          import hashlib
           from pathlib import Path
           from PIL import Image
-          from colorado_geographic_mask import build_explicit_land_water_mask
+          from shapely.geometry import shape
+          from colorado_png_geography_oracle import verify_png_footprints
           base = Path("colorado-real-road-preview")
           src = base / "tiger2025"
           out = base / "routed-layers"
@@ -125,37 +129,31 @@ jobs:
           assert model["physical_legal_access_certified"] is False
           assert model["turn_restrictions_modeled"] is False
           assert model["unsupported_direction_way_count"] == len(model["unsupported_direction_way_ids"])
-          mask = build_explicit_land_water_mask(
-              src / "tiger2025-colorado-land.geojson",
-              src / "tiger2025-colorado-areawater.geojson",
-              summary["bounds_lonlat"], 64, 64)
-          # Avoid a vacuous water test: the viewport includes Sloan's Lake.
-          assert mask["pixel_counts"]["water_excluded"] > 0, (
-              "No Census water pixels in preview; water-exclusion test would be vacuous")
+          geometries = {}
+          for kind, filename in (("land", "tiger2025-colorado-land.geojson"),
+                                 ("water", "tiger2025-colorado-areawater.geojson")):
+              raw = (src / filename).read_bytes()
+              assert hashlib.sha256(raw).hexdigest() == summary["mask_provenance"][kind+"_geojson_sha256"]
+              geometries[kind] = shape(json.loads(raw)["geometry"])
+          assert summary["mask_provenance"]["pixel_support_rule"] == "entire-cell-covered-by-land-and-disjoint-from-water-v1"
           reports = {}
           for metric in ("distance", "time"):
               entry = summary["layers"][metric]
               with Image.open(out / entry["image"]) as image:
                   image.load()
                   assert image.size == (64, 64) and image.mode == "RGBA"
-                  nonzero = 0
-                  transparent = 0
-                  for y, row in enumerate(mask["land_mask"]):
-                      for x, is_land in enumerate(row):
-                          alpha = image.getpixel((x, y))[3]
-                          if not is_land:
-                              assert alpha == 0, "Water/off-land pixel incorrectly shaded"
-                          nonzero += alpha > 0
-                          transparent += alpha == 0
+              oracle = verify_png_footprints(out / entry["image"], geometries["land"], geometries["water"], summary["bounds_lonlat"])
+              assert oracle["geography_pixel_counts"]["water_excluded"] > 0, "Vacuous water check"
+              assert oracle["geography_pixel_counts"] == summary["mask_provenance"]["pixel_counts"]
+              nonzero, transparent = oracle["routed_pixels"], oracle["transparent_pixels"]
               assert nonzero > 0, "Real-world road-region preview has no routed samples"
               assert transparent > 0, "Real-world preview has no transparent unsupported samples"
               assert entry["reason_counts"].get("routed_candidate", 0) == nonzero
-              reports[metric] = {"routed_pixels": nonzero,
-                                 "transparent_pixels": transparent}
+              reports[metric] = oracle
           (base / "alpha-verification.json").write_text(json.dumps({
               "status": "research-only-verified-alpha-not-physical-access",
               "release_eligible": False,
-              "geography_pixel_counts": mask["pixel_counts"],
+              "geography_pixel_counts": oracle["geography_pixel_counts"],
               "metrics": reports,
           }, indent=2) + "\n")
           print(json.dumps(reports, indent=2))

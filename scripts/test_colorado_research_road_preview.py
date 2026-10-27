@@ -65,7 +65,7 @@ class ResearchRoadPreviewTests(unittest.TestCase):
         self.assertFalse(result["land_water_completeness_certified"])
         self.assertEqual(result["source_cbsa_count"], 2)
         self.assertEqual(result["source_cbsa_ids"], ["A", "B"])
-        self.assertEqual(result["mask_provenance"]["pixel_counts"]["water_excluded"], 1)
+        self.assertEqual(result["mask_provenance"]["pixel_counts"]["water_excluded"], 9)
         for metric in ("time", "distance"):
             details = result["layers"][metric]
             png = self.out / details["image"]
@@ -79,7 +79,7 @@ class ResearchRoadPreviewTests(unittest.TestCase):
                 self.assertGreater(image.getpixel((4, 2))[3], 0)
             self.assertIn("off_land", details["reason_counts"])
             self.assertIn("routed_candidate", details["reason_counts"])
-            self.assertEqual(details["transparent_pixels"], 21)
+            self.assertEqual(details["transparent_pixels"], 23)
         manifest = json.loads((self.out / "preview-manifest.json").read_text())
         self.assertFalse(manifest["release_eligible"])
 
