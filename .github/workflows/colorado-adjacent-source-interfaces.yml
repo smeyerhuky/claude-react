@@ -6,6 +6,10 @@ on:
       - '.github/workflows/colorado-adjacent-source-interfaces.yml'
       - 'scripts/colorado_adjacent_source_interfaces.py'
       - 'scripts/test_colorado_adjacent_source_interfaces.py'
+      - 'scripts/colorado_adjacent_route_witnesses.py'
+      - 'scripts/test_colorado_adjacent_route_witnesses.py'
+      - 'scripts/colorado_road_subdivision_preservation.py'
+      - 'scripts/road_spike.py'
       - 'scripts/colorado_raw_boundary_interfaces.py'
       - 'scripts/stream_osm_roads.py'
 permissions:
@@ -13,14 +17,14 @@ permissions:
 jobs:
   adjacent-source-interfaces:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5'
-      - run: PYTHONPATH=scripts python -m unittest -v scripts/test_colorado_adjacent_source_interfaces.py scripts/test_colorado_raw_boundary_interfaces.py
+      - run: PYTHONPATH=scripts python -m unittest -v scripts/test_colorado_adjacent_source_interfaces.py scripts/test_colorado_raw_boundary_interfaces.py scripts/test_colorado_adjacent_route_witnesses.py
       - name: Acquire genuine retained Colorado and adjacent New Mexico sources
         run: |
           set -euo pipefail
@@ -59,6 +63,33 @@ jobs:
           assert row["directed_adjacency_counts"]["outbound"] > 0
           assert all(p["can_enter_retained_way_set"] or p["can_exit_retained_way_set"] for p in row["raw_interface_nodes"])
           PY
+      - name: Compare fixed directed border routes and replay added-way witnesses
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=30s 15m python -u scripts/colorado_adjacent_route_witnesses.py \
+            --parent-osm local-data/colorado.osm.pbf local-data/new-mexico.osm.pbf \
+            --interfaces adjacent-source-interfaces/report.json \
+            --output adjacent-source-interfaces/route-witnesses.json \
+            2>&1 | tee adjacent-source-interfaces/routes.log
+          python - <<'PYROUTES'
+          import json
+          from pathlib import Path
+          r = json.loads(Path("adjacent-source-interfaces/route-witnesses.json").read_text())
+          assert r["release_eligible"] is False and r["access_certified"] is False
+          assert r["source_union_geographic_coverage_certified"] is False
+          assert r["complete_global_competition"] is False and r["qualifying_metro_competition_tested"] is False
+          assert r["baseline_path_preservation"]["modeled_baseline_paths_preserved_modulo_subdivision"] is True
+          assert len(r["comparisons"]) == 112 and r["independent_directed_labels_checked"] == 256
+          assert {w["metric"] for w in r["path_witnesses"]} == {"length", "travel_time"}
+          assert all(w["added_osm_way_ids"] and w["steps"] for w in r["path_witnesses"])
+          # Fixed nontrivial routes that exist in BOTH bounded graphs. A source
+          # update that removes this improvement must receive investigation.
+          for metric, minimum in (("length", 30000), ("travel_time", 3000)):
+              row, = [x for x in r["comparisons"] if x["origin"] == 144605514 and
+                      x["destination"] == 141782050 and x["metric"] == metric]
+              assert row["baseline_cost"] is not None and row["union_cost"] is not None
+              assert row["baseline_cost"]-row["union_cost"] > minimum
+          PYROUTES
       - uses: actions/upload-artifact@v6
         if: always()
         with:
