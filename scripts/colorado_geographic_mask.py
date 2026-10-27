@@ -8,6 +8,7 @@ import argparse
 import hashlib
 import json
 import math
+from fractions import Fraction
 from pathlib import Path
 
 
@@ -52,14 +53,14 @@ def _load_polygon_file(path, label):
 
 def build_explicit_land_water_mask(land_geojson, water_geojson, bounds, width,
                                    height, max_pixels=20000):
-    """Pixel-center mask with source hashes, conservative off-land/no-data cells.
+    """Full-pixel footprint mask with source hashes and conservative no-data cells.
 
     Both geographic polygon layers are REQUIRED. A valid geometry does not
     prove the supplied source contains every stream, reservoir or seasonal
     water body. Do not use this mask to authorize a production road region.
     """
     import numpy as np
-    from shapely import contains_xy
+    from shapely import box, covers, intersects
 
     if type(width) is not int or type(height) is not int or (
             width < 1 or height < 1 or width * height > max_pixels):
@@ -76,11 +77,27 @@ def build_explicit_land_water_mask(land_geojson, water_geojson, bounds, width,
 
     land, land_hash, land_features = _load_polygon_file(land_geojson, "Land")
     water, water_hash, water_features = _load_polygon_file(water_geojson, "Water")
-    xs = west + (np.arange(width) + 0.5) * (east - west) / width
-    ys = north - (np.arange(height) + 0.5) * (north - south) / height
-    lon, lat = np.meshgrid(xs, ys)
-    inside_land = contains_xy(land, lon, lat)
-    on_water = contains_xy(water, lon, lat)
+    # Enclose exact linear interpolation of the input floating-point bounds.
+    # Neighboring footprints overlap by at most rounding width, never leave a
+    # gap. Unpadded cell edges can miss water that touches a decimal grid line.
+    def edges(start, stop, count):
+        start, stop = Fraction(start), Fraction(stop)
+        lows, highs = [], []
+        for i in range(count+1):
+            exact = start+(stop-start)*i/count
+            value = float(exact)
+            lows.append(math.nextafter(value, -math.inf) if Fraction(value) > exact else value)
+            highs.append(math.nextafter(value, math.inf) if Fraction(value) < exact else value)
+        return lows, highs
+    xlow, xhigh = edges(west, east, width)
+    ylow, yhigh = edges(south, north, height)
+    left, top = np.meshgrid(xlow[:-1], yhigh[1:][::-1])
+    right, bottom = np.meshgrid(xhigh[1:], ylow[:-1][::-1])
+    cells = box(left, bottom, right, top)
+    inside_land = covers(land, cells)
+    # Include boundary contact: a point/line intersection is still unsupported
+    # shoreline. Thin supplied polygons cannot vanish between pixel centers.
+    on_water = intersects(water, cells)
     valid = inside_land & ~on_water
     outside = int(np.count_nonzero(~inside_land))
     excluded_water = int(np.count_nonzero(inside_land & on_water))
@@ -88,6 +105,7 @@ def build_explicit_land_water_mask(land_geojson, water_geojson, bounds, width,
         "status": "research-only-explicit-land-water-mask",
         "release_eligible": False,
         "input_completeness_certified": False,
+        "pixel_support_rule": "entire-cell-covered-by-land-and-disjoint-from-water-v1",
         "bounds_lonlat": list(bounds),
         "width": width, "height": height,
         "land_mask": valid.tolist(),
@@ -97,7 +115,8 @@ def build_explicit_land_water_mask(land_geojson, water_geojson, bounds, width,
         "land_geojson_sha256": land_hash,
         "water_geojson_sha256": water_hash,
         "polygon_features": {"land": land_features, "water": water_features},
-        "warning": ("Input GeoJSON is not independently certified as complete; "
+        "warning": ("Partial land cells and all water contact remain transparent. "
+                    "Input GeoJSON is not independently certified as complete; "
                     "road access, external graph routes and waterways may be missing."),
     }
 

@@ -136,7 +136,7 @@ def render_research_preview(graph, snapped, land_geojson, water_geojson,
         "road_edge_count_in_viewport": indexed_edges,
         "mask_provenance": {key: mask[key] for key in
             ("land_geojson_sha256", "water_geojson_sha256",
-             "pixel_counts", "input_completeness_certified")},
+             "pixel_counts", "input_completeness_certified", "pixel_support_rule")},
         "layers": layers,
         "warning": ("Pixels are geometrically snapped toward modeled road centerlines; "
                     "no legal/physical connector audit, external graph closure, or "

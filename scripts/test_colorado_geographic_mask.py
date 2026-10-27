@@ -39,11 +39,11 @@ class ExplicitGeographyMaskTests(unittest.TestCase):
             kwargs.pop("bounds", (0, 0, 1, 1)),
             kwargs.pop("width", 5), kwargs.pop("height", 5), **kwargs)
 
-    def test_explicit_water_center_is_not_assigned_to_land(self):
+    def test_water_footprint_and_boundary_contacts_are_not_land(self):
         result = self.build()
         self.assertEqual(result["pixel_counts"],
-                         {"land_nonwater": 24,
-                          "water_excluded": 1,
+                         {"land_nonwater": 16,
+                          "water_excluded": 9,
                           "outside_supplied_land": 0})
         self.assertFalse(result["land_mask"][2][2])
         self.assertTrue(result["land_mask"][0][0])
@@ -61,6 +61,22 @@ class ExplicitGeographyMaskTests(unittest.TestCase):
         self.assertEqual(result["pixel_counts"]["outside_supplied_land"], 11)
         self.assertTrue(result["land_mask"][0][0])
 
+    def test_narrow_water_between_centers_and_partial_land_cells(self):
+        # No center lies inside this narrow polygon; a center mask misses it.
+        self.water.write_text(json.dumps(polygon(square(.19, 0, .21, 1))))
+        result = self.build()
+        self.assertTrue(all(not row[0] and not row[1] and row[2] for row in result["land_mask"]))
+        # Column 3 has center .7 inside land, but footprint extends to .8.
+        self.land.write_text(json.dumps(polygon(square(0, 0, .75, 1))))
+        result = self.build()
+        self.assertTrue(all(not row[3] and not row[4] for row in result["land_mask"]))
+
+    def test_corner_only_water_contact_is_transparent(self):
+        self.water.write_text(json.dumps(polygon(square(.5, .5, .6, .6))))
+        result = self.build(width=2, height=2)
+        # All four footprints meet at (.5,.5), including dry-center cells.
+        self.assertEqual(result["pixel_counts"]["water_excluded"], 4)
+
     def test_feature_collection_union_preserves_water_exclusion(self):
         self.land.write_text(json.dumps(
             {"type": "FeatureCollection", "features": [
@@ -69,7 +85,7 @@ class ExplicitGeographyMaskTests(unittest.TestCase):
                 {"type": "Feature", "properties": {},
                  "geometry": polygon(square(.5, 0, 1, 1))}]}))
         result = self.build()
-        self.assertEqual(result["pixel_counts"]["water_excluded"], 1)
+        self.assertEqual(result["pixel_counts"]["water_excluded"], 9)
         self.assertEqual(result["polygon_features"]["land"], 2)
 
     def test_missing_water_or_malformed_geom_fails_closed(self):
@@ -115,7 +131,7 @@ class ExplicitGeographyMaskTests(unittest.TestCase):
             index, winners, "length", (0, 0, 1, 1), mask,
             width=5, height=5, max_gap_m=30)
         self.assertIsNone(output["cbsa_grid"][2][2])
-        self.assertEqual(output["reasons"]["off_land"], 1)
+        self.assertEqual(output["reasons"]["off_land"], 9)
         self.assertEqual(output["cbsa_grid"][2][0], "B")
         self.assertEqual(output["cbsa_grid"][2][4], "B")
         self.assertFalse(output["release_eligible"])
@@ -128,7 +144,7 @@ class ExplicitGeographyMaskTests(unittest.TestCase):
         with patch.object(sys, "argv", args):
             main()
         payload = json.loads(output.read_text())
-        self.assertEqual(payload["pixel_counts"]["water_excluded"], 1)
+        self.assertEqual(payload["pixel_counts"]["water_excluded"], 9)
         self.assertFalse(payload["release_eligible"])
 
 
