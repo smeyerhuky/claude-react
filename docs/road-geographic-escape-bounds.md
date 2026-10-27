@@ -67,3 +67,17 @@ No real-data closure/exclusion result is claimed. Next integrate verified
 snapshot-bound coverage and rigorously costed incumbents before using the bound
 with the 367-metro domain inventory. The public map and both origin scenarios
 are unchanged.
+
+## Actual sourced path checks
+
+`colorado_escape_witness_audit.py` also checks the 12 real Colorado/New Mexico
+path witnesses from the adjacent-source workflow. It binds both PBF hashes and
+timestamps, independently replays every directed primitive cost using vector
+atan2 spherical geometry (2 mm / 1e-9 relative agreement tolerance), and verifies
+the conditional lower bound against each actual excursion's replayed cost.
+Diagnostic rectangles are constructed around each path's endpoints with 0.001
+degree padding; they make no road-coverage claim. A witness must actually visit
+an outside coordinate, and both metrics must be checked. The initial local run
+checked six actual excursions per metric with no disagreements. CI reproduces
+these checks from newly acquired actual source data. This checks known path
+costs, not optimality, a global speed ceiling, regional closure or legal access.
