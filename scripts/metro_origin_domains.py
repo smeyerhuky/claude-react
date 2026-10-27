@@ -24,7 +24,16 @@ def covering_ball(bounds):
     """
     if not isinstance(bounds, (list, tuple)) or len(bounds) != 4:
         raise ValueError("Invalid source-origin bbox")
-    west, south, east, north = map(number, bounds)
+    # Shapefile/GEOS bounds arrive as IEEE-754 floats. Fraction(str(x))
+    # silently substitutes a nearby decimal for the actual stored endpoint;
+    # a tight exact exclusion bound must enclose the stored binary geometry.
+    def source_endpoint(value):
+        if type(value) is float:
+            if not math.isfinite(value):
+                raise ValueError("Nonfinite source-origin bbox endpoint")
+            return Fraction.from_float(value)
+        return number(value)
+    west, south, east, north = map(source_endpoint, bounds)
     point((west, south)); point((east, north))
     if west > east or south > north:
         raise ValueError("Unwrapped ordered source bbox required")

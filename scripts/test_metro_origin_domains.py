@@ -52,6 +52,26 @@ class OriginDomainTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             covering_ball((1, 0, 0, 1))
 
+    def test_binary_tiger_bbox_endpoints_are_not_decimal_substitutions(self):
+        # Shapefile polygon coordinates are binary64. A decimal string of a
+        # float is not necessarily its exact stored coordinate.
+        bounds = (0.1, 0.2, 0.3, 0.4)
+        result = covering_ball(bounds)
+        west, south, east, north = map(Fraction.from_float, bounds)
+        expected_center = ((west + east) / 2, (south + north) / 2)
+        expected_radius = Fraction(6371000) * Fraction(22, 7) * (
+            east - west + north - south) / 360
+        encoded_center = tuple(Fraction(*map(int, pair))
+                               for pair in result["center_lonlat_exact"])
+        encoded_radius = Fraction(*map(int, result["radius_m_exact"]))
+        self.assertEqual(encoded_center, expected_center)
+        self.assertEqual(encoded_radius, expected_radius)
+        self.assertNotEqual(expected_radius, Fraction(6371000) * Fraction(22, 7)
+                            * Fraction(2, 5) / 360)
+        self.assertGreaterEqual(result["radius_upper_bound_m"], float(expected_radius))
+        with self.assertRaises(ValueError):
+            covering_ball((0, 0, float("nan"), 1))
+
     def test_preserves_existing_inventory_and_exposes_source_scope_gap(self):
         result = build_domains(self.existing, self.population, self.geometries)
         self.assertEqual(result["existing_csv_cbsa_ids"], ["10000"])
