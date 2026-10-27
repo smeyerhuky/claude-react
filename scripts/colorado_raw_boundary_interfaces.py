@@ -57,7 +57,8 @@ class ParentAudit:
             raise ValueError("Invalid boundary sample limit")
         self.inventories, self.limit, self.seen = inventories, sample_limit, set()
         self.remaining = [set(i.ways) for i in inventories]
-        self.rows = [{"counts": Counter(), "ports": set(), "ways": set(), "samples": []} for _ in inventories]
+        self.rows = [{"counts": Counter(), "ports": set(), "ways": set(), "samples": [],
+                      "exits": set(), "entries": set(), "coordinates": {}} for _ in inventories]
         self.unsupported_direction_ways = 0
 
     def add(self, way, tags, points):
@@ -93,6 +94,17 @@ class ParentAudit:
                     if a[1:] == b[1:]:
                         row["counts"]["identical_coordinate_adjacencies"] += 1
                     row["ports"].update(n for n, inside in ((u, inside_u), (v, inside_v)) if inside)
+                    if len(row["ports"]) > 100000:
+                        raise ValueError("Interface inventory exceeds output safety bound; never truncate ports")
+                    if inside_u:
+                        row["exits"].add(u)
+                    if inside_v:
+                        row["entries"].add(v)
+                    for point in (a, b):
+                        if point[0] in row["ports"]:
+                            old = row["coordinates"].setdefault(point[0], point[1:])
+                            if old != point[1:]:
+                                raise ValueError("Interface node coordinates disagree across source ways")
                     item = (way, index, u, v)
                     negated = tuple(-n for n in item)
                     if len(row["samples"]) < self.limit:
@@ -115,6 +127,10 @@ class ParentAudit:
                 "retained_modeled_ways": len(inventory.ways), "retained_raw_osm_nodes": len(inventory.nodes),
                 "omitted_supported_ways_touching_retained_nodes": len(row["ways"]),
                 "retained_raw_interface_node_count": len(row["ports"]), "directed_adjacency_counts": counts,
+                "raw_interface_nodes": [{"osm_node_id": node, "lonlat": list(row["coordinates"][node]),
+                                          "can_exit_retained_way_set": node in row["exits"],
+                                          "can_enter_retained_way_set": node in row["entries"]}
+                                         for node in sorted(row["ports"])],
                 "parent_raw_adjacency_interface_empty": not row["ports"],
                 "sample_directed_adjacencies": [{"osm_way_id": w, "segment_index": i, "u": u, "v": v}
                     for w, i, u, v in sorted(tuple(-n for n in item) for item in row["samples"])]})

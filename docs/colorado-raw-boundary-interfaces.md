@@ -14,6 +14,10 @@ that the road lies geographically inside a bbox. Reverse-only roads cannot
 create outgoing connections. Repeated and parallel adjacencies retain their
 multiplicity. Samples are deterministically bounded and include way ID,
 segment index and directed endpoint IDs.
+All interface node IDs, coordinates and entry/exit roles are emitted in full,
+including endpoints of omitted-internal arcs. Only adjacency *samples* are
+bounded. More than 100,000 ports fails closed rather than silently truncating
+the interface that a future boundary relaxation would need.
 
 Raw shape nodes matter: an omitted road can join an interior vertex of a
 contracted edge. Such an interface requires promoting the shape vertex to a

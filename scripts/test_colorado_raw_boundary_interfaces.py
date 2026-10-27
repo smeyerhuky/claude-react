@@ -17,6 +17,9 @@ class RawBoundaryTests(unittest.TestCase):
         audit.add(10, TAGS, POINTS)
         # Node 2 is an interior shape point, not a retained way endpoint.
         audit.add(20, {**TAGS, "oneway": "-1"}, [POINTS[1], (4, 1., 1.)])
+        interface = audit.report()["extracts"][0]["raw_interface_nodes"]
+        self.assertEqual(interface, [{"osm_node_id": 2, "lonlat": [1., 0.],
+                                     "can_exit_retained_way_set": False, "can_enter_retained_way_set": True}])
         audit.add(30, {**TAGS, "oneway": "no"}, POINTS[1:])
         audit.add(40, TAGS, [POINTS[2], (5, 3., 0.)])
         result = audit.report()

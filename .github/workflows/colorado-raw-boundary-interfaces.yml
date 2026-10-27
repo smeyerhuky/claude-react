@@ -51,6 +51,9 @@ jobs:
           for row in r["extracts"]:
               assert row["way_reference_tag_coordinate_inclusion_verified"] is True
               assert row["retained_modeled_ways"] > 0 and row["retained_raw_interface_node_count"] > 0
+              assert len(row["raw_interface_nodes"]) == row["retained_raw_interface_node_count"]
+              assert len({p["osm_node_id"] for p in row["raw_interface_nodes"]}) == row["retained_raw_interface_node_count"]
+              assert all(p["can_exit_retained_way_set"] or p["can_enter_retained_way_set"] for p in row["raw_interface_nodes"])
               assert row["parent_raw_adjacency_interface_empty"] is False
               assert row["directed_adjacency_counts"]["inbound"] > 0 and row["directed_adjacency_counts"]["outbound"] > 0
               assert row["sample_directed_adjacencies"]
