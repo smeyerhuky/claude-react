@@ -15,8 +15,8 @@ from stream_osm_roads import load_pbf
 
 def compare_queues(baseline, expanded):
     """Fail closed if expanded inventory drops a qualifying CBSA."""
-    a = {str(x["cbsa"]): x for x in baseline["metros"]}
-    b = {str(x["cbsa"]): x for x in expanded["metros"]}
+    a = {str(x["cbsa"]): x for x in baseline["metro_candidates"]}
+    b = {str(x["cbsa"]): x for x in expanded["metro_candidates"]}
     if not a or set(a) != set(b):
         raise ValueError("Expanded comparison changed qualifying CBSA identities")
     rows = []
@@ -24,10 +24,10 @@ def compare_queues(baseline, expanded):
         old, new = a[cbsa], b[cbsa]
         rows.append({
             "cbsa": cbsa,
-            "baseline_triage": old["triage_status"],
-            "expanded_triage": new["triage_status"],
-            "baseline_candidate_count": len(old["candidates"]),
-            "expanded_candidate_count": len(new["candidates"]),
+            "baseline_triage": old["road_proximity_triage_status"],
+            "expanded_triage": new["road_proximity_triage_status"],
+            "baseline_candidate_count": old["candidate_count_within_limit"],
+            "expanded_candidate_count": new["candidate_count_within_limit"],
         })
     return {
         "release_eligible": False,
