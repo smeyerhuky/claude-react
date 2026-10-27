@@ -17,6 +17,8 @@ def compare_queues(baseline, expanded):
     """Fail closed if expanded inventory drops a qualifying CBSA."""
     a = {str(x["cbsa"]): x for x in baseline["candidates"]}
     b = {str(x["cbsa"]): x for x in expanded["candidates"]}
+    if len(a) != len(baseline["candidates"]) or len(b) != len(expanded["candidates"]):
+        raise ValueError("Duplicate CBSA in extract comparison")
     if not a or set(a) != set(b):
         raise ValueError("Expanded comparison changed qualifying CBSA identities")
     rows = []
@@ -34,6 +36,10 @@ def compare_queues(baseline, expanded):
         "access_certified": False,
         "extract_coverage_certified": False,
         "comparison_is_geometric_only": True,
+        "baseline_graph_nodes": baseline.get("graph_nodes"),
+        "expanded_graph_nodes": expanded.get("graph_nodes"),
+        "baseline_graph_edges": baseline.get("graph_edges"),
+        "expanded_graph_edges": expanded.get("graph_edges"),
         "qualifying_cbsa_count": len(rows),
         "changed_triage_count": sum(x["baseline_triage"] != x["expanded_triage"] for x in rows),
         "metros": rows,
@@ -48,7 +54,7 @@ def main():
     parser.add_argument("--metros", required=True)
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
-    metros = read_metros(args.metros)
+    metros = read_metros(Path(args.metros))
     baseline = build_review_queue(load_pbf(args.baseline_osm), metros)
     expanded = build_review_queue(load_pbf(args.expanded_osm), metros)
     result = compare_queues(baseline, expanded)
