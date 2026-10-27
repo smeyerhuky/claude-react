@@ -3,6 +3,9 @@ on:
   pull_request:
     paths:
       - 'scripts/road_spike.py'
+      - 'scripts/test_road_direction_budgets.py'
+      - 'scripts/colorado_real_directed_competition.py'
+      - 'scripts/test_colorado_real_directed_competition.py'
       - 'scripts/stream_osm_roads.py'
       - 'scripts/road_segment_snapping.py'
       - 'scripts/road_access_diagnostics.py'
