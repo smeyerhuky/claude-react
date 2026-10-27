@@ -9,6 +9,7 @@ import argparse
 import csv
 import hashlib
 import json
+import math
 from pathlib import Path
 
 from shapely.geometry import Point
@@ -19,15 +20,17 @@ def classify_representative_points(rows, state, threshold, audit=None):
     if state.is_empty or not state.is_valid:
         raise ValueError("Invalid state geometry")
     qualifying = {}
+    seen = set()
     for row in rows:
         cbsa = row["cbsa"]
-        if cbsa in qualifying:
+        if cbsa in seen:
             raise ValueError("Duplicate CBSA: " + cbsa)
+        seen.add(cbsa)
         population = int(row["population"])
         if population < threshold:
             continue
         lon, lat = float(row["longitude"]), float(row["latitude"])
-        if not (-180 <= lon <= 180 and -90 <= lat <= 90):
+        if not (math.isfinite(lon) and math.isfinite(lat) and -180 <= lon <= 180 and -90 <= lat <= 90):
             raise ValueError("Invalid metro representative point")
         qualifying[cbsa] = {"cbsa": cbsa, "inside_colorado_state": bool(state.covers(Point(lon, lat)))}
     if not qualifying:
