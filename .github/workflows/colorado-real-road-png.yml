@@ -11,6 +11,7 @@ on:
       - 'scripts/colorado_road_png_dijkstra_oracle.py'
       - 'scripts/colorado_connector_review_queue.py'
       - 'scripts/colorado_extract_comparison.py'
+      - 'scripts/colorado_competition_blockers.py'
   push:
     branches: [main]
     paths:
@@ -155,6 +156,22 @@ jobs:
           for cbsa in ("14500", "17820"):
               row = next(x for x in result["metros"] if x["cbsa"] == cbsa)
               print(json.dumps(row, sort_keys=True))
+          PY
+      - name: Inventory complete-source blockers from real expanded OSM comparison
+        run: |
+          set -euo pipefail
+          python scripts/colorado_competition_blockers.py \
+            --comparison colorado-real-road-preview/extract-comparison.json \
+            --output colorado-real-road-preview/competition-blockers.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          b = json.loads(Path("colorado-real-road-preview/competition-blockers.json").read_text())
+          assert b["release_eligible"] is False
+          assert b["directed_global_competition_testable"] is False
+          assert b["qualifying_cbsa_count"] == 359
+          assert b["expanded_geometric_candidate_cbsa_count"] + b["missing_geometric_candidate_cbsa_count"] == 359
+          assert len(b["missing_geometric_candidate_cbsa_ids"]) == b["missing_geometric_candidate_cbsa_count"]
           PY
       - name: Reject unapproved evidence and cross-source manifest mismatches
         run: |
