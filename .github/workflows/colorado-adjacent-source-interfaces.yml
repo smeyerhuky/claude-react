@@ -10,6 +10,11 @@ on:
       - 'scripts/test_colorado_adjacent_route_witnesses.py'
       - 'scripts/colorado_road_subdivision_preservation.py'
       - 'scripts/road_spike.py'
+      - 'scripts/metro_competition_bounds.py'
+      - 'scripts/road_geographic_escape_bounds.py'
+      - 'scripts/test_road_geographic_escape_bounds.py'
+      - 'scripts/colorado_escape_witness_audit.py'
+      - 'scripts/test_colorado_escape_witness_audit.py'
       - 'scripts/colorado_raw_boundary_interfaces.py'
       - 'scripts/stream_osm_roads.py'
 permissions:
@@ -90,6 +95,25 @@ jobs:
               assert row["baseline_cost"] is not None and row["union_cost"] is not None
               assert row["baseline_cost"]-row["union_cost"] > minimum
           PYROUTES
+      - name: Independently replay actual path excursions against conditional geometric bounds
+        run: |
+          set -euo pipefail
+          PYTHONPATH=scripts python -m unittest -v scripts/test_road_geographic_escape_bounds.py scripts/test_colorado_escape_witness_audit.py
+          python scripts/colorado_escape_witness_audit.py \
+            --route-report adjacent-source-interfaces/route-witnesses.json \
+            --parent-osm local-data/colorado.osm.pbf local-data/new-mexico.osm.pbf \
+            --output adjacent-source-interfaces/escape-witness-audit.json
+          python - <<'PYESCAPE'
+          import json
+          from pathlib import Path
+          r = json.loads(Path("adjacent-source-interfaces/escape-witness-audit.json").read_text())
+          assert r["independent_actual_path_excursions_checked"] == 12
+          assert {p["metric"] for p in r["paths"]} == {"length", "travel_time"}
+          assert all(p["outside_geometry_points"] > 0 for p in r["paths"])
+          assert r["release_eligible"] is False and r["access_certified"] is False
+          assert r["parent_exterior_coverage_certified"] is False
+          assert r["applied_exterior_route_exclusions"] == []
+          PYESCAPE
       - uses: actions/upload-artifact@v6
         if: always()
         with:
