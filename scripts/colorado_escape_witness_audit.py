@@ -79,6 +79,8 @@ def audit_witnesses(report):
     return {"release_eligible": False, "access_certified": False, "complete_global_competition": False,
             "parent_exterior_coverage_certified": False, "applied_exterior_route_exclusions": [],
             "independent_actual_path_excursions_checked": len(rows), "paths": rows,
+            "metric_units": {"length": "meters", "travel_time": "seconds"},
+            "cost_agreement_absolute_tolerance": .002, "cost_agreement_relative_tolerance": 1e-9,
             "warning": "Diagnostic endpoint rectangles have no source coverage claim; a ceiling on these actual paths is not proof of a global speed ceiling. No regional closure or legal-access certification."}
 
 

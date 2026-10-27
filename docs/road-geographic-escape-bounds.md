@@ -73,7 +73,8 @@ are unchanged.
 `colorado_escape_witness_audit.py` also checks the 12 real Colorado/New Mexico
 path witnesses from the adjacent-source workflow. It binds both PBF hashes and
 timestamps, independently replays every directed primitive cost using vector
-atan2 spherical geometry (2 mm / 1e-9 relative agreement tolerance), and verifies
+atan2 spherical geometry (absolute tolerance 0.002 meters or seconds,
+plus relative tolerance 1e-9), and verifies
 the conditional lower bound against each actual excursion's replayed cost.
 Diagnostic rectangles are constructed around each path's endpoints with 0.001
 degree padding; they make no road-coverage claim. A witness must actually visit
