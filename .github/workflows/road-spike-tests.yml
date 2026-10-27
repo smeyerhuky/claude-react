@@ -38,6 +38,9 @@ on:
       - 'scripts/visualize_colorado_roads.py'
       - '.github/workflows/colorado-road-evidence.yml'
       - 'scripts/test_road_spike.py'
+      - 'scripts/road_boundary_relaxation.py'
+      - 'scripts/test_road_boundary_relaxation.py'
+      - 'scripts/colorado_parent_cut_bound_audit.py'
       - 'scripts/get_road_spike_graph.py'
       - '.github/workflows/road-spike-tests.yml'
   workflow_dispatch:
