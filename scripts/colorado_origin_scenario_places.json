@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "scenario_id": "colorado-named-city-point-leads-v1",
+  "status": "unapproved research leads, not road-access origins",
+  "gazetteer_url": "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_08.txt",
+  "gazetteer_sha256": "bf6eef3e2ef556da6c4b6f448aa83d63d00de25477182a45155407f16dcbcdb5",
+  "association_basis": "Explicit named-city research alternatives; not an official CBSA-place crosswalk, complete principal-city inventory, or approved origin policy",
+  "places": [
+    {
+      "cbsa": "14500",
+      "geoid": "0807850",
+      "name": "Boulder city",
+      "metro_name": "Boulder, CO Metro Area"
+    },
+    {
+      "cbsa": "17820",
+      "geoid": "0816000",
+      "name": "Colorado Springs city",
+      "metro_name": "Colorado Springs, CO Metro Area"
+    },
+    {
+      "cbsa": "19740",
+      "geoid": "0820000",
+      "name": "Denver city",
+      "metro_name": "Denver-Aurora-Centennial, CO Metro Area"
+    },
+    {
+      "cbsa": "22660",
+      "geoid": "0827425",
+      "name": "Fort Collins city",
+      "metro_name": "Fort Collins-Loveland, CO Metro Area"
+    },
+    {
+      "cbsa": "24300",
+      "geoid": "0831660",
+      "name": "Grand Junction city",
+      "metro_name": "Grand Junction, CO Metro Area"
+    },
+    {
+      "cbsa": "24540",
+      "geoid": "0832155",
+      "name": "Greeley city",
+      "metro_name": "Greeley, CO Metro Area"
+    },
+    {
+      "cbsa": "39380",
+      "geoid": "0862000",
+      "name": "Pueblo city",
+      "metro_name": "Pueblo, CO Metro Area"
+    }
+  ]
+}

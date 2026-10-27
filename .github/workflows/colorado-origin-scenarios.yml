@@ -1,0 +1,76 @@
+name: Colorado research origin scenarios from real Census and OSM
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/colorado-origin-scenarios.yml'
+      - 'scripts/colorado_origin_scenarios.py'
+      - 'scripts/colorado_origin_scenario_places.json'
+      - 'scripts/test_colorado_origin_scenarios.py'
+      - 'scripts/colorado_origin_source_investigation.py'
+      - 'scripts/colorado_geographic_point_diagnostics.py'
+      - 'scripts/stream_osm_roads.py'
+      - 'public/data/metros-census-2025.csv'
+permissions:
+  contents: read
+jobs:
+  source-scenarios:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5'
+      - run: PYTHONPATH=scripts python -m unittest -v scripts/test_colorado_origin_scenarios.py
+      - name: Acquire genuine Census place points and full Colorado source roads
+        run: |
+          set -euo pipefail
+          mkdir -p local-data origin-scenarios
+          curl -fLSs --retry 3 --connect-timeout 20 --max-time 180 -o local-data/2025_gaz_place_08.txt https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_08.txt
+          curl -fLSs --retry 3 --connect-timeout 20 --max-time 1200 -o local-data/colorado.osm.pbf https://download.geofabrik.de/north-america/us/colorado-latest.osm.pbf
+      - name: Preserve both source inventories and investigate seven leads per scenario
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=30s 10m python -u scripts/colorado_origin_scenarios.py \
+            --metros public/data/metros-census-2025.csv --places local-data/2025_gaz_place_08.txt \
+            --osm local-data/colorado.osm.pbf --output origin-scenarios/registry.json \
+            2>&1 | tee origin-scenarios/investigation.log
+          python - <<'PY'
+          import csv, hashlib, json
+          from pathlib import Path
+          r = json.loads(Path("origin-scenarios/registry.json").read_text())
+          with Path("public/data/metros-census-2025.csv").open(newline="") as handle:
+              ids = sorted(x["cbsa"] for x in csv.DictReader(handle) if int(x["population"]) >= 100000)
+          assert len(ids) == len(set(ids)) == 359 and r["qualifying_cbsa_ids"] == ids
+          assert r["release_eligible"] is False and r["access_certified"] is False
+          assert r["complete_global_competition"] is False and r["approved_origin_count"] == 0
+          assert len(r["scenarios"]) == 2 and len(r["scenario_point_displacements"]) == 7
+          for scenario, rows in r["scenarios"].items():
+              assert [x["cbsa"] for x in rows] == ids
+              assert all(x["access_verified"] is False and x["connector_costs_established"] is False for x in rows)
+              if scenario == "colorado-named-city-point-leads-v1":
+                  assert sum(x["origin_lonlat"] is None for x in rows) == 352
+              by_id = {x["cbsa"]: x for x in rows}
+              report = r["raw_source_investigations"][scenario]
+              assert report["access_verified"] is False and report["release_eligible"] is False
+              assert len(report["metros"]) == 7 and report["highway_ways_with_missing_locations"] == 0
+              for point in report["metros"]:
+                  assert point["origin_lonlat"] == by_id[point["cbsa"]]["origin_lonlat"]
+                  for field in ("nearest_mapped_highway", "nearest_model_drivable_highway"):
+                      candidate = point[field]
+                      assert candidate is None or candidate["access_verified"] is False
+          for field, path in (("metros_csv_sha256", "public/data/metros-census-2025.csv"),
+                              ("gazetteer_sha256", "local-data/2025_gaz_place_08.txt"),
+                              ("selection_sha256", "scripts/colorado_origin_scenario_places.json"),
+                              ("osm_sha256", "local-data/colorado.osm.pbf")):
+              with Path(path).open("rb") as handle:
+                  assert r["source_provenance"][field] == hashlib.file_digest(handle, "sha256").hexdigest()
+          PY
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: colorado-research-origin-scenarios
+          path: origin-scenarios/
+          retention-days: 14
