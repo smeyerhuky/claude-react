@@ -12,6 +12,8 @@ on:
       - 'scripts/colorado_connector_review_queue.py'
       - 'scripts/colorado_extract_comparison.py'
       - 'scripts/colorado_competition_blockers.py'
+      - 'scripts/colorado_origin_source_investigation.py'
+      - 'scripts/test_colorado_origin_source_investigation.py'
   push:
     branches: [main]
     paths:
@@ -45,6 +47,33 @@ jobs:
           osmium extract --bbox=-106.1,38.65,-104.5,40.1 --strategy=complete_ways local-data/colorado.osm.pbf -o local-data/corridor.osm.pbf
           osmium tags-filter local-data/corridor.osm.pbf w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,residential,unclassified,living_street,service -o local-data/roads.osm.pbf
           sha256sum local-data/roads.osm.pbf > colorado-real-road-preview/filtered-road-sha256.txt
+      - name: Investigate missing metro origins directly against the original Colorado PBF
+        run: |
+          set -euo pipefail
+          PYTHONPATH=scripts python -m unittest -v scripts/test_colorado_origin_source_investigation.py
+          timeout --signal=TERM --kill-after=30s 8m python -u scripts/colorado_origin_source_investigation.py \
+            --osm local-data/colorado.osm.pbf --metros public/data/metros-census-2025.csv \
+            --cbsa 14500 17820 19740 22660 24540 --radius-m 20000 \
+            --output colorado-real-road-preview/raw-origin-investigation.json \
+            2>&1 | tee colorado-real-road-preview/raw-origin-investigation.log
+          python - <<'PYCODE'
+          import hashlib
+          import json
+          from pathlib import Path
+          result = json.loads(Path("colorado-real-road-preview/raw-origin-investigation.json").read_text())
+          assert result["release_eligible"] is False
+          assert result["access_verified"] is False
+          assert result["extract_coverage_certified"] is False
+          assert result["highway_ways_with_missing_locations"] == 0
+          assert [m["cbsa"] for m in result["metros"]] == ["14500", "17820", "19740", "22660", "24540"]
+          for field, filename in (("osm_sha256", "local-data/colorado.osm.pbf"),
+                                  ("metros_csv_sha256", "public/data/metros-census-2025.csv")):
+              with Path(filename).open("rb") as handle:
+                  assert result[field] == hashlib.file_digest(handle, "sha256").hexdigest()
+          # Non-vacuous data scan; a road lead remains unapproved evidence.
+          assert all(m["nearest_mapped_highway"] is not None for m in result["metros"])
+          assert all(m["nearest_model_drivable_highway"] is not None for m in result["metros"])
+          PYCODE
       - name: Prepare official Census TIGER2025 land and county water sources
         run: |
           set -euo pipefail
