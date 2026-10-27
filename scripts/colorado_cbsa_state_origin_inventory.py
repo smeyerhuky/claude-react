@@ -97,6 +97,8 @@ def main():
     result = classify_representative_points(rows, states[0], args.threshold, audit)
     result["tiger_state_zip_sha256"] = hashlib.sha256(Path(args.tiger_state_zip).read_bytes()).hexdigest()
     result["metros_csv_sha256"] = metros_digest
+    result["polygon_native_crs"] = "EPSG:4269"
+    result["origin_coordinate_datum_verified"] = False
     if args.audit:
         result["audit_sha256"] = hashlib.sha256(Path(args.audit).read_bytes()).hexdigest()
     Path(args.output).write_text(json.dumps(result, sort_keys=True, indent=2) + "\n")

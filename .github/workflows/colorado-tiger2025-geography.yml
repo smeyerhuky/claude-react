@@ -25,7 +25,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install TIGER and research masking dependencies
-        run: python -m pip install 'pyshp>=2.3,<3' 'shapely>=2,<3' 'numpy>=1.26,<3'
+        run: python -m pip install 'pyshp>=2.3,<3' 'pyproj>=3.7,<4' 'shapely>=2,<3' 'numpy>=1.26,<3'
       - name: Offline synthetic county selection, missing water, and source corruption regressions
         run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_tiger2025_geography.py -v
       - uses: actions/cache@v4
@@ -57,6 +57,12 @@ jobs:
           pixels = json.loads((root/"census-water-mask.json").read_text())
           assert m["release_eligible"] is False
           assert m["land_water_completeness_certified"] is False
+          operation = m["coordinate_operation"]
+          assert operation["source_crs"] == "EPSG:4269" and operation["target_crs"] == "EPSG:4326"
+          assert operation["operation"] == "EPSG:1188" and operation["reported_operation_accuracy_m"] == 4
+          assert operation["accuracy_is_absolute_error_bound"] is False
+          assert operation["geographic_accuracy_certified"] is False
+          assert all(s["native_crs"] == "EPSG:4269" and len(s["prj_sha256"]) == 64 for s in m["source_archives"])
           assert len(m["selected_county_geoids"]) >= 1
           assert pixels["release_eligible"] is False
           assert pixels["pixel_counts"]["water_excluded"] > 0, "No Census water pixel in test viewport"
