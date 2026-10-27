@@ -1,0 +1,28 @@
+name: Colorado expanded-extract comparison contracts
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/colorado-extract-comparison.yml'
+      - 'scripts/colorado_extract_comparison.py'
+      - 'scripts/test_colorado_extract_comparison.py'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/colorado-extract-comparison.yml'
+      - 'scripts/colorado_extract_comparison.py'
+      - 'scripts/test_colorado_extract_comparison.py'
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install graph dependencies
+        run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2' 'shapely>=2,<3' 'numpy>=1.26,<3'
+      - name: Run comparison regression tests
+        run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_extract_comparison.py -v
