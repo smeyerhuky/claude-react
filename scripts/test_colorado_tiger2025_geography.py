@@ -7,6 +7,7 @@ import zipfile
 from pathlib import Path
 
 import shapefile
+from pyproj import CRS
 from shapely.geometry import shape
 
 from colorado_geographic_mask import build_explicit_land_water_mask
@@ -36,6 +37,7 @@ def write_zip(folder, filename, records, fields):
             path = folder / (base.name + ext)
             dest.write(path, path.name)
             path.unlink()
+        dest.writestr(base.name+".prj", CRS.from_epsg(4269).to_wkt("WKT1_ESRI"))
 
 
 class Tiger2025SourceTests(unittest.TestCase):
@@ -71,6 +73,10 @@ class Tiger2025SourceTests(unittest.TestCase):
         result = self.ingest()
         self.assertFalse(result["release_eligible"])
         self.assertFalse(result["land_water_completeness_certified"])
+        self.assertEqual(result["coordinate_operation"]["operation"], "EPSG:1188")
+        self.assertEqual(result["coordinate_operation"]["reported_operation_accuracy_m"], 4)
+        self.assertFalse(result["coordinate_operation"]["accuracy_is_absolute_error_bound"])
+        self.assertEqual(result["source_archives"][0]["native_crs"], "EPSG:4269")
         self.assertEqual(result["selected_county_geoids"], ["08001", "08031"])
         self.assertEqual(len(result["source_archives"]), 4)
         self.assertEqual(result["intersecting_areawater_features"], 2)
@@ -138,6 +144,31 @@ class Tiger2025SourceTests(unittest.TestCase):
                 dst.writestr(name, value)
         with self.assertRaisesRegex(ValueError, "lacks"):
             self.ingest()
+
+    def test_missing_wrong_and_malformed_source_crs_fail_closed(self):
+        path = self.cache / STATE_FILENAME
+        original = path.read_bytes()
+        for prj in (None, CRS.from_epsg(4326).to_wkt(), "not a CRS"):
+            path.write_bytes(original)
+            with zipfile.ZipFile(path) as src:
+                data = {n: src.read(n) for n in src.namelist() if not n.endswith(".prj")}
+            with zipfile.ZipFile(path, "w") as dst:
+                for name, raw in data.items():
+                    dst.writestr(name, raw)
+                if prj is not None:
+                    dst.writestr(path.stem+".prj", prj)
+            with self.subTest(prj=prj), self.assertRaisesRegex(ValueError, "CRS"):
+                self.ingest()
+
+    def test_explicit_operation_scope_and_axis_order(self):
+        from shapely.geometry import box
+        from colorado_tiger2025_geography import _coordinate_operation, _colorado_to_wgs84
+        transformer, _ = _coordinate_operation()
+        geometry = box(-105.1, 39.7, -105, 39.8)
+        # This operation is intentionally a declared approximate no-op.
+        self.assertEqual(_colorado_to_wgs84(geometry, transformer).bounds, geometry.bounds)
+        with self.assertRaisesRegex(ValueError, "scope"):
+            _colorado_to_wgs84(box(10, 10, 11, 11), transformer)
 
 
 if __name__ == "__main__":

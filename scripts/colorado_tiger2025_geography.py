@@ -18,13 +18,60 @@ from pathlib import Path
 
 import shapefile
 from shapely.geometry import box, mapping, shape
-from shapely.ops import unary_union
+from shapely.ops import unary_union, transform
 
 TIGER_BASE = "https://www2.census.gov/geo/tiger/TIGER2025"
 STATE_FILENAME = "tl_2025_us_state.zip"
 COUNTY_FILENAME = "tl_2025_us_county.zip"
 STATE_FIPS = "08"
 MAX_ARCHIVE_BYTES = 130_000_000
+
+
+def _native_crs(zf, stem):
+    """Reject missing/foreign source datum; never guess from coordinate ranges."""
+    from pyproj import CRS
+    from pyproj.exceptions import CRSError
+    names = {name.lower(): name for name in zf.namelist()}
+    name = names.get((stem+".prj").lower())
+    if name is None or zf.getinfo(name).file_size > 65536:
+        raise ValueError("TIGER archive lacks a bounded .prj source CRS")
+    raw = zf.read(name)
+    try:
+        crs = CRS.from_wkt(raw.decode("utf-8"))
+    except (CRSError, UnicodeDecodeError) as error:
+        raise ValueError("Invalid TIGER .prj source CRS") from error
+    if not crs.equals(CRS.from_epsg(4269), ignore_axis_order=True):
+        raise ValueError("TIGER2025 source CRS must be NAD83 EPSG:4269")
+    return {"native_crs": "EPSG:4269", "prj_sha256": hashlib.sha256(raw).hexdigest()}
+
+
+def _coordinate_operation():
+    """Explicit approximate EPSG operation, not an automatic best-grid claim."""
+    import pyproj
+    transformer = pyproj.Transformer.from_pipeline("urn:ogc:def:coordinateOperation:EPSG::1188")
+    if (transformer.source_crs.to_epsg() != 4269 or transformer.target_crs.to_epsg() != 4326 or
+            transformer.accuracy != 4):
+        raise ValueError("EPSG:1188 operation definition changed; review before reuse")
+    metadata = {"source_crs": "EPSG:4269", "target_crs": "EPSG:4326", "operation": "EPSG:1188",
+                "name": transformer.description, "reported_operation_accuracy_m": transformer.accuracy,
+                "accuracy_is_absolute_error_bound": False, "geographic_accuracy_certified": False,
+                "definition": transformer.definition, "pyproj_version": pyproj.__version__,
+                "proj_version": pyproj.proj_version_str, "geometry_axis_order": "longitude,latitude",
+                "warning": "Approximate declared operation, currently a numerical no-op; no epoch/grid/shoreline or absolute-error certification"}
+    return transformer, metadata
+
+
+def _colorado_to_wgs84(geometry, transformer):
+    if not box(-110, 36, -101, 42).covers(geometry):
+        raise ValueError("Geometry outside supported Colorado coordinate-operation scope")
+    def xy(x, y, z=None):
+        # EPSG:1188 uses native latitude/longitude axes. GeoJSON is lon/lat.
+        lat, lon = transformer.transform(y, x, errcheck=True)
+        return lon, lat
+    result = transform(xy, geometry)
+    if result.is_empty or not result.is_valid:
+        raise ValueError("Invalid transformed TIGER geometry")
+    return result
 
 
 def _validate_bbox(bounds):
@@ -80,16 +127,18 @@ def _download_census_zip(cache, folder, filename, offline=False):
                     raise ValueError("TIGER archive lacks " + key)
                 if zf.getinfo(members[key]).file_size > 350_000_000:
                     raise ValueError("TIGER shapefile member exceeds safety limit")
+            crs = _native_crs(zf, expected_stem)
     except zipfile.BadZipFile as exc:
         raise ValueError("Corrupt TIGER zip file") from exc
     return dest, {"url": url, "filename": filename, "sha256": digest,
-                  "bytes": len(raw)}
+                  "bytes": len(raw), **crs}
 
 
 def _read_shapes(path, max_records=250000):
     path = Path(path)
     with zipfile.ZipFile(path) as zf:
         stem = path.stem
+        _native_crs(zf, stem)  # Direct readers get the same fail-closed guard.
         names = {name.lower(): name for name in zf.namelist()}
         def read(ext):
             return io.BytesIO(zf.read(names[(stem+ext).lower()]))
@@ -109,14 +158,15 @@ def _read_shapes(path, max_records=250000):
             yield properties, geom
 
 
-def _write_geojson(path, geom, kind):
+def _write_geojson(path, geom, kind, coordinate_operation):
     if geom.is_empty or not geom.is_valid or geom.geom_type not in (
         "Polygon", "MultiPolygon"):
         raise ValueError("Empty/invalid " + kind + " polygon output")
     path = Path(path)
     path.write_text(json.dumps({
         "type": "Feature", "properties": {"research_only": True,
-                                       "layer": kind, "vintage": 2025},
+                                       "layer": kind, "vintage": 2025,
+                                       "coordinate_operation": coordinate_operation},
         "geometry": mapping(geom)
     }, separators=(",", ":")) + "\n", encoding="utf-8")
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -130,6 +180,7 @@ def prepare_tiger2025_geography(bounds, cache, output_dir, offline=False):
     file is absent, malformed or the county coverage has gaps, fail closed.
     """
     viewport = _validate_bbox(bounds)
+    transformer, operation = _coordinate_operation()
     output = Path(output_dir)
     output.mkdir(parents=True, exist_ok=True)
     sources = []
@@ -140,7 +191,7 @@ def prepare_tiger2025_geography(bounds, cache, output_dir, offline=False):
               if fields.get("GEOID") == STATE_FIPS]
     if len(states) != 1:
         raise ValueError("Missing or duplicate Colorado state polygon")
-    state = states[0]
+    state = _colorado_to_wgs84(states[0], transformer)
     land = state.intersection(viewport)
     if land.is_empty or land.area <= 0:
         raise ValueError("Preview does not intersect official Colorado polygon")
@@ -151,7 +202,10 @@ def prepare_tiger2025_geography(bounds, cache, output_dir, offline=False):
     selected = []
     selected_parts = []
     for fields, polygon in _read_shapes(county_path, 5000):
-        if fields.get("STATEFP") != STATE_FIPS or not polygon.intersects(viewport):
+        if fields.get("STATEFP") != STATE_FIPS:
+            continue
+        polygon = _colorado_to_wgs84(polygon, transformer)
+        if not polygon.intersects(viewport):
             continue
         geoid = fields.get("GEOID")
         if not isinstance(geoid, str) or not re.fullmatch(r"08\d{3}", geoid):
@@ -174,6 +228,7 @@ def prepare_tiger2025_geography(bounds, cache, output_dir, offline=False):
             cache, "AREAWATER", f"tl_2025_{geoid}_areawater.zip", offline)
         sources.append(provenance)
         for _, polygon in _read_shapes(path, 50000):
+            polygon = _colorado_to_wgs84(polygon, transformer)
             if polygon.intersects(viewport):
                 clipped = polygon.intersection(viewport)
                 if clipped.area > 0:
@@ -191,8 +246,8 @@ def prepare_tiger2025_geography(bounds, cache, output_dir, offline=False):
 
     land_path = output / "tiger2025-colorado-land.geojson"
     water_path = output / "tiger2025-colorado-areawater.geojson"
-    land_hash = _write_geojson(land_path, land, "land")
-    water_hash = _write_geojson(water_path, water, "water")
+    land_hash = _write_geojson(land_path, land, "land", operation)
+    water_hash = _write_geojson(water_path, water, "water", operation)
     manifest = {
         "schema_version": 1,
         "status": "research-only-official-source-ingestion",
@@ -201,6 +256,7 @@ def prepare_tiger2025_geography(bounds, cache, output_dir, offline=False):
         "land_water_completeness_certified": False,
         "outside_extract_coverage_certified": False,
         "vintage": 2025, "state_fips": STATE_FIPS,
+        "coordinate_operation": operation,
         "bbox_lonlat": list(bounds),
         "selected_county_geoids": sorted(selected),
         "county_coverage_gap_degree2": uncovered,
@@ -211,6 +267,7 @@ def prepare_tiger2025_geography(bounds, cache, output_dir, offline=False):
             "water": {"path": water_path.name, "sha256": water_hash}
         },
         "limitations": [
+            "EPSG:1188 is an explicit approximate NAD83-to-WGS84 operation with reported 4m accuracy, not an absolute error guarantee; no source epoch/realization or shoreline certification",
             "Census AREAWATER polygons omit narrow single-line drainage and may omit seasonal water",
             "State/county TIGER coverage is not legal/physical drivable connector evidence",
             "This clipping process does not prove full network or source metro coverage",
