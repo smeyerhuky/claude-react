@@ -21,6 +21,11 @@ class ComparisonTests(unittest.TestCase):
         self.assertFalse(result["access_certified"])
         self.assertFalse(result["extract_coverage_certified"])
 
+    def test_duplicate_metro_fails_closed(self):
+        with self.assertRaises(ValueError):
+            compare_queues(queue([("14500", "outside", 0), ("14500", "outside", 0)]),
+                           queue([("14500", "candidate", 1)]))
+
     def test_dropped_metro_fails_closed(self):
         with self.assertRaises(ValueError):
             compare_queues(queue([("14500", "outside", 0)]), queue([]))
