@@ -5,14 +5,37 @@ A disagreement is a coverage warning, never an approval. Sources and probes
 must be supplied explicitly; this does not validate physical/legal access.
 """
 import math
+from collections import Counter
+from numbers import Real
 
 import networkx as nx
 
 
-def directed_winner(graph, sources, target, weight):
-    """Independently calculate each source's directed cost to a probe node."""
+def _weighted_arcs(graph, weight):
+    """Validate before NetworkX can silently substitute a unit edge cost."""
     if weight not in ("length", "travel_time"):
         raise ValueError("Unsupported routing metric")
+    if not graph.is_directed():
+        raise ValueError("Routing requires a directed graph")
+    arcs = Counter()
+    for u, v, data in graph.edges(data=True):
+        cost = data.get(weight)
+        if (isinstance(cost, bool) or not isinstance(cost, Real) or
+                not math.isfinite(cost) or cost < 0):
+            raise ValueError("Missing or invalid directed edge weight")
+        # Keys can change when extracts are rebuilt. Preserve multiplicity and
+        # metric costs, rather than trusting locally assigned multiedge keys.
+        arcs[(u, v, cost)] += 1
+    return arcs
+
+
+def directed_winner(graph, sources, target, weight):
+    """Independently calculate each source's directed cost to a probe node."""
+    _weighted_arcs(graph, weight)
+    return _directed_winner(graph, sources, target, weight)
+
+
+def _directed_winner(graph, sources, target, weight):
     if not sources or len(sources) != len(set(sources)):
         raise ValueError("Missing or duplicate metro sources")
     if target not in graph:
@@ -35,23 +58,26 @@ def directed_winner(graph, sources, target, weight):
                   if abs(cost - best) <= max(0.002, abs(best) * 1e-9))
     if len(tied) != 1:
         return {"status": "tied", "winner": None}
-    return {"status": "reachable", "winner": tied[0]}
+    return {"status": "reachable", "winner": tied[0], "cost": best}
 
 
 def compare_directed_winners(baseline, expanded, sources, probes, weight):
     # A larger bbox alone does not prove graph inclusion. Missing baseline
     # directed arcs would make a winner comparison misleading.
-    for u, v, key, data in baseline.edges(keys=True, data=True) if baseline.is_multigraph() else ((u, v, None, data) for u, v, data in baseline.edges(data=True)):
-        if not expanded.has_edge(u, v):
-            raise ValueError("Expanded graph lost a baseline directed arc")
+    old_arcs = _weighted_arcs(baseline, weight)
+    new_arcs = _weighted_arcs(expanded, weight)
+    if old_arcs - new_arcs:
+        raise ValueError("Expanded graph lost a baseline directed arc or changed its cost")
+    if not set(baseline).issubset(expanded):
+        raise ValueError("Expanded graph lost a baseline node")
     if not sources or len(sources) < 2:
         raise ValueError("Need at least two competing metro sources")
     if not probes or len(probes) != len(set(probes)):
         raise ValueError("Missing or duplicate probes")
     rows = []
     for probe in probes:
-        old = directed_winner(baseline, sources, probe, weight)
-        new = directed_winner(expanded, sources, probe, weight)
+        old = _directed_winner(baseline, sources, probe, weight)
+        new = _directed_winner(expanded, sources, probe, weight)
         rows.append({"probe": str(probe), "baseline": old, "expanded": new,
                      "changed": old != new})
     return {
