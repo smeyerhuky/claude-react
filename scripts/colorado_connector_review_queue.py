@@ -129,6 +129,17 @@ def build_review_queue(graph, metros, threshold=100000, max_gap_m=100,
                     c["distance_to_centerline_m"],
                     str(c["osm_way_id"]), c["road_from_node"],
                     c["road_to_node"], c["road_edge_key"]))
+        # The coarse index envelope can include origins far from any loaded
+        # road. Distinguish that condition from a nearby *unapproved* lead.
+        # None of these classifications is physical/legal access evidence.
+        if candidates:
+            triage_status = "geometric_candidate_unverified"
+        elif not inside_envelope:
+            triage_status = "outside_coarse_index_envelope_unassessed"
+        elif nearest_triage is not None:
+            triage_status = "inside_coarse_envelope_unapproved_road_lead_within_500m"
+        else:
+            triage_status = "inside_coarse_envelope_no_indexed_road_within_500m"
         queue.append({
             "cbsa": cbsa, "metro_name": metro["name"],
             "population": metro["population"],
@@ -145,6 +156,7 @@ def build_review_queue(graph, metros, threshold=100000, max_gap_m=100,
             "candidate_count_within_limit": len(candidates),
             "candidate_roads": candidates[:per_metro],
             "nearest_unapproved_triage_lead_within_500m": nearest_triage,
+            "road_proximity_triage_status": triage_status,
             "unresolved_obligations": [
                 "Independently verify a legal public motor-vehicle connection from the exact origin",
                 "Confirm vehicle direction, barriers, private access and grade separation",
@@ -184,6 +196,8 @@ def build_review_queue(graph, metros, threshold=100000, max_gap_m=100,
                 "origin_lonlat": x["origin_lonlat"],
                 "nearest_unapproved_triage_lead_within_500m":
                     x["nearest_unapproved_triage_lead_within_500m"],
+                "road_proximity_triage_status":
+                    x["road_proximity_triage_status"],
                 "access_verified": False,
             }
             for x in queue
@@ -194,6 +208,10 @@ def build_review_queue(graph, metros, threshold=100000, max_gap_m=100,
             x["graph_envelope_relation"] == "inside_road_segment_index_envelope"
             and not x["candidate_roads"]
             and x["nearest_unapproved_triage_lead_within_500m"] is not None
+            for x in queue),
+        "inside_envelope_missing_without_triage_lead": sum(
+            x["road_proximity_triage_status"] ==
+            "inside_coarse_envelope_no_indexed_road_within_500m"
             for x in queue),
         "graph_nodes": graph.number_of_nodes(),
         "graph_edges": graph.number_of_edges(),
