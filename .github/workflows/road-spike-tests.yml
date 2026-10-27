@@ -11,6 +11,8 @@ on:
       - 'scripts/test_colorado_png_geography_oracle.py'
       - 'scripts/metro_competition_bounds.py'
       - 'scripts/test_metro_competition_bounds.py'
+      - 'scripts/road_geographic_escape_bounds.py'
+      - 'scripts/test_road_geographic_escape_bounds.py'
       - 'scripts/colorado_competition_bound_audit.py'
       - 'scripts/test_colorado_competition_bound_audit.py'
       - 'scripts/test_road_direction_budgets.py'
