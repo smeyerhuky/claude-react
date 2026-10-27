@@ -38,6 +38,15 @@ class DirectedBoundaryTests(unittest.TestCase):
             ["probe"], "travel_time")
         self.assertEqual(result["changed_probe_count"], 0)
 
+    def test_lost_directed_arc_is_rejected(self):
+        old = graph([("denver", "probe", 10, 10),
+                     ("boulder", "probe", 2, 2)])
+        new = graph([("denver", "probe", 10, 10)])
+        with self.assertRaisesRegex(ValueError, "lost a baseline directed arc"):
+            compare_directed_winners(
+                old, new, {"19740": "denver", "14500": "boulder"},
+                ["probe"], "length")
+
     def test_missing_competitor_source_fails_closed(self):
         old = graph([("denver", "probe", 10, 10)])
         new = graph([("denver", "probe", 10, 10),
