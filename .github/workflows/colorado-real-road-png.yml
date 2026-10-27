@@ -12,6 +12,10 @@ on:
       - 'scripts/colorado_connector_review_queue.py'
       - 'scripts/colorado_extract_comparison.py'
       - 'scripts/colorado_competition_blockers.py'
+      - 'scripts/metro_competition_bounds.py'
+      - 'scripts/test_metro_competition_bounds.py'
+      - 'scripts/colorado_competition_bound_audit.py'
+      - 'scripts/test_colorado_competition_bound_audit.py'
       - 'scripts/colorado_origin_source_investigation.py'
       - 'scripts/test_colorado_origin_source_investigation.py'
       - 'scripts/road_spike.py'
@@ -244,6 +248,28 @@ jobs:
                       assert selected.issubset({p["winner"] for p in data["probes"]})
                       assert any(len(p.get("source_costs", [])) >= 2 for p in data["probes"]), "Vacuous competition: no probe has two reachable metros"
           PYCODE
+      - name: Check conditional source bounds against independent real route costs
+        run: |
+          set -euo pipefail
+          PYTHONPATH=scripts python -m unittest -v scripts/test_metro_competition_bounds.py scripts/test_colorado_competition_bound_audit.py
+          python scripts/colorado_competition_bound_audit.py \
+            --audit colorado-real-road-preview/real-directed-competition.json \
+            --metros public/data/metros-census-2025.csv \
+            --output colorado-real-road-preview/conditional-competition-bounds.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path("colorado-real-road-preview/conditional-competition-bounds.json").read_text())
+          assert r["release_eligible"] is False and r["access_certified"] is False
+          assert r["complete_global_competition"] is False
+          assert len(r["qualifying_cbsa_ids"]) == 359 and len(r["unknown_origin_domain_ids"]) == 356
+          assert r["independent_source_route_costs_checked"] == 144 and r["lower_bound_violations"] == 0
+          assert r["applied_source_exclusions"] == []
+          assert len(r["probes"]) == 48
+          assert all(p["conditional_only"] and p["unknown_origin_domain_count"] == 356
+                     and not p["applied_source_exclusions"] for p in r["probes"])
+          assert any(b["conditional_exclusion"] for p in r["probes"] for b in p["known_graph_vertex_origin_bounds"])
+          PY
       - name: Inventory complete-source blockers from real expanded OSM comparison
         run: |
           set -euo pipefail

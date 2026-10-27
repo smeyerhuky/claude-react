@@ -78,6 +78,9 @@ unverified connector kilometers and changes route costs; it is not a fix.
    modeled edge and connector cost dominates that same geometry convention.
    For time, divide by a proved model-wide speed ceiling (including connectors).
    A missing origin or omitted local edge alone proves no such bound.
+   [Conditional rational bounds and real-route checks](colorado-conditional-competition-bounds.md)
+   implement this calculation without certifying its unresolved preconditions or
+   removing any unknown-origin competitors.
 4. Partition the graph with explicit cut arcs and exact boundary labels or
    certified optimistic exterior costs. Overlap alone is insufficient: a better
    route can leave and re-enter beyond any arbitrary overlap.
