@@ -91,9 +91,12 @@ def main():
     with Path(args.metros).open(newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
     audit = json.loads(Path(args.audit).read_text()) if args.audit else None
+    metros_digest = hashlib.sha256(Path(args.metros).read_bytes()).hexdigest()
+    if audit is not None and audit.get("metros_csv_sha256") != metros_digest:
+        raise ValueError("Connector audit does not match exact metro CSV SHA-256")
     result = classify_representative_points(rows, states[0], args.threshold, audit)
     result["tiger_state_zip_sha256"] = hashlib.sha256(Path(args.tiger_state_zip).read_bytes()).hexdigest()
-    result["metros_csv_sha256"] = hashlib.sha256(Path(args.metros).read_bytes()).hexdigest()
+    result["metros_csv_sha256"] = metros_digest
     if args.audit:
         result["audit_sha256"] = hashlib.sha256(Path(args.audit).read_bytes()).hexdigest()
     Path(args.output).write_text(json.dumps(result, sort_keys=True, indent=2) + "\n")
