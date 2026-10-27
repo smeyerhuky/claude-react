@@ -1,9 +1,12 @@
 import copy
+from fractions import Fraction
+import math
+import random
 import unittest
 
 from shapely.geometry import box
 
-from metro_origin_domains import build_domains, population_records
+from metro_origin_domains import build_domains, covering_ball, population_records
 
 
 def geography(cbsa, name, shape, point):
@@ -27,6 +30,27 @@ class OriginDomainTests(unittest.TestCase):
                     [("Geographic Area", None), (None, 2025), (".A Metro Area", "unavailable")]):
             with self.assertRaises(ValueError):
                 population_records(bad)
+
+    def test_covering_ball_contains_box_points_in_independent_geometry(self):
+        rng = random.Random(138)
+        for bounds in ((-106, 38, -104, 41), (-180, -90, 180, 90), (170, 80, 180, 90), (-150, 60, -147, 64)):
+            result = covering_ball(bounds)
+            center = [float(Fraction(*map(int, v))) for v in result["center_lonlat_exact"]]
+            radius = float(Fraction(*map(int, result["radius_m_exact"])))
+            west, south, east, north = bounds
+            samples = [(x, y) for x in (west, east) for y in (south, north)]
+            samples += [(rng.uniform(west, east), rng.uniform(south, north)) for _ in range(30)]
+            def vector(p):
+                lon, lat = map(math.radians, p)
+                return math.cos(lat)*math.cos(lon), math.cos(lat)*math.sin(lon), math.sin(lat)
+            a = vector(center)
+            for sample in samples:
+                b = vector(sample)
+                cross = (a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0])
+                distance = 6371000*math.atan2(math.sqrt(sum(v*v for v in cross)), sum(x*y for x, y in zip(a, b)))
+                self.assertLessEqual(distance, radius+1e-7)
+        with self.assertRaises(ValueError):
+            covering_ball((1, 0, 0, 1))
 
     def test_preserves_existing_inventory_and_exposes_source_scope_gap(self):
         result = build_domains(self.existing, self.population, self.geometries)

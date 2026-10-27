@@ -50,3 +50,16 @@ bounds still requires matching coordinate/cost conventions and a feasible,
 fully costed incumbent; native NAD83 envelopes must not silently be treated as
 verified WGS84 road origins. All access, global-competition and release flags
 remain false. No source is actually excluded by this artifact.
+
+Each box also gets a conservative rational spherical covering ball, compatible
+with the endpoint-radius method in `metro_competition_bounds.py` once coordinate
+and cost assumptions are discharged. The center is the interval midpoint and
+the radius is `R*(22/7)*(longitude_span+latitude_span)/360`. A path along a
+meridian and then a parallel is no longer than this bound because `22/7 > pi`
+and a parallel's radius is no larger than `R`. Thus all points of the enclosing
+box are covered, including unknown candidate origins; exact rational values
+avoid rounding the enclosing radius inward. This does not choose a road origin,
+verify that an urban anchor actually exists inside the domain, or provide a
+feasible full-route incumbent. Those preconditions still block actual source
+exclusion and release. Independent vector-geometry tests check corners and
+sample points, including poles and wide-longitude boxes.

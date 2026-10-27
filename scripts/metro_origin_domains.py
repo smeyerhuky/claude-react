@@ -2,14 +2,40 @@
 """Research source inventory/domains; preserve the public CONUS dataset."""
 import argparse
 import csv
+from fractions import Fraction
 import hashlib
 import json
+import math
 from pathlib import Path
 import zipfile
 
 from shapely.geometry import Point
 
 from colorado_tiger2025_geography import _native_crs, _read_shapes
+from metro_competition_bounds import RADIUS_M, number, point
+
+
+def covering_ball(bounds):
+    """Conservative spherical origin domain enclosing every point in a bbox.
+
+    A meridian-plus-parallel path has length <= R*pi*(|dlat|+|dlon|)/180.
+    Use rational 22/7 > pi and the largest center-to-box coordinate offsets.
+    This is geometry in a declared coordinate model, not datum alignment proof.
+    """
+    if not isinstance(bounds, (list, tuple)) or len(bounds) != 4:
+        raise ValueError("Invalid source-origin bbox")
+    west, south, east, north = map(number, bounds)
+    point((west, south)); point((east, north))
+    if west > east or south > north:
+        raise ValueError("Unwrapped ordered source bbox required")
+    center = ((west+east)/2, (south+north)/2)
+    radius = RADIUS_M*Fraction(22, 7)*(east-west+north-south)/360
+    def encoded(value):
+        return [str(value.numerator), str(value.denominator)]
+    return {"center_lonlat_exact": [encoded(v) for v in center],
+            "radius_m_exact": encoded(radius), "radius_upper_bound_m": math.nextafter(float(radius), math.inf) if radius else 0.,
+            "method": "rational-meridian-parallel-covering-ball-v1",
+            "coordinate_model": "spherical coordinates in the supplied native CRS; not verified road/OSM datum alignment"}
 
 
 def population_records(rows, threshold=100000):
@@ -56,6 +82,8 @@ def build_domains(existing_rows, populations, geometries, registry=None):
     by_name, seen_ids = {}, set()
     for fields, geometry in geometries:
         cbsa = fields["GEOID"]
+        if not isinstance(cbsa, str) or len(cbsa) != 5 or not cbsa.isdigit():
+            raise ValueError("Invalid source CBSA identity")
         if cbsa in seen_ids:
             raise ValueError("Duplicate source CBSA geography")
         seen_ids.add(cbsa)
@@ -75,6 +103,8 @@ def build_domains(existing_rows, populations, geometries, registry=None):
         if len(urban_rows) != len(rows) or set(urban_rows) != set(existing):
             raise ValueError("Scenario/current CSV inventory mismatch")
     for pop in populations:
+        if type(pop["population"]) is not int or pop["population"] < 100000:
+            raise ValueError("Population outside qualifying source contract")
         name = pop["name"]
         if name in source_names or name not in by_name:
             raise ValueError("Duplicate or unmatched exact Census metropolitan name: "+name)
@@ -88,6 +118,7 @@ def build_domains(existing_rows, populations, geometries, registry=None):
             raise ValueError("Source internal point outside corresponding native polygon")
         row = {"cbsa": cbsa, "name": name, "source_population": pop["population"],
                "native_representative_lonlat": point, "native_bbox_lonlat": list(geometry.bounds),
+               "hypothetical_urban_origin_covering_ball": covering_ball(geometry.bounds),
                "included_in_existing_csv": cbsa in existing, "representative_point_inside_native_polygon": True,
                "access_verified": False, "road_origin_verified": False}
         if cbsa in existing:

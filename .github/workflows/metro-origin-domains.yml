@@ -46,6 +46,7 @@ jobs:
           assert len(r["source_qualifying_cbsa_ids"]) == 367
           assert r["source_qualifiers_absent_from_existing_csv"] == ["10380","11260","11640","27980","32420","38660","41980","46520"]
           assert len(r["domains"]) == len({x["cbsa"] for x in r["domains"]}) == 367
+          assert all(x["hypothetical_urban_origin_covering_ball"]["radius_upper_bound_m"] > 0 for x in r["domains"])
           assert r["native_crs"] == "EPSG:4269" and r["datum_alignment_verified"] is False
           assert r["release_eligible"] is False and r["access_certified"] is False
           assert r["road_coverage_certified"] is False and r["complete_global_competition"] is False
