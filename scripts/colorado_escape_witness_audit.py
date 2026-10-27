@@ -34,6 +34,9 @@ def audit_witnesses(report):
         metric = w["metric"]
         if metric not in ("length", "travel_time") or not w["steps"]:
             raise ValueError("Missing directed metric/geometry witness")
+        if (w["steps"][0]["u"] != w["origin"] or w["steps"][-1]["v"] != w["destination"] or
+                w.get("node_path") != [w["steps"][0]["u"]]+[step["v"] for step in w["steps"]]):
+            raise ValueError("Path endpoint/node identity disagrees with directed witness")
         metrics.add(metric)
         costs, coordinates, last = [], [], None
         for step in w["steps"]:

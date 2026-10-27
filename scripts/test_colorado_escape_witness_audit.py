@@ -9,7 +9,7 @@ def fixture():
     length = vector_distance(shape[0],shape[1])+vector_distance(shape[1],shape[2])
     return {"release_eligible": False, "access_certified": False,
             "source_union_geographic_coverage_certified": False, "complete_global_competition": False,
-            "path_witnesses": [{"origin": 1, "destination": 3, "metric": metric,
+            "path_witnesses": [{"origin": 1, "destination": 3, "node_path": [1,3], "metric": metric,
                 "independently_replayed_geometry_cost": length if metric == "length" else length/(60*1000/3600),
                 "steps": [{"u":1,"v":3,"osm_node_ids":[1,2,3],"geometry_lonlat":shape,"speed_kph":60}]}
                 for metric in ("length","travel_time")]}
@@ -27,7 +27,8 @@ class EscapeWitnessAuditTests(unittest.TestCase):
         for mutate in (lambda r:r["path_witnesses"][0].update(independently_replayed_geometry_cost=1),
                        lambda r:r["path_witnesses"][0]["steps"][0].update(osm_node_ids=[3,2,1]),
                        lambda r:r["path_witnesses"][0]["steps"][0].update(speed_kph=141),
-                       lambda r:r.update(release_eligible=True)):
+                       lambda r:r.update(release_eligible=True),
+                       lambda r:r["path_witnesses"][0].update(origin=999)):
             r=copy.deepcopy(fixture()); mutate(r)
             with self.assertRaises(ValueError): audit_witnesses(r)
 
