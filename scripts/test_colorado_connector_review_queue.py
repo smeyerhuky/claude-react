@@ -52,6 +52,8 @@ class HumanAuditQueueTests(unittest.TestCase):
                          "candidate_requires_independent_audit")
         self.assertFalse(candidate["access_verified"])
         self.assertFalse(candidate["has_approved_connector"])
+        self.assertEqual(candidate["road_proximity_triage_status"],
+                         "geometric_candidate_unverified")
         self.assertEqual(candidate["candidate_count_within_limit"], 1,
                          "Reverse directed arcs are one physical centerline")
         edge = candidate["candidate_roads"][0]
@@ -85,6 +87,10 @@ class HumanAuditQueueTests(unittest.TestCase):
                          "outside_road_segment_index_envelope")
         self.assertFalse(near["urban_access_anchor_independently_verified"])
         self.assertFalse(far["urban_access_anchor_independently_verified"])
+        self.assertIsNone(far["nearest_unapproved_triage_lead_within_500m"])
+        self.assertEqual(far["road_proximity_triage_status"],
+                         "outside_coarse_index_envelope_unassessed")
+        self.assertIsNone(near["nearest_unapproved_triage_lead_within_500m"])
         self.assertIn("representative_point", near["origin_coordinate_kind"])
 
     def test_inside_envelope_but_not_near_road_is_still_an_unverified_metro(self):
@@ -101,6 +107,36 @@ class HumanAuditQueueTests(unittest.TestCase):
         self.assertEqual(local["review_status"],
                          "no_candidate_within_geometric_limit")
         self.assertFalse(local["access_verified"])
+        lead = local["nearest_unapproved_triage_lead_within_500m"]
+        self.assertIsNotNone(lead)
+        self.assertGreater(lead["distance_to_centerline_m"], 100)
+        self.assertFalse(lead["public_legal_motor_access_verified"])
+        self.assertEqual(local["road_proximity_triage_status"],
+                         "inside_coarse_envelope_unapproved_road_lead_within_500m")
+        self.assertEqual(result["inside_envelope_missing_with_triage_lead"], 1)
+        self.assertEqual(result["inside_envelope_missing_without_triage_lead"], 0)
+
+    def test_inside_coarse_envelope_without_road_within_500m_is_not_certified(self):
+        # The road's 0.01-degree index cell extends far beyond its centerline.
+        # An origin inside the envelope can still be >500 m from every edge.
+        extra = {"cbsa": "12346", "name": "No indexed road within 500m",
+                 "population": 180000, "lon": -104.9995, "lat": 39.708}
+        result = self.make(metros=self.metros + [extra])
+        local = next(m for m in result["candidates"] if m["cbsa"] == "12346")
+        self.assertEqual(local["graph_envelope_relation"],
+                         "inside_road_segment_index_envelope")
+        self.assertEqual(local["candidate_roads"], [])
+        self.assertIsNone(local["nearest_unapproved_triage_lead_within_500m"])
+        self.assertEqual(local["road_proximity_triage_status"],
+                         "inside_coarse_envelope_no_indexed_road_within_500m")
+        self.assertFalse(local["access_verified"])
+        self.assertFalse(result["graph_envelope_certifies_route_coverage"])
+        self.assertEqual(result["inside_envelope_missing_with_triage_lead"], 0)
+        self.assertEqual(result["inside_envelope_missing_without_triage_lead"], 1)
+        self.assertEqual(
+            result["missing_metros_inside_road_index_envelope"],
+            result["inside_envelope_missing_with_triage_lead"] +
+            result["inside_envelope_missing_without_triage_lead"])
 
     def test_conservative_envelope_includes_curved_segments_beyond_endpoints(self):
         # The segment's middle coordinate extends beyond both road nodes.
