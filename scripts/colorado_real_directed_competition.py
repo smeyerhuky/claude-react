@@ -112,10 +112,12 @@ def main():
               "sources": sources, "fixed_probe_node_ids": [str(n) for n in probes],
               "probe_coordinates_lonlat": {str(n): [baseline.nodes[n]["x"], baseline.nodes[n]["y"]] for n in probes},
               "graph_inclusion_proven": False,
+              "baseline_routing_model": dict(baseline.graph),
               "warning": "Stable winners do not certify coverage; expanded paths may still omit exterior routes. Direction-specific graph vertices are not verified geographic access.",
               "baseline": audit_graph(baseline, sources, probes)}
     del baseline
     expanded, _ = load_pbf(args.expanded_osm)
+    result["expanded_routing_model"] = dict(expanded.graph)
     result["expanded"] = audit_graph(expanded, sources, probes)
     changes = []
     for orientation in ORIENTATIONS:
