@@ -21,9 +21,16 @@ def compare_queues(baseline, expanded):
         raise ValueError("Duplicate CBSA in extract comparison")
     if not a or set(a) != set(b):
         raise ValueError("Expanded comparison changed qualifying CBSA identities")
+    for dimension in ("graph_nodes", "graph_edges"):
+        old_size, new_size = baseline.get(dimension), expanded.get(dimension)
+        if (old_size is not None and new_size is not None and
+                new_size < old_size):
+            raise ValueError("Expanded extract shrank " + dimension)
     rows = []
     for cbsa in sorted(a):
         old, new = a[cbsa], b[cbsa]
+        if new["candidate_count_within_limit"] < old["candidate_count_within_limit"]:
+            raise ValueError("Expanded extract lost nearby road candidates for " + cbsa)
         rows.append({
             "cbsa": cbsa,
             "baseline_triage": old["road_proximity_triage_status"],
@@ -42,6 +49,7 @@ def compare_queues(baseline, expanded):
         "expanded_graph_edges": expanded.get("graph_edges"),
         "qualifying_cbsa_count": len(rows),
         "changed_triage_count": sum(x["baseline_triage"] != x["expanded_triage"] for x in rows),
+        "changed_metros": [x for x in rows if x["baseline_triage"] != x["expanded_triage"]],
         "metros": rows,
         "warning": "No inference of geographic completeness, network reachability or legal access",
     }
