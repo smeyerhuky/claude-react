@@ -55,8 +55,11 @@ def main():
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
     metros = read_metros(Path(args.metros))
-    baseline = build_review_queue(load_pbf(args.baseline_osm), metros)
-    expanded = build_review_queue(load_pbf(args.expanded_osm), metros)
+    baseline_graph, _ = load_pbf(args.baseline_osm)
+    baseline = build_review_queue(baseline_graph, metros)
+    del baseline_graph
+    expanded_graph, _ = load_pbf(args.expanded_osm)
+    expanded = build_review_queue(expanded_graph, metros)
     result = compare_queues(baseline, expanded)
     Path(args.output).write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
     print(json.dumps({k: v for k, v in result.items() if k != "metros"}, indent=2))
