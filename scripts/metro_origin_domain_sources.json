@@ -1,0 +1,7 @@
+{
+  "version": "census-2025-us-pr-origin-domains-v1",
+  "population_url": "https://www2.census.gov/programs-surveys/popest/tables/2020-2025/metro/totals/cbsa-met-est2025-pop.xlsx",
+  "population_sha256": "e84062424a88f7ee0665a4ee7b719aeda676a85b18d9194a30be6d441ea5fe43",
+  "geography_url": "https://www2.census.gov/geo/tiger/TIGER2025/CBSA/tl_2025_us_cbsa.zip",
+  "geography_sha256": "8b0424f077280caaa5e09442fd0b0aec32b3e8d7d5fa909988304663bc0a761d"
+}
