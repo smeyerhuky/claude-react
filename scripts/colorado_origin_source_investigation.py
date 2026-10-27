@@ -14,7 +14,7 @@ import osmium
 
 from colorado_geographic_point_diagnostics import project_polyline
 from colorado_metro_winners import read_metros
-from stream_osm_roads import drivable
+from stream_osm_roads import drivable, direction_flags
 
 
 class OriginInvestigation(osmium.SimpleHandler):
@@ -71,7 +71,7 @@ class OriginInvestigation(osmium.SimpleHandler):
                          "access": w.tags.get("access"),
                          "motor_vehicle": w.tags.get("motor_vehicle"),
                          "motorcar": w.tags.get("motorcar"),
-                         "model_drivable": drivable(w),
+                         "model_drivable": drivable(w) and direction_flags(w.tags) is not None,
                          "gap_m": gap,
                          "projection_lonlat": [projection["snapped_lon"], projection["snapped_lat"]],
                          "access_verified": False}

@@ -26,6 +26,29 @@ def drivable(w):
             and w.tags.get("motor_vehicle") not in ("no", "private")
             and w.tags.get("motorcar") not in ("no", "private"))
 
+
+def direction_flags(tags):
+    """Static passenger-car directions; None means unsupported, not two-way.
+
+    Explicit values override implied motorway/roundabout direction. Time-varying
+    and unknown values cannot be interpreted without another routing contract.
+    """
+    if any(tags.get(key) for key in ("oneway:conditional", "oneway:motor_vehicle:conditional",
+                                    "oneway:motorcar:conditional")):
+        return None
+    value = tags.get("oneway:motorcar", tags.get("oneway:motor_vehicle", tags.get("oneway", ""))).strip().lower()
+    if value in ("yes", "true", "1"):
+        return True, False
+    if value == "-1":
+        return False, True
+    if value in ("no", "false", "0"):
+        return True, True
+    if value:
+        return None
+    if tags.get("junction") == "roundabout" or tags.get("highway") == "motorway":
+        return True, False
+    return True, True
+
 class JunctionIndex(osmium.SimpleHandler):
     def __init__(self):
         super().__init__()
@@ -60,11 +83,24 @@ class RoadHandler(osmium.SimpleHandler):
         self.keep = keep
         self.ways = 0
         self.max_nodes = max_nodes
+        self.graph.graph.update(routing_model="static-passenger-car-v2",
+                                unsupported_direction_way_count=0,
+                                unsupported_direction_way_ids=[],
+                                turn_restrictions_modeled=False,
+                                physical_legal_access_certified=False)
 
     def way(self, w):
         if not drivable(w): return
+        directions = direction_flags(w.tags)
+        if directions is None:
+            self.graph.graph["unsupported_direction_way_count"] += 1
+            self.graph.graph["unsupported_direction_way_ids"].append(
+                int(w.id) if getattr(w, "id", None) is not None else None)
+            return
+        if any(not n.location.valid() for n in w.nodes):
+            raise ValueError("Missing OSM way node location; refuse invented road chord")
         points = [(int(n.ref), float(n.location.lon), float(n.location.lat))
-                  for n in w.nodes if n.location.valid()]
+                  for n in w.nodes]
         if len(points) < 2: return
         speed = SPEED_KPH[w.tags.get("highway")]
         posted = w.tags.get("maxspeed", "").strip().lower()
@@ -72,8 +108,7 @@ class RoadHandler(osmium.SimpleHandler):
         if part.isdecimal():
             speed = max(5, min(140, int(part)*(1.609344 if "mph" in posted else 1)))
         oneway = w.tags.get("oneway", "").lower()
-        forward = oneway != "-1"
-        backward = oneway not in ("yes", "true", "1") and w.tags.get("junction") != "roundabout"
+        forward, backward = directions
         origin = points[0]
         distance = 0.0
         shape = [origin]
@@ -82,7 +117,7 @@ class RoadHandler(osmium.SimpleHandler):
             shape.append(b)
             if b[0] not in self.keep: continue
             u, v = origin[0], b[0]
-            if u != v and distance > 0:
+            if distance > 0:
                 self.graph.add_node(u, x=origin[1], y=origin[2])
                 self.graph.add_node(v, x=b[1], y=b[2])
                 cost = {"length":distance, "travel_time":distance/(speed*1000/3600),
