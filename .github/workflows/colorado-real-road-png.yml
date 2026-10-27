@@ -10,6 +10,7 @@ on:
       - 'scripts/colorado_routed_raster_diagnostics.py'
       - 'scripts/colorado_road_png_dijkstra_oracle.py'
       - 'scripts/colorado_connector_review_queue.py'
+      - 'scripts/colorado_extract_comparison.py'
   push:
     branches: [main]
     paths:
@@ -19,7 +20,7 @@ permissions:
 jobs:
   real-source-preview:
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v6
@@ -131,6 +132,30 @@ jobs:
             --threshold 100000 --max-gap-m 100 --per-metro 4 \
             --output colorado-real-road-preview/connector-review-queue.json \
             2>&1 | tee colorado-real-road-preview/connector-review-queue.log
+      - name: Compare bounded expanded Colorado road extract with baseline
+        run: |
+          set -euo pipefail
+          osmium extract --bbox=-106.5,38.3,-104.0,40.6 --strategy=complete_ways local-data/colorado.osm.pbf -o local-data/expanded-corridor.osm.pbf
+          osmium tags-filter local-data/expanded-corridor.osm.pbf w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,residential,unclassified,living_street,service -o local-data/expanded-roads.osm.pbf
+          sha256sum local-data/expanded-roads.osm.pbf > colorado-real-road-preview/expanded-road-sha256.txt
+          timeout --signal=TERM --kill-after=30s 12m python -u scripts/colorado_extract_comparison.py \
+            --baseline-osm local-data/roads.osm.pbf \
+            --expanded-osm local-data/expanded-roads.osm.pbf \
+            --metros public/data/metros-census-2025.csv \
+            --output colorado-real-road-preview/extract-comparison.json \
+            2>&1 | tee colorado-real-road-preview/extract-comparison.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result = json.loads(Path("colorado-real-road-preview/extract-comparison.json").read_text())
+          assert result["release_eligible"] is False
+          assert result["access_certified"] is False
+          assert result["extract_coverage_certified"] is False
+          assert result["qualifying_cbsa_count"] == 359, "Unexpected qualifying metro inventory"
+          for cbsa in ("14500", "17820"):
+              row = next(x for x in result["metros"] if x["cbsa"] == cbsa)
+              print(json.dumps(row, sort_keys=True))
+          PY
       - name: Reject unapproved evidence and cross-source manifest mismatches
         run: |
           python - <<'PY'
