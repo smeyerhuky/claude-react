@@ -14,6 +14,10 @@ on:
       - 'scripts/colorado_competition_blockers.py'
       - 'scripts/colorado_origin_source_investigation.py'
       - 'scripts/test_colorado_origin_source_investigation.py'
+      - 'scripts/road_spike.py'
+      - 'scripts/test_road_direction_budgets.py'
+      - 'scripts/colorado_real_directed_competition.py'
+      - 'scripts/test_colorado_real_directed_competition.py'
   push:
     branches: [main]
     paths:
@@ -186,6 +190,38 @@ jobs:
               row = next(x for x in result["metros"] if x["cbsa"] == cbsa)
               print(json.dumps(row, sort_keys=True))
           PY
+      - name: Independently compare real directed competition and network budgets
+        run: |
+          set -euo pipefail
+          PYTHONPATH=scripts python -m unittest -v scripts/test_road_spike.py scripts/test_road_direction_budgets.py scripts/test_colorado_real_directed_competition.py
+          timeout --signal=TERM --kill-after=30s 18m python -u scripts/colorado_real_directed_competition.py \
+            --baseline-osm local-data/roads.osm.pbf --expanded-osm local-data/expanded-roads.osm.pbf \
+            --metros public/data/metros-census-2025.csv \
+            --output colorado-real-road-preview/real-directed-competition.json \
+            2>&1 | tee colorado-real-road-preview/real-directed-competition.log
+          python - <<'PYCODE'
+          import csv
+          import json
+          from pathlib import Path
+          r = json.loads(Path("colorado-real-road-preview/real-directed-competition.json").read_text())
+          assert r["release_eligible"] is False and r["access_certified"] is False
+          assert r["complete_global_competition"] is False and r["graph_inclusion_proven"] is False
+          with Path("public/data/metros-census-2025.csv").open(newline="") as handle:
+              eligible = sorted(row["cbsa"] for row in csv.DictReader(handle) if int(row["population"]) >= 100000)
+          selected = {s["cbsa"] for s in r["sources"]}
+          assert selected == {"14500", "17820", "19740"}
+          assert r["qualifying_cbsa_ids"] == eligible
+          assert set(r["omitted_qualifying_cbsa_ids"]) == set(eligible)-selected
+          assert len(r["fixed_probe_node_ids"]) >= 3
+          for graph in ("baseline", "expanded"):
+              for direction in ("location-to-metro", "metro-to-location"):
+                  for metric in ("length", "travel_time"):
+                      data = r[graph][direction][metric]
+                      assert data["oracle_disagreements"] == 0
+                      assert data["single_metro_isochrone"]["probe_disagreements"] == 0
+                      assert selected.issubset({p["winner"] for p in data["probes"]})
+                      assert any(len(p.get("source_costs", [])) >= 2 for p in data["probes"]), "Vacuous competition: no probe has two reachable metros"
+          PYCODE
       - name: Inventory complete-source blockers from real expanded OSM comparison
         run: |
           set -euo pipefail

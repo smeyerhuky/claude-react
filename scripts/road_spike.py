@@ -23,25 +23,45 @@ def metro_candidates(path, threshold):
         ]
 
 
-def assign(graph, sources, weight, nx):
-    """Winner per node by node→metro directed shortest cost, O(V+E) memory.
+def assign(graph, sources, weight, nx=None, *, orientation="location-to-metro",
+           max_cost=None):
+    """Winner per node with explicit direction and optional budget.
 
-    Run multi-source Dijkstra on REVERSED roads, carrying the winning CBSA
-    with each frontier item. This avoids storing a full route for every node.
+    Default preserves node→metro research results. Forward roads support
+    outward metro→node competition and network isochrones. A budget limits
+    modeled network cost only; it does not certify off-road access or closure.
     """
     import heapq
+    if orientation not in ("location-to-metro", "metro-to-location"):
+        raise ValueError("Invalid route orientation")
+    if not graph.is_directed() or weight not in ("length", "travel_time"):
+        raise ValueError("Directed graph and supported metric required")
+    if max_cost is not None and (isinstance(max_cost, bool) or
+            not isinstance(max_cost, (int, float)) or not math.isfinite(max_cost)
+            or max_cost < 0):
+        raise ValueError("Invalid network cost budget")
+    # Check the entire supplied graph even when a budget would hide bad arcs.
+    for _, _, data in graph.edges(data=True):
+        value = data.get(weight)
+        if (isinstance(value, bool) or not isinstance(value, (int, float)) or
+                not math.isfinite(value) or value < 0):
+            raise ValueError("Missing, non-finite or negative edge cost")
     frontier = []
     best = {}
+    if not sources or any(m["node"] not in graph for m in sources):
+        raise ValueError("Missing source or source outside graph")
     for metro in sorted(sources, key=lambda m: m["cbsa"]):
         node, cbsa = metro["node"], metro["cbsa"]
         heapq.heappush(frontier, (0.0, cbsa, node))
-    reverse = graph.reverse(copy=False)
+    roads = graph.reverse(copy=False) if orientation == "location-to-metro" else graph
     while frontier:
         cost, cbsa, node = heapq.heappop(frontier)
+        if max_cost is not None and cost > max_cost:
+            break
         if node in best:
             continue
         best[node] = {"cbsa": cbsa, "cost": round(cost, 3)}
-        for neighbor, edges in reverse.adj[node].items():
+        for neighbor, edges in roads.adj[node].items():
             if neighbor in best:
                 continue
             if graph.is_multigraph():
