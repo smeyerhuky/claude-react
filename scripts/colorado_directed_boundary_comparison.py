@@ -38,7 +38,7 @@ def directed_winner(graph, sources, target, weight):
     return {"status": "reachable", "winner": tied[0]}
 
 
-def compare_directed_winners(baseline, expanded, sources, probes, weight):
+def compare_directed_winners(baseline, expanded, sources, probes, weight):\n    # A larger bbox alone does not prove graph inclusion. Missing baseline\n    # directed arcs would make a winner comparison misleading.\n    for u, v, key, data in baseline.edges(keys=True, data=True) if baseline.is_multigraph() else ((u, v, None, data) for u, v, data in baseline.edges(data=True)):\n        if not expanded.has_edge(u, v):\n            raise ValueError("Expanded graph lost a baseline directed arc")\n    if not sources or len(sources) < 2:\n        raise ValueError("Need at least two competing metro sources")
     if not probes or len(probes) != len(set(probes)):
         raise ValueError("Missing or duplicate probes")
     rows = []
