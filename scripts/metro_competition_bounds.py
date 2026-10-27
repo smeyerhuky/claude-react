@@ -14,7 +14,9 @@ def number(value):
     if isinstance(value, bool) or not isinstance(value, (int, float, str, Fraction)):
         raise ValueError("Expected finite numeric value")
     try:
-        return Fraction(str(value))
+        # Preserve the actual stored binary coordinate/cost. Decimal text of a
+        # float is round-trip safe, but is not its exact mathematical value.
+        return Fraction.from_float(value) if isinstance(value, float) else Fraction(str(value))
     except (ValueError, ZeroDivisionError, OverflowError) as error:
         raise ValueError("Expected finite numeric value") from error
 
@@ -90,9 +92,10 @@ def screen_competitors(eligible_ids, origin_domains, destination, *, metric,
                      "lower_bound": None if bound is None else float(bound),
                      "lower_bound_exact": None if bound is None else [str(bound.numerator), str(bound.denominator)]})
     return {"release_eligible": False, "complete_global_competition": False,
-            "method": "rational-spherical-coordinate-lower-bound-v1",
+            "method": "rational-spherical-coordinate-lower-bound-v2",
             "metric": metric, "units": "meters" if metric == "length" else "seconds",
             "conditional_only": True, "applied_source_exclusions": [], "sources": rows,
+            "numeric_input_contract": "Float values preserve their exact stored binary value; strings and rational values retain explicit exact semantics",
             "preconditions_not_certified": ["complete independently justified origin domains",
                 "all full route costs dominate the radius-6371000m spherical geometry",
                 "feasible full incumbent with the same endpoints, metric and orientation",

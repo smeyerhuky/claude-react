@@ -32,8 +32,17 @@ entire route. Time costs must additionally obey a *global* speed ceiling,
 including exterior roads and connectors; divide the length bound by that speed.
 The comparison is strict: a source can only be conditionally screened when its
 lower bound exceeds a feasible incumbent upper bound plus the chosen margin.
-All arithmetic and comparisons are exact rational operations on decimal input
-values. Display floats do not determine screening decisions.
+Version 2 preserves Python float inputs as their exact stored binary values;
+explicit decimal strings, integers and rational inputs retain their exact
+semantics. All bound arithmetic and comparisons use rational operations.
+Display floats do not determine screening decisions. Converting a float via
+`Fraction(str(value))` would substitute a nearby decimal endpoint: for adjacent
+binary floats at latitude 40 degrees this previously inflated the rational
+lower bound to 1.111e-9 m, above even a 7.901e-10 m upper bound on the spherical
+meridian distance. Regression tests use the independent rational inequality
+`pi < 355/113` to reject this failure at tiny separations and ensure the source
+remains a possible competitor. This fixes numerical input interpretation; it
+does not establish datum alignment, modeled-cost domination or legal access.
 
 These are conditional mathematical statements, not proof that a particular
 origin envelope, incumbent route, floating-point graph model or global speed
