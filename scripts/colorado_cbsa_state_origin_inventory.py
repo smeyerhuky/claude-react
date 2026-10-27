@@ -78,7 +78,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--metros", required=True)
     p.add_argument("--tiger-state-zip", required=True)
-    p.add_argument("--audit", required=True)
+    p.add_argument("--audit")
     p.add_argument("--threshold", type=int, default=100000)
     p.add_argument("--output", required=True)
     args = p.parse_args()
@@ -90,11 +90,12 @@ def main():
         raise ValueError("Missing or duplicate official Colorado state polygon")
     with Path(args.metros).open(newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
-    audit = json.loads(Path(args.audit).read_text())
+    audit = json.loads(Path(args.audit).read_text()) if args.audit else None
     result = classify_representative_points(rows, states[0], args.threshold, audit)
     result["tiger_state_zip_sha256"] = hashlib.sha256(Path(args.tiger_state_zip).read_bytes()).hexdigest()
     result["metros_csv_sha256"] = hashlib.sha256(Path(args.metros).read_bytes()).hexdigest()
-    result["audit_sha256"] = hashlib.sha256(Path(args.audit).read_bytes()).hexdigest()
+    if args.audit:
+        result["audit_sha256"] = hashlib.sha256(Path(args.audit).read_bytes()).hexdigest()
     Path(args.output).write_text(json.dumps(result, sort_keys=True, indent=2) + "\n")
     print(json.dumps({k: v for k, v in result.items() if not k.endswith("_ids")}, indent=2))
 
