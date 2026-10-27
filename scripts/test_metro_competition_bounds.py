@@ -3,7 +3,7 @@ import random
 import unittest
 from fractions import Fraction
 
-from metro_competition_bounds import distance_lower_bound, screen_competitors
+from metro_competition_bounds import distance_lower_bound, number, screen_competitors
 
 
 def spherical_distance(a, b):
@@ -31,6 +31,25 @@ class CompetitionBoundTests(unittest.TestCase):
         for a, b in pairs:
             self.assertLessEqual(float(distance_lower_bound(a, b)), spherical_distance(a, b)+1e-7)
             self.assertEqual(distance_lower_bound(a, b), distance_lower_bound(b, a))
+
+    def test_binary_float_endpoints_cannot_inflate_a_tiny_lower_bound(self):
+        # 355/113 > pi gives an independent rational UPPER bound on each
+        # meridian distance. The old decimal substitution exceeded even this.
+        for latitude in (.1, 40., -40., 89., -89.):
+            adjacent = math.nextafter(latitude, math.inf)
+            delta = Fraction.from_float(adjacent)-Fraction.from_float(latitude)
+            distance_upper = 6371000*Fraction(355, 113)*delta/180
+            lower = distance_lower_bound((0, latitude), (0, adjacent))
+            self.assertGreater(lower, 0)
+            self.assertLessEqual(lower, distance_upper)
+            # A full meridian route plus a tiny detour can be feasible under
+            # this upper budget; a lower bound must never exclude this source.
+            result = screen_competitors(["a"], {"a": domain((0, latitude))},
+                (0, adjacent), metric="length", incumbent_cost=distance_upper)
+            self.assertFalse(result["sources"][0]["conditional_exclusion"])
+        self.assertEqual(number(.1), Fraction.from_float(.1))
+        self.assertEqual(number("0.1"), Fraction(1, 10))
+        self.assertNotEqual(number(.1), number("0.1"))
 
     def test_endpoint_domains_and_connector_costs_cannot_disappear(self):
         source, anchor, destination, attachment = (0, 0), (1, 1), (10, 10), (9, 9)
