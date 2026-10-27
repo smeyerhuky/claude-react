@@ -16,6 +16,7 @@ from stream_osm_roads import meters
 def _atoms(graph):
     if not graph.is_directed() or not graph.is_multigraph():
         raise ValueError("Expected directed OSM multigraph")
+    interior_owners = {}
     for u, v, _, data in graph.edges(keys=True, data=True):
         geometry = data.get("geometry")
         ids = data.get("osm_node_ids")
@@ -31,6 +32,18 @@ def _atoms(graph):
                any(isinstance(x, bool) or not isinstance(x, (int, float)) or not math.isfinite(x) for x in p)
                for p in geometry):
             raise ValueError("Invalid OSM segment coordinates")
+        interior = ids[1:-1]
+        if len(interior) != len(set(interior)) or any(node in graph for node in interior):
+            raise ValueError("Contraction bypasses a graph junction or repeated interior node")
+        # An interior shape vertex cannot hide a junction shared by another
+        # physical edge. Exact parallel/reverse copies are the same shape.
+        sequence = tuple((node, tuple(float(x) for x in point))
+                         for node, point in zip(ids, geometry))
+        physical = hashlib.sha256(repr((way, min(sequence, tuple(reversed(sequence))))).encode("utf-8")).digest()
+        for node in interior:
+            owner = interior_owners.setdefault(node, physical)
+            if owner != physical:
+                raise ValueError("Contraction hides a shared interior OSM junction")
         for node, point in ((u, geometry[0]), (v, geometry[-1])):
             attrs = graph.nodes[node]
             if (attrs.get("x"), attrs.get("y")) != tuple(point):

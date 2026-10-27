@@ -13,6 +13,12 @@ recomputes edge length and modeled time from full geometry/speed and checks them
 within explicit floating-point tolerance. It also checks graph endpoints against
 their source geometry. Missing provenance fails closed.
 
+Validate contraction independently: no graph junction may be buried inside an
+edge, no repeated interior node may be contracted away, and no interior vertex
+may be shared by different physical edge shapes. Exact reverse/parallel copies
+of one physical shape are allowed. Without these checks, preserved atomic counts
+and retained nodes could conceal a lost turn at a buried junction.
+
 Require the expanded multiset to contain every baseline directed primitive arc,
 and require every baseline graph junction node to remain a graph node. Thus each
 baseline contracted arc has an expanded path through the same ordered primitive
