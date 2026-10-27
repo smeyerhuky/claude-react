@@ -10,6 +10,7 @@ import argparse
 import gc
 import hashlib
 import json
+import math
 from pathlib import Path
 
 import networkx as nx
@@ -17,10 +18,78 @@ import networkx as nx
 from colorado_metro_winners import read_metros, snap_candidates
 from colorado_road_subdivision_preservation import baseline_snapshot, verify_expansion
 from road_spike import assign
-from stream_osm_roads import load_pbf
+from stream_osm_roads import load_pbf, meters
 
 ORIENTATIONS = ("location-to-metro", "metro-to-location")
 METRICS = ("length", "travel_time")
+
+
+def validate_boundary_regressions(result, fixture):
+    """Check historical real-data failures without granting release eligibility."""
+    if (result.get("release_eligible") is not False or result.get("access_certified") is not False or
+            fixture.get("release_eligible") is not False or fixture.get("access_certified") is not False):
+        raise ValueError("Boundary regression must remain research-only")
+    if sorted(s["cbsa"] for s in result["sources"]) != fixture["source_cbsa_ids"]:
+        raise ValueError("Boundary regression source inventory mismatch")
+    if any(result[graph+"_routing_model"].get("routing_model") != fixture["routing_model"] for graph in ("baseline", "expanded")):
+        raise ValueError("Boundary regression graph model mismatch")
+    direction = fixture["orientation"]
+    if direction != "metro-to-location" or not fixture["probes"]:
+        raise ValueError("Invalid boundary regression orientation/probes")
+    seen, checks = set(), []
+    for case in fixture["probes"]:
+        node, metric = case["node"], case["metric"]
+        if metric not in METRICS or (node, metric) in seen:
+            raise ValueError("Invalid or duplicate boundary regression")
+        if case["units"] != ("meters" if metric == "length" else "seconds"):
+            raise ValueError("Boundary regression metric units mismatch")
+        seen.add((node, metric))
+        before, after = [], []
+        for graph, rows in (("baseline", before), ("expanded", after)):
+            matches = [p for p in result[graph][direction][metric]["probes"] if p["probe"] == node]
+            if len(matches) != 1 or matches[0]["status"] != "reachable":
+                raise ValueError("Boundary regression probe missing, duplicated, tied or unreachable")
+            rows.append(matches[0])
+        old, new = before[0], after[0]
+        if old["winner"] != case["baseline_winner"] or new["winner"] != case["expanded_winner"]:
+            raise ValueError("Real boundary winner expectation changed; investigate source/model before refreshing fixture")
+        costs = (old["cost"], new["cost"], case["minimum_cost_decrease"])
+        if any(isinstance(v, bool) or not isinstance(v, (float, int)) or not math.isfinite(v) or v < 0 for v in costs):
+            raise ValueError("Invalid boundary regression cost")
+        decrease = old["cost"] - new["cost"]
+        if decrease < case["minimum_cost_decrease"]:
+            raise ValueError("Real boundary route improvement disappeared; investigate source/model")
+        checks.append({"probe": node, "metric": metric, "baseline_winner": old["winner"],
+                       "expanded_winner": new["winner"], "cost_decrease": decrease,
+                       "units": case["units"], "expectations_met": True})
+    return {"release_eligible": False, "access_certified": False, "cases": checks}
+
+
+def boundary_route_witness(graph, sources, case, baseline_way_ids, bounds):
+    """Trace one independent expanded route through added OSM ways."""
+    source = next(s["node"] for s in sources if s["cbsa"] == case["expanded_winner"])
+    target, metric = int(case["node"]), case["metric"]
+    path = nx.shortest_path(graph, source, target, weight=metric)
+    west, south, east, north = bounds
+    def inside(point):
+        return west <= point[0] <= east and south <= point[1] <= north
+    outside, added, cost = 0, set(), 0.
+    for u, v in zip(path, path[1:]):
+        edge = min(graph[u][v].values(), key=lambda d: (d[metric], d["osm_way_id"]))
+        cost += edge[metric]
+        outside += sum(not inside(point) for point in edge["geometry"])
+        if edge["osm_way_id"] not in baseline_way_ids:
+            added.add(edge["osm_way_id"])
+    leave_reenter = inside((graph.nodes[source]["x"], graph.nodes[source]["y"])) and inside(
+        (graph.nodes[target]["x"], graph.nodes[target]["y"])) and outside > 0
+    if not added or (case["require_leave_and_reenter"] and not leave_reenter):
+        raise ValueError("Expected added-road/leave-and-reenter witness disappeared")
+    return {"probe": str(target), "metric": metric, "source_node": str(source),
+            "source_cbsa": case["expanded_winner"], "release_eligible": False, "access_certified": False,
+            "route_cost": cost, "added_osm_way_ids": sorted(added),
+            "geometry_points_outside_baseline_extract_bbox": outside,
+            "leaves_and_reenters_declared_bbox": leave_reenter,
+            "warning": "BBox excursion and added ways explain a model comparison; neither certifies coverage or legal access"}
 
 
 def audit_graph(graph, sources, probes, *, budgets=(10000, 600)):
@@ -87,6 +156,8 @@ def main():
     p.add_argument("--metros", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
     args = p.parse_args()
+    fixture_path = Path(__file__).with_name("colorado_boundary_regression_probes.json")
+    fixture = json.loads(fixture_path.read_text())
     metros = read_metros(args.metros)
     eligible = [m for m in metros if m["population"] >= 100000]
     ids = [m["cbsa"] for m in eligible]
@@ -106,6 +177,12 @@ def main():
     if rejected:
         raise ValueError("Missing deterministic probe")
     probes = sorted({s["node"] for s in sources} | {probe_selection[0]["node"]})
+    probes = sorted(set(probes) | {int(case["node"]) for case in fixture["probes"]})
+    for case in fixture["probes"]:
+        node = int(case["node"])
+        if node not in baseline or meters(case["lonlat"], (baseline.nodes[node]["x"], baseline.nodes[node]["y"])) > 1:
+            raise ValueError("Boundary regression OSM node/coordinate changed")
+    baseline_way_ids = {data["osm_way_id"] for _, _, data in baseline.edges(data=True)}
     snapshot = baseline_snapshot(baseline)
     result = {"release_eligible": False, "access_certified": False,
               "extract_coverage_certified": False, "complete_global_competition": False,
@@ -126,6 +203,16 @@ def main():
     del snapshot
     gc.collect()
     result["expanded"] = audit_graph(expanded, sources, probes)
+    result["boundary_regressions"] = validate_boundary_regressions(result, fixture)
+    result["boundary_regressions"]["fixture_sha256"] = hashlib.sha256(fixture_path.read_bytes()).hexdigest()
+    result["boundary_regressions"]["discovery_osm_sha256"] = fixture["discovery_osm_sha256"]
+    result["boundary_regressions"]["route_witnesses"] = [
+        boundary_route_witness(expanded, sources, case, baseline_way_ids, fixture["baseline_extract_bbox"])
+        for case in fixture["probes"]]
+    for case, witness in zip(fixture["probes"], result["boundary_regressions"]["route_witnesses"]):
+        row = next(p for p in result["expanded"][fixture["orientation"]][case["metric"]]["probes"] if p["probe"] == case["node"])
+        if abs(witness["route_cost"] - row["cost"]) > max(.002, row["cost"]*1e-9):
+            raise ValueError("Boundary route witness differs from independent probe cost")
     changes = []
     for orientation in ORIENTATIONS:
         for metric in METRICS:

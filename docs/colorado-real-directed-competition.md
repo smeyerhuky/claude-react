@@ -22,7 +22,8 @@ Census representative coordinates or evidence of drivable geographic access.
 For each graph, metric (meters or modeled seconds), and orientation
 (location-to-metro or metro-to-location), compare custom multi-source winner
 labels to independent per-probe NetworkX Dijkstra source costs. Use each of the
-three source nodes plus a road vertex selected near Sloan's Lake as fixed probes.
+three source nodes, a road vertex selected near Sloan's Lake, and two versioned
+real boundary-regression nodes as fixed probes.
 Require every metro to appear as a winner and at least one probe with two
 reachable competitors. Report all reachable source costs, ties, unreachable
 probes and differences between extracts. Missing fixed nodes fail closed.
@@ -57,3 +58,7 @@ be incomplete.
 See [coverage acceptance](colorado-coverage-acceptance.md) for remaining #138
 obligations. This CLI adds real direction-specific algorithm evidence; it does
 not discharge geographic boundary closure or independent access review.
+
+See [real boundary regressions](colorado-real-boundary-regressions.md): the broader
+scan found twelve modeled-time winner flips, and CI now checks a real
+leave/re-enter route and a substantial distance-cost improvement.

@@ -8,6 +8,8 @@ on:
       - 'scripts/test_colorado_real_directed_competition.py'
       - 'scripts/colorado_road_subdivision_preservation.py'
       - 'scripts/test_colorado_road_subdivision_preservation.py'
+      - 'scripts/colorado_boundary_regression_probes.json'
+      - 'scripts/test_colorado_boundary_regressions.py'
       - 'scripts/stream_osm_roads.py'
       - 'scripts/road_segment_snapping.py'
       - 'scripts/road_access_diagnostics.py'

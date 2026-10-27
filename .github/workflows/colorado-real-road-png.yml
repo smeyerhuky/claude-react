@@ -22,6 +22,8 @@ on:
       - 'scripts/test_colorado_real_directed_competition.py'
       - 'scripts/colorado_road_subdivision_preservation.py'
       - 'scripts/test_colorado_road_subdivision_preservation.py'
+      - 'scripts/colorado_boundary_regression_probes.json'
+      - 'scripts/test_colorado_boundary_regressions.py'
   push:
     branches: [main]
     paths:
@@ -203,7 +205,7 @@ jobs:
       - name: Independently compare real directed competition and network budgets
         run: |
           set -euo pipefail
-          PYTHONPATH=scripts python -m unittest -v scripts/test_stream_osm_roads.py scripts/test_road_spike.py scripts/test_road_direction_budgets.py scripts/test_colorado_real_directed_competition.py scripts/test_colorado_road_subdivision_preservation.py
+          PYTHONPATH=scripts python -m unittest -v scripts/test_stream_osm_roads.py scripts/test_road_spike.py scripts/test_road_direction_budgets.py scripts/test_colorado_real_directed_competition.py scripts/test_colorado_road_subdivision_preservation.py scripts/test_colorado_boundary_regressions.py
           timeout --signal=TERM --kill-after=30s 18m python -u scripts/colorado_real_directed_competition.py \
             --baseline-osm local-data/roads.osm.pbf --expanded-osm local-data/expanded-roads.osm.pbf \
             --metros public/data/metros-census-2025.csv \
@@ -226,7 +228,13 @@ jobs:
           assert selected == {"14500", "17820", "19740"}
           assert r["qualifying_cbsa_ids"] == eligible
           assert set(r["omitted_qualifying_cbsa_ids"]) == set(eligible)-selected
-          assert len(r["fixed_probe_node_ids"]) >= 3
+          assert len(r["fixed_probe_node_ids"]) >= 6
+          regressions = r["boundary_regressions"]
+          assert len(regressions["cases"]) == 2
+          assert all(c["expectations_met"] for c in regressions["cases"])
+          witnesses = regressions["route_witnesses"]
+          assert all(w["added_osm_way_ids"] for w in witnesses)
+          assert any(w["leaves_and_reenters_declared_bbox"] for w in witnesses)
           for graph in ("baseline", "expanded"):
               for direction in ("location-to-metro", "metro-to-location"):
                   for metric in ("length", "travel_time"):
