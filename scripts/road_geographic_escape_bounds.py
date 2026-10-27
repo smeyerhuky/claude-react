@@ -60,7 +60,7 @@ def screen_exterior_routes(origin, destination, bounds, *, metric, incumbent_upp
             "conditional_exterior_routes_cannot_improve": lower > upper+slack,
             "applied_exterior_route_exclusions": [],
             "preconditions_not_certified": [
-                "all modeled incident ways at every inner-region routing node are included, tied to exact source snapshot and boundary",
+                "all modeled incident ways at every raw OSM node inside the region, including hidden shape nodes, are included and tied to exact source snapshot/boundary",
                 "all full route costs dominate the declared spherical geometry, including connectors and numerical errors",
                 "independently justified endpoint domains and feasible fully costed incumbent upper bound",
                 "global speed ceiling including exterior roads and connectors for travel_time",

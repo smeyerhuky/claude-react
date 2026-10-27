@@ -31,7 +31,8 @@ binary float interpretation comes from conditional competition bounds version 2.
 supplied feasible full incumbent upper bound plus margin. Ties remain possible.
 A positive conditional result only becomes usable after proving all of:
 
-- Complete incident modeled ways at every inner routing node, bound to the
+- Complete incident modeled ways at every raw OSM node inside the region,
+  including shape nodes hidden by contraction, bound to the
   actual source snapshot, extraction process and geographic boundary.
 - Full route costs dominate this coordinate model, including floating-point
   errors, origin/destination connectors and a global time-speed ceiling.
