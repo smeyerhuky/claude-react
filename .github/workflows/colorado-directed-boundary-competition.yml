@@ -1,0 +1,21 @@
+name: Colorado directed boundary competition contracts
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/colorado_directed_boundary_comparison.py'
+      - 'scripts/test_colorado_directed_boundary_comparison.py'
+      - '.github/workflows/colorado-directed-boundary-competition.yml'
+permissions:
+  contents: read
+jobs:
+  directed-boundary-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx>=3.4,<4'
+      - run: PYTHONPATH=scripts python -m unittest -v scripts/test_colorado_directed_boundary_comparison.py
