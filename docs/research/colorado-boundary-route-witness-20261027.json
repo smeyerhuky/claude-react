@@ -1,0 +1,50 @@
+[
+  {
+    "probe": "176941993",
+    "metric": "travel_time",
+    "winner": "19740",
+    "cost": 2683.2769771061758,
+    "route_road_edges": 288,
+    "route_bounds": [
+      -104.9006949,
+      39.3031617,
+      -104.4735985,
+      39.4500581
+    ],
+    "geometry_points_outside_original_bbox": 74,
+    "route_way_ids_absent_from_baseline_pbf": [
+      17045571
+    ],
+    "probe_lonlat": [
+      -104.5145698,
+      39.3031617
+    ]
+  },
+  {
+    "probe": "176985903",
+    "metric": "length",
+    "winner": "17820",
+    "cost": 125667.11029917184,
+    "route_road_edges": 506,
+    "route_bounds": [
+      -105.5085998,
+      38.5856486,
+      -104.6406056,
+      38.9851245
+    ],
+    "geometry_points_outside_original_bbox": 588,
+    "route_way_ids_absent_from_baseline_pbf": [
+      17051634,
+      17053154,
+      17121387,
+      180073451,
+      180073452,
+      1258539402,
+      1258539403
+    ],
+    "probe_lonlat": [
+      -105.5081393,
+      38.5994114
+    ]
+  }
+]

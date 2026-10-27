@@ -1,0 +1,64 @@
+{
+  "schema_version": "colorado-real-boundary-probes-v1",
+  "release_eligible": false,
+  "access_certified": false,
+  "discovery_osm_sha256": "7bd588e3c811eef3620dd3d4b4646252b238b2483c6c8463434c4ca021822c7c",
+  "source_cbsa_ids": [
+    "14500",
+    "17820",
+    "19740"
+  ],
+  "source_contract": "Unapproved baseline nearest-node research snaps; graph-vertex routes only; all connector costs excluded",
+  "orientation": "metro-to-location",
+  "baseline_extract_bbox": [
+    -106.1,
+    38.65,
+    -104.5,
+    40.1
+  ],
+  "probes": [
+    {
+      "node": "176941993",
+      "lonlat": [
+        -104.5145698,
+        39.3031617
+      ],
+      "metric": "travel_time",
+      "baseline_winner": "17820",
+      "expanded_winner": "19740",
+      "minimum_cost_decrease": 200.0,
+      "units": "seconds",
+      "require_leave_and_reenter": true,
+      "observed_baseline_cost": 2925.8073820303143,
+      "observed_expanded_cost": 2683.2769771061758,
+      "observed_added_way_ids": [
+        17045571
+      ]
+    },
+    {
+      "node": "176985903",
+      "lonlat": [
+        -105.5081393,
+        38.5994114
+      ],
+      "metric": "length",
+      "baseline_winner": "17820",
+      "expanded_winner": "17820",
+      "minimum_cost_decrease": 20000.0,
+      "units": "meters",
+      "require_leave_and_reenter": false,
+      "observed_baseline_cost": 147470.7280339001,
+      "observed_expanded_cost": 125667.11029917192,
+      "observed_added_way_ids": [
+        17051634,
+        17053154,
+        17121387,
+        180073451,
+        180073452,
+        1258539402,
+        1258539403
+      ]
+    }
+  ],
+  "routing_model": "static-passenger-car-v2"
+}

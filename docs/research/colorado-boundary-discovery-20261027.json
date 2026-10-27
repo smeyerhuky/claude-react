@@ -1,0 +1,458 @@
+{
+  "release_eligible": false,
+  "access_certified": false,
+  "global_competition_complete": false,
+  "source_contract": "three unapproved snapped graph nodes; connector costs excluded",
+  "sources": [
+    {
+      "cbsa": "19740",
+      "name": "Denver-Aurora-Centennial, CO Metro Area",
+      "population": 3092037,
+      "lon": -104.9010728,
+      "lat": 39.434789,
+      "node": 6350018589,
+      "snap_m": 32.5
+    },
+    {
+      "cbsa": "17820",
+      "name": "Colorado Springs, CO Metro Area",
+      "population": 781796,
+      "lon": -104.6387277,
+      "lat": 38.8455072,
+      "node": 4152315425,
+      "snap_m": 1139.3
+    },
+    {
+      "cbsa": "14500",
+      "name": "Boulder, CO Metro Area",
+      "population": 328560,
+      "lon": -105.3977104,
+      "lat": 40.0949712,
+      "node": 176404071,
+      "snap_m": 1942.2
+    }
+  ],
+  "metrics": {
+    "length": {
+      "common_reachable_vertices": 578930,
+      "changed_winners": 0,
+      "cost_decreases": 1250,
+      "cost_increases": 0,
+      "newly_reachable_baseline_vertices": 300,
+      "lost_reachable_baseline_vertices": 0,
+      "probes": [
+        {
+          "node": "176985903",
+          "lonlat": [
+            -105.5081393,
+            38.5994114
+          ],
+          "baseline": {
+            "cbsa": "17820",
+            "cost": 147470.728
+          },
+          "expanded": {
+            "cbsa": "17820",
+            "cost": 125667.11
+          },
+          "expanded_oracle_costs": [
+            [
+              125667.11029917192,
+              "17820"
+            ],
+            [
+              156225.34067079105,
+              "19740"
+            ],
+            [
+              238449.72517264154,
+              "14500"
+            ]
+          ],
+          "baseline_oracle_costs": [
+            [
+              147470.7280339001,
+              "17820"
+            ],
+            [
+              176333.398116156,
+              "19740"
+            ],
+            [
+              256380.88021066663,
+              "14500"
+            ]
+          ]
+        },
+        {
+          "node": "2543900908",
+          "lonlat": [
+            -106.1040057,
+            39.8300771
+          ],
+          "baseline": {
+            "cbsa": "14500",
+            "cost": 166825.815
+          },
+          "expanded": {
+            "cbsa": "14500",
+            "cost": 148956.766
+          },
+          "expanded_oracle_costs": [
+            [
+              148956.76554714423,
+              "14500"
+            ],
+            [
+              166515.88485576745,
+              "19740"
+            ],
+            [
+              229847.9985517846,
+              "17820"
+            ]
+          ],
+          "baseline_oracle_costs": [
+            [
+              166825.81515898643,
+              "14500"
+            ],
+            [
+              184384.93446760986,
+              "19740"
+            ],
+            [
+              261163.24126550055,
+              "17820"
+            ]
+          ]
+        },
+        {
+          "node": "2726244948",
+          "lonlat": [
+            -105.8923889,
+            40.1144043
+          ],
+          "baseline": {
+            "cbsa": "14500",
+            "cost": 159901.5
+          },
+          "expanded": {
+            "cbsa": "14500",
+            "cost": 140757.739
+          },
+          "expanded_oracle_costs": [
+            [
+              140757.7387348188,
+              "14500"
+            ],
+            [
+              174535.14665181522,
+              "19740"
+            ],
+            [
+              251313.4534497059,
+              "17820"
+            ]
+          ],
+          "baseline_oracle_costs": [
+            [
+              159901.49977000605,
+              "14500"
+            ],
+            [
+              177460.61907862936,
+              "19740"
+            ],
+            [
+              254238.92587652005,
+              "17820"
+            ]
+          ]
+        }
+      ]
+    },
+    "travel_time": {
+      "common_reachable_vertices": 578930,
+      "changed_winners": 12,
+      "cost_decreases": 980,
+      "cost_increases": 0,
+      "newly_reachable_baseline_vertices": 300,
+      "lost_reachable_baseline_vertices": 0,
+      "probes": [
+        {
+          "node": "176925919",
+          "lonlat": [
+            -104.4933932,
+            39.3031679
+          ],
+          "baseline": {
+            "cbsa": "17820",
+            "cost": 2762.77
+          },
+          "expanded": {
+            "cbsa": "19740",
+            "cost": 2520.24
+          },
+          "expanded_oracle_costs": [
+            [
+              2520.2398550209896,
+              "19740"
+            ],
+            [
+              2762.7702599451263,
+              "17820"
+            ],
+            [
+              6187.528274659484,
+              "14500"
+            ]
+          ],
+          "baseline_oracle_costs": [
+            [
+              2762.7702599451263,
+              "17820"
+            ],
+            [
+              3040.4788671554516,
+              "19740"
+            ],
+            [
+              6707.767286793949,
+              "14500"
+            ]
+          ]
+        },
+        {
+          "node": "176941993",
+          "lonlat": [
+            -104.5145698,
+            39.3031617
+          ],
+          "baseline": {
+            "cbsa": "17820",
+            "cost": 2925.807
+          },
+          "expanded": {
+            "cbsa": "19740",
+            "cost": 2683.277
+          },
+          "expanded_oracle_costs": [
+            [
+              2683.2769771061758,
+              "19740"
+            ],
+            [
+              2925.8073820303143,
+              "17820"
+            ],
+            [
+              6350.565396744671,
+              "14500"
+            ]
+          ],
+          "baseline_oracle_costs": [
+            [
+              2925.8073820303143,
+              "17820"
+            ],
+            [
+              3203.5159892406377,
+              "19740"
+            ],
+            [
+              6870.804408879134,
+              "14500"
+            ]
+          ]
+        },
+        {
+          "node": "176942007",
+          "lonlat": [
+            -104.5150977,
+            39.3058917
+          ],
+          "baseline": {
+            "cbsa": "17820",
+            "cost": 2966.568
+          },
+          "expanded": {
+            "cbsa": "19740",
+            "cost": 2724.038
+          },
+          "expanded_oracle_costs": [
+            [
+              2724.037740518332,
+              "19740"
+            ],
+            [
+              2966.5681454424707,
+              "17820"
+            ],
+            [
+              6391.326160156828,
+              "14500"
+            ]
+          ],
+          "baseline_oracle_costs": [
+            [
+              2966.5681454424707,
+              "17820"
+            ],
+            [
+              3244.2767526527946,
+              "19740"
+            ],
+            [
+              6911.565172291292,
+              "14500"
+            ]
+          ]
+        },
+        {
+          "node": "176985903",
+          "lonlat": [
+            -105.5081393,
+            38.5994114
+          ],
+          "baseline": {
+            "cbsa": "17820",
+            "cost": 9879.585
+          },
+          "expanded": {
+            "cbsa": "17820",
+            "cost": 5813.694
+          },
+          "expanded_oracle_costs": [
+            [
+              5813.69356979321,
+              "17820"
+            ],
+            [
+              7873.326351818903,
+              "19740"
+            ],
+            [
+              11622.2162118444,
+              "14500"
+            ]
+          ],
+          "baseline_oracle_costs": [
+            [
+              9879.584711719763,
+              "17820"
+            ],
+            [
+              11607.58879309795,
+              "19740"
+            ],
+            [
+              13663.013157371615,
+              "14500"
+            ]
+          ]
+        },
+        {
+          "node": "2543900908",
+          "lonlat": [
+            -106.1040057,
+            39.8300771
+          ],
+          "baseline": {
+            "cbsa": "19740",
+            "cost": 9394.17
+          },
+          "expanded": {
+            "cbsa": "19740",
+            "cost": 6867.862
+          },
+          "expanded_oracle_costs": [
+            [
+              6867.861931986366,
+              "19740"
+            ],
+            [
+              7503.984419951788,
+              "14500"
+            ],
+            [
+              9350.801488253372,
+              "17820"
+            ]
+          ],
+          "baseline_oracle_costs": [
+            [
+              9394.169526510323,
+              "19740"
+            ],
+            [
+              10030.292014475743,
+              "14500"
+            ],
+            [
+              11877.109082777339,
+              "17820"
+            ]
+          ]
+        },
+        {
+          "node": "2543901744",
+          "lonlat": [
+            -106.0976905,
+            39.8358278
+          ],
+          "baseline": {
+            "cbsa": "19740",
+            "cost": 9335.921
+          },
+          "expanded": {
+            "cbsa": "19740",
+            "cost": 6926.11
+          },
+          "expanded_oracle_costs": [
+            [
+              6926.110230679089,
+              "19740"
+            ],
+            [
+              7562.232718644512,
+              "14500"
+            ],
+            [
+              9409.049786946094,
+              "17820"
+            ]
+          ],
+          "baseline_oracle_costs": [
+            [
+              9335.921227817598,
+              "19740"
+            ],
+            [
+              9972.04371578302,
+              "14500"
+            ],
+            [
+              11818.860784084614,
+              "17820"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "seconds": 288.5039036940002,
+  "provenance": {
+    "upstream_osm_sha256": "7bd588e3c811eef3620dd3d4b4646252b238b2483c6c8463434c4ca021822c7c",
+    "routing_model": "static-passenger-car-v2",
+    "code_revision": "85eb752489e4410aefc8a2504943895e027a9cac",
+    "orientation": "metro-to-location",
+    "threshold_population": 100000,
+    "qualifying_source_count": 359,
+    "omitted_qualifying_source_count": 356,
+    "extract_method": "Local pyosmium complete-way extraction with identical baseline/expanded bboxes and highway classes; filtered binary hashes differ from osmium-tool output",
+    "baseline_osm_sha256": "74ff489984af40bbae19252dcbceb639f6bd503a57bfa0aacb70e587669772ee",
+    "expanded_osm_sha256": "976778111c39f91a0504c5c85787851ffc773c15af0b5dbe8a6e48db8ad3f0b4",
+    "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8"
+  }
+}
