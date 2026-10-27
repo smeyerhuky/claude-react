@@ -7,6 +7,7 @@ with independent per-probe reverse Dijkstra, in BOTH orientations and metrics.
 This does not prove graph inclusion or global coverage.
 """
 import argparse
+import gc
 import hashlib
 import json
 from pathlib import Path
@@ -14,6 +15,7 @@ from pathlib import Path
 import networkx as nx
 
 from colorado_metro_winners import read_metros, snap_candidates
+from colorado_road_subdivision_preservation import baseline_snapshot, verify_expansion
 from road_spike import assign
 from stream_osm_roads import load_pbf
 
@@ -104,6 +106,7 @@ def main():
     if rejected:
         raise ValueError("Missing deterministic probe")
     probes = sorted({s["node"] for s in sources} | {probe_selection[0]["node"]})
+    snapshot = baseline_snapshot(baseline)
     result = {"release_eligible": False, "access_certified": False,
               "extract_coverage_certified": False, "complete_global_competition": False,
               "threshold_population": 100000, "qualifying_cbsa_ids": sorted(ids),
@@ -116,8 +119,12 @@ def main():
               "warning": "Stable winners do not certify coverage; expanded paths may still omit exterior routes. Direction-specific graph vertices are not verified geographic access.",
               "baseline": audit_graph(baseline, sources, probes)}
     del baseline
+    gc.collect()
     expanded, _ = load_pbf(args.expanded_osm)
     result["expanded_routing_model"] = dict(expanded.graph)
+    result["baseline_model_path_preservation"] = verify_expansion(snapshot, expanded)
+    del snapshot
+    gc.collect()
     result["expanded"] = audit_graph(expanded, sources, probes)
     changes = []
     for orientation in ORIENTATIONS:

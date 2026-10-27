@@ -48,8 +48,11 @@ release ledger or connector approval is changed. All reports retain
 Equal winners do not prove coverage; lost arcs or exterior routes may be missing.
 The stricter #153 inclusion comparison remains available for graphs with identical
 arc subdivision. Rebuilt contracted OSM extracts may subdivide boundary arcs at
-new junctions; a future common-refinement/cut-arc audit must establish inclusion
-before treating a baseline/expanded comparison as a coverage argument.
+new junctions; the primitive-segment audit now checks modeled baseline path preservation modulo
+subdivision, including directed multiplicity, exact way/node identities, geometry,
+speed, cost consistency and surviving junctions. It does not establish exterior
+cut-arc closure or completeness of either graph. A preserved baseline can still
+be incomplete.
 
 See [coverage acceptance](colorado-coverage-acceptance.md) for remaining #138
 obligations. This CLI adds real direction-specific algorithm evidence; it does
