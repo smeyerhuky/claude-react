@@ -1,11 +1,12 @@
 # Pinned research original-source archive
 
 The fixed manifest at `scripts/research-source-snapshots/co-nm-az-20261027.json`
-records exact CO/NM/AZ/UT OpenStreetMap bytes with common replication timestamp
+records exact CO/NM/AZ/UT/OK OpenStreetMap bytes with common replication timestamp
 2026-10-27T21:23:59Z, Census 2025 population/CBSA/state/county/area-water archives,
 the Colorado Gazetteer, all five Denver-area county water files used by the
-preserved regression, and the unchanged public CONUS CSV. The eighteen original
-files cover the current coupled routing and all four geography test areas.
+preserved regression, and the unchanged public CONUS CSV. The nineteen original
+files cover current coupled routing, all four geography test areas and the
+Oklahoma resource preflight.
 Source URLs, sizes and SHA256 values identify
 each original input. The filename `population.xlsx` preserves the exact official
 `cbsa-met-est2025-pop.xlsx` bytes.
@@ -23,9 +24,10 @@ release. No extra secret values are required.
 This retains original bytes beyond short-lived derived CI artifacts and mutable
 `latest` URLs. Changed upstream bytes must fail; acquire the exact archived asset
 or separately review/version a new snapshot rather than rewriting a checksum.
-`SHA256SUMS-v3` and `source-manifest-v3.json` accompany the complete inputs.
-Revision 3 adds Utah and dated provider acquisition URLs. The collection retains
-its original tag so existing recovery links remain valid. Both earlier revisions
+`SHA256SUMS-v4` and `source-manifest-v4.json` accompany the complete inputs.
+Revision 3 added Utah and dated provider URLs; revision 4 adds the Oklahoma
+resource-preflight input. The collection retains
+its original tag so existing recovery links remain valid. All three earlier revisions
 and their metadata assets are retained unchanged;
 new metadata filenames prevent overwriting earlier checksums or documentation.
 Archive metadata
@@ -39,7 +41,7 @@ Authorized writers can recover the exact inputs without the old workspace:
 gh release download research-sources-20261027-co-nm-az-v1 \
   --repo smeyerhuky/claude-react --dir local-data/pinned-20261027
 cd local-data/pinned-20261027
-sha256sum -c SHA256SUMS-v3
+sha256sum -c SHA256SUMS-v4
 ```
 
 ## Source attribution and rights
@@ -58,3 +60,8 @@ All release/access/global/coverage flags remain false. #137 independent physical
 and legal connector review and a different release approver remain required.
 No source is excluded, no connector is self-certified, and no public map, road
 beta or environment publication is enabled by this archive.
+
+Revision 4 adds the exact Oklahoma PBF used only for the bounded raw-node
+resource counterexample. It does not add Oklahoma roads to routing. Earlier
+v1/v2/v3 metadata names and every earlier original asset remain retained; this
+revision uses fresh v4 metadata names and never publishes the draft.

@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'scripts/road_spike.py'
+      - 'scripts/colorado_node_union_preflight.py'
+      - 'scripts/test_colorado_node_union_preflight.py'
       - 'scripts/colorado_geographic_mask.py'
       - 'scripts/colorado_tiger2025_geography.py'
       - 'scripts/test_colorado_tiger2025_geography.py'

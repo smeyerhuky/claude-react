@@ -113,6 +113,12 @@
       "bytes": 170845020,
       "sha256": "34f704431a8b3812372ec10083e151d4227a50caf19159fc9af730f942940c41",
       "source_url": "https://download.geofabrik.de/north-america/us/utah-261027.osm.pbf"
+    },
+    {
+      "filename": "oklahoma.osm.pbf",
+      "bytes": 169850063,
+      "sha256": "4e76187cb20fd187d759de9565568381a76d87518377a0e03585d9865e498106",
+      "source_url": "https://download.geofabrik.de/north-america/us/oklahoma-261027.osm.pbf"
     }
   ],
   "warning": "Original research inputs only. Archival retention does not certify legal/physical connectors, complete source/road/geographic coverage, datum alignment or global competition.",
@@ -121,8 +127,9 @@
   "draft_release_tag": "research-sources-20261027-co-nm-az-v1",
   "geographic_accuracy_certified": false,
   "complete_global_competition": false,
-  "manifest_revision": 3,
+  "manifest_revision": 4,
   "extension_states": [
-    "UT"
+    "UT",
+    "OK"
   ]
 }
