@@ -10,7 +10,7 @@ extract does not complete #138. Issue #137 independently gates access evidence;
 | --- | --- | --- |
 | Geography | Exact sourced Census land/water geometries, hashes, acquisition provenance, positive water and off-land negatives for the claimed viewport | Sloan's Lake preview only; thin/seasonal waterways not certified |
 | Road coverage | Complete modeled graph inside a stated boundary, all cut arcs accounted for, adjacent-state and leave/re-enter route analysis | Complete-way clipping and index envelopes do not prove closure |
-| Metro inventory | Exact unique qualifying CBSA identities from hashed CSV; every source included or rigorously excluded per destination and metric | 359 qualifying at population >=100,000; current 100m geometric queue has only one candidate |
+| Metro inventory | Exact unique qualifying CBSA identities from hashed CSV; every source included or rigorously excluded per destination and metric | 367 qualifying in the complete supplied Census table (359 in the public CSV); four-source CO/NM research comparisons leave 363 unrepresented |
 | Origins | Explicit origin semantics plus exact connectors, direction, costs and independently reviewed physical/legal entry | CBSA representative points and nearest-road snaps are unapproved |
 | Destinations | Exact supported on-road attachment, direction, ambiguity and legal/physical access review; unsupported samples transparent | Geometric projection cannot establish entry or grade separation |
 | Reachability | Directed distance and modeled-time routes, disconnected and one-way negatives, boundary and threshold regression cases | A route in a clipped graph gives an upper bound, not proof of the global optimum |
@@ -78,7 +78,7 @@ unverified connector kilometers and changes route costs; it is not a fix.
    modeled edge and connector cost dominates that same geometry convention.
    For time, divide by a proved model-wide speed ceiling (including connectors).
    A missing origin or omitted local edge alone proves no such bound.
-   [Conditional rational bounds and real-route checks](colorado-conditional-competition-bounds.md)
+   [Conditional rational bounds and real-route checks](colorado-conditional-competition-bounds.md) and [connector-budget sensitivity](colorado-connector-budget-frontier.md)
    implement this calculation without certifying its unresolved preconditions or
    removing any unknown-origin competitors.
 4. Partition the graph with explicit cut arcs and exact boundary labels or
