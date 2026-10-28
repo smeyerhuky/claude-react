@@ -1,0 +1,29 @@
+name: Denver through-road waypoint hypothesis
+on:
+  pull_request:
+    paths:
+      - 'scripts/denver_waypoint_hypothesis.py'
+      - 'scripts/test_denver_waypoint_hypothesis.py'
+      - '.github/workflows/denver-waypoint-hypothesis.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  replay-scenarios:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2'
+      - run: python -m unittest discover -s scripts -p 'test_denver_waypoint_hypothesis.py' -v
+      - run: curl --fail --location --retry 3 --max-time 300 https://download.geofabrik.de/north-america/us/colorado-261027.osm.pbf --output colorado.osm.pbf
+      - name: Compare preserved Census lead and separate through-road hypothesis
+        run: python -u scripts/denver_waypoint_hypothesis.py --osm colorado.osm.pbf --output result/report.json
+      - uses: actions/upload-artifact@v6
+        with:
+          name: denver-through-road-hypothesis
+          path: result/report.json
+          retention-days: 14
