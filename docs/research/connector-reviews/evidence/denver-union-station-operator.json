@@ -1,0 +1,31 @@
+{
+  "schema": "access-source-excerpts-v1",
+  "sources": [
+    {
+      "url": "https://www.denverunionstation.com/transportation/rideshare/",
+      "publisher": "Denver Union Station website (operator guidance; not a government road authority)",
+      "retrieved_utc": "2026-10-28",
+      "response_bytes": 69999,
+      "response_sha256": "6dcfc816b05fd2daba0c9072e986f98fde18b078ca03459459ef78c71edef67b",
+      "retention": "Selected verbatim text excerpts only; full HTML not retained in repository. HTML hash records fetched bytes, not a promise of future availability.",
+      "excerpts": [
+        "Rideshare and taxi lanes are located directly in front of Denver Union Station off Wynkoop Street.",
+        "Rideshare pickup and drop-off typically take place on the west side of Denver Union Station near the Wynkoop Street entrance.",
+        "Always check your rideshare app for the exact pin location during pickup."
+      ]
+    },
+    {
+      "url": "https://www.denverunionstation.com/transportation/parking-and-rentals/",
+      "publisher": "Denver Union Station website (operator guidance; not a government road authority)",
+      "retrieved_utc": "2026-10-28",
+      "response_bytes": 68644,
+      "response_sha256": "99c0d4763b3f4d292562d2a2d653d3322298486985abcb91af1b6b90ffdcd09c",
+      "retention": "Selected verbatim text excerpts only; full HTML not retained in repository. HTML hash records fetched bytes, not a promise of future availability.",
+      "excerpts": [
+        "Street and metered parking is available in downtown Denver on a first-come, first-served basis.",
+        "Denver Union Station does not have a dedicated parking lot.",
+        "17th and Wynkoop St."
+      ]
+    }
+  ]
+}

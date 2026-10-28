@@ -1,0 +1,36 @@
+name: Connector AI review packet integrity
+on:
+  pull_request:
+    paths:
+      - 'scripts/connector_review_packet.py'
+      - 'scripts/test_connector_review_packet.py'
+      - 'docs/research/connector-reviews/**'
+      - 'docs/research/tucson-unreachable-negative.json'
+      - 'docs/urban-access-anchor-policy.md'
+      - '.github/workflows/connector-ai-review.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  packet-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s scripts -p 'test_connector_review_packet.py' -v
+      - name: Validate all retained reviews (does not certify access)
+        run: |
+          python - <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          from connector_review_packet import validate
+          packets = sorted(Path('docs/research/connector-reviews').glob('*.json'))
+          if not packets:
+              raise SystemExit('No review packets found')
+          for path in packets:
+              print(path, json.dumps(validate(json.loads(path.read_text()), Path('.'))))
+          PY

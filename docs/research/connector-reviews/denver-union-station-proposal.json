@@ -1,0 +1,93 @@
+{
+  "schema": "ai-connector-review-v1",
+  "cbsa": "19740",
+  "origin_policy": "urban-access-anchor-v1",
+  "candidate": {
+    "name": "Denver Union Station, designated vehicle pickup area off Wynkoop Street",
+    "selection_reason": "Recognizable central urban transport destination with operator-published motor-vehicle pickup guidance; proposed single Denver anchor, not an adopted rule for every multi-center CBSA.",
+    "coordinate_status": "not_selected_pending_georeferenced_entry_evidence",
+    "approved": false
+  },
+  "reviewer": {
+    "kind": "ai",
+    "identity": "Codex (OpenAI), 2026-10-28",
+    "procedure": "Fetch and read both operator transportation pages; retain exact excerpts and response hashes; compare claims to precise connector requirements; record unresolved geometry and use restrictions rather than infer a road snap."
+  },
+  "sources": [
+    {
+      "id": "operator-guidance",
+      "path": "docs/research/connector-reviews/evidence/denver-union-station-operator.json",
+      "sha256": "886cf016d5e33fbde21db224b467870664a68c8f82e6468b59fd7a5e0d04adc9",
+      "kind": "independent_access_record",
+      "provenance": "Primary station-operator guidance independent of routing input. Selected excerpts, not an independent legal survey or road-authority determination. URLs, capture date and original response hashes retained in source record."
+    }
+  ],
+  "machine_assertions": [
+    {
+      "source": "operator-guidance",
+      "keys": [
+        "sources",
+        0,
+        "excerpts",
+        0
+      ],
+      "equals": "Rideshare and taxi lanes are located directly in front of Denver Union Station off Wynkoop Street."
+    },
+    {
+      "source": "operator-guidance",
+      "keys": [
+        "sources",
+        1,
+        "excerpts",
+        1
+      ],
+      "equals": "Denver Union Station does not have a dedicated parking lot."
+    }
+  ],
+  "findings": {
+    "physical_connection": {
+      "status": "unknown",
+      "sources": [
+        "operator-guidance"
+      ],
+      "reason": "Operator explicitly describes taxi/rideshare access off Wynkoop and valet at 17th/Wynkoop, supporting candidate investigation. No precise georeferenced entrance, connecting path or current barrier check retained; the FAQ uses a side-of-station description that must be reconciled spatially before choosing coordinates."
+    },
+    "legal_motor_access": {
+      "status": "unknown",
+      "sources": [
+        "operator-guidance"
+      ],
+      "reason": "Taxi/rideshare and paid valet guidance is not evidence that arbitrary private cars may use every lane. Need exact proposed vehicle class, curb zone restrictions, hours and applicable municipal signage or records."
+    },
+    "same_grade": {
+      "status": "unknown",
+      "sources": [
+        "operator-guidance"
+      ],
+      "reason": "Written address and pickup guidance do not resolve precise lane, grade, curb entry or crossings; no agency geometry or suitably dated imagery interpretation retained."
+    },
+    "direction_and_turns": {
+      "status": "unknown",
+      "sources": [
+        "operator-guidance"
+      ],
+      "reason": "No directed entrance/exit maneuver or turn restrictions identified. Mutable rideshare app pins cannot define a versioned anchor."
+    },
+    "connector_cost": {
+      "status": "unknown",
+      "sources": [
+        "operator-guidance"
+      ],
+      "reason": "No coordinate/path adopted, so no reproducible graph connection or connector cost. Do not route to the building centroid or nearby centerline automatically."
+    }
+  },
+  "decision": "needs_evidence",
+  "access_verified": false,
+  "release_eligible": false,
+  "limitations": [
+    "Proposed candidate only; existing Denver Census regression is unchanged.",
+    "Operator evidence supports existence of pickup services, not full connector approval.",
+    "Full HTML remains local; repository retains explicitly identified excerpts. No OSM bundle/coordinate approval binding yet.",
+    "No claim that all metropolitan centers are represented by this one station."
+  ]
+}
