@@ -1,0 +1,48 @@
+{
+  "access_certified": false,
+  "completed_sources": [
+    {
+      "source": "oklahoma.osm.pbf",
+      "union_modeled_node_ids": 4016550
+    },
+    {
+      "source": "kansas.osm.pbf",
+      "union_modeled_node_ids": 7308146
+    }
+  ],
+  "first_limit_exceeding_witness": {
+    "lonlat": [
+      -98.2076764,
+      32.6353546
+    ],
+    "osm_node_id": 236399841,
+    "osm_way_id": 21937580
+  },
+  "node_limit": 15000000,
+  "release_eligible": false,
+  "road_coverage_certified": false,
+  "schema": "oklahoma-kansas-texas-node-preflight-v1",
+  "source_provenance": [
+    {
+      "name": "oklahoma.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "4e76187cb20fd187d759de9565568381a76d87518377a0e03585d9865e498106",
+      "size_bytes": 169850063
+    },
+    {
+      "name": "kansas.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "eae1e55d59e8a15fe6abd7057b86098c6e03bb9a88b7997f46256ca59386f30e",
+      "size_bytes": 117395534
+    },
+    {
+      "name": "texas.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "28f51b4ab7f41a6e23f0d772bcccc07d379d6592ebdb351a6f7969fa2053e5f0",
+      "size_bytes": 726272759
+    }
+  ],
+  "source_scan_complete": false,
+  "stopped_source": "texas.osm.pbf",
+  "union_node_count_lower_bound": 15000001
+}

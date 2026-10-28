@@ -1,0 +1,67 @@
+name: Kansas Texas raw-source and shard preflight
+on:
+  pull_request:
+    paths:
+      - 'scripts/kansas_texas_node_preflight.py'
+      - 'docs/research/kansas-texas-source-preflight/**'
+      - '.github/workflows/kansas-texas-source-preflight.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  node-budget:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2'
+      - name: Download the three exact dated inputs
+        run: |
+          for state in oklahoma kansas texas; do
+            curl --fail --location --retry 3 --max-time 300 "https://download.geofabrik.de/north-america/us/$state-261027.osm.pbf" --output "$state.osm.pbf"
+          done
+      - run: python -u scripts/kansas_texas_node_preflight.py --osm oklahoma.osm.pbf kansas.osm.pbf texas.osm.pbf --output node-preflight.json
+      - uses: actions/upload-artifact@v6
+        with:
+          name: neighbor-node-preflight
+          path: node-preflight.json
+          retention-days: 14
+  raw-origins:
+    strategy:
+      matrix:
+        include:
+          - state: kansas
+            ids: '48620 45820 31740 29940 28140'
+          - state: texas
+            ids: '48660 43300 11100 19100 10180'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2'
+      - run: curl --fail --location --retry 3 --max-time 300 "https://download.geofabrik.de/north-america/us/${{ matrix.state }}-261027.osm.pbf" --output "${{ matrix.state }}.osm.pbf"
+      - name: Reproduce the complete selected raw-origin scan
+        env:
+          RESEARCH_STATE: ${{ matrix.state }}
+          RESEARCH_IDS: ${{ matrix.ids }}
+        run: |
+          python scripts/colorado_origin_source_investigation.py --osm "$RESEARCH_STATE.osm.pbf" --metros public/data/metros-census-2025.csv --cbsa $RESEARCH_IDS --radius-m 25000 --output origins.json
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          actual=json.loads(Path('origins.json').read_text())
+          expected=json.loads(Path('docs/research/kansas-texas-source-preflight/'+os.environ['RESEARCH_STATE']+'-origins.json').read_text())
+          assert actual==expected
+          assert actual['access_verified'] is False and actual['release_eligible'] is False
+          PY
+      - uses: actions/upload-artifact@v6
+        with:
+          name: ${{ matrix.state }}-raw-origin-leads
+          path: origins.json
+          retention-days: 14

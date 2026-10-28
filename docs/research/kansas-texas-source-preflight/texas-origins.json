@@ -1,0 +1,214 @@
+{
+  "access_verified": false,
+  "extract_coverage_certified": false,
+  "highway_ways_with_missing_locations": 0,
+  "limitations": "Nearest geometry only within supplied PBF and search radius; OSM tags and modeled driving eligibility do not prove physical/legal entry; representative points are not verified urban access anchors",
+  "method": "Raw PBF highway-way scan; no contracted graph or SegmentGridIndex; local equirectangular projection with spherical gap distance",
+  "metros": [
+    {
+      "cbsa": "10180",
+      "name": "Abilene, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 61.861468178003975,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 539602105,
+        "osm_way_url": "https://www.openstreetmap.org/way/539602105",
+        "projection_lonlat": [
+          -99.7180966,
+          32.4521325
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 61.861468178003975,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 539602105,
+        "osm_way_url": "https://www.openstreetmap.org/way/539602105",
+        "projection_lonlat": [
+          -99.7180966,
+          32.4521325
+        ]
+      },
+      "origin_lonlat": [
+        -99.7187428,
+        32.4520222
+      ]
+    },
+    {
+      "cbsa": "11100",
+      "name": "Amarillo, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 118.47337439954447,
+        "highway": "tertiary",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Golden Chestnut Lane",
+        "osm_way_id": 293936331,
+        "osm_way_url": "https://www.openstreetmap.org/way/293936331",
+        "projection_lonlat": [
+          -101.9078134,
+          35.2471951
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 118.47337439954447,
+        "highway": "tertiary",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Golden Chestnut Lane",
+        "osm_way_id": 293936331,
+        "osm_way_url": "https://www.openstreetmap.org/way/293936331",
+        "projection_lonlat": [
+          -101.9078134,
+          35.2471951
+        ]
+      },
+      "origin_lonlat": [
+        -101.9086699,
+        35.2479988
+      ]
+    },
+    {
+      "cbsa": "19100",
+      "name": "Dallas-Fort Worth-Arlington, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 31.916467972930093,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Cartwright Street",
+        "osm_way_id": 9950968,
+        "osm_way_url": "https://www.openstreetmap.org/way/9950968",
+        "projection_lonlat": [
+          -96.97041397872955,
+          32.8488908491148
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 31.916467972930093,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Cartwright Street",
+        "osm_way_id": 9950968,
+        "osm_way_url": "https://www.openstreetmap.org/way/9950968",
+        "projection_lonlat": [
+          -96.97041397872955,
+          32.8488908491148
+        ]
+      },
+      "origin_lonlat": [
+        -96.9704894,
+        32.8491708
+      ]
+    },
+    {
+      "cbsa": "43300",
+      "name": "Sherman-Denison, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 188.71951458076185,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 863773992,
+        "osm_way_url": "https://www.openstreetmap.org/way/863773992",
+        "projection_lonlat": [
+          -96.6766558,
+          33.6260797
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 188.71951458076185,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 863773992,
+        "osm_way_url": "https://www.openstreetmap.org/way/863773992",
+        "projection_lonlat": [
+          -96.6766558,
+          33.6260797
+        ]
+      },
+      "origin_lonlat": [
+        -96.6757774,
+        33.6245482
+      ]
+    },
+    {
+      "cbsa": "48660",
+      "name": "Wichita Falls, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": "private",
+        "access_verified": false,
+        "gap_m": 386.1627563343948,
+        "highway": "service",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 20673888,
+        "osm_way_url": "https://www.openstreetmap.org/way/20673888",
+        "projection_lonlat": [
+          -98.504394,
+          33.776448
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 1119.0841834966602,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 20673883,
+        "osm_way_url": "https://www.openstreetmap.org/way/20673883",
+        "projection_lonlat": [
+          -98.512115,
+          33.777951
+        ]
+      },
+      "origin_lonlat": [
+        -98.5003189,
+        33.7756819
+      ]
+    }
+  ],
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "osm_sha256": "28f51b4ab7f41a6e23f0d772bcccc07d379d6592ebdb351a6f7969fa2053e5f0",
+  "release_eligible": false,
+  "scan_radius_m": 25000.0,
+  "schema_version": "colorado-raw-origin-investigation-v1"
+}
