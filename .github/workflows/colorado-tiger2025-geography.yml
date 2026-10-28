@@ -7,12 +7,17 @@ on:
       - 'scripts/colorado_tiger2025_geography.py'
       - 'scripts/test_colorado_tiger2025_geography.py'
       - 'scripts/colorado_geographic_mask.py'
+      - 'scripts/colorado_town_geography_audit.py'
+      - 'scripts/test_colorado_town_geography_audit.py'
+      - 'scripts/colorado_png_geography_oracle.py'
   push:
     branches: [main]
     paths:
       - '.github/workflows/colorado-tiger2025-geography.yml'
       - 'scripts/colorado_tiger2025_geography.py'
       - 'scripts/test_colorado_tiger2025_geography.py'
+      - 'scripts/colorado_town_geography_audit.py'
+      - 'scripts/test_colorado_town_geography_audit.py'
 permissions:
   contents: read
 jobs:
@@ -25,13 +30,13 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install TIGER and research masking dependencies
-        run: python -m pip install 'pyshp>=2.3,<3' 'pyproj>=3.7,<4' 'shapely>=2,<3' 'numpy>=1.26,<3'
+        run: python -m pip install 'pyshp>=2.3,<3' 'pyproj>=3.7,<4' 'shapely>=2,<3' 'numpy>=1.26,<3' 'pillow>=11,<13'
       - name: Offline synthetic county selection, missing water, and source corruption regressions
-        run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_tiger2025_geography.py -v
+        run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_tiger2025_geography.py scripts/test_colorado_town_geography_audit.py -v
       - uses: actions/cache@v4
         with:
           path: local-data/tiger2025
-          key: tiger2025-census-2025-denver-county-water-v1
+          key: tiger2025-census-2025-denver-southern-town-water-v2
       - name: Download real 2025 Census Colorado area-water and state polygons
         run: |
           set -euo pipefail
@@ -69,6 +74,32 @@ jobs:
           assert pixels["pixel_counts"]["land_nonwater"] > 0
           print("Research mask result:", pixels["pixel_counts"])
           PY
+      - name: Independently audit southern town geography and painted-water/off-land negatives
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=30s 10m python -u scripts/colorado_town_geography_audit.py \
+            --cache local-data/tiger2025 \
+            --output-dir colorado-geographic-validation/southern-towns \
+            2>&1 | tee colorado-geographic-validation/southern-town-geography.log
+          python - <<'PYTOWNS'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("colorado-geographic-validation/southern-towns/town-geography-audit.json").read_text())
+          assert r["release_eligible"] is False and r["road_access_certified"] is False
+          assert r["land_water_completeness_certified"] is False
+          assert {x["name"] for x in r["results"]}=={"antonito","ignacio","san-luis"}
+          assert sum(x["independent_scalar_cells_checked"] for x in r["results"])==12288
+          for case in r["results"]:
+              assert case["unsupported_painted_cells"]==0
+              assert sum(case["pixel_counts"].values())==4096
+              assert case["pixel_counts"]["water_excluded"]>0 and case["pixel_counts"]["land_nonwater"]>0
+              assert case["negative_rejections"]["water"]==1
+              for flag in ("release_eligible","road_access_certified","land_water_completeness_certified","geographic_accuracy_certified"):
+                  assert case[flag] is False
+          antonito=next(x for x in r["results"] if x["name"]=="antonito")
+          assert antonito["pixel_counts"]["outside_supplied_land"]>0
+          assert antonito["negative_rejections"]["outside_land"]==1
+          PYTOWNS
       - uses: actions/upload-artifact@v6
         if: always()
         with:

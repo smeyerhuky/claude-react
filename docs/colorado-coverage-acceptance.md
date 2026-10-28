@@ -100,3 +100,8 @@ research extension, not discharge of these acceptance obligations.
 [Arizona exterior competition](colorado-arizona-exterior-competition.md) checks
 every modeled prefix arc, inventories weighted interfaces, and compares added
 source roads without declaring the expanded parent geographically complete.
+
+[Southern town geography](colorado-southern-town-geography.md) exercises sourced
+water/off-land exclusions and independently rejected painted negatives at the
+actual three town probe areas, while keeping hydrological completeness and
+absolute geographic accuracy explicitly uncertified.
