@@ -1,0 +1,103 @@
+name: Colorado neighboring-metro directed competition research
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/colorado-neighbor-metro-competition.yml'
+      - 'scripts/colorado_neighbor_metro_competition.py'
+      - 'scripts/test_colorado_neighbor_metro_competition.py'
+      - 'scripts/colorado_adjacent_route_witnesses.py'
+      - 'scripts/test_colorado_adjacent_route_witnesses.py'
+      - 'scripts/colorado_adjacent_source_interfaces.py'
+      - 'scripts/colorado_raw_boundary_interfaces.py'
+      - 'scripts/colorado_road_subdivision_preservation.py'
+      - 'scripts/colorado_metro_winners.py'
+      - 'scripts/colorado_origin_scenarios.py'
+      - 'scripts/colorado_origin_scenario_places.json'
+      - 'scripts/metro_origin_domains.py'
+      - 'scripts/metro_origin_domain_sources.json'
+      - 'scripts/metro_competition_bounds.py'
+      - 'scripts/colorado_tiger2025_geography.py'
+      - 'scripts/road_spike.py'
+      - 'scripts/stream_osm_roads.py'
+      - 'public/data/metros-census-2025.csv'
+permissions:
+  contents: read
+jobs:
+  actual-interstate-metro-subset:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2' 'shapely>=2,<3' 'pyshp>=2.3,<3' 'pyproj>=3.7,<4' 'openpyxl>=3.1,<4'
+      - run: PYTHONPATH=scripts python -m unittest -v scripts/test_colorado_neighbor_metro_competition.py scripts/test_colorado_adjacent_route_witnesses.py
+      - name: Acquire actual source bytes
+        run: |
+          set -euo pipefail
+          mkdir -p local-data neighbor-metro-competition
+          curl -fLSs --retry 3 --connect-timeout 20 --max-time 1200 -o local-data/colorado.osm.pbf https://download.geofabrik.de/north-america/us/colorado-latest.osm.pbf
+          curl -fLSs --retry 3 --connect-timeout 20 --max-time 1200 -o local-data/new-mexico.osm.pbf https://download.geofabrik.de/north-america/us/new-mexico-latest.osm.pbf
+          curl -fLSs --retry 3 --max-time 180 -o local-data/cbsa-met-est2025-pop.xlsx https://www2.census.gov/programs-surveys/popest/tables/2020-2025/metro/totals/cbsa-met-est2025-pop.xlsx
+          curl -fLSs --retry 3 --max-time 600 -o local-data/tl_2025_us_cbsa.zip https://www2.census.gov/geo/tiger/TIGER2025/CBSA/tl_2025_us_cbsa.zip
+          curl -fLSs --retry 3 --max-time 180 -o local-data/2025_gaz_place_08.txt https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_08.txt
+      - name: Verify full supplied-source inventory and consistent OSM union
+        run: |
+          set -euo pipefail
+          python scripts/metro_origin_domains.py --metros public/data/metros-census-2025.csv \
+            --population local-data/cbsa-met-est2025-pop.xlsx --cbsa-zip local-data/tl_2025_us_cbsa.zip \
+            --output neighbor-metro-competition/domains.json
+          timeout --signal=TERM --kill-after=30s 12m python -u scripts/colorado_adjacent_source_interfaces.py \
+            --parent-osm local-data/colorado.osm.pbf local-data/new-mexico.osm.pbf \
+            --output neighbor-metro-competition/interfaces.json \
+            2>&1 | tee neighbor-metro-competition/interfaces.log
+      - name: Independently check interstate competing sources and separate network isochrones
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=30s 25m python -u scripts/colorado_neighbor_metro_competition.py \
+            --parent-osm local-data/colorado.osm.pbf local-data/new-mexico.osm.pbf \
+            --interfaces neighbor-metro-competition/interfaces.json --domains neighbor-metro-competition/domains.json \
+            --metros public/data/metros-census-2025.csv --places local-data/2025_gaz_place_08.txt \
+            --output neighbor-metro-competition/report.json \
+            2>&1 | tee neighbor-metro-competition/routing.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path("neighbor-metro-competition/report.json").read_text())
+          selected={"10740","22140","39380","42140"}
+          assert set(r["diagnostic_source_cbsa_ids"]) == selected
+          assert len(r["source_qualifying_cbsa_ids"]) == len(set(r["source_qualifying_cbsa_ids"])) == 367
+          assert len(r["legacy_csv_cbsa_ids"]) == 359
+          assert set(r["unrepresented_source_qualifying_cbsa_ids"]) == set(r["source_qualifying_cbsa_ids"])-selected
+          assert len(r["unrepresented_source_qualifying_cbsa_ids"]) == 363
+          assert r["independent_source_costs_checked"] == r["single_source_isochrone_probe_checks"] == 240
+          assert len(r["probes"]) == 60 and r["oracle_disagreements"] == 0
+          assert all(len(p["source_costs"]) == 4 for p in r["probes"])
+          assert r["baseline_path_preservation"]["modeled_baseline_paths_preserved_modulo_subdivision"] is True
+          assert r["baseline_selected_source_competition_computed"] is False
+          assert r["missing_baseline_raw_source_cbsa_ids"] == ["10740","22140","42140"]
+          assert r["baseline_sources_requiring_junction_promotion"] == []
+          assert len(r["town_probe_leads"]) == 3
+          expected={"0802355":"42140","0838535":"22140","0868105":"39380"}
+          for place in r["town_probe_leads"]:
+              cases=[p for p in r["probes"] if p["probe"] == str(place["road_node"])]
+              assert len(cases) == 4
+              assert all(p["subset_winner_ids"] == [expected[place["place_geoid"]]] for p in cases)
+          assert {p["place_geoid"] for p in r["town_probe_leads"]} == {"0802355","0838535","0868105"}
+          assert all(not p["destination_connector_verified"] and not p["destination_connector_costs_included"] for p in r["town_probe_leads"])
+          assert r["release_eligible"] is False and r["access_certified"] is False
+          assert r["complete_global_competition"] is False and r["road_coverage_certified"] is False
+          assert r["applied_source_exclusions"] == []
+          assert all(s["access_verified"] is False and s["connector_costs_included"] is False for s in r["sources"])
+          assert r["selected_ways"] <= r["resource_limits"]["ways"]
+          assert r["graph_nodes"] <= r["resource_limits"]["nodes"]
+          assert r["peak_process_rss_kib"] > 0
+          PY
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: colorado-neighbor-metro-competition
+          path: neighbor-metro-competition/
+          retention-days: 14

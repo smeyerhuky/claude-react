@@ -61,6 +61,19 @@ class AdjacentRouteTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "reverses"):
             path_witness(expanded, 1, 3, "length", {10, 20})
 
+    def test_explicit_way_and_node_budgets_fail_closed(self):
+        c = CorridorWays((-2,-2,3,3), max_ways=1)
+        c.add(10,TAGS,POINTS)
+        with self.assertRaisesRegex(ValueError,"memory limit"):
+            c.add(20,TAGS,[POINTS[-1],(4,2.,0.)])
+        with self.assertRaisesRegex(RuntimeError,"exceeded"):
+            build_graph(c.rows,max_nodes=1)
+        for value in (0, True, 500001):
+            with self.assertRaises(ValueError):
+                CorridorWays(max_ways=value)
+        with self.assertRaises(ValueError):
+            build_graph(c.rows,max_nodes=1500001)
+
     def test_invalid_or_empty_corridor_fails(self):
         with self.assertRaises(ValueError):
             CorridorWays((0, 1, 0, 2))
