@@ -119,6 +119,18 @@
       "bytes": 169850063,
       "sha256": "4e76187cb20fd187d759de9565568381a76d87518377a0e03585d9865e498106",
       "source_url": "https://download.geofabrik.de/north-america/us/oklahoma-261027.osm.pbf"
+    },
+    {
+      "filename": "kansas.osm.pbf",
+      "bytes": 117395534,
+      "sha256": "eae1e55d59e8a15fe6abd7057b86098c6e03bb9a88b7997f46256ca59386f30e",
+      "source_url": "https://download.geofabrik.de/north-america/us/kansas-261027.osm.pbf"
+    },
+    {
+      "filename": "texas.osm.pbf",
+      "bytes": 726272759,
+      "sha256": "28f51b4ab7f41a6e23f0d772bcccc07d379d6592ebdb351a6f7969fa2053e5f0",
+      "source_url": "https://download.geofabrik.de/north-america/us/texas-261027.osm.pbf"
     }
   ],
   "warning": "Original research inputs only. Archival retention does not certify legal/physical connectors, complete source/road/geographic coverage, datum alignment or global competition.",
@@ -127,9 +139,11 @@
   "draft_release_tag": "research-sources-20261027-co-nm-az-v1",
   "geographic_accuracy_certified": false,
   "complete_global_competition": false,
-  "manifest_revision": 4,
+  "manifest_revision": 5,
   "extension_states": [
     "UT",
-    "OK"
+    "OK",
+    "KS",
+    "TX"
   ]
 }

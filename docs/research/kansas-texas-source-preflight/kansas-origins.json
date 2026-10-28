@@ -1,0 +1,214 @@
+{
+  "access_verified": false,
+  "extract_coverage_certified": false,
+  "highway_ways_with_missing_locations": 0,
+  "limitations": "Nearest geometry only within supplied PBF and search radius; OSM tags and modeled driving eligibility do not prove physical/legal entry; representative points are not verified urban access anchors",
+  "method": "Raw PBF highway-way scan; no contracted graph or SegmentGridIndex; local equirectangular projection with spherical gap distance",
+  "metros": [
+    {
+      "cbsa": "28140",
+      "name": "Kansas City, MO-KS Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 11824.751862542116,
+        "highway": "cycleway",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Indian Creek Trail",
+        "osm_way_id": 68597181,
+        "osm_way_url": "https://www.openstreetmap.org/way/68597181",
+        "projection_lonlat": [
+          -94.5786833,
+          38.9494311
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 13042.688840027844,
+        "highway": "tertiary",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "West Minor Drive",
+        "osm_way_id": 18532448,
+        "osm_way_url": "https://www.openstreetmap.org/way/18532448",
+        "projection_lonlat": [
+          -94.5932955,
+          38.9163989
+        ]
+      },
+      "origin_lonlat": [
+        -94.4438406,
+        38.9318567
+      ]
+    },
+    {
+      "cbsa": "29940",
+      "name": "Lawrence, KS Metro Area",
+      "nearest_mapped_highway": {
+        "access": "private",
+        "access_verified": false,
+        "gap_m": 247.26025020387578,
+        "highway": "service",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 834123716,
+        "osm_way_url": "https://www.openstreetmap.org/way/834123716",
+        "projection_lonlat": [
+          -95.28896465597568,
+          38.898017810244944
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 291.92298349916416,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "North 1100 Road",
+        "osm_way_id": 13037422,
+        "osm_way_url": "https://www.openstreetmap.org/way/13037422",
+        "projection_lonlat": [
+          -95.29095997371265,
+          38.899042108514344
+        ]
+      },
+      "origin_lonlat": [
+        -95.2909475,
+        38.8964168
+      ]
+    },
+    {
+      "cbsa": "31740",
+      "name": "Manhattan, KS Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 195.44855327364235,
+        "highway": "track",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 13210340,
+        "osm_way_url": "https://www.openstreetmap.org/way/13210340",
+        "projection_lonlat": [
+          -96.56102119966559,
+          39.26694222106679
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 392.17759512495417,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 747489696,
+        "osm_way_url": "https://www.openstreetmap.org/way/747489696",
+        "projection_lonlat": [
+          -96.559906,
+          39.271452
+        ]
+      },
+      "origin_lonlat": [
+        -96.5622422,
+        39.2684241
+      ]
+    },
+    {
+      "cbsa": "45820",
+      "name": "Topeka, KS Metro Area",
+      "nearest_mapped_highway": {
+        "access": "private",
+        "access_verified": false,
+        "gap_m": 102.2282040945934,
+        "highway": "service",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 745237741,
+        "osm_way_url": "https://www.openstreetmap.org/way/745237741",
+        "projection_lonlat": [
+          -95.80294,
+          39.0404996
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 192.70417710999268,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Southwest Huntoon Street",
+        "osm_way_id": 13249850,
+        "osm_way_url": "https://www.openstreetmap.org/way/13249850",
+        "projection_lonlat": [
+          -95.80263131315044,
+          39.043121819198234
+        ]
+      },
+      "origin_lonlat": [
+        -95.8026393,
+        39.0413888
+      ]
+    },
+    {
+      "cbsa": "48620",
+      "name": "Wichita, KS Metro Area",
+      "nearest_mapped_highway": {
+        "access": "no",
+        "access_verified": false,
+        "gap_m": 19.221667087486008,
+        "highway": "unclassified",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "South Winfield Street",
+        "osm_way_id": 13251037,
+        "osm_way_url": "https://www.openstreetmap.org/way/13251037",
+        "projection_lonlat": [
+          -97.24639617186152,
+          37.637746078118866
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 160.03008496442192,
+        "highway": "secondary",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "South Rock Road",
+        "osm_way_id": 501054823,
+        "osm_way_url": "https://www.openstreetmap.org/way/501054823",
+        "projection_lonlat": [
+          -97.24447008568731,
+          37.63789699743953
+        ]
+      },
+      "origin_lonlat": [
+        -97.2462875,
+        37.637896
+      ]
+    }
+  ],
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "osm_sha256": "eae1e55d59e8a15fe6abd7057b86098c6e03bb9a88b7997f46256ca59386f30e",
+  "release_eligible": false,
+  "scan_radius_m": 25000.0,
+  "schema_version": "colorado-raw-origin-investigation-v1"
+}
