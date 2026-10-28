@@ -1,0 +1,88 @@
+{
+  "access_certified": false,
+  "component_node_ids": [
+    175053966,
+    175244804,
+    175244806
+  ],
+  "domains_sha256": "d860aef0a6ac2e442590098ed98a7cd601fa63764d8d76ba63e444bebcc5a260",
+  "incident_raw_highways": [
+    {
+      "component_node_ids": [
+        175053966
+      ],
+      "modeled": false,
+      "nodes_outside_component": 106,
+      "osm_way_id": 16877709,
+      "point_count": 107,
+      "tags": {
+        "highway": "track"
+      }
+    },
+    {
+      "component_node_ids": [
+        175053966,
+        175244804,
+        175244806
+      ],
+      "modeled": true,
+      "nodes_outside_component": 0,
+      "osm_way_id": 16894310,
+      "point_count": 3,
+      "tags": {
+        "highway": "residential",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:reviewed": "no",
+        "tiger:separated": "no",
+        "tiger:source": "tiger_import_dch_v0.6_20070809",
+        "tiger:tlid": "121150093",
+        "tiger:upload_uuid": "bulk_upload.pl-627e5016-20d0-49d8-b9c3-d32ec5303897"
+      }
+    }
+  ],
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "origin_moved": false,
+  "release_eligible": false,
+  "road_coverage_certified": false,
+  "road_filter_changed": false,
+  "schema": "tucson-unreachable-lead-negative-v1",
+  "scope": "Supplied Arizona PBF static eligibility only; five-source report separately records both-direction unreachability to all18 probes",
+  "source": {
+    "access_verified": false,
+    "cbsa": "46060",
+    "connector_costs_included": false,
+    "diagnostic_gap_m": 5691.809484196113,
+    "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+    "native_origin_lonlat": [
+      -111.7836574,
+      32.128038
+    ],
+    "node": 175244806,
+    "node_lonlat": [
+      -111.755014,
+      32.082966
+    ],
+    "source_shard": 0
+  },
+  "source_provenance": {
+    "name": "arizona.osm.pbf",
+    "replication_timestamp": "2026-10-27T21:23:59Z",
+    "sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
+    "size_bytes": 304245283
+  },
+  "upstream_ci": {
+    "head": "ad475d5cf75dce4a4a5b8d91a874a8454c6f4b6b",
+    "job": 123035264717,
+    "run": 40750401790
+  },
+  "upstream_report_sha256": "8172c9555f3fa6c7bb5c1ece706df8a7416006e32bf694be84d215ff3d6fc6d0",
+  "warning": "Local same-source component investigation, not independent access or geographic/road completeness evidence. No assertion of real-world inaccessibility.",
+  "weak_component_bbox": [
+    -111.755014,
+    32.081916,
+    -111.75319,
+    32.082966
+  ],
+  "weak_component_node_count": 3
+}
