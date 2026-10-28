@@ -1,0 +1,84 @@
+{
+  "schema": "denver-reference-junction-audit-v1",
+  "municipal_node": 4993,
+  "municipal_reference_lonlat": [
+    -104.999734452924,
+    39.7528550246765
+  ],
+  "osm_node": 3033992180,
+  "osm_reference_lonlat": [
+    -104.9997276,
+    39.7528388
+  ],
+  "reference_displacement_m": 1.8968402403839788,
+  "street_records_checked": [
+    1002,
+    6783,
+    23202
+  ],
+  "municipal_grade_code_meaning": "Surface",
+  "municipal_direction_code_meaning": "Two Way",
+  "sign_records_in_query": 58,
+  "sign_records_without_description": 13,
+  "selected_restrictions": [
+    {
+      "objectid": 116106,
+      "description": "LOADING ONLY ALL TIMES (LEFT)/ NO PARKING ANYTIME TAZ (RIGHT)",
+      "lonlat": [
+        -104.99947453638364,
+        39.75293507450383
+      ],
+      "collection_epoch_ms": 1657379580000
+    },
+    {
+      "objectid": 205538,
+      "description": "STREET SWEEPING 4TH TUESDAY (LEFT) PASSENGER LOADING ONLY 7AM-5PM (RIGHT)",
+      "lonlat": [
+        -104.9993694375388,
+        39.753018782079444
+      ],
+      "collection_epoch_ms": 1657379580000
+    },
+    {
+      "objectid": 116092,
+      "description": "RESERVED ADA PARKING (LEFT)/ NO PARKING ANYTIME TAZ (RIGHT)",
+      "lonlat": [
+        -105.00001015221054,
+        39.7527149115688
+      ],
+      "collection_epoch_ms": 1657379580000
+    }
+  ],
+  "parking_restriction_records_in_larger_query": 0,
+  "restrictions_touching_selected_osm_ways": [
+    {
+      "id": 8877780,
+      "tags": {
+        "restriction": "no_left_turn",
+        "type": "restriction"
+      },
+      "members": [
+        [
+          "w",
+          640085099,
+          "from"
+        ],
+        [
+          "n",
+          11952210822,
+          "via"
+        ],
+        [
+          "w",
+          905039434,
+          "to"
+        ]
+      ]
+    }
+  ],
+  "entry_path_selected": false,
+  "anchor_adopted": false,
+  "access_verified": false,
+  "release_eligible": false,
+  "warning": "Reference junction only. Sign points do not define curb-zone endpoints or legal access; missing records are unknown, not unrestricted."
+}

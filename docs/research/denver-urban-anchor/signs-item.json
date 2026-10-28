@@ -1,0 +1,70 @@
+{
+  "id": "7ae75543e901487eabf70864799fd6db",
+  "owner": "210530_geospatialDenver",
+  "ownerId": "0773851d901445c2afbaa3a45dca5a25",
+  "orgId": "zdB7qR0BtYrg0Xpl",
+  "created": 1753300168000,
+  "modified": 1753451732000,
+  "guid": null,
+  "name": "Signs_from_Cartegraph",
+  "title": "Signs from Cartegraph",
+  "type": "Feature Service",
+  "typeKeywords": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Public Data Collection",
+    "Service",
+    "Singlelayer",
+    "Hosted Service"
+  ],
+  "description": null,
+  "tags": [
+    "signs",
+    "Cartegraph"
+  ],
+  "snippet": "Cartegraph signs asset data updated from Cartegraph in a 1-way sync, providing daily Cartegraph updated data",
+  "thumbnail": "thumbnail/ago_downloaded.png",
+  "documentation": null,
+  "extent": [
+    [
+      -105.19472342497652,
+      39.60012142521704
+    ],
+    [
+      -104.69264337728185,
+      39.8436109803075
+    ]
+  ],
+  "categories": [],
+  "spatialReference": "2877",
+  "accessInformation": null,
+  "classification": null,
+  "licenseInfo": null,
+  "culture": "",
+  "properties": null,
+  "advancedSettings": null,
+  "url": "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/arcgis/rest/services/Signs_from_Cartegraph/FeatureServer",
+  "proxyFilter": null,
+  "access": "public",
+  "size": 565338112,
+  "subInfo": 0,
+  "appCategories": [],
+  "industries": [],
+  "languages": [],
+  "largeThumbnail": null,
+  "banner": null,
+  "screenshots": [],
+  "listed": false,
+  "commentsEnabled": false,
+  "numComments": 0,
+  "numRatings": 0,
+  "avgRating": 0,
+  "numViews": 271,
+  "scoreCompleteness": 58,
+  "groupDesignations": null,
+  "apiToken1ExpirationDate": -1,
+  "apiToken2ExpirationDate": -1,
+  "lastViewed": 1793192400000
+}

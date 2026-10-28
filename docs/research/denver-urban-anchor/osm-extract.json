@@ -1,0 +1,154 @@
+{
+  "schema": "denver-reference-junction-osm-extract-v1",
+  "source_sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+  "ways": [
+    {
+      "id": 475723486,
+      "version": 15,
+      "timestamp": "2026-10-26 15:42:52+00:00",
+      "tags": {
+        "cycleway:left": "shared_lane",
+        "cycleway:right": "lane",
+        "highway": "tertiary",
+        "lanes": "2",
+        "lanes:backward": "1",
+        "lanes:forward": "1",
+        "lit": "yes",
+        "name": "17th Street",
+        "oneway": "no",
+        "parking:left": "lane",
+        "parking:left:orientation": "parallel",
+        "parking:right": "street_side",
+        "parking:right:orientation": "parallel",
+        "surface": "asphalt"
+      },
+      "nodes": [
+        [
+          3033992180,
+          -104.9997276,
+          39.7528388
+        ],
+        [
+          3286551928,
+          -104.9996259,
+          39.7527611
+        ],
+        [
+          279852289,
+          -104.9992662,
+          39.7524846
+        ],
+        [
+          3286570195,
+          -104.9989158,
+          39.7522152
+        ],
+        [
+          176075247,
+          -104.998833,
+          39.7521516
+        ]
+      ]
+    },
+    {
+      "id": 640085099,
+      "version": 13,
+      "timestamp": "2026-10-26 15:42:52+00:00",
+      "tags": {
+        "cycleway:left": "separate",
+        "cycleway:right": "lane",
+        "cycleway:right:buffer": "no",
+        "highway": "tertiary",
+        "lanes": "2",
+        "lit": "yes",
+        "name": "Wynkoop Street",
+        "parking:lane:both": "parallel",
+        "smoothness": "excellent",
+        "surface": "asphalt"
+      },
+      "nodes": [
+        [
+          11952210822,
+          -105.0009134,
+          39.7518932
+        ],
+        [
+          3290924202,
+          -105.0008232,
+          39.751963
+        ],
+        [
+          11952210820,
+          -105.0008043,
+          39.7519776
+        ],
+        [
+          12766821226,
+          -104.9998295,
+          39.7527565
+        ],
+        [
+          4097616721,
+          -104.9997989,
+          39.7527795
+        ],
+        [
+          3033992180,
+          -104.9997276,
+          39.7528388
+        ],
+        [
+          5673802765,
+          -104.9996522,
+          39.7528993
+        ],
+        [
+          12766821222,
+          -104.9996244,
+          39.7529221
+        ],
+        [
+          12766821229,
+          -104.9986364,
+          39.7536841
+        ],
+        [
+          3289277773,
+          -104.9986113,
+          39.7537042
+        ],
+        [
+          1386844564,
+          -104.9985404,
+          39.7537533
+        ]
+      ]
+    }
+  ],
+  "restrictions_touching_selected_ways": [
+    {
+      "id": 8877780,
+      "tags": {
+        "restriction": "no_left_turn",
+        "type": "restriction"
+      },
+      "members": [
+        [
+          "w",
+          640085099,
+          "from"
+        ],
+        [
+          "n",
+          11952210822,
+          "via"
+        ],
+        [
+          "w",
+          905039434,
+          "to"
+        ]
+      ]
+    }
+  ]
+}

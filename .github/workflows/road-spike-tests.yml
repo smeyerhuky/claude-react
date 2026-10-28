@@ -2,6 +2,9 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/denver_anchor_evidence.py'
+      - 'scripts/test_denver_anchor_evidence.py'
+      - 'docs/research/denver-urban-anchor/**'
       - 'scripts/connector_review_packet.py'
       - 'scripts/test_connector_review_packet.py'
       - 'docs/research/connector-reviews/**'

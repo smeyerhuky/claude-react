@@ -1,0 +1,72 @@
+{
+  "schema": "denver-urban-anchor-evidence-v1",
+  "files": {
+    "streets.json": {
+      "sha256": "64d23b95d9ee15c65956076fca8a9d4297cbd9ec26149130a75ba8fabf55ed24",
+      "size_bytes": 168491,
+      "url": "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/ArcGIS/rest/services/ODC_TRANS_STREET_L/FeatureServer/145/query?f=pjson&where=1%3D1&geometry=-105.002%2C39.750%2C-104.997%2C39.755&geometryType=esriGeometryEnvelope&inSR=4326&outSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&resultRecordCount=2000",
+      "retrieved_utc": "2026-10-28"
+    },
+    "streets-layer.json": {
+      "sha256": "994ae6380bd0fe194fb21e68d1b0b900f6a1eb659db804fed8ce80ac95aeb9f9",
+      "size_bytes": 100258,
+      "url": "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/ArcGIS/rest/services/ODC_TRANS_STREET_L/FeatureServer/145?f=pjson",
+      "retrieved_utc": "2026-10-28"
+    },
+    "streets-item.json": {
+      "sha256": "c752728fd38ef0e9629b02ccf06f20bb3488447f193d4fbf9dd302ff33104c4f",
+      "size_bytes": 2756,
+      "url": "https://www.arcgis.com/sharing/rest/content/items/8174a75527d0464fa49d24be32646bb1?f=pjson",
+      "retrieved_utc": "2026-10-28"
+    },
+    "signs.json": {
+      "sha256": "55e3fa69b69d738ad42946be9e606ccde8f4e3cb14e51beec165044a10087a93",
+      "size_bytes": 158491,
+      "url": "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/ArcGIS/rest/services/Signs_from_Cartegraph/FeatureServer/0/query?f=pjson&where=1%3D1&geometry=-105.0002%2C39.7524%2C-104.9989%2C39.7536&geometryType=esriGeometryEnvelope&inSR=4326&outSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&resultRecordCount=2000&orderByFields=OBJECTID",
+      "retrieved_utc": "2026-10-28"
+    },
+    "signs-layer.json": {
+      "sha256": "5771e4d9f9a1a8b992b3b513d28209df61a6cb7c0d1196488ec1b659c1539ab8",
+      "size_bytes": 31139,
+      "url": "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/ArcGIS/rest/services/Signs_from_Cartegraph/FeatureServer/0?f=pjson",
+      "retrieved_utc": "2026-10-28"
+    },
+    "signs-item.json": {
+      "sha256": "740776213562cf29a6aa9de39c63c9d44a1a5cc450b84fe036940a8a77ac910a",
+      "size_bytes": 1732,
+      "url": "https://www.arcgis.com/sharing/rest/content/items/7ae75543e901487eabf70864799fd6db?f=pjson",
+      "retrieved_utc": "2026-10-28"
+    },
+    "parking-restrictions.json": {
+      "sha256": "0edc7835594a696f815ba478905ca35dff1b490e0661247a5e4474572cab09ea",
+      "size_bytes": 306,
+      "url": "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/ArcGIS/rest/services/ODC_TRANS_PARKINGRESTRICTIONS_L/FeatureServer/360/query?f=pjson&where=1%3D1&geometry=-105.002%2C39.750%2C-104.997%2C39.755&geometryType=esriGeometryEnvelope&inSR=4326&outSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&resultRecordCount=2000",
+      "retrieved_utc": "2026-10-28"
+    },
+    "parking-item.json": {
+      "sha256": "0ec13d39fbfaf52501b113c749021288358e6fdda1f2d6f4722945d9caade77e",
+      "size_bytes": 3418,
+      "url": "https://www.arcgis.com/sharing/rest/content/items/ee60512e41d44f619a6bf6483dba7683?f=pjson",
+      "retrieved_utc": "2026-10-28"
+    },
+    "organization.json": {
+      "sha256": "6d9a5b52769cf1fd27752715945893d840ac076553424a7b88164a84de10aa28",
+      "size_bytes": 16247,
+      "url": "https://www.arcgis.com/sharing/rest/portals/zdB7qR0BtYrg0Xpl?f=pjson",
+      "retrieved_utc": "2026-10-28"
+    },
+    "osm-extract.json": {
+      "sha256": "0f5166afa69cdc6c1fc950e29622501ef000c5dd3e4590b113d57b232f2446ab",
+      "size_bytes": 3088,
+      "url": "https://download.geofabrik.de/north-america/us/colorado-261027.osm.pbf",
+      "retrieved_utc": "2026-10-28",
+      "retention": "Derived subset; full source retained in unpublished research archive."
+    }
+  },
+  "osm_source": {
+    "url": "https://download.geofabrik.de/north-america/us/colorado-261027.osm.pbf",
+    "size_bytes": 386197077,
+    "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7"
+  },
+  "note": "Retained response bytes, no truncation. City data AS IS and NOT FOR ENGINEERING PURPOSES; see streets-item.json. Captured sign records are not a current field inspection."
+}

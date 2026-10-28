@@ -1,0 +1,3854 @@
+{
+  "currentVersion" : 12, 
+  "id" : 145, 
+  "name" : "TRANS_STREET_L", 
+  "type" : "Feature Layer", 
+  "serviceItemId" : "8174a75527d0464fa49d24be32646bb1", 
+  "cacheMaxAge" : 30, 
+  "displayField" : "NAME", 
+  "description" : "", 
+  "copyrightText" : "", 
+  "defaultVisibility" : false, 
+  "editingInfo" : {
+    "lastEditDate" : 1791975885632, 
+    "schemaLastEditDate" : 1791975885632, 
+    "dataLastEditDate" : 1791975871001
+  }, 
+  "relationships" : [], 
+  "isDataVersioned" : false, 
+  "hasContingentValuesDefinition" : false, 
+  "supportsAppend" : true, 
+  "supportsCalculate" : true, 
+  "supportsASyncCalculate" : true, 
+  "supportsTruncate" : true, 
+  "supportsAttachmentsByUploadId" : true, 
+  "supportsAttachmentsResizing" : true, 
+  "supportsRollbackOnFailureParameter" : true, 
+  "supportsStatistics" : true, 
+  "supportsExceedsLimitStatistics" : true, 
+  "supportsAdvancedQueries" : true, 
+  "supportsValidateSql" : true, 
+  "supportsCoordinatesQuantization" : true, 
+  "supportsLayerOverrides" : true, 
+  "supportsTilesAndBasicQueriesMode" : true, 
+  "supportsFieldDescriptionProperty" : true, 
+  "supportsQuantizationEditMode" : true, 
+  "supportsColumnStoreIndex" : true, 
+  "supportsApplyEditsWithGlobalIds" : true, 
+  "supportsMultiScaleGeometry" : true, 
+  "supportsReturningQueryGeometry" : true, 
+  "enableNullGeometry" : false, 
+  "hasGeometryProperties" : true, 
+  "geometryProperties" : 
+  {
+    "shapeLengthFieldName" : "Shape__Length", 
+    "units" : "esriFeet"
+  }, 
+  "advancedQueryCapabilities" : {
+    "supportsPagination" : true, 
+    "supportsPaginationOnAggregatedQueries" : true, 
+    "supportsQueryRelatedPagination" : true, 
+    "supportsQueryWithDistance" : true, 
+    "supportsOutDistance" : true, 
+    "supportsReturningQueryExtent" : true, 
+    "supportsStatistics" : true, 
+    "supportsOrderBy" : true, 
+    "supportsDistinct" : true, 
+    "supportsQueryWithResultType" : true, 
+    "supportsSqlExpression" : true, 
+    "supportsTimeRelation" : true, 
+    "supportsAdvancedQueryRelated" : true, 
+    "supportsCountDistinct" : true, 
+    "supportsPercentileStatistics" : true, 
+    "supportsApproxPercentileStatistics" : true, 
+    "supportsSpatialAggregationStatistics" : true, 
+    "supportsTrueCurve" : true, 
+    "supportedSpatialAggregationStatistics" : [
+      "EnvelopeAggregate", 
+      "CentroidAggregate", 
+      "ConvexHullAggregate"
+    ], 
+    "supportsLod" : true, 
+    "supportsQueryWithLodSR" : false, 
+    "supportedLodTypes" : [
+      "geohash"
+    ], 
+    "supportsReturningGeometryCentroid" : false, 
+    "supportsReturningGeometryEnvelope" : true, 
+    "supportsReturningGeometryProperties" : true, 
+    "supportsQueryWithDatumTransformation" : true, 
+    "supportsCurrentUserQueries" : true, 
+    "supportsHavingClause" : true, 
+    "supportsOutFieldSQLExpression" : true, 
+    "supportsMaxRecordCountFactor" : true, 
+    "supportsTopFeaturesQuery" : true, 
+    "supportsDisjointSpatialRel" : true, 
+    "supportsQueryWithCacheHint" : true, 
+    "supportedOperationsWithCacheHint" : [
+      "query", 
+      "queryTopFilter", 
+      "queryAnalytics", 
+      "queryAttachments", 
+      "queryRelated", 
+      "queryBins", 
+      "queryPivot"
+    ], 
+    "supportsQueryAnalytic" : true, 
+    "supportsQueryPivot" : true, 
+    "supportsQueryBins" : true, 
+    "supportsDefaultSR" : true, 
+    "supportsTranslations" : false, 
+    "supportsAggIds" : true, 
+    "supportsQueryWithCollation" : true, 
+    "supportsISODOW" : true, 
+    "supportsISOWeek" : true, 
+    "supportsFullTextSearch" : true, 
+    "fullTextSearchCapabilities" : {
+      "supportsAccentSensitivity" : true, 
+      "supportsStopWords" : true, 
+      "supportsSearchOperator" : true, 
+      "supportsOperator" : true
+    }
+  }, 
+  "advancedQueryAnalyticCapabilities" : {
+    "supportsLinearRegression" : true, 
+    "supportsTrendlineRegression" : true, 
+    "supportsAsync" : true, 
+    "supportsPercentileAnalytic" : true
+  }, 
+  "queryBinsCapabilities" : {
+    "supportsAsync" : true, 
+    "supportsAutoIntervalBin" : true, 
+    "supportsFixedIntervalBin" : true, 
+    "supportsFixedBoundariesBin" : true, 
+    "supportsDateBin" : true, 
+    "supportsClassificationBin" : true, 
+    "supportsStackBy" : true, 
+    "supportsSplitBy" : true, 
+    "supportsFirstDayOfWeek" : true, 
+    "supportsSnapToData" : true, 
+    "supportsReturnFullIntervalBin" : true, 
+    "supportsReturnStackValueRange" : true, 
+    "supportsNormalization" : true, 
+    "supportedStatisticTypes" : [
+      "COUNT", 
+      "SUM", 
+      "AVG", 
+      "VAR", 
+      "STDDEV", 
+      "MIN", 
+      "MAX", 
+      "PERCENTILE_CONT", 
+      "PERCENTILE_DISC", 
+      "APPROX_PERCENTILE_CONT", 
+      "APPROX_PERCENTILE_DISC", 
+      "CentroidAggregate", 
+      "EnvelopeAggregate", 
+      "ConvexHullAggregate"
+    ], 
+    "supportedNormalizationTypes" : [
+      "boxCox", 
+      "field", 
+      "inverse", 
+      "log", 
+      "naturalLog", 
+      "percentOfTotal", 
+      "squareRoot"
+    ]
+  }, 
+  "supportedOperationsWithCollation" : "query,addField,updateField", 
+  "advancedEditingCapabilities" : {
+    "supportedSqlFormatsInCalculate" : [
+      "standard"
+    ], 
+    "supportsAsyncApplyEdits" : true, 
+    "supportsReturnEditResults" : true, 
+    "supportsApplyEditsbyUploadID" : true, 
+    "supportedApplyEditsUploadIDFormats" : "JSON,PBF", 
+    "supportsTranslation" : false, 
+    "supportsMaxTranslations" : 10
+  }, 
+  "infoInEstimates" : [
+    "extent", 
+    "count"
+  ], 
+  "useStandardizedQueries" : true, 
+  "geometryType" : "esriGeometryPolyline", 
+  "minScale" : 0, 
+  "maxScale" : 0, 
+  "extent" : {
+    "xmin" : 3109856.8368465602, 
+    "ymin" : 1648923.4279993922, 
+    "xmax" : 3258607.0577182174, 
+    "ymax" : 1769493.5070687234, 
+    "spatialReference" : {
+      "wkid" : 2877, 
+      "latestWkid" : 2877
+    }
+  }, 
+  "spatialReference" : {
+    "wkid" : 2877, 
+    "latestWkid" : 2877
+  }, 
+  "drawingInfo":{"renderer":{"type":"simple","symbol":{"type":"esriSLS","style":"esriSLSSolid","color":[78,78,78,255],"width":2}},"scaleSymbols":true,"transparency":0,"labelingInfo":null}, 
+  "allowGeometryUpdates" : true, 
+  "trueCurveSupportMode" : "OGC", 
+  "supportedCurveTypes" : [
+    "esriGeometryCircularArc"
+  ], 
+  "supportedTrueCurvePbfFeatureEncodings" : [
+    "esriCompressedShapeBuffer", 
+    "esriDefault"
+  ], 
+  "allowTrueCurvesUpdates" : true, 
+  "onlyAllowTrueCurveUpdatesByTrueCurveClients" : true, 
+  "hasAttachments" : false, 
+  "htmlPopupType" : "esriServerHTMLPopupTypeAsHTMLText", 
+  "hasMetadata" : true, 
+  "hasM" : false, 
+  "hasZ" : false, 
+  "objectIdField" : "OBJECTID", 
+  "uniqueIdField" : 
+  {
+    "name" : "OBJECTID", 
+    "isSystemMaintained" : true
+  }, 
+  "globalIdField" : "GlobalID", 
+  "typeIdField" : "", 
+  "collation" : {
+    "locale" : "neutral", 
+    "caseSensitive" : false, 
+    "accentSensitive" : true
+  }, 
+  "fields" : [
+    {
+      "name" : "OBJECTID", 
+      "type" : "esriFieldTypeOID", 
+      "alias" : "OBJECTID", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : false, 
+      "editable" : false, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "GlobalID", 
+      "type" : "esriFieldTypeGlobalID", 
+      "alias" : "GlobalID", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 38, 
+      "nullable" : false, 
+      "editable" : false, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FNODE", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "FNODE_", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "TNODE", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "TNODE_", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "STREETID", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "STREETID", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "MASTERID", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "MASTERID", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "L_F_ADD", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "L_F_ADD", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "L_T_ADD", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "L_T_ADD", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "R_F_ADD", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "R_F_ADD", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "R_T_ADD", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "R_T_ADD", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "PREFIX", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "PREFIX", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 3, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "DirPrefix", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Directional Prefixes for streets/addresses", 
+        "codedValues" : [
+          {
+            "name" : "N", 
+            "code" : "N"
+          }, 
+          {
+            "name" : "S", 
+            "code" : "S"
+          }, 
+          {
+            "name" : "E", 
+            "code" : "E"
+          }, 
+          {
+            "name" : "W", 
+            "code" : "W"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "NAME", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "NAME", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 30, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "TYPE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "TYPE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 4, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "StreetType", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Street Types", 
+        "codedValues" : [
+          {
+            "name" : "AVE", 
+            "code" : "AVE"
+          }, 
+          {
+            "name" : "BLVD", 
+            "code" : "BLVD"
+          }, 
+          {
+            "name" : "CIR", 
+            "code" : "CIR"
+          }, 
+          {
+            "name" : "CT", 
+            "code" : "CT"
+          }, 
+          {
+            "name" : "DR", 
+            "code" : "DR"
+          }, 
+          {
+            "name" : "LN", 
+            "code" : "LN"
+          }, 
+          {
+            "name" : "PKWY", 
+            "code" : "PKWY"
+          }, 
+          {
+            "name" : "PL", 
+            "code" : "PL"
+          }, 
+          {
+            "name" : "RD", 
+            "code" : "RD"
+          }, 
+          {
+            "name" : "ST", 
+            "code" : "ST"
+          }, 
+          {
+            "name" : "WAY", 
+            "code" : "WAY"
+          }, 
+          {
+            "name" : "CRES", 
+            "code" : "CRES"
+          }, 
+          {
+            "name" : "FWY", 
+            "code" : "FWY"
+          }, 
+          {
+            "name" : "HWY", 
+            "code" : "HWY"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "POSTMODIFIER", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "POSTMODIFIER", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FULLNAME", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "FULLNAME", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FROMNAME", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "FROMNAME", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "TONAME", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "TONAME", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "LEN_MI", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "LEN_MI", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ALIAS1", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "ALIAS1", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 100, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ALIAS2", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "ALIAS2", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 100, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "ALIAS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "ALIAS for Central Square CAD", 
+        "codedValues" : [
+          {
+            "name" : "BND", 
+            "code" : "BND"
+          }, 
+          {
+            "name" : "BND/ENCLAVE", 
+            "code" : "BND/ENCLAVE"
+          }, 
+          {
+            "name" : "DTC", 
+            "code" : "DTC"
+          }, 
+          {
+            "name" : "ENCLAVE", 
+            "code" : "ENCLAVE"
+          }, 
+          {
+            "name" : "FORT LOGAN CEMETERY", 
+            "code" : "FORT LOGAN CEMETERY"
+          }, 
+          {
+            "name" : "STATE HIGHWAY", 
+            "code" : "STATE HIGHWAY"
+          }, 
+          {
+            "name" : "STATE HIGHWAY/BND", 
+            "code" : "STATE HIGHWAY/BND"
+          }, 
+          {
+            "name" : "STATE HIGHWAY/BND/ENCLAVE", 
+            "code" : "STATE HIGHWAY/BND/ENCLAVE"
+          }, 
+          {
+            "name" : "US HIGHWAY", 
+            "code" : "US HIGHWAY"
+          }, 
+          {
+            "name" : "US HIGHWAY/BND", 
+            "code" : "US HIGHWAY/BND"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "JURISID", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "JURISID", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "JURISMTC", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Jurisdiction and Maintenance", 
+        "codedValues" : [
+          {
+            "name" : "ADAMS", 
+            "code" : "ADAMS"
+          }, 
+          {
+            "name" : "ARAPAHOE", 
+            "code" : "ARAPAHOE"
+          }, 
+          {
+            "name" : "AURORA", 
+            "code" : "AURORA"
+          }, 
+          {
+            "name" : "CDOT", 
+            "code" : "CDOT"
+          }, 
+          {
+            "name" : "CHERRY HILLS VILLAGE", 
+            "code" : "CHERRY HILLS VILLAGE"
+          }, 
+          {
+            "name" : "COMMERCE CITY", 
+            "code" : "COMMERCE CITY"
+          }, 
+          {
+            "name" : "DENVER", 
+            "code" : "DENVER"
+          }, 
+          {
+            "name" : "E470", 
+            "code" : "E470"
+          }, 
+          {
+            "name" : "ENGLEWOOD", 
+            "code" : "ENGLEWOOD"
+          }, 
+          {
+            "name" : "FEDERAL", 
+            "code" : "FEDERAL"
+          }, 
+          {
+            "name" : "GLENDALE", 
+            "code" : "GLENDALE"
+          }, 
+          {
+            "name" : "STATE", 
+            "code" : "STATE"
+          }, 
+          {
+            "name" : "GREENWOOD VILLLAGE", 
+            "code" : "GREENWOOD VILLLAGE"
+          }, 
+          {
+            "name" : "JEFFERSON", 
+            "code" : "JEFFERSON"
+          }, 
+          {
+            "name" : "LAKESIDE", 
+            "code" : "LAKESIDE"
+          }, 
+          {
+            "name" : "LAKEWOOD", 
+            "code" : "LAKEWOOD"
+          }, 
+          {
+            "name" : "PRIVATE", 
+            "code" : "PRIVATE"
+          }, 
+          {
+            "name" : "RTD", 
+            "code" : "RTD"
+          }, 
+          {
+            "name" : "SHERIDAN", 
+            "code" : "SHERIDAN"
+          }, 
+          {
+            "name" : "WHEAT RIDGE", 
+            "code" : "WHEAT RIDGE"
+          }, 
+          {
+            "name" : "AURARIA", 
+            "code" : "AURARIA"
+          }, 
+          {
+            "name" : "DENVER PARKS AND RECREATION", 
+            "code" : "DENVER PARKS AND RECREATION"
+          }, 
+          {
+            "name" : "DEN", 
+            "code" : "DEN"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "MAINTNCE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "MAINTNCE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "JURISMTC", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Jurisdiction and Maintenance", 
+        "codedValues" : [
+          {
+            "name" : "ADAMS", 
+            "code" : "ADAMS"
+          }, 
+          {
+            "name" : "ARAPAHOE", 
+            "code" : "ARAPAHOE"
+          }, 
+          {
+            "name" : "AURORA", 
+            "code" : "AURORA"
+          }, 
+          {
+            "name" : "CDOT", 
+            "code" : "CDOT"
+          }, 
+          {
+            "name" : "CHERRY HILLS VILLAGE", 
+            "code" : "CHERRY HILLS VILLAGE"
+          }, 
+          {
+            "name" : "COMMERCE CITY", 
+            "code" : "COMMERCE CITY"
+          }, 
+          {
+            "name" : "DENVER", 
+            "code" : "DENVER"
+          }, 
+          {
+            "name" : "E470", 
+            "code" : "E470"
+          }, 
+          {
+            "name" : "ENGLEWOOD", 
+            "code" : "ENGLEWOOD"
+          }, 
+          {
+            "name" : "FEDERAL", 
+            "code" : "FEDERAL"
+          }, 
+          {
+            "name" : "GLENDALE", 
+            "code" : "GLENDALE"
+          }, 
+          {
+            "name" : "STATE", 
+            "code" : "STATE"
+          }, 
+          {
+            "name" : "GREENWOOD VILLLAGE", 
+            "code" : "GREENWOOD VILLLAGE"
+          }, 
+          {
+            "name" : "JEFFERSON", 
+            "code" : "JEFFERSON"
+          }, 
+          {
+            "name" : "LAKESIDE", 
+            "code" : "LAKESIDE"
+          }, 
+          {
+            "name" : "LAKEWOOD", 
+            "code" : "LAKEWOOD"
+          }, 
+          {
+            "name" : "PRIVATE", 
+            "code" : "PRIVATE"
+          }, 
+          {
+            "name" : "RTD", 
+            "code" : "RTD"
+          }, 
+          {
+            "name" : "SHERIDAN", 
+            "code" : "SHERIDAN"
+          }, 
+          {
+            "name" : "WHEAT RIDGE", 
+            "code" : "WHEAT RIDGE"
+          }, 
+          {
+            "name" : "AURARIA", 
+            "code" : "AURARIA"
+          }, 
+          {
+            "name" : "DENVER PARKS AND RECREATION", 
+            "code" : "DENVER PARKS AND RECREATION"
+          }, 
+          {
+            "name" : "DEN", 
+            "code" : "DEN"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ADDRESSQUAD", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "ADDRESSQUAD", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 2, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "ADDRESSQUAD", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Address Quadrants", 
+        "codedValues" : [
+          {
+            "name" : "E", 
+            "code" : "E"
+          }, 
+          {
+            "name" : "N", 
+            "code" : "N"
+          }, 
+          {
+            "name" : "NE", 
+            "code" : "NE"
+          }, 
+          {
+            "name" : "NW", 
+            "code" : "NW"
+          }, 
+          {
+            "name" : "S", 
+            "code" : "S"
+          }, 
+          {
+            "name" : "SE", 
+            "code" : "SE"
+          }, 
+          {
+            "name" : "SW", 
+            "code" : "SW"
+          }, 
+          {
+            "name" : "W", 
+            "code" : "W"
+          }, 
+          {
+            "name" : "00", 
+            "code" : "00"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "VOLCLASS", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "VOLCLASS", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 15, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "VOLCLASS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Volume Class", 
+        "codedValues" : [
+          {
+            "name" : "OUTSIDECCD", 
+            "code" : "OUTSIDECCD"
+          }, 
+          {
+            "name" : "ARTERIAL", 
+            "code" : "ARTERIAL"
+          }, 
+          {
+            "name" : "COLLECTOR", 
+            "code" : "COLLECTOR"
+          }, 
+          {
+            "name" : "LOCAL", 
+            "code" : "LOCAL"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FUNCLASS", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "FUNCLASS", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "FUNCCLASS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Function Class FHWA", 
+        "codedValues" : [
+          {
+            "name" : "Interstate-Rural", 
+            "code" : "Interstate-Rural"
+          }, 
+          {
+            "name" : "Interstate-Urban", 
+            "code" : "Interstate-Urban"
+          }, 
+          {
+            "name" : "Freeway-Urban", 
+            "code" : "Freeway-Urban"
+          }, 
+          {
+            "name" : "Other Pri Art-Urban", 
+            "code" : "Other Pri Art-Urban"
+          }, 
+          {
+            "name" : "Minor Art-Urban", 
+            "code" : "Minor Art-Urban"
+          }, 
+          {
+            "name" : "Collector-Urban", 
+            "code" : "Collector-Urban"
+          }, 
+          {
+            "name" : "Local-Urban", 
+            "code" : "Local-Urban"
+          }, 
+          {
+            "name" : "Other Pri Art-Rural", 
+            "code" : "Other Pri Art-Rural"
+          }, 
+          {
+            "name" : "Minor Art-Rural", 
+            "code" : "Minor Art-Rural"
+          }, 
+          {
+            "name" : "Major Coll-Rural", 
+            "code" : "Major Coll-Rural"
+          }, 
+          {
+            "name" : "Minor Coll-Rural", 
+            "code" : "Minor Coll-Rural"
+          }, 
+          {
+            "name" : "Local-Rural", 
+            "code" : "Local-Rural"
+          }, 
+          {
+            "name" : "Not in HUTF Inventory", 
+            "code" : "Not in HUTF Inventory"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "TT_SEGTYPE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "TT_SEGTYPE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "TT_SEGTYPE", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Census CFCCodes", 
+        "codedValues" : [
+          {
+            "name" : "Road", 
+            "code" : "A00"
+          }, 
+          {
+            "name" : "Road,Unseparated", 
+            "code" : "A01"
+          }, 
+          {
+            "name" : "Road,Unseparated,Underpassing", 
+            "code" : "A03"
+          }, 
+          {
+            "name" : "Road,Separated", 
+            "code" : "A05"
+          }, 
+          {
+            "name" : "Road,Separated,Underpassing", 
+            "code" : "A07"
+          }, 
+          {
+            "name" : "Interstate, Unseparated, Underpassing", 
+            "code" : "A13"
+          }, 
+          {
+            "name" : "Interstate, Separated", 
+            "code" : "A15"
+          }, 
+          {
+            "name" : "US Highway, Unseparated", 
+            "code" : "A21"
+          }, 
+          {
+            "name" : "US Highway, Unseparated,Underpassing", 
+            "code" : "A23"
+          }, 
+          {
+            "name" : "US Highway, Separated", 
+            "code" : "A25"
+          }, 
+          {
+            "name" : "US Highway, Separated, Underpassing", 
+            "code" : "A27"
+          }, 
+          {
+            "name" : "County Road, Unseparated", 
+            "code" : "A31"
+          }, 
+          {
+            "name" : "County Road, Separated", 
+            "code" : "A35"
+          }, 
+          {
+            "name" : "City Street", 
+            "code" : "A40"
+          }, 
+          {
+            "name" : "City Street, Unseparated", 
+            "code" : "A41"
+          }, 
+          {
+            "name" : "City Street, Unseparated, Underpassing", 
+            "code" : "A43"
+          }, 
+          {
+            "name" : "City Street, Separated", 
+            "code" : "A45"
+          }, 
+          {
+            "name" : "City Street, Separated, In Tunnel", 
+            "code" : "A46"
+          }, 
+          {
+            "name" : "City Street, Separated, Underpassing", 
+            "code" : "A47"
+          }, 
+          {
+            "name" : "Special Road", 
+            "code" : "A60"
+          }, 
+          {
+            "name" : "Cul-De-Sac", 
+            "code" : "A61"
+          }, 
+          {
+            "name" : "Traffic Circle", 
+            "code" : "A62"
+          }, 
+          {
+            "name" : "Access Ramp", 
+            "code" : "A63"
+          }, 
+          {
+            "name" : "Service Road", 
+            "code" : "A64"
+          }, 
+          {
+            "name" : "Ferry Crossing", 
+            "code" : "A65"
+          }, 
+          {
+            "name" : "Other Road", 
+            "code" : "A70"
+          }, 
+          {
+            "name" : "Walkway", 
+            "code" : "A71"
+          }, 
+          {
+            "name" : "Road, Unseparated, In Tunnel", 
+            "code" : "A02"
+          }, 
+          {
+            "name" : "Road, Unseparated, Rail Crossing", 
+            "code" : "A04"
+          }, 
+          {
+            "name" : "Road,Separated, In Tunnel", 
+            "code" : "A06"
+          }, 
+          {
+            "name" : "Road, Separated,Rail Crossing", 
+            "code" : "A08"
+          }, 
+          {
+            "name" : "Interstate Highway", 
+            "code" : "A10"
+          }, 
+          {
+            "name" : "Interstate, Unseparated", 
+            "code" : "A11"
+          }, 
+          {
+            "name" : "Interstate, Unseparated, In Tunnel", 
+            "code" : "A12"
+          }, 
+          {
+            "name" : "Interstate, Unseparated, Rail Crossing", 
+            "code" : "A14"
+          }, 
+          {
+            "name" : "Interstate, Separated, In Tunnel", 
+            "code" : "A16"
+          }, 
+          {
+            "name" : "Interstate, Separated, Rail Crossing", 
+            "code" : "A18"
+          }, 
+          {
+            "name" : "US Highway", 
+            "code" : "A20"
+          }, 
+          {
+            "name" : "US Highway, Unseparated, In Tunnel", 
+            "code" : "A22"
+          }, 
+          {
+            "name" : "US Highway, Unseparated, Rail Crossing", 
+            "code" : "A24"
+          }, 
+          {
+            "name" : "US Highway, Separated, In Tunnel", 
+            "code" : "A26"
+          }, 
+          {
+            "name" : "US Highway, Separated, Rail Crossing", 
+            "code" : "A28"
+          }, 
+          {
+            "name" : "County Road", 
+            "code" : "A30"
+          }, 
+          {
+            "name" : "County Road, Unseparated, In Tunnel", 
+            "code" : "A32"
+          }, 
+          {
+            "name" : "County Road, Unseparated, Underpassing", 
+            "code" : "A33"
+          }, 
+          {
+            "name" : "County Road, Unseparated, Rail Crossing", 
+            "code" : "A34"
+          }, 
+          {
+            "name" : "County Road, Separated, Underpassing", 
+            "code" : "A37"
+          }, 
+          {
+            "name" : "County Road, Separated, Rail Crossing", 
+            "code" : "A38"
+          }, 
+          {
+            "name" : "City Street, Unseparated, In Tunnel", 
+            "code" : "A42"
+          }, 
+          {
+            "name" : "City Street, Unseparated, Rail Crossing", 
+            "code" : "A44"
+          }, 
+          {
+            "name" : "City Street, Separated, Rail Crossing", 
+            "code" : "A48"
+          }, 
+          {
+            "name" : "Jeep Trail", 
+            "code" : "A50"
+          }, 
+          {
+            "name" : "Jeep Trail, Unseparated", 
+            "code" : "A51"
+          }, 
+          {
+            "name" : "Jeep Trail, Unseparated, In Tunnel", 
+            "code" : "A52"
+          }, 
+          {
+            "name" : "Jeep Trail, Unseparated, Underpassing", 
+            "code" : "A53"
+          }, 
+          {
+            "name" : "Jeep Trail, Unseparated, Rail Crossing", 
+            "code" : "A54"
+          }, 
+          {
+            "name" : "Stairway", 
+            "code" : "A72"
+          }, 
+          {
+            "name" : "Alley", 
+            "code" : "A73"
+          }, 
+          {
+            "name" : "County Road, Separated", 
+            "code" : "A36"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "CITYID", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "CITYID", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 100, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "CITYID", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "City ID", 
+        "codedValues" : [
+          {
+            "name" : "Commerce City", 
+            "code" : "Commerce City"
+          }, 
+          {
+            "name" : "Littleton", 
+            "code" : "Littleton"
+          }, 
+          {
+            "name" : "Sheridan", 
+            "code" : "Sheridan"
+          }, 
+          {
+            "name" : "Edgewater", 
+            "code" : "Edgewater"
+          }, 
+          {
+            "name" : "Lakeside", 
+            "code" : "Lakeside"
+          }, 
+          {
+            "name" : "Lakewood", 
+            "code" : "Lakewood"
+          }, 
+          {
+            "name" : "Mountain View", 
+            "code" : "Mountain View"
+          }, 
+          {
+            "name" : "Wheat Ridge", 
+            "code" : "Wheat Ridge"
+          }, 
+          {
+            "name" : "Aurora - Adams Co", 
+            "code" : "Aurora - Adams Co"
+          }, 
+          {
+            "name" : "Cherry Hills Village", 
+            "code" : "Cherry Hills Village"
+          }, 
+          {
+            "name" : "Englewood", 
+            "code" : "Englewood"
+          }, 
+          {
+            "name" : "Glendale", 
+            "code" : "Glendale"
+          }, 
+          {
+            "name" : "Greenwood Village", 
+            "code" : "Greenwood Village"
+          }, 
+          {
+            "name" : "Denver", 
+            "code" : "Denver"
+          }, 
+          {
+            "name" : "Aurora - Arapahoe Co", 
+            "code" : "Aurora - Arapahoe Co"
+          }, 
+          {
+            "name" : "Unincorporated Jefferson County", 
+            "code" : "Unincorporated Jefferson County"
+          }, 
+          {
+            "name" : "Unincorporated Adams County", 
+            "code" : "Unincorporated Adams County"
+          }, 
+          {
+            "name" : "Unincorporated Arapahoe County", 
+            "code" : "Unincorporated Arapahoe County"
+          }, 
+          {
+            "name" : "Greenwood Village half of border with Denver", 
+            "code" : "Greenwood Village half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Greenwood Village", 
+            "code" : "Denver half of border with Greenwood Village"
+          }, 
+          {
+            "name" : "Cherry Hills Village half of border with Denver", 
+            "code" : "Cherry Hills Village half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Cherry Hills Village", 
+            "code" : "Denver half of border with Cherry Hills Village"
+          }, 
+          {
+            "name" : "Aurora half of border with Denver", 
+            "code" : "Aurora half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Aurora", 
+            "code" : "Denver half of border with Aurora"
+          }, 
+          {
+            "name" : "Commerce City half of border with Denver", 
+            "code" : "Commerce City half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Commerce City", 
+            "code" : "Denver half of border with Commerce City"
+          }, 
+          {
+            "name" : "Rocky Mtn Ntl Arsenal half of border with Denver", 
+            "code" : "Rocky Mtn Ntl Arsenal half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Rocky Mtn Ntl Arsenal", 
+            "code" : "Denver half of border with Rocky Mtn Ntl Arsenal"
+          }, 
+          {
+            "name" : "Lakewood half of border with Denver", 
+            "code" : "Lakewood half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Lakewood", 
+            "code" : "Denver half of border with Lakewood"
+          }, 
+          {
+            "name" : "Unincorporated Arapahoe County half of border with Denver", 
+            "code" : "Unincorporated Arapahoe County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Unincorporated Arapahoe County", 
+            "code" : "Denver half of border with Unincorporated Arapahoe County"
+          }, 
+          {
+            "name" : "Unincorporated Adams County half of border with Denver", 
+            "code" : "Unincorporated Adams County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Unincorporated Adams County", 
+            "code" : "Denver half of border with Unincorporated Adams County"
+          }, 
+          {
+            "name" : "Unincorporated Jefferson County half of border with Denver", 
+            "code" : "Unincorporated Jefferson County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Unincorporated Jefferson County", 
+            "code" : "Denver half of border with Unincorporated Jefferson County"
+          }, 
+          {
+            "name" : "Glendale half of border with Denver", 
+            "code" : "Glendale half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Glendale", 
+            "code" : "Denver half of border with Glendale"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "COUNTYID", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "COUNTYID", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 100, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "COUNTYID", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "County ID", 
+        "codedValues" : [
+          {
+            "name" : "Adams", 
+            "code" : "Adams"
+          }, 
+          {
+            "name" : "Arapahoe", 
+            "code" : "Arapahoe"
+          }, 
+          {
+            "name" : "Denver", 
+            "code" : "Denver"
+          }, 
+          {
+            "name" : "Jefferson", 
+            "code" : "Jefferson"
+          }, 
+          {
+            "name" : "Boulder", 
+            "code" : "Boulder"
+          }, 
+          {
+            "name" : "Douglas", 
+            "code" : "Douglas"
+          }, 
+          {
+            "name" : "Weld", 
+            "code" : "Weld"
+          }, 
+          {
+            "name" : "Broomfield", 
+            "code" : "Broomfield"
+          }, 
+          {
+            "name" : "Arapahoe County half of border with Denver", 
+            "code" : "Arapahoe County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver County half of border with Arapahoe", 
+            "code" : "Denver County half of border with Arapahoe"
+          }, 
+          {
+            "name" : "Adams County half of border with Denver", 
+            "code" : "Adams County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver County half of border with Adams", 
+            "code" : "Denver County half of border with Adams"
+          }, 
+          {
+            "name" : "Jefferson County half of border with Denver", 
+            "code" : "Jefferson County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver County half of border with Jefferson", 
+            "code" : "Denver County half of border with Jefferson"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ZIPLEFT", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "ZIPLEFT", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 10, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "ZIP", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "ZIP Codes", 
+        "codedValues" : [
+          {
+            "name" : "80010", 
+            "code" : "80010"
+          }, 
+          {
+            "name" : "80012", 
+            "code" : "80012"
+          }, 
+          {
+            "name" : "80014", 
+            "code" : "80014"
+          }, 
+          {
+            "name" : "80019", 
+            "code" : "80019"
+          }, 
+          {
+            "name" : "80022", 
+            "code" : "80022"
+          }, 
+          {
+            "name" : "80045", 
+            "code" : "80045"
+          }, 
+          {
+            "name" : "80110", 
+            "code" : "80110"
+          }, 
+          {
+            "name" : "80111", 
+            "code" : "80111"
+          }, 
+          {
+            "name" : "80123", 
+            "code" : "80123"
+          }, 
+          {
+            "name" : "80137", 
+            "code" : "80137"
+          }, 
+          {
+            "name" : "80202", 
+            "code" : "80202"
+          }, 
+          {
+            "name" : "80203", 
+            "code" : "80203"
+          }, 
+          {
+            "name" : "80204", 
+            "code" : "80204"
+          }, 
+          {
+            "name" : "80205", 
+            "code" : "80205"
+          }, 
+          {
+            "name" : "80206", 
+            "code" : "80206"
+          }, 
+          {
+            "name" : "80207", 
+            "code" : "80207"
+          }, 
+          {
+            "name" : "80209", 
+            "code" : "80209"
+          }, 
+          {
+            "name" : "80210", 
+            "code" : "80210"
+          }, 
+          {
+            "name" : "80211", 
+            "code" : "80211"
+          }, 
+          {
+            "name" : "80212", 
+            "code" : "80212"
+          }, 
+          {
+            "name" : "80214", 
+            "code" : "80214"
+          }, 
+          {
+            "name" : "80216", 
+            "code" : "80216"
+          }, 
+          {
+            "name" : "80218", 
+            "code" : "80218"
+          }, 
+          {
+            "name" : "80219", 
+            "code" : "80219"
+          }, 
+          {
+            "name" : "80220", 
+            "code" : "80220"
+          }, 
+          {
+            "name" : "80221", 
+            "code" : "80221"
+          }, 
+          {
+            "name" : "80222", 
+            "code" : "80222"
+          }, 
+          {
+            "name" : "80223", 
+            "code" : "80223"
+          }, 
+          {
+            "name" : "80224", 
+            "code" : "80224"
+          }, 
+          {
+            "name" : "80226", 
+            "code" : "80226"
+          }, 
+          {
+            "name" : "80227", 
+            "code" : "80227"
+          }, 
+          {
+            "name" : "80230", 
+            "code" : "80230"
+          }, 
+          {
+            "name" : "80231", 
+            "code" : "80231"
+          }, 
+          {
+            "name" : "80232", 
+            "code" : "80232"
+          }, 
+          {
+            "name" : "80235", 
+            "code" : "80235"
+          }, 
+          {
+            "name" : "80236", 
+            "code" : "80236"
+          }, 
+          {
+            "name" : "80237", 
+            "code" : "80237"
+          }, 
+          {
+            "name" : "80238", 
+            "code" : "80238"
+          }, 
+          {
+            "name" : "80239", 
+            "code" : "80239"
+          }, 
+          {
+            "name" : "80240", 
+            "code" : "80240"
+          }, 
+          {
+            "name" : "80246", 
+            "code" : "80246"
+          }, 
+          {
+            "name" : "80247", 
+            "code" : "80247"
+          }, 
+          {
+            "name" : "80249", 
+            "code" : "80249"
+          }, 
+          {
+            "name" : "80603", 
+            "code" : "80603"
+          }, 
+          {
+            "name" : "80642", 
+            "code" : "80642"
+          }, 
+          {
+            "name" : "NotCCD", 
+            "code" : "NotCCD"
+          }, 
+          {
+            "name" : "80002", 
+            "code" : "80002"
+          }, 
+          {
+            "name" : "80037", 
+            "code" : "80037"
+          }, 
+          {
+            "name" : "80127", 
+            "code" : "80127"
+          }, 
+          {
+            "name" : "80294", 
+            "code" : "80294"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ZIPRIGHT", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "ZIPRIGHT", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 10, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "ZIP", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "ZIP Codes", 
+        "codedValues" : [
+          {
+            "name" : "80010", 
+            "code" : "80010"
+          }, 
+          {
+            "name" : "80012", 
+            "code" : "80012"
+          }, 
+          {
+            "name" : "80014", 
+            "code" : "80014"
+          }, 
+          {
+            "name" : "80019", 
+            "code" : "80019"
+          }, 
+          {
+            "name" : "80022", 
+            "code" : "80022"
+          }, 
+          {
+            "name" : "80045", 
+            "code" : "80045"
+          }, 
+          {
+            "name" : "80110", 
+            "code" : "80110"
+          }, 
+          {
+            "name" : "80111", 
+            "code" : "80111"
+          }, 
+          {
+            "name" : "80123", 
+            "code" : "80123"
+          }, 
+          {
+            "name" : "80137", 
+            "code" : "80137"
+          }, 
+          {
+            "name" : "80202", 
+            "code" : "80202"
+          }, 
+          {
+            "name" : "80203", 
+            "code" : "80203"
+          }, 
+          {
+            "name" : "80204", 
+            "code" : "80204"
+          }, 
+          {
+            "name" : "80205", 
+            "code" : "80205"
+          }, 
+          {
+            "name" : "80206", 
+            "code" : "80206"
+          }, 
+          {
+            "name" : "80207", 
+            "code" : "80207"
+          }, 
+          {
+            "name" : "80209", 
+            "code" : "80209"
+          }, 
+          {
+            "name" : "80210", 
+            "code" : "80210"
+          }, 
+          {
+            "name" : "80211", 
+            "code" : "80211"
+          }, 
+          {
+            "name" : "80212", 
+            "code" : "80212"
+          }, 
+          {
+            "name" : "80214", 
+            "code" : "80214"
+          }, 
+          {
+            "name" : "80216", 
+            "code" : "80216"
+          }, 
+          {
+            "name" : "80218", 
+            "code" : "80218"
+          }, 
+          {
+            "name" : "80219", 
+            "code" : "80219"
+          }, 
+          {
+            "name" : "80220", 
+            "code" : "80220"
+          }, 
+          {
+            "name" : "80221", 
+            "code" : "80221"
+          }, 
+          {
+            "name" : "80222", 
+            "code" : "80222"
+          }, 
+          {
+            "name" : "80223", 
+            "code" : "80223"
+          }, 
+          {
+            "name" : "80224", 
+            "code" : "80224"
+          }, 
+          {
+            "name" : "80226", 
+            "code" : "80226"
+          }, 
+          {
+            "name" : "80227", 
+            "code" : "80227"
+          }, 
+          {
+            "name" : "80230", 
+            "code" : "80230"
+          }, 
+          {
+            "name" : "80231", 
+            "code" : "80231"
+          }, 
+          {
+            "name" : "80232", 
+            "code" : "80232"
+          }, 
+          {
+            "name" : "80235", 
+            "code" : "80235"
+          }, 
+          {
+            "name" : "80236", 
+            "code" : "80236"
+          }, 
+          {
+            "name" : "80237", 
+            "code" : "80237"
+          }, 
+          {
+            "name" : "80238", 
+            "code" : "80238"
+          }, 
+          {
+            "name" : "80239", 
+            "code" : "80239"
+          }, 
+          {
+            "name" : "80240", 
+            "code" : "80240"
+          }, 
+          {
+            "name" : "80246", 
+            "code" : "80246"
+          }, 
+          {
+            "name" : "80247", 
+            "code" : "80247"
+          }, 
+          {
+            "name" : "80249", 
+            "code" : "80249"
+          }, 
+          {
+            "name" : "80603", 
+            "code" : "80603"
+          }, 
+          {
+            "name" : "80642", 
+            "code" : "80642"
+          }, 
+          {
+            "name" : "NotCCD", 
+            "code" : "NotCCD"
+          }, 
+          {
+            "name" : "80002", 
+            "code" : "80002"
+          }, 
+          {
+            "name" : "80037", 
+            "code" : "80037"
+          }, 
+          {
+            "name" : "80127", 
+            "code" : "80127"
+          }, 
+          {
+            "name" : "80294", 
+            "code" : "80294"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "SPEEDLIMIT", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "SPEEDLIMIT", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "SPEEDLIMIT", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Speed Limit", 
+        "codedValues" : [
+          {
+            "name" : "15", 
+            "code" : 15
+          }, 
+          {
+            "name" : "25", 
+            "code" : 25
+          }, 
+          {
+            "name" : "30", 
+            "code" : 30
+          }, 
+          {
+            "name" : "35", 
+            "code" : 35
+          }, 
+          {
+            "name" : "40", 
+            "code" : 40
+          }, 
+          {
+            "name" : "45", 
+            "code" : 45
+          }, 
+          {
+            "name" : "55", 
+            "code" : 55
+          }, 
+          {
+            "name" : "65", 
+            "code" : 65
+          }, 
+          {
+            "name" : "70", 
+            "code" : 70
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ONEWAY", 
+      "type" : "esriFieldTypeSmallInteger", 
+      "alias" : "ONEWAY", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "ONEWAY", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "ONEWAY Codes", 
+        "codedValues" : [
+          {
+            "name" : "Two Way", 
+            "code" : 0
+          }, 
+          {
+            "name" : "One Way in Arc direction", 
+            "code" : 1
+          }, 
+          {
+            "name" : "One Way in reverse Arc direction", 
+            "code" : 2
+          }, 
+          {
+            "name" : "Reversible", 
+            "code" : 3
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "RCITYID", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "RCITYID", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 100, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "CITYID", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "City ID", 
+        "codedValues" : [
+          {
+            "name" : "Commerce City", 
+            "code" : "Commerce City"
+          }, 
+          {
+            "name" : "Littleton", 
+            "code" : "Littleton"
+          }, 
+          {
+            "name" : "Sheridan", 
+            "code" : "Sheridan"
+          }, 
+          {
+            "name" : "Edgewater", 
+            "code" : "Edgewater"
+          }, 
+          {
+            "name" : "Lakeside", 
+            "code" : "Lakeside"
+          }, 
+          {
+            "name" : "Lakewood", 
+            "code" : "Lakewood"
+          }, 
+          {
+            "name" : "Mountain View", 
+            "code" : "Mountain View"
+          }, 
+          {
+            "name" : "Wheat Ridge", 
+            "code" : "Wheat Ridge"
+          }, 
+          {
+            "name" : "Aurora - Adams Co", 
+            "code" : "Aurora - Adams Co"
+          }, 
+          {
+            "name" : "Cherry Hills Village", 
+            "code" : "Cherry Hills Village"
+          }, 
+          {
+            "name" : "Englewood", 
+            "code" : "Englewood"
+          }, 
+          {
+            "name" : "Glendale", 
+            "code" : "Glendale"
+          }, 
+          {
+            "name" : "Greenwood Village", 
+            "code" : "Greenwood Village"
+          }, 
+          {
+            "name" : "Denver", 
+            "code" : "Denver"
+          }, 
+          {
+            "name" : "Aurora - Arapahoe Co", 
+            "code" : "Aurora - Arapahoe Co"
+          }, 
+          {
+            "name" : "Unincorporated Jefferson County", 
+            "code" : "Unincorporated Jefferson County"
+          }, 
+          {
+            "name" : "Unincorporated Adams County", 
+            "code" : "Unincorporated Adams County"
+          }, 
+          {
+            "name" : "Unincorporated Arapahoe County", 
+            "code" : "Unincorporated Arapahoe County"
+          }, 
+          {
+            "name" : "Greenwood Village half of border with Denver", 
+            "code" : "Greenwood Village half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Greenwood Village", 
+            "code" : "Denver half of border with Greenwood Village"
+          }, 
+          {
+            "name" : "Cherry Hills Village half of border with Denver", 
+            "code" : "Cherry Hills Village half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Cherry Hills Village", 
+            "code" : "Denver half of border with Cherry Hills Village"
+          }, 
+          {
+            "name" : "Aurora half of border with Denver", 
+            "code" : "Aurora half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Aurora", 
+            "code" : "Denver half of border with Aurora"
+          }, 
+          {
+            "name" : "Commerce City half of border with Denver", 
+            "code" : "Commerce City half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Commerce City", 
+            "code" : "Denver half of border with Commerce City"
+          }, 
+          {
+            "name" : "Rocky Mtn Ntl Arsenal half of border with Denver", 
+            "code" : "Rocky Mtn Ntl Arsenal half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Rocky Mtn Ntl Arsenal", 
+            "code" : "Denver half of border with Rocky Mtn Ntl Arsenal"
+          }, 
+          {
+            "name" : "Lakewood half of border with Denver", 
+            "code" : "Lakewood half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Lakewood", 
+            "code" : "Denver half of border with Lakewood"
+          }, 
+          {
+            "name" : "Unincorporated Arapahoe County half of border with Denver", 
+            "code" : "Unincorporated Arapahoe County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Unincorporated Arapahoe County", 
+            "code" : "Denver half of border with Unincorporated Arapahoe County"
+          }, 
+          {
+            "name" : "Unincorporated Adams County half of border with Denver", 
+            "code" : "Unincorporated Adams County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Unincorporated Adams County", 
+            "code" : "Denver half of border with Unincorporated Adams County"
+          }, 
+          {
+            "name" : "Unincorporated Jefferson County half of border with Denver", 
+            "code" : "Unincorporated Jefferson County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Unincorporated Jefferson County", 
+            "code" : "Denver half of border with Unincorporated Jefferson County"
+          }, 
+          {
+            "name" : "Glendale half of border with Denver", 
+            "code" : "Glendale half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Glendale", 
+            "code" : "Denver half of border with Glendale"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "RCOUNTYID", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "RCOUNTYID", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 100, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "COUNTYID", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "County ID", 
+        "codedValues" : [
+          {
+            "name" : "Adams", 
+            "code" : "Adams"
+          }, 
+          {
+            "name" : "Arapahoe", 
+            "code" : "Arapahoe"
+          }, 
+          {
+            "name" : "Denver", 
+            "code" : "Denver"
+          }, 
+          {
+            "name" : "Jefferson", 
+            "code" : "Jefferson"
+          }, 
+          {
+            "name" : "Boulder", 
+            "code" : "Boulder"
+          }, 
+          {
+            "name" : "Douglas", 
+            "code" : "Douglas"
+          }, 
+          {
+            "name" : "Weld", 
+            "code" : "Weld"
+          }, 
+          {
+            "name" : "Broomfield", 
+            "code" : "Broomfield"
+          }, 
+          {
+            "name" : "Arapahoe County half of border with Denver", 
+            "code" : "Arapahoe County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver County half of border with Arapahoe", 
+            "code" : "Denver County half of border with Arapahoe"
+          }, 
+          {
+            "name" : "Adams County half of border with Denver", 
+            "code" : "Adams County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver County half of border with Adams", 
+            "code" : "Denver County half of border with Adams"
+          }, 
+          {
+            "name" : "Jefferson County half of border with Denver", 
+            "code" : "Jefferson County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver County half of border with Jefferson", 
+            "code" : "Denver County half of border with Jefferson"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "STATUS", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "STATUS", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 30, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "STATUS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Construction Status", 
+        "codedValues" : [
+          {
+            "name" : "CONSTRUCTED", 
+            "code" : "CONSTRUCTED"
+          }, 
+          {
+            "name" : "PLATTED", 
+            "code" : "PLATTED"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "MEDIAN", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "MEDIAN", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 1, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "MEDIAN", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Median Designation", 
+        "codedValues" : [
+          {
+            "name" : "Circle Median", 
+            "code" : "C"
+          }, 
+          {
+            "name" : "No Median", 
+            "code" : "N"
+          }, 
+          {
+            "name" : "Has Median", 
+            "code" : "Y"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "HUTF", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "HUTF", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 100, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "HUTF", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "HUTF Designation", 
+        "codedValues" : [
+          {
+            "name" : "Jursplit - Our share", 
+            "code" : "Jursplit - Our share"
+          }, 
+          {
+            "name" : "Jursplit - Their share", 
+            "code" : "Jursplit - Their share"
+          }, 
+          {
+            "name" : "Not Eligible", 
+            "code" : "Not Eligible"
+          }, 
+          {
+            "name" : "Eligible", 
+            "code" : "Eligible"
+          }, 
+          {
+            "name" : "Planned Eligible", 
+            "code" : "Planned Eligible"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "HUNDBLKNUM", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "HUNDBLKNUM", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "HUNDBLKDIR", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "HUNDBLKDIR", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 2, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "HBDir", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Hundred Block Direction", 
+        "codedValues" : [
+          {
+            "name" : "Eastern", 
+            "code" : "E"
+          }, 
+          {
+            "name" : "Northern", 
+            "code" : "N"
+          }, 
+          {
+            "name" : "Northeastern", 
+            "code" : "NE"
+          }, 
+          {
+            "name" : "Northwestern", 
+            "code" : "NW"
+          }, 
+          {
+            "name" : "Southern", 
+            "code" : "S"
+          }, 
+          {
+            "name" : "Western", 
+            "code" : "W"
+          }, 
+          {
+            "name" : "Interstates and related", 
+            "code" : "I"
+          }, 
+          {
+            "name" : "None", 
+            "code" : "X"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "HUNDBLKMAJ", 
+      "type" : "esriFieldTypeSmallInteger", 
+      "alias" : "HUNDBLKMAJ", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ALTDIR", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "ALTDIR", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 4, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "AltDir", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Direction of travel for oneway/double line streets", 
+        "codedValues" : [
+          {
+            "name" : "Two Way", 
+            "code" : "2"
+          }, 
+          {
+            "name" : "Circle", 
+            "code" : "C"
+          }, 
+          {
+            "name" : "East", 
+            "code" : "E"
+          }, 
+          {
+            "name" : "North", 
+            "code" : "N"
+          }, 
+          {
+            "name" : "Northeast", 
+            "code" : "NE"
+          }, 
+          {
+            "name" : "Northwest", 
+            "code" : "NW"
+          }, 
+          {
+            "name" : "South", 
+            "code" : "S"
+          }, 
+          {
+            "name" : "Southeast", 
+            "code" : "SE"
+          }, 
+          {
+            "name" : "Southwest", 
+            "code" : "SW"
+          }, 
+          {
+            "name" : "West", 
+            "code" : "W"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ROUTE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "ROUTE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 11, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "SEGMID", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "SEGMID", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "LEFTPREC", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "LEFTPREC", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 10, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "PREC", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Police Precinct", 
+        "codedValues" : [
+          {
+            "name" : "P111", 
+            "code" : "P111"
+          }, 
+          {
+            "name" : "P112", 
+            "code" : "P112"
+          }, 
+          {
+            "name" : "P113", 
+            "code" : "P113"
+          }, 
+          {
+            "name" : "P114", 
+            "code" : "P114"
+          }, 
+          {
+            "name" : "P115", 
+            "code" : "P115"
+          }, 
+          {
+            "name" : "P116", 
+            "code" : "P116"
+          }, 
+          {
+            "name" : "P121", 
+            "code" : "P121"
+          }, 
+          {
+            "name" : "P122", 
+            "code" : "P122"
+          }, 
+          {
+            "name" : "P123", 
+            "code" : "P123"
+          }, 
+          {
+            "name" : "P124", 
+            "code" : "P124"
+          }, 
+          {
+            "name" : "P125", 
+            "code" : "P125"
+          }, 
+          {
+            "name" : "P211", 
+            "code" : "P211"
+          }, 
+          {
+            "name" : "P212", 
+            "code" : "P212"
+          }, 
+          {
+            "name" : "P213", 
+            "code" : "P213"
+          }, 
+          {
+            "name" : "P214", 
+            "code" : "P214"
+          }, 
+          {
+            "name" : "P215", 
+            "code" : "P215"
+          }, 
+          {
+            "name" : "P221", 
+            "code" : "P221"
+          }, 
+          {
+            "name" : "P222", 
+            "code" : "P222"
+          }, 
+          {
+            "name" : "P223", 
+            "code" : "P223"
+          }, 
+          {
+            "name" : "P224", 
+            "code" : "P224"
+          }, 
+          {
+            "name" : "P231", 
+            "code" : "P231"
+          }, 
+          {
+            "name" : "P232", 
+            "code" : "P232"
+          }, 
+          {
+            "name" : "P233", 
+            "code" : "P233"
+          }, 
+          {
+            "name" : "P234", 
+            "code" : "P234"
+          }, 
+          {
+            "name" : "P235", 
+            "code" : "P235"
+          }, 
+          {
+            "name" : "P311", 
+            "code" : "P311"
+          }, 
+          {
+            "name" : "P312", 
+            "code" : "P312"
+          }, 
+          {
+            "name" : "P313", 
+            "code" : "P313"
+          }, 
+          {
+            "name" : "P314", 
+            "code" : "P314"
+          }, 
+          {
+            "name" : "P315", 
+            "code" : "P315"
+          }, 
+          {
+            "name" : "P316", 
+            "code" : "P316"
+          }, 
+          {
+            "name" : "P317", 
+            "code" : "P317"
+          }, 
+          {
+            "name" : "P318", 
+            "code" : "P318"
+          }, 
+          {
+            "name" : "P321", 
+            "code" : "P321"
+          }, 
+          {
+            "name" : "P322", 
+            "code" : "P322"
+          }, 
+          {
+            "name" : "P323", 
+            "code" : "P323"
+          }, 
+          {
+            "name" : "P324", 
+            "code" : "P324"
+          }, 
+          {
+            "name" : "P325", 
+            "code" : "P325"
+          }, 
+          {
+            "name" : "P326", 
+            "code" : "P326"
+          }, 
+          {
+            "name" : "P411", 
+            "code" : "P411"
+          }, 
+          {
+            "name" : "P412", 
+            "code" : "P412"
+          }, 
+          {
+            "name" : "P413", 
+            "code" : "P413"
+          }, 
+          {
+            "name" : "P414", 
+            "code" : "P414"
+          }, 
+          {
+            "name" : "P421", 
+            "code" : "P421"
+          }, 
+          {
+            "name" : "P422", 
+            "code" : "P422"
+          }, 
+          {
+            "name" : "P423", 
+            "code" : "P423"
+          }, 
+          {
+            "name" : "P424", 
+            "code" : "P424"
+          }, 
+          {
+            "name" : "P431", 
+            "code" : "P431"
+          }, 
+          {
+            "name" : "P432", 
+            "code" : "P432"
+          }, 
+          {
+            "name" : "P433", 
+            "code" : "P433"
+          }, 
+          {
+            "name" : "P434", 
+            "code" : "P434"
+          }, 
+          {
+            "name" : "P435", 
+            "code" : "P435"
+          }, 
+          {
+            "name" : "P436", 
+            "code" : "P436"
+          }, 
+          {
+            "name" : "P511", 
+            "code" : "P511"
+          }, 
+          {
+            "name" : "P512", 
+            "code" : "P512"
+          }, 
+          {
+            "name" : "P521", 
+            "code" : "P521"
+          }, 
+          {
+            "name" : "P522", 
+            "code" : "P522"
+          }, 
+          {
+            "name" : "P523", 
+            "code" : "P523"
+          }, 
+          {
+            "name" : "P524", 
+            "code" : "P524"
+          }, 
+          {
+            "name" : "P531", 
+            "code" : "P531"
+          }, 
+          {
+            "name" : "P532", 
+            "code" : "P532"
+          }, 
+          {
+            "name" : "P533", 
+            "code" : "P533"
+          }, 
+          {
+            "name" : "P534", 
+            "code" : "P534"
+          }, 
+          {
+            "name" : "P611", 
+            "code" : "P611"
+          }, 
+          {
+            "name" : "P612", 
+            "code" : "P612"
+          }, 
+          {
+            "name" : "P613", 
+            "code" : "P613"
+          }, 
+          {
+            "name" : "P614", 
+            "code" : "P614"
+          }, 
+          {
+            "name" : "P615", 
+            "code" : "P615"
+          }, 
+          {
+            "name" : "P616", 
+            "code" : "P616"
+          }, 
+          {
+            "name" : "P617", 
+            "code" : "P617"
+          }, 
+          {
+            "name" : "P618", 
+            "code" : "P618"
+          }, 
+          {
+            "name" : "P621", 
+            "code" : "P621"
+          }, 
+          {
+            "name" : "P622", 
+            "code" : "P622"
+          }, 
+          {
+            "name" : "P623", 
+            "code" : "P623"
+          }, 
+          {
+            "name" : "P624", 
+            "code" : "P624"
+          }, 
+          {
+            "name" : "P625", 
+            "code" : "P625"
+          }, 
+          {
+            "name" : "P626", 
+            "code" : "P626"
+          }, 
+          {
+            "name" : "P759", 
+            "code" : "P759"
+          }, 
+          {
+            "name" : "P513", 
+            "code" : "P513"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "RTPREC", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "RTPREC", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 10, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "PREC", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Police Precinct", 
+        "codedValues" : [
+          {
+            "name" : "P111", 
+            "code" : "P111"
+          }, 
+          {
+            "name" : "P112", 
+            "code" : "P112"
+          }, 
+          {
+            "name" : "P113", 
+            "code" : "P113"
+          }, 
+          {
+            "name" : "P114", 
+            "code" : "P114"
+          }, 
+          {
+            "name" : "P115", 
+            "code" : "P115"
+          }, 
+          {
+            "name" : "P116", 
+            "code" : "P116"
+          }, 
+          {
+            "name" : "P121", 
+            "code" : "P121"
+          }, 
+          {
+            "name" : "P122", 
+            "code" : "P122"
+          }, 
+          {
+            "name" : "P123", 
+            "code" : "P123"
+          }, 
+          {
+            "name" : "P124", 
+            "code" : "P124"
+          }, 
+          {
+            "name" : "P125", 
+            "code" : "P125"
+          }, 
+          {
+            "name" : "P211", 
+            "code" : "P211"
+          }, 
+          {
+            "name" : "P212", 
+            "code" : "P212"
+          }, 
+          {
+            "name" : "P213", 
+            "code" : "P213"
+          }, 
+          {
+            "name" : "P214", 
+            "code" : "P214"
+          }, 
+          {
+            "name" : "P215", 
+            "code" : "P215"
+          }, 
+          {
+            "name" : "P221", 
+            "code" : "P221"
+          }, 
+          {
+            "name" : "P222", 
+            "code" : "P222"
+          }, 
+          {
+            "name" : "P223", 
+            "code" : "P223"
+          }, 
+          {
+            "name" : "P224", 
+            "code" : "P224"
+          }, 
+          {
+            "name" : "P231", 
+            "code" : "P231"
+          }, 
+          {
+            "name" : "P232", 
+            "code" : "P232"
+          }, 
+          {
+            "name" : "P233", 
+            "code" : "P233"
+          }, 
+          {
+            "name" : "P234", 
+            "code" : "P234"
+          }, 
+          {
+            "name" : "P235", 
+            "code" : "P235"
+          }, 
+          {
+            "name" : "P311", 
+            "code" : "P311"
+          }, 
+          {
+            "name" : "P312", 
+            "code" : "P312"
+          }, 
+          {
+            "name" : "P313", 
+            "code" : "P313"
+          }, 
+          {
+            "name" : "P314", 
+            "code" : "P314"
+          }, 
+          {
+            "name" : "P315", 
+            "code" : "P315"
+          }, 
+          {
+            "name" : "P316", 
+            "code" : "P316"
+          }, 
+          {
+            "name" : "P317", 
+            "code" : "P317"
+          }, 
+          {
+            "name" : "P318", 
+            "code" : "P318"
+          }, 
+          {
+            "name" : "P321", 
+            "code" : "P321"
+          }, 
+          {
+            "name" : "P322", 
+            "code" : "P322"
+          }, 
+          {
+            "name" : "P323", 
+            "code" : "P323"
+          }, 
+          {
+            "name" : "P324", 
+            "code" : "P324"
+          }, 
+          {
+            "name" : "P325", 
+            "code" : "P325"
+          }, 
+          {
+            "name" : "P326", 
+            "code" : "P326"
+          }, 
+          {
+            "name" : "P411", 
+            "code" : "P411"
+          }, 
+          {
+            "name" : "P412", 
+            "code" : "P412"
+          }, 
+          {
+            "name" : "P413", 
+            "code" : "P413"
+          }, 
+          {
+            "name" : "P414", 
+            "code" : "P414"
+          }, 
+          {
+            "name" : "P421", 
+            "code" : "P421"
+          }, 
+          {
+            "name" : "P422", 
+            "code" : "P422"
+          }, 
+          {
+            "name" : "P423", 
+            "code" : "P423"
+          }, 
+          {
+            "name" : "P424", 
+            "code" : "P424"
+          }, 
+          {
+            "name" : "P431", 
+            "code" : "P431"
+          }, 
+          {
+            "name" : "P432", 
+            "code" : "P432"
+          }, 
+          {
+            "name" : "P433", 
+            "code" : "P433"
+          }, 
+          {
+            "name" : "P434", 
+            "code" : "P434"
+          }, 
+          {
+            "name" : "P435", 
+            "code" : "P435"
+          }, 
+          {
+            "name" : "P436", 
+            "code" : "P436"
+          }, 
+          {
+            "name" : "P511", 
+            "code" : "P511"
+          }, 
+          {
+            "name" : "P512", 
+            "code" : "P512"
+          }, 
+          {
+            "name" : "P521", 
+            "code" : "P521"
+          }, 
+          {
+            "name" : "P522", 
+            "code" : "P522"
+          }, 
+          {
+            "name" : "P523", 
+            "code" : "P523"
+          }, 
+          {
+            "name" : "P524", 
+            "code" : "P524"
+          }, 
+          {
+            "name" : "P531", 
+            "code" : "P531"
+          }, 
+          {
+            "name" : "P532", 
+            "code" : "P532"
+          }, 
+          {
+            "name" : "P533", 
+            "code" : "P533"
+          }, 
+          {
+            "name" : "P534", 
+            "code" : "P534"
+          }, 
+          {
+            "name" : "P611", 
+            "code" : "P611"
+          }, 
+          {
+            "name" : "P612", 
+            "code" : "P612"
+          }, 
+          {
+            "name" : "P613", 
+            "code" : "P613"
+          }, 
+          {
+            "name" : "P614", 
+            "code" : "P614"
+          }, 
+          {
+            "name" : "P615", 
+            "code" : "P615"
+          }, 
+          {
+            "name" : "P616", 
+            "code" : "P616"
+          }, 
+          {
+            "name" : "P617", 
+            "code" : "P617"
+          }, 
+          {
+            "name" : "P618", 
+            "code" : "P618"
+          }, 
+          {
+            "name" : "P621", 
+            "code" : "P621"
+          }, 
+          {
+            "name" : "P622", 
+            "code" : "P622"
+          }, 
+          {
+            "name" : "P623", 
+            "code" : "P623"
+          }, 
+          {
+            "name" : "P624", 
+            "code" : "P624"
+          }, 
+          {
+            "name" : "P625", 
+            "code" : "P625"
+          }, 
+          {
+            "name" : "P626", 
+            "code" : "P626"
+          }, 
+          {
+            "name" : "P759", 
+            "code" : "P759"
+          }, 
+          {
+            "name" : "P513", 
+            "code" : "P513"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "LEFTFIRE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "LEFTFIRE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 10, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "FIRE", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "FIRE Districts", 
+        "codedValues" : [
+          {
+            "name" : "AU35", 
+            "code" : "AU35"
+          }, 
+          {
+            "name" : "D02", 
+            "code" : "D02"
+          }, 
+          {
+            "name" : "D03", 
+            "code" : "D03"
+          }, 
+          {
+            "name" : "D03R", 
+            "code" : "D03R"
+          }, 
+          {
+            "name" : "D04", 
+            "code" : "D04"
+          }, 
+          {
+            "name" : "D04R", 
+            "code" : "D04R"
+          }, 
+          {
+            "name" : "D05", 
+            "code" : "D05"
+          }, 
+          {
+            "name" : "D06", 
+            "code" : "D06"
+          }, 
+          {
+            "name" : "D06R", 
+            "code" : "D06R"
+          }, 
+          {
+            "name" : "D07", 
+            "code" : "D07"
+          }, 
+          {
+            "name" : "D07GR", 
+            "code" : "D07GR"
+          }, 
+          {
+            "name" : "D07R", 
+            "code" : "D07R"
+          }, 
+          {
+            "name" : "DIA1", 
+            "code" : "DIA1"
+          }, 
+          {
+            "name" : "GLEN", 
+            "code" : "GLEN"
+          }, 
+          {
+            "name" : "SKY", 
+            "code" : "SKY"
+          }, 
+          {
+            "name" : "SKY2", 
+            "code" : "SKY2"
+          }, 
+          {
+            "name" : "SWAC", 
+            "code" : "SWAC"
+          }, 
+          {
+            "name" : "WM", 
+            "code" : "WM"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "RTFIRE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "RTFIRE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 10, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "FIRE", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "FIRE Districts", 
+        "codedValues" : [
+          {
+            "name" : "AU35", 
+            "code" : "AU35"
+          }, 
+          {
+            "name" : "D02", 
+            "code" : "D02"
+          }, 
+          {
+            "name" : "D03", 
+            "code" : "D03"
+          }, 
+          {
+            "name" : "D03R", 
+            "code" : "D03R"
+          }, 
+          {
+            "name" : "D04", 
+            "code" : "D04"
+          }, 
+          {
+            "name" : "D04R", 
+            "code" : "D04R"
+          }, 
+          {
+            "name" : "D05", 
+            "code" : "D05"
+          }, 
+          {
+            "name" : "D06", 
+            "code" : "D06"
+          }, 
+          {
+            "name" : "D06R", 
+            "code" : "D06R"
+          }, 
+          {
+            "name" : "D07", 
+            "code" : "D07"
+          }, 
+          {
+            "name" : "D07GR", 
+            "code" : "D07GR"
+          }, 
+          {
+            "name" : "D07R", 
+            "code" : "D07R"
+          }, 
+          {
+            "name" : "DIA1", 
+            "code" : "DIA1"
+          }, 
+          {
+            "name" : "GLEN", 
+            "code" : "GLEN"
+          }, 
+          {
+            "name" : "SKY", 
+            "code" : "SKY"
+          }, 
+          {
+            "name" : "SKY2", 
+            "code" : "SKY2"
+          }, 
+          {
+            "name" : "SWAC", 
+            "code" : "SWAC"
+          }, 
+          {
+            "name" : "WM", 
+            "code" : "WM"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "LEFTEMS", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "LEFTEMS", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 10, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "EMS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "EMS Zones", 
+        "codedValues" : [
+          {
+            "name" : "CD01", 
+            "code" : "CD01"
+          }, 
+          {
+            "name" : "CD02", 
+            "code" : "CD02"
+          }, 
+          {
+            "name" : "CD03", 
+            "code" : "CD03"
+          }, 
+          {
+            "name" : "CD04", 
+            "code" : "CD04"
+          }, 
+          {
+            "name" : "CD05", 
+            "code" : "CD05"
+          }, 
+          {
+            "name" : "CD06", 
+            "code" : "CD06"
+          }, 
+          {
+            "name" : "CD07", 
+            "code" : "CD07"
+          }, 
+          {
+            "name" : "CD08", 
+            "code" : "CD08"
+          }, 
+          {
+            "name" : "CD09", 
+            "code" : "CD09"
+          }, 
+          {
+            "name" : "CD10", 
+            "code" : "CD10"
+          }, 
+          {
+            "name" : "CD11", 
+            "code" : "CD11"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "RTEMS", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "RTEMS", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 10, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "EMS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "EMS Zones", 
+        "codedValues" : [
+          {
+            "name" : "CD01", 
+            "code" : "CD01"
+          }, 
+          {
+            "name" : "CD02", 
+            "code" : "CD02"
+          }, 
+          {
+            "name" : "CD03", 
+            "code" : "CD03"
+          }, 
+          {
+            "name" : "CD04", 
+            "code" : "CD04"
+          }, 
+          {
+            "name" : "CD05", 
+            "code" : "CD05"
+          }, 
+          {
+            "name" : "CD06", 
+            "code" : "CD06"
+          }, 
+          {
+            "name" : "CD07", 
+            "code" : "CD07"
+          }, 
+          {
+            "name" : "CD08", 
+            "code" : "CD08"
+          }, 
+          {
+            "name" : "CD09", 
+            "code" : "CD09"
+          }, 
+          {
+            "name" : "CD10", 
+            "code" : "CD10"
+          }, 
+          {
+            "name" : "CD11", 
+            "code" : "CD11"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "F_ZLEV", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "F_ZLEV", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "ZLEV", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Relative Elevation Codes", 
+        "codedValues" : [
+          {
+            "name" : "Surface", 
+            "code" : 0
+          }, 
+          {
+            "name" : "On Structure", 
+            "code" : 1
+          }, 
+          {
+            "name" : "On higher Structure", 
+            "code" : 2
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "T_ZLEV", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "T_ZLEV", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "ZLEV", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Relative Elevation Codes", 
+        "codedValues" : [
+          {
+            "name" : "Surface", 
+            "code" : 0
+          }, 
+          {
+            "name" : "On Structure", 
+            "code" : 1
+          }, 
+          {
+            "name" : "On higher Structure", 
+            "code" : 2
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "HUNDBLKNAME", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "HUNDBLKNAME", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "MAJOR_STREET", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "MAJOR_STREET", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 100, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "LEFTSWEEP", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "LEFTSWEEP", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "RIGHTSWEEP", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "RIGHTSWEEP", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "SSSID", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "SSSID", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "NIGHTSWEEP", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "NIGHTSWEEP", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "SNOWROUTE_ID", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "SNOWROUTE_ID", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "PRIORITY", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "PRIORITY", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "RSPROUTE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "RSPROUTE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "PCI", 
+      "type" : "esriFieldTypeSmallInteger", 
+      "alias" : "PCI", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "created_user", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "created_user", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "created_date", 
+      "type" : "esriFieldTypeDate", 
+      "alias" : "created_date", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 8, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null, 
+      "precision" : 1
+    }, 
+    {
+      "name" : "last_edited_user", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "last_edited_user", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "last_edited_date", 
+      "type" : "esriFieldTypeDate", 
+      "alias" : "last_edited_date", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 8, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null, 
+      "precision" : 1
+    }, 
+    {
+      "name" : "Shape__Length", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "Shape__Length", 
+      "sqlType" : "sqlTypeDouble", 
+      "nullable" : true, 
+      "editable" : false, 
+      "domain" : null, 
+      "defaultValue" : null
+    }
+  ], 
+  "indexes" : [
+    {
+      "name" : "PK__ODC_TRAN__F4B70D854C5B2B20", 
+      "fields" : "OBJECTID", 
+      "isAscending" : true, 
+      "isUnique" : true, 
+      "description" : "", 
+      "indexType" : "Attribute"
+    }, 
+    {
+      "name" : "user_7647.ODC_TRANS_STREET_L_TRANS_STREET_L4_Shape_sidx", 
+      "fields" : "SHAPE", 
+      "isAscending" : true, 
+      "isUnique" : false, 
+      "description" : "", 
+      "indexType" : "Spatial"
+    }, 
+    {
+      "name" : "FDO_GlobalID", 
+      "fields" : "GlobalID", 
+      "isAscending" : true, 
+      "isUnique" : true, 
+      "description" : "", 
+      "indexType" : "Attribute"
+    }, 
+    {
+      "name" : "Shape__Length_Index", 
+      "fields" : "Shape__Length", 
+      "isAscending" : true, 
+      "isUnique" : false, 
+      "description" : "", 
+      "indexType" : "Attribute"
+    }
+  ], 
+  "dateFieldsTimeReference" : {
+    "timeZone" : "UTC", 
+    "timeZoneIANA" : "Etc/UTC", 
+    "respectsDaylightSaving" : false
+  }, 
+  "preferredTimeReference" : null, 
+  "types" : [], 
+  "templates" : [
+    {
+      "name" : "TRANS_STREET_L", 
+      "description" : "", 
+      "drawingTool" : "esriFeatureEditToolLine", 
+      "prototype" : {
+        "attributes" : {
+          "last_edited_date" : null, 
+          "last_edited_user" : null, 
+          "FNODE" : null, 
+          "TNODE" : null, 
+          "STREETID" : null, 
+          "MASTERID" : null, 
+          "L_F_ADD" : null, 
+          "L_T_ADD" : null, 
+          "R_F_ADD" : null, 
+          "R_T_ADD" : null, 
+          "PREFIX" : null, 
+          "NAME" : null, 
+          "TYPE" : null, 
+          "POSTMODIFIER" : null, 
+          "FULLNAME" : null, 
+          "FROMNAME" : null, 
+          "TONAME" : null, 
+          "LEN_MI" : null, 
+          "ALIAS1" : null, 
+          "ALIAS2" : null, 
+          "JURISID" : null, 
+          "MAINTNCE" : null, 
+          "ADDRESSQUAD" : null, 
+          "VOLCLASS" : null, 
+          "FUNCLASS" : null, 
+          "TT_SEGTYPE" : null, 
+          "CITYID" : null, 
+          "COUNTYID" : null, 
+          "ZIPLEFT" : null, 
+          "ZIPRIGHT" : null, 
+          "SPEEDLIMIT" : null, 
+          "ONEWAY" : null, 
+          "RCITYID" : null, 
+          "RCOUNTYID" : null, 
+          "STATUS" : null, 
+          "MEDIAN" : null, 
+          "HUTF" : null, 
+          "HUNDBLKNUM" : null, 
+          "HUNDBLKDIR" : null, 
+          "HUNDBLKMAJ" : null, 
+          "ALTDIR" : null, 
+          "ROUTE" : null, 
+          "SEGMID" : null, 
+          "LEFTPREC" : null, 
+          "RTPREC" : null, 
+          "LEFTFIRE" : null, 
+          "RTFIRE" : null, 
+          "LEFTEMS" : null, 
+          "RTEMS" : null, 
+          "F_ZLEV" : null, 
+          "T_ZLEV" : null, 
+          "HUNDBLKNAME" : null, 
+          "MAJOR_STREET" : null, 
+          "LEFTSWEEP" : null, 
+          "RIGHTSWEEP" : null, 
+          "SSSID" : null, 
+          "NIGHTSWEEP" : null, 
+          "SNOWROUTE_ID" : null, 
+          "PRIORITY" : null, 
+          "RSPROUTE" : null, 
+          "PCI" : null, 
+          "created_user" : null, 
+          "created_date" : null
+        }
+      }
+    }
+  ], 
+  "supportedQueryFormats" : "JSON, geoJSON, PBF", 
+  "supportedAppendFormats" : "sqlite,geoPackage,shapefile,filegdb,featureCollection,geojson,csv,excel,jsonl,featureService,pbf", 
+  "supportedAppendSourceFilterFormats" : "sqlite,geoPackage,shapefile,filegdb,featureService", 
+  "supportedExportFormats" : "csv,shapefile,sqlite,geoPackage,filegdb,featureCollection,geojson,kml,excel,parquet", 
+  "supportedConvertFileFormats" : "JSON,PBF,Parquet", 
+  "supportedConvertContentFormats" : "LayerEditCollection,FeatureCollection", 
+  "supportedSpatialRelationships" : [
+    "esriSpatialRelIntersects", 
+    "esriSpatialRelContains", 
+    "esriSpatialRelCrosses", 
+    "esriSpatialRelEnvelopeIntersects", 
+    "esriSpatialRelIndexIntersects", 
+    "esriSpatialRelOverlaps", 
+    "esriSpatialRelTouches", 
+    "esriSpatialRelWithin", 
+    "esriSpatialRelDisjoint", 
+    "esriSpatialRelRelation"
+  ], 
+  "guidFormat" : "", 
+  "supportsContingentValues" : true, 
+  "supportsEditingContingentValues" : true, 
+  "supportedContingentValuesFormats" : "JSON, PBF", 
+  "supportsFieldGroups" : true, 
+  "supportedSyncDataOptions" : 260, 
+  "hasStaticData" : false, 
+  "maxRecordCount" : 2000, 
+  "standardMaxRecordCount" : 2000, 
+  "maxIdsCount" : 1000000, 
+  "standardMaxRecordCountNoGeometry" : 32000, 
+  "tileMaxRecordCount" : 4000, 
+  "maxRecordCountFactor" : 1, 
+  "capabilities" : "Query,Extract"
+}

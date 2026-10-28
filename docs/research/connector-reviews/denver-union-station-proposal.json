@@ -5,13 +5,26 @@
   "candidate": {
     "name": "Denver Union Station, designated vehicle pickup area off Wynkoop Street",
     "selection_reason": "Recognizable central urban transport destination with operator-published motor-vehicle pickup guidance; proposed single Denver anchor, not an adopted rule for every multi-center CBSA.",
-    "coordinate_status": "not_selected_pending_georeferenced_entry_evidence",
-    "approved": false
+    "coordinate_status": "municipal_and_osm_reference_junction_identified_exact_pickup_entry_unresolved",
+    "approved": false,
+    "reference_junction": {
+      "municipal_node": 4993,
+      "municipal_lonlat": [
+        -104.999734452924,
+        39.7528550246765
+      ],
+      "osm_node": 3033992180,
+      "osm_lonlat": [
+        -104.9997276,
+        39.7528388
+      ],
+      "role": "Reference only, not an adopted anchor or approved curb entry."
+    }
   },
   "reviewer": {
     "kind": "ai",
     "identity": "Codex (OpenAI), 2026-10-28",
-    "procedure": "Fetch and read both operator transportation pages; retain exact excerpts and response hashes; compare claims to precise connector requirements; record unresolved geometry and use restrictions rather than infer a road snap."
+    "procedure": "Fetch and read both operator transportation pages; retain exact excerpts and response hashes; compare claims to precise connector requirements; record unresolved geometry and use restrictions rather than infer a road snap. Inspect retained municipal street topology and coded grade/direction domains, 58 nearby city sign records, empty larger parking query, and exact-PBF OSM way/restriction extraction; distinguish reference-junction agreement from permission to enter a curb lane."
   },
   "sources": [
     {
@@ -20,6 +33,27 @@
       "sha256": "886cf016d5e33fbde21db224b467870664a68c8f82e6468b59fd7a5e0d04adc9",
       "kind": "independent_access_record",
       "provenance": "Primary station-operator guidance independent of routing input. Selected excerpts, not an independent legal survey or road-authority determination. URLs, capture date and original response hashes retained in source record."
+    },
+    {
+      "id": "city-streets",
+      "path": "docs/research/denver-urban-anchor/streets.json",
+      "sha256": "64d23b95d9ee15c65956076fca8a9d4297cbd9ec26149130a75ba8fabf55ed24",
+      "kind": "independent_access_record",
+      "provenance": "City and County of Denver ArcGIS street response; exact request, capture date, hash and city publisher metadata retained in denver-urban-anchor/manifest.json. AS IS, not for engineering purposes."
+    },
+    {
+      "id": "city-signs",
+      "path": "docs/research/denver-urban-anchor/signs.json",
+      "sha256": "55e3fa69b69d738ad42946be9e606ccde8f4e3cb14e51beec165044a10087a93",
+      "kind": "independent_access_record",
+      "provenance": "Denver GIS organization Signs from Cartegraph snapshot. Collection dates and unknown descriptions retained; not a current sign inspection or complete curb-rule inventory."
+    },
+    {
+      "id": "junction-audit",
+      "path": "docs/research/denver-urban-anchor/report.json",
+      "sha256": "c7026c37fd49893869c45e8ce05253bcba26f27ad564c6f8f2758d876ac9ad7f",
+      "kind": "routing_model",
+      "provenance": "Deterministic comparison of retained city and exact-source OSM data; derived report, not separate independent evidence."
     }
   ],
   "machine_assertions": [
@@ -42,52 +76,120 @@
         1
       ],
       "equals": "Denver Union Station does not have a dedicated parking lot."
+    },
+    {
+      "source": "junction-audit",
+      "keys": [
+        "municipal_node"
+      ],
+      "equals": 4993
+    },
+    {
+      "source": "junction-audit",
+      "keys": [
+        "osm_node"
+      ],
+      "equals": 3033992180
+    },
+    {
+      "source": "junction-audit",
+      "keys": [
+        "municipal_reference_lonlat"
+      ],
+      "equals": [
+        -104.999734452924,
+        39.7528550246765
+      ]
+    },
+    {
+      "source": "junction-audit",
+      "keys": [
+        "sign_records_in_query"
+      ],
+      "equals": 58
+    },
+    {
+      "source": "junction-audit",
+      "keys": [
+        "sign_records_without_description"
+      ],
+      "equals": 13
+    },
+    {
+      "source": "junction-audit",
+      "keys": [
+        "parking_restriction_records_in_larger_query"
+      ],
+      "equals": 0
+    },
+    {
+      "source": "junction-audit",
+      "keys": [
+        "anchor_adopted"
+      ],
+      "equals": false
     }
   ],
   "findings": {
     "physical_connection": {
       "status": "unknown",
       "sources": [
-        "operator-guidance"
+        "operator-guidance",
+        "city-streets",
+        "city-signs",
+        "junction-audit"
       ],
-      "reason": "Operator explicitly describes taxi/rideshare access off Wynkoop and valet at 17th/Wynkoop, supporting candidate investigation. No precise georeferenced entrance, connecting path or current barrier check retained; the FAQ uses a side-of-station description that must be reconciled spatially before choosing coordinates."
+      "reason": "City streets 1002/6783/23202 share municipal node 4993 at [-104.999734452924,39.7528550246765]; OSM ways 475723486/640085099 share node 3033992180, 1.897 m away. This establishes a plausible road-junction reference, not a drivable path from the precise designated pickup curb. No entry geometry adopted."
     },
     "legal_motor_access": {
       "status": "unknown",
       "sources": [
-        "operator-guidance"
+        "operator-guidance",
+        "city-streets",
+        "city-signs",
+        "junction-audit"
       ],
-      "reason": "Taxi/rideshare and paid valet guidance is not evidence that arbitrary private cars may use every lane. Need exact proposed vehicle class, curb zone restrictions, hours and applicable municipal signage or records."
+      "reason": "City signs include loading-only, passenger-loading 7AM-5PM, reserved ADA and no-parking restrictions near the reference. Thirteen of 58 nearby sign records lack descriptions; selected restriction records were collected in 2022. An empty parking-restriction query is missing coverage, not unrestricted permission. Cannot establish current private-car pickup rights for an exact curb zone."
     },
     "same_grade": {
       "status": "unknown",
       "sources": [
-        "operator-guidance"
+        "operator-guidance",
+        "city-streets",
+        "city-signs",
+        "junction-audit"
       ],
-      "reason": "Written address and pickup guidance do not resolve precise lane, grade, curb entry or crossings; no agency geometry or suitably dated imagery interpretation retained."
+      "reason": "Independent municipal street data explicitly code all three road segments at Surface at both endpoints and share the same junction. This supports the road-road junction grade. It does not resolve the exact curb entry, bicycle lane crossing, barriers or a physical origin-to-road connector, so the full access question remains unknown."
     },
     "direction_and_turns": {
       "status": "unknown",
       "sources": [
-        "operator-guidance"
+        "operator-guidance",
+        "city-streets",
+        "city-signs",
+        "junction-audit"
       ],
-      "reason": "No directed entrance/exit maneuver or turn restrictions identified. Mutable rideshare app pins cannot define a versioned anchor."
+      "reason": "City metadata explicitly defines code 0 as Two Way for the three inspected segments; local OSM 17th is oneway=no. A no_left_turn relation 8877780 touches the selected Wynkoop way at a different node, 11952210822, toward way 905039434. The current routing model does not enforce all turn restrictions. Need entry/exit maneuver selection and current sign interpretation before a directional access finding."
     },
     "connector_cost": {
       "status": "unknown",
       "sources": [
-        "operator-guidance"
+        "operator-guidance",
+        "city-streets",
+        "city-signs",
+        "junction-audit"
       ],
-      "reason": "No coordinate/path adopted, so no reproducible graph connection or connector cost. Do not route to the building centroid or nearby centerline automatically."
+      "reason": "The 1.897 m city/OSM point disagreement is dataset displacement, not connector length. No route to the designated pickup curb has been selected; no zero-cost, straight-line or centroid connector is assigned."
     }
   },
   "decision": "needs_evidence",
   "access_verified": false,
   "release_eligible": false,
   "limitations": [
-    "Proposed candidate only; existing Denver Census regression is unchanged.",
-    "Operator evidence supports existence of pickup services, not full connector approval.",
-    "Full HTML remains local; repository retains explicitly identified excerpts. No OSM bundle/coordinate approval binding yet.",
-    "No claim that all metropolitan centers are represented by this one station."
+    "Reference junction precisely identified; no urban anchor coordinate or entry path adopted. Existing Denver Census regression unchanged.",
+    "City street dataset disclaims accuracy/completeness and is NOT FOR ENGINEERING PURPOSES; publisher terms retained.",
+    "Selected city sign restriction records date to 2022; 13 nearby descriptions are empty and source has no photo attachments. No current field verification.",
+    "Operator, city GIS and OSM are distinct source families, but agreement does not prove all curb access conditions.",
+    "No implicit closure of #137, graph-bundle approval or geographic coverage claim."
   ]
 }
