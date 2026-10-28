@@ -28,6 +28,12 @@ class SparseParentTests(unittest.TestCase):
         parent,regional=fixture()
         result=compare_parent(parent,regional)
         self.assertEqual(result["independent_primitive_source_costs_checked"],24)
+        self.assertEqual(result["primitive_predecessor_paths_checked"],sum(o["primitive_parent_cost"] is not None for r in result["comparisons"] for o in r["source_costs"]))
+        for row in result["comparisons"]:
+            for option in row["source_costs"]:
+                exact=option["exact_stored_arc_path_cost"]
+                if option["primitive_parent_cost"] is None:self.assertIsNone(exact)
+                else:self.assertAlmostEqual(float(Fraction(*map(int,exact))),option["primitive_parent_cost"])
         self.assertEqual(result["changed_subset_winner_cases"],2)
         self.assertEqual(result["changed_isochrone_budget_cases"],2)
         self.assertEqual(result["unrepresented_source_qualifying_cbsa_ids"],["30000"])

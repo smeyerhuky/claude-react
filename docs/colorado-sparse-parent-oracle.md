@@ -29,7 +29,10 @@ Unrepresented eligible IDs stay unknown, with zero applied exclusions.
 
 A parent cost cannot exceed a known regional path cost beyond the declared
 0.002 metric-unit /1e-9 relative tolerance. Improvements and budget/winner
-changes are reported. Up to 12 diagnostic improved paths retain OSM node IDs,
+changes are reported. Every finite sampled path is replayed against stored
+primitive arcs, checked against the SciPy cost label, and records its exact
+binary64-edge rational sum. This is a graph-only cost, excluding connectors.
+Up to 12 diagnostic improved paths retain OSM node IDs,
 outside-rectangle counts, and an exact rational sum of stored binary64 edge
 costs. Actual travel direction is preserved for reverse-orientation queries;
 missing directed arcs and predecessor cycles fail. These witnesses do not retain

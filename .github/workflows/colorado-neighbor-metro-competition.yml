@@ -115,6 +115,7 @@ jobs:
           p=json.loads(Path("neighbor-metro-competition/primitive-parent-oracle.json").read_text())
           assert p["independent_primitive_source_costs_checked"] == 240
           assert len(p["comparisons"]) == 60
+          assert p["primitive_predecessor_paths_checked"] == 240
           assert p["source_provenance"] == r["source_provenance"]
           assert p["source_qualifying_cbsa_ids"] == r["source_qualifying_cbsa_ids"]
           assert p["unrepresented_source_qualifying_cbsa_ids"] == r["unrepresented_source_qualifying_cbsa_ids"]

@@ -67,7 +67,7 @@ def compare_parent(parent, regional):
     expected={(o,m,str(n)) for o in ("metro-to-location","location-to-metro") for m in ("length","travel_time") for n in probes}
     if len(by_case)!=len(rows) or set(by_case)!=expected:
         raise ValueError("Incomplete/duplicate regional directed comparisons")
-    result,witnesses,checked,improvements,budget_changes=[],[],0,0,0
+    result,witnesses,checked,improvements,budget_changes,path_checks=[],[],0,0,0,0
     for orientation in ("metro-to-location","location-to-metro"):
         for metric,budget in (("length",100000),("travel_time",3600)):
             matrix=getattr(parent,metric)
@@ -96,12 +96,16 @@ def compare_parent(parent, regional):
                     changed_budget=(old is not None and old<=budget)!=(new is not None and new<=budget)
                     budget_changes+=changed_budget
                     checked+=1
-                    costs_by_probe[probe].append({"cbsa":source["cbsa"],"regional_cost":old,"primitive_parent_cost":new,
-                                                  "improved":improved,"budget_reachability_changed":changed_budget})
-                    if improved and len(witnesses)<12:
+                    path,exact=None,None
+                    if new is not None:
                         path,exact=trace_path(matrix,predecessors,start,parent.node_index[probe])
                         if not math.isclose(float(exact),new,rel_tol=1e-9,abs_tol=.002):
-                            raise ValueError("Exact primitive witness cost disagrees with oracle label")
+                            raise ValueError("Exact primitive path cost disagrees with oracle label")
+                        path_checks+=1
+                    costs_by_probe[probe].append({"cbsa":source["cbsa"],"regional_cost":old,"primitive_parent_cost":new,
+                                                  "improved":improved,"budget_reachability_changed":changed_budget,
+                                                  "exact_stored_arc_path_cost":None if exact is None else [str(exact.numerator),str(exact.denominator)]})
+                    if improved and len(witnesses)<12:
                         outside=sum(not(bounds[0]<=parent.longitude[n]<=bounds[2] and bounds[1]<=parent.latitude[n]<=bounds[3]) for n in path)
                         actual_path=path if orientation=="metro-to-location" else list(reversed(path))
                         witnesses.append({"source_cbsa":source["cbsa"],"probe":str(probe),"orientation":orientation,"metric":metric,
@@ -123,7 +127,7 @@ def compare_parent(parent, regional):
             "parent_exterior_coverage_certified":False,"source_qualifying_cbsa_ids":sorted(ids),
             "diagnostic_source_cbsa_ids":sorted(selected),"unrepresented_source_qualifying_cbsa_ids":sorted(set(ids)-selected),
             "applied_source_exclusions":[],"independent_primitive_source_costs_checked":checked,
-            "improved_source_cost_cases":improvements,"changed_isochrone_budget_cases":budget_changes,
+            "primitive_predecessor_paths_checked":path_checks,"improved_source_cost_cases":improvements,"changed_isochrone_budget_cases":budget_changes,
             "changed_subset_winner_cases":sum(r["subset_winner_changed"] for r in result),"comparisons":result,
             "changed_route_witnesses":witnesses,"witness_limit":12,"primitive_parent_graph":parent.report,
             "origin_contract":regional["origin_contract"],"metric_units":regional["metric_units"],
