@@ -2,6 +2,9 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/metro_scenario_checkpoint.py'
+      - 'scripts/test_metro_scenario_checkpoint.py'
+      - 'docs/research/census-26-source-checkpoint/**'
       - 'scripts/denver_anchor_evidence.py'
       - 'scripts/test_denver_anchor_evidence.py'
       - 'docs/research/denver-urban-anchor/**'

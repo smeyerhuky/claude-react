@@ -6,6 +6,9 @@ on:
       - '.github/workflows/colorado-two-partition-routing.yml'
       - 'scripts/road_partition_oracle.py'
       - 'scripts/test_road_partition_oracle.py'
+      - 'scripts/metro_scenario_checkpoint.py'
+      - 'scripts/test_metro_scenario_checkpoint.py'
+      - 'docs/research/census-26-source-checkpoint/**'
       - 'scripts/colorado_two_partition_competition.py'
       - 'scripts/test_colorado_two_partition_competition.py'
       - 'docs/research/oklahoma-partition-reference/**'
@@ -106,6 +109,8 @@ jobs:
               assert r[flag] is False
           assert r["applied_source_exclusions"]==[]
           PYCHECK
+      - name: Preserve the separately versioned Census regression scenario
+        run: python scripts/metro_scenario_checkpoint.py two-partition-routing/report.json
       - uses: actions/upload-artifact@v6
         if: always()
         with:
