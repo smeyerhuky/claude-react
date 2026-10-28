@@ -71,6 +71,42 @@
       "bytes": 25231,
       "sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
       "source_url": "https://raw.githubusercontent.com/smeyerhuky/claude-react/eeb6606b01a36cd95764166670f634234aa6b8ea/public/data/metros-census-2025.csv"
+    },
+    {
+      "filename": "tl_2025_08001_areawater.zip",
+      "bytes": 555302,
+      "sha256": "41f220c954fc7e8c4f96b4e400dd2c576959d19cfefc2e67b897a5c7c9ae4089",
+      "source_url": "https://www2.census.gov/geo/tiger/TIGER2025/AREAWATER/tl_2025_08001_areawater.zip"
+    },
+    {
+      "filename": "tl_2025_08005_areawater.zip",
+      "bytes": 343992,
+      "sha256": "5b985ec579e93175c6382aa4fcc1caf960234529b76b81b64d5705dd8af81b59",
+      "source_url": "https://www2.census.gov/geo/tiger/TIGER2025/AREAWATER/tl_2025_08005_areawater.zip"
+    },
+    {
+      "filename": "tl_2025_08014_areawater.zip",
+      "bytes": 31802,
+      "sha256": "d60a29c5daf11fd3b16ed614c270e41ed7156c9efd6c204b1715f09224b21d2b",
+      "source_url": "https://www2.census.gov/geo/tiger/TIGER2025/AREAWATER/tl_2025_08014_areawater.zip"
+    },
+    {
+      "filename": "tl_2025_08031_areawater.zip",
+      "bytes": 42911,
+      "sha256": "81fa3a55010adc1cf830ad032e13e1f92f2705cc1446cac5cd60de7c4987f953",
+      "source_url": "https://www2.census.gov/geo/tiger/TIGER2025/AREAWATER/tl_2025_08031_areawater.zip"
+    },
+    {
+      "filename": "tl_2025_08059_areawater.zip",
+      "bytes": 377470,
+      "sha256": "80025015d788bc7397c7857c11e7a5fc6e1e6f1749767d6e8d305f7aba77fb72",
+      "source_url": "https://www2.census.gov/geo/tiger/TIGER2025/AREAWATER/tl_2025_08059_areawater.zip"
+    },
+    {
+      "filename": "2025_gaz_place_08.txt",
+      "bytes": 48621,
+      "sha256": "bf6eef3e2ef556da6c4b6f448aa83d63d00de25477182a45155407f16dcbcdb5",
+      "source_url": "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_08.txt"
     }
   ],
   "warning": "Original research inputs only. Archival retention does not certify legal/physical connectors, complete source/road/geographic coverage, datum alignment or global competition.",
@@ -78,5 +114,6 @@
   "draft_release_id": 426327474,
   "draft_release_tag": "research-sources-20261027-co-nm-az-v1",
   "geographic_accuracy_certified": false,
-  "complete_global_competition": false
+  "complete_global_competition": false,
+  "manifest_revision": 2
 }

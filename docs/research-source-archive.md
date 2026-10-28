@@ -3,7 +3,10 @@
 The fixed manifest at `scripts/research-source-snapshots/co-nm-az-20261027.json`
 records exact CO/NM/AZ OpenStreetMap bytes with common replication timestamp
 2026-10-27T21:23:59Z, Census 2025 population/CBSA/state/county/area-water archives,
-and the unchanged public CONUS CSV. Source URLs, sizes and SHA256 values identify
+the Colorado Gazetteer, all five Denver-area county water files used by the
+preserved regression, and the unchanged public CONUS CSV. The seventeen original
+files cover the current coupled routing and all four geography test areas.
+Source URLs, sizes and SHA256 values identify
 each original input. The filename `population.xlsx` preserves the exact official
 `cbsa-met-est2025-pop.xlsx` bytes.
 
@@ -20,10 +23,22 @@ release. No extra secret values are required.
 This retains original bytes beyond short-lived derived CI artifacts and mutable
 `latest` URLs. Changed upstream bytes must fail; acquire the exact archived asset
 or separately review/version a new snapshot rather than rewriting a checksum.
-`SHA256SUMS` and `source-manifest.json` accompany the input files. Archive metadata
+`SHA256SUMS-v2` and `source-manifest-v2.json` accompany the complete inputs.
+The original smaller revision and its metadata assets are retained unchanged;
+new metadata filenames prevent overwriting earlier checksums or documentation.
+Archive metadata
 is not access evidence, a coverage certificate or a production release manifest.
 The draft is intentionally unpublished; authorized repository writers can inspect
 or retrieve it. Publication is a separate owner action.
+
+Authorized writers can recover the exact inputs without the old workspace:
+
+```sh
+gh release download research-sources-20261027-co-nm-az-v1 \
+  --repo smeyerhuky/claude-react --dir local-data/pinned-20261027
+cd local-data/pinned-20261027
+sha256sum -c SHA256SUMS-v2
+```
 
 ## Source attribution and rights
 
