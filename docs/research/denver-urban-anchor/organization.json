@@ -1,0 +1,451 @@
+{
+  "2DSketchStylesGroupQuery": "title:\"Esri Sketch Styles\" AND owner:esri_en",
+  "2DStylesGroupQuery": "title:\"Esri 2D Styles\" AND owner:esri_en",
+  "3DBasemapGalleryGroupQuery": "title:\"ArcGIS Online 3D Basemaps\" AND owner:esri_en",
+  "access": "public",
+  "allSSL": true,
+  "allowedRedirectUris": [
+    "https://gisqa.denvergov.org/gisportal/"
+  ],
+  "analysisLayersGroupQuery": "title:\"Living Atlas Analysis Layers\" AND owner:esri",
+  "authorizedCrossOriginDomains": [
+    
+  ],
+  "basemapGalleryGroupQuery": "id:55957ec076704a108574b266e896803b",
+  "canShareBingPublic": false,
+  "cdnUrl": "https://cdn.arcgis.com",
+  "colorSetsGroupQuery": "title:\"Esri Colors\" AND owner:esri_en",
+  "commentsEnabled": false,
+  "contentCategorySetsGroupQuery": "title:\"ArcGIS Online Content Category Sets\" AND owner:esri_en",
+  "culture": "en",
+  "cultureFormat": "us",
+  "customBaseUrl": "maps.arcgis.com",
+  "default3DBasemapQuery": "typekeywords:\"sourceId#topographic\" AND type:\"Web Scene\" AND owner:esri_en",
+  "defaultBasemap": {
+    "id": "8b3b470883a744aeb60e5fff0a319ce7",
+    "title": "Light Gray Canvas",
+    "baseMapLayers": [
+      {
+        "opacity": 1,
+        "title": "World Light Gray Canvas Base",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledMapServiceLayer",
+        "id": "World_Light_Gray_Base_1486"
+      },
+      {
+        "opacity": 1,
+        "title": "World Light Gray Reference",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledMapServiceLayer",
+        "isReference": true,
+        "id": "World_Light_Gray_Reference_8656"
+      }
+    ],
+    "operationalLayers": [
+      
+    ]
+  },
+  "defaultDevBasemap": {
+    "baseMapLayers": [
+      {
+        "id": "World_Hillshade_2559",
+        "layerType": "ArcGISTiledMapServiceLayer",
+        "url": "https://ibasemaps-api.arcgis.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer",
+        "visibility": true,
+        "opacity": 1,
+        "title": "World Hillshade"
+      },
+      {
+        "id": "VectorTile_9568",
+        "type": "VectorTileLayer",
+        "layerType": "VectorTileLayer",
+        "title": "World Topographic Map",
+        "styleUrl": "https://cdn.arcgis.com/sharing/rest/content/items/42df0d22517e49ad84edcee4c093857d/resources/styles/root.json",
+        "visibility": true,
+        "opacity": 1
+      }
+    ],
+    "title": "Topographic"
+  },
+  "defaultExtent": {
+    "xmin": -1.170187874120247E7,
+    "ymin": 4818801.589668483,
+    "xmax": -1.1671926072753599E7,
+    "ymax": 4839553.742894804,
+    "spatialReference": {
+      "wkid": 102100
+    }
+  },
+  "defaultVectorBasemap": {
+    "baseMapLayers": [
+      {
+        "id": "World_Hillshade_3805",
+        "layerType": "ArcGISTiledMapServiceLayer",
+        "url": "https://services.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer",
+        "visibility": true,
+        "opacity": 1,
+        "title": "World Hillshade"
+      },
+      {
+        "id": "195012aeb31-layer-2",
+        "type": "VectorTileLayer",
+        "layerType": "VectorTileLayer",
+        "title": "World Topographic Map",
+        "styleUrl": "https://cdn.arcgis.com/sharing/rest/content/items/27e89eb03c1e4341a1d75e597f0291e6/resources/styles/root.json",
+        "visibility": true,
+        "opacity": 1
+      }
+    ],
+    "title": "Topographic"
+  },
+  "description": "Enterprise-wide GIS Program for the City and County of Denver, Colorado",
+  "dev3DBasemapGalleryGroupQuery": "title:\"World 3D Basemaps for Developers\" AND owner:esri_en",
+  "devBasemapGalleryGroupQuery": "title:\"World Basemaps for Developers\" AND owner:esri",
+  "disconnectedModeEnabled": false,
+  "eueiEnabled": false,
+  "featuredGroups": [
+    {
+      "title": "National Maps for USA",
+      "owner": "Federal_User_Community"
+    },
+    {
+      "title": "Esri Maps and Data",
+      "owner": "esri"
+    },
+    {
+      "title": "Community Basemaps",
+      "owner": "esri"
+    },
+    {
+      "title": "Landsat Community",
+      "owner": "esri"
+    },
+    {
+      "title": "Web Application Templates",
+      "owner": "esri_en"
+    },
+    {
+      "title": "ArcGIS for Local Government",
+      "owner": "ArcGISTeamLocalGov"
+    },
+    {
+      "title": "My BAO Group",
+      "owner": "histanton",
+      "id": "0ef1b34106f74073bfb3ac8860efde59",
+      "altTitle": "My BAO Group (histanton)"
+    },
+    {
+      "title": "My BAO Group",
+      "owner": "Douglas_geospatialDenver",
+      "id": "82940acb7724463d98b9e2dd9d7c13bb",
+      "altTitle": "My BAO Group (Douglas_geospatialDenver)"
+    }
+  ],
+  "featuredGroupsId": "",
+  "featuredItemsGroupQuery": "",
+  "fontManifestUrl": "https://static.arcgis.com/fonts/fontManifestUrl.json",
+  "g3DTilesGalleryGroupQuery": "title:\"ArcGIS Online Google 3D Basemaps\" AND owner:esri_en",
+  "galleryTemplatesGroupQuery": "title:\"Gallery Templates\" AND owner:esri_en",
+  "hasCategorySchema": true,
+  "helpBase": "https://doc.arcgis.com/en/arcgis-online/",
+  "helperServices": {
+    "aiAssistantServices": {
+      "url": "https://aiservices.arcgis.com",
+      "docChatAssistant": "/skills/doc_chat",
+      "sqlGenerationAssistant": "/skills/sqlGeneration",
+      "graphQueryAssistant": "/skills/graphQueryGeneration",
+      "arcadeGenerationAssistant": "/skills/arcade_generation",
+      "discoveryAssistant": "/skills/discovery",
+      "itemInformationAssistant": "/skills/item_information_suggester",
+      "pythonAssistant": "/skills/python_code_suggester/chat"
+    },
+    "aiModels": {
+      "url": "https://aimodels.arcgis.com"
+    },
+    "aiUtilityServices": {
+      "url": "https://aiutils.arcgis.com",
+      "api": {
+        "text_translate": "/api/text/translate",
+        "text_analyze": "/api/text/analyze",
+        "image_analyze": "/api/image/analyze",
+        "image_extract": "/api/image/extractText",
+        "file_analyze": "/api/file/analyze",
+        "embeddings": "/api/embeddings",
+        "audio_transcribe": "/api/audio/transcribe",
+        "audio_speech": "/api/audio/speech"
+      },
+      "translateUtility": "/api/translate",
+      "imageExtractTextUtility": "/api/assistant/imageExtractText"
+    },
+    "asyncClosestFacility": {
+      "url": "https://logistics.arcgis.com/arcgis/rest/services/World/ClosestFacility/GPServer/FindClosestFacilities",
+      "defaultTravelMode": "FEgifRtFndKNcJMJ"
+    },
+    "asyncFleetRouting": {
+      "url": "https://logistics.arcgis.com/arcgis/rest/services/World/VehicleRoutingProblem/GPServer",
+      "defaultTravelMode": "FEgifRtFndKNcJMJ"
+    },
+    "asyncLocationAllocation": {
+      "url": "https://logistics.arcgis.com/arcgis/rest/services/World/LocationAllocation/GPServer",
+      "defaultTravelMode": "FEgifRtFndKNcJMJ"
+    },
+    "asyncODCostMatrix": {
+      "url": "https://logistics.arcgis.com/arcgis/rest/services/World/OriginDestinationCostMatrix/GPServer",
+      "defaultTravelMode": "FEgifRtFndKNcJMJ"
+    },
+    "asyncPrintTask": {
+      "url": "https://print.arcgis.com/arcgis/rest/services/PrintingToolsAsync/GPServer/Export%20Web%20Map%20Task"
+    },
+    "asyncRoute": {
+      "url": "https://logistics.arcgis.com/arcgis/rest/services/World/Route/GPServer",
+      "defaultTravelMode": "FEgifRtFndKNcJMJ"
+    },
+    "asyncServiceArea": {
+      "url": "https://logistics.arcgis.com/arcgis/rest/services/World/ServiceAreas/GPServer/GenerateServiceAreas",
+      "defaultTravelMode": "FEgifRtFndKNcJMJ"
+    },
+    "asyncVRP": {
+      "url": "https://logistics.arcgis.com/arcgis/rest/services/World/VehicleRoutingProblem/GPServer/SolveVehicleRoutingProblem",
+      "defaultTravelMode": "FEgifRtFndKNcJMJ"
+    },
+    "batchGeocode": [
+      {
+        "url": "https://geocode.arcgis.com/arcgis/rest/services/World/GPServer/BatchGeocode"
+      }
+    ],
+    "closestFacility": {
+      "url": "https://route.arcgis.com/arcgis/rest/services/World/ClosestFacility/NAServer/ClosestFacility_World",
+      "defaultTravelMode": "FEgifRtFndKNcJMJ"
+    },
+    "dashboardsUtility": {
+      "url": "https://dashboards-api.arcgis.com"
+    },
+    "defaultElevationLayers": [
+      {
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "id": "globalElevation",
+        "layerType": "ArcGISTiledElevationServiceLayer",
+        "units": "esriMeters"
+      }
+    ],
+    "elevation": {
+      "url": "https://elevation.arcgis.com/arcgis/rest/services/Tools/Elevation/GPServer"
+    },
+    "elevationSync": {
+      "url": "https://elevation.arcgis.com/arcgis/rest/services/Tools/ElevationSync/GPServer"
+    },
+    "geocode": [
+      {
+        "url": "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer",
+        "northLat": "Ymax",
+        "southLat": "Ymin",
+        "eastLon": "Xmax",
+        "westLon": "Xmin",
+        "name": "ArcGIS World Geocoding Service",
+        "suggest": true,
+        "placefinding": true,
+        "batch": true,
+        "esri": true,
+        "ordinal": 1
+      }
+    ],
+    "geometry": {
+      "url": "https://utility.arcgisonline.com/arcgis/rest/services/Geometry/GeometryServer"
+    },
+    "hydrology": {
+      "url": "https://hydro.arcgis.com/arcgis/rest/services/Tools/Hydrology/GPServer"
+    },
+    "layoutInfoTask": {
+      "url": "https://print.arcgis.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Get%20Layout%20Templates%20Info%20Task"
+    },
+    "locationTracking": {
+      "url": "https://locationservices1.arcgis.com/zdB7qR0BtYrg0Xpl/arcgis/rest/services/location_tracking/FeatureServer",
+      "id": "64a968d027154d8d88db5f42e7568c0b"
+    },
+    "odCostMatrix": {
+      "url": "https://route.arcgis.com/arcgis/rest/services/World/OriginDestinationCostMatrix/NAServer/OriginDestinationCostMatrix_World",
+      "defaultTravelMode": "FEgifRtFndKNcJMJ"
+    },
+    "orthomappingElevation": {
+      "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
+    },
+    "packaging": {
+      "url": "https://packaging.arcgis.com/arcgis/rest/services/OfflinePackaging/GPServer",
+      "maxMapAreaItemsLimit": 16,
+      "exportTilesMap": [
+        {
+          "source": "https://services.arcgisonline.com",
+          "export": "https://tiledbasemaps.arcgis.com"
+        },
+        {
+          "source": "https://basemaps-api.arcgis.com",
+          "export": "https://basemaps.arcgis.com"
+        },
+        {
+          "source": "https://ibasemaps-api.arcgis.com",
+          "export": "https://tiledbasemaps.arcgis.com"
+        }
+      ]
+    },
+    "printTask": {
+      "url": "https://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
+    },
+    "route": {
+      "url": "https://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World",
+      "defaultTravelMode": "FEgifRtFndKNcJMJ"
+    },
+    "routingUtilities": {
+      "url": "https://logistics.arcgis.com/arcgis/rest/services/World/Utilities/GPServer"
+    },
+    "serviceArea": {
+      "url": "https://route.arcgis.com/arcgis/rest/services/World/ServiceAreas/NAServer/ServiceArea_World",
+      "defaultTravelMode": "FEgifRtFndKNcJMJ"
+    },
+    "snapToRoads": {
+      "url": "https://route.arcgis.com/arcgis/rest/services/World/SnapToRoadsSync/GPServer",
+      "defaultTravelMode": "FEgifRtFndKNcJMJ"
+    },
+    "symbols": {
+      "url": "https://utility.arcgisonline.com/arcgis/rest/services/Utilities/Symbols/SymbolServer"
+    },
+    "syncVRP": {
+      "url": "https://logistics.arcgis.com/arcgis/rest/services/World/VehicleRoutingProblemSync/GPServer/EditVehicleRoutingProblem",
+      "defaultTravelMode": "FEgifRtFndKNcJMJ"
+    },
+    "traffic": {
+      "url": "https://traffic.arcgis.com/arcgis/rest/services/World/Traffic/MapServer"
+    },
+    "trafficData": {
+      "url": "https://traffic.arcgis.com/arcgis/rest/services/World/TrafficFeeds/GPServer"
+    },
+    "workflowManager": {
+      "url": "https://workflow.arcgis.com"
+    },
+    "analysis": {
+      "url": "https://analysis1.arcgis.com/arcgis/rest/services/tasks/GPServer"
+    },
+    "geoenrichment": {
+      "url": "https://geoenrich.arcgis.com/arcgis/rest/services/World/GeoenrichmentServer"
+    },
+    "asyncGeocode": {
+      "url": "https://analysis1.arcgis.com/arcgis/rest/services/tasks/GPServer"
+    },
+    "creditEstimation": {
+      "url": "https://analysis1.arcgis.com/arcgis/rest/services/Estimate/GPServer"
+    },
+    "rasterAnalytics": {
+      "url": "https://rasteranalysis1.arcgis.com/arcgis/rest/services/RasterAnalysisTools/GPServer"
+    },
+    "rasterUtilities": {
+      "url": "https://rasteranalysis1.arcgis.com/arcgis/rest/services/Utilities/RasterUtilities/GPServer"
+    },
+    "datastoreManagement": {
+      "url": "https://datastoremanagement1.arcgis.com"
+    },
+    "dataPipelines": {
+      "url": "https://datapipelinesservices1.arcgis.com"
+    },
+    "analysisModels": {
+      "url": "https://webanalysis1.arcgis.com"
+    }
+  },
+  "homePageFeaturedContent": "id:2e3e2840bde048ee8110ec845a841ebb",
+  "homePageFeaturedContentCount": 12,
+  "id": "zdB7qR0BtYrg0Xpl",
+  "isPortal": false,
+  "layerTemplatesGroupQuery": "title:\"Esri Layer Templates\" AND owner:esri_en",
+  "livingAtlasGroupQuery": "title:\"LAW Search\" AND owner:Esri_LivingAtlas",
+  "metadataEditable": true,
+  "metadataFormats": [
+    "iso19115"
+  ],
+  "name": "geospatialDENVER: Putting Denver on the map.",
+  "portalHostname": "www.arcgis.com",
+  "portalMode": "multitenant",
+  "portalName": "ArcGIS Online",
+  "portalProperties": {
+    "links": {
+      
+    },
+    "showSocialMediaLinks": true,
+    "sharedTheme": {
+      "header": {
+        "background": "#002d56",
+        "text": "#ffffff"
+      },
+      "body": {
+        "background": "no-color",
+        "text": "#58595b",
+        "link": "#002d56"
+      },
+      "button": {
+        "background": "#002d56",
+        "text": "#ffffff"
+      },
+      "logo": {
+        "small": "https://geospatialdenver.maps.arcgis.com/sharing/rest/content/items/dfe523dcaf3f4dd288508802f3c65417/data",
+        "link": "https://www.denvergov.org"
+      }
+    },
+    "showCreditsOnProfile": true,
+    "revertHttpsEndDate": null,
+    "homePage": "modern",
+    "mapViewer": "modern",
+    "mapViewerSwitchDate": 1732548917441,
+    "openData": {
+      "enabled": true,
+      "settings": {
+        "migrations": {
+          "siteToItems": true
+        },
+        "appVersion": "2.1"
+      }
+    },
+    "hub": {
+      "enabled": true,
+      "settings": {
+        "orgType": "enterprise",
+        "communityOrg": {
+          "orgId": "hcZ4bwMn6lNykUGt",
+          "portalHostname": "ccdgishub.maps.arcgis.com"
+        },
+        "informationalBanner": true
+      }
+    },
+    "topNav": {
+      
+    }
+  },
+  "portalThumbnail": null,
+  "rasterFunctionTemplatesGroupQuery": "title:\"Raster Function Templates\" AND owner:esri_en",
+  "region": "US",
+  "rotatorPanels": [
+    {
+      "id": "banner-html",
+      "innerHTML": "<div><div><img src='https://geospatialdenver.maps.arcgis.com/sharing/rest/portals/self/resources/banner.jpg?token=SECURITY_TOKEN' style='-webkit-border-radius:0 0 10px 10px; -moz-border-radius:0 0 10px 10px; -o-border-radius:0 0 10px 10px; border-radius:0 0 10px 10px; margin-top:0; width:960px; height:360px;' /><\/div><\/div>"
+    }
+  ],
+  "showHomePageDescription": true,
+  "staticImagesUrl": "https://static.arcgis.com/images",
+  "stylesGroupQuery": "title:\"Esri Styles\" AND owner:esri_en",
+  "supports3DTilesServices": true,
+  "supportsHostedServices": true,
+  "symbolSetsGroupQuery": "title:\"Esri Symbols\" AND owner:esri_en",
+  "templatesGroupQuery": "title:\"Web Application Templates\" AND owner:esri_en",
+  "thumbnail": "thumbnail1621012983434.png",
+  "units": "english",
+  "urlKey": "geospatialDenver",
+  "use3dBasemaps": true,
+  "useDefault3dBasemap": false,
+  "useVectorBasemaps": false,
+  "vectorBasemapGalleryGroupQuery": "title:\"United States Vector Basemaps\" AND owner:Esri_cy_US",
+  "ipCntryCode": "US",
+  "httpPort": 80,
+  "httpsPort": 443,
+  "supportsOAuth": true,
+  "isReadOnly": false,
+  "currentVersion": "2026.2",
+  "vectorSearchEnabled": false
+}

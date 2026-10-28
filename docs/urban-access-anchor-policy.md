@@ -64,9 +64,12 @@ review, not an approved urban anchor or real-world inaccessibility claim.
 The [Denver Union Station proposal](research/connector-reviews/denver-union-station-proposal.json)
 uses station-operator pickup and valet guidance independent of OSM. It is a
 plausible urban destination lead, but the text does not locate an exact entry or
-establish unrestricted private-car use. All five connector findings remain
-unknown. This packet records actual AI source review rather than substituting
-a nearest-road snap for evidence.
+establish unrestricted private-car use. The follow-up [municipal/OSM audit](research/denver-urban-anchor/README.md) identifies
+the precise reference junction, coded surface/two-way attributes and nearby
+loading restrictions. All five complete connector findings remain unresolved
+because the exact curb entry and current restrictions are not established.
+This packet records actual AI source review rather than substituting a
+nearest-road snap for evidence.
 
 ## Remaining release work
 

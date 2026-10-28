@@ -1,0 +1,37 @@
+name: Denver urban anchor evidence
+on:
+  pull_request:
+    paths:
+      - 'scripts/denver_anchor_evidence.py'
+      - 'scripts/test_denver_anchor_evidence.py'
+      - 'docs/research/denver-urban-anchor/**'
+      - 'docs/research/connector-reviews/denver-union-station-proposal.json'
+      - '.github/workflows/denver-anchor-evidence.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproduce-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'osmium>=4,<5'
+      - name: Verify snapshots, report, negative checks and AI packet
+        run: |
+          python -m unittest discover -s scripts -p 'test_denver_anchor_evidence.py' -v
+          python scripts/connector_review_packet.py docs/research/connector-reviews/denver-union-station-proposal.json
+      - name: Fetch exact dated Colorado source
+        run: |
+          curl --fail --location --retry 3 --max-time 300 https://download.geofabrik.de/north-america/us/colorado-261027.osm.pbf --output colorado.osm.pbf
+      - name: Reproduce shared OSM junction and incident turn relations from exact bytes
+        timeout-minutes: 10
+        run: python scripts/denver_anchor_evidence.py --osm colorado.osm.pbf --output reproduced-report.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: denver-reference-junction-evidence
+          path: reproduced-report.json
+          retention-days: 14

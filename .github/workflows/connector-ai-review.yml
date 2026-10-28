@@ -5,6 +5,7 @@ on:
       - 'scripts/connector_review_packet.py'
       - 'scripts/test_connector_review_packet.py'
       - 'docs/research/connector-reviews/**'
+      - 'docs/research/denver-urban-anchor/**'
       - 'docs/research/tucson-unreachable-negative.json'
       - 'docs/urban-access-anchor-policy.md'
       - '.github/workflows/connector-ai-review.yml'

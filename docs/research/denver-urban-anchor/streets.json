@@ -1,0 +1,6133 @@
+{
+  "objectIdFieldName" : "OBJECTID", 
+  "uniqueIdField" : 
+  {
+    "name" : "OBJECTID", 
+    "isSystemMaintained" : true
+  }, 
+  "globalIdFieldName" : "GlobalID", 
+  "geometryProperties" : 
+  {
+    "shapeLengthFieldName" : "Shape__Length", 
+    "units" : "esriFeet"
+  }, 
+  "geometryType" : "esriGeometryPolyline", 
+  "spatialReference" : {
+    "wkid" : 4326, 
+    "latestWkid" : 4326
+  }, 
+  "fields" : [
+    {
+      "name" : "OBJECTID", 
+      "type" : "esriFieldTypeOID", 
+      "alias" : "OBJECTID", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "GlobalID", 
+      "type" : "esriFieldTypeGlobalID", 
+      "alias" : "GlobalID", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 38, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FNODE", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "FNODE_", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "TNODE", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "TNODE_", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "STREETID", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "STREETID", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "MASTERID", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "MASTERID", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "L_F_ADD", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "L_F_ADD", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "L_T_ADD", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "L_T_ADD", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "R_F_ADD", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "R_F_ADD", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "R_T_ADD", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "R_T_ADD", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "PREFIX", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "PREFIX", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 3, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "DirPrefix", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Directional Prefixes for streets/addresses", 
+        "codedValues" : [
+          {
+            "name" : "N", 
+            "code" : "N"
+          }, 
+          {
+            "name" : "S", 
+            "code" : "S"
+          }, 
+          {
+            "name" : "E", 
+            "code" : "E"
+          }, 
+          {
+            "name" : "W", 
+            "code" : "W"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "NAME", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "NAME", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 30, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "TYPE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "TYPE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 4, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "StreetType", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Street Types", 
+        "codedValues" : [
+          {
+            "name" : "AVE", 
+            "code" : "AVE"
+          }, 
+          {
+            "name" : "BLVD", 
+            "code" : "BLVD"
+          }, 
+          {
+            "name" : "CIR", 
+            "code" : "CIR"
+          }, 
+          {
+            "name" : "CT", 
+            "code" : "CT"
+          }, 
+          {
+            "name" : "DR", 
+            "code" : "DR"
+          }, 
+          {
+            "name" : "LN", 
+            "code" : "LN"
+          }, 
+          {
+            "name" : "PKWY", 
+            "code" : "PKWY"
+          }, 
+          {
+            "name" : "PL", 
+            "code" : "PL"
+          }, 
+          {
+            "name" : "RD", 
+            "code" : "RD"
+          }, 
+          {
+            "name" : "ST", 
+            "code" : "ST"
+          }, 
+          {
+            "name" : "WAY", 
+            "code" : "WAY"
+          }, 
+          {
+            "name" : "CRES", 
+            "code" : "CRES"
+          }, 
+          {
+            "name" : "FWY", 
+            "code" : "FWY"
+          }, 
+          {
+            "name" : "HWY", 
+            "code" : "HWY"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "POSTMODIFIER", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "POSTMODIFIER", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FULLNAME", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "FULLNAME", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FROMNAME", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "FROMNAME", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "TONAME", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "TONAME", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "LEN_MI", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "LEN_MI", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ALIAS1", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "ALIAS1", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 100, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ALIAS2", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "ALIAS2", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 100, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "ALIAS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "ALIAS for Central Square CAD", 
+        "codedValues" : [
+          {
+            "name" : "BND", 
+            "code" : "BND"
+          }, 
+          {
+            "name" : "BND/ENCLAVE", 
+            "code" : "BND/ENCLAVE"
+          }, 
+          {
+            "name" : "DTC", 
+            "code" : "DTC"
+          }, 
+          {
+            "name" : "ENCLAVE", 
+            "code" : "ENCLAVE"
+          }, 
+          {
+            "name" : "FORT LOGAN CEMETERY", 
+            "code" : "FORT LOGAN CEMETERY"
+          }, 
+          {
+            "name" : "STATE HIGHWAY", 
+            "code" : "STATE HIGHWAY"
+          }, 
+          {
+            "name" : "STATE HIGHWAY/BND", 
+            "code" : "STATE HIGHWAY/BND"
+          }, 
+          {
+            "name" : "STATE HIGHWAY/BND/ENCLAVE", 
+            "code" : "STATE HIGHWAY/BND/ENCLAVE"
+          }, 
+          {
+            "name" : "US HIGHWAY", 
+            "code" : "US HIGHWAY"
+          }, 
+          {
+            "name" : "US HIGHWAY/BND", 
+            "code" : "US HIGHWAY/BND"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "JURISID", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "JURISID", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "JURISMTC", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Jurisdiction and Maintenance", 
+        "codedValues" : [
+          {
+            "name" : "ADAMS", 
+            "code" : "ADAMS"
+          }, 
+          {
+            "name" : "ARAPAHOE", 
+            "code" : "ARAPAHOE"
+          }, 
+          {
+            "name" : "AURORA", 
+            "code" : "AURORA"
+          }, 
+          {
+            "name" : "CDOT", 
+            "code" : "CDOT"
+          }, 
+          {
+            "name" : "CHERRY HILLS VILLAGE", 
+            "code" : "CHERRY HILLS VILLAGE"
+          }, 
+          {
+            "name" : "COMMERCE CITY", 
+            "code" : "COMMERCE CITY"
+          }, 
+          {
+            "name" : "DENVER", 
+            "code" : "DENVER"
+          }, 
+          {
+            "name" : "E470", 
+            "code" : "E470"
+          }, 
+          {
+            "name" : "ENGLEWOOD", 
+            "code" : "ENGLEWOOD"
+          }, 
+          {
+            "name" : "FEDERAL", 
+            "code" : "FEDERAL"
+          }, 
+          {
+            "name" : "GLENDALE", 
+            "code" : "GLENDALE"
+          }, 
+          {
+            "name" : "STATE", 
+            "code" : "STATE"
+          }, 
+          {
+            "name" : "GREENWOOD VILLLAGE", 
+            "code" : "GREENWOOD VILLLAGE"
+          }, 
+          {
+            "name" : "JEFFERSON", 
+            "code" : "JEFFERSON"
+          }, 
+          {
+            "name" : "LAKESIDE", 
+            "code" : "LAKESIDE"
+          }, 
+          {
+            "name" : "LAKEWOOD", 
+            "code" : "LAKEWOOD"
+          }, 
+          {
+            "name" : "PRIVATE", 
+            "code" : "PRIVATE"
+          }, 
+          {
+            "name" : "RTD", 
+            "code" : "RTD"
+          }, 
+          {
+            "name" : "SHERIDAN", 
+            "code" : "SHERIDAN"
+          }, 
+          {
+            "name" : "WHEAT RIDGE", 
+            "code" : "WHEAT RIDGE"
+          }, 
+          {
+            "name" : "AURARIA", 
+            "code" : "AURARIA"
+          }, 
+          {
+            "name" : "DENVER PARKS AND RECREATION", 
+            "code" : "DENVER PARKS AND RECREATION"
+          }, 
+          {
+            "name" : "DEN", 
+            "code" : "DEN"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "MAINTNCE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "MAINTNCE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "JURISMTC", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Jurisdiction and Maintenance", 
+        "codedValues" : [
+          {
+            "name" : "ADAMS", 
+            "code" : "ADAMS"
+          }, 
+          {
+            "name" : "ARAPAHOE", 
+            "code" : "ARAPAHOE"
+          }, 
+          {
+            "name" : "AURORA", 
+            "code" : "AURORA"
+          }, 
+          {
+            "name" : "CDOT", 
+            "code" : "CDOT"
+          }, 
+          {
+            "name" : "CHERRY HILLS VILLAGE", 
+            "code" : "CHERRY HILLS VILLAGE"
+          }, 
+          {
+            "name" : "COMMERCE CITY", 
+            "code" : "COMMERCE CITY"
+          }, 
+          {
+            "name" : "DENVER", 
+            "code" : "DENVER"
+          }, 
+          {
+            "name" : "E470", 
+            "code" : "E470"
+          }, 
+          {
+            "name" : "ENGLEWOOD", 
+            "code" : "ENGLEWOOD"
+          }, 
+          {
+            "name" : "FEDERAL", 
+            "code" : "FEDERAL"
+          }, 
+          {
+            "name" : "GLENDALE", 
+            "code" : "GLENDALE"
+          }, 
+          {
+            "name" : "STATE", 
+            "code" : "STATE"
+          }, 
+          {
+            "name" : "GREENWOOD VILLLAGE", 
+            "code" : "GREENWOOD VILLLAGE"
+          }, 
+          {
+            "name" : "JEFFERSON", 
+            "code" : "JEFFERSON"
+          }, 
+          {
+            "name" : "LAKESIDE", 
+            "code" : "LAKESIDE"
+          }, 
+          {
+            "name" : "LAKEWOOD", 
+            "code" : "LAKEWOOD"
+          }, 
+          {
+            "name" : "PRIVATE", 
+            "code" : "PRIVATE"
+          }, 
+          {
+            "name" : "RTD", 
+            "code" : "RTD"
+          }, 
+          {
+            "name" : "SHERIDAN", 
+            "code" : "SHERIDAN"
+          }, 
+          {
+            "name" : "WHEAT RIDGE", 
+            "code" : "WHEAT RIDGE"
+          }, 
+          {
+            "name" : "AURARIA", 
+            "code" : "AURARIA"
+          }, 
+          {
+            "name" : "DENVER PARKS AND RECREATION", 
+            "code" : "DENVER PARKS AND RECREATION"
+          }, 
+          {
+            "name" : "DEN", 
+            "code" : "DEN"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ADDRESSQUAD", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "ADDRESSQUAD", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 2, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "ADDRESSQUAD", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Address Quadrants", 
+        "codedValues" : [
+          {
+            "name" : "E", 
+            "code" : "E"
+          }, 
+          {
+            "name" : "N", 
+            "code" : "N"
+          }, 
+          {
+            "name" : "NE", 
+            "code" : "NE"
+          }, 
+          {
+            "name" : "NW", 
+            "code" : "NW"
+          }, 
+          {
+            "name" : "S", 
+            "code" : "S"
+          }, 
+          {
+            "name" : "SE", 
+            "code" : "SE"
+          }, 
+          {
+            "name" : "SW", 
+            "code" : "SW"
+          }, 
+          {
+            "name" : "W", 
+            "code" : "W"
+          }, 
+          {
+            "name" : "00", 
+            "code" : "00"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "VOLCLASS", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "VOLCLASS", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 15, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "VOLCLASS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Volume Class", 
+        "codedValues" : [
+          {
+            "name" : "OUTSIDECCD", 
+            "code" : "OUTSIDECCD"
+          }, 
+          {
+            "name" : "ARTERIAL", 
+            "code" : "ARTERIAL"
+          }, 
+          {
+            "name" : "COLLECTOR", 
+            "code" : "COLLECTOR"
+          }, 
+          {
+            "name" : "LOCAL", 
+            "code" : "LOCAL"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FUNCLASS", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "FUNCLASS", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "FUNCCLASS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Function Class FHWA", 
+        "codedValues" : [
+          {
+            "name" : "Interstate-Rural", 
+            "code" : "Interstate-Rural"
+          }, 
+          {
+            "name" : "Interstate-Urban", 
+            "code" : "Interstate-Urban"
+          }, 
+          {
+            "name" : "Freeway-Urban", 
+            "code" : "Freeway-Urban"
+          }, 
+          {
+            "name" : "Other Pri Art-Urban", 
+            "code" : "Other Pri Art-Urban"
+          }, 
+          {
+            "name" : "Minor Art-Urban", 
+            "code" : "Minor Art-Urban"
+          }, 
+          {
+            "name" : "Collector-Urban", 
+            "code" : "Collector-Urban"
+          }, 
+          {
+            "name" : "Local-Urban", 
+            "code" : "Local-Urban"
+          }, 
+          {
+            "name" : "Other Pri Art-Rural", 
+            "code" : "Other Pri Art-Rural"
+          }, 
+          {
+            "name" : "Minor Art-Rural", 
+            "code" : "Minor Art-Rural"
+          }, 
+          {
+            "name" : "Major Coll-Rural", 
+            "code" : "Major Coll-Rural"
+          }, 
+          {
+            "name" : "Minor Coll-Rural", 
+            "code" : "Minor Coll-Rural"
+          }, 
+          {
+            "name" : "Local-Rural", 
+            "code" : "Local-Rural"
+          }, 
+          {
+            "name" : "Not in HUTF Inventory", 
+            "code" : "Not in HUTF Inventory"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "TT_SEGTYPE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "TT_SEGTYPE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "TT_SEGTYPE", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Census CFCCodes", 
+        "codedValues" : [
+          {
+            "name" : "Road", 
+            "code" : "A00"
+          }, 
+          {
+            "name" : "Road,Unseparated", 
+            "code" : "A01"
+          }, 
+          {
+            "name" : "Road,Unseparated,Underpassing", 
+            "code" : "A03"
+          }, 
+          {
+            "name" : "Road,Separated", 
+            "code" : "A05"
+          }, 
+          {
+            "name" : "Road,Separated,Underpassing", 
+            "code" : "A07"
+          }, 
+          {
+            "name" : "Interstate, Unseparated, Underpassing", 
+            "code" : "A13"
+          }, 
+          {
+            "name" : "Interstate, Separated", 
+            "code" : "A15"
+          }, 
+          {
+            "name" : "US Highway, Unseparated", 
+            "code" : "A21"
+          }, 
+          {
+            "name" : "US Highway, Unseparated,Underpassing", 
+            "code" : "A23"
+          }, 
+          {
+            "name" : "US Highway, Separated", 
+            "code" : "A25"
+          }, 
+          {
+            "name" : "US Highway, Separated, Underpassing", 
+            "code" : "A27"
+          }, 
+          {
+            "name" : "County Road, Unseparated", 
+            "code" : "A31"
+          }, 
+          {
+            "name" : "County Road, Separated", 
+            "code" : "A35"
+          }, 
+          {
+            "name" : "City Street", 
+            "code" : "A40"
+          }, 
+          {
+            "name" : "City Street, Unseparated", 
+            "code" : "A41"
+          }, 
+          {
+            "name" : "City Street, Unseparated, Underpassing", 
+            "code" : "A43"
+          }, 
+          {
+            "name" : "City Street, Separated", 
+            "code" : "A45"
+          }, 
+          {
+            "name" : "City Street, Separated, In Tunnel", 
+            "code" : "A46"
+          }, 
+          {
+            "name" : "City Street, Separated, Underpassing", 
+            "code" : "A47"
+          }, 
+          {
+            "name" : "Special Road", 
+            "code" : "A60"
+          }, 
+          {
+            "name" : "Cul-De-Sac", 
+            "code" : "A61"
+          }, 
+          {
+            "name" : "Traffic Circle", 
+            "code" : "A62"
+          }, 
+          {
+            "name" : "Access Ramp", 
+            "code" : "A63"
+          }, 
+          {
+            "name" : "Service Road", 
+            "code" : "A64"
+          }, 
+          {
+            "name" : "Ferry Crossing", 
+            "code" : "A65"
+          }, 
+          {
+            "name" : "Other Road", 
+            "code" : "A70"
+          }, 
+          {
+            "name" : "Walkway", 
+            "code" : "A71"
+          }, 
+          {
+            "name" : "Road, Unseparated, In Tunnel", 
+            "code" : "A02"
+          }, 
+          {
+            "name" : "Road, Unseparated, Rail Crossing", 
+            "code" : "A04"
+          }, 
+          {
+            "name" : "Road,Separated, In Tunnel", 
+            "code" : "A06"
+          }, 
+          {
+            "name" : "Road, Separated,Rail Crossing", 
+            "code" : "A08"
+          }, 
+          {
+            "name" : "Interstate Highway", 
+            "code" : "A10"
+          }, 
+          {
+            "name" : "Interstate, Unseparated", 
+            "code" : "A11"
+          }, 
+          {
+            "name" : "Interstate, Unseparated, In Tunnel", 
+            "code" : "A12"
+          }, 
+          {
+            "name" : "Interstate, Unseparated, Rail Crossing", 
+            "code" : "A14"
+          }, 
+          {
+            "name" : "Interstate, Separated, In Tunnel", 
+            "code" : "A16"
+          }, 
+          {
+            "name" : "Interstate, Separated, Rail Crossing", 
+            "code" : "A18"
+          }, 
+          {
+            "name" : "US Highway", 
+            "code" : "A20"
+          }, 
+          {
+            "name" : "US Highway, Unseparated, In Tunnel", 
+            "code" : "A22"
+          }, 
+          {
+            "name" : "US Highway, Unseparated, Rail Crossing", 
+            "code" : "A24"
+          }, 
+          {
+            "name" : "US Highway, Separated, In Tunnel", 
+            "code" : "A26"
+          }, 
+          {
+            "name" : "US Highway, Separated, Rail Crossing", 
+            "code" : "A28"
+          }, 
+          {
+            "name" : "County Road", 
+            "code" : "A30"
+          }, 
+          {
+            "name" : "County Road, Unseparated, In Tunnel", 
+            "code" : "A32"
+          }, 
+          {
+            "name" : "County Road, Unseparated, Underpassing", 
+            "code" : "A33"
+          }, 
+          {
+            "name" : "County Road, Unseparated, Rail Crossing", 
+            "code" : "A34"
+          }, 
+          {
+            "name" : "County Road, Separated, Underpassing", 
+            "code" : "A37"
+          }, 
+          {
+            "name" : "County Road, Separated, Rail Crossing", 
+            "code" : "A38"
+          }, 
+          {
+            "name" : "City Street, Unseparated, In Tunnel", 
+            "code" : "A42"
+          }, 
+          {
+            "name" : "City Street, Unseparated, Rail Crossing", 
+            "code" : "A44"
+          }, 
+          {
+            "name" : "City Street, Separated, Rail Crossing", 
+            "code" : "A48"
+          }, 
+          {
+            "name" : "Jeep Trail", 
+            "code" : "A50"
+          }, 
+          {
+            "name" : "Jeep Trail, Unseparated", 
+            "code" : "A51"
+          }, 
+          {
+            "name" : "Jeep Trail, Unseparated, In Tunnel", 
+            "code" : "A52"
+          }, 
+          {
+            "name" : "Jeep Trail, Unseparated, Underpassing", 
+            "code" : "A53"
+          }, 
+          {
+            "name" : "Jeep Trail, Unseparated, Rail Crossing", 
+            "code" : "A54"
+          }, 
+          {
+            "name" : "Stairway", 
+            "code" : "A72"
+          }, 
+          {
+            "name" : "Alley", 
+            "code" : "A73"
+          }, 
+          {
+            "name" : "County Road, Separated", 
+            "code" : "A36"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "CITYID", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "CITYID", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 100, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "CITYID", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "City ID", 
+        "codedValues" : [
+          {
+            "name" : "Commerce City", 
+            "code" : "Commerce City"
+          }, 
+          {
+            "name" : "Littleton", 
+            "code" : "Littleton"
+          }, 
+          {
+            "name" : "Sheridan", 
+            "code" : "Sheridan"
+          }, 
+          {
+            "name" : "Edgewater", 
+            "code" : "Edgewater"
+          }, 
+          {
+            "name" : "Lakeside", 
+            "code" : "Lakeside"
+          }, 
+          {
+            "name" : "Lakewood", 
+            "code" : "Lakewood"
+          }, 
+          {
+            "name" : "Mountain View", 
+            "code" : "Mountain View"
+          }, 
+          {
+            "name" : "Wheat Ridge", 
+            "code" : "Wheat Ridge"
+          }, 
+          {
+            "name" : "Aurora - Adams Co", 
+            "code" : "Aurora - Adams Co"
+          }, 
+          {
+            "name" : "Cherry Hills Village", 
+            "code" : "Cherry Hills Village"
+          }, 
+          {
+            "name" : "Englewood", 
+            "code" : "Englewood"
+          }, 
+          {
+            "name" : "Glendale", 
+            "code" : "Glendale"
+          }, 
+          {
+            "name" : "Greenwood Village", 
+            "code" : "Greenwood Village"
+          }, 
+          {
+            "name" : "Denver", 
+            "code" : "Denver"
+          }, 
+          {
+            "name" : "Aurora - Arapahoe Co", 
+            "code" : "Aurora - Arapahoe Co"
+          }, 
+          {
+            "name" : "Unincorporated Jefferson County", 
+            "code" : "Unincorporated Jefferson County"
+          }, 
+          {
+            "name" : "Unincorporated Adams County", 
+            "code" : "Unincorporated Adams County"
+          }, 
+          {
+            "name" : "Unincorporated Arapahoe County", 
+            "code" : "Unincorporated Arapahoe County"
+          }, 
+          {
+            "name" : "Greenwood Village half of border with Denver", 
+            "code" : "Greenwood Village half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Greenwood Village", 
+            "code" : "Denver half of border with Greenwood Village"
+          }, 
+          {
+            "name" : "Cherry Hills Village half of border with Denver", 
+            "code" : "Cherry Hills Village half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Cherry Hills Village", 
+            "code" : "Denver half of border with Cherry Hills Village"
+          }, 
+          {
+            "name" : "Aurora half of border with Denver", 
+            "code" : "Aurora half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Aurora", 
+            "code" : "Denver half of border with Aurora"
+          }, 
+          {
+            "name" : "Commerce City half of border with Denver", 
+            "code" : "Commerce City half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Commerce City", 
+            "code" : "Denver half of border with Commerce City"
+          }, 
+          {
+            "name" : "Rocky Mtn Ntl Arsenal half of border with Denver", 
+            "code" : "Rocky Mtn Ntl Arsenal half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Rocky Mtn Ntl Arsenal", 
+            "code" : "Denver half of border with Rocky Mtn Ntl Arsenal"
+          }, 
+          {
+            "name" : "Lakewood half of border with Denver", 
+            "code" : "Lakewood half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Lakewood", 
+            "code" : "Denver half of border with Lakewood"
+          }, 
+          {
+            "name" : "Unincorporated Arapahoe County half of border with Denver", 
+            "code" : "Unincorporated Arapahoe County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Unincorporated Arapahoe County", 
+            "code" : "Denver half of border with Unincorporated Arapahoe County"
+          }, 
+          {
+            "name" : "Unincorporated Adams County half of border with Denver", 
+            "code" : "Unincorporated Adams County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Unincorporated Adams County", 
+            "code" : "Denver half of border with Unincorporated Adams County"
+          }, 
+          {
+            "name" : "Unincorporated Jefferson County half of border with Denver", 
+            "code" : "Unincorporated Jefferson County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Unincorporated Jefferson County", 
+            "code" : "Denver half of border with Unincorporated Jefferson County"
+          }, 
+          {
+            "name" : "Glendale half of border with Denver", 
+            "code" : "Glendale half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Glendale", 
+            "code" : "Denver half of border with Glendale"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "COUNTYID", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "COUNTYID", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 100, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "COUNTYID", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "County ID", 
+        "codedValues" : [
+          {
+            "name" : "Adams", 
+            "code" : "Adams"
+          }, 
+          {
+            "name" : "Arapahoe", 
+            "code" : "Arapahoe"
+          }, 
+          {
+            "name" : "Denver", 
+            "code" : "Denver"
+          }, 
+          {
+            "name" : "Jefferson", 
+            "code" : "Jefferson"
+          }, 
+          {
+            "name" : "Boulder", 
+            "code" : "Boulder"
+          }, 
+          {
+            "name" : "Douglas", 
+            "code" : "Douglas"
+          }, 
+          {
+            "name" : "Weld", 
+            "code" : "Weld"
+          }, 
+          {
+            "name" : "Broomfield", 
+            "code" : "Broomfield"
+          }, 
+          {
+            "name" : "Arapahoe County half of border with Denver", 
+            "code" : "Arapahoe County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver County half of border with Arapahoe", 
+            "code" : "Denver County half of border with Arapahoe"
+          }, 
+          {
+            "name" : "Adams County half of border with Denver", 
+            "code" : "Adams County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver County half of border with Adams", 
+            "code" : "Denver County half of border with Adams"
+          }, 
+          {
+            "name" : "Jefferson County half of border with Denver", 
+            "code" : "Jefferson County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver County half of border with Jefferson", 
+            "code" : "Denver County half of border with Jefferson"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ZIPLEFT", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "ZIPLEFT", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 10, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "ZIP", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "ZIP Codes", 
+        "codedValues" : [
+          {
+            "name" : "80010", 
+            "code" : "80010"
+          }, 
+          {
+            "name" : "80012", 
+            "code" : "80012"
+          }, 
+          {
+            "name" : "80014", 
+            "code" : "80014"
+          }, 
+          {
+            "name" : "80019", 
+            "code" : "80019"
+          }, 
+          {
+            "name" : "80022", 
+            "code" : "80022"
+          }, 
+          {
+            "name" : "80045", 
+            "code" : "80045"
+          }, 
+          {
+            "name" : "80110", 
+            "code" : "80110"
+          }, 
+          {
+            "name" : "80111", 
+            "code" : "80111"
+          }, 
+          {
+            "name" : "80123", 
+            "code" : "80123"
+          }, 
+          {
+            "name" : "80137", 
+            "code" : "80137"
+          }, 
+          {
+            "name" : "80202", 
+            "code" : "80202"
+          }, 
+          {
+            "name" : "80203", 
+            "code" : "80203"
+          }, 
+          {
+            "name" : "80204", 
+            "code" : "80204"
+          }, 
+          {
+            "name" : "80205", 
+            "code" : "80205"
+          }, 
+          {
+            "name" : "80206", 
+            "code" : "80206"
+          }, 
+          {
+            "name" : "80207", 
+            "code" : "80207"
+          }, 
+          {
+            "name" : "80209", 
+            "code" : "80209"
+          }, 
+          {
+            "name" : "80210", 
+            "code" : "80210"
+          }, 
+          {
+            "name" : "80211", 
+            "code" : "80211"
+          }, 
+          {
+            "name" : "80212", 
+            "code" : "80212"
+          }, 
+          {
+            "name" : "80214", 
+            "code" : "80214"
+          }, 
+          {
+            "name" : "80216", 
+            "code" : "80216"
+          }, 
+          {
+            "name" : "80218", 
+            "code" : "80218"
+          }, 
+          {
+            "name" : "80219", 
+            "code" : "80219"
+          }, 
+          {
+            "name" : "80220", 
+            "code" : "80220"
+          }, 
+          {
+            "name" : "80221", 
+            "code" : "80221"
+          }, 
+          {
+            "name" : "80222", 
+            "code" : "80222"
+          }, 
+          {
+            "name" : "80223", 
+            "code" : "80223"
+          }, 
+          {
+            "name" : "80224", 
+            "code" : "80224"
+          }, 
+          {
+            "name" : "80226", 
+            "code" : "80226"
+          }, 
+          {
+            "name" : "80227", 
+            "code" : "80227"
+          }, 
+          {
+            "name" : "80230", 
+            "code" : "80230"
+          }, 
+          {
+            "name" : "80231", 
+            "code" : "80231"
+          }, 
+          {
+            "name" : "80232", 
+            "code" : "80232"
+          }, 
+          {
+            "name" : "80235", 
+            "code" : "80235"
+          }, 
+          {
+            "name" : "80236", 
+            "code" : "80236"
+          }, 
+          {
+            "name" : "80237", 
+            "code" : "80237"
+          }, 
+          {
+            "name" : "80238", 
+            "code" : "80238"
+          }, 
+          {
+            "name" : "80239", 
+            "code" : "80239"
+          }, 
+          {
+            "name" : "80240", 
+            "code" : "80240"
+          }, 
+          {
+            "name" : "80246", 
+            "code" : "80246"
+          }, 
+          {
+            "name" : "80247", 
+            "code" : "80247"
+          }, 
+          {
+            "name" : "80249", 
+            "code" : "80249"
+          }, 
+          {
+            "name" : "80603", 
+            "code" : "80603"
+          }, 
+          {
+            "name" : "80642", 
+            "code" : "80642"
+          }, 
+          {
+            "name" : "NotCCD", 
+            "code" : "NotCCD"
+          }, 
+          {
+            "name" : "80002", 
+            "code" : "80002"
+          }, 
+          {
+            "name" : "80037", 
+            "code" : "80037"
+          }, 
+          {
+            "name" : "80127", 
+            "code" : "80127"
+          }, 
+          {
+            "name" : "80294", 
+            "code" : "80294"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ZIPRIGHT", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "ZIPRIGHT", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 10, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "ZIP", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "ZIP Codes", 
+        "codedValues" : [
+          {
+            "name" : "80010", 
+            "code" : "80010"
+          }, 
+          {
+            "name" : "80012", 
+            "code" : "80012"
+          }, 
+          {
+            "name" : "80014", 
+            "code" : "80014"
+          }, 
+          {
+            "name" : "80019", 
+            "code" : "80019"
+          }, 
+          {
+            "name" : "80022", 
+            "code" : "80022"
+          }, 
+          {
+            "name" : "80045", 
+            "code" : "80045"
+          }, 
+          {
+            "name" : "80110", 
+            "code" : "80110"
+          }, 
+          {
+            "name" : "80111", 
+            "code" : "80111"
+          }, 
+          {
+            "name" : "80123", 
+            "code" : "80123"
+          }, 
+          {
+            "name" : "80137", 
+            "code" : "80137"
+          }, 
+          {
+            "name" : "80202", 
+            "code" : "80202"
+          }, 
+          {
+            "name" : "80203", 
+            "code" : "80203"
+          }, 
+          {
+            "name" : "80204", 
+            "code" : "80204"
+          }, 
+          {
+            "name" : "80205", 
+            "code" : "80205"
+          }, 
+          {
+            "name" : "80206", 
+            "code" : "80206"
+          }, 
+          {
+            "name" : "80207", 
+            "code" : "80207"
+          }, 
+          {
+            "name" : "80209", 
+            "code" : "80209"
+          }, 
+          {
+            "name" : "80210", 
+            "code" : "80210"
+          }, 
+          {
+            "name" : "80211", 
+            "code" : "80211"
+          }, 
+          {
+            "name" : "80212", 
+            "code" : "80212"
+          }, 
+          {
+            "name" : "80214", 
+            "code" : "80214"
+          }, 
+          {
+            "name" : "80216", 
+            "code" : "80216"
+          }, 
+          {
+            "name" : "80218", 
+            "code" : "80218"
+          }, 
+          {
+            "name" : "80219", 
+            "code" : "80219"
+          }, 
+          {
+            "name" : "80220", 
+            "code" : "80220"
+          }, 
+          {
+            "name" : "80221", 
+            "code" : "80221"
+          }, 
+          {
+            "name" : "80222", 
+            "code" : "80222"
+          }, 
+          {
+            "name" : "80223", 
+            "code" : "80223"
+          }, 
+          {
+            "name" : "80224", 
+            "code" : "80224"
+          }, 
+          {
+            "name" : "80226", 
+            "code" : "80226"
+          }, 
+          {
+            "name" : "80227", 
+            "code" : "80227"
+          }, 
+          {
+            "name" : "80230", 
+            "code" : "80230"
+          }, 
+          {
+            "name" : "80231", 
+            "code" : "80231"
+          }, 
+          {
+            "name" : "80232", 
+            "code" : "80232"
+          }, 
+          {
+            "name" : "80235", 
+            "code" : "80235"
+          }, 
+          {
+            "name" : "80236", 
+            "code" : "80236"
+          }, 
+          {
+            "name" : "80237", 
+            "code" : "80237"
+          }, 
+          {
+            "name" : "80238", 
+            "code" : "80238"
+          }, 
+          {
+            "name" : "80239", 
+            "code" : "80239"
+          }, 
+          {
+            "name" : "80240", 
+            "code" : "80240"
+          }, 
+          {
+            "name" : "80246", 
+            "code" : "80246"
+          }, 
+          {
+            "name" : "80247", 
+            "code" : "80247"
+          }, 
+          {
+            "name" : "80249", 
+            "code" : "80249"
+          }, 
+          {
+            "name" : "80603", 
+            "code" : "80603"
+          }, 
+          {
+            "name" : "80642", 
+            "code" : "80642"
+          }, 
+          {
+            "name" : "NotCCD", 
+            "code" : "NotCCD"
+          }, 
+          {
+            "name" : "80002", 
+            "code" : "80002"
+          }, 
+          {
+            "name" : "80037", 
+            "code" : "80037"
+          }, 
+          {
+            "name" : "80127", 
+            "code" : "80127"
+          }, 
+          {
+            "name" : "80294", 
+            "code" : "80294"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "SPEEDLIMIT", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "SPEEDLIMIT", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "SPEEDLIMIT", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Speed Limit", 
+        "codedValues" : [
+          {
+            "name" : "15", 
+            "code" : 15
+          }, 
+          {
+            "name" : "25", 
+            "code" : 25
+          }, 
+          {
+            "name" : "30", 
+            "code" : 30
+          }, 
+          {
+            "name" : "35", 
+            "code" : 35
+          }, 
+          {
+            "name" : "40", 
+            "code" : 40
+          }, 
+          {
+            "name" : "45", 
+            "code" : 45
+          }, 
+          {
+            "name" : "55", 
+            "code" : 55
+          }, 
+          {
+            "name" : "65", 
+            "code" : 65
+          }, 
+          {
+            "name" : "70", 
+            "code" : 70
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ONEWAY", 
+      "type" : "esriFieldTypeSmallInteger", 
+      "alias" : "ONEWAY", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "ONEWAY", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "ONEWAY Codes", 
+        "codedValues" : [
+          {
+            "name" : "Two Way", 
+            "code" : 0
+          }, 
+          {
+            "name" : "One Way in Arc direction", 
+            "code" : 1
+          }, 
+          {
+            "name" : "One Way in reverse Arc direction", 
+            "code" : 2
+          }, 
+          {
+            "name" : "Reversible", 
+            "code" : 3
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "RCITYID", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "RCITYID", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 100, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "CITYID", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "City ID", 
+        "codedValues" : [
+          {
+            "name" : "Commerce City", 
+            "code" : "Commerce City"
+          }, 
+          {
+            "name" : "Littleton", 
+            "code" : "Littleton"
+          }, 
+          {
+            "name" : "Sheridan", 
+            "code" : "Sheridan"
+          }, 
+          {
+            "name" : "Edgewater", 
+            "code" : "Edgewater"
+          }, 
+          {
+            "name" : "Lakeside", 
+            "code" : "Lakeside"
+          }, 
+          {
+            "name" : "Lakewood", 
+            "code" : "Lakewood"
+          }, 
+          {
+            "name" : "Mountain View", 
+            "code" : "Mountain View"
+          }, 
+          {
+            "name" : "Wheat Ridge", 
+            "code" : "Wheat Ridge"
+          }, 
+          {
+            "name" : "Aurora - Adams Co", 
+            "code" : "Aurora - Adams Co"
+          }, 
+          {
+            "name" : "Cherry Hills Village", 
+            "code" : "Cherry Hills Village"
+          }, 
+          {
+            "name" : "Englewood", 
+            "code" : "Englewood"
+          }, 
+          {
+            "name" : "Glendale", 
+            "code" : "Glendale"
+          }, 
+          {
+            "name" : "Greenwood Village", 
+            "code" : "Greenwood Village"
+          }, 
+          {
+            "name" : "Denver", 
+            "code" : "Denver"
+          }, 
+          {
+            "name" : "Aurora - Arapahoe Co", 
+            "code" : "Aurora - Arapahoe Co"
+          }, 
+          {
+            "name" : "Unincorporated Jefferson County", 
+            "code" : "Unincorporated Jefferson County"
+          }, 
+          {
+            "name" : "Unincorporated Adams County", 
+            "code" : "Unincorporated Adams County"
+          }, 
+          {
+            "name" : "Unincorporated Arapahoe County", 
+            "code" : "Unincorporated Arapahoe County"
+          }, 
+          {
+            "name" : "Greenwood Village half of border with Denver", 
+            "code" : "Greenwood Village half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Greenwood Village", 
+            "code" : "Denver half of border with Greenwood Village"
+          }, 
+          {
+            "name" : "Cherry Hills Village half of border with Denver", 
+            "code" : "Cherry Hills Village half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Cherry Hills Village", 
+            "code" : "Denver half of border with Cherry Hills Village"
+          }, 
+          {
+            "name" : "Aurora half of border with Denver", 
+            "code" : "Aurora half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Aurora", 
+            "code" : "Denver half of border with Aurora"
+          }, 
+          {
+            "name" : "Commerce City half of border with Denver", 
+            "code" : "Commerce City half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Commerce City", 
+            "code" : "Denver half of border with Commerce City"
+          }, 
+          {
+            "name" : "Rocky Mtn Ntl Arsenal half of border with Denver", 
+            "code" : "Rocky Mtn Ntl Arsenal half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Rocky Mtn Ntl Arsenal", 
+            "code" : "Denver half of border with Rocky Mtn Ntl Arsenal"
+          }, 
+          {
+            "name" : "Lakewood half of border with Denver", 
+            "code" : "Lakewood half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Lakewood", 
+            "code" : "Denver half of border with Lakewood"
+          }, 
+          {
+            "name" : "Unincorporated Arapahoe County half of border with Denver", 
+            "code" : "Unincorporated Arapahoe County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Unincorporated Arapahoe County", 
+            "code" : "Denver half of border with Unincorporated Arapahoe County"
+          }, 
+          {
+            "name" : "Unincorporated Adams County half of border with Denver", 
+            "code" : "Unincorporated Adams County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Unincorporated Adams County", 
+            "code" : "Denver half of border with Unincorporated Adams County"
+          }, 
+          {
+            "name" : "Unincorporated Jefferson County half of border with Denver", 
+            "code" : "Unincorporated Jefferson County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Unincorporated Jefferson County", 
+            "code" : "Denver half of border with Unincorporated Jefferson County"
+          }, 
+          {
+            "name" : "Glendale half of border with Denver", 
+            "code" : "Glendale half of border with Denver"
+          }, 
+          {
+            "name" : "Denver half of border with Glendale", 
+            "code" : "Denver half of border with Glendale"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "RCOUNTYID", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "RCOUNTYID", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 100, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "COUNTYID", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "County ID", 
+        "codedValues" : [
+          {
+            "name" : "Adams", 
+            "code" : "Adams"
+          }, 
+          {
+            "name" : "Arapahoe", 
+            "code" : "Arapahoe"
+          }, 
+          {
+            "name" : "Denver", 
+            "code" : "Denver"
+          }, 
+          {
+            "name" : "Jefferson", 
+            "code" : "Jefferson"
+          }, 
+          {
+            "name" : "Boulder", 
+            "code" : "Boulder"
+          }, 
+          {
+            "name" : "Douglas", 
+            "code" : "Douglas"
+          }, 
+          {
+            "name" : "Weld", 
+            "code" : "Weld"
+          }, 
+          {
+            "name" : "Broomfield", 
+            "code" : "Broomfield"
+          }, 
+          {
+            "name" : "Arapahoe County half of border with Denver", 
+            "code" : "Arapahoe County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver County half of border with Arapahoe", 
+            "code" : "Denver County half of border with Arapahoe"
+          }, 
+          {
+            "name" : "Adams County half of border with Denver", 
+            "code" : "Adams County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver County half of border with Adams", 
+            "code" : "Denver County half of border with Adams"
+          }, 
+          {
+            "name" : "Jefferson County half of border with Denver", 
+            "code" : "Jefferson County half of border with Denver"
+          }, 
+          {
+            "name" : "Denver County half of border with Jefferson", 
+            "code" : "Denver County half of border with Jefferson"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "STATUS", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "STATUS", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 30, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "STATUS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Construction Status", 
+        "codedValues" : [
+          {
+            "name" : "CONSTRUCTED", 
+            "code" : "CONSTRUCTED"
+          }, 
+          {
+            "name" : "PLATTED", 
+            "code" : "PLATTED"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "MEDIAN", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "MEDIAN", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 1, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "MEDIAN", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Median Designation", 
+        "codedValues" : [
+          {
+            "name" : "Circle Median", 
+            "code" : "C"
+          }, 
+          {
+            "name" : "No Median", 
+            "code" : "N"
+          }, 
+          {
+            "name" : "Has Median", 
+            "code" : "Y"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "HUTF", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "HUTF", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 100, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "HUTF", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "HUTF Designation", 
+        "codedValues" : [
+          {
+            "name" : "Jursplit - Our share", 
+            "code" : "Jursplit - Our share"
+          }, 
+          {
+            "name" : "Jursplit - Their share", 
+            "code" : "Jursplit - Their share"
+          }, 
+          {
+            "name" : "Not Eligible", 
+            "code" : "Not Eligible"
+          }, 
+          {
+            "name" : "Eligible", 
+            "code" : "Eligible"
+          }, 
+          {
+            "name" : "Planned Eligible", 
+            "code" : "Planned Eligible"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "HUNDBLKNUM", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "HUNDBLKNUM", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "HUNDBLKDIR", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "HUNDBLKDIR", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 2, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "HBDir", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Hundred Block Direction", 
+        "codedValues" : [
+          {
+            "name" : "Eastern", 
+            "code" : "E"
+          }, 
+          {
+            "name" : "Northern", 
+            "code" : "N"
+          }, 
+          {
+            "name" : "Northeastern", 
+            "code" : "NE"
+          }, 
+          {
+            "name" : "Northwestern", 
+            "code" : "NW"
+          }, 
+          {
+            "name" : "Southern", 
+            "code" : "S"
+          }, 
+          {
+            "name" : "Western", 
+            "code" : "W"
+          }, 
+          {
+            "name" : "Interstates and related", 
+            "code" : "I"
+          }, 
+          {
+            "name" : "None", 
+            "code" : "X"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "HUNDBLKMAJ", 
+      "type" : "esriFieldTypeSmallInteger", 
+      "alias" : "HUNDBLKMAJ", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ALTDIR", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "ALTDIR", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 4, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "AltDir", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Direction of travel for oneway/double line streets", 
+        "codedValues" : [
+          {
+            "name" : "Two Way", 
+            "code" : "2"
+          }, 
+          {
+            "name" : "Circle", 
+            "code" : "C"
+          }, 
+          {
+            "name" : "East", 
+            "code" : "E"
+          }, 
+          {
+            "name" : "North", 
+            "code" : "N"
+          }, 
+          {
+            "name" : "Northeast", 
+            "code" : "NE"
+          }, 
+          {
+            "name" : "Northwest", 
+            "code" : "NW"
+          }, 
+          {
+            "name" : "South", 
+            "code" : "S"
+          }, 
+          {
+            "name" : "Southeast", 
+            "code" : "SE"
+          }, 
+          {
+            "name" : "Southwest", 
+            "code" : "SW"
+          }, 
+          {
+            "name" : "West", 
+            "code" : "W"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ROUTE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "ROUTE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 11, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "SEGMID", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "SEGMID", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "LEFTPREC", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "LEFTPREC", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 10, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "PREC", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Police Precinct", 
+        "codedValues" : [
+          {
+            "name" : "P111", 
+            "code" : "P111"
+          }, 
+          {
+            "name" : "P112", 
+            "code" : "P112"
+          }, 
+          {
+            "name" : "P113", 
+            "code" : "P113"
+          }, 
+          {
+            "name" : "P114", 
+            "code" : "P114"
+          }, 
+          {
+            "name" : "P115", 
+            "code" : "P115"
+          }, 
+          {
+            "name" : "P116", 
+            "code" : "P116"
+          }, 
+          {
+            "name" : "P121", 
+            "code" : "P121"
+          }, 
+          {
+            "name" : "P122", 
+            "code" : "P122"
+          }, 
+          {
+            "name" : "P123", 
+            "code" : "P123"
+          }, 
+          {
+            "name" : "P124", 
+            "code" : "P124"
+          }, 
+          {
+            "name" : "P125", 
+            "code" : "P125"
+          }, 
+          {
+            "name" : "P211", 
+            "code" : "P211"
+          }, 
+          {
+            "name" : "P212", 
+            "code" : "P212"
+          }, 
+          {
+            "name" : "P213", 
+            "code" : "P213"
+          }, 
+          {
+            "name" : "P214", 
+            "code" : "P214"
+          }, 
+          {
+            "name" : "P215", 
+            "code" : "P215"
+          }, 
+          {
+            "name" : "P221", 
+            "code" : "P221"
+          }, 
+          {
+            "name" : "P222", 
+            "code" : "P222"
+          }, 
+          {
+            "name" : "P223", 
+            "code" : "P223"
+          }, 
+          {
+            "name" : "P224", 
+            "code" : "P224"
+          }, 
+          {
+            "name" : "P231", 
+            "code" : "P231"
+          }, 
+          {
+            "name" : "P232", 
+            "code" : "P232"
+          }, 
+          {
+            "name" : "P233", 
+            "code" : "P233"
+          }, 
+          {
+            "name" : "P234", 
+            "code" : "P234"
+          }, 
+          {
+            "name" : "P235", 
+            "code" : "P235"
+          }, 
+          {
+            "name" : "P311", 
+            "code" : "P311"
+          }, 
+          {
+            "name" : "P312", 
+            "code" : "P312"
+          }, 
+          {
+            "name" : "P313", 
+            "code" : "P313"
+          }, 
+          {
+            "name" : "P314", 
+            "code" : "P314"
+          }, 
+          {
+            "name" : "P315", 
+            "code" : "P315"
+          }, 
+          {
+            "name" : "P316", 
+            "code" : "P316"
+          }, 
+          {
+            "name" : "P317", 
+            "code" : "P317"
+          }, 
+          {
+            "name" : "P318", 
+            "code" : "P318"
+          }, 
+          {
+            "name" : "P321", 
+            "code" : "P321"
+          }, 
+          {
+            "name" : "P322", 
+            "code" : "P322"
+          }, 
+          {
+            "name" : "P323", 
+            "code" : "P323"
+          }, 
+          {
+            "name" : "P324", 
+            "code" : "P324"
+          }, 
+          {
+            "name" : "P325", 
+            "code" : "P325"
+          }, 
+          {
+            "name" : "P326", 
+            "code" : "P326"
+          }, 
+          {
+            "name" : "P411", 
+            "code" : "P411"
+          }, 
+          {
+            "name" : "P412", 
+            "code" : "P412"
+          }, 
+          {
+            "name" : "P413", 
+            "code" : "P413"
+          }, 
+          {
+            "name" : "P414", 
+            "code" : "P414"
+          }, 
+          {
+            "name" : "P421", 
+            "code" : "P421"
+          }, 
+          {
+            "name" : "P422", 
+            "code" : "P422"
+          }, 
+          {
+            "name" : "P423", 
+            "code" : "P423"
+          }, 
+          {
+            "name" : "P424", 
+            "code" : "P424"
+          }, 
+          {
+            "name" : "P431", 
+            "code" : "P431"
+          }, 
+          {
+            "name" : "P432", 
+            "code" : "P432"
+          }, 
+          {
+            "name" : "P433", 
+            "code" : "P433"
+          }, 
+          {
+            "name" : "P434", 
+            "code" : "P434"
+          }, 
+          {
+            "name" : "P435", 
+            "code" : "P435"
+          }, 
+          {
+            "name" : "P436", 
+            "code" : "P436"
+          }, 
+          {
+            "name" : "P511", 
+            "code" : "P511"
+          }, 
+          {
+            "name" : "P512", 
+            "code" : "P512"
+          }, 
+          {
+            "name" : "P521", 
+            "code" : "P521"
+          }, 
+          {
+            "name" : "P522", 
+            "code" : "P522"
+          }, 
+          {
+            "name" : "P523", 
+            "code" : "P523"
+          }, 
+          {
+            "name" : "P524", 
+            "code" : "P524"
+          }, 
+          {
+            "name" : "P531", 
+            "code" : "P531"
+          }, 
+          {
+            "name" : "P532", 
+            "code" : "P532"
+          }, 
+          {
+            "name" : "P533", 
+            "code" : "P533"
+          }, 
+          {
+            "name" : "P534", 
+            "code" : "P534"
+          }, 
+          {
+            "name" : "P611", 
+            "code" : "P611"
+          }, 
+          {
+            "name" : "P612", 
+            "code" : "P612"
+          }, 
+          {
+            "name" : "P613", 
+            "code" : "P613"
+          }, 
+          {
+            "name" : "P614", 
+            "code" : "P614"
+          }, 
+          {
+            "name" : "P615", 
+            "code" : "P615"
+          }, 
+          {
+            "name" : "P616", 
+            "code" : "P616"
+          }, 
+          {
+            "name" : "P617", 
+            "code" : "P617"
+          }, 
+          {
+            "name" : "P618", 
+            "code" : "P618"
+          }, 
+          {
+            "name" : "P621", 
+            "code" : "P621"
+          }, 
+          {
+            "name" : "P622", 
+            "code" : "P622"
+          }, 
+          {
+            "name" : "P623", 
+            "code" : "P623"
+          }, 
+          {
+            "name" : "P624", 
+            "code" : "P624"
+          }, 
+          {
+            "name" : "P625", 
+            "code" : "P625"
+          }, 
+          {
+            "name" : "P626", 
+            "code" : "P626"
+          }, 
+          {
+            "name" : "P759", 
+            "code" : "P759"
+          }, 
+          {
+            "name" : "P513", 
+            "code" : "P513"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "RTPREC", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "RTPREC", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 10, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "PREC", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Police Precinct", 
+        "codedValues" : [
+          {
+            "name" : "P111", 
+            "code" : "P111"
+          }, 
+          {
+            "name" : "P112", 
+            "code" : "P112"
+          }, 
+          {
+            "name" : "P113", 
+            "code" : "P113"
+          }, 
+          {
+            "name" : "P114", 
+            "code" : "P114"
+          }, 
+          {
+            "name" : "P115", 
+            "code" : "P115"
+          }, 
+          {
+            "name" : "P116", 
+            "code" : "P116"
+          }, 
+          {
+            "name" : "P121", 
+            "code" : "P121"
+          }, 
+          {
+            "name" : "P122", 
+            "code" : "P122"
+          }, 
+          {
+            "name" : "P123", 
+            "code" : "P123"
+          }, 
+          {
+            "name" : "P124", 
+            "code" : "P124"
+          }, 
+          {
+            "name" : "P125", 
+            "code" : "P125"
+          }, 
+          {
+            "name" : "P211", 
+            "code" : "P211"
+          }, 
+          {
+            "name" : "P212", 
+            "code" : "P212"
+          }, 
+          {
+            "name" : "P213", 
+            "code" : "P213"
+          }, 
+          {
+            "name" : "P214", 
+            "code" : "P214"
+          }, 
+          {
+            "name" : "P215", 
+            "code" : "P215"
+          }, 
+          {
+            "name" : "P221", 
+            "code" : "P221"
+          }, 
+          {
+            "name" : "P222", 
+            "code" : "P222"
+          }, 
+          {
+            "name" : "P223", 
+            "code" : "P223"
+          }, 
+          {
+            "name" : "P224", 
+            "code" : "P224"
+          }, 
+          {
+            "name" : "P231", 
+            "code" : "P231"
+          }, 
+          {
+            "name" : "P232", 
+            "code" : "P232"
+          }, 
+          {
+            "name" : "P233", 
+            "code" : "P233"
+          }, 
+          {
+            "name" : "P234", 
+            "code" : "P234"
+          }, 
+          {
+            "name" : "P235", 
+            "code" : "P235"
+          }, 
+          {
+            "name" : "P311", 
+            "code" : "P311"
+          }, 
+          {
+            "name" : "P312", 
+            "code" : "P312"
+          }, 
+          {
+            "name" : "P313", 
+            "code" : "P313"
+          }, 
+          {
+            "name" : "P314", 
+            "code" : "P314"
+          }, 
+          {
+            "name" : "P315", 
+            "code" : "P315"
+          }, 
+          {
+            "name" : "P316", 
+            "code" : "P316"
+          }, 
+          {
+            "name" : "P317", 
+            "code" : "P317"
+          }, 
+          {
+            "name" : "P318", 
+            "code" : "P318"
+          }, 
+          {
+            "name" : "P321", 
+            "code" : "P321"
+          }, 
+          {
+            "name" : "P322", 
+            "code" : "P322"
+          }, 
+          {
+            "name" : "P323", 
+            "code" : "P323"
+          }, 
+          {
+            "name" : "P324", 
+            "code" : "P324"
+          }, 
+          {
+            "name" : "P325", 
+            "code" : "P325"
+          }, 
+          {
+            "name" : "P326", 
+            "code" : "P326"
+          }, 
+          {
+            "name" : "P411", 
+            "code" : "P411"
+          }, 
+          {
+            "name" : "P412", 
+            "code" : "P412"
+          }, 
+          {
+            "name" : "P413", 
+            "code" : "P413"
+          }, 
+          {
+            "name" : "P414", 
+            "code" : "P414"
+          }, 
+          {
+            "name" : "P421", 
+            "code" : "P421"
+          }, 
+          {
+            "name" : "P422", 
+            "code" : "P422"
+          }, 
+          {
+            "name" : "P423", 
+            "code" : "P423"
+          }, 
+          {
+            "name" : "P424", 
+            "code" : "P424"
+          }, 
+          {
+            "name" : "P431", 
+            "code" : "P431"
+          }, 
+          {
+            "name" : "P432", 
+            "code" : "P432"
+          }, 
+          {
+            "name" : "P433", 
+            "code" : "P433"
+          }, 
+          {
+            "name" : "P434", 
+            "code" : "P434"
+          }, 
+          {
+            "name" : "P435", 
+            "code" : "P435"
+          }, 
+          {
+            "name" : "P436", 
+            "code" : "P436"
+          }, 
+          {
+            "name" : "P511", 
+            "code" : "P511"
+          }, 
+          {
+            "name" : "P512", 
+            "code" : "P512"
+          }, 
+          {
+            "name" : "P521", 
+            "code" : "P521"
+          }, 
+          {
+            "name" : "P522", 
+            "code" : "P522"
+          }, 
+          {
+            "name" : "P523", 
+            "code" : "P523"
+          }, 
+          {
+            "name" : "P524", 
+            "code" : "P524"
+          }, 
+          {
+            "name" : "P531", 
+            "code" : "P531"
+          }, 
+          {
+            "name" : "P532", 
+            "code" : "P532"
+          }, 
+          {
+            "name" : "P533", 
+            "code" : "P533"
+          }, 
+          {
+            "name" : "P534", 
+            "code" : "P534"
+          }, 
+          {
+            "name" : "P611", 
+            "code" : "P611"
+          }, 
+          {
+            "name" : "P612", 
+            "code" : "P612"
+          }, 
+          {
+            "name" : "P613", 
+            "code" : "P613"
+          }, 
+          {
+            "name" : "P614", 
+            "code" : "P614"
+          }, 
+          {
+            "name" : "P615", 
+            "code" : "P615"
+          }, 
+          {
+            "name" : "P616", 
+            "code" : "P616"
+          }, 
+          {
+            "name" : "P617", 
+            "code" : "P617"
+          }, 
+          {
+            "name" : "P618", 
+            "code" : "P618"
+          }, 
+          {
+            "name" : "P621", 
+            "code" : "P621"
+          }, 
+          {
+            "name" : "P622", 
+            "code" : "P622"
+          }, 
+          {
+            "name" : "P623", 
+            "code" : "P623"
+          }, 
+          {
+            "name" : "P624", 
+            "code" : "P624"
+          }, 
+          {
+            "name" : "P625", 
+            "code" : "P625"
+          }, 
+          {
+            "name" : "P626", 
+            "code" : "P626"
+          }, 
+          {
+            "name" : "P759", 
+            "code" : "P759"
+          }, 
+          {
+            "name" : "P513", 
+            "code" : "P513"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "LEFTFIRE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "LEFTFIRE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 10, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "FIRE", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "FIRE Districts", 
+        "codedValues" : [
+          {
+            "name" : "AU35", 
+            "code" : "AU35"
+          }, 
+          {
+            "name" : "D02", 
+            "code" : "D02"
+          }, 
+          {
+            "name" : "D03", 
+            "code" : "D03"
+          }, 
+          {
+            "name" : "D03R", 
+            "code" : "D03R"
+          }, 
+          {
+            "name" : "D04", 
+            "code" : "D04"
+          }, 
+          {
+            "name" : "D04R", 
+            "code" : "D04R"
+          }, 
+          {
+            "name" : "D05", 
+            "code" : "D05"
+          }, 
+          {
+            "name" : "D06", 
+            "code" : "D06"
+          }, 
+          {
+            "name" : "D06R", 
+            "code" : "D06R"
+          }, 
+          {
+            "name" : "D07", 
+            "code" : "D07"
+          }, 
+          {
+            "name" : "D07GR", 
+            "code" : "D07GR"
+          }, 
+          {
+            "name" : "D07R", 
+            "code" : "D07R"
+          }, 
+          {
+            "name" : "DIA1", 
+            "code" : "DIA1"
+          }, 
+          {
+            "name" : "GLEN", 
+            "code" : "GLEN"
+          }, 
+          {
+            "name" : "SKY", 
+            "code" : "SKY"
+          }, 
+          {
+            "name" : "SKY2", 
+            "code" : "SKY2"
+          }, 
+          {
+            "name" : "SWAC", 
+            "code" : "SWAC"
+          }, 
+          {
+            "name" : "WM", 
+            "code" : "WM"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "RTFIRE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "RTFIRE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 10, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "FIRE", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "FIRE Districts", 
+        "codedValues" : [
+          {
+            "name" : "AU35", 
+            "code" : "AU35"
+          }, 
+          {
+            "name" : "D02", 
+            "code" : "D02"
+          }, 
+          {
+            "name" : "D03", 
+            "code" : "D03"
+          }, 
+          {
+            "name" : "D03R", 
+            "code" : "D03R"
+          }, 
+          {
+            "name" : "D04", 
+            "code" : "D04"
+          }, 
+          {
+            "name" : "D04R", 
+            "code" : "D04R"
+          }, 
+          {
+            "name" : "D05", 
+            "code" : "D05"
+          }, 
+          {
+            "name" : "D06", 
+            "code" : "D06"
+          }, 
+          {
+            "name" : "D06R", 
+            "code" : "D06R"
+          }, 
+          {
+            "name" : "D07", 
+            "code" : "D07"
+          }, 
+          {
+            "name" : "D07GR", 
+            "code" : "D07GR"
+          }, 
+          {
+            "name" : "D07R", 
+            "code" : "D07R"
+          }, 
+          {
+            "name" : "DIA1", 
+            "code" : "DIA1"
+          }, 
+          {
+            "name" : "GLEN", 
+            "code" : "GLEN"
+          }, 
+          {
+            "name" : "SKY", 
+            "code" : "SKY"
+          }, 
+          {
+            "name" : "SKY2", 
+            "code" : "SKY2"
+          }, 
+          {
+            "name" : "SWAC", 
+            "code" : "SWAC"
+          }, 
+          {
+            "name" : "WM", 
+            "code" : "WM"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "LEFTEMS", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "LEFTEMS", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 10, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "EMS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "EMS Zones", 
+        "codedValues" : [
+          {
+            "name" : "CD01", 
+            "code" : "CD01"
+          }, 
+          {
+            "name" : "CD02", 
+            "code" : "CD02"
+          }, 
+          {
+            "name" : "CD03", 
+            "code" : "CD03"
+          }, 
+          {
+            "name" : "CD04", 
+            "code" : "CD04"
+          }, 
+          {
+            "name" : "CD05", 
+            "code" : "CD05"
+          }, 
+          {
+            "name" : "CD06", 
+            "code" : "CD06"
+          }, 
+          {
+            "name" : "CD07", 
+            "code" : "CD07"
+          }, 
+          {
+            "name" : "CD08", 
+            "code" : "CD08"
+          }, 
+          {
+            "name" : "CD09", 
+            "code" : "CD09"
+          }, 
+          {
+            "name" : "CD10", 
+            "code" : "CD10"
+          }, 
+          {
+            "name" : "CD11", 
+            "code" : "CD11"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "RTEMS", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "RTEMS", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 10, 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "EMS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "EMS Zones", 
+        "codedValues" : [
+          {
+            "name" : "CD01", 
+            "code" : "CD01"
+          }, 
+          {
+            "name" : "CD02", 
+            "code" : "CD02"
+          }, 
+          {
+            "name" : "CD03", 
+            "code" : "CD03"
+          }, 
+          {
+            "name" : "CD04", 
+            "code" : "CD04"
+          }, 
+          {
+            "name" : "CD05", 
+            "code" : "CD05"
+          }, 
+          {
+            "name" : "CD06", 
+            "code" : "CD06"
+          }, 
+          {
+            "name" : "CD07", 
+            "code" : "CD07"
+          }, 
+          {
+            "name" : "CD08", 
+            "code" : "CD08"
+          }, 
+          {
+            "name" : "CD09", 
+            "code" : "CD09"
+          }, 
+          {
+            "name" : "CD10", 
+            "code" : "CD10"
+          }, 
+          {
+            "name" : "CD11", 
+            "code" : "CD11"
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "F_ZLEV", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "F_ZLEV", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "ZLEV", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Relative Elevation Codes", 
+        "codedValues" : [
+          {
+            "name" : "Surface", 
+            "code" : 0
+          }, 
+          {
+            "name" : "On Structure", 
+            "code" : 1
+          }, 
+          {
+            "name" : "On higher Structure", 
+            "code" : 2
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "T_ZLEV", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "T_ZLEV", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : 
+      {
+        "type" : "codedValue", 
+        "name" : "ZLEV", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "description" : "Relative Elevation Codes", 
+        "codedValues" : [
+          {
+            "name" : "Surface", 
+            "code" : 0
+          }, 
+          {
+            "name" : "On Structure", 
+            "code" : 1
+          }, 
+          {
+            "name" : "On higher Structure", 
+            "code" : 2
+          }
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "HUNDBLKNAME", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "HUNDBLKNAME", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "MAJOR_STREET", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "MAJOR_STREET", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 100, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "LEFTSWEEP", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "LEFTSWEEP", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "RIGHTSWEEP", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "RIGHTSWEEP", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "SSSID", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "SSSID", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "NIGHTSWEEP", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "NIGHTSWEEP", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "SNOWROUTE_ID", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "SNOWROUTE_ID", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "PRIORITY", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "PRIORITY", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "RSPROUTE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "RSPROUTE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 50, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "PCI", 
+      "type" : "esriFieldTypeSmallInteger", 
+      "alias" : "PCI", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "created_user", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "created_user", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "created_date", 
+      "type" : "esriFieldTypeDate", 
+      "alias" : "created_date", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 8, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "last_edited_user", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "last_edited_user", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "last_edited_date", 
+      "type" : "esriFieldTypeDate", 
+      "alias" : "last_edited_date", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 8, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Shape__Length", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "Shape__Length", 
+      "sqlType" : "sqlTypeDouble", 
+      "domain" : null, 
+      "defaultValue" : null
+    }
+  ], 
+  "features" : [
+    {
+      "attributes" : {
+        "OBJECTID" : 16, 
+        "GlobalID" : "70d5a7bc-5308-41dd-bf0f-c7bd7e55cdcd", 
+        "FNODE" : 16499, 
+        "TNODE" : 4717, 
+        "STREETID" : 9999, 
+        "MASTERID" : 4100, 
+        "L_F_ADD" : 0, 
+        "L_T_ADD" : 0, 
+        "R_F_ADD" : 0, 
+        "R_T_ADD" : 0, 
+        "PREFIX" : null, 
+        "NAME" : "16TH TO I25 HOV", 
+        "TYPE" : "RAMP", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "16TH TO I25 HOV RAMP", 
+        "FROMNAME" : "END/RTD BUS LANE", 
+        "TONAME" : "19TH TO I25 HOV RAMP/19TH ST/STR", 
+        "LEN_MI" : 0.2, 
+        "ALIAS1" : "SH RAMP", 
+        "ALIAS2" : null, 
+        "JURISID" : "RTD", 
+        "MAINTNCE" : "RTD", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "LOCAL", 
+        "FUNCLASS" : "Not in HUTF Inventory", 
+        "TT_SEGTYPE" : "A01", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : null, 
+        "MEDIAN" : "N", 
+        "HUTF" : "Not Eligible", 
+        "HUNDBLKNUM" : 0, 
+        "HUNDBLKDIR" : "NW", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : null, 
+        "SEGMID" : 0, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : null, 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : null, 
+        "RIGHTSWEEP" : null, 
+        "SSSID" : null, 
+        "NIGHTSWEEP" : null, 
+        "SNOWROUTE_ID" : null, 
+        "PRIORITY" : null, 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1373846400000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1745853694000, 
+        "Shape__Length" : 888.46438539377971
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-104.999966025615, 39.7537777432331], 
+            [-104.999658032914, 39.7540104899433], 
+            [-104.999444438139, 39.7541700281927], 
+            [-104.999281526333, 39.7542955678878], 
+            [-104.999126288225, 39.7544164213949], 
+            [-104.998525294927, 39.7548869433199], 
+            [-104.998460779259, 39.7549314984161], 
+            [-104.998368719726, 39.7549806556032], 
+            [-104.998282798597, 39.7550263001484], 
+            [-104.99818560828, 39.7550703555366], 
+            [-104.998109625429, 39.7551076868032], 
+            [-104.998038749454, 39.7551452622662], 
+            [-104.997926547632, 39.7552154098001], 
+            [-104.997644720731, 39.7554223540906]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 1002, 
+        "GlobalID" : "96c1bcb1-3404-4f63-b717-5fd40b2ebaea", 
+        "FNODE" : 5040, 
+        "TNODE" : 4993, 
+        "STREETID" : 524, 
+        "MASTERID" : 25048, 
+        "L_F_ADD" : 1600, 
+        "L_T_ADD" : 1698, 
+        "R_F_ADD" : 1601, 
+        "R_T_ADD" : 1699, 
+        "PREFIX" : null, 
+        "NAME" : "17TH", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "17TH ST", 
+        "FROMNAME" : "WAZEE ST/TRAFFIC SIGNAL", 
+        "TONAME" : "WYNKOOP ST", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Local-Urban", 
+        "TT_SEGTYPE" : "A05", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1700, 
+        "HUNDBLKDIR" : "NE", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : "17TH     ST", 
+        "SEGMID" : 1601, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1600 BLK OF 17TH ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50303, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1525219200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 358.93931250500134
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-104.998809248261, 39.7521760980271], 
+            [-104.999256812949, 39.752504345296], 
+            [-104.999734452924, 39.7528550246765]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 2636, 
+        "GlobalID" : "1855303c-c5d2-4a84-8bd1-ea4a4741d336", 
+        "FNODE" : 5226, 
+        "TNODE" : 5183, 
+        "STREETID" : 516, 
+        "MASTERID" : 19570, 
+        "L_F_ADD" : 1601, 
+        "L_T_ADD" : 1699, 
+        "R_F_ADD" : 1600, 
+        "R_T_ADD" : 1698, 
+        "PREFIX" : null, 
+        "NAME" : "MARKET", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "MARKET ST", 
+        "FROMNAME" : "16TH ST/TRAFFIC SIGNAL", 
+        "TONAME" : "17TH ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Local-Urban", 
+        "TT_SEGTYPE" : "A05", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 1, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1400, 
+        "HUNDBLKDIR" : "NW", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "NE", 
+        "ROUTE" : "MARKET   ST", 
+        "SEGMID" : 1601, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1600 BLK OF MARKET ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50306, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1033344000000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 491.88335216122584
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-104.998317110173, 39.7498769123868], 
+            [-104.997069998904, 39.7508238490853]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 3039, 
+        "GlobalID" : "2698e606-1aa6-49da-ba3f-d8b498e2720f", 
+        "FNODE" : 5183, 
+        "TNODE" : 5091, 
+        "STREETID" : 524, 
+        "MASTERID" : 25050, 
+        "L_F_ADD" : 1400, 
+        "L_T_ADD" : 1498, 
+        "R_F_ADD" : 1401, 
+        "R_T_ADD" : 1499, 
+        "PREFIX" : null, 
+        "NAME" : "17TH", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "17TH ST", 
+        "FROMNAME" : "MARKET ST/TRAFFIC SIGNAL", 
+        "TONAME" : "BLAKE ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Local-Urban", 
+        "TT_SEGTYPE" : "A05", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 2, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1700, 
+        "HUNDBLKDIR" : "NE", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "SE", 
+        "ROUTE" : "17TH     ST", 
+        "SEGMID" : 1401, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1400 BLK OF 17TH ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50303, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1525219200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 345.65668584602292
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-104.997069998904, 39.7508238490853], 
+            [-104.997521141295, 39.7511469693361], 
+            [-104.997971402581, 39.7514690581771]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 3092, 
+        "GlobalID" : "cd77355c-4dfa-4ff3-bbcb-c6645e7b0418", 
+        "FNODE" : 5226, 
+        "TNODE" : 5190, 
+        "STREETID" : 529, 
+        "MASTERID" : 3352, 
+        "L_F_ADD" : 1400, 
+        "L_T_ADD" : 1498, 
+        "R_F_ADD" : 1401, 
+        "R_T_ADD" : 1499, 
+        "PREFIX" : null, 
+        "NAME" : "16TH", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "16TH ST", 
+        "FROMNAME" : "MARKET ST/TRAFFIC SIGNAL", 
+        "TONAME" : "BLAKE ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "LOCAL", 
+        "FUNCLASS" : "Not in HUTF Inventory", 
+        "TT_SEGTYPE" : "A71", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Not Eligible", 
+        "HUNDBLKNUM" : 1600, 
+        "HUNDBLKDIR" : "NE", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : "16TH     ST", 
+        "SEGMID" : 0, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1400 BLK OF 16TH ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : null, 
+        "PRIORITY" : null, 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1525219200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 347.54251985430869
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-104.998317110173, 39.7498769123868], 
+            [-104.998750358974, 39.7502150506369], 
+            [-104.99918626569, 39.7505552592807]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 3160, 
+        "GlobalID" : "e58a0d8f-569d-40da-a63e-e7fd08166471", 
+        "FNODE" : 5135, 
+        "TNODE" : 5071, 
+        "STREETID" : 529, 
+        "MASTERID" : 3260, 
+        "L_F_ADD" : 1600, 
+        "L_T_ADD" : 1698, 
+        "R_F_ADD" : 1601, 
+        "R_T_ADD" : 1699, 
+        "PREFIX" : null, 
+        "NAME" : "16TH", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "16TH ST", 
+        "FROMNAME" : "WAZEE ST/TRAFFIC SIGNAL", 
+        "TONAME" : "WYNKOOP ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "LOCAL", 
+        "FUNCLASS" : "Major Coll-Rural", 
+        "TT_SEGTYPE" : "A71", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Not Eligible", 
+        "HUNDBLKNUM" : 1600, 
+        "HUNDBLKDIR" : "NE", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : "16TH     ST", 
+        "SEGMID" : 1601, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1600 BLK OF 16TH ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : null, 
+        "PRIORITY" : null, 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1525219200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 354.97541966357596
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.000025308782, 39.751219403998], 
+            [-105.000462809827, 39.7515567071381], 
+            [-105.000919321899, 39.7519074515768]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 3349, 
+        "GlobalID" : "959099f3-d922-4bb9-ae94-cd460dc380a8", 
+        "FNODE" : 4893, 
+        "TNODE" : 4806, 
+        "STREETID" : 447, 
+        "MASTERID" : 3073, 
+        "L_F_ADD" : 1801, 
+        "L_T_ADD" : 1899, 
+        "R_F_ADD" : 1800, 
+        "R_T_ADD" : 1898, 
+        "PREFIX" : null, 
+        "NAME" : "WYNKOOP", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "WYNKOOP ST", 
+        "FROMNAME" : "18TH ST", 
+        "TONAME" : "19TH ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "LOCAL", 
+        "FUNCLASS" : "Major Coll-Rural", 
+        "TT_SEGTYPE" : "A01", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1700, 
+        "HUNDBLKDIR" : "NW", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : "WYNKOOP  ST", 
+        "SEGMID" : 1801, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1800 BLK OF WYNKOOP ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "NightSwp", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50306, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1033344000000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1745853694000, 
+        "Shape__Length" : 474.64724997402845
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-104.998481223639, 39.7537827335992], 
+            [-104.997277855514, 39.7546965734993]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 4581, 
+        "GlobalID" : "6ef94f1e-71e6-4a8b-a646-94b6cea03cc1", 
+        "FNODE" : 5260, 
+        "TNODE" : 5190, 
+        "STREETID" : 461, 
+        "MASTERID" : 24858, 
+        "L_F_ADD" : 1501, 
+        "L_T_ADD" : 1599, 
+        "R_F_ADD" : 1500, 
+        "R_T_ADD" : 1598, 
+        "PREFIX" : null, 
+        "NAME" : "BLAKE", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "BLAKE ST", 
+        "FROMNAME" : "15TH ST/TRAFFIC SIGNAL", 
+        "TONAME" : "16TH ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Local-Urban", 
+        "TT_SEGTYPE" : "A21", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 2, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1500, 
+        "HUNDBLKDIR" : "NW", 
+        "HUNDBLKMAJ" : 2, 
+        "ALTDIR" : "SW", 
+        "ROUTE" : "BLAKE    ST", 
+        "SEGMID" : 1501, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1500 BLK OF BLAKE ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50306, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1033344000000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 477.22262069406247
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.000358653587, 39.7496079829957], 
+            [-104.99918626569, 39.7505552592807]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 6044, 
+        "GlobalID" : "92027918-1294-464f-8857-5a8d6b388b94", 
+        "FNODE" : 5260, 
+        "TNODE" : 5199, 
+        "STREETID" : 531, 
+        "MASTERID" : 25042, 
+        "L_F_ADD" : 1500, 
+        "L_T_ADD" : 1598, 
+        "R_F_ADD" : 1501, 
+        "R_T_ADD" : 1599, 
+        "PREFIX" : null, 
+        "NAME" : "15TH", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "15TH ST", 
+        "FROMNAME" : "BLAKE ST/TRAFFIC SIGNAL", 
+        "TONAME" : "WAZEE ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Local-Urban", 
+        "TT_SEGTYPE" : "A05", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 1, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1500, 
+        "HUNDBLKDIR" : "NE", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "NW", 
+        "ROUTE" : "15TH     ST", 
+        "SEGMID" : 1501, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1500 BLK OF 15TH ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50302, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1525219200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 350.29216696668141
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.000358653587, 39.7496079829957], 
+            [-105.000814939981, 39.7499589073253], 
+            [-105.001241160629, 39.7502867145498]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 6682, 
+        "GlobalID" : "7f6c26e8-2ed3-4438-bbc0-60a83d7edbaf", 
+        "FNODE" : 17658, 
+        "TNODE" : 17659, 
+        "STREETID" : 508, 
+        "MASTERID" : 29020, 
+        "L_F_ADD" : 0, 
+        "L_T_ADD" : 0, 
+        "R_F_ADD" : 1600, 
+        "R_T_ADD" : 1698, 
+        "PREFIX" : null, 
+        "NAME" : "WEWATTA", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "WEWATTA ST", 
+        "FROMNAME" : "16TH ST/RRX/TRAFFIC SIGNAL BTWN DELGANY ST AND 17TH ST", 
+        "TONAME" : "17TH ST", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "LOCAL", 
+        "FUNCLASS" : "Major Coll-Rural", 
+        "TT_SEGTYPE" : "A01", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 1, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Not Eligible", 
+        "HUNDBLKNUM" : 1900, 
+        "HUNDBLKDIR" : "NW", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "NE", 
+        "ROUTE" : "WEWATTA  ST", 
+        "SEGMID" : 0, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1600 BLK OF WEWATTA ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "531111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50211, 
+        "PRIORITY" : "B", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1245283200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713967000, 
+        "Shape__Length" : 454.64354519131041
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.002712324653, 39.7532490176048], 
+            [-105.002462956692, 39.7533174883242], 
+            [-105.001674762695, 39.7539644572367], 
+            [-105.001575228598, 39.7540998983943]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 6783, 
+        "GlobalID" : "761aa39e-0f6f-4387-8a03-2be669613692", 
+        "FNODE" : 4993, 
+        "TNODE" : 4893, 
+        "STREETID" : 447, 
+        "MASTERID" : 3158, 
+        "L_F_ADD" : 1701, 
+        "L_T_ADD" : 1799, 
+        "R_F_ADD" : 1700, 
+        "R_T_ADD" : 1798, 
+        "PREFIX" : null, 
+        "NAME" : "WYNKOOP", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "WYNKOOP ST", 
+        "FROMNAME" : "17TH ST", 
+        "TONAME" : "18TH ST", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "LOCAL", 
+        "FUNCLASS" : "Local-Urban", 
+        "TT_SEGTYPE" : "A01", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1700, 
+        "HUNDBLKDIR" : "NW", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : "WYNKOOP  ST", 
+        "SEGMID" : 1701, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1700 BLK OF WYNKOOP ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "NightSwp", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50306, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1033344000000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1745853694000, 
+        "Shape__Length" : 488.22684086693107
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-104.999734452924, 39.7528550246765], 
+            [-104.998481223639, 39.7537827335992]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 6874, 
+        "GlobalID" : "90db85c9-f6df-4ebf-af8c-319fb4355fa0", 
+        "FNODE" : 17658, 
+        "TNODE" : 17659, 
+        "STREETID" : 508, 
+        "MASTERID" : 27689, 
+        "L_F_ADD" : 1601, 
+        "L_T_ADD" : 1699, 
+        "R_F_ADD" : 0, 
+        "R_T_ADD" : 0, 
+        "PREFIX" : null, 
+        "NAME" : "WEWATTA", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "WEWATTA ST", 
+        "FROMNAME" : "16TH ST/RRX/TRAFFIC SIGNAL BTWN DELGANY ST AND 17TH ST", 
+        "TONAME" : "17TH ST", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "LOCAL", 
+        "FUNCLASS" : "Major Coll-Rural", 
+        "TT_SEGTYPE" : "A01", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 2, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "Y", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1900, 
+        "HUNDBLKDIR" : "NW", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "SW", 
+        "ROUTE" : "WEWATTA  ST", 
+        "SEGMID" : 1631, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1601 BLK OF WEWATTA ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "531111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50211, 
+        "PRIORITY" : "B", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1144886400000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713967000, 
+        "Shape__Length" : 447.5688053606728
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.002712324653, 39.7532490176048], 
+            [-105.001726053444, 39.7540397786464], 
+            [-105.001575228598, 39.7540998983943]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 7120, 
+        "GlobalID" : "cf567d43-855d-45e4-9514-536ba26668cf", 
+        "FNODE" : 5091, 
+        "TNODE" : 5040, 
+        "STREETID" : 524, 
+        "MASTERID" : 25049, 
+        "L_F_ADD" : 1500, 
+        "L_T_ADD" : 1598, 
+        "R_F_ADD" : 1501, 
+        "R_T_ADD" : 1599, 
+        "PREFIX" : null, 
+        "NAME" : "17TH", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "17TH ST", 
+        "FROMNAME" : "BLAKE ST/TRAFFIC SIGNAL", 
+        "TONAME" : "WAZEE ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Local-Urban", 
+        "TT_SEGTYPE" : "A05", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1700, 
+        "HUNDBLKDIR" : "NE", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : "17TH     ST", 
+        "SEGMID" : 1501, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1500 BLK OF 17TH ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50303, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1525219200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 349.04506794107181
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-104.997971402581, 39.7514690581771], 
+            [-104.998393855212, 39.7518260250337], 
+            [-104.998809248261, 39.7521760980271]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 7192, 
+        "GlobalID" : "c94781aa-6892-40c5-a809-89cb831d7705", 
+        "FNODE" : 5135, 
+        "TNODE" : 5040, 
+        "STREETID" : 456, 
+        "MASTERID" : 25073, 
+        "L_F_ADD" : 1601, 
+        "L_T_ADD" : 1699, 
+        "R_F_ADD" : 1600, 
+        "R_T_ADD" : 1698, 
+        "PREFIX" : null, 
+        "NAME" : "WAZEE", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "WAZEE ST", 
+        "FROMNAME" : "16TH ST/TRAFFIC SIGNAL", 
+        "TONAME" : "17TH ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Major Coll-Rural", 
+        "TT_SEGTYPE" : "A05", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1600, 
+        "HUNDBLKDIR" : "NW", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : "WAZEE    ST", 
+        "SEGMID" : 1601, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1600 BLK OF WAZEE ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50306, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1047427200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 488.22390309714984
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.000025308782, 39.751219403998], 
+            [-104.998809248261, 39.7521760980271]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 7933, 
+        "GlobalID" : "0713700e-221a-40c0-8710-62dcba22e0d0", 
+        "FNODE" : 5071, 
+        "TNODE" : 17658, 
+        "STREETID" : 529, 
+        "MASTERID" : 4096, 
+        "L_F_ADD" : 1700, 
+        "L_T_ADD" : 1898, 
+        "R_F_ADD" : 1701, 
+        "R_T_ADD" : 1899, 
+        "PREFIX" : null, 
+        "NAME" : "16TH", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "16TH ST", 
+        "FROMNAME" : "WYNKOOP ST/TRAFFIC SIGNAL", 
+        "TONAME" : "WEWATTA ST/RRX/TRAFFIC SIGNAL BTWN DELGANY ST AND 17TH ST", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "LOCAL", 
+        "FUNCLASS" : "Major Coll-Rural", 
+        "TT_SEGTYPE" : "A71", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Not Eligible", 
+        "HUNDBLKNUM" : 1600, 
+        "HUNDBLKDIR" : "NE", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : "16TH     ST", 
+        "SEGMID" : 1701, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1700 BLK OF 16TH ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "531111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50211, 
+        "PRIORITY" : "B", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1352851200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713967000, 
+        "Shape__Length" : 702.14065789005463
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.000919321899, 39.7519074515768], 
+            [-105.00164895774, 39.7524446641692], 
+            [-105.002712324653, 39.7532490176048]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 8009, 
+        "GlobalID" : "c63f64ef-4ed3-4411-9a7d-1a9fb9fd9619", 
+        "FNODE" : 5212, 
+        "TNODE" : 5183, 
+        "STREETID" : 524, 
+        "MASTERID" : 25051, 
+        "L_F_ADD" : 1300, 
+        "L_T_ADD" : 1398, 
+        "R_F_ADD" : 1301, 
+        "R_T_ADD" : 1399, 
+        "PREFIX" : null, 
+        "NAME" : "17TH", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "17TH ST", 
+        "FROMNAME" : "LARIMER ST/TRAFFIC SIGNAL", 
+        "TONAME" : "MARKET ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Local-Urban", 
+        "TT_SEGTYPE" : "A05", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 2, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1700, 
+        "HUNDBLKDIR" : "NE", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "SE", 
+        "ROUTE" : "17TH     ST", 
+        "SEGMID" : 1301, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1300 BLK OF 17TH ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50303, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1525219200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 346.30921104526817
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-104.996207979367, 39.7501448280895], 
+            [-104.996545566584, 39.7504108344661], 
+            [-104.996624404115, 39.7504729524203], 
+            [-104.997069998904, 39.7508238490853]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 8811, 
+        "GlobalID" : "fb333b09-4d2e-4ff8-b770-5f8095e5e52f", 
+        "FNODE" : 5022, 
+        "TNODE" : 4976, 
+        "STREETID" : 522, 
+        "MASTERID" : 25069, 
+        "L_F_ADD" : 1500, 
+        "L_T_ADD" : 1598, 
+        "R_F_ADD" : 1501, 
+        "R_T_ADD" : 1599, 
+        "PREFIX" : null, 
+        "NAME" : "18TH", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "18TH ST", 
+        "FROMNAME" : "BLAKE ST/TRAFFIC SIGNAL", 
+        "TONAME" : "WAZEE ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Local-Urban", 
+        "TT_SEGTYPE" : "A05", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 1, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1800, 
+        "HUNDBLKDIR" : "NE", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "NW", 
+        "ROUTE" : "18TH     ST", 
+        "SEGMID" : 1501, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1500 BLK OF 18TH ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50303, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1525219200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 346.24212809481133
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-104.996748255855, 39.7524174658911], 
+            [-104.997192183288, 39.7527560010421], 
+            [-104.997624620425, 39.7530852157008]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 9228, 
+        "GlobalID" : "1ebaa7e6-fcbe-4cba-b9c5-46b9f03d9464", 
+        "FNODE" : 4976, 
+        "TNODE" : 4878, 
+        "STREETID" : 456, 
+        "MASTERID" : 25071, 
+        "L_F_ADD" : 1801, 
+        "L_T_ADD" : 1899, 
+        "R_F_ADD" : 1800, 
+        "R_T_ADD" : 1898, 
+        "PREFIX" : null, 
+        "NAME" : "WAZEE", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "WAZEE ST", 
+        "FROMNAME" : "18TH ST/TRAFFIC SIGNAL", 
+        "TONAME" : "19TH ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Major Coll-Rural", 
+        "TT_SEGTYPE" : "A05", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1600, 
+        "HUNDBLKDIR" : "NW", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : "WAZEE    ST", 
+        "SEGMID" : 1801, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1800 BLK OF WAZEE ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50306, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1047427200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 481.1905381442956
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-104.997624620425, 39.7530852157008], 
+            [-104.996412226291, 39.7540175406706]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 9952, 
+        "GlobalID" : "078cf16a-a141-44d2-b62b-23ad7ddb7fba", 
+        "FNODE" : 5040, 
+        "TNODE" : 4976, 
+        "STREETID" : 456, 
+        "MASTERID" : 25072, 
+        "L_F_ADD" : 1701, 
+        "L_T_ADD" : 1799, 
+        "R_F_ADD" : 1700, 
+        "R_T_ADD" : 1798, 
+        "PREFIX" : null, 
+        "NAME" : "WAZEE", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "WAZEE ST", 
+        "FROMNAME" : "17TH ST/TRAFFIC SIGNAL", 
+        "TONAME" : "18TH ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Major Coll-Rural", 
+        "TT_SEGTYPE" : "A05", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1600, 
+        "HUNDBLKDIR" : "NW", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : "WAZEE    ST", 
+        "SEGMID" : 1701, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1700 BLK OF WAZEE ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50306, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1047427200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 469.696602649089
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-104.998809248261, 39.7521760980271], 
+            [-104.997624620425, 39.7530852157008]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 10808, 
+        "GlobalID" : "29afd068-0be1-43c4-9b6f-8bdae08cb438", 
+        "FNODE" : 5309, 
+        "TNODE" : 5199, 
+        "STREETID" : 456, 
+        "MASTERID" : 25075, 
+        "L_F_ADD" : 1401, 
+        "L_T_ADD" : 1499, 
+        "R_F_ADD" : 1400, 
+        "R_T_ADD" : 1498, 
+        "PREFIX" : null, 
+        "NAME" : "WAZEE", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "WAZEE ST", 
+        "FROMNAME" : "14TH ST", 
+        "TONAME" : "15TH ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Major Coll-Rural", 
+        "TT_SEGTYPE" : "A05", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1600, 
+        "HUNDBLKDIR" : "NW", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : "WAZEE    ST", 
+        "SEGMID" : 1401, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1400 BLK OF WAZEE ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50306, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1123718400000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 586.27738619189859
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.002506338428, 39.7490395465804], 
+            [-105.002211084723, 39.7495502881482], 
+            [-105.001241160629, 39.7502867145498]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 11167, 
+        "GlobalID" : "60644b55-fbd7-4161-bdb9-72b3bc5871e9", 
+        "FNODE" : 5190, 
+        "TNODE" : 5091, 
+        "STREETID" : 461, 
+        "MASTERID" : 24857, 
+        "L_F_ADD" : 1601, 
+        "L_T_ADD" : 1699, 
+        "R_F_ADD" : 1600, 
+        "R_T_ADD" : 1698, 
+        "PREFIX" : null, 
+        "NAME" : "BLAKE", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "BLAKE ST", 
+        "FROMNAME" : "16TH ST/TRAFFIC SIGNAL", 
+        "TONAME" : "17TH ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Local-Urban", 
+        "TT_SEGTYPE" : "A21", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 2, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1500, 
+        "HUNDBLKDIR" : "NW", 
+        "HUNDBLKMAJ" : 2, 
+        "ALTDIR" : "SW", 
+        "ROUTE" : "BLAKE    ST", 
+        "SEGMID" : 1601, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1600 BLK OF BLAKE ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50306, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1033344000000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 476.95706599594951
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-104.99918626569, 39.7505552592807], 
+            [-104.997971402581, 39.7514690581771]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 11220, 
+        "GlobalID" : "168fdc19-42d6-4c71-9e04-178d5bc77f86", 
+        "FNODE" : 5183, 
+        "TNODE" : 5073, 
+        "STREETID" : 516, 
+        "MASTERID" : 19569, 
+        "L_F_ADD" : 1701, 
+        "L_T_ADD" : 1799, 
+        "R_F_ADD" : 1700, 
+        "R_T_ADD" : 1798, 
+        "PREFIX" : null, 
+        "NAME" : "MARKET", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "MARKET ST", 
+        "FROMNAME" : "17TH ST/TRAFFIC SIGNAL", 
+        "TONAME" : "18TH ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Local-Urban", 
+        "TT_SEGTYPE" : "A05", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 1, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1400, 
+        "HUNDBLKDIR" : "NW", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "NE", 
+        "ROUTE" : "MARKET   ST", 
+        "SEGMID" : 1701, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1700 BLK OF MARKET ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50306, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1033344000000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 477.65631770690783
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-104.997069998904, 39.7508238490853], 
+            [-104.995868348826, 39.7517507200107]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 11901, 
+        "GlobalID" : "a875d456-04e1-4226-a5d3-fd2b4daea903", 
+        "FNODE" : 5163, 
+        "TNODE" : 5071, 
+        "STREETID" : 447, 
+        "MASTERID" : 3298, 
+        "L_F_ADD" : 1501, 
+        "L_T_ADD" : 1599, 
+        "R_F_ADD" : 1500, 
+        "R_T_ADD" : 1598, 
+        "PREFIX" : null, 
+        "NAME" : "WYNKOOP", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "WYNKOOP ST", 
+        "FROMNAME" : "15TH ST/TRAFFIC SIGNAL", 
+        "TONAME" : "16TH ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "LOCAL", 
+        "FUNCLASS" : "Major Coll-Rural", 
+        "TT_SEGTYPE" : "A01", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1700, 
+        "HUNDBLKDIR" : "NW", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : "WYNKOOP  ST", 
+        "SEGMID" : 1501, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1500 BLK OF WYNKOOP ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "NightSwp", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50306, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1033344000000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1745853694000, 
+        "Shape__Length" : 483.31911193678314
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.002116642602, 39.7509554579991], 
+            [-105.000919321899, 39.7519074515768]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 13529, 
+        "GlobalID" : "cddfe416-3458-4a46-bde0-6944c9cb8081", 
+        "FNODE" : 5091, 
+        "TNODE" : 5022, 
+        "STREETID" : 461, 
+        "MASTERID" : 3251, 
+        "L_F_ADD" : 1701, 
+        "L_T_ADD" : 1799, 
+        "R_F_ADD" : 1700, 
+        "R_T_ADD" : 1798, 
+        "PREFIX" : null, 
+        "NAME" : "BLAKE", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "BLAKE ST", 
+        "FROMNAME" : "17TH ST/TRAFFIC SIGNAL", 
+        "TONAME" : "18TH ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Local-Urban", 
+        "TT_SEGTYPE" : "A21", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 2, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1500, 
+        "HUNDBLKDIR" : "NW", 
+        "HUNDBLKMAJ" : 2, 
+        "ALTDIR" : "SW", 
+        "ROUTE" : "BLAKE    ST", 
+        "SEGMID" : 1701, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1700 BLK OF BLAKE ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50306, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1033344000000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 487.47673345734052
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-104.997971402581, 39.7514690581771], 
+            [-104.996748255855, 39.7524174658911]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 16177, 
+        "GlobalID" : "88315a7d-4e9e-4f13-a584-3f9ca86b7b70", 
+        "FNODE" : 4878, 
+        "TNODE" : 4806, 
+        "STREETID" : 506, 
+        "MASTERID" : 25066, 
+        "L_F_ADD" : 1600, 
+        "L_T_ADD" : 1698, 
+        "R_F_ADD" : 1601, 
+        "R_T_ADD" : 1699, 
+        "PREFIX" : null, 
+        "NAME" : "19TH", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "19TH ST", 
+        "FROMNAME" : "WAZEE ST/TRAFFIC SIGNAL", 
+        "TONAME" : "WYNKOOP ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Major Coll-Rural", 
+        "TT_SEGTYPE" : "A01", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1900, 
+        "HUNDBLKDIR" : "NE", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : "19TH     ST", 
+        "SEGMID" : 1601, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1600 BLK OF 19TH ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50304, 
+        "PRIORITY" : "A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1525219200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 347.014249500716
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-104.996412226291, 39.7540175406706], 
+            [-104.996875544955, 39.7543808660567], 
+            [-104.997277855514, 39.7546965734993]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 16509, 
+        "GlobalID" : "dd2bfe1b-8141-45e6-b6a8-6c48d606bc30", 
+        "FNODE" : 5199, 
+        "TNODE" : 5135, 
+        "STREETID" : 456, 
+        "MASTERID" : 25074, 
+        "L_F_ADD" : 1501, 
+        "L_T_ADD" : 1599, 
+        "R_F_ADD" : 1500, 
+        "R_T_ADD" : 1598, 
+        "PREFIX" : null, 
+        "NAME" : "WAZEE", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "WAZEE ST", 
+        "FROMNAME" : "15TH ST/TRAFFIC SIGNAL", 
+        "TONAME" : "16TH ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Major Coll-Rural", 
+        "TT_SEGTYPE" : "A05", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1600, 
+        "HUNDBLKDIR" : "NW", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : "WAZEE    ST", 
+        "SEGMID" : 1501, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1500 BLK OF WAZEE ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50306, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1047427200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 481.98276305947212
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.001241160629, 39.7502867145498], 
+            [-105.000025308782, 39.751219403998]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 18430, 
+        "GlobalID" : "aef3c526-0829-4665-a1d3-55e6dea5ffc1", 
+        "FNODE" : 17659, 
+        "TNODE" : 17677, 
+        "STREETID" : 508, 
+        "MASTERID" : 29021, 
+        "L_F_ADD" : 0, 
+        "L_T_ADD" : 0, 
+        "R_F_ADD" : 1700, 
+        "R_T_ADD" : 1798, 
+        "PREFIX" : null, 
+        "NAME" : "WEWATTA", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "WEWATTA ST", 
+        "FROMNAME" : "17TH ST", 
+        "TONAME" : "18TH ST", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "LOCAL", 
+        "FUNCLASS" : "Local-Urban", 
+        "TT_SEGTYPE" : "A01", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 1, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Not Eligible", 
+        "HUNDBLKNUM" : 1900, 
+        "HUNDBLKDIR" : "NW", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "NE", 
+        "ROUTE" : "WEWATTA  ST", 
+        "SEGMID" : 0, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1700 BLK OF WEWATTA ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "531111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50211, 
+        "PRIORITY" : "B", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1207267200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713967000, 
+        "Shape__Length" : 519.46669294184835
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.001575228598, 39.7540998983943], 
+            [-105.001409253287, 39.7541725613617], 
+            [-105.000402813822, 39.7549200556702], 
+            [-105.00027565343, 39.7549992747438], 
+            [-105.000252374817, 39.7550716555851]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 18563, 
+        "GlobalID" : "d4a7b858-3e0d-4b14-82d8-8196eb702bcb", 
+        "FNODE" : 17659, 
+        "TNODE" : 17677, 
+        "STREETID" : 508, 
+        "MASTERID" : 27685, 
+        "L_F_ADD" : 1701, 
+        "L_T_ADD" : 1799, 
+        "R_F_ADD" : 0, 
+        "R_T_ADD" : 0, 
+        "PREFIX" : null, 
+        "NAME" : "WEWATTA", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "WEWATTA ST", 
+        "FROMNAME" : "17TH ST", 
+        "TONAME" : "18TH ST", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "LOCAL", 
+        "FUNCLASS" : "Major Coll-Rural", 
+        "TT_SEGTYPE" : "A01", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 2, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "Y", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1900, 
+        "HUNDBLKDIR" : "NW", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "SW", 
+        "ROUTE" : "WEWATTA  ST", 
+        "SEGMID" : 1705, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1701 BLK OF WEWATTA ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "531111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50211, 
+        "PRIORITY" : "B", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1207267200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713967000, 
+        "Shape__Length" : 525.56950578972123
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.001575228598, 39.7540998983943], 
+            [-105.001493373357, 39.7542245468466], 
+            [-105.000368866979, 39.7550721069205], 
+            [-105.000252374817, 39.7550716555851]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 23202, 
+        "GlobalID" : "0c61b57f-8a74-43c9-9666-8d63c40a22fe", 
+        "FNODE" : 5071, 
+        "TNODE" : 4993, 
+        "STREETID" : 447, 
+        "MASTERID" : 3244, 
+        "L_F_ADD" : 1601, 
+        "L_T_ADD" : 1699, 
+        "R_F_ADD" : 1600, 
+        "R_T_ADD" : 1698, 
+        "PREFIX" : null, 
+        "NAME" : "WYNKOOP", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "WYNKOOP ST", 
+        "FROMNAME" : "16TH ST/TRAFFIC SIGNAL", 
+        "TONAME" : "17TH ST", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "LOCAL", 
+        "FUNCLASS" : "Major Coll-Rural", 
+        "TT_SEGTYPE" : "A01", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1700, 
+        "HUNDBLKDIR" : "NW", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : "WYNKOOP  ST", 
+        "SEGMID" : 1601, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1600 BLK OF WYNKOOP ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "NightSwp", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50306, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1033344000000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1745853694000, 
+        "Shape__Length" : 479.72399113317505
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.000919321899, 39.7519074515768], 
+            [-104.999734452924, 39.7528550246765]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 23863, 
+        "GlobalID" : "06032d89-f53f-4927-9180-7d27b27182b4", 
+        "FNODE" : 17659, 
+        "TNODE" : 17888, 
+        "STREETID" : 524, 
+        "MASTERID" : 28090, 
+        "L_F_ADD" : 1900, 
+        "L_T_ADD" : 1998, 
+        "R_F_ADD" : 1901, 
+        "R_T_ADD" : 1999, 
+        "PREFIX" : null, 
+        "NAME" : "17TH", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "17TH ST", 
+        "FROMNAME" : "WEWATTA ST", 
+        "TONAME" : "CHESTNUT PL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "LOCAL", 
+        "FUNCLASS" : "Major Coll-Rural", 
+        "TT_SEGTYPE" : "A01", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1700, 
+        "HUNDBLKDIR" : "NE", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : "17TH     ST", 
+        "SEGMID" : 1901, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1900 BLK OF 17TH ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "531111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : null, 
+        "PRIORITY" : null, 
+        "RSPROUTE" : "RS203", 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1379894400000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713967000, 
+        "Shape__Length" : 331.08883550246242
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.001575228598, 39.7540998983943], 
+            [-105.002406998284, 39.754743282356]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 23974, 
+        "GlobalID" : "5e67af07-aafe-40fe-b70f-bb63b10fdae5", 
+        "FNODE" : 5190, 
+        "TNODE" : 5135, 
+        "STREETID" : 529, 
+        "MASTERID" : 3336, 
+        "L_F_ADD" : 1500, 
+        "L_T_ADD" : 1598, 
+        "R_F_ADD" : 1501, 
+        "R_T_ADD" : 1599, 
+        "PREFIX" : null, 
+        "NAME" : "16TH", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "16TH ST", 
+        "FROMNAME" : "BLAKE ST/TRAFFIC SIGNAL", 
+        "TONAME" : "WAZEE ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "LOCAL", 
+        "FUNCLASS" : "Major Coll-Rural", 
+        "TT_SEGTYPE" : "A71", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Not Eligible", 
+        "HUNDBLKNUM" : 1600, 
+        "HUNDBLKDIR" : "NE", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : "16TH     ST", 
+        "SEGMID" : 1501, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1500 BLK OF 16TH ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : null, 
+        "PRIORITY" : null, 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1525219200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 337.91710201150465
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-104.99918626569, 39.7505552592807], 
+            [-104.999602604344, 39.750884814564], 
+            [-105.000025308782, 39.751219403998]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 23987, 
+        "GlobalID" : "84bae5d4-71b0-46a5-9b44-67e030dfab3d", 
+        "FNODE" : 5199, 
+        "TNODE" : 5163, 
+        "STREETID" : 531, 
+        "MASTERID" : 25040, 
+        "L_F_ADD" : 1600, 
+        "L_T_ADD" : 1698, 
+        "R_F_ADD" : 1601, 
+        "R_T_ADD" : 1699, 
+        "PREFIX" : null, 
+        "NAME" : "15TH", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "15TH ST", 
+        "FROMNAME" : "WAZEE ST/TRAFFIC SIGNAL", 
+        "TONAME" : "WYNKOOP ST/TRAFFIC SIGNAL", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Local-Urban", 
+        "TT_SEGTYPE" : "A01", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1500, 
+        "HUNDBLKDIR" : "NE", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : "15TH     ST", 
+        "SEGMID" : 1601, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1600 BLK OF 15TH ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50302, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1525219200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 346.32521932702343
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.001241160629, 39.7502867145498], 
+            [-105.001675098787, 39.7506181852625], 
+            [-105.002116642602, 39.7509554579991]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 24836, 
+        "GlobalID" : "3f3466b1-2ca9-4ea0-9fea-9cd7e482b797", 
+        "FNODE" : 4806, 
+        "TNODE" : 4717, 
+        "STREETID" : 506, 
+        "MASTERID" : 4098, 
+        "L_F_ADD" : 1700, 
+        "L_T_ADD" : 1798, 
+        "R_F_ADD" : 1701, 
+        "R_T_ADD" : 1799, 
+        "PREFIX" : null, 
+        "NAME" : "19TH", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "19TH ST", 
+        "FROMNAME" : "WYNKOOP ST/TRAFFIC SIGNAL", 
+        "TONAME" : "19TH TO I25 HOV RAMP/16TH TO I25 HOV RAMP/STR", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Major Coll-Rural", 
+        "TT_SEGTYPE" : "A01", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 0, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1900, 
+        "HUNDBLKDIR" : "NE", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "2", 
+        "ROUTE" : "19TH     ST", 
+        "SEGMID" : 1701, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1700 BLK OF 19TH ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "531111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : null, 
+        "PRIORITY" : null, 
+        "RSPROUTE" : "RS203", 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1087430400000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713967000, 
+        "Shape__Length" : 335.6232488191871
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-104.997277855514, 39.7546965734993], 
+            [-104.997443268487, 39.7547698992148], 
+            [-104.997576038901, 39.754869943365], 
+            [-104.997667574498, 39.7549431695317], 
+            [-104.997722417102, 39.7549984706069], 
+            [-104.997751989671, 39.7550465593321], 
+            [-104.997787057913, 39.7551101927603], 
+            [-104.997757441414, 39.7552720340271], 
+            [-104.997644720731, 39.7554223540906]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 26883, 
+        "GlobalID" : "cbc1506d-126f-47ed-a595-e1686342395c", 
+        "FNODE" : 4976, 
+        "TNODE" : 4893, 
+        "STREETID" : 522, 
+        "MASTERID" : 25068, 
+        "L_F_ADD" : 1600, 
+        "L_T_ADD" : 1698, 
+        "R_F_ADD" : 1601, 
+        "R_T_ADD" : 1699, 
+        "PREFIX" : null, 
+        "NAME" : "18TH", 
+        "TYPE" : "ST", 
+        "POSTMODIFIER" : null, 
+        "FULLNAME" : "18TH ST", 
+        "FROMNAME" : "WAZEE ST/TRAFFIC SIGNAL", 
+        "TONAME" : "WYNKOOP ST", 
+        "LEN_MI" : 0.1, 
+        "ALIAS1" : null, 
+        "ALIAS2" : null, 
+        "JURISID" : "DENVER", 
+        "MAINTNCE" : "DENVER", 
+        "ADDRESSQUAD" : "NW", 
+        "VOLCLASS" : "ARTERIAL", 
+        "FUNCLASS" : "Local-Urban", 
+        "TT_SEGTYPE" : "A05", 
+        "CITYID" : "Denver", 
+        "COUNTYID" : "Denver", 
+        "ZIPLEFT" : "80202", 
+        "ZIPRIGHT" : "80202", 
+        "SPEEDLIMIT" : 25, 
+        "ONEWAY" : 1, 
+        "RCITYID" : "Denver", 
+        "RCOUNTYID" : "Denver", 
+        "STATUS" : "CONSTRUCTED", 
+        "MEDIAN" : "N", 
+        "HUTF" : "Eligible", 
+        "HUNDBLKNUM" : 1800, 
+        "HUNDBLKDIR" : "NE", 
+        "HUNDBLKMAJ" : 0, 
+        "ALTDIR" : "NW", 
+        "ROUTE" : "18TH     ST", 
+        "SEGMID" : 1601, 
+        "LEFTPREC" : "P612", 
+        "RTPREC" : "P612", 
+        "LEFTFIRE" : "D02", 
+        "RTFIRE" : "D02", 
+        "LEFTEMS" : "CD10", 
+        "RTEMS" : "CD10", 
+        "F_ZLEV" : 0, 
+        "T_ZLEV" : 0, 
+        "HUNDBLKNAME" : "1600 BLK OF 18TH ST", 
+        "MAJOR_STREET" : null, 
+        "LEFTSWEEP" : "N", 
+        "RIGHTSWEEP" : "N", 
+        "SSSID" : "5A1111N0", 
+        "NIGHTSWEEP" : "Yes", 
+        "SNOWROUTE_ID" : 50303, 
+        "PRIORITY" : "Super A", 
+        "RSPROUTE" : null, 
+        "PCI" : null, 
+        "created_user" : "STREETS", 
+        "created_date" : 1525219200000, 
+        "last_edited_user" : "220181", 
+        "last_edited_date" : 1749713149000, 
+        "Shape__Length" : 350.09707124060338
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-104.997624620425, 39.7530852157008], 
+            [-104.998060429225, 39.7534401842821], 
+            [-104.998481223639, 39.7537827335992]
+          ]
+        ]
+      }
+    }
+  ]
+}
