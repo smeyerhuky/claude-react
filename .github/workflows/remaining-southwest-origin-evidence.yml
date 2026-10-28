@@ -1,0 +1,59 @@
+name: Remaining southwest origin evidence
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/remaining-southwest-origin-evidence.yml'
+      - 'docs/research/southwest-remaining-origins/**'
+      - 'scripts/colorado_origin_source_investigation.py'
+      - 'scripts/stream_osm_roads.py'
+      - 'scripts/colorado_geographic_point_diagnostics.py'
+      - 'scripts/colorado_metro_winners.py'
+      - 'public/data/metros-census-2025.csv'
+permissions:
+  contents: read
+jobs:
+  reproduce-raw-origin-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        state: [arizona, new-mexico]
+    env:
+      SOURCE_STATE: ${{ matrix.state }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5'
+      - name: Acquire and verify exact dated source, then reproduce every raw field
+        run: |
+          python - <<'PY'
+          import hashlib, json, os, subprocess
+          from pathlib import Path
+          state=os.environ['SOURCE_STATE']
+          assert state in ('arizona','new-mexico')
+          expected=json.loads(Path('docs/research/southwest-remaining-origins',state+'.json').read_text())
+          manifest=json.loads(Path('scripts/research-source-snapshots/co-nm-az-20261027.json').read_text())
+          source=next(x for x in manifest['files'] if x['filename']==state+'.osm.pbf')
+          path=Path(source['filename'])
+          url='https://download.geofabrik.de/north-america/us/'+state+'-261027.osm.pbf'
+          subprocess.run(['curl','-fLSs','--retry','3','--connect-timeout','20','--max-time','600','--output',str(path),url],check=True)
+          assert path.stat().st_size==source['bytes']
+          with path.open('rb') as f:
+              assert hashlib.file_digest(f,'sha256').hexdigest()==source['sha256']==expected['osm_sha256']
+          ids={'arizona':['38060','43420','46060','49740'],'new-mexico':['29740']}[state]
+          subprocess.run(['python','scripts/colorado_origin_source_investigation.py','--osm',str(path),'--metros','public/data/metros-census-2025.csv','--cbsa',*ids,'--radius-m','25000','--output','reproduced.json'],check=True)
+          actual=json.loads(Path('reproduced.json').read_text())
+          for key,value in actual.items():
+              assert expected[key]==value, key
+          for field,file in [('scanner_sha256','scripts/colorado_origin_source_investigation.py'),('driving_filter_sha256','scripts/stream_osm_roads.py')]:
+              assert expected[field]==hashlib.sha256(Path(file).read_bytes()).hexdigest()
+          assert {r['cbsa'] for r in actual['metros']}==set(ids)
+          assert not expected['access_verified'] and not expected['release_eligible']
+          assert not expected['complete_global_competition'] and expected['applied_source_exclusions']==[]
+          assert not expected['connector_costs_included']
+          print('Every raw-scan field reproduced for',state,'; no connector certified or competitor excluded')
+          PY

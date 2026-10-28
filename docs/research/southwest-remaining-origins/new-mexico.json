@@ -1,0 +1,63 @@
+{
+  "access_verified": false,
+  "applied_source_exclusions": [],
+  "code_head": "e769c030c579750c817f86d5c1935520f1991e3b",
+  "complete_global_competition": false,
+  "connector_costs_included": false,
+  "driving_filter_sha256": "25e8bbe7ce8ccd54e7a0237165b4e8370f69a1828af6e4ec0e063559a618ec3c",
+  "extract_coverage_certified": false,
+  "highway_ways_with_missing_locations": 0,
+  "limitations": "Nearest geometry only within supplied PBF and search radius; OSM tags and modeled driving eligibility do not prove physical/legal entry; representative points are not verified urban access anchors",
+  "method": "Raw PBF highway-way scan; no contracted graph or SegmentGridIndex; local equirectangular projection with spherical gap distance",
+  "metros": [
+    {
+      "cbsa": "29740",
+      "name": "Las Cruces, NM Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 57.41642044927035,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Pineview Road",
+        "osm_way_id": 14460243,
+        "osm_way_url": "https://www.openstreetmap.org/way/14460243",
+        "projection_lonlat": [
+          -106.83436693903235,
+          32.35001091591083
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 57.41642044927035,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Pineview Road",
+        "osm_way_id": 14460243,
+        "osm_way_url": "https://www.openstreetmap.org/way/14460243",
+        "projection_lonlat": [
+          -106.83436693903235,
+          32.35001091591083
+        ]
+      },
+      "origin_lonlat": [
+        -106.8349684,
+        32.349919
+      ]
+    }
+  ],
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "osm_sha256": "2aa3ba0e91c0f19ffd0d614d98f112546552a51d02daf2474d8f06e54304508a",
+  "release_eligible": false,
+  "scan_radius_m": 25000.0,
+  "scanner_sha256": "342ea2fcf9c470697364671a4330a514dac094beeb02bccbe31636cfb9e1d2f5",
+  "schema_version": "colorado-raw-origin-investigation-v1",
+  "source_filename": "new-mexico.osm.pbf",
+  "source_inclusion_status": "Unrepresented in #180; raw proximity investigation does not add a routing source",
+  "source_replication_timestamp": "2026-10-27T21:23:59Z"
+}
