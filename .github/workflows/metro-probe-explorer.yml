@@ -1,0 +1,40 @@
+name: Offline metro road-probe explorer
+on:
+  pull_request:
+    paths:
+      - 'scripts/build_metro_probe_explorer.py'
+      - 'scripts/check_metro_probe_explorer.cjs'
+      - 'scripts/metro_scenario_checkpoint.py'
+      - 'docs/research/census-26-source-checkpoint/**'
+      - 'public/data/metros-census-2025.csv'
+      - '.github/workflows/metro-probe-explorer.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-and-check-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+      - name: Generate only from the hash-checked frozen scenario
+        run: python scripts/build_metro_probe_explorer.py --output explorer.html
+      - name: Install isolated browser tooling
+        run: |
+          npm install --prefix "$RUNNER_TEMP/metro-explorer-browser" --no-audit --no-fund playwright@1.56.1
+          node "$RUNNER_TEMP/metro-explorer-browser/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Check all metric/direction/probe combinations and zero network requests
+        run: NODE_PATH="$RUNNER_TEMP/metro-explorer-browser/node_modules" node scripts/check_metro_probe_explorer.cjs explorer.html explorer.png
+      - uses: actions/upload-artifact@v6
+        with:
+          name: offline-metro-road-probe-explorer
+          path: |
+            explorer.html
+            explorer.png
+          retention-days: 14
