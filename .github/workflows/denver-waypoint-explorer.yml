@@ -1,0 +1,36 @@
+name: Denver waypoint comparison explorer
+on:
+  pull_request:
+    paths:
+      - 'scripts/build_denver_waypoint_explorer.py'
+      - 'scripts/check_denver_waypoint_explorer.cjs'
+      - 'docs/research/denver-waypoint-hypothesis/**'
+      - '.github/workflows/denver-waypoint-explorer.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-comparison:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+      - run: python scripts/build_denver_waypoint_explorer.py --output comparison.html
+      - name: Install isolated browser tooling
+        run: |
+          npm install --prefix "$RUNNER_TEMP/metro-browser" --no-audit --no-fund playwright@1.56.1
+          node "$RUNNER_TEMP/metro-browser/node_modules/playwright/cli.js" install --with-deps chromium
+      - run: NODE_PATH="$RUNNER_TEMP/metro-browser/node_modules" node scripts/check_denver_waypoint_explorer.cjs comparison.html docs/research/denver-waypoint-hypothesis/report.json comparison.png
+      - uses: actions/upload-artifact@v6
+        with:
+          name: denver-waypoint-comparison-explorer
+          path: |
+            comparison.html
+            comparison.png
+          retention-days: 14
