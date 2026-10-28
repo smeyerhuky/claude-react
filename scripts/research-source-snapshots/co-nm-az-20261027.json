@@ -1,0 +1,82 @@
+{
+  "schema": "research-original-source-archive-v1",
+  "release_eligible": false,
+  "access_certified": false,
+  "road_coverage_certified": false,
+  "land_water_completeness_certified": false,
+  "osm_replication_timestamp": "2026-10-27T21:23:59Z",
+  "files": [
+    {
+      "filename": "colorado.osm.pbf",
+      "bytes": 386197077,
+      "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+      "source_url": "https://download.geofabrik.de/north-america/us/colorado-latest.osm.pbf"
+    },
+    {
+      "filename": "new-mexico.osm.pbf",
+      "bytes": 136658631,
+      "sha256": "2aa3ba0e91c0f19ffd0d614d98f112546552a51d02daf2474d8f06e54304508a",
+      "source_url": "https://download.geofabrik.de/north-america/us/new-mexico-latest.osm.pbf"
+    },
+    {
+      "filename": "arizona.osm.pbf",
+      "bytes": 304245283,
+      "sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
+      "source_url": "https://download.geofabrik.de/north-america/us/arizona-latest.osm.pbf"
+    },
+    {
+      "filename": "population.xlsx",
+      "bytes": 44826,
+      "sha256": "e84062424a88f7ee0665a4ee7b719aeda676a85b18d9194a30be6d441ea5fe43",
+      "source_url": "https://www2.census.gov/programs-surveys/popest/tables/2020-2025/metro/totals/cbsa-met-est2025-pop.xlsx"
+    },
+    {
+      "filename": "tl_2025_us_cbsa.zip",
+      "bytes": 34964000,
+      "sha256": "8b0424f077280caaa5e09442fd0b0aec32b3e8d7d5fa909988304663bc0a761d",
+      "source_url": "https://www2.census.gov/geo/tiger/TIGER2025/CBSA/tl_2025_us_cbsa.zip"
+    },
+    {
+      "filename": "tl_2025_08021_areawater.zip",
+      "bytes": 101318,
+      "sha256": "b4942c4e885f17d4dc6d29ad338f2acc6c1b1a309774855ba7f9c9948468db4b",
+      "source_url": "https://www2.census.gov/geo/tiger/TIGER2025/AREAWATER/tl_2025_08021_areawater.zip"
+    },
+    {
+      "filename": "tl_2025_08023_areawater.zip",
+      "bytes": 47226,
+      "sha256": "d969790ca7af2d76799cb7e25117856b30e582ce55fec20e1a6cfa8d72121940",
+      "source_url": "https://www2.census.gov/geo/tiger/TIGER2025/AREAWATER/tl_2025_08023_areawater.zip"
+    },
+    {
+      "filename": "tl_2025_08067_areawater.zip",
+      "bytes": 123827,
+      "sha256": "3c900b4c9504a83cf1b7656b9b43b704dec52a0ef20638d3dc450d493390bbf2",
+      "source_url": "https://www2.census.gov/geo/tiger/TIGER2025/AREAWATER/tl_2025_08067_areawater.zip"
+    },
+    {
+      "filename": "tl_2025_us_county.zip",
+      "bytes": 83989800,
+      "sha256": "9c6e9d9076abce2670d1de255de3710c35ecca00a7005d88e012dec52d95f763",
+      "source_url": "https://www2.census.gov/geo/tiger/TIGER2025/COUNTY/tl_2025_us_county.zip"
+    },
+    {
+      "filename": "tl_2025_us_state.zip",
+      "bytes": 9956072,
+      "sha256": "59a220888a8d9be8117c4fcd38f542bd02d81abf0d198c78113595ad540dd957",
+      "source_url": "https://www2.census.gov/geo/tiger/TIGER2025/STATE/tl_2025_us_state.zip"
+    },
+    {
+      "filename": "metros-census-2025.csv",
+      "bytes": 25231,
+      "sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+      "source_url": "https://raw.githubusercontent.com/smeyerhuky/claude-react/eeb6606b01a36cd95764166670f634234aa6b8ea/public/data/metros-census-2025.csv"
+    }
+  ],
+  "warning": "Original research inputs only. Archival retention does not certify legal/physical connectors, complete source/road/geographic coverage, datum alignment or global competition.",
+  "snapshot_id": "co-nm-az-20261027",
+  "draft_release_id": 426327474,
+  "draft_release_tag": "research-sources-20261027-co-nm-az-v1",
+  "geographic_accuracy_certified": false,
+  "complete_global_competition": false
+}
