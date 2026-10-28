@@ -2,6 +2,8 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/kansas_two_partition_competition.py'
+      - 'scripts/test_kansas_two_partition_competition.py'
       - 'scripts/metro_competitor_review_queue.py'
       - 'scripts/test_metro_competitor_review_queue.py'
       - 'docs/research/remaining-competitor-queue/**'

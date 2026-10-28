@@ -1,0 +1,60 @@
+name: Kansas two-partition routing research
+on:
+  pull_request:
+    paths:
+      - 'scripts/kansas_two_partition_competition.py'
+      - 'scripts/test_kansas_two_partition_competition.py'
+      - '.github/workflows/kansas-two-partition-routing.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  six-state-paths:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2'
+      - run: PYTHONPATH=scripts python -m unittest -v scripts/test_kansas_two_partition_competition.py scripts/test_road_partition_oracle.py
+      - name: Acquire the six exact dated inputs
+        run: |
+          for state in colorado new-mexico arizona utah oklahoma kansas; do
+            curl --fail --location --retry 3 --max-time 600 "https://download.geofabrik.de/north-america/us/$state-261027.osm.pbf" --output "$state.osm.pbf"
+          done
+      - name: Preserve old sources and replay expanded-shard routes
+        run: |
+          mkdir result
+          python -u scripts/kansas_two_partition_competition.py --parent-osm colorado.osm.pbf new-mexico.osm.pbf arizona.osm.pbf utah.osm.pbf oklahoma.osm.pbf kansas.osm.pbf --output result/report.json 2>&1 | tee result/routing.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('result/report.json').read_text())
+          assert len(r['sources'])==31 and len(r['comparisons'])==72
+          assert len(r['source_qualifying_cbsa_ids'])==367 and len(r['unrepresented_source_qualifying_cbsa_ids'])==336
+          assert r['retained_costs_compared']==1872 and r['source_costs_computed']==2232
+          assert all(len(c['source_costs'])==31 for c in r['comparisons'])
+          finite=sum(c['graph_only_cost'] is not None for row in r['comparisons'] for c in row['source_costs'])
+          assert finite==r['finite_queries_replayed']
+          assert r['partition_layout_id']=='central-western-v1'
+          assert r['new_source_costs_computed']==360
+          assert sum(r['retained_cost_comparison_statuses'].values())==1872
+          old={s['cbsa']:s for s in json.loads(Path('docs/research/census-26-source-checkpoint/baseline.json').read_text())['sources']}
+          assert all(s['retained_reference_record']==old[s['cbsa']] for s in r['sources'] if s['cbsa'] in old)
+          assert all(g['nodes']<=15000000 and g['directed_primitive_arcs']<=40000000 for g in r['partition_graphs'])
+          assert all(run['local_dijkstra_calls']<=512 and run['overlay_nodes']<=192 for run in r['local_oracle_runs'])
+          assert r['interface_audit']['flattened_road_union_constructed'] is False
+          assert len(r['interface_audit']['interface_ports'])<=128
+          assert r['applied_source_exclusions']==[]
+          assert all(s['access_verified'] is False and s['connector_costs_included'] is False for s in r['sources'])
+          for flag in ('release_eligible','access_certified','road_coverage_certified','complete_global_competition','parent_exterior_coverage_certified','datum_alignment_verified'):
+              assert r[flag] is False
+          PY
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: kansas-two-partition-routing
+          path: result/
+          retention-days: 14
