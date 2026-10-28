@@ -5,6 +5,10 @@ on:
     paths:
       - '.github/workflows/colorado-neighbor-metro-competition.yml'
       - 'scripts/colorado_neighbor_metro_competition.py'
+      - 'scripts/metro_connector_budget_frontier.py'
+      - 'scripts/test_metro_connector_budget_frontier.py'
+      - 'scripts/colorado_connector_budget_frontier.py'
+      - 'scripts/test_colorado_connector_budget_frontier.py'
       - 'scripts/road_primitive_sparse.py'
       - 'scripts/test_road_primitive_sparse.py'
       - 'scripts/colorado_sparse_parent_oracle.py'
@@ -131,6 +135,36 @@ jobs:
           assert p["parent_exterior_coverage_certified"] is False
           assert p["applied_source_exclusions"] == []
           PYPARENT
+      - name: Compute conditional connector-budget sensitivity for every supplied qualifying metro
+        run: |
+          set -euo pipefail
+          PYTHONPATH=scripts python -m unittest -v scripts/test_metro_connector_budget_frontier.py scripts/test_colorado_connector_budget_frontier.py
+          python scripts/colorado_connector_budget_frontier.py \
+            --domains neighbor-metro-competition/domains.json \
+            --regional-report neighbor-metro-competition/report.json \
+            --parent-report neighbor-metro-competition/primitive-parent-oracle.json \
+            --output neighbor-metro-competition/connector-budget-frontier.json
+          python - <<'PYFRONTIER'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("neighbor-metro-competition/connector-budget-frontier.json").read_text())
+          ids=set(r["source_qualifying_cbsa_ids"])
+          assert len(ids)==367 and len(r["frontiers"])==60
+          assert r["source_thresholds_computed"]==22020
+          assert len(r["unrepresented_source_qualifying_cbsa_ids"])==363
+          assert r["applied_source_exclusions"]==[] and r["conditional_only"] is True
+          for key in ("release_eligible","access_certified","complete_global_competition","road_coverage_certified","datum_alignment_verified"):
+              assert r[key] is False
+          for row in r["frontiers"]:
+              assert len(row["sources"])==367 and {s["cbsa"] for s in row["sources"]}==ids
+              previous=set()
+              for case in row["budget_cases"]:
+                  retained=set(case["retained_or_unknown_ids"])
+                  conditional=set(case["conditional_bound_exceeds_full_incumbent_ids"])
+                  assert retained|conditional==ids and not retained&conditional
+                  assert previous<=retained
+                  previous=retained
+          PYFRONTIER
       - uses: actions/upload-artifact@v6
         if: always()
         with:
