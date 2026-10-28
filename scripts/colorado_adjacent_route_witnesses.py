@@ -20,11 +20,13 @@ PROBES = [143742225, 143862641, 143904064, 143710319, 8499393844, 144231228, 141
 
 
 class CorridorWays:
-    def __init__(self, bounds=BBOX):
+    def __init__(self, bounds=BBOX, *, max_ways=200000):
         if (len(bounds) != 4 or any(isinstance(v, bool) or not isinstance(v, (int, float)) or not math.isfinite(v) for v in bounds)
                 or not -180 <= bounds[0] < bounds[2] <= 180 or not -90 <= bounds[1] < bounds[3] <= 90):
             raise ValueError("Finite ordered geographic corridor required")
-        self.bounds, self.rows = tuple(bounds), {}
+        if type(max_ways) is not int or not 1 <= max_ways <= 500000:
+            raise ValueError("Explicit bounded way budget required")
+        self.bounds, self.rows, self.max_ways = tuple(bounds), {}, max_ways
 
     def add(self, way, tags, points):
         if not supported(tags):
@@ -42,12 +44,14 @@ class CorridorWays:
             if fingerprint(way, *old) != digest:
                 raise ValueError("Selected overlapping way disagrees")
             return
-        if len(self.rows) >= 200000:
+        if len(self.rows) >= self.max_ways:
             raise ValueError("Bounded corridor way memory limit exceeded")
         self.rows[way] = (dict(tags), tuple(points))
 
 
-def build_graph(rows):
+def build_graph(rows, *, max_nodes=300000):
+    if type(max_nodes) is not int or not 1 <= max_nodes <= 1500000:
+        raise ValueError("Explicit bounded graph node budget required")
     if not rows:
         raise ValueError("Empty corridor cannot validate routes")
     def proxy(way, tags, points):
@@ -56,7 +60,9 @@ def build_graph(rows):
     index = JunctionIndex()
     for way, (tags, points) in rows.items():
         index.way(proxy(way, tags, points))
-    handler = RoadHandler(index.junctions(), max_nodes=300000)
+    keep = index.junctions()
+    del index
+    handler = RoadHandler(keep, max_nodes=max_nodes)
     for way, (tags, points) in rows.items():
         handler.way(proxy(way, tags, points))
     return handler.graph
