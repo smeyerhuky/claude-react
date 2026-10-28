@@ -19,6 +19,8 @@ on:
       - 'scripts/test_colorado_connector_budget_frontier.py'
       - 'scripts/colorado_expanded_parent_competition.py'
       - 'scripts/test_colorado_expanded_parent_competition.py'
+      - 'scripts/colorado_exterior_parent_competition.py'
+      - 'scripts/test_colorado_exterior_parent_competition.py'
       - 'scripts/road_primitive_sparse.py'
       - 'scripts/test_road_primitive_sparse.py'
       - 'scripts/colorado_sparse_parent_oracle.py'
