@@ -1,0 +1,38 @@
+{
+  "baseline_sha256": "904baa4eae4fc820aa4e4cd6cc44840e41c99e7dc392f5cb6b702b1cf6499139",
+  "domains_sha256": "d860aef0a6ac2e442590098ed98a7cd601fa63764d8d76ba63e444bebcc5a260",
+  "release_eligible": false,
+  "schema": "utah-batch-reference-v1",
+  "source_provenance": [
+    {
+      "name": "colorado.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+      "size_bytes": 386197077
+    },
+    {
+      "name": "new-mexico.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "2aa3ba0e91c0f19ffd0d614d98f112546552a51d02daf2474d8f06e54304508a",
+      "size_bytes": 136658631
+    },
+    {
+      "name": "arizona.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
+      "size_bytes": 304245283
+    },
+    {
+      "name": "utah.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "34f704431a8b3812372ec10083e151d4227a50caf19159fc9af730f942940c41",
+      "size_bytes": 170845020
+    }
+  ],
+  "upstream_ci": {
+    "head": "ef7ca991578f2785df33f3b5500c7e088bc1ee44",
+    "job": 122915627722,
+    "run": 40716527174
+  },
+  "warning": "Exact passed #180 report. Regression evidence, not independent route ground truth or connector certification."
+}

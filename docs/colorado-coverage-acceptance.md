@@ -109,3 +109,8 @@ absolute geographic accuracy explicitly uncertified.
 [Utah exterior competition](colorado-utah-exterior-competition.md) preserves the
 three-state prefix, reproduces every prior source cost and separates exterior
 road effects from added-source effects; the enlarged parent remains uncertified.
+
+[Bounded remaining-Utah competitors](colorado-utah-bounded-competitors.md)
+uses three same-graph 15+1 experiments and checks all repeated costs before
+forming an eighteen-source research union. The 349 other identities remain
+unrepresented; no unknown source is excluded or connector certified.
