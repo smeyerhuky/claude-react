@@ -91,3 +91,8 @@ unverified connector kilometers and changes route costs; it is not a fix.
 No lower-bound certificate can repair incomplete data *inside* the claimed graph
 boundary. Geometric exclusion must not substitute for access review, turn
 restrictions, physical road closure evidence, or independent geographic sourcing.
+
+[Expanded primitive-parent competition](colorado-expanded-parent-competition.md)
+adds six explicit Colorado source leads while preserving the original four,
+and records the remaining outside-parent source priorities. It is a graph-only
+research extension, not discharge of these acceptance obligations.

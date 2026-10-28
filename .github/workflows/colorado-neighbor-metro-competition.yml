@@ -9,6 +9,8 @@ on:
       - 'scripts/test_metro_connector_budget_frontier.py'
       - 'scripts/colorado_connector_budget_frontier.py'
       - 'scripts/test_colorado_connector_budget_frontier.py'
+      - 'scripts/colorado_expanded_parent_competition.py'
+      - 'scripts/test_colorado_expanded_parent_competition.py'
       - 'scripts/road_primitive_sparse.py'
       - 'scripts/test_road_primitive_sparse.py'
       - 'scripts/colorado_sparse_parent_oracle.py'
@@ -168,6 +170,35 @@ jobs:
                   assert previous<=retained
                   previous=retained
           PYFRONTIER
+      - name: Expand parent competition while preserving original source nodes
+        run: |
+          set -euo pipefail
+          PYTHONPATH=scripts python -m unittest -v scripts/test_colorado_expanded_parent_competition.py
+          timeout --signal=TERM --kill-after=30s 15m python -u scripts/colorado_expanded_parent_competition.py \
+            --domains neighbor-metro-competition/domains.json \
+            --regional-report neighbor-metro-competition/report.json \
+            --parent-report neighbor-metro-competition/primitive-parent-oracle.json \
+            --metros public/data/metros-census-2025.csv \
+            --parent-osm local-data/colorado.osm.pbf local-data/new-mexico.osm.pbf \
+            --output neighbor-metro-competition/expanded-parent-competition.json \
+            2>&1 | tee neighbor-metro-competition/expanded-parent-competition.log
+          python - <<'PYEXPANDED'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("neighbor-metro-competition/expanded-parent-competition.json").read_text())
+          assert len(r["source_qualifying_cbsa_ids"])==367
+          assert len(r["diagnostic_source_cbsa_ids"])==10
+          assert len(r["unrepresented_source_qualifying_cbsa_ids"])==357
+          assert r["source_costs_computed"]==600 and r["baseline_source_costs_checked"]==240
+          assert len(r["comparisons"])==60
+          assert r["primitive_paths_replayed"]==sum(o["graph_only_cost"] is not None for c in r["comparisons"] for o in c["source_costs"])
+          assert all(len(c["source_costs"])==10 for c in r["comparisons"])
+          assert all(s["access_verified"] is False and s["connector_costs_included"] is False for s in r["sources"])
+          assert sum(s["lead_policy"]=="preserved-original-contracted-vertex-lead" for s in r["sources"])==4
+          for flag in ("release_eligible","access_certified","complete_global_competition","road_coverage_certified","parent_exterior_coverage_certified","datum_alignment_verified"):
+              assert r[flag] is False
+          assert r["applied_source_exclusions"]==[]
+          PYEXPANDED
       - uses: actions/upload-artifact@v6
         if: always()
         with:
