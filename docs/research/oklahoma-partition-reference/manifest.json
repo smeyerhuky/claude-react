@@ -1,0 +1,85 @@
+{
+  "baseline_sha256": "f3d103973e0d35b56392a91920496986253b0181927f5cec829f297944e7af94",
+  "conservative_raw_port_ids": [
+    145124557,
+    145177163,
+    145190515,
+    145190533,
+    145194633,
+    145194849,
+    145205046,
+    145214343,
+    145214353,
+    145216656,
+    145216674,
+    145216697,
+    145216712,
+    145216738,
+    145216750,
+    145216757,
+    145216780,
+    145216796,
+    145217048,
+    145223368,
+    145227694,
+    145227730,
+    145227788,
+    145227835,
+    145228683,
+    145230093,
+    145258041,
+    148147051,
+    1345973648,
+    1827139205,
+    3238817236,
+    10069824859,
+    10069824899,
+    10069824900,
+    10069824945,
+    10069824955,
+    10785548604
+  ],
+  "domains_sha256": "d860aef0a6ac2e442590098ed98a7cd601fa63764d8d76ba63e444bebcc5a260",
+  "expected_conceptual_union_nodes": 18740644,
+  "expected_shared_vertices": 1443,
+  "release_eligible": false,
+  "schema": "oklahoma-two-partition-reference-v1",
+  "source_provenance": [
+    {
+      "name": "colorado.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+      "size_bytes": 386197077
+    },
+    {
+      "name": "new-mexico.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "2aa3ba0e91c0f19ffd0d614d98f112546552a51d02daf2474d8f06e54304508a",
+      "size_bytes": 136658631
+    },
+    {
+      "name": "arizona.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
+      "size_bytes": 304245283
+    },
+    {
+      "name": "utah.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "34f704431a8b3812372ec10083e151d4227a50caf19159fc9af730f942940c41",
+      "size_bytes": 170845020
+    },
+    {
+      "name": "oklahoma.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "4e76187cb20fd187d759de9565568381a76d87518377a0e03585d9865e498106",
+      "size_bytes": 169850063
+    }
+  ],
+  "upstream_ci": {
+    "head": "2b4f4a01a193502abaa0f04a92879b79c3ddba8e",
+    "job": 123003707811,
+    "run": 40741417138
+  },
+  "warning": "Passed18-source regression report plus local raw interface investigation, to be reproduced by source CI. Not independent access or geographic ground truth."
+}
