@@ -10,19 +10,19 @@
       "filename": "colorado.osm.pbf",
       "bytes": 386197077,
       "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
-      "source_url": "https://download.geofabrik.de/north-america/us/colorado-latest.osm.pbf"
+      "source_url": "https://download.geofabrik.de/north-america/us/colorado-261027.osm.pbf"
     },
     {
       "filename": "new-mexico.osm.pbf",
       "bytes": 136658631,
       "sha256": "2aa3ba0e91c0f19ffd0d614d98f112546552a51d02daf2474d8f06e54304508a",
-      "source_url": "https://download.geofabrik.de/north-america/us/new-mexico-latest.osm.pbf"
+      "source_url": "https://download.geofabrik.de/north-america/us/new-mexico-261027.osm.pbf"
     },
     {
       "filename": "arizona.osm.pbf",
       "bytes": 304245283,
       "sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
-      "source_url": "https://download.geofabrik.de/north-america/us/arizona-latest.osm.pbf"
+      "source_url": "https://download.geofabrik.de/north-america/us/arizona-261027.osm.pbf"
     },
     {
       "filename": "population.xlsx",
@@ -107,6 +107,12 @@
       "bytes": 48621,
       "sha256": "bf6eef3e2ef556da6c4b6f448aa83d63d00de25477182a45155407f16dcbcdb5",
       "source_url": "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_08.txt"
+    },
+    {
+      "filename": "utah.osm.pbf",
+      "bytes": 170845020,
+      "sha256": "34f704431a8b3812372ec10083e151d4227a50caf19159fc9af730f942940c41",
+      "source_url": "https://download.geofabrik.de/north-america/us/utah-261027.osm.pbf"
     }
   ],
   "warning": "Original research inputs only. Archival retention does not certify legal/physical connectors, complete source/road/geographic coverage, datum alignment or global competition.",
@@ -115,5 +121,8 @@
   "draft_release_tag": "research-sources-20261027-co-nm-az-v1",
   "geographic_accuracy_certified": false,
   "complete_global_competition": false,
-  "manifest_revision": 2
+  "manifest_revision": 3,
+  "extension_states": [
+    "UT"
+  ]
 }

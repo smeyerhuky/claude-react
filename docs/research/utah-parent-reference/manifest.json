@@ -1,0 +1,45 @@
+{
+  "schema": "utah-prefix-reference-v1",
+  "release_eligible": false,
+  "additional_cbsa_ids": [
+    "39340",
+    "41100"
+  ],
+  "prefix_sources": [
+    {
+      "name": "colorado.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+      "size_bytes": 386197077
+    },
+    {
+      "name": "new-mexico.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "2aa3ba0e91c0f19ffd0d614d98f112546552a51d02daf2474d8f06e54304508a",
+      "size_bytes": 136658631
+    },
+    {
+      "name": "arizona.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
+      "size_bytes": 304245283
+    }
+  ],
+  "additional_sources": [
+    {
+      "name": "utah.osm.pbf",
+      "sha256": "34f704431a8b3812372ec10083e151d4227a50caf19159fc9af730f942940c41",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "size_bytes": 170845020
+    }
+  ],
+  "baseline_sha256": "2d932774313357ab000b70bfcec8d314ead993a884ce6a2a584231278782bf34",
+  "domains_sha256": "d860aef0a6ac2e442590098ed98a7cd601fa63764d8d76ba63e444bebcc5a260",
+  "upstream_report_sha256": "ba410698bff010c627cfe0f71d4f08f68b69e402a5ba7f376bca4ffb964bab9f",
+  "upstream_ci": {
+    "head": "e815bf4aa4f8bb632e37c4833be5b15a8721abcc",
+    "run": 40640674406,
+    "job": 122657819801
+  },
+  "warning": "Lossless projection of required baseline fields and all 780 graph costs from passed source CI. Not independent ground truth or access/coverage certification."
+}

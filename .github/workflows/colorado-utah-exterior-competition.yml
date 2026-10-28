@@ -1,0 +1,108 @@
+name: Colorado Utah exterior competition research
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/colorado-utah-exterior-competition.yml'
+      - 'scripts/colorado_utah_exterior_competition.py'
+      - 'scripts/test_colorado_utah_exterior_competition.py'
+      - 'docs/research/utah-parent-reference/**'
+      - 'scripts/colorado_exterior_parent_competition.py'
+      - 'scripts/colorado_expanded_parent_competition.py'
+      - 'scripts/road_primitive_sparse.py'
+      - 'scripts/stream_osm_roads.py'
+      - 'scripts/colorado_adjacent_source_interfaces.py'
+      - 'scripts/colorado_raw_boundary_interfaces.py'
+      - 'scripts/colorado_neighbor_metro_competition.py'
+      - 'scripts/research-source-snapshots/**'
+      - 'public/data/metros-census-2025.csv'
+permissions:
+  contents: read
+jobs:
+  four-state-prefix-and-routes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2'
+      - name: Check frozen prefix binding and cumulative-source regressions
+        run: PYTHONPATH=scripts python -m unittest -v scripts/test_colorado_utah_exterior_competition.py scripts/test_colorado_exterior_parent_competition.py
+      - name: Acquire exact dated sources without accepting changed bytes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PYSOURCES'
+          from pathlib import Path
+          import json, subprocess, sys
+          sys.path.insert(0,"scripts")
+          from colorado_utah_exterior_competition import REFERENCE, digest, load_reference
+          m,_,_=load_reference(REFERENCE)
+          root=Path("local-data");root.mkdir(exist_ok=True)
+          archive_id=json.loads(Path("scripts/research-source-snapshots/co-nm-az-20261027.json").read_text())["draft_release_id"]
+          response=subprocess.run(["gh","api",f"repos/smeyerhuky/claude-react/releases/{archive_id}"],capture_output=True,text=True)
+          assets=json.loads(response.stdout)["assets"] if response.returncode==0 else []
+          if response.returncode:
+              print("Archive is unavailable to this read-only job; using checksum-pinned dated provider files",flush=True)
+          for s in m["prefix_sources"]+m["additional_sources"]:
+              name=s["name"]
+              date=s["replication_timestamp"].split("T")[0].replace("-","")[2:]
+              url="https://download.geofabrik.de/north-america/us/"+name.removesuffix(".osm.pbf")+"-"+date+".osm.pbf"
+              target=root/name
+              matches=[a for a in assets if a["name"]==name]
+              restored=False
+              if matches:
+                  if len(matches)!=1 or matches[0]["state"]!="uploaded" or matches[0]["size"]!=s["size_bytes"] or matches[0].get("digest")!="sha256:"+s["sha256"]:
+                      raise ValueError("Retained source metadata mismatch; never substitute changed bytes")
+                  with target.open("wb") as f:
+                      result=subprocess.run(["gh","api","--header","Accept: application/octet-stream",f"repos/smeyerhuky/claude-react/releases/assets/{matches[0]['id']}"],stdout=f,stderr=subprocess.PIPE)
+                  restored=result.returncode==0
+              if not restored:
+                  subprocess.run(["curl","-fLSs","--retry","3","--connect-timeout","20","--max-time","1200","--output",str(target),url],check=True)
+              if target.stat().st_size!=s["size_bytes"] or digest(target)!=s["sha256"]:
+                  raise ValueError("Exact dated source mismatch; do not rewrite hashes or substitute latest")
+              print("Verified source",name,"archive" if restored else "dated provider",s["sha256"],flush=True)
+          PYSOURCES
+      - name: Reproduce all prior costs and check Utah exterior effects
+        run: |
+          set -euo pipefail
+          mkdir -p utah-exterior-competition
+          timeout --signal=TERM --kill-after=30s 30m python -u scripts/colorado_utah_exterior_competition.py \
+            --metros public/data/metros-census-2025.csv \
+            --parent-osm local-data/colorado.osm.pbf local-data/new-mexico.osm.pbf local-data/arizona.osm.pbf local-data/utah.osm.pbf \
+            --output utah-exterior-competition/report.json \
+            2>&1 | tee utah-exterior-competition/routing.log
+          python - <<'PYCHECK'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("utah-exterior-competition/report.json").read_text())
+          assert len(r["source_qualifying_cbsa_ids"])==367
+          assert len(r["diagnostic_source_cbsa_ids"])==15
+          assert r["additional_source_cbsa_ids"]==["39340","41100"]
+          assert len(r["prefix_diagnostic_source_cbsa_ids"])==13
+          assert len(r["unrepresented_source_qualifying_cbsa_ids"])==352
+          assert r["original_prefix_costs_reproduced"]==780 and r["source_costs_computed"]==900
+          assert len(r["comparisons"])==60
+          assert r["primitive_paths_replayed"]==sum(o["graph_only_cost"] is not None for c in r["comparisons"] for o in c["source_costs"])
+          for c in r["comparisons"]:
+              assert len(c["source_costs"])==15
+              assert all(o["prefix_cost_status"]=="not_computed_for_previously_unrepresented_source" for o in c["source_costs"] if o["cbsa"] in r["additional_source_cbsa_ids"])
+          cut=r["weighted_prefix_interface"]
+          assert cut["prefix_directed_pairs_preserved"]==24898833
+          assert cut["all_prefix_modeled_paths_preserved_with_nonincreased_cost"] is True
+          assert cut["inbound_directed_pairs"]>0 and cut["outbound_directed_pairs"]>0
+          assert cut["weighted_interface_node_count"]==len(cut["weighted_interface_nodes"])>0
+          assert r["primitive_parent_graph"]["nodes"]<=14747913
+          assert all(s["access_verified"] is False and s["connector_costs_included"] is False for s in r["sources"])
+          for flag in ("release_eligible","access_certified","complete_global_competition","road_coverage_certified","parent_exterior_coverage_certified","datum_alignment_verified"):
+              assert r[flag] is False
+          assert r["applied_source_exclusions"]==[]
+          PYCHECK
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: colorado-utah-exterior-competition
+          path: utah-exterior-competition/
+          retention-days: 14
