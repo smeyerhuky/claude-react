@@ -5,6 +5,10 @@ on:
     paths:
       - '.github/workflows/colorado-neighbor-metro-competition.yml'
       - 'scripts/colorado_neighbor_metro_competition.py'
+      - 'scripts/road_primitive_sparse.py'
+      - 'scripts/test_road_primitive_sparse.py'
+      - 'scripts/colorado_sparse_parent_oracle.py'
+      - 'scripts/test_colorado_sparse_parent_oracle.py'
       - 'scripts/test_colorado_neighbor_metro_competition.py'
       - 'scripts/colorado_adjacent_route_witnesses.py'
       - 'scripts/test_colorado_adjacent_route_witnesses.py'
@@ -26,7 +30,7 @@ permissions:
 jobs:
   actual-interstate-metro-subset:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 75
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v6
@@ -95,6 +99,38 @@ jobs:
           assert r["graph_nodes"] <= r["resource_limits"]["nodes"]
           assert r["peak_process_rss_kib"] > 0
           PY
+      - name: Verify regional costs against all supplied parent roads with an independent primitive CSR oracle
+        run: |
+          set -euo pipefail
+          PYTHONPATH=scripts python -m unittest -v scripts/test_road_primitive_sparse.py scripts/test_colorado_sparse_parent_oracle.py
+          timeout --signal=TERM --kill-after=30s 25m python -u scripts/colorado_sparse_parent_oracle.py \
+            --regional-report neighbor-metro-competition/report.json \
+            --parent-osm local-data/colorado.osm.pbf local-data/new-mexico.osm.pbf \
+            --output neighbor-metro-competition/primitive-parent-oracle.json \
+            2>&1 | tee neighbor-metro-competition/primitive-parent-oracle.log
+          python - <<'PYPARENT'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("neighbor-metro-competition/report.json").read_text())
+          p=json.loads(Path("neighbor-metro-competition/primitive-parent-oracle.json").read_text())
+          assert p["independent_primitive_source_costs_checked"] == 240
+          assert len(p["comparisons"]) == 60
+          assert p["primitive_predecessor_paths_checked"] == 240
+          assert p["source_provenance"] == r["source_provenance"]
+          assert p["source_qualifying_cbsa_ids"] == r["source_qualifying_cbsa_ids"]
+          assert p["unrepresented_source_qualifying_cbsa_ids"] == r["unrepresented_source_qualifying_cbsa_ids"]
+          assert p["primitive_parent_graph"]["nodes"] > r["graph_nodes"]
+          assert p["primitive_parent_graph"]["modeled_ways"] > r["selected_ways"]
+          # Preserve this actual-source sample agreement. New exterior shortcuts
+          # must trigger investigation rather than silently altering the claim.
+          assert p["improved_source_cost_cases"] == 0
+          assert p["changed_subset_winner_cases"] == 0
+          assert p["changed_isochrone_budget_cases"] == 0
+          assert p["release_eligible"] is False and p["access_certified"] is False
+          assert p["complete_global_competition"] is False and p["road_coverage_certified"] is False
+          assert p["parent_exterior_coverage_certified"] is False
+          assert p["applied_source_exclusions"] == []
+          PYPARENT
       - uses: actions/upload-artifact@v6
         if: always()
         with:
