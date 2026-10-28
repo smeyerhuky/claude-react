@@ -1,0 +1,72 @@
+{
+  "access_certified": false,
+  "applied_source_exclusions": [],
+  "complete_global_competition": false,
+  "completed_prefix_counts": [
+    {
+      "source": "colorado.osm.pbf",
+      "union_modeled_node_ids": 5292810
+    },
+    {
+      "source": "new-mexico.osm.pbf",
+      "union_modeled_node_ids": 8191913
+    },
+    {
+      "source": "arizona.osm.pbf",
+      "union_modeled_node_ids": 12398597
+    },
+    {
+      "source": "utah.osm.pbf",
+      "union_modeled_node_ids": 14725537
+    }
+  ],
+  "datum_alignment_verified": false,
+  "first_limit_exceeding_witness": {
+    "lonlat": [
+      -98.605935,
+      35.371261
+    ],
+    "osm_node_id": 145059100,
+    "osm_way_id": 14699540
+  },
+  "node_limit": 15000000,
+  "parent_exterior_coverage_certified": false,
+  "release_eligible": false,
+  "road_coverage_certified": false,
+  "schema": "bounded-modeled-node-union-preflight-v1",
+  "source_provenance": [
+    {
+      "name": "colorado.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+      "size_bytes": 386197077
+    },
+    {
+      "name": "new-mexico.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "2aa3ba0e91c0f19ffd0d614d98f112546552a51d02daf2474d8f06e54304508a",
+      "size_bytes": 136658631
+    },
+    {
+      "name": "arizona.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
+      "size_bytes": 304245283
+    },
+    {
+      "name": "utah.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "34f704431a8b3812372ec10083e151d4227a50caf19159fc9af730f942940c41",
+      "size_bytes": 170845020
+    },
+    {
+      "name": "oklahoma.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "4e76187cb20fd187d759de9565568381a76d87518377a0e03585d9865e498106",
+      "size_bytes": 169850063
+    }
+  ],
+  "source_scan_complete": false,
+  "union_node_count_lower_bound": 15000001,
+  "warning": "Supported-way unique-node necessary resource check only. Not a complete graph/model compatibility audit, full union count, route computation, access evidence or geographic coverage certificate. No resource limit changed."
+}
