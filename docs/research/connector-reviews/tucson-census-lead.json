@@ -1,0 +1,132 @@
+{
+  "schema": "ai-connector-review-v1",
+  "cbsa": "46060",
+  "origin_policy": "census-regression-v1",
+  "reviewer": {
+    "kind": "ai",
+    "identity": "Codex (OpenAI), 2026-10-28",
+    "procedure": "Inspect pinned negative report and source-reproduction workflow; distinguish modeled connectivity from physical/legal access; answer every access question without inferring from proximity."
+  },
+  "sources": [
+    {
+      "id": "az-component",
+      "path": "docs/research/tucson-unreachable-negative.json",
+      "sha256": "a3e83c2a082847f75828acac0bacfbbba81027e94cf72b1600807bffb91f8268",
+      "kind": "routing_model",
+      "provenance": "Pinned Arizona OSM report, independently reproducible by .github/workflows/tucson-unreachable-negative.yml. Same-source topology evidence, not independent access evidence."
+    }
+  ],
+  "machine_assertions": [
+    {
+      "source": "az-component",
+      "keys": [
+        "source",
+        "cbsa"
+      ],
+      "equals": "46060"
+    },
+    {
+      "source": "az-component",
+      "keys": [
+        "source",
+        "node"
+      ],
+      "equals": 175244806
+    },
+    {
+      "source": "az-component",
+      "keys": [
+        "source",
+        "native_origin_lonlat"
+      ],
+      "equals": [
+        -111.7836574,
+        32.128038
+      ]
+    },
+    {
+      "source": "az-component",
+      "keys": [
+        "weak_component_node_count"
+      ],
+      "equals": 3
+    },
+    {
+      "source": "az-component",
+      "keys": [
+        "component_node_ids"
+      ],
+      "equals": [
+        175053966,
+        175244804,
+        175244806
+      ]
+    },
+    {
+      "source": "az-component",
+      "keys": [
+        "access_certified"
+      ],
+      "equals": false
+    },
+    {
+      "source": "az-component",
+      "keys": [
+        "origin_moved"
+      ],
+      "equals": false
+    },
+    {
+      "source": "az-component",
+      "keys": [
+        "road_filter_changed"
+      ],
+      "equals": false
+    }
+  ],
+  "findings": {
+    "physical_connection": {
+      "status": "unknown",
+      "sources": [
+        "az-component"
+      ],
+      "reason": "The 5691.8 m geometric gap is not a surveyed or documented drivable path. The selected road node belongs to a three-node modeled component; this does not establish real-world inaccessibility."
+    },
+    "legal_motor_access": {
+      "status": "unknown",
+      "sources": [
+        "az-component"
+      ],
+      "reason": "OSM residential/track and TIGER tags do not establish a public right of motor access; no independent access record retained."
+    },
+    "same_grade": {
+      "status": "unknown",
+      "sources": [
+        "az-component"
+      ],
+      "reason": "No independent survey, imagery interpretation or agency record demonstrates the proposed origin-to-road connection at the correct grade."
+    },
+    "direction_and_turns": {
+      "status": "unknown",
+      "sources": [
+        "az-component"
+      ],
+      "reason": "The static model does not resolve all turn restrictions; no reviewed connector geometry or directed entry has been selected."
+    },
+    "connector_cost": {
+      "status": "unknown",
+      "sources": [
+        "az-component"
+      ],
+      "reason": "No physical connector path selected; straight-line gap cannot supply a validated travel distance or time."
+    }
+  },
+  "decision": "reject_modeled_candidate",
+  "access_verified": false,
+  "release_eligible": false,
+  "limitations": [
+    "Reject only this candidate for current modeled routing to the existing probes, not Tucson eligibility or real-world accessibility.",
+    "No urban anchor selected. Preserve Census regression; a future urban anchor is a different versioned candidate.",
+    "AI review is not a separate release approver. No approval ledger mutation or geographic coverage claim."
+  ]
+}

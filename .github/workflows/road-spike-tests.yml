@@ -2,6 +2,9 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/connector_review_packet.py'
+      - 'scripts/test_connector_review_packet.py'
+      - 'docs/research/connector-reviews/**'
       - 'scripts/road_spike.py'
       - 'scripts/road_partition_oracle.py'
       - 'scripts/test_road_partition_oracle.py'
