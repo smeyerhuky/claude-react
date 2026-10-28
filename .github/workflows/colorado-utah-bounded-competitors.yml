@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/colorado-utah-bounded-competitors.yml'
       - 'scripts/colorado_utah_bounded_competitors.py'
+      - 'scripts/colorado_utah_exterior_competition.py'
       - 'scripts/test_colorado_utah_bounded_competitors.py'
       - 'docs/research/utah-batch-reference/**'
       - 'docs/research/utah-parent-reference/domains.json'
@@ -15,6 +16,8 @@ on:
       - 'scripts/colorado_adjacent_source_interfaces.py'
       - 'scripts/colorado_raw_boundary_interfaces.py'
       - 'scripts/colorado_neighbor_metro_competition.py'
+      - 'scripts/colorado_metro_winners.py'
+      - 'scripts/colorado_sparse_parent_oracle.py'
       - 'scripts/research-source-snapshots/**'
       - 'public/data/metros-census-2025.csv'
 permissions:
