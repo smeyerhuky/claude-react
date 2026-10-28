@@ -99,3 +99,8 @@ No source/destination connector, legal entry, turns/grade, land/water/datum,
 exterior closure or independent golden evidence is certified. #137's independent
 reviewer and separate approver gate, empty approval ledger and public map remain
 intact. UI integration must continue to await those release obligations.
+
+[Tucson's modeled-unreachable lead](colorado-tucson-unreachable-negative.md)
+records the three-node residential component and excluded track found by the
+source run. It remains an included, explicitly unreachable modeled source;
+no origin or filter is changed to remove that negative case.

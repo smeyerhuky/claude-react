@@ -1,0 +1,87 @@
+name: Tucson modeled-unreachable negative
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/tucson-unreachable-negative.yml'
+      - 'docs/research/tucson-unreachable-negative.json'
+      - 'docs/research/utah-parent-reference/domains.json'
+      - 'public/data/metros-census-2025.csv'
+      - 'scripts/road_primitive_sparse.py'
+      - 'scripts/stream_osm_roads.py'
+      - 'scripts/colorado_adjacent_source_interfaces.py'
+      - 'scripts/colorado_raw_boundary_interfaces.py'
+      - 'scripts/colorado_exterior_parent_competition.py'
+      - 'scripts/colorado_expanded_parent_competition.py'
+permissions:
+  contents: read
+jobs:
+  reproduce-component-and-excluded-link:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2'
+      - name: Reproduce exact native lead, complete Arizona component and raw incident ways
+        run: |
+          python - <<'PY'
+          import hashlib,json,math,subprocess,sys
+          from pathlib import Path
+          import numpy as np
+          from scipy.sparse.csgraph import connected_components
+          sys.path.insert(0,'scripts')
+          from colorado_adjacent_source_interfaces import HighwayReader,source_metadata
+          from colorado_exterior_parent_competition import SourceScan
+          from colorado_expanded_parent_competition import nearest_primitive_lead
+          from colorado_raw_boundary_interfaces import supported
+          from road_primitive_sparse import PrimitiveSparseBuilder
+          expected=json.loads(Path('docs/research/tucson-unreachable-negative.json').read_text())
+          assert all(expected[f] is False for f in ('release_eligible','access_certified','road_coverage_certified','origin_moved','road_filter_changed'))
+          source=expected['source']
+          assert source['access_verified'] is False and source['connector_costs_included'] is False
+          for path,key in [('public/data/metros-census-2025.csv','metros_csv_sha256'),('docs/research/utah-parent-reference/domains.json','domains_sha256')]:
+              assert hashlib.sha256(Path(path).read_bytes()).hexdigest()==expected[key]
+          domains=json.loads(Path('docs/research/utah-parent-reference/domains.json').read_text())
+          native=next(x for x in domains['domains'] if x['cbsa']=='46060')['native_representative_lonlat']
+          assert native==source['native_origin_lonlat']
+          p=Path('arizona.osm.pbf')
+          subprocess.run(['curl','-fLSs','--retry','3','--connect-timeout','20','--max-time','600','--output',str(p),'https://download.geofabrik.de/north-america/us/arizona-261027.osm.pbf'],check=True)
+          assert source_metadata(p)==expected['source_provenance']
+          b=PrimitiveSparseBuilder();scan=SourceScan(b)
+          HighwayReader(scan).apply_file(str(p),locations=True,idx='sparse_mem_array')
+          del scan
+          graph=b.finish();del b
+          lead=nearest_primitive_lead(graph,native)
+          assert lead['node']==source['node'] and lead['node_lonlat']==source['node_lonlat']
+          assert math.isclose(lead['diagnostic_gap_m'],source['diagnostic_gap_m'],abs_tol=1e-6,rel_tol=1e-12)
+          _,labels=connected_components(graph.length,directed=True,connection='weak')
+          indices=np.flatnonzero(labels==labels[graph.node_index[source['node']]])
+          component=set(map(int,graph.osm_ids[indices]))
+          assert len(component)==expected['weak_component_node_count']==3
+          assert sorted(component)==expected['component_node_ids']
+          bbox=[float(graph.longitude[indices].min()),float(graph.latitude[indices].min()),float(graph.longitude[indices].max()),float(graph.latitude[indices].max())]
+          assert bbox==expected['weak_component_bbox']
+          class Incident:
+              def __init__(self): self.ways=[]
+              def add(self,way,tags,points):
+                  touching=[n for n,x,y in points if n in component]
+                  if not touching: return
+                  modeled=bool(supported(tags));outside=sum(n not in component for n,x,y in points)
+                  if modeled and outside: raise ValueError('Modeled way crosses claimed complete component')
+                  if len(self.ways)>=10000: raise ValueError('Incident budget exceeded; never truncate')
+                  self.ways.append({'osm_way_id':way,'tags':tags,'modeled':modeled,'point_count':len(points),'component_node_ids':sorted(set(touching)),'nodes_outside_component':outside})
+          incident=Incident();HighwayReader(incident).apply_file(str(p),locations=True,idx='sparse_mem_array')
+          assert incident.ways==expected['incident_raw_highways']
+          root=Path('tucson-negative');root.mkdir()
+          (root/'report.json').write_text(json.dumps(expected,indent=2,sort_keys=True)+'\n')
+          print('Reproduced complete3-node component and excluded track; no origin/filter/approval changed')
+          PY
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: tucson-unreachable-negative
+          path: tucson-negative/
+          retention-days: 14
