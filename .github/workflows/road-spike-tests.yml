@@ -2,6 +2,9 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/metro_competitor_review_queue.py'
+      - 'scripts/test_metro_competitor_review_queue.py'
+      - 'docs/research/remaining-competitor-queue/**'
       - 'scripts/denver_waypoint_hypothesis.py'
       - 'scripts/test_denver_waypoint_hypothesis.py'
       - 'scripts/metro_scenario_checkpoint.py'

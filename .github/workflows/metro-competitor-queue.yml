@@ -1,0 +1,22 @@
+name: Complete remaining metro competitor queue
+on:
+  pull_request:
+    paths:
+      - 'scripts/metro_competitor_review_queue.py'
+      - 'scripts/test_metro_competitor_review_queue.py'
+      - 'docs/research/remaining-competitor-queue/**'
+      - '.github/workflows/metro-competitor-queue.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproduce-complete-queue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s scripts -p 'test_metro_competitor_review_queue.py' -v
+      - run: python scripts/metro_competitor_review_queue.py --output reproduced.json
+      - run: cmp reproduced.json docs/research/remaining-competitor-queue/queue.json
