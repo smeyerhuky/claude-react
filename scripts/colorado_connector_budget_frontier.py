@@ -57,7 +57,7 @@ def audit_frontiers(domains,regional,parent):
         metric=row["metric"]
         result=connector_budget_frontier(ids,origin_domains,coordinates[row["probe"]],metric=metric,
                     graph_path_cost=cost,connector_budgets=[0,5000,25000] if metric=="length" else [0,600,3600],
-                    margin=1 if metric=="length" else ".1",speed_ceiling_kph=140 if metric=="travel_time" else None)
+                    margin=1 if metric=="length" else ".1",speed_ceiling_kph=140 if metric=="travel_time" else None,incumbent_cbsa=cbsa)
         result.update(probe=row["probe"],orientation=row["orientation"],incumbent_cbsa=cbsa,
                       incumbent_source_node=sources[cbsa]["node"],destination_node_lonlat=coordinates[row["probe"]])
         frontiers.append(result)

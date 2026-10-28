@@ -28,6 +28,10 @@ class CensusFrontierTests(unittest.TestCase):
             previous=set()
             for case in row["budget_cases"]:
                 current=set(case["retained_or_unknown_ids"])
+                if case["incumbent_budget_refuted_under_geometric_assumptions"]:
+                    self.assertEqual(current,set(result["source_qualifying_cbsa_ids"]))
+                    self.assertEqual(case["conditional_bound_exceeds_full_incumbent_ids"],[])
+                    continue
                 self.assertTrue(previous<=current)
                 self.assertEqual(current|set(case["conditional_bound_exceeds_full_incumbent_ids"]),set(result["source_qualifying_cbsa_ids"]))
                 previous=current

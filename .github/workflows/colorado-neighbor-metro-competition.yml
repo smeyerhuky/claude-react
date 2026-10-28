@@ -162,6 +162,9 @@ jobs:
                   retained=set(case["retained_or_unknown_ids"])
                   conditional=set(case["conditional_bound_exceeds_full_incumbent_ids"])
                   assert retained|conditional==ids and not retained&conditional
+                  if case["incumbent_budget_refuted_under_geometric_assumptions"]:
+                      assert retained==ids and not conditional
+                      continue
                   assert previous<=retained
                   previous=retained
           PYFRONTIER

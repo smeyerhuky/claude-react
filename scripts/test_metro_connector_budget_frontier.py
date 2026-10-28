@@ -31,6 +31,18 @@ class FrontierTests(unittest.TestCase):
                 budget=Fraction(*map(int,case["total_connector_cost_upper_bound_assumption_exact"]))
                 self.assertEqual("a" in case["conditional_bound_exceeds_full_incumbent_ids"],lower>Fraction(1,3)+budget+Fraction(1,7))
 
+    def test_inconsistent_incumbent_budget_retains_every_source(self):
+        lower=distance_lower_bound([0,1],[0,0])
+        result=self.fixture(incumbent_cbsa="a",graph_path_cost=100,
+                            connector_budgets=[0,lower-100,lower])
+        self.assertTrue(result["budget_cases"][0]["incumbent_budget_refuted_under_geometric_assumptions"])
+        self.assertEqual(result["budget_cases"][0]["retained_or_unknown_ids"],["a","b"])
+        self.assertEqual(result["budget_cases"][0]["conditional_bound_exceeds_full_incumbent_ids"],[])
+        self.assertFalse(result["budget_cases"][1]["incumbent_budget_refuted_under_geometric_assumptions"])
+        self.assertNotIn("a",result["budget_cases"][1]["conditional_bound_exceeds_full_incumbent_ids"])
+        self.assertEqual(result["applied_source_exclusions"],[])
+        with self.assertRaises(ValueError):self.fixture(incumbent_cbsa="missing")
+
     def test_unknown_time_ceiling_never_has_threshold(self):
         result=self.fixture(metric="travel_time")
         self.assertTrue(all(r["connector_budget_strict_upper_threshold_exact"] is None for r in result["sources"]))

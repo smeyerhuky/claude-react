@@ -16,7 +16,11 @@ B < L - G - M
 ```
 
 All arithmetic is rational; equality remains a possible competitor. Larger
-connector budgets retain monotonically more competitors. Unknown source domains
+connector budgets retain monotonically more competitors among assumptions not
+geometrically refuted. If G+B is below the incumbent's own full-route geometric
+lower bound, that budget assumption is inconsistent under the stated geometry:
+the case retains every source and emits no conditional exclusion IDs. Absence
+of this contradiction still does not prove feasible connectors. Unknown source domains
 and missing global speed ceilings never receive a threshold. This helper applies
 no exclusions and certifies no preconditions.
 

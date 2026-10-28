@@ -10,12 +10,14 @@ from metro_competition_bounds import distance_lower_bound, number, point
 
 def connector_budget_frontier(eligible_ids, domains, destination, *, metric,
                               graph_path_cost, connector_budgets, margin=0,
-                              speed_ceiling_kph=None):
+                              speed_ceiling_kph=None, incumbent_cbsa=None):
     ids=list(eligible_ids)
     if not ids or any(not isinstance(i,str) or not i for i in ids) or len(ids)!=len(set(ids)):
         raise ValueError("Complete unique eligible source inventory required")
     if set(domains)-set(ids):
         raise ValueError("Origin domain outside eligible inventory")
+    if incumbent_cbsa is not None and incumbent_cbsa not in ids:
+        raise ValueError("Incumbent outside eligible inventory")
     point(destination)
     graph,slack=number(graph_path_cost),number(margin)
     budgets=list(map(number,connector_budgets))
@@ -45,6 +47,9 @@ def connector_budget_frontier(eligible_ids, domains, destination, *, metric,
         rows.append({"cbsa":cbsa,"reason":reason,
                      "lower_bound_exact":None if lower is None else encoded(lower),
                      "connector_budget_strict_upper_threshold_exact":None if threshold is None else encoded(threshold)})
+    incumbent_row=next((r for r in rows if r["cbsa"]==incumbent_cbsa),None)
+    incumbent_lower=None if incumbent_row is None else incumbent_row["lower_bound_exact"]
+    incumbent_lower=None if incumbent_lower is None else number(incumbent_lower[0])/number(incumbent_lower[1])
     cases=[]
     for budget in sorted(budgets):
         may_compete=[];conditional=[]
@@ -52,12 +57,19 @@ def connector_budget_frontier(eligible_ids, domains, destination, *, metric,
             value=row["connector_budget_strict_upper_threshold_exact"]
             threshold=None if value is None else number(value[0])/number(value[1])
             (conditional if threshold is not None and budget<threshold else may_compete).append(row["cbsa"])
+        refuted=incumbent_lower is not None and graph+budget<incumbent_lower
+        if refuted:
+            # Inconsistent assumptions must not yield a vacuous exclusion list.
+            conditional=[];may_compete=sorted(ids)
         cases.append({"total_connector_cost_upper_bound_assumption_exact":encoded(budget),
+                      "incumbent_budget_refuted_under_geometric_assumptions":refuted,
                       "conditional_bound_exceeds_full_incumbent_ids":conditional,
                       "retained_or_unknown_ids":may_compete})
     return {"conditional_only":True,"release_eligible":False,"access_certified":False,
             "complete_global_competition":False,"applied_source_exclusions":[],
             "metric":metric,"units":"meters" if metric=="length" else "seconds",
+            "incumbent_cbsa":incumbent_cbsa,
+            "budget_feasibility_warning":"Not refuted is not feasible; actual directed connectors and all preconditions remain unverified",
             "graph_path_cost_exact":encoded(graph),"margin_exact":encoded(slack),
             "sources":rows,"budget_cases":cases,
             "preconditions_not_certified":[
