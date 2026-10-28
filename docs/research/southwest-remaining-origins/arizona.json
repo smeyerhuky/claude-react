@@ -1,0 +1,183 @@
+{
+  "access_verified": false,
+  "applied_source_exclusions": [],
+  "code_head": "e769c030c579750c817f86d5c1935520f1991e3b",
+  "complete_global_competition": false,
+  "connector_costs_included": false,
+  "driving_filter_sha256": "25e8bbe7ce8ccd54e7a0237165b4e8370f69a1828af6e4ec0e063559a618ec3c",
+  "extract_coverage_certified": false,
+  "highway_ways_with_missing_locations": 0,
+  "limitations": "Nearest geometry only within supplied PBF and search radius; OSM tags and modeled driving eligibility do not prove physical/legal entry; representative points are not verified urban access anchors",
+  "method": "Raw PBF highway-way scan; no contracted graph or SegmentGridIndex; local equirectangular projection with spherical gap distance",
+  "metros": [
+    {
+      "cbsa": "38060",
+      "name": "Phoenix-Mesa-Chandler, AZ Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 3538.4027419048452,
+        "highway": "track",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 836803538,
+        "osm_way_url": "https://www.openstreetmap.org/way/836803538",
+        "projection_lonlat": [
+          -112.0302016,
+          33.1901539
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 3720.722707576762,
+        "highway": "primary",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "West Riggs Road",
+        "osm_way_id": 529995284,
+        "osm_way_url": "https://www.openstreetmap.org/way/529995284",
+        "projection_lonlat": [
+          -112.0666706,
+          33.2192117
+        ]
+      },
+      "origin_lonlat": [
+        -112.0678624,
+        33.1857653
+      ]
+    },
+    {
+      "cbsa": "43420",
+      "name": "Sierra Vista-Douglas, AZ Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 2904.266695107348,
+        "highway": "track",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 16798965,
+        "osm_way_url": "https://www.openstreetmap.org/way/16798965",
+        "projection_lonlat": [
+          -109.745451,
+          31.846847
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 3730.4698754407955,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "East Rainbows End Trail",
+        "osm_way_id": 16811609,
+        "osm_way_url": "https://www.openstreetmap.org/way/16811609",
+        "projection_lonlat": [
+          -109.7451241,
+          31.8619115
+        ]
+      },
+      "origin_lonlat": [
+        -109.7751627,
+        31.8401287
+      ]
+    },
+    {
+      "cbsa": "46060",
+      "name": "Tucson, AZ Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 1256.3077040135056,
+        "highway": "track",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 16891431,
+        "osm_way_url": "https://www.openstreetmap.org/way/16891431",
+        "projection_lonlat": [
+          -111.796619,
+          32.130715
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 5691.809484196113,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 16894310,
+        "osm_way_url": "https://www.openstreetmap.org/way/16894310",
+        "projection_lonlat": [
+          -111.755014,
+          32.082966
+        ]
+      },
+      "origin_lonlat": [
+        -111.7836574,
+        32.128038
+      ]
+    },
+    {
+      "cbsa": "49740",
+      "name": "Yuma, AZ Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 543.1988378857784,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 16952553,
+        "osm_way_url": "https://www.openstreetmap.org/way/16952553",
+        "projection_lonlat": [
+          -113.906696,
+          32.770575
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 543.1988378857784,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 16952553,
+        "osm_way_url": "https://www.openstreetmap.org/way/16952553",
+        "projection_lonlat": [
+          -113.906696,
+          32.770575
+        ]
+      },
+      "origin_lonlat": [
+        -113.910905,
+        32.7739424
+      ]
+    }
+  ],
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "osm_sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
+  "release_eligible": false,
+  "scan_radius_m": 25000.0,
+  "scanner_sha256": "342ea2fcf9c470697364671a4330a514dac094beeb02bccbe31636cfb9e1d2f5",
+  "schema_version": "colorado-raw-origin-investigation-v1",
+  "source_filename": "arizona.osm.pbf",
+  "source_inclusion_status": "Unrepresented in #180; raw proximity investigation does not add a routing source",
+  "source_replication_timestamp": "2026-10-27T21:23:59Z"
+}
