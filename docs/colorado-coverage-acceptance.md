@@ -114,3 +114,8 @@ road effects from added-source effects; the enlarged parent remains uncertified.
 uses three same-graph 15+1 experiments and checks all repeated costs before
 forming an eighteen-source research union. The 349 other identities remain
 unrepresented; no unknown source is excluded or connector certified.
+
+[Two-partition routing research](colorado-two-partition-routing.md) tests bounded
+local shortest-path composition across the retained graph and Oklahoma, including
+shared/shared arc improvements and repeated leave/re-enter paths. Its unapproved
+26-source subset leaves 341 identities unknown; it does not authorize UI regions.

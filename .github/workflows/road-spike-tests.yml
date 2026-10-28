@@ -3,6 +3,11 @@ on:
   pull_request:
     paths:
       - 'scripts/road_spike.py'
+      - 'scripts/road_partition_oracle.py'
+      - 'scripts/test_road_partition_oracle.py'
+      - 'scripts/colorado_two_partition_competition.py'
+      - 'scripts/test_colorado_two_partition_competition.py'
+      - 'docs/research/oklahoma-partition-reference/**'
       - 'scripts/colorado_node_union_preflight.py'
       - 'scripts/test_colorado_node_union_preflight.py'
       - 'scripts/colorado_geographic_mask.py'
