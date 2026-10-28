@@ -102,9 +102,16 @@ class PrimitiveSparseBuilder:
             raise
 
     def finish(self):
+        return self._materialize(close=True)
+
+    def snapshot(self):
+        """Freeze an independent prefix graph while allowing further sources."""
+        return self._materialize(close=False)
+
+    def _materialize(self, *, close):
         if self.failed or self.finished or not self.u:
             raise ValueError("Cannot finish failed, empty or finished source scan")
-        self.finished=True
+        self.finished=close
         nodes,arcs=len(self.ids),len(self.u)
         u=np.frombuffer(self.u,dtype=np.uint32)
         v=np.frombuffer(self.v,dtype=np.uint32)
@@ -131,8 +138,12 @@ class PrimitiveSparseBuilder:
                 "unsupported_direction_ways":self.unsupported,
                 "parallel_cost_policy":"per-metric minimum, not summation; explicit zero arcs retained",
                 "resource_limits":{"nodes":self.max_nodes,"arcs":self.max_arcs}}
-        result=PrimitiveSparseGraph(self.node_index,np.frombuffer(self.ids,dtype=np.uint64),
-            np.frombuffer(self.lon,dtype=np.float64),np.frombuffer(self.lat,dtype=np.float64),length,travel_time,report)
-        self.fingerprints.clear()
-        del self.u,self.v,self.length,self.time
+        ids=np.frombuffer(self.ids,dtype=np.uint64)
+        lon=np.frombuffer(self.lon,dtype=np.float64)
+        lat=np.frombuffer(self.lat,dtype=np.float64)
+        result=PrimitiveSparseGraph(self.node_index if close else self.node_index.copy(),
+            ids if close else ids.copy(),lon if close else lon.copy(),lat if close else lat.copy(),length,travel_time,report)
+        if close:
+            self.fingerprints.clear()
+            del self.u,self.v,self.length,self.time
         return result

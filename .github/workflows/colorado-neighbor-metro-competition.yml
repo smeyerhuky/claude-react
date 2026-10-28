@@ -11,6 +11,8 @@ on:
       - 'scripts/test_colorado_connector_budget_frontier.py'
       - 'scripts/colorado_expanded_parent_competition.py'
       - 'scripts/test_colorado_expanded_parent_competition.py'
+      - 'scripts/colorado_exterior_parent_competition.py'
+      - 'scripts/test_colorado_exterior_parent_competition.py'
       - 'scripts/road_primitive_sparse.py'
       - 'scripts/test_road_primitive_sparse.py'
       - 'scripts/colorado_sparse_parent_oracle.py'
@@ -50,6 +52,7 @@ jobs:
           mkdir -p local-data neighbor-metro-competition
           curl -fLSs --retry 3 --connect-timeout 20 --max-time 1200 -o local-data/colorado.osm.pbf https://download.geofabrik.de/north-america/us/colorado-latest.osm.pbf
           curl -fLSs --retry 3 --connect-timeout 20 --max-time 1200 -o local-data/new-mexico.osm.pbf https://download.geofabrik.de/north-america/us/new-mexico-latest.osm.pbf
+          curl -fLSs --retry 3 --connect-timeout 20 --max-time 1200 -o local-data/arizona.osm.pbf https://download.geofabrik.de/north-america/us/arizona-latest.osm.pbf
           curl -fLSs --retry 3 --max-time 180 -o local-data/cbsa-met-est2025-pop.xlsx https://www2.census.gov/programs-surveys/popest/tables/2020-2025/metro/totals/cbsa-met-est2025-pop.xlsx
           curl -fLSs --retry 3 --max-time 600 -o local-data/tl_2025_us_cbsa.zip https://www2.census.gov/geo/tiger/TIGER2025/CBSA/tl_2025_us_cbsa.zip
           curl -fLSs --retry 3 --max-time 180 -o local-data/2025_gaz_place_08.txt https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_08.txt
@@ -199,6 +202,39 @@ jobs:
               assert r[flag] is False
           assert r["applied_source_exclusions"]==[]
           PYEXPANDED
+      - name: Audit Arizona exterior routes, weighted interfaces and source competition
+        run: |
+          set -euo pipefail
+          PYTHONPATH=scripts python -m unittest -v scripts/test_colorado_exterior_parent_competition.py
+          timeout --signal=TERM --kill-after=30s 25m python -u scripts/colorado_exterior_parent_competition.py \
+            --domains neighbor-metro-competition/domains.json \
+            --baseline-report neighbor-metro-competition/expanded-parent-competition.json \
+            --metros public/data/metros-census-2025.csv \
+            --parent-osm local-data/colorado.osm.pbf local-data/new-mexico.osm.pbf local-data/arizona.osm.pbf \
+            --output neighbor-metro-competition/arizona-exterior-competition.json \
+            2>&1 | tee neighbor-metro-competition/arizona-exterior-competition.log
+          python - <<'PYEXTERIOR'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("neighbor-metro-competition/arizona-exterior-competition.json").read_text())
+          baseline=json.loads(Path("neighbor-metro-competition/expanded-parent-competition.json").read_text())
+          assert len(r["source_qualifying_cbsa_ids"])==367
+          assert len(r["diagnostic_source_cbsa_ids"])==13
+          assert len(r["unrepresented_source_qualifying_cbsa_ids"])==354
+          assert r["source_costs_computed"]==780 and r["original_prefix_costs_reproduced"]==600
+          assert len(r["comparisons"])==60
+          assert r["primitive_paths_replayed"]==sum(o["graph_only_cost"] is not None for c in r["comparisons"] for o in c["source_costs"])
+          assert all(len(c["source_costs"])==13 for c in r["comparisons"])
+          cut=r["weighted_prefix_interface"]
+          assert cut["prefix_directed_pairs_preserved"]==baseline["primitive_parent_graph"]["unique_directed_pairs"]
+          assert cut["all_prefix_modeled_paths_preserved_with_nonincreased_cost"] is True
+          assert cut["inbound_directed_pairs"]>0 and cut["outbound_directed_pairs"]>0
+          assert cut["weighted_interface_node_count"]==len(cut["weighted_interface_nodes"])>0
+          assert all(s["access_verified"] is False and s["connector_costs_included"] is False for s in r["sources"])
+          for flag in ("release_eligible","access_certified","complete_global_competition","road_coverage_certified","parent_exterior_coverage_certified","datum_alignment_verified"):
+              assert r[flag] is False
+          assert r["applied_source_exclusions"]==[]
+          PYEXTERIOR
       - uses: actions/upload-artifact@v6
         if: always()
         with:
