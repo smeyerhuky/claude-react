@@ -1,0 +1,5131 @@
+{
+  "access_certified": false,
+  "applied_exclusions": [],
+  "census_checkpoint_sha256": "50bd53258391d080d75376bf1574ea7e83f6df4de9cb7eb63f03f3ff01db31d5",
+  "domains_sha256": "d860aef0a6ac2e442590098ed98a7cd601fa63764d8d76ba63e444bebcc5a260",
+  "geographic_coverage_certified": false,
+  "modeled_source_identities": 26,
+  "priority_method": "Increasing spherical native-Census-point distance to the nearest retained road-node probe; CBSA ID breaks ties.",
+  "qualifying_identities": 367,
+  "queue": [
+    {
+      "access_verified": false,
+      "cbsa": "48660",
+      "included_in_public_csv": true,
+      "investigation_rank": 1,
+      "name": "Wichita Falls, TX Metro Area",
+      "native_point_distance_m": 84071.98155221455,
+      "native_representative_lonlat": [
+        -98.5003189,
+        33.7756819
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 149448,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27900",
+      "included_in_public_csv": true,
+      "investigation_rank": 2,
+      "name": "Joplin, MO-KS Metro Area",
+      "native_point_distance_m": 175892.64190157413,
+      "native_representative_lonlat": [
+        -94.5006513,
+        37.0921351
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 208796,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48620",
+      "included_in_public_csv": true,
+      "investigation_rank": 3,
+      "name": "Wichita, KS Metro Area",
+      "native_point_distance_m": 180188.36157215154,
+      "native_representative_lonlat": [
+        -97.2462875,
+        37.637896
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 663809,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22900",
+      "included_in_public_csv": true,
+      "investigation_rank": 4,
+      "name": "Fort Smith, AR-OK Metro Area",
+      "native_point_distance_m": 181266.07759252388,
+      "native_representative_lonlat": [
+        -94.448349,
+        35.4290883
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 234140,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22220",
+      "included_in_public_csv": true,
+      "investigation_rank": 5,
+      "name": "Fayetteville-Springdale-Rogers, AR Metro Area",
+      "native_point_distance_m": 189027.99740597315,
+      "native_representative_lonlat": [
+        -94.0795449,
+        36.1163935
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 622177,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43300",
+      "included_in_public_csv": true,
+      "investigation_rank": 6,
+      "name": "Sherman-Denison, TX Metro Area",
+      "native_point_distance_m": 189685.68729087472,
+      "native_representative_lonlat": [
+        -96.6757774,
+        33.6245482
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 153613,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11100",
+      "included_in_public_csv": true,
+      "investigation_rank": 7,
+      "name": "Amarillo, TX Metro Area",
+      "native_point_distance_m": 223249.76835070667,
+      "native_representative_lonlat": [
+        -101.9086699,
+        35.2479988
+      ],
+      "nearest_existing_probe_node": "144605514",
+      "source_population": 276235,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19100",
+      "included_in_public_csv": true,
+      "investigation_rank": 8,
+      "name": "Dallas-Fort Worth-Arlington, TX Metro Area",
+      "native_point_distance_m": 230050.1855229072,
+      "native_representative_lonlat": [
+        -96.9704894,
+        32.8491708
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 8477157,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "10180",
+      "included_in_public_csv": true,
+      "investigation_rank": 9,
+      "name": "Abilene, TX Metro Area",
+      "native_point_distance_m": 260368.6125483414,
+      "native_representative_lonlat": [
+        -99.7187428,
+        32.4520222
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 185429,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "44180",
+      "included_in_public_csv": true,
+      "investigation_rank": 10,
+      "name": "Springfield, MO Metro Area",
+      "native_point_distance_m": 293599.7321417347,
+      "native_representative_lonlat": [
+        -93.1802617,
+        37.3608699
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 500694,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29940",
+      "included_in_public_csv": true,
+      "investigation_rank": 11,
+      "name": "Lawrence, KS Metro Area",
+      "native_point_distance_m": 303364.1099171435,
+      "native_representative_lonlat": [
+        -95.2909475,
+        38.8964168
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 120920,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "45820",
+      "included_in_public_csv": true,
+      "investigation_rank": 12,
+      "name": "Topeka, KS Metro Area",
+      "native_point_distance_m": 310999.90540161054,
+      "native_representative_lonlat": [
+        -95.8026393,
+        39.0413888
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 233052,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28140",
+      "included_in_public_csv": true,
+      "investigation_rank": 13,
+      "name": "Kansas City, MO-KS Metro Area",
+      "native_point_distance_m": 334040.7291618783,
+      "native_representative_lonlat": [
+        -94.4438406,
+        38.9318567
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 2270682,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31740",
+      "included_in_public_csv": true,
+      "investigation_rank": 14,
+      "name": "Manhattan, KS Metro Area",
+      "native_point_distance_m": 336179.18176175235,
+      "native_representative_lonlat": [
+        -96.5622422,
+        39.2684241
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 136122,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31180",
+      "included_in_public_csv": true,
+      "investigation_rank": 15,
+      "name": "Lubbock, TX Metro Area",
+      "native_point_distance_m": 340232.59722276096,
+      "native_representative_lonlat": [
+        -101.8833475,
+        33.4664357
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 368431,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "47380",
+      "included_in_public_csv": true,
+      "investigation_rank": 16,
+      "name": "Waco, TX Metro Area",
+      "native_point_distance_m": 343291.34806003113,
+      "native_representative_lonlat": [
+        -97.2860178,
+        31.5921004
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 308807,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16940",
+      "included_in_public_csv": true,
+      "investigation_rank": 17,
+      "name": "Cheyenne, WY Metro Area",
+      "native_point_distance_m": 349254.6766664138,
+      "native_representative_lonlat": [
+        -104.660395,
+        41.2928302
+      ],
+      "nearest_existing_probe_node": "12985655919",
+      "source_population": 102938,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "45500",
+      "included_in_public_csv": true,
+      "investigation_rank": 18,
+      "name": "Texarkana, TX-AR Metro Area",
+      "native_point_distance_m": 357793.2931422753,
+      "native_representative_lonlat": [
+        -94.2071619,
+        33.4783728
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 146816,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28660",
+      "included_in_public_csv": true,
+      "investigation_rank": 19,
+      "name": "Killeen-Temple, TX Metro Area",
+      "native_point_distance_m": 374546.79735184094,
+      "native_representative_lonlat": [
+        -97.7896384,
+        31.2027301
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 511497,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "46340",
+      "included_in_public_csv": true,
+      "investigation_rank": 20,
+      "name": "Tyler, TX Metro Area",
+      "native_point_distance_m": 378029.78743721417,
+      "native_representative_lonlat": [
+        -95.2689389,
+        32.3751053
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 252549,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30780",
+      "included_in_public_csv": true,
+      "investigation_rank": 21,
+      "name": "Little Rock-North Little Rock-Conway, AR Metro Area",
+      "native_point_distance_m": 380641.3709192062,
+      "native_representative_lonlat": [
+        -92.4005889,
+        34.7557726
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 777607,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41660",
+      "included_in_public_csv": true,
+      "investigation_rank": 22,
+      "name": "San Angelo, TX Metro Area",
+      "native_point_distance_m": 409036.482208602,
+      "native_representative_lonlat": [
+        -100.6594181,
+        31.3653095
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 122065,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "21340",
+      "included_in_public_csv": true,
+      "investigation_rank": 23,
+      "name": "El Paso, TX Metro Area",
+      "native_point_distance_m": 410302.10214359843,
+      "native_representative_lonlat": [
+        -105.5213326,
+        31.527394
+      ],
+      "nearest_existing_probe_node": "141021562",
+      "source_population": 881291,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41140",
+      "included_in_public_csv": true,
+      "investigation_rank": 24,
+      "name": "St. Joseph, MO-KS Metro Area",
+      "native_point_distance_m": 415785.33183852665,
+      "native_representative_lonlat": [
+        -94.7837537,
+        39.834843
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 119170,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30980",
+      "included_in_public_csv": true,
+      "investigation_rank": 25,
+      "name": "Longview, TX Metro Area",
+      "native_point_distance_m": 417712.613578176,
+      "native_representative_lonlat": [
+        -94.6848326,
+        32.4316457
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 297315,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33260",
+      "included_in_public_csv": true,
+      "investigation_rank": 26,
+      "name": "Midland, TX Metro Area",
+      "native_point_distance_m": 428447.78840892436,
+      "native_representative_lonlat": [
+        -101.9945395,
+        32.0923594
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 193139,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17860",
+      "included_in_public_csv": true,
+      "investigation_rank": 27,
+      "name": "Columbia, MO Metro Area",
+      "native_point_distance_m": 438139.3678183595,
+      "native_representative_lonlat": [
+        -92.585236,
+        38.9865239
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 219062,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27620",
+      "included_in_public_csv": true,
+      "investigation_rank": 28,
+      "name": "Jefferson City, MO Metro Area",
+      "native_point_distance_m": 447311.1363916767,
+      "native_representative_lonlat": [
+        -92.088876,
+        38.6368854
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 152712,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17780",
+      "included_in_public_csv": true,
+      "investigation_rank": 29,
+      "name": "College Station-Bryan, TX Metro Area",
+      "native_point_distance_m": 457067.4166470847,
+      "native_representative_lonlat": [
+        -96.4885368,
+        30.7543917
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 287476,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43340",
+      "included_in_public_csv": true,
+      "investigation_rank": 30,
+      "name": "Shreveport-Bossier City, LA Metro Area",
+      "native_point_distance_m": 480145.6575385899,
+      "native_representative_lonlat": [
+        -93.7448836,
+        32.4376822
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 383474,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12420",
+      "included_in_public_csv": true,
+      "investigation_rank": 31,
+      "name": "Austin-Round Rock-San Marcos, TX Metro Area",
+      "native_point_distance_m": 481317.58406364976,
+      "native_representative_lonlat": [
+        -97.6498417,
+        30.2497437
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 2620945,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "36220",
+      "included_in_public_csv": true,
+      "investigation_rank": 32,
+      "name": "Odessa, TX Metro Area",
+      "native_point_distance_m": 484395.30994067073,
+      "native_representative_lonlat": [
+        -102.5425068,
+        31.8653008
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 173801,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27860",
+      "included_in_public_csv": true,
+      "investigation_rank": 33,
+      "name": "Jonesboro, AR Metro Area",
+      "native_point_distance_m": 501298.75283565454,
+      "native_representative_lonlat": [
+        -90.6501752,
+        35.6969781
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 139440,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30700",
+      "included_in_public_csv": true,
+      "investigation_rank": 34,
+      "name": "Lincoln, NE Metro Area",
+      "native_point_distance_m": 510264.5849252291,
+      "native_representative_lonlat": [
+        -96.8688013,
+        40.8174287
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 352081,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29820",
+      "included_in_public_csv": true,
+      "investigation_rank": 35,
+      "name": "Las Vegas-Henderson-North Las Vegas, NV Metro Area",
+      "native_point_distance_m": 539842.4298050182,
+      "native_representative_lonlat": [
+        -115.0143977,
+        36.2141295
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 2407226,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33740",
+      "included_in_public_csv": true,
+      "investigation_rank": 36,
+      "name": "Monroe, LA Metro Area",
+      "native_point_distance_m": 549144.9118852231,
+      "native_representative_lonlat": [
+        -92.0583184,
+        32.67396
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 222390,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "36540",
+      "included_in_public_csv": true,
+      "investigation_rank": 37,
+      "name": "Omaha, NE-IA Metro Area",
+      "native_point_distance_m": 559535.7927982536,
+      "native_representative_lonlat": [
+        -95.9999701,
+        41.2904587
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 1009836,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41700",
+      "included_in_public_csv": true,
+      "investigation_rank": 38,
+      "name": "San Antonio-New Braunfels, TX Metro Area",
+      "native_point_distance_m": 566909.2579005348,
+      "native_representative_lonlat": [
+        -98.6069734,
+        29.4330599
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 2813140,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41180",
+      "included_in_public_csv": true,
+      "investigation_rank": 39,
+      "name": "St. Louis, MO-IL Metro Area",
+      "native_point_distance_m": 583586.6015022114,
+      "native_representative_lonlat": [
+        -90.3458253,
+        38.7402108
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 2814421,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "32820",
+      "included_in_public_csv": true,
+      "investigation_rank": 40,
+      "name": "Memphis, TN-MS-AR Metro Area",
+      "native_point_distance_m": 591024.4039594154,
+      "native_representative_lonlat": [
+        -89.8205035,
+        35.010307
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 1341412,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "26420",
+      "included_in_public_csv": true,
+      "investigation_rank": 41,
+      "name": "Houston-Pasadena-The Woodlands, TX Metro Area",
+      "native_point_distance_m": 600251.2854623244,
+      "native_representative_lonlat": [
+        -95.34262,
+        29.8010046
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 7904627,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19780",
+      "included_in_public_csv": true,
+      "investigation_rank": 42,
+      "name": "Des Moines-West Des Moines, IA Metro Area",
+      "native_point_distance_m": 627051.5890029543,
+      "native_representative_lonlat": [
+        -93.7597124,
+        41.5770501
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 758539,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13140",
+      "included_in_public_csv": true,
+      "investigation_rank": 43,
+      "name": "Beaumont-Port Arthur, TX Metro Area",
+      "native_point_distance_m": 634231.4000199276,
+      "native_representative_lonlat": [
+        -94.2027049,
+        30.0759278
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 399310,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "10780",
+      "included_in_public_csv": true,
+      "investigation_rank": 44,
+      "name": "Alexandria, LA Metro Area",
+      "native_point_distance_m": 643093.217558798,
+      "native_representative_lonlat": [
+        -92.5468034,
+        31.3253478
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 147952,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27180",
+      "included_in_public_csv": true,
+      "investigation_rank": 45,
+      "name": "Jackson, TN Metro Area",
+      "native_point_distance_m": 658510.5189676506,
+      "native_representative_lonlat": [
+        -88.8826924,
+        35.7532151
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 184569,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "37140",
+      "included_in_public_csv": true,
+      "investigation_rank": 46,
+      "name": "Paducah, KY-IL Metro Area",
+      "native_point_distance_m": 671644.0391017266,
+      "native_representative_lonlat": [
+        -88.7170503,
+        37.0942343
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 102259,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11180",
+      "included_in_public_csv": true,
+      "investigation_rank": 47,
+      "name": "Ames, IA Metro Area",
+      "native_point_distance_m": 676829.2971767397,
+      "native_representative_lonlat": [
+        -93.6980079,
+        42.0361281
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 128090,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39660",
+      "included_in_public_csv": true,
+      "investigation_rank": 48,
+      "name": "Rapid City, SD Metro Area",
+      "native_point_distance_m": 684578.0053489108,
+      "native_representative_lonlat": [
+        -102.916612,
+        44.1951082
+      ],
+      "nearest_existing_probe_node": "12985655919",
+      "source_population": 156934,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "44100",
+      "included_in_public_csv": true,
+      "investigation_rank": 49,
+      "name": "Springfield, IL Metro Area",
+      "native_point_distance_m": 692264.6577381204,
+      "native_representative_lonlat": [
+        -89.6960672,
+        39.8286215
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 206033,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43580",
+      "included_in_public_csv": true,
+      "investigation_rank": 50,
+      "name": "Sioux City, IA-NE-SD Metro Area",
+      "native_point_distance_m": 694801.8863629131,
+      "native_representative_lonlat": [
+        -96.3113345,
+        42.5080093
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 145738,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40140",
+      "included_in_public_csv": true,
+      "investigation_rank": 51,
+      "name": "Riverside-San Bernardino-Ontario, CA Metro Area",
+      "native_point_distance_m": 695435.6758220018,
+      "native_representative_lonlat": [
+        -116.134544,
+        34.5384592
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 4769007,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27140",
+      "included_in_public_csv": true,
+      "investigation_rank": 52,
+      "name": "Jackson, MS Metro Area",
+      "native_point_distance_m": 699352.5753714988,
+      "native_representative_lonlat": [
+        -90.1364218,
+        32.4263105
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 609847,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29340",
+      "included_in_public_csv": true,
+      "investigation_rank": 53,
+      "name": "Lake Charles, LA Metro Area",
+      "native_point_distance_m": 700648.928481724,
+      "native_representative_lonlat": [
+        -93.1900931,
+        30.0384514
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 244655,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "26980",
+      "included_in_public_csv": true,
+      "investigation_rank": 54,
+      "name": "Iowa City, IA Metro Area",
+      "native_point_distance_m": 703674.5974861073,
+      "native_representative_lonlat": [
+        -91.6479303,
+        41.5178058
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 182711,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "20940",
+      "included_in_public_csv": true,
+      "investigation_rank": 55,
+      "name": "El Centro, CA Metro Area",
+      "native_point_distance_m": 723511.7724268261,
+      "native_representative_lonlat": [
+        -115.3554001,
+        33.0408143
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 181411,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "18580",
+      "included_in_public_csv": true,
+      "investigation_rank": 56,
+      "name": "Corpus Christi, TX Metro Area",
+      "native_point_distance_m": 744026.919463195,
+      "native_representative_lonlat": [
+        -97.4016678,
+        27.8948171
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 451191,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19340",
+      "included_in_public_csv": true,
+      "investigation_rank": 57,
+      "name": "Davenport-Moline-Rock Island, IA-IL Metro Area",
+      "native_point_distance_m": 755230.3808394874,
+      "native_representative_lonlat": [
+        -90.460076,
+        41.3916799
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 380452,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16300",
+      "included_in_public_csv": true,
+      "investigation_rank": 58,
+      "name": "Cedar Rapids, IA Metro Area",
+      "native_point_distance_m": 756893.4437879105,
+      "native_representative_lonlat": [
+        -91.6310949,
+        42.0862886
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 279285,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29700",
+      "included_in_public_csv": true,
+      "investigation_rank": 59,
+      "name": "Laredo, TX Metro Area",
+      "native_point_distance_m": 757637.4613372914,
+      "native_representative_lonlat": [
+        -99.3407518,
+        27.7607987
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 281224,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17300",
+      "included_in_public_csv": true,
+      "investigation_rank": 60,
+      "name": "Clarksville, TN-KY Metro Area",
+      "native_point_distance_m": 766093.0756020775,
+      "native_representative_lonlat": [
+        -87.6243072,
+        36.6957098
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 349001,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "47940",
+      "included_in_public_csv": true,
+      "investigation_rank": 61,
+      "name": "Waterloo-Cedar Falls, IA Metro Area",
+      "native_point_distance_m": 766942.5167192571,
+      "native_representative_lonlat": [
+        -92.471608,
+        42.5367962
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 169189,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "46300",
+      "included_in_public_csv": true,
+      "investigation_rank": 62,
+      "name": "Twin Falls, ID Metro Area",
+      "native_point_distance_m": 767308.9163610247,
+      "native_representative_lonlat": [
+        -114.5687294,
+        42.4403972
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 123901,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "37900",
+      "included_in_public_csv": true,
+      "investigation_rank": 63,
+      "name": "Peoria, IL Metro Area",
+      "native_point_distance_m": 767373.7013726002,
+      "native_representative_lonlat": [
+        -89.5146389,
+        40.7880685
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 363505,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29180",
+      "included_in_public_csv": true,
+      "investigation_rank": 64,
+      "name": "Lafayette, LA Metro Area",
+      "native_point_distance_m": 775177.1018733527,
+      "native_representative_lonlat": [
+        -92.1365518,
+        30.0129611
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 423758,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22520",
+      "included_in_public_csv": true,
+      "investigation_rank": 65,
+      "name": "Florence-Muscle Shoals, AL Metro Area",
+      "native_point_distance_m": 782237.953398598,
+      "native_representative_lonlat": [
+        -87.7193881,
+        34.7992544
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 156609,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "21780",
+      "included_in_public_csv": true,
+      "investigation_rank": 66,
+      "name": "Evansville, IN Metro Area",
+      "native_point_distance_m": 786823.3062859583,
+      "native_representative_lonlat": [
+        -87.5845186,
+        38.0491421
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 273786,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "26820",
+      "included_in_public_csv": true,
+      "investigation_rank": 67,
+      "name": "Idaho Falls, ID Metro Area",
+      "native_point_distance_m": 789810.9711654162,
+      "native_representative_lonlat": [
+        -112.4209193,
+        43.6204231
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 173851,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12940",
+      "included_in_public_csv": true,
+      "investigation_rank": 68,
+      "name": "Baton Rouge, LA Metro Area",
+      "native_point_distance_m": 792205.0511690024,
+      "native_representative_lonlat": [
+        -91.1269263,
+        30.5152419
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 888699,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "14010",
+      "included_in_public_csv": true,
+      "investigation_rank": 69,
+      "name": "Bloomington, IL Metro Area",
+      "native_point_distance_m": 793480.1754899955,
+      "native_representative_lonlat": [
+        -88.8445391,
+        40.4945594
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 171419,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43620",
+      "included_in_public_csv": true,
+      "investigation_rank": 70,
+      "name": "Sioux Falls, SD-MN Metro Area",
+      "native_point_distance_m": 810042.5247198212,
+      "native_representative_lonlat": [
+        -96.8754156,
+        43.5256577
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 314638,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "36980",
+      "included_in_public_csv": true,
+      "investigation_rank": 71,
+      "name": "Owensboro, KY Metro Area",
+      "native_point_distance_m": 817083.1071700315,
+      "native_representative_lonlat": [
+        -87.1473864,
+        37.6643749
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 113962,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16580",
+      "included_in_public_csv": true,
+      "investigation_rank": 72,
+      "name": "Champaign-Urbana, IL Metro Area",
+      "native_point_distance_m": 817276.6824810319,
+      "native_representative_lonlat": [
+        -88.2986226,
+        40.2344885
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 239979,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25220",
+      "included_in_public_csv": true,
+      "investigation_rank": 73,
+      "name": "Hammond, LA Metro Area",
+      "native_point_distance_m": 824243.0632652987,
+      "native_representative_lonlat": [
+        -90.4064899,
+        30.6213483
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 141346,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41740",
+      "included_in_public_csv": true,
+      "investigation_rank": 74,
+      "name": "San Diego-Chula Vista-Carlsbad, CA Metro Area",
+      "native_point_distance_m": 830895.5603432615,
+      "native_representative_lonlat": [
+        -116.7761174,
+        33.0236041
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 3282248,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "46220",
+      "included_in_public_csv": true,
+      "investigation_rank": 75,
+      "name": "Tuscaloosa, AL Metro Area",
+      "native_point_distance_m": 842631.2884972785,
+      "native_representative_lonlat": [
+        -87.7991473,
+        33.0978769
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 281850,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19460",
+      "included_in_public_csv": true,
+      "investigation_rank": 76,
+      "name": "Decatur, AL Metro Area",
+      "native_point_distance_m": 846220.2527280437,
+      "native_representative_lonlat": [
+        -87.0971469,
+        34.4893614
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 160326,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "34980",
+      "included_in_public_csv": true,
+      "investigation_rank": 77,
+      "name": "Nashville-Davidson--Murfreesboro--Franklin, TN Metro Area",
+      "native_point_distance_m": 848560.5507637039,
+      "native_representative_lonlat": [
+        -86.7229798,
+        36.0915767
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 2197416,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "45460",
+      "included_in_public_csv": true,
+      "investigation_rank": 78,
+      "name": "Terre Haute, IN Metro Area",
+      "native_point_distance_m": 849735.0460188249,
+      "native_representative_lonlat": [
+        -87.3470958,
+        39.392389
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 169241,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25620",
+      "included_in_public_csv": true,
+      "investigation_rank": 79,
+      "name": "Hattiesburg, MS Metro Area",
+      "native_point_distance_m": 854336.691216643,
+      "native_representative_lonlat": [
+        -89.232741,
+        31.1884408
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 158014,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "26620",
+      "included_in_public_csv": true,
+      "investigation_rank": 80,
+      "name": "Huntsville, AL Metro Area",
+      "native_point_distance_m": 869903.0762906793,
+      "native_representative_lonlat": [
+        -86.7348706,
+        34.7832617
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 556444,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43640",
+      "included_in_public_csv": true,
+      "investigation_rank": 81,
+      "name": "Slidell-Mandeville-Covington, LA Metro Area",
+      "native_point_distance_m": 870058.6826820738,
+      "native_representative_lonlat": [
+        -89.9519622,
+        30.4100224
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 279108,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "47300",
+      "included_in_public_csv": true,
+      "investigation_rank": 82,
+      "name": "Visalia, CA Metro Area",
+      "native_point_distance_m": 872798.8405881119,
+      "native_representative_lonlat": [
+        -118.7810551,
+        36.2288339
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 485146,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "14540",
+      "included_in_public_csv": true,
+      "investigation_rank": 83,
+      "name": "Bowling Green, KY Metro Area",
+      "native_point_distance_m": 876508.2796407393,
+      "native_representative_lonlat": [
+        -86.3973979,
+        37.0468044
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 197180,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31080",
+      "included_in_public_csv": true,
+      "investigation_rank": 84,
+      "name": "Los Angeles-Long Beach-Anaheim, CA Metro Area",
+      "native_point_distance_m": 886430.7603578595,
+      "native_representative_lonlat": [
+        -118.1827533,
+        34.1087033
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 12844441,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12540",
+      "included_in_public_csv": true,
+      "investigation_rank": 85,
+      "name": "Bakersfield-Delano, CA Metro Area",
+      "native_point_distance_m": 888065.6246835592,
+      "native_representative_lonlat": [
+        -118.7295064,
+        35.3466288
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 927068,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31860",
+      "included_in_public_csv": true,
+      "investigation_rank": 86,
+      "name": "Mankato, MN Metro Area",
+      "native_point_distance_m": 894514.4789469227,
+      "native_representative_lonlat": [
+        -94.1477975,
+        44.15479
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 104907,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "14020",
+      "included_in_public_csv": true,
+      "investigation_rank": 87,
+      "name": "Bloomington, IN Metro Area",
+      "native_point_distance_m": 898579.4952338262,
+      "native_representative_lonlat": [
+        -86.6717544,
+        39.2417362
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 165231,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "14260",
+      "included_in_public_csv": true,
+      "investigation_rank": 88,
+      "name": "Boise City, ID Metro Area",
+      "native_point_distance_m": 900272.747173084,
+      "native_representative_lonlat": [
+        -116.1419089,
+        43.0066485
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 864243,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28100",
+      "included_in_public_csv": true,
+      "investigation_rank": 89,
+      "name": "Kankakee, IL Metro Area",
+      "native_point_distance_m": 902229.9191849697,
+      "native_representative_lonlat": [
+        -87.8611165,
+        41.1395105
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 105525,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "32580",
+      "included_in_public_csv": true,
+      "investigation_rank": 90,
+      "name": "McAllen-Edinburg-Mission, TX Metro Area",
+      "native_point_distance_m": 904598.9541628087,
+      "native_representative_lonlat": [
+        -98.18099,
+        26.3963839
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 921549,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13740",
+      "included_in_public_csv": true,
+      "investigation_rank": 91,
+      "name": "Billings, MT Metro Area",
+      "native_point_distance_m": 905725.590899294,
+      "native_representative_lonlat": [
+        -108.8323611,
+        45.6371402
+      ],
+      "nearest_existing_probe_node": "12985655919",
+      "source_population": 193603,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13820",
+      "included_in_public_csv": true,
+      "investigation_rank": 92,
+      "name": "Birmingham, AL Metro Area",
+      "native_point_distance_m": 908765.7974275172,
+      "native_representative_lonlat": [
+        -86.8143378,
+        33.4623718
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 1197766,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40420",
+      "included_in_public_csv": true,
+      "investigation_rank": 93,
+      "name": "Rockford, IL Metro Area",
+      "native_point_distance_m": 911839.074586001,
+      "native_representative_lonlat": [
+        -89.0429139,
+        42.331183
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 337242,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40340",
+      "included_in_public_csv": true,
+      "investigation_rank": 94,
+      "name": "Rochester, MN Metro Area",
+      "native_point_distance_m": 915227.9753329625,
+      "native_representative_lonlat": [
+        -92.3306605,
+        43.9498104
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 231184,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "26380",
+      "included_in_public_csv": true,
+      "investigation_rank": 95,
+      "name": "Houma-Bayou Cane-Thibodaux, LA Metro Area",
+      "native_point_distance_m": 917087.0333052924,
+      "native_representative_lonlat": [
+        -90.8436739,
+        29.3341299
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 199668,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25060",
+      "included_in_public_csv": true,
+      "investigation_rank": 96,
+      "name": "Gulfport-Biloxi, MS Metro Area",
+      "native_point_distance_m": 925473.3278578973,
+      "native_representative_lonlat": [
+        -88.9992972,
+        30.4801526
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 431329,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29200",
+      "included_in_public_csv": true,
+      "investigation_rank": 97,
+      "name": "Lafayette-West Lafayette, IN Metro Area",
+      "native_point_distance_m": 925671.0878697883,
+      "native_representative_lonlat": [
+        -87.0171117,
+        40.4821533
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 228468,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "21060",
+      "included_in_public_csv": true,
+      "investigation_rank": 98,
+      "name": "Elizabethtown, KY Metro Area",
+      "native_point_distance_m": 926881.6232016464,
+      "native_representative_lonlat": [
+        -85.8875977,
+        37.6512088
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 128666,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29100",
+      "included_in_public_csv": true,
+      "investigation_rank": 99,
+      "name": "La Crosse-Onalaska, WI-MN Metro Area",
+      "native_point_distance_m": 932549.180182407,
+      "native_representative_lonlat": [
+        -91.1101402,
+        43.6982642
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 171182,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27500",
+      "included_in_public_csv": true,
+      "investigation_rank": 100,
+      "name": "Janesville-Beloit, WI Metro Area",
+      "native_point_distance_m": 937220.3223000271,
+      "native_representative_lonlat": [
+        -89.0752844,
+        42.6698802
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 166472,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "15180",
+      "included_in_public_csv": true,
+      "investigation_rank": 101,
+      "name": "Brownsville-Harlingen, TX Metro Area",
+      "native_point_distance_m": 941283.7796345302,
+      "native_representative_lonlat": [
+        -97.4789584,
+        26.1029227
+      ],
+      "nearest_existing_probe_node": "145395841",
+      "source_population": 433946,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "23420",
+      "included_in_public_csv": true,
+      "investigation_rank": 102,
+      "name": "Fresno, CA Metro Area",
+      "native_point_distance_m": 943775.9124099795,
+      "native_representative_lonlat": [
+        -119.6684884,
+        36.8794036
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 1203383,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16980",
+      "included_in_public_csv": true,
+      "investigation_rank": 103,
+      "name": "Chicago-Naperville-Elgin, IL-IN Metro Area",
+      "native_point_distance_m": 943973.8574720083,
+      "native_representative_lonlat": [
+        -87.8418871,
+        41.75878
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 9434123,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31540",
+      "included_in_public_csv": true,
+      "investigation_rank": 104,
+      "name": "Madison, WI Metro Area",
+      "native_point_distance_m": 944250.3294496929,
+      "native_representative_lonlat": [
+        -89.5977453,
+        43.0838459
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 709685,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31140",
+      "included_in_public_csv": true,
+      "investigation_rank": 105,
+      "name": "Louisville/Jefferson County, KY-IN Metro Area",
+      "native_point_distance_m": 952156.3318312558,
+      "native_representative_lonlat": [
+        -85.7019893,
+        38.2243628
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 1402509,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "23460",
+      "included_in_public_csv": true,
+      "investigation_rank": 106,
+      "name": "Gadsden, AL Metro Area",
+      "native_point_distance_m": 953970.0057363197,
+      "native_representative_lonlat": [
+        -86.0342629,
+        34.0476407
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 103886,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "37100",
+      "included_in_public_csv": true,
+      "investigation_rank": 107,
+      "name": "Oxnard-Thousand Oaks-Ventura, CA Metro Area",
+      "native_point_distance_m": 956741.7929494035,
+      "native_representative_lonlat": [
+        -119.1331453,
+        34.3587477
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 830851,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "26900",
+      "included_in_public_csv": true,
+      "investigation_rank": 108,
+      "name": "Indianapolis-Carmel-Greenwood, IN Metro Area",
+      "native_point_distance_m": 963431.1924923931,
+      "native_representative_lonlat": [
+        -86.1242596,
+        39.7905331
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 2205695,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "14580",
+      "included_in_public_csv": true,
+      "investigation_rank": 109,
+      "name": "Bozeman, MT Metro Area",
+      "native_point_distance_m": 963635.9514002166,
+      "native_representative_lonlat": [
+        -111.1639214,
+        45.5180536
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 128740,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33660",
+      "included_in_public_csv": true,
+      "investigation_rank": 110,
+      "name": "Mobile, AL Metro Area",
+      "native_point_distance_m": 965001.6222676069,
+      "native_representative_lonlat": [
+        -88.1965682,
+        30.6845725
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 411658,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25260",
+      "included_in_public_csv": true,
+      "investigation_rank": 111,
+      "name": "Hanford-Corcoran, CA Metro Area",
+      "native_point_distance_m": 967252.4310569429,
+      "native_representative_lonlat": [
+        -119.8155301,
+        36.072478
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 154327,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39900",
+      "included_in_public_csv": true,
+      "investigation_rank": 112,
+      "name": "Reno, NV Metro Area",
+      "native_point_distance_m": 981282.7187695538,
+      "native_representative_lonlat": [
+        -119.5555069,
+        40.2510571
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 578734,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11500",
+      "included_in_public_csv": true,
+      "investigation_rank": 113,
+      "name": "Anniston-Oxford, AL Metro Area",
+      "native_point_distance_m": 981834.2708025868,
+      "native_representative_lonlat": [
+        -85.8279089,
+        33.7705162
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 115834,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16860",
+      "included_in_public_csv": true,
+      "investigation_rank": 114,
+      "name": "Chattanooga, TN-GA Metro Area",
+      "native_point_distance_m": 986038.0349010562,
+      "native_representative_lonlat": [
+        -85.3611582,
+        35.0493612
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 594530,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "35380",
+      "included_in_public_csv": true,
+      "investigation_rank": 115,
+      "name": "New Orleans-Metairie, LA Metro Area",
+      "native_point_distance_m": 990910.4465614139,
+      "native_representative_lonlat": [
+        -89.5760676,
+        29.282447
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 970849,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33860",
+      "included_in_public_csv": true,
+      "investigation_rank": 116,
+      "name": "Montgomery, AL Metro Area",
+      "native_point_distance_m": 995981.5305947316,
+      "native_representative_lonlat": [
+        -86.4045848,
+        32.3656313
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 388747,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19300",
+      "included_in_public_csv": true,
+      "investigation_rank": 117,
+      "name": "Daphne-Fairhope-Foley, AL Metro Area",
+      "native_point_distance_m": 999167.4095199642,
+      "native_representative_lonlat": [
+        -87.7460666,
+        30.6592183
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 267761,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28450",
+      "included_in_public_csv": true,
+      "investigation_rank": 118,
+      "name": "Kenosha, WI Metro Area",
+      "native_point_distance_m": 1000559.7700266052,
+      "native_representative_lonlat": [
+        -87.8799955,
+        42.5875256
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 168448,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33140",
+      "included_in_public_csv": true,
+      "investigation_rank": 119,
+      "name": "Michigan City-La Porte, IN Metro Area",
+      "native_point_distance_m": 1005077.9318312891,
+      "native_representative_lonlat": [
+        -86.7447386,
+        41.5490129
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 111294,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33460",
+      "included_in_public_csv": true,
+      "investigation_rank": 120,
+      "name": "Minneapolis-St. Paul-Bloomington, MN-WI Metro Area",
+      "native_point_distance_m": 1012399.1870168665,
+      "native_representative_lonlat": [
+        -93.275361,
+        45.096664
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 3790295,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13900",
+      "included_in_public_csv": true,
+      "investigation_rank": 121,
+      "name": "Bismarck, ND Metro Area",
+      "native_point_distance_m": 1012653.4398383813,
+      "native_representative_lonlat": [
+        -100.979592,
+        46.887031
+      ],
+      "nearest_existing_probe_node": "12985655919",
+      "source_population": 139750,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40660",
+      "included_in_public_csv": true,
+      "investigation_rank": 122,
+      "name": "Rome, GA Metro Area",
+      "native_point_distance_m": 1019353.0550825255,
+      "native_representative_lonlat": [
+        -85.2136849,
+        34.2636901
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 101378,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "35660",
+      "included_in_public_csv": true,
+      "investigation_rank": 123,
+      "name": "Niles, MI Metro Area",
+      "native_point_distance_m": 1020049.765473603,
+      "native_representative_lonlat": [
+        -86.7425435,
+        41.7913818
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 152444,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39540",
+      "included_in_public_csv": true,
+      "investigation_rank": 124,
+      "name": "Racine-Mount Pleasant, WI Metro Area",
+      "native_point_distance_m": 1021522.9664610809,
+      "native_representative_lonlat": [
+        -87.7715988,
+        42.7803923
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 198919,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33340",
+      "included_in_public_csv": true,
+      "investigation_rank": 125,
+      "name": "Milwaukee-Waukesha, WI Metro Area",
+      "native_point_distance_m": 1026109.1839385285,
+      "native_representative_lonlat": [
+        -87.8623115,
+        42.9126431
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 1575010,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42200",
+      "included_in_public_csv": true,
+      "investigation_rank": 126,
+      "name": "Santa Maria-Santa Barbara, CA Metro Area",
+      "native_point_distance_m": 1028254.1619661336,
+      "native_representative_lonlat": [
+        -120.0383645,
+        34.5366774
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 442065,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "32900",
+      "included_in_public_csv": true,
+      "investigation_rank": 127,
+      "name": "Merced, CA Metro Area",
+      "native_point_distance_m": 1035298.2683830396,
+      "native_representative_lonlat": [
+        -120.7228019,
+        37.1948063
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 297260,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19140",
+      "included_in_public_csv": true,
+      "investigation_rank": 128,
+      "name": "Dalton, GA Metro Area",
+      "native_point_distance_m": 1036785.3825568275,
+      "native_representative_lonlat": [
+        -84.856279,
+        34.7969557
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 147819,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42020",
+      "included_in_public_csv": true,
+      "investigation_rank": 129,
+      "name": "San Luis Obispo-Paso Robles, CA Metro Area",
+      "native_point_distance_m": 1038243.8312196381,
+      "native_representative_lonlat": [
+        -120.4488974,
+        35.3881891
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 282367,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "34620",
+      "included_in_public_csv": true,
+      "investigation_rank": 130,
+      "name": "Muncie, IN Metro Area",
+      "native_point_distance_m": 1038608.5149791946,
+      "native_representative_lonlat": [
+        -85.3992617,
+        40.2275433
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 113106,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "37860",
+      "included_in_public_csv": true,
+      "investigation_rank": 131,
+      "name": "Pensacola-Ferry Pass-Brent, FL Metro Area",
+      "native_point_distance_m": 1045821.5215804705,
+      "native_representative_lonlat": [
+        -87.1585466,
+        30.6085566
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 544949,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41060",
+      "included_in_public_csv": true,
+      "investigation_rank": 132,
+      "name": "St. Cloud, MN Metro Area",
+      "native_point_distance_m": 1047345.2714205491,
+      "native_representative_lonlat": [
+        -94.4883635,
+        45.5930312
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 205854,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17420",
+      "included_in_public_csv": true,
+      "investigation_rank": 133,
+      "name": "Cleveland, TN Metro Area",
+      "native_point_distance_m": 1047376.0410500962,
+      "native_representative_lonlat": [
+        -84.6550787,
+        35.1381174
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 134057,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "20740",
+      "included_in_public_csv": true,
+      "investigation_rank": 134,
+      "name": "Eau Claire, WI Metro Area",
+      "native_point_distance_m": 1049206.1490002905,
+      "native_representative_lonlat": [
+        -91.2843222,
+        44.9386719
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 176647,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22540",
+      "included_in_public_csv": true,
+      "investigation_rank": 135,
+      "name": "Fond du Lac, WI Metro Area",
+      "native_point_distance_m": 1058634.662501819,
+      "native_representative_lonlat": [
+        -88.493284,
+        43.7547219
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 104669,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33700",
+      "included_in_public_csv": true,
+      "investigation_rank": 136,
+      "name": "Modesto, CA Metro Area",
+      "native_point_distance_m": 1059120.5693222277,
+      "native_representative_lonlat": [
+        -121.0028311,
+        37.5623162
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 557719,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30460",
+      "included_in_public_csv": true,
+      "investigation_rank": 137,
+      "name": "Lexington-Fayette, KY Metro Area",
+      "native_point_distance_m": 1059263.0408600592,
+      "native_representative_lonlat": [
+        -84.4385451,
+        38.1028763
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 535174,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43780",
+      "included_in_public_csv": true,
+      "investigation_rank": 138,
+      "name": "South Bend-Mishawaka, IN-MI Metro Area",
+      "native_point_distance_m": 1062154.982925446,
+      "native_representative_lonlat": [
+        -86.1230143,
+        41.7749808
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 324538,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12220",
+      "included_in_public_csv": true,
+      "investigation_rank": 139,
+      "name": "Auburn-Opelika, AL Metro Area",
+      "native_point_distance_m": 1062722.8123899142,
+      "native_representative_lonlat": [
+        -85.5271267,
+        32.4922058
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 208013,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40900",
+      "included_in_public_csv": true,
+      "investigation_rank": 140,
+      "name": "Sacramento-Roseville-Folsom, CA Metro Area",
+      "native_point_distance_m": 1067452.075438031,
+      "native_representative_lonlat": [
+        -121.0056427,
+        38.7902715
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 2477274,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "21140",
+      "included_in_public_csv": true,
+      "investigation_rank": 141,
+      "name": "Elkhart-Goshen, IN Metro Area",
+      "native_point_distance_m": 1070543.6195488882,
+      "native_representative_lonlat": [
+        -85.8639864,
+        41.6006928
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 208774,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17140",
+      "included_in_public_csv": true,
+      "investigation_rank": 142,
+      "name": "Cincinnati, OH-KY-IN Metro Area",
+      "native_point_distance_m": 1076742.9748175484,
+      "native_representative_lonlat": [
+        -84.463535,
+        39.0785953
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 2312858,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "36780",
+      "included_in_public_csv": true,
+      "investigation_rank": 143,
+      "name": "Oshkosh-Neenah, WI Metro Area",
+      "native_point_distance_m": 1077998.242719992,
+      "native_representative_lonlat": [
+        -88.6681488,
+        44.0857068
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 174218,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28940",
+      "included_in_public_csv": true,
+      "investigation_rank": 144,
+      "name": "Knoxville, TN Metro Area",
+      "native_point_distance_m": 1080776.0715495364,
+      "native_representative_lonlat": [
+        -84.1361137,
+        36.0444622
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 968137,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "44700",
+      "included_in_public_csv": true,
+      "investigation_rank": 145,
+      "name": "Stockton-Lodi, CA Metro Area",
+      "native_point_distance_m": 1083356.6562845327,
+      "native_representative_lonlat": [
+        -121.272244,
+        37.9349815
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 823815,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "23060",
+      "included_in_public_csv": true,
+      "investigation_rank": 146,
+      "name": "Fort Wayne, IN Metro Area",
+      "native_point_distance_m": 1087467.5716069683,
+      "native_representative_lonlat": [
+        -85.2164239,
+        41.0069993
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 466258,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41940",
+      "included_in_public_csv": true,
+      "investigation_rank": 147,
+      "name": "San Jose-Sunnyvale-Santa Clara, CA Metro Area",
+      "native_point_distance_m": 1094588.532187035,
+      "native_representative_lonlat": [
+        -121.3713721,
+        36.9084718
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 1984473,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41500",
+      "included_in_public_csv": true,
+      "investigation_rank": 148,
+      "name": "Salinas, CA Metro Area",
+      "native_point_distance_m": 1097593.7221007217,
+      "native_representative_lonlat": [
+        -121.3155781,
+        36.2401044
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 433729,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43100",
+      "included_in_public_csv": true,
+      "investigation_rank": 149,
+      "name": "Sheboygan, WI Metro Area",
+      "native_point_distance_m": 1098407.4265358958,
+      "native_representative_lonlat": [
+        -87.731531,
+        43.7387131
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 118047,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48140",
+      "included_in_public_csv": true,
+      "investigation_rank": 150,
+      "name": "Wausau, WI Metro Area",
+      "native_point_distance_m": 1102089.5190155676,
+      "native_representative_lonlat": [
+        -89.757823,
+        44.8980363
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 139432,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "18880",
+      "included_in_public_csv": true,
+      "investigation_rank": 151,
+      "name": "Crestview-Fort Walton Beach-Destin, FL Metro Area",
+      "native_point_distance_m": 1106884.1271002993,
+      "native_representative_lonlat": [
+        -86.3581638,
+        30.5949415
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 315098,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12060",
+      "included_in_public_csv": true,
+      "investigation_rank": 152,
+      "name": "Atlanta-Sandy Springs-Roswell, GA Metro Area",
+      "native_point_distance_m": 1108915.972197352,
+      "native_representative_lonlat": [
+        -84.3928478,
+        33.7324018
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 6482182,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11540",
+      "included_in_public_csv": true,
+      "investigation_rank": 153,
+      "name": "Appleton, WI Metro Area",
+      "native_point_distance_m": 1110544.6284335742,
+      "native_representative_lonlat": [
+        -88.3723255,
+        44.2906032
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 249876,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "49700",
+      "included_in_public_csv": true,
+      "investigation_rank": 154,
+      "name": "Yuba City, CA Metro Area",
+      "native_point_distance_m": 1116390.0796249602,
+      "native_representative_lonlat": [
+        -121.5118327,
+        39.1609692
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 187478,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17980",
+      "included_in_public_csv": true,
+      "investigation_rank": 155,
+      "name": "Columbus, GA-AL Metro Area",
+      "native_point_distance_m": 1123980.6833114014,
+      "native_representative_lonlat": [
+        -84.8437095,
+        32.4193768
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 324830,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19430",
+      "included_in_public_csv": true,
+      "investigation_rank": 156,
+      "name": "Dayton-Kettering-Beavercreek, OH Metro Area",
+      "native_point_distance_m": 1125201.1843923156,
+      "native_representative_lonlat": [
+        -84.1409921,
+        39.8297456
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 826554,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28020",
+      "included_in_public_csv": true,
+      "investigation_rank": 157,
+      "name": "Kalamazoo-Portage, MI Metro Area",
+      "native_point_distance_m": 1131354.660835738,
+      "native_representative_lonlat": [
+        -85.5328544,
+        42.2462657
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 263795,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17020",
+      "included_in_public_csv": true,
+      "investigation_rank": 158,
+      "name": "Chico, CA Metro Area",
+      "native_point_distance_m": 1133726.3783014144,
+      "native_representative_lonlat": [
+        -121.6032086,
+        39.6653362
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 209211,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "20020",
+      "included_in_public_csv": true,
+      "investigation_rank": 159,
+      "name": "Dothan, AL Metro Area",
+      "native_point_distance_m": 1135280.8978757525,
+      "native_representative_lonlat": [
+        -85.4691904,
+        31.2455283
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 156266,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "23580",
+      "included_in_public_csv": true,
+      "investigation_rank": 160,
+      "name": "Gainesville, GA Metro Area",
+      "native_point_distance_m": 1141578.2231791862,
+      "native_representative_lonlat": [
+        -83.8184997,
+        34.3175689
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 226568,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "46700",
+      "included_in_public_csv": true,
+      "investigation_rank": 161,
+      "name": "Vallejo, CA Metro Area",
+      "native_point_distance_m": 1143274.0536564942,
+      "native_representative_lonlat": [
+        -121.939594,
+        38.2672255
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 455376,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24580",
+      "included_in_public_csv": true,
+      "investigation_rank": 162,
+      "name": "Green Bay, WI Metro Area",
+      "native_point_distance_m": 1145306.523933163,
+      "native_representative_lonlat": [
+        -87.9961303,
+        44.4740244
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 336756,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "34100",
+      "included_in_public_csv": true,
+      "investigation_rank": 163,
+      "name": "Morristown, TN Metro Area",
+      "native_point_distance_m": 1148158.8354482106,
+      "native_representative_lonlat": [
+        -83.376546,
+        36.1154845
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 128867,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42100",
+      "included_in_public_csv": true,
+      "investigation_rank": 164,
+      "name": "Santa Cruz-Watsonville, CA Metro Area",
+      "native_point_distance_m": 1150182.4838533676,
+      "native_representative_lonlat": [
+        -122.0077889,
+        37.0123466
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 258852,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "34740",
+      "included_in_public_csv": true,
+      "investigation_rank": 165,
+      "name": "Muskegon-Norton Shores, MI Metro Area",
+      "native_point_distance_m": 1151434.790012541,
+      "native_representative_lonlat": [
+        -86.4209083,
+        43.4287388
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 177901,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22020",
+      "included_in_public_csv": true,
+      "investigation_rank": 166,
+      "name": "Fargo, ND-MN Metro Area",
+      "native_point_distance_m": 1152175.9967119417,
+      "native_representative_lonlat": [
+        -96.9601826,
+        46.9148591
+      ],
+      "nearest_existing_probe_node": "12985655919",
+      "source_population": 269528,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "44220",
+      "included_in_public_csv": true,
+      "investigation_rank": 167,
+      "name": "Springfield, OH Metro Area",
+      "native_point_distance_m": 1157197.1408183672,
+      "native_representative_lonlat": [
+        -83.783676,
+        39.9170315
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 135340,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30620",
+      "included_in_public_csv": true,
+      "investigation_rank": 168,
+      "name": "Lima, OH Metro Area",
+      "native_point_distance_m": 1162567.6307093895,
+      "native_representative_lonlat": [
+        -84.1061032,
+        40.7716274
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 100881,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24340",
+      "included_in_public_csv": true,
+      "investigation_rank": 169,
+      "name": "Grand Rapids-Wyoming-Kentwood, MI Metro Area",
+      "native_point_distance_m": 1165178.9782625076,
+      "native_representative_lonlat": [
+        -85.715614,
+        42.9798406
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 1183645,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12980",
+      "included_in_public_csv": true,
+      "investigation_rank": 170,
+      "name": "Battle Creek, MI Metro Area",
+      "native_point_distance_m": 1167585.3132150774,
+      "native_representative_lonlat": [
+        -85.0123853,
+        42.2429896
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 133408,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41860",
+      "included_in_public_csv": true,
+      "investigation_rank": 171,
+      "name": "San Francisco-Oakland-Fremont, CA Metro Area",
+      "native_point_distance_m": 1171033.2794704665,
+      "native_representative_lonlat": [
+        -122.2744317,
+        37.7737185
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 4630041,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "34900",
+      "included_in_public_csv": true,
+      "investigation_rank": 172,
+      "name": "Napa, CA Metro Area",
+      "native_point_distance_m": 1178547.1700942272,
+      "native_representative_lonlat": [
+        -122.3259045,
+        38.5070999
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 132949,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "37460",
+      "included_in_public_csv": true,
+      "investigation_rank": 173,
+      "name": "Panama City-Panama City Beach, FL Metro Area",
+      "native_point_distance_m": 1183207.3723442305,
+      "native_representative_lonlat": [
+        -85.6420894,
+        30.2732406
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 231174,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39820",
+      "included_in_public_csv": true,
+      "investigation_rank": 174,
+      "name": "Redding, CA Metro Area",
+      "native_point_distance_m": 1198968.4074718093,
+      "native_representative_lonlat": [
+        -122.0435558,
+        40.7605142
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 181648,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33540",
+      "included_in_public_csv": true,
+      "investigation_rank": 175,
+      "name": "Missoula, MT Metro Area",
+      "native_point_distance_m": 1199179.9331614824,
+      "native_representative_lonlat": [
+        -114.2626684,
+        47.0695448
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 128698,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31420",
+      "included_in_public_csv": true,
+      "investigation_rank": 176,
+      "name": "Macon-Bibb County, GA Metro Area",
+      "native_point_distance_m": 1201442.3000105391,
+      "native_representative_lonlat": [
+        -83.714305,
+        32.8562163
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 238553,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12020",
+      "included_in_public_csv": true,
+      "investigation_rank": 177,
+      "name": "Athens-Clarke County, GA Metro Area",
+      "native_point_distance_m": 1206185.9400440957,
+      "native_representative_lonlat": [
+        -83.2138965,
+        33.943984
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 224148,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27100",
+      "included_in_public_csv": true,
+      "investigation_rank": 178,
+      "name": "Jackson, MI Metro Area",
+      "native_point_distance_m": 1209947.6675516146,
+      "native_representative_lonlat": [
+        -84.4208679,
+        42.2484738
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 159552,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "47580",
+      "included_in_public_csv": true,
+      "investigation_rank": 179,
+      "name": "Warner Robins, GA Metro Area",
+      "native_point_distance_m": 1217312.6171436429,
+      "native_representative_lonlat": [
+        -83.7110844,
+        32.4928056
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 208091,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29620",
+      "included_in_public_csv": true,
+      "investigation_rank": 180,
+      "name": "Lansing-East Lansing, MI Metro Area",
+      "native_point_distance_m": 1223415.4676658637,
+      "native_representative_lonlat": [
+        -84.6053717,
+        42.7136586
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 479722,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "26580",
+      "included_in_public_csv": true,
+      "investigation_rank": 181,
+      "name": "Huntington-Ashland, WV-KY-OH Metro Area",
+      "native_point_distance_m": 1223864.3018613695,
+      "native_representative_lonlat": [
+        -82.5799944,
+        38.3574874
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 365965,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "10500",
+      "included_in_public_csv": true,
+      "investigation_rank": 182,
+      "name": "Albany, GA Metro Area",
+      "native_point_distance_m": 1224472.7189337758,
+      "native_representative_lonlat": [
+        -84.1107184,
+        31.6446859
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 145510,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11700",
+      "included_in_public_csv": true,
+      "investigation_rank": 183,
+      "name": "Asheville, NC Metro Area",
+      "native_point_distance_m": 1226164.4298615728,
+      "native_representative_lonlat": [
+        -82.5706835,
+        35.6163405
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 422345,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "45780",
+      "included_in_public_csv": true,
+      "investigation_rank": 184,
+      "name": "Toledo, OH Metro Area",
+      "native_point_distance_m": 1228266.7100472986,
+      "native_representative_lonlat": [
+        -83.6907772,
+        41.5443571
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 599376,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28700",
+      "included_in_public_csv": true,
+      "investigation_rank": 185,
+      "name": "Kingsport-Bristol, TN-VA Metro Area",
+      "native_point_distance_m": 1228608.9710519626,
+      "native_representative_lonlat": [
+        -82.4401446,
+        36.6041611
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 314834,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42220",
+      "included_in_public_csv": true,
+      "investigation_rank": 186,
+      "name": "Santa Rosa-Petaluma, CA Metro Area",
+      "native_point_distance_m": 1230783.968249836,
+      "native_representative_lonlat": [
+        -122.9261095,
+        38.5251824
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 486444,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "18140",
+      "included_in_public_csv": true,
+      "investigation_rank": 187,
+      "name": "Columbus, OH Metro Area",
+      "native_point_distance_m": 1236464.6504410966,
+      "native_representative_lonlat": [
+        -82.8359105,
+        39.9685617
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 2242028,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27740",
+      "included_in_public_csv": true,
+      "investigation_rank": 188,
+      "name": "Johnson City, TN Metro Area",
+      "native_point_distance_m": 1240307.7032897165,
+      "native_representative_lonlat": [
+        -82.3326926,
+        36.2658223
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 216416,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24220",
+      "included_in_public_csv": true,
+      "investigation_rank": 189,
+      "name": "Grand Forks, ND-MN Metro Area",
+      "native_point_distance_m": 1242170.225803642,
+      "native_representative_lonlat": [
+        -96.8426809,
+        47.835929
+      ],
+      "nearest_existing_probe_node": "12985655919",
+      "source_population": 105046,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11460",
+      "included_in_public_csv": true,
+      "investigation_rank": 190,
+      "name": "Ann Arbor, MI Metro Area",
+      "native_point_distance_m": 1251805.2668526622,
+      "native_representative_lonlat": [
+        -83.8434233,
+        42.2522168
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 370214,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24860",
+      "included_in_public_csv": true,
+      "investigation_rank": 191,
+      "name": "Greenville-Anderson-Greer, SC Metro Area",
+      "native_point_distance_m": 1257678.1337678442,
+      "native_representative_lonlat": [
+        -82.4134227,
+        34.6837085
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 1014101,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33780",
+      "included_in_public_csv": true,
+      "investigation_rank": 192,
+      "name": "Monroe, MI Metro Area",
+      "native_point_distance_m": 1261117.2067119433,
+      "native_representative_lonlat": [
+        -83.4871059,
+        41.916097
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 156004,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "20260",
+      "included_in_public_csv": true,
+      "investigation_rank": 193,
+      "name": "Duluth, MN-WI Metro Area",
+      "native_point_distance_m": 1270151.4657380038,
+      "native_representative_lonlat": [
+        -92.3762703,
+        47.3297029
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 281219,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13460",
+      "included_in_public_csv": true,
+      "investigation_rank": 194,
+      "name": "Bend, OR Metro Area",
+      "native_point_distance_m": 1275794.6391038417,
+      "native_representative_lonlat": [
+        -120.8870717,
+        44.1538371
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 266376,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "45220",
+      "included_in_public_csv": true,
+      "investigation_rank": 195,
+      "name": "Tallahassee, FL Metro Area",
+      "native_point_distance_m": 1286077.023053508,
+      "native_representative_lonlat": [
+        -84.2670012,
+        30.3463661
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 397442,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31900",
+      "included_in_public_csv": true,
+      "investigation_rank": 196,
+      "name": "Mansfield, OH Metro Area",
+      "native_point_distance_m": 1286295.3102648766,
+      "native_representative_lonlat": [
+        -82.5427812,
+        40.774159
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 124893,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41780",
+      "included_in_public_csv": true,
+      "investigation_rank": 197,
+      "name": "Sandusky, OH Metro Area",
+      "native_point_distance_m": 1295600.1237926206,
+      "native_representative_lonlat": [
+        -82.7945682,
+        41.5196059
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 112777,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "45900",
+      "included_in_public_csv": true,
+      "investigation_rank": 198,
+      "name": "Traverse City, MI Metro Area",
+      "native_point_distance_m": 1296269.9403130363,
+      "native_representative_lonlat": [
+        -85.90832,
+        44.9523239
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 156972,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40980",
+      "included_in_public_csv": true,
+      "investigation_rank": 199,
+      "name": "Saginaw, MI Metro Area",
+      "native_point_distance_m": 1297914.5481867122,
+      "native_representative_lonlat": [
+        -84.05541,
+        43.3282667
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 187688,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22420",
+      "included_in_public_csv": true,
+      "investigation_rank": 200,
+      "name": "Flint, MI Metro Area",
+      "native_point_distance_m": 1303740.4255499928,
+      "native_representative_lonlat": [
+        -83.7063718,
+        43.0210768
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 401093,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43900",
+      "included_in_public_csv": true,
+      "investigation_rank": 201,
+      "name": "Spartanburg, SC Metro Area",
+      "native_point_distance_m": 1305431.616389573,
+      "native_representative_lonlat": [
+        -81.8424008,
+        34.8346199
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 407656,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "32780",
+      "included_in_public_csv": true,
+      "investigation_rank": 202,
+      "name": "Medford, OR Metro Area",
+      "native_point_distance_m": 1310060.280307138,
+      "native_representative_lonlat": [
+        -122.6756106,
+        42.4116214
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 221795,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16620",
+      "included_in_public_csv": true,
+      "investigation_rank": 203,
+      "name": "Charleston, WV Metro Area",
+      "native_point_distance_m": 1317335.3406312293,
+      "native_representative_lonlat": [
+        -81.4925567,
+        38.2832126
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 200170,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19820",
+      "included_in_public_csv": true,
+      "investigation_rank": 204,
+      "name": "Detroit-Warren-Dearborn, MI Metro Area",
+      "native_point_distance_m": 1322963.301106329,
+      "native_representative_lonlat": [
+        -83.2008463,
+        42.7218478
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 4390913,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25860",
+      "included_in_public_csv": true,
+      "investigation_rank": 205,
+      "name": "Hickory-Lenoir-Morganton, NC Metro Area",
+      "native_point_distance_m": 1323378.645919979,
+      "native_representative_lonlat": [
+        -81.4565843,
+        35.8142954
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 376890,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13020",
+      "included_in_public_csv": true,
+      "investigation_rank": 206,
+      "name": "Bay City, MI Metro Area",
+      "native_point_distance_m": 1326040.5013727746,
+      "native_representative_lonlat": [
+        -83.9787007,
+        43.6997112
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 102123,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12260",
+      "included_in_public_csv": true,
+      "investigation_rank": 207,
+      "name": "Augusta-Richmond County, GA-SC Metro Area",
+      "native_point_distance_m": 1330740.560515112,
+      "native_representative_lonlat": [
+        -81.9828327,
+        33.4603713
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 641231,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28420",
+      "included_in_public_csv": true,
+      "investigation_rank": 208,
+      "name": "Kennewick-Richland, WA Metro Area",
+      "native_point_distance_m": 1340596.080470922,
+      "native_representative_lonlat": [
+        -119.2549271,
+        46.3641545
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 324334,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "46660",
+      "included_in_public_csv": true,
+      "investigation_rank": 209,
+      "name": "Valdosta, GA Metro Area",
+      "native_point_distance_m": 1340762.4322706056,
+      "native_representative_lonlat": [
+        -83.2435548,
+        30.8271579
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 153276,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17660",
+      "included_in_public_csv": true,
+      "investigation_rank": 210,
+      "name": "Coeur d'Alene, ID Metro Area",
+      "native_point_distance_m": 1341940.6751471346,
+      "native_representative_lonlat": [
+        -116.6958613,
+        47.6759605
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 191864,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13220",
+      "included_in_public_csv": true,
+      "investigation_rank": 211,
+      "name": "Beckley, WV Metro Area",
+      "native_point_distance_m": 1342908.404407382,
+      "native_representative_lonlat": [
+        -81.1637481,
+        37.9056593
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 109940,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "15940",
+      "included_in_public_csv": true,
+      "investigation_rank": 212,
+      "name": "Canton-Massillon, OH Metro Area",
+      "native_point_distance_m": 1387261.1708969076,
+      "native_representative_lonlat": [
+        -81.261468,
+        40.7110505
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 400246,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16740",
+      "included_in_public_csv": true,
+      "investigation_rank": 213,
+      "name": "Charlotte-Concord-Gastonia, NC-SC Metro Area",
+      "native_point_distance_m": 1392514.5580630002,
+      "native_representative_lonlat": [
+        -80.7972848,
+        35.1663423
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 2938830,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "10420",
+      "included_in_public_csv": true,
+      "investigation_rank": 214,
+      "name": "Akron, OH Metro Area",
+      "native_point_distance_m": 1394389.3500686884,
+      "native_representative_lonlat": [
+        -81.3501104,
+        41.1466395
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 701780,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17900",
+      "included_in_public_csv": true,
+      "investigation_rank": 215,
+      "name": "Columbia, SC Metro Area",
+      "native_point_distance_m": 1395948.7016986995,
+      "native_representative_lonlat": [
+        -81.0378453,
+        34.0775845
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 879918,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13980",
+      "included_in_public_csv": true,
+      "investigation_rank": 216,
+      "name": "Blacksburg-Christiansburg-Radford, VA Metro Area",
+      "native_point_distance_m": 1396830.1066210226,
+      "native_representative_lonlat": [
+        -80.5315166,
+        37.1213643
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 181616,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "21660",
+      "included_in_public_csv": true,
+      "investigation_rank": 217,
+      "name": "Eugene-Springfield, OR Metro Area",
+      "native_point_distance_m": 1399641.6978441274,
+      "native_representative_lonlat": [
+        -122.8975806,
+        43.9283337
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 381584,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48540",
+      "included_in_public_csv": true,
+      "investigation_rank": 218,
+      "name": "Wheeling, WV-OH Metro Area",
+      "native_point_distance_m": 1400688.9330379555,
+      "native_representative_lonlat": [
+        -80.8548262,
+        39.9776866
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 134089,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "10540",
+      "included_in_public_csv": true,
+      "investigation_rank": 219,
+      "name": "Albany, OR Metro Area",
+      "native_point_distance_m": 1406128.9242263054,
+      "native_representative_lonlat": [
+        -122.5372084,
+        44.4888982
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 132843,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17410",
+      "included_in_public_csv": true,
+      "investigation_rank": 220,
+      "name": "Cleveland, OH Metro Area",
+      "native_point_distance_m": 1407193.4774640277,
+      "native_representative_lonlat": [
+        -81.4305203,
+        41.6675481
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 2165775,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "44060",
+      "included_in_public_csv": true,
+      "investigation_rank": 221,
+      "name": "Spokane-Spokane Valley, WA Metro Area",
+      "native_point_distance_m": 1419176.6264083837,
+      "native_representative_lonlat": [
+        -117.663472,
+        48.091618
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 608012,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "49180",
+      "included_in_public_csv": true,
+      "investigation_rank": 222,
+      "name": "Winston-Salem, NC Metro Area",
+      "native_point_distance_m": 1419830.779416688,
+      "native_representative_lonlat": [
+        -80.3450642,
+        36.0788515
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 712206,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48260",
+      "included_in_public_csv": true,
+      "investigation_rank": 223,
+      "name": "Weirton-Steubenville, WV-OH Metro Area",
+      "native_point_distance_m": 1423680.9585977213,
+      "native_representative_lonlat": [
+        -80.7019657,
+        40.3889142
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 112468,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "49420",
+      "included_in_public_csv": true,
+      "investigation_rank": 224,
+      "name": "Yakima, WA Metro Area",
+      "native_point_distance_m": 1428033.6387080557,
+      "native_representative_lonlat": [
+        -120.7401446,
+        46.4565581
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 259185,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "49660",
+      "included_in_public_csv": true,
+      "investigation_rank": 225,
+      "name": "Youngstown-Warren, OH Metro Area",
+      "native_point_distance_m": 1442672.873674543,
+      "native_representative_lonlat": [
+        -80.7650804,
+        41.1950924
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 423678,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42340",
+      "included_in_public_csv": true,
+      "investigation_rank": 226,
+      "name": "Savannah, GA Metro Area",
+      "native_point_distance_m": 1444798.7749443888,
+      "native_representative_lonlat": [
+        -81.2732867,
+        32.1092557
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 438314,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40220",
+      "included_in_public_csv": true,
+      "investigation_rank": 227,
+      "name": "Roanoke, VA Metro Area",
+      "native_point_distance_m": 1448411.9239680753,
+      "native_representative_lonlat": [
+        -79.9469346,
+        37.2862262
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 316547,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "15260",
+      "included_in_public_csv": true,
+      "investigation_rank": 228,
+      "name": "Brunswick-St. Simons, GA Metro Area",
+      "native_point_distance_m": 1454797.9079156301,
+      "native_representative_lonlat": [
+        -81.5889087,
+        31.3017391
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 118524,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41420",
+      "included_in_public_csv": true,
+      "investigation_rank": 229,
+      "name": "Salem, OR Metro Area",
+      "native_point_distance_m": 1454991.335804796,
+      "native_representative_lonlat": [
+        -122.9017571,
+        44.9033845
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 445814,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "44940",
+      "included_in_public_csv": true,
+      "investigation_rank": 230,
+      "name": "Sumter, SC Metro Area",
+      "native_point_distance_m": 1458947.1796059434,
+      "native_representative_lonlat": [
+        -80.3823757,
+        33.9161395
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 105067,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "23540",
+      "included_in_public_csv": true,
+      "investigation_rank": 231,
+      "name": "Gainesville, FL Metro Area",
+      "native_point_distance_m": 1469508.914027086,
+      "native_representative_lonlat": [
+        -82.6662573,
+        29.4533549
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 359036,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24660",
+      "included_in_public_csv": true,
+      "investigation_rank": 232,
+      "name": "Greensboro-High Point, NC Metro Area",
+      "native_point_distance_m": 1469840.4881938156,
+      "native_representative_lonlat": [
+        -79.7926333,
+        36.0252039
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 805945,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "38900",
+      "included_in_public_csv": true,
+      "investigation_rank": 233,
+      "name": "Portland-Vancouver-Hillsboro, OR-WA Metro Area",
+      "native_point_distance_m": 1471377.992434555,
+      "native_representative_lonlat": [
+        -122.484378,
+        45.6006221
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 2542282,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25940",
+      "included_in_public_csv": true,
+      "investigation_rank": 234,
+      "name": "Hilton Head Island-Bluffton-Port Royal, SC Metro Area",
+      "native_point_distance_m": 1471835.2744854076,
+      "native_representative_lonlat": [
+        -80.8308775,
+        32.3867916
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 242966,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "34060",
+      "included_in_public_csv": true,
+      "investigation_rank": 235,
+      "name": "Morgantown, WV Metro Area",
+      "native_point_distance_m": 1479862.1792697748,
+      "native_representative_lonlat": [
+        -79.8019121,
+        39.5251551
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 141995,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "38300",
+      "included_in_public_csv": true,
+      "investigation_rank": 236,
+      "name": "Pittsburgh, PA Metro Area",
+      "native_point_distance_m": 1494797.2827008157,
+      "native_representative_lonlat": [
+        -79.8639858,
+        40.4713315
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 2421992,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27260",
+      "included_in_public_csv": true,
+      "investigation_rank": 237,
+      "name": "Jacksonville, FL Metro Area",
+      "native_point_distance_m": 1497037.1258758397,
+      "native_representative_lonlat": [
+        -81.7560584,
+        30.2341385
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 1785500,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22500",
+      "included_in_public_csv": true,
+      "investigation_rank": 238,
+      "name": "Florence, SC Metro Area",
+      "native_point_distance_m": 1503946.0559241348,
+      "native_representative_lonlat": [
+        -79.8061642,
+        34.1535741
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 201392,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "15500",
+      "included_in_public_csv": true,
+      "investigation_rank": 239,
+      "name": "Burlington, NC Metro Area",
+      "native_point_distance_m": 1504695.9209141275,
+      "native_representative_lonlat": [
+        -79.4005733,
+        36.0439535
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 186177,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "38240",
+      "included_in_public_csv": true,
+      "investigation_rank": 240,
+      "name": "Pinehurst-Southern Pines, NC Metro Area",
+      "native_point_distance_m": 1506961.8987111321,
+      "native_representative_lonlat": [
+        -79.4927233,
+        35.3082734
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 110619,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48300",
+      "included_in_public_csv": true,
+      "investigation_rank": 241,
+      "name": "Wenatchee-East Wenatchee, WA Metro Area",
+      "native_point_distance_m": 1507836.8764988796,
+      "native_representative_lonlat": [
+        -120.2701973,
+        47.7661102
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 128414,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31340",
+      "included_in_public_csv": true,
+      "investigation_rank": 242,
+      "name": "Lynchburg, VA Metro Area",
+      "native_point_distance_m": 1512912.5687501426,
+      "native_representative_lonlat": [
+        -79.2166894,
+        37.3649258
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 269169,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "26140",
+      "included_in_public_csv": true,
+      "investigation_rank": 243,
+      "name": "Homosassa Springs, FL Metro Area",
+      "native_point_distance_m": 1514023.5130749373,
+      "native_representative_lonlat": [
+        -82.5955513,
+        28.8502933
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 171666,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16700",
+      "included_in_public_csv": true,
+      "investigation_rank": 244,
+      "name": "Charleston-North Charleston, SC Metro Area",
+      "native_point_distance_m": 1520478.4086535363,
+      "native_representative_lonlat": [
+        -80.0099468,
+        33.0175399
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 889263,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "44420",
+      "included_in_public_csv": true,
+      "investigation_rank": 245,
+      "name": "Staunton-Stuarts Draft, VA Metro Area",
+      "native_point_distance_m": 1522473.0329847012,
+      "native_representative_lonlat": [
+        -79.1276321,
+        38.1609584
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 129692,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31020",
+      "included_in_public_csv": true,
+      "investigation_rank": 246,
+      "name": "Longview-Kelso, WA Metro Area",
+      "native_point_distance_m": 1522946.787650071,
+      "native_representative_lonlat": [
+        -122.6784596,
+        46.1967854
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 114885,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "21500",
+      "included_in_public_csv": true,
+      "investigation_rank": 247,
+      "name": "Erie, PA Metro Area",
+      "native_point_distance_m": 1528121.434202533,
+      "native_representative_lonlat": [
+        -80.0963858,
+        42.1179519
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 265832,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "20500",
+      "included_in_public_csv": true,
+      "investigation_rank": 248,
+      "name": "Durham-Chapel Hill, NC Metro Area",
+      "native_point_distance_m": 1532412.9563545675,
+      "native_representative_lonlat": [
+        -79.0969897,
+        35.995536
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 625485,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "36100",
+      "included_in_public_csv": true,
+      "investigation_rank": 249,
+      "name": "Ocala, FL Metro Area",
+      "native_point_distance_m": 1535085.8619242832,
+      "native_representative_lonlat": [
+        -82.0431004,
+        29.2028047
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 442660,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25500",
+      "included_in_public_csv": true,
+      "investigation_rank": 250,
+      "name": "Harrisonburg, VA Metro Area",
+      "native_point_distance_m": 1545815.7156161654,
+      "native_representative_lonlat": [
+        -78.8853291,
+        38.5076118
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 140155,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22180",
+      "included_in_public_csv": true,
+      "investigation_rank": 251,
+      "name": "Fayetteville, NC Metro Area",
+      "native_point_distance_m": 1557669.4795389893,
+      "native_representative_lonlat": [
+        -78.9822092,
+        35.0379563
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 395412,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48680",
+      "included_in_public_csv": true,
+      "investigation_rank": 252,
+      "name": "Wildwood-The Villages, FL Metro Area",
+      "native_point_distance_m": 1564375.4650366532,
+      "native_representative_lonlat": [
+        -82.0695548,
+        28.7132767
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 157772,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42660",
+      "included_in_public_csv": true,
+      "investigation_rank": 253,
+      "name": "Seattle-Tacoma-Bellevue, WA Metro Area",
+      "native_point_distance_m": 1567312.027521749,
+      "native_representative_lonlat": [
+        -121.8339765,
+        47.4905518
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 4161883,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16820",
+      "included_in_public_csv": true,
+      "investigation_rank": 254,
+      "name": "Charlottesville, VA Metro Area",
+      "native_point_distance_m": 1568370.6112509742,
+      "native_representative_lonlat": [
+        -78.5932062,
+        37.9490837
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 228597,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "45300",
+      "included_in_public_csv": true,
+      "investigation_rank": 255,
+      "name": "Tampa-St. Petersburg-Clearwater, FL Metro Area",
+      "native_point_distance_m": 1568949.6057573205,
+      "native_representative_lonlat": [
+        -82.525188,
+        28.1205405
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 3418895,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "36500",
+      "included_in_public_csv": true,
+      "investigation_rank": 256,
+      "name": "Olympia-Lacey-Tumwater, WA Metro Area",
+      "native_point_distance_m": 1583008.731880169,
+      "native_representative_lonlat": [
+        -122.8301524,
+        46.9358216
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 304261,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "34820",
+      "included_in_public_csv": true,
+      "investigation_rank": 257,
+      "name": "Myrtle Beach-Conway-North Myrtle Beach, SC Metro Area",
+      "native_point_distance_m": 1584686.3852573207,
+      "native_representative_lonlat": [
+        -78.9766749,
+        33.9092694
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 427551,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "49020",
+      "included_in_public_csv": true,
+      "investigation_rank": 258,
+      "name": "Winchester, VA-WV Metro Area",
+      "native_point_distance_m": 1589285.7446239053,
+      "native_representative_lonlat": [
+        -78.4718276,
+        39.2729744
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 152332,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27780",
+      "included_in_public_csv": true,
+      "investigation_rank": 259,
+      "name": "Johnstown, PA Metro Area",
+      "native_point_distance_m": 1591014.3937327212,
+      "native_representative_lonlat": [
+        -78.7104876,
+        40.5102089
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 128968,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39580",
+      "included_in_public_csv": true,
+      "investigation_rank": 260,
+      "name": "Raleigh-Cary, NC Metro Area",
+      "native_point_distance_m": 1592470.2615906738,
+      "native_representative_lonlat": [
+        -78.4604412,
+        35.7567464
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 1595720,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19660",
+      "included_in_public_csv": true,
+      "investigation_rank": 261,
+      "name": "Deltona-Daytona Beach-Ormond Beach, FL Metro Area",
+      "native_point_distance_m": 1605457.0189619262,
+      "native_representative_lonlat": [
+        -81.1890231,
+        29.1789002
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 746933,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "14740",
+      "included_in_public_csv": true,
+      "investigation_rank": 262,
+      "name": "Bremerton-Silverdale-Port Orchard, WA Metro Area",
+      "native_point_distance_m": 1623567.3201236755,
+      "native_representative_lonlat": [
+        -122.6496358,
+        47.6396874
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 283374,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11020",
+      "included_in_public_csv": true,
+      "investigation_rank": 263,
+      "name": "Altoona, PA Metro Area",
+      "native_point_distance_m": 1623987.9592475228,
+      "native_representative_lonlat": [
+        -78.309597,
+        40.4986828
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 119541,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "35840",
+      "included_in_public_csv": true,
+      "investigation_rank": 264,
+      "name": "North Port-Bradenton-Sarasota, FL Metro Area",
+      "native_point_distance_m": 1633622.4989688848,
+      "native_representative_lonlat": [
+        -82.4145331,
+        27.3290555
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 948158,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25180",
+      "included_in_public_csv": true,
+      "investigation_rank": 265,
+      "name": "Hagerstown-Martinsburg, MD-WV Metro Area",
+      "native_point_distance_m": 1634600.1109736247,
+      "native_representative_lonlat": [
+        -77.9845935,
+        39.5544327
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 315280,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "36740",
+      "included_in_public_csv": true,
+      "investigation_rank": 266,
+      "name": "Orlando-Kissimmee-Sanford, FL Metro Area",
+      "native_point_distance_m": 1638988.325257949,
+      "native_representative_lonlat": [
+        -81.3560597,
+        28.4343977
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 2957672,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24140",
+      "included_in_public_csv": true,
+      "investigation_rank": 267,
+      "name": "Goldsboro, NC Metro Area",
+      "native_point_distance_m": 1639196.5748617162,
+      "native_representative_lonlat": [
+        -78.0086695,
+        35.3541896
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 122278,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29460",
+      "included_in_public_csv": true,
+      "investigation_rank": 268,
+      "name": "Lakeland-Winter Haven, FL Metro Area",
+      "native_point_distance_m": 1644407.7131917533,
+      "native_representative_lonlat": [
+        -81.6943014,
+        27.9548539
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 874790,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "34580",
+      "included_in_public_csv": true,
+      "investigation_rank": 269,
+      "name": "Mount Vernon-Anacortes, WA Metro Area",
+      "native_point_distance_m": 1645019.835895163,
+      "native_representative_lonlat": [
+        -121.8157703,
+        48.4932917
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 132975,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40580",
+      "included_in_public_csv": true,
+      "investigation_rank": 270,
+      "name": "Rocky Mount, NC Metro Area",
+      "native_point_distance_m": 1649211.3863248024,
+      "native_representative_lonlat": [
+        -77.7985494,
+        35.9410455
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 148486,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48900",
+      "included_in_public_csv": true,
+      "investigation_rank": 271,
+      "name": "Wilmington, NC Metro Area",
+      "native_point_distance_m": 1659339.1666366365,
+      "native_representative_lonlat": [
+        -78.0416743,
+        34.2536905
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 492772,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16540",
+      "included_in_public_csv": true,
+      "investigation_rank": 272,
+      "name": "Chambersburg, PA Metro Area",
+      "native_point_distance_m": 1662225.2365007934,
+      "native_representative_lonlat": [
+        -77.7245208,
+        39.9267722
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 160652,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "15380",
+      "included_in_public_csv": true,
+      "investigation_rank": 273,
+      "name": "Buffalo-Cheektowaga, NY Metro Area",
+      "native_point_distance_m": 1665369.560663072,
+      "native_representative_lonlat": [
+        -78.7773351,
+        43.0443711
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 1155653,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "47900",
+      "included_in_public_csv": true,
+      "investigation_rank": 274,
+      "name": "Washington-Arlington-Alexandria, DC-VA-MD-WV Metro Area",
+      "native_point_distance_m": 1668663.272608901,
+      "native_representative_lonlat": [
+        -77.4956841,
+        38.8297866
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 6465724,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40060",
+      "included_in_public_csv": true,
+      "investigation_rank": 275,
+      "name": "Richmond, VA Metro Area",
+      "native_point_distance_m": 1669448.9290459082,
+      "native_representative_lonlat": [
+        -77.4437202,
+        37.4122374
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 1389338,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "44300",
+      "included_in_public_csv": true,
+      "investigation_rank": 276,
+      "name": "State College, PA Metro Area",
+      "native_point_distance_m": 1671315.6207016998,
+      "native_representative_lonlat": [
+        -77.847667,
+        40.9093218
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 157393,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13380",
+      "included_in_public_csv": true,
+      "investigation_rank": 277,
+      "name": "Bellingham, WA Metro Area",
+      "native_point_distance_m": 1674325.6452519468,
+      "native_representative_lonlat": [
+        -121.8364325,
+        48.8426531
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 236392,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24780",
+      "included_in_public_csv": true,
+      "investigation_rank": 278,
+      "name": "Greenville, NC Metro Area",
+      "native_point_distance_m": 1692275.931608131,
+      "native_representative_lonlat": [
+        -77.3727387,
+        35.5924897
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 182936,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39460",
+      "included_in_public_csv": true,
+      "investigation_rank": 279,
+      "name": "Punta Gorda, FL Metro Area",
+      "native_point_distance_m": 1695164.52277501,
+      "native_representative_lonlat": [
+        -82.0036297,
+        26.906358
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 217212,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27340",
+      "included_in_public_csv": true,
+      "investigation_rank": 280,
+      "name": "Jacksonville, NC Metro Area",
+      "native_point_distance_m": 1696195.1385364237,
+      "native_representative_lonlat": [
+        -77.4994691,
+        34.7631087
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 217175,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "37340",
+      "included_in_public_csv": true,
+      "investigation_rank": 281,
+      "name": "Palm Bay-Melbourne-Titusville, FL Metro Area",
+      "native_point_distance_m": 1699980.469306728,
+      "native_representative_lonlat": [
+        -80.7003334,
+        28.2983112
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 663982,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "23900",
+      "included_in_public_csv": true,
+      "investigation_rank": 282,
+      "name": "Gettysburg, PA Metro Area",
+      "native_point_distance_m": 1704158.3317755763,
+      "native_representative_lonlat": [
+        -77.2177502,
+        39.8694372
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 107594,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42700",
+      "included_in_public_csv": true,
+      "investigation_rank": 283,
+      "name": "Sebring, FL Metro Area",
+      "native_point_distance_m": 1713981.7859570615,
+      "native_representative_lonlat": [
+        -81.3423534,
+        27.3410799
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 111122,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "15980",
+      "included_in_public_csv": true,
+      "investigation_rank": 284,
+      "name": "Cape Coral-Fort Myers, FL Metro Area",
+      "native_point_distance_m": 1722022.2333333248,
+      "native_representative_lonlat": [
+        -81.9841817,
+        26.5632731
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 875607,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25420",
+      "included_in_public_csv": true,
+      "investigation_rank": 285,
+      "name": "Harrisburg-Carlisle, PA Metro Area",
+      "native_point_distance_m": 1725757.3644191253,
+      "native_representative_lonlat": [
+        -77.0504897,
+        40.335915
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 617427,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "49620",
+      "included_in_public_csv": true,
+      "investigation_rank": 286,
+      "name": "York-Hanover, PA Metro Area",
+      "native_point_distance_m": 1746265.3946582945,
+      "native_representative_lonlat": [
+        -76.7288887,
+        39.9217514
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 473197,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48700",
+      "included_in_public_csv": true,
+      "investigation_rank": 287,
+      "name": "Williamsport, PA Metro Area",
+      "native_point_distance_m": 1746491.987401952,
+      "native_representative_lonlat": [
+        -77.0552624,
+        41.3438824
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 112587,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42680",
+      "included_in_public_csv": true,
+      "investigation_rank": 288,
+      "name": "Sebastian-Vero Beach-West Vero Corridor, FL Metro Area",
+      "native_point_distance_m": 1749096.8853541743,
+      "native_representative_lonlat": [
+        -80.5747894,
+        27.7005283
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 172799,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30500",
+      "included_in_public_csv": true,
+      "investigation_rank": 289,
+      "name": "Lexington Park, MD Metro Area",
+      "native_point_distance_m": 1749983.3755364758,
+      "native_representative_lonlat": [
+        -76.5279346,
+        38.3126957
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 211176,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12580",
+      "included_in_public_csv": true,
+      "investigation_rank": 290,
+      "name": "Baltimore-Columbia-Towson, MD Metro Area",
+      "native_point_distance_m": 1754233.9923716404,
+      "native_representative_lonlat": [
+        -76.5495009,
+        39.304361
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 2857781,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40380",
+      "included_in_public_csv": true,
+      "investigation_rank": 291,
+      "name": "Rochester, NY Metro Area",
+      "native_point_distance_m": 1763708.7846356905,
+      "native_representative_lonlat": [
+        -77.5565575,
+        43.184718
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 1056149,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "47260",
+      "included_in_public_csv": true,
+      "investigation_rank": 292,
+      "name": "Virginia Beach-Chesapeake-Norfolk, VA-NC Metro Area",
+      "native_point_distance_m": 1765507.021901057,
+      "native_representative_lonlat": [
+        -76.3918494,
+        36.8372891
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 1797213,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30140",
+      "included_in_public_csv": true,
+      "investigation_rank": 293,
+      "name": "Lebanon, PA Metro Area",
+      "native_point_distance_m": 1775403.473301601,
+      "native_representative_lonlat": [
+        -76.4648185,
+        40.3714482
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 146380,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29540",
+      "included_in_public_csv": true,
+      "investigation_rank": 294,
+      "name": "Lancaster, PA Metro Area",
+      "native_point_distance_m": 1788414.1048638888,
+      "native_representative_lonlat": [
+        -76.250198,
+        40.0419921
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 563159,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "38940",
+      "included_in_public_csv": true,
+      "investigation_rank": 295,
+      "name": "Port St. Lucie, FL Metro Area",
+      "native_point_distance_m": 1792770.052349179,
+      "native_representative_lonlat": [
+        -80.4249613,
+        27.2279435
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 568721,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "34940",
+      "included_in_public_csv": true,
+      "investigation_rank": 296,
+      "name": "Naples-Marco Island, FL Metro Area",
+      "native_point_distance_m": 1798270.9155238925,
+      "native_representative_lonlat": [
+        -81.4009553,
+        26.118786
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 417131,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41540",
+      "included_in_public_csv": true,
+      "investigation_rank": 297,
+      "name": "Salisbury, MD Metro Area",
+      "native_point_distance_m": 1816004.9687784368,
+      "native_representative_lonlat": [
+        -75.7692524,
+        38.1972788
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 131872,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39740",
+      "included_in_public_csv": true,
+      "investigation_rank": 298,
+      "name": "Reading, PA Metro Area",
+      "native_point_distance_m": 1821164.6284440209,
+      "native_representative_lonlat": [
+        -75.9268598,
+        40.4139565
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 440072,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27060",
+      "included_in_public_csv": true,
+      "investigation_rank": 299,
+      "name": "Ithaca, NY Metro Area",
+      "native_point_distance_m": 1823322.5911796736,
+      "native_representative_lonlat": [
+        -76.4734835,
+        42.4530063
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 104047,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42540",
+      "included_in_public_csv": true,
+      "investigation_rank": 300,
+      "name": "Scranton--Wilkes-Barre, PA Metro Area",
+      "native_point_distance_m": 1840541.3984165916,
+      "native_representative_lonlat": [
+        -75.8981877,
+        41.3228806
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 574418,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "20100",
+      "included_in_public_csv": true,
+      "investigation_rank": 301,
+      "name": "Dover, DE Metro Area",
+      "native_point_distance_m": 1842508.0149831974,
+      "native_representative_lonlat": [
+        -75.5029819,
+        39.0970884
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 194786,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13780",
+      "included_in_public_csv": true,
+      "investigation_rank": 302,
+      "name": "Binghamton, NY Metro Area",
+      "native_point_distance_m": 1850896.78338543,
+      "native_representative_lonlat": [
+        -76.0229431,
+        42.1639276
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 243189,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "45060",
+      "included_in_public_csv": true,
+      "investigation_rank": 303,
+      "name": "Syracuse, NY Metro Area",
+      "native_point_distance_m": 1862362.7324848506,
+      "native_representative_lonlat": [
+        -76.1961336,
+        43.0065163
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 652273,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "37980",
+      "included_in_public_csv": true,
+      "investigation_rank": 304,
+      "name": "Philadelphia-Camden-Wilmington, PA-NJ-DE-MD Metro Area",
+      "native_point_distance_m": 1865984.4438470448,
+      "native_representative_lonlat": [
+        -75.3119824,
+        39.8949576
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 6329118,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33100",
+      "included_in_public_csv": true,
+      "investigation_rank": 305,
+      "name": "Miami-Fort Lauderdale-West Palm Beach, FL Metro Area",
+      "native_point_distance_m": 1868287.5355084916,
+      "native_representative_lonlat": [
+        -80.4787552,
+        26.1018281
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 6391072,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "10900",
+      "included_in_public_csv": true,
+      "investigation_rank": 306,
+      "name": "Allentown-Bethlehem-Easton, PA-NJ Metro Area",
+      "native_point_distance_m": 1871499.790175836,
+      "native_representative_lonlat": [
+        -75.398158,
+        40.7893392
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 887615,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "47220",
+      "included_in_public_csv": true,
+      "investigation_rank": 307,
+      "name": "Vineland, NJ Metro Area",
+      "native_point_distance_m": 1876913.596597783,
+      "native_representative_lonlat": [
+        -75.1216277,
+        39.3284336
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 157148,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48060",
+      "included_in_public_csv": true,
+      "investigation_rank": 308,
+      "name": "Watertown-Fort Drum, NY Metro Area",
+      "native_point_distance_m": 1908183.411346103,
+      "native_representative_lonlat": [
+        -76.0529678,
+        43.996389
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 111540,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12100",
+      "included_in_public_csv": true,
+      "investigation_rank": 309,
+      "name": "Atlantic City-Hammonton, NJ Metro Area",
+      "native_point_distance_m": 1909532.2622855701,
+      "native_representative_lonlat": [
+        -74.7383113,
+        39.2861857
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 372047,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "45940",
+      "included_in_public_csv": true,
+      "investigation_rank": 310,
+      "name": "Trenton-Princeton, NJ Metro Area",
+      "native_point_distance_m": 1922089.304566192,
+      "native_representative_lonlat": [
+        -74.703724,
+        40.2825026
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 399289,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "46540",
+      "included_in_public_csv": true,
+      "investigation_rank": 311,
+      "name": "Utica-Rome, NY Metro Area",
+      "native_point_distance_m": 1952255.5522976406,
+      "native_representative_lonlat": [
+        -75.1731893,
+        43.3322796
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 285611,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28740",
+      "included_in_public_csv": true,
+      "investigation_rank": 312,
+      "name": "Kingston, NY Metro Area",
+      "native_point_distance_m": 1987168.1764212488,
+      "native_representative_lonlat": [
+        -74.2654582,
+        41.9472124
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 183330,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28880",
+      "included_in_public_csv": true,
+      "investigation_rank": 313,
+      "name": "Kiryas Joel-Poughkeepsie-Newburgh, NY Metro Area",
+      "native_point_distance_m": 1998432.3652424705,
+      "native_representative_lonlat": [
+        -74.0338729,
+        41.5752737
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 718377,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "35620",
+      "included_in_public_csv": true,
+      "investigation_rank": 314,
+      "name": "New York-Newark-Jersey City, NY-NJ Metro Area",
+      "native_point_distance_m": 2003307.8917193157,
+      "native_representative_lonlat": [
+        -73.80773,
+        40.7354255
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 20112448,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "10580",
+      "included_in_public_csv": true,
+      "investigation_rank": 315,
+      "name": "Albany-Schenectady-Troy, NY Metro Area",
+      "native_point_distance_m": 2033140.4696723141,
+      "native_representative_lonlat": [
+        -73.9423479,
+        42.7879202
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 915835,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "14860",
+      "included_in_public_csv": true,
+      "investigation_rank": 316,
+      "name": "Bridgeport-Stamford-Danbury, CT Metro Area",
+      "native_point_distance_m": 2045500.026417463,
+      "native_representative_lonlat": [
+        -73.3932673,
+        41.2524425
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 978179,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24020",
+      "included_in_public_csv": true,
+      "investigation_rank": 317,
+      "name": "Glens Falls, NY Metro Area",
+      "native_point_distance_m": 2074998.3699243506,
+      "native_representative_lonlat": [
+        -73.6367573,
+        43.4404503
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 124373,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "47930",
+      "included_in_public_csv": true,
+      "investigation_rank": 318,
+      "name": "Waterbury-Shelton, CT Metro Area",
+      "native_point_distance_m": 2075092.3213080126,
+      "native_representative_lonlat": [
+        -73.0879059,
+        41.5189311
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 463349,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "38340",
+      "included_in_public_csv": true,
+      "investigation_rank": 319,
+      "name": "Pittsfield, MA Metro Area",
+      "native_point_distance_m": 2081110.7108877073,
+      "native_representative_lonlat": [
+        -73.2179276,
+        42.371493
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 128224,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "35300",
+      "included_in_public_csv": true,
+      "investigation_rank": 320,
+      "name": "New Haven, CT Metro Area",
+      "native_point_distance_m": 2092115.3166525052,
+      "native_representative_lonlat": [
+        -72.8370243,
+        41.2901671
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 578741,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25540",
+      "included_in_public_csv": true,
+      "investigation_rank": 321,
+      "name": "Hartford-West Hartford-East Hartford, CT Metro Area",
+      "native_point_distance_m": 2122559.7061256217,
+      "native_representative_lonlat": [
+        -72.5451122,
+        41.6880385
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 1171426,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "44140",
+      "included_in_public_csv": true,
+      "investigation_rank": 322,
+      "name": "Springfield, MA Metro Area",
+      "native_point_distance_m": 2123317.0936966036,
+      "native_representative_lonlat": [
+        -72.6356473,
+        42.1361975
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 464338,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11200",
+      "included_in_public_csv": true,
+      "investigation_rank": 323,
+      "name": "Amherst Town-Northampton, MA Metro Area",
+      "native_point_distance_m": 2125125.915961025,
+      "native_representative_lonlat": [
+        -72.6636919,
+        42.33946
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 164065,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "35980",
+      "included_in_public_csv": true,
+      "investigation_rank": 324,
+      "name": "Norwich-New London-Willimantic, CT Metro Area",
+      "native_point_distance_m": 2155829.7664862457,
+      "native_representative_lonlat": [
+        -72.1016655,
+        41.4847688
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 284015,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "15540",
+      "included_in_public_csv": true,
+      "investigation_rank": 325,
+      "name": "Burlington-South Burlington, VT Metro Area",
+      "native_point_distance_m": 2159719.9257009057,
+      "native_representative_lonlat": [
+        -73.0411754,
+        44.6891146
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 227803,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "49340",
+      "included_in_public_csv": true,
+      "investigation_rank": 326,
+      "name": "Worcester, MA Metro Area",
+      "native_point_distance_m": 2183090.8524987157,
+      "native_representative_lonlat": [
+        -71.940282,
+        42.3116934
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 888502,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31700",
+      "included_in_public_csv": true,
+      "investigation_rank": 327,
+      "name": "Manchester-Nashua, NH Metro Area",
+      "native_point_distance_m": 2212806.3501009205,
+      "native_representative_lonlat": [
+        -71.7230554,
+        42.9115317
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 433415,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39300",
+      "included_in_public_csv": true,
+      "investigation_rank": 328,
+      "name": "Providence-Warwick, RI-MA Metro Area",
+      "native_point_distance_m": 2226282.9787614937,
+      "native_representative_lonlat": [
+        -71.2866874,
+        41.7068397
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 1708161,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "14460",
+      "included_in_public_csv": true,
+      "investigation_rank": 329,
+      "name": "Boston-Cambridge-Newton, MA-NH Metro Area",
+      "native_point_distance_m": 2261252.535902011,
+      "native_representative_lonlat": [
+        -71.0219925,
+        42.517606
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 5034221,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12700",
+      "included_in_public_csv": true,
+      "investigation_rank": 330,
+      "name": "Barnstable Town, MA Metro Area",
+      "native_point_distance_m": 2318698.531322185,
+      "native_representative_lonlat": [
+        -70.1648227,
+        41.7061233
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 233539,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "38860",
+      "included_in_public_csv": true,
+      "investigation_rank": 331,
+      "name": "Portland-South Portland, ME Metro Area",
+      "native_point_distance_m": 2332760.8410111447,
+      "native_representative_lonlat": [
+        -70.4183755,
+        43.6514172
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 577635,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30340",
+      "included_in_public_csv": true,
+      "investigation_rank": 332,
+      "name": "Lewiston-Auburn, ME Metro Area",
+      "native_point_distance_m": 2361553.9891231847,
+      "native_representative_lonlat": [
+        -70.2074347,
+        44.1676811
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 116487,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12620",
+      "included_in_public_csv": true,
+      "investigation_rank": 333,
+      "name": "Bangor, ME Metro Area",
+      "native_point_distance_m": 2512116.0786449728,
+      "native_representative_lonlat": [
+        -68.666616,
+        45.4092843
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 157967,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "10380",
+      "included_in_public_csv": false,
+      "investigation_rank": 334,
+      "name": "Aguadilla, PR Metro Area",
+      "native_point_distance_m": 3470068.610913424,
+      "native_representative_lonlat": [
+        -67.0972023,
+        18.391555
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 250088,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "32420",
+      "included_in_public_csv": false,
+      "investigation_rank": 335,
+      "name": "Mayag\u00fcez, PR Metro Area",
+      "native_point_distance_m": 3491762.444635489,
+      "native_representative_lonlat": [
+        -67.1666383,
+        18.0192258
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 206355,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11640",
+      "included_in_public_csv": false,
+      "investigation_rank": 336,
+      "name": "Arecibo, PR Metro Area",
+      "native_point_distance_m": 3493582.8423554124,
+      "native_representative_lonlat": [
+        -66.7599813,
+        18.4392239
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 179229,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "38660",
+      "included_in_public_csv": false,
+      "investigation_rank": 337,
+      "name": "Ponce, PR Metro Area",
+      "native_point_distance_m": 3532957.8802752206,
+      "native_representative_lonlat": [
+        -66.6457033,
+        18.0228643
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 262792,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41980",
+      "included_in_public_csv": false,
+      "investigation_rank": 338,
+      "name": "San Juan-Bayam\u00f3n-Caguas, PR Metro Area",
+      "native_point_distance_m": 3562133.0007698643,
+      "native_representative_lonlat": [
+        -66.0368437,
+        18.2944526
+      ],
+      "nearest_existing_probe_node": "8446107003",
+      "source_population": 2024195,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11260",
+      "included_in_public_csv": false,
+      "investigation_rank": 339,
+      "name": "Anchorage, AK Metro Area",
+      "native_point_distance_m": 3938234.57949097,
+      "native_representative_lonlat": [
+        -149.6782218,
+        62.2127844
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 405821,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27980",
+      "included_in_public_csv": false,
+      "investigation_rank": 340,
+      "name": "Kahului-Wailuku, HI Metro Area",
+      "native_point_distance_m": 4905641.797053797,
+      "native_representative_lonlat": [
+        -156.6015502,
+        20.8559308
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 160674,
+      "status": "unknown_competitor"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "46520",
+      "included_in_public_csv": false,
+      "investigation_rank": 341,
+      "name": "Urban Honolulu, HI Metro Area",
+      "native_point_distance_m": 5011273.097085654,
+      "native_representative_lonlat": [
+        -158.201974,
+        21.4613654
+      ],
+      "nearest_existing_probe_node": "143742225",
+      "source_population": 988703,
+      "status": "unknown_competitor"
+    }
+  ],
+  "release_eligible": false,
+  "schema": "remaining-metro-competitor-investigation-queue-v1",
+  "unknown_competitors": 341,
+  "warning": "Scheduling heuristic only, not a routing lower bound, irrelevant-competitor proof, urban-anchor choice or state completion. Every listed identity remains unknown. Large CBSA domains and exterior road routes can change investigation priority."
+}
