@@ -1,0 +1,9 @@
+{
+  "schema": "denver-waypoint-hypothesis-result-v1",
+  "report_sha256": "d259dbe16fbc26bf8dd52d0287c26d7f837a4df197bc47380aff8a027c009e2d",
+  "upstream_head": "fce27f03f1f12d1f7c5d7c94c10336c988521b5c",
+  "upstream_run": 40782386652,
+  "upstream_job": 123147034438,
+  "release_eligible": false,
+  "anchor_adopted": false
+}

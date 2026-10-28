@@ -1,0 +1,682 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "cases": [
+    {
+      "actual_directed_path_sha256": "0cbb5eb79979d571ba688a2c8bc704c9c318cc71b08e473aa788ceb5faad0300",
+      "exact_stored_path_cost": [
+        "455132726979313116403",
+        "4503599627370496"
+      ],
+      "graph_only_cost": 101059.76655057356,
+      "metric": "length",
+      "orientation": "metro-to-location",
+      "path_nodes": 2756,
+      "probe_cbsa": "14500",
+      "probe_node": 7298599564,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "a112672b0c942a7506e55ddc74318ed00a40d347dc010c02853ecf655a1120a1",
+      "exact_stored_path_cost": [
+        "787545624135367659313",
+        "9007199254740992"
+      ],
+      "graph_only_cost": 87435.12848578751,
+      "metric": "length",
+      "orientation": "metro-to-location",
+      "path_nodes": 1782,
+      "probe_cbsa": "17820",
+      "probe_node": 11866557610,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "de0aa2b646e4ed812c632897c194e2f0bda52ad97a342bab1969560fc2b2af7b",
+      "exact_stored_path_cost": [
+        "0",
+        "1"
+      ],
+      "graph_only_cost": 0.0,
+      "metric": "length",
+      "orientation": "metro-to-location",
+      "path_nodes": 1,
+      "probe_cbsa": "19740",
+      "probe_node": 6350018589,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "ba81cdf5be46480549ea15b0d1c20554ec07e707039d791a679ee24670d9a2b9",
+      "exact_stored_path_cost": [
+        "805355215820716416653",
+        "4503599627370496"
+      ],
+      "graph_only_cost": 178824.7807212247,
+      "metric": "length",
+      "orientation": "metro-to-location",
+      "path_nodes": 5220,
+      "probe_cbsa": "22660",
+      "probe_node": 1795087746,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "af3d70b3c297620beb23274083dfbe7ad05a2d0c3b33a5978ffe9a5c2fa71389",
+      "exact_stored_path_cost": [
+        "1462876565845775724907",
+        "9007199254740992"
+      ],
+      "graph_only_cost": 162411.9245586562,
+      "metric": "length",
+      "orientation": "metro-to-location",
+      "path_nodes": 2456,
+      "probe_cbsa": "39380",
+      "probe_node": 12985655919,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "6df49034899d876688e962aca94cc7c018581bdb8bbf24c4a25f9c6a5e049784",
+      "exact_stored_path_cost": [
+        "536005437217050850893",
+        "9007199254740992"
+      ],
+      "graph_only_cost": 59508.55777226442,
+      "metric": "length",
+      "orientation": "metro-to-location",
+      "path_nodes": 1675,
+      "probe_cbsa": "14500",
+      "probe_node": 7298599564,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    },
+    {
+      "actual_directed_path_sha256": "c562e1b6b71afdb459b2db1a5f4bac04e878087f3d5fade8b69fd9d20c413aae",
+      "exact_stored_path_cost": [
+        "551529301009288244765",
+        "4503599627370496"
+      ],
+      "graph_only_cost": 122464.105747186,
+      "metric": "length",
+      "orientation": "metro-to-location",
+      "path_nodes": 1919,
+      "probe_cbsa": "17820",
+      "probe_node": 11866557610,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    },
+    {
+      "actual_directed_path_sha256": "bf8805278f584ddb2e0636a84d822ba486d71a744648662c9a81ce96f7db1dfd",
+      "exact_stored_path_cost": [
+        "381649927958362139117",
+        "9007199254740992"
+      ],
+      "graph_only_cost": 42371.653736590546,
+      "metric": "length",
+      "orientation": "metro-to-location",
+      "path_nodes": 1061,
+      "probe_cbsa": "19740",
+      "probe_node": 6350018589,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    },
+    {
+      "actual_directed_path_sha256": "b401259fa2ca894423fcb354b55513ced9b25fbe8151895a3f2a968509211ef8",
+      "exact_stored_path_cost": [
+        "1236450414899857451393",
+        "9007199254740992"
+      ],
+      "graph_only_cost": 137273.5719429151,
+      "metric": "length",
+      "orientation": "metro-to-location",
+      "path_nodes": 4139,
+      "probe_cbsa": "22660",
+      "probe_node": 1795087746,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    },
+    {
+      "actual_directed_path_sha256": "fe03afbe9e92ef762a45f519e1c5dc35eea45bb7d54c2174ab4503658fc098e0",
+      "exact_stored_path_cost": [
+        "444597385932246138781",
+        "2251799813685248"
+      ],
+      "graph_only_cost": 197440.9018200547,
+      "metric": "length",
+      "orientation": "metro-to-location",
+      "path_nodes": 2593,
+      "probe_cbsa": "39380",
+      "probe_node": 12985655919,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    },
+    {
+      "actual_directed_path_sha256": "0712164459de8529452ce3a19886d962d917c1f061062ce3e4e361821cfbb9c2",
+      "exact_stored_path_cost": [
+        "328700411284726227055",
+        "72057594037927936"
+      ],
+      "graph_only_cost": 4561.634560150772,
+      "metric": "travel_time",
+      "orientation": "metro-to-location",
+      "path_nodes": 2567,
+      "probe_cbsa": "14500",
+      "probe_node": 7298599564,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "4479b8d2657c007652c128be91c85ee3af02351cf988a766309252dae018ad50",
+      "exact_stored_path_cost": [
+        "239896382262296909009",
+        "72057594037927936"
+      ],
+      "graph_only_cost": 3329.2310888985,
+      "metric": "travel_time",
+      "orientation": "metro-to-location",
+      "path_nodes": 1310,
+      "probe_cbsa": "17820",
+      "probe_node": 11866557610,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "de0aa2b646e4ed812c632897c194e2f0bda52ad97a342bab1969560fc2b2af7b",
+      "exact_stored_path_cost": [
+        "0",
+        "1"
+      ],
+      "graph_only_cost": 0.0,
+      "metric": "travel_time",
+      "orientation": "metro-to-location",
+      "path_nodes": 1,
+      "probe_cbsa": "19740",
+      "probe_node": 6350018589,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "3e136299a073575110df4d2bb551f68c6d50c0e615b932ca7830cebb67e4d2af",
+      "exact_stored_path_cost": [
+        "1177084835079971885957",
+        "144115188075855872"
+      ],
+      "graph_only_cost": 8167.666786518065,
+      "metric": "travel_time",
+      "orientation": "metro-to-location",
+      "path_nodes": 3876,
+      "probe_cbsa": "22660",
+      "probe_node": 1795087746,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "35113f6f8277cf63fa89a36b4c54b4eacea6813a0ee09d658265073946aec58d",
+      "exact_stored_path_cost": [
+        "1837609643179535402851",
+        "288230376151711744"
+      ],
+      "graph_only_cost": 6375.489175409812,
+      "metric": "travel_time",
+      "orientation": "metro-to-location",
+      "path_nodes": 1987,
+      "probe_cbsa": "39380",
+      "probe_node": 12985655919,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "ae67f30d54889bc04ddc78411567aed8576f659d42cddb5a3953fa7fedf85524",
+      "exact_stored_path_cost": [
+        "103307629851619789697",
+        "36028797018963968"
+      ],
+      "graph_only_cost": 2867.3627320180326,
+      "metric": "travel_time",
+      "orientation": "metro-to-location",
+      "path_nodes": 1590,
+      "probe_cbsa": "14500",
+      "probe_node": 7298599564,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    },
+    {
+      "actual_directed_path_sha256": "fee5c381c586cf059a9e039f6545c4c13027585fac6e27593fde009f6db60b9b",
+      "exact_stored_path_cost": [
+        "316481229647302508767",
+        "72057594037927936"
+      ],
+      "graph_only_cost": 4392.059350201459,
+      "metric": "travel_time",
+      "orientation": "metro-to-location",
+      "path_nodes": 1740,
+      "probe_cbsa": "17820",
+      "probe_node": 11866557610,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    },
+    {
+      "actual_directed_path_sha256": "446f02664fe6d8bf1749b2a28c873d4e4485dfa504487c22c756f418babf6104",
+      "exact_stored_path_cost": [
+        "265017283515877870205",
+        "144115188075855872"
+      ],
+      "graph_only_cost": 1838.9268130183782,
+      "metric": "travel_time",
+      "orientation": "metro-to-location",
+      "path_nodes": 1040,
+      "probe_cbsa": "19740",
+      "probe_node": 6350018589,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    },
+    {
+      "actual_directed_path_sha256": "e2483d6d3373cb1660c9e0ae09ef9a0feeb20a518fd1eef2d5a350ae59e10515",
+      "exact_stored_path_cost": [
+        "932914531916998590635",
+        "144115188075855872"
+      ],
+      "graph_only_cost": 6473.394958385338,
+      "metric": "travel_time",
+      "orientation": "metro-to-location",
+      "path_nodes": 2899,
+      "probe_cbsa": "22660",
+      "probe_node": 1795087746,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    },
+    {
+      "actual_directed_path_sha256": "53996930dfc2807cff214720ac01f27686214fd2d6f12251e3a474ebfe4d1f20",
+      "exact_stored_path_cost": [
+        "2143949032719557801883",
+        "288230376151711744"
+      ],
+      "graph_only_cost": 7438.31743671277,
+      "metric": "travel_time",
+      "orientation": "metro-to-location",
+      "path_nodes": 2417,
+      "probe_cbsa": "39380",
+      "probe_node": 12985655919,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    },
+    {
+      "actual_directed_path_sha256": "6e531d12d1be3669e33c45145e0a817b2c94b1956648452fc1832c7e663df080",
+      "exact_stored_path_cost": [
+        "1813232220863752378409",
+        "18014398509481984"
+      ],
+      "graph_only_cost": 100654.6080297572,
+      "metric": "length",
+      "orientation": "location-to-metro",
+      "path_nodes": 2674,
+      "probe_cbsa": "14500",
+      "probe_node": 7298599564,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "2b47ad41fded041d996dd84fa3f79bb7c9aaefa26a32ec9a8692025693bf969f",
+      "exact_stored_path_cost": [
+        "391652633802717731725",
+        "4503599627370496"
+      ],
+      "graph_only_cost": 86964.35434057252,
+      "metric": "length",
+      "orientation": "location-to-metro",
+      "path_nodes": 1897,
+      "probe_cbsa": "17820",
+      "probe_node": 11866557610,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "de0aa2b646e4ed812c632897c194e2f0bda52ad97a342bab1969560fc2b2af7b",
+      "exact_stored_path_cost": [
+        "0",
+        "1"
+      ],
+      "graph_only_cost": 0.0,
+      "metric": "length",
+      "orientation": "location-to-metro",
+      "path_nodes": 1,
+      "probe_cbsa": "19740",
+      "probe_node": 6350018589,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "04045322dccb5ce9a2f4256f5df58044e855713d1404eb44f71b3f4d29c8c96d",
+      "exact_stored_path_cost": [
+        "1608692474952210212623",
+        "9007199254740992"
+      ],
+      "graph_only_cost": 178600.74252331763,
+      "metric": "length",
+      "orientation": "location-to-metro",
+      "path_nodes": 5210,
+      "probe_cbsa": "22660",
+      "probe_node": 1795087746,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "aefac32eec6c80dd227a8c7979b8ae1ae686600095eaeb02bef0f167ec9f75d0",
+      "exact_stored_path_cost": [
+        "730324016808317994091",
+        "4503599627370496"
+      ],
+      "graph_only_cost": 162164.50777946523,
+      "metric": "length",
+      "orientation": "location-to-metro",
+      "path_nodes": 2383,
+      "probe_cbsa": "39380",
+      "probe_node": 12985655919,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "026fc571e5e8633dee382c2272e58093f63a37a27c8f2521e7aa9dd9c4bea31a",
+      "exact_stored_path_cost": [
+        "1067490352081087352491",
+        "18014398509481984"
+      ],
+      "graph_only_cost": 59257.61837228201,
+      "metric": "length",
+      "orientation": "location-to-metro",
+      "path_nodes": 1742,
+      "probe_cbsa": "14500",
+      "probe_node": 7298599564,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    },
+    {
+      "actual_directed_path_sha256": "dbd3a52d176c310117d0dd4752724a10e7cd700127dddb64c613be0ad4af2b21",
+      "exact_stored_path_cost": [
+        "68719121088486653541",
+        "562949953421312"
+      ],
+      "graph_only_cost": 122069.68074310746,
+      "metric": "length",
+      "orientation": "location-to-metro",
+      "path_nodes": 2129,
+      "probe_cbsa": "17820",
+      "probe_node": 11866557610,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    },
+    {
+      "actual_directed_path_sha256": "6c36e66553fd124ebb166cf9ba7fe35584aa67662d97f3c90f41e696ab6120c0",
+      "exact_stored_path_cost": [
+        "47730135724170361217",
+        "1125899906842624"
+      ],
+      "graph_only_cost": 42392.87651956608,
+      "metric": "length",
+      "orientation": "location-to-metro",
+      "path_nodes": 1118,
+      "probe_cbsa": "19740",
+      "probe_node": 6350018589,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    },
+    {
+      "actual_directed_path_sha256": "fff67b48ff9a4f670c3b8e78f39938a542a885d7fa3561668db876364df08b12",
+      "exact_stored_path_cost": [
+        "77238846285054856229",
+        "562949953421312"
+      ],
+      "graph_only_cost": 137203.75286584205,
+      "metric": "length",
+      "orientation": "location-to-metro",
+      "path_nodes": 4278,
+      "probe_cbsa": "22660",
+      "probe_node": 1795087746,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    },
+    {
+      "actual_directed_path_sha256": "0bba612b54aa71830fe6f9d058d76f958e185ae5e70e1fa51a2f82402ab0ac35",
+      "exact_stored_path_cost": [
+        "444212175856746745347",
+        "2251799813685248"
+      ],
+      "graph_only_cost": 197269.83418200028,
+      "metric": "length",
+      "orientation": "location-to-metro",
+      "path_nodes": 2615,
+      "probe_cbsa": "39380",
+      "probe_node": 12985655919,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    },
+    {
+      "actual_directed_path_sha256": "be23a3fe9d2a7778d97daf0d69f214337fc1f1c89d93aa8d32fa466cc6db8d44",
+      "exact_stored_path_cost": [
+        "1306481727333856241089",
+        "288230376151711744"
+      ],
+      "graph_only_cost": 4532.76904668154,
+      "metric": "travel_time",
+      "orientation": "location-to-metro",
+      "path_nodes": 2584,
+      "probe_cbsa": "14500",
+      "probe_node": 7298599564,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "0e4b6fae753780e385ca99b760603fae796af78a2e0f77c411b22b4e1cf94989",
+      "exact_stored_path_cost": [
+        "476506382093792239551",
+        "144115188075855872"
+      ],
+      "graph_only_cost": 3306.427229883501,
+      "metric": "travel_time",
+      "orientation": "location-to-metro",
+      "path_nodes": 1312,
+      "probe_cbsa": "17820",
+      "probe_node": 11866557610,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "de0aa2b646e4ed812c632897c194e2f0bda52ad97a342bab1969560fc2b2af7b",
+      "exact_stored_path_cost": [
+        "0",
+        "1"
+      ],
+      "graph_only_cost": 0.0,
+      "metric": "travel_time",
+      "orientation": "location-to-metro",
+      "path_nodes": 1,
+      "probe_cbsa": "19740",
+      "probe_node": 6350018589,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "0e400082cf93852d368b18d82814ba12c6593c9dbcefb89511094261726d4678",
+      "exact_stored_path_cost": [
+        "293318452579837717161",
+        "36028797018963968"
+      ],
+      "graph_only_cost": 8141.222490038966,
+      "metric": "travel_time",
+      "orientation": "location-to-metro",
+      "path_nodes": 3829,
+      "probe_cbsa": "22660",
+      "probe_node": 1795087746,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "1f4b6b1a1d4b5d22470e92553d70156dbfe9531ada5ad29404bf5c46768ab1d6",
+      "exact_stored_path_cost": [
+        "115491333277048431589",
+        "18014398509481984"
+      ],
+      "graph_only_cost": 6411.0568674418255,
+      "metric": "travel_time",
+      "orientation": "location-to-metro",
+      "path_nodes": 1996,
+      "probe_cbsa": "39380",
+      "probe_node": 12985655919,
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "actual_directed_path_sha256": "8f2a946ee076a7191de4a21a5cdbdafa4c62c7be32d1e99884e11370d1653723",
+      "exact_stored_path_cost": [
+        "822128687475613110693",
+        "288230376151711744"
+      ],
+      "graph_only_cost": 2852.3318688758864,
+      "metric": "travel_time",
+      "orientation": "location-to-metro",
+      "path_nodes": 1624,
+      "probe_cbsa": "14500",
+      "probe_node": 7298599564,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    },
+    {
+      "actual_directed_path_sha256": "663f01534254d0eaf8ffc9c258b100daeeef676a5306f2d5a5d2b80294ead0e3",
+      "exact_stored_path_cost": [
+        "314569063648616662965",
+        "72057594037927936"
+      ],
+      "graph_only_cost": 4365.522716218377,
+      "metric": "travel_time",
+      "orientation": "location-to-metro",
+      "path_nodes": 1716,
+      "probe_cbsa": "17820",
+      "probe_node": 11866557610,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    },
+    {
+      "actual_directed_path_sha256": "0b0c1027700cc33a7e0dc7022d633e33cd2c2968b09a7523b4f84c553c9a839d",
+      "exact_stored_path_cost": [
+        "66927384515149265847",
+        "36028797018963968"
+      ],
+      "graph_only_cost": 1857.608081666496,
+      "metric": "travel_time",
+      "orientation": "location-to-metro",
+      "path_nodes": 1030,
+      "probe_cbsa": "19740",
+      "probe_node": 6350018589,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    },
+    {
+      "actual_directed_path_sha256": "cd96bc45c727538ad1764c5132dc7feb2205bf581255dba54d481afc013c3a20",
+      "exact_stored_path_cost": [
+        "465548645195114651723",
+        "72057594037927936"
+      ],
+      "graph_only_cost": 6460.785312233308,
+      "metric": "travel_time",
+      "orientation": "location-to-metro",
+      "path_nodes": 2869,
+      "probe_cbsa": "22660",
+      "probe_node": 1795087746,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    },
+    {
+      "actual_directed_path_sha256": "80ac8cca6cd505bcfb21781e962bde5de855cbdff89916db6d1d008a45f68f4a",
+      "exact_stored_path_cost": [
+        "1076562411419828539091",
+        "144115188075855872"
+      ],
+      "graph_only_cost": 7470.152353776713,
+      "metric": "travel_time",
+      "orientation": "location-to-metro",
+      "path_nodes": 2400,
+      "probe_cbsa": "39380",
+      "probe_node": 12985655919,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    }
+  ],
+  "cases_computed": 40,
+  "census_checkpoint_sha256": "50bd53258391d080d75376bf1574ea7e83f6df4de9cb7eb63f03f3ff01db31d5",
+  "connector_costs_included": false,
+  "elapsed_seconds": 90.44220964300001,
+  "evidence_manifest_sha256": "3bed19eb5a2e269481581074d604aca1912a924555a2e8c546797e1ea0041858",
+  "finite_queries_replayed": 40,
+  "graph": {
+    "access_certified": false,
+    "complete_global_competition": false,
+    "directed_primitive_arcs": 10591691,
+    "exact_duplicate_highway_ways": 0,
+    "modeled_ways": 659471,
+    "nodes": 5292810,
+    "parallel_cost_policy": "per-metric minimum, not summation; explicit zero arcs retained",
+    "release_eligible": false,
+    "resource_limits": {
+      "arcs": 40000000,
+      "nodes": 15000000
+    },
+    "road_coverage_certified": false,
+    "routing_model": "static-passenger-car-v2:directed-primitive-sparse-reference",
+    "turn_restrictions_modeled": false,
+    "unique_directed_pairs": 10591536,
+    "unsupported_direction_ways": 7,
+    "zero_length_primitive_arcs_retained": 2
+  },
+  "metric_units": {
+    "length": "meters",
+    "travel_time": "seconds"
+  },
+  "peak_process_rss_kib": 2245848,
+  "probes": [
+    {
+      "cbsa": "14500",
+      "node": 7298599564,
+      "node_lonlat": [
+        -105.3798182,
+        40.0845569
+      ]
+    },
+    {
+      "cbsa": "17820",
+      "node": 11866557610,
+      "node_lonlat": [
+        -104.6330139,
+        38.8381282
+      ]
+    },
+    {
+      "cbsa": "19740",
+      "node": 6350018589,
+      "node_lonlat": [
+        -104.9006949,
+        39.4347705
+      ]
+    },
+    {
+      "cbsa": "22660",
+      "node": 1795087746,
+      "node_lonlat": [
+        -105.4780464,
+        40.6737585
+      ]
+    },
+    {
+      "cbsa": "39380",
+      "node": 12985655919,
+      "node_lonlat": [
+        -104.4981783,
+        38.1543889
+      ]
+    }
+  ],
+  "release_eligible": false,
+  "road_coverage_certified": false,
+  "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1",
+  "scenarios": [
+    {
+      "access_verified": false,
+      "cbsa": "19740",
+      "native_census_origin_lonlat": [
+        -104.9010728,
+        39.434789
+      ],
+      "node": 6350018589,
+      "node_lonlat": [
+        -104.9006949,
+        39.4347705
+      ],
+      "scenario_id": "preserved-census-denver-road-lead-v1"
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19740",
+      "municipal_reference_lonlat": [
+        -104.999734452924,
+        39.7528550246765
+      ],
+      "node": 3033992180,
+      "node_lonlat": [
+        -104.9997276,
+        39.7528388
+      ],
+      "purpose": "Hypothetical through-road graph-start waypoint, not station pickup/parking/entry approval.",
+      "reference_displacement_m": 1.8968402403839788,
+      "scenario_id": "denver-wynkoop-17th-through-road-hypothesis-v1"
+    }
+  ],
+  "schema": "denver-waypoint-hypothesis-v1",
+  "source_provenance": {
+    "name": "colorado.osm.pbf",
+    "replication_timestamp": "2026-10-27T21:23:59Z",
+    "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+    "size_bytes": 386197077
+  },
+  "warning": "Colorado-only graph-start sensitivity; no certified curb access, off-road connector, global competitor winner, exterior completeness or geographic regions. Census five-state baseline remains separate and unchanged."
+}
