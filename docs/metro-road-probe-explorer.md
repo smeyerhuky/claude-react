@@ -25,7 +25,8 @@ in Chromium, including source-row preservation, units, Tucson negatives, a known
 zero-cost road-node case, point-click selection and zero external requests. Its
 artifact contains the HTML and a screenshot; either can be regenerated from the
 versioned builder/checkpoint, independent of artifact expiration. Browser tooling
-is installed in CI's temporary directory; app dependencies stay unchanged.
+is installed in CI's temporary directory on pinned Ubuntu 24.04; app
+dependencies stay unchanged.
 
 This is a research inspection surface, not the production React component's road
 mode. The public straight-line map, URL state, canvas and PNG export stay intact.
