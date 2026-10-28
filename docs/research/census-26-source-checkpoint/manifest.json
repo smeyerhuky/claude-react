@@ -1,0 +1,10 @@
+{
+  "schema": "census-scenario-checkpoint-provenance-v1",
+  "baseline_sha256": "50bd53258391d080d75376bf1574ea7e83f6df4de9cb7eb63f03f3ff01db31d5",
+  "upstream_report_sha256": "8172c9555f3fa6c7bb5c1ece706df8a7416006e32bf694be84d215ff3d6fc6d0",
+  "upstream_head": "ad475d5cf75dce4a4a5b8d91a874a8454c6f4b6b",
+  "upstream_ci_run": 40750401790,
+  "upstream_ci_job": 123035264717,
+  "projection": "All 26 complete source records, five PBF identities, population-domain hash, 367 qualifying and 341 unknown identities, probe coordinates and all 1872 finite/unreachable cost records. Per-leg witnesses remain in upstream report; this is not independent physical access evidence.",
+  "release_eligible": false
+}
