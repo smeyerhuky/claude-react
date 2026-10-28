@@ -1,0 +1,54 @@
+name: Utah remaining origin evidence
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/utah-remaining-origin-evidence.yml'
+      - 'docs/research/utah-remaining-origins.json'
+      - 'scripts/colorado_origin_source_investigation.py'
+      - 'scripts/stream_osm_roads.py'
+      - 'scripts/colorado_geographic_point_diagnostics.py'
+      - 'public/data/metros-census-2025.csv'
+permissions:
+  contents: read
+jobs:
+  reproduce-raw-origin-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5'
+      - name: Acquire and verify exact dated Utah input
+        run: |
+          curl -fLSs --retry 3 --connect-timeout 20 --max-time 600 --output utah.osm.pbf https://download.geofabrik.de/north-america/us/utah-261027.osm.pbf
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          m=json.loads(Path('scripts/research-source-snapshots/co-nm-az-20261027.json').read_text())
+          u=next(x for x in m['files'] if x['filename']=='utah.osm.pbf')
+          p=Path('utah.osm.pbf')
+          assert p.stat().st_size==u['bytes']
+          with p.open('rb') as f:
+              assert hashlib.file_digest(f,'sha256').hexdigest()==u['sha256']
+          PY
+      - name: Reproduce every recorded raw-scan field without approving access
+        run: |
+          python scripts/colorado_origin_source_investigation.py --osm utah.osm.pbf --metros public/data/metros-census-2025.csv --cbsa 41620 36260 30860 --radius-m 25000 --output reproduced.json
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          expected=json.loads(Path('docs/research/utah-remaining-origins.json').read_text())
+          actual=json.loads(Path('reproduced.json').read_text())
+          for key,value in actual.items():
+              assert expected[key]==value, key
+          for field,path in [('scanner_sha256','scripts/colorado_origin_source_investigation.py'),('driving_filter_sha256','scripts/stream_osm_roads.py')]:
+              assert expected[field]==hashlib.sha256(Path(path).read_bytes()).hexdigest()
+          assert not expected['access_verified'] and not expected['release_eligible']
+          assert not expected['complete_global_competition'] and expected['applied_source_exclusions']==[]
+          assert not expected['connector_costs_included']
+          assert {r['cbsa'] for r in actual['metros']}=={'30860','36260','41620'}
+          print('Every raw-scan field reproduced; no connector certified or competitor excluded')
+          PY

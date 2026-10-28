@@ -1,0 +1,143 @@
+{
+  "access_verified": false,
+  "applied_source_exclusions": [],
+  "code_head": "ef7ca991578f2785df33f3b5500c7e088bc1ee44",
+  "complete_global_competition": false,
+  "connector_costs_included": false,
+  "driving_filter_sha256": "25e8bbe7ce8ccd54e7a0237165b4e8370f69a1828af6e4ec0e063559a618ec3c",
+  "extract_coverage_certified": false,
+  "highway_ways_with_missing_locations": 0,
+  "limitations": "Nearest geometry only within supplied PBF and search radius; OSM tags and modeled driving eligibility do not prove physical/legal entry; representative points are not verified urban access anchors",
+  "method": "Raw PBF highway-way scan; no contracted graph or SegmentGridIndex; local equirectangular projection with spherical gap distance",
+  "metros": [
+    {
+      "cbsa": "30860",
+      "name": "Logan, UT-ID Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 213.63379730488697,
+        "highway": "track",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 1122318901,
+        "osm_way_url": "https://www.openstreetmap.org/way/1122318901",
+        "projection_lonlat": [
+          -111.7863028,
+          41.8907461
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 866.8051683792598,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "9000 North",
+        "osm_way_id": 10084613,
+        "osm_way_url": "https://www.openstreetmap.org/way/10084613",
+        "projection_lonlat": [
+          -111.7867889,
+          41.8968009
+        ]
+      },
+      "origin_lonlat": [
+        -111.7874375,
+        41.8890205
+      ]
+    },
+    {
+      "cbsa": "36260",
+      "name": "Ogden, UT Metro Area",
+      "nearest_mapped_highway": {
+        "access": "private",
+        "access_verified": false,
+        "gap_m": 1423.7080383440718,
+        "highway": "track",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 10088573,
+        "osm_way_url": "https://www.openstreetmap.org/way/10088573",
+        "projection_lonlat": [
+          -111.86340008128755,
+          41.13686637158525
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 1454.0283177417416,
+        "highway": "motorway",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 30451330,
+        "osm_way_url": "https://www.openstreetmap.org/way/30451330",
+        "projection_lonlat": [
+          -111.8644134,
+          41.1372802
+        ]
+      },
+      "origin_lonlat": [
+        -111.8669334,
+        41.1243423
+      ]
+    },
+    {
+      "cbsa": "41620",
+      "name": "Salt Lake City-Murray, UT Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 1573.191540819908,
+        "highway": "path",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 362270953,
+        "osm_way_url": "https://www.openstreetmap.org/way/362270953",
+        "projection_lonlat": [
+          -112.9706496,
+          40.5678336
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 4040.9844799378548,
+        "highway": "unclassified",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Cedar Mountain Road",
+        "osm_way_id": 10165786,
+        "osm_way_url": "https://www.openstreetmap.org/way/10165786",
+        "projection_lonlat": [
+          -113.0009305,
+          40.5698685
+        ]
+      },
+      "origin_lonlat": [
+        -112.9532527,
+        40.5728869
+      ]
+    }
+  ],
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "osm_sha256": "34f704431a8b3812372ec10083e151d4227a50caf19159fc9af730f942940c41",
+  "release_eligible": false,
+  "scan_radius_m": 25000.0,
+  "scanner_sha256": "342ea2fcf9c470697364671a4330a514dac094beeb02bccbe31636cfb9e1d2f5",
+  "schema_version": "colorado-raw-origin-investigation-v1",
+  "source_filename": "utah.osm.pbf",
+  "source_inclusion_status": "Unrepresented in the 15-source route comparison; proximity investigation only",
+  "source_replication_timestamp": "2026-10-27T21:23:59Z"
+}
