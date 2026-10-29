@@ -73,3 +73,17 @@ remain separate: Joplin and Kansas City have very different nearest geometry in
 Kansas and Missouri. The five new native-point AI reviews display `needs evidence`;
 no review result is converted to access approval. Filters never alter the parent
 map or its population threshold.
+
+A separately versioned **31-source six-state Census experiment** is also available.
+It preserves all 2,232 cases (2,088 finite, 144 unsupported in the model) and keeps
+336 qualifying identities unrepresented. Its 18 probes are inherited; unchanged
+sampled winners cannot establish other winners or geographic closure. Wichita's
+selected primitive vertex belongs to a closed six-node model component, and the
+retained Tucson lead is also unsupported. No real-world inaccessibility is inferred.
+
+The original 26-source view and its 341 unrepresented identities remain available.
+The competitor inventory is explicitly labeled as that 26-source baseline; its
+membership counts do not silently switch to the separate 31-source experiment.
+The new generated view binds the separate checkpoint and exact Wichita candidate
+before displaying its model-negative note. Browser checks compare all 2,232
+visible values/no-data entries over every direction/metric/probe combination.

@@ -1,0 +1,15 @@
+{
+  "access_certified": false,
+  "baseline_sha256": "6b737f9853705e4ad50369547890b973f5234620b807e5a5cae1e74ce238414b",
+  "local_source_report_sha256": "034aa2ec4d4b232b7693334361393aa64066e313cd8c7dfd210ce4362f971251",
+  "release_eligible": false,
+  "scenario_id": "census-six-state-longitude-query-v1-cut-107.4-boundary-label-v1",
+  "schema": "census-31-source-checkpoint-manifest-v1",
+  "upstream_ci": {
+    "head": "33e00e8c9abc60ccd7b464ab656e8365a4e03d88",
+    "job": 123224251726,
+    "run": 40805773428
+  },
+  "upstream_ci_report_sha256": "4b7920ebef7273bfb6dff7bc43e0c0846670ee8ff185826e8aa9e30e3c76828c",
+  "warning": "Separate graph-only regression snapshot matched to green source CI. No connector, urban-anchor or geographic/global coverage approval."
+}

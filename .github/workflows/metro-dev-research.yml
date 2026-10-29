@@ -2,11 +2,22 @@ name: Metro development research inspector
 on:
   pull_request:
     paths:
+      - 'scripts/build_metro_probe_explorer.py'
+      - 'scripts/build_denver_waypoint_explorer.py'
+      - 'scripts/metro_competitor_review_queue.py'
+      - 'scripts/metro_scenario_checkpoint.py'
+      - 'scripts/connector_review_packet.py'
+      - 'docs/research/denver-waypoint-hypothesis/**'
       - 'src/components/MetroPopulationVoronoi.jsx'
       - 'src/components/MetroRoadResearchPanel.jsx'
       - 'src/research/**'
       - 'scripts/check_metro_dev_research.cjs'
       - 'scripts/build_metro_competitor_explorer.py'
+      - 'scripts/build_six_state_probe_explorer.py'
+      - 'scripts/check_six_state_probe_explorer.cjs'
+      - 'scripts/six_state_checkpoint.py'
+      - 'docs/research/census-31-source-checkpoint/**'
+      - 'docs/research/wichita-model-lead-negative.json'
       - 'scripts/check_metro_competitor_explorer.cjs'
       - 'docs/research/remaining-competitor-queue/**'
       - 'docs/research/kansas-texas-source-preflight/**'
@@ -44,6 +55,8 @@ jobs:
           RESEARCH_BASE_COMMIT: ${{ github.event.pull_request.base.sha || github.sha }}
         run: |
           python scripts/build_metro_probe_explorer.py --output /tmp/probes.html
+          python scripts/build_six_state_probe_explorer.py --output /tmp/six-state.html
+          cmp /tmp/six-state.html src/research/metro-six-state-probes.html
           python scripts/build_denver_waypoint_explorer.py --output /tmp/comparison.html
           python scripts/build_metro_competitor_explorer.py --output /tmp/inventory.html
           cmp /tmp/inventory.html src/research/metro-competitor-inventory.html
@@ -59,7 +72,7 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
-          hashes=[json.loads(Path('docs/research/denver-waypoint-hypothesis/manifest.json').read_text())['report_sha256'],json.loads(Path('docs/research/census-26-source-checkpoint/manifest.json').read_text())['baseline_sha256']]
+          hashes=[json.loads(Path('docs/research/denver-waypoint-hypothesis/manifest.json').read_text())['report_sha256'],json.loads(Path('docs/research/census-26-source-checkpoint/manifest.json').read_text())['baseline_sha256'],json.loads(Path('docs/research/census-31-source-checkpoint/manifest.json').read_text())['baseline_sha256']]
           markers=['Inspect road research (dev)','Road research inspector','MetroRoadResearchPanel','Metro competitor investigation inventory',*hashes]
           for path in Path('dist').rglob('*.js'):
               text=path.read_text()
@@ -67,6 +80,8 @@ jobs:
           PY
       - name: Install isolated browser driver
         run: npm install --prefix "$RUNNER_TEMP/metro-inspector-driver" --no-audit --no-fund playwright@1.56.1
+      - name: Check all 2232 displayed six-state costs offline
+        run: NODE_PATH="$RUNNER_TEMP/metro-inspector-driver/node_modules" node scripts/check_six_state_probe_explorer.cjs src/research/metro-six-state-probes.html
       - name: Check complete native-point inventory without network requests
         run: NODE_PATH="$RUNNER_TEMP/metro-inspector-driver/node_modules" node scripts/check_metro_competitor_explorer.cjs src/research/metro-competitor-inventory.html
       - name: Check opt-in, sandbox, keyboard closure and unchanged map state/canvas
