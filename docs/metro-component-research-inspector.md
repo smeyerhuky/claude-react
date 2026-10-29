@@ -62,3 +62,14 @@ Census domains, all 341 queue identities in order, absent CSV qualifiers, search
 keyboard selection and zero offline-view network requests. It also exercises the
 inventory inside the sandboxed component and compares the parent canvas and state
 before opening and after closing it. Production excludes this view and its data.
+
+The inventory also distinguishes 14 unrepresented identities with retained
+native-point lead scans from the other 327 without those particular scans. These
+14 are still part of the same 341 unrepresented route competitors. They include
+all first ten queue identities; scanned geometry is not modeled route coverage.
+Select a row or point to see per-extract mapped and model-supported ways/gaps,
+with the original snapshot identity and report hashes. Cross-border observations
+remain separate: Joplin and Kansas City have very different nearest geometry in
+Kansas and Missouri. The five new native-point AI reviews display `needs evidence`;
+no review result is converted to access approval. Filters never alter the parent
+map or its population threshold.
