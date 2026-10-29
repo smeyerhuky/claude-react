@@ -1,0 +1,80 @@
+name: Metro development research inspector
+on:
+  pull_request:
+    paths:
+      - 'src/components/MetroPopulationVoronoi.jsx'
+      - 'src/components/MetroRoadResearchPanel.jsx'
+      - 'src/research/**'
+      - 'scripts/check_metro_dev_research.cjs'
+      - 'scripts/check_metro_lint_baseline.py'
+      - '.github/workflows/metro-dev-research.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preserve-public-map:
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: yarn
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - run: corepack enable
+      - run: yarn install --frozen-lockfile --prefer-offline
+      - name: Verify generated research views and lint changes
+        env:
+          RESEARCH_BASE_COMMIT: ${{ github.event.pull_request.base.sha || github.sha }}
+        run: |
+          python scripts/build_metro_probe_explorer.py --output /tmp/probes.html
+          python scripts/build_denver_waypoint_explorer.py --output /tmp/comparison.html
+          cmp /tmp/probes.html src/research/metro-census-probes.html
+          cmp /tmp/comparison.html src/research/denver-waypoint-comparison.html
+          node node_modules/eslint/bin/eslint.js src/components/MetroRoadResearchPanel.jsx --max-warnings 0
+          python scripts/check_metro_lint_baseline.py "$RESEARCH_BASE_COMMIT"
+      - name: Production cannot activate research even with the opt-in flag
+        env:
+          VITE_METRO_ROAD_RESEARCH: '1'
+        run: |
+          npm run build
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          hashes=[json.loads(Path('docs/research/denver-waypoint-hypothesis/manifest.json').read_text())['report_sha256'],json.loads(Path('docs/research/census-26-source-checkpoint/manifest.json').read_text())['baseline_sha256']]
+          markers=['Inspect road research (dev)','Road research inspector','MetroRoadResearchPanel',*hashes]
+          for path in Path('dist').rglob('*.js'):
+              text=path.read_text()
+              assert not any(marker in text for marker in markers),str(path)
+          PY
+      - name: Install isolated browser driver
+        run: npm install --prefix "$RUNNER_TEMP/metro-inspector-driver" --no-audit --no-fund playwright@1.56.1
+      - name: Check opt-in, sandbox, keyboard closure and unchanged map state/canvas
+        shell: bash
+        run: |
+          mkdir -p inspector-artifact
+          VITE_METRO_ROAD_RESEARCH=1 ./node_modules/.bin/vite --host 127.0.0.1 --port 4178 > inspector-artifact/enabled.log 2>&1 &
+          task_enabled_pid=$!
+          VITE_METRO_ROAD_RESEARCH=0 ./node_modules/.bin/vite --host 127.0.0.1 --port 4179 > inspector-artifact/disabled.log 2>&1 &
+          task_disabled_pid=$!
+          trap 'kill "$task_enabled_pid" "$task_disabled_pid" || true' EXIT
+          for attempt in $(seq 1 40); do
+            if curl --silent --fail http://127.0.0.1:4178/claude-react/ >/dev/null && curl --silent --fail http://127.0.0.1:4179/claude-react/ >/dev/null; then break; fi
+            sleep 1
+          done
+          NODE_PATH="$RUNNER_TEMP/metro-inspector-driver/node_modules" node scripts/check_metro_dev_research.cjs http://127.0.0.1:4178/claude-react/ enabled inspector-artifact/research-inspector.png
+          NODE_PATH="$RUNNER_TEMP/metro-inspector-driver/node_modules" node scripts/check_metro_dev_research.cjs http://127.0.0.1:4179/claude-react/ disabled
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: metro-development-research-inspector
+          path: inspector-artifact/
+          retention-days: 14
