@@ -103,3 +103,4 @@ This project serves as a sandbox for experimenting with and showcasing React com
 
 It also provides a good set of instructions for setting up a React project with Vite, Tailwind CSS, and Recharts, making it a useful reference for future projects.
 
+.
