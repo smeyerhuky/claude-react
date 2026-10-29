@@ -1,0 +1,174 @@
+{
+  "access_verified": false,
+  "extract_coverage_certified": false,
+  "highway_ways_with_missing_locations": 0,
+  "limitations": "Nearest geometry only within supplied PBF and search radius; OSM tags and modeled driving eligibility do not prove physical/legal entry; representative points are not verified urban access anchors",
+  "method": "Raw PBF highway-way scan; no contracted graph or SegmentGridIndex; local equirectangular projection with spherical gap distance",
+  "metros": [
+    {
+      "cbsa": "17860",
+      "name": "Columbia, MO Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 488.3711435527753,
+        "highway": "unclassified",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "County Road 440",
+        "osm_way_id": 18502160,
+        "osm_way_url": "https://www.openstreetmap.org/way/18502160",
+        "projection_lonlat": [
+          -92.5816671115294,
+          38.98992901066491
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 488.3711435527753,
+        "highway": "unclassified",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "County Road 440",
+        "osm_way_id": 18502160,
+        "osm_way_url": "https://www.openstreetmap.org/way/18502160",
+        "projection_lonlat": [
+          -92.5816671115294,
+          38.98992901066491
+        ]
+      },
+      "origin_lonlat": [
+        -92.585236,
+        38.9865239
+      ]
+    },
+    {
+      "cbsa": "27620",
+      "name": "Jefferson City, MO Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 279.82762794908257,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "County Road 4031",
+        "osm_way_id": 18384368,
+        "osm_way_url": "https://www.openstreetmap.org/way/18384368",
+        "projection_lonlat": [
+          -92.091879,
+          38.635974
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 279.82762794908257,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "County Road 4031",
+        "osm_way_id": 18384368,
+        "osm_way_url": "https://www.openstreetmap.org/way/18384368",
+        "projection_lonlat": [
+          -92.091879,
+          38.635974
+        ]
+      },
+      "origin_lonlat": [
+        -92.088876,
+        38.6368854
+      ]
+    },
+    {
+      "cbsa": "41140",
+      "name": "St. Joseph, MO-KS Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 116.93902429424561,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "County Road 305",
+        "osm_way_id": 18312139,
+        "osm_way_url": "https://www.openstreetmap.org/way/18312139",
+        "projection_lonlat": [
+          -94.78373214800287,
+          39.8358945276865
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 116.93902429424561,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "County Road 305",
+        "osm_way_id": 18312139,
+        "osm_way_url": "https://www.openstreetmap.org/way/18312139",
+        "projection_lonlat": [
+          -94.78373214800287,
+          39.8358945276865
+        ]
+      },
+      "origin_lonlat": [
+        -94.7837537,
+        39.834843
+      ]
+    },
+    {
+      "cbsa": "41180",
+      "name": "St. Louis, MO-IL Metro Area",
+      "nearest_mapped_highway": {
+        "access": "no",
+        "access_verified": false,
+        "gap_m": 85.63373849346182,
+        "highway": "service",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 628618336,
+        "osm_way_url": "https://www.openstreetmap.org/way/628618336",
+        "projection_lonlat": [
+          -90.3448689,
+          38.7400195
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 310.6309963855343,
+        "highway": "tertiary",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "James S McDonnell Boulevard",
+        "osm_way_id": 18714964,
+        "osm_way_url": "https://www.openstreetmap.org/way/18714964",
+        "projection_lonlat": [
+          -90.34390028679981,
+          38.742566566009046
+        ]
+      },
+      "origin_lonlat": [
+        -90.3458253,
+        38.7402108
+      ]
+    }
+  ],
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "osm_sha256": "f032af34ca4bd0dabc9224761874cfde34a8f82ab488e0233c1c01c00af3b010",
+  "release_eligible": false,
+  "scan_radius_m": 25000.0,
+  "schema_version": "colorado-raw-origin-investigation-v1"
+}
