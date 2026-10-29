@@ -1,0 +1,39 @@
+name: Nevada competitor frontier
+on:
+  pull_request:
+    paths:
+      - 'scripts/nevada_frontier_origin_evidence.py'
+      - 'scripts/colorado_origin_source_investigation.py'
+      - 'docs/research/nevada-competitor-frontier/**'
+      - '.github/workflows/nevada-frontier-origin-evidence.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproduce-native-point-evidence:
+    strategy:
+      fail-fast: false
+      matrix:
+        state: [nevada]
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2'
+      - run: PYTHONPATH=scripts python -m unittest -v scripts/test_colorado_origin_source_investigation.py
+      - name: Acquire exact dated source
+        env:
+          RESEARCH_STATE: ${{ matrix.state }}
+        run: curl --fail --location --retry 3 --max-time 300 "https://download.geofabrik.de/north-america/us/$RESEARCH_STATE-261027.osm.pbf" --output "$RESEARCH_STATE.osm.pbf"
+      - name: Verify input identities and reproduce the entire retained scan
+        env:
+          RESEARCH_STATE: ${{ matrix.state }}
+        run: python -u scripts/nevada_frontier_origin_evidence.py --state "$RESEARCH_STATE" --osm "$RESEARCH_STATE.osm.pbf" --output result/origins.json
+      - uses: actions/upload-artifact@v6
+        with:
+          name: ${{ matrix.state }}-nevada-frontier-origin-evidence
+          path: result/
+          retention-days: 14

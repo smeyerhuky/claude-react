@@ -14,13 +14,13 @@ TEMPLATE=r'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="vi
 <h1>Metro competitor inventory — 26-source baseline</h1>
 <p class="notice">Native Census representative points, not reviewed urban anchors or road access. A modeled identity has research costs at 18 sampled road nodes only. No point establishes geographic coverage, an approved connector or a global winner.</p>
 <p id="inventory"></p><p>This inventory uses the frozen 26-source comparison. Select a separately versioned 31-source or 32-source experiment for expanded cost snapshots.</p><p>Investigation follows the competitor queue, not state completion. Queue rank uses straight-line distance to existing probes for scheduling only; it cannot exclude a competitor or bound a road cost.</p>
-<div class="panel controls"><label>Investigation status<select id="status"><option value="all">All qualifying identities</option><option value="unknown">Unrepresented in frozen route comparison</option><option value="modeled">Included in frozen route comparison</option><option value="investigated">Unrepresented with retained lead scans (53)</option><option value="unscanned">Unrepresented without these lead scans (288)</option></select></label><label>Native point state<select id="pointstate"><option value="all">All native point states</option></select></label><label>Search name or CBSA<input id="search" type="search" placeholder="Example: Wichita or 48660"></label><label>Public CSV membership<select id="csv"><option value="all">All source qualifiers</option><option value="absent">Absent from public CSV</option></select></label></div>
+<div class="panel controls"><label>Investigation status<select id="status"><option value="all">All qualifying identities</option><option value="unknown">Unrepresented in frozen route comparison</option><option value="modeled">Included in frozen route comparison</option><option value="investigated">Unrepresented with retained lead scans (55)</option><option value="unscanned">Unrepresented without these lead scans (286)</option></select></label><label>Native point state<select id="pointstate"><option value="all">All native point states</option></select></label><label>Search name or CBSA<input id="search" type="search" placeholder="Example: Wichita or 48660"></label><label>Public CSV membership<select id="csv"><option value="all">All source qualifiers</option><option value="absent">Absent from public CSV</option></select></label></div>
 <div class="panel"><p id="count" aria-live="polite"></p><p>Blue: included in frozen comparison. Amber: unrepresented. All points remain unapproved.</p><svg id="plot" viewBox="0 0 960 430" role="img" aria-label="Native Census metro representative point scatter plot, without geographic coverage regions"></svg><small>Longitude/latitude scatter without a basemap; the view fits the filtered points. Empty space has no ownership, road reachability or accessibility meaning.</small></div>
 <div class="panel"><p id="selected" aria-live="polite">Select a point or metro row to inspect its identity.</p><ul id="observations"></ul><div class="table"><table><caption>Complete source inventory; filters do not change the parent map.</caption><thead><tr><th>Metro / CBSA</th><th>Native point state</th><th>Research status</th><th>Retained lead investigation</th><th>Queue rank</th><th>Scheduling distance</th><th>Public CSV</th></tr></thead><tbody id="rows"></tbody></table></div></div><footer id="provenance"></footer>
 <script>'use strict';
 const data=__DATA__, $=id=>document.getElementById(id), ns='http://www.w3.org/2000/svg';let selected=null;
 for(const state of [...new Set(data.rows.flatMap(r=>r.point_states.map(s=>s.abbreviation)))].sort()){const option=document.createElement('option');option.value=state;option.textContent=state;$('pointstate').append(option);}
-$('inventory').textContent=`${data.rows.length} qualifying identities · 26 included in frozen comparison · 341 unrepresented · 0 approved connectors. 53 unrepresented identities have retained native-point scans; all 341 remain outside the frozen route comparison. Eight source qualifiers absent from the public CSV are retained here.`;
+$('inventory').textContent=`${data.rows.length} qualifying identities · 26 included in frozen comparison · 341 unrepresented · 0 approved connectors. 55 unrepresented identities have retained native-point scans; all 341 remain outside the frozen route comparison. Eight source qualifiers absent from the public CSV are retained here.`;
 $('provenance').textContent=`Frozen Census checkpoint SHA-256: ${data.checkpoint_sha256}. Domains SHA-256: ${data.domains_sha256}. Queue SHA-256: ${data.queue_sha256}. OSM snapshot: 2026-10-27T21:23:59Z. Retained lead reports: ${Object.entries(data.lead_report_sha256).map(([path,sha])=>path+' SHA-256 '+sha).join(' · ')}. Native point/state report SHA-256: ${data.point_state_report_sha256}. Same native Census datum; point membership is not metro extent or road coverage. No live routing or external requests.`;
 
 function choose(row){selected=row.cbsa;$('observations').replaceChildren();
@@ -51,7 +51,8 @@ def lead_scans(domains):
     manifest=json.loads((ROOT/'docs/research/missouri-arkansas-origin-evidence/manifest.json').read_text())
     expansion=json.loads((ROOT/'docs/research/competitor-frontier-expansion/manifest.json').read_text())
     retained=json.loads((ROOT/'docs/research/retained-extract-frontier/manifest.json').read_text())
-    records=manifest['records']+expansion['records']+retained['records']
+    nevada=json.loads((ROOT/'docs/research/nevada-competitor-frontier/manifest.json').read_text())
+    records=manifest['records']+expansion['records']+retained['records']+nevada['records']
     expected_reports={}
     for record in records:
         name=record['source']['name'];digest=record['source']['sha256']
@@ -90,15 +91,18 @@ def build(output):
     unknown={r['cbsa']:r for r in queue['queue']};modeled={s['cbsa'] for s in baseline['sources']}
     domain_index={d['cbsa']:d for d in domains['domains']}
     scans,scan_hashes=lead_scans(domain_index)
-    if len(scans)!=53 or set(scans)&modeled or not all(r['cbsa'] in scans for r in queue['queue'][:10]):raise ValueError('Frozen lead-investigation accounting changed')
+    if len(scans)!=55 or set(scans)&modeled or not all(r['cbsa'] in scans for r in queue['queue'][:10]):raise ValueError('Frozen lead-investigation accounting changed')
     triage=json.loads((ROOT/'docs/research/competitor-frontier-expansion/review.json').read_text())
     if triage['schema']!='metro-frontier-ai-triage-v1' or triage['access_verified'] is not False or triage['release_eligible'] is not False:raise ValueError('Research-only AI triage required')
     additional_triage=json.loads((ROOT/'docs/research/retained-extract-frontier/review.json').read_text())
     if additional_triage['schema']!='metro-frontier-ai-triage-v1' or additional_triage['access_verified'] is not False or additional_triage['release_eligible'] is not False:raise ValueError('Research-only additional triage required')
-    notes={r['cbsa']:r for r in triage['records']+additional_triage['records']}
+    nevada_triage=json.loads((ROOT/'docs/research/nevada-competitor-frontier/review.json').read_text())
+    if nevada_triage['schema']!='metro-frontier-ai-triage-v1' or nevada_triage['access_verified'] is not False or nevada_triage['release_eligible'] is not False:raise ValueError('Research-only Nevada triage required')
+    notes={r['cbsa']:r for r in triage['records']+additional_triage['records']+nevada_triage['records']}
     expansion=json.loads((ROOT/'docs/research/competitor-frontier-expansion/manifest.json').read_text())
     retained=json.loads((ROOT/'docs/research/retained-extract-frontier/manifest.json').read_text())
-    if len(notes)!=39 or set(notes)!=set(expansion['new_identities'])|set(retained['new_identities']) or any(r['access_verified'] is not False or r['release_eligible'] is not False for r in notes.values()):raise ValueError('Complete unapproved AI triage required')
+    nevada=json.loads((ROOT/'docs/research/nevada-competitor-frontier/manifest.json').read_text())
+    if len(notes)!=41 or set(notes)!=set(expansion['new_identities'])|set(retained['new_identities'])|set(nevada['new_identities']) or any(r['access_verified'] is not False or r['release_eligible'] is not False for r in notes.values()):raise ValueError('Complete unapproved AI triage required')
     state_raw=(ROOT/'docs/research/native-state-inventory/report.json').read_bytes()
     state_manifest=json.loads((ROOT/'docs/research/native-state-inventory/manifest.json').read_text())
     if hashlib.sha256(state_raw).hexdigest()!=state_manifest['report_sha256']:raise ValueError('Native state report changed')

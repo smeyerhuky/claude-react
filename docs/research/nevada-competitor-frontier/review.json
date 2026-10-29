@@ -1,0 +1,23 @@
+{
+  "access_verified": false,
+  "limitations": "Scheduling and model triage only. No independent access attestation, connector approval, adopted urban anchor or coverage proof.",
+  "records": [
+    {
+      "access_verified": false,
+      "cbsa": "29820",
+      "next_action": "review_access_before_routing",
+      "reason": "The nearest geometry is an unnamed service way 16.491 m from the unchanged native Census point. Modeled eligibility and absent restriction tags do not establish public, legal or physically connected entry; inspect service-road context and independent access evidence.",
+      "release_eligible": false
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39900",
+      "next_action": "review_native_origin_context_before_access",
+      "reason": "The nearest mapped way is an excluded track 596.241 m away. The nearest model-supported way is residential Schell Creek Ranch Road 14.499 km away. Reject the track under the existing model policy and review the large rural Census-origin context before proposing a separately reviewed urban anchor; no gap connector or city-inaccessibility claim is justified.",
+      "release_eligible": false
+    }
+  ],
+  "release_eligible": false,
+  "reviewer": "Codex AI research triage",
+  "schema": "metro-frontier-ai-triage-v1"
+}
