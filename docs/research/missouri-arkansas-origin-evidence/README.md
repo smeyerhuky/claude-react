@@ -36,9 +36,11 @@ replaced by a nearest-road snap.
 All report access/release/coverage flags remain false. The public straight-line
 map, 26-source frozen checkpoint, 341 unrepresented competitor identities and
 #137 gate are unchanged. The new Missouri/Arkansas raw PBFs are retained locally
-and fetched by exact dated URL in CI; they have **not** been added to the draft
-source archive. Archive V5 and its assets remain unchanged; no environment or
-release was published.
+and fetched by exact dated URL in CI. Archive revision 6 includes their identities
+for retention in the existing unpublished draft. Verify the retention workflow,
+server-side asset digests and downloaded bytes before claiming recovery is
+complete. All earlier source identities/assets remain unchanged; no environment
+or source release is published.
 
 Five [AI review packets](../connector-reviews/) bind each CBSA to the retained
 per-extract reports and machine-check its source identity and selected way IDs.

@@ -131,6 +131,18 @@
       "bytes": 726272759,
       "sha256": "28f51b4ab7f41a6e23f0d772bcccc07d379d6592ebdb351a6f7969fa2053e5f0",
       "source_url": "https://download.geofabrik.de/north-america/us/texas-261027.osm.pbf"
+    },
+    {
+      "filename": "missouri.osm.pbf",
+      "bytes": 199941531,
+      "sha256": "f032af34ca4bd0dabc9224761874cfde34a8f82ab488e0233c1c01c00af3b010",
+      "source_url": "https://download.geofabrik.de/north-america/us/missouri-261027.osm.pbf"
+    },
+    {
+      "filename": "arkansas.osm.pbf",
+      "bytes": 100263701,
+      "sha256": "50eabfa65da53c7d1d288fd4dda032c5b230b04bf9c7ae0eed4c6f44f8cb9cd5",
+      "source_url": "https://download.geofabrik.de/north-america/us/arkansas-261027.osm.pbf"
     }
   ],
   "warning": "Original research inputs only. Archival retention does not certify legal/physical connectors, complete source/road/geographic coverage, datum alignment or global competition.",
@@ -139,11 +151,14 @@
   "draft_release_tag": "research-sources-20261027-co-nm-az-v1",
   "geographic_accuracy_certified": false,
   "complete_global_competition": false,
-  "manifest_revision": 5,
+  "manifest_revision": 6,
   "extension_states": [
     "UT",
     "OK",
     "KS",
-    "TX"
-  ]
+    "TX",
+    "MO",
+    "AR"
+  ],
+  "aggregate_archive_byte_budget": 2500000000
 }

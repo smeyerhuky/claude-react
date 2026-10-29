@@ -27,9 +27,10 @@ jobs:
           assert m["draft_release_tag"]=="research-sources-20261027-co-nm-az-v1"
           for flag in ("release_eligible","access_certified","road_coverage_certified","land_water_completeness_certified","geographic_accuracy_certified","complete_global_competition"):
               assert m[flag] is False
-          assert m["manifest_revision"]==5
-          assert len(m["files"])==len({x["filename"] for x in m["files"]})==21
-          assert sum(x["bytes"] for x in m["files"])<2_200_000_000
+          assert m["manifest_revision"]==6
+          assert len(m["files"])==len({x["filename"] for x in m["files"]})==23
+          assert m["aggregate_archive_byte_budget"]==2_500_000_000
+          assert sum(x["bytes"] for x in m["files"])<2_500_000_000
           for entry in m["files"]:
               name=entry["filename"]
               assert Path(name).name==name and name not in (".","..")
@@ -43,7 +44,7 @@ jobs:
                   with urllib.request.urlopen(entry["source_url"],timeout=60) as response:
                       data=response.read(entry["bytes"]+1)
                   assert len(data)==entry["bytes"] and hashlib.sha256(data).hexdigest()==entry["sha256"]
-          print("Twenty-one pinned original inputs validated; all three small remote checksum probes passed")
+          print("Twenty-three pinned original inputs validated; all three small remote checksum probes passed")
           PY
   retain-draft-assets:
     if: github.event_name == 'workflow_dispatch'
@@ -84,10 +85,10 @@ jobs:
                   digest=hashlib.file_digest(f,"sha256").hexdigest()
               if digest!=entry["sha256"] or path.stat().st_size!=entry["bytes"]:
                   raise ValueError("Source bytes changed; do not alter expected checksums")
-          shutil.copyfile(manifest_path,root/"source-manifest-v5.json")
-          shutil.copyfile("docs/research-source-archive.md",root/"README-v5.md")
-          (root/"SHA256SUMS-v5").write_text("".join(x["sha256"]+"  "+x["filename"]+"\n" for x in m["files"]))
-          paths=[root/x["filename"] for x in m["files"]]+[root/n for n in ("source-manifest-v5.json","README-v5.md","SHA256SUMS-v5")]
+          shutil.copyfile(manifest_path,root/"source-manifest-v6.json")
+          shutil.copyfile("docs/research-source-archive.md",root/"README-v6.md")
+          (root/"SHA256SUMS-v6").write_text("".join(x["sha256"]+"  "+x["filename"]+"\n" for x in m["files"]))
+          paths=[root/x["filename"] for x in m["files"]]+[root/n for n in ("source-manifest-v6.json","README-v6.md","SHA256SUMS-v6")]
           verified=[]
           for path in paths:
               with path.open("rb") as f:

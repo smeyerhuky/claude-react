@@ -1,7 +1,7 @@
 {
   "access_verified": false,
   "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
-  "raw_retention": "New Missouri/Arkansas PBFs are local and retrievable by exact dated URL; not yet retained in draft archive V5. Existing archive assets are unchanged.",
+  "raw_retention": "Missouri/Arkansas identities are included in archive revision 6 for the same unpublished draft. Retention completion must be verified against server asset hashes/state and restored bytes; manifest inclusion alone is not upload proof. Earlier assets are unchanged.",
   "records": [
     {
       "cbsa_ids": [
