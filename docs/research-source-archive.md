@@ -1,10 +1,10 @@
 # Pinned research original-source archive
 
 The fixed manifest at `scripts/research-source-snapshots/co-nm-az-20261027.json`
-records exact CO/NM/AZ/UT/OK/KS/TX/MO/AR OpenStreetMap bytes with common replication timestamp
+records exact CO/NM/AZ/UT/OK/KS/TX/MO/AR/WY/NE/LA OpenStreetMap bytes with common replication timestamp
 2026-10-27T21:23:59Z, Census 2025 population/CBSA/state/county/area-water archives,
 the Colorado Gazetteer, all five Denver-area county water files used by the
-preserved regression, and the unchanged public CONUS CSV. The twenty-three original
+preserved regression, and the unchanged public CONUS CSV. The twenty-six original
 files cover current coupled routing, all four geography test areas and the
 Oklahoma, Kansas, Texas, Missouri and Arkansas resource/origin investigations.
 Source URLs, sizes and SHA256 values identify
@@ -24,7 +24,7 @@ release. No extra secret values are required.
 This retains original bytes beyond short-lived derived CI artifacts and mutable
 `latest` URLs. Changed upstream bytes must fail; acquire the exact archived asset
 or separately review/version a new snapshot rather than rewriting a checksum.
-`SHA256SUMS-v6` and `source-manifest-v6.json` accompany the complete inputs.
+`SHA256SUMS-v7` and `source-manifest-v7.json` accompany the complete inputs.
 Revision 3 added Utah and dated provider URLs; revision 4 adds the Oklahoma
 resource-preflight input. Revision 5 added Kansas and Texas (2,142,116,765 bytes across 21 originals).
 Revision 6 adds Missouri and Arkansas (2,442,321,997 bytes across 23 originals). The collection retains
@@ -42,7 +42,7 @@ Authorized writers can recover the exact inputs without the old workspace:
 gh release download research-sources-20261027-co-nm-az-v1 \
   --repo smeyerhuky/claude-react --dir local-data/pinned-20261027
 cd local-data/pinned-20261027
-sha256sum -c SHA256SUMS-v6
+sha256sum -c SHA256SUMS-v7
 ```
 
 ## Source attribution and rights
@@ -72,3 +72,15 @@ are `source-manifest-v6.json`, `README-v6.md` and `SHA256SUMS-v6`. Manifest pres
 alone does not prove upload completion: the retention workflow must verify each
 server-side digest, size and uploaded state against the existing draft, and
 recovery must verify the downloaded bytes. No source release is published.
+
+
+Revision 7 adds Wyoming, Nebraska and Louisiana for the next competitor frontier.
+The complete 26-original inventory totals 2,786,138,930 bytes under an explicit
+3-billion-byte aggregate archive budget. This is a source-retention budget change;
+per-asset, primitive graph, partition/oracle and connector-review limits stay unchanged.
+All 23 earlier original entries and v1–v6 metadata assets remain unchanged.
+New metadata uses `source-manifest-v7.json`, `README-v7.md` and `SHA256SUMS-v7`.
+The writer now verifies and reuses matching original draft assets before downloading
+missing inputs; conflicting assets still fail without replacement. It checks the
+unpublished draft before each upload. Server hashes/state and a downloaded-byte
+restore check must pass before retention is claimed complete. No release is published.

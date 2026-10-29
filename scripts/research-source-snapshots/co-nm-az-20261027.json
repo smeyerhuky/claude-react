@@ -143,6 +143,24 @@
       "bytes": 100263701,
       "sha256": "50eabfa65da53c7d1d288fd4dda032c5b230b04bf9c7ae0eed4c6f44f8cb9cd5",
       "source_url": "https://download.geofabrik.de/north-america/us/arkansas-261027.osm.pbf"
+    },
+    {
+      "filename": "wyoming.osm.pbf",
+      "bytes": 95139142,
+      "sha256": "9dd05b095a075dc7ed08539eef6936564ba968ba27e764b0fc5533c460fec3f4",
+      "source_url": "https://download.geofabrik.de/north-america/us/wyoming-261027.osm.pbf"
+    },
+    {
+      "filename": "nebraska.osm.pbf",
+      "bytes": 101370391,
+      "sha256": "f91f656839009e06205143d461f07ced853b5d342070ed6e38cac38576943f92",
+      "source_url": "https://download.geofabrik.de/north-america/us/nebraska-261027.osm.pbf"
+    },
+    {
+      "filename": "louisiana.osm.pbf",
+      "bytes": 147307400,
+      "sha256": "2095fafde920e5a4bc77fc2b9d83d6c08fd282b0e36e335e4c168256df8d7220",
+      "source_url": "https://download.geofabrik.de/north-america/us/louisiana-261027.osm.pbf"
     }
   ],
   "warning": "Original research inputs only. Archival retention does not certify legal/physical connectors, complete source/road/geographic coverage, datum alignment or global competition.",
@@ -151,14 +169,17 @@
   "draft_release_tag": "research-sources-20261027-co-nm-az-v1",
   "geographic_accuracy_certified": false,
   "complete_global_competition": false,
-  "manifest_revision": 6,
+  "manifest_revision": 7,
   "extension_states": [
     "UT",
     "OK",
     "KS",
     "TX",
     "MO",
-    "AR"
+    "AR",
+    "WY",
+    "NE",
+    "LA"
   ],
-  "aggregate_archive_byte_budget": 2500000000
+  "aggregate_archive_byte_budget": 3000000000
 }
