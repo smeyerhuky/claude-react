@@ -23,6 +23,7 @@ on:
       - 'docs/research/kansas-texas-source-preflight/**'
       - 'docs/research/missouri-arkansas-origin-evidence/**'
       - 'docs/research/competitor-frontier-expansion/**'
+      - 'docs/research/native-state-inventory/**'
       - 'docs/research/connector-reviews/**'
       - 'docs/research/utah-parent-reference/domains.json'
       - 'docs/research/census-26-source-checkpoint/**'
