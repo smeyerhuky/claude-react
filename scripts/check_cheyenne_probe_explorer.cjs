@@ -4,7 +4,9 @@ const fs=require('fs'),{chromium}=require('playwright');
  try{
   const page=await browser.newPage({viewport:{width:1200,height:1100},locale:"en-US"}),errors=[],requests=[];page.on('pageerror',e=>errors.push(String(e)));page.on('request',r=>requests.push(r.url()));
   await page.setContent(fs.readFileSync(process.argv[2],'utf8'));
-  const baseline=JSON.parse(fs.readFileSync('docs/research/census-32-source-checkpoint/baseline.json','utf8'));
+  const baseline=JSON.parse(fs.readFileSync(process.argv[4]||'docs/research/census-32-source-checkpoint/baseline.json','utf8'));
+  if(!(await page.locator('h1').innerText()).includes('Cheyenne seven-state'))throw Error('Wrong scenario title');
+  const lead=baseline.sources.find(s=>s.cbsa==='16940');if(!(await page.locator('body').innerText()).includes((lead.diagnostic_gap_m/1000).toFixed(3)+' km'))throw Error('Cheyenne connector gap hidden');
   const probes=await page.locator('#probe option').evaluateAll(nodes=>nodes.map(n=>n.value));if(probes.length!==18)throw Error('Wrong inherited probe inventory');
   let combinations=0,cells=0,unreachable=0;
   for(const metric of ['length','travel_time'])for(const direction of ['location-to-metro','metro-to-location'])for(const probe of probes){
