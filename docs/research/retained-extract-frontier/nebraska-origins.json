@@ -1,0 +1,94 @@
+{
+  "access_verified": false,
+  "extract_coverage_certified": false,
+  "highway_ways_with_missing_locations": 0,
+  "limitations": "Nearest geometry only within supplied PBF and search radius; OSM tags and modeled driving eligibility do not prove physical/legal entry; representative points are not verified urban access anchors",
+  "method": "Raw PBF highway-way scan; no contracted graph or SegmentGridIndex; local equirectangular projection with spherical gap distance",
+  "metros": [
+    {
+      "cbsa": "30700",
+      "name": "Lincoln, NE Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 328.8694856481321,
+        "highway": "motorway",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 158428267,
+        "osm_way_url": "https://www.openstreetmap.org/way/158428267",
+        "projection_lonlat": [
+          -96.86909582748618,
+          40.82037788349396
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 328.8694856481321,
+        "highway": "motorway",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 158428267,
+        "osm_way_url": "https://www.openstreetmap.org/way/158428267",
+        "projection_lonlat": [
+          -96.86909582748618,
+          40.82037788349396
+        ]
+      },
+      "origin_lonlat": [
+        -96.8688013,
+        40.8174287
+      ]
+    },
+    {
+      "cbsa": "36540",
+      "name": "Omaha, NE-IA Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 40.387674682842764,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "North 57th Street",
+        "osm_way_id": 176921077,
+        "osm_way_url": "https://www.openstreetmap.org/way/176921077",
+        "projection_lonlat": [
+          -96.00045349992317,
+          41.290459525407336
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 40.387674682842764,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "North 57th Street",
+        "osm_way_id": 176921077,
+        "osm_way_url": "https://www.openstreetmap.org/way/176921077",
+        "projection_lonlat": [
+          -96.00045349992317,
+          41.290459525407336
+        ]
+      },
+      "origin_lonlat": [
+        -95.9999701,
+        41.2904587
+      ]
+    }
+  ],
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "osm_sha256": "f91f656839009e06205143d461f07ced853b5d342070ed6e38cac38576943f92",
+  "release_eligible": false,
+  "scan_radius_m": 25000.0,
+  "schema_version": "colorado-raw-origin-investigation-v1"
+}

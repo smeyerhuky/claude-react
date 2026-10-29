@@ -1,0 +1,174 @@
+{
+  "access_verified": false,
+  "extract_coverage_certified": false,
+  "highway_ways_with_missing_locations": 0,
+  "limitations": "Nearest geometry only within supplied PBF and search radius; OSM tags and modeled driving eligibility do not prove physical/legal entry; representative points are not verified urban access anchors",
+  "method": "Raw PBF highway-way scan; no contracted graph or SegmentGridIndex; local equirectangular projection with spherical gap distance",
+  "metros": [
+    {
+      "cbsa": "15180",
+      "name": "Brownsville-Harlingen, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 227.4062475086292,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Kretz Road",
+        "osm_way_id": 20768293,
+        "osm_way_url": "https://www.openstreetmap.org/way/20768293",
+        "projection_lonlat": [
+          -97.47914578866799,
+          26.10088452140215
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 227.4062475086292,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Kretz Road",
+        "osm_way_id": 20768293,
+        "osm_way_url": "https://www.openstreetmap.org/way/20768293",
+        "projection_lonlat": [
+          -97.47914578866799,
+          26.10088452140215
+        ]
+      },
+      "origin_lonlat": [
+        -97.4789584,
+        26.1029227
+      ]
+    },
+    {
+      "cbsa": "18580",
+      "name": "Corpus Christi, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 599.2272188579706,
+        "highway": "track",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 519377019,
+        "osm_way_url": "https://www.openstreetmap.org/way/519377019",
+        "projection_lonlat": [
+          -97.4047874,
+          27.8994474
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 649.1018630594367,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 820489514,
+        "osm_way_url": "https://www.openstreetmap.org/way/820489514",
+        "projection_lonlat": [
+          -97.3979657,
+          27.8899828
+        ]
+      },
+      "origin_lonlat": [
+        -97.4016678,
+        27.8948171
+      ]
+    },
+    {
+      "cbsa": "29700",
+      "name": "Laredo, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 439.7058704502362,
+        "highway": "proposed",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Laredo Outer Loop",
+        "osm_way_id": 1379298080,
+        "osm_way_url": "https://www.openstreetmap.org/way/1379298080",
+        "projection_lonlat": [
+          -99.33628428737055,
+          27.76070684849352
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 701.7140249417673,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 21321388,
+        "osm_way_url": "https://www.openstreetmap.org/way/21321388",
+        "projection_lonlat": [
+          -99.33661626561215,
+          27.75565752474454
+        ]
+      },
+      "origin_lonlat": [
+        -99.3407518,
+        27.7607987
+      ]
+    },
+    {
+      "cbsa": "32580",
+      "name": "McAllen-Edinburg-Mission, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 435.3397440579492,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 15264391,
+        "osm_way_url": "https://www.openstreetmap.org/way/15264391",
+        "projection_lonlat": [
+          -98.1845628,
+          26.3941287
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 435.3397440579492,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 15264391,
+        "osm_way_url": "https://www.openstreetmap.org/way/15264391",
+        "projection_lonlat": [
+          -98.1845628,
+          26.3941287
+        ]
+      },
+      "origin_lonlat": [
+        -98.18099,
+        26.3963839
+      ]
+    }
+  ],
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "osm_sha256": "28f51b4ab7f41a6e23f0d772bcccc07d379d6592ebdb351a6f7969fa2053e5f0",
+  "release_eligible": false,
+  "scan_radius_m": 25000.0,
+  "schema_version": "colorado-raw-origin-investigation-v1"
+}

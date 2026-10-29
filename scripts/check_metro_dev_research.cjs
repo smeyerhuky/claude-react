@@ -34,8 +34,8 @@ const {chromium}=require('playwright');
   await frame.locator('#status').selectOption('unknown');if(await frame.locator('#rows tr').count()!==341)throw Error('Missing unknown competitors');
   if(await frame.locator('#rows tr').first().getAttribute('data-cbsa')!=='48660')throw Error('Investigation queue order changed');
   await frame.locator('#status').selectOption('modeled');if(await frame.locator('#rows tr').count()!==26)throw Error('Modeled count changed');
-  await frame.locator('#status').selectOption('investigated');if(await frame.locator('#rows tr').count()!==36)throw Error('Lead investigation count changed');
-  await frame.locator('#status').selectOption('unscanned');if(await frame.locator('#rows tr').count()!==305)throw Error('Unscanned count changed');
+  await frame.locator('#status').selectOption('investigated');if(await frame.locator('#rows tr').count()!==53)throw Error('Lead investigation count changed');
+  await frame.locator('#status').selectOption('unscanned');if(await frame.locator('#rows tr').count()!==288)throw Error('Unscanned count changed');
   await frame.locator('#status').selectOption('all');await frame.locator('#csv').selectOption('absent');if(await frame.locator('#rows tr').count()!==8)throw Error('Absent CSV qualifiers dropped');
   await frame.locator('#csv').selectOption('all');await frame.locator('#search').fill('48660');if(await frame.locator('#rows tr').count()!==1)throw Error('CBSA search failed');
   await frame.locator('#rows button').click();if(!(await frame.locator('#selected').innerText()).includes('Access unapproved'))throw Error('Selection lost access warning');
@@ -48,6 +48,6 @@ const {chromium}=require('playwright');
   await page.keyboard.press('Escape');await dialog.waitFor({state:'hidden'});
   const after=await snapshot();if(JSON.stringify(before)!==JSON.stringify(after))throw Error('Inspector changed map rendering/state');
   if(errors.length)throw Error(errors.join('\n'));
-  console.log(JSON.stringify({devPanel:true,probeRows:26,sixStateRows:31,comparisonRows:5,inventoryRows:367,unknownRows:341,absentCsvRows:8,leadInvestigations:36,sandbox,mapStateAndCanvasPreserved:true,pageErrors:0}));
+  console.log(JSON.stringify({devPanel:true,probeRows:26,sixStateRows:31,comparisonRows:5,inventoryRows:367,unknownRows:341,absentCsvRows:8,leadInvestigations:53,sandbox,mapStateAndCanvasPreserved:true,pageErrors:0}));
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1});

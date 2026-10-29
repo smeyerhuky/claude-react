@@ -1,0 +1,414 @@
+{
+  "access_verified": false,
+  "extract_coverage_certified": false,
+  "highway_ways_with_missing_locations": 0,
+  "limitations": "Nearest geometry only within supplied PBF and search radius; OSM tags and modeled driving eligibility do not prove physical/legal entry; representative points are not verified urban access anchors",
+  "method": "Raw PBF highway-way scan; no contracted graph or SegmentGridIndex; local equirectangular projection with spherical gap distance",
+  "metros": [
+    {
+      "cbsa": "10780",
+      "name": "Alexandria, LA Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 393.77098174119857,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 982158559,
+        "osm_way_url": "https://www.openstreetmap.org/way/982158559",
+        "projection_lonlat": [
+          -92.5429466,
+          31.3240493
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 393.77098174119857,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 982158559,
+        "osm_way_url": "https://www.openstreetmap.org/way/982158559",
+        "projection_lonlat": [
+          -92.5429466,
+          31.3240493
+        ]
+      },
+      "origin_lonlat": [
+        -92.5468034,
+        31.3253478
+      ]
+    },
+    {
+      "cbsa": "12940",
+      "name": "Baton Rouge, LA Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 1.4781771553429643,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "North Buttonwood Drive",
+        "osm_way_id": 12629049,
+        "osm_way_url": "https://www.openstreetmap.org/way/12629049",
+        "projection_lonlat": [
+          -91.12691090843781,
+          30.515242847735166
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 1.4781771553429643,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "North Buttonwood Drive",
+        "osm_way_id": 12629049,
+        "osm_way_url": "https://www.openstreetmap.org/way/12629049",
+        "projection_lonlat": [
+          -91.12691090843781,
+          30.515242847735166
+        ]
+      },
+      "origin_lonlat": [
+        -91.1269263,
+        30.5152419
+      ]
+    },
+    {
+      "cbsa": "25220",
+      "name": "Hammond, LA Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 28.410112115092524,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Stilley Road",
+        "osm_way_id": 13494091,
+        "osm_way_url": "https://www.openstreetmap.org/way/13494091",
+        "projection_lonlat": [
+          -90.40648785526321,
+          30.621092807782716
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 28.410112115092524,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Stilley Road",
+        "osm_way_id": 13494091,
+        "osm_way_url": "https://www.openstreetmap.org/way/13494091",
+        "projection_lonlat": [
+          -90.40648785526321,
+          30.621092807782716
+        ]
+      },
+      "origin_lonlat": [
+        -90.4064899,
+        30.6213483
+      ]
+    },
+    {
+      "cbsa": "26380",
+      "name": "Houma-Bayou Cane-Thibodaux, LA Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 117.37808846949528,
+        "highway": "secondary",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Bayou Dularge Road",
+        "osm_way_id": 13506002,
+        "osm_way_url": "https://www.openstreetmap.org/way/13506002",
+        "projection_lonlat": [
+          -90.84397175104469,
+          29.335153072777725
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 117.37808846949528,
+        "highway": "secondary",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Bayou Dularge Road",
+        "osm_way_id": 13506002,
+        "osm_way_url": "https://www.openstreetmap.org/way/13506002",
+        "projection_lonlat": [
+          -90.84397175104469,
+          29.335153072777725
+        ]
+      },
+      "origin_lonlat": [
+        -90.8436739,
+        29.3341299
+      ]
+    },
+    {
+      "cbsa": "29180",
+      "name": "Lafayette, LA Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 204.19918196982184,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Cotton Loop",
+        "osm_way_id": 13511696,
+        "osm_way_url": "https://www.openstreetmap.org/way/13511696",
+        "projection_lonlat": [
+          -92.136961,
+          30.014763
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 204.19918196982184,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Cotton Loop",
+        "osm_way_id": 13511696,
+        "osm_way_url": "https://www.openstreetmap.org/way/13511696",
+        "projection_lonlat": [
+          -92.136961,
+          30.014763
+        ]
+      },
+      "origin_lonlat": [
+        -92.1365518,
+        30.0129611
+      ]
+    },
+    {
+      "cbsa": "29340",
+      "name": "Lake Charles, LA Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 1341.464225614618,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Smith Road",
+        "osm_way_id": 12609011,
+        "osm_way_url": "https://www.openstreetmap.org/way/12609011",
+        "projection_lonlat": [
+          -93.203991,
+          30.037563
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 1341.464225614618,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Smith Road",
+        "osm_way_id": 12609011,
+        "osm_way_url": "https://www.openstreetmap.org/way/12609011",
+        "projection_lonlat": [
+          -93.203991,
+          30.037563
+        ]
+      },
+      "origin_lonlat": [
+        -93.1900931,
+        30.0384514
+      ]
+    },
+    {
+      "cbsa": "33740",
+      "name": "Monroe, LA Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 790.9741650733616,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 136737265,
+        "osm_way_url": "https://www.openstreetmap.org/way/136737265",
+        "projection_lonlat": [
+          -92.0529414,
+          32.6794478
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 790.9741650733616,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 136737265,
+        "osm_way_url": "https://www.openstreetmap.org/way/136737265",
+        "projection_lonlat": [
+          -92.0529414,
+          32.6794478
+        ]
+      },
+      "origin_lonlat": [
+        -92.0583184,
+        32.67396
+      ]
+    },
+    {
+      "cbsa": "35380",
+      "name": "New Orleans-Metairie, LA Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 8305.493643612253,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 1231581523,
+        "osm_way_url": "https://www.openstreetmap.org/way/1231581523",
+        "projection_lonlat": [
+          -89.5379822,
+          29.3493521
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 8305.493643612253,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 1231581523,
+        "osm_way_url": "https://www.openstreetmap.org/way/1231581523",
+        "projection_lonlat": [
+          -89.5379822,
+          29.3493521
+        ]
+      },
+      "origin_lonlat": [
+        -89.5760676,
+        29.282447
+      ]
+    },
+    {
+      "cbsa": "43340",
+      "name": "Shreveport-Bossier City, LA Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 80.19733233571512,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 1436645107,
+        "osm_way_url": "https://www.openstreetmap.org/way/1436645107",
+        "projection_lonlat": [
+          -93.7453304,
+          32.4370674
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 80.19733233571512,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 1436645107,
+        "osm_way_url": "https://www.openstreetmap.org/way/1436645107",
+        "projection_lonlat": [
+          -93.7453304,
+          32.4370674
+        ]
+      },
+      "origin_lonlat": [
+        -93.7448836,
+        32.4376822
+      ]
+    },
+    {
+      "cbsa": "43640",
+      "name": "Slidell-Mandeville-Covington, LA Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 363.85323780196995,
+        "highway": "track",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 13486514,
+        "osm_way_url": "https://www.openstreetmap.org/way/13486514",
+        "projection_lonlat": [
+          -89.95575509511663,
+          30.409936745615294
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 673.3034913911529,
+        "highway": "secondary",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 615202774,
+        "osm_way_url": "https://www.openstreetmap.org/way/615202774",
+        "projection_lonlat": [
+          -89.95128314345426,
+          30.40399562488695
+        ]
+      },
+      "origin_lonlat": [
+        -89.9519622,
+        30.4100224
+      ]
+    }
+  ],
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "osm_sha256": "2095fafde920e5a4bc77fc2b9d83d6c08fd282b0e36e335e4c168256df8d7220",
+  "release_eligible": false,
+  "scan_radius_m": 25000.0,
+  "schema_version": "colorado-raw-origin-investigation-v1"
+}
