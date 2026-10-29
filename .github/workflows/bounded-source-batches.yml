@@ -1,0 +1,29 @@
+name: Shared-budget source batches
+on:
+  pull_request:
+    paths:
+      - 'scripts/road_boundary_label_batches.py'
+      - 'scripts/test_road_boundary_label_batches.py'
+      - 'scripts/road_boundary_label_oracle.py'
+      - 'scripts/road_query_leaf_core.py'
+      - 'scripts/road_primitive_sparse.py'
+      - 'scripts/road_partition_oracle.py'
+      - 'docs/research/bounded-source-batches.md'
+      - '.github/workflows/bounded-source-batches.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preserve-native-oracle-and-total-budget:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2'
+      - run: python -m unittest discover -s scripts -p 'test_road_boundary_label_batches.py' -v
+      - run: python -m unittest discover -s scripts -p 'test_road_boundary_label_oracle.py' -v
