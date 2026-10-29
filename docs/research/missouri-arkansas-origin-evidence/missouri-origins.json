@@ -1,0 +1,134 @@
+{
+  "access_verified": false,
+  "extract_coverage_certified": false,
+  "highway_ways_with_missing_locations": 0,
+  "limitations": "Nearest geometry only within supplied PBF and search radius; OSM tags and modeled driving eligibility do not prove physical/legal entry; representative points are not verified urban access anchors",
+  "method": "Raw PBF highway-way scan; no contracted graph or SegmentGridIndex; local equirectangular projection with spherical gap distance",
+  "metros": [
+    {
+      "cbsa": "27900",
+      "name": "Joplin, MO-KS Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 5.956529872365703,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 897906982,
+        "osm_way_url": "https://www.openstreetmap.org/way/897906982",
+        "projection_lonlat": [
+          -94.50065045724382,
+          37.09218866414192
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 5.956529872365703,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 897906982,
+        "osm_way_url": "https://www.openstreetmap.org/way/897906982",
+        "projection_lonlat": [
+          -94.50065045724382,
+          37.09218866414192
+        ]
+      },
+      "origin_lonlat": [
+        -94.5006513,
+        37.0921351
+      ]
+    },
+    {
+      "cbsa": "28140",
+      "name": "Kansas City, MO-KS Metro Area",
+      "nearest_mapped_highway": {
+        "access": "private",
+        "access_verified": false,
+        "gap_m": 83.56302737920221,
+        "highway": "service",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 755905999,
+        "osm_way_url": "https://www.openstreetmap.org/way/755905999",
+        "projection_lonlat": [
+          -94.4428754,
+          38.9318886
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 156.95723449344715,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Northwest Cedar Creek Lane",
+        "osm_way_id": 18509332,
+        "osm_way_url": "https://www.openstreetmap.org/way/18509332",
+        "projection_lonlat": [
+          -94.44211697161347,
+          38.931415430731775
+        ]
+      },
+      "origin_lonlat": [
+        -94.4438406,
+        38.9318567
+      ]
+    },
+    {
+      "cbsa": "44180",
+      "name": "Springfield, MO Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 344.38848006461217,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Old Trail Lane",
+        "osm_way_id": 887513769,
+        "osm_way_url": "https://www.openstreetmap.org/way/887513769",
+        "projection_lonlat": [
+          -93.1841305,
+          37.3612395
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 344.38848006461217,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Old Trail Lane",
+        "osm_way_id": 887513769,
+        "osm_way_url": "https://www.openstreetmap.org/way/887513769",
+        "projection_lonlat": [
+          -93.1841305,
+          37.3612395
+        ]
+      },
+      "origin_lonlat": [
+        -93.1802617,
+        37.3608699
+      ]
+    }
+  ],
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "osm_sha256": "f032af34ca4bd0dabc9224761874cfde34a8f82ab488e0233c1c01c00af3b010",
+  "release_eligible": false,
+  "scan_radius_m": 25000.0,
+  "schema_version": "colorado-raw-origin-investigation-v1"
+}

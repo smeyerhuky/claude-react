@@ -1,0 +1,74 @@
+{
+  "access_verified": false,
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "raw_retention": "New Missouri/Arkansas PBFs are local and retrievable by exact dated URL; not yet retained in draft archive V5. Existing archive assets are unchanged.",
+  "records": [
+    {
+      "cbsa_ids": [
+        "27900",
+        "28140",
+        "44180"
+      ],
+      "report_path": "docs/research/missouri-arkansas-origin-evidence/missouri-origins.json",
+      "report_sha256": "4dacce2e952c6e71c74b0441666b4faa11ff3e55cc5937b1a6453e450eeeb473",
+      "source": {
+        "name": "missouri.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "f032af34ca4bd0dabc9224761874cfde34a8f82ab488e0233c1c01c00af3b010",
+        "size_bytes": 199941531
+      },
+      "state": "missouri",
+      "url": "https://download.geofabrik.de/north-america/us/missouri-261027.osm.pbf"
+    },
+    {
+      "cbsa_ids": [
+        "22220",
+        "22900"
+      ],
+      "report_path": "docs/research/missouri-arkansas-origin-evidence/arkansas-origins.json",
+      "report_sha256": "abb73290cdc2a6ae05115e14c31d4edf468f0886a45b16f3ae83ab36b2e70893",
+      "source": {
+        "name": "arkansas.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "50eabfa65da53c7d1d288fd4dda032c5b230b04bf9c7ae0eed4c6f44f8cb9cd5",
+        "size_bytes": 100263701
+      },
+      "state": "arkansas",
+      "url": "https://download.geofabrik.de/north-america/us/arkansas-261027.osm.pbf"
+    },
+    {
+      "cbsa_ids": [
+        "27900",
+        "28140"
+      ],
+      "report_path": "docs/research/missouri-arkansas-origin-evidence/kansas-origins.json",
+      "report_sha256": "e8c0fc4d5d00ea1ed6a8bf3ff8586cfd7b8a2a925c78ec2ed455d638c5d1dfd8",
+      "source": {
+        "name": "kansas.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "eae1e55d59e8a15fe6abd7057b86098c6e03bb9a88b7997f46256ca59386f30e",
+        "size_bytes": 117395534
+      },
+      "state": "kansas",
+      "url": "https://download.geofabrik.de/north-america/us/kansas-261027.osm.pbf"
+    },
+    {
+      "cbsa_ids": [
+        "22900"
+      ],
+      "report_path": "docs/research/missouri-arkansas-origin-evidence/oklahoma-origins.json",
+      "report_sha256": "b775565166ccd4f4e6be2b49fdc6cc7335be720db90ef5e98e7074470e7c7c68",
+      "source": {
+        "name": "oklahoma.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "4e76187cb20fd187d759de9565568381a76d87518377a0e03585d9865e498106",
+        "size_bytes": 169850063
+      },
+      "state": "oklahoma",
+      "url": "https://download.geofabrik.de/north-america/us/oklahoma-261027.osm.pbf"
+    }
+  ],
+  "release_eligible": false,
+  "retrieved_utc": "2026-10-29",
+  "schema": "missouri-arkansas-origin-evidence-v1"
+}

@@ -1,0 +1,143 @@
+{
+  "access_verified": false,
+  "candidate": {
+    "approved": false,
+    "name": "Joplin, MO-KS Metro Area",
+    "native_origin_lonlat": [
+      -94.5006513,
+      37.0921351
+    ],
+    "observations": [
+      {
+        "adopted_as_connector": false,
+        "extract": "missouri",
+        "gap_m": 5.956529872365703,
+        "osm_way_id": 897906982,
+        "projection_lonlat": [
+          -94.50065045724382,
+          37.09218866414192
+        ]
+      },
+      {
+        "adopted_as_connector": false,
+        "extract": "kansas",
+        "gap_m": 6115.452370056235,
+        "osm_way_id": 18511296,
+        "projection_lonlat": [
+          -94.5672107,
+          37.0778027
+        ]
+      }
+    ],
+    "scope": "Original-point regression investigation; no urban anchor or connector adopted"
+  },
+  "cbsa": "27900",
+  "decision": "needs_evidence",
+  "findings": {
+    "connector_cost": {
+      "reason": "A straight-line projection gap is not a traversable connector cost. No cost is adopted or silently set to zero.",
+      "sources": [
+        "missouri",
+        "kansas"
+      ],
+      "status": "unknown"
+    },
+    "direction_and_turns": {
+      "reason": "The scan distinguishes model-eligible ways but does not review directed connector approaches, critical maneuvers or turn restrictions.",
+      "sources": [
+        "missouri",
+        "kansas"
+      ],
+      "status": "unknown"
+    },
+    "legal_motor_access": {
+      "reason": "OSM driving-filter eligibility and absent restriction tags do not establish legal permission. No independent road-authority or property-access record for a specific connector is retained.",
+      "sources": [
+        "missouri",
+        "kansas"
+      ],
+      "status": "unknown"
+    },
+    "physical_connection": {
+      "reason": "Per-extract projected centerline gaps are not inspected drivable paths from the native Census point. No entry/exit route or barrier crossing is established.",
+      "sources": [
+        "missouri",
+        "kansas"
+      ],
+      "status": "unknown"
+    },
+    "same_grade": {
+      "reason": "Nearest geometry does not establish grade, driveway connectivity or barrier-free access. The scan has no independently reviewed vertical or crossing evidence.",
+      "sources": [
+        "missouri",
+        "kansas"
+      ],
+      "status": "unknown"
+    }
+  },
+  "limitations": "Source/25km-radius-limited native-point geometry investigation. Not a reviewed urban access anchor, legal survey, vehicle connector or geographic closure. Separate #137 access-evidence and approval requirements remain intact.",
+  "machine_assertions": [
+    {
+      "equals": "27900",
+      "keys": [
+        "metros",
+        0,
+        "cbsa"
+      ],
+      "source": "missouri"
+    },
+    {
+      "equals": 897906982,
+      "keys": [
+        "metros",
+        0,
+        "nearest_model_drivable_highway",
+        "osm_way_id"
+      ],
+      "source": "missouri"
+    },
+    {
+      "equals": "27900",
+      "keys": [
+        "metros",
+        0,
+        "cbsa"
+      ],
+      "source": "kansas"
+    },
+    {
+      "equals": 18511296,
+      "keys": [
+        "metros",
+        0,
+        "nearest_model_drivable_highway",
+        "osm_way_id"
+      ],
+      "source": "kansas"
+    }
+  ],
+  "origin_policy": "census-regression-v1",
+  "release_eligible": false,
+  "reviewer": {
+    "identity": "Codex (OpenAI), 2026-10-29",
+    "kind": "ai",
+    "procedure": "Read all retained selected-extract observations and exact-input manifest; compare cross-border nearest mapped and model-supported geometry; distinguish model filtering from real legal/physical entry; answer every access question without treating proximity, raw tags or green replay CI as certification."
+  },
+  "schema": "ai-connector-review-v1",
+  "sources": [
+    {
+      "id": "missouri",
+      "kind": "routing_model",
+      "path": "docs/research/missouri-arkansas-origin-evidence/missouri-origins.json",
+      "provenance": "Exact dated missouri OSM extract native-point scan. Full PBF identity, epoch, CSV identity and reproduction command are bound by the research manifest; not independent legal/physical access evidence.",
+      "sha256": "4dacce2e952c6e71c74b0441666b4faa11ff3e55cc5937b1a6453e450eeeb473"
+    },
+    {
+      "id": "kansas",
+      "kind": "routing_model",
+      "path": "docs/research/missouri-arkansas-origin-evidence/kansas-origins.json",
+      "provenance": "Exact dated kansas OSM extract native-point scan. Full PBF identity, epoch, CSV identity and reproduction command are bound by the research manifest; not independent legal/physical access evidence.",
+      "sha256": "e8c0fc4d5d00ea1ed6a8bf3ff8586cfd7b8a2a925c78ec2ed455d638c5d1dfd8"
+    }
+  ]
+}
