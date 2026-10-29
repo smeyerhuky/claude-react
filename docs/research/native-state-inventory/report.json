@@ -1,0 +1,5941 @@
+{
+  "access_verified": false,
+  "coordinate_operation": "none; both Census inputs use native NAD83",
+  "domains_sha256": "d860aef0a6ac2e442590098ed98a7cd601fa63764d8d76ba63e444bebcc5a260",
+  "geographic_coverage_certified": false,
+  "multiple_state_cbsa_ids": [],
+  "native_crs": "EPSG:4269",
+  "qualifying_identities": 367,
+  "release_eligible": false,
+  "rows": [
+    {
+      "access_verified": false,
+      "cbsa": "10180",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -99.7187428,
+        32.4520222
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "10380",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -67.0972023,
+        18.391555
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PR",
+          "geoid": "72",
+          "name": "Puerto Rico"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "10420",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -81.3501104,
+        41.1466395
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OH",
+          "geoid": "39",
+          "name": "Ohio"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "10500",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -84.1107184,
+        31.6446859
+      ],
+      "point_states": [
+        {
+          "abbreviation": "GA",
+          "geoid": "13",
+          "name": "Georgia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "10540",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -122.5372084,
+        44.4888982
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OR",
+          "geoid": "41",
+          "name": "Oregon"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "10580",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -73.9423479,
+        42.7879202
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NY",
+          "geoid": "36",
+          "name": "New York"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "10740",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -106.4583918,
+        35.1234965
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NM",
+          "geoid": "35",
+          "name": "New Mexico"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "10780",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -92.5468034,
+        31.3253478
+      ],
+      "point_states": [
+        {
+          "abbreviation": "LA",
+          "geoid": "22",
+          "name": "Louisiana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "10900",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -75.398158,
+        40.7893392
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PA",
+          "geoid": "42",
+          "name": "Pennsylvania"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11020",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -78.309597,
+        40.4986828
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PA",
+          "geoid": "42",
+          "name": "Pennsylvania"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11100",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -101.9086699,
+        35.2479988
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11180",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -93.6980079,
+        42.0361281
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IA",
+          "geoid": "19",
+          "name": "Iowa"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11200",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -72.6636919,
+        42.33946
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MA",
+          "geoid": "25",
+          "name": "Massachusetts"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11260",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -149.6782218,
+        62.2127844
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AK",
+          "geoid": "02",
+          "name": "Alaska"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11460",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -83.8434233,
+        42.2522168
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MI",
+          "geoid": "26",
+          "name": "Michigan"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11500",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -85.8279089,
+        33.7705162
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AL",
+          "geoid": "01",
+          "name": "Alabama"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11540",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -88.3723255,
+        44.2906032
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WI",
+          "geoid": "55",
+          "name": "Wisconsin"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11640",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -66.7599813,
+        18.4392239
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PR",
+          "geoid": "72",
+          "name": "Puerto Rico"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "11700",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -82.5706835,
+        35.6163405
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NC",
+          "geoid": "37",
+          "name": "North Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12020",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -83.2138965,
+        33.943984
+      ],
+      "point_states": [
+        {
+          "abbreviation": "GA",
+          "geoid": "13",
+          "name": "Georgia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12060",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -84.3928478,
+        33.7324018
+      ],
+      "point_states": [
+        {
+          "abbreviation": "GA",
+          "geoid": "13",
+          "name": "Georgia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12100",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -74.7383113,
+        39.2861857
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NJ",
+          "geoid": "34",
+          "name": "New Jersey"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12220",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -85.5271267,
+        32.4922058
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AL",
+          "geoid": "01",
+          "name": "Alabama"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12260",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -81.9828327,
+        33.4603713
+      ],
+      "point_states": [
+        {
+          "abbreviation": "GA",
+          "geoid": "13",
+          "name": "Georgia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12420",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -97.6498417,
+        30.2497437
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12540",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -118.7295064,
+        35.3466288
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12580",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -76.5495009,
+        39.304361
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MD",
+          "geoid": "24",
+          "name": "Maryland"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12620",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -68.666616,
+        45.4092843
+      ],
+      "point_states": [
+        {
+          "abbreviation": "ME",
+          "geoid": "23",
+          "name": "Maine"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12700",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -70.1648227,
+        41.7061233
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MA",
+          "geoid": "25",
+          "name": "Massachusetts"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12940",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -91.1269263,
+        30.5152419
+      ],
+      "point_states": [
+        {
+          "abbreviation": "LA",
+          "geoid": "22",
+          "name": "Louisiana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12980",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -85.0123853,
+        42.2429896
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MI",
+          "geoid": "26",
+          "name": "Michigan"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13020",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -83.9787007,
+        43.6997112
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MI",
+          "geoid": "26",
+          "name": "Michigan"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -94.2027049,
+        30.0759278
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13220",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -81.1637481,
+        37.9056593
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WV",
+          "geoid": "54",
+          "name": "West Virginia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13380",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -121.8364325,
+        48.8426531
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WA",
+          "geoid": "53",
+          "name": "Washington"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13460",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -120.8870717,
+        44.1538371
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OR",
+          "geoid": "41",
+          "name": "Oregon"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13740",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -108.8323611,
+        45.6371402
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MT",
+          "geoid": "30",
+          "name": "Montana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13780",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -76.0229431,
+        42.1639276
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NY",
+          "geoid": "36",
+          "name": "New York"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13820",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -86.8143378,
+        33.4623718
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AL",
+          "geoid": "01",
+          "name": "Alabama"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13900",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -100.979592,
+        46.887031
+      ],
+      "point_states": [
+        {
+          "abbreviation": "ND",
+          "geoid": "38",
+          "name": "North Dakota"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "13980",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -80.5315166,
+        37.1213643
+      ],
+      "point_states": [
+        {
+          "abbreviation": "VA",
+          "geoid": "51",
+          "name": "Virginia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "14010",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -88.8445391,
+        40.4945594
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IL",
+          "geoid": "17",
+          "name": "Illinois"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "14020",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -86.6717544,
+        39.2417362
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IN",
+          "geoid": "18",
+          "name": "Indiana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "14260",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -116.1419089,
+        43.0066485
+      ],
+      "point_states": [
+        {
+          "abbreviation": "ID",
+          "geoid": "16",
+          "name": "Idaho"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "14460",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -71.0219925,
+        42.517606
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MA",
+          "geoid": "25",
+          "name": "Massachusetts"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "14500",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -105.3977104,
+        40.0949712
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CO",
+          "geoid": "08",
+          "name": "Colorado"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "14540",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -86.3973979,
+        37.0468044
+      ],
+      "point_states": [
+        {
+          "abbreviation": "KY",
+          "geoid": "21",
+          "name": "Kentucky"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "14580",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -111.1639214,
+        45.5180536
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MT",
+          "geoid": "30",
+          "name": "Montana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "14740",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -122.6496358,
+        47.6396874
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WA",
+          "geoid": "53",
+          "name": "Washington"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "14860",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -73.3932673,
+        41.2524425
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CT",
+          "geoid": "09",
+          "name": "Connecticut"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "15180",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -97.4789584,
+        26.1029227
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "15260",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -81.5889087,
+        31.3017391
+      ],
+      "point_states": [
+        {
+          "abbreviation": "GA",
+          "geoid": "13",
+          "name": "Georgia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "15380",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -78.7773351,
+        43.0443711
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NY",
+          "geoid": "36",
+          "name": "New York"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "15500",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -79.4005733,
+        36.0439535
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NC",
+          "geoid": "37",
+          "name": "North Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "15540",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -73.0411754,
+        44.6891146
+      ],
+      "point_states": [
+        {
+          "abbreviation": "VT",
+          "geoid": "50",
+          "name": "Vermont"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "15940",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -81.261468,
+        40.7110505
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OH",
+          "geoid": "39",
+          "name": "Ohio"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "15980",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -81.9841817,
+        26.5632731
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16300",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -91.6310949,
+        42.0862886
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IA",
+          "geoid": "19",
+          "name": "Iowa"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16540",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -77.7245208,
+        39.9267722
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PA",
+          "geoid": "42",
+          "name": "Pennsylvania"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16580",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -88.2986226,
+        40.2344885
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IL",
+          "geoid": "17",
+          "name": "Illinois"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16620",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -81.4925567,
+        38.2832126
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WV",
+          "geoid": "54",
+          "name": "West Virginia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16700",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -80.0099468,
+        33.0175399
+      ],
+      "point_states": [
+        {
+          "abbreviation": "SC",
+          "geoid": "45",
+          "name": "South Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16740",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -80.7972848,
+        35.1663423
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NC",
+          "geoid": "37",
+          "name": "North Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16820",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -78.5932062,
+        37.9490837
+      ],
+      "point_states": [
+        {
+          "abbreviation": "VA",
+          "geoid": "51",
+          "name": "Virginia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16860",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -85.3611582,
+        35.0493612
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TN",
+          "geoid": "47",
+          "name": "Tennessee"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16940",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -104.660395,
+        41.2928302
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WY",
+          "geoid": "56",
+          "name": "Wyoming"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16980",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -87.8418871,
+        41.75878
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IL",
+          "geoid": "17",
+          "name": "Illinois"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17020",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -121.6032086,
+        39.6653362
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -84.463535,
+        39.0785953
+      ],
+      "point_states": [
+        {
+          "abbreviation": "KY",
+          "geoid": "21",
+          "name": "Kentucky"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17300",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -87.6243072,
+        36.6957098
+      ],
+      "point_states": [
+        {
+          "abbreviation": "KY",
+          "geoid": "21",
+          "name": "Kentucky"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17410",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -81.4305203,
+        41.6675481
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OH",
+          "geoid": "39",
+          "name": "Ohio"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17420",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -84.6550787,
+        35.1381174
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TN",
+          "geoid": "47",
+          "name": "Tennessee"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17660",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -116.6958613,
+        47.6759605
+      ],
+      "point_states": [
+        {
+          "abbreviation": "ID",
+          "geoid": "16",
+          "name": "Idaho"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17780",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -96.4885368,
+        30.7543917
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17820",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -104.6387277,
+        38.8455072
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CO",
+          "geoid": "08",
+          "name": "Colorado"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17860",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -92.585236,
+        38.9865239
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MO",
+          "geoid": "29",
+          "name": "Missouri"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17900",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -81.0378453,
+        34.0775845
+      ],
+      "point_states": [
+        {
+          "abbreviation": "SC",
+          "geoid": "45",
+          "name": "South Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17980",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -84.8437095,
+        32.4193768
+      ],
+      "point_states": [
+        {
+          "abbreviation": "GA",
+          "geoid": "13",
+          "name": "Georgia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "18140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -82.8359105,
+        39.9685617
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OH",
+          "geoid": "39",
+          "name": "Ohio"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "18580",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -97.4016678,
+        27.8948171
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "18880",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -86.3581638,
+        30.5949415
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19100",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -96.9704894,
+        32.8491708
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -84.856279,
+        34.7969557
+      ],
+      "point_states": [
+        {
+          "abbreviation": "GA",
+          "geoid": "13",
+          "name": "Georgia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19300",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -87.7460666,
+        30.6592183
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AL",
+          "geoid": "01",
+          "name": "Alabama"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19340",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -90.460076,
+        41.3916799
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IL",
+          "geoid": "17",
+          "name": "Illinois"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19430",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -84.1409921,
+        39.8297456
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OH",
+          "geoid": "39",
+          "name": "Ohio"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19460",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -87.0971469,
+        34.4893614
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AL",
+          "geoid": "01",
+          "name": "Alabama"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19660",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -81.1890231,
+        29.1789002
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19740",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -104.9010728,
+        39.434789
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CO",
+          "geoid": "08",
+          "name": "Colorado"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19780",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -93.7597124,
+        41.5770501
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IA",
+          "geoid": "19",
+          "name": "Iowa"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19820",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -83.2008463,
+        42.7218478
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MI",
+          "geoid": "26",
+          "name": "Michigan"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "20020",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -85.4691904,
+        31.2455283
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AL",
+          "geoid": "01",
+          "name": "Alabama"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "20100",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -75.5029819,
+        39.0970884
+      ],
+      "point_states": [
+        {
+          "abbreviation": "DE",
+          "geoid": "10",
+          "name": "Delaware"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "20260",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -92.3762703,
+        47.3297029
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MN",
+          "geoid": "27",
+          "name": "Minnesota"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "20500",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -79.0969897,
+        35.995536
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NC",
+          "geoid": "37",
+          "name": "North Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "20740",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -91.2843222,
+        44.9386719
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WI",
+          "geoid": "55",
+          "name": "Wisconsin"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "20940",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -115.3554001,
+        33.0408143
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "21060",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -85.8875977,
+        37.6512088
+      ],
+      "point_states": [
+        {
+          "abbreviation": "KY",
+          "geoid": "21",
+          "name": "Kentucky"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "21140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -85.8639864,
+        41.6006928
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IN",
+          "geoid": "18",
+          "name": "Indiana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "21340",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -105.5213326,
+        31.527394
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "21500",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -80.0963858,
+        42.1179519
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PA",
+          "geoid": "42",
+          "name": "Pennsylvania"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "21660",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -122.8975806,
+        43.9283337
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OR",
+          "geoid": "41",
+          "name": "Oregon"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "21780",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -87.5845186,
+        38.0491421
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IN",
+          "geoid": "18",
+          "name": "Indiana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22020",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -96.9601826,
+        46.9148591
+      ],
+      "point_states": [
+        {
+          "abbreviation": "ND",
+          "geoid": "38",
+          "name": "North Dakota"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -108.3245778,
+        36.5116245
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NM",
+          "geoid": "35",
+          "name": "New Mexico"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22180",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -78.9822092,
+        35.0379563
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NC",
+          "geoid": "37",
+          "name": "North Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22220",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -94.0795449,
+        36.1163935
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AR",
+          "geoid": "05",
+          "name": "Arkansas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22380",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -111.7737277,
+        35.8296919
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AZ",
+          "geoid": "04",
+          "name": "Arizona"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22420",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -83.7063718,
+        43.0210768
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MI",
+          "geoid": "26",
+          "name": "Michigan"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22500",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -79.8061642,
+        34.1535741
+      ],
+      "point_states": [
+        {
+          "abbreviation": "SC",
+          "geoid": "45",
+          "name": "South Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22520",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -87.7193881,
+        34.7992544
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AL",
+          "geoid": "01",
+          "name": "Alabama"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22540",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -88.493284,
+        43.7547219
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WI",
+          "geoid": "55",
+          "name": "Wisconsin"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22660",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -105.4867638,
+        40.6580933
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CO",
+          "geoid": "08",
+          "name": "Colorado"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22900",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -94.448349,
+        35.4290883
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OK",
+          "geoid": "40",
+          "name": "Oklahoma"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "23060",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -85.2164239,
+        41.0069993
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IN",
+          "geoid": "18",
+          "name": "Indiana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "23420",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -119.6684884,
+        36.8794036
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "23460",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -86.0342629,
+        34.0476407
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AL",
+          "geoid": "01",
+          "name": "Alabama"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "23540",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -82.6662573,
+        29.4533549
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "23580",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -83.8184997,
+        34.3175689
+      ],
+      "point_states": [
+        {
+          "abbreviation": "GA",
+          "geoid": "13",
+          "name": "Georgia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "23900",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -77.2177502,
+        39.8694372
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PA",
+          "geoid": "42",
+          "name": "Pennsylvania"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24020",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -73.6367573,
+        43.4404503
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NY",
+          "geoid": "36",
+          "name": "New York"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -78.0086695,
+        35.3541896
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NC",
+          "geoid": "37",
+          "name": "North Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24220",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -96.8426809,
+        47.835929
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MN",
+          "geoid": "27",
+          "name": "Minnesota"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24300",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -108.4605707,
+        39.019524
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CO",
+          "geoid": "08",
+          "name": "Colorado"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24340",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -85.715614,
+        42.9798406
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MI",
+          "geoid": "26",
+          "name": "Michigan"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24540",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -104.383666,
+        40.555961
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CO",
+          "geoid": "08",
+          "name": "Colorado"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24580",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -87.9961303,
+        44.4740244
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WI",
+          "geoid": "55",
+          "name": "Wisconsin"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24660",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -79.7926333,
+        36.0252039
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NC",
+          "geoid": "37",
+          "name": "North Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24780",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -77.3727387,
+        35.5924897
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NC",
+          "geoid": "37",
+          "name": "North Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24860",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -82.4134227,
+        34.6837085
+      ],
+      "point_states": [
+        {
+          "abbreviation": "SC",
+          "geoid": "45",
+          "name": "South Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25060",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -88.9992972,
+        30.4801526
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MS",
+          "geoid": "28",
+          "name": "Mississippi"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25180",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -77.9845935,
+        39.5544327
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WV",
+          "geoid": "54",
+          "name": "West Virginia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25220",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -90.4064899,
+        30.6213483
+      ],
+      "point_states": [
+        {
+          "abbreviation": "LA",
+          "geoid": "22",
+          "name": "Louisiana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25260",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -119.8155301,
+        36.072478
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25420",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -77.0504897,
+        40.335915
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PA",
+          "geoid": "42",
+          "name": "Pennsylvania"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25500",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -78.8853291,
+        38.5076118
+      ],
+      "point_states": [
+        {
+          "abbreviation": "VA",
+          "geoid": "51",
+          "name": "Virginia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25540",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -72.5451122,
+        41.6880385
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CT",
+          "geoid": "09",
+          "name": "Connecticut"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25620",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -89.232741,
+        31.1884408
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MS",
+          "geoid": "28",
+          "name": "Mississippi"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25860",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -81.4565843,
+        35.8142954
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NC",
+          "geoid": "37",
+          "name": "North Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25940",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -80.8308775,
+        32.3867916
+      ],
+      "point_states": [
+        {
+          "abbreviation": "SC",
+          "geoid": "45",
+          "name": "South Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "26140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -82.5955513,
+        28.8502933
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "26380",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -90.8436739,
+        29.3341299
+      ],
+      "point_states": [
+        {
+          "abbreviation": "LA",
+          "geoid": "22",
+          "name": "Louisiana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "26420",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -95.34262,
+        29.8010046
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "26580",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -82.5799944,
+        38.3574874
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WV",
+          "geoid": "54",
+          "name": "West Virginia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "26620",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -86.7348706,
+        34.7832617
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AL",
+          "geoid": "01",
+          "name": "Alabama"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "26820",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -112.4209193,
+        43.6204231
+      ],
+      "point_states": [
+        {
+          "abbreviation": "ID",
+          "geoid": "16",
+          "name": "Idaho"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "26900",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -86.1242596,
+        39.7905331
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IN",
+          "geoid": "18",
+          "name": "Indiana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "26980",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -91.6479303,
+        41.5178058
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IA",
+          "geoid": "19",
+          "name": "Iowa"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27060",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -76.4734835,
+        42.4530063
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NY",
+          "geoid": "36",
+          "name": "New York"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27100",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -84.4208679,
+        42.2484738
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MI",
+          "geoid": "26",
+          "name": "Michigan"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -90.1364218,
+        32.4263105
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MS",
+          "geoid": "28",
+          "name": "Mississippi"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27180",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -88.8826924,
+        35.7532151
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TN",
+          "geoid": "47",
+          "name": "Tennessee"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27260",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -81.7560584,
+        30.2341385
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27340",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -77.4994691,
+        34.7631087
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NC",
+          "geoid": "37",
+          "name": "North Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27500",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -89.0752844,
+        42.6698802
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WI",
+          "geoid": "55",
+          "name": "Wisconsin"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27620",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -92.088876,
+        38.6368854
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MO",
+          "geoid": "29",
+          "name": "Missouri"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27740",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -82.3326926,
+        36.2658223
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TN",
+          "geoid": "47",
+          "name": "Tennessee"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27780",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -78.7104876,
+        40.5102089
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PA",
+          "geoid": "42",
+          "name": "Pennsylvania"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27860",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -90.6501752,
+        35.6969781
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AR",
+          "geoid": "05",
+          "name": "Arkansas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27900",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -94.5006513,
+        37.0921351
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MO",
+          "geoid": "29",
+          "name": "Missouri"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "27980",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -156.6015502,
+        20.8559308
+      ],
+      "point_states": [
+        {
+          "abbreviation": "HI",
+          "geoid": "15",
+          "name": "Hawaii"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28020",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -85.5328544,
+        42.2462657
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MI",
+          "geoid": "26",
+          "name": "Michigan"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28100",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -87.8611165,
+        41.1395105
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IL",
+          "geoid": "17",
+          "name": "Illinois"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -94.4438406,
+        38.9318567
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MO",
+          "geoid": "29",
+          "name": "Missouri"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28420",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -119.2549271,
+        46.3641545
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WA",
+          "geoid": "53",
+          "name": "Washington"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28450",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -87.8799955,
+        42.5875256
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WI",
+          "geoid": "55",
+          "name": "Wisconsin"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28660",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -97.7896384,
+        31.2027301
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28700",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -82.4401446,
+        36.6041611
+      ],
+      "point_states": [
+        {
+          "abbreviation": "VA",
+          "geoid": "51",
+          "name": "Virginia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28740",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -74.2654582,
+        41.9472124
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NY",
+          "geoid": "36",
+          "name": "New York"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28880",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -74.0338729,
+        41.5752737
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NY",
+          "geoid": "36",
+          "name": "New York"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28940",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -84.1361137,
+        36.0444622
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TN",
+          "geoid": "47",
+          "name": "Tennessee"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29100",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -91.1101402,
+        43.6982642
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WI",
+          "geoid": "55",
+          "name": "Wisconsin"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29180",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -92.1365518,
+        30.0129611
+      ],
+      "point_states": [
+        {
+          "abbreviation": "LA",
+          "geoid": "22",
+          "name": "Louisiana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29200",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -87.0171117,
+        40.4821533
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IN",
+          "geoid": "18",
+          "name": "Indiana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29340",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -93.1900931,
+        30.0384514
+      ],
+      "point_states": [
+        {
+          "abbreviation": "LA",
+          "geoid": "22",
+          "name": "Louisiana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29420",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -113.7496891,
+        35.717705
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AZ",
+          "geoid": "04",
+          "name": "Arizona"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29460",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -81.6943014,
+        27.9548539
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29540",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -76.250198,
+        40.0419921
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PA",
+          "geoid": "42",
+          "name": "Pennsylvania"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29620",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -84.6053717,
+        42.7136586
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MI",
+          "geoid": "26",
+          "name": "Michigan"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29700",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -99.3407518,
+        27.7607987
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29740",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -106.8349684,
+        32.349919
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NM",
+          "geoid": "35",
+          "name": "New Mexico"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29820",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -115.0143977,
+        36.2141295
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NV",
+          "geoid": "32",
+          "name": "Nevada"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29940",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -95.2909475,
+        38.8964168
+      ],
+      "point_states": [
+        {
+          "abbreviation": "KS",
+          "geoid": "20",
+          "name": "Kansas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30020",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -98.4309024,
+        34.529113
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OK",
+          "geoid": "40",
+          "name": "Oklahoma"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -76.4648185,
+        40.3714482
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PA",
+          "geoid": "42",
+          "name": "Pennsylvania"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30340",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -70.2074347,
+        44.1676811
+      ],
+      "point_states": [
+        {
+          "abbreviation": "ME",
+          "geoid": "23",
+          "name": "Maine"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30460",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -84.4385451,
+        38.1028763
+      ],
+      "point_states": [
+        {
+          "abbreviation": "KY",
+          "geoid": "21",
+          "name": "Kentucky"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30500",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -76.5279346,
+        38.3126957
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MD",
+          "geoid": "24",
+          "name": "Maryland"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30620",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -84.1061032,
+        40.7716274
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OH",
+          "geoid": "39",
+          "name": "Ohio"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30700",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -96.8688013,
+        40.8174287
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NE",
+          "geoid": "31",
+          "name": "Nebraska"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30780",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -92.4005889,
+        34.7557726
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AR",
+          "geoid": "05",
+          "name": "Arkansas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30860",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -111.7874375,
+        41.8890205
+      ],
+      "point_states": [
+        {
+          "abbreviation": "UT",
+          "geoid": "49",
+          "name": "Utah"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30980",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -94.6848326,
+        32.4316457
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31020",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -122.6784596,
+        46.1967854
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WA",
+          "geoid": "53",
+          "name": "Washington"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31080",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -118.1827533,
+        34.1087033
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -85.7019893,
+        38.2243628
+      ],
+      "point_states": [
+        {
+          "abbreviation": "KY",
+          "geoid": "21",
+          "name": "Kentucky"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31180",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -101.8833475,
+        33.4664357
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31340",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -79.2166894,
+        37.3649258
+      ],
+      "point_states": [
+        {
+          "abbreviation": "VA",
+          "geoid": "51",
+          "name": "Virginia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31420",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -83.714305,
+        32.8562163
+      ],
+      "point_states": [
+        {
+          "abbreviation": "GA",
+          "geoid": "13",
+          "name": "Georgia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31540",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -89.5977453,
+        43.0838459
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WI",
+          "geoid": "55",
+          "name": "Wisconsin"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31700",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -71.7230554,
+        42.9115317
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NH",
+          "geoid": "33",
+          "name": "New Hampshire"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31740",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -96.5622422,
+        39.2684241
+      ],
+      "point_states": [
+        {
+          "abbreviation": "KS",
+          "geoid": "20",
+          "name": "Kansas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31860",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -94.1477975,
+        44.15479
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MN",
+          "geoid": "27",
+          "name": "Minnesota"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31900",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -82.5427812,
+        40.774159
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OH",
+          "geoid": "39",
+          "name": "Ohio"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "32420",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -67.1666383,
+        18.0192258
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PR",
+          "geoid": "72",
+          "name": "Puerto Rico"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "32580",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -98.18099,
+        26.3963839
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "32780",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -122.6756106,
+        42.4116214
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OR",
+          "geoid": "41",
+          "name": "Oregon"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "32820",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -89.8205035,
+        35.010307
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TN",
+          "geoid": "47",
+          "name": "Tennessee"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "32900",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -120.7228019,
+        37.1948063
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33100",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -80.4787552,
+        26.1018281
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -86.7447386,
+        41.5490129
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IN",
+          "geoid": "18",
+          "name": "Indiana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33260",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -101.9945395,
+        32.0923594
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33340",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -87.8623115,
+        42.9126431
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WI",
+          "geoid": "55",
+          "name": "Wisconsin"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33460",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -93.275361,
+        45.096664
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MN",
+          "geoid": "27",
+          "name": "Minnesota"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33540",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -114.2626684,
+        47.0695448
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MT",
+          "geoid": "30",
+          "name": "Montana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33660",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -88.1965682,
+        30.6845725
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AL",
+          "geoid": "01",
+          "name": "Alabama"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33700",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -121.0028311,
+        37.5623162
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33740",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -92.0583184,
+        32.67396
+      ],
+      "point_states": [
+        {
+          "abbreviation": "LA",
+          "geoid": "22",
+          "name": "Louisiana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33780",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -83.4871059,
+        41.916097
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MI",
+          "geoid": "26",
+          "name": "Michigan"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33860",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -86.4045848,
+        32.3656313
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AL",
+          "geoid": "01",
+          "name": "Alabama"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "34060",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -79.8019121,
+        39.5251551
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WV",
+          "geoid": "54",
+          "name": "West Virginia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "34100",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -83.376546,
+        36.1154845
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TN",
+          "geoid": "47",
+          "name": "Tennessee"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "34580",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -121.8157703,
+        48.4932917
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WA",
+          "geoid": "53",
+          "name": "Washington"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "34620",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -85.3992617,
+        40.2275433
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IN",
+          "geoid": "18",
+          "name": "Indiana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "34740",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -86.4209083,
+        43.4287388
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MI",
+          "geoid": "26",
+          "name": "Michigan"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "34820",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -78.9766749,
+        33.9092694
+      ],
+      "point_states": [
+        {
+          "abbreviation": "SC",
+          "geoid": "45",
+          "name": "South Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "34900",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -122.3259045,
+        38.5070999
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "34940",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -81.4009553,
+        26.118786
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "34980",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -86.7229798,
+        36.0915767
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TN",
+          "geoid": "47",
+          "name": "Tennessee"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "35300",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -72.8370243,
+        41.2901671
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CT",
+          "geoid": "09",
+          "name": "Connecticut"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "35380",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -89.5760676,
+        29.282447
+      ],
+      "point_states": [
+        {
+          "abbreviation": "LA",
+          "geoid": "22",
+          "name": "Louisiana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "35620",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -73.80773,
+        40.7354255
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NY",
+          "geoid": "36",
+          "name": "New York"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "35660",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -86.7425435,
+        41.7913818
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MI",
+          "geoid": "26",
+          "name": "Michigan"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "35840",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -82.4145331,
+        27.3290555
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "35980",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -72.1016655,
+        41.4847688
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CT",
+          "geoid": "09",
+          "name": "Connecticut"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "36100",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -82.0431004,
+        29.2028047
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "36220",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -102.5425068,
+        31.8653008
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "36260",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -111.8669334,
+        41.1243423
+      ],
+      "point_states": [
+        {
+          "abbreviation": "UT",
+          "geoid": "49",
+          "name": "Utah"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "36420",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -97.5069659,
+        35.4309676
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OK",
+          "geoid": "40",
+          "name": "Oklahoma"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "36500",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -122.8301524,
+        46.9358216
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WA",
+          "geoid": "53",
+          "name": "Washington"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "36540",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -95.9999701,
+        41.2904587
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NE",
+          "geoid": "31",
+          "name": "Nebraska"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "36740",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -81.3560597,
+        28.4343977
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "36780",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -88.6681488,
+        44.0857068
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WI",
+          "geoid": "55",
+          "name": "Wisconsin"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "36980",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -87.1473864,
+        37.6643749
+      ],
+      "point_states": [
+        {
+          "abbreviation": "KY",
+          "geoid": "21",
+          "name": "Kentucky"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "37100",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -119.1331453,
+        34.3587477
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "37140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -88.7170503,
+        37.0942343
+      ],
+      "point_states": [
+        {
+          "abbreviation": "KY",
+          "geoid": "21",
+          "name": "Kentucky"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "37340",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -80.7003334,
+        28.2983112
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "37460",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -85.6420894,
+        30.2732406
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "37860",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -87.1585466,
+        30.6085566
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "37900",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -89.5146389,
+        40.7880685
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IL",
+          "geoid": "17",
+          "name": "Illinois"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "37980",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -75.3119824,
+        39.8949576
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PA",
+          "geoid": "42",
+          "name": "Pennsylvania"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "38060",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -112.0678624,
+        33.1857653
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AZ",
+          "geoid": "04",
+          "name": "Arizona"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "38240",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -79.4927233,
+        35.3082734
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NC",
+          "geoid": "37",
+          "name": "North Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "38300",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -79.8639858,
+        40.4713315
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PA",
+          "geoid": "42",
+          "name": "Pennsylvania"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "38340",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -73.2179276,
+        42.371493
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MA",
+          "geoid": "25",
+          "name": "Massachusetts"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "38660",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -66.6457033,
+        18.0228643
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PR",
+          "geoid": "72",
+          "name": "Puerto Rico"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "38860",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -70.4183755,
+        43.6514172
+      ],
+      "point_states": [
+        {
+          "abbreviation": "ME",
+          "geoid": "23",
+          "name": "Maine"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "38900",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -122.484378,
+        45.6006221
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WA",
+          "geoid": "53",
+          "name": "Washington"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "38940",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -80.4249613,
+        27.2279435
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39150",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -112.5772247,
+        34.631071
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AZ",
+          "geoid": "04",
+          "name": "Arizona"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39300",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -71.2866874,
+        41.7068397
+      ],
+      "point_states": [
+        {
+          "abbreviation": "RI",
+          "geoid": "44",
+          "name": "Rhode Island"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39340",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -112.3590592,
+        39.872067
+      ],
+      "point_states": [
+        {
+          "abbreviation": "UT",
+          "geoid": "49",
+          "name": "Utah"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39380",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -104.4846683,
+        38.1627652
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CO",
+          "geoid": "08",
+          "name": "Colorado"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39460",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -82.0036297,
+        26.906358
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39540",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -87.7715988,
+        42.7803923
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WI",
+          "geoid": "55",
+          "name": "Wisconsin"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39580",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -78.4604412,
+        35.7567464
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NC",
+          "geoid": "37",
+          "name": "North Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39660",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -102.916612,
+        44.1951082
+      ],
+      "point_states": [
+        {
+          "abbreviation": "SD",
+          "geoid": "46",
+          "name": "South Dakota"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39740",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -75.9268598,
+        40.4139565
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PA",
+          "geoid": "42",
+          "name": "Pennsylvania"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39820",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -122.0435558,
+        40.7605142
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39900",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -119.5555069,
+        40.2510571
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NV",
+          "geoid": "32",
+          "name": "Nevada"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40060",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -77.4437202,
+        37.4122374
+      ],
+      "point_states": [
+        {
+          "abbreviation": "VA",
+          "geoid": "51",
+          "name": "Virginia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -116.134544,
+        34.5384592
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40220",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -79.9469346,
+        37.2862262
+      ],
+      "point_states": [
+        {
+          "abbreviation": "VA",
+          "geoid": "51",
+          "name": "Virginia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40340",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -92.3306605,
+        43.9498104
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MN",
+          "geoid": "27",
+          "name": "Minnesota"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40380",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -77.5565575,
+        43.184718
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NY",
+          "geoid": "36",
+          "name": "New York"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40420",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -89.0429139,
+        42.331183
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IL",
+          "geoid": "17",
+          "name": "Illinois"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40580",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -77.7985494,
+        35.9410455
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NC",
+          "geoid": "37",
+          "name": "North Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40660",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -85.2136849,
+        34.2636901
+      ],
+      "point_states": [
+        {
+          "abbreviation": "GA",
+          "geoid": "13",
+          "name": "Georgia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40900",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -121.0056427,
+        38.7902715
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "40980",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -84.05541,
+        43.3282667
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MI",
+          "geoid": "26",
+          "name": "Michigan"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41060",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -94.4883635,
+        45.5930312
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MN",
+          "geoid": "27",
+          "name": "Minnesota"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41100",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -113.4878003,
+        37.2625308
+      ],
+      "point_states": [
+        {
+          "abbreviation": "UT",
+          "geoid": "49",
+          "name": "Utah"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -94.7837537,
+        39.834843
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MO",
+          "geoid": "29",
+          "name": "Missouri"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41180",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -90.3458253,
+        38.7402108
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MO",
+          "geoid": "29",
+          "name": "Missouri"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41420",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -122.9017571,
+        44.9033845
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OR",
+          "geoid": "41",
+          "name": "Oregon"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41500",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -121.3155781,
+        36.2401044
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41540",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -75.7692524,
+        38.1972788
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MD",
+          "geoid": "24",
+          "name": "Maryland"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41620",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -112.9532527,
+        40.5728869
+      ],
+      "point_states": [
+        {
+          "abbreviation": "UT",
+          "geoid": "49",
+          "name": "Utah"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41660",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -100.6594181,
+        31.3653095
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41700",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -98.6069734,
+        29.4330599
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41740",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -116.7761174,
+        33.0236041
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41780",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -82.7945682,
+        41.5196059
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OH",
+          "geoid": "39",
+          "name": "Ohio"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41860",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -122.2744317,
+        37.7737185
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41940",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -121.3713721,
+        36.9084718
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41980",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -66.0368437,
+        18.2944526
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PR",
+          "geoid": "72",
+          "name": "Puerto Rico"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42020",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -120.4488974,
+        35.3881891
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42100",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -122.0077889,
+        37.0123466
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -105.9639718,
+        35.5145309
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NM",
+          "geoid": "35",
+          "name": "New Mexico"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42200",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -120.0383645,
+        34.5366774
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42220",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -122.9261095,
+        38.5251824
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42340",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -81.2732867,
+        32.1092557
+      ],
+      "point_states": [
+        {
+          "abbreviation": "GA",
+          "geoid": "13",
+          "name": "Georgia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42540",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -75.8981877,
+        41.3228806
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PA",
+          "geoid": "42",
+          "name": "Pennsylvania"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42660",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -121.8339765,
+        47.4905518
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WA",
+          "geoid": "53",
+          "name": "Washington"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42680",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -80.5747894,
+        27.7005283
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42700",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -81.3423534,
+        27.3410799
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43100",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -87.731531,
+        43.7387131
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WI",
+          "geoid": "55",
+          "name": "Wisconsin"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43300",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -96.6757774,
+        33.6245482
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43340",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -93.7448836,
+        32.4376822
+      ],
+      "point_states": [
+        {
+          "abbreviation": "LA",
+          "geoid": "22",
+          "name": "Louisiana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43420",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -109.7751627,
+        31.8401287
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AZ",
+          "geoid": "04",
+          "name": "Arizona"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43580",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -96.3113345,
+        42.5080093
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IA",
+          "geoid": "19",
+          "name": "Iowa"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43620",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -96.8754156,
+        43.5256577
+      ],
+      "point_states": [
+        {
+          "abbreviation": "SD",
+          "geoid": "46",
+          "name": "South Dakota"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43640",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -89.9519622,
+        30.4100224
+      ],
+      "point_states": [
+        {
+          "abbreviation": "LA",
+          "geoid": "22",
+          "name": "Louisiana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43780",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -86.1230143,
+        41.7749808
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MI",
+          "geoid": "26",
+          "name": "Michigan"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43900",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -81.8424008,
+        34.8346199
+      ],
+      "point_states": [
+        {
+          "abbreviation": "SC",
+          "geoid": "45",
+          "name": "South Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "44060",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -117.663472,
+        48.091618
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WA",
+          "geoid": "53",
+          "name": "Washington"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "44100",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -89.6960672,
+        39.8286215
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IL",
+          "geoid": "17",
+          "name": "Illinois"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "44140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -72.6356473,
+        42.1361975
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MA",
+          "geoid": "25",
+          "name": "Massachusetts"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "44180",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -93.1802617,
+        37.3608699
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MO",
+          "geoid": "29",
+          "name": "Missouri"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "44220",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -83.783676,
+        39.9170315
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OH",
+          "geoid": "39",
+          "name": "Ohio"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "44300",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -77.847667,
+        40.9093218
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PA",
+          "geoid": "42",
+          "name": "Pennsylvania"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "44420",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -79.1276321,
+        38.1609584
+      ],
+      "point_states": [
+        {
+          "abbreviation": "VA",
+          "geoid": "51",
+          "name": "Virginia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "44700",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -121.272244,
+        37.9349815
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "44940",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -80.3823757,
+        33.9161395
+      ],
+      "point_states": [
+        {
+          "abbreviation": "SC",
+          "geoid": "45",
+          "name": "South Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "45060",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -76.1961336,
+        43.0065163
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NY",
+          "geoid": "36",
+          "name": "New York"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "45220",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -84.2670012,
+        30.3463661
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "45300",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -82.525188,
+        28.1205405
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "45460",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -87.3470958,
+        39.392389
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IN",
+          "geoid": "18",
+          "name": "Indiana"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "45500",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -94.2071619,
+        33.4783728
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "45780",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -83.6907772,
+        41.5443571
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OH",
+          "geoid": "39",
+          "name": "Ohio"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "45820",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -95.8026393,
+        39.0413888
+      ],
+      "point_states": [
+        {
+          "abbreviation": "KS",
+          "geoid": "20",
+          "name": "Kansas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "45900",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -85.90832,
+        44.9523239
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MI",
+          "geoid": "26",
+          "name": "Michigan"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "45940",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -74.703724,
+        40.2825026
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NJ",
+          "geoid": "34",
+          "name": "New Jersey"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "46060",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -111.7836574,
+        32.128038
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AZ",
+          "geoid": "04",
+          "name": "Arizona"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "46140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -96.1772979,
+        36.2544416
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OK",
+          "geoid": "40",
+          "name": "Oklahoma"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "46220",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -87.7991473,
+        33.0978769
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AL",
+          "geoid": "01",
+          "name": "Alabama"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "46300",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -114.5687294,
+        42.4403972
+      ],
+      "point_states": [
+        {
+          "abbreviation": "ID",
+          "geoid": "16",
+          "name": "Idaho"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "46340",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -95.2689389,
+        32.3751053
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "46520",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -158.201974,
+        21.4613654
+      ],
+      "point_states": [
+        {
+          "abbreviation": "HI",
+          "geoid": "15",
+          "name": "Hawaii"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "46540",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -75.1731893,
+        43.3322796
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NY",
+          "geoid": "36",
+          "name": "New York"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "46660",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -83.2435548,
+        30.8271579
+      ],
+      "point_states": [
+        {
+          "abbreviation": "GA",
+          "geoid": "13",
+          "name": "Georgia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "46700",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -121.939594,
+        38.2672255
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "47220",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -75.1216277,
+        39.3284336
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NJ",
+          "geoid": "34",
+          "name": "New Jersey"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "47260",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -76.3918494,
+        36.8372891
+      ],
+      "point_states": [
+        {
+          "abbreviation": "VA",
+          "geoid": "51",
+          "name": "Virginia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "47300",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -118.7810551,
+        36.2288339
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "47380",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -97.2860178,
+        31.5921004
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "47580",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -83.7110844,
+        32.4928056
+      ],
+      "point_states": [
+        {
+          "abbreviation": "GA",
+          "geoid": "13",
+          "name": "Georgia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "47900",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -77.4956841,
+        38.8297866
+      ],
+      "point_states": [
+        {
+          "abbreviation": "VA",
+          "geoid": "51",
+          "name": "Virginia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "47930",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -73.0879059,
+        41.5189311
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CT",
+          "geoid": "09",
+          "name": "Connecticut"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "47940",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -92.471608,
+        42.5367962
+      ],
+      "point_states": [
+        {
+          "abbreviation": "IA",
+          "geoid": "19",
+          "name": "Iowa"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48060",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -76.0529678,
+        43.996389
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NY",
+          "geoid": "36",
+          "name": "New York"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48140",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -89.757823,
+        44.8980363
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WI",
+          "geoid": "55",
+          "name": "Wisconsin"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48260",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -80.7019657,
+        40.3889142
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OH",
+          "geoid": "39",
+          "name": "Ohio"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48300",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -120.2701973,
+        47.7661102
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WA",
+          "geoid": "53",
+          "name": "Washington"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48540",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -80.8548262,
+        39.9776866
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OH",
+          "geoid": "39",
+          "name": "Ohio"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48620",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -97.2462875,
+        37.637896
+      ],
+      "point_states": [
+        {
+          "abbreviation": "KS",
+          "geoid": "20",
+          "name": "Kansas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48660",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -98.5003189,
+        33.7756819
+      ],
+      "point_states": [
+        {
+          "abbreviation": "TX",
+          "geoid": "48",
+          "name": "Texas"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48680",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -82.0695548,
+        28.7132767
+      ],
+      "point_states": [
+        {
+          "abbreviation": "FL",
+          "geoid": "12",
+          "name": "Florida"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48700",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -77.0552624,
+        41.3438824
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PA",
+          "geoid": "42",
+          "name": "Pennsylvania"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48900",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -78.0416743,
+        34.2536905
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NC",
+          "geoid": "37",
+          "name": "North Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "49020",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -78.4718276,
+        39.2729744
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WV",
+          "geoid": "54",
+          "name": "West Virginia"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "49180",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -80.3450642,
+        36.0788515
+      ],
+      "point_states": [
+        {
+          "abbreviation": "NC",
+          "geoid": "37",
+          "name": "North Carolina"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "49340",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -71.940282,
+        42.3116934
+      ],
+      "point_states": [
+        {
+          "abbreviation": "MA",
+          "geoid": "25",
+          "name": "Massachusetts"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "49420",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -120.7401446,
+        46.4565581
+      ],
+      "point_states": [
+        {
+          "abbreviation": "WA",
+          "geoid": "53",
+          "name": "Washington"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "49620",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -76.7288887,
+        39.9217514
+      ],
+      "point_states": [
+        {
+          "abbreviation": "PA",
+          "geoid": "42",
+          "name": "Pennsylvania"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "49660",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -80.7650804,
+        41.1950924
+      ],
+      "point_states": [
+        {
+          "abbreviation": "OH",
+          "geoid": "39",
+          "name": "Ohio"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "49700",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -121.5118327,
+        39.1609692
+      ],
+      "point_states": [
+        {
+          "abbreviation": "CA",
+          "geoid": "06",
+          "name": "California"
+        }
+      ]
+    },
+    {
+      "access_verified": false,
+      "cbsa": "49740",
+      "membership_status": "unique",
+      "native_representative_lonlat": [
+        -113.910905,
+        32.7739424
+      ],
+      "point_states": [
+        {
+          "abbreviation": "AZ",
+          "geoid": "04",
+          "name": "Arizona"
+        }
+      ]
+    }
+  ],
+  "schema": "metro-native-state-inventory-v1",
+  "state_membership_counts": {
+    "AK": 1,
+    "AL": 12,
+    "AR": 3,
+    "AZ": 7,
+    "CA": 25,
+    "CO": 7,
+    "CT": 5,
+    "DE": 1,
+    "FL": 22,
+    "GA": 13,
+    "HI": 2,
+    "IA": 6,
+    "ID": 4,
+    "IL": 8,
+    "IN": 9,
+    "KS": 4,
+    "KY": 8,
+    "LA": 10,
+    "MA": 6,
+    "MD": 3,
+    "ME": 3,
+    "MI": 15,
+    "MN": 6,
+    "MO": 7,
+    "MS": 3,
+    "MT": 3,
+    "NC": 15,
+    "ND": 2,
+    "NE": 2,
+    "NH": 1,
+    "NJ": 3,
+    "NM": 4,
+    "NV": 2,
+    "NY": 12,
+    "OH": 13,
+    "OK": 4,
+    "OR": 5,
+    "PA": 16,
+    "PR": 5,
+    "RI": 1,
+    "SC": 8,
+    "SD": 2,
+    "TN": 8,
+    "TX": 24,
+    "UT": 5,
+    "VA": 10,
+    "VT": 1,
+    "WA": 11,
+    "WI": 13,
+    "WV": 6,
+    "WY": 1
+  },
+  "state_zip_sha256": "59a220888a8d9be8117c4fcd38f542bd02d81abf0d198c78113595ad540dd957",
+  "unmatched_cbsa_ids": [],
+  "warning": "Native representative point membership only, not CBSA extent, extract coverage, road access, complete competition or an adopted urban anchor. Border/missing matches remain explicit; no nearest-state fallback. No native-to-OSM datum alignment is asserted."
+}

@@ -10,6 +10,11 @@ const fs=require('fs'),crypto=require('crypto'),{chromium}=require('playwright')
   if(actual.rows.length!==367||new Set(actual.rows.map(r=>r.cbsa)).size!==367)throw Error('Incomplete unique source inventory');
   for(const row of actual.rows){const domain=expected.domains.find(d=>d.cbsa===row.cbsa);if(!domain||JSON.stringify(row.point)!==JSON.stringify(domain.native_representative_lonlat)||row.name!==domain.name||row.population!==domain.source_population)throw Error('Source identity or native point changed');}
   const queueSha=crypto.createHash('sha256').update(fs.readFileSync('docs/research/remaining-competitor-queue/queue.json')).digest('hex');if(actual.queue_sha256!==queueSha)throw Error('Wrong frozen queue');
+  const states=JSON.parse(fs.readFileSync('docs/research/native-state-inventory/report.json','utf8'));
+  for(const row of actual.rows)require('assert').deepStrictEqual(row.point_states,states.rows.find(s=>s.cbsa===row.cbsa).point_states);
+  await page.locator('#pointstate').selectOption('TN');const tnIds=await page.locator('#rows tr').evaluateAll(rows=>rows.map(r=>r.dataset.cbsa));if(!tnIds.includes('32820')||tnIds.length!==8)throw Error('Native-state filtering changed membership or omitted Memphis');
+  await page.locator('#pointstate').selectOption('PR');if(await page.locator('#rows tr').count()!==5)throw Error('Puerto Rico native points missing');
+  await page.locator('#pointstate').selectOption('all');
   await page.locator('#status').selectOption('unknown');
   const ids=await page.locator('#rows tr').evaluateAll(rows=>rows.map(r=>r.dataset.cbsa));if(JSON.stringify(ids)!==JSON.stringify(queue.queue.map(r=>r.cbsa)))throw Error('Unknown identities/order changed');
   if(actual.rows.filter(r=>r.scans.length).length!==36||actual.rows.some(r=>r.modeled&&r.scans.length))throw Error('Lead investigations confused with route coverage');

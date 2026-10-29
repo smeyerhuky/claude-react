@@ -1,0 +1,13 @@
+{
+  "access_verified": false,
+  "domains_sha256": "d860aef0a6ac2e442590098ed98a7cd601fa63764d8d76ba63e444bebcc5a260",
+  "release_eligible": false,
+  "report_sha256": "85c2c60334f499fe9f1fc193fa9a05f020db5b0aea847f6814b6fd57547a95db",
+  "schema": "metro-native-state-inventory-manifest-v1",
+  "state_source": {
+    "filename": "tl_2025_us_state.zip",
+    "sha256": "59a220888a8d9be8117c4fcd38f542bd02d81abf0d198c78113595ad540dd957",
+    "size_bytes": 9956072,
+    "url": "https://www2.census.gov/geo/tiger/TIGER2025/STATE/tl_2025_us_state.zip"
+  }
+}
