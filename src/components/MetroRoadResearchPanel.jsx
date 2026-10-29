@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import probeHtml from '../research/metro-census-probes.html?raw'
 import comparisonHtml from '../research/denver-waypoint-comparison.html?raw'
+import inventoryHtml from '../research/metro-competitor-inventory.html?raw'
+
+const views = {
+  probes: { title: 'Census road-node research experiment', html: probeHtml },
+  denver: { title: 'Denver road-start sensitivity experiment', html: comparisonHtml },
+  inventory: { title: 'Metro competitor investigation inventory', html: inventoryHtml },
+}
 
 export default function MetroRoadResearchPanel() {
   const [open, setOpen] = useState(false)
@@ -25,10 +32,11 @@ export default function MetroRoadResearchPanel() {
           <select value={view} onChange={event => setView(event.target.value)} className="rounded border bg-white px-2 py-1">
             <option value="probes">Frozen 26-source Census probe experiment</option>
             <option value="denver">Denver through-road start sensitivity</option>
+            <option value="inventory">All qualifying metros and missing competitors</option>
           </select>
         </label>
       </div>
-      {open && <iframe title={view === 'probes' ? 'Census road-node research experiment' : 'Denver road-start sensitivity experiment'} sandbox="allow-scripts" srcDoc={view === 'probes' ? probeHtml : comparisonHtml} className="block h-[70dvh] w-full border-0" />}
+      {open && <iframe title={views[view].title} sandbox="allow-scripts" srcDoc={views[view].html} className="block h-[70dvh] w-full border-0" />}
     </dialog>
   </>
 }
