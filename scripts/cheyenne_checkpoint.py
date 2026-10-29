@@ -6,10 +6,19 @@ from fractions import Fraction
 import json
 import math
 from pathlib import Path
-from cheyenne_graph_views import CANDIDATES, NAMES, ROOT
 from metro_scenario_checkpoint import FLAGS, project as common, require
 from six_state_checkpoint import load_reference
-from colorado_expanded_parent_competition import winners
+
+ROOT=Path(__file__).resolve().parents[1]
+CANDIDATES=ROOT/'docs/research/cheyenne-partition-layouts/initial-negative.json'
+NAMES=('colorado.osm.pbf','new-mexico.osm.pbf','arizona.osm.pbf','utah.osm.pbf','oklahoma.osm.pbf','kansas.osm.pbf','wyoming.osm.pbf')
+
+
+def winners(rows,field):
+    finite=[(r[field],r['cbsa']) for r in rows if r[field] is not None]
+    best=min((v for v,_ in finite),default=None)
+    return ([] if best is None else sorted(cbsa for v,cbsa in finite if abs(v-best)<=max(.002,abs(best)*1e-9))),best
+
 
 SCENARIO='census-seven-state-query-repartition-v1-fullcut-107.4-querycut-104'
 
