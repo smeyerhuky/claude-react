@@ -1,0 +1,20 @@
+{
+  "access_certified": false,
+  "baseline_sha256": "1d6a87ed643c713cc78e7e088527b98c04161914474ba5d8444f1c1eec66ab7f",
+  "complete_global_competition": false,
+  "datum_alignment_verified": false,
+  "local_source_report_sha256": "b28fc75129b8479f8f0b4fc09dcaa964d54320992e44b0ca4dfdb642d504d7db",
+  "parent_exterior_coverage_certified": false,
+  "release_eligible": false,
+  "road_coverage_certified": false,
+  "scenario_id": "census-seven-state-query-repartition-v1-fullcut-107.4-querycut-104",
+  "schema": "census-32-source-checkpoint-manifest-v1",
+  "upstream_ci": {
+    "artifact": "cheyenne-query-repartition",
+    "head": "487ccc0caa1a37bd43e0fc8fae1213fafcb8b8fc",
+    "job": 123652132699,
+    "run": 40931876552
+  },
+  "upstream_ci_report_sha256": "4492b11c99ff253a3fcc8625a8c20b56818a86901ff51ec090de6dd06777c438",
+  "warning": "Separately versioned graph-only32-source research snapshot. Independently rebuilt original-source CI exactly matches local costs and identities. No connector, urban-anchor, coverage or road-mode approval."
+}
