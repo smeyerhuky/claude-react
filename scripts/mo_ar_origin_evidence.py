@@ -29,7 +29,7 @@ def main():
     if len(ids)!=len(set(ids)) or {m['cbsa'] for m in metros}!=set(ids):raise ValueError('Exact selected source identities required')
     for m in metros:
         if [m['lon'],m['lat']]!=domains[m['cbsa']]['native_representative_lonlat']:raise ValueError('Native source point changed')
-    scanner=OriginInvestigation(metros,25000)
+    scanner=OriginInvestigation(metros,25000.0)
     scanner.apply_file(str(args.osm),locations=True,idx='sparse_mem_array')
     result=scanner.report();sha=hashlib.sha256()
     with args.osm.open('rb') as handle:
@@ -40,7 +40,9 @@ def main():
     if not path.is_relative_to(REFERENCE) or hashlib.sha256(path.read_bytes()).hexdigest()!=record['report_sha256']:raise ValueError('Pinned report identity changed')
     if result!=json.loads(path.read_text()):raise ValueError('Selected raw-origin scan changed')
     if result['access_verified'] is not False or result['release_eligible'] is not False or result['extract_coverage_certified'] is not False:raise ValueError('No approval or coverage certification permitted')
-    args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(result,indent=2,sort_keys=True)+'\n')
+    serialized=json.dumps(result,indent=2,sort_keys=True)+'\n'
+    if hashlib.sha256(serialized.encode()).hexdigest()!=record['report_sha256']:raise ValueError('Reproduced report serialization changed')
+    args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(serialized)
     print(json.dumps({'state':args.state,'native_points_reproduced':len(metros),'access_verified':False,'release_eligible':False}))
 
 if __name__=='__main__':main()
