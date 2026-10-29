@@ -106,6 +106,7 @@ REFERENCE=ROOT/'docs/research/census-32-source-checkpoint'
 
 def load_reference32(root=REFERENCE):
     root=Path(root);manifest=json.loads((root/'manifest.json').read_text());raw=(root/'baseline.json').read_bytes()
+    require(manifest['schema']=='census-32-source-checkpoint-manifest-v1' and manifest['scenario_id']==SCENARIO and all(manifest.get(f) is False for f in FLAGS),'Research-only32-source manifest required')
     require(hashlib.sha256(raw).hexdigest()==manifest['baseline_sha256'],'32-source checkpoint bytes changed')
     data=json.loads(raw)
     require(data['schema']=='census-32-source-query-repartition-regression-v1' and data['scenario_id']==SCENARIO,'Separate32-source snapshot required')
