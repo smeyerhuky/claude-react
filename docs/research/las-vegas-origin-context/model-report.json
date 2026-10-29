@@ -1,0 +1,161 @@
+{
+  "access_verified": false,
+  "area_selection_scope": "Two explicitly selected ways and two nodes, discovered in broader model-context investigation; not a complete landuse, barrier or restriction inventory.",
+  "cbsa": "29820",
+  "datum_alignment_verified": false,
+  "domains_sha256": "d860aef0a6ac2e442590098ed98a7cd601fa63764d8d76ba63e444bebcc5a260",
+  "geographic_coverage_certified": false,
+  "independent_access_evidence": false,
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "model_polygon_covers_native_origin": true,
+  "model_polygon_covers_primitive_lead": true,
+  "native_origin_lonlat": [
+    -115.0143977,
+    36.2141295
+  ],
+  "nearby_gate": {
+    "id": 8114260504,
+    "lonlat": [
+      -115.0166267,
+      36.2121921
+    ],
+    "tags": {
+      "barrier": "gate"
+    }
+  },
+  "nearby_gate_identified_as_operator_entrance": false,
+  "origin_to_nearby_gate_gap_m": 293.9381496746159,
+  "origin_to_primitive_lead_gap_m": 44.969169390248474,
+  "osm_source": {
+    "name": "nevada.osm.pbf",
+    "replication_timestamp": "2026-10-27T21:23:59Z",
+    "sha256": "4cc689a971124a50d1ffe169e93a4c69542f478e47b6164007dd6e57f85650b5",
+    "size_bytes": 124016809
+  },
+  "primitive_road_lead": {
+    "id": 7614401690,
+    "lonlat": [
+      -115.0139223,
+      36.2142577
+    ],
+    "tags": {}
+  },
+  "quarry_way": {
+    "id": 1520965805,
+    "nodes": [
+      {
+        "id": 4018812403,
+        "lat": 36.218306,
+        "lon": -115.0073934
+      },
+      {
+        "id": 4018812402,
+        "lat": 36.2183004,
+        "lon": -115.0102293
+      },
+      {
+        "id": 7080703983,
+        "lat": 36.2182995,
+        "lon": -115.0109217
+      },
+      {
+        "id": 4018812401,
+        "lat": 36.2182966,
+        "lon": -115.0130637
+      },
+      {
+        "id": 13152219435,
+        "lat": 36.2182851,
+        "lon": -115.0158642
+      },
+      {
+        "id": 585366567,
+        "lat": 36.2182835,
+        "lon": -115.016251
+      },
+      {
+        "id": 1439765762,
+        "lat": 36.2104937,
+        "lon": -115.0174227
+      },
+      {
+        "id": 13873983756,
+        "lat": 36.2104831,
+        "lon": -115.0126666
+      },
+      {
+        "id": 13873983748,
+        "lat": 36.2104731,
+        "lon": -115.0081512
+      },
+      {
+        "id": 4018812403,
+        "lat": 36.218306,
+        "lon": -115.0073934
+      }
+    ],
+    "tags": {
+      "amenity": "recycling",
+      "landuse": "quarry",
+      "name": "Hollywood Pit",
+      "operator": "Boulder Sand & Gravel, Inc.",
+      "recycling:asphalt": "yes",
+      "recycling:concrete": "yes",
+      "recycling_type": "centre",
+      "resource": "gravel",
+      "website": "https://bouldersandandgravel.com/"
+    }
+  },
+  "release_eligible": false,
+  "schema": "las-vegas-selected-osm-origin-context-v1",
+  "selected_highway_way": {
+    "id": 815168941,
+    "nodes": [
+      {
+        "id": 137575273,
+        "lat": 36.2121266,
+        "lon": -115.016758
+      },
+      {
+        "id": 7614384284,
+        "lat": 36.2122576,
+        "lon": -115.0166975
+      },
+      {
+        "id": 7614401685,
+        "lat": 36.2124186,
+        "lon": -115.0161917
+      },
+      {
+        "id": 7614401686,
+        "lat": 36.2125786,
+        "lon": -115.0155325
+      },
+      {
+        "id": 7614401687,
+        "lat": 36.2127687,
+        "lon": -115.0154741
+      },
+      {
+        "id": 7614401688,
+        "lat": 36.2130098,
+        "lon": -115.0153771
+      },
+      {
+        "id": 7614401689,
+        "lat": 36.2136358,
+        "lon": -115.0148411
+      },
+      {
+        "id": 7614401690,
+        "lat": 36.2142577,
+        "lon": -115.0139223
+      }
+    ],
+    "tags": {
+      "highway": "service"
+    }
+  },
+  "source_population": 2407226,
+  "urban_anchor_adopted": false
+}

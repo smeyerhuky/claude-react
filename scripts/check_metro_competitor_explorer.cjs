@@ -29,6 +29,7 @@ const fs=require('fs'),crypto=require('crypto'),{chromium}=require('playwright')
   const triage=JSON.parse(fs.readFileSync('docs/research/competitor-frontier-expansion/review.json','utf8'));
   for(const note of [...triage.records,...JSON.parse(fs.readFileSync('docs/research/retained-extract-frontier/review.json','utf8')).records,...JSON.parse(fs.readFileSync('docs/research/nevada-competitor-frontier/review.json','utf8')).records])require('assert').deepStrictEqual(actual.rows.find(r=>r.cbsa===note.cbsa).triage,note);
   await page.locator('#status').selectOption('all');await page.locator('#search').fill('32820');await page.locator('#plot circle').click();if(!(await page.locator('#observations').innerText()).includes('appropriate neighboring-state extract'))throw Error('Memphis absence confused with inaccessibility');await page.locator('#search').fill('');
+  const vegas=actual.rows.find(r=>r.cbsa==='29820');if(vegas.review?.decision!=='needs_evidence'||!vegas.triage.reason.includes('Hollywood Pit'))throw Error('Las Vegas origin context or unresolved review hidden');
   for(const row of queue.queue.slice(0,10))if(!actual.rows.find(r=>r.cbsa===row.cbsa).scans.length)throw Error('First ten investigation accounting changed');
   await page.locator('#status').selectOption('investigated');if(await page.locator('#rows tr').count()!==55)throw Error('Investigation filter wrong');
   await page.locator('#status').selectOption('unscanned');if(await page.locator('#rows tr').count()!==286)throw Error('Unscanned filter wrong');
