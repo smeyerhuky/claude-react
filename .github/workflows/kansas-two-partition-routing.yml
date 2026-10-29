@@ -26,6 +26,7 @@ jobs:
           done
       - name: Preserve old sources and replay expanded-shard routes
         run: |
+          set -o pipefail
           mkdir result
           python -u scripts/kansas_two_partition_competition.py --parent-osm colorado.osm.pbf new-mexico.osm.pbf arizona.osm.pbf utah.osm.pbf oklahoma.osm.pbf kansas.osm.pbf --output result/report.json 2>&1 | tee result/routing.log
           python - <<'PY'
