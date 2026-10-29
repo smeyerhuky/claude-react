@@ -29,6 +29,7 @@ class Text(HTMLParser):
 def operator_report():
     path=REFERENCE/'operator-hollywood.html';raw=path.read_bytes();p=Text();p.feed(raw.decode('utf-8'))
     provenance=json.loads((REFERENCE/'operator-hollywood-provenance.json').read_text())
+    if provenance['url']!='https://bouldersandandgravel.com/locations/hollywood/' or provenance['final_url']!=provenance['url'] or provenance['status']!=200:raise ValueError('Exact operator publisher and response provenance required')
     if len(raw)!=provenance['bytes'] or hashlib.sha256(raw).hexdigest()!=provenance['sha256']:raise ValueError('Retained operator bytes changed')
     address='7198 East Alto Ave\nLas Vegas, NV 89156';hours='6:00 AM - 2:45 PM'
     directions='From Lake Mead Boulevard and Hollywood Boulevard, continue East on Lake Mead Boulevard to Arnona Road, turn left. Follow Arnona Road to the North and this will lead you to the pit, the first one on the right.'

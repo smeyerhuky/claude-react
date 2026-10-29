@@ -21,6 +21,20 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2' 'shapely>=2,<3'
+      - name: Verify every retained evidence byte identity
+        run: |
+          python - <<'PYMANIFEST'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('docs/research/las-vegas-origin-context').resolve()
+          manifest=json.loads((root/'manifest.json').read_text())
+          assert all(manifest[f] is False for f in ('access_verified','release_eligible','geographic_coverage_certified'))
+          for name,record in manifest['files'].items():
+              path=(root/name).resolve()
+              assert Path(name).name==name and path.is_relative_to(root)
+              raw=path.read_bytes()
+              assert len(raw)==record['bytes'] and hashlib.sha256(raw).hexdigest()==record['sha256']
+          PYMANIFEST
       - name: Recover and hash the exact original Nevada input
         env:
           GH_TOKEN: ${{ github.token }}

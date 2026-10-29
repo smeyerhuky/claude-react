@@ -136,7 +136,7 @@ jobs:
               return sorted((a['name'],a['id'],a['size'],a['digest'],a['state']) for a in result['assets'])
           assert inventory(before)==inventory(after)
           receipt=dict(schema='draft-source-byte-restore-v1',release_id=manifest['draft_release_id'],
-                       draft=True,published_at=None,original_entries_verified=len(manifest['files']),
+                       draft=True,published_at=None,original_entries_metadata_verified=len(manifest['files']),
                        all_assets_unchanged=True,source_manifest_sha256=hashlib.sha256(manifest_path.read_bytes()).hexdigest(),
                        restored=restored,access_verified=False,release_eligible=False,
                        warning='Independent execution of byte recovery only; no connector certification or source publication.')
