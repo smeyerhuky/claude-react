@@ -1,0 +1,2311 @@
+{
+  "access_certified": false,
+  "candidate_sources": [
+    {
+      "access_verified": false,
+      "cbsa": "10740",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 2139.27792311012,
+      "lead_policy": "preserved-original-contracted-vertex-lead",
+      "native_origin_lonlat": [
+        -106.4583918,
+        35.1234965
+      ],
+      "node": 141021562,
+      "node_lonlat": [
+        -106.480839,
+        35.1292478
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "10740",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 2139.27792311012,
+        "lead_policy": "preserved-original-contracted-vertex-lead",
+        "native_origin_lonlat": [
+          -106.4583918,
+          35.1234965
+        ],
+        "node": 141021562,
+        "node_lonlat": [
+          -106.480839,
+          35.1292478
+        ],
+        "query_view_membership_shards": [
+          1
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "10740",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 2139.27792311012,
+          "lead_policy": "preserved-original-contracted-vertex-lead",
+          "native_origin_lonlat": [
+            -106.4583918,
+            35.1234965
+          ],
+          "node": 141021562,
+          "node_lonlat": [
+            -106.480839,
+            35.1292478
+          ]
+        },
+        "source_membership_shards": [
+          1
+        ],
+        "source_shard": 1
+      },
+      "source_membership_shards": [
+        1
+      ],
+      "source_shard": 1
+    },
+    {
+      "access_verified": false,
+      "cbsa": "14500",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 1912.5012175584613,
+      "lead_policy": "additional-nearest-primitive-vertex-lead",
+      "native_origin_lonlat": [
+        -105.3977104,
+        40.0949712
+      ],
+      "node": 7298599564,
+      "node_lonlat": [
+        -105.3798182,
+        40.0845569
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "14500",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 1912.5012175584613,
+        "lead_policy": "additional-nearest-primitive-vertex-lead",
+        "native_origin_lonlat": [
+          -105.3977104,
+          40.0949712
+        ],
+        "node": 7298599564,
+        "node_lonlat": [
+          -105.3798182,
+          40.0845569
+        ],
+        "query_view_membership_shards": [
+          1
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "14500",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 1912.5012175584613,
+          "lead_policy": "additional-nearest-primitive-vertex-lead",
+          "native_origin_lonlat": [
+            -105.3977104,
+            40.0949712
+          ],
+          "node": 7298599564,
+          "node_lonlat": [
+            -105.3798182,
+            40.0845569
+          ]
+        },
+        "source_membership_shards": [
+          1
+        ],
+        "source_shard": 1
+      },
+      "source_membership_shards": [
+        1
+      ],
+      "source_shard": 1
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16940",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 1798.3331240928114,
+      "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-wyoming-containing-shard",
+      "native_origin_lonlat": [
+        -104.660395,
+        41.2928302
+      ],
+      "node": 3668705925,
+      "node_lonlat": [
+        -104.6403007,
+        41.2986299
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "source_membership_shards": [
+        1
+      ],
+      "source_shard": 1
+    },
+    {
+      "access_verified": false,
+      "cbsa": "17820",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 958.1842206041059,
+      "lead_policy": "additional-nearest-primitive-vertex-lead",
+      "native_origin_lonlat": [
+        -104.6387277,
+        38.8455072
+      ],
+      "node": 11866557610,
+      "node_lonlat": [
+        -104.6330139,
+        38.8381282
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "17820",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 958.1842206041059,
+        "lead_policy": "additional-nearest-primitive-vertex-lead",
+        "native_origin_lonlat": [
+          -104.6387277,
+          38.8455072
+        ],
+        "node": 11866557610,
+        "node_lonlat": [
+          -104.6330139,
+          38.8381282
+        ],
+        "query_view_membership_shards": [
+          1
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "17820",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 958.1842206041059,
+          "lead_policy": "additional-nearest-primitive-vertex-lead",
+          "native_origin_lonlat": [
+            -104.6387277,
+            38.8455072
+          ],
+          "node": 11866557610,
+          "node_lonlat": [
+            -104.6330139,
+            38.8381282
+          ]
+        },
+        "source_membership_shards": [
+          1
+        ],
+        "source_shard": 1
+      },
+      "source_membership_shards": [
+        1
+      ],
+      "source_shard": 1
+    },
+    {
+      "access_verified": false,
+      "cbsa": "19740",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 32.51963212050145,
+      "lead_policy": "additional-nearest-primitive-vertex-lead",
+      "native_origin_lonlat": [
+        -104.9010728,
+        39.434789
+      ],
+      "node": 6350018589,
+      "node_lonlat": [
+        -104.9006949,
+        39.4347705
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "19740",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 32.51963212050145,
+        "lead_policy": "additional-nearest-primitive-vertex-lead",
+        "native_origin_lonlat": [
+          -104.9010728,
+          39.434789
+        ],
+        "node": 6350018589,
+        "node_lonlat": [
+          -104.9006949,
+          39.4347705
+        ],
+        "query_view_membership_shards": [
+          1
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "19740",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 32.51963212050145,
+          "lead_policy": "additional-nearest-primitive-vertex-lead",
+          "native_origin_lonlat": [
+            -104.9010728,
+            39.434789
+          ],
+          "node": 6350018589,
+          "node_lonlat": [
+            -104.9006949,
+            39.4347705
+          ]
+        },
+        "source_membership_shards": [
+          1
+        ],
+        "source_shard": 1
+      },
+      "source_membership_shards": [
+        1
+      ],
+      "source_shard": 1
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22140",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 923.1137789523796,
+      "lead_policy": "preserved-original-contracted-vertex-lead",
+      "native_origin_lonlat": [
+        -108.3245778,
+        36.5116245
+      ],
+      "node": 13604499946,
+      "node_lonlat": [
+        -108.3321628,
+        36.5172598
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "22140",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 923.1137789523796,
+        "lead_policy": "preserved-original-contracted-vertex-lead",
+        "native_origin_lonlat": [
+          -108.3245778,
+          36.5116245
+        ],
+        "node": 13604499946,
+        "node_lonlat": [
+          -108.3321628,
+          36.5172598
+        ],
+        "query_view_membership_shards": [
+          0
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "22140",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 923.1137789523796,
+          "lead_policy": "preserved-original-contracted-vertex-lead",
+          "native_origin_lonlat": [
+            -108.3245778,
+            36.5116245
+          ],
+          "node": 13604499946,
+          "node_lonlat": [
+            -108.3321628,
+            36.5172598
+          ]
+        },
+        "source_membership_shards": [
+          0
+        ],
+        "source_shard": 0
+      },
+      "source_membership_shards": [
+        0
+      ],
+      "source_shard": 0
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22380",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 743.5793110089116,
+      "lead_policy": "additional-nearest-primitive-vertex-lead",
+      "native_origin_lonlat": [
+        -111.7737277,
+        35.8296919
+      ],
+      "node": 174809100,
+      "node_lonlat": [
+        -111.775813,
+        35.823222
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "22380",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 743.5793110089116,
+        "lead_policy": "additional-nearest-primitive-vertex-lead",
+        "native_origin_lonlat": [
+          -111.7737277,
+          35.8296919
+        ],
+        "node": 174809100,
+        "node_lonlat": [
+          -111.775813,
+          35.823222
+        ],
+        "query_view_membership_shards": [
+          0
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "22380",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 743.5793110089116,
+          "lead_policy": "additional-nearest-primitive-vertex-lead",
+          "native_origin_lonlat": [
+            -111.7737277,
+            35.8296919
+          ],
+          "node": 174809100,
+          "node_lonlat": [
+            -111.775813,
+            35.823222
+          ]
+        },
+        "source_membership_shards": [
+          0
+        ],
+        "source_shard": 0
+      },
+      "source_membership_shards": [
+        0
+      ],
+      "source_shard": 0
+    },
+    {
+      "access_verified": false,
+      "cbsa": "22660",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 1890.7111584242023,
+      "lead_policy": "additional-nearest-primitive-vertex-lead",
+      "native_origin_lonlat": [
+        -105.4867638,
+        40.6580933
+      ],
+      "node": 1795087746,
+      "node_lonlat": [
+        -105.4780464,
+        40.6737585
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "22660",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 1890.7111584242023,
+        "lead_policy": "additional-nearest-primitive-vertex-lead",
+        "native_origin_lonlat": [
+          -105.4867638,
+          40.6580933
+        ],
+        "node": 1795087746,
+        "node_lonlat": [
+          -105.4780464,
+          40.6737585
+        ],
+        "query_view_membership_shards": [
+          1
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "22660",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 1890.7111584242023,
+          "lead_policy": "additional-nearest-primitive-vertex-lead",
+          "native_origin_lonlat": [
+            -105.4867638,
+            40.6580933
+          ],
+          "node": 1795087746,
+          "node_lonlat": [
+            -105.4780464,
+            40.6737585
+          ]
+        },
+        "source_membership_shards": [
+          1
+        ],
+        "source_shard": 1
+      },
+      "source_membership_shards": [
+        1
+      ],
+      "source_shard": 1
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24300",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 290.7296692273918,
+      "lead_policy": "additional-nearest-primitive-vertex-lead",
+      "native_origin_lonlat": [
+        -108.4605707,
+        39.019524
+      ],
+      "node": 13427204837,
+      "node_lonlat": [
+        -108.4597864,
+        39.0220666
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "24300",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 290.7296692273918,
+        "lead_policy": "additional-nearest-primitive-vertex-lead",
+        "native_origin_lonlat": [
+          -108.4605707,
+          39.019524
+        ],
+        "node": 13427204837,
+        "node_lonlat": [
+          -108.4597864,
+          39.0220666
+        ],
+        "query_view_membership_shards": [
+          0
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "24300",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 290.7296692273918,
+          "lead_policy": "additional-nearest-primitive-vertex-lead",
+          "native_origin_lonlat": [
+            -108.4605707,
+            39.019524
+          ],
+          "node": 13427204837,
+          "node_lonlat": [
+            -108.4597864,
+            39.0220666
+          ]
+        },
+        "source_membership_shards": [
+          0
+        ],
+        "source_shard": 0
+      },
+      "source_membership_shards": [
+        0
+      ],
+      "source_shard": 0
+    },
+    {
+      "access_verified": false,
+      "cbsa": "24540",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 843.3593467726575,
+      "lead_policy": "additional-nearest-primitive-vertex-lead",
+      "native_origin_lonlat": [
+        -104.383666,
+        40.555961
+      ],
+      "node": 55793090,
+      "node_lonlat": [
+        -104.3759062,
+        40.5511899
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "24540",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 843.3593467726575,
+        "lead_policy": "additional-nearest-primitive-vertex-lead",
+        "native_origin_lonlat": [
+          -104.383666,
+          40.555961
+        ],
+        "node": 55793090,
+        "node_lonlat": [
+          -104.3759062,
+          40.5511899
+        ],
+        "query_view_membership_shards": [
+          1
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "24540",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 843.3593467726575,
+          "lead_policy": "additional-nearest-primitive-vertex-lead",
+          "native_origin_lonlat": [
+            -104.383666,
+            40.555961
+          ],
+          "node": 55793090,
+          "node_lonlat": [
+            -104.3759062,
+            40.5511899
+          ]
+        },
+        "source_membership_shards": [
+          1
+        ],
+        "source_shard": 1
+      },
+      "source_membership_shards": [
+        1
+      ],
+      "source_shard": 1
+    },
+    {
+      "access_verified": false,
+      "cbsa": "28140",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 13042.688840027844,
+      "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-kansas-containing-shard",
+      "native_origin_lonlat": [
+        -94.4438406,
+        38.9318567
+      ],
+      "node": 191025595,
+      "node_lonlat": [
+        -94.5932955,
+        38.9163989
+      ],
+      "query_view_membership_shards": [
+        1
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "28140",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 13042.688840027844,
+        "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-kansas-containing-shard",
+        "native_origin_lonlat": [
+          -94.4438406,
+          38.9318567
+        ],
+        "node": 191025595,
+        "node_lonlat": [
+          -94.5932955,
+          38.9163989
+        ],
+        "query_view_membership_shards": [
+          1
+        ],
+        "source_membership_shards": [
+          1
+        ],
+        "source_shard": 1
+      },
+      "source_membership_shards": [
+        1
+      ],
+      "source_shard": 1
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29420",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 2555.465036706209,
+      "lead_policy": "additional-nearest-primitive-vertex-lead",
+      "native_origin_lonlat": [
+        -113.7496891,
+        35.717705
+      ],
+      "node": 175234965,
+      "node_lonlat": [
+        -113.722096,
+        35.722834
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "29420",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 2555.465036706209,
+        "lead_policy": "additional-nearest-primitive-vertex-lead",
+        "native_origin_lonlat": [
+          -113.7496891,
+          35.717705
+        ],
+        "node": 175234965,
+        "node_lonlat": [
+          -113.722096,
+          35.722834
+        ],
+        "query_view_membership_shards": [
+          0
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "29420",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 2555.465036706209,
+          "lead_policy": "additional-nearest-primitive-vertex-lead",
+          "native_origin_lonlat": [
+            -113.7496891,
+            35.717705
+          ],
+          "node": 175234965,
+          "node_lonlat": [
+            -113.722096,
+            35.722834
+          ]
+        },
+        "source_membership_shards": [
+          0
+        ],
+        "source_shard": 0
+      },
+      "source_membership_shards": [
+        0
+      ],
+      "source_shard": 0
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29740",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 57.64699937661151,
+      "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+      "native_origin_lonlat": [
+        -106.8349684,
+        32.349919
+      ],
+      "node": 141871232,
+      "node_lonlat": [
+        -106.8343767,
+        32.3500565
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "29740",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 57.64699937661151,
+        "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+        "native_origin_lonlat": [
+          -106.8349684,
+          32.349919
+        ],
+        "node": 141871232,
+        "node_lonlat": [
+          -106.8343767,
+          32.3500565
+        ],
+        "query_view_membership_shards": [
+          1
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "29740",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 57.64699937661151,
+          "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+          "native_origin_lonlat": [
+            -106.8349684,
+            32.349919
+          ],
+          "node": 141871232,
+          "node_lonlat": [
+            -106.8343767,
+            32.3500565
+          ],
+          "source_shard": 0
+        },
+        "source_membership_shards": [
+          1
+        ],
+        "source_shard": 1
+      },
+      "source_membership_shards": [
+        1
+      ],
+      "source_shard": 1
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29940",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 308.24471611278176,
+      "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-kansas-containing-shard",
+      "native_origin_lonlat": [
+        -95.2909475,
+        38.8964168
+      ],
+      "node": 7786572989,
+      "node_lonlat": [
+        -95.2898163,
+        38.8990454
+      ],
+      "query_view_membership_shards": [
+        1
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "29940",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 308.24471611278176,
+        "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-kansas-containing-shard",
+        "native_origin_lonlat": [
+          -95.2909475,
+          38.8964168
+        ],
+        "node": 7786572989,
+        "node_lonlat": [
+          -95.2898163,
+          38.8990454
+        ],
+        "query_view_membership_shards": [
+          1
+        ],
+        "source_membership_shards": [
+          1
+        ],
+        "source_shard": 1
+      },
+      "source_membership_shards": [
+        1
+      ],
+      "source_shard": 1
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30020",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 808.4159000350636,
+      "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+      "native_origin_lonlat": [
+        -98.4309024,
+        34.529113
+      ],
+      "node": 145395841,
+      "node_lonlat": [
+        -98.422079,
+        34.528981
+      ],
+      "query_view_membership_shards": [
+        1
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "30020",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 808.4159000350636,
+        "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+        "native_origin_lonlat": [
+          -98.4309024,
+          34.529113
+        ],
+        "node": 145395841,
+        "node_lonlat": [
+          -98.422079,
+          34.528981
+        ],
+        "query_view_membership_shards": [
+          1
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "30020",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 808.4159000350636,
+          "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+          "native_origin_lonlat": [
+            -98.4309024,
+            34.529113
+          ],
+          "node": 145395841,
+          "node_lonlat": [
+            -98.422079,
+            34.528981
+          ],
+          "source_shard": 1
+        },
+        "source_membership_shards": [
+          1
+        ],
+        "source_shard": 1
+      },
+      "source_membership_shards": [
+        1
+      ],
+      "source_shard": 1
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30860",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 866.8051683792598,
+      "lead_policy": "additional-nearest-primitive-vertex-lead",
+      "native_origin_lonlat": [
+        -111.7874375,
+        41.8890205
+      ],
+      "node": 9743986364,
+      "node_lonlat": [
+        -111.7867889,
+        41.8968009
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "30860",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 866.8051683792598,
+        "lead_policy": "additional-nearest-primitive-vertex-lead",
+        "native_origin_lonlat": [
+          -111.7874375,
+          41.8890205
+        ],
+        "node": 9743986364,
+        "node_lonlat": [
+          -111.7867889,
+          41.8968009
+        ],
+        "query_view_membership_shards": [
+          0
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "30860",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 866.8051683792598,
+          "lead_policy": "additional-nearest-primitive-vertex-lead",
+          "native_origin_lonlat": [
+            -111.7874375,
+            41.8890205
+          ],
+          "node": 9743986364,
+          "node_lonlat": [
+            -111.7867889,
+            41.8968009
+          ]
+        },
+        "source_membership_shards": [
+          0
+        ],
+        "source_shard": 0
+      },
+      "source_membership_shards": [
+        0
+      ],
+      "source_shard": 0
+    },
+    {
+      "access_verified": false,
+      "cbsa": "31740",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 392.17759512495417,
+      "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-kansas-containing-shard",
+      "native_origin_lonlat": [
+        -96.5622422,
+        39.2684241
+      ],
+      "node": 121844170,
+      "node_lonlat": [
+        -96.559906,
+        39.271452
+      ],
+      "query_view_membership_shards": [
+        1
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "31740",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 392.17759512495417,
+        "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-kansas-containing-shard",
+        "native_origin_lonlat": [
+          -96.5622422,
+          39.2684241
+        ],
+        "node": 121844170,
+        "node_lonlat": [
+          -96.559906,
+          39.271452
+        ],
+        "query_view_membership_shards": [
+          1
+        ],
+        "source_membership_shards": [
+          1
+        ],
+        "source_shard": 1
+      },
+      "source_membership_shards": [
+        1
+      ],
+      "source_shard": 1
+    },
+    {
+      "access_verified": false,
+      "cbsa": "36260",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 1454.0283177417416,
+      "lead_policy": "additional-nearest-primitive-vertex-lead",
+      "native_origin_lonlat": [
+        -111.8669334,
+        41.1243423
+      ],
+      "node": 83056045,
+      "node_lonlat": [
+        -111.8644134,
+        41.1372802
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "36260",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 1454.0283177417416,
+        "lead_policy": "additional-nearest-primitive-vertex-lead",
+        "native_origin_lonlat": [
+          -111.8669334,
+          41.1243423
+        ],
+        "node": 83056045,
+        "node_lonlat": [
+          -111.8644134,
+          41.1372802
+        ],
+        "query_view_membership_shards": [
+          0
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "36260",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 1454.0283177417416,
+          "lead_policy": "additional-nearest-primitive-vertex-lead",
+          "native_origin_lonlat": [
+            -111.8669334,
+            41.1243423
+          ],
+          "node": 83056045,
+          "node_lonlat": [
+            -111.8644134,
+            41.1372802
+          ]
+        },
+        "source_membership_shards": [
+          0
+        ],
+        "source_shard": 0
+      },
+      "source_membership_shards": [
+        0
+      ],
+      "source_shard": 0
+    },
+    {
+      "access_verified": false,
+      "cbsa": "36420",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 47.047786810138945,
+      "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+      "native_origin_lonlat": [
+        -97.5069659,
+        35.4309676
+      ],
+      "node": 7044271750,
+      "node_lonlat": [
+        -97.5072794,
+        35.4313049
+      ],
+      "query_view_membership_shards": [
+        1
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "36420",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 47.047786810138945,
+        "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+        "native_origin_lonlat": [
+          -97.5069659,
+          35.4309676
+        ],
+        "node": 7044271750,
+        "node_lonlat": [
+          -97.5072794,
+          35.4313049
+        ],
+        "query_view_membership_shards": [
+          1
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "36420",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 47.047786810138945,
+          "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+          "native_origin_lonlat": [
+            -97.5069659,
+            35.4309676
+          ],
+          "node": 7044271750,
+          "node_lonlat": [
+            -97.5072794,
+            35.4313049
+          ],
+          "source_shard": 1
+        },
+        "source_membership_shards": [
+          1
+        ],
+        "source_shard": 1
+      },
+      "source_membership_shards": [
+        1
+      ],
+      "source_shard": 1
+    },
+    {
+      "access_verified": false,
+      "cbsa": "38060",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 3720.722707576762,
+      "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+      "native_origin_lonlat": [
+        -112.0678624,
+        33.1857653
+      ],
+      "node": 6718651421,
+      "node_lonlat": [
+        -112.0666706,
+        33.2192117
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "38060",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 3720.722707576762,
+        "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+        "native_origin_lonlat": [
+          -112.0678624,
+          33.1857653
+        ],
+        "node": 6718651421,
+        "node_lonlat": [
+          -112.0666706,
+          33.2192117
+        ],
+        "query_view_membership_shards": [
+          0
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "38060",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 3720.722707576762,
+          "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+          "native_origin_lonlat": [
+            -112.0678624,
+            33.1857653
+          ],
+          "node": 6718651421,
+          "node_lonlat": [
+            -112.0666706,
+            33.2192117
+          ],
+          "source_shard": 0
+        },
+        "source_membership_shards": [
+          0
+        ],
+        "source_shard": 0
+      },
+      "source_membership_shards": [
+        0
+      ],
+      "source_shard": 0
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39150",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 2729.023741899675,
+      "lead_policy": "additional-nearest-primitive-vertex-lead",
+      "native_origin_lonlat": [
+        -112.5772247,
+        34.631071
+      ],
+      "node": 11754811626,
+      "node_lonlat": [
+        -112.5547975,
+        34.6148927
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "39150",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 2729.023741899675,
+        "lead_policy": "additional-nearest-primitive-vertex-lead",
+        "native_origin_lonlat": [
+          -112.5772247,
+          34.631071
+        ],
+        "node": 11754811626,
+        "node_lonlat": [
+          -112.5547975,
+          34.6148927
+        ],
+        "query_view_membership_shards": [
+          0
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "39150",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 2729.023741899675,
+          "lead_policy": "additional-nearest-primitive-vertex-lead",
+          "native_origin_lonlat": [
+            -112.5772247,
+            34.631071
+          ],
+          "node": 11754811626,
+          "node_lonlat": [
+            -112.5547975,
+            34.6148927
+          ]
+        },
+        "source_membership_shards": [
+          0
+        ],
+        "source_shard": 0
+      },
+      "source_membership_shards": [
+        0
+      ],
+      "source_shard": 0
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39340",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 787.6350716534138,
+      "lead_policy": "additional-nearest-primitive-vertex-lead",
+      "native_origin_lonlat": [
+        -112.3590592,
+        39.872067
+      ],
+      "node": 83265629,
+      "node_lonlat": [
+        -112.3680111,
+        39.8703434
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "39340",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 787.6350716534138,
+        "lead_policy": "additional-nearest-primitive-vertex-lead",
+        "native_origin_lonlat": [
+          -112.3590592,
+          39.872067
+        ],
+        "node": 83265629,
+        "node_lonlat": [
+          -112.3680111,
+          39.8703434
+        ],
+        "query_view_membership_shards": [
+          0
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "39340",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 787.6350716534138,
+          "lead_policy": "additional-nearest-primitive-vertex-lead",
+          "native_origin_lonlat": [
+            -112.3590592,
+            39.872067
+          ],
+          "node": 83265629,
+          "node_lonlat": [
+            -112.3680111,
+            39.8703434
+          ]
+        },
+        "source_membership_shards": [
+          0
+        ],
+        "source_shard": 0
+      },
+      "source_membership_shards": [
+        0
+      ],
+      "source_shard": 0
+    },
+    {
+      "access_verified": false,
+      "cbsa": "39380",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 1504.2572210248868,
+      "lead_policy": "preserved-original-contracted-vertex-lead",
+      "native_origin_lonlat": [
+        -104.4846683,
+        38.1627652
+      ],
+      "node": 12985655919,
+      "node_lonlat": [
+        -104.4981783,
+        38.1543889
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "39380",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 1504.2572210248868,
+        "lead_policy": "preserved-original-contracted-vertex-lead",
+        "native_origin_lonlat": [
+          -104.4846683,
+          38.1627652
+        ],
+        "node": 12985655919,
+        "node_lonlat": [
+          -104.4981783,
+          38.1543889
+        ],
+        "query_view_membership_shards": [
+          1
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "39380",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 1504.2572210248868,
+          "lead_policy": "preserved-original-contracted-vertex-lead",
+          "native_origin_lonlat": [
+            -104.4846683,
+            38.1627652
+          ],
+          "node": 12985655919,
+          "node_lonlat": [
+            -104.4981783,
+            38.1543889
+          ]
+        },
+        "source_membership_shards": [
+          1
+        ],
+        "source_shard": 1
+      },
+      "source_membership_shards": [
+        1
+      ],
+      "source_shard": 1
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41100",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 2450.7121303672116,
+      "lead_policy": "additional-nearest-primitive-vertex-lead",
+      "native_origin_lonlat": [
+        -113.4878003,
+        37.2625308
+      ],
+      "node": 1851150729,
+      "node_lonlat": [
+        -113.4937446,
+        37.2410049
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "41100",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 2450.7121303672116,
+        "lead_policy": "additional-nearest-primitive-vertex-lead",
+        "native_origin_lonlat": [
+          -113.4878003,
+          37.2625308
+        ],
+        "node": 1851150729,
+        "node_lonlat": [
+          -113.4937446,
+          37.2410049
+        ],
+        "query_view_membership_shards": [
+          0
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "41100",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 2450.7121303672116,
+          "lead_policy": "additional-nearest-primitive-vertex-lead",
+          "native_origin_lonlat": [
+            -113.4878003,
+            37.2625308
+          ],
+          "node": 1851150729,
+          "node_lonlat": [
+            -113.4937446,
+            37.2410049
+          ]
+        },
+        "source_membership_shards": [
+          0
+        ],
+        "source_shard": 0
+      },
+      "source_membership_shards": [
+        0
+      ],
+      "source_shard": 0
+    },
+    {
+      "access_verified": false,
+      "cbsa": "41620",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 4040.9844799378548,
+      "lead_policy": "additional-nearest-primitive-vertex-lead",
+      "native_origin_lonlat": [
+        -112.9532527,
+        40.5728869
+      ],
+      "node": 11347363705,
+      "node_lonlat": [
+        -113.0009305,
+        40.5698685
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "41620",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 4040.9844799378548,
+        "lead_policy": "additional-nearest-primitive-vertex-lead",
+        "native_origin_lonlat": [
+          -112.9532527,
+          40.5728869
+        ],
+        "node": 11347363705,
+        "node_lonlat": [
+          -113.0009305,
+          40.5698685
+        ],
+        "query_view_membership_shards": [
+          0
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "41620",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 4040.9844799378548,
+          "lead_policy": "additional-nearest-primitive-vertex-lead",
+          "native_origin_lonlat": [
+            -112.9532527,
+            40.5728869
+          ],
+          "node": 11347363705,
+          "node_lonlat": [
+            -113.0009305,
+            40.5698685
+          ]
+        },
+        "source_membership_shards": [
+          0
+        ],
+        "source_shard": 0
+      },
+      "source_membership_shards": [
+        0
+      ],
+      "source_shard": 0
+    },
+    {
+      "access_verified": false,
+      "cbsa": "42140",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 495.3674959151889,
+      "lead_policy": "preserved-original-contracted-vertex-lead",
+      "native_origin_lonlat": [
+        -105.9639718,
+        35.5145309
+      ],
+      "node": 2274029984,
+      "node_lonlat": [
+        -105.9594259,
+        35.5170119
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "42140",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 495.3674959151889,
+        "lead_policy": "preserved-original-contracted-vertex-lead",
+        "native_origin_lonlat": [
+          -105.9639718,
+          35.5145309
+        ],
+        "node": 2274029984,
+        "node_lonlat": [
+          -105.9594259,
+          35.5170119
+        ],
+        "query_view_membership_shards": [
+          1
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "42140",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 495.3674959151889,
+          "lead_policy": "preserved-original-contracted-vertex-lead",
+          "native_origin_lonlat": [
+            -105.9639718,
+            35.5145309
+          ],
+          "node": 2274029984,
+          "node_lonlat": [
+            -105.9594259,
+            35.5170119
+          ]
+        },
+        "source_membership_shards": [
+          1
+        ],
+        "source_shard": 1
+      },
+      "source_membership_shards": [
+        1
+      ],
+      "source_shard": 1
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43420",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 3730.4698754407955,
+      "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+      "native_origin_lonlat": [
+        -109.7751627,
+        31.8401287
+      ],
+      "node": 173831740,
+      "node_lonlat": [
+        -109.7451241,
+        31.8619115
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "43420",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 3730.4698754407955,
+        "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+        "native_origin_lonlat": [
+          -109.7751627,
+          31.8401287
+        ],
+        "node": 173831740,
+        "node_lonlat": [
+          -109.7451241,
+          31.8619115
+        ],
+        "query_view_membership_shards": [
+          0
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "43420",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 3730.4698754407955,
+          "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+          "native_origin_lonlat": [
+            -109.7751627,
+            31.8401287
+          ],
+          "node": 173831740,
+          "node_lonlat": [
+            -109.7451241,
+            31.8619115
+          ],
+          "source_shard": 0
+        },
+        "source_membership_shards": [
+          0
+        ],
+        "source_shard": 0
+      },
+      "source_membership_shards": [
+        0
+      ],
+      "source_shard": 0
+    },
+    {
+      "access_verified": false,
+      "cbsa": "45820",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 192.95911539531622,
+      "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-kansas-containing-shard",
+      "native_origin_lonlat": [
+        -95.8026393,
+        39.0413888
+      ],
+      "node": 6970839916,
+      "node_lonlat": [
+        -95.8025165,
+        39.0431215
+      ],
+      "query_view_membership_shards": [
+        1
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "45820",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 192.95911539531622,
+        "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-kansas-containing-shard",
+        "native_origin_lonlat": [
+          -95.8026393,
+          39.0413888
+        ],
+        "node": 6970839916,
+        "node_lonlat": [
+          -95.8025165,
+          39.0431215
+        ],
+        "query_view_membership_shards": [
+          1
+        ],
+        "source_membership_shards": [
+          1
+        ],
+        "source_shard": 1
+      },
+      "source_membership_shards": [
+        1
+      ],
+      "source_shard": 1
+    },
+    {
+      "access_verified": false,
+      "cbsa": "46060",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 5691.809484196113,
+      "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+      "native_origin_lonlat": [
+        -111.7836574,
+        32.128038
+      ],
+      "node": 175244806,
+      "node_lonlat": [
+        -111.755014,
+        32.082966
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "46060",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 5691.809484196113,
+        "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+        "native_origin_lonlat": [
+          -111.7836574,
+          32.128038
+        ],
+        "node": 175244806,
+        "node_lonlat": [
+          -111.755014,
+          32.082966
+        ],
+        "query_view_membership_shards": [
+          0
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "46060",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 5691.809484196113,
+          "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+          "native_origin_lonlat": [
+            -111.7836574,
+            32.128038
+          ],
+          "node": 175244806,
+          "node_lonlat": [
+            -111.755014,
+            32.082966
+          ],
+          "source_shard": 0
+        },
+        "source_membership_shards": [
+          0
+        ],
+        "source_shard": 0
+      },
+      "source_membership_shards": [
+        0
+      ],
+      "source_shard": 0
+    },
+    {
+      "access_verified": false,
+      "cbsa": "46140",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 664.4022297449249,
+      "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+      "native_origin_lonlat": [
+        -96.1772979,
+        36.2544416
+      ],
+      "node": 8446107003,
+      "node_lonlat": [
+        -96.1783385,
+        36.2603575
+      ],
+      "query_view_membership_shards": [
+        1
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "46140",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 664.4022297449249,
+        "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+        "native_origin_lonlat": [
+          -96.1772979,
+          36.2544416
+        ],
+        "node": 8446107003,
+        "node_lonlat": [
+          -96.1783385,
+          36.2603575
+        ],
+        "query_view_membership_shards": [
+          1
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "46140",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 664.4022297449249,
+          "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+          "native_origin_lonlat": [
+            -96.1772979,
+            36.2544416
+          ],
+          "node": 8446107003,
+          "node_lonlat": [
+            -96.1783385,
+            36.2603575
+          ],
+          "source_shard": 1
+        },
+        "source_membership_shards": [
+          1
+        ],
+        "source_shard": 1
+      },
+      "source_membership_shards": [
+        1
+      ],
+      "source_shard": 1
+    },
+    {
+      "access_verified": false,
+      "cbsa": "48620",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 176.03791843503194,
+      "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-kansas-containing-shard",
+      "native_origin_lonlat": [
+        -97.2462875,
+        37.637896
+      ],
+      "node": 9066920518,
+      "node_lonlat": [
+        -97.2469028,
+        37.6363897
+      ],
+      "query_view_membership_shards": [
+        1
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "48620",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 176.03791843503194,
+        "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-kansas-containing-shard",
+        "native_origin_lonlat": [
+          -97.2462875,
+          37.637896
+        ],
+        "node": 9066920518,
+        "node_lonlat": [
+          -97.2469028,
+          37.6363897
+        ],
+        "query_view_membership_shards": [
+          1
+        ],
+        "source_membership_shards": [
+          1
+        ],
+        "source_shard": 1
+      },
+      "source_membership_shards": [
+        1
+      ],
+      "source_shard": 1
+    },
+    {
+      "access_verified": false,
+      "cbsa": "49740",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 543.1988378857784,
+      "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+      "native_origin_lonlat": [
+        -113.910905,
+        32.7739424
+      ],
+      "node": 175789640,
+      "node_lonlat": [
+        -113.906696,
+        32.770575
+      ],
+      "query_view_membership_shards": [
+        0
+      ],
+      "retained_reference_record": {
+        "access_verified": false,
+        "cbsa": "49740",
+        "connector_costs_included": false,
+        "diagnostic_gap_m": 543.1988378857784,
+        "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+        "native_origin_lonlat": [
+          -113.910905,
+          32.7739424
+        ],
+        "node": 175789640,
+        "node_lonlat": [
+          -113.906696,
+          32.770575
+        ],
+        "query_view_membership_shards": [
+          0
+        ],
+        "retained_reference_record": {
+          "access_verified": false,
+          "cbsa": "49740",
+          "connector_costs_included": false,
+          "diagnostic_gap_m": 543.1988378857784,
+          "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-shard",
+          "native_origin_lonlat": [
+            -113.910905,
+            32.7739424
+          ],
+          "node": 175789640,
+          "node_lonlat": [
+            -113.906696,
+            32.770575
+          ],
+          "source_shard": 0
+        },
+        "source_membership_shards": [
+          0
+        ],
+        "source_shard": 0
+      },
+      "source_membership_shards": [
+        0
+      ],
+      "source_shard": 0
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29820",
+      "connector_costs_included": false,
+      "diagnostic_gap_m": 44.96910727516717,
+      "lead_policy": "unapproved-nearest-primitive-vertex-in-nevada-containing-shard",
+      "native_origin_lonlat": [
+        -115.0143977,
+        36.2141295
+      ],
+      "node": 7614401690,
+      "node_lonlat": [
+        -115.0139223,
+        36.2142577
+      ]
+    }
+  ],
+  "complete_global_competition": false,
+  "datum_alignment_verified": false,
+  "full_partition_graphs": [
+    {
+      "access_certified": false,
+      "complete_global_competition": false,
+      "directed_primitive_arcs": 20751166,
+      "exact_duplicate_highway_ways": 0,
+      "modeled_ways": 1441876,
+      "nodes": 10331910,
+      "parallel_cost_policy": "per-metric minimum, not summation; explicit zero arcs retained",
+      "release_eligible": false,
+      "resource_limits": {
+        "arcs": 40000000,
+        "nodes": 15000000
+      },
+      "road_coverage_certified": false,
+      "routing_model": "static-passenger-car-v2:directed-primitive-sparse-reference",
+      "turn_restrictions_modeled": false,
+      "unique_directed_pairs": 20751001,
+      "unsupported_direction_ways": 0,
+      "zero_length_primitive_arcs_retained": 2
+    },
+    {
+      "access_certified": false,
+      "complete_global_competition": false,
+      "directed_primitive_arcs": 30571595,
+      "exact_duplicate_highway_ways": 0,
+      "modeled_ways": 1950017,
+      "nodes": 14975532,
+      "parallel_cost_policy": "per-metric minimum, not summation; explicit zero arcs retained",
+      "release_eligible": false,
+      "resource_limits": {
+        "arcs": 40000000,
+        "nodes": 15000000
+      },
+      "road_coverage_certified": false,
+      "routing_model": "static-passenger-car-v2:directed-primitive-sparse-reference",
+      "turn_restrictions_modeled": false,
+      "unique_directed_pairs": 30571416,
+      "unsupported_direction_ways": 0,
+      "zero_length_primitive_arcs_retained": 2
+    }
+  ],
+  "ingestion_cut": -107.4,
+  "parent_exterior_coverage_certified": false,
+  "partition_assignment_audit": {
+    "access_certified": false,
+    "builder_way_counts_mean": "contiguous runs, not original raw ways",
+    "contiguous_runs": 3391893,
+    "duplicate_original_highways_verified": 6374,
+    "eligible_primitive_segments_assigned_once": 26875005,
+    "internal_way_identity": "(original OSM way ID << 20) | contiguous run index; not an OSM way ID",
+    "longitude_cut": -107.4,
+    "new_boundary_nodes_created": 0,
+    "original_fingerprint_cache_mib_limit": 64,
+    "original_fingerprint_database_byte_limit": 1000000000,
+    "original_fingerprint_database_bytes": 293879808,
+    "original_fingerprint_record_limit": 10000000,
+    "original_raw_highways_fingerprinted": 6120670,
+    "ownership_rule": "west iff mean endpoint longitude < cut; east otherwise",
+    "partition_policy": "primitive-segment-midpoint-longitude-v1",
+    "release_eligible": false,
+    "source_segments_omitted": 0
+  },
+  "partition_graphs": [
+    {
+      "access_certified": false,
+      "arbitrary_new_endpoints_supported": false,
+      "complete_global_competition": false,
+      "directed_primitive_arcs": 25567242,
+      "exact_duplicate_highway_ways": 0,
+      "modeled_way_count_scope": "No original ways reingested; protected native weighted pairs only",
+      "modeled_ways": 0,
+      "nodes": 12693951,
+      "parallel_cost_policy": "per-metric minimum, not summation; explicit zero arcs retained",
+      "query_protected_node_ids": [
+        55793090,
+        83056045,
+        83265629,
+        121844170,
+        141021562,
+        141782050,
+        141871232,
+        143710319,
+        143742225,
+        143862641,
+        143904064,
+        144231228,
+        144605514,
+        145395841,
+        173831740,
+        174809100,
+        175234965,
+        175244806,
+        175789640,
+        176620315,
+        176623627,
+        191025595,
+        1795087746,
+        1851150729,
+        2274029984,
+        3668705925,
+        6350018589,
+        6718651421,
+        6970839916,
+        7044271750,
+        7298599564,
+        7614401690,
+        7786572989,
+        8446107003,
+        8499393844,
+        9066920518,
+        9743986364,
+        11347363705,
+        11754811626,
+        11866557610,
+        12985655919,
+        13427204837,
+        13604499946,
+        13970098408
+      ],
+      "query_protected_node_ids_sha256": "72ec36f0cb5dd694fc2825514cc1aaa5ee42cf7a35d5d2ef8178bfb493eb4de0",
+      "query_repartition_longitude_cut": -104.0,
+      "query_repartition_policy": "native-weighted-pair-midpoint-v1",
+      "query_view_policy": "query-protected-undirected-leaf-core-v1",
+      "release_eligible": false,
+      "resource_limits": {
+        "arcs": 40000000,
+        "nodes": 15000000
+      },
+      "road_coverage_certified": false,
+      "routing_model": "static-passenger-car-v2:directed-primitive-sparse-reference",
+      "turn_restrictions_modeled": false,
+      "unique_directed_pairs": 25567242,
+      "unsupported_direction_ways": 0,
+      "zero_length_primitive_arcs_retained": 4
+    },
+    {
+      "access_certified": false,
+      "arbitrary_new_endpoints_supported": false,
+      "complete_global_competition": false,
+      "directed_primitive_arcs": 11924016,
+      "exact_duplicate_highway_ways": 0,
+      "modeled_way_count_scope": "No original ways reingested; protected native weighted pairs only",
+      "modeled_ways": 0,
+      "nodes": 5650697,
+      "parallel_cost_policy": "per-metric minimum, not summation; explicit zero arcs retained",
+      "query_protected_node_ids": [
+        55793090,
+        83056045,
+        83265629,
+        121844170,
+        141021562,
+        141782050,
+        141871232,
+        143710319,
+        143742225,
+        143862641,
+        143904064,
+        144231228,
+        144605514,
+        145395841,
+        173831740,
+        174809100,
+        175234965,
+        175244806,
+        175789640,
+        176620315,
+        176623627,
+        191025595,
+        1795087746,
+        1851150729,
+        2274029984,
+        3668705925,
+        6350018589,
+        6718651421,
+        6970839916,
+        7044271750,
+        7298599564,
+        7614401690,
+        7786572989,
+        8446107003,
+        8499393844,
+        9066920518,
+        9743986364,
+        11347363705,
+        11754811626,
+        11866557610,
+        12985655919,
+        13427204837,
+        13604499946,
+        13970098408
+      ],
+      "query_protected_node_ids_sha256": "72ec36f0cb5dd694fc2825514cc1aaa5ee42cf7a35d5d2ef8178bfb493eb4de0",
+      "query_repartition_longitude_cut": -104.0,
+      "query_repartition_policy": "native-weighted-pair-midpoint-v1",
+      "query_view_policy": "query-protected-undirected-leaf-core-v1",
+      "release_eligible": false,
+      "resource_limits": {
+        "arcs": 40000000,
+        "nodes": 15000000
+      },
+      "road_coverage_certified": false,
+      "routing_model": "static-passenger-car-v2:directed-primitive-sparse-reference",
+      "turn_restrictions_modeled": false,
+      "unique_directed_pairs": 11924016,
+      "unsupported_direction_ways": 0,
+      "zero_length_primitive_arcs_retained": 0
+    }
+  ],
+  "query_core_audit": {
+    "access_certified": false,
+    "arbitrary_new_endpoints_supported": false,
+    "globally_surviving_shared_vertices": 217,
+    "original_directed_pairs": [
+      20751001,
+      30571416
+    ],
+    "original_shared_vertices": 297,
+    "policy": "query-protected-undirected-leaf-core-v1",
+    "protected_node_set_sha256": "72ec36f0cb5dd694fc2825514cc1aaa5ee42cf7a35d5d2ef8178bfb493eb4de0",
+    "protected_osm_node_ids": [
+      55793090,
+      83056045,
+      83265629,
+      121844170,
+      141021562,
+      141782050,
+      141871232,
+      143710319,
+      143742225,
+      143862641,
+      143904064,
+      144231228,
+      144605514,
+      145395841,
+      173831740,
+      174809100,
+      175234965,
+      175244806,
+      175789640,
+      176620315,
+      176623627,
+      191025595,
+      1795087746,
+      1851150729,
+      2274029984,
+      3668705925,
+      6350018589,
+      6718651421,
+      6970839916,
+      7044271750,
+      7298599564,
+      7614401690,
+      7786572989,
+      8446107003,
+      8499393844,
+      9066920518,
+      9743986364,
+      11347363705,
+      11754811626,
+      11866557610,
+      12985655919,
+      13427204837,
+      13604499946,
+      13970098408
+    ],
+    "query_view_nodes": [
+      7626118,
+      10718555
+    ],
+    "release_eligible": false,
+    "removed_node_entries_per_shard": [
+      2705792,
+      4256976
+    ],
+    "removed_nonquery_leaf_nodes": 6249166,
+    "removed_unqueried_component_nodes": 713522,
+    "retained_directed_pairs": [
+      15384619,
+      22106639
+    ],
+    "surviving_shared_vertices": 216
+  },
+  "query_repartition_audit": {
+    "access_certified": false,
+    "arbitrary_new_endpoints_supported": false,
+    "assigned_pair_entries": 37491258,
+    "coordinate_changes": 0,
+    "flattened_weighted_union_constructed": false,
+    "full_source_repartition_constructed": false,
+    "input_pair_entries": 37491258,
+    "input_query_nodes": [
+      7626118,
+      10718555
+    ],
+    "input_shared_vertices": 216,
+    "native_vertices_omitted": 0,
+    "new_native_vertices_created": 0,
+    "output_query_nodes": [
+      12693951,
+      5650697
+    ],
+    "output_shared_vertices": 191,
+    "output_unique_pairs": [
+      25567242,
+      11924016
+    ],
+    "policy": "protected-native-weighted-pair-repartition-v1",
+    "protected_node_ids": [
+      55793090,
+      83056045,
+      83265629,
+      121844170,
+      141021562,
+      141782050,
+      141871232,
+      143710319,
+      143742225,
+      143862641,
+      143904064,
+      144231228,
+      144605514,
+      145395841,
+      173831740,
+      174809100,
+      175234965,
+      175244806,
+      175789640,
+      176620315,
+      176623627,
+      191025595,
+      1795087746,
+      1851150729,
+      2274029984,
+      3668705925,
+      6350018589,
+      6718651421,
+      6970839916,
+      7044271750,
+      7298599564,
+      7614401690,
+      7786572989,
+      8446107003,
+      8499393844,
+      9066920518,
+      9743986364,
+      11347363705,
+      11754811626,
+      11866557610,
+      12985655919,
+      13427204837,
+      13604499946,
+      13970098408
+    ],
+    "protected_node_set_sha256": "72ec36f0cb5dd694fc2825514cc1aaa5ee42cf7a35d5d2ef8178bfb493eb4de0",
+    "query_cut": -104.0,
+    "release_eligible": false
+  },
+  "release_eligible": false,
+  "retained32_checkpoint_sha256": "1d6a87ed643c713cc78e7e088527b98c04161914474ba5d8444f1c1eec66ab7f",
+  "road_coverage_certified": false,
+  "schema": "las-vegas-eight-state-query-preflight-v1",
+  "source_costs_computed": 0,
+  "source_provenance": [
+    {
+      "name": "colorado.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+      "size_bytes": 386197077
+    },
+    {
+      "name": "new-mexico.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "2aa3ba0e91c0f19ffd0d614d98f112546552a51d02daf2474d8f06e54304508a",
+      "size_bytes": 136658631
+    },
+    {
+      "name": "arizona.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
+      "size_bytes": 304245283
+    },
+    {
+      "name": "utah.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "34f704431a8b3812372ec10083e151d4227a50caf19159fc9af730f942940c41",
+      "size_bytes": 170845020
+    },
+    {
+      "name": "oklahoma.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "4e76187cb20fd187d759de9565568381a76d87518377a0e03585d9865e498106",
+      "size_bytes": 169850063
+    },
+    {
+      "name": "kansas.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "eae1e55d59e8a15fe6abd7057b86098c6e03bb9a88b7997f46256ca59386f30e",
+      "size_bytes": 117395534
+    },
+    {
+      "name": "wyoming.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "9dd05b095a075dc7ed08539eef6936564ba968ba27e764b0fc5533c460fec3f4",
+      "size_bytes": 95139142
+    },
+    {
+      "name": "nevada.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "4cc689a971124a50d1ffe169e93a4c69542f478e47b6164007dd6e57f85650b5",
+      "size_bytes": 124016809
+    }
+  ],
+  "urban_anchor_adopted": false,
+  "within_original192_boundary_limit": true
+}
