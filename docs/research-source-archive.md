@@ -1,12 +1,12 @@
 # Pinned research original-source archive
 
 The fixed manifest at `scripts/research-source-snapshots/co-nm-az-20261027.json`
-records exact CO/NM/AZ/UT/OK/KS/TX OpenStreetMap bytes with common replication timestamp
+records exact CO/NM/AZ/UT/OK/KS/TX/MO/AR OpenStreetMap bytes with common replication timestamp
 2026-10-27T21:23:59Z, Census 2025 population/CBSA/state/county/area-water archives,
 the Colorado Gazetteer, all five Denver-area county water files used by the
-preserved regression, and the unchanged public CONUS CSV. The twenty-one original
+preserved regression, and the unchanged public CONUS CSV. The twenty-three original
 files cover current coupled routing, all four geography test areas and the
-Oklahoma, Kansas and Texas resource/origin investigations.
+Oklahoma, Kansas, Texas, Missouri and Arkansas resource/origin investigations.
 Source URLs, sizes and SHA256 values identify
 each original input. The filename `population.xlsx` preserves the exact official
 `cbsa-met-est2025-pop.xlsx` bytes.
@@ -24,10 +24,11 @@ release. No extra secret values are required.
 This retains original bytes beyond short-lived derived CI artifacts and mutable
 `latest` URLs. Changed upstream bytes must fail; acquire the exact archived asset
 or separately review/version a new snapshot rather than rewriting a checksum.
-`SHA256SUMS-v5` and `source-manifest-v5.json` accompany the complete inputs.
+`SHA256SUMS-v6` and `source-manifest-v6.json` accompany the complete inputs.
 Revision 3 added Utah and dated provider URLs; revision 4 adds the Oklahoma
-resource-preflight input. Revision 5 adds the Kansas and Texas inputs (2,142,116,765 total bytes across 21 originals). The collection retains
-its original tag so existing recovery links remain valid. All four earlier revisions
+resource-preflight input. Revision 5 added Kansas and Texas (2,142,116,765 bytes across 21 originals).
+Revision 6 adds Missouri and Arkansas (2,442,321,997 bytes across 23 originals). The collection retains
+its original tag so existing recovery links remain valid. All five earlier revisions
 and their metadata assets are retained unchanged;
 new metadata filenames prevent overwriting earlier checksums or documentation.
 Archive metadata
@@ -41,7 +42,7 @@ Authorized writers can recover the exact inputs without the old workspace:
 gh release download research-sources-20261027-co-nm-az-v1 \
   --repo smeyerhuky/claude-react --dir local-data/pinned-20261027
 cd local-data/pinned-20261027
-sha256sum -c SHA256SUMS-v5
+sha256sum -c SHA256SUMS-v6
 ```
 
 ## Source attribution and rights
@@ -62,3 +63,12 @@ No source is excluded, no connector is self-certified, and no public map, road
 beta or environment publication is enabled by this archive.
 
 Revision 5 retains the exact Kansas and Texas PBFs used for raw-origin and node-resource investigation. The aggregate archive validation budget is 2.2 billion bytes; the per-asset limit remains below 2 billion bytes. Primitive graph caps remain 15 million nodes / 40 million arcs. Earlier v1/v2/v3/v4 metadata and all original assets remain unchanged; new metadata uses v5 names. Retention adds no routing eligibility and never publishes the draft.
+
+Revision 6 retains the two exact Missouri/Arkansas inputs used in the cross-border
+native-point evidence. Its explicit aggregate archive budget is 2.5 billion
+bytes; per-asset and graph/oracle limits remain unchanged. All 21 existing
+original entries and v1–v5 metadata assets remain unchanged. New metadata names
+are `source-manifest-v6.json`, `README-v6.md` and `SHA256SUMS-v6`. Manifest presence
+alone does not prove upload completion: the retention workflow must verify each
+server-side digest, size and uploaded state against the existing draft, and
+recovery must verify the downloaded bytes. No source release is published.
