@@ -79,7 +79,7 @@ class TwoPartitionOracle:
                                       for m in ('length', 'travel_time')):
                     ports.update((int(u), v)); improving_pairs.add((int(u), v))
         if len(ports) > max_ports:
-            raise ValueError('Interface port budget exceeded; never truncate')
+            raise ValueError(f'Interface port budget exceeded: {len(ports)} > {max_ports}; never truncate')
         self.ports = sorted(int(addition.osm_ids[i]) for i in ports)
         self.audit = {'shared_vertices': len(indices), 'interface_ports': self.ports,
             'prefix_inbound_directed_pairs': int(incoming.sum()),
