@@ -1,5 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { Delaunay, geoAlbers } from 'd3'
+
+const RoadResearchPanel = import.meta.env.DEV && import.meta.env.VITE_METRO_ROAD_RESEARCH === '1'
+  ? lazy(() => import('./MetroRoadResearchPanel'))
+  : null
 
 // Illustrative seed data, NOT a complete or validated 2025 Census CBSA inventory.
 // Each row: anchor name, longitude, latitude, approximate metro population.
@@ -558,6 +562,7 @@ export default function MetroPopulationVoronoi() {
   }, [landRings, cells])
   return (
     <div data-testid="metro-app" data-source-kind={sourceKind} className="fixed inset-0 flex overflow-hidden bg-slate-100 text-slate-900" style={{height:'100dvh'}}>
+      {RoadResearchPanel && <Suspense fallback={null}><RoadResearchPanel /></Suspense>}
       <aside aria-label="Map navigation" className={`relative z-30 flex shrink-0 flex-col border-r border-slate-200 bg-white shadow-sm transition-[width] duration-200 ${drawerOpen?'w-[min(76vw,288px)]':'w-14'}`}>
         <div className="flex h-14 shrink-0 items-center justify-between border-b border-slate-100 px-2">
           <a href="#/" aria-label="Home" title="Home" className="flex h-10 w-10 items-center justify-center rounded-lg hover:bg-slate-100 text-xl">⌂</a>
