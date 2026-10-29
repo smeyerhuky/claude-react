@@ -70,16 +70,25 @@ jobs:
         shell: bash
         run: |
           mkdir -p inspector-artifact
+          # Different VITE flags invalidate the same optimizer cache. Start and
+          # exercise each server sequentially to avoid racing cache replacement.
+          trap 'kill "${task_enabled_pid:-}" "${task_disabled_pid:-}" 2>/dev/null || true' EXIT
           VITE_METRO_ROAD_RESEARCH=1 ./node_modules/.bin/vite --host 127.0.0.1 --port 4178 > inspector-artifact/enabled.log 2>&1 &
           task_enabled_pid=$!
-          VITE_METRO_ROAD_RESEARCH=0 ./node_modules/.bin/vite --host 127.0.0.1 --port 4179 > inspector-artifact/disabled.log 2>&1 &
-          task_disabled_pid=$!
-          trap 'kill "$task_enabled_pid" "$task_disabled_pid" || true' EXIT
           for attempt in $(seq 1 40); do
-            if curl --silent --fail http://127.0.0.1:4178/claude-react/ >/dev/null && curl --silent --fail http://127.0.0.1:4179/claude-react/ >/dev/null; then break; fi
+            if curl --silent --fail http://127.0.0.1:4178/claude-react/ >/dev/null; then break; fi
             sleep 1
           done
           NODE_PATH="$RUNNER_TEMP/metro-inspector-driver/node_modules" node scripts/check_metro_dev_research.cjs http://127.0.0.1:4178/claude-react/ enabled inspector-artifact/research-inspector.png
+          kill "$task_enabled_pid"
+          wait "$task_enabled_pid" || true
+          task_enabled_pid=''
+          VITE_METRO_ROAD_RESEARCH=0 ./node_modules/.bin/vite --host 127.0.0.1 --port 4179 > inspector-artifact/disabled.log 2>&1 &
+          task_disabled_pid=$!
+          for attempt in $(seq 1 40); do
+            if curl --silent --fail http://127.0.0.1:4179/claude-react/ >/dev/null; then break; fi
+            sleep 1
+          done
           NODE_PATH="$RUNNER_TEMP/metro-inspector-driver/node_modules" node scripts/check_metro_dev_research.cjs http://127.0.0.1:4179/claude-react/ disabled
       - uses: actions/upload-artifact@v6
         if: always()
