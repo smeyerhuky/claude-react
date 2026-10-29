@@ -1,0 +1,54 @@
+{
+  "access_verified": false,
+  "extract_coverage_certified": false,
+  "highway_ways_with_missing_locations": 0,
+  "limitations": "Nearest geometry only within supplied PBF and search radius; OSM tags and modeled driving eligibility do not prove physical/legal entry; representative points are not verified urban access anchors",
+  "method": "Raw PBF highway-way scan; no contracted graph or SegmentGridIndex; local equirectangular projection with spherical gap distance",
+  "metros": [
+    {
+      "cbsa": "41140",
+      "name": "St. Joseph, MO-KS Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 8195.0611041977,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 18304878,
+        "osm_way_url": "https://www.openstreetmap.org/way/18304878",
+        "projection_lonlat": [
+          -94.879695,
+          39.836885
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 8195.0611041977,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 18304878,
+        "osm_way_url": "https://www.openstreetmap.org/way/18304878",
+        "projection_lonlat": [
+          -94.879695,
+          39.836885
+        ]
+      },
+      "origin_lonlat": [
+        -94.7837537,
+        39.834843
+      ]
+    }
+  ],
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "osm_sha256": "eae1e55d59e8a15fe6abd7057b86098c6e03bb9a88b7997f46256ca59386f30e",
+  "release_eligible": false,
+  "scan_radius_m": 25000.0,
+  "schema_version": "colorado-raw-origin-investigation-v1"
+}

@@ -1,0 +1,614 @@
+{
+  "access_verified": false,
+  "extract_coverage_certified": false,
+  "highway_ways_with_missing_locations": 0,
+  "limitations": "Nearest geometry only within supplied PBF and search radius; OSM tags and modeled driving eligibility do not prove physical/legal entry; representative points are not verified urban access anchors",
+  "method": "Raw PBF highway-way scan; no contracted graph or SegmentGridIndex; local equirectangular projection with spherical gap distance",
+  "metros": [
+    {
+      "cbsa": "12420",
+      "name": "Austin-Round Rock-San Marcos, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 19.304963383042995,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 1263359166,
+        "osm_way_url": "https://www.openstreetmap.org/way/1263359166",
+        "projection_lonlat": [
+          -97.6497447857186,
+          30.249591604738136
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 19.304963383042995,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 1263359166,
+        "osm_way_url": "https://www.openstreetmap.org/way/1263359166",
+        "projection_lonlat": [
+          -97.6497447857186,
+          30.249591604738136
+        ]
+      },
+      "origin_lonlat": [
+        -97.6498417,
+        30.2497437
+      ]
+    },
+    {
+      "cbsa": "13140",
+      "name": "Beaumont-Port Arthur, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 71.78820644398316,
+        "highway": "tertiary",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Phelan Boulevard",
+        "osm_way_id": 21037356,
+        "osm_way_url": "https://www.openstreetmap.org/way/21037356",
+        "projection_lonlat": [
+          -94.20271145191963,
+          30.07657338195444
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 71.78820644398316,
+        "highway": "tertiary",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Phelan Boulevard",
+        "osm_way_id": 21037356,
+        "osm_way_url": "https://www.openstreetmap.org/way/21037356",
+        "projection_lonlat": [
+          -94.20271145191963,
+          30.07657338195444
+        ]
+      },
+      "origin_lonlat": [
+        -94.2027049,
+        30.0759278
+      ]
+    },
+    {
+      "cbsa": "17780",
+      "name": "College Station-Bryan, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": "private",
+        "access_verified": false,
+        "gap_m": 395.2333807317981,
+        "highway": "service",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 455387250,
+        "osm_way_url": "https://www.openstreetmap.org/way/455387250",
+        "projection_lonlat": [
+          -96.4867673,
+          30.751179
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 464.37910348687217,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 21199550,
+        "osm_way_url": "https://www.openstreetmap.org/way/21199550",
+        "projection_lonlat": [
+          -96.4855158,
+          30.757663
+        ]
+      },
+      "origin_lonlat": [
+        -96.4885368,
+        30.7543917
+      ]
+    },
+    {
+      "cbsa": "21340",
+      "name": "El Paso, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 2634.0722386539132,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 15048822,
+        "osm_way_url": "https://www.openstreetmap.org/way/15048822",
+        "projection_lonlat": [
+          -105.54620715101511,
+          31.537960428958705
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 2634.0722386539132,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 15048822,
+        "osm_way_url": "https://www.openstreetmap.org/way/15048822",
+        "projection_lonlat": [
+          -105.54620715101511,
+          31.537960428958705
+        ]
+      },
+      "origin_lonlat": [
+        -105.5213326,
+        31.527394
+      ]
+    },
+    {
+      "cbsa": "26420",
+      "name": "Houston-Pasadena-The Woodlands, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 40.661926578295464,
+        "highway": "secondary",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Jensen Drive",
+        "osm_way_id": 129144374,
+        "osm_way_url": "https://www.openstreetmap.org/way/129144374",
+        "projection_lonlat": [
+          -95.34219872890277,
+          29.80099520759892
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 40.661926578295464,
+        "highway": "secondary",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Jensen Drive",
+        "osm_way_id": 129144374,
+        "osm_way_url": "https://www.openstreetmap.org/way/129144374",
+        "projection_lonlat": [
+          -95.34219872890277,
+          29.80099520759892
+        ]
+      },
+      "origin_lonlat": [
+        -95.34262,
+        29.8010046
+      ]
+    },
+    {
+      "cbsa": "28660",
+      "name": "Killeen-Temple, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 39.34457819952666,
+        "highway": "track",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 894311794,
+        "osm_way_url": "https://www.openstreetmap.org/way/894311794",
+        "projection_lonlat": [
+          -97.78971453861593,
+          31.203077889502993
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 955.8229793320988,
+        "highway": "unclassified",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 882890314,
+        "osm_way_url": "https://www.openstreetmap.org/way/882890314",
+        "projection_lonlat": [
+          -97.7866182,
+          31.2109287
+        ]
+      },
+      "origin_lonlat": [
+        -97.7896384,
+        31.2027301
+      ]
+    },
+    {
+      "cbsa": "30980",
+      "name": "Longview, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": "no",
+        "access_verified": false,
+        "gap_m": 66.01611249256067,
+        "highway": "service",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 291233894,
+        "osm_way_url": "https://www.openstreetmap.org/way/291233894",
+        "projection_lonlat": [
+          -94.68483637578393,
+          32.43105201139045
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 852.9411533018603,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 384128256,
+        "osm_way_url": "https://www.openstreetmap.org/way/384128256",
+        "projection_lonlat": [
+          -94.6932143,
+          32.4346111
+        ]
+      },
+      "origin_lonlat": [
+        -94.6848326,
+        32.4316457
+      ]
+    },
+    {
+      "cbsa": "31180",
+      "name": "Lubbock, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 52.44566251974619,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Gary Avenue",
+        "osm_way_id": 1426684442,
+        "osm_way_url": "https://www.openstreetmap.org/way/1426684442",
+        "projection_lonlat": [
+          -101.8827903,
+          33.4665157
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 52.44566251974619,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Gary Avenue",
+        "osm_way_id": 1426684442,
+        "osm_way_url": "https://www.openstreetmap.org/way/1426684442",
+        "projection_lonlat": [
+          -101.8827903,
+          33.4665157
+        ]
+      },
+      "origin_lonlat": [
+        -101.8833475,
+        33.4664357
+      ]
+    },
+    {
+      "cbsa": "33260",
+      "name": "Midland, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 177.68823582471595,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 1351144317,
+        "osm_way_url": "https://www.openstreetmap.org/way/1351144317",
+        "projection_lonlat": [
+          -101.99642340146382,
+          32.09228027224349
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 177.68823582471595,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 1351144317,
+        "osm_way_url": "https://www.openstreetmap.org/way/1351144317",
+        "projection_lonlat": [
+          -101.99642340146382,
+          32.09228027224349
+        ]
+      },
+      "origin_lonlat": [
+        -101.9945395,
+        32.0923594
+      ]
+    },
+    {
+      "cbsa": "36220",
+      "name": "Odessa, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 145.67450453341945,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 1125588653,
+        "osm_way_url": "https://www.openstreetmap.org/way/1125588653",
+        "projection_lonlat": [
+          -102.5440486,
+          31.8653419
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 145.67450453341945,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 1125588653,
+        "osm_way_url": "https://www.openstreetmap.org/way/1125588653",
+        "projection_lonlat": [
+          -102.5440486,
+          31.8653419
+        ]
+      },
+      "origin_lonlat": [
+        -102.5425068,
+        31.8653008
+      ]
+    },
+    {
+      "cbsa": "41660",
+      "name": "San Angelo, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 97.35516819559842,
+        "highway": "track",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 21268176,
+        "osm_way_url": "https://www.openstreetmap.org/way/21268176",
+        "projection_lonlat": [
+          -100.6592190959671,
+          31.366168388760656
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 1780.7823062102227,
+        "highway": "trunk",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "US Highway 67 South",
+        "osm_way_id": 21289554,
+        "osm_way_url": "https://www.openstreetmap.org/way/21289554",
+        "projection_lonlat": [
+          -100.65815363913184,
+          31.34933098200576
+        ]
+      },
+      "origin_lonlat": [
+        -100.6594181,
+        31.3653095
+      ]
+    },
+    {
+      "cbsa": "41700",
+      "name": "San Antonio-New Braunfels, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": "private",
+        "access_verified": false,
+        "gap_m": 51.46594140899144,
+        "highway": "track",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 15135012,
+        "osm_way_url": "https://www.openstreetmap.org/way/15135012",
+        "projection_lonlat": [
+          -98.60750445217332,
+          29.43304229856346
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 254.9743094244209,
+        "highway": "secondary",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "State Highway 151",
+        "osm_way_id": 15161844,
+        "osm_way_url": "https://www.openstreetmap.org/way/15161844",
+        "projection_lonlat": [
+          -98.6082131949352,
+          29.431037008361592
+        ]
+      },
+      "origin_lonlat": [
+        -98.6069734,
+        29.4330599
+      ]
+    },
+    {
+      "cbsa": "45500",
+      "name": "Texarkana, TX-AR Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 552.863726698817,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 20700692,
+        "osm_way_url": "https://www.openstreetmap.org/way/20700692",
+        "projection_lonlat": [
+          -94.20120565186151,
+          33.478571130383166
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 552.863726698817,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 20700692,
+        "osm_way_url": "https://www.openstreetmap.org/way/20700692",
+        "projection_lonlat": [
+          -94.20120565186151,
+          33.478571130383166
+        ]
+      },
+      "origin_lonlat": [
+        -94.2071619,
+        33.4783728
+      ]
+    },
+    {
+      "cbsa": "46340",
+      "name": "Tyler, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 48.93638167063698,
+        "highway": "trunk",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "North Northeast Loop 323",
+        "osm_way_id": 118760294,
+        "osm_way_url": "https://www.openstreetmap.org/way/118760294",
+        "projection_lonlat": [
+          -95.26841781647688,
+          32.375108085672736
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 48.93638167063698,
+        "highway": "trunk",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "North Northeast Loop 323",
+        "osm_way_id": 118760294,
+        "osm_way_url": "https://www.openstreetmap.org/way/118760294",
+        "projection_lonlat": [
+          -95.26841781647688,
+          32.375108085672736
+        ]
+      },
+      "origin_lonlat": [
+        -95.2689389,
+        32.3751053
+      ]
+    },
+    {
+      "cbsa": "47380",
+      "name": "Waco, TX Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 9.999011831500578,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Sundown Drive",
+        "osm_way_id": 21925149,
+        "osm_way_url": "https://www.openstreetmap.org/way/21925149",
+        "projection_lonlat": [
+          -97.28596800394423,
+          31.59202110904019
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 9.999011831500578,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Sundown Drive",
+        "osm_way_id": 21925149,
+        "osm_way_url": "https://www.openstreetmap.org/way/21925149",
+        "projection_lonlat": [
+          -97.28596800394423,
+          31.59202110904019
+        ]
+      },
+      "origin_lonlat": [
+        -97.2860178,
+        31.5921004
+      ]
+    }
+  ],
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "osm_sha256": "28f51b4ab7f41a6e23f0d772bcccc07d379d6592ebdb351a6f7969fa2053e5f0",
+  "release_eligible": false,
+  "scan_radius_m": 25000.0,
+  "schema_version": "colorado-raw-origin-investigation-v1"
+}

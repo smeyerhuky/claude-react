@@ -1,0 +1,144 @@
+{
+  "access_verified": false,
+  "extract_coverage_certified": false,
+  "highway_ways_with_missing_locations": 0,
+  "limitations": "Nearest geometry only within supplied PBF and search radius; OSM tags and modeled driving eligibility do not prove physical/legal entry; representative points are not verified urban access anchors",
+  "method": "Raw PBF highway-way scan; no contracted graph or SegmentGridIndex; local equirectangular projection with spherical gap distance",
+  "metros": [
+    {
+      "cbsa": "27860",
+      "name": "Jonesboro, AR Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 151.911953839343,
+        "highway": "track",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 1189699789,
+        "osm_way_url": "https://www.openstreetmap.org/way/1189699789",
+        "projection_lonlat": [
+          -90.6499743,
+          35.6983345
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 813.6653817036739,
+        "highway": "secondary",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 1221483332,
+        "osm_way_url": "https://www.openstreetmap.org/way/1221483332",
+        "projection_lonlat": [
+          -90.65918403506397,
+          35.69711448107644
+        ]
+      },
+      "origin_lonlat": [
+        -90.6501752,
+        35.6969781
+      ]
+    },
+    {
+      "cbsa": "30780",
+      "name": "Little Rock-North Little Rock-Conway, AR Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 8.560283923216385,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 729836219,
+        "osm_way_url": "https://www.openstreetmap.org/way/729836219",
+        "projection_lonlat": [
+          -92.40059630705161,
+          34.75569585642323
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 8.560283923216385,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 729836219,
+        "osm_way_url": "https://www.openstreetmap.org/way/729836219",
+        "projection_lonlat": [
+          -92.40059630705161,
+          34.75569585642323
+        ]
+      },
+      "origin_lonlat": [
+        -92.4005889,
+        34.7557726
+      ]
+    },
+    {
+      "cbsa": "32820",
+      "name": "Memphis, TN-MS-AR Metro Area",
+      "nearest_mapped_highway": null,
+      "nearest_model_drivable_highway": null,
+      "origin_lonlat": [
+        -89.8205035,
+        35.010307
+      ]
+    },
+    {
+      "cbsa": "45500",
+      "name": "Texarkana, TX-AR Metro Area",
+      "nearest_mapped_highway": {
+        "access": "private",
+        "access_verified": false,
+        "gap_m": 5420.311588286017,
+        "highway": "service",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 20700408,
+        "osm_way_url": "https://www.openstreetmap.org/way/20700408",
+        "projection_lonlat": [
+          -94.203776,
+          33.527037
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 7627.990561992615,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 20700848,
+        "osm_way_url": "https://www.openstreetmap.org/way/20700848",
+        "projection_lonlat": [
+          -94.221797,
+          33.545879
+        ]
+      },
+      "origin_lonlat": [
+        -94.2071619,
+        33.4783728
+      ]
+    }
+  ],
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "osm_sha256": "50eabfa65da53c7d1d288fd4dda032c5b230b04bf9c7ae0eed4c6f44f8cb9cd5",
+  "release_eligible": false,
+  "scan_radius_m": 25000.0,
+  "schema_version": "colorado-raw-origin-investigation-v1"
+}
