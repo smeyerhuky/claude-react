@@ -1,0 +1,27 @@
+{
+  "schema": "denver-rtd-anchor-screen-v1",
+  "cbsa": "19740",
+  "osage_parking_candidate_rejected": true,
+  "osage_operator_auto_spaces": 0,
+  "blake_operator_auto_spaces": 200,
+  "blake_generalized_facility_lonlat": [
+    -104.97346020204844,
+    39.77224759897497
+  ],
+  "modeled_driveway_way": 436487553,
+  "modeled_road_junction_node": 176077058,
+  "modeled_road_junction_lonlat": [
+    -104.9735792,
+    39.7730621
+  ],
+  "modeled_driveway_length_m": 81.39561644517805,
+  "facility_point_to_modeled_junction_displacement_m": 91.13771166743977,
+  "displacement_is_connector_length": false,
+  "driveway_is_approved_anchor": false,
+  "connector_cost_seconds": null,
+  "entry_path_independently_verified": false,
+  "access_verified": false,
+  "release_eligible": false,
+  "decision": "needs_evidence",
+  "warning": "Generalized operator facility point and OSM driveway do not prove exact entrance, rights, grade, turns or connector cost."
+}

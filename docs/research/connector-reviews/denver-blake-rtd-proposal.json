@@ -1,0 +1,140 @@
+{
+  "schema": "ai-connector-review-v1",
+  "cbsa": "19740",
+  "origin_policy": "urban-access-anchor-v1",
+  "candidate": {
+    "name": "38th & Blake RTD Park-n-Ride driveway candidate",
+    "approved": false,
+    "coordinate_status": "operator_facility_point_generalized_osm_driveway_unverified",
+    "selection_reason": "Near-central Denver transit parking alternative after 10th/Osage operator record showed zero auto spaces. Does not resolve a single-anchor policy for Denver-Aurora-Centennial or supersede Union Station proposal.",
+    "modeled_road_junction_node": 176077058
+  },
+  "reviewer": {
+    "kind": "ai",
+    "identity": "Codex (OpenAI), 2026-10-29",
+    "procedure": "Inspect operator map metadata, linked facilities layer, zero-space Osage record and 200-space Blake record; compare generalized geometry with pinned Colorado OSM driveway; replay deterministic source screening and assess all five access questions."
+  },
+  "sources": [
+    {
+      "id": "operator-map",
+      "path": "docs/research/denver-rtd-anchor/rtd-map-item.json",
+      "sha256": "663c5fb87743f2cb9d4c42f48593cb57130ed1d26e78ed6a0f23dd8fb3f3d0f1",
+      "kind": "independent_access_record",
+      "provenance": "Operator-owned rtdgis map item. Description explicitly says generalized planning locations; full exact response and request provenance retained."
+    },
+    {
+      "id": "operator-facilities",
+      "path": "docs/research/denver-rtd-anchor/rtd-denver-parking.json",
+      "sha256": "cd8c2b879386d749d3d94d7ff3a614bb66250bd530c76d9d10e3ea190dae5997",
+      "kind": "independent_access_record",
+      "provenance": "Operator-linked facilities service, Denver facilities with AUTOS > 0. Capacity is not unrestricted-use permission or exact driveway geometry."
+    },
+    {
+      "id": "screen",
+      "path": "docs/research/denver-rtd-anchor/report.json",
+      "sha256": "4a05522b95f90ccffdf6a86d0b4f1837cd605eab39da009f5ce9991fd4e99eec",
+      "kind": "routing_model",
+      "provenance": "Deterministic retained-source screening; OSM is not independent access evidence."
+    }
+  ],
+  "machine_assertions": [
+    {
+      "source": "screen",
+      "keys": [
+        "osage_operator_auto_spaces"
+      ],
+      "equals": 0
+    },
+    {
+      "source": "screen",
+      "keys": [
+        "blake_operator_auto_spaces"
+      ],
+      "equals": 200
+    },
+    {
+      "source": "screen",
+      "keys": [
+        "modeled_driveway_way"
+      ],
+      "equals": 436487553
+    },
+    {
+      "source": "screen",
+      "keys": [
+        "modeled_road_junction_node"
+      ],
+      "equals": 176077058
+    },
+    {
+      "source": "screen",
+      "keys": [
+        "displacement_is_connector_length"
+      ],
+      "equals": false
+    },
+    {
+      "source": "screen",
+      "keys": [
+        "entry_path_independently_verified"
+      ],
+      "equals": false
+    }
+  ],
+  "findings": {
+    "physical_connection": {
+      "status": "unknown",
+      "reason": "OSM driveway 436487553 meets Wynkoop/39th at node 176077058. Operator geometry is explicitly generalized, so this does not independently identify or verify the entrance.",
+      "sources": [
+        "operator-map",
+        "operator-facilities",
+        "screen"
+      ]
+    },
+    "legal_motor_access": {
+      "status": "unknown",
+      "reason": "RTD lists 200 auto spaces, but full parking conditions, vehicle class, hours and exact driveway rights are unresolved. Operator guidance requests returned HTTP 403; this is missing evidence, not denial of access.",
+      "sources": [
+        "operator-map",
+        "operator-facilities",
+        "screen"
+      ]
+    },
+    "same_grade": {
+      "status": "unknown",
+      "reason": "OSM shared nodes and a surface-parking tag are not independent grade evidence for the selected path.",
+      "sources": [
+        "operator-map",
+        "operator-facilities",
+        "screen"
+      ]
+    },
+    "direction_and_turns": {
+      "status": "unknown",
+      "reason": "OSM tags driveway two-way; current entrance signs and permitted street-to-driveway turns have not been independently established.",
+      "sources": [
+        "operator-map",
+        "operator-facilities",
+        "screen"
+      ]
+    },
+    "connector_cost": {
+      "status": "unknown",
+      "reason": "The modeled driveway is 81.396 m; generalized-point displacement is 91.138 m. Neither is an adopted anchor-to-road connector cost. Actual anchor/path and speed assumption remain unset.",
+      "sources": [
+        "operator-map",
+        "operator-facilities",
+        "screen"
+      ]
+    }
+  },
+  "decision": "needs_evidence",
+  "access_verified": false,
+  "release_eligible": false,
+  "limitations": [
+    "No adopted anchor, approved connector, ledger entry, Census-origin replacement or production-map change.",
+    "Need independently locatable driveway/site plan plus applicable motor-access conditions and current direction/turn/grade evidence before separate approval.",
+    "Generalized geometry fields and attribute LATITUDE/LONGITUDE differ; neither is accepted as an entrance.",
+    "HTTP failures are retained in the bundle; this review does not interpret unavailable guidance as permission."
+  ]
+}

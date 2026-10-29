@@ -1,0 +1,56 @@
+{
+  "schema": "denver-rtd-anchor-evidence-v1",
+  "files": {
+    "rtd-map-item.json": {
+      "sha256": "663c5fb87743f2cb9d4c42f48593cb57130ed1d26e78ed6a0f23dd8fb3f3d0f1",
+      "size_bytes": 3401,
+      "url": "https://www.arcgis.com/sharing/rest/content/items/b3bbfcd4fe944346a8c345ab49f4c3d9?f=json",
+      "retrieved_utc": "2026-10-29"
+    },
+    "rtd-map-data.json": {
+      "sha256": "3ba26b1bb88a252a51e3bb2a75e4108e868f05b64e88dbf4752bd0a8b7f3c383",
+      "size_bytes": 38090,
+      "url": "https://www.arcgis.com/sharing/rest/content/items/b3bbfcd4fe944346a8c345ab49f4c3d9/data?f=json",
+      "retrieved_utc": "2026-10-29"
+    },
+    "rtd-layer.json": {
+      "sha256": "43442c95f508dc3e723b0405d51de60f8536ecf1b5bff89de221aded95953e62",
+      "size_bytes": 15225,
+      "url": "https://services5.arcgis.com/1fZoXlzLW6FCIUcE/arcgis/rest/services/RTD_GIS_Current_Runboard/FeatureServer/0?f=json",
+      "retrieved_utc": "2026-10-29"
+    },
+    "rtd-osage.json": {
+      "sha256": "1c93130396061d3c246a2a59e527117a0a1fe83550f44ce2f0e752b94ba87306",
+      "size_bytes": 5236,
+      "url": "https://services5.arcgis.com/1fZoXlzLW6FCIUcE/arcgis/rest/services/RTD_GIS_Current_Runboard/FeatureServer/0/query?f=json&where=UPPER%28NAME%29+LIKE+%27%25OSAGE%25%27&outFields=%2A&outSR=4326&returnGeometry=true",
+      "retrieved_utc": "2026-10-29"
+    },
+    "rtd-denver-parking.json": {
+      "sha256": "cd8c2b879386d749d3d94d7ff3a614bb66250bd530c76d9d10e3ea190dae5997",
+      "size_bytes": 16573,
+      "url": "https://services5.arcgis.com/1fZoXlzLW6FCIUcE/arcgis/rest/services/RTD_GIS_Current_Runboard/FeatureServer/0/query?f=json&where=CITY+%3D+%27Denver%27+AND+AUTOS+%3E+0&outFields=%2A&outSR=4326",
+      "retrieved_utc": "2026-10-29"
+    },
+    "osm-extract.json": {
+      "sha256": "2bc9090e40ebc39983fc92fdfda8bf0e873ca4f5b727b31d2a17195e94117811",
+      "size_bytes": 7169,
+      "provenance": "Selected complete ways from pinned Colorado PBF; OSM topology is not independent access evidence."
+    },
+    "unavailable-pages.json": {
+      "sha256": "496849dcc6ae6245c87af91b887f12aaf7c7d5a9265d98ba679d8da5cac872d4",
+      "size_bytes": 948,
+      "provenance": "Local HTTP outcomes; response content unavailable."
+    }
+  },
+  "osm_source": {
+    "path": "colorado.osm.pbf",
+    "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+    "url": "https://download.geofabrik.de/north-america/us/colorado-261027.osm.pbf"
+  },
+  "metro_source": {
+    "path": "public/data/metros-census-2025.csv",
+    "sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8"
+  },
+  "access_verified": false,
+  "release_eligible": false
+}

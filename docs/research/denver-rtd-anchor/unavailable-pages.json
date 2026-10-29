@@ -1,0 +1,32 @@
+{
+  "attempted_utc": "2026-10-29",
+  "requests": [
+    {
+      "name": "rtd-parking",
+      "url": "https://www.rtd-denver.com/riding-rtd/parking",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "name": "rtd-ten-osage",
+      "url": "https://www.rtd-denver.com/riding-rtd/parking/10th-osage-station",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.rtd-denver.com/how-to-ride/parking",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.rtd-denver.com/HowToPark.shtml",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://rtd-denver.com/riding-rtd/parking",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.rtd-denver.com/riding-rtd/parking/38th-blake-station",
+      "error": "HTTP Error 403: Forbidden"
+    }
+  ],
+  "interpretation": "HTTP 403 is missing evidence, not denial or grant of vehicle access."
+}
