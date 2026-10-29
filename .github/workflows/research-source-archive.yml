@@ -6,6 +6,8 @@ on:
       - '.github/workflows/research-source-archive.yml'
       - 'scripts/research-source-snapshots/**'
       - 'docs/research-source-archive.md'
+      - 'scripts/research_source_archive_checks.py'
+      - 'scripts/test_research_source_archive_checks.py'
 permissions:
   contents: read
 jobs:
@@ -16,6 +18,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           persist-credentials: false
+      - run: python3 -m unittest discover -s scripts -p 'test_research_source_archive_checks.py' -v
       - name: Validate fixed source inventory and fetch small checksum probes
         run: |
           python3 - <<'PY'
@@ -27,10 +30,10 @@ jobs:
           assert m["draft_release_tag"]=="research-sources-20261027-co-nm-az-v1"
           for flag in ("release_eligible","access_certified","road_coverage_certified","land_water_completeness_certified","geographic_accuracy_certified","complete_global_competition"):
               assert m[flag] is False
-          assert m["manifest_revision"]==6
-          assert len(m["files"])==len({x["filename"] for x in m["files"]})==23
-          assert m["aggregate_archive_byte_budget"]==2_500_000_000
-          assert sum(x["bytes"] for x in m["files"])<2_500_000_000
+          assert m["manifest_revision"]==7
+          assert len(m["files"])==len({x["filename"] for x in m["files"]})==26
+          assert m["aggregate_archive_byte_budget"]==3_000_000_000
+          assert sum(x["bytes"] for x in m["files"])<3_000_000_000
           for entry in m["files"]:
               name=entry["filename"]
               assert Path(name).name==name and name not in (".","..")
@@ -44,7 +47,7 @@ jobs:
                   with urllib.request.urlopen(entry["source_url"],timeout=60) as response:
                       data=response.read(entry["bytes"]+1)
                   assert len(data)==entry["bytes"] and hashlib.sha256(data).hexdigest()==entry["sha256"]
-          print("Twenty-three pinned original inputs validated; all three small remote checksum probes passed")
+          print("Twenty-six pinned original inputs validated; all three small remote checksum probes passed")
           PY
   retain-draft-assets:
     if: github.event_name == 'workflow_dispatch'
@@ -62,8 +65,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           python3 - <<'PY'
-          import hashlib, json, os, shutil, subprocess
+          import hashlib, json, os, shutil, subprocess, sys
           from pathlib import Path
+          sys.path.insert(0,"scripts")
+          from research_source_archive_checks import require_draft, existing_original
           assert os.environ["GITHUB_REPOSITORY"]=="smeyerhuky/claude-react"
           repo="smeyerhuky/claude-react"
           manifest_path=Path("scripts/research-source-snapshots/co-nm-az-20261027.json")
@@ -72,12 +77,17 @@ jobs:
           root.mkdir()
           def release():
               r=json.loads(subprocess.check_output(["gh","api",f"repos/{repo}/releases/{m['draft_release_id']}"]))
-              if r["draft"] is not True or r["tag_name"]!=m["draft_release_tag"]:
-                  raise ValueError("Expected existing draft; never publish or modify a published release")
-              return r
+              return require_draft(r,m["draft_release_id"],m["draft_release_tag"])
           release()
+          verified=[]
+          original_paths=[]
           for entry in m["files"]:
               path=root/entry["filename"]
+              existing=existing_original(release()["assets"],entry)
+              if existing is not None:
+                  verified.append(existing)
+                  print("Verified existing original asset",path.name,flush=True)
+                  continue
               print("Acquiring pinned source",path.name,flush=True)
               subprocess.run(["curl","-fLSs","--retry","3","--connect-timeout","20","--max-time","1200",
                               "--output",str(path),entry["source_url"]],check=True)
@@ -85,11 +95,11 @@ jobs:
                   digest=hashlib.file_digest(f,"sha256").hexdigest()
               if digest!=entry["sha256"] or path.stat().st_size!=entry["bytes"]:
                   raise ValueError("Source bytes changed; do not alter expected checksums")
-          shutil.copyfile(manifest_path,root/"source-manifest-v6.json")
-          shutil.copyfile("docs/research-source-archive.md",root/"README-v6.md")
-          (root/"SHA256SUMS-v6").write_text("".join(x["sha256"]+"  "+x["filename"]+"\n" for x in m["files"]))
-          paths=[root/x["filename"] for x in m["files"]]+[root/n for n in ("source-manifest-v6.json","README-v6.md","SHA256SUMS-v6")]
-          verified=[]
+              original_paths.append(path)
+          shutil.copyfile(manifest_path,root/"source-manifest-v7.json")
+          shutil.copyfile("docs/research-source-archive.md",root/"README-v7.md")
+          (root/"SHA256SUMS-v7").write_text("".join(x["sha256"]+"  "+x["filename"]+"\n" for x in m["files"]))
+          paths=original_paths+[root/n for n in ("source-manifest-v7.json","README-v7.md","SHA256SUMS-v7")]
           for path in paths:
               with path.open("rb") as f:
                   digest="sha256:"+hashlib.file_digest(f,"sha256").hexdigest()

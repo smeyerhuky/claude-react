@@ -15,6 +15,9 @@ on:
       - 'scripts/colorado_raw_boundary_interfaces.py'
       - 'scripts/colorado_neighbor_metro_competition.py'
       - 'scripts/research-source-snapshots/**'
+      - 'scripts/fetch_research_source.py'
+      - 'scripts/research_source_cache.py'
+      - 'scripts/research_source_archive_checks.py'
       - 'public/data/metros-census-2025.csv'
 permissions:
   contents: read
@@ -30,6 +33,21 @@ jobs:
       - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2'
       - name: Check frozen prefix binding and cumulative-source regressions
         run: PYTHONPATH=scripts python -m unittest -v scripts/test_colorado_utah_exterior_competition.py scripts/test_colorado_exterior_parent_competition.py
+      - id: original-source-identity
+        name: Derive the exact original-source cache key
+        run: |
+          python - <<'PYKEY'
+          import json,os,sys
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          from research_source_cache import cache_key,MANIFEST
+          with Path(os.environ['GITHUB_OUTPUT']).open('a') as f:
+              f.write('key='+cache_key(json.loads(MANIFEST.read_text()))+'\n')
+          PYKEY
+      - uses: actions/cache/restore@v4
+        with:
+          path: local-data/*.osm.pbf
+          key: ${{ steps.original-source-identity.outputs.key }}
       - name: Acquire exact dated sources without accepting changed bytes
         env:
           GH_TOKEN: ${{ github.token }}
@@ -41,29 +59,17 @@ jobs:
           from colorado_utah_exterior_competition import REFERENCE, digest, load_reference
           m,_,_=load_reference(REFERENCE)
           root=Path("local-data");root.mkdir(exist_ok=True)
-          archive_id=json.loads(Path("scripts/research-source-snapshots/co-nm-az-20261027.json").read_text())["draft_release_id"]
-          response=subprocess.run(["gh","api",f"repos/smeyerhuky/claude-react/releases/{archive_id}"],capture_output=True,text=True)
-          assets=json.loads(response.stdout)["assets"] if response.returncode==0 else []
-          if response.returncode:
-              print("Archive is unavailable to this read-only job; using checksum-pinned dated provider files",flush=True)
-          for s in m["prefix_sources"]+m["additional_sources"]:
-              name=s["name"]
-              date=s["replication_timestamp"].split("T")[0].replace("-","")[2:]
-              url="https://download.geofabrik.de/north-america/us/"+name.removesuffix(".osm.pbf")+"-"+date+".osm.pbf"
-              target=root/name
-              matches=[a for a in assets if a["name"]==name]
-              restored=False
-              if matches:
-                  if len(matches)!=1 or matches[0]["state"]!="uploaded" or matches[0]["size"]!=s["size_bytes"] or matches[0].get("digest")!="sha256:"+s["sha256"]:
-                      raise ValueError("Retained source metadata mismatch; never substitute changed bytes")
-                  with target.open("wb") as f:
-                      result=subprocess.run(["gh","api","--header","Accept: application/octet-stream",f"repos/smeyerhuky/claude-react/releases/assets/{matches[0]['id']}"],stdout=f,stderr=subprocess.PIPE)
-                  restored=result.returncode==0
-              if not restored:
-                  subprocess.run(["curl","-fLSs","--retry","3","--connect-timeout","20","--max-time","1200","--output",str(target),url],check=True)
-              if target.stat().st_size!=s["size_bytes"] or digest(target)!=s["sha256"]:
-                  raise ValueError("Exact dated source mismatch; do not rewrite hashes or substitute latest")
-              print("Verified source",name,"archive" if restored else "dated provider",s["sha256"],flush=True)
+          from fetch_research_source import recover,entry_for
+          archive=json.loads(Path("scripts/research-source-snapshots/co-nm-az-20261027.json").read_text())
+          for source in m["prefix_sources"]+m["additional_sources"]:
+              entry=entry_for(archive,source["name"])
+              if entry["bytes"]!=source["size_bytes"] or entry["sha256"]!=source["sha256"]:
+                  raise ValueError("Frozen source identity differs from original archive")
+              target=root/source["name"]
+              delivery=recover(archive,source["name"],target)
+              if target.stat().st_size!=source["size_bytes"] or digest(target)!=source["sha256"]:
+                  raise ValueError("Exact dated source mismatch; never substitute changed bytes")
+              print("Verified source",source["name"],delivery,source["sha256"],flush=True)
           PYSOURCES
       - name: Reproduce all prior costs and check Utah exterior effects
         run: |
