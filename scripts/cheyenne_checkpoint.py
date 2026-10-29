@@ -114,7 +114,19 @@ def load_reference32(root=REFERENCE):
     return data
 
 
+def check_frozen(root=REFERENCE):
+    root=Path(root);manifest=json.loads((root/'manifest.json').read_text());raw=(root/'source-report.json').read_bytes()
+    require(hashlib.sha256(raw).hexdigest()==manifest['upstream_ci_report_sha256'],'Retained independent source report bytes changed')
+    result=project(json.loads(raw))
+    require(result==load_reference32(root),'Frozen32-source costs differ from independently replayed source report')
+    return result
+
+
 if __name__=='__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('report',type=Path);p.add_argument('--compare',type=Path);a=p.parse_args();r=project(json.loads(a.report.read_text()))
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('report',type=Path,nargs='?');p.add_argument('--compare',type=Path);p.add_argument('--check-frozen',action='store_true');a=p.parse_args()
+    if a.check_frozen:r=check_frozen()
+    else:
+        require(a.report is not None,'Report path required unless checking the frozen checkpoint')
+        r=project(json.loads(a.report.read_text()))
     if a.compare:require(r==project(json.loads(a.compare.read_text())),'Independent original-source semantic reproduction differs')
     print(json.dumps(dict(scenario_id=SCENARIO,sources=32,costs=2304,finite=r['finite_queries'],unreachable=r['unreachable_queries'],access_certified=False),indent=2))
