@@ -70,3 +70,10 @@ vertices with the original dense oracle still rejecting the same input. These
 are mathematical fixtures, not independently reviewed real-world connectors.
 All access/release/global/geographic flags remain false. The public straight-line
 map and #137 approval gate remain intact.
+
+The full experiment passed source CI at `33e00e8c9abc60ccd7b464ab656e8365a4e03d88`:
+2,232 cases, 2,088 finite replays, all 1,872 retained comparisons preserved without
+finite-route loss/increase, with 122 improvements. A separate
+[31-source checkpoint](research/census-31-source-checkpoint/README.md) retains the
+result without changing the old reference. All 18 probes are inherited and
+sampled winners remain unchanged; this establishes no geographic closure.

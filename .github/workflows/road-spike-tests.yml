@@ -2,6 +2,12 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/six_state_checkpoint.py'
+      - 'scripts/test_six_state_checkpoint.py'
+      - 'scripts/wichita_model_component.py'
+      - 'scripts/test_wichita_model_component.py'
+      - 'docs/research/census-31-source-checkpoint/**'
+      - 'docs/research/wichita-model-lead-negative.json'
       - 'scripts/road_boundary_label_oracle.py'
       - 'scripts/test_road_boundary_label_oracle.py'
       - 'scripts/road_longitude_partition.py'

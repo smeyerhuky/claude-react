@@ -1,0 +1,1057 @@
+{
+  "applied_source_exclusions": [],
+  "census_checkpoint_sha256": "50bd53258391d080d75376bf1574ea7e83f6df4de9cb7eb63f03f3ff01db31d5",
+  "diagnostic_source_cbsa_ids": [
+    "10740",
+    "14500",
+    "17820",
+    "19740",
+    "22140",
+    "22380",
+    "22660",
+    "24300",
+    "24540",
+    "28140",
+    "29420",
+    "29740",
+    "29940",
+    "30020",
+    "30860",
+    "31740",
+    "36260",
+    "36420",
+    "38060",
+    "39150",
+    "39340",
+    "39380",
+    "41100",
+    "41620",
+    "42140",
+    "43420",
+    "45820",
+    "46060",
+    "46140",
+    "48620",
+    "49740"
+  ],
+  "finite_queries_replayed": 2088,
+  "full_model_union_nodes": 22027949,
+  "full_partition_graphs": [
+    {
+      "access_certified": false,
+      "complete_global_competition": false,
+      "directed_primitive_arcs": 16068555,
+      "exact_duplicate_highway_ways": 0,
+      "modeled_ways": 1138040,
+      "nodes": 7981341,
+      "parallel_cost_policy": "per-metric minimum, not summation; explicit zero arcs retained",
+      "release_eligible": false,
+      "resource_limits": {
+        "arcs": 40000000,
+        "nodes": 15000000
+      },
+      "road_coverage_certified": false,
+      "routing_model": "static-passenger-car-v2:directed-primitive-sparse-reference",
+      "turn_restrictions_modeled": false,
+      "unique_directed_pairs": 16068502,
+      "unsupported_direction_ways": 0,
+      "zero_length_primitive_arcs_retained": 2
+    },
+    {
+      "access_certified": false,
+      "complete_global_competition": false,
+      "directed_primitive_arcs": 28680667,
+      "exact_duplicate_highway_ways": 0,
+      "modeled_ways": 1876495,
+      "nodes": 14046853,
+      "parallel_cost_policy": "per-metric minimum, not summation; explicit zero arcs retained",
+      "release_eligible": false,
+      "resource_limits": {
+        "arcs": 40000000,
+        "nodes": 15000000
+      },
+      "road_coverage_certified": false,
+      "routing_model": "static-passenger-car-v2:directed-primitive-sparse-reference",
+      "turn_restrictions_modeled": false,
+      "unique_directed_pairs": 28680488,
+      "unsupported_direction_ways": 0,
+      "zero_length_primitive_arcs_retained": 2
+    }
+  ],
+  "interface_audit": {
+    "boundary_vertex_count": 178,
+    "boundary_vertex_limit": 192,
+    "conceptual_union_nodes": 15985526,
+    "dense_overlay_constructed": false,
+    "dense_port_closure_constructed": false,
+    "flattened_road_union_constructed": false,
+    "shared_vertices": 178,
+    "solver_policy": "two-shard-boundary-label-fixed-point-v1"
+  },
+  "local_oracle_runs": [
+    {
+      "access_certified": false,
+      "auxiliary_nodes_per_shard": 1,
+      "cached_unchanged_local_passes": 7,
+      "complete_global_competition": false,
+      "converged": true,
+      "dense_overlay_constructed": false,
+      "finite_queries_replayed": 522,
+      "fixed_point_sweeps": [
+        {
+          "complete_sweeps": 5,
+          "converged": true,
+          "source": 141021562
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 7298599564
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 11866557610
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 6350018589
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 13604499946
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 174809100
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 1795087746
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 13427204837
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 55793090
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 191025595
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 175234965
+        },
+        {
+          "complete_sweeps": 5,
+          "converged": true,
+          "source": 141871232
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 7786572989
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 145395841
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 9743986364
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 121844170
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 83056045
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 7044271750
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 6718651421
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 11754811626
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 83265629
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 12985655919
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 1851150729
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 11347363705
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 2274029984
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 173831740
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 6970839916
+        },
+        {
+          "complete_sweeps": 1,
+          "converged": true,
+          "source": 175244806
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 8446107003
+        },
+        {
+          "complete_sweeps": 1,
+          "converged": true,
+          "source": 9066920518
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 175789640
+        }
+      ],
+      "local_dijkstra_calls": 279,
+      "metric": "length",
+      "native_predecessor_steps": 3400195,
+      "native_replay_nodes": 2629361,
+      "propagation_dijkstra_calls": 215,
+      "release_eligible": false,
+      "replay_dijkstra_calls": 64,
+      "reverse": false,
+      "road_coverage_certified": false,
+      "solver_policy": "two-shard-boundary-label-fixed-point-v1",
+      "warning": "Exact graph-only node-state query model; no connectors, turns/grade, datum alignment or geographic/exterior closure certified.",
+      "working_shard_arcs": [
+        11946481,
+        20799425
+      ],
+      "working_shard_nodes": [
+        5903289,
+        10082417
+      ]
+    },
+    {
+      "access_certified": false,
+      "auxiliary_nodes_per_shard": 1,
+      "cached_unchanged_local_passes": 0,
+      "complete_global_competition": false,
+      "converged": true,
+      "dense_overlay_constructed": false,
+      "finite_queries_replayed": 522,
+      "fixed_point_sweeps": [
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 141021562
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 7298599564
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 11866557610
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 6350018589
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 13604499946
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 174809100
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 1795087746
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 13427204837
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 55793090
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 191025595
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 175234965
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 141871232
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 7786572989
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 145395841
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 9743986364
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 121844170
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 83056045
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 7044271750
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 6718651421
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 11754811626
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 83265629
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 12985655919
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 1851150729
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 11347363705
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 2274029984
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 173831740
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 6970839916
+        },
+        {
+          "complete_sweeps": 1,
+          "converged": true,
+          "source": 175244806
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 8446107003
+        },
+        {
+          "complete_sweeps": 1,
+          "converged": true,
+          "source": 9066920518
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 175789640
+        }
+      ],
+      "local_dijkstra_calls": 259,
+      "metric": "travel_time",
+      "native_predecessor_steps": 2946015,
+      "native_replay_nodes": 2043621,
+      "propagation_dijkstra_calls": 218,
+      "release_eligible": false,
+      "replay_dijkstra_calls": 41,
+      "reverse": false,
+      "road_coverage_certified": false,
+      "solver_policy": "two-shard-boundary-label-fixed-point-v1",
+      "warning": "Exact graph-only node-state query model; no connectors, turns/grade, datum alignment or geographic/exterior closure certified.",
+      "working_shard_arcs": [
+        11946481,
+        20799425
+      ],
+      "working_shard_nodes": [
+        5903289,
+        10082417
+      ]
+    },
+    {
+      "access_certified": false,
+      "auxiliary_nodes_per_shard": 1,
+      "cached_unchanged_local_passes": 7,
+      "complete_global_competition": false,
+      "converged": true,
+      "dense_overlay_constructed": false,
+      "finite_queries_replayed": 522,
+      "fixed_point_sweeps": [
+        {
+          "complete_sweeps": 5,
+          "converged": true,
+          "source": 141021562
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 7298599564
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 11866557610
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 6350018589
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 13604499946
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 174809100
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 1795087746
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 13427204837
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 55793090
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 191025595
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 175234965
+        },
+        {
+          "complete_sweeps": 5,
+          "converged": true,
+          "source": 141871232
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 7786572989
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 145395841
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 9743986364
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 121844170
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 83056045
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 7044271750
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 6718651421
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 11754811626
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 83265629
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 12985655919
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 1851150729
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 11347363705
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 2274029984
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 173831740
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 6970839916
+        },
+        {
+          "complete_sweeps": 1,
+          "converged": true,
+          "source": 175244806
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 8446107003
+        },
+        {
+          "complete_sweeps": 1,
+          "converged": true,
+          "source": 9066920518
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 175789640
+        }
+      ],
+      "local_dijkstra_calls": 279,
+      "metric": "length",
+      "native_predecessor_steps": 3395115,
+      "native_replay_nodes": 2628346,
+      "propagation_dijkstra_calls": 215,
+      "release_eligible": false,
+      "replay_dijkstra_calls": 64,
+      "reverse": true,
+      "road_coverage_certified": false,
+      "solver_policy": "two-shard-boundary-label-fixed-point-v1",
+      "warning": "Exact graph-only node-state query model; no connectors, turns/grade, datum alignment or geographic/exterior closure certified.",
+      "working_shard_arcs": [
+        11946481,
+        20799425
+      ],
+      "working_shard_nodes": [
+        5903289,
+        10082417
+      ]
+    },
+    {
+      "access_certified": false,
+      "auxiliary_nodes_per_shard": 1,
+      "cached_unchanged_local_passes": 0,
+      "complete_global_competition": false,
+      "converged": true,
+      "dense_overlay_constructed": false,
+      "finite_queries_replayed": 522,
+      "fixed_point_sweeps": [
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 141021562
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 7298599564
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 11866557610
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 6350018589
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 13604499946
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 174809100
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 1795087746
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 13427204837
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 55793090
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 191025595
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 175234965
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 141871232
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 7786572989
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 145395841
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 9743986364
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 121844170
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 83056045
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 7044271750
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 6718651421
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 11754811626
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 83265629
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 12985655919
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 1851150729
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 11347363705
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 2274029984
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 173831740
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 6970839916
+        },
+        {
+          "complete_sweeps": 1,
+          "converged": true,
+          "source": 175244806
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 8446107003
+        },
+        {
+          "complete_sweeps": 1,
+          "converged": true,
+          "source": 9066920518
+        },
+        {
+          "complete_sweeps": 4,
+          "converged": true,
+          "source": 175789640
+        }
+      ],
+      "local_dijkstra_calls": 259,
+      "metric": "travel_time",
+      "native_predecessor_steps": 2948315,
+      "native_replay_nodes": 2036356,
+      "propagation_dijkstra_calls": 218,
+      "release_eligible": false,
+      "replay_dijkstra_calls": 41,
+      "reverse": true,
+      "road_coverage_certified": false,
+      "solver_policy": "two-shard-boundary-label-fixed-point-v1",
+      "warning": "Exact graph-only node-state query model; no connectors, turns/grade, datum alignment or geographic/exterior closure certified.",
+      "working_shard_arcs": [
+        11946481,
+        20799425
+      ],
+      "working_shard_nodes": [
+        5903289,
+        10082417
+      ]
+    }
+  ],
+  "partition_graphs": [
+    {
+      "access_certified": false,
+      "complete_global_competition": false,
+      "directed_primitive_arcs": 16068555,
+      "exact_duplicate_highway_ways": 0,
+      "modeled_ways": 1138040,
+      "node_inventory_scope": "query-active nodes plus globally isolated protected endpoints",
+      "nodes": 5903288,
+      "original_full_shard_nodes": 7981341,
+      "original_unique_directed_pairs": 16068502,
+      "parallel_cost_policy": "per-metric minimum, not summation; explicit zero arcs retained",
+      "query_protected_node_ids": [
+        55793090,
+        83056045,
+        83265629,
+        121844170,
+        141021562,
+        141782050,
+        141871232,
+        143710319,
+        143742225,
+        143862641,
+        143904064,
+        144231228,
+        144605514,
+        145395841,
+        173831740,
+        174809100,
+        175234965,
+        175244806,
+        175789640,
+        176620315,
+        176623627,
+        191025595,
+        1795087746,
+        1851150729,
+        2274029984,
+        6350018589,
+        6718651421,
+        6970839916,
+        7044271750,
+        7298599564,
+        7786572989,
+        8446107003,
+        8499393844,
+        9066920518,
+        9743986364,
+        11347363705,
+        11754811626,
+        11866557610,
+        12985655919,
+        13427204837,
+        13604499946,
+        13970098408
+      ],
+      "query_protected_node_ids_sha256": "5b4e72d086f9ddfd3c5c83582ab9bdf5a58482a2ee6bbec32627ac717cb1e6f7",
+      "query_view_policy": "query-protected-undirected-leaf-core-v1",
+      "raw_arc_count_scope": "original full shard before parallel reduction and query pruning",
+      "release_eligible": false,
+      "resource_limits": {
+        "arcs": 40000000,
+        "nodes": 15000000
+      },
+      "road_coverage_certified": false,
+      "routing_model": "static-passenger-car-v2:directed-primitive-sparse-reference",
+      "turn_restrictions_modeled": false,
+      "unique_directed_pairs": 11946302,
+      "unsupported_direction_ways": 0,
+      "zero_length_primitive_arcs_retained": 2
+    },
+    {
+      "access_certified": false,
+      "complete_global_competition": false,
+      "directed_primitive_arcs": 28680667,
+      "exact_duplicate_highway_ways": 0,
+      "modeled_ways": 1876495,
+      "node_inventory_scope": "query-active nodes plus globally isolated protected endpoints",
+      "nodes": 10082416,
+      "original_full_shard_nodes": 14046853,
+      "original_unique_directed_pairs": 28680488,
+      "parallel_cost_policy": "per-metric minimum, not summation; explicit zero arcs retained",
+      "query_protected_node_ids": [
+        55793090,
+        83056045,
+        83265629,
+        121844170,
+        141021562,
+        141782050,
+        141871232,
+        143710319,
+        143742225,
+        143862641,
+        143904064,
+        144231228,
+        144605514,
+        145395841,
+        173831740,
+        174809100,
+        175234965,
+        175244806,
+        175789640,
+        176620315,
+        176623627,
+        191025595,
+        1795087746,
+        1851150729,
+        2274029984,
+        6350018589,
+        6718651421,
+        6970839916,
+        7044271750,
+        7298599564,
+        7786572989,
+        8446107003,
+        8499393844,
+        9066920518,
+        9743986364,
+        11347363705,
+        11754811626,
+        11866557610,
+        12985655919,
+        13427204837,
+        13604499946,
+        13970098408
+      ],
+      "query_protected_node_ids_sha256": "5b4e72d086f9ddfd3c5c83582ab9bdf5a58482a2ee6bbec32627ac717cb1e6f7",
+      "query_view_policy": "query-protected-undirected-leaf-core-v1",
+      "raw_arc_count_scope": "original full shard before parallel reduction and query pruning",
+      "release_eligible": false,
+      "resource_limits": {
+        "arcs": 40000000,
+        "nodes": 15000000
+      },
+      "road_coverage_certified": false,
+      "routing_model": "static-passenger-car-v2:directed-primitive-sparse-reference",
+      "turn_restrictions_modeled": false,
+      "unique_directed_pairs": 20799246,
+      "unsupported_direction_ways": 0,
+      "zero_length_primitive_arcs_retained": 2
+    }
+  ],
+  "query_core_audit": {
+    "access_certified": false,
+    "arbitrary_new_endpoints_supported": false,
+    "globally_surviving_shared_vertices": 179,
+    "original_directed_pairs": [
+      16068502,
+      28680488
+    ],
+    "original_shared_vertices": 245,
+    "policy": "query-protected-undirected-leaf-core-v1",
+    "protected_node_set_sha256": "5b4e72d086f9ddfd3c5c83582ab9bdf5a58482a2ee6bbec32627ac717cb1e6f7",
+    "protected_osm_node_ids": [
+      55793090,
+      83056045,
+      83265629,
+      121844170,
+      141021562,
+      141782050,
+      141871232,
+      143710319,
+      143742225,
+      143862641,
+      143904064,
+      144231228,
+      144605514,
+      145395841,
+      173831740,
+      174809100,
+      175234965,
+      175244806,
+      175789640,
+      176620315,
+      176623627,
+      191025595,
+      1795087746,
+      1851150729,
+      2274029984,
+      6350018589,
+      6718651421,
+      6970839916,
+      7044271750,
+      7298599564,
+      7786572989,
+      8446107003,
+      8499393844,
+      9066920518,
+      9743986364,
+      11347363705,
+      11754811626,
+      11866557610,
+      12985655919,
+      13427204837,
+      13604499946,
+      13970098408
+    ],
+    "query_view_nodes": [
+      5903288,
+      10082416
+    ],
+    "release_eligible": false,
+    "removed_node_entries_per_shard": [
+      2078053,
+      3964436
+    ],
+    "removed_nonquery_leaf_nodes": 5434035,
+    "removed_unqueried_component_nodes": 608388,
+    "retained_directed_pairs": [
+      11946302,
+      20799246
+    ],
+    "surviving_shared_vertices": 178
+  },
+  "retained_cost_comparison_statuses": {
+    "improved": 122,
+    "still_unreachable": 72,
+    "unchanged": 1678
+  },
+  "retained_costs_compared": 1872,
+  "scenario_id": "census-six-state-longitude-query-v1-cut-107.4-boundary-label-v1",
+  "schema": "kansas-two-partition-competition-v1",
+  "solver_policy": "boundary-label-v1",
+  "source_costs_computed": 2232
+}

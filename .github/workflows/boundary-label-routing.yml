@@ -2,6 +2,20 @@ name: Bounded boundary-label routing experiment
 on:
   pull_request:
     paths:
+      - 'scripts/six_state_checkpoint.py'
+      - 'scripts/metro_scenario_checkpoint.py'
+      - 'scripts/road_primitive_sparse.py'
+      - 'scripts/stream_osm_roads.py'
+      - 'scripts/colorado_raw_boundary_interfaces.py'
+      - 'scripts/road_source_fingerprint_store.py'
+      - 'scripts/road_partition_oracle.py'
+      - 'scripts/colorado_expanded_parent_competition.py'
+      - 'scripts/colorado_exterior_parent_competition.py'
+      - 'scripts/colorado_adjacent_source_interfaces.py'
+      - 'scripts/research-source-snapshots/**'
+      - 'docs/research/census-31-source-checkpoint/**'
+      - 'docs/research/census-26-source-checkpoint/**'
+      - 'docs/research/utah-parent-reference/domains.json'
       - 'scripts/road_boundary_label_oracle.py'
       - 'scripts/test_road_boundary_label_oracle.py'
       - 'scripts/kansas_two_partition_competition.py'
@@ -62,6 +76,8 @@ jobs:
           for flag in ('release_eligible','access_certified','road_coverage_certified','complete_global_competition','parent_exterior_coverage_certified','datum_alignment_verified'):
               assert r[flag] is False
           PY
+      - name: Preserve the separate 31-source checkpoint
+        run: python scripts/six_state_checkpoint.py result/report.json
       - uses: actions/upload-artifact@v6
         if: always()
         with:

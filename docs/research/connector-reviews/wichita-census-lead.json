@@ -1,0 +1,125 @@
+{
+  "access_verified": false,
+  "candidate": {
+    "approved": false,
+    "name": "Wichita unapproved primitive-vertex research lead",
+    "native_origin_lonlat": [
+      -97.2462875,
+      37.637896
+    ],
+    "road_node": 9066920518,
+    "road_node_lonlat": [
+      -97.2469028,
+      37.6363897
+    ]
+  },
+  "cbsa": "48620",
+  "decision": "reject_modeled_candidate",
+  "decision_reason": "The chosen vertex cannot serve the retained probes within the supplied static model: its six-node service-way component has no modeled outgoing adjacency to any outside native node. The metropolitan identity is retained and real-world access remains unresolved.",
+  "findings": {
+    "connector_cost": {
+      "reason": "The 176 m vertex gap is a diagnostic, not a traversable connector or charged driving cost.",
+      "sources": [
+        "component"
+      ],
+      "status": "unknown"
+    },
+    "direction_and_turns": {
+      "reason": "Weak-component separation prevents a modeled route in either direction; critical real-world approaches and turn permissions remain unreviewed.",
+      "sources": [
+        "component"
+      ],
+      "status": "unknown"
+    },
+    "legal_motor_access": {
+      "reason": "Outward ways carry OSM access=no tags; the service way lacks an access tag. These routing inputs are not an independent legal-access determination.",
+      "sources": [
+        "component"
+      ],
+      "status": "unknown"
+    },
+    "physical_connection": {
+      "reason": "The model proves a closed six-node component, but does not establish a physical drivable connector from the geographic origin or a real-world barrier.",
+      "sources": [
+        "component"
+      ],
+      "status": "unknown"
+    },
+    "same_grade": {
+      "reason": "Native-node connectivity is inspected, but no independent grade/crossing/entry evidence is retained.",
+      "sources": [
+        "component"
+      ],
+      "status": "unknown"
+    }
+  },
+  "limitations": "Reject this research start for the sampled model, not Wichita eligibility or real-world accessibility. The Census origin, driving filter, source inventory and #137 gate remain unchanged; a separately reviewed urban anchor still needs independent access evidence.",
+  "machine_assertions": [
+    {
+      "equals": 9066920518,
+      "keys": [
+        "source",
+        "node"
+      ],
+      "source": "component"
+    },
+    {
+      "equals": 6,
+      "keys": [
+        "weak_component_node_count"
+      ],
+      "source": "component"
+    },
+    {
+      "equals": true,
+      "keys": [
+        "all_retained_probes_outside_closed_component"
+      ],
+      "source": "component"
+    },
+    {
+      "equals": false,
+      "keys": [
+        "incident_raw_highways",
+        0,
+        "modeled"
+      ],
+      "source": "component"
+    },
+    {
+      "equals": false,
+      "keys": [
+        "incident_raw_highways",
+        1,
+        "modeled"
+      ],
+      "source": "component"
+    },
+    {
+      "equals": true,
+      "keys": [
+        "incident_raw_highways",
+        2,
+        "modeled"
+      ],
+      "source": "component"
+    }
+  ],
+  "origin_policy": "census-regression-v1",
+  "release_eligible": false,
+  "reviewer": {
+    "identity": "Codex (OpenAI), 2026-10-29",
+    "kind": "ai",
+    "procedure": "Inspect the original-point nearest-vertex choice and retained raw-way tags; reproduce bounded weak-component closure across all six exact PBFs; compare every retained probe identity against the closed component; distinguish modeled disconnection from real-world physical/legal access."
+  },
+  "schema": "ai-connector-review-v1",
+  "sources": [
+    {
+      "id": "component",
+      "kind": "routing_model",
+      "path": "docs/research/wichita-model-lead-negative.json",
+      "provenance": "Same-source raw OSM incident-way/weak-component audit, independent of the routing solver but not independent real-world access evidence.",
+      "sha256": "a0890ee00027421febb414da181202d20deb3e449a269173b56a3ce90c60eded"
+    }
+  ]
+}

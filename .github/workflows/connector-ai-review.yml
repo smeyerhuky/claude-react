@@ -8,6 +8,7 @@ on:
       - 'docs/research/denver-urban-anchor/**'
       - 'docs/research/missouri-arkansas-origin-evidence/**'
       - 'docs/research/tucson-unreachable-negative.json'
+      - 'docs/research/wichita-model-lead-negative.json'
       - 'docs/urban-access-anchor-policy.md'
       - '.github/workflows/connector-ai-review.yml'
   workflow_dispatch:

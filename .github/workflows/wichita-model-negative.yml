@@ -1,0 +1,37 @@
+name: Wichita model-lead component negative
+on:
+  pull_request:
+    paths:
+      - 'scripts/wichita_model_component.py'
+      - 'scripts/test_wichita_model_component.py'
+      - 'scripts/stream_osm_roads.py'
+      - 'scripts/colorado_raw_boundary_interfaces.py'
+      - 'scripts/colorado_adjacent_source_interfaces.py'
+      - 'docs/research/wichita-model-lead-negative.json'
+      - '.github/workflows/wichita-model-negative.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproduce-closed-component:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2'
+      - run: PYTHONPATH=scripts python -m unittest -v scripts/test_wichita_model_component.py
+      - name: Acquire the six exact inputs
+        run: |
+          for state in colorado new-mexico arizona utah oklahoma kansas; do
+            curl --fail --location --retry 3 --max-time 600 "https://download.geofabrik.de/north-america/us/$state-261027.osm.pbf" --output "$state.osm.pbf"
+          done
+      - name: Discover the bounded component and verify all six raw incident inventories
+        run: python -u scripts/wichita_model_component.py --parent-osm colorado.osm.pbf new-mexico.osm.pbf arizona.osm.pbf utah.osm.pbf oklahoma.osm.pbf kansas.osm.pbf --output result/negative.json
+      - uses: actions/upload-artifact@v6
+        with:
+          name: wichita-model-lead-negative
+          path: result/
+          retention-days: 14

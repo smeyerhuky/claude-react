@@ -1,0 +1,216 @@
+{
+  "access_verified": false,
+  "all_retained_probes_outside_closed_component": true,
+  "complete_global_competition": false,
+  "component_node_ids": [
+    9066920518,
+    9066920519,
+    9066920520,
+    9066920521,
+    9066920522,
+    9066920523
+  ],
+  "component_node_limit": 1000,
+  "discovery_pass_limit": 8,
+  "discovery_passes": 2,
+  "domains_sha256": "d860aef0a6ac2e442590098ed98a7cd601fa63764d8d76ba63e444bebcc5a260",
+  "incident_raw_highways": [
+    {
+      "modeled": false,
+      "node_ids": [
+        122314918,
+        9066920523,
+        11893036349,
+        122314922,
+        6260153530,
+        122314923
+      ],
+      "osm_way_id": 13250670,
+      "raw_way_fingerprint_sha256": "5679eaff13c95279009204e9ea486ee6a378f3a05803aa1f952a132308c02289",
+      "tags": {
+        "access": "no",
+        "highway": "residential",
+        "lanes": "2",
+        "name": "Winfield Street",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Sedgwick, KS",
+        "tiger:name_base": "Winfield",
+        "tiger:name_type": "St"
+      }
+    },
+    {
+      "modeled": false,
+      "node_ids": [
+        122314918,
+        6260153540,
+        9066920518,
+        6260153544,
+        9066920503,
+        6260153536,
+        6260153539,
+        9066920494,
+        6260153535,
+        122384270,
+        8577161381,
+        122337345
+      ],
+      "osm_way_id": 13255340,
+      "raw_way_fingerprint_sha256": "141018b07ed99d58e3c29807abc78897f5e82b09bd8091a6718c79861f8079b1",
+      "tags": {
+        "access": "no",
+        "highway": "residential",
+        "name": "Emporia Drive",
+        "name_1": "Emporia Court",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Sedgwick, KS",
+        "tiger:name_base": "Emporia",
+        "tiger:name_base_1": "Emporia",
+        "tiger:name_type": "Dr",
+        "tiger:name_type_1": "Ct"
+      }
+    },
+    {
+      "modeled": true,
+      "node_ids": [
+        9066920518,
+        9066920519,
+        9066920520,
+        9066920521,
+        9066920522,
+        9066920523
+      ],
+      "osm_way_id": 980133538,
+      "raw_way_fingerprint_sha256": "79d64348298dd94025fe62177c6b14f89cba46bcf8db705840a20593a0234e28",
+      "tags": {
+        "highway": "service"
+      }
+    }
+  ],
+  "incident_way_counts_by_source": {
+    "arizona.osm.pbf": 0,
+    "colorado.osm.pbf": 0,
+    "kansas.osm.pbf": 3,
+    "new-mexico.osm.pbf": 0,
+    "oklahoma.osm.pbf": 0,
+    "utah.osm.pbf": 0
+  },
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "native_coordinates": {
+    "9066920518": [
+      -97.2469028,
+      37.6363897
+    ],
+    "9066920519": [
+      -97.2468945,
+      37.6362995
+    ],
+    "9066920520": [
+      -97.2468762,
+      37.6362634
+    ],
+    "9066920521": [
+      -97.2466394,
+      37.635896
+    ],
+    "9066920522": [
+      -97.2466034,
+      37.6358854
+    ],
+    "9066920523": [
+      -97.2463581,
+      37.6358854
+    ]
+  },
+  "origin_moved": false,
+  "release_eligible": false,
+  "retained_census_checkpoint_sha256": "50bd53258391d080d75376bf1574ea7e83f6df4de9cb7eb63f03f3ff01db31d5",
+  "retained_probe_node_ids": [
+    141021562,
+    141782050,
+    143710319,
+    143742225,
+    143862641,
+    143904064,
+    144231228,
+    144605514,
+    145395841,
+    176620315,
+    176623627,
+    2274029984,
+    7044271750,
+    8446107003,
+    8499393844,
+    12985655919,
+    13604499946,
+    13970098408
+  ],
+  "road_coverage_certified": false,
+  "road_filter_changed": false,
+  "schema": "wichita-static-component-negative-v1",
+  "scope": "Exact six supplied PBFs and unchanged static driving filter; weak-component disconnection from all18 retained probes implies model unreachability in either direction. No real-world access or metro-eligibility conclusion.",
+  "source": {
+    "access_verified": false,
+    "cbsa": "48620",
+    "connector_costs_included": false,
+    "diagnostic_gap_m": 176.03791843503194,
+    "lead_policy": "unapproved-nearest-primitive-vertex-in-declared-kansas-containing-shard",
+    "native_origin_lonlat": [
+      -97.2462875,
+      37.637896
+    ],
+    "node": 9066920518,
+    "node_lonlat": [
+      -97.2469028,
+      37.6363897
+    ],
+    "query_view_membership_shards": [
+      1
+    ],
+    "source_membership_shards": [
+      1
+    ],
+    "source_shard": 1
+  },
+  "source_excluded": false,
+  "source_provenance": [
+    {
+      "name": "colorado.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+      "size_bytes": 386197077
+    },
+    {
+      "name": "new-mexico.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "2aa3ba0e91c0f19ffd0d614d98f112546552a51d02daf2474d8f06e54304508a",
+      "size_bytes": 136658631
+    },
+    {
+      "name": "arizona.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
+      "size_bytes": 304245283
+    },
+    {
+      "name": "utah.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "34f704431a8b3812372ec10083e151d4227a50caf19159fc9af730f942940c41",
+      "size_bytes": 170845020
+    },
+    {
+      "name": "oklahoma.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "4e76187cb20fd187d759de9565568381a76d87518377a0e03585d9865e498106",
+      "size_bytes": 169850063
+    },
+    {
+      "name": "kansas.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "eae1e55d59e8a15fe6abd7057b86098c6e03bb9a88b7997f46256ca59386f30e",
+      "size_bytes": 117395534
+    }
+  ],
+  "weak_component_node_count": 6
+}
