@@ -1,0 +1,74 @@
+name: Las Vegas protected probe extension
+on:
+  pull_request:
+    paths:
+      - 'scripts/road_transposed_probe_queries.py'
+      - 'scripts/test_road_transposed_probe_queries.py'
+      - 'scripts/las_vegas_probe_extension.py'
+      - 'scripts/las_vegas_probe_checkpoint.py'
+      - 'scripts/las_vegas_probe_reference.py'
+      - 'docs/research/las-vegas-probe-extension/**'
+      - '.github/workflows/las-vegas-probe-extension.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-originals-and-protected-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r docs/research/las-vegas-probe-extension/graph-runtime-requirements.txt
+      - run: python -m unittest discover -s scripts -p 'test_road_transposed_probe_queries.py' -v
+      - run: python -m unittest discover -s scripts -p 'test_road_boundary_label_batches.py' -v
+      - id: source-identity
+        run: |
+          python - <<'PYKEY'
+          import json,os,sys
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          from research_source_cache import cache_key,MANIFEST
+          with Path(os.environ['GITHUB_OUTPUT']).open('a') as handle:
+              handle.write('key='+cache_key(json.loads(MANIFEST.read_text()))+'\n')
+          PYKEY
+      - uses: actions/cache/restore@v4
+        with:
+          path: local-data/*.osm.pbf
+          key: ${{ steps.source-identity.outputs.key }}
+      - name: Recover and verify all eight exact original inputs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for state in colorado new-mexico arizona utah oklahoma kansas wyoming nevada; do
+            python scripts/fetch_research_source.py --source "$state.osm.pbf" --output "local-data/$state.osm.pbf"
+          done
+      - name: Rebuild protected views from originals before any temporary graph reuse
+        run: |
+          PYTHONPATH=scripts python -u - <<'PYPREPARE'
+          import os
+          from pathlib import Path
+          from las_vegas_probe_reference import verify,REFERENCE
+          from las_vegas_graph_views import NAMES,prepare
+          verify(REFERENCE/'retained33-source-report.json',require_current=True)
+          temporary=Path(os.environ['RUNNER_TEMP'])/'fresh-original44'
+          assert not temporary.exists(),'Never restore a derived graph from another execution'
+          prepare([Path('local-data')/n for n in NAMES],temporary)
+          PYPREPARE
+      - name: Compute the additional sample using only the remaining shared budget
+        run: |
+          set -o pipefail
+          mkdir -p result
+          python -u scripts/las_vegas_probe_extension.py --parent-osm local-data/colorado.osm.pbf local-data/new-mexico.osm.pbf local-data/arizona.osm.pbf local-data/utah.osm.pbf local-data/oklahoma.osm.pbf local-data/kansas.osm.pbf local-data/wyoming.osm.pbf local-data/nevada.osm.pbf --retained-report docs/research/las-vegas-probe-extension/retained33-source-report.json --session-cache "$RUNNER_TEMP/fresh-original44" --output result/probe-report.json 2>&1 | tee result/probe.log
+      - name: Audit every requested direction and exact native replay
+        run: python scripts/las_vegas_probe_checkpoint.py result/probe-report.json --retained-report docs/research/las-vegas-probe-extension/retained33-source-report.json
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: las-vegas-protected-probe
+          path: result/
+          retention-days: 14

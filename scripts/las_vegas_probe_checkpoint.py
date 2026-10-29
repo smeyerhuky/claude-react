@@ -3,19 +3,20 @@ import argparse,hashlib,json
 from fractions import Fraction
 from pathlib import Path
 from cheyenne_checkpoint import winners
-from las_vegas_checkpoint import project as previous_project
+from las_vegas_probe_reference import verify,REFERENCE
 from metro_scenario_checkpoint import FLAGS,project as common,require
 
 SCENARIO='census-eight-state-las-vegas-probe-v1-transposed-target-batches'
 
 
 def project(report,retained_report):
-    old=previous_project(retained_report);result=common(report);sources=report['sources'];source_nodes={s['cbsa']:s['node'] for s in sources};order=[s['node'] for s in sources]
+    bound,old,model_identity=verify(REFERENCE/'retained33-source-report.json');require(retained_report==bound,'Exact independent parent report required');result=common(report);sources=report['sources'];source_nodes={s['cbsa']:s['node'] for s in sources};order=[s['node'] for s in sources]
     candidate=next(s for s in old['sources'] if s['cbsa']=='29820');probe=candidate['node']
     require(report['schema']=='las-vegas-protected-probe-extension-v1' and report['scenario_id']==SCENARIO and report['solver_policy']=='single-probe-transposed-target-batches-v1','Separate protected-probe scenario required')
     require(result['sources']==old['sources'] and result['source_provenance']==old['source_provenance'] and result['domains_sha256']==old['domains_sha256'] and result['metric_units']==old['metric_units'],'Exact retained33-source graph, identities and metric units required')
     require(result['source_qualifying_cbsa_ids']==old['source_qualifying_cbsa_ids'] and result['unrepresented_source_qualifying_cbsa_ids']==old['unrepresented_source_qualifying_cbsa_ids'],'All367 qualifiers and334 unknown competitors required')
     identity=hashlib.sha256(json.dumps(old,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+    require(report['graph_model_sha256']==model_identity and report['retained33_raw_report_sha256']==hashlib.sha256((REFERENCE/'retained33-source-report.json').read_bytes()).hexdigest(),'Probe and parent graph policy or raw evidence differ')
     require(report['retained33_projection_sha256']==identity,'Retained33-source semantic identity changed')
     require(result['probe_coordinates_lonlat']=={str(probe):candidate['node_lonlat']} and probe in retained_report['query_core_audit']['protected_osm_node_ids'],'One already-protected Las Vegas road-node probe required')
     require(report['source_costs_computed']==report['new_probe_costs_computed']==132 and report['new_endpoints_added']==0 and len(result['cases'])==4,'All132 new costs without new graph endpoints required')
@@ -66,7 +67,7 @@ def project(report,retained_report):
     require(total_finite==result['finite_queries'],'Every finite probe result requires a native replay')
     self_rows=[r for c in report['comparisons'] for r in c['source_costs'] if r['cbsa']=='29820']
     require(len(self_rows)==4 and all(r['graph_only_cost']==0 and r['segments']==[] for r in self_rows),'Selected road-node identity must have zero graph cost without inventing a connector')
-    result.update(schema='census-33-source-protected-probe-regression-v1',scenario_id=SCENARIO,solver_policy='single-probe-transposed-target-batches-v1',retained33_projection_sha256=identity,**{f:False for f in FLAGS})
+    result.update(schema='census-33-source-protected-probe-regression-v1',scenario_id=SCENARIO,solver_policy='single-probe-transposed-target-batches-v1',retained33_projection_sha256=identity,graph_model_sha256=model_identity,**{f:False for f in FLAGS})
     return result
 
 
