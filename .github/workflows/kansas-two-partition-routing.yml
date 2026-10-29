@@ -1,7 +1,19 @@
-name: Kansas two-partition routing research
+name: Kansas bounded routing preflight
 on:
   pull_request:
     paths:
+      - 'scripts/road_longitude_partition.py'
+      - 'scripts/road_longitude_preflight.py'
+      - 'scripts/road_query_leaf_core.py'
+      - 'scripts/road_source_fingerprint_store.py'
+      - 'scripts/road_query_cut_diagnostic.py'
+      - 'scripts/kansas_longitude_sweep.py'
+      - 'scripts/test_road_query_cut_diagnostic.py'
+      - 'scripts/test_road_longitude_partition.py'
+      - 'scripts/test_road_longitude_preflight.py'
+      - 'scripts/test_road_query_leaf_core.py'
+      - 'scripts/test_road_source_fingerprint_store.py'
+      - 'docs/research/kansas-partition-layouts/**'
       - 'scripts/kansas_two_partition_competition.py'
       - 'scripts/test_kansas_two_partition_competition.py'
       - '.github/workflows/kansas-two-partition-routing.yml'
@@ -9,7 +21,7 @@ on:
 permissions:
   contents: read
 jobs:
-  six-state-paths:
+  six-state-negative:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
@@ -24,32 +36,33 @@ jobs:
           for state in colorado new-mexico arizona utah oklahoma kansas; do
             curl --fail --location --retry 3 --max-time 600 "https://download.geofabrik.de/north-america/us/$state-261027.osm.pbf" --output "$state.osm.pbf"
           done
-      - name: Preserve old sources and replay expanded-shard routes
+      - name: Reproduce the exact unscoped cut inventory
+        run: |
+          mkdir -p result
+          python -u scripts/kansas_longitude_sweep.py --parent-osm colorado.osm.pbf new-mexico.osm.pbf arizona.osm.pbf utah.osm.pbf oklahoma.osm.pbf kansas.osm.pbf --output result/longitude-sweep.json
+      - name: Reproduce the bounded rejection without claiming route coverage
         run: |
           set -o pipefail
-          mkdir result
-          python -u scripts/kansas_two_partition_competition.py --parent-osm colorado.osm.pbf new-mexico.osm.pbf arizona.osm.pbf utah.osm.pbf oklahoma.osm.pbf kansas.osm.pbf --output result/report.json 2>&1 | tee result/routing.log
+          mkdir -p result
+          python -u scripts/kansas_two_partition_competition.py --expect-interface-rejection --parent-osm colorado.osm.pbf new-mexico.osm.pbf arizona.osm.pbf utah.osm.pbf oklahoma.osm.pbf kansas.osm.pbf --output result/report.json 2>&1 | tee result/routing.log
           python - <<'PY'
           import json
           from pathlib import Path
           r=json.loads(Path('result/report.json').read_text())
-          assert len(r['sources'])==31 and len(r['comparisons'])==72
-          assert len(r['source_qualifying_cbsa_ids'])==367 and len(r['unrepresented_source_qualifying_cbsa_ids'])==336
-          assert r['retained_costs_compared']==1872 and r['source_costs_computed']==2232
-          assert all(len(c['source_costs'])==31 for c in r['comparisons'])
-          finite=sum(c['graph_only_cost'] is not None for row in r['comparisons'] for c in row['source_costs'])
-          assert finite==r['finite_queries_replayed']
-          assert r['partition_layout_id']=='central-western-v1'
-          assert r['new_source_costs_computed']==360
-          assert sum(r['retained_cost_comparison_statuses'].values())==1872
+          assert r['schema']=='kansas-two-partition-negative-v1'
+          assert r['status']=='blocked_by_interface_budget'
+          assert r['interface_port_count']==178 and r['interface_port_limit']==128
+          assert r['candidate_source_count']==31 and len(r['candidate_sources'])==31
+          assert r['candidate_sources_are_route_coverage'] is False
+          assert r['published_scenario_source_count']==26 and r['published_scenario_unknown_source_count']==341
+          assert r['source_costs_computed']==r['retained_costs_compared']==r['finite_queries_replayed']==0
+          assert len(r['query_cut_audit']['cuts'])==56
+          assert r['query_core_audit']['arbitrary_new_endpoints_supported'] is False
+          assert len(r['query_core_audit']['protected_osm_node_ids'])==42
           old={s['cbsa']:s for s in json.loads(Path('docs/research/census-26-source-checkpoint/baseline.json').read_text())['sources']}
-          assert all(s['retained_reference_record']==old[s['cbsa']] for s in r['sources'] if s['cbsa'] in old)
-          assert all(g['nodes']<=15000000 and g['directed_primitive_arcs']<=40000000 for g in r['partition_graphs'])
-          assert all(run['local_dijkstra_calls']<=512 and run['overlay_nodes']<=192 for run in r['local_oracle_runs'])
-          assert r['interface_audit']['flattened_road_union_constructed'] is False
-          assert len(r['interface_audit']['interface_ports'])<=128
-          assert r['applied_source_exclusions']==[]
-          assert all(s['access_verified'] is False and s['connector_costs_included'] is False for s in r['sources'])
+          assert all(s['retained_reference_record']==old[s['cbsa']] for s in r['candidate_sources'] if s['cbsa'] in old)
+          assert all(g['nodes']<=15000000 and g['directed_primitive_arcs']<=40000000 for g in r['full_partition_graphs'])
+          assert all(s['access_verified'] is False and s['connector_costs_included'] is False for s in r['candidate_sources'])
           for flag in ('release_eligible','access_certified','road_coverage_certified','complete_global_competition','parent_exterior_coverage_certified','datum_alignment_verified'):
               assert r[flag] is False
           PY

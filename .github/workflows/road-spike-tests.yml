@@ -2,6 +2,18 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/road_longitude_partition.py'
+      - 'scripts/road_longitude_preflight.py'
+      - 'scripts/road_query_leaf_core.py'
+      - 'scripts/road_source_fingerprint_store.py'
+      - 'scripts/road_query_cut_diagnostic.py'
+      - 'scripts/kansas_longitude_sweep.py'
+      - 'scripts/test_road_query_cut_diagnostic.py'
+      - 'scripts/test_road_longitude_partition.py'
+      - 'scripts/test_road_longitude_preflight.py'
+      - 'scripts/test_road_query_leaf_core.py'
+      - 'scripts/test_road_source_fingerprint_store.py'
+      - 'docs/research/kansas-partition-layouts/**'
       - 'scripts/kansas_two_partition_competition.py'
       - 'scripts/test_kansas_two_partition_competition.py'
       - 'scripts/metro_competitor_review_queue.py'

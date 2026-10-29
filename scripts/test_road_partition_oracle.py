@@ -3,7 +3,7 @@ import random
 
 import networkx as nx
 
-from road_partition_oracle import TwoPartitionOracle
+from road_partition_oracle import TwoPartitionOracle, InterfacePortBudgetExceeded
 from road_primitive_sparse import PrimitiveSparseBuilder
 
 
@@ -151,8 +151,11 @@ class PartitionTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 TwoPartitionOracle(p, q)
         p, q = fixture()
-        with self.assertRaises(ValueError):
+        with self.assertRaises(InterfacePortBudgetExceeded) as caught:
             TwoPartitionOracle(p, q, max_ports=1)
+        self.assertEqual(caught.exception.limit,1)
+        self.assertGreater(caught.exception.count,1)
+        self.assertIn(str(caught.exception.count),str(caught.exception))
         oracle = TwoPartitionOracle(p, q)
         for sources, targets, budget in (([999], [1], 512), ([1, 1], [6], 512), ([1], [6], 1)):
             with self.assertRaises(ValueError):

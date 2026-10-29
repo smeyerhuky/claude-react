@@ -1,0 +1,120 @@
+{
+  "access_certified": false,
+  "layout": "longitude-query-v1",
+  "longitude_cut": -107.4,
+  "observation": "local run; not fresh CI and no route cases completed",
+  "outcome": "TwoPartitionOracle rejected interface port budget before routing; active shared-node count is not asserted to equal port count",
+  "query_core_audit": {
+    "access_certified": false,
+    "arbitrary_new_endpoints_supported": false,
+    "globally_surviving_shared_vertices": 179,
+    "original_directed_pairs": [
+      16068502,
+      28680488
+    ],
+    "original_shared_vertices": 245,
+    "policy": "query-protected-undirected-leaf-core-v1",
+    "protected_node_set_sha256": "5b4e72d086f9ddfd3c5c83582ab9bdf5a58482a2ee6bbec32627ac717cb1e6f7",
+    "protected_osm_node_ids": [
+      55793090,
+      83056045,
+      83265629,
+      121844170,
+      141021562,
+      141782050,
+      141871232,
+      143710319,
+      143742225,
+      143862641,
+      143904064,
+      144231228,
+      144605514,
+      145395841,
+      173831740,
+      174809100,
+      175234965,
+      175244806,
+      175789640,
+      176620315,
+      176623627,
+      191025595,
+      1795087746,
+      1851150729,
+      2274029984,
+      6350018589,
+      6718651421,
+      6970839916,
+      7044271750,
+      7298599564,
+      7786572989,
+      8446107003,
+      8499393844,
+      9066920518,
+      9743986364,
+      11347363705,
+      11754811626,
+      11866557610,
+      12985655919,
+      13427204837,
+      13604499946,
+      13970098408
+    ],
+    "query_view_nodes": [
+      5903288,
+      10082416
+    ],
+    "release_eligible": false,
+    "removed_node_entries_per_shard": [
+      2078053,
+      3964436
+    ],
+    "removed_nonquery_leaf_nodes": 5434035,
+    "removed_unqueried_component_nodes": 608388,
+    "retained_directed_pairs": [
+      11946302,
+      20799246
+    ],
+    "surviving_shared_vertices": 178
+  },
+  "release_eligible": false,
+  "schema": "kansas-query-core-negative-v1",
+  "source_provenance": [
+    {
+      "name": "colorado.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+      "size_bytes": 386197077
+    },
+    {
+      "name": "new-mexico.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "2aa3ba0e91c0f19ffd0d614d98f112546552a51d02daf2474d8f06e54304508a",
+      "size_bytes": 136658631
+    },
+    {
+      "name": "arizona.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
+      "size_bytes": 304245283
+    },
+    {
+      "name": "utah.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "34f704431a8b3812372ec10083e151d4227a50caf19159fc9af730f942940c41",
+      "size_bytes": 170845020
+    },
+    {
+      "name": "oklahoma.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "4e76187cb20fd187d759de9565568381a76d87518377a0e03585d9865e498106",
+      "size_bytes": 169850063
+    },
+    {
+      "name": "kansas.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "eae1e55d59e8a15fe6abd7057b86098c6e03bb9a88b7997f46256ca59386f30e",
+      "size_bytes": 117395534
+    }
+  ],
+  "unchanged_interface_port_limit": 128
+}

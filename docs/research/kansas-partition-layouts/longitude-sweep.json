@@ -1,0 +1,839 @@
+{
+  "access_certified": false,
+  "cuts": [
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -109.5,
+      "node_arc_budgets_pass": false,
+      "partition_nodes": [
+        6265559,
+        15762658
+      ],
+      "partition_raw_arcs": [
+        12605598,
+        32143624
+      ],
+      "shared_node_count": 268
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -109.4,
+      "node_arc_budgets_pass": false,
+      "partition_nodes": [
+        6333190,
+        15695026
+      ],
+      "partition_raw_arcs": [
+        12742107,
+        32007115
+      ],
+      "shared_node_count": 267
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -109.3,
+      "node_arc_budgets_pass": false,
+      "partition_nodes": [
+        6400792,
+        15627424
+      ],
+      "partition_raw_arcs": [
+        12878286,
+        31870936
+      ],
+      "shared_node_count": 267
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -109.2,
+      "node_arc_budgets_pass": false,
+      "partition_nodes": [
+        6459409,
+        15568753
+      ],
+      "partition_raw_arcs": [
+        12996465,
+        31752757
+      ],
+      "shared_node_count": 213
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -109.1,
+      "node_arc_budgets_pass": false,
+      "partition_nodes": [
+        6518487,
+        15509663
+      ],
+      "partition_raw_arcs": [
+        13115075,
+        31634147
+      ],
+      "shared_node_count": 201
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -109.0,
+      "node_arc_budgets_pass": false,
+      "partition_nodes": [
+        6579419,
+        15448742
+      ],
+      "partition_raw_arcs": [
+        13237898,
+        31511324
+      ],
+      "shared_node_count": 212
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -108.9,
+      "node_arc_budgets_pass": false,
+      "partition_nodes": [
+        6638613,
+        15389569
+      ],
+      "partition_raw_arcs": [
+        13356552,
+        31392670
+      ],
+      "shared_node_count": 233
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -108.8,
+      "node_arc_budgets_pass": false,
+      "partition_nodes": [
+        6704256,
+        15323926
+      ],
+      "partition_raw_arcs": [
+        13488764,
+        31260458
+      ],
+      "shared_node_count": 233
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -108.7,
+      "node_arc_budgets_pass": false,
+      "partition_nodes": [
+        6784478,
+        15243745
+      ],
+      "partition_raw_arcs": [
+        13650621,
+        31098601
+      ],
+      "shared_node_count": 274
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -108.6,
+      "node_arc_budgets_pass": false,
+      "partition_nodes": [
+        6862071,
+        15166181
+      ],
+      "partition_raw_arcs": [
+        13806143,
+        30943079
+      ],
+      "shared_node_count": 303
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -108.5,
+      "node_arc_budgets_pass": false,
+      "partition_nodes": [
+        6961111,
+        15067147
+      ],
+      "partition_raw_arcs": [
+        14005837,
+        30743385
+      ],
+      "shared_node_count": 309
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -108.4,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        7031015,
+        14997208
+      ],
+      "partition_raw_arcs": [
+        14145755,
+        30603467
+      ],
+      "shared_node_count": 274
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -108.3,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        7105019,
+        14923247
+      ],
+      "partition_raw_arcs": [
+        14294788,
+        30454434
+      ],
+      "shared_node_count": 317
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -108.2,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        7197961,
+        14830290
+      ],
+      "partition_raw_arcs": [
+        14481415,
+        30267807
+      ],
+      "shared_node_count": 302
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -108.1,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        7302476,
+        14725750
+      ],
+      "partition_raw_arcs": [
+        14692575,
+        30056647
+      ],
+      "shared_node_count": 277
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -108.0,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        7397451,
+        14630836
+      ],
+      "partition_raw_arcs": [
+        14883954,
+        29865268
+      ],
+      "shared_node_count": 338
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -107.9,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        7501196,
+        14527105
+      ],
+      "partition_raw_arcs": [
+        15093248,
+        29655974
+      ],
+      "shared_node_count": 352
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -107.8,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        7627207,
+        14401146
+      ],
+      "partition_raw_arcs": [
+        15348074,
+        29401148
+      ],
+      "shared_node_count": 404
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -107.7,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        7733113,
+        14295206
+      ],
+      "partition_raw_arcs": [
+        15565219,
+        29184003
+      ],
+      "shared_node_count": 370
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -107.6,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        7834422,
+        14193868
+      ],
+      "partition_raw_arcs": [
+        15771427,
+        28977795
+      ],
+      "shared_node_count": 341
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -107.5,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        7918113,
+        14110153
+      ],
+      "partition_raw_arcs": [
+        15940564,
+        28808658
+      ],
+      "shared_node_count": 317
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -107.4,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        7981341,
+        14046853
+      ],
+      "partition_raw_arcs": [
+        16068555,
+        28680667
+      ],
+      "shared_node_count": 245
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -107.3,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        8064818,
+        13963472
+      ],
+      "partition_raw_arcs": [
+        16236619,
+        28512603
+      ],
+      "shared_node_count": 341
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -107.2,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        8156354,
+        13871844
+      ],
+      "partition_raw_arcs": [
+        16420501,
+        28328721
+      ],
+      "shared_node_count": 249
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -107.1,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        8227875,
+        13800358
+      ],
+      "partition_raw_arcs": [
+        16563200,
+        28186022
+      ],
+      "shared_node_count": 284
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -107.0,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        8297634,
+        13730604
+      ],
+      "partition_raw_arcs": [
+        16703468,
+        28045754
+      ],
+      "shared_node_count": 289
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -106.9,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        8405240,
+        13623104
+      ],
+      "partition_raw_arcs": [
+        16919469,
+        27829753
+      ],
+      "shared_node_count": 395
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -106.8,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        8525371,
+        13503019
+      ],
+      "partition_raw_arcs": [
+        17161191,
+        27588031
+      ],
+      "shared_node_count": 441
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -106.7,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        8725014,
+        13303529
+      ],
+      "partition_raw_arcs": [
+        17560383,
+        27188839
+      ],
+      "shared_node_count": 594
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -106.6,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        8953302,
+        13075192
+      ],
+      "partition_raw_arcs": [
+        18014772,
+        26734450
+      ],
+      "shared_node_count": 545
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -106.5,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        9134391,
+        12893954
+      ],
+      "partition_raw_arcs": [
+        18379334,
+        26369888
+      ],
+      "shared_node_count": 396
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -106.4,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        9218596,
+        12809621
+      ],
+      "partition_raw_arcs": [
+        18546516,
+        26202706
+      ],
+      "shared_node_count": 268
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -106.3,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        9316126,
+        12712173
+      ],
+      "partition_raw_arcs": [
+        18741572,
+        26007650
+      ],
+      "shared_node_count": 350
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -106.2,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        9388291,
+        12639968
+      ],
+      "partition_raw_arcs": [
+        18886744,
+        25862478
+      ],
+      "shared_node_count": 310
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -106.1,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        9470881,
+        12557511
+      ],
+      "partition_raw_arcs": [
+        19053538,
+        25695684
+      ],
+      "shared_node_count": 443
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -106.0,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        9624184,
+        12404202
+      ],
+      "partition_raw_arcs": [
+        19356420,
+        25392802
+      ],
+      "shared_node_count": 437
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -105.9,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        9781618,
+        12246763
+      ],
+      "partition_raw_arcs": [
+        19672939,
+        25076283
+      ],
+      "shared_node_count": 432
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -105.8,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        9882544,
+        12145664
+      ],
+      "partition_raw_arcs": [
+        19876876,
+        24872346
+      ],
+      "shared_node_count": 259
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -105.7,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        9981916,
+        12046395
+      ],
+      "partition_raw_arcs": [
+        20075466,
+        24673756
+      ],
+      "shared_node_count": 362
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -105.6,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        10100202,
+        11928191
+      ],
+      "partition_raw_arcs": [
+        20312689,
+        24436533
+      ],
+      "shared_node_count": 444
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -105.5,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        10244083,
+        11784262
+      ],
+      "partition_raw_arcs": [
+        20602175,
+        24147047
+      ],
+      "shared_node_count": 396
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -105.4,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        10408809,
+        11619562
+      ],
+      "partition_raw_arcs": [
+        20932017,
+        23817205
+      ],
+      "shared_node_count": 422
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -105.3,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        10600472,
+        11427890
+      ],
+      "partition_raw_arcs": [
+        21315191,
+        23434031
+      ],
+      "shared_node_count": 413
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -105.2,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        10847536,
+        11181000
+      ],
+      "partition_raw_arcs": [
+        21808419,
+        22940803
+      ],
+      "shared_node_count": 587
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -105.1,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        11220563,
+        10808342
+      ],
+      "partition_raw_arcs": [
+        22550029,
+        22199193
+      ],
+      "shared_node_count": 956
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -105.0,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        11748330,
+        10280619
+      ],
+      "partition_raw_arcs": [
+        23618725,
+        21130497
+      ],
+      "shared_node_count": 1000
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -104.9,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        12197650,
+        9831261
+      ],
+      "partition_raw_arcs": [
+        24517945,
+        20231277
+      ],
+      "shared_node_count": 962
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -104.8,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        12774985,
+        9254281
+      ],
+      "partition_raw_arcs": [
+        25639644,
+        19109578
+      ],
+      "shared_node_count": 1317
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -104.7,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        13409298,
+        8619763
+      ],
+      "partition_raw_arcs": [
+        26880934,
+        17868288
+      ],
+      "shared_node_count": 1112
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -104.6,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        13668203,
+        8360359
+      ],
+      "partition_raw_arcs": [
+        27404994,
+        17344228
+      ],
+      "shared_node_count": 613
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -104.5,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        13814623,
+        8213811
+      ],
+      "partition_raw_arcs": [
+        27708141,
+        17041081
+      ],
+      "shared_node_count": 485
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -104.4,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        13908688,
+        8119725
+      ],
+      "partition_raw_arcs": [
+        27899972,
+        16849250
+      ],
+      "shared_node_count": 464
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -104.3,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        13977903,
+        8050403
+      ],
+      "partition_raw_arcs": [
+        28041172,
+        16708050
+      ],
+      "shared_node_count": 357
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -104.2,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        14041427,
+        7986873
+      ],
+      "partition_raw_arcs": [
+        28172910,
+        16576312
+      ],
+      "shared_node_count": 351
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -104.1,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        14082941,
+        7945366
+      ],
+      "partition_raw_arcs": [
+        28257382,
+        16491840
+      ],
+      "shared_node_count": 358
+    },
+    {
+      "interface_cardinality_bound_pass": false,
+      "longitude_cut": -104.0,
+      "node_arc_budgets_pass": true,
+      "partition_nodes": [
+        14123630,
+        7904569
+      ],
+      "partition_raw_arcs": [
+        28340876,
+        16408346
+      ],
+      "shared_node_count": 250
+    }
+  ],
+  "duplicate_raw_highways_verified": 4561,
+  "fingerprint_cache_mib_limit": 64,
+  "fingerprint_database_byte_limit": 1000000000,
+  "fingerprint_database_bytes": 256143360,
+  "fingerprint_record_limit": 10000000,
+  "raw_directed_arcs": 44749222,
+  "raw_fingerprint_records": 5361155,
+  "release_eligible": false,
+  "schema": "longitude-midpoint-sweep-preflight-v1",
+  "selected_candidate": null,
+  "source_provenance": [
+    {
+      "name": "colorado.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+      "size_bytes": 386197077
+    },
+    {
+      "name": "new-mexico.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "2aa3ba0e91c0f19ffd0d614d98f112546552a51d02daf2474d8f06e54304508a",
+      "size_bytes": 136658631
+    },
+    {
+      "name": "arizona.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
+      "size_bytes": 304245283
+    },
+    {
+      "name": "utah.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "34f704431a8b3812372ec10083e151d4227a50caf19159fc9af730f942940c41",
+      "size_bytes": 170845020
+    },
+    {
+      "name": "oklahoma.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "4e76187cb20fd187d759de9565568381a76d87518377a0e03585d9865e498106",
+      "size_bytes": 169850063
+    },
+    {
+      "name": "kansas.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "eae1e55d59e8a15fe6abd7057b86098c6e03bb9a88b7997f46256ca59386f30e",
+      "size_bytes": 117395534
+    }
+  ],
+  "union_modeled_nodes": 22027949,
+  "warning": "Exact input-specific node/arc membership sweep only, not CSR routing/access or geographic certification. Segment ownership uses midpoint longitude; no new boundary nodes or omitted segments."
+}
