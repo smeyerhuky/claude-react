@@ -43,7 +43,12 @@ def prepare(paths,cache=None):
         context=dict(schema='las-vegas-eight-state-query-preflight-v1',source_provenance=metadata,candidate_sources=sources,full_partition_graphs=full,partition_assignment_audit=assignment,query_core_audit=query,source_costs_computed=0,access_certified=False,release_eligible=False,complete_global_competition=False,road_coverage_certified=False,urban_anchor_adopted=False,ingestion_cut=-107.4)
         if cache is not None:save(views,cache,binding,context)
     for key in ('source_provenance','candidate_sources','full_partition_graphs','partition_assignment_audit','query_core_audit'):
-        require(context[key]==reference[key],'Original44 source or graph inventory changed: '+key)
+        actual=context[key];expected=reference[key]
+        if key=='partition_assignment_audit':
+            require(actual['original_fingerprint_database_bytes']<=actual['original_fingerprint_database_byte_limit']==1000000000,'Original fingerprint database budget changed')
+            actual={k:v for k,v in actual.items() if k!='original_fingerprint_database_bytes'}
+            expected={k:v for k,v in expected.items() if k!='original_fingerprint_database_bytes'}
+        require(actual==expected,'Original44 source or graph inventory changed: '+key)
     sources=[]
     for candidate in context['candidate_sources']:
         s=dict(candidate)

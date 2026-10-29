@@ -1,0 +1,64 @@
+name: Las Vegas bounded33-source comparison
+on:
+  pull_request:
+    paths:
+      - 'scripts/las_vegas_graph_views.py'
+      - 'scripts/las_vegas_query_competition.py'
+      - 'scripts/las_vegas_checkpoint.py'
+      - 'scripts/road_boundary_label_batches.py'
+      - 'scripts/road_boundary_label_oracle.py'
+      - 'scripts/road_query_repartition.py'
+      - 'docs/research/las-vegas-partition-layout/**'
+      - '.github/workflows/las-vegas-query-competition.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-eight-state33-source-costs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2'
+      - run: python -m unittest discover -s scripts -p 'test_road_boundary_label_batches.py' -v
+      - run: python -m unittest discover -s scripts -p 'test_road_boundary_label_oracle.py' -v
+      - run: python -m unittest discover -s scripts -p 'test_cheyenne_checkpoint.py' -v
+      - id: source-identity
+        run: |
+          python - <<'PYKEY'
+          import json,os,sys
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          from research_source_cache import cache_key,MANIFEST
+          with Path(os.environ['GITHUB_OUTPUT']).open('a') as handle:
+              handle.write('key='+cache_key(json.loads(MANIFEST.read_text()))+'\n')
+          PYKEY
+      - uses: actions/cache/restore@v4
+        with:
+          path: local-data/*.osm.pbf
+          key: ${{ steps.source-identity.outputs.key }}
+      - name: Recover and verify eight exact original inputs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for state in colorado new-mexico arizona utah oklahoma kansas wyoming nevada; do
+            python scripts/fetch_research_source.py --source "$state.osm.pbf" --output "local-data/$state.osm.pbf"
+          done
+      - name: Independently rebuild all graphs and replay all2376 costs
+        run: |
+          set -o pipefail
+          mkdir -p result
+          python -u scripts/las_vegas_query_competition.py --parent-osm local-data/colorado.osm.pbf local-data/new-mexico.osm.pbf local-data/arizona.osm.pbf local-data/utah.osm.pbf local-data/oklahoma.osm.pbf local-data/kansas.osm.pbf local-data/wyoming.osm.pbf local-data/nevada.osm.pbf --output result/report.json 2>&1 | tee result/routing.log
+      - name: Audit all source bindings, native legs and shared budgets
+        run: python scripts/las_vegas_checkpoint.py result/report.json
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: las-vegas33-source-comparison
+          path: result/
+          retention-days: 14
