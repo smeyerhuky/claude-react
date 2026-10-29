@@ -1,0 +1,102 @@
+{
+  "access_verified": false,
+  "candidate": {
+    "approved": false,
+    "name": "Springfield, MO Metro Area",
+    "native_origin_lonlat": [
+      -93.1802617,
+      37.3608699
+    ],
+    "observations": [
+      {
+        "adopted_as_connector": false,
+        "extract": "missouri",
+        "gap_m": 344.38848006461217,
+        "osm_way_id": 887513769,
+        "projection_lonlat": [
+          -93.1841305,
+          37.3612395
+        ]
+      }
+    ],
+    "scope": "Original-point regression investigation; no urban anchor or connector adopted"
+  },
+  "cbsa": "44180",
+  "decision": "needs_evidence",
+  "findings": {
+    "connector_cost": {
+      "reason": "A straight-line projection gap is not a traversable connector cost. No cost is adopted or silently set to zero.",
+      "sources": [
+        "missouri"
+      ],
+      "status": "unknown"
+    },
+    "direction_and_turns": {
+      "reason": "The scan distinguishes model-eligible ways but does not review directed connector approaches, critical maneuvers or turn restrictions.",
+      "sources": [
+        "missouri"
+      ],
+      "status": "unknown"
+    },
+    "legal_motor_access": {
+      "reason": "OSM driving-filter eligibility and absent restriction tags do not establish legal permission. No independent road-authority or property-access record for a specific connector is retained.",
+      "sources": [
+        "missouri"
+      ],
+      "status": "unknown"
+    },
+    "physical_connection": {
+      "reason": "Per-extract projected centerline gaps are not inspected drivable paths from the native Census point. No entry/exit route or barrier crossing is established.",
+      "sources": [
+        "missouri"
+      ],
+      "status": "unknown"
+    },
+    "same_grade": {
+      "reason": "Nearest geometry does not establish grade, driveway connectivity or barrier-free access. The scan has no independently reviewed vertical or crossing evidence.",
+      "sources": [
+        "missouri"
+      ],
+      "status": "unknown"
+    }
+  },
+  "limitations": "Source/25km-radius-limited native-point geometry investigation. Not a reviewed urban access anchor, legal survey, vehicle connector or geographic closure. Separate #137 access-evidence and approval requirements remain intact.",
+  "machine_assertions": [
+    {
+      "equals": "44180",
+      "keys": [
+        "metros",
+        2,
+        "cbsa"
+      ],
+      "source": "missouri"
+    },
+    {
+      "equals": 887513769,
+      "keys": [
+        "metros",
+        2,
+        "nearest_model_drivable_highway",
+        "osm_way_id"
+      ],
+      "source": "missouri"
+    }
+  ],
+  "origin_policy": "census-regression-v1",
+  "release_eligible": false,
+  "reviewer": {
+    "identity": "Codex (OpenAI), 2026-10-29",
+    "kind": "ai",
+    "procedure": "Read all retained selected-extract observations and exact-input manifest; compare cross-border nearest mapped and model-supported geometry; distinguish model filtering from real legal/physical entry; answer every access question without treating proximity, raw tags or green replay CI as certification."
+  },
+  "schema": "ai-connector-review-v1",
+  "sources": [
+    {
+      "id": "missouri",
+      "kind": "routing_model",
+      "path": "docs/research/missouri-arkansas-origin-evidence/missouri-origins.json",
+      "provenance": "Exact dated missouri OSM extract native-point scan. Full PBF identity, epoch, CSV identity and reproduction command are bound by the research manifest; not independent legal/physical access evidence.",
+      "sha256": "4dacce2e952c6e71c74b0441666b4faa11ff3e55cc5937b1a6453e450eeeb473"
+    }
+  ]
+}

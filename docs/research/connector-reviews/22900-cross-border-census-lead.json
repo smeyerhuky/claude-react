@@ -1,0 +1,143 @@
+{
+  "access_verified": false,
+  "candidate": {
+    "approved": false,
+    "name": "Fort Smith, AR-OK Metro Area",
+    "native_origin_lonlat": [
+      -94.448349,
+      35.4290883
+    ],
+    "observations": [
+      {
+        "adopted_as_connector": false,
+        "extract": "arkansas",
+        "gap_m": 900.7376889294686,
+        "osm_way_id": 378149497,
+        "projection_lonlat": [
+          -94.43852304520959,
+          35.430319239610846
+        ]
+      },
+      {
+        "adopted_as_connector": false,
+        "extract": "oklahoma",
+        "gap_m": 900.7376889294686,
+        "osm_way_id": 378149497,
+        "projection_lonlat": [
+          -94.43852304520959,
+          35.430319239610846
+        ]
+      }
+    ],
+    "scope": "Original-point regression investigation; no urban anchor or connector adopted"
+  },
+  "cbsa": "22900",
+  "decision": "needs_evidence",
+  "findings": {
+    "connector_cost": {
+      "reason": "A straight-line projection gap is not a traversable connector cost. No cost is adopted or silently set to zero.",
+      "sources": [
+        "arkansas",
+        "oklahoma"
+      ],
+      "status": "unknown"
+    },
+    "direction_and_turns": {
+      "reason": "The scan distinguishes model-eligible ways but does not review directed connector approaches, critical maneuvers or turn restrictions.",
+      "sources": [
+        "arkansas",
+        "oklahoma"
+      ],
+      "status": "unknown"
+    },
+    "legal_motor_access": {
+      "reason": "OSM driving-filter eligibility and absent restriction tags do not establish legal permission. No independent road-authority or property-access record for a specific connector is retained.",
+      "sources": [
+        "arkansas",
+        "oklahoma"
+      ],
+      "status": "unknown"
+    },
+    "physical_connection": {
+      "reason": "Per-extract projected centerline gaps are not inspected drivable paths from the native Census point. No entry/exit route or barrier crossing is established.",
+      "sources": [
+        "arkansas",
+        "oklahoma"
+      ],
+      "status": "unknown"
+    },
+    "same_grade": {
+      "reason": "Nearest geometry does not establish grade, driveway connectivity or barrier-free access. The scan has no independently reviewed vertical or crossing evidence.",
+      "sources": [
+        "arkansas",
+        "oklahoma"
+      ],
+      "status": "unknown"
+    }
+  },
+  "limitations": "Source/25km-radius-limited native-point geometry investigation. Not a reviewed urban access anchor, legal survey, vehicle connector or geographic closure. Separate #137 access-evidence and approval requirements remain intact.",
+  "machine_assertions": [
+    {
+      "equals": "22900",
+      "keys": [
+        "metros",
+        1,
+        "cbsa"
+      ],
+      "source": "arkansas"
+    },
+    {
+      "equals": 378149497,
+      "keys": [
+        "metros",
+        1,
+        "nearest_model_drivable_highway",
+        "osm_way_id"
+      ],
+      "source": "arkansas"
+    },
+    {
+      "equals": "22900",
+      "keys": [
+        "metros",
+        0,
+        "cbsa"
+      ],
+      "source": "oklahoma"
+    },
+    {
+      "equals": 378149497,
+      "keys": [
+        "metros",
+        0,
+        "nearest_model_drivable_highway",
+        "osm_way_id"
+      ],
+      "source": "oklahoma"
+    }
+  ],
+  "origin_policy": "census-regression-v1",
+  "release_eligible": false,
+  "reviewer": {
+    "identity": "Codex (OpenAI), 2026-10-29",
+    "kind": "ai",
+    "procedure": "Read all retained selected-extract observations and exact-input manifest; compare cross-border nearest mapped and model-supported geometry; distinguish model filtering from real legal/physical entry; answer every access question without treating proximity, raw tags or green replay CI as certification."
+  },
+  "schema": "ai-connector-review-v1",
+  "sources": [
+    {
+      "id": "arkansas",
+      "kind": "routing_model",
+      "path": "docs/research/missouri-arkansas-origin-evidence/arkansas-origins.json",
+      "provenance": "Exact dated arkansas OSM extract native-point scan. Full PBF identity, epoch, CSV identity and reproduction command are bound by the research manifest; not independent legal/physical access evidence.",
+      "sha256": "abb73290cdc2a6ae05115e14c31d4edf468f0886a45b16f3ae83ab36b2e70893"
+    },
+    {
+      "id": "oklahoma",
+      "kind": "routing_model",
+      "path": "docs/research/missouri-arkansas-origin-evidence/oklahoma-origins.json",
+      "provenance": "Exact dated oklahoma OSM extract native-point scan. Full PBF identity, epoch, CSV identity and reproduction command are bound by the research manifest; not independent legal/physical access evidence.",
+      "sha256": "b775565166ccd4f4e6be2b49fdc6cc7335be720db90ef5e98e7074470e7c7c68"
+    }
+  ]
+}
