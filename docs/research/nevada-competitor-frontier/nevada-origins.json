@@ -1,0 +1,94 @@
+{
+  "access_verified": false,
+  "extract_coverage_certified": false,
+  "highway_ways_with_missing_locations": 0,
+  "limitations": "Nearest geometry only within supplied PBF and search radius; OSM tags and modeled driving eligibility do not prove physical/legal entry; representative points are not verified urban access anchors",
+  "method": "Raw PBF highway-way scan; no contracted graph or SegmentGridIndex; local equirectangular projection with spherical gap distance",
+  "metros": [
+    {
+      "cbsa": "29820",
+      "name": "Las Vegas-Henderson-North Las Vegas, NV Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 16.49055607300309,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 815168941,
+        "osm_way_url": "https://www.openstreetmap.org/way/815168941",
+        "projection_lonlat": [
+          -115.014279561232,
+          36.214015883761235
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 16.49055607300309,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 815168941,
+        "osm_way_url": "https://www.openstreetmap.org/way/815168941",
+        "projection_lonlat": [
+          -115.014279561232,
+          36.214015883761235
+        ]
+      },
+      "origin_lonlat": [
+        -115.0143977,
+        36.2141295
+      ]
+    },
+    {
+      "cbsa": "39900",
+      "name": "Reno, NV Metro Area",
+      "nearest_mapped_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 596.2407355685356,
+        "highway": "track",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 14378232,
+        "osm_way_url": "https://www.openstreetmap.org/way/14378232",
+        "projection_lonlat": [
+          -119.54924448197521,
+          40.25348784794968
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 14498.804710940465,
+        "highway": "residential",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "Schell Creek Ranch Road",
+        "osm_way_id": 14388935,
+        "osm_way_url": "https://www.openstreetmap.org/way/14388935",
+        "projection_lonlat": [
+          -119.386347,
+          40.232922
+        ]
+      },
+      "origin_lonlat": [
+        -119.5555069,
+        40.2510571
+      ]
+    }
+  ],
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "osm_sha256": "4cc689a971124a50d1ffe169e93a4c69542f478e47b6164007dd6e57f85650b5",
+  "release_eligible": false,
+  "scan_radius_m": 25000.0,
+  "schema_version": "colorado-raw-origin-investigation-v1"
+}

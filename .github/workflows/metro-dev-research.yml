@@ -24,6 +24,7 @@ on:
       - 'docs/research/missouri-arkansas-origin-evidence/**'
       - 'docs/research/competitor-frontier-expansion/**'
       - 'docs/research/retained-extract-frontier/**'
+      - 'docs/research/nevada-competitor-frontier/**'
       - 'docs/research/native-state-inventory/**'
       - 'docs/research/connector-reviews/**'
       - 'docs/research/utah-parent-reference/domains.json'

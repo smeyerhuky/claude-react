@@ -42,7 +42,7 @@ Authorized writers can recover the exact inputs without the old workspace:
 gh release download research-sources-20261027-co-nm-az-v1 \
   --repo smeyerhuky/claude-react --dir local-data/pinned-20261027
 cd local-data/pinned-20261027
-sha256sum -c SHA256SUMS-v7
+sha256sum -c SHA256SUMS-v8
 ```
 
 ## Source attribution and rights
@@ -84,3 +84,12 @@ The writer now verifies and reuses matching original draft assets before downloa
 missing inputs; conflicting assets still fail without replacement. It checks the
 unpublished draft before each upload. Server hashes/state and a downloaded-byte
 restore check must pass before retention is claimed complete. No release is published.
+
+
+Revision 8 adds the exact Nevada input for Las Vegas, the highest-ranked competitor
+without a retained native-point lead scan, and Reno. The 27 originals total
+2,910,155,739 bytes within the unchanged 3-billion-byte archive budget. All 26 prior
+original entries and v1–v7 metadata assets remain unchanged. New metadata uses
+`source-manifest-v8.json`, `README-v8.md` and `SHA256SUMS-v8`. Retention is complete
+only after the manual writer verifies every original and a byte-checked restore
+succeeds. No graph/oracle cap, connector gate or publication policy changes.

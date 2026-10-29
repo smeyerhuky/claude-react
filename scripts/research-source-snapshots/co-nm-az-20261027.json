@@ -161,6 +161,12 @@
       "bytes": 147307400,
       "sha256": "2095fafde920e5a4bc77fc2b9d83d6c08fd282b0e36e335e4c168256df8d7220",
       "source_url": "https://download.geofabrik.de/north-america/us/louisiana-261027.osm.pbf"
+    },
+    {
+      "filename": "nevada.osm.pbf",
+      "bytes": 124016809,
+      "sha256": "4cc689a971124a50d1ffe169e93a4c69542f478e47b6164007dd6e57f85650b5",
+      "source_url": "https://download.geofabrik.de/north-america/us/nevada-261027.osm.pbf"
     }
   ],
   "warning": "Original research inputs only. Archival retention does not certify legal/physical connectors, complete source/road/geographic coverage, datum alignment or global competition.",
@@ -169,7 +175,7 @@
   "draft_release_tag": "research-sources-20261027-co-nm-az-v1",
   "geographic_accuracy_certified": false,
   "complete_global_competition": false,
-  "manifest_revision": 7,
+  "manifest_revision": 8,
   "extension_states": [
     "UT",
     "OK",
@@ -179,7 +185,8 @@
     "AR",
     "WY",
     "NE",
-    "LA"
+    "LA",
+    "NV"
   ],
   "aggregate_archive_byte_budget": 3000000000
 }
