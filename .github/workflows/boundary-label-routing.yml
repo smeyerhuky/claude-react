@@ -13,6 +13,9 @@ on:
       - 'scripts/colorado_exterior_parent_competition.py'
       - 'scripts/colorado_adjacent_source_interfaces.py'
       - 'scripts/research-source-snapshots/**'
+      - 'scripts/fetch_research_source.py'
+      - 'scripts/research_source_cache.py'
+      - 'scripts/research_source_archive_checks.py'
       - 'docs/research/census-31-source-checkpoint/**'
       - 'docs/research/census-26-source-checkpoint/**'
       - 'docs/research/utah-parent-reference/domains.json'
@@ -37,16 +40,33 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2'
       - run: PYTHONPATH=scripts python -m unittest -v scripts/test_road_boundary_label_oracle.py scripts/test_road_partition_oracle.py
-      - name: Acquire six exact dated inputs
+      - id: original-source-identity
+        name: Derive the exact original-source cache key
+        run: |
+          python - <<'PYKEY'
+          import json,os,sys
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          from research_source_cache import cache_key,MANIFEST
+          with Path(os.environ['GITHUB_OUTPUT']).open('a') as f:
+              f.write('key='+cache_key(json.loads(MANIFEST.read_text()))+'\n')
+          PYKEY
+      - uses: actions/cache/restore@v4
+        with:
+          path: local-data/*.osm.pbf
+          key: ${{ steps.original-source-identity.outputs.key }}
+      - name: Acquire six exact dated inputs from verified cache or original sources
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           for state in colorado new-mexico arizona utah oklahoma kansas; do
-            curl --fail --location --retry 3 --max-time 600 "https://download.geofabrik.de/north-america/us/$state-261027.osm.pbf" --output "$state.osm.pbf"
+            python scripts/fetch_research_source.py --source "$state.osm.pbf" --output "local-data/$state.osm.pbf"
           done
       - name: Converge every query and replay all finite native paths
         run: |
           set -o pipefail
           mkdir -p result
-          python -u scripts/kansas_two_partition_competition.py --solver boundary-label-v1 --parent-osm colorado.osm.pbf new-mexico.osm.pbf arizona.osm.pbf utah.osm.pbf oklahoma.osm.pbf kansas.osm.pbf --output result/report.json 2>&1 | tee result/routing.log
+          python -u scripts/kansas_two_partition_competition.py --solver boundary-label-v1 --parent-osm local-data/colorado.osm.pbf local-data/new-mexico.osm.pbf local-data/arizona.osm.pbf local-data/utah.osm.pbf local-data/oklahoma.osm.pbf local-data/kansas.osm.pbf --output result/report.json 2>&1 | tee result/routing.log
           python - <<'PY'
           import json
           from pathlib import Path
