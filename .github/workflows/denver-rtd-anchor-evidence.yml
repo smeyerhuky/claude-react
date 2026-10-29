@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'scripts/denver_rtd_anchor_evidence.py'
+      - 'scripts/denver_blake_city_geometry.py'
+      - 'scripts/test_denver_blake_city_geometry.py'
       - 'scripts/denver_anchor_evidence.py'
       - 'public/data/metros-census-2025.csv'
       - 'scripts/test_denver_rtd_anchor_evidence.py'
@@ -18,5 +20,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - run: python -m pip install 'shapely>=2,<3' 'pyproj>=3.7,<4'
       - run: python -m unittest discover -s scripts -p 'test_denver_rtd_anchor_evidence.py' -v
       - run: python scripts/connector_review_packet.py docs/research/connector-reviews/denver-blake-rtd-proposal.json
+      - run: python -m unittest discover -s scripts -p 'test_denver_blake_city_geometry.py' -v

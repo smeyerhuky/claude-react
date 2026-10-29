@@ -12,7 +12,7 @@
   "reviewer": {
     "kind": "ai",
     "identity": "Codex (OpenAI), 2026-10-29",
-    "procedure": "Inspect operator map metadata, linked facilities layer, zero-space Osage record and 200-space Blake record; compare generalized geometry with pinned Colorado OSM driveway; replay deterministic source screening and assess all five access questions."
+    "procedure": "Inspect operator map metadata, linked facilities layer, zero-space Osage record and 200-space Blake record; compare generalized geometry with pinned Colorado OSM driveway; replay deterministic source screening and assess all five access questions. Inspect city parking/driveway capture criteria and compare exact retained polygons in WGS84 UTM zone 13; preserve absent, historical and 2D evidence limitations."
   },
   "sources": [
     {
@@ -35,6 +35,27 @@
       "sha256": "4a05522b95f90ccffdf6a86d0b4f1837cd605eab39da009f5ce9991fd4e99eec",
       "kind": "routing_model",
       "provenance": "Deterministic retained-source screening; OSM is not independent access evidence."
+    },
+    {
+      "id": "city-lots",
+      "path": "docs/research/denver-rtd-anchor/city-geometry/lots.json",
+      "sha256": "1c91c064f81714a4940a5ee97e839cd210c9dd3288ff7631d2d4a937915f615d",
+      "kind": "independent_access_record",
+      "provenance": "Denver city-published 2022 imagery-derived 2D parking footprints and replay comparison. Exact requests/hashes retained in city-geometry/manifest.json. Historical geometry, not current legal/grade/turn evidence."
+    },
+    {
+      "id": "city-lot-metadata",
+      "path": "docs/research/denver-rtd-anchor/city-geometry/lots-item.json",
+      "sha256": "4f908fcd775d5a78bcd089860bf41703104c89075a4f599a9d337e01fb70f221",
+      "kind": "independent_access_record",
+      "provenance": "Denver city-published 2022 imagery-derived 2D parking footprints and replay comparison. Exact requests/hashes retained in city-geometry/manifest.json. Historical geometry, not current legal/grade/turn evidence."
+    },
+    {
+      "id": "city-geometry-audit",
+      "path": "docs/research/denver-rtd-anchor/city-geometry/report.json",
+      "sha256": "7424a66eae68409fa15380c27fa150d0b6d33bc440d8fa438e9b27e106a5a3c8",
+      "kind": "routing_model",
+      "provenance": "Denver city-published 2022 imagery-derived 2D parking footprints and replay comparison. Exact requests/hashes retained in city-geometry/manifest.json. Historical geometry, not current legal/grade/turn evidence."
     }
   ],
   "machine_assertions": [
@@ -79,16 +100,37 @@
         "entry_path_independently_verified"
       ],
       "equals": false
+    },
+    {
+      "source": "city-geometry-audit",
+      "keys": [
+        "parking_intersections",
+        0,
+        "city_objectid"
+      ],
+      "equals": 41640
+    },
+    {
+      "source": "city-geometry-audit",
+      "keys": [
+        "parking_intersections",
+        0,
+        "covers_road_junction"
+      ],
+      "equals": false
     }
   ],
   "findings": {
     "physical_connection": {
       "status": "unknown",
-      "reason": "OSM driveway 436487553 meets Wynkoop/39th at node 176077058. Operator geometry is explicitly generalized, so this does not independently identify or verify the entrance.",
+      "reason": "OSM driveway 436487553 meets Wynkoop/39th at node 176077058. Operator geometry is explicitly generalized, so this does not independently identify or verify the entrance. Denver 2022 2D parking polygon 41640 corroborates 74.139 m of the mapped driveway; 7.267 m lies outside the polygon toward the road junction. This historical overlap does not independently verify the complete current connection.",
       "sources": [
         "operator-map",
         "operator-facilities",
-        "screen"
+        "screen",
+        "city-lots",
+        "city-lot-metadata",
+        "city-geometry-audit"
       ]
     },
     "legal_motor_access": {
