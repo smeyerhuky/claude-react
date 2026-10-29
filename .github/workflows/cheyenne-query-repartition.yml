@@ -1,0 +1,100 @@
+name: Cheyenne bounded query repartition experiment
+on:
+  pull_request:
+    paths:
+      - 'scripts/cheyenne_graph_views.py'
+      - 'scripts/cheyenne_longitude_sweep.py'
+      - 'scripts/cheyenne_query_repartition_competition.py'
+      - 'scripts/road_query_repartition.py'
+      - 'scripts/test_road_query_repartition.py'
+      - 'scripts/road_query_view_cache.py'
+      - 'scripts/test_road_query_view_cache.py'
+      - 'docs/research/cheyenne-partition-layouts/**'
+      - '.github/workflows/cheyenne-query-repartition.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-seven-state-query-routing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2'
+      - run: python -m unittest discover -s scripts -p 'test_road_query_repartition.py' -v
+      - run: python -m unittest discover -s scripts -p 'test_road_query_view_cache.py' -v
+      - id: original-source-identity
+        run: |
+          python - <<'PYKEY'
+          import json,os,sys
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          from research_source_cache import cache_key,MANIFEST
+          with Path(os.environ['GITHUB_OUTPUT']).open('a') as f:
+              f.write('key='+cache_key(json.loads(MANIFEST.read_text()))+'\n')
+          PYKEY
+      - uses: actions/cache/restore@v4
+        with:
+          path: local-data/*.osm.pbf
+          key: ${{ steps.original-source-identity.outputs.key }}
+      - name: Recover seven exact original inputs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for state in colorado new-mexico arizona utah oklahoma kansas wyoming; do
+            python scripts/fetch_research_source.py --source "$state.osm.pbf" --output "local-data/$state.osm.pbf"
+          done
+      - name: Rebuild all graphs without using a derived query cache
+        run: |
+          set -o pipefail
+          mkdir -p result
+          python -u scripts/cheyenne_query_repartition_competition.py --parent-osm local-data/colorado.osm.pbf local-data/new-mexico.osm.pbf local-data/arizona.osm.pbf local-data/utah.osm.pbf local-data/oklahoma.osm.pbf local-data/kansas.osm.pbf local-data/wyoming.osm.pbf --output result/report.json 2>&1 | tee result/routing.log
+      - name: Independently verify all56 original full-source cut inventories
+        run: |
+          python -u scripts/cheyenne_longitude_sweep.py --parent-osm local-data/colorado.osm.pbf local-data/new-mexico.osm.pbf local-data/arizona.osm.pbf local-data/utah.osm.pbf local-data/oklahoma.osm.pbf local-data/kansas.osm.pbf local-data/wyoming.osm.pbf --output result/full-source-cut-sweep.json
+      - name: Verify all old costs and every finite native replay
+        run: |
+          PYTHONPATH=scripts python - <<'PYCHECK'
+          import json
+          from pathlib import Path
+          from metro_scenario_checkpoint import project
+          from six_state_checkpoint import load_reference
+          r=json.loads(Path('result/report.json').read_text());p=project(r);old=load_reference()
+          assert len(p['sources'])==32 and set(p['cases'])==set(old['cases'])
+          assert r['source_costs_computed']==2304 and r['retained_costs_compared']==2232 and r['new_source_costs_computed']==72
+          assert r['ingestion_cut']==-107.4 and r['query_cut']==-104.0
+          assert r['query_core_audit']['surviving_shared_vertices']==216
+          assert r['query_repartition_audit']['output_shared_vertices']==191
+          assert r['query_repartition_audit']['input_pair_entries']==r['query_repartition_audit']['assigned_pair_entries']
+          assert r['query_repartition_audit']['native_vertices_omitted']==0 and r['query_repartition_audit']['coordinate_changes']==0
+          assert r['query_repartition_audit']['full_source_repartition_constructed'] is False
+          assert r['query_repartition_audit']['flattened_weighted_union_constructed'] is False
+          assert r['interface_audit']['boundary_vertex_count']==191 and r['interface_audit']['boundary_vertex_limit']==192
+          for key,records in old['cases'].items():
+              for cbsa,previous in records.items():
+                  before=previous['graph_only_cost'];now=p['cases'][key][cbsa]['graph_only_cost']
+                  if before is not None:assert now is not None and now<=before+max(.002,abs(before)*1e-9)
+          previous={s['cbsa']:s for s in old['sources']}
+          for s in r['sources']:
+              if s['cbsa'] in previous:
+                  assert s['retained_reference_record']==previous[s['cbsa']]
+                  assert all(s[k]==previous[s['cbsa']][k] for k in ['node','node_lonlat','native_origin_lonlat','lead_policy','diagnostic_gap_m','access_verified','connector_costs_included'])
+          assert len(r['local_oracle_runs'])==4 and sum(x['finite_queries_replayed'] for x in r['local_oracle_runs'])==r['finite_queries_replayed']
+          for run in r['local_oracle_runs']:
+              assert run['converged'] is True and run['local_dijkstra_calls']<=512
+              assert run['local_dijkstra_calls']==run['propagation_dijkstra_calls']+run['replay_dijkstra_calls']
+              assert len(run['fixed_point_sweeps'])==32 and all(x['converged'] is True for x in run['fixed_point_sweeps'])
+              assert max(run['working_shard_nodes'])<=15000000 and max(run['working_shard_arcs'])<=40000000
+          for g in r['partition_graphs']+r['full_partition_graphs']:
+              assert g['nodes']<=g['resource_limits']['nodes']<=15000000
+              assert g['directed_primitive_arcs']<=g['resource_limits']['arcs']<=40000000
+          PYCHECK
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: cheyenne-query-repartition
+          path: result/
+          retention-days: 14
