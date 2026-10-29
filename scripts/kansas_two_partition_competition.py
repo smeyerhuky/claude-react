@@ -39,8 +39,10 @@ def main():
     p.add_argument('--layout',choices=('longitude-query-v1','central-western-v1','retained-prefix-v1'),default='longitude-query-v1')
     p.add_argument('--longitude-cut',type=float,default=-107.4)
     p.add_argument('--query-cut-diagnostic',action='store_true',help='Write alternate-cut counts for protected views, without solving routes')
+    p.add_argument('--solver',choices=('port-closure-v1','boundary-label-v1'),default='port-closure-v1')
     p.add_argument('--expect-interface-rejection',action='store_true',help='Reproduce the pinned negative; never treat rejection as route coverage')
     args=p.parse_args();began=time.monotonic()
+    if args.solver=='boundary-label-v1' and (args.layout!='longitude-query-v1' or args.expect_interface_rejection or args.query_cut_diagnostic):p.error('Boundary-label solver requires the explicit longitude query scenario')
     if args.expect_interface_rejection and (args.layout!='longitude-query-v1' or args.longitude_cut!=-107.4 or args.query_cut_diagnostic):p.error('Pinned negative requires only longitude-query-v1 at -107.4')
     if args.query_cut_diagnostic and args.layout!='longitude-query-v1':p.error('Cut diagnostic requires longitude-query-v1')
     baseline=load_reference();_,domains,prefix_baseline=prefix_reference()
@@ -127,7 +129,10 @@ def main():
     for source in sources:
         source['query_view_membership_shards']=[i for i,g in enumerate(graphs) if source['node'] in g.node_index]
     try:
-        oracle=TwoPartitionOracle(prefix,addition)
+        if args.solver=='boundary-label-v1':
+            from road_boundary_label_oracle import BoundaryLabelOracle
+            oracle=BoundaryLabelOracle(prefix,addition)
+        else:oracle=TwoPartitionOracle(prefix,addition)
     except InterfacePortBudgetExceeded as exc:
         if not args.expect_interface_rejection:raise
         if exc.count!=178 or exc.limit!=128:raise ValueError('Pinned interface rejection changed') from exc
@@ -159,7 +164,9 @@ def main():
     old_cases=baseline['cases'];cases=[];runs=[];checks=0;statuses={}
     for orientation in ('metro-to-location','location-to-metro'):
         for metric in ('length','travel_time'):
-            run=oracle.solve([s['node'] for s in sources],list(map(int,coordinates)),metric,reverse=orientation=='location-to-metro')
+            options={'reverse':orientation=='location-to-metro'}
+            if args.solver=='boundary-label-v1':options['progress']=lambda event:print('[Boundary fixed point]',json.dumps(event),flush=True)
+            run=oracle.solve([s['node'] for s in sources],list(map(int,coordinates)),metric,**options)
             values={(r['source'],r['target']):r for r in run['results']}
             for probe in coordinates:
                 key='|'.join((metric,orientation,probe));options=[]
@@ -185,7 +192,8 @@ def main():
             print('[Kansas completed]',orientation,metric,run['finite_queries_replayed'],'replays',flush=True)
     if checks!=1872:raise ValueError('Every old case must be retained and compared')
     result={**{f:False for f in SAFETY},'schema':'kansas-two-partition-competition-v1',
-            'scenario_id':'census-six-state-'+args.layout+(f'-cut{args.longitude_cut:g}' if spatial else ''),
+            'scenario_id':'census-six-state-'+args.layout+(f'-cut{args.longitude_cut:g}' if spatial else '')+'-'+args.solver,
+            'solver_policy':args.solver,
             'source_membership_scope':'full input shards; query_view_membership_shards records derived ownership',
             'interface_audit_scope':'protected query views' if spatial else 'full shards',
             'full_model_union_nodes':sum(g['nodes'] for g in full_graph_reports)-(query_audit['original_shared_vertices'] if spatial else oracle.audit['shared_vertices']),

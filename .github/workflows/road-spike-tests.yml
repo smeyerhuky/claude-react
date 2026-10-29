@@ -2,6 +2,8 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/road_boundary_label_oracle.py'
+      - 'scripts/test_road_boundary_label_oracle.py'
       - 'scripts/road_longitude_partition.py'
       - 'scripts/road_longitude_preflight.py'
       - 'scripts/road_query_leaf_core.py'
