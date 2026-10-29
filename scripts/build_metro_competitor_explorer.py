@@ -118,7 +118,11 @@ def build(output):
         q=unknown.get(d['cbsa'])
         rows.append(dict(cbsa=d['cbsa'],name=d['name'],population=d['source_population'],point=d['native_representative_lonlat'],modeled=d['cbsa'] in modeled,in_public_csv=d['included_in_existing_csv'],rank=q['investigation_rank'] if q else None,distance_m=q['native_point_distance_m'] if q else None,scans=scans.get(d['cbsa'],[]),review=None,triage=notes.get(d['cbsa']),point_states=point_states[d['cbsa']]['point_states']))
     for row in rows:
-        path=ROOT/'docs/research/connector-reviews'/f"{row['cbsa']}-cross-border-census-lead.json"
+        root=ROOT/'docs/research/connector-reviews'
+        paths=[root/f"{row['cbsa']}-cross-border-census-lead.json",root/f"{row['cbsa']}-census-lead.json"]
+        existing=[p for p in paths if p.exists()]
+        if len(existing)>1:raise ValueError('Ambiguous native review packet')
+        path=existing[0] if existing else paths[0]
         if path.exists():
             from connector_review_packet import validate
             packet=json.loads(path.read_text());validate(packet,ROOT)

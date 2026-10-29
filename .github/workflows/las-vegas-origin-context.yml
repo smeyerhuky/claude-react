@@ -1,0 +1,38 @@
+name: Las Vegas selected origin context
+on:
+  pull_request:
+    paths:
+      - 'scripts/las_vegas_origin_context.py'
+      - 'docs/research/las-vegas-origin-context/**'
+      - 'docs/research/connector-reviews/29820-census-lead.json'
+      - '.github/workflows/las-vegas-origin-context.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproduce-selected-context-without-approval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx>=3.4,<4' 'osmium>=4,<5' 'scipy>=1.14,<2' 'shapely>=2,<3'
+      - name: Recover and hash the exact original Nevada input
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/fetch_research_source.py --source nevada.osm.pbf --output local-data/nevada.osm.pbf
+      - name: Reproduce selected native geometry and unchanged Census identity
+        run: python scripts/las_vegas_origin_context.py --osm local-data/nevada.osm.pbf --output result/model-report.json --compare docs/research/las-vegas-origin-context/model-report.json
+      - name: Reproduce literal operator evidence from retained bytes
+        run: python scripts/las_vegas_origin_context.py --operator-only --output result/operator-report.json --compare docs/research/las-vegas-origin-context/operator-report.json
+      - name: Validate all five unanswered access questions without approval
+        run: python scripts/connector_review_packet.py docs/research/connector-reviews/29820-census-lead.json
+      - uses: actions/upload-artifact@v6
+        with:
+          name: las-vegas-selected-origin-context
+          path: result/
+          retention-days: 14
