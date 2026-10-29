@@ -1,0 +1,54 @@
+{
+  "access_verified": false,
+  "extract_coverage_certified": false,
+  "highway_ways_with_missing_locations": 0,
+  "limitations": "Nearest geometry only within supplied PBF and search radius; OSM tags and modeled driving eligibility do not prove physical/legal entry; representative points are not verified urban access anchors",
+  "method": "Raw PBF highway-way scan; no contracted graph or SegmentGridIndex; local equirectangular projection with spherical gap distance",
+  "metros": [
+    {
+      "cbsa": "16940",
+      "name": "Cheyenne, WY Metro Area",
+      "nearest_mapped_highway": {
+        "access": "private",
+        "access_verified": false,
+        "gap_m": 387.74986315277926,
+        "highway": "service",
+        "model_drivable": false,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": "County Road 220",
+        "osm_way_id": 746823311,
+        "osm_way_url": "https://www.openstreetmap.org/way/746823311",
+        "projection_lonlat": [
+          -104.6624136,
+          41.2896902
+        ]
+      },
+      "nearest_model_drivable_highway": {
+        "access": null,
+        "access_verified": false,
+        "gap_m": 1798.3331240928114,
+        "highway": "service",
+        "model_drivable": true,
+        "motor_vehicle": null,
+        "motorcar": null,
+        "name": null,
+        "osm_way_id": 15734031,
+        "osm_way_url": "https://www.openstreetmap.org/way/15734031",
+        "projection_lonlat": [
+          -104.6403007,
+          41.2986299
+        ]
+      },
+      "origin_lonlat": [
+        -104.660395,
+        41.2928302
+      ]
+    }
+  ],
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "osm_sha256": "9dd05b095a075dc7ed08539eef6936564ba968ba27e764b0fc5533c460fec3f4",
+  "release_eligible": false,
+  "scan_radius_m": 25000.0,
+  "schema_version": "colorado-raw-origin-investigation-v1"
+}

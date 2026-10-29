@@ -1,0 +1,132 @@
+{
+  "access_verified": false,
+  "limitations": "Scheduling/model triage only; not a five-question connector evidence packet, independent attestation, adopted urban anchor or coverage proof.",
+  "records": [
+    {
+      "access_verified": false,
+      "cbsa": "10780",
+      "next_action": "review_access_before_routing",
+      "reason": "The retained geometry is a model-supported lead only. Need a defined reviewed urban anchor and independent physical/legal/direction/grade evidence before using an access connector.",
+      "release_eligible": false
+    },
+    {
+      "access_verified": false,
+      "cbsa": "12940",
+      "next_action": "review_access_before_routing",
+      "reason": "The retained geometry is a model-supported lead only. Need a defined reviewed urban anchor and independent physical/legal/direction/grade evidence before using an access connector.",
+      "release_eligible": false
+    },
+    {
+      "access_verified": false,
+      "cbsa": "15180",
+      "next_action": "review_access_before_routing",
+      "reason": "The retained geometry is a model-supported lead only. Need a defined reviewed urban anchor and independent physical/legal/direction/grade evidence before using an access connector.",
+      "release_eligible": false
+    },
+    {
+      "access_verified": false,
+      "cbsa": "16940",
+      "next_action": "reject_unsupported_nearest_model_candidate",
+      "reason": "The nearest mapped geometry in wyoming is rejected by the unchanged driving filter (access/class restrictions). Retain the separately reported model-supported lead without treating it as legal or physically connected.",
+      "release_eligible": false
+    },
+    {
+      "access_verified": false,
+      "cbsa": "18580",
+      "next_action": "reject_unsupported_nearest_model_candidate",
+      "reason": "The nearest mapped geometry in texas is rejected by the unchanged driving filter (access/class restrictions). Retain the separately reported model-supported lead without treating it as legal or physically connected.",
+      "release_eligible": false
+    },
+    {
+      "access_verified": false,
+      "cbsa": "25220",
+      "next_action": "review_access_before_routing",
+      "reason": "The retained geometry is a model-supported lead only. Need a defined reviewed urban anchor and independent physical/legal/direction/grade evidence before using an access connector.",
+      "release_eligible": false
+    },
+    {
+      "access_verified": false,
+      "cbsa": "26380",
+      "next_action": "review_access_before_routing",
+      "reason": "The retained geometry is a model-supported lead only. Need a defined reviewed urban anchor and independent physical/legal/direction/grade evidence before using an access connector.",
+      "release_eligible": false
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29180",
+      "next_action": "review_access_before_routing",
+      "reason": "The retained geometry is a model-supported lead only. Need a defined reviewed urban anchor and independent physical/legal/direction/grade evidence before using an access connector.",
+      "release_eligible": false
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29340",
+      "next_action": "review_native_origin_context",
+      "reason": "Large native-point geometry gap: retain the Census regression point and investigate an independently reviewed urban anchor as a separate origin policy. No silent relocation, access claim or city-inaccessibility inference.",
+      "release_eligible": false
+    },
+    {
+      "access_verified": false,
+      "cbsa": "29700",
+      "next_action": "reject_unsupported_nearest_model_candidate",
+      "reason": "The nearest mapped geometry in texas is rejected by the unchanged driving filter (access/class restrictions). Retain the separately reported model-supported lead without treating it as legal or physically connected.",
+      "release_eligible": false
+    },
+    {
+      "access_verified": false,
+      "cbsa": "30700",
+      "next_action": "review_access_before_routing",
+      "reason": "The retained geometry is a model-supported lead only. Need a defined reviewed urban anchor and independent physical/legal/direction/grade evidence before using an access connector.",
+      "release_eligible": false
+    },
+    {
+      "access_verified": false,
+      "cbsa": "32580",
+      "next_action": "review_access_before_routing",
+      "reason": "The retained geometry is a model-supported lead only. Need a defined reviewed urban anchor and independent physical/legal/direction/grade evidence before using an access connector.",
+      "release_eligible": false
+    },
+    {
+      "access_verified": false,
+      "cbsa": "33740",
+      "next_action": "review_access_before_routing",
+      "reason": "The retained geometry is a model-supported lead only. Need a defined reviewed urban anchor and independent physical/legal/direction/grade evidence before using an access connector.",
+      "release_eligible": false
+    },
+    {
+      "access_verified": false,
+      "cbsa": "35380",
+      "next_action": "review_native_origin_context",
+      "reason": "Large native-point geometry gap: retain the Census regression point and investigate an independently reviewed urban anchor as a separate origin policy. No silent relocation, access claim or city-inaccessibility inference.",
+      "release_eligible": false
+    },
+    {
+      "access_verified": false,
+      "cbsa": "36540",
+      "next_action": "review_access_before_routing",
+      "reason": "The retained geometry is a model-supported lead only. Need a defined reviewed urban anchor and independent physical/legal/direction/grade evidence before using an access connector.",
+      "release_eligible": false
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43340",
+      "next_action": "review_access_before_routing",
+      "reason": "The retained geometry is a model-supported lead only. Need a defined reviewed urban anchor and independent physical/legal/direction/grade evidence before using an access connector.",
+      "release_eligible": false
+    },
+    {
+      "access_verified": false,
+      "cbsa": "43640",
+      "next_action": "reject_unsupported_nearest_model_candidate",
+      "reason": "The nearest mapped geometry in louisiana is rejected by the unchanged driving filter (access/class restrictions). Retain the separately reported model-supported lead without treating it as legal or physically connected.",
+      "release_eligible": false
+    }
+  ],
+  "release_eligible": false,
+  "reviewer": {
+    "identity": "Codex (OpenAI), 2026-10-29",
+    "kind": "ai",
+    "procedure": "Inspect all17 retained extract observations for17 unchanged native Census points; distinguish nearest mapped from eligible geometry, compare both cross-border pairs and identify extract-limited absence. Do not assert physical/legal facts from OSM geometry."
+  },
+  "schema": "metro-frontier-ai-triage-v1"
+}
