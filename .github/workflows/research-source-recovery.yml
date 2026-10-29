@@ -1,0 +1,70 @@
+name: Exact research source recovery
+on:
+  pull_request:
+    paths:
+      - 'scripts/fetch_research_source.py'
+      - 'scripts/test_fetch_research_source.py'
+      - 'scripts/research_source_archive_checks.py'
+      - 'scripts/test_research_source_archive_checks.py'
+      - 'scripts/research_source_cache.py'
+      - 'scripts/test_research_source_cache.py'
+      - 'docs/research-source-recovery.md'
+      - '.github/workflows/research-source-recovery.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  recovery-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s scripts -p 'test_research_source_archive_checks.py' -v
+      - run: python -m unittest discover -s scripts -p 'test_fetch_research_source.py' -v
+      - run: python -m unittest discover -s scripts -p 'test_research_source_cache.py' -v
+      - name: Recover one small exact input with the read-only job identity
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/fetch_research_source.py --source metros-census-2025.csv --output recovered/metros-census-2025.csv
+  prime-exact-source-cache:
+    if: github.event_name == 'workflow_dispatch'
+    needs: recovery-integrity
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - id: identity
+        name: Derive cache identity from the six exact input hashes
+        run: |
+          python - <<'PY'
+          import json,os,sys
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          from research_source_cache import cache_key,MANIFEST
+          with Path(os.environ['GITHUB_OUTPUT']).open('a') as f:
+              f.write('key='+cache_key(json.loads(MANIFEST.read_text()))+'\n')
+          PY
+      - uses: actions/cache/restore@v4
+        id: original-cache
+        with:
+          path: local-data/*.osm.pbf
+          key: ${{ steps.identity.outputs.key }}
+      - name: Recover and verify each original; never publish a source release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for state in colorado new-mexico arizona utah oklahoma kansas; do
+            python scripts/fetch_research_source.py --source "$state.osm.pbf" --output "local-data/$state.osm.pbf"
+          done
+      - uses: actions/cache/save@v4
+        if: steps.original-cache.outputs.cache-hit != 'true'
+        with:
+          path: local-data/*.osm.pbf
+          key: ${{ steps.identity.outputs.key }}
