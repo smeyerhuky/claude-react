@@ -1,0 +1,24 @@
+{
+  "access_verified": false,
+  "files": {
+    "model-report.json": {
+      "bytes": 3788,
+      "sha256": "495d58a07961ba2c3573c461ad411f88cd65dd338701f99b0529e1c950465080"
+    },
+    "operator-hollywood-provenance.json": {
+      "bytes": 290,
+      "sha256": "385aea60e91c3cbcaca1b923e37a746d2ede82dd1fd2aed06bcbf0894d20cd7c"
+    },
+    "operator-hollywood.html": {
+      "bytes": 104830,
+      "sha256": "7030dc54dba44d85f8ff5e93ab61d3970c652bbc8cbac9a9f053f7f6788a7cec"
+    },
+    "operator-report.json": {
+      "bytes": 1297,
+      "sha256": "329bb776b86631adecf51ccbdd1be24c92d0d8bdab16d13179c37496ba1c88ef"
+    }
+  },
+  "geographic_coverage_certified": false,
+  "release_eligible": false,
+  "schema": "las-vegas-selected-origin-evidence-v1"
+}

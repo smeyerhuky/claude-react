@@ -1,0 +1,176 @@
+{
+  "access_verified": false,
+  "candidate": {
+    "approved": false,
+    "modeled_road_lead_node": 7614401690,
+    "modeled_service_way": 815168941,
+    "name": "Las Vegas native Census point / Hollywood Pit service-way research lead",
+    "native_origin_lonlat": [
+      -115.0143977,
+      36.2141295
+    ],
+    "selection_reason": "Nearest primitive-node regression lead only. No quarry interior point is adopted as a reviewed urban access anchor."
+  },
+  "cbsa": "29820",
+  "decision": "needs_evidence",
+  "findings": {
+    "connector_cost": {
+      "reason": "The raw highway projection is 16.491 m away and the primitive-vertex diagnostic is 44.969 m away. Neither distance is an actual reviewed connector path or speed assumption. The nearby gate is 293.938 m from the origin and remains an unassigned context observation.",
+      "sources": [
+        "model",
+        "operator-text",
+        "operator-html"
+      ],
+      "status": "unknown"
+    },
+    "direction_and_turns": {
+      "reason": "Published directions say to turn left from Lake Mead Boulevard onto Arnona Road and use the first pit on the right. They do not independently establish current permitted turns, lane direction or signs for the selected interior connector and exact directed graph node.",
+      "sources": [
+        "model",
+        "operator-text",
+        "operator-html"
+      ],
+      "status": "unknown"
+    },
+    "legal_motor_access": {
+      "reason": "The operator publishes aggregate production, dumping services and weekday business hours. This does not establish public motor access for the selected geographic point, vehicle class, purpose or interior service road. Missing OSM restriction tags are not permission.",
+      "sources": [
+        "model",
+        "operator-text",
+        "operator-html"
+      ],
+      "status": "unknown"
+    },
+    "physical_connection": {
+      "reason": "The selected primitive vertex and native point fall numerically inside the OSM polygon tagged Hollywood Pit. The operator describes customer access from Lake Mead Boulevard via Arnona Road, but this does not locate or verify the precise origin-to-selected-service-way path inside the quarry. A nearby mapped gate is not identified as that operator entrance.",
+      "sources": [
+        "model",
+        "operator-text",
+        "operator-html"
+      ],
+      "status": "unknown"
+    },
+    "same_grade": {
+      "reason": "A closed 2D landuse polygon, road geometry and published customer directions do not independently establish same-grade connectivity for the selected origin-to-road path.",
+      "sources": [
+        "model",
+        "operator-text",
+        "operator-html"
+      ],
+      "status": "unknown"
+    }
+  },
+  "limitations": [
+    "No adopted urban anchor, legal-access approval, connector cost, ledger entry or public road-mode activation.",
+    "Numerical Census/OSM containment is model context with unverified datum alignment, not independent boundary/physical proof.",
+    "The selected-way scan is not a complete landuse, barrier, one-way, turn or restriction inventory.",
+    "Need an independently locatable entrance/site plan and applicable vehicle rights plus grade and directed-turn evidence for an actual selected anchor/path before separate approval."
+  ],
+  "machine_assertions": [
+    {
+      "equals": "4cc689a971124a50d1ffe169e93a4c69542f478e47b6164007dd6e57f85650b5",
+      "keys": [
+        "osm_source",
+        "sha256"
+      ],
+      "source": "model"
+    },
+    {
+      "equals": "quarry",
+      "keys": [
+        "quarry_way",
+        "tags",
+        "landuse"
+      ],
+      "source": "model"
+    },
+    {
+      "equals": true,
+      "keys": [
+        "model_polygon_covers_native_origin"
+      ],
+      "source": "model"
+    },
+    {
+      "equals": true,
+      "keys": [
+        "model_polygon_covers_primitive_lead"
+      ],
+      "source": "model"
+    },
+    {
+      "equals": 7614401690,
+      "keys": [
+        "primitive_road_lead",
+        "id"
+      ],
+      "source": "model"
+    },
+    {
+      "equals": false,
+      "keys": [
+        "nearby_gate_identified_as_operator_entrance"
+      ],
+      "source": "model"
+    },
+    {
+      "equals": "Monday - Friday",
+      "keys": [
+        "published_days"
+      ],
+      "source": "operator-text"
+    },
+    {
+      "equals": "6:00 AM - 2:45 PM",
+      "keys": [
+        "published_hours"
+      ],
+      "source": "operator-text"
+    },
+    {
+      "equals": false,
+      "keys": [
+        "precise_selected_connector_verified"
+      ],
+      "source": "operator-text"
+    }
+  ],
+  "origin_policy": "census-regression-v1",
+  "release_eligible": false,
+  "reviewer": {
+    "identity": "Codex AI, 2026-10-29",
+    "kind": "ai",
+    "procedure": "Inspect exact selected OSM ways/nodes, closed-polygon numerical containment and literal operator location page. Review all five access questions; distinguish published facility customer directions from the exact selected connector and preserve unknown grade/legal/turn/path evidence."
+  },
+  "schema": "ai-connector-review-v1",
+  "sources": [
+    {
+      "id": "model",
+      "kind": "routing_model",
+      "path": "docs/research/las-vegas-origin-context/model-report.json",
+      "provenance": "Selected closed quarry way, service way, primitive lead and nearby gate reproduced from exact Nevada bytes. OSM context is not independent legal/physical access evidence.",
+      "sha256": "495d58a07961ba2c3573c461ad411f88cd65dd338701f99b0529e1c950465080"
+    },
+    {
+      "id": "operator-text",
+      "kind": "independent_access_record",
+      "path": "docs/research/las-vegas-origin-context/operator-report.json",
+      "provenance": "Literal location, business hours, material-use description and customer directions extracted from the retained operator-owned Hollywood location page. No exact entrance or selected connector rights are asserted.",
+      "sha256": "329bb776b86631adecf51ccbdd1be24c92d0d8bdab16d13179c37496ba1c88ef"
+    },
+    {
+      "id": "operator-html",
+      "kind": "independent_access_record",
+      "path": "docs/research/las-vegas-origin-context/operator-hollywood.html",
+      "provenance": "Exact https://bouldersandandgravel.com/locations/hollywood/ response retrieved 2026-10-29; URL, byte count and SHA-256 are retained in operator-hollywood-provenance.json.",
+      "sha256": "7030dc54dba44d85f8ff5e93ab61d3970c652bbc8cbac9a9f053f7f6788a7cec"
+    },
+    {
+      "id": "census-input",
+      "kind": "routing_model",
+      "path": "public/data/metros-census-2025.csv",
+      "provenance": "Unchanged native 2025 Census-derived identity/population/origin input, not physical-access evidence.",
+      "sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8"
+    }
+  ]
+}

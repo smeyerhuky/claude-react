@@ -11,6 +11,14 @@ on:
       - 'docs/research-source-recovery.md'
       - '.github/workflows/research-source-recovery.yml'
   workflow_dispatch:
+    inputs:
+      purpose:
+        description: Exact original recovery operation
+        type: choice
+        default: prime-original-cache
+        options:
+          - prime-original-cache
+          - restore-nevada
 permissions:
   contents: read
 jobs:
@@ -29,7 +37,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: python scripts/fetch_research_source.py --source metros-census-2025.csv --output recovered/metros-census-2025.csv
   prime-exact-source-cache:
-    if: github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch' && inputs.purpose != 'restore-nevada'
     needs: recovery-integrity
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -68,3 +76,75 @@ jobs:
         with:
           path: local-data/*.osm.pbf
           key: ${{ steps.identity.outputs.key }}
+
+  verify-draft-nevada-restore:
+    if: github.event_name == 'workflow_dispatch' && inputs.purpose == 'restore-nevada'
+    needs: recovery-integrity
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # A writer identity can read unpublished draft assets. All release operations
+    # below are reads; no upload, replacement or publication is performed.
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Download actual draft bytes and compare every expected digest
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PYRESTORE'
+          import hashlib,json,os,subprocess,sys
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          from research_source_archive_checks import require_draft,existing_original
+          repo='smeyerhuky/claude-react'
+          assert os.environ['GITHUB_REPOSITORY']==repo
+          manifest_path=Path('scripts/research-source-snapshots/co-nm-az-20261027.json')
+          manifest=json.loads(manifest_path.read_text());revision=manifest['manifest_revision']
+          assert type(revision) is int and 8<=revision<=100
+          assert manifest['aggregate_archive_byte_budget']==3000000000
+          assert sum(e['bytes'] for e in manifest['files'])<3000000000
+          def release():
+              result=json.loads(subprocess.check_output(['gh','api',f"repos/{repo}/releases/{manifest['draft_release_id']}"]))
+              return require_draft(result,manifest['draft_release_id'],manifest['draft_release_tag'])
+          before=release()
+          for entry in manifest['files']:
+              assert existing_original(before['assets'],entry) is not None
+          entry=next(e for e in manifest['files'] if e['filename']=='nevada.osm.pbf')
+          expected={entry['filename']:(entry['bytes'],entry['sha256'])}
+          metadata={f'source-manifest-v{revision}.json':manifest_path.read_bytes(),
+                    f'README-v{revision}.md':Path('docs/research-source-archive.md').read_bytes(),
+                    f'SHA256SUMS-v{revision}':''.join(e['sha256']+'  '+e['filename']+'\n' for e in manifest['files']).encode()}
+          expected.update({name:(len(raw),hashlib.sha256(raw).hexdigest()) for name,raw in metadata.items()})
+          root=Path(os.environ['RUNNER_TEMP'])/'draft-source-byte-restore';root.mkdir()
+          restored=[]
+          for name,(size,digest) in expected.items():
+              asset=next(a for a in before['assets'] if a['name']==name)
+              assert asset['state']=='uploaded' and asset['size']==size and asset['digest']=='sha256:'+digest
+              subprocess.run(['gh','release','download',manifest['draft_release_tag'],'--repo',repo,'--pattern',name,'--dir',str(root)],check=True)
+              path=root/name
+              with path.open('rb') as handle:actual=hashlib.file_digest(handle,'sha256').hexdigest()
+              assert path.stat().st_size==size and actual==digest
+              restored.append(dict(name=name,asset_id=asset['id'],bytes=size,sha256=actual))
+          after=release()
+          def inventory(result):
+              return sorted((a['name'],a['id'],a['size'],a['digest'],a['state']) for a in result['assets'])
+          assert inventory(before)==inventory(after)
+          receipt=dict(schema='draft-source-byte-restore-v1',release_id=manifest['draft_release_id'],
+                       draft=True,published_at=None,original_entries_metadata_verified=len(manifest['files']),
+                       all_assets_unchanged=True,source_manifest_sha256=hashlib.sha256(manifest_path.read_bytes()).hexdigest(),
+                       restored=restored,access_verified=False,release_eligible=False,
+                       warning='Independent execution of byte recovery only; no connector certification or source publication.')
+          Path('draft-source-restore-receipt.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
+          print(json.dumps(receipt,indent=2))
+          PYRESTORE
+      - uses: actions/upload-artifact@v6
+        with:
+          name: draft-source-byte-restore-verification
+          path: draft-source-restore-receipt.json
+          retention-days: 14

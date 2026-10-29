@@ -1,0 +1,15 @@
+{
+  "access_verified": false,
+  "input_html_sha256": "7030dc54dba44d85f8ff5e93ab61d3970c652bbc8cbac9a9f053f7f6788a7cec",
+  "precise_selected_connector_verified": false,
+  "published_address": "7198 East Alto Ave\nLas Vegas, NV 89156",
+  "published_days": "Monday - Friday",
+  "published_description": "Boulder Sand & Gravel is an aggregate materials supplier and producer. At the Hollywood pit, we mine and process Type II gravel base. We recycle concrete and asphalt with native material to make a custom blend of different Type II gravel bases. Material accepted for dumping are asphalt, concrete and dirt.",
+  "published_directions": "From Lake Mead Boulevard and Hollywood Boulevard, continue East on Lake Mead Boulevard to Arnona Road, turn left. Follow Arnona Road to the North and this will lead you to the pit, the first one on the right.",
+  "published_hours": "6:00 AM - 2:45 PM",
+  "release_eligible": false,
+  "retrieved_utc": "2026-10-29",
+  "schema": "las-vegas-operator-text-v1",
+  "source_url": "https://bouldersandandgravel.com/locations/hollywood/",
+  "warning": "Literal operator text only. Customer directions and business hours do not establish access from the Census point, an exact entrance coordinate, grade, current signs or permitted turns for the selected connector."
+}
