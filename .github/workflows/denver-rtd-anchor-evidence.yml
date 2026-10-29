@@ -1,0 +1,20 @@
+name: Denver RTD anchor evidence
+on:
+  pull_request:
+    paths:
+      - 'scripts/denver_rtd_anchor_evidence.py'
+      - 'scripts/test_denver_rtd_anchor_evidence.py'
+      - 'docs/research/denver-rtd-anchor/**'
+      - 'docs/research/connector-reviews/denver-blake-rtd-proposal.json'
+      - '.github/workflows/denver-rtd-anchor-evidence.yml'
+  workflow_dispatch:
+jobs:
+  retained-source-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s scripts -p 'test_denver_rtd_anchor_evidence.py' -v
+      - run: python scripts/connector_review_packet.py docs/research/connector-reviews/denver-blake-rtd-proposal.json
