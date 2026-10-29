@@ -1,0 +1,27 @@
+{
+  "schema": "denver-blake-city-geometry-audit-v1",
+  "osm_extract_sha256": "2bc9090e40ebc39983fc92fdfda8bf0e873ca4f5b727b31d2a17195e94117811",
+  "osm_way": 436487553,
+  "measurement_crs": "EPSG:32613",
+  "planar_driveway_length_m": 81.406,
+  "city_driveway_polygons_in_query": 0,
+  "city_parking_polygons_in_query": 7,
+  "parking_intersections": [
+    {
+      "city_objectid": 41640,
+      "type": "Impervious",
+      "overlap_m": 74.139,
+      "outside_polygon_m": 7.267,
+      "covers_road_junction": false
+    }
+  ],
+  "imagery_year": 2022,
+  "observed_current_conditions": false,
+  "physical_connection_verified": false,
+  "legal_access_verified": false,
+  "same_grade_verified": false,
+  "turns_verified": false,
+  "access_verified": false,
+  "release_eligible": false,
+  "warning": "Historical 2D footprint corroboration only. Empty driveway query is not absence of access; lot polygons do not establish ownership, permission, elevation or current conditions."
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "denver-blake-city-geometry-v1",
+  "files": [
+    {
+      "name": "driveways-item",
+      "url": "https://www.arcgis.com/sharing/rest/content/items/2266d2f6d57d45dca6f38b84f74bdb04?f=json",
+      "sha256": "c3b8e9a2536d2b0a6c958a3e146aaa019c779e9b46d1655795b8666276ef5c86",
+      "size_bytes": 4310,
+      "retrieved_utc": "2026-10-29"
+    },
+    {
+      "name": "lots-item",
+      "url": "https://www.arcgis.com/sharing/rest/content/items/68d456af4e0d4c79bb65ba0c6efc59c8?f=json",
+      "sha256": "4f908fcd775d5a78bcd089860bf41703104c89075a4f599a9d337e01fb70f221",
+      "size_bytes": 4896,
+      "retrieved_utc": "2026-10-29"
+    },
+    {
+      "name": "lots-service",
+      "url": "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/arcgis/rest/services/ODC_TRANS_PARKINGLOTS_A/FeatureServer?f=json",
+      "sha256": "95fde9da520a2f1fe9520c7366c79e8f2ea447e96b637467974d32bfa0f4d27f",
+      "size_bytes": 5596,
+      "retrieved_utc": "2026-10-29"
+    },
+    {
+      "name": "driveways-service",
+      "url": "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/arcgis/rest/services/ODC_TRANS_DRIVEWAYS_A/FeatureServer?f=json",
+      "sha256": "484f69632342ef320423d32a564dd2c3bc5fe23239e7cb45bda5486ad909d32e",
+      "size_bytes": 4978,
+      "retrieved_utc": "2026-10-29"
+    },
+    {
+      "name": "lots-layer",
+      "url": "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/arcgis/rest/services/ODC_TRANS_PARKINGLOTS_A/FeatureServer/139?f=json",
+      "sha256": "eada486c0a31c6fa0700d7d2903645331637d344053adf0f04510743376837d8",
+      "size_bytes": 9462,
+      "retrieved_utc": "2026-10-29"
+    },
+    {
+      "name": "driveways-layer",
+      "url": "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/arcgis/rest/services/ODC_TRANS_DRIVEWAYS_A/FeatureServer/188?f=json",
+      "sha256": "7fb06675c6ca10c1e1cc9bf09b98f331c0995a4e22bd05a69d13d735d182adef",
+      "size_bytes": 9278,
+      "retrieved_utc": "2026-10-29"
+    },
+    {
+      "name": "lots",
+      "url": "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/arcgis/rest/services/ODC_TRANS_PARKINGLOTS_A/FeatureServer/139/query?f=json&where=1%3D1&geometry=-104.9742%2C39.7717%2C-104.9726%2C39.7734&geometryType=esriGeometryEnvelope&inSR=4326&outSR=4326&outFields=%2A&returnGeometry=true&resultRecordCount=2000",
+      "sha256": "1c91c064f81714a4940a5ee97e839cd210c9dd3288ff7631d2d4a937915f615d",
+      "size_bytes": 125570,
+      "retrieved_utc": "2026-10-29"
+    },
+    {
+      "name": "driveways",
+      "url": "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/arcgis/rest/services/ODC_TRANS_DRIVEWAYS_A/FeatureServer/188/query?f=json&where=1%3D1&geometry=-104.9742%2C39.7717%2C-104.9726%2C39.7734&geometryType=esriGeometryEnvelope&inSR=4326&outSR=4326&outFields=%2A&returnGeometry=true&resultRecordCount=2000",
+      "sha256": "437b1d00810278f617f39f5d45ffaf96d9cd705330987c255c3d9cb934e4a5ce",
+      "size_bytes": 247,
+      "retrieved_utc": "2026-10-29"
+    }
+  ]
+}
