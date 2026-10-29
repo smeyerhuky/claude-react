@@ -3,12 +3,14 @@ import probeHtml from '../research/metro-census-probes.html?raw'
 import comparisonHtml from '../research/denver-waypoint-comparison.html?raw'
 import inventoryHtml from '../research/metro-competitor-inventory.html?raw'
 import sixStateHtml from '../research/metro-six-state-probes.html?raw'
+import cheyenneHtml from '../research/metro-cheyenne-probes.html?raw'
 
 const views = {
   probes: { title: 'Census road-node research experiment', html: probeHtml },
   denver: { title: 'Denver road-start sensitivity experiment', html: comparisonHtml },
   inventory: { title: 'Metro competitor investigation inventory', html: inventoryHtml },
   sixState: { title: 'Six-state Census road-node experiment', html: sixStateHtml },
+  cheyenne: { title: 'Cheyenne seven-state Census road-node experiment', html: cheyenneHtml },
 }
 
 export default function MetroRoadResearchPanel() {
@@ -34,6 +36,7 @@ export default function MetroRoadResearchPanel() {
           <select value={view} onChange={event => setView(event.target.value)} className="rounded border bg-white px-2 py-1">
             <option value="probes">Frozen 26-source Census probe experiment</option>
             <option value="sixState">Separate 31-source six-state Census experiment</option>
+            <option value="cheyenne">Separate 32-source Cheyenne Census experiment</option>
             <option value="denver">Denver through-road start sensitivity</option>
             <option value="inventory">Qualifying metros and missing competitors — 26-source baseline</option>
           </select>

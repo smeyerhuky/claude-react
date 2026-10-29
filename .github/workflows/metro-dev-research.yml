@@ -14,6 +14,11 @@ on:
       - 'scripts/check_metro_dev_research.cjs'
       - 'scripts/build_metro_competitor_explorer.py'
       - 'scripts/build_six_state_probe_explorer.py'
+      - 'scripts/build_cheyenne_probe_explorer.py'
+      - 'scripts/check_cheyenne_probe_explorer.cjs'
+      - 'scripts/cheyenne_checkpoint.py'
+      - 'scripts/test_cheyenne_checkpoint.py'
+      - 'docs/research/census-32-source-checkpoint/**'
       - 'scripts/check_six_state_probe_explorer.cjs'
       - 'scripts/six_state_checkpoint.py'
       - 'docs/research/census-31-source-checkpoint/**'
@@ -58,6 +63,10 @@ jobs:
         env:
           RESEARCH_BASE_COMMIT: ${{ github.event.pull_request.base.sha || github.sha }}
         run: |
+          python scripts/cheyenne_checkpoint.py --check-frozen
+          python -m unittest discover -s scripts -p 'test_cheyenne_checkpoint.py' -v
+          python scripts/build_cheyenne_probe_explorer.py --output /tmp/cheyenne.html
+          cmp /tmp/cheyenne.html src/research/metro-cheyenne-probes.html
           python scripts/build_metro_probe_explorer.py --output /tmp/probes.html
           python scripts/build_six_state_probe_explorer.py --output /tmp/six-state.html
           cmp /tmp/six-state.html src/research/metro-six-state-probes.html
@@ -76,7 +85,7 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
-          hashes=[json.loads(Path('docs/research/denver-waypoint-hypothesis/manifest.json').read_text())['report_sha256'],json.loads(Path('docs/research/census-26-source-checkpoint/manifest.json').read_text())['baseline_sha256'],json.loads(Path('docs/research/census-31-source-checkpoint/manifest.json').read_text())['baseline_sha256']]
+          hashes=[json.loads(Path('docs/research/denver-waypoint-hypothesis/manifest.json').read_text())['report_sha256'],json.loads(Path('docs/research/census-26-source-checkpoint/manifest.json').read_text())['baseline_sha256'],json.loads(Path('docs/research/census-31-source-checkpoint/manifest.json').read_text())['baseline_sha256'],json.loads(Path('docs/research/census-32-source-checkpoint/manifest.json').read_text())['baseline_sha256']]
           markers=['Inspect road research (dev)','Road research inspector','MetroRoadResearchPanel','Metro competitor investigation inventory',*hashes]
           for path in Path('dist').rglob('*.js'):
               text=path.read_text()
@@ -86,6 +95,8 @@ jobs:
         run: npm install --prefix "$RUNNER_TEMP/metro-inspector-driver" --no-audit --no-fund playwright@1.56.1
       - name: Check all 2232 displayed six-state costs offline
         run: NODE_PATH="$RUNNER_TEMP/metro-inspector-driver/node_modules" node scripts/check_six_state_probe_explorer.cjs src/research/metro-six-state-probes.html
+      - name: Check all 2304 displayed Cheyenne costs offline
+        run: NODE_PATH="$RUNNER_TEMP/metro-inspector-driver/node_modules" node scripts/check_cheyenne_probe_explorer.cjs src/research/metro-cheyenne-probes.html
       - name: Check complete native-point inventory without network requests
         run: NODE_PATH="$RUNNER_TEMP/metro-inspector-driver/node_modules" node scripts/check_metro_competitor_explorer.cjs src/research/metro-competitor-inventory.html
       - name: Check opt-in, sandbox, keyboard closure and unchanged map state/canvas
