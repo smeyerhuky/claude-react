@@ -28,7 +28,8 @@ def build(output):
     for before,after in replacements.items():
         if template.count(before)!=1:raise ValueError('Shared template changed; review scenario labels')
         template=template.replace(before,after)
-    notice='<p class="notice">This separate experiment adds Cheyenne to the 31-source snapshot using the same 18 probes. All 335 unrepresented competitors remain unknown. Query-only graph partitioning preserves native road vertices and costs within the existing resource limits. It does not review urban anchors or approve connectors, road regions or geographic coverage.</p>'
+    cheyenne=next(s for s in data['sources'] if s['cbsa']=='16940')
+    notice=f'<p class="notice">This separate experiment adds Cheyenne to the 31-source snapshot using the same 18 probes. All 335 unrepresented competitors remain unknown. Cheyenne’s selected road lead is {cheyenne["diagnostic_gap_m"]/1000:.3f} km from its Census point; that gap has no verified connector. Query-only graph partitioning preserves native road vertices and costs within the existing resource limits. It does not review urban anchors or approve connectors, road regions or geographic coverage.</p>'
     template=template.replace('<p id="inventory"></p>','<p id="inventory"></p>'+notice)
     html=template.replace('__DATA__',json.dumps(data,separators=(',',':'),allow_nan=False).replace('<','\\u003c')).replace('__IDENTITY__',json.dumps(hashlib.sha256(raw).hexdigest()))
     Path(output).write_text(html,encoding='utf-8');return output
