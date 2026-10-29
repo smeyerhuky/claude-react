@@ -14,6 +14,7 @@ const fs=require('fs'),crypto=require('crypto'),{chromium}=require('playwright')
   for(const row of actual.rows)require('assert').deepStrictEqual(row.point_states,states.rows.find(s=>s.cbsa===row.cbsa).point_states);
   await page.locator('#pointstate').selectOption('TN');const tnIds=await page.locator('#rows tr').evaluateAll(rows=>rows.map(r=>r.dataset.cbsa));if(!tnIds.includes('32820')||tnIds.length!==8)throw Error('Native-state filtering changed membership or omitted Memphis');
   await page.locator('#pointstate').selectOption('PR');if(await page.locator('#rows tr').count()!==5)throw Error('Puerto Rico native points missing');
+  await page.locator('#pointstate').selectOption('TX');const txPositions=await page.locator('#plot circle').evaluateAll(dots=>dots.map(d=>Number(d.getAttribute('cx'))));if(txPositions.length!==24||Math.max(...txPositions)-Math.min(...txPositions)<700)throw Error('Filtered native points did not fit the research view');
   await page.locator('#pointstate').selectOption('all');
   await page.locator('#status').selectOption('unknown');
   const ids=await page.locator('#rows tr').evaluateAll(rows=>rows.map(r=>r.dataset.cbsa));if(JSON.stringify(ids)!==JSON.stringify(queue.queue.map(r=>r.cbsa)))throw Error('Unknown identities/order changed');
