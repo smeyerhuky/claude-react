@@ -1,0 +1,103 @@
+{
+  "access_verified": false,
+  "geographic_coverage_certified": false,
+  "metros_csv_sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+  "new_identities": [
+    "10780",
+    "12940",
+    "15180",
+    "16940",
+    "18580",
+    "25220",
+    "26380",
+    "29180",
+    "29340",
+    "29700",
+    "30700",
+    "32580",
+    "33740",
+    "35380",
+    "36540",
+    "43340",
+    "43640"
+  ],
+  "new_identity_count": 17,
+  "records": [
+    {
+      "cbsa_ids": [
+        "15180",
+        "18580",
+        "29700",
+        "32580"
+      ],
+      "report_path": "docs/research/retained-extract-frontier/texas-origins.json",
+      "report_sha256": "35d0723b467df0717b95a301e3e83c622abe46b51d43a32320ae91bcf347f9cd",
+      "source": {
+        "name": "texas.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "28f51b4ab7f41a6e23f0d772bcccc07d379d6592ebdb351a6f7969fa2053e5f0",
+        "size_bytes": 726272759
+      },
+      "state": "texas",
+      "url": "https://download.geofabrik.de/north-america/us/texas-261027.osm.pbf"
+    },
+    {
+      "cbsa_ids": [
+        "16940"
+      ],
+      "report_path": "docs/research/retained-extract-frontier/wyoming-origins.json",
+      "report_sha256": "4e27e01cb64a7eba068e3a1a67d55955638282c8a004dbbee91fa40f7f112bb4",
+      "source": {
+        "name": "wyoming.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "9dd05b095a075dc7ed08539eef6936564ba968ba27e764b0fc5533c460fec3f4",
+        "size_bytes": 95139142
+      },
+      "state": "wyoming",
+      "url": "https://download.geofabrik.de/north-america/us/wyoming-261027.osm.pbf"
+    },
+    {
+      "cbsa_ids": [
+        "30700",
+        "36540"
+      ],
+      "report_path": "docs/research/retained-extract-frontier/nebraska-origins.json",
+      "report_sha256": "43b92cf60f4e60dbfcab594c6e7474678098282bfe67c86589c57551e34b6c4b",
+      "source": {
+        "name": "nebraska.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "f91f656839009e06205143d461f07ced853b5d342070ed6e38cac38576943f92",
+        "size_bytes": 101370391
+      },
+      "state": "nebraska",
+      "url": "https://download.geofabrik.de/north-america/us/nebraska-261027.osm.pbf"
+    },
+    {
+      "cbsa_ids": [
+        "10780",
+        "12940",
+        "25220",
+        "26380",
+        "29180",
+        "29340",
+        "33740",
+        "35380",
+        "43340",
+        "43640"
+      ],
+      "report_path": "docs/research/retained-extract-frontier/louisiana-origins.json",
+      "report_sha256": "a4624c8a6d244086d3db0cd500932ac804bf52a91ad20016c0964f473c1ea62b",
+      "source": {
+        "name": "louisiana.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "2095fafde920e5a4bc77fc2b9d83d6c08fd282b0e36e335e4c168256df8d7220",
+        "size_bytes": 147307400
+      },
+      "state": "louisiana",
+      "url": "https://download.geofabrik.de/north-america/us/louisiana-261027.osm.pbf"
+    }
+  ],
+  "release_eligible": false,
+  "retention_note": "Texas retained in archive revision6; WY NE LA exact inputs require verified unpublished revision7 retention before this investigation is merged.",
+  "schema": "retained-extract-competitor-frontier-v1"
+}
