@@ -8,6 +8,7 @@ SOURCES=('colorado.osm.pbf','new-mexico.osm.pbf','arizona.osm.pbf','utah.osm.pbf
 
 def cache_key(manifest):
     entries=[entry_for(manifest,n) for n in SOURCES]
+    if sum(r['bytes'] for r in entries)>1500000000:raise ValueError('Six-input cache exceeds its 1.5 GB budget')
     identity=[(r['filename'],r['bytes'],r['sha256']) for r in entries]
     digest=hashlib.sha256(json.dumps(identity,separators=(',',':')).encode()).hexdigest()
     return 'research-original-six-v1-'+digest

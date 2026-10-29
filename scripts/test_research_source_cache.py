@@ -16,3 +16,7 @@ class SourceCacheTests(unittest.TestCase):
     def test_duplicate_named_source_fails(self):
         m=json.loads(MANIFEST.read_text());m['files'].append(copy.deepcopy(m['files'][0]))
         with self.assertRaises(ValueError):cache_key(m)
+
+    def test_aggregate_cache_budget_is_bounded(self):
+        m=json.loads(MANIFEST.read_text());m['files'][0]['bytes']=1900000000
+        with self.assertRaises(ValueError):cache_key(m)
