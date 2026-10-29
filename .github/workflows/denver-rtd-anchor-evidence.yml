@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'scripts/denver_rtd_anchor_evidence.py'
+      - 'scripts/denver_anchor_evidence.py'
+      - 'public/data/metros-census-2025.csv'
       - 'scripts/test_denver_rtd_anchor_evidence.py'
       - 'docs/research/denver-rtd-anchor/**'
       - 'docs/research/connector-reviews/denver-blake-rtd-proposal.json'
