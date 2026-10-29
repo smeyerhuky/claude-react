@@ -1,0 +1,547 @@
+{
+  "access_certified": false,
+  "cuts": [
+    {
+      "longitude_cut": -109.5,
+      "query_shared_vertices": 190
+    },
+    {
+      "longitude_cut": -109.4,
+      "query_shared_vertices": 183
+    },
+    {
+      "longitude_cut": -109.3,
+      "query_shared_vertices": 169
+    },
+    {
+      "longitude_cut": -109.2,
+      "query_shared_vertices": 142
+    },
+    {
+      "longitude_cut": -109.1,
+      "query_shared_vertices": 157
+    },
+    {
+      "longitude_cut": -109.0,
+      "query_shared_vertices": 155
+    },
+    {
+      "longitude_cut": -108.9,
+      "query_shared_vertices": 157
+    },
+    {
+      "longitude_cut": -108.8,
+      "query_shared_vertices": 179
+    },
+    {
+      "longitude_cut": -108.7,
+      "query_shared_vertices": 180
+    },
+    {
+      "longitude_cut": -108.6,
+      "query_shared_vertices": 227
+    },
+    {
+      "longitude_cut": -108.5,
+      "query_shared_vertices": 219
+    },
+    {
+      "longitude_cut": -108.4,
+      "query_shared_vertices": 183
+    },
+    {
+      "longitude_cut": -108.3,
+      "query_shared_vertices": 220
+    },
+    {
+      "longitude_cut": -108.2,
+      "query_shared_vertices": 225
+    },
+    {
+      "longitude_cut": -108.1,
+      "query_shared_vertices": 196
+    },
+    {
+      "longitude_cut": -108.0,
+      "query_shared_vertices": 250
+    },
+    {
+      "longitude_cut": -107.9,
+      "query_shared_vertices": 248
+    },
+    {
+      "longitude_cut": -107.8,
+      "query_shared_vertices": 274
+    },
+    {
+      "longitude_cut": -107.7,
+      "query_shared_vertices": 253
+    },
+    {
+      "longitude_cut": -107.6,
+      "query_shared_vertices": 254
+    },
+    {
+      "longitude_cut": -107.5,
+      "query_shared_vertices": 209
+    },
+    {
+      "longitude_cut": -107.4,
+      "query_shared_vertices": 178
+    },
+    {
+      "longitude_cut": -107.3,
+      "query_shared_vertices": 222
+    },
+    {
+      "longitude_cut": -107.2,
+      "query_shared_vertices": 172
+    },
+    {
+      "longitude_cut": -107.1,
+      "query_shared_vertices": 212
+    },
+    {
+      "longitude_cut": -107.0,
+      "query_shared_vertices": 199
+    },
+    {
+      "longitude_cut": -106.9,
+      "query_shared_vertices": 274
+    },
+    {
+      "longitude_cut": -106.8,
+      "query_shared_vertices": 316
+    },
+    {
+      "longitude_cut": -106.7,
+      "query_shared_vertices": 474
+    },
+    {
+      "longitude_cut": -106.6,
+      "query_shared_vertices": 388
+    },
+    {
+      "longitude_cut": -106.5,
+      "query_shared_vertices": 301
+    },
+    {
+      "longitude_cut": -106.4,
+      "query_shared_vertices": 179
+    },
+    {
+      "longitude_cut": -106.3,
+      "query_shared_vertices": 225
+    },
+    {
+      "longitude_cut": -106.2,
+      "query_shared_vertices": 223
+    },
+    {
+      "longitude_cut": -106.1,
+      "query_shared_vertices": 283
+    },
+    {
+      "longitude_cut": -106.0,
+      "query_shared_vertices": 342
+    },
+    {
+      "longitude_cut": -105.9,
+      "query_shared_vertices": 295
+    },
+    {
+      "longitude_cut": -105.8,
+      "query_shared_vertices": 171
+    },
+    {
+      "longitude_cut": -105.7,
+      "query_shared_vertices": 270
+    },
+    {
+      "longitude_cut": -105.6,
+      "query_shared_vertices": 284
+    },
+    {
+      "longitude_cut": -105.5,
+      "query_shared_vertices": 268
+    },
+    {
+      "longitude_cut": -105.4,
+      "query_shared_vertices": 254
+    },
+    {
+      "longitude_cut": -105.3,
+      "query_shared_vertices": 265
+    },
+    {
+      "longitude_cut": -105.2,
+      "query_shared_vertices": 437
+    },
+    {
+      "longitude_cut": -105.1,
+      "query_shared_vertices": 807
+    },
+    {
+      "longitude_cut": -105.0,
+      "query_shared_vertices": 821
+    },
+    {
+      "longitude_cut": -104.9,
+      "query_shared_vertices": 822
+    },
+    {
+      "longitude_cut": -104.8,
+      "query_shared_vertices": 1117
+    },
+    {
+      "longitude_cut": -104.7,
+      "query_shared_vertices": 912
+    },
+    {
+      "longitude_cut": -104.6,
+      "query_shared_vertices": 472
+    },
+    {
+      "longitude_cut": -104.5,
+      "query_shared_vertices": 385
+    },
+    {
+      "longitude_cut": -104.4,
+      "query_shared_vertices": 378
+    },
+    {
+      "longitude_cut": -104.3,
+      "query_shared_vertices": 247
+    },
+    {
+      "longitude_cut": -104.2,
+      "query_shared_vertices": 279
+    },
+    {
+      "longitude_cut": -104.1,
+      "query_shared_vertices": 293
+    },
+    {
+      "longitude_cut": -104.0,
+      "query_shared_vertices": 191
+    }
+  ],
+  "observation": "Local exact-source diagnostic; fresh CI must reproduce semantic audit",
+  "query_cut_audit": {
+    "access_certified": false,
+    "arbitrary_new_endpoints_supported": false,
+    "cuts": [
+      {
+        "longitude_cut": -109.5,
+        "query_shared_vertices": 190
+      },
+      {
+        "longitude_cut": -109.4,
+        "query_shared_vertices": 183
+      },
+      {
+        "longitude_cut": -109.3,
+        "query_shared_vertices": 169
+      },
+      {
+        "longitude_cut": -109.2,
+        "query_shared_vertices": 142
+      },
+      {
+        "longitude_cut": -109.1,
+        "query_shared_vertices": 157
+      },
+      {
+        "longitude_cut": -109.0,
+        "query_shared_vertices": 155
+      },
+      {
+        "longitude_cut": -108.9,
+        "query_shared_vertices": 157
+      },
+      {
+        "longitude_cut": -108.8,
+        "query_shared_vertices": 179
+      },
+      {
+        "longitude_cut": -108.7,
+        "query_shared_vertices": 180
+      },
+      {
+        "longitude_cut": -108.6,
+        "query_shared_vertices": 227
+      },
+      {
+        "longitude_cut": -108.5,
+        "query_shared_vertices": 219
+      },
+      {
+        "longitude_cut": -108.4,
+        "query_shared_vertices": 183
+      },
+      {
+        "longitude_cut": -108.3,
+        "query_shared_vertices": 220
+      },
+      {
+        "longitude_cut": -108.2,
+        "query_shared_vertices": 225
+      },
+      {
+        "longitude_cut": -108.1,
+        "query_shared_vertices": 196
+      },
+      {
+        "longitude_cut": -108.0,
+        "query_shared_vertices": 250
+      },
+      {
+        "longitude_cut": -107.9,
+        "query_shared_vertices": 248
+      },
+      {
+        "longitude_cut": -107.8,
+        "query_shared_vertices": 274
+      },
+      {
+        "longitude_cut": -107.7,
+        "query_shared_vertices": 253
+      },
+      {
+        "longitude_cut": -107.6,
+        "query_shared_vertices": 254
+      },
+      {
+        "longitude_cut": -107.5,
+        "query_shared_vertices": 209
+      },
+      {
+        "longitude_cut": -107.4,
+        "query_shared_vertices": 178
+      },
+      {
+        "longitude_cut": -107.3,
+        "query_shared_vertices": 222
+      },
+      {
+        "longitude_cut": -107.2,
+        "query_shared_vertices": 172
+      },
+      {
+        "longitude_cut": -107.1,
+        "query_shared_vertices": 212
+      },
+      {
+        "longitude_cut": -107.0,
+        "query_shared_vertices": 199
+      },
+      {
+        "longitude_cut": -106.9,
+        "query_shared_vertices": 274
+      },
+      {
+        "longitude_cut": -106.8,
+        "query_shared_vertices": 316
+      },
+      {
+        "longitude_cut": -106.7,
+        "query_shared_vertices": 474
+      },
+      {
+        "longitude_cut": -106.6,
+        "query_shared_vertices": 388
+      },
+      {
+        "longitude_cut": -106.5,
+        "query_shared_vertices": 301
+      },
+      {
+        "longitude_cut": -106.4,
+        "query_shared_vertices": 179
+      },
+      {
+        "longitude_cut": -106.3,
+        "query_shared_vertices": 225
+      },
+      {
+        "longitude_cut": -106.2,
+        "query_shared_vertices": 223
+      },
+      {
+        "longitude_cut": -106.1,
+        "query_shared_vertices": 283
+      },
+      {
+        "longitude_cut": -106.0,
+        "query_shared_vertices": 342
+      },
+      {
+        "longitude_cut": -105.9,
+        "query_shared_vertices": 295
+      },
+      {
+        "longitude_cut": -105.8,
+        "query_shared_vertices": 171
+      },
+      {
+        "longitude_cut": -105.7,
+        "query_shared_vertices": 270
+      },
+      {
+        "longitude_cut": -105.6,
+        "query_shared_vertices": 284
+      },
+      {
+        "longitude_cut": -105.5,
+        "query_shared_vertices": 268
+      },
+      {
+        "longitude_cut": -105.4,
+        "query_shared_vertices": 254
+      },
+      {
+        "longitude_cut": -105.3,
+        "query_shared_vertices": 265
+      },
+      {
+        "longitude_cut": -105.2,
+        "query_shared_vertices": 437
+      },
+      {
+        "longitude_cut": -105.1,
+        "query_shared_vertices": 807
+      },
+      {
+        "longitude_cut": -105.0,
+        "query_shared_vertices": 821
+      },
+      {
+        "longitude_cut": -104.9,
+        "query_shared_vertices": 822
+      },
+      {
+        "longitude_cut": -104.8,
+        "query_shared_vertices": 1117
+      },
+      {
+        "longitude_cut": -104.7,
+        "query_shared_vertices": 912
+      },
+      {
+        "longitude_cut": -104.6,
+        "query_shared_vertices": 472
+      },
+      {
+        "longitude_cut": -104.5,
+        "query_shared_vertices": 385
+      },
+      {
+        "longitude_cut": -104.4,
+        "query_shared_vertices": 378
+      },
+      {
+        "longitude_cut": -104.3,
+        "query_shared_vertices": 247
+      },
+      {
+        "longitude_cut": -104.2,
+        "query_shared_vertices": 279
+      },
+      {
+        "longitude_cut": -104.1,
+        "query_shared_vertices": 293
+      },
+      {
+        "longitude_cut": -104.0,
+        "query_shared_vertices": 191
+      }
+    ],
+    "protected_node_set_sha256": "5b4e72d086f9ddfd3c5c83582ab9bdf5a58482a2ee6bbec32627ac717cb1e6f7",
+    "protected_osm_node_ids": [
+      55793090,
+      83056045,
+      83265629,
+      121844170,
+      141021562,
+      141782050,
+      141871232,
+      143710319,
+      143742225,
+      143862641,
+      143904064,
+      144231228,
+      144605514,
+      145395841,
+      173831740,
+      174809100,
+      175234965,
+      175244806,
+      175789640,
+      176620315,
+      176623627,
+      191025595,
+      1795087746,
+      1851150729,
+      2274029984,
+      6350018589,
+      6718651421,
+      6970839916,
+      7044271750,
+      7298599564,
+      7786572989,
+      8446107003,
+      8499393844,
+      9066920518,
+      9743986364,
+      11347363705,
+      11754811626,
+      11866557610,
+      12985655919,
+      13427204837,
+      13604499946,
+      13970098408
+    ],
+    "release_eligible": false,
+    "scope": "protected query node-state graph only; full-source cut budgets still required"
+  },
+  "release_eligible": false,
+  "schema": "protected-query-cut-sweep-v1",
+  "source_provenance": [
+    {
+      "name": "colorado.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+      "size_bytes": 386197077
+    },
+    {
+      "name": "new-mexico.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "2aa3ba0e91c0f19ffd0d614d98f112546552a51d02daf2474d8f06e54304508a",
+      "size_bytes": 136658631
+    },
+    {
+      "name": "arizona.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
+      "size_bytes": 304245283
+    },
+    {
+      "name": "utah.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "34f704431a8b3812372ec10083e151d4227a50caf19159fc9af730f942940c41",
+      "size_bytes": 170845020
+    },
+    {
+      "name": "oklahoma.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "4e76187cb20fd187d759de9565568381a76d87518377a0e03585d9865e498106",
+      "size_bytes": 169850063
+    },
+    {
+      "name": "kansas.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "eae1e55d59e8a15fe6abd7057b86098c6e03bb9a88b7997f46256ca59386f30e",
+      "size_bytes": 117395534
+    }
+  ]
+}

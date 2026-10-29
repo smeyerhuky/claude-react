@@ -1,0 +1,75 @@
+{
+  "schema": "kansas-central-western-layout-negative-v1",
+  "source_provenance": [
+    {
+      "name": "colorado.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+      "size_bytes": 386197077
+    },
+    {
+      "name": "new-mexico.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "2aa3ba0e91c0f19ffd0d614d98f112546552a51d02daf2474d8f06e54304508a",
+      "size_bytes": 136658631
+    },
+    {
+      "name": "arizona.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
+      "size_bytes": 304245283
+    },
+    {
+      "name": "utah.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "34f704431a8b3812372ec10083e151d4227a50caf19159fc9af730f942940c41",
+      "size_bytes": 170845020
+    },
+    {
+      "name": "oklahoma.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "4e76187cb20fd187d759de9565568381a76d87518377a0e03585d9865e498106",
+      "size_bytes": 169850063
+    },
+    {
+      "name": "kansas.osm.pbf",
+      "sha256": "eae1e55d59e8a15fe6abd7057b86098c6e03bb9a88b7997f46256ca59386f30e",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "size_bytes": 117395534
+    }
+  ],
+  "partition_source_names": [
+    [
+      "colorado.osm.pbf",
+      "oklahoma.osm.pbf",
+      "kansas.osm.pbf"
+    ],
+    [
+      "new-mexico.osm.pbf",
+      "arizona.osm.pbf",
+      "utah.osm.pbf"
+    ]
+  ],
+  "partition_nodes": [
+    12596093,
+    9463408
+  ],
+  "partition_raw_arcs": [
+    25743157,
+    19068307
+  ],
+  "accepted": false,
+  "failed_budget": "interface_ports",
+  "port_limit": 128,
+  "observed_error": "Interface port budget exceeded: 661 > 128; never truncate",
+  "observation": "Exact-source CI rebuilt both shards and measured the rejected interface before any route cases were computed.",
+  "reproduce": "python scripts/kansas_two_partition_competition.py --layout central-western-v1 --parent-osm colorado.osm.pbf new-mexico.osm.pbf arizona.osm.pbf utah.osm.pbf oklahoma.osm.pbf kansas.osm.pbf --output report.json",
+  "release_eligible": false,
+  "access_certified": false,
+  "interface_ports_measured": 661,
+  "upstream_ci": {
+    "head": "06bb880a52d28fe76554ba9e1229868692ad6026",
+    "run": 40791753794,
+    "job": 123178412531
+  }
+}

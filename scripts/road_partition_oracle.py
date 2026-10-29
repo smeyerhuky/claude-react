@@ -1,6 +1,7 @@
 """Bounded two-shard primitive shortest paths; no access/coverage certification."""
 from fractions import Fraction
 import hashlib
+import json
 import math
 
 import numpy as np
@@ -15,13 +16,22 @@ def close(a, b):
 
 
 def validate(graph):
+    protected = graph.report.get('query_protected_node_ids')
+    if 'query_view_policy' in graph.report or protected is not None:
+        if (graph.report.get('query_view_policy') != 'query-protected-undirected-leaf-core-v1'
+                or not isinstance(protected,list) or not 1 <= len(protected) <= 64
+                or any(type(node) is not int or not 0 < node <= 2**63-1 for node in protected)
+                or len(set(protected)) != len(protected)
+                or hashlib.sha256(json.dumps(sorted(protected),separators=(',',':')).encode()).hexdigest()
+                   != graph.report.get('query_protected_node_ids_sha256')):
+            raise ValueError('Explicit checksum-bound query-view endpoint contract required')
     n = len(graph.osm_ids)
     limits = graph.report.get('resource_limits', {})
     if (type(limits.get('nodes')) is not int or not n <= limits['nodes'] <= 15000000
             or type(limits.get('arcs')) is not int or not graph.length.nnz <= limits['arcs'] <= 40000000
             or graph.report['unique_directed_pairs'] != graph.length.nnz):
         raise ValueError('Each individual shard must respect unchanged primitive resource caps')
-    if (not n or len(graph.node_index) != n or graph.report['nodes'] != n
+    if ((not n and protected is None) or len(graph.node_index) != n or graph.report['nodes'] != n
             or any(graph.report.get(f) is not False for f in ('release_eligible', 'access_certified',
                 'road_coverage_certified', 'complete_global_competition', 'turn_restrictions_modeled'))
             or graph.report['routing_model'] != 'static-passenger-car-v2:directed-primitive-sparse-reference'
@@ -44,12 +54,22 @@ def validate(graph):
             raise ValueError('Sorted finite nonnegative common directed topology required')
 
 
+class InterfacePortBudgetExceeded(ValueError):
+    def __init__(self,count,limit):
+        self.count=count;self.limit=limit
+        super().__init__(f'Interface port budget exceeded: {count} > {limit}; never truncate')
+
+
 class TwoPartitionOracle:
     def __init__(self, prefix, addition, *, max_ports=128):
         if type(max_ports) is not int or not 1 <= max_ports <= 128:
             raise ValueError('Explicit interface budget required')
         for graph in (prefix, addition):
             validate(graph)
+        protected = [g.report.get('query_protected_node_ids') for g in (prefix,addition)]
+        if any(p is not None for p in protected) and protected[0] != protected[1]:
+            raise ValueError('Both query views must bind the same protected endpoint set')
+        self.protected_query_nodes = None if protected[0] is None else set(protected[0])
         self.graphs = (prefix, addition)
         old = np.fromiter((prefix.node_index.get(int(n), -1) for n in addition.osm_ids),
                           dtype=np.int64, count=len(addition.osm_ids))
@@ -79,7 +99,7 @@ class TwoPartitionOracle:
                                       for m in ('length', 'travel_time')):
                     ports.update((int(u), v)); improving_pairs.add((int(u), v))
         if len(ports) > max_ports:
-            raise ValueError('Interface port budget exceeded; never truncate')
+            raise InterfacePortBudgetExceeded(len(ports),max_ports)
         self.ports = sorted(int(addition.osm_ids[i]) for i in ports)
         self.audit = {'shared_vertices': len(indices), 'interface_ports': self.ports,
             'prefix_inbound_directed_pairs': int(incoming.sum()),
@@ -97,6 +117,8 @@ class TwoPartitionOracle:
                 or len(sources)*len(targets) > 1024
                 or type(max_oracles) is not int or not 1 <= max_oracles <= 512):
             raise ValueError('Bounded unique source/target queries and metric required')
+        if self.protected_query_nodes is not None and not set([*sources,*targets]) <= self.protected_query_nodes:
+            raise ValueError('New endpoints require freshly derived query views')
         endpoints = sorted(set(self.ports) | set(sources) | set(targets))
         if len(endpoints) > 192 or any(not any(n in g.node_index for g in self.graphs) for n in endpoints):
             raise ValueError('Missing endpoint or overlay budget exceeded')
