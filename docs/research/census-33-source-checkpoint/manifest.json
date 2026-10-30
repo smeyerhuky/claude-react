@@ -1,0 +1,25 @@
+{
+  "access_certified": false,
+  "baseline_sha256": "d077818c69d25f23f7b8004937c58341207334655a23493c5856977b87f6e9c8",
+  "complete_global_competition": false,
+  "datum_alignment_verified": false,
+  "parent_ci": {
+    "head": "637027ce526d2bf9ab7afb81b6a7d7c35b2e130a",
+    "job": 123686102020,
+    "run": 40941595075
+  },
+  "parent_exterior_coverage_certified": false,
+  "parent_report_sha256": "ec718426c27921b223e655c4a3191fe79e96dfdd7a8a8a0c4439b44fb7719b9d",
+  "probe_ci": {
+    "artifact_id": 12931799402,
+    "artifact_sha256": "4263638e997089dd30c192e16b4a3dcbddf5d8d30a5c2a2c37ec5594f4eb643f",
+    "head": "711de65debf6fa8af49245fa7a9257d11e705210",
+    "job": 123721703128,
+    "run": 40951842923
+  },
+  "probe_report_sha256": "7ea3968a5c5c6f0178e119d3e1de4fa40426db0a5fb3e52e0ef71e3e72a2c262",
+  "release_eligible": false,
+  "road_coverage_certified": false,
+  "scenario_id": "census-eight-state-33-source-19-sample-v1",
+  "schema": "census-33-source-19-sample-manifest-v1"
+}
