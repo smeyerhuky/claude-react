@@ -38,10 +38,11 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install -r docs/research/tucson-urban-entry-context/probe-requirements.txt
-      - name: Restore and verify exact original Arizona input
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: python scripts/fetch_research_source.py --source arizona.osm.pbf --output local-data/arizona.osm.pbf
+      - name: Fetch exact original public Arizona input with bounded retries
+        run: |
+          mkdir -p local-data
+          curl -fLSs --retry 3 --connect-timeout 20 --max-time 600 --output local-data/arizona.osm.pbf https://download.geofabrik.de/north-america/us/arizona-261027.osm.pbf
+          python scripts/fetch_research_source.py --source arizona.osm.pbf --output local-data/arizona.osm.pbf
       - name: Replay every selected raw way, node and referencing restriction
         run: |
           python scripts/tucson_entry_osm_context.py --osm local-data/arizona.osm.pbf --municipal-lots docs/research/tucson-urban-entry-context/municipal-lots.json --output /tmp/tucson-context.json
