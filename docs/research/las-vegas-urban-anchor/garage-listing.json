@@ -1,0 +1,81 @@
+{
+  "schema": "las-vegas-garage-listing-review-v1",
+  "url": "https://www.parkwhiz.com/p/las-vegas-parking/500-s-main-st/",
+  "retrieved_at_utc": "2026-10-30T19:18:15.873366+00:00",
+  "response_sha256": "45d2691d2f7ec50908a81e2c94d8593db54f2e4c03878a7a1ff4f0d3a4bac2ad",
+  "response_bytes": 227476,
+  "retention": "Whitelisted location fields only; unrelated runtime/session state excluded. Full HTML is not published; response hash cannot be recomputed from this projection.",
+  "source_json_path": "window.__INITIAL_STATE__.location",
+  "listing": {
+    "id": 12083,
+    "name": "City of Las Vegas Parking Garage",
+    "address1": "500 S. Main St.",
+    "city": "Las Vegas",
+    "state": "NV",
+    "postal_code": 89101,
+    "description": "Secure and affordable indoor garage in downtown Las Vegas. Just a few minutes to the Smith Center for Performing Arts, Zappos Theatre, and Discovery Children's Museum.\r\n\r\n\r\n\r\nMax Vehicle Height: 8ft.",
+    "entrances": [
+      {
+        "coordinates": [
+          36.16705386424245,
+          -115.14959603548051
+        ]
+      }
+    ]
+  },
+  "provider_coordinate_order": "latitude,longitude as observed in listing coordinates and corresponding lat/lng fields",
+  "reference_marker_lonlat": [
+    -115.14959603548051,
+    36.16705386424245
+  ],
+  "coordinate_datum": "Not declared in retained listing; not a surveyed or approved entrance",
+  "operator": {
+    "id": 2194,
+    "name": "City of Las Vegas Parking"
+  },
+  "photos": [
+    {
+      "path": "docs/research/las-vegas-urban-anchor/parkwhiz-garage-0.png",
+      "url": "https://d2uqqhmijd5j2z.cloudfront.net/files/303904/original/500_S_Main_St_02.png?1537978629",
+      "sha256": "7c58a9205da316244bb9a6e7e00e9270d422993c162080d84a0c470014b7d237",
+      "bytes": 906132,
+      "position": 0
+    },
+    {
+      "path": "docs/research/las-vegas-urban-anchor/parkwhiz-garage-1.png",
+      "url": "https://d2uqqhmijd5j2z.cloudfront.net/files/303916/original/500_S_Main_St.png?1537978635",
+      "sha256": "0d7d9c0a1a6a3f8fc2376680819bce6dd838e27a3711cd5cc8ebd66e7e3834f1",
+      "bytes": 799482,
+      "position": 1
+    },
+    {
+      "path": "docs/research/las-vegas-urban-anchor/parkwhiz-garage-2.png",
+      "url": "https://d2uqqhmijd5j2z.cloudfront.net/files/303910/original/500_S_Main_St_03.png?1537978632",
+      "sha256": "b02e1859094bec3e271048ef1e1400f3a31d7e88e028864b7238e4178a9d68fe",
+      "bytes": 952348,
+      "position": 2
+    }
+  ],
+  "visual_observations": [
+    {
+      "photo_positions": [
+        0,
+        1,
+        2
+      ],
+      "finding": "Main Street-facing garage opening shows red Wrong Way signs and an exiting vehicle. City Hall Parking and 500 S. Main St. signage are visible.",
+      "limitation": "AI visual interpretation of linked historical images. Copyright2018 mark is visible, but exact capture dates and present applicability are not established. No claim that the provider coordinate exactly locates this opening."
+    }
+  ],
+  "access_verified": false,
+  "release_eligible": false,
+  "public_api": {
+    "url": "https://api.parkwhiz.com/v4/locations/12083",
+    "path": "docs/research/las-vegas-urban-anchor/parkwhiz-location.json",
+    "sha256": "97b4470740a580fad0a4cac415b62ef183ab58b6ce0c08eb87f65d3c703a982c",
+    "retrieved_at_utc": "2026-10-30T19:19:32.258462+00:00",
+    "response_bytes": 4646,
+    "listed_max_height_inches": 96
+  },
+  "municipal_portal_limitation": "Official parking permit link redirects to https://lasvegas.mgzephire.com/parking_portal/login. No login, application or account action was attempted; no entrance plan obtained."
+}
