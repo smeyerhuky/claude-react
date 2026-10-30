@@ -1,0 +1,4854 @@
+{
+  "access_certified": false,
+  "input_sha256": {
+    "docs/research/census-33-source-checkpoint/baseline.json": "d077818c69d25f23f7b8004937c58341207334655a23493c5856977b87f6e9c8",
+    "docs/research/census-33-source-checkpoint/manifest.json": "09a50d8ded349ab024e63b89d460e145a3b4933d88ed19fb948aed1cb6e7c16c",
+    "docs/research/competitor-frontier-expansion/arkansas-origins.json": "b5ed58c1e7bbf9a5b6b34475a840358863a4c51817182d87be99c4ee35220791",
+    "docs/research/competitor-frontier-expansion/kansas-origins.json": "8aca09fba454603fc99d56be077054c37286630643eeefa784a3c1917c06b64a",
+    "docs/research/competitor-frontier-expansion/missouri-origins.json": "35d4e959e0f37fc7e1e8c177fe0b4bbfe5bd9caaade28774e070de8e29cd0dc5",
+    "docs/research/competitor-frontier-expansion/texas-origins.json": "a49686e44fbdfd56f2adbd276b30d8847a12222913ec5e35feb188f58aa1f920",
+    "docs/research/connector-reviews/22220-cross-border-census-lead.json": "8a7df4bf7e594a9e788980e52979d7504ddcb19f33836020e629e9c8b37e0a61",
+    "docs/research/connector-reviews/22900-cross-border-census-lead.json": "580daf15122b313ddc34ab0d3aa775cee6a76a64bd1f92cf56bbab5bee797923",
+    "docs/research/connector-reviews/27900-cross-border-census-lead.json": "26c8afba910c4538631d6d8a45ff94c0eb6f2f7cde2a33a906fa8cc5af6abe24",
+    "docs/research/connector-reviews/28140-cross-border-census-lead.json": "98aca40a1b401d23e79391c9b7fca48f4dfd9406d86904f9081bdde2ab63ee87",
+    "docs/research/connector-reviews/29820-census-lead.json": "7545a9196009d0d2ba89c66d91ba8a347e606aa69df38ed38b8098b914e24e32",
+    "docs/research/connector-reviews/29820-city-garage-proposal.json": "ff36d9830ba8e4e90beab7c5d120e3c734af7577825d67ef21619d07274114dd",
+    "docs/research/connector-reviews/44180-cross-border-census-lead.json": "556c627b44b08c8bbfa86d5e667688ac0f39bf27d5462990555adc3e78eafb46",
+    "docs/research/connector-reviews/denver-blake-rtd-proposal.json": "697ee0a3ee9bfb91e238f976ddabbf4889af5ad30775ecb8edd87bedef96231b",
+    "docs/research/connector-reviews/denver-union-station-proposal.json": "a4659ca41fff778ae89bfb884d296a99d470557cd53b106efec5ee7dbd3bb2d9",
+    "docs/research/connector-reviews/tucson-census-lead.json": "9daa5e17d0802cb360c6ef522c2232acf0d4fb68bd69b3b6b697afe036ab7e28",
+    "docs/research/connector-reviews/wichita-census-lead.json": "4eb862ab09a99a0406283edf51d76417151101cf125aa6427f413b22e9ee9d1f",
+    "docs/research/kansas-texas-source-preflight/kansas-origins.json": "e65727e29ef5446a126e3799a93d7c37c9ecf917efe1f5265da8ae11da93f1e0",
+    "docs/research/kansas-texas-source-preflight/texas-origins.json": "f3e107c0ecf6deefb70f2c875033404cd5344383c3513a69a8bd67bd47501dbe",
+    "docs/research/missouri-arkansas-origin-evidence/arkansas-origins.json": "abb73290cdc2a6ae05115e14c31d4edf468f0886a45b16f3ae83ab36b2e70893",
+    "docs/research/missouri-arkansas-origin-evidence/kansas-origins.json": "e8c0fc4d5d00ea1ed6a8bf3ff8586cfd7b8a2a925c78ec2ed455d638c5d1dfd8",
+    "docs/research/missouri-arkansas-origin-evidence/missouri-origins.json": "4dacce2e952c6e71c74b0441666b4faa11ff3e55cc5937b1a6453e450eeeb473",
+    "docs/research/missouri-arkansas-origin-evidence/oklahoma-origins.json": "b775565166ccd4f4e6be2b49fdc6cc7335be720db90ef5e98e7074470e7c7c68",
+    "docs/research/native-state-inventory/report.json": "85c2c60334f499fe9f1fc193fa9a05f020db5b0aea847f6814b6fd57547a95db",
+    "docs/research/nevada-competitor-frontier/nevada-origins.json": "934b3261f198c6e950d487764f40e61a77d2963608226745243f4ba7f89aeb0d",
+    "docs/research/retained-extract-frontier/louisiana-origins.json": "a4624c8a6d244086d3db0cd500932ac804bf52a91ad20016c0964f473c1ea62b",
+    "docs/research/retained-extract-frontier/nebraska-origins.json": "43b92cf60f4e60dbfcab594c6e7474678098282bfe67c86589c57551e34b6c4b",
+    "docs/research/retained-extract-frontier/texas-origins.json": "35d0723b467df0717b95a301e3e83c622abe46b51d43a32320ae91bcf347f9cd",
+    "docs/research/retained-extract-frontier/wyoming-origins.json": "4e27e01cb64a7eba068e3a1a67d55955638282c8a004dbbee91fa40f7f112bb4",
+    "docs/research/utah-parent-reference/domains.json": "d860aef0a6ac2e442590098ed98a7cd601fa63764d8d76ba63e444bebcc5a260",
+    "scripts/colorado_reviewed_connectors.json": "cbac5c424e0c840a95de00ddf1f77a5627d35543b2d97a524222908590c62d38"
+  },
+  "jurisdiction_scope": "50 states, DC and Puerto Rico; native point grouping only",
+  "modeled_nodata_costs": 152,
+  "public_ready_states": 0,
+  "qualifying_identities": 367,
+  "release_eligible": false,
+  "routed_research_leads": 33,
+  "schema": "state-release-work-queue-v1",
+  "states": [
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "14500",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Boulder, CO Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "17820",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Colorado Springs, CO Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "19740",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Denver-Aurora-Centennial, CO Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [
+            {
+              "decision": "needs_evidence",
+              "origin_policy": "urban-access-anchor-v1",
+              "path": "docs/research/connector-reviews/denver-blake-rtd-proposal.json",
+              "sha256": "697ee0a3ee9bfb91e238f976ddabbf4889af5ad30775ecb8edd87bedef96231b"
+            },
+            {
+              "decision": "needs_evidence",
+              "origin_policy": "urban-access-anchor-v1",
+              "path": "docs/research/connector-reviews/denver-union-station-proposal.json",
+              "sha256": "a4659ca41fff778ae89bfb884d296a99d470557cd53b106efec5ee7dbd3bb2d9"
+            }
+          ],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "22660",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Fort Collins-Loveland, CO Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "24300",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Grand Junction, CO Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "24540",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Greeley, CO Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "39380",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Pueblo, CO Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 7,
+      "next_work": "independent_anchor_and_destination_access_evidence",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 7,
+      "state": "CO",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [],
+      "work_order": 1
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "10740",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Albuquerque, NM Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "22140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Farmington, NM Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "29740",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Las Cruces, NM Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "42140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Santa Fe, NM Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 4,
+      "next_work": "independent_anchor_and_destination_access_evidence",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 4,
+      "state": "NM",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [],
+      "work_order": 2
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "22380",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Flagstaff, AZ Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "29420",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Lake Havasu City-Kingman, AZ Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "38060",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Phoenix-Mesa-Chandler, AZ Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "39150",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Prescott Valley-Prescott, AZ Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "43420",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Sierra Vista-Douglas, AZ Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "46060",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 76,
+          "name": "Tucson, AZ Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [
+            {
+              "decision": "reject_modeled_candidate",
+              "origin_policy": "census-regression-v1",
+              "path": "docs/research/connector-reviews/tucson-census-lead.json",
+              "sha256": "9daa5e17d0802cb360c6ef522c2232acf0d4fb68bd69b3b6b697afe036ab7e28"
+            }
+          ],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "49740",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Yuma, AZ Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        }
+      ],
+      "modeled_nodata_costs": 76,
+      "native_point_qualifiers": 7,
+      "next_work": "independent_anchor_and_destination_access_evidence",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 7,
+      "state": "AZ",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [],
+      "work_order": 3
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "30860",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Logan, UT-ID Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "36260",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Ogden, UT Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "39340",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Provo-Orem-Lehi, UT Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "41100",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "St. George, UT Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "41620",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Salt Lake City-Murray, UT Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 5,
+      "next_work": "independent_anchor_and_destination_access_evidence",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 5,
+      "state": "UT",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [],
+      "work_order": 4
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "22900",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Fort Smith, AR-OK Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [
+            {
+              "decision": "needs_evidence",
+              "origin_policy": "census-regression-v1",
+              "path": "docs/research/connector-reviews/22900-cross-border-census-lead.json",
+              "sha256": "580daf15122b313ddc34ab0d3aa775cee6a76a64bd1f92cf56bbab5bee797923"
+            }
+          ],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "30020",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Lawton, OK Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "36420",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Oklahoma City, OK Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "46140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Tulsa, OK Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": true
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 4,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 3,
+      "state": "OK",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "22900"
+      ],
+      "work_order": 5
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "29940",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Lawrence, KS Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "31740",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Manhattan, KS Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "45820",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Topeka, KS Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "48620",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 76,
+          "name": "Wichita, KS Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [
+            {
+              "decision": "reject_modeled_candidate",
+              "origin_policy": "census-regression-v1",
+              "path": "docs/research/connector-reviews/wichita-census-lead.json",
+              "sha256": "4eb862ab09a99a0406283edf51d76417151101cf125aa6427f413b22e9ee9d1f"
+            }
+          ],
+          "routed_research_lead": true
+        }
+      ],
+      "modeled_nodata_costs": 76,
+      "native_point_qualifiers": 4,
+      "next_work": "independent_anchor_and_destination_access_evidence",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 4,
+      "state": "KS",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [],
+      "work_order": 6
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "16940",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Cheyenne, WY Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": true
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 1,
+      "next_work": "independent_anchor_and_destination_access_evidence",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 1,
+      "state": "WY",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [],
+      "work_order": 7
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "29820",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Las Vegas-Henderson-North Las Vegas, NV Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [
+            {
+              "decision": "needs_evidence",
+              "origin_policy": "census-regression-v1",
+              "path": "docs/research/connector-reviews/29820-census-lead.json",
+              "sha256": "7545a9196009d0d2ba89c66d91ba8a347e606aa69df38ed38b8098b914e24e32"
+            },
+            {
+              "decision": "needs_evidence",
+              "origin_policy": "urban-access-anchor-v1",
+              "path": "docs/research/connector-reviews/29820-city-garage-proposal.json",
+              "sha256": "ff36d9830ba8e4e90beab7c5d120e3c734af7577825d67ef21619d07274114dd"
+            }
+          ],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "39900",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Reno, NV Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 2,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 1,
+      "state": "NV",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "39900"
+      ],
+      "work_order": 8
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "10180",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Abilene, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "11100",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Amarillo, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "12420",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Austin-Round Rock-San Marcos, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "13140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Beaumont-Port Arthur, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "15180",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Brownsville-Harlingen, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "17780",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "College Station-Bryan, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "18580",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Corpus Christi, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "19100",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Dallas-Fort Worth-Arlington, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "21340",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "El Paso, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "26420",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Houston-Pasadena-The Woodlands, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "28660",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Killeen-Temple, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "29700",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Laredo, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "30980",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Longview, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "31180",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Lubbock, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "32580",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "McAllen-Edinburg-Mission, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "33260",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Midland, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "36220",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Odessa, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "41660",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "San Angelo, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "41700",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "San Antonio-New Braunfels, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "43300",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Sherman-Denison, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "45500",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Texarkana, TX-AR Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "46340",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Tyler, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "47380",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Waco, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "48660",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Wichita Falls, TX Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 24,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "TX",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "10180",
+        "11100",
+        "12420",
+        "13140",
+        "15180",
+        "17780",
+        "18580",
+        "19100",
+        "21340",
+        "26420",
+        "28660",
+        "29700",
+        "30980",
+        "31180",
+        "32580",
+        "33260",
+        "36220",
+        "41660",
+        "41700",
+        "43300",
+        "45500",
+        "46340",
+        "47380",
+        "48660"
+      ],
+      "work_order": 9
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "17860",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Columbia, MO Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "27620",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Jefferson City, MO Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "27900",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Joplin, MO-KS Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [
+            {
+              "decision": "needs_evidence",
+              "origin_policy": "census-regression-v1",
+              "path": "docs/research/connector-reviews/27900-cross-border-census-lead.json",
+              "sha256": "26c8afba910c4538631d6d8a45ff94c0eb6f2f7cde2a33a906fa8cc5af6abe24"
+            }
+          ],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "28140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Kansas City, MO-KS Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [
+            {
+              "decision": "needs_evidence",
+              "origin_policy": "census-regression-v1",
+              "path": "docs/research/connector-reviews/28140-cross-border-census-lead.json",
+              "sha256": "98aca40a1b401d23e79391c9b7fca48f4dfd9406d86904f9081bdde2ab63ee87"
+            }
+          ],
+          "routed_research_lead": true
+        },
+        {
+          "cbsa": "41140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "St. Joseph, MO-KS Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "41180",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "St. Louis, MO-IL Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "44180",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Springfield, MO Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [
+            {
+              "decision": "needs_evidence",
+              "origin_policy": "census-regression-v1",
+              "path": "docs/research/connector-reviews/44180-cross-border-census-lead.json",
+              "sha256": "556c627b44b08c8bbfa86d5e667688ac0f39bf27d5462990555adc3e78eafb46"
+            }
+          ],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 7,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 1,
+      "state": "MO",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "17860",
+        "27620",
+        "27900",
+        "41140",
+        "41180",
+        "44180"
+      ],
+      "work_order": 10
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "22220",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Fayetteville-Springdale-Rogers, AR Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [
+            {
+              "decision": "needs_evidence",
+              "origin_policy": "census-regression-v1",
+              "path": "docs/research/connector-reviews/22220-cross-border-census-lead.json",
+              "sha256": "8a7df4bf7e594a9e788980e52979d7504ddcb19f33836020e629e9c8b37e0a61"
+            }
+          ],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "27860",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Jonesboro, AR Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "30780",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Little Rock-North Little Rock-Conway, AR Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 3,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "AR",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "22220",
+        "27860",
+        "30780"
+      ],
+      "work_order": 11
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "12540",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Bakersfield-Delano, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "17020",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Chico, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "20940",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "El Centro, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "23420",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Fresno, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "25260",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Hanford-Corcoran, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "31080",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Los Angeles-Long Beach-Anaheim, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "32900",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Merced, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "33700",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Modesto, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "34900",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Napa, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "37100",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Oxnard-Thousand Oaks-Ventura, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "39820",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Redding, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "40140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Riverside-San Bernardino-Ontario, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "40900",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Sacramento-Roseville-Folsom, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "41500",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Salinas, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "41740",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "San Diego-Chula Vista-Carlsbad, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "41860",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "San Francisco-Oakland-Fremont, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "41940",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "San Jose-Sunnyvale-Santa Clara, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "42020",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "San Luis Obispo-Paso Robles, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "42100",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Santa Cruz-Watsonville, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "42200",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Santa Maria-Santa Barbara, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "42220",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Santa Rosa-Petaluma, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "44700",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Stockton-Lodi, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "46700",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Vallejo, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "47300",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Visalia, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "49700",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Yuba City, CA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 25,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "CA",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "12540",
+        "17020",
+        "20940",
+        "23420",
+        "25260",
+        "31080",
+        "32900",
+        "33700",
+        "34900",
+        "37100",
+        "39820",
+        "40140",
+        "40900",
+        "41500",
+        "41740",
+        "41860",
+        "41940",
+        "42020",
+        "42100",
+        "42200",
+        "42220",
+        "44700",
+        "46700",
+        "47300",
+        "49700"
+      ],
+      "work_order": 12
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "10780",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Alexandria, LA Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "12940",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Baton Rouge, LA Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "25220",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Hammond, LA Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "26380",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Houma-Bayou Cane-Thibodaux, LA Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "29180",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Lafayette, LA Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "29340",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Lake Charles, LA Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "33740",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Monroe, LA Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "35380",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "New Orleans-Metairie, LA Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "43340",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Shreveport-Bossier City, LA Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "43640",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Slidell-Mandeville-Covington, LA Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 10,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "LA",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "10780",
+        "12940",
+        "25220",
+        "26380",
+        "29180",
+        "29340",
+        "33740",
+        "35380",
+        "43340",
+        "43640"
+      ],
+      "work_order": 13
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "30700",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Lincoln, NE Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "36540",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Omaha, NE-IA Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 2,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "NE",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "30700",
+        "36540"
+      ],
+      "work_order": 14
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "16860",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Chattanooga, TN-GA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "17420",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Cleveland, TN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "27180",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Jackson, TN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "27740",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Johnson City, TN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "28940",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Knoxville, TN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "32820",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Memphis, TN-MS-AR Metro Area",
+          "retained_lead_scan": true,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "34100",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Morristown, TN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "34980",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Nashville-Davidson--Murfreesboro--Franklin, TN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 8,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "TN",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "16860",
+        "17420",
+        "27180",
+        "27740",
+        "28940",
+        "32820",
+        "34100",
+        "34980"
+      ],
+      "work_order": 15
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "11180",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Ames, IA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "16300",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Cedar Rapids, IA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "19780",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Des Moines-West Des Moines, IA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "26980",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Iowa City, IA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "43580",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Sioux City, IA-NE-SD Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "47940",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Waterloo-Cedar Falls, IA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 6,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "IA",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "11180",
+        "16300",
+        "19780",
+        "26980",
+        "43580",
+        "47940"
+      ],
+      "work_order": 16
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "14540",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Bowling Green, KY Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "17140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Cincinnati, OH-KY-IN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "17300",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Clarksville, TN-KY Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "21060",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Elizabethtown, KY Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "30460",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Lexington-Fayette, KY Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "31140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Louisville/Jefferson County, KY-IN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "36980",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Owensboro, KY Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "37140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Paducah, KY-IL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 8,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "KY",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "14540",
+        "17140",
+        "17300",
+        "21060",
+        "30460",
+        "31140",
+        "36980",
+        "37140"
+      ],
+      "work_order": 17
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "39660",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Rapid City, SD Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "43620",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Sioux Falls, SD-MN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 2,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "SD",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "39660",
+        "43620"
+      ],
+      "work_order": 18
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "14010",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Bloomington, IL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "16580",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Champaign-Urbana, IL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "16980",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Chicago-Naperville-Elgin, IL-IN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "19340",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Davenport-Moline-Rock Island, IA-IL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "28100",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Kankakee, IL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "37900",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Peoria, IL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "40420",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Rockford, IL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "44100",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Springfield, IL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 8,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "IL",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "14010",
+        "16580",
+        "16980",
+        "19340",
+        "28100",
+        "37900",
+        "40420",
+        "44100"
+      ],
+      "work_order": 19
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "14260",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Boise City, ID Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "17660",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Coeur d'Alene, ID Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "26820",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Idaho Falls, ID Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "46300",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Twin Falls, ID Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 4,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "ID",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "14260",
+        "17660",
+        "26820",
+        "46300"
+      ],
+      "work_order": 20
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "25060",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Gulfport-Biloxi, MS Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "25620",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Hattiesburg, MS Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "27140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Jackson, MS Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 3,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "MS",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "25060",
+        "25620",
+        "27140"
+      ],
+      "work_order": 21
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "11500",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Anniston-Oxford, AL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "12220",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Auburn-Opelika, AL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "13820",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Birmingham, AL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "19300",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Daphne-Fairhope-Foley, AL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "19460",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Decatur, AL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "20020",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Dothan, AL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "22520",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Florence-Muscle Shoals, AL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "23460",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Gadsden, AL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "26620",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Huntsville, AL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "33660",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Mobile, AL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "33860",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Montgomery, AL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "46220",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Tuscaloosa, AL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 12,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "AL",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "11500",
+        "12220",
+        "13820",
+        "19300",
+        "19460",
+        "20020",
+        "22520",
+        "23460",
+        "26620",
+        "33660",
+        "33860",
+        "46220"
+      ],
+      "work_order": 22
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "14020",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Bloomington, IN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "21140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Elkhart-Goshen, IN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "21780",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Evansville, IN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "23060",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Fort Wayne, IN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "26900",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Indianapolis-Carmel-Greenwood, IN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "29200",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Lafayette-West Lafayette, IN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "33140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Michigan City-La Porte, IN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "34620",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Muncie, IN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "45460",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Terre Haute, IN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 9,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "IN",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "14020",
+        "21140",
+        "21780",
+        "23060",
+        "26900",
+        "29200",
+        "33140",
+        "34620",
+        "45460"
+      ],
+      "work_order": 23
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "20260",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Duluth, MN-WI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "24220",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Grand Forks, ND-MN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "31860",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Mankato, MN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "33460",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Minneapolis-St. Paul-Bloomington, MN-WI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "40340",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Rochester, MN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "41060",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "St. Cloud, MN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 6,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "MN",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "20260",
+        "24220",
+        "31860",
+        "33460",
+        "40340",
+        "41060"
+      ],
+      "work_order": 24
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "13740",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Billings, MT Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "14580",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Bozeman, MT Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "33540",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Missoula, MT Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 3,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "MT",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "13740",
+        "14580",
+        "33540"
+      ],
+      "work_order": 25
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "11540",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Appleton, WI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "20740",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Eau Claire, WI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "22540",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Fond du Lac, WI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "24580",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Green Bay, WI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "27500",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Janesville-Beloit, WI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "28450",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Kenosha, WI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "29100",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "La Crosse-Onalaska, WI-MN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "31540",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Madison, WI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "33340",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Milwaukee-Waukesha, WI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "36780",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Oshkosh-Neenah, WI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "39540",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Racine-Mount Pleasant, WI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "43100",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Sheboygan, WI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "48140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Wausau, WI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 13,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "WI",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "11540",
+        "20740",
+        "22540",
+        "24580",
+        "27500",
+        "28450",
+        "29100",
+        "31540",
+        "33340",
+        "36780",
+        "39540",
+        "43100",
+        "48140"
+      ],
+      "work_order": 26
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "10540",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Albany, OR Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "13460",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Bend, OR Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "21660",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Eugene-Springfield, OR Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "32780",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Medford, OR Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "41420",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Salem, OR Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 5,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "OR",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "10540",
+        "13460",
+        "21660",
+        "32780",
+        "41420"
+      ],
+      "work_order": 27
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "13900",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Bismarck, ND Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "22020",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Fargo, ND-MN Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 2,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "ND",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "13900",
+        "22020"
+      ],
+      "work_order": 28
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "10500",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Albany, GA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "12020",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Athens-Clarke County, GA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "12060",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Atlanta-Sandy Springs-Roswell, GA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "12260",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Augusta-Richmond County, GA-SC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "15260",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Brunswick-St. Simons, GA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "17980",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Columbus, GA-AL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "19140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Dalton, GA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "23580",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Gainesville, GA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "31420",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Macon-Bibb County, GA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "40660",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Rome, GA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "42340",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Savannah, GA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "46660",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Valdosta, GA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "47580",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Warner Robins, GA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 13,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "GA",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "10500",
+        "12020",
+        "12060",
+        "12260",
+        "15260",
+        "17980",
+        "19140",
+        "23580",
+        "31420",
+        "40660",
+        "42340",
+        "46660",
+        "47580"
+      ],
+      "work_order": 29
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "11460",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Ann Arbor, MI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "12980",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Battle Creek, MI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "13020",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Bay City, MI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "19820",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Detroit-Warren-Dearborn, MI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "22420",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Flint, MI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "24340",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Grand Rapids-Wyoming-Kentwood, MI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "27100",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Jackson, MI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "28020",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Kalamazoo-Portage, MI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "29620",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Lansing-East Lansing, MI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "33780",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Monroe, MI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "34740",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Muskegon-Norton Shores, MI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "35660",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Niles, MI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "40980",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Saginaw, MI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "43780",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "South Bend-Mishawaka, IN-MI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "45900",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Traverse City, MI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 15,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "MI",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "11460",
+        "12980",
+        "13020",
+        "19820",
+        "22420",
+        "24340",
+        "27100",
+        "28020",
+        "29620",
+        "33780",
+        "34740",
+        "35660",
+        "40980",
+        "43780",
+        "45900"
+      ],
+      "work_order": 30
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "15980",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Cape Coral-Fort Myers, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "18880",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Crestview-Fort Walton Beach-Destin, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "19660",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Deltona-Daytona Beach-Ormond Beach, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "23540",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Gainesville, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "26140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Homosassa Springs, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "27260",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Jacksonville, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "29460",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Lakeland-Winter Haven, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "33100",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Miami-Fort Lauderdale-West Palm Beach, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "34940",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Naples-Marco Island, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "35840",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "North Port-Bradenton-Sarasota, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "36100",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Ocala, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "36740",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Orlando-Kissimmee-Sanford, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "37340",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Palm Bay-Melbourne-Titusville, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "37460",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Panama City-Panama City Beach, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "37860",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Pensacola-Ferry Pass-Brent, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "38940",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Port St. Lucie, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "39460",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Punta Gorda, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "42680",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Sebastian-Vero Beach-West Vero Corridor, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "42700",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Sebring, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "45220",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Tallahassee, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "45300",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Tampa-St. Petersburg-Clearwater, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "48680",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Wildwood-The Villages, FL Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 22,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "FL",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "15980",
+        "18880",
+        "19660",
+        "23540",
+        "26140",
+        "27260",
+        "29460",
+        "33100",
+        "34940",
+        "35840",
+        "36100",
+        "36740",
+        "37340",
+        "37460",
+        "37860",
+        "38940",
+        "39460",
+        "42680",
+        "42700",
+        "45220",
+        "45300",
+        "48680"
+      ],
+      "work_order": 31
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "10420",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Akron, OH Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "15940",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Canton-Massillon, OH Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "17410",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Cleveland, OH Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "18140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Columbus, OH Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "19430",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Dayton-Kettering-Beavercreek, OH Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "30620",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Lima, OH Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "31900",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Mansfield, OH Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "41780",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Sandusky, OH Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "44220",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Springfield, OH Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "45780",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Toledo, OH Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "48260",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Weirton-Steubenville, WV-OH Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "48540",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Wheeling, WV-OH Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "49660",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Youngstown-Warren, OH Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 13,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "OH",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "10420",
+        "15940",
+        "17410",
+        "18140",
+        "19430",
+        "30620",
+        "31900",
+        "41780",
+        "44220",
+        "45780",
+        "48260",
+        "48540",
+        "49660"
+      ],
+      "work_order": 32
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "13380",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Bellingham, WA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "14740",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Bremerton-Silverdale-Port Orchard, WA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "28420",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Kennewick-Richland, WA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "31020",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Longview-Kelso, WA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "34580",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Mount Vernon-Anacortes, WA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "36500",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Olympia-Lacey-Tumwater, WA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "38900",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Portland-Vancouver-Hillsboro, OR-WA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "42660",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Seattle-Tacoma-Bellevue, WA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "44060",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Spokane-Spokane Valley, WA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "48300",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Wenatchee-East Wenatchee, WA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "49420",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Yakima, WA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 11,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "WA",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "13380",
+        "14740",
+        "28420",
+        "31020",
+        "34580",
+        "36500",
+        "38900",
+        "42660",
+        "44060",
+        "48300",
+        "49420"
+      ],
+      "work_order": 33
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "13220",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Beckley, WV Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "16620",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Charleston, WV Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "25180",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Hagerstown-Martinsburg, MD-WV Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "26580",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Huntington-Ashland, WV-KY-OH Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "34060",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Morgantown, WV Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "49020",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Winchester, VA-WV Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 6,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "WV",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "13220",
+        "16620",
+        "25180",
+        "26580",
+        "34060",
+        "49020"
+      ],
+      "work_order": 34
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "11700",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Asheville, NC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "15500",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Burlington, NC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "16740",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Charlotte-Concord-Gastonia, NC-SC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "20500",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Durham-Chapel Hill, NC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "22180",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Fayetteville, NC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "24140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Goldsboro, NC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "24660",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Greensboro-High Point, NC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "24780",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Greenville, NC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "25860",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Hickory-Lenoir-Morganton, NC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "27340",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Jacksonville, NC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "38240",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Pinehurst-Southern Pines, NC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "39580",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Raleigh-Cary, NC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "40580",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Rocky Mount, NC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "48900",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Wilmington, NC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "49180",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Winston-Salem, NC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 15,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "NC",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "11700",
+        "15500",
+        "16740",
+        "20500",
+        "22180",
+        "24140",
+        "24660",
+        "24780",
+        "25860",
+        "27340",
+        "38240",
+        "39580",
+        "40580",
+        "48900",
+        "49180"
+      ],
+      "work_order": 35
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "13980",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Blacksburg-Christiansburg-Radford, VA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "16820",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Charlottesville, VA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "25500",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Harrisonburg, VA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "28700",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Kingsport-Bristol, TN-VA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "31340",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Lynchburg, VA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "40060",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Richmond, VA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "40220",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Roanoke, VA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "44420",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Staunton-Stuarts Draft, VA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "47260",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Virginia Beach-Chesapeake-Norfolk, VA-NC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "47900",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Washington-Arlington-Alexandria, DC-VA-MD-WV Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 10,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "VA",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "13980",
+        "16820",
+        "25500",
+        "28700",
+        "31340",
+        "40060",
+        "40220",
+        "44420",
+        "47260",
+        "47900"
+      ],
+      "work_order": 36
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "16700",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Charleston-North Charleston, SC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "17900",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Columbia, SC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "22500",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Florence, SC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "24860",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Greenville-Anderson-Greer, SC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "25940",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Hilton Head Island-Bluffton-Port Royal, SC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "34820",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Myrtle Beach-Conway-North Myrtle Beach, SC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "43900",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Spartanburg, SC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "44940",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Sumter, SC Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 8,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "SC",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "16700",
+        "17900",
+        "22500",
+        "24860",
+        "25940",
+        "34820",
+        "43900",
+        "44940"
+      ],
+      "work_order": 37
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "10900",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Allentown-Bethlehem-Easton, PA-NJ Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "11020",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Altoona, PA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "16540",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Chambersburg, PA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "21500",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Erie, PA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "23900",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Gettysburg, PA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "25420",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Harrisburg-Carlisle, PA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "27780",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Johnstown, PA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "29540",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Lancaster, PA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "30140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Lebanon, PA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "37980",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Philadelphia-Camden-Wilmington, PA-NJ-DE-MD Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "38300",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Pittsburgh, PA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "39740",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Reading, PA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "42540",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Scranton--Wilkes-Barre, PA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "44300",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "State College, PA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "48700",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Williamsport, PA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "49620",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "York-Hanover, PA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 16,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "PA",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "10900",
+        "11020",
+        "16540",
+        "21500",
+        "23900",
+        "25420",
+        "27780",
+        "29540",
+        "30140",
+        "37980",
+        "38300",
+        "39740",
+        "42540",
+        "44300",
+        "48700",
+        "49620"
+      ],
+      "work_order": 38
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "10580",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Albany-Schenectady-Troy, NY Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "13780",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Binghamton, NY Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "15380",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Buffalo-Cheektowaga, NY Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "24020",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Glens Falls, NY Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "27060",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Ithaca, NY Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "28740",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Kingston, NY Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "28880",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Kiryas Joel-Poughkeepsie-Newburgh, NY Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "35620",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "New York-Newark-Jersey City, NY-NJ Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "40380",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Rochester, NY Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "45060",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Syracuse, NY Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "46540",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Utica-Rome, NY Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "48060",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Watertown-Fort Drum, NY Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 12,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "NY",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "10580",
+        "13780",
+        "15380",
+        "24020",
+        "27060",
+        "28740",
+        "28880",
+        "35620",
+        "40380",
+        "45060",
+        "46540",
+        "48060"
+      ],
+      "work_order": 39
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "12580",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Baltimore-Columbia-Towson, MD Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "30500",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Lexington Park, MD Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "41540",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Salisbury, MD Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 3,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "MD",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "12580",
+        "30500",
+        "41540"
+      ],
+      "work_order": 40
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "20100",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Dover, DE Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 1,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "DE",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "20100"
+      ],
+      "work_order": 41
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "12100",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Atlantic City-Hammonton, NJ Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "45940",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Trenton-Princeton, NJ Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "47220",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Vineland, NJ Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 3,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "NJ",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "12100",
+        "45940",
+        "47220"
+      ],
+      "work_order": 42
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "14860",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Bridgeport-Stamford-Danbury, CT Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "25540",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Hartford-West Hartford-East Hartford, CT Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "35300",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "New Haven, CT Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "35980",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Norwich-New London-Willimantic, CT Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "47930",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Waterbury-Shelton, CT Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 5,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "CT",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "14860",
+        "25540",
+        "35300",
+        "35980",
+        "47930"
+      ],
+      "work_order": 43
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "11200",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Amherst Town-Northampton, MA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "12700",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Barnstable Town, MA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "14460",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Boston-Cambridge-Newton, MA-NH Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "38340",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Pittsfield, MA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "44140",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Springfield, MA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "49340",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Worcester, MA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 6,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "MA",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "11200",
+        "12700",
+        "14460",
+        "38340",
+        "44140",
+        "49340"
+      ],
+      "work_order": 44
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "15540",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Burlington-South Burlington, VT Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 1,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "VT",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "15540"
+      ],
+      "work_order": 45
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "31700",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Manchester-Nashua, NH Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 1,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "NH",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "31700"
+      ],
+      "work_order": 46
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "39300",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Providence-Warwick, RI-MA Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 1,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "RI",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "39300"
+      ],
+      "work_order": 47
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "12620",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Bangor, ME Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "30340",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Lewiston-Auburn, ME Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "38860",
+          "in_public_csv": true,
+          "modeled_nodata_costs": 0,
+          "name": "Portland-South Portland, ME Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 3,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "ME",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "12620",
+        "30340",
+        "38860"
+      ],
+      "work_order": 48
+    },
+    {
+      "absent_public_csv_cbsa_ids": [
+        "10380",
+        "11640",
+        "32420",
+        "38660",
+        "41980"
+      ],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "10380",
+          "in_public_csv": false,
+          "modeled_nodata_costs": 0,
+          "name": "Aguadilla, PR Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "11640",
+          "in_public_csv": false,
+          "modeled_nodata_costs": 0,
+          "name": "Arecibo, PR Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "32420",
+          "in_public_csv": false,
+          "modeled_nodata_costs": 0,
+          "name": "Mayag\u00fcez, PR Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "38660",
+          "in_public_csv": false,
+          "modeled_nodata_costs": 0,
+          "name": "Ponce, PR Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "41980",
+          "in_public_csv": false,
+          "modeled_nodata_costs": 0,
+          "name": "San Juan-Bayam\u00f3n-Caguas, PR Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 5,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "PR",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "10380",
+        "11640",
+        "32420",
+        "38660",
+        "41980"
+      ],
+      "work_order": 49
+    },
+    {
+      "absent_public_csv_cbsa_ids": [
+        "11260"
+      ],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "11260",
+          "in_public_csv": false,
+          "modeled_nodata_costs": 0,
+          "name": "Anchorage, AK Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 1,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "AK",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "11260"
+      ],
+      "work_order": 50
+    },
+    {
+      "absent_public_csv_cbsa_ids": [
+        "27980",
+        "46520"
+      ],
+      "geographic_coverage_certified": false,
+      "metros": [
+        {
+          "cbsa": "27980",
+          "in_public_csv": false,
+          "modeled_nodata_costs": 0,
+          "name": "Kahului-Wailuku, HI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        },
+        {
+          "cbsa": "46520",
+          "in_public_csv": false,
+          "modeled_nodata_costs": 0,
+          "name": "Urban Honolulu, HI Metro Area",
+          "retained_lead_scan": false,
+          "review_packets": [],
+          "routed_research_lead": false
+        }
+      ],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 2,
+      "next_work": "source_and_anchor_investigation",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "HI",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [
+        "27980",
+        "46520"
+      ],
+      "work_order": 51
+    },
+    {
+      "absent_public_csv_cbsa_ids": [],
+      "geographic_coverage_certified": false,
+      "metros": [],
+      "modeled_nodata_costs": 0,
+      "native_point_qualifiers": 0,
+      "next_work": "independent_anchor_and_destination_access_evidence",
+      "open_release_gates": [
+        137,
+        138,
+        139
+      ],
+      "release_eligible": false,
+      "routed_research_leads": 0,
+      "state": "DC",
+      "status": "blocked_on_access_coverage_and_artifact_gates",
+      "unrouted_cbsa_ids": [],
+      "work_order": 52
+    }
+  ],
+  "unrouted_qualifying_identities": 334,
+  "warning": "Scheduling only. Native-point state membership is not CBSA extent, extract coverage, exterior-route closure or release approval. Empty native-state groups (including DC) are not vacuously complete. AK, HI, PR and all eight absent-public-CSV qualifiers remain explicit. No omitted competitor is excluded."
+}
