@@ -1,0 +1,17 @@
+{
+  "schema": "municipal-parking-source-excerpts-v1",
+  "id": "colorado-springs",
+  "url": "https://coloradosprings.gov/parking",
+  "retrieved_at_utc": "2026-10-30T19:37:02.681191+00:00",
+  "http_status": 200,
+  "response_sha256": "10593a15e02e6610fe2c4a90990cc94360a58d37e88296e1edd0bbe9dcb21cbd",
+  "response_bytes": 57284,
+  "excerpts": [
+    "City Hall Lot ( employees only )",
+    "Kiowa Garage - 127 E Kiowa St.",
+    "Vehicles may not remain parked in the parking lots or garages for longer than 72 hours. Extended stay options may be available"
+  ],
+  "retention": "Selected literal visible text with whitespace normalized; full HTML/form/runtime state not published. Response hash identifies the fetch but cannot be recomputed from excerpts.",
+  "access_verified": false,
+  "release_eligible": false
+}

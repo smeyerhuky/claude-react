@@ -1,0 +1,1442 @@
+{
+ "currentVersion": 11.5,
+ "cimVersion": "3.5.0",
+ "id": 0,
+ "name": "Public Parking",
+ "type": "Feature Layer",
+ "parentLayer": null,
+ "defaultVisibility": true,
+ "minScale": 0,
+ "maxScale": 0,
+ "canScaleSymbols": false,
+ "geometryType": "esriGeometryPolygon",
+ "description": "",
+ "copyrightText": "",
+ "editFieldsInfo": {
+  "creationDateField": "created_date",
+  "creatorField": "created_user",
+  "editDateField": "last_edited_date",
+  "editorField": "last_edited_user"
+ },
+ "ownershipBasedAccessControlForFeatures": null,
+ "syncCanReturnChanges": true,
+ "relationships": [],
+ "isDataVersioned": true,
+ "isDataArchived": false,
+ "infoInEstimates": [
+  "extent"
+ ],
+ "isDataBranchVersioned": false,
+ "isDataReplicaTracked": false,
+ "isCoGoEnabled": false,
+ "supportsRollbackOnFailureParameter": false,
+ "archivingInfo": {
+  "supportsQueryWithHistoricMoment": false,
+  "startArchivingMoment": -1
+ },
+ "supportsStatistics": true,
+ "supportsExceedsLimitStatistics": true,
+ "supportsAdvancedQueries": true,
+ "supportsValidateSQL": true,
+ "supportsCoordinatesQuantization": true,
+ "supportsQuantizationEditMode": true,
+ "supportsCalculate": true,
+ "supportsASyncCalculate": true,
+ "supportsDatumTransformation": true,
+ "advancedQueryCapabilities": {
+  "supportsPagination": true,
+  "supportsQueryWithDistance": true,
+  "supportsReturningQueryExtent": true,
+  "supportsStatistics": true,
+  "supportsPercentileStatistics": true,
+  "supportsHavingClause": true,
+  "supportsOrderBy": true,
+  "supportsDistinct": true,
+  "supportsCountDistinct": true,
+  "supportsAdvancedQueryRelated": true,
+  "supportsQueryRelatedPagination": true,
+  "supportsCurrentUserQueries": true,
+  "supportsFullTextSearch": true,
+  "fullTextSearchCapabilities": {
+   "supportsSearchOperator": true,
+   "supportsOperator": false,
+   "supportsSqlExpressionInFullText": true
+  },
+  "fullTextSearchableFields": [],
+  "supportsQueryAttachments": true,
+  "supportsQueryAttachmentsWithReturnUrl": true,
+  "supportsQueryWithResultType": true,
+  "supportsReturningGeometryCentroid": true,
+  "supportsReturningGeometryEnvelope": true,
+  "supportsSqlExpression": true,
+  "supportsQueryWithDatumTransformation": true,
+  "supportsLod": false,
+  "supportsQueryWithLodSR": false,
+  "supportsQueryAnalytic": true,
+  "supportsTrueCurve": true,
+  "supportedCurveTypes": [
+   "esriGeometryCircularArc",
+   "esriGeometryEllipticArc",
+   "esriGeometryBezier3Curve"
+  ],
+  "supportsQueryWithCacheHint": false
+ },
+ "advancedQueryAnalyticCapabilities": {
+  "supportsLinearRegression": true,
+  "supportsAsync": true,
+  "supportsPercentileAnalytic": true
+ },
+ "advancedEditingCapabilities": {
+  "supportedSqlFormatsInCalculate": [
+   "standard"
+  ],
+  "supportsAsyncApplyEdits": true,
+  "supportsApplyEditsbyUploadID": true,
+  "supportedApplyEditsUploadIDFormats": "JSON,PBF"
+ },
+ "hasGeometryProperties": true,
+ "geometryProperties": {
+  "shapeAreaFieldName": "Shape__Area",
+  "shapeLengthFieldName": "Shape__Length",
+  "units": "esriFeet"
+ },
+ "hasMetadata": true,
+ "extent": {
+  "xmin": 3223499.3974995315,
+  "ymin": 1390575.6676456034,
+  "xmax": 3226244.270618692,
+  "ymax": 1399962.337192431,
+  "spatialReference": {
+   "wkid": 2876,
+   "latestWkid": 2876,
+   "xyTolerance": 0.003280833333333333,
+   "zTolerance": 2,
+   "mTolerance": 0.001,
+   "falseX": -118265500,
+   "falseY": -95180100,
+   "xyUnits": 3.7138342128391795E7,
+   "falseZ": 0,
+   "zUnits": 1,
+   "falseM": -100000,
+   "mUnits": 10000
+  }
+ },
+ "spatialReference": {
+  "wkid": 2876,
+  "latestWkid": 2876,
+  "xyTolerance": 0.003280833333333333,
+  "zTolerance": 2,
+  "mTolerance": 0.001,
+  "falseX": -118265500,
+  "falseY": -95180100,
+  "xyUnits": 3.7138342128391795E7,
+  "falseZ": 0,
+  "zUnits": 1,
+  "falseM": -100000,
+  "mUnits": 10000
+ },
+ "sourceSpatialReference": {
+  "wkid": 2876,
+  "latestWkid": 2876,
+  "xyTolerance": 0.0032808333333333335,
+  "zTolerance": 2,
+  "mTolerance": 0.001,
+  "falseX": -118265500,
+  "falseY": -95180100,
+  "xyUnits": 3048.0060960121914,
+  "falseZ": 0,
+  "zUnits": 1,
+  "falseM": 0,
+  "mUnits": 1
+ },
+ "drawingInfo": {
+  "renderer": {
+   "type": "uniqueValue",
+   "field1": "Name",
+   "uniqueValueGroups": [
+    {
+     "heading": "Name",
+     "classes": [
+      {
+       "label": "Free all day",
+       "description": "Free all day",
+       "symbol": {
+        "type": "esriSFS",
+        "style": "esriSFSSolid",
+        "color": [
+         130,
+         130,
+         130,
+         0
+        ],
+        "outline": {
+         "type": "esriSLS",
+         "style": "esriSLSSolid",
+         "color": [
+          0,
+          197,
+          255,
+          255
+         ],
+         "width": 2
+        }
+       },
+       "values": [
+        [
+         "Free all day"
+        ]
+       ]
+      },
+      {
+       "label": "Orange Zone",
+       "description": "Orange Zone",
+       "symbol": {
+        "type": "esriSFS",
+        "style": "esriSFSSolid",
+        "color": [
+         246,
+         197,
+         103,
+         255
+        ],
+        "outline": null
+       },
+       "values": [
+        [
+         "Orange Zone"
+        ]
+       ]
+      },
+      {
+       "label": "Two Hour",
+       "description": "Two Hour",
+       "symbol": {
+        "type": "esriSFS",
+        "style": "esriSFSSolid",
+        "color": [
+         56,
+         168,
+         0,
+         255
+        ],
+        "outline": null
+       },
+       "values": [
+        [
+         "Two Hour"
+        ]
+       ]
+      },
+      {
+       "label": "Two Hour or Permit Parking",
+       "description": "Two Hour or Permit Parking",
+       "symbol": {
+        "type": "esriSFS",
+        "style": "esriSFSSolid",
+        "color": [
+         226,
+         202,
+         252,
+         0
+        ],
+        "outline": {
+         "type": "esriSLS",
+         "style": "esriSLSSolid",
+         "color": [
+          152,
+          230,
+          0,
+          255
+         ],
+         "width": 2
+        }
+       },
+       "values": [
+        [
+         "Two Hour or Permit Parking"
+        ]
+       ]
+      }
+     ]
+    }
+   ],
+   "uniqueValueInfos": [
+    {
+     "symbol": {
+      "type": "esriSFS",
+      "style": "esriSFSSolid",
+      "color": [
+       130,
+       130,
+       130,
+       0
+      ],
+      "outline": {
+       "type": "esriSLS",
+       "style": "esriSLSSolid",
+       "color": [
+        0,
+        197,
+        255,
+        255
+       ],
+       "width": 2
+      }
+     },
+     "value": "Free all day",
+     "label": "Free all day"
+    },
+    {
+     "symbol": {
+      "type": "esriSFS",
+      "style": "esriSFSSolid",
+      "color": [
+       246,
+       197,
+       103,
+       255
+      ],
+      "outline": null
+     },
+     "value": "Orange Zone",
+     "label": "Orange Zone"
+    },
+    {
+     "symbol": {
+      "type": "esriSFS",
+      "style": "esriSFSSolid",
+      "color": [
+       56,
+       168,
+       0,
+       255
+      ],
+      "outline": null
+     },
+     "value": "Two Hour",
+     "label": "Two Hour"
+    },
+    {
+     "symbol": {
+      "type": "esriSFS",
+      "style": "esriSFSSolid",
+      "color": [
+       226,
+       202,
+       252,
+       0
+      ],
+      "outline": {
+       "type": "esriSLS",
+       "style": "esriSLSSolid",
+       "color": [
+        152,
+        230,
+        0,
+        255
+       ],
+       "width": 2
+      }
+     },
+     "value": "Two Hour or Permit Parking",
+     "label": "Two Hour or Permit Parking"
+    }
+   ],
+   "fieldDelimiter": ",",
+   "authoringInfo": {
+    "colorRamp": {
+     "type": "multipart",
+     "colorRamps": [
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        252,
+        212,
+        215,
+        255
+       ],
+       "toColor": [
+        252,
+        212,
+        215,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        179,
+        252,
+        182,
+        255
+       ],
+       "toColor": [
+        179,
+        252,
+        182,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        196,
+        182,
+        252,
+        255
+       ],
+       "toColor": [
+        196,
+        182,
+        252,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        182,
+        237,
+        252,
+        255
+       ],
+       "toColor": [
+        182,
+        237,
+        252,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        252,
+        249,
+        194,
+        255
+       ],
+       "toColor": [
+        252,
+        249,
+        194,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        252,
+        184,
+        240,
+        255
+       ],
+       "toColor": [
+        252,
+        184,
+        240,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        210,
+        252,
+        224,
+        255
+       ],
+       "toColor": [
+        210,
+        252,
+        224,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        210,
+        215,
+        252,
+        255
+       ],
+       "toColor": [
+        210,
+        215,
+        252,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        252,
+        214,
+        182,
+        255
+       ],
+       "toColor": [
+        252,
+        214,
+        182,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        252,
+        179,
+        201,
+        255
+       ],
+       "toColor": [
+        252,
+        179,
+        201,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        252,
+        212,
+        241,
+        255
+       ],
+       "toColor": [
+        252,
+        212,
+        241,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        224,
+        199,
+        252,
+        255
+       ],
+       "toColor": [
+        224,
+        199,
+        252,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        197,
+        252,
+        251,
+        255
+       ],
+       "toColor": [
+        197,
+        252,
+        251,
+        255
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "scaleSymbols": true,
+  "transparency": 0,
+  "labelingInfo": null
+ },
+ "hasM": false,
+ "hasZ": false,
+ "allowGeometryUpdates": true,
+ "allowTrueCurvesUpdates": true,
+ "onlyAllowTrueCurveUpdatesByTrueCurveClients": true,
+ "hasAttachments": true,
+ "supportsAttachmentsByUploadId": true,
+ "supportsAttachmentsResizing": true,
+ "supportsApplyEditsWithGlobalIds": false,
+ "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+ "objectIdField": "OBJECTID_1",
+ "globalIdField": "GlobalID",
+ "displayField": "Name",
+ "typeIdField": "Name",
+ "subtypeField": "",
+ "fields": [
+  {
+   "name": "OBJECTID_1",
+   "type": "esriFieldTypeOID",
+   "alias": "OBJECTID_1",
+   "domain": null,
+   "editable": false,
+   "nullable": false,
+   "defaultValue": null,
+   "modelName": "OBJECTID_1"
+  },
+  {
+   "name": "OBJECTID",
+   "type": "esriFieldTypeInteger",
+   "alias": "OBJECTID",
+   "domain": null,
+   "editable": true,
+   "nullable": true,
+   "defaultValue": null,
+   "modelName": "OBJECTID"
+  },
+  {
+   "name": "Name",
+   "type": "esriFieldTypeString",
+   "alias": "Name",
+   "domain": null,
+   "editable": true,
+   "nullable": true,
+   "length": 60,
+   "defaultValue": null,
+   "modelName": "Name"
+  },
+  {
+   "name": "Passport_Z",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "Passport_Z",
+   "domain": null,
+   "editable": true,
+   "nullable": true,
+   "defaultValue": null,
+   "modelName": "Passport_Z"
+  },
+  {
+   "name": "Shape_Leng",
+   "type": "esriFieldTypeDouble",
+   "alias": "Shape_Leng",
+   "domain": null,
+   "editable": true,
+   "nullable": true,
+   "defaultValue": null,
+   "modelName": "Shape_Leng"
+  },
+  {
+   "name": "Zone_Cap",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "Zone_Cap",
+   "domain": null,
+   "editable": true,
+   "nullable": true,
+   "defaultValue": null,
+   "modelName": "Zone_Cap"
+  },
+  {
+   "name": "Shape__Area",
+   "type": "esriFieldTypeDouble",
+   "alias": "Shape.area",
+   "domain": null,
+   "editable": false,
+   "nullable": true,
+   "defaultValue": null,
+   "modelName": "Shape.STArea()",
+   "required": true
+  },
+  {
+   "name": "Shape__Length",
+   "type": "esriFieldTypeDouble",
+   "alias": "Shape.len",
+   "domain": null,
+   "editable": false,
+   "nullable": true,
+   "defaultValue": null,
+   "modelName": "Shape.STLength()",
+   "required": true
+  },
+  {
+   "name": "Description",
+   "type": "esriFieldTypeString",
+   "alias": "Description",
+   "domain": null,
+   "editable": true,
+   "nullable": true,
+   "length": 200,
+   "defaultValue": null,
+   "modelName": "Description"
+  },
+  {
+   "name": "Condition",
+   "type": "esriFieldTypeString",
+   "alias": "Condition",
+   "domain": {
+    "type": "codedValue",
+    "name": "SW_PS_Asset_Con",
+    "description": "Asset Condition",
+    "codedValues": [
+     {
+      "name": "Not Rated",
+      "code": "Not Rated"
+     },
+     {
+      "name": "1-Excellent",
+      "code": "1"
+     },
+     {
+      "name": "2-Good",
+      "code": "2"
+     },
+     {
+      "name": "3-Fair",
+      "code": "3"
+     },
+     {
+      "name": "4-Poor",
+      "code": "4"
+     },
+     {
+      "name": "5-Very Poor",
+      "code": "5"
+     }
+    ],
+    "mergePolicy": "esriMPTDefaultValue",
+    "splitPolicy": "esriSPTDefaultValue"
+   },
+   "editable": true,
+   "nullable": true,
+   "length": 255,
+   "defaultValue": null,
+   "modelName": "Condition"
+  },
+  {
+   "name": "Maintainer",
+   "type": "esriFieldTypeString",
+   "alias": "Maintainer",
+   "domain": {
+    "type": "codedValue",
+    "name": "SW_PS_MAINT",
+    "description": "Maintainer",
+    "codedValues": [
+     {
+      "name": "Engineering (Concrete/Asphalt)",
+      "code": "Engineering (Concrete/Asphalt)"
+     },
+     {
+      "name": "Forestry",
+      "code": "Forestry"
+     },
+     {
+      "name": "Infrastructure Services",
+      "code": "Infrastructure Services"
+     },
+     {
+      "name": "Natural Areas",
+      "code": "Natural Areas"
+     },
+     {
+      "name": "Parks",
+      "code": "Parks"
+     },
+     {
+      "name": "Stormwater",
+      "code": "Stormwater"
+     },
+     {
+      "name": "Contractor",
+      "code": "Contractor"
+     },
+     {
+      "name": "CDOT",
+      "code": "CDOT"
+     },
+     {
+      "name": "County",
+      "code": "County"
+     },
+     {
+      "name": "Private",
+      "code": "Private"
+     },
+     {
+      "name": "Traffic",
+      "code": "Traffic"
+     },
+     {
+      "name": "Traffic/IT",
+      "code": "Traffic/IT"
+     },
+     {
+      "name": "Recreation",
+      "code": "Recreation"
+     },
+     {
+      "name": "Culture",
+      "code": "Culture"
+     },
+     {
+      "name": "Cemetary",
+      "code": "Cemetary"
+     },
+     {
+      "name": "Golf",
+      "code": "Golf"
+     },
+     {
+      "name": "Other",
+      "code": "Other"
+     },
+     {
+      "name": "Water Resources",
+      "code": "Water Resources"
+     },
+     {
+      "name": "Water/Sewer",
+      "code": "Water/Sewer"
+     },
+     {
+      "name": "<NULL>",
+      "code": "<NULL>"
+     },
+     {
+      "name": "Planning&AssetManagement",
+      "code": "Planning&AssetManagement"
+     },
+     {
+      "name": "CPRD Facilities",
+      "code": "CPRD Facilities"
+     },
+     {
+      "name": "PW Facilities",
+      "code": "PW Facilities"
+     }
+    ],
+    "mergePolicy": "esriMPTDefaultValue",
+    "splitPolicy": "esriSPTDefaultValue"
+   },
+   "editable": true,
+   "nullable": true,
+   "length": 255,
+   "defaultValue": null,
+   "modelName": "Maintainer"
+  },
+  {
+   "name": "MaintenanceFrequency",
+   "type": "esriFieldTypeString",
+   "alias": "Maintenance Frequency",
+   "domain": {
+    "type": "codedValue",
+    "name": "SW_PS_MPF",
+    "description": "MaintenancePriorityFrequency",
+    "codedValues": [
+     {
+      "name": "Weekly",
+      "code": "Weekly"
+     },
+     {
+      "name": "Monthly",
+      "code": "Monthly"
+     },
+     {
+      "name": "6Months",
+      "code": "6Months"
+     },
+     {
+      "name": "12Months",
+      "code": "12Months"
+     },
+     {
+      "name": "Every3Years",
+      "code": "Every3Years"
+     },
+     {
+      "name": "Every5years",
+      "code": "Every5years"
+     },
+     {
+      "name": "AsNeeded",
+      "code": "AsNeeded"
+     },
+     {
+      "name": "SnowPrioritization",
+      "code": "SnowPrioritization"
+     },
+     {
+      "name": "Ms4 Standards",
+      "code": "Ms4 Standards"
+     },
+     {
+      "name": "Event Priority(HotSpot)",
+      "code": "Event Priority(HotSpot)"
+     },
+     {
+      "name": "BiWeekly",
+      "code": "BiWeekly"
+     },
+     {
+      "name": "MUTCD Standards",
+      "code": "MUTCD Standards"
+     }
+    ],
+    "mergePolicy": "esriMPTDefaultValue",
+    "splitPolicy": "esriSPTDefaultValue"
+   },
+   "editable": true,
+   "nullable": true,
+   "length": 255,
+   "defaultValue": null,
+   "modelName": "MaintenanceFrequency"
+  },
+  {
+   "name": "AssetCriticality",
+   "type": "esriFieldTypeString",
+   "alias": "Asset Criticality",
+   "domain": {
+    "type": "codedValue",
+    "name": "SW_PS_ASSET_CRIT",
+    "description": "Asset Criticality",
+    "codedValues": [
+     {
+      "name": "1-Minimal Impact",
+      "code": "1"
+     },
+     {
+      "name": "2-Low Impact",
+      "code": "2"
+     },
+     {
+      "name": "3-Moderate Impact",
+      "code": "3"
+     },
+     {
+      "name": "4-High Impact",
+      "code": "4"
+     },
+     {
+      "name": "5-Severe Impact",
+      "code": "5"
+     }
+    ],
+    "mergePolicy": "esriMPTDefaultValue",
+    "splitPolicy": "esriSPTDefaultValue"
+   },
+   "editable": true,
+   "nullable": true,
+   "length": 255,
+   "defaultValue": null,
+   "modelName": "AssetCriticality"
+  },
+  {
+   "name": "LifeCycleStatus",
+   "type": "esriFieldTypeString",
+   "alias": "Lifecycle Status",
+   "domain": {
+    "type": "codedValue",
+    "name": "SW_PS_LCS",
+    "description": "Life Cycle Status",
+    "codedValues": [
+     {
+      "name": "Planned",
+      "code": "Planned"
+     },
+     {
+      "name": "Pending",
+      "code": "Pending"
+     },
+     {
+      "name": "Operational",
+      "code": "Operational"
+     },
+     {
+      "name": "Maintenance Required",
+      "code": "Maintenance Required "
+     },
+     {
+      "name": "Out of service",
+      "code": "Out of service"
+     },
+     {
+      "name": "Abandoned",
+      "code": "Abandoned"
+     },
+     {
+      "name": "Removed",
+      "code": "Removed"
+     },
+     {
+      "name": "Legacy ID",
+      "code": "Legacy ID"
+     }
+    ],
+    "mergePolicy": "esriMPTDefaultValue",
+    "splitPolicy": "esriSPTDefaultValue"
+   },
+   "editable": true,
+   "nullable": true,
+   "length": 255,
+   "defaultValue": null,
+   "modelName": "LifeCycleStatus"
+  },
+  {
+   "name": "ExpectedLifeSpan",
+   "type": "esriFieldTypeString",
+   "alias": "Expected Life Span",
+   "domain": {
+    "type": "codedValue",
+    "name": "SW_PS_ELS",
+    "description": "Expected Life Span",
+    "codedValues": [
+     {
+      "name": "0-5 Years",
+      "code": "0-5 Years"
+     },
+     {
+      "name": "6-10 Years",
+      "code": "6-10 Years"
+     },
+     {
+      "name": "11-15 Years",
+      "code": "11-15 Years"
+     },
+     {
+      "name": "16-20 Years",
+      "code": "16-20 Years"
+     },
+     {
+      "name": "21-30 Years",
+      "code": "21-30 Years"
+     },
+     {
+      "name": "31-50 Years",
+      "code": "31-50 Years"
+     }
+    ],
+    "mergePolicy": "esriMPTDefaultValue",
+    "splitPolicy": "esriSPTDefaultValue"
+   },
+   "editable": true,
+   "nullable": true,
+   "length": 255,
+   "defaultValue": null,
+   "modelName": "ExpectedLifeSpan"
+  },
+  {
+   "name": "Owner",
+   "type": "esriFieldTypeString",
+   "alias": "Owner",
+   "domain": {
+    "type": "codedValue",
+    "name": "SW_PS_OWNER",
+    "description": "Owner",
+    "codedValues": [
+     {
+      "name": "CPRD",
+      "code": "CPRD"
+     },
+     {
+      "name": "Public Works",
+      "code": "Public Works"
+     },
+     {
+      "name": "WaterSewer",
+      "code": "WaterSewer"
+     },
+     {
+      "name": "CDOT",
+      "code": "CDOT"
+     },
+     {
+      "name": "County",
+      "code": "County"
+     },
+     {
+      "name": "Private",
+      "code": "Private"
+     },
+     {
+      "name": "<NULL>",
+      "code": "<NULL>"
+     }
+    ],
+    "mergePolicy": "esriMPTDefaultValue",
+    "splitPolicy": "esriSPTDefaultValue"
+   },
+   "editable": true,
+   "nullable": true,
+   "length": 255,
+   "defaultValue": null,
+   "modelName": "Owner"
+  },
+  {
+   "name": "GlobalID",
+   "type": "esriFieldTypeGlobalID",
+   "alias": "Global ID",
+   "domain": null,
+   "editable": false,
+   "nullable": false,
+   "length": 38,
+   "defaultValue": null,
+   "modelName": "GlobalID"
+  },
+  {
+   "name": "created_user",
+   "type": "esriFieldTypeString",
+   "alias": "Created User",
+   "domain": null,
+   "editable": false,
+   "nullable": true,
+   "length": 255,
+   "defaultValue": null,
+   "modelName": "created_user"
+  },
+  {
+   "name": "created_date",
+   "type": "esriFieldTypeDate",
+   "alias": "Created Date",
+   "domain": null,
+   "editable": false,
+   "nullable": true,
+   "length": 8,
+   "defaultValue": null,
+   "modelName": "created_date"
+  },
+  {
+   "name": "last_edited_user",
+   "type": "esriFieldTypeString",
+   "alias": "Last Edit User",
+   "domain": null,
+   "editable": false,
+   "nullable": true,
+   "length": 255,
+   "defaultValue": null,
+   "modelName": "last_edited_user"
+  },
+  {
+   "name": "last_edited_date",
+   "type": "esriFieldTypeDate",
+   "alias": "Last Edit Date",
+   "domain": null,
+   "editable": false,
+   "nullable": true,
+   "length": 8,
+   "defaultValue": null,
+   "modelName": "last_edited_date"
+  }
+ ],
+ "geometryField": {
+  "name": "Shape",
+  "type": "esriFieldTypeGeometry",
+  "alias": "Shape",
+  "domain": null,
+  "editable": true,
+  "nullable": true,
+  "defaultValue": null,
+  "modelName": "Shape"
+ },
+ "indexes": [
+  {
+   "name": "R206_pk",
+   "isAscending": true,
+   "isUnique": true,
+   "description": "",
+   "fields": "OBJECTID_1"
+  },
+  {
+   "name": "UUID_206",
+   "isAscending": true,
+   "isUnique": true,
+   "description": "",
+   "fields": "GlobalID"
+  },
+  {
+   "name": "UUID_OID_206",
+   "isAscending": true,
+   "isUnique": true,
+   "description": "",
+   "fields": "GlobalID,OBJECTID_1"
+  },
+  {
+   "name": "S113_idx",
+   "isAscending": true,
+   "isUnique": true,
+   "description": "",
+   "fields": "Shape"
+  }
+ ],
+ "datesInUnknownTimezone": false,
+ "dateFieldsTimeReference": {
+  "timeZone": "UTC",
+  "timeZoneIANA": "Etc/UTC",
+  "respectsDaylightSaving": false
+ },
+ "preferredTimeReference": null,
+ "types": [
+  {
+   "id": "Free all day",
+   "name": "Free all day",
+   "domains": {
+    "Condition": {"type": "inherited"},
+    "Maintainer": {"type": "inherited"},
+    "MaintenanceFrequency": {"type": "inherited"},
+    "AssetCriticality": {"type": "inherited"},
+    "LifeCycleStatus": {"type": "inherited"},
+    "ExpectedLifeSpan": {"type": "inherited"},
+    "Owner": {"type": "inherited"}
+   },
+   "templates": [
+    {
+     "name": "Free all day",
+     "description": "",
+     "prototype": {
+      "attributes": {
+       "LifeCycleStatus": null,
+       "ExpectedLifeSpan": null,
+       "OBJECTID": null,
+       "Name": "Free all day",
+       "Passport_Z": null,
+       "Shape_Leng": null,
+       "Zone_Cap": null,
+       "Owner": null,
+       "AssetCriticality": null,
+       "Description": null,
+       "Condition": null,
+       "Maintainer": null,
+       "MaintenanceFrequency": null
+      }
+     },
+     "drawingTool": "esriFeatureEditToolPolygon"
+    }
+   ]
+  },
+  {
+   "id": "Orange Zone",
+   "name": "Orange Zone",
+   "domains": {
+    "Condition": {"type": "inherited"},
+    "Maintainer": {"type": "inherited"},
+    "MaintenanceFrequency": {"type": "inherited"},
+    "AssetCriticality": {"type": "inherited"},
+    "LifeCycleStatus": {"type": "inherited"},
+    "ExpectedLifeSpan": {"type": "inherited"},
+    "Owner": {"type": "inherited"}
+   },
+   "templates": [
+    {
+     "name": "Orange Zone",
+     "description": "",
+     "prototype": {
+      "attributes": {
+       "LifeCycleStatus": null,
+       "ExpectedLifeSpan": null,
+       "OBJECTID": null,
+       "Name": "Orange Zone",
+       "Passport_Z": null,
+       "Shape_Leng": null,
+       "Zone_Cap": null,
+       "Owner": null,
+       "AssetCriticality": null,
+       "Description": null,
+       "Condition": null,
+       "Maintainer": null,
+       "MaintenanceFrequency": null
+      }
+     },
+     "drawingTool": "esriFeatureEditToolPolygon"
+    }
+   ]
+  },
+  {
+   "id": "Two Hour",
+   "name": "Two Hour",
+   "domains": {
+    "Condition": {"type": "inherited"},
+    "Maintainer": {"type": "inherited"},
+    "MaintenanceFrequency": {"type": "inherited"},
+    "AssetCriticality": {"type": "inherited"},
+    "LifeCycleStatus": {"type": "inherited"},
+    "ExpectedLifeSpan": {"type": "inherited"},
+    "Owner": {"type": "inherited"}
+   },
+   "templates": [
+    {
+     "name": "Two Hour",
+     "description": "",
+     "prototype": {
+      "attributes": {
+       "LifeCycleStatus": null,
+       "ExpectedLifeSpan": null,
+       "OBJECTID": null,
+       "Name": "Two Hour",
+       "Passport_Z": null,
+       "Shape_Leng": null,
+       "Zone_Cap": null,
+       "Owner": null,
+       "AssetCriticality": null,
+       "Description": null,
+       "Condition": null,
+       "Maintainer": null,
+       "MaintenanceFrequency": null
+      }
+     },
+     "drawingTool": "esriFeatureEditToolPolygon"
+    }
+   ]
+  },
+  {
+   "id": "Two Hour or Permit Parking",
+   "name": "Two Hour or Permit Parking",
+   "domains": {
+    "Condition": {"type": "inherited"},
+    "Maintainer": {"type": "inherited"},
+    "MaintenanceFrequency": {"type": "inherited"},
+    "AssetCriticality": {"type": "inherited"},
+    "LifeCycleStatus": {"type": "inherited"},
+    "ExpectedLifeSpan": {"type": "inherited"},
+    "Owner": {"type": "inherited"}
+   },
+   "templates": [
+    {
+     "name": "Two Hour or Permit Parking",
+     "description": "",
+     "prototype": {
+      "attributes": {
+       "LifeCycleStatus": null,
+       "ExpectedLifeSpan": null,
+       "OBJECTID": null,
+       "Name": "Two Hour or Permit Parking",
+       "Passport_Z": null,
+       "Shape_Leng": null,
+       "Zone_Cap": null,
+       "Owner": null,
+       "AssetCriticality": null,
+       "Description": null,
+       "Condition": null,
+       "Maintainer": null,
+       "MaintenanceFrequency": null
+      }
+     },
+     "drawingTool": "esriFeatureEditToolPolygon"
+    }
+   ]
+  }
+ ],
+ "templates": [],
+ "maxRecordCount": 2000,
+ "supportedQueryFormats": "JSON, geoJSON, PBF",
+ "supportedExportFormats": "sqlite,filegdb,shapefile,csv,geojson",
+ "capabilities": "Query,Create,Update,Delete,Uploads,Editing",
+ "useStandardizedQueries": true,
+ "bigIntegerRestrictedTo53Bits": true,
+ "supportedSpatialRelationships": [
+  "esriSpatialRelIntersects",
+  "esriSpatialRelContains",
+  "esriSpatialRelCrosses",
+  "esriSpatialRelEnvelopeIntersects",
+  "esriSpatialRelIndexIntersects",
+  "esriSpatialRelOverlaps",
+  "esriSpatialRelTouches",
+  "esriSpatialRelWithin",
+  "esriSpatialRelRelation"
+ ],
+ "attachmentProperties": [
+  {
+   "name": "id",
+   "fieldName": "ATTACHMENTID",
+   "isEnabled": true
+  },
+  {
+   "name": "globalId",
+   "fieldName": "GLOBALID",
+   "isEnabled": true
+  },
+  {
+   "name": "name",
+   "fieldName": "ATT_NAME",
+   "isEnabled": true
+  },
+  {
+   "name": "size",
+   "fieldName": "DATA_SIZE",
+   "isEnabled": true
+  },
+  {
+   "name": "contentType",
+   "fieldName": "CONTENT_TYPE",
+   "isEnabled": true
+  },
+  {
+   "name": "keywords",
+   "fieldName": "KEYWORDS",
+   "isEnabled": false
+  },
+  {
+   "name": "exifInfo",
+   "fieldName": "EXIFINFO",
+   "isEnabled": false
+  }
+ ],
+ "attachmentFields": [
+  {
+   "name": "ATTACHMENTID",
+   "type": "esriFieldTypeOID",
+   "alias": "Attachment ID",
+   "domain": null,
+   "editable": false,
+   "nullable": false,
+   "defaultValue": null
+  },
+  {
+   "name": "GLOBALID",
+   "type": "esriFieldTypeGlobalID",
+   "alias": "Global ID",
+   "domain": null,
+   "editable": false,
+   "nullable": false,
+   "length": 38,
+   "defaultValue": null
+  },
+  {
+   "name": "ATT_NAME",
+   "type": "esriFieldTypeString",
+   "alias": "Attachment Name",
+   "domain": null,
+   "editable": true,
+   "nullable": false,
+   "length": 250,
+   "defaultValue": null
+  },
+  {
+   "name": "DATA_SIZE",
+   "type": "esriFieldTypeInteger",
+   "alias": "Data Size",
+   "domain": null,
+   "editable": true,
+   "nullable": false,
+   "defaultValue": null
+  },
+  {
+   "name": "CONTENT_TYPE",
+   "type": "esriFieldTypeString",
+   "alias": "Content Type",
+   "domain": null,
+   "editable": true,
+   "nullable": false,
+   "length": 150,
+   "defaultValue": null
+  }
+ ],
+ "supportsAppend": true,
+ "supportedAppendFormats": "FILEGDB,PBF",
+ "standardMaxRecordCount": 4000,
+ "tileMaxRecordCount": 4000,
+ "standardMaxRecordCountNoGeometry": 32000,
+ "maxRecordCountFactor": 1,
+ "serviceItemId": "cac21e7e7f5e493e88569140f454a8c8"
+}

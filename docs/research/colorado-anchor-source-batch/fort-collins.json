@@ -1,0 +1,19 @@
+{
+  "schema": "municipal-parking-source-excerpts-v1",
+  "id": "fort-collins",
+  "url": "https://www.fortcollins.gov/Services/Parking/Where-to-Park",
+  "retrieved_at_utc": "2026-10-30T19:37:02.677566+00:00",
+  "http_status": 200,
+  "response_sha256": "2ec0aadce2ea4e5bcfef14ff46c9de37ec11e2bba30cf3be58de8319433cd71d",
+  "response_bytes": 113578,
+  "excerpts": [
+    "Civic Center Parking Garage Southeast corner of Laporte Avenue and Mason Street",
+    "All three garages are open 24 hours and security patrolled.",
+    "Always follow posted signage for the most accurate guidance.",
+    "All garages are gateless.",
+    "You must initiate a parking session regardless of your length of stay."
+  ],
+  "retention": "Selected literal visible text with whitespace normalized; full HTML/form/runtime state not published. Response hash identifies the fetch but cannot be recomputed from excerpts.",
+  "access_verified": false,
+  "release_eligible": false
+}

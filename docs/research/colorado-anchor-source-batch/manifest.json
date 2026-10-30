@@ -1,0 +1,97 @@
+{
+  "schema": "colorado-municipal-parking-source-batch-v1",
+  "retained_sources": [
+    {
+      "id": "fort-collins-map",
+      "path": "docs/research/colorado-anchor-source-batch/fort-collins-map.pdf",
+      "url": "https://www.fortcollins.gov/files/sharedassets/city/v/3/planning-development-amp-transportation/parking/25-28507-downtown-parking-map-web-v3.pdf",
+      "retrieved_at_utc": "2026-10-30T19:37:02.697388+00:00",
+      "sha256": "f222dee1a4ecb58e1dd006fc703d492483f3e76387ef4f78e22e71ef0058bfc0",
+      "bytes": 529213
+    },
+    {
+      "id": "springs-terms",
+      "path": "docs/research/colorado-anchor-source-batch/springs-terms.pdf",
+      "url": "https://coloradosprings.gov/system/files/2026-06/Parking%20Lots%20and%20Garage%20Terms%20and%20Conditions_Individuals.pdf",
+      "retrieved_at_utc": "2026-10-30T19:37:02.698356+00:00",
+      "sha256": "5d877800bf09fd860f1b1018a38ae36e1734e67f9a96e2fe0f246e5fb7b55647",
+      "bytes": 182704
+    },
+    {
+      "id": "grand-junction-map",
+      "path": "docs/research/colorado-anchor-source-batch/grand-junction-map.pdf",
+      "url": "https://www.gjcity.org/DocumentCenter/View/14410/Downtown-Parking-Map---Jan-2026",
+      "retrieved_at_utc": "2026-10-30T19:37:02.698884+00:00",
+      "sha256": "edf0832c70666b147cd98863e3db9d5af2c07f5981c45cbbc579cc9ec9d35c17",
+      "bytes": 398978
+    },
+    {
+      "id": "greeley-public-parking",
+      "path": "docs/research/colorado-anchor-source-batch/greeley-public-parking.json",
+      "url": "https://gis.greeleygov.com/arcgis_svr/rest/services/Public/Parking/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&returnGeometry=true&resultRecordCount=1000&f=pjson",
+      "retrieved_at_utc": "2026-10-30T19:37:02.699882+00:00",
+      "sha256": "eb1fcf2060b5bd057e92d9f1d71626e13e008ee9acb49d6a9e5036cd9b3cff47",
+      "bytes": 93512
+    },
+    {
+      "id": "greeley-public-parking-layer",
+      "path": "docs/research/colorado-anchor-source-batch/greeley-public-parking-layer.json",
+      "url": "https://gis.greeleygov.com/arcgis_svr/rest/services/Public/Parking/FeatureServer/0?f=pjson",
+      "retrieved_at_utc": "2026-10-30T19:37:02.700355+00:00",
+      "sha256": "d3df633ee7497151229347c3d2eb38238c339d40f2d16f1521a14341276368f8",
+      "bytes": 29467
+    },
+    {
+      "id": "greeley-webmap",
+      "path": "docs/research/colorado-anchor-source-batch/greeley-webmap.json",
+      "url": "https://gis.greeleygov.com/portal/sharing/rest/content/items/1ced69aad2e540ceb83da9d73f779c11?f=json",
+      "retrieved_at_utc": "2026-10-30T19:37:02.700599+00:00",
+      "sha256": "90d839dc6bdf62042be0afeb45544bcbf05ff5c2353407de026b1094f213a53c",
+      "bytes": 29536
+    },
+    {
+      "id": "greeley-webmap-data",
+      "path": "docs/research/colorado-anchor-source-batch/greeley-webmap-data.json",
+      "url": "https://gis.greeleygov.com/portal/sharing/rest/content/items/1ced69aad2e540ceb83da9d73f779c11/data?f=json",
+      "retrieved_at_utc": "2026-10-30T19:37:02.700836+00:00",
+      "sha256": "1793bc5acf96b310e272511c600947f50273dc11cf69953b8e2ef8b63816d6dd",
+      "bytes": 16576
+    }
+  ],
+  "excerpts": {
+    "boulder": {
+      "path": "docs/research/colorado-anchor-source-batch/boulder.json",
+      "sha256": "eabbdd248b66dd6d8b613e199cc8547988763295b71129ea8d5821cb4af3e032"
+    },
+    "fort-collins": {
+      "path": "docs/research/colorado-anchor-source-batch/fort-collins.json",
+      "sha256": "cf823c199273d7a024af0f7e9aaedc1a06f10c7cfb283e5c21c9e4bb56134c9d"
+    },
+    "colorado-springs": {
+      "path": "docs/research/colorado-anchor-source-batch/colorado-springs.json",
+      "sha256": "a659797dfdf928293879f8d9930b692b34d7198e75345f4ca6a4d8fb791b1c6a"
+    },
+    "grand-junction": {
+      "path": "docs/research/colorado-anchor-source-batch/grand-junction.json",
+      "sha256": "92eb05898477c9d8d9065d4975b50b221b78b9ddab37f2adb5bd2e6068c1d96b"
+    },
+    "pueblo": {
+      "path": "docs/research/colorado-anchor-source-batch/pueblo.json",
+      "sha256": "c6f2ae2a0b1c0dd6ffb1ac016a9ee7bd4fa5295552e1c16abb32830f9099f95b"
+    },
+    "greeley": {
+      "path": "docs/research/colorado-anchor-source-batch/greeley.json",
+      "sha256": "feed2e29ca4ed0a56ef0b358b80c2ce5aa41e9d2e3c22a99740c88cd84982338"
+    }
+  },
+  "access_verified": false,
+  "release_eligible": false,
+  "warning": "Primary municipal parking-use context, not an independently certified connector, exact vehicle entry, grade or turn audit. No anchor or path cost is adopted.",
+  "derived_excerpts": [
+    {
+      "path": "docs/research/colorado-anchor-source-batch/springs-terms-excerpts.json",
+      "sha256": "45b6d31c1a4c67249f69a4a8fbd16a5ee8c965e2d9584801fd8bb8664744f439",
+      "bytes": 637
+    }
+  ]
+}

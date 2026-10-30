@@ -1,0 +1,18 @@
+{
+  "schema": "municipal-parking-source-excerpts-v1",
+  "id": "boulder",
+  "url": "https://bouldercolorado.gov/services/city-parking-garages",
+  "retrieved_at_utc": "2026-10-30T19:37:02.672653+00:00",
+  "http_status": 200,
+  "response_sha256": "96292a2209f35ae96335b0f2a8de3a2138ed738d8e1aaa03a7fed651a32caff6",
+  "response_bytes": 91439,
+  "excerpts": [
+    "City of Boulder Public Garages",
+    "11th and Spruce 390 10 1st, 2nd and 3rd floors: 7' B asement and 4th floors: 6\u20198\u2019\u2019",
+    "2240 Broadway (Trinity Garage): 54 parking spaces. 7' height limit. Permit parking only.",
+    "No storage of vehicles for over 72 hours."
+  ],
+  "retention": "Selected literal visible text with whitespace normalized; full HTML/form/runtime state not published. Response hash identifies the fetch but cannot be recomputed from excerpts.",
+  "access_verified": false,
+  "release_eligible": false
+}
