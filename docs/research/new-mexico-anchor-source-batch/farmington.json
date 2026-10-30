@@ -1,0 +1,19 @@
+{
+  "schema": "municipal-source-excerpts-v1",
+  "cbsa": "22140",
+  "city": "farmington",
+  "url": "https://farmingtonnm.gov/195/Farmington-Civic-Center",
+  "source_kind": "municipal_facility_location",
+  "http_status": 200,
+  "retrieved_at_utc": "2026-10-30T19:49:04.158519+00:00",
+  "response_sha256": "af3657bda9d7069932f30ce06a6d7e972f79af29bbc7608fe6c8bf309cc010e2",
+  "response_bytes": 117274,
+  "excerpts": [
+    "200 W Arrington, Farmington, NM 87401",
+    "The Farmington Civic Center is a multi-purpose facility serving as a convention and conference site, as well as a performing and visual arts center."
+  ],
+  "interpretation": "Facility address and purpose identify an urban location only. No public motor entry, parking rights or exact driveway are established.",
+  "retention": "Selected literal visible text with whitespace normalized. Full HTML/runtime/form state is not published. Response digest cannot be recomputed from excerpts.",
+  "access_verified": false,
+  "release_eligible": false
+}

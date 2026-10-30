@@ -1,0 +1,56 @@
+{
+  "schema": "municipal-source-screen-batch-v1",
+  "state": "NM",
+  "native_state_report_sha256": "85c2c60334f499fe9f1fc193fa9a05f020db5b0aea847f6814b6fd57547a95db",
+  "records": [
+    {
+      "cbsa": "10740",
+      "source_path": "docs/research/new-mexico-anchor-source-batch/albuquerque.json",
+      "source_sha256": "36482106fa26a23c1ad347de21709a05002e7afc802666331f0089147d9317b2",
+      "source_kind": "municipal_parking_guidance",
+      "entry_review_status": "needs_evidence",
+      "anchor_adopted": false,
+      "access_verified": false,
+      "release_eligible": false
+    },
+    {
+      "cbsa": "22140",
+      "source_path": "docs/research/new-mexico-anchor-source-batch/farmington.json",
+      "source_sha256": "d8ad86702e306e744c7ab2ab3f8f81a5e019d6597b3501f009ffdf64e89f0275",
+      "source_kind": "municipal_facility_location",
+      "entry_review_status": "needs_evidence",
+      "anchor_adopted": false,
+      "access_verified": false,
+      "release_eligible": false
+    },
+    {
+      "cbsa": "29740",
+      "source_path": "docs/research/new-mexico-anchor-source-batch/las-cruces.json",
+      "source_sha256": "f8590c5a3684895c0fd15392fc46cb521bc62bf53532f2dfd34a8bfcfe6df4c5",
+      "source_kind": "municipal_planning",
+      "entry_review_status": "needs_evidence",
+      "anchor_adopted": false,
+      "access_verified": false,
+      "release_eligible": false
+    },
+    {
+      "cbsa": "42140",
+      "source_path": "docs/research/new-mexico-anchor-source-batch/santa-fe.json",
+      "source_sha256": "a7334bf5febf574e3fe388ae1cd990a1737b68897b6855a37c46ebea58882d20",
+      "source_kind": "municipal_parking_guidance",
+      "entry_review_status": "needs_evidence",
+      "anchor_adopted": false,
+      "access_verified": false,
+      "release_eligible": false
+    }
+  ],
+  "access_verified": false,
+  "release_eligible": false,
+  "geographic_coverage_certified": false,
+  "notes": [
+    "All four native-point metro identities retained; grouping is not CBSA jurisdiction or coverage.",
+    "Albuquerque April2026 parking-study PDF was read as planning/management context; no site-specific vehicle entry was established from it.",
+    "Large Las Cruces draft PDF download was incomplete and is excluded from evidence; only the city page identifying the draft is cited.",
+    "No exact entry/exit paths, connectors, road-node snaps or multi-center anchor choices are adopted."
+  ]
+}

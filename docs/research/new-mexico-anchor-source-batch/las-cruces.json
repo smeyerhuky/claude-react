@@ -1,0 +1,19 @@
+{
+  "schema": "municipal-source-excerpts-v1",
+  "cbsa": "29740",
+  "city": "las-cruces",
+  "url": "https://lascruces.gov/community/community-development/downtown-master-plan-update/",
+  "source_kind": "municipal_planning",
+  "http_status": 200,
+  "retrieved_at_utc": "2026-10-30T19:49:04.171931+00:00",
+  "response_sha256": "b61acfbace71707e45f7b11930e57d2427c7a7ae043c6f0d719ca22629968c33",
+  "response_bytes": 544537,
+  "excerpts": [
+    "Downtown Master Plan Update (See Links Below for Draft Plan)",
+    "The draft Downtown Master Plan now available for your review builds directly on this input, translating community priorities into a focused set of strategies and actions."
+  ],
+  "interpretation": "A draft plan is planning context, not as-built entry geometry, current legal driving permission or an adopted anchor.",
+  "retention": "Selected literal visible text with whitespace normalized. Full HTML/runtime/form state is not published. Response digest cannot be recomputed from excerpts.",
+  "access_verified": false,
+  "release_eligible": false
+}

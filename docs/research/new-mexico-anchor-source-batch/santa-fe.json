@@ -1,0 +1,21 @@
+{
+  "schema": "municipal-source-excerpts-v1",
+  "cbsa": "42140",
+  "city": "santa-fe",
+  "url": "https://santafenm.gov/public-works/parking",
+  "source_kind": "municipal_parking_guidance",
+  "http_status": 200,
+  "retrieved_at_utc": "2026-10-30T19:49:04.154428+00:00",
+  "response_sha256": "13ceb954440f5fdd5bfc146d486cafacbc4a8144cfeeccc51118798d609fff20",
+  "response_bytes": 97127,
+  "excerpts": [
+    "Water Street Municipal Lot 100 East Water Street Santa Fe, NM 87501",
+    "Hours: Open 24 hours a day seven days a week.",
+    "Open 7AM to 11PM Sunday-Thursday, 7AM to 1AM Friday and Saturday.",
+    "Please note that trailers or bike racks are not allowed at the Sandoval Municipal Garage."
+  ],
+  "interpretation": "Water Street lot and the closing-hour/trailer-restricted garages are different candidates. Do not use a generic garage point as an unrestricted all-hours destination.",
+  "retention": "Selected literal visible text with whitespace normalized. Full HTML/runtime/form state is not published. Response digest cannot be recomputed from excerpts.",
+  "access_verified": false,
+  "release_eligible": false
+}
