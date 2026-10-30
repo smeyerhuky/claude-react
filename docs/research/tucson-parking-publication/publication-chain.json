@@ -1,0 +1,10 @@
+{
+  "city_page_url": "https://www.tucsonaz.gov/Departments/Transportation-Mobility/Park-Tucson",
+  "city_response_bytes": 152465,
+  "city_response_sha256": "ea1b6bb1a7cb22ce3196681ee6b39437c45bbc862c8c4fcc4c37f9c09340a385",
+  "closure_link_label": "Oct 31 2026 Halloween Congress Street Pilot Closure Map",
+  "pdf_url": "https://www.tucsonaz.gov/files/sharedassets/public/v/2/transportation-and-mobility/dtm/documents/park-tucson/map_congress-st-closure_rev-3_20261029.pdf",
+  "retention": "Selected public publication links only; original page runtime/form state omitted.",
+  "schema": "tucson-parking-publication-chain-v1",
+  "visitor_url": "https://www.tucsonaz.gov/Departments/Transportation-Mobility/Park-Tucson/Daily-Visitor-Parking"
+}
