@@ -1,0 +1,83 @@
+name: Colorado TIGER 2025 real-data research PNGs (uncertified)
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/colorado-tiger2025-research.yml'
+      - 'scripts/colorado_tiger2025_research_masks.py'
+      - 'scripts/test_colorado_tiger2025_research_masks.py'
+      - 'scripts/colorado_geographic_mask.py'
+      - 'scripts/colorado_research_road_preview.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install polygon and PNG test tooling
+        run: python -m pip install 'numpy>=1.26,<3' 'shapely>=2,<3' 'pyproj>=3.6,<4' 'pyshp>=2.3,<3' 'pillow>=10,<13'
+      - name: Offline synthetic TIGER shapefile contracts
+        run: PYTHONPATH=scripts python -m unittest scripts/test_colorado_tiger2025_research_masks.py -v
+  real-census-and-road-research:
+    needs: offline-contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install bounded road and polygon tooling
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y osmium-tool
+          python -m pip install 'numpy>=1.26,<3' 'shapely>=2,<3' 'pyproj>=3.6,<4' 'pyshp>=2.3,<3' 'pillow>=10,<13' 'networkx>=3.4,<4' 'scipy>=1.14,<2' 'osmium>=4,<5'
+      - name: Source 2025 Census Colorado state/county/AREAWATER and render geography PNG
+        run: |
+          set -euo pipefail
+          mkdir -p colorado-tiger2025-research
+          date -u '+census_download_started_utc=%Y-%m-%dT%H:%M:%SZ' | tee colorado-tiger2025-research/processing.log
+          /usr/bin/time -v -o colorado-tiger2025-research/tiger-resources.txt timeout 12m \
+            python -u scripts/colorado_tiger2025_research_masks.py \
+            --bounds -105.075 39.70 -104.92 39.79 --pixels 96 \
+            --output-dir colorado-tiger2025-research \
+            2>&1 | tee -a colorado-tiger2025-research/processing.log
+      - name: Download Colorado OSM and extract bounded roads (research only)
+        run: |
+          set -euo pipefail
+          mkdir -p local-data
+          date -u '+osm_download_started_utc=%Y-%m-%dT%H:%M:%SZ' | tee -a colorado-tiger2025-research/processing.log
+          curl -fLSs --retry 3 --connect-timeout 20 --max-time 1200 \
+            -o local-data/colorado.osm.pbf https://download.geofabrik.de/north-america/us/colorado-latest.osm.pbf
+          sha256sum local-data/colorado.osm.pbf | tee colorado-tiger2025-research/osm-source-sha256.txt
+          osmium extract --bbox=-106.1,38.65,-104.5,40.1 --strategy=complete_ways \
+            local-data/colorado.osm.pbf -o local-data/corridor.osm.pbf
+          osmium tags-filter local-data/corridor.osm.pbf \
+            w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,residential,unclassified,living_street,service \
+            -o local-data/roads.osm.pbf
+      - name: Render separate real-input road-time and road-distance PNG diagnostics
+        run: |
+          set -euo pipefail
+          /usr/bin/time -v -o colorado-tiger2025-research/road-resources.txt timeout --signal=TERM --kill-after=30s 20m \
+            python -u scripts/colorado_research_road_preview.py \
+            --osm local-data/roads.osm.pbf \
+            --metros public/data/metros-census-2025.csv \
+            --land-geojson colorado-tiger2025-research/tiger2025-colorado-land.geojson \
+            --water-geojson colorado-tiger2025-research/tiger2025-colorado-water.geojson \
+            --bounds -105.075 39.70 -104.92 39.79 \
+            --threshold 100000 --pixels 96 --max-gap-m 60 \
+            --output-dir colorado-tiger2025-research/road-preview \
+            2>&1 | tee -a colorado-tiger2025-research/processing.log
+      - name: Upload uncensored research diagnostics, source digests and logs
+        uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: colorado-tiger2025-uncertified-research
+          path: colorado-tiger2025-research/
+          if-no-files-found: warn
+          retention-days: 14
