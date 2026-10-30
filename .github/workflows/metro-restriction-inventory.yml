@@ -1,0 +1,43 @@
+name: Raw state restriction inventory contract
+on:
+  pull_request:
+    paths:
+      - 'scripts/metro_restriction_inventory.py'
+      - 'scripts/test_metro_restriction_inventory.py'
+      - 'docs/research/state-restriction-inventory/**'
+      - '.github/workflows/metro-restriction-inventory.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inventory-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'osmium==4.3.2'
+      - run: python -m unittest discover -s scripts -p test_metro_restriction_inventory.py -v
+      - name: Verify source identities and honest inventory scope
+        run: |
+          python - <<'PY'
+          import hashlib,json,sys
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          from metro_restriction_inventory import BASELINE,STATES
+          report=json.loads(Path('docs/research/state-restriction-inventory/report.json').read_text())
+          assert report['schema']=='raw-state-restriction-inventory-v1'
+          assert report['baseline_sha256']==hashlib.sha256(BASELINE.read_bytes()).hexdigest()
+          source={s['name']:s for s in json.loads(BASELINE.read_text())['source_provenance']}
+          assert [r['state'] for r in report['states']]==list(STATES)
+          for row in report['states']:
+              assert row['source']==source[row['state']+'.osm.pbf']
+              assert sum(row['generic_kind_counts'].values())==row['raw_restriction_relation_count']
+              assert all(0<=n<=row['raw_restriction_relation_count'] for n in row['overlapping_flag_counts'].values())
+              assert all(len(v)<=3 for v in row['example_relations'].values())
+          assert all(report[k] is False for k in ('turn_support_certified','geographic_coverage_certified','access_verified','release_eligible'))
+          print('Offline contract/identity checks only; original-source recount requires the declared pinned PBF inputs.')
+          PY
+      - run: python scripts/las_vegas_ui_checkpoint.py --check-frozen
