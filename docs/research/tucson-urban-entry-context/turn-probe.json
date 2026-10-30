@@ -1,0 +1,333 @@
+{
+  "access_certified": false,
+  "anchor_adopted": false,
+  "comparisons": [
+    {
+      "metric": "length",
+      "prohibited_arc_pair": [
+        "236722007:0:1",
+        "34617543:0:0"
+      ],
+      "source": 8365097507,
+      "target": 8365097506,
+      "with_declared_turn_rule": {
+        "access_certified": false,
+        "arc_path": [
+          "236722007:0:1",
+          "525065883:9:1",
+          "525065883:8:1",
+          "525065883:7:1",
+          "525065883:6:1",
+          "525065883:5:1",
+          "525065883:4:1",
+          "525065883:3:1",
+          "525065883:2:1",
+          "525065883:1:1",
+          "525065883:0:1",
+          "16900785:11:1",
+          "16900785:10:1",
+          "16900785:9:1",
+          "16900785:8:1",
+          "16900785:7:1",
+          "16900785:6:1",
+          "16900785:5:1",
+          "16900785:4:1",
+          "742141123:0:0",
+          "742141123:1:0",
+          "742141123:2:0",
+          "742141123:3:0",
+          "16925670:2:0",
+          "236722003:0:0",
+          "236722003:1:0",
+          "692094065:0:0",
+          "692094065:1:0",
+          "34617543:0:0"
+        ],
+        "car_exempt_relation_ids": [],
+        "converged": true,
+        "cost": 464.79062701996634,
+        "declared_reversal_pairs": [],
+        "discovered_states": 259,
+        "exact_stored_path_cost": [
+          "261653861831552441",
+          "562949953421312"
+        ],
+        "geographic_coverage_certified": false,
+        "metric": "length",
+        "orientation": "explicit-forward-source-to-target",
+        "partial_results_returned": false,
+        "release_eligible": false,
+        "reversal_policy": "same-way-immediate-reversals-require-declared-pair-or-only-u-rule",
+        "settled_states": 254,
+        "solver_policy": "bounded-forward-via-node-car-turn-probe-v1",
+        "source": 8365097507,
+        "source_approach": "unconstrained-declared-node-start",
+        "target": 8365097506,
+        "transitions_examined": 513,
+        "warning": "Exact path in the declared local graph only. No source, anchor, real-world turn/access, exterior closure or geographic coverage certification."
+      },
+      "without_turn_rule": {
+        "access_certified": false,
+        "arc_path": [
+          "236722007:0:1",
+          "34617543:0:0"
+        ],
+        "car_exempt_relation_ids": [],
+        "converged": true,
+        "cost": 20.687163154340585,
+        "declared_reversal_pairs": [],
+        "discovered_states": 7,
+        "exact_stored_path_cost": [
+          "5822918767077557",
+          "281474976710656"
+        ],
+        "geographic_coverage_certified": false,
+        "metric": "length",
+        "orientation": "explicit-forward-source-to-target",
+        "partial_results_returned": false,
+        "release_eligible": false,
+        "reversal_policy": "same-way-immediate-reversals-require-declared-pair-or-only-u-rule",
+        "settled_states": 4,
+        "solver_policy": "bounded-forward-via-node-car-turn-probe-v1",
+        "source": 8365097507,
+        "source_approach": "unconstrained-declared-node-start",
+        "target": 8365097506,
+        "transitions_examined": 8,
+        "warning": "Exact path in the declared local graph only. No source, anchor, real-world turn/access, exterior closure or geographic coverage certification."
+      }
+    },
+    {
+      "metric": "length",
+      "prohibited_arc_pair": [
+        "236722007:0:1",
+        "34617543:0:0"
+      ],
+      "source": 8365097506,
+      "target": 8365097507,
+      "with_declared_turn_rule": {
+        "access_certified": false,
+        "arc_path": [
+          "34617543:0:1",
+          "236722007:0:0"
+        ],
+        "car_exempt_relation_ids": [],
+        "converged": true,
+        "cost": 20.687163154340585,
+        "declared_reversal_pairs": [],
+        "discovered_states": 6,
+        "exact_stored_path_cost": [
+          "5822918767077557",
+          "281474976710656"
+        ],
+        "geographic_coverage_certified": false,
+        "metric": "length",
+        "orientation": "explicit-forward-source-to-target",
+        "partial_results_returned": false,
+        "release_eligible": false,
+        "reversal_policy": "same-way-immediate-reversals-require-declared-pair-or-only-u-rule",
+        "settled_states": 4,
+        "solver_policy": "bounded-forward-via-node-car-turn-probe-v1",
+        "source": 8365097506,
+        "source_approach": "unconstrained-declared-node-start",
+        "target": 8365097507,
+        "transitions_examined": 7,
+        "warning": "Exact path in the declared local graph only. No source, anchor, real-world turn/access, exterior closure or geographic coverage certification."
+      },
+      "without_turn_rule": {
+        "access_certified": false,
+        "arc_path": [
+          "34617543:0:1",
+          "236722007:0:0"
+        ],
+        "car_exempt_relation_ids": [],
+        "converged": true,
+        "cost": 20.687163154340585,
+        "declared_reversal_pairs": [],
+        "discovered_states": 6,
+        "exact_stored_path_cost": [
+          "5822918767077557",
+          "281474976710656"
+        ],
+        "geographic_coverage_certified": false,
+        "metric": "length",
+        "orientation": "explicit-forward-source-to-target",
+        "partial_results_returned": false,
+        "release_eligible": false,
+        "reversal_policy": "same-way-immediate-reversals-require-declared-pair-or-only-u-rule",
+        "settled_states": 4,
+        "solver_policy": "bounded-forward-via-node-car-turn-probe-v1",
+        "source": 8365097506,
+        "source_approach": "unconstrained-declared-node-start",
+        "target": 8365097507,
+        "transitions_examined": 7,
+        "warning": "Exact path in the declared local graph only. No source, anchor, real-world turn/access, exterior closure or geographic coverage certification."
+      }
+    },
+    {
+      "metric": "travel_time",
+      "prohibited_arc_pair": [
+        "236722007:0:1",
+        "34617543:0:0"
+      ],
+      "source": 8365097507,
+      "target": 8365097506,
+      "with_declared_turn_rule": {
+        "access_certified": false,
+        "arc_path": [
+          "236722007:1:0",
+          "236722007:2:0",
+          "868392297:0:0",
+          "868392297:1:0",
+          "868392297:2:0",
+          "868392297:3:0",
+          "868392297:4:0",
+          "868392297:5:0",
+          "868392297:6:0",
+          "868392297:7:0",
+          "868392297:8:0",
+          "16900783:6:1",
+          "16900783:5:1",
+          "16900783:4:1",
+          "16900783:3:1",
+          "16900783:2:1",
+          "16900783:1:1",
+          "16900783:0:1",
+          "525065883:7:0",
+          "525065883:8:0",
+          "525065883:9:0",
+          "34617543:0:0"
+        ],
+        "car_exempt_relation_ids": [],
+        "converged": true,
+        "cost": 39.71519477227437,
+        "declared_reversal_pairs": [],
+        "discovered_states": 232,
+        "exact_stored_path_cost": [
+          "1430890691018892323",
+          "36028797018963968"
+        ],
+        "geographic_coverage_certified": false,
+        "metric": "travel_time",
+        "orientation": "explicit-forward-source-to-target",
+        "partial_results_returned": false,
+        "release_eligible": false,
+        "reversal_policy": "same-way-immediate-reversals-require-declared-pair-or-only-u-rule",
+        "settled_states": 218,
+        "solver_policy": "bounded-forward-via-node-car-turn-probe-v1",
+        "source": 8365097507,
+        "source_approach": "unconstrained-declared-node-start",
+        "target": 8365097506,
+        "transitions_examined": 430,
+        "warning": "Exact path in the declared local graph only. No source, anchor, real-world turn/access, exterior closure or geographic coverage certification."
+      },
+      "without_turn_rule": {
+        "access_certified": false,
+        "arc_path": [
+          "236722007:0:1",
+          "34617543:0:0"
+        ],
+        "car_exempt_relation_ids": [],
+        "converged": true,
+        "cost": 1.5107026244509147,
+        "declared_reversal_pairs": [],
+        "discovered_states": 8,
+        "exact_stored_path_cost": [
+          "3401799888272385",
+          "2251799813685248"
+        ],
+        "geographic_coverage_certified": false,
+        "metric": "travel_time",
+        "orientation": "explicit-forward-source-to-target",
+        "partial_results_returned": false,
+        "release_eligible": false,
+        "reversal_policy": "same-way-immediate-reversals-require-declared-pair-or-only-u-rule",
+        "settled_states": 5,
+        "solver_policy": "bounded-forward-via-node-car-turn-probe-v1",
+        "source": 8365097507,
+        "source_approach": "unconstrained-declared-node-start",
+        "target": 8365097506,
+        "transitions_examined": 10,
+        "warning": "Exact path in the declared local graph only. No source, anchor, real-world turn/access, exterior closure or geographic coverage certification."
+      }
+    },
+    {
+      "metric": "travel_time",
+      "prohibited_arc_pair": [
+        "236722007:0:1",
+        "34617543:0:0"
+      ],
+      "source": 8365097506,
+      "target": 8365097507,
+      "with_declared_turn_rule": {
+        "access_certified": false,
+        "arc_path": [
+          "34617543:0:1",
+          "236722007:0:0"
+        ],
+        "car_exempt_relation_ids": [],
+        "converged": true,
+        "cost": 1.5107026244509147,
+        "declared_reversal_pairs": [],
+        "discovered_states": 6,
+        "exact_stored_path_cost": [
+          "3401799888272385",
+          "2251799813685248"
+        ],
+        "geographic_coverage_certified": false,
+        "metric": "travel_time",
+        "orientation": "explicit-forward-source-to-target",
+        "partial_results_returned": false,
+        "release_eligible": false,
+        "reversal_policy": "same-way-immediate-reversals-require-declared-pair-or-only-u-rule",
+        "settled_states": 3,
+        "solver_policy": "bounded-forward-via-node-car-turn-probe-v1",
+        "source": 8365097506,
+        "source_approach": "unconstrained-declared-node-start",
+        "target": 8365097507,
+        "transitions_examined": 6,
+        "warning": "Exact path in the declared local graph only. No source, anchor, real-world turn/access, exterior closure or geographic coverage certification."
+      },
+      "without_turn_rule": {
+        "access_certified": false,
+        "arc_path": [
+          "34617543:0:1",
+          "236722007:0:0"
+        ],
+        "car_exempt_relation_ids": [],
+        "converged": true,
+        "cost": 1.5107026244509147,
+        "declared_reversal_pairs": [],
+        "discovered_states": 6,
+        "exact_stored_path_cost": [
+          "3401799888272385",
+          "2251799813685248"
+        ],
+        "geographic_coverage_certified": false,
+        "metric": "travel_time",
+        "orientation": "explicit-forward-source-to-target",
+        "partial_results_returned": false,
+        "release_eligible": false,
+        "reversal_policy": "same-way-immediate-reversals-require-declared-pair-or-only-u-rule",
+        "settled_states": 3,
+        "solver_policy": "bounded-forward-via-node-car-turn-probe-v1",
+        "source": 8365097506,
+        "source_approach": "unconstrained-declared-node-start",
+        "target": 8365097507,
+        "transitions_examined": 6,
+        "warning": "Exact path in the declared local graph only. No source, anchor, real-world turn/access, exterior closure or geographic coverage certification."
+      }
+    }
+  ],
+  "connector_costs_included": false,
+  "directed_arcs": 364,
+  "metric_units": {
+    "length": "meters",
+    "travel_time": "seconds"
+  },
+  "nodes": 209,
+  "release_eligible": false,
+  "road_eligibility": "Inherited static-passenger-car-v2 research predicate and speed rules; not physical/legal certification",
+  "schema": "tucson-local-turn-probe-v1",
+  "scope": "Declared bounded local context only; no exterior closure or geographic optimum claim",
+  "warning": "Municipal point is not a chosen graph endpoint. This probe does not fix or replace the retained Census-origin scenario or establish a vehicle route to a garage. Initial road-node approach is unconstrained."
+}

@@ -1,0 +1,50 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "files": {
+    "municipal-layer.json": {
+      "bytes": 128274,
+      "retrieved_at_utc": "2026-10-30T20:18:11.403606+00:00",
+      "sha256": "e9b075f3e3f24babffd8152b30159502e30a08edebc0cca5bea67c2586730dac",
+      "url": "https://services3.arcgis.com/9coHY2fvuFjG9HQX/arcgis/rest/services/Downtown_Parking_Garages_and_Lots/FeatureServer/0?f=pjson"
+    },
+    "municipal-lots.json": {
+      "bytes": 97733,
+      "retrieved_at_utc": "2026-10-30T20:18:11.403737+00:00",
+      "sha256": "b681c5d4921d0ca39a6c11cd3bb0388c02a9ac1d38e7bf9edccf37e4e5009b5f",
+      "url": "https://services3.arcgis.com/9coHY2fvuFjG9HQX/arcgis/rest/services/Downtown_Parking_Garages_and_Lots/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&returnGeometry=true&resultRecordCount=1000&f=pjson"
+    },
+    "operator-map-item.json": {
+      "bytes": 1421,
+      "retrieved_at_utc": "2026-10-30T20:18:11.403748+00:00",
+      "sha256": "1da41f4640923e241cc5d70f45adde7577efe1124d2c34da132082b654164d27",
+      "url": "https://www.arcgis.com/sharing/rest/content/items/2faefeade9e545f9af2e32e374006673?f=json"
+    },
+    "operator-webmap.json": {
+      "bytes": 75854,
+      "retrieved_at_utc": "2026-10-30T20:18:11.403791+00:00",
+      "sha256": "de99f406da3caf8ec6b56f9b2e5309a5455162ad148a0e9545788138255f4039",
+      "url": "https://www.arcgis.com/sharing/rest/content/items/4fd1d2ad7f1b44a38884b8f3530c1436/data?f=json"
+    },
+    "osm-context.json": {
+      "bytes": 145551,
+      "sha256": "dd14a9be24f721f32412ee2ea25eff0370bec8fb7c3bf2cca56c904e6d9b8312"
+    },
+    "publication-chain.json": {
+      "bytes": 785,
+      "sha256": "b7c66f00334cc0f2be0f1a71ca32c2ae767142e1632f2808b74b373a1c76dd27"
+    },
+    "turn-probe.json": {
+      "bytes": 12168,
+      "sha256": "0f2bbd874230b4fd57ad9af8ccc38c0f9a6cac6a613c7737c479dddfcc3fa04c"
+    }
+  },
+  "osm_source": {
+    "bytes": 304245283,
+    "name": "arizona.osm.pbf",
+    "sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9"
+  },
+  "release_eligible": false,
+  "schema": "tucson-urban-entry-context-manifest-v1",
+  "warning": "Independent publisher context and exact raw graph research only; no certified vehicle connection or public isochrone asset."
+}
