@@ -6,7 +6,7 @@
     "name": "City of Las Vegas parking garage, 500 S. Main St. \u2014 event-parking urban candidate",
     "approved": false,
     "selection_reason": "City-published downtown motor-vehicle parking destination offers independent facility-use evidence unlike the quarry regression point. This is a candidate for review, not the selected metro-wide anchor.",
-    "coordinate_status": "exact_vehicle_entry_and_datum_unresolved",
+    "coordinate_status": "provider_reference_marker_available_exact_permitted_vehicle_entry_unresolved",
     "anchor_lonlat": null,
     "road_node": null,
     "metro_representation_policy": "Unresolved: compare a single downtown Las Vegas destination with an explicit multi-center policy for Las Vegas-Henderson-North Las Vegas before evaluating winners.",
@@ -16,12 +16,20 @@
       "latitude": "36.2141295",
       "population": "2407226",
       "cbsa": "29820"
+    },
+    "reference_marker": {
+      "lonlat": [
+        -115.14959603548051,
+        36.16705386424245
+      ],
+      "role": "Unadopted provider marker only; datum and intended entry remain unverified.",
+      "source": "garage-listing"
     }
   },
   "reviewer": {
     "kind": "ai",
     "identity": "Codex (OpenAI), 2026-10-30",
-    "procedure": "Read retained Hollywood Pit packet and #137; fetch official city parking guidance and linked First Friday article with TLS verification; inspect literal visible-text excerpts; distinguish event invitation, parking office, exact garage entry and all-hours rights. Disclose unavailable RTC sources. Do not infer a coordinate, directed connection, or approval."
+    "procedure": "Read retained Hollywood Pit packet and #137; fetch official city parking guidance and linked First Friday article with TLS verification; inspect literal visible-text excerpts; distinguish event invitation, parking office, exact garage entry and all-hours rights. Disclose unavailable RTC sources. Do not infer a coordinate, directed connection, or approval. Inspect ParkWhiz location12083 linked via the city reservation destination list; whitelist location data and discard page runtime state. Inspect three original linked images without altering copyright markings; distinguish entrance-labelled marker from historical Wrong Way signage. No graph endpoint adopted."
   },
   "sources": [
     {
@@ -44,6 +52,41 @@
       "path": "docs/research/connector-reviews/29820-census-lead.json",
       "sha256": "7545a9196009d0d2ba89c66d91ba8a347e606aa69df38ed38b8098b914e24e32",
       "provenance": "Prior AI review retained unchanged for comparison; does not establish independent access to this different candidate."
+    },
+    {
+      "id": "garage-listing",
+      "kind": "independent_access_record",
+      "path": "docs/research/las-vegas-urban-anchor/garage-listing.json",
+      "sha256": "9164fa0047b25d8c3db9e6b0d145e8bcf0f96f2f92a7e9605d848d9c780b7073",
+      "provenance": "ParkWhiz garage listing selected fields and AI inspection of its linked photos; location12083 is among the destination IDs in the official city First Friday reservation link. Provider data and historical photos are not current independent entrance certification."
+    },
+    {
+      "id": "garage-photo-0",
+      "kind": "independent_access_record",
+      "path": "docs/research/las-vegas-urban-anchor/parkwhiz-garage-0.png",
+      "sha256": "7c58a9205da316244bb9a6e7e00e9270d422993c162080d84a0c470014b7d237",
+      "provenance": "Unmodified listing photo at https://d2uqqhmijd5j2z.cloudfront.net/files/303904/original/500_S_Main_St_02.png?1537978629; fetched2026-10-30. Original copyright marks preserved; exact capture/current applicability unknown."
+    },
+    {
+      "id": "garage-photo-1",
+      "kind": "independent_access_record",
+      "path": "docs/research/las-vegas-urban-anchor/parkwhiz-garage-1.png",
+      "sha256": "0d7d9c0a1a6a3f8fc2376680819bce6dd838e27a3711cd5cc8ebd66e7e3834f1",
+      "provenance": "Unmodified listing photo at https://d2uqqhmijd5j2z.cloudfront.net/files/303916/original/500_S_Main_St.png?1537978635; fetched2026-10-30. Original copyright marks preserved; exact capture/current applicability unknown."
+    },
+    {
+      "id": "garage-photo-2",
+      "kind": "independent_access_record",
+      "path": "docs/research/las-vegas-urban-anchor/parkwhiz-garage-2.png",
+      "sha256": "b02e1859094bec3e271048ef1e1400f3a31d7e88e028864b7238e4178a9d68fe",
+      "provenance": "Unmodified listing photo at https://d2uqqhmijd5j2z.cloudfront.net/files/303910/original/500_S_Main_St_03.png?1537978632; fetched2026-10-30. Original copyright marks preserved; exact capture/current applicability unknown."
+    },
+    {
+      "id": "public-location-api",
+      "kind": "independent_access_record",
+      "path": "docs/research/las-vegas-urban-anchor/parkwhiz-location.json",
+      "sha256": "97b4470740a580fad0a4cac415b62ef183ab58b6ce0c08eb87f65d3c703a982c",
+      "provenance": "Unauthenticated public ParkWhiz v4 location12083 response, fetched2026-10-30. URL/hash in garage-listing.json. The listing restriction is not a survey or current legal attestation."
     }
   ],
   "machine_assertions": [
@@ -73,42 +116,93 @@
         "access_verified"
       ],
       "equals": false
+    },
+    {
+      "source": "garage-listing",
+      "keys": [
+        "listing",
+        "id"
+      ],
+      "equals": 12083
+    },
+    {
+      "source": "garage-listing",
+      "keys": [
+        "operator",
+        "name"
+      ],
+      "equals": "City of Las Vegas Parking"
+    },
+    {
+      "source": "garage-listing",
+      "keys": [
+        "reference_marker_lonlat"
+      ],
+      "equals": [
+        -115.14959603548051,
+        36.16705386424245
+      ]
+    },
+    {
+      "source": "public-location-api",
+      "keys": [
+        "entrances",
+        0,
+        "max_dimensions",
+        "inches",
+        "height"
+      ],
+      "equals": 96
+    },
+    {
+      "source": "public-location-api",
+      "keys": [
+        "entrances",
+        0,
+        "human_readable"
+      ],
+      "equals": "No vehicles over 8' in height"
     }
   ],
   "findings": {
     "physical_connection": {
       "status": "unknown",
-      "reason": "The city invites First Friday visitors to park at its garage at 500 S. Main St., but no precise vehicle entrance or path to a graph node is identified.",
+      "reason": "The listing supplies an entrance-labelled marker and historical garage photos, but the Main Street-facing opening shown has Wrong Way signs and an exiting vehicle. Do not equate a provider marker with the permitted ingress. Exact intended entry and continuous path to a bound graph node remain unresolved.",
       "sources": [
-        "city-parking"
+        "city-parking",
+        "garage-listing"
       ]
     },
     "legal_motor_access": {
       "status": "unknown",
-      "reason": "The city publishes an event-specific parking invitation and explicitly requires clearly signed public/event spaces. This does not establish unrestricted private-car use, current garage rules, vehicle limits or permission for an exact entry maneuver.",
+      "reason": "The city publishes an event-specific parking invitation and explicitly requires clearly signed public/event spaces. This does not establish unrestricted private-car use, current garage rules, vehicle limits or permission for an exact entry maneuver. The provider description also states Max Vehicle Height:8ft.; this is a listed restriction rather than a guarantee for an unlocated path.",
       "sources": [
-        "city-parking"
+        "city-parking",
+        "garage-listing"
       ]
     },
     "same_grade": {
       "status": "unknown",
       "reason": "No surveyed entrance, ramp elevation, grade record or current physical inspection is retained.",
       "sources": [
-        "city-parking"
+        "city-parking",
+        "garage-listing"
       ]
     },
     "direction_and_turns": {
       "status": "unknown",
-      "reason": "The address and event guidance identify no entry lane, one-way orientation, permitted turn, exit, or applicable signs for an exact directed network path.",
+      "reason": "Historical linked photos show Wrong Way signs over the Main Street-facing opening. They contradict treating that depicted opening as generic bidirectional ingress, but are not a current sign survey and do not establish the correct entry approach/exit or exact directed maneuver.",
       "sources": [
-        "city-parking"
+        "city-parking",
+        "garage-listing"
       ]
     },
     "connector_cost": {
       "status": "unknown",
       "reason": "No anchor coordinate, actual connector polyline, length, speed, parking delay or turn cost is adopted. The Census/quarry diagnostic gap is unrelated to this proposed garage.",
       "sources": [
-        "city-parking"
+        "city-parking",
+        "garage-listing"
       ]
     }
   },
@@ -117,9 +211,10 @@
   "release_eligible": false,
   "limitations": [
     "No anchor adopted; no graph/origin/connector cost/ledger/public map change.",
-    "No precise coordinates or graph-node binding: this preliminary candidate cannot be handed off for approval or routing.",
+    "Provider marker available, but precise permitted entrance coordinates/datum and directed graph-node binding remain unresolved. This preliminary candidate cannot be handed off for approval or routing.",
     "Need authoritative dated entrance/site plan and current signs/vehicle/time restrictions, grade and directed-path evidence, exact graph-bundle binding and separate independent review under #137.",
     "The multi-center CBSA destination policy remains undecided; the first named city is not automatically representative.",
-    "RTC HTTP403 responses provide no parking or vehicle-rights evidence."
+    "RTC HTTP403 responses provide no parking or vehicle-rights evidence.",
+    "Provider entrance coordinates are a selection/reference lead only; old photos cannot independently certify current grade, signs or motor rights."
   ]
 }
