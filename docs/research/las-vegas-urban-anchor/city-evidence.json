@@ -1,0 +1,50 @@
+{
+  "schema": "las-vegas-city-parking-excerpts-v1",
+  "sources": [
+    {
+      "id": "parking-services",
+      "url": "https://www.lasvegasnevada.gov/Residents/Parking-Transportation/Parking",
+      "retrieved_at_utc": "2026-10-30T18:39:32.070135+00:00",
+      "http_status": 200,
+      "response_sha256": "65956ae545fc1e0dd20874ba629b6f1ac8fc84d68cbbe0032bec7805d8723c80",
+      "response_bytes": 62239,
+      "excerpts": [
+        "The Parking Services Office is located at",
+        "350 S. City Parkway.",
+        "The app can also",
+        "reserve parking in our garages."
+      ],
+      "retention": "Selected literal visible-text excerpts; response digest identifies fetched HTML. Original HTML containing unrelated site form state is not published. No claim that the digest independently authenticates publisher or truth."
+    },
+    {
+      "id": "first-friday",
+      "url": "https://www.lasvegasnevada.gov/News/Blog/Detail/first-friday-parking-in-downtown-las-vegas",
+      "retrieved_at_utc": "2026-10-30T18:39:32.072727+00:00",
+      "http_status": 200,
+      "response_sha256": "69356f56f806b7d7fead1d892251f7c3b698a88f3e9a32fb366499ce879034a7",
+      "response_bytes": 52225,
+      "excerpts": [
+        "Park at the city of Las Vegas parking garage, 500 S. Main St., and take the shuttle to and from First Friday. The shuttle runs from 3 p.m. to midnight.",
+        "Wherever you park, please make sure the spot is clearly signed for public or event parking; never park anywhere that is not. Never park in a dirt lot - even if there are attendants; these are not legitimate parking locations and you risk being towed."
+      ],
+      "retention": "Selected literal visible-text excerpts; response digest identifies fetched HTML. Original HTML containing unrelated site form state is not published. No claim that the digest independently authenticates publisher or truth."
+    }
+  ],
+  "access_verified": false,
+  "release_eligible": false,
+  "limitations": [
+    "Event parking invitation is not an unrestricted all-hours motor-access permit.",
+    "The source does not identify a georeferenced vehicle entrance, grade, directed turn, or connector cost.",
+    "Parking-office address is not the garage address; do not substitute it."
+  ],
+  "unavailable_sources": [
+    {
+      "url": "https://www.rtcsnv.com/ways-to-travel/transit-services/park-ride/",
+      "http_status": 403
+    },
+    {
+      "url": "https://www.rtcsnv.com/ways-to-travel/transit-services/transit-centers/",
+      "http_status": 403
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "schema": "ai-connector-review-v1",
+  "cbsa": "29820",
+  "origin_policy": "urban-access-anchor-v1",
+  "candidate": {
+    "name": "City of Las Vegas parking garage, 500 S. Main St. \u2014 event-parking urban candidate",
+    "approved": false,
+    "selection_reason": "City-published downtown motor-vehicle parking destination offers independent facility-use evidence unlike the quarry regression point. This is a candidate for review, not the selected metro-wide anchor.",
+    "coordinate_status": "exact_vehicle_entry_and_datum_unresolved",
+    "anchor_lonlat": null,
+    "road_node": null,
+    "metro_representation_policy": "Unresolved: compare a single downtown Las Vegas destination with an explicit multi-center policy for Las Vegas-Henderson-North Las Vegas before evaluating winners.",
+    "census_record": {
+      "name": "Las Vegas-Henderson-North Las Vegas, NV Metro Area",
+      "longitude": "-115.0143977",
+      "latitude": "36.2141295",
+      "population": "2407226",
+      "cbsa": "29820"
+    }
+  },
+  "reviewer": {
+    "kind": "ai",
+    "identity": "Codex (OpenAI), 2026-10-30",
+    "procedure": "Read retained Hollywood Pit packet and #137; fetch official city parking guidance and linked First Friday article with TLS verification; inspect literal visible-text excerpts; distinguish event invitation, parking office, exact garage entry and all-hours rights. Disclose unavailable RTC sources. Do not infer a coordinate, directed connection, or approval."
+  },
+  "sources": [
+    {
+      "id": "city-parking",
+      "kind": "independent_access_record",
+      "path": "docs/research/las-vegas-urban-anchor/city-evidence.json",
+      "sha256": "23aed06f3b6e1fd738b53d56cfddc09b76da7375c2642b4d02954043017ef8ed",
+      "provenance": "Selected literal excerpts of two official City of Las Vegas pages, fetched 2026-10-30. Exact URLs, response digests, sizes and retrieval times retained. Primary publication context, not survey or independent certification."
+    },
+    {
+      "id": "census-input",
+      "kind": "routing_model",
+      "path": "public/data/metros-census-2025.csv",
+      "sha256": "ecd594584ff6ab074a94fbad5c85ec2506b0c4e0d4c4870120d7e3d0b5b795f8",
+      "provenance": "Unchanged Census-derived CBSA identity/population input. No access evidence."
+    },
+    {
+      "id": "quarry-review",
+      "kind": "routing_model",
+      "path": "docs/research/connector-reviews/29820-census-lead.json",
+      "sha256": "7545a9196009d0d2ba89c66d91ba8a347e606aa69df38ed38b8098b914e24e32",
+      "provenance": "Prior AI review retained unchanged for comparison; does not establish independent access to this different candidate."
+    }
+  ],
+  "machine_assertions": [
+    {
+      "source": "city-parking",
+      "keys": [
+        "sources",
+        1,
+        "excerpts",
+        0
+      ],
+      "equals": "Park at the city of Las Vegas parking garage, 500 S. Main St., and take the shuttle to and from First Friday. The shuttle runs from 3 p.m. to midnight."
+    },
+    {
+      "source": "city-parking",
+      "keys": [
+        "sources",
+        1,
+        "excerpts",
+        1
+      ],
+      "equals": "Wherever you park, please make sure the spot is clearly signed for public or event parking; never park anywhere that is not. Never park in a dirt lot - even if there are attendants; these are not legitimate parking locations and you risk being towed."
+    },
+    {
+      "source": "city-parking",
+      "keys": [
+        "access_verified"
+      ],
+      "equals": false
+    }
+  ],
+  "findings": {
+    "physical_connection": {
+      "status": "unknown",
+      "reason": "The city invites First Friday visitors to park at its garage at 500 S. Main St., but no precise vehicle entrance or path to a graph node is identified.",
+      "sources": [
+        "city-parking"
+      ]
+    },
+    "legal_motor_access": {
+      "status": "unknown",
+      "reason": "The city publishes an event-specific parking invitation and explicitly requires clearly signed public/event spaces. This does not establish unrestricted private-car use, current garage rules, vehicle limits or permission for an exact entry maneuver.",
+      "sources": [
+        "city-parking"
+      ]
+    },
+    "same_grade": {
+      "status": "unknown",
+      "reason": "No surveyed entrance, ramp elevation, grade record or current physical inspection is retained.",
+      "sources": [
+        "city-parking"
+      ]
+    },
+    "direction_and_turns": {
+      "status": "unknown",
+      "reason": "The address and event guidance identify no entry lane, one-way orientation, permitted turn, exit, or applicable signs for an exact directed network path.",
+      "sources": [
+        "city-parking"
+      ]
+    },
+    "connector_cost": {
+      "status": "unknown",
+      "reason": "No anchor coordinate, actual connector polyline, length, speed, parking delay or turn cost is adopted. The Census/quarry diagnostic gap is unrelated to this proposed garage.",
+      "sources": [
+        "city-parking"
+      ]
+    }
+  },
+  "decision": "needs_evidence",
+  "access_verified": false,
+  "release_eligible": false,
+  "limitations": [
+    "No anchor adopted; no graph/origin/connector cost/ledger/public map change.",
+    "No precise coordinates or graph-node binding: this preliminary candidate cannot be handed off for approval or routing.",
+    "Need authoritative dated entrance/site plan and current signs/vehicle/time restrictions, grade and directed-path evidence, exact graph-bundle binding and separate independent review under #137.",
+    "The multi-center CBSA destination policy remains undecided; the first named city is not automatically representative.",
+    "RTC HTTP403 responses provide no parking or vehicle-rights evidence."
+  ]
+}
