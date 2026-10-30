@@ -1,0 +1,16 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "entry_path_verified": false,
+  "excerpts": [
+    "Visitor parking is available in all six Park Tucson garages and all five Park Tucson surface parking lots. Monday to Friday, from 8:00am to 5:00pm, parking is charged hourly at $1.25/hour. Evenings and weekends, a flat rate for a 12-hour time period applies, flat rates range from $3 to $7.\nWhen you enter a garage, you will have the choice of pressing a green button to receive a ticket that you will use later to pay, or you may insert a credit or debit card directly. Your card will serve as your ticket, and in order to complete payment and exit the garage, you will need to insert the same card at the exit. If you lose the ticket that you receive at the entrance, you will need to pay a $15 Lost Ticket Fee.\nArriving and Departing during Different Pricing Periods?\nParkers who arrive during one pricing period and depart during another pricing period, will be charged the sum of the applicable rates for each period.",
+    "Pennington Street Garage - 110 E. Pennington St., entrance and exit on Scott Avenue\nOpen 24 hours, 7 days/week\nWeekday Daytime Rate\n- $1.25 per hour\nEvening and Weekend Rates\nEvenings (5:00pm - 6:00am) Sunday - Wednesday: $5 flat rate\nEvenings (5:00pm - 6:00am) Thursday - Saturday: $7 flat rate\nWeekend Days (6:00am - 5:00pm) Saturday - Sunday: $5 flat rate\nLost Ticket: $15\nCash and credit cards can be used at kiosks on the ground level next to the elevators and stairwell, and along Scott Avenue, next to the outside stairwell. Credit and debit cards can be used at either the kiosk or exit gates.\nTwo Blink EV (Electric Vehicle) Charging Stations on Level 1 of Pennington Street Garage next to the stairwell.\n711 Public Spaces"
+  ],
+  "original_response_bytes": 162749,
+  "original_response_sha256": "3114d5af0a252350d23ad423abce8b9f0f4ac5107bfb825d253f98e84131f39f",
+  "release_eligible": false,
+  "retention": "Selected literal visible-text excerpts; original HTML form/runtime state omitted. Original response hash is a retrieval identity, not recomputable from these excerpts.",
+  "retrieved_at_utc": "2026-10-30T20:34:54.995443+00:00",
+  "schema": "tucson-parking-publication-excerpts-v1",
+  "url": "https://www.tucsonaz.gov/Departments/Transportation-Mobility/Park-Tucson/Daily-Visitor-Parking"
+}

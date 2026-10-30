@@ -1,0 +1,28 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "closure_event": {
+    "end_local": "2026-11-01T03:00:00",
+    "local_time_basis": "Tucson local civil time, America/Phoenix; PDF itself gives clock times without a numeric UTC offset",
+    "map_export_date": "2026-10-29",
+    "start_local": "2026-10-31T17:00:00"
+  },
+  "entry_path_verified": false,
+  "files": {
+    "congress-closure-20261029.pdf": {
+      "bytes": 529821,
+      "sha256": "3af451538f42784c65c606f9ae25400e8a4d65a847b82a251273312dea4cd75f"
+    },
+    "publication-chain.json": {
+      "bytes": 742,
+      "sha256": "d02cd2e56c6affb31958d5077f5fcb2afb5d5cff0a47851437366a3a3c616079"
+    },
+    "visitor-excerpts.json": {
+      "bytes": 2362,
+      "sha256": "330257da7ca0197ee7de7a27d230575d8b8cb1d6b6bd095eb5965c471211e1f2"
+    }
+  },
+  "release_eligible": false,
+  "retrieved_utc": "2026-10-30",
+  "schema": "tucson-parking-publication-manifest-v1"
+}
