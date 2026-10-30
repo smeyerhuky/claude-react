@@ -6,6 +6,7 @@ on:
       - 'scripts/test_connector_review_packet.py'
       - 'docs/research/connector-reviews/**'
       - 'docs/research/denver-urban-anchor/**'
+      - 'docs/research/las-vegas-urban-anchor/**'
       - 'docs/research/missouri-arkansas-origin-evidence/**'
       - 'docs/research/tucson-unreachable-negative.json'
       - 'docs/research/wichita-model-lead-negative.json'
