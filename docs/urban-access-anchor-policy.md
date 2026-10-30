@@ -20,6 +20,20 @@ or a defined set represents the metro before evaluating winners; never silently
 use the first named city. Census city points are selection leads, not access proof.
 No actual urban anchor is adopted by this document.
 
+On 2026-10-30 the user selected **the nearest of a reviewed set of anchors across
+principal cities** for multi-center metros. Eligibility and population thresholds
+remain attached to the CBSA, not to each city or anchor. For each requested metric
+and direction, aggregate the complete reviewed anchor set by minimum full cost,
+including the applicable reviewed connector paths. Different anchors can minimize
+distance, outward time and return time. Preserve ties and explicit unknown costs.
+A missing/unknown anchor cannot be dropped to manufacture a complete metro minimum;
+a finite subset is only a research bound until the required set is accounted for.
+The expected set and principal-city identities must be explicitly sourced and
+versioned; do not parse hyphenated CBSA names into an unsourced city list. Each
+anchor/path still requires independent evidence and separate approval under #137.
+Existing Census origins, single-source regressions and straight-line behavior are
+unchanged; no anchor is adopted by this policy choice.
+
 ## Review procedure
 
 1. Retain inspectable evidence with provenance, capture date and exact hashes.
