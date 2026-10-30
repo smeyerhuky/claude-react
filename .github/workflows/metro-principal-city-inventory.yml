@@ -1,0 +1,25 @@
+name: Official metro principal-city inventory
+on:
+  pull_request:
+    paths:
+      - 'scripts/metro_principal_city_inventory.py'
+      - 'scripts/test_metro_principal_city_inventory.py'
+      - 'docs/research/principal-city-inventory/**'
+      - 'docs/research/utah-parent-reference/domains.json'
+      - '.github/workflows/metro-principal-city-inventory.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  principal-city-inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'openpyxl==3.1.5'
+      - run: python -m unittest discover -s scripts -p test_metro_principal_city_inventory.py -v
+      - run: python scripts/metro_principal_city_inventory.py
+      - run: python scripts/las_vegas_ui_checkpoint.py --check-frozen
