@@ -1,0 +1,1814 @@
+{
+  "access_verified": false,
+  "baseline_sha256": "d077818c69d25f23f7b8004937c58341207334655a23493c5856977b87f6e9c8",
+  "geographic_coverage_certified": false,
+  "query_semantics": "Raw overlapping syntax diagnostics only; not applicable-car turn counts or supported graph transitions",
+  "release_eligible": false,
+  "schema": "raw-state-restriction-inventory-v1",
+  "selection": "Every relation whose type tag equals restriction in each exact declared source; no highway or vehicle-mode filter",
+  "states": [
+    {
+      "all_selected_relation_projection_sha256": "7a43f3c9f3de749dd1713c6002e27d1222d8a78e2a1f36eeb0d04bb8f429de4a",
+      "example_relations": {
+        "conditional_key": [
+          {
+            "id": 5389983,
+            "members": [
+              {
+                "ref": 3662584303,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 362164004,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 362164002,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "only_right_turn @ (Su 08:00-16:00)",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 5389984,
+            "members": [
+              {
+                "ref": 3409771267,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 361840118,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 333929230,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Su 08:00-16:00)",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 5389985,
+            "members": [
+              {
+                "ref": 3662584302,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 361835982,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 628911675,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Su 08:00-16:00)",
+              "source": "Mile Hi Church",
+              "type": "restriction"
+            }
+          }
+        ],
+        "exception_key": [
+          {
+            "id": 419222,
+            "members": [
+              {
+                "ref": 176064853,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 73082874,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 16985760,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "except": "bicycle",
+              "restriction": "no_left_turn",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 420265,
+            "members": [
+              {
+                "ref": 16981496,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 176064853,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 16985760,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "except": "bicycle",
+              "restriction": "no_right_turn",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 1157014,
+            "members": [
+              {
+                "ref": 16982103,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 28980425,
+                "role": "to",
+                "type": "w"
+              },
+              {
+                "ref": 176069962,
+                "role": "via",
+                "type": "n"
+              }
+            ],
+            "tags": {
+              "except": "bicycle",
+              "restriction": "only_right_turn",
+              "type": "restriction",
+              "via": "node/176069962"
+            }
+          }
+        ],
+        "generic_kind_outside_via_node_probe": [
+          {
+            "id": 8287224,
+            "members": [
+              {
+                "ref": 587223039,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 176088033,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 130921930,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_right_turn_on_red",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 17826515,
+            "members": [
+              {
+                "ref": 1300732309,
+                "role": "to",
+                "type": "w"
+              },
+              {
+                "ref": 541930018,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 340361213,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 3475755217,
+                "role": "via",
+                "type": "n"
+              }
+            ],
+            "tags": {
+              "restriction": "no_entry",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 17826516,
+            "members": [
+              {
+                "ref": 3014839028,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 297593058,
+                "role": "to",
+                "type": "w"
+              },
+              {
+                "ref": 297593061,
+                "role": "from",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_entry",
+              "type": "restriction"
+            }
+          }
+        ],
+        "missing_generic_kind": [
+          {
+            "id": 5389983,
+            "members": [
+              {
+                "ref": 3662584303,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 362164004,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 362164002,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "only_right_turn @ (Su 08:00-16:00)",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 5389984,
+            "members": [
+              {
+                "ref": 3409771267,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 361840118,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 333929230,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Su 08:00-16:00)",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 5389985,
+            "members": [
+              {
+                "ref": 3662584302,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 361835982,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 628911675,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Su 08:00-16:00)",
+              "source": "Mile Hi Church",
+              "type": "restriction"
+            }
+          }
+        ],
+        "via_way": [
+          {
+            "id": 2516794,
+            "members": [
+              {
+                "ref": 800937106,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 186839303,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 800937105,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_u_turn",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 2516795,
+            "members": [
+              {
+                "ref": 800937105,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 186839302,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 800937106,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_u_turn",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 2999192,
+            "members": [
+              {
+                "ref": 1504731685,
+                "role": "to",
+                "type": "w"
+              },
+              {
+                "ref": 225717153,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 1483418718,
+                "role": "from",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_u_turn",
+              "type": "restriction"
+            }
+          }
+        ]
+      },
+      "generic_kind_counts": {
+        "<missing>": 71,
+        "no_entry": 2,
+        "no_left_turn": 3233,
+        "no_right_turn": 1319,
+        "no_right_turn_on_red": 1,
+        "no_straight_on": 122,
+        "no_u_turn": 3477,
+        "only_left_turn": 84,
+        "only_right_turn": 462,
+        "only_straight_on": 756,
+        "only_u_turn": 3
+      },
+      "overlapping_flag_counts": {
+        "conditional_key": 65,
+        "exception_key": 77,
+        "generic_kind_outside_via_node_probe": 3,
+        "missing_generic_kind": 71,
+        "via_way": 1163
+      },
+      "raw_restriction_relation_count": 9530,
+      "sample_policy": "First three ascending relation IDs per diagnostic flag; examples are not the complete relation inventory",
+      "source": {
+        "name": "colorado.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+        "size_bytes": 386197077
+      },
+      "state": "colorado"
+    },
+    {
+      "all_selected_relation_projection_sha256": "da34897febc03fb56cc3720f94328147f8b5aea0da6d87f7c2fc0d62bd0d5d54",
+      "example_relations": {
+        "conditional_key": [
+          {
+            "id": 18855915,
+            "members": [
+              {
+                "ref": 1368707722,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 1368710950,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 1368710951,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_u_turn @ (Mo-Su 15:00-19:00)",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 18929601,
+            "members": [
+              {
+                "ref": 510954290,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 14415959,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 1374095042,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_u_turn @ (Mo-Fr 07:00-08:00,13:30-14:30; SH off)",
+              "type": "restriction"
+            }
+          }
+        ],
+        "generic_kind_outside_via_node_probe": [
+          {
+            "id": 18855553,
+            "members": [
+              {
+                "ref": 240448674,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 376259268,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 376259264,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_left_turn @ (Mo-Su 14:00-18:00)",
+              "type": "restriction"
+            }
+          }
+        ],
+        "missing_generic_kind": [
+          {
+            "id": 18855915,
+            "members": [
+              {
+                "ref": 1368707722,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 1368710950,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 1368710951,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_u_turn @ (Mo-Su 15:00-19:00)",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 18929601,
+            "members": [
+              {
+                "ref": 510954290,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 14415959,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 1374095042,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_u_turn @ (Mo-Fr 07:00-08:00,13:30-14:30; SH off)",
+              "type": "restriction"
+            }
+          }
+        ],
+        "via_way": [
+          {
+            "id": 3800486,
+            "members": [
+              {
+                "ref": 595494404,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 595494406,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 595494407,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_u_turn",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 3800489,
+            "members": [
+              {
+                "ref": 595494404,
+                "role": "to",
+                "type": "w"
+              },
+              {
+                "ref": 286512957,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 595494407,
+                "role": "from",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_u_turn",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 3800490,
+            "members": [
+              {
+                "ref": 286512957,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 595494404,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 595494406,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_u_turn",
+              "type": "restriction"
+            }
+          }
+        ]
+      },
+      "generic_kind_counts": {
+        "<missing>": 2,
+        "no_left_turn": 631,
+        "no_left_turn @ (Mo-Su 14:00-18:00)": 1,
+        "no_right_turn": 408,
+        "no_straight_on": 11,
+        "no_u_turn": 573,
+        "only_left_turn": 31,
+        "only_right_turn": 43,
+        "only_straight_on": 109,
+        "only_u_turn": 5
+      },
+      "overlapping_flag_counts": {
+        "conditional_key": 2,
+        "exception_key": 0,
+        "generic_kind_outside_via_node_probe": 1,
+        "missing_generic_kind": 2,
+        "via_way": 367
+      },
+      "raw_restriction_relation_count": 1814,
+      "sample_policy": "First three ascending relation IDs per diagnostic flag; examples are not the complete relation inventory",
+      "source": {
+        "name": "new-mexico.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "2aa3ba0e91c0f19ffd0d614d98f112546552a51d02daf2474d8f06e54304508a",
+        "size_bytes": 136658631
+      },
+      "state": "new-mexico"
+    },
+    {
+      "all_selected_relation_projection_sha256": "445e9e13472b3165d6bac0ca785b3051b40534ed6172db2fe9ee0cc75b6b31d5",
+      "example_relations": {
+        "conditional_key": [
+          {
+            "id": 6250262,
+            "members": [
+              {
+                "ref": 41559481,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 527631298,
+                "role": "to",
+                "type": "w"
+              },
+              {
+                "ref": 527631297,
+                "role": "from",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Mo-Fr 06:00-09:00)",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 6250271,
+            "members": [
+              {
+                "ref": 1525902877,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 420511600,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 549340879,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Mo-Fr 06:00-09:00)",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 6250288,
+            "members": [
+              {
+                "ref": 331953385,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 420512215,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 436772420,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Mo-Fr 16:00-18:00)",
+              "type": "restriction"
+            }
+          }
+        ],
+        "exception_key": [
+          {
+            "id": 4623497,
+            "members": [
+              {
+                "ref": 329993236,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 41769115,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 527955225,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "except": "bus",
+              "restriction": "no_left_turn",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 6268977,
+            "members": [
+              {
+                "ref": 41769349,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 436775552,
+                "role": "to",
+                "type": "w"
+              },
+              {
+                "ref": 549330427,
+                "role": "from",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "except": "bus",
+              "restriction:conditional": "no_left_turn @ (Mo-Fr 06:00-09:00,16:00-18:00)",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 6458541,
+            "members": [
+              {
+                "ref": 786936666,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 9696518183,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 16908791,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "except": "bicycle",
+              "restriction": "no_right_turn",
+              "type": "restriction"
+            }
+          }
+        ],
+        "generic_kind_outside_via_node_probe": [
+          {
+            "id": 12541257,
+            "members": [
+              {
+                "ref": 348919274,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 436946938,
+                "role": "to",
+                "type": "w"
+              },
+              {
+                "ref": 3028635054,
+                "role": "via",
+                "type": "n"
+              }
+            ],
+            "tags": {
+              "restriction": "no_right_turn_on_red",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 12541258,
+            "members": [
+              {
+                "ref": 344994322,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 436946940,
+                "role": "to",
+                "type": "w"
+              },
+              {
+                "ref": 3028635055,
+                "role": "via",
+                "type": "n"
+              }
+            ],
+            "tags": {
+              "restriction": "no_right_turn_on_red",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 21776528,
+            "members": [
+              {
+                "ref": 997360328,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 1571175343,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 5643102381,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 591121136,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_entry",
+              "type": "restriction"
+            }
+          }
+        ],
+        "missing_generic_kind": [
+          {
+            "id": 6250262,
+            "members": [
+              {
+                "ref": 41559481,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 527631298,
+                "role": "to",
+                "type": "w"
+              },
+              {
+                "ref": 527631297,
+                "role": "from",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Mo-Fr 06:00-09:00)",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 6250271,
+            "members": [
+              {
+                "ref": 1525902877,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 420511600,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 549340879,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Mo-Fr 06:00-09:00)",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 6250288,
+            "members": [
+              {
+                "ref": 331953385,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 420512215,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 436772420,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Mo-Fr 16:00-18:00)",
+              "type": "restriction"
+            }
+          }
+        ],
+        "via_way": [
+          {
+            "id": 2451750,
+            "members": [
+              {
+                "ref": 123445153,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 1340007750,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 437327478,
+                "role": "to",
+                "type": "w"
+              },
+              {
+                "ref": 437327483,
+                "role": "from",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_right_turn",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 2858574,
+            "members": [
+              {
+                "ref": 204795129,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 215284778,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 520459845,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_u_turn",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 3118447,
+            "members": [
+              {
+                "ref": 683638339,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 16934224,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 232273209,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_u_turn",
+              "type": "restriction"
+            }
+          }
+        ]
+      },
+      "generic_kind_counts": {
+        "<missing>": 239,
+        "no_entry": 1,
+        "no_left_turn": 3126,
+        "no_right_turn": 776,
+        "no_right_turn_on_red": 2,
+        "no_straight_on": 98,
+        "no_u_turn": 3085,
+        "only_left_turn": 54,
+        "only_right_turn": 147,
+        "only_straight_on": 375,
+        "only_u_turn": 2
+      },
+      "overlapping_flag_counts": {
+        "conditional_key": 236,
+        "exception_key": 75,
+        "generic_kind_outside_via_node_probe": 3,
+        "missing_generic_kind": 239,
+        "via_way": 1691
+      },
+      "raw_restriction_relation_count": 7905,
+      "sample_policy": "First three ascending relation IDs per diagnostic flag; examples are not the complete relation inventory",
+      "source": {
+        "name": "arizona.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
+        "size_bytes": 304245283
+      },
+      "state": "arizona"
+    },
+    {
+      "all_selected_relation_projection_sha256": "f224985125ef0af3f070fb8bcf11d4e7cfce14929880d3666ef52d49f0310429",
+      "example_relations": {
+        "conditional_key": [
+          {
+            "id": 12489127,
+            "members": [
+              {
+                "ref": 10138672,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 83545142,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 10127897,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Mo-Su 7:30-15:30)",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 12489128,
+            "members": [
+              {
+                "ref": 1310897506,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 83545142,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 10127897,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_right_turn @ (Mo-Su 7:30-15:30)",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 13747988,
+            "members": [
+              {
+                "ref": 10162752,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 83888280,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 36872731,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Mo-Su 15:00-18:00)",
+              "type": "restriction"
+            }
+          }
+        ],
+        "exception_key": [
+          {
+            "id": 1946019,
+            "members": [
+              {
+                "ref": 425375507,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 10144525,
+                "role": "to",
+                "type": "w"
+              },
+              {
+                "ref": 1226596595,
+                "role": "via",
+                "type": "n"
+              }
+            ],
+            "tags": {
+              "except": "bicycle;psv",
+              "restriction": "no_left_turn",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 1946020,
+            "members": [
+              {
+                "ref": 1190805685,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 10144610,
+                "role": "to",
+                "type": "w"
+              },
+              {
+                "ref": 1226596651,
+                "role": "via",
+                "type": "n"
+              }
+            ],
+            "tags": {
+              "except": "bicycle;psv",
+              "restriction": "no_left_turn",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 1946022,
+            "members": [
+              {
+                "ref": 1226595858,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 659463305,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 415333491,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "except": "bicycle;psv",
+              "restriction": "no_left_turn",
+              "type": "restriction"
+            }
+          }
+        ],
+        "generic_kind_outside_via_node_probe": [
+          {
+            "id": 14316177,
+            "members": [
+              {
+                "ref": 1188513118,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 83574863,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 1543005552,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_right_turn_on_red",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 14316179,
+            "members": [
+              {
+                "ref": 743222192,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 83574863,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 1543005554,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_right_turn_on_red",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 20043812,
+            "members": [
+              {
+                "ref": 1529761999,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 287860756,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 967697739,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_right_turn_on_red",
+              "type": "restriction"
+            }
+          }
+        ],
+        "missing_generic_kind": [
+          {
+            "id": 12489127,
+            "members": [
+              {
+                "ref": 10138672,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 83545142,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 10127897,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Mo-Su 7:30-15:30)",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 12489128,
+            "members": [
+              {
+                "ref": 1310897506,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 83545142,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 10127897,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_right_turn @ (Mo-Su 7:30-15:30)",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 13747988,
+            "members": [
+              {
+                "ref": 10162752,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 83888280,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 36872731,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Mo-Su 15:00-18:00)",
+              "type": "restriction"
+            }
+          }
+        ],
+        "via_way": [
+          {
+            "id": 3213538,
+            "members": [
+              {
+                "ref": 1100810576,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 131754239,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 1453656423,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_left_turn",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 5688576,
+            "members": [
+              {
+                "ref": 143652154,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 143652159,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 69054720,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_u_turn",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 5688577,
+            "members": [
+              {
+                "ref": 143652159,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 143652152,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 143652154,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_u_turn",
+              "type": "restriction"
+            }
+          }
+        ]
+      },
+      "generic_kind_counts": {
+        "<missing>": 11,
+        "no_left_turn": 1015,
+        "no_right_turn": 319,
+        "no_right_turn_on_red": 5,
+        "no_straight_on": 30,
+        "no_u_turn": 1105,
+        "only_left_turn": 71,
+        "only_right_turn": 209,
+        "only_straight_on": 640,
+        "only_u_turn": 2
+      },
+      "overlapping_flag_counts": {
+        "conditional_key": 8,
+        "exception_key": 20,
+        "generic_kind_outside_via_node_probe": 5,
+        "missing_generic_kind": 11,
+        "via_way": 277
+      },
+      "raw_restriction_relation_count": 3407,
+      "sample_policy": "First three ascending relation IDs per diagnostic flag; examples are not the complete relation inventory",
+      "source": {
+        "name": "utah.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "34f704431a8b3812372ec10083e151d4227a50caf19159fc9af730f942940c41",
+        "size_bytes": 170845020
+      },
+      "state": "utah"
+    },
+    {
+      "all_selected_relation_projection_sha256": "da5694cc1306a20733284fa26ac61f3c35424c50e949d08db365e9f3c30a112b",
+      "example_relations": {
+        "conditional_key": [
+          {
+            "id": 2583189,
+            "members": [
+              {
+                "ref": 148331928,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 618120383,
+                "role": "to",
+                "type": "w"
+              },
+              {
+                "ref": 618120374,
+                "role": "from",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Mo-Sa 07:00-19:00)",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 2583190,
+            "members": [
+              {
+                "ref": 148331928,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 618120382,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 618120353,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Mo-Sa 07:00-19:00)",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 2684556,
+            "members": [
+              {
+                "ref": 148350464,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 555873974,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 742057635,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Mo-Fr 07:00-09:00,16:00-18:00)",
+              "type": "restriction"
+            }
+          }
+        ],
+        "exception_key": [
+          {
+            "id": 3419008,
+            "members": [
+              {
+                "ref": 148308442,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 257845366,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 688804009,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "except": "motorcar",
+              "restriction": "no_left_turn",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 3781910,
+            "members": [
+              {
+                "ref": 285170261,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 285170278,
+                "role": "to",
+                "type": "w"
+              },
+              {
+                "ref": 2888468207,
+                "role": "via",
+                "type": "n"
+              }
+            ],
+            "tags": {
+              "except": "emergency",
+              "restriction": "only_straight_on",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 3781911,
+            "members": [
+              {
+                "ref": 38418794,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 285170255,
+                "role": "to",
+                "type": "w"
+              },
+              {
+                "ref": 2888470103,
+                "role": "via",
+                "type": "n"
+              }
+            ],
+            "tags": {
+              "except": "emergency",
+              "restriction": "only_straight_on",
+              "type": "restriction"
+            }
+          }
+        ],
+        "missing_generic_kind": [
+          {
+            "id": 2583189,
+            "members": [
+              {
+                "ref": 148331928,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 618120383,
+                "role": "to",
+                "type": "w"
+              },
+              {
+                "ref": 618120374,
+                "role": "from",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Mo-Sa 07:00-19:00)",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 2583190,
+            "members": [
+              {
+                "ref": 148331928,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 618120382,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 618120353,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Mo-Sa 07:00-19:00)",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 2684556,
+            "members": [
+              {
+                "ref": 148350464,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 555873974,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 742057635,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction:conditional": "no_left_turn @ (Mo-Fr 07:00-09:00,16:00-18:00)",
+              "type": "restriction"
+            }
+          }
+        ],
+        "via_way": [
+          {
+            "id": 1205968,
+            "members": [
+              {
+                "ref": 80291252,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 80292005,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 203831708,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "only_left_turn",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 1341304,
+            "members": [
+              {
+                "ref": 91509553,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 80404039,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 91509462,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_u_turn",
+              "type": "restriction"
+            }
+          },
+          {
+            "id": 1341305,
+            "members": [
+              {
+                "ref": 91509576,
+                "role": "via",
+                "type": "w"
+              },
+              {
+                "ref": 15046375,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 91509467,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "tags": {
+              "restriction": "no_u_turn",
+              "type": "restriction"
+            }
+          }
+        ]
+      },
+      "generic_kind_counts": {
+        "<missing>": 54,
+        "no_left_turn": 3018,
+        "no_right_turn": 954,
+        "no_straight_on": 34,
+        "no_u_turn": 2116,
+        "only_left_turn": 252,
+        "only_right_turn": 2343,
+        "only_straight_on": 1061
+      },
+      "overlapping_flag_counts": {
+        "conditional_key": 55,
+        "exception_key": 21,
+        "generic_kind_outside_via_node_probe": 0,
+        "missing_generic_kind": 54,
+        "via_way": 387
+      },
+      "raw_restriction_relation_count": 9832,
+      "sample_policy": "First three ascending relation IDs per diagnostic flag; examples are not the complete relation inventory",
+      "source": {
+        "name": "oklahoma.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "4e76187cb20fd187d759de9565568381a76d87518377a0e03585d9865e498106",
+        "size_bytes": 169850063
+      },
+      "state": "oklahoma"
+    }
+  ],
+  "turn_support_certified": false,
+  "warning": "Does not inventory node/way access tags, all temporal controls, missing relations or real-world restrictions. Counted relations may not apply to ordinary private cars. Via-node shape alone does not establish an unambiguous directed approach. Existing node-only routing and all costs remain unchanged."
+}
