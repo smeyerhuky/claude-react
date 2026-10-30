@@ -35,9 +35,15 @@ separately hashed retained research input. No vintage reconciliation is silently
 assumed, and later official changes require a new reviewed snapshot.
 
 Run `python scripts/metro_principal_city_inventory.py` to verify the report, or
-`--write` to reproduce it using `openpyxl==3.1.5`. Five tests verify all qualifying
+`--write` to reproduce it using `openpyxl==3.1.5`. Six tests verify all qualifying
 IDs and omitted CSV rows, non-title principal cities, FIPS leading zeros, duplicate
 and conflicting rows, altered source bytes and missing domains. The workflow has
 read-only repository permission and verifies the unchanged 2,508-cost UI checkpoint.
 All adoption, access and release flags remain false. The public map, existing
 Census-origin routing, #137 approval gate and private source archive are unchanged.
+
+The report also groups memberships by each principal city’s own state FIPS code
+across all 50 states, DC and Puerto Rico. Cross-state CBSAs appear in every
+applicable group. This complements the older native-point state queue: DC has
+principal-city work even though no qualifying native CBSA representative point
+was grouped there. Neither grouping certifies state or metro geographic coverage.

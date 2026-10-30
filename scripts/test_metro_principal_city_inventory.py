@@ -27,6 +27,19 @@ class PrincipalCityInventoryTests(unittest.TestCase):
         self.assertEqual(len(self.by_id['33100']['principal_cities']), 13)
         self.assertEqual({c['name'] for c in self.by_id['43420']['principal_cities']}, {'Sierra Vista', 'Douglas'})
 
+    def test_state_groups_retain_cross_state_principal_cities_and_all_jurisdictions(self):
+        states = {r['state']: r for r in self.report['states']}
+        self.assertEqual(len(states), 52)
+        self.assertEqual(sum(r['principal_city_membership_count'] for r in states.values()), 698)
+        self.assertIn('47900', states['DC']['cbsa_ids'])
+        self.assertIn('47900', states['VA']['cbsa_ids'])
+        self.assertTrue(states['AK']['principal_city_memberships'])
+        self.assertTrue(states['HI']['principal_city_memberships'])
+        self.assertTrue(states['PR']['principal_city_memberships'])
+        for row in states.values():
+            self.assertFalse(row['release_eligible'])
+            self.assertEqual(row['anchor_selection_status'], 'not_selected')
+
     def test_fips_leading_zeros_and_no_adoption(self):
         for metro in self.report['metros']:
             self.assertEqual(metro['anchor_selection_status'], 'not_selected')

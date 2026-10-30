@@ -15,6 +15,7 @@ SOURCE = REFERENCE/'list2_2023.xlsx'
 DOMAINS = ROOT/'docs/research/utah-parent-reference/domains.json'
 SOURCE_SHA256 = '1e1091de28d1ad1423cebf18e7cdb6db4fbf2204fd357bc68c24e8261dcce161'
 SOURCE_URL = 'https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list2_2023.xlsx'
+STATE_FIPS = dict(pair.split(':') for pair in ('01:AL 02:AK 04:AZ 05:AR 06:CA 08:CO 09:CT 10:DE 11:DC 12:FL 13:GA 15:HI 16:ID 17:IL 18:IN 19:IA 20:KS 21:KY 22:LA 23:ME 24:MD 25:MA 26:MI 27:MN 28:MS 29:MO 30:MT 31:NE 32:NV 33:NH 34:NJ 35:NM 36:NY 37:NC 38:ND 39:OH 40:OK 41:OR 42:PA 44:RI 45:SC 46:SD 47:TN 48:TX 49:UT 50:VT 51:VA 53:WA 54:WV 55:WI 56:WY 72:PR').split())
 HEADERS = ('CBSA Code', 'CBSA Title', 'Metropolitan/Micropolitan Statistical Area',
            'Principal City Name', 'FIPS State Code', 'FIPS Place Code')
 
@@ -75,6 +76,17 @@ def project(source=SOURCE, domains_path=DOMAINS):
                             principal_cities=sorted(entry['cities'], key=lambda c: c['principal_city_id']),
                             anchor_selection_status='not_selected', adopted_anchor_ids=[], access_verified=False,
                             release_eligible=False))
+    # This grouping follows each source city's state, not the metro's native
+    # representative point. A cross-state CBSA can occur in several groups.
+    state_groups = []
+    require(all(c['state_fips'] in STATE_FIPS for r in records for c in r['principal_cities']),
+            'Principal-city jurisdiction outside explicit state/DC/PR scope')
+    for fips, abbreviation in sorted(STATE_FIPS.items()):
+        cities = [dict(cbsa=r['cbsa'], **c) for r in records for c in r['principal_cities'] if c['state_fips'] == fips]
+        state_groups.append(dict(state_fips=fips, state=abbreviation, principal_city_memberships=cities,
+                                 principal_city_membership_count=len(cities),
+                                 cbsa_ids=sorted({c['cbsa'] for c in cities}),
+                                 anchor_selection_status='not_selected', release_eligible=False))
     return dict(schema='metro-principal-city-inventory-v1',
                 source=dict(url=SOURCE_URL, sha256=SOURCE_SHA256, bytes=len(raw), delineation='July 2023',
                             retrieved_utc='2026-10-30', workbook_sheet='List 2'),
@@ -82,6 +94,7 @@ def project(source=SOURCE, domains_path=DOMAINS):
                 qualifying_cbsa_count=len(records), principal_city_membership_count=sum(len(r['principal_cities']) for r in records),
                 qualifying_cbsa_ids=sorted(ids),
                 qualifiers_absent_from_existing_csv=[r['cbsa'] for r in records if not r['included_in_existing_csv']],
+                states=state_groups, jurisdiction_scope='50 states, DC and Puerto Rico; principal-city membership only, not geographic coverage',
                 metros=records, anchors_adopted=False, access_verified=False, release_eligible=False,
                 warning='Official July 2023 principal-city membership joined by exact CBSA ID to the retained qualifying domain. Not current vehicle entry evidence, an anchor selection, coordinate registry or approval. Source vintage and any later changes require review; no title splitting or population-based city filtering.')
 
