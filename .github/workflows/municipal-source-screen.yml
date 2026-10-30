@@ -1,0 +1,32 @@
+name: Municipal source screen integrity
+on:
+  pull_request:
+    paths:
+      - 'docs/research/*-anchor-source-batch/**'
+      - 'scripts/municipal_source_screen.py'
+      - 'scripts/test_municipal_source_screen.py'
+      - '.github/workflows/municipal-source-screen.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  municipal-source-context:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s scripts -p test_municipal_source_screen.py -v
+      - name: Validate retained generic state batches without certifying access
+        run: |
+          python - <<'PY'
+          import json
+          import sys
+          sys.path.insert(0, "scripts")
+          from pathlib import Path
+          from municipal_source_screen import check
+          for path in sorted(Path('docs/research').glob('*-anchor-source-batch/manifest.json')):
+              if json.loads(path.read_text()).get('schema') == 'municipal-source-screen-batch-v1':
+                  print(check(path))
+          PY

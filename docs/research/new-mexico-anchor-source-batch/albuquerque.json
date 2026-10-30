@@ -1,0 +1,19 @@
+{
+  "schema": "municipal-source-excerpts-v1",
+  "cbsa": "10740",
+  "city": "albuquerque",
+  "url": "https://www.cabq.gov/generalservices/parking-management/parking/city-parking-facilities",
+  "source_kind": "municipal_parking_guidance",
+  "http_status": 200,
+  "retrieved_at_utc": "2026-10-30T19:49:04.150478+00:00",
+  "response_sha256": "2632c2f094573403d05877d6dc6af86d28af6199d095f251b63c6479cbf050b4",
+  "response_bytes": 111437,
+  "excerpts": [
+    "Hourly parking is available at all structures as well as the surface lots at the Main Library and at Old Town.",
+    "Hourly parking rates are $1 per 30 minutes."
+  ],
+  "interpretation": "The city publishes hourly parking availability. No facility entry, grade, turn, vehicle profile or adopted anchor is established.",
+  "retention": "Selected literal visible text with whitespace normalized. Full HTML/runtime/form state is not published. Response digest cannot be recomputed from excerpts.",
+  "access_verified": false,
+  "release_eligible": false
+}
