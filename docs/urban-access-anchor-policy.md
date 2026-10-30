@@ -79,3 +79,7 @@ must not be passed off as an OSM file. Audited real-world positive and negative
 fixtures, missing-competitor accounting, exterior routing, geographic masks and
 UI artifact compatibility remain necessary (#137, #138, #139). The public
 straight-line map stays unchanged. This workflow does not close those issues.
+
+The [anchor-set research contract](research/metro-anchor-set-contract.md) tests
+full-cost minima, metric/direction identity, ties and required-anchor unknowns
+using synthetic fixtures. It does not install or approve a registry.

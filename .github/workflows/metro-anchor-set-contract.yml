@@ -1,0 +1,23 @@
+name: Metro anchor-set research contract
+on:
+  pull_request:
+    paths:
+      - 'scripts/metro_anchor_set_contract.py'
+      - 'scripts/test_metro_anchor_set_contract.py'
+      - 'docs/urban-access-anchor-policy.md'
+      - 'docs/research/metro-anchor-set-contract.md'
+      - '.github/workflows/metro-anchor-set-contract.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  anchor-set-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s scripts -p test_metro_anchor_set_contract.py -v
+      - run: python scripts/las_vegas_ui_checkpoint.py --check-frozen
