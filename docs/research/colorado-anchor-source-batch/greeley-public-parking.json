@@ -1,0 +1,4009 @@
+{
+ "objectIdFieldName": "OBJECTID_1",
+ "globalIdFieldName": "GlobalID",
+ "geometryType": "esriGeometryPolygon",
+ "spatialReference": {
+  "wkid": 4326,
+  "latestWkid": 4326
+ },
+ "fields": [
+  {
+   "name": "OBJECTID_1",
+   "alias": "OBJECTID_1",
+   "type": "esriFieldTypeOID"
+  },
+  {
+   "name": "OBJECTID",
+   "alias": "OBJECTID",
+   "type": "esriFieldTypeInteger"
+  },
+  {
+   "name": "Name",
+   "alias": "Name",
+   "type": "esriFieldTypeString",
+   "length": 60
+  },
+  {
+   "name": "Passport_Z",
+   "alias": "Passport_Z",
+   "type": "esriFieldTypeSmallInteger"
+  },
+  {
+   "name": "Shape_Leng",
+   "alias": "Shape_Leng",
+   "type": "esriFieldTypeDouble"
+  },
+  {
+   "name": "Zone_Cap",
+   "alias": "Zone_Cap",
+   "type": "esriFieldTypeSmallInteger"
+  },
+  {
+   "name": "Shape__Area",
+   "alias": "Shape.area",
+   "type": "esriFieldTypeDouble"
+  },
+  {
+   "name": "Shape__Length",
+   "alias": "Shape.len",
+   "type": "esriFieldTypeDouble"
+  },
+  {
+   "name": "Description",
+   "alias": "Description",
+   "type": "esriFieldTypeString",
+   "length": 200
+  },
+  {
+   "name": "Condition",
+   "alias": "Condition",
+   "type": "esriFieldTypeString",
+   "length": 255
+  },
+  {
+   "name": "Maintainer",
+   "alias": "Maintainer",
+   "type": "esriFieldTypeString",
+   "length": 255
+  },
+  {
+   "name": "MaintenanceFrequency",
+   "alias": "Maintenance Frequency",
+   "type": "esriFieldTypeString",
+   "length": 255
+  },
+  {
+   "name": "AssetCriticality",
+   "alias": "Asset Criticality",
+   "type": "esriFieldTypeString",
+   "length": 255
+  },
+  {
+   "name": "LifeCycleStatus",
+   "alias": "Lifecycle Status",
+   "type": "esriFieldTypeString",
+   "length": 255
+  },
+  {
+   "name": "ExpectedLifeSpan",
+   "alias": "Expected Life Span",
+   "type": "esriFieldTypeString",
+   "length": 255
+  },
+  {
+   "name": "Owner",
+   "alias": "Owner",
+   "type": "esriFieldTypeString",
+   "length": 255
+  },
+  {
+   "name": "GlobalID",
+   "alias": "Global ID",
+   "type": "esriFieldTypeGlobalID",
+   "length": 38
+  },
+  {
+   "name": "created_user",
+   "alias": "Created User",
+   "type": "esriFieldTypeString",
+   "length": 255
+  },
+  {
+   "name": "created_date",
+   "alias": "Created Date",
+   "type": "esriFieldTypeDate",
+   "length": 8
+  },
+  {
+   "name": "last_edited_user",
+   "alias": "Last Edit User",
+   "type": "esriFieldTypeString",
+   "length": 255
+  },
+  {
+   "name": "last_edited_date",
+   "alias": "Last Edit Date",
+   "type": "esriFieldTypeDate",
+   "length": 8
+  }
+ ],
+ "features": [
+  {
+   "attributes": {
+    "OBJECTID_1": 1,
+    "OBJECTID": 4,
+    "Name": "Two Hour",
+    "Passport_Z": 5424,
+    "Shape_Leng": 974.94380187,
+    "Zone_Cap": 10,
+    "Shape__Area": 26056.645848935685,
+    "Shape__Length": 974.94380187609181,
+    "Description": null,
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{366A7CBC-DC60-40E5-9E78-30C93625C040}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69607657810791,
+       40.423850878398099
+      ],
+      [
+       -104.69607455693607,
+       40.424021253734338
+      ],
+      [
+       -104.69454325978123,
+       40.424025911816507
+      ],
+      [
+       -104.694545223011,
+       40.423860735390171
+      ],
+      [
+       -104.69607657810791,
+       40.423850878398099
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 2,
+    "OBJECTID": 5,
+    "Name": "Two Hour",
+    "Passport_Z": 5426,
+    "Shape_Leng": 893.49164578,
+    "Zone_Cap": 11,
+    "Shape__Area": 13698.701681673792,
+    "Shape__Length": 893.49164579913486,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{7F388E2F-99D1-4795-8CDA-394D102A2768}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69609177234651,
+       40.422486303428812
+      ],
+      [
+       -104.69609353540939,
+       40.422581560425023
+      ],
+      [
+       -104.69460453952865,
+       40.422573868292552
+      ],
+      [
+       -104.69460966337567,
+       40.42248730237236
+      ],
+      [
+       -104.69609177234651,
+       40.422486303428812
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 3,
+    "OBJECTID": 24,
+    "Name": "Two Hour",
+    "Passport_Z": 5425,
+    "Shape_Leng": 950.41423176,
+    "Zone_Cap": 14,
+    "Shape__Area": 17449.416828341346,
+    "Shape__Length": 950.41423177072397,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{6EA957DE-CDEA-4762-8BB0-FC95258FC133}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69454456086588,
+       40.422653079869249
+      ],
+      [
+       -104.69455536145759,
+       40.423846937936567
+      ],
+      [
+       -104.69439664676885,
+       40.423850025758021
+      ],
+      [
+       -104.69441514364871,
+       40.422655379490863
+      ],
+      [
+       -104.69454456086588,
+       40.422653079869249
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 4,
+    "OBJECTID": 25,
+    "Name": "Two Hour",
+    "Passport_Z": 5428,
+    "Shape_Leng": 900.94857119,
+    "Zone_Cap": 2,
+    "Shape__Area": 13235.092170332169,
+    "Shape__Length": 900.9485712014739,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{9064D7DC-8815-4AF6-B9D2-18EAE3D24756}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69455368643324,
+       40.421300087672776
+      ],
+      [
+       -104.69453994755197,
+       40.422456048528637
+      ],
+      [
+       -104.69442203757372,
+       40.422447983480836
+      ],
+      [
+       -104.69444460721198,
+       40.421305002518338
+      ],
+      [
+       -104.69455368643324,
+       40.421300087672776
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 5,
+    "OBJECTID": 27,
+    "Name": "Free all day",
+    "Passport_Z": 5423,
+    "Shape_Leng": 696.4657737,
+    "Zone_Cap": 19,
+    "Shape__Area": 20576.604912610655,
+    "Shape__Length": 696.46577370121599,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{D04DF185-4A75-45DC-B4C8-22FD3327F086}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69454495485361,
+       40.42404560495563
+      ],
+      [
+       -104.69454167188181,
+       40.424800013676069
+      ],
+      [
+       -104.69425642728105,
+       40.424791185726292
+      ],
+      [
+       -104.69428825809547,
+       40.424048570790454
+      ],
+      [
+       -104.69454495485361,
+       40.42404560495563
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 6,
+    "OBJECTID": 29,
+    "Name": "Two Hour",
+    "Passport_Z": 5454,
+    "Shape_Leng": 947.50841932,
+    "Zone_Cap": 29,
+    "Shape__Area": 26693.260706377034,
+    "Shape__Length": 898.36641647127828,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{B2E9B5CE-289A-45F6-939F-02F4F5D588C4}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69062554171089,
+       40.422632534180345
+      ],
+      [
+       -104.68927084401317,
+       40.422621668364506
+      ],
+      [
+       -104.68925036669285,
+       40.422429953028072
+      ],
+      [
+       -104.68953322502449,
+       40.422430709783441
+      ],
+      [
+       -104.68993409982009,
+       40.422431466712837
+      ],
+      [
+       -104.69062212320716,
+       40.42244278169494
+      ],
+      [
+       -104.69062554171089,
+       40.422632534180345
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 7,
+    "OBJECTID": 30,
+    "Name": "Two Hour",
+    "Passport_Z": 5430,
+    "Shape_Leng": 959.14960782,
+    "Zone_Cap": 66,
+    "Shape__Area": 28164.589070818587,
+    "Shape__Length": 900.77405024388179,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{55B299C3-5AE2-4C15-AECD-6CB0468B17AE}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69417958057485,
+       40.424037267935923
+      ],
+      [
+       -104.692824913,
+       40.424026159430191
+      ],
+      [
+       -104.69283890609059,
+       40.423824217586613
+      ],
+      [
+       -104.69418017203024,
+       40.42382727585408
+      ],
+      [
+       -104.69417958057485,
+       40.424037267935923
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 8,
+    "OBJECTID": 31,
+    "Name": "Orange Zone",
+    "Passport_Z": 5434,
+    "Shape_Leng": 686.37532284,
+    "Zone_Cap": 36,
+    "Shape__Area": 19345.437940657859,
+    "Shape__Length": 621.02526088687989,
+    "Description": "Free two hour parking. After the first two hours- pay to stay longer, move vehicle two blocks or out of the orange zone. Free parking with no time limit after 5 p.m. and on weekends and City holidays.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{939DB7F2-5ADA-498F-84BE-F6764EEB5948}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.6927958565759,
+       40.424057647606865
+      ],
+      [
+       -104.69278629550986,
+       40.424674913193364
+      ],
+      [
+       -104.69248470002887,
+       40.424676000097669
+      ],
+      [
+       -104.69247760413721,
+       40.424062377801619
+      ],
+      [
+       -104.6927958565759,
+       40.424057647606865
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 9,
+    "OBJECTID": 32,
+    "Name": "Two Hour Removed",
+    "Passport_Z": 5429,
+    "Shape_Leng": 959.44740027,
+    "Zone_Cap": 31,
+    "Shape__Area": 24661.638332694143,
+    "Shape__Length": 898.47418959502795,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{35243CDF-A273-4CAF-ABE3-EF0ABB431C0A}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "ROHRE",
+    "last_edited_date": 1788532906000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69418548822054,
+       40.42592918895042
+      ],
+      [
+       -104.69280261351788,
+       40.425914501804726
+      ],
+      [
+       -104.6928021661023,
+       40.425741923549587
+      ],
+      [
+       -104.69418640425464,
+       40.42575027438869
+      ],
+      [
+       -104.69418548822054,
+       40.42592918895042
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 10,
+    "OBJECTID": 33,
+    "Name": "Two Hour",
+    "Passport_Z": 5438,
+    "Shape_Leng": 924.80174524,
+    "Zone_Cap": 33,
+    "Shape__Area": 25260.664495927616,
+    "Shape__Length": 862.99002209374737,
+    "Description": "Free two hour parking. After the first two hours- pay to stay longer, move vehicle two blocks or out of the orange zone. Free parking with no time limit after 5 p.m. and on weekends and City holidays.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{DF717545-329E-4381-A7B7-90A2F49AD09F}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69236641358582,
+       40.425753796636215
+      ],
+      [
+       -104.69237956008028,
+       40.425945099934424
+      ],
+      [
+       -104.69106322228461,
+       40.425931945822533
+      ],
+      [
+       -104.69108666868922,
+       40.425739604166964
+      ],
+      [
+       -104.69236641358582,
+       40.425753796636215
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 11,
+    "OBJECTID": 34,
+    "Name": "Orange Zone",
+    "Passport_Z": 5439,
+    "Shape_Leng": 990.02796229,
+    "Zone_Cap": 14,
+    "Shape__Area": 20665.274464319809,
+    "Shape__Length": 886.50071462626295,
+    "Description": "Free two hour parking. After the first two hours- pay to stay longer, move vehicle two blocks or out of the orange zone. Free parking with no time limit after 5 p.m. and on weekends and City holidays.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{6356E2C4-DBD0-460C-8347-2B9D784AC383}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69243742044499,
+       40.424924950714789
+      ],
+      [
+       -104.69103408325562,
+       40.42495567698959
+      ],
+      [
+       -104.69105697868451,
+       40.42477491710811
+      ],
+      [
+       -104.69174592506897,
+       40.424800367909832
+      ],
+      [
+       -104.69243487109544,
+       40.424799682060218
+      ],
+      [
+       -104.69243742044499,
+       40.424924950714789
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 12,
+    "OBJECTID": 35,
+    "Name": "Orange Zone",
+    "Passport_Z": 5440,
+    "Shape_Leng": 957.9182375,
+    "Zone_Cap": 14,
+    "Shape__Area": 22041.067405832589,
+    "Shape__Length": 957.91823749788045,
+    "Description": "Free two hour parking. After the first two hours- pay to stay longer, move vehicle two blocks or out of the orange zone. Free parking with no time limit after 5 p.m. and on weekends and City holidays.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{514010EE-16CD-42C7-9516-3C842BDCC3A0}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69253701174121,
+       40.423986004793484
+      ],
+      [
+       -104.69100136099803,
+       40.423959696160431
+      ],
+      [
+       -104.69100443401965,
+       40.423827351684913
+      ],
+      [
+       -104.6925385218772,
+       40.423835231623663
+      ],
+      [
+       -104.69253701174121,
+       40.423986004793484
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 13,
+    "OBJECTID": 36,
+    "Name": "Orange Zone",
+    "Passport_Z": 5446,
+    "Shape_Leng": 965.97056164,
+    "Zone_Cap": 24,
+    "Shape__Area": 27849.662123606035,
+    "Shape__Length": 887.52733974039018,
+    "Description": "Free two hour parking. After the first two hours- pay to stay longer, move vehicle two blocks or out of the orange zone. Free parking with no time limit after 5 p.m. and on weekends and City holidays.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{9CC1CCE8-E213-48E0-8A86-8CB2F52C848A}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69094732573348,
+       40.423724027239949
+      ],
+      [
+       -104.69068166772777,
+       40.423716637451946
+      ],
+      [
+       -104.69068862758424,
+       40.422712604015494
+      ],
+      [
+       -104.69096651780245,
+       40.422707519879047
+      ],
+      [
+       -104.69094732573348,
+       40.423724027239949
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 14,
+    "OBJECTID": 37,
+    "Name": "Orange Zone",
+    "Passport_Z": 5445,
+    "Shape_Leng": 723.38272414,
+    "Zone_Cap": 10,
+    "Shape__Area": 20295.0426177954,
+    "Shape__Length": 723.38272414947153,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{DAEA9B1C-C85E-44D1-B5C9-0F86603E93FC}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69094539808296,
+       40.424770016955605
+      ],
+      [
+       -104.69069492881169,
+       40.424768945654122
+      ],
+      [
+       -104.69070619502322,
+       40.423961944529132
+      ],
+      [
+       -104.69095455459345,
+       40.423972954834902
+      ],
+      [
+       -104.69094539808296,
+       40.424770016955605
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 15,
+    "OBJECTID": 38,
+    "Name": "Two Hour",
+    "Passport_Z": 5444,
+    "Shape_Leng": 680.43626564,
+    "Zone_Cap": 0,
+    "Shape__Area": 18232.994216521976,
+    "Shape__Length": 652.69906404529593,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{E379BCDA-D494-4166-9A0E-93A16849FD4B}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69095204540521,
+       40.425702166796036
+      ],
+      [
+       -104.69067405744349,
+       40.425701085515641
+      ],
+      [
+       -104.69068197533872,
+       40.425000908748622
+      ],
+      [
+       -104.69091845645768,
+       40.425004389873955
+      ],
+      [
+       -104.69095204540521,
+       40.425702166796036
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 16,
+    "OBJECTID": 40,
+    "Name": "Orange Zone",
+    "Passport_Z": 5435,
+    "Shape_Leng": 957.62821393,
+    "Zone_Cap": 60,
+    "Shape__Area": 30021.842012758403,
+    "Shape__Length": 956.62724079418763,
+    "Description": "Free two hour parking. After the first two hours- pay to stay longer, move vehicle two blocks or out of the orange zone. Free parking with no time limit after 5 p.m. and on weekends and City holidays.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{364C0759-65D6-48C1-99FD-56D181C79933}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69275904095359,
+       40.42381066232857
+      ],
+      [
+       -104.69248678800678,
+       40.423796531938471
+      ],
+      [
+       -104.69250536463794,
+       40.422693059364775
+      ],
+      [
+       -104.69276685025963,
+       40.422696722509102
+      ],
+      [
+       -104.69275904095359,
+       40.42381066232857
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 17,
+    "OBJECTID": 42,
+    "Name": "Two Hour",
+    "Passport_Z": 5447,
+    "Shape_Leng": 973.48870213,
+    "Zone_Cap": 25,
+    "Shape__Area": 29519.361680396421,
+    "Shape__Length": 973.48870214724366,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{12F7B01E-81C0-46F9-92F1-974F2485BF2E}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69095714054437,
+       40.422432550033122
+      ],
+      [
+       -104.69071684672376,
+       40.422429366553459
+      ],
+      [
+       -104.69071549896161,
+       40.421284147603487
+      ],
+      [
+       -104.69098519770691,
+       40.421295875058341
+      ],
+      [
+       -104.69095714054437,
+       40.422432550033122
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 18,
+    "OBJECTID": 43,
+    "Name": "Two Hour",
+    "Passport_Z": 5452,
+    "Shape_Leng": 986.30513479,
+    "Zone_Cap": 28,
+    "Shape__Area": 23055.355594970904,
+    "Shape__Length": 889.42223482947634,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{93062E77-FD9B-4315-BF88-2F45FE1F618A}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69060258134508,
+       40.424942103359172
+      ],
+      [
+       -104.6892249510672,
+       40.424925952797324
+      ],
+      [
+       -104.6892193154232,
+       40.424762164306571
+      ],
+      [
+       -104.69060542823185,
+       40.424776861981485
+      ],
+      [
+       -104.69060258134508,
+       40.424942103359172
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 19,
+    "OBJECTID": 49,
+    "Name": "Two Hour",
+    "Passport_Z": 5448,
+    "Shape_Leng": 973.45326038,
+    "Zone_Cap": 20,
+    "Shape__Area": 30971.914272563208,
+    "Shape__Length": 973.4532603855256,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{1CA0E64E-9353-4413-8BBC-4FCBABEAE43D}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69098812276235,
+       40.421025280593788
+      ],
+      [
+       -104.69071722687291,
+       40.421023797520327
+      ],
+      [
+       -104.69072953053993,
+       40.419890635556477
+      ],
+      [
+       -104.69099929663727,
+       40.419899810213707
+      ],
+      [
+       -104.69098812276235,
+       40.421025280593788
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 20,
+    "OBJECTID": 50,
+    "Name": "Two Hour",
+    "Passport_Z": 5449,
+    "Shape_Leng": 978.17248978,
+    "Zone_Cap": 20,
+    "Shape__Area": 31103.449165768936,
+    "Shape__Length": 978.17248975569419,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{5CED86BA-3158-458B-A6B9-0DB56C3F9C84}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69100251521969,
+       40.41965604738526
+      ],
+      [
+       -104.69073316572853,
+       40.41967009109316
+      ],
+      [
+       -104.69074539614883,
+       40.418518052932484
+      ],
+      [
+       -104.69101612383596,
+       40.418537230358794
+      ],
+      [
+       -104.69100251521969,
+       40.41965604738526
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 21,
+    "OBJECTID": 51,
+    "Name": "Free all day",
+    "Passport_Z": 5450,
+    "Shape_Leng": 931.90030821,
+    "Zone_Cap": 11,
+    "Shape__Area": 24080.745943998605,
+    "Shape__Length": 931.90030820461322,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{60EA2650-8EDB-4168-814C-F2474308C925}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69059177624159,
+       40.427292285169365
+      ],
+      [
+       -104.68914782647774,
+       40.427276445027509
+      ],
+      [
+       -104.68912604998953,
+       40.427108808029054
+      ],
+      [
+       -104.69060172597953,
+       40.427134458740461
+      ],
+      [
+       -104.69059177624159,
+       40.427292285169365
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 22,
+    "OBJECTID": 57,
+    "Name": "Free all day",
+    "Passport_Z": 5421,
+    "Shape_Leng": 671.36538951,
+    "Zone_Cap": 17,
+    "Shape__Area": 16937.530357982654,
+    "Shape__Length": 671.36538950619899,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{1E6012F9-4EE0-44F1-B419-E5CC4BC506A9}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69450544203326,
+       40.425002967586479
+      ],
+      [
+       -104.69450005156072,
+       40.425762620266077
+      ],
+      [
+       -104.69426466964308,
+       40.42574733969083
+      ],
+      [
+       -104.69429650081629,
+       40.425004724913506
+      ],
+      [
+       -104.69450544203326,
+       40.425002967586479
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 23,
+    "OBJECTID": 58,
+    "Name": "Free all day",
+    "Passport_Z": 5420,
+    "Shape_Leng": 951.95273296,
+    "Zone_Cap": 26,
+    "Shape__Area": 25666.609184718905,
+    "Shape__Length": 898.4939953322571,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{B73AC690-F15D-4167-BE25-3562591CC570}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69448609223578,
+       40.427085090490117
+      ],
+      [
+       -104.69426499048691,
+       40.427081306496106
+      ],
+      [
+       -104.69422951702879,
+       40.42603848118069
+      ],
+      [
+       -104.69449641597899,
+       40.426034963017983
+      ],
+      [
+       -104.69448696313403,
+       40.426556761950991
+      ],
+      [
+       -104.69448609223578,
+       40.427085090490117
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 24,
+    "OBJECTID": 59,
+    "Name": "Two Hour",
+    "Passport_Z": 5433,
+    "Shape_Leng": 667.54593736,
+    "Zone_Cap": 56,
+    "Shape__Area": 19511.160028336282,
+    "Shape__Length": 624.48966342736992,
+    "Description": "Free two hour parking. After the first two hours- pay to stay longer, move vehicle two blocks or out of the orange zone. Free parking with no time limit after 5 p.m. and on weekends and City holidays.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{B6D20E69-1CC9-4751-8F06-65676B516615}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69277955986122,
+       40.425059028193644
+      ],
+      [
+       -104.69277601368204,
+       40.425666188139786
+      ],
+      [
+       -104.69246503763792,
+       40.425689534466684
+      ],
+      [
+       -104.69246879353997,
+       40.425058778681823
+      ],
+      [
+       -104.69277955986122,
+       40.425059028193644
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 25,
+    "OBJECTID": 75,
+    "Name": "Two Hour - Removed 5427",
+    "Passport_Z": null,
+    "Shape_Leng": 327.28449021,
+    "Zone_Cap": 10,
+    "Shape__Area": 4003.4619354264369,
+    "Shape__Length": 327.28449020249701,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{FB072652-A7B8-4E3B-9C2C-561E56A2C2C4}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "ROHRE",
+    "last_edited_date": 1790087256000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.6957246558715,
+       40.422425580545351
+      ],
+      [
+       -104.69560879258491,
+       40.422424777327329
+      ],
+      [
+       -104.69561314690438,
+       40.42205793125131
+      ],
+      [
+       -104.69571245758688,
+       40.422058619726116
+      ],
+      [
+       -104.6957246558715,
+       40.422425580545351
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 26,
+    "OBJECTID": 76,
+    "Name": "Two Hour - Removed 5427",
+    "Passport_Z": null,
+    "Shape_Leng": 301.5088954,
+    "Zone_Cap": 8,
+    "Shape__Area": 2855.3937790169939,
+    "Shape__Length": 301.50889539233356,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{6CD904A5-52D7-4596-B2EE-86E8F7C8DB6B}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "ROHRE",
+    "last_edited_date": 1790087258000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69510130393751,
+       40.422412823455794
+      ],
+      [
+       -104.69500755978798,
+       40.422407956352451
+      ],
+      [
+       -104.6950228021408,
+       40.422053836910621
+      ],
+      [
+       -104.69508890869241,
+       40.422062729904795
+      ],
+      [
+       -104.69510130393751,
+       40.422412823455794
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 27,
+    "OBJECTID": 78,
+    "Name": "Two Hour",
+    "Passport_Z": 5462,
+    "Shape_Leng": 447.27525185,
+    "Zone_Cap": 17,
+    "Shape__Area": 6172.1207351019002,
+    "Shape__Length": 447.2752518383524,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{2612BACC-680E-4CFC-AA06-F01A5A01B9AF}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69691076906304,
+       40.422442230035102
+      ],
+      [
+       -104.69678943874291,
+       40.422437173425116
+      ],
+      [
+       -104.69679006887415,
+       40.421918491175852
+      ],
+      [
+       -104.69690051315197,
+       40.421910821349591
+      ],
+      [
+       -104.69691076906304,
+       40.422442230035102
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 28,
+    "OBJECTID": 79,
+    "Name": "Two Hour",
+    "Passport_Z": 5463,
+    "Shape_Leng": 391.92088612,
+    "Zone_Cap": 8,
+    "Shape__Area": 5177.4623278879699,
+    "Shape__Length": 391.92088613294027,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{9328B133-F70E-4960-A4AA-34D6772DB8CB}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.6972486986197,
+       40.421862627462929
+      ],
+      [
+       -104.69712731935989,
+       40.421861787590153
+      ],
+      [
+       -104.69714374939981,
+       40.421406469185513
+      ],
+      [
+       -104.69724847613523,
+       40.421415627291402
+      ],
+      [
+       -104.6972486986197,
+       40.421862627462929
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 29,
+    "OBJECTID": 82,
+    "Name": "Free all day",
+    "Passport_Z": null,
+    "Shape_Leng": 901.0148488,
+    "Zone_Cap": 78,
+    "Shape__Area": 40618.702087370868,
+    "Shape__Length": 901.0148487928011,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{2D20B2BB-F115-47EE-A13E-66A6FE8970A1}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "ROHRE",
+    "last_edited_date": 1790087223000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.68879433104198,
+       40.423567011589746
+      ],
+      [
+       -104.68838907904136,
+       40.423580191566515
+      ],
+      [
+       -104.68828090256922,
+       40.422698700554122
+      ],
+      [
+       -104.6887702094736,
+       40.422664758471043
+      ],
+      [
+       -104.68879433104198,
+       40.423567011589746
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 30,
+    "OBJECTID": 83,
+    "Name": "Free all day",
+    "Passport_Z": null,
+    "Shape_Leng": 577.90709434,
+    "Zone_Cap": 13,
+    "Shape__Area": 19997.789302061901,
+    "Shape__Length": 577.90709434143378,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{B835A1BC-2D24-4078-91AA-9FC80EEFB7B7}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "ROHRE",
+    "last_edited_date": 1790087226000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.68782088240548,
+       40.422345953531313
+      ],
+      [
+       -104.68739350679949,
+       40.422351544044837
+      ],
+      [
+       -104.68738954056603,
+       40.421864159246041
+      ],
+      [
+       -104.68779155698452,
+       40.421881969653271
+      ],
+      [
+       -104.68782088240548,
+       40.422345953531313
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 31,
+    "OBJECTID": 89,
+    "Name": "Two Hour",
+    "Passport_Z": 5456,
+    "Shape_Leng": 1026.63905302,
+    "Zone_Cap": 20,
+    "Shape__Area": 32780.408199991733,
+    "Shape__Length": 1026.6390530106837,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{C0245518-E62D-47C3-BCEB-3BFF98A70A2E}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69101846834381,
+       40.418298271610738
+      ],
+      [
+       -104.69075004159039,
+       40.418300129068335
+      ],
+      [
+       -104.69073578000682,
+       40.417096283602433
+      ],
+      [
+       -104.69100420317106,
+       40.417094426185578
+      ],
+      [
+       -104.69101846834381,
+       40.418298271610738
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 32,
+    "OBJECTID": 90,
+    "Name": "Two Hour",
+    "Passport_Z": 5457,
+    "Shape_Leng": 1033.02729867,
+    "Zone_Cap": 20,
+    "Shape__Area": 34425.162601596137,
+    "Shape__Length": 1033.0272986658938,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{1AB57813-9E1C-496B-BC5E-181EB5BA4738}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69103472656961,
+       40.41693620426139
+      ],
+      [
+       -104.6907523894459,
+       40.416936252597282
+      ],
+      [
+       -104.69075204361449,
+       40.415734216826465
+      ],
+      [
+       -104.69103437689844,
+       40.415734169400203
+      ],
+      [
+       -104.69103472656961,
+       40.41693620426139
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 33,
+    "OBJECTID": 91,
+    "Name": "Two Hour",
+    "Passport_Z": 5458,
+    "Shape_Leng": 1385.64985152,
+    "Zone_Cap": 20,
+    "Shape__Area": 49428.26240703791,
+    "Shape__Length": 1385.6498514864456,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{B13B244E-1308-40CA-8904-4A67310C5C88}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69106525644908,
+       40.415563425779666
+      ],
+      [
+       -104.69076790528273,
+       40.41556424753395
+      ],
+      [
+       -104.69077461972756,
+       40.413882668136615
+      ],
+      [
+       -104.69105731546979,
+       40.413884776638142
+      ],
+      [
+       -104.69106525644908,
+       40.415563425779666
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 34,
+    "OBJECTID": 92,
+    "Name": "Two Hour",
+    "Passport_Z": 5461,
+    "Shape_Leng": 1016.36691571,
+    "Zone_Cap": 54,
+    "Shape__Area": 28941.708871655741,
+    "Shape__Length": 934.49432892381958,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{3CD2A7E1-86F3-493B-B681-471440455B87}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69435443025583,
+       40.413880743439186
+      ],
+      [
+       -104.69293179402348,
+       40.413865851097057
+      ],
+      [
+       -104.69294070596092,
+       40.413668589135334
+      ],
+      [
+       -104.69434558223789,
+       40.4136743887086
+      ],
+      [
+       -104.69435443025583,
+       40.413880743439186
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 35,
+    "OBJECTID": 93,
+    "Name": "Two Hour",
+    "Passport_Z": 5460,
+    "Shape_Leng": 984.32162633,
+    "Zone_Cap": 24,
+    "Shape__Area": 26457.835381136614,
+    "Shape__Length": 984.32162633045948,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{C45DB1CA-FB06-4E31-A0F5-FDF7C3E00BEB}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69264012340381,
+       40.41385879429393
+      ],
+      [
+       -104.69108850982902,
+       40.413854131434313
+      ],
+      [
+       -104.69108757688089,
+       40.413693285372027
+      ],
+      [
+       -104.6926293860173,
+       40.413682403646007
+      ],
+      [
+       -104.69264012340381,
+       40.41385879429393
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 36,
+    "OBJECTID": 108,
+    "Name": "Two Hour",
+    "Passport_Z": 5459,
+    "Shape_Leng": 984.32162633,
+    "Zone_Cap": 12,
+    "Shape__Area": 26457.835381136614,
+    "Shape__Length": 984.32162633045948,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{278D47AB-9E1E-4CB6-B2AF-23E7C8B7BCA6}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69074473216277,
+       40.413843129224801
+      ],
+      [
+       -104.68919311907763,
+       40.41383844101513
+      ],
+      [
+       -104.68919219062764,
+       40.41367759493712
+      ],
+      [
+       -104.69073399971143,
+       40.413666738400828
+      ],
+      [
+       -104.69074473216277,
+       40.413843129224801
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 37,
+    "OBJECTID": 111,
+    "Name": "Free all day",
+    "Passport_Z": null,
+    "Shape_Leng": 1010.75295409,
+    "Zone_Cap": 33,
+    "Shape__Area": 22489.680612885633,
+    "Shape__Length": 890.6832938256448,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{E15D0142-0CCB-4EB7-8F0F-327B1132B3CF}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "ROHRE",
+    "last_edited_date": 1790087217000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69418747245288,
+       40.427314319161034
+      ],
+      [
+       -104.69279297591605,
+       40.427303037710651
+      ],
+      [
+       -104.69278921427995,
+       40.427146607178209
+      ],
+      [
+       -104.69417619897837,
+       40.427151769918325
+      ],
+      [
+       -104.69418747245288,
+       40.427314319161034
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 38,
+    "OBJECTID": 112,
+    "Name": "Free all day",
+    "Passport_Z": null,
+    "Shape_Leng": 637.45230015,
+    "Zone_Cap": 0,
+    "Shape__Area": 14907.143609698298,
+    "Shape__Length": 637.4523001557709,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{B8B9F056-43BB-4BB3-98EB-110869E77F21}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "ROHRE",
+    "last_edited_date": 1790087221000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.6890703298416,
+       40.425720433807435
+      ],
+      [
+       -104.6888713667538,
+       40.425719043088762
+      ],
+      [
+       -104.68885775249558,
+       40.425009313255792
+      ],
+      [
+       -104.68906796886101,
+       40.424993886920426
+      ],
+      [
+       -104.6890703298416,
+       40.425720433807435
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 39,
+    "OBJECTID": 113,
+    "Name": "Free all day",
+    "Passport_Z": null,
+    "Shape_Leng": 954.48550195,
+    "Zone_Cap": 0,
+    "Shape__Area": 29049.985037194991,
+    "Shape__Length": 954.48550195259565,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{9C7D5081-73A0-45E1-A8EF-99994D35AE80}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "ROHRE",
+    "last_edited_date": 1790087222000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.68911818716522,
+       40.422382241768055
+      ],
+      [
+       -104.68886059146706,
+       40.422385488279204
+      ],
+      [
+       -104.68890029360954,
+       40.421275387799064
+      ],
+      [
+       -104.68915794546835,
+       40.421267094508956
+      ],
+      [
+       -104.68911818716522,
+       40.422382241768055
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 40,
+    "OBJECTID": null,
+    "Name": "Free all day",
+    "Passport_Z": null,
+    "Shape_Leng": null,
+    "Zone_Cap": null,
+    "Shape__Area": 34256.581689355859,
+    "Shape__Length": 977.60220266161184,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{B13F2FEA-5CB0-456E-A3E8-9E06DB017E1F}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69603720086815,
+       40.425018571715711
+      ],
+      [
+       -104.6945888081973,
+       40.425018572336192
+      ],
+      [
+       -104.69458344347336,
+       40.42478171743543
+      ],
+      [
+       -104.69603720111201,
+       40.424789884936658
+      ],
+      [
+       -104.69603720086815,
+       40.425018571715711
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 41,
+    "OBJECTID": 0,
+    "Name": "Free all day",
+    "Passport_Z": null,
+    "Shape_Leng": null,
+    "Zone_Cap": null,
+    "Shape__Area": 25871.688991414376,
+    "Shape__Length": 944.99263691572366,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{961F07A9-7A20-434E-80CE-CCF683B02A52}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.6960059102975,
+       40.427334318547736
+      ],
+      [
+       -104.69453069598042,
+       40.427330235030134
+      ],
+      [
+       -104.69453605985535,
+       40.427146475420777
+      ],
+      [
+       -104.69600054622205,
+       40.42717097648098
+      ],
+      [
+       -104.6960059102975,
+       40.427334318547736
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 42,
+    "OBJECTID": null,
+    "Name": "Free all day",
+    "Passport_Z": null,
+    "Shape_Leng": null,
+    "Zone_Cap": null,
+    "Shape__Area": 32520.653676546954,
+    "Shape__Length": 1006.2921035733089,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{B0182767-2948-4714-89EF-546B176938BA}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69091507790083,
+       40.428477702982654
+      ],
+      [
+       -104.69063612842849,
+       40.428469536073884
+      ],
+      [
+       -104.69064685668509,
+       40.427301650416545
+      ],
+      [
+       -104.69091507771851,
+       40.427301650408971
+      ],
+      [
+       -104.69091507790083,
+       40.428477702982654
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 43,
+    "OBJECTID": 39,
+    "Name": "Free all day",
+    "Passport_Z": 5443,
+    "Shape_Leng": 952.44804316,
+    "Zone_Cap": 14,
+    "Shape__Area": 14707.531103839039,
+    "Shape__Length": 559.26761049493621,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{EF1D0475-65C7-4ACA-B065-A73E111F1F2C}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69067247583297,
+       40.426526115950196
+      ],
+      [
+       -104.69090826134833,
+       40.426525921256726
+      ],
+      [
+       -104.69091571186262,
+       40.427100974794719
+      ],
+      [
+       -104.69064668768573,
+       40.427100102794519
+      ],
+      [
+       -104.69067247583297,
+       40.426526115950196
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 44,
+    "OBJECTID": 39,
+    "Name": "Two Hour",
+    "Passport_Z": 5443,
+    "Shape_Leng": 952.44804316,
+    "Zone_Cap": 14,
+    "Shape__Area": 12298.989458872933,
+    "Shape__Length": 524.46653525873705,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{B6D38B3B-08D8-4DB1-AE57-B21D27F361AC}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69090826134833,
+       40.426525921256726
+      ],
+      [
+       -104.69067247583297,
+       40.426526115950196
+      ],
+      [
+       -104.69069731936519,
+       40.425973164656206
+      ],
+      [
+       -104.69090112932614,
+       40.425975528991529
+      ],
+      [
+       -104.69090826134833,
+       40.426525921256726
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 45,
+    "OBJECTID": 28,
+    "Name": "Two Hour",
+    "Passport_Z": 5431,
+    "Shape_Leng": 962.67288403,
+    "Zone_Cap": 16,
+    "Shape__Area": 14357.88306755144,
+    "Shape__Length": 862.20642453708854,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{ABD342BC-7B02-4EDC-B52E-D1937B3D8B54}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69285344463545,
+       40.422545695544841
+      ],
+      [
+       -104.69426103892589,
+       40.42255870075487
+      ],
+      [
+       -104.69427428613383,
+       40.422658772137297
+      ],
+      [
+       -104.69284757081115,
+       40.422645471070979
+      ],
+      [
+       -104.69285344463545,
+       40.422545695544841
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 46,
+    "OBJECTID": 28,
+    "Name": "Two Hour",
+    "Passport_Z": null,
+    "Shape_Leng": 962.67288403,
+    "Zone_Cap": 0,
+    "Shape__Area": 13395.078718962599,
+    "Shape__Length": 845.66297470523762,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{180CC421-CE49-4087-8366-3C5D896602B4}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "ROHRE",
+    "last_edited_date": 1790087216000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69285344463545,
+       40.422545695544841
+      ],
+      [
+       -104.69285924726314,
+       40.422447147074394
+      ],
+      [
+       -104.69355357617158,
+       40.422454065559634
+      ],
+      [
+       -104.6942500507058,
+       40.422475685800507
+      ],
+      [
+       -104.69426103892589,
+       40.42255870075487
+      ],
+      [
+       -104.69285344463545,
+       40.422545695544841
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 47,
+    "OBJECTID": 56,
+    "Name": "Two Hour",
+    "Passport_Z": null,
+    "Shape_Leng": 962.67288405,
+    "Zone_Cap": 0,
+    "Shape__Area": 14330.473947737844,
+    "Shape__Length": 843.18430972805811,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{9B756B24-6905-4CE8-A536-82D5A41E029D}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "ROHRE",
+    "last_edited_date": 1790087216000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69101879597996,
+       40.422536511436874
+      ],
+      [
+       -104.69102604504238,
+       40.422438539618568
+      ],
+      [
+       -104.6924018257894,
+       40.422442598697792
+      ],
+      [
+       -104.69240332314021,
+       40.422549334218886
+      ],
+      [
+       -104.69101879597996,
+       40.422536511436874
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 48,
+    "OBJECTID": 56,
+    "Name": "Two Hour",
+    "Passport_Z": 5442,
+    "Shape_Leng": 962.67288405,
+    "Zone_Cap": 21,
+    "Shape__Area": 12676.20477455885,
+    "Shape__Length": 838.82426741943118,
+    "Description": "Free two hour parking. After the first two hours- pay to stay longer, move vehicle two blocks or out of the orange zone. Free parking with no time limit after 5 p.m. and on weekends and City holidays.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{D8C930D0-8B5C-4422-88F6-340A05F74D16}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69101879597996,
+       40.422536511436874
+      ],
+      [
+       -104.69240332314021,
+       40.422549334218886
+      ],
+      [
+       -104.69240459963254,
+       40.422640388299442
+      ],
+      [
+       -104.69101221709087,
+       40.42262542942678
+      ],
+      [
+       -104.69101879597996,
+       40.422536511436874
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 49,
+    "OBJECTID": 41,
+    "Name": "Free all day",
+    "Passport_Z": 5436,
+    "Shape_Leng": 983.66700959,
+    "Zone_Cap": 57,
+    "Shape__Area": 16054.158722701679,
+    "Shape__Length": 569.35049169512899,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{1ADE7C6B-53E7-43F6-968D-25E69E204129}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69250336240204,
+       40.421847577199522
+      ],
+      [
+       -104.69250215509869,
+       40.421280639836802
+      ],
+      [
+       -104.6927841669289,
+       40.42128112162694
+      ],
+      [
+       -104.6927779682476,
+       40.421851587433203
+      ],
+      [
+       -104.69250336240204,
+       40.421847577199522
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 50,
+    "OBJECTID": 41,
+    "Name": "Two Hour",
+    "Passport_Z": 5436,
+    "Shape_Leng": 983.66700959,
+    "Zone_Cap": 57,
+    "Shape__Area": 15703.342394011086,
+    "Shape__Length": 567.25627518695171,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{4BE66D1C-1CDD-4D69-8C61-EB25EB69693B}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69250336240204,
+       40.421847577199522
+      ],
+      [
+       -104.6927779682476,
+       40.421851587433203
+      ],
+      [
+       -104.69277177734629,
+       40.422421391260407
+      ],
+      [
+       -104.69250458257062,
+       40.422420755017697
+      ],
+      [
+       -104.69250336240204,
+       40.421847577199522
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 51,
+    "OBJECTID": null,
+    "Name": "Free all day",
+    "Passport_Z": null,
+    "Shape_Leng": null,
+    "Zone_Cap": null,
+    "Shape__Area": 21894.168383902055,
+    "Shape__Length": 983.43667645432549,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{34B2D0A9-9BC6-432F-A2A1-77822DCF2A5D}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69250465666764,
+       40.427291057171125
+      ],
+      [
+       -104.69091507771851,
+       40.427301650408971
+      ],
+      [
+       -104.69091912190429,
+       40.427156100631962
+      ],
+      [
+       -104.69250616151146,
+       40.42716477297617
+      ],
+      [
+       -104.69250465666764,
+       40.427291057171125
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 52,
+    "OBJECTID": 110,
+    "Name": "Free all day",
+    "Passport_Z": null,
+    "Shape_Leng": 969.44756518,
+    "Zone_Cap": 36,
+    "Shape__Area": 22482.979623985553,
+    "Shape__Length": 754.44150080652798,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{6720C977-3067-4492-84E4-2FF21B91A360}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "ROHRE",
+    "last_edited_date": 1790087214000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.68914844915503,
+       40.42354738822845
+      ],
+      [
+       -104.68888179198248,
+       40.423542713525968
+      ],
+      [
+       -104.68888043336834,
+       40.422724718260064
+      ],
+      [
+       -104.68914722153878,
+       40.422703303658352
+      ],
+      [
+       -104.68914844915503,
+       40.42354738822845
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 53,
+    "OBJECTID": 44,
+    "Name": "Free all day",
+    "Passport_Z": 5451,
+    "Shape_Leng": 940.94757378,
+    "Zone_Cap": 25,
+    "Shape__Area": 13477.741219043519,
+    "Shape__Length": 543.91078943697084,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{4C1E2F22-20F6-47D7-A27D-6D2870018F76}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.68988359109363,
+       40.425741258841029
+      ],
+      [
+       -104.68987662378902,
+       40.425912988336165
+      ],
+      [
+       -104.68913582313277,
+       40.425916236348726
+      ],
+      [
+       -104.68913927953024,
+       40.425730102958269
+      ],
+      [
+       -104.68988359109363,
+       40.425741258841029
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 54,
+    "OBJECTID": 44,
+    "Name": "Two Hour",
+    "Passport_Z": 5451,
+    "Shape_Leng": 940.94757378,
+    "Zone_Cap": 25,
+    "Shape__Area": 12869.491634892342,
+    "Shape__Length": 538.16113077918806,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{16A709A2-417B-41F6-8846-E934B620EC92}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.68988038488523,
+       40.425743191713792
+      ],
+      [
+       -104.69062094087512,
+       40.425742403167355
+      ],
+      [
+       -104.69062281130977,
+       40.425912198555963
+      ],
+      [
+       -104.68987731452322,
+       40.425914948417265
+      ],
+      [
+       -104.68988038488523,
+       40.425743191713792
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 55,
+    "OBJECTID": null,
+    "Name": "Free all day",
+    "Passport_Z": null,
+    "Shape_Leng": null,
+    "Zone_Cap": null,
+    "Shape__Area": 23230.078669324404,
+    "Shape__Length": 914.01464436285607,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{2B67FA58-C936-41B4-92A8-E92C019B6372}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.68911263348011,
+       40.427056636499358
+      ],
+      [
+       -104.68891951410036,
+       40.427056636767176
+      ],
+      [
+       -104.68888717858502,
+       40.425962231622876
+      ],
+      [
+       -104.68911263388618,
+       40.42596223226105
+      ],
+      [
+       -104.68911263348011,
+       40.427056636499358
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 56,
+    "OBJECTID": 45,
+    "Name": "Free all day",
+    "Passport_Z": 5432,
+    "Shape_Leng": 907.98783675,
+    "Zone_Cap": 16,
+    "Shape__Area": 15956.640595727906,
+    "Shape__Length": 576.57399635515276,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{94FBF71A-592A-4EAF-A19E-ED46881C8D1F}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69248987299771,
+       40.426498128486088
+      ],
+      [
+       -104.69276254482169,
+       40.426511940175686
+      ],
+      [
+       -104.69275100583721,
+       40.42708792861724
+      ],
+      [
+       -104.69248667159927,
+       40.427093833790082
+      ],
+      [
+       -104.69248987299771,
+       40.426498128486088
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 57,
+    "OBJECTID": 45,
+    "Name": "Two Hour",
+    "Passport_Z": 5432,
+    "Shape_Leng": 907.98783675,
+    "Zone_Cap": 16,
+    "Shape__Area": 14375.644351139914,
+    "Shape__Length": 527.48861590451361,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{8CECEA38-3AFF-4690-BFB0-412458F8A8A5}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69248987299771,
+       40.426498128486088
+      ],
+      [
+       -104.69248891285299,
+       40.425989966453642
+      ],
+      [
+       -104.69276947588367,
+       40.425995493270079
+      ],
+      [
+       -104.69276254482169,
+       40.426511940175686
+      ],
+      [
+       -104.69248987299771,
+       40.426498128486088
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 58,
+    "OBJECTID": 74,
+    "Name": "Orange Zone",
+    "Passport_Z": 5441,
+    "Shape_Leng": 279.75329347,
+    "Zone_Cap": 8,
+    "Shape__Area": 8637.5957977235103,
+    "Shape__Length": 373.36577054444496,
+    "Description": "Free two hour parking. After the first two hours- pay to stay longer, move vehicle two blocks or out of the orange zone. Free parking with no time limit after 5 p.m. and on weekends and City holidays.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{AB8BB6CE-FE1F-4791-81C6-D24A7D73AA99}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69137065274653,
+       40.422973335338476
+      ],
+      [
+       -104.69106734690493,
+       40.422971139114495
+      ],
+      [
+       -104.69106722740594,
+       40.422690903035722
+      ],
+      [
+       -104.69137232562852,
+       40.422693687261003
+      ],
+      [
+       -104.69137065274653,
+       40.422973335338476
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 59,
+    "OBJECTID": null,
+    "Name": "Two Hour",
+    "Passport_Z": 5466,
+    "Shape_Leng": null,
+    "Zone_Cap": null,
+    "Shape__Area": 10481.032121761893,
+    "Shape__Length": 484.75329877060494,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{29EC5E80-7FEF-4406-90B9-47A0F3F9C8F9}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69079063669288,
+       40.411916717440569
+      ],
+      [
+       -104.69012471175236,
+       40.411912832241242
+      ],
+      [
+       -104.69011860335968,
+       40.411756567476203
+      ],
+      [
+       -104.69078847722533,
+       40.411763528895079
+      ],
+      [
+       -104.69079063669288,
+       40.411916717440569
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 60,
+    "OBJECTID": null,
+    "Name": "Two Hour",
+    "Passport_Z": 5465,
+    "Shape_Leng": null,
+    "Zone_Cap": null,
+    "Shape__Area": 42772.04585942471,
+    "Shape__Length": 1366.3989972255392,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{762A71EE-8293-40AD-B8CA-6602DDEDACC8}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69107987418283,
+       40.413635554541074
+      ],
+      [
+       -104.69083687883175,
+       40.413627262799416
+      ],
+      [
+       -104.6908296930107,
+       40.411944278015412
+      ],
+      [
+       -104.69108750949782,
+       40.411950885419095
+      ],
+      [
+       -104.69107987418283,
+       40.413635554541074
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 61,
+    "OBJECTID": 73,
+    "Name": "Orange Zone",
+    "Passport_Z": 5453,
+    "Shape_Leng": 583.499877,
+    "Zone_Cap": 57,
+    "Shape__Area": 22740.94572602454,
+    "Shape__Length": 625.72166536890302,
+    "Description": "Free two hour parking. After the first two hours- pay to stay longer, move vehicle two blocks or out of the orange zone. Free parking with no time limit after 5 p.m. and on weekends and City holidays.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{D29B8574-AF82-4E02-A75A-C0EA544989A1}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69063891070581,
+       40.424370559325531
+      ],
+      [
+       -104.6899261162915,
+       40.424369015453806
+      ],
+      [
+       -104.68992700713957,
+       40.424052959579143
+      ],
+      [
+       -104.69063663391728,
+       40.424056094393556
+      ],
+      [
+       -104.69063891070581,
+       40.424370559325531
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 62,
+    "OBJECTID": null,
+    "Name": "Two Hour or Permit Parking",
+    "Passport_Z": null,
+    "Shape_Leng": null,
+    "Zone_Cap": null,
+    "Shape__Area": 14255.508663588853,
+    "Shape__Length": 646.60525967732519,
+    "Description": "Free Two-Hour parking with the option to pay-to-stay using Passport and/or Area 3 permit",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{8BA82B3E-E49C-444E-A0C1-B2D3A983433C}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.68914502244466,
+       40.4247292424172
+      ],
+      [
+       -104.68887193906691,
+       40.424724474182689
+      ],
+      [
+       -104.68888102101224,
+       40.424343390924491
+      ],
+      [
+       -104.68903361467657,
+       40.424346244410593
+      ],
+      [
+       -104.68903465580811,
+       40.424050770671045
+      ],
+      [
+       -104.68916113870311,
+       40.424053143383929
+      ],
+      [
+       -104.68914502244466,
+       40.4247292424172
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 63,
+    "OBJECTID": 48,
+    "Name": "Two Hour",
+    "Passport_Z": 5455,
+    "Shape_Leng": 708.67794244,
+    "Zone_Cap": 59,
+    "Shape__Area": 9470.3402868284247,
+    "Shape__Length": 563.14662215394787,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{C5C5ED7B-3AAE-4B6D-B57A-06511756B3F1}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.68901989977391,
+       40.424241657911281
+      ],
+      [
+       -104.68887656116929,
+       40.424241532257469
+      ],
+      [
+       -104.68888943381835,
+       40.423575437165795
+      ],
+      [
+       -104.68902661305627,
+       40.423576396071688
+      ],
+      [
+       -104.68901989977391,
+       40.424241657911281
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 64,
+    "OBJECTID": null,
+    "Name": "Two Hour or Permit Parking",
+    "Passport_Z": null,
+    "Shape_Leng": null,
+    "Zone_Cap": null,
+    "Shape__Area": 14067.62516139133,
+    "Shape__Length": 480.13626112467722,
+    "Description": "Free Two-Hour parking with the option to pay-to-stay using Passport and/or Area 3 permit",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{42D161E3-82CA-4DCF-9115-5CAA0CE2423A}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.68876457869975,
+       40.424706685556075
+      ],
+      [
+       -104.68840451766252,
+       40.424700592967781
+      ],
+      [
+       -104.68839189304282,
+       40.424322813593527
+      ],
+      [
+       -104.68876290653701,
+       40.424325408228142
+      ],
+      [
+       -104.68876457869975,
+       40.424706685556075
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 65,
+    "OBJECTID": 87,
+    "Name": "Orange Zone",
+    "Passport_Z": 5441,
+    "Shape_Leng": 701.94479033,
+    "Zone_Cap": 15,
+    "Shape__Area": 9768.5969038226776,
+    "Shape__Length": 674.18435222392486,
+    "Description": "Free two hour parking. After the first two hours- pay to stay longer, move vehicle two blocks or out of the orange zone. Free parking with no time limit after 5 p.m. and on weekends and City holidays.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{60FD2A80-AE7D-4A9E-8988-BC309267725F}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69223869313043,
+       40.423333677312961
+      ],
+      [
+       -104.69114411333075,
+       40.423326051776414
+      ],
+      [
+       -104.69114329741164,
+       40.423237623518446
+      ],
+      [
+       -104.69224008455043,
+       40.423246306464407
+      ],
+      [
+       -104.69223869313043,
+       40.423333677312961
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 66,
+    "OBJECTID": null,
+    "Name": "Two Hour or Permit Parking",
+    "Passport_Z": null,
+    "Shape_Leng": null,
+    "Zone_Cap": null,
+    "Shape__Area": 23932.841543057999,
+    "Shape__Length": 704.24860833217542,
+    "Description": "Free Two-Hour parking with the option to pay-to-stay using Passport and/or Area 3 permit",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{5F1F1651-FD0F-4438-90DD-0F55712317CA}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69012734189644,
+       40.423510117854391
+      ],
+      [
+       -104.68919427756464,
+       40.423502409695004
+      ],
+      [
+       -104.68919508787475,
+       40.42324744355961
+      ],
+      [
+       -104.69013033178301,
+       40.423259933064976
+      ],
+      [
+       -104.69012734189644,
+       40.423510117854391
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 67,
+    "OBJECTID": null,
+    "Name": "Two Hour",
+    "Passport_Z": 5466,
+    "Shape_Leng": null,
+    "Zone_Cap": null,
+    "Shape__Area": 24571.739096918322,
+    "Shape__Length": 992.50419308870369,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{F0D586A8-6704-4D34-B618-CF0F56D5D246}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69454863390951,
+       40.402885628837403
+      ],
+      [
+       -104.69297251339682,
+       40.402883198701765
+      ],
+      [
+       -104.69296542145428,
+       40.402727031444606
+      ],
+      [
+       -104.69455220375305,
+       40.402735495207203
+      ],
+      [
+       -104.69454863390951,
+       40.402885628837403
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 68,
+    "OBJECTID": 29,
+    "Name": "Two Hour",
+    "Passport_Z": 5454,
+    "Shape_Leng": 947.50841932,
+    "Zone_Cap": 29,
+    "Shape__Area": 18203.393341998151,
+    "Shape__Length": 650.51599405545585,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{53F1D9EF-0E1C-4B38-A66B-758744C0A175}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69068999155249,
+       40.421250653702494
+      ],
+      [
+       -104.68977834268117,
+       40.42124927679869
+      ],
+      [
+       -104.68977693881877,
+       40.421051781183522
+      ],
+      [
+       -104.69005979140424,
+       40.421052536655395
+      ],
+      [
+       -104.69046065805372,
+       40.421053291765716
+      ],
+      [
+       -104.69068994307707,
+       40.421057061880866
+      ],
+      [
+       -104.69068999155249,
+       40.421250653702494
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 69,
+    "OBJECTID": 29,
+    "Name": "Two Hour",
+    "Passport_Z": 5454,
+    "Shape_Leng": 947.50841932,
+    "Zone_Cap": 29,
+    "Shape__Area": 18203.393341998151,
+    "Shape__Length": 650.51599405545585,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{5C61E6B3-8C95-4D8F-A96C-A7A5827B364C}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69195506213516,
+       40.42126471382867
+      ],
+      [
+       -104.69104341304904,
+       40.421263346864976
+      ],
+      [
+       -104.69104200549972,
+       40.421065851265695
+      ],
+      [
+       -104.69132485815803,
+       40.421066603653543
+      ],
+      [
+       -104.69172572490477,
+       40.421067354393031
+      ],
+      [
+       -104.69195501004603,
+       40.421071122008186
+      ],
+      [
+       -104.69195506213516,
+       40.42126471382867
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 70,
+    "OBJECTID": null,
+    "Name": "Two Hour",
+    "Passport_Z": 5466,
+    "Shape_Leng": null,
+    "Zone_Cap": null,
+    "Shape__Area": 3847.5811438223241,
+    "Shape__Length": 331.27768085363664,
+    "Description": "Free two hour parking with the option to pay-to-stay using Passport",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": "31-50 Years",
+    "Owner": "Public Works",
+    "GlobalID": "{7B49713B-C130-4042-97EA-0C70E8CF946D}",
+    "created_user": null,
+    "created_date": null,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715668000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.6917923534691,
+       40.411928495625887
+      ],
+      [
+       -104.69129750064796,
+       40.411925613449043
+      ],
+      [
+       -104.6912976250341,
+       40.411849222115762
+      ],
+      [
+       -104.69179171541772,
+       40.411851473948076
+      ],
+      [
+       -104.6917923534691,
+       40.411928495625887
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 401,
+    "OBJECTID": null,
+    "Name": "16th Street Alley Parking",
+    "Passport_Z": null,
+    "Shape_Leng": null,
+    "Zone_Cap": null,
+    "Shape__Area": 8019.9215760397028,
+    "Shape__Length": 385.02801642224324,
+    "Description": "To be determined",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Planned",
+    "ExpectedLifeSpan": null,
+    "Owner": "Public Works",
+    "GlobalID": "{92B022C1-1013-41DA-8FEC-C1A24197447A}",
+    "created_user": "CARRD",
+    "created_date": 1767715744000,
+    "last_edited_user": "CARRD",
+    "last_edited_date": 1767715835000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.6936114476959,
+       40.414705571856089
+      ],
+      [
+       -104.69345502742699,
+       40.414608246109282
+      ],
+      [
+       -104.69342702023785,
+       40.414585694209684
+      ],
+      [
+       -104.69333950765277,
+       40.414510501158638
+      ],
+      [
+       -104.69334195556409,
+       40.414326307394646
+      ],
+      [
+       -104.69361581249025,
+       40.414328114925894
+      ],
+      [
+       -104.6936114476959,
+       40.414705571856089
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 402,
+    "OBJECTID": null,
+    "Name": "Free all day",
+    "Passport_Z": null,
+    "Shape_Leng": null,
+    "Zone_Cap": null,
+    "Shape__Area": 26818.857868336723,
+    "Shape__Length": 655.07481369130255,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": "Infrastructure Services",
+    "MaintenanceFrequency": "SnowPrioritization",
+    "AssetCriticality": null,
+    "LifeCycleStatus": "Operational",
+    "ExpectedLifeSpan": null,
+    "Owner": "Public Works",
+    "GlobalID": "{27DC7AF4-D0CE-46AF-954B-DA8B4581F5CF}",
+    "created_user": "ROHRE",
+    "created_date": 1788533133000,
+    "last_edited_user": "ROHRE",
+    "last_edited_date": 1788533817000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69467028650794,
+       40.425532181830775
+      ],
+      [
+       -104.69466061149625,
+       40.425081253516609
+      ],
+      [
+       -104.69525068522027,
+       40.425079529594818
+      ],
+      [
+       -104.69525294415749,
+       40.425530479347898
+      ],
+      [
+       -104.69467028650794,
+       40.425532181830775
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 802,
+    "OBJECTID": 31,
+    "Name": "Free all day",
+    "Passport_Z": null,
+    "Shape_Leng": 391.73471103,
+    "Zone_Cap": null,
+    "Shape__Area": 13631.076994798437,
+    "Shape__Length": 530.22860165291263,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": null,
+    "MaintenanceFrequency": null,
+    "AssetCriticality": null,
+    "LifeCycleStatus": null,
+    "ExpectedLifeSpan": null,
+    "Owner": null,
+    "GlobalID": "{0FA2564C-D142-4F6A-B9E9-381F2E267E43}",
+    "created_user": "ROHRE",
+    "created_date": 1789156125000,
+    "last_edited_user": "ROHRE",
+    "last_edited_date": 1789156225000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69601739608737,
+       40.425736578629511
+      ],
+      [
+       -104.69531596317276,
+       40.425736950646069
+      ],
+      [
+       -104.69531619688279,
+       40.42554706444264
+      ],
+      [
+       -104.6960179328433,
+       40.425543333404882
+      ],
+      [
+       -104.69601739608737,
+       40.425736578629511
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 803,
+    "OBJECTID": 31,
+    "Name": "Free all day",
+    "Passport_Z": null,
+    "Shape_Leng": 391.73471103,
+    "Zone_Cap": null,
+    "Shape__Area": 8948.918022362539,
+    "Shape__Length": 378.46811864095059,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": null,
+    "MaintenanceFrequency": null,
+    "AssetCriticality": null,
+    "LifeCycleStatus": null,
+    "ExpectedLifeSpan": null,
+    "Owner": null,
+    "GlobalID": "{553ECF4E-7389-4A0A-9E30-718DFED4C82F}",
+    "created_user": "ROHRE",
+    "created_date": 1789156246000,
+    "last_edited_user": "ROHRE",
+    "last_edited_date": 1789156311000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69601013633321,
+       40.425996746843424
+      ],
+      [
+       -104.69566654985532,
+       40.425996166828639
+      ],
+      [
+       -104.69567172803302,
+       40.425740807045244
+      ],
+      [
+       -104.69601746859425,
+       40.42574010237751
+      ],
+      [
+       -104.69601013633321,
+       40.425996746843424
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "attributes": {
+    "OBJECTID_1": 804,
+    "OBJECTID": 31,
+    "Name": "Free all day",
+    "Passport_Z": null,
+    "Shape_Leng": 391.73471103,
+    "Zone_Cap": null,
+    "Shape__Area": 10985.029946028117,
+    "Shape__Length": 510.64066405525608,
+    "Description": "Free all day parking with no time limits.",
+    "Condition": null,
+    "Maintainer": null,
+    "MaintenanceFrequency": null,
+    "AssetCriticality": null,
+    "LifeCycleStatus": null,
+    "ExpectedLifeSpan": null,
+    "Owner": null,
+    "GlobalID": "{63962C84-F1A6-4D77-8241-998FA15ECB7D}",
+    "created_user": "ROHRE",
+    "created_date": 1789156341000,
+    "last_edited_user": "ROHRE",
+    "last_edited_date": 1789156411000
+   },
+   "geometry": {
+    "rings": [
+     [
+      [
+       -104.69604107703412,
+       40.425216233584948
+      ],
+      [
+       -104.69532221037657,
+       40.425210847789288
+      ],
+      [
+       -104.69532239441958,
+       40.425061664981811
+      ],
+      [
+       -104.69604412159863,
+       40.425064701963436
+      ],
+      [
+       -104.69604107703412,
+       40.425216233584948
+      ]
+     ]
+    ]
+   }
+  }
+ ]
+}

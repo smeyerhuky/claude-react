@@ -1,0 +1,18 @@
+{
+  "schema": "municipal-parking-source-excerpts-v1",
+  "id": "greeley",
+  "url": "https://greeleyco.gov/residents/transportation/parking/",
+  "retrieved_at_utc": "2026-10-30T19:37:02.696568+00:00",
+  "http_status": 200,
+  "response_sha256": "65c1e34a617c6182fceb68195856dceb1a2c397a9fbf7a53cbaf98c7ca21d227",
+  "response_bytes": 193326,
+  "excerpts": [
+    "Parking in Greeley",
+    "Downtown Parking Find parking resources in Downtown Greeley"
+  ],
+  "retention": "Selected literal visible text with whitespace normalized; full HTML/form/runtime state not published. Response hash identifies the fetch but cannot be recomputed from excerpts.",
+  "access_verified": false,
+  "release_eligible": false,
+  "published_dashboard_url": "https://gis.greeleygov.com/portal/apps/dashboards/f0082e474f5040ceb0847a7458dc969c",
+  "linked_webmap_id": "1ced69aad2e540ceb83da9d73f779c11"
+}
