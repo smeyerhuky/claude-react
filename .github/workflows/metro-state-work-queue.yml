@@ -1,0 +1,22 @@
+name: Metro state work queue integrity
+on:
+  pull_request:
+    paths:
+      - 'scripts/metro_state_work_queue.py'
+      - 'scripts/test_metro_state_work_queue.py'
+      - 'scripts/colorado_reviewed_connectors.json'
+      - 'docs/research/**'
+      - '.github/workflows/metro-state-work-queue.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  state-work-inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s scripts -p test_metro_state_work_queue.py -v
+      - run: python scripts/metro_state_work_queue.py --check docs/research/state-release-work-queue/report.json
