@@ -5,6 +5,7 @@ import inventoryHtml from '../research/metro-competitor-inventory.html?raw'
 import sixStateHtml from '../research/metro-six-state-probes.html?raw'
 import cheyenneHtml from '../research/metro-cheyenne-probes.html?raw'
 import lasVegasHtml from '../research/metro-las-vegas-probes.html?raw'
+import referenceScenario from '../research/metro-reference-scenario.json'
 
 const views = {
   probes: { title: 'Census road-node research experiment', html: probeHtml },
@@ -34,6 +35,11 @@ export default function MetroRoadResearchPanel() {
       </header>
       <div className="space-y-2 border-b p-3 text-sm">
         <p>Frozen experiments with unapproved road leads. These views do not follow the map’s population threshold, uploaded data or selected metro. They do not approve road regions or vehicle access.</p>
+        <details data-testid="metro-reference-scenario" data-scenario-sha256={referenceScenario.scenario_sha256} className="rounded border border-slate-300 bg-slate-50 p-2">
+          <summary className="cursor-pointer font-medium">Planned road-model assumptions</summary>
+          <p className="mt-2 font-medium">Not applied to the frozen experiments.</p>
+          <p className="mt-1">{referenceScenario.planned_info_tooltip}</p>
+        </details>
         <label className="flex flex-wrap items-center gap-2">Research experiment
           <select value={view} onChange={event => setView(event.target.value)} className="rounded border bg-white px-2 py-1">
             <option value="probes">Frozen 26-source Census probe experiment</option>

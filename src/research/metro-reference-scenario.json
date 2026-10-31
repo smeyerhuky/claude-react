@@ -1,0 +1,9 @@
+{
+  "access_verified": false,
+  "old_checkpoint_evaluated_under_scenario": false,
+  "planned_info_tooltip": "Reference: 28 Oct 2026, 12:00 MDT (18:00 UTC). Solo passenger car. Access is frozen at that instant; free-flow time excludes traffic and waiting. Conditions may change before arrival. Vehicle, reviewed-anchor and coverage limits apply; unsupported areas remain transparent.",
+  "reference_instant_utc": "2026-10-28T18:00:00Z",
+  "release_eligible": false,
+  "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+  "schema": "planned-road-scenario-info-v1"
+}

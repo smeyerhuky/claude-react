@@ -1,0 +1,28 @@
+name: Fixed reference road scenario
+on:
+  pull_request:
+    paths:
+      - 'scripts/road_reference_scenario.py'
+      - 'scripts/test_road_reference_scenario.py'
+      - 'scripts/metro_anchor_set_contract.py'
+      - 'scripts/test_metro_anchor_set_contract.py'
+      - 'docs/research/reference-road-scenario/**'
+      - 'docs/urban-access-anchor-policy.md'
+      - '.github/workflows/road-reference-scenario.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  scenario-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'tzdata==2026.5'
+      - run: python -m unittest discover -s scripts -p test_road_reference_scenario.py -v
+      - run: python -m unittest discover -s scripts -p test_metro_anchor_set_contract.py -v
+      - run: python scripts/road_reference_scenario.py
+      - run: python scripts/las_vegas_ui_checkpoint.py --check-frozen

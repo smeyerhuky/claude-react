@@ -10,7 +10,7 @@ import math
 import re
 from urllib.parse import urlparse
 
-SCHEMA = 'metro-anchor-set-research-v1'
+SCHEMA = 'metro-anchor-set-research-v2'
 METRICS = {'length': 'meters', 'travel_time': 'seconds'}
 DIRECTIONS = {'from_anchor', 'to_anchor'}
 
@@ -66,9 +66,9 @@ def stored_cost(value):
     return Fraction(value)
 
 
-def aggregate(registry, records, *, graph_bundle_sha256, sample_id, metric, direction):
+def aggregate(registry, records, *, graph_bundle_sha256, scenario_sha256, sample_id, metric, direction):
     expected = validate_registry(registry)
-    require(digest(graph_bundle_sha256) and identity(sample_id)
+    require(digest(graph_bundle_sha256) and digest(scenario_sha256) and identity(sample_id)
             and metric in METRICS and direction in DIRECTIONS, 'Explicit query identity required')
     require(isinstance(records, list) and len(records) <= len(expected),
             'One bounded query record per expected anchor required')
@@ -80,9 +80,10 @@ def aggregate(registry, records, *, graph_bundle_sha256, sample_id, metric, dire
         require(row.get('schema') == SCHEMA and row.get('cbsa') == registry['cbsa']
                 and row.get('registry_sha256') == binding
                 and row.get('graph_bundle_sha256') == graph_bundle_sha256
+                and row.get('scenario_sha256') == scenario_sha256
                 and row.get('sample_id') == sample_id and row.get('metric') == metric
                 and row.get('direction') == direction and row.get('unit') == METRICS[metric],
-                'Mixed registry, CBSA, graph, sample, metric, direction or units')
+                'Mixed registry, CBSA, graph, scenario, sample, metric, direction or units')
         status = row.get('status')
         if status == 'finite':
             # Never infer a zero connector from a graph-only route. Direction and
@@ -105,7 +106,7 @@ def aggregate(registry, records, *, graph_bundle_sha256, sample_id, metric, dire
     def exact(value):
         return None if value is None else [str(value.numerator), str(value.denominator)]
     return dict(schema=SCHEMA, cbsa=registry['cbsa'], registry_sha256=binding,
-                graph_bundle_sha256=graph_bundle_sha256, sample_id=sample_id,
+                graph_bundle_sha256=graph_bundle_sha256, scenario_sha256=scenario_sha256, sample_id=sample_id,
                 metric=metric, direction=direction, unit=METRICS[metric], status=status,
                 cost=float(best) if status == 'finite' else None,
                 exact_stored_cost=exact(best) if status == 'finite' else None,

@@ -59,8 +59,9 @@ fixtures, identity/accounting and false certification flags; **it does not repea
 the five full-source passes**. The separately required Colorado/Arizona exact-source
 context CI for the raw compiler remains intact and is not replaced by these checks.
 
-Current temporal-policy selection is unresolved; all conditional profiles remain
-unsupported here. Full lane/turn applicability, connector orientation and independent
+The user selected a fixed reference-time approximation; its contract is retained
+separately. The current strict compiler still leaves all conditional profiles
+unsupported here; this inventory was not reevaluated under that new scenario. Full lane/turn applicability, connector orientation and independent
 access evidence, different-approver approval, complete competitor/exterior routing,
 land/water masks and audited golden cases remain release requirements. Zero connectors
 are approved. The old graph, its frozen 2,508 costs and all older inspector views are
