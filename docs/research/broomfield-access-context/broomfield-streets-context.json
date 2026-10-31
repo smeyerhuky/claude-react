@@ -1,0 +1,7015 @@
+{
+  "features": [
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777197,
+        "LAST_UPDATE": 1688669439000,
+        "MAINTENANCE_RESPONSIBILITY": null,
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 3231,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215647000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071620962533,
+              39.9205010170162
+            ],
+            [
+              -105.071601171036,
+              39.9205535261247
+            ],
+            [
+              -105.071592677268,
+              39.9206352318411
+            ],
+            [
+              -105.071600495436,
+              39.9210290243312
+            ],
+            [
+              -105.071606101063,
+              39.9210780207394
+            ],
+            [
+              -105.071611879336,
+              39.9210959600977
+            ],
+            [
+              -105.071626911724,
+              39.9211170267675
+            ],
+            [
+              -105.07163543325,
+              39.9211235621786
+            ],
+            [
+              -105.071672005694,
+              39.9211412152732
+            ],
+            [
+              -105.071814958662,
+              39.9211586226514
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777201,
+        "LAST_UPDATE": 1688669439000,
+        "MAINTENANCE_RESPONSIBILITY": null,
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 3232,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215647000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071812940035,
+              39.9205187994916
+            ],
+            [
+              -105.07166596167,
+              39.9205160174721
+            ],
+            [
+              -105.071620962533,
+              39.9205010170162
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006275600000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Main St",
+        "FUNCTIONAL_CLASS": "Minor Arterial",
+        "GIS_ID": 777673,
+        "LAST_UPDATE": 1688669481000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": 1,
+        "OBJECTID": 3479,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215647000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 30,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071814958662,
+              39.9211586226514
+            ],
+            [
+              -105.071816522417,
+              39.92165405731
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006275600000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Main St",
+        "FUNCTIONAL_CLASS": "Minor Arterial",
+        "GIS_ID": 48404,
+        "LAST_UPDATE": 1688684983000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": 1,
+        "OBJECTID": 3484,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215647000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 30,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071819691182,
+              39.9224223647916
+            ],
+            [
+              -105.071819727204,
+              39.9224313562808
+            ],
+            [
+              -105.071822362972,
+              39.9230701593879
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006275600000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "W 3Rd Avenue Dr",
+        "FUNCTIONAL_CLASS": "Local",
+        "GIS_ID": 47372,
+        "LAST_UPDATE": 1688747697000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 3486,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215647000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 25,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071816522417,
+              39.92165405731
+            ],
+            [
+              -105.07181810743,
+              39.921654057799
+            ],
+            [
+              -105.072303916737,
+              39.921654415607
+            ],
+            [
+              -105.072467435843,
+              39.9216545354927
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777695,
+        "LAST_UPDATE": 1688766428000,
+        "MAINTENANCE_RESPONSIBILITY": null,
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 3504,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215647000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071531604368,
+              39.9228490550829
+            ],
+            [
+              -105.07143950311,
+              39.9228824549724
+            ],
+            [
+              -105.071398303736,
+              39.922908155292
+            ],
+            [
+              -105.071370504193,
+              39.9229418547525
+            ],
+            [
+              -105.071371104143,
+              39.9229912549481
+            ],
+            [
+              -105.071391904453,
+              39.9230200555193
+            ],
+            [
+              -105.071442203751,
+              39.9230472554935
+            ],
+            [
+              -105.071532103762,
+              39.9230781550095
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777697,
+        "LAST_UPDATE": 1688766428000,
+        "MAINTENANCE_RESPONSIBILITY": null,
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 3506,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215647000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071530704327,
+              39.9224267543575
+            ],
+            [
+              -105.071531604368,
+              39.9228490550829
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777702,
+        "LAST_UPDATE": 1688766428000,
+        "MAINTENANCE_RESPONSIBILITY": null,
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 3508,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215647000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071531604368,
+              39.9228490550829
+            ],
+            [
+              -105.071532103762,
+              39.9230781550095
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777703,
+        "LAST_UPDATE": 1688766428000,
+        "MAINTENANCE_RESPONSIBILITY": null,
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 3509,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215647000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071819691182,
+              39.9224223647916
+            ],
+            [
+              -105.071530704327,
+              39.9224267543575
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006275600000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "E 3Rd Ave",
+        "FUNCTIONAL_CLASS": "Local",
+        "GIS_ID": 49407,
+        "LAST_UPDATE": 1701878644000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 7343,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 25,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068473969022,
+              39.9216082810265
+            ],
+            [
+              -105.068796783545,
+              39.9215958540535
+            ],
+            [
+              -105.069732485559,
+              39.921641458048
+            ],
+            [
+              -105.070604318506,
+              39.9216495728479
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006275600000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Spader Way",
+        "FUNCTIONAL_CLASS": "Connector",
+        "GIS_ID": 776974,
+        "LAST_UPDATE": 1701878644000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 7347,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 25,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066692448317,
+              39.920543228962
+            ],
+            [
+              -105.066709384516,
+              39.9205937957856
+            ],
+            [
+              -105.066723520557,
+              39.9206224010149
+            ],
+            [
+              -105.066798929174,
+              39.920774990189
+            ],
+            [
+              -105.066936614035,
+              39.921006136411
+            ],
+            [
+              -105.066961194233,
+              39.9210658304765
+            ],
+            [
+              -105.066964684598,
+              39.9210771046401
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Descombes Dr",
+        "FUNCTIONAL_CLASS": "Local",
+        "GIS_ID": 777544,
+        "LAST_UPDATE": 1701878644000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 7350,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 25,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.070604318506,
+              39.9216495728479
+            ],
+            [
+              -105.070604288982,
+              39.9216468275055
+            ],
+            [
+              -105.070600615872,
+              39.9204378775749
+            ],
+            [
+              -105.070600444179,
+              39.9203816663166
+            ],
+            [
+              -105.070589337745,
+              39.9202653956485
+            ],
+            [
+              -105.070569091672,
+              39.9201746986585
+            ],
+            [
+              -105.07055700471,
+              39.9201429221929
+            ],
+            [
+              -105.070552162592,
+              39.9201301876212
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006275600000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Spader Way",
+        "FUNCTIONAL_CLASS": "Connector",
+        "GIS_ID": 777667,
+        "LAST_UPDATE": 1701878644000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 7354,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 25,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.067075647778,
+              39.9193966627727
+            ],
+            [
+              -105.066897189759,
+              39.9195381647721
+            ],
+            [
+              -105.066803706535,
+              39.9196414961591
+            ],
+            [
+              -105.066743735467,
+              39.9197354380035
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006275600000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Spader Way",
+        "FUNCTIONAL_CLASS": "Connector",
+        "GIS_ID": 49494,
+        "LAST_UPDATE": 1701878644000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 7355,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 25,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066743735467,
+              39.9197354380035
+            ],
+            [
+              -105.066708565114,
+              39.9198070104925
+            ],
+            [
+              -105.066676238994,
+              39.9198943220218
+            ],
+            [
+              -105.066638687329,
+              39.9200911512059
+            ],
+            [
+              -105.066632044824,
+              39.9202160415263
+            ],
+            [
+              -105.066637342876,
+              39.9203029731319
+            ],
+            [
+              -105.066650054911,
+              39.9203904252996
+            ],
+            [
+              -105.066669136257,
+              39.9204736259647
+            ],
+            [
+              -105.066692448317,
+              39.920543228962
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Descombes Dr",
+        "FUNCTIONAL_CLASS": "Local",
+        "GIS_ID": 777670,
+        "LAST_UPDATE": 1701878644000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 7356,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 25,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.069703091074,
+              39.9194486638851
+            ],
+            [
+              -105.069482974035,
+              39.9193499531371
+            ],
+            [
+              -105.069379598905,
+              39.919308666452
+            ],
+            [
+              -105.06926972068,
+              39.9192725107687
+            ],
+            [
+              -105.069084974241,
+              39.9192314913686
+            ],
+            [
+              -105.068968294895,
+              39.9192182364266
+            ],
+            [
+              -105.068628424811,
+              39.9191928250797
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006275600000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "E 3Rd Ave",
+        "FUNCTIONAL_CLASS": "Local",
+        "GIS_ID": 777672,
+        "LAST_UPDATE": 1701878644000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 7357,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 25,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.067010461572,
+              39.9216407574276
+            ],
+            [
+              -105.067763689128,
+              39.9216356222573
+            ],
+            [
+              -105.068473969022,
+              39.9216082810265
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006275600000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Community Park Rd",
+        "FUNCTIONAL_CLASS": "Local",
+        "GIS_ID": 48246,
+        "LAST_UPDATE": 1701878644000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 7358,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 25,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071388765016,
+              39.9183114830281
+            ],
+            [
+              -105.071246589348,
+              39.918270354421
+            ],
+            [
+              -105.071054434477,
+              39.9182060544674
+            ],
+            [
+              -105.070948239913,
+              39.9181833970847
+            ],
+            [
+              -105.070845839422,
+              39.9181677023885
+            ],
+            [
+              -105.070723474732,
+              39.9181637148087
+            ],
+            [
+              -105.070632058213,
+              39.9181397612193
+            ],
+            [
+              -105.070597300523,
+              39.9181204573231
+            ],
+            [
+              -105.070556306433,
+              39.9180917938462
+            ],
+            [
+              -105.070530765109,
+              39.918064071538
+            ],
+            [
+              -105.070521445751,
+              39.9180412652189
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777698,
+        "LAST_UPDATE": 1701878644000,
+        "MAINTENANCE_RESPONSIBILITY": null,
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 7359,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071115704392,
+              39.9224631556401
+            ],
+            [
+              -105.07090170431,
+              39.9224682551736
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777699,
+        "LAST_UPDATE": 1701878644000,
+        "MAINTENANCE_RESPONSIBILITY": null,
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 7360,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071116303542,
+              39.9224342554773
+            ],
+            [
+              -105.071117704915,
+              39.9223437545012
+            ],
+            [
+              -105.070904404125,
+              39.9223448549803
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777700,
+        "LAST_UPDATE": 1701878644000,
+        "MAINTENANCE_RESPONSIBILITY": null,
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 7361,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071115704392,
+              39.9224631556401
+            ],
+            [
+              -105.071112303891,
+              39.9226225546751
+            ],
+            [
+              -105.070907104659,
+              39.9226276545704
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777704,
+        "LAST_UPDATE": 1701878644000,
+        "MAINTENANCE_RESPONSIBILITY": null,
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 7362,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071530704327,
+              39.9224267543575
+            ],
+            [
+              -105.071116303542,
+              39.9224342554773
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777705,
+        "LAST_UPDATE": 1701878644000,
+        "MAINTENANCE_RESPONSIBILITY": null,
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 7363,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071116303542,
+              39.9224342554773
+            ],
+            [
+              -105.071115704392,
+              39.9224631556401
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006300800000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Community Park Rd",
+        "FUNCTIONAL_CLASS": "Local",
+        "GIS_ID": 48075,
+        "LAST_UPDATE": 1674248997000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 7593,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 25,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071805033917,
+              39.9183648766519
+            ],
+            [
+              -105.071575988721,
+              39.9183435850479
+            ],
+            [
+              -105.071388765016,
+              39.9183114830281
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006300800000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "E 3Rd Ave",
+        "FUNCTIONAL_CLASS": "Local",
+        "GIS_ID": 49832,
+        "LAST_UPDATE": 1701878644000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 7598,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 25,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.070604318506,
+              39.9216495728479
+            ],
+            [
+              -105.070753002193,
+              39.9216477421487
+            ],
+            [
+              -105.070802315797,
+              39.9216471360539
+            ],
+            [
+              -105.071816522417,
+              39.92165405731
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006275600000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "W 2Nd Ave",
+        "FUNCTIONAL_CLASS": "Local",
+        "GIS_ID": 48548,
+        "LAST_UPDATE": 1688666786000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 7679,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 25,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.072468020048,
+              39.9183625474242
+            ],
+            [
+              -105.071806621204,
+              39.9183648753485
+            ],
+            [
+              -105.071805033917,
+              39.9183648766519
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006275600000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Community Park Rd",
+        "FUNCTIONAL_CLASS": "Local",
+        "GIS_ID": 776965,
+        "LAST_UPDATE": 1701878644000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 7682,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 25,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.070521445751,
+              39.9180412652189
+            ],
+            [
+              -105.070517647735,
+              39.9180319714824
+            ],
+            [
+              -105.070514069949,
+              39.9180172331343
+            ],
+            [
+              -105.070511813728,
+              39.9179891356177
+            ],
+            [
+              -105.070512907041,
+              39.9178900762308
+            ],
+            [
+              -105.070506475485,
+              39.9177983112021
+            ],
+            [
+              -105.070481503921,
+              39.9176590244809
+            ],
+            [
+              -105.070440178152,
+              39.9175544740218
+            ],
+            [
+              -105.070299519682,
+              39.9173227840559
+            ],
+            [
+              -105.070202492418,
+              39.9172397227214
+            ],
+            [
+              -105.070086718255,
+              39.917159749058
+            ],
+            [
+              -105.069961158731,
+              39.9170946528821
+            ],
+            [
+              -105.069787186314,
+              39.9170244067362
+            ],
+            [
+              -105.069583925671,
+              39.9169888535405
+            ],
+            [
+              -105.069348209926,
+              39.9169780271253
+            ],
+            [
+              -105.069178901918,
+              39.9169867526835
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006300800000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Spader Way",
+        "FUNCTIONAL_CLASS": "Connector",
+        "GIS_ID": 48520,
+        "LAST_UPDATE": 1701878644000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 8092,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 25,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066613284271,
+              39.9222120804584
+            ],
+            [
+              -105.066895279497,
+              39.9219105289092
+            ],
+            [
+              -105.066937975281,
+              39.921842724238
+            ],
+            [
+              -105.066975842802,
+              39.9217528809911
+            ],
+            [
+              -105.067010461572,
+              39.9216407574276
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006275600000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Main St",
+        "FUNCTIONAL_CLASS": "Minor Arterial",
+        "GIS_ID": 48602,
+        "LAST_UPDATE": 1703716640000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": 1,
+        "OBJECTID": 8481,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 30,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071805033917,
+              39.9183648766519
+            ],
+            [
+              -105.071811220104,
+              39.919973668118
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Descombes Dr",
+        "FUNCTIONAL_CLASS": "Local",
+        "GIS_ID": 777671,
+        "LAST_UPDATE": 1703716710000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 8482,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 25,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.070552162592,
+              39.9201301876212
+            ],
+            [
+              -105.070533406996,
+              39.9200820517909
+            ],
+            [
+              -105.070485580926,
+              39.9199947564255
+            ],
+            [
+              -105.070432303326,
+              39.9199192916798
+            ],
+            [
+              -105.070370584487,
+              39.9198456012551
+            ],
+            [
+              -105.070307600897,
+              39.9197833148252
+            ],
+            [
+              -105.07022389851,
+              39.9197146544796
+            ],
+            [
+              -105.070126298121,
+              39.9196487117463
+            ],
+            [
+              -105.070020259314,
+              39.9195887538786
+            ],
+            [
+              -105.06970439286,
+              39.9194492379706
+            ],
+            [
+              -105.069703091074,
+              39.9194486638851
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Descombes Dr",
+        "FUNCTIONAL_CLASS": "Local",
+        "GIS_ID": 777669,
+        "LAST_UPDATE": 1703716735000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 8483,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215648000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 25,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068628424811,
+              39.9191928250797
+            ],
+            [
+              -105.068167107407,
+              39.9191557548969
+            ],
+            [
+              -105.067926412482,
+              39.9191481709469
+            ],
+            [
+              -105.067809033073,
+              39.9191570542016
+            ],
+            [
+              -105.067678983768,
+              39.9191749189621
+            ],
+            [
+              -105.067545564755,
+              39.9192027088827
+            ],
+            [
+              -105.067432358741,
+              39.9192361470011
+            ],
+            [
+              -105.067345410182,
+              39.9192668402521
+            ],
+            [
+              -105.067239531869,
+              39.9193112217958
+            ],
+            [
+              -105.067075647778,
+              39.9193966627727
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 776932,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9580,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066812817415,
+              39.917777914099
+            ],
+            [
+              -105.066811818193,
+              39.917813914512
+            ],
+            [
+              -105.066810818596,
+              39.9178483144378
+            ],
+            [
+              -105.066801717755,
+              39.9181727140371
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 776934,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9582,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066736162021,
+              39.9211339121506
+            ],
+            [
+              -105.066536161652,
+              39.9211836122221
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 776935,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9583,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.065759961971,
+              39.9203294127463
+            ],
+            [
+              -105.066007361647,
+              39.9203518118263
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 776936,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9584,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066536161652,
+              39.9211836122221
+            ],
+            [
+              -105.066340760936,
+              39.9212323124143
+            ],
+            [
+              -105.066044361779,
+              39.9207732121542
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 776937,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9585,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.065487761798,
+              39.9203048111035
+            ],
+            [
+              -105.065509143917,
+              39.9203730947923
+            ],
+            [
+              -105.065571961744,
+              39.9205737121883
+            ],
+            [
+              -105.065574715745,
+              39.9205780547856
+            ],
+            [
+              -105.06567296103,
+              39.9207330122392
+            ],
+            [
+              -105.065813761947,
+              39.9208760115773
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777147,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9600,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066536161652,
+              39.9211836122221
+            ],
+            [
+              -105.066462862383,
+              39.9210168119903
+            ],
+            [
+              -105.066214061206,
+              39.9206976118114
+            ],
+            [
+              -105.066007361647,
+              39.9203518118263
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777148,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9601,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066692448317,
+              39.920543228962
+            ],
+            [
+              -105.066408761432,
+              39.9206107119112
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777149,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9602,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066408761432,
+              39.9206107119112
+            ],
+            [
+              -105.066214061206,
+              39.9206976118114
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777150,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9603,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066408761432,
+              39.9206107119112
+            ],
+            [
+              -105.066652661364,
+              39.9209558117213
+            ],
+            [
+              -105.066736162021,
+              39.9211339121506
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777151,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9604,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066044361779,
+              39.9207732121542
+            ],
+            [
+              -105.065813761947,
+              39.9208760115773
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777152,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9605,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066044361779,
+              39.9207732121542
+            ],
+            [
+              -105.065871562107,
+              39.9205368112912
+            ],
+            [
+              -105.065759961971,
+              39.9203294127463
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777153,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9606,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066007361647,
+              39.9203518118263
+            ],
+            [
+              -105.066138361487,
+              39.9203637114668
+            ],
+            [
+              -105.066262961806,
+              39.9204080126718
+            ],
+            [
+              -105.066408761432,
+              39.9206107119112
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777154,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9607,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066214061206,
+              39.9206976118114
+            ],
+            [
+              -105.066044361779,
+              39.9207732121542
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777155,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9608,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066964684598,
+              39.9210771046401
+            ],
+            [
+              -105.066736162021,
+              39.9211339121506
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777156,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9609,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.065283162096,
+              39.9202862120688
+            ],
+            [
+              -105.065487761798,
+              39.9203048111035
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777157,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9610,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.065487761798,
+              39.9203048111035
+            ],
+            [
+              -105.065759961971,
+              39.9203294127463
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777158,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9611,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.065813761947,
+              39.9208760115773
+            ],
+            [
+              -105.065713969936,
+              39.9208966496713
+            ],
+            [
+              -105.065697590734,
+              39.9209000365588
+            ],
+            [
+              -105.065505962473,
+              39.9208335119114
+            ],
+            [
+              -105.065318261877,
+              39.9205150122273
+            ],
+            [
+              -105.065289082079,
+              39.9203247973785
+            ],
+            [
+              -105.065283162096,
+              39.9202862120688
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777159,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9612,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.065059713699,
+              39.9202683115564
+            ],
+            [
+              -105.06505761967,
+              39.9203814571614
+            ],
+            [
+              -105.065053370977,
+              39.9206110202632
+            ],
+            [
+              -105.06505322651,
+              39.9206188248988
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777160,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9613,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.065283162096,
+              39.9202862120688
+            ],
+            [
+              -105.065059713699,
+              39.9202683115564
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777161,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9614,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.065059713699,
+              39.9202683115564
+            ],
+            [
+              -105.064812923409,
+              39.9202518859654
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777162,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9615,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066743735467,
+              39.9197354380035
+            ],
+            [
+              -105.066493954076,
+              39.9196369233601
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777163,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9616,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066140054032,
+              39.9195287237845
+            ],
+            [
+              -105.06593045515,
+              39.9194519239594
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777164,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9617,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066498154497,
+              39.9191380236272
+            ],
+            [
+              -105.06631025465,
+              39.9192899243093
+            ],
+            [
+              -105.066140054032,
+              39.9195287237845
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777165,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9618,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066493954076,
+              39.9196369233601
+            ],
+            [
+              -105.06654545525,
+              39.9195511242198
+            ],
+            [
+              -105.066724455094,
+              39.9193918240165
+            ],
+            [
+              -105.066607954288,
+              39.9192900236705
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777166,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9619,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066493954076,
+              39.9196369233601
+            ],
+            [
+              -105.066320004439,
+              39.91959080366
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777167,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9620,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066607954288,
+              39.9192900236705
+            ],
+            [
+              -105.066498154497,
+              39.9191380236272
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777168,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9621,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066607954288,
+              39.9192900236705
+            ],
+            [
+              -105.066446077582,
+              39.919418797
+            ],
+            [
+              -105.066320004439,
+              39.91959080366
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777169,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9622,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066498154497,
+              39.9191380236272
+            ],
+            [
+              -105.06638255385,
+              39.9189782234723
+            ],
+            [
+              -105.066213055277,
+              39.9191085241302
+            ],
+            [
+              -105.066042455387,
+              39.919291823751
+            ],
+            [
+              -105.06593045515,
+              39.9194519239594
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777170,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9623,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.065987054424,
+              39.9201020235456
+            ],
+            [
+              -105.06577332818,
+              39.9200901730079
+            ],
+            [
+              -105.065772454707,
+              39.9200901237804
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777171,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9624,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066209555061,
+              39.9201210238086
+            ],
+            [
+              -105.065987054424,
+              39.9201020235456
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777172,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9625,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.065824154094,
+              39.9196711239057
+            ],
+            [
+              -105.065779755034,
+              39.9195990229265
+            ],
+            [
+              -105.065799554887,
+              39.9195142241121
+            ],
+            [
+              -105.065849555012,
+              39.9194661233481
+            ],
+            [
+              -105.06593045515,
+              39.9194519239594
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777173,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9626,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066493954076,
+              39.9196369233601
+            ],
+            [
+              -105.066463654916,
+              39.9196951238941
+            ],
+            [
+              -105.0664443543,
+              39.9197504233474
+            ],
+            [
+              -105.066418854011,
+              39.9198269236764
+            ],
+            [
+              -105.066408953983,
+              39.9198830240826
+            ],
+            [
+              -105.06639025425,
+              39.9201380243963
+            ],
+            [
+              -105.066209555061,
+              39.9201210238086
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777174,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9627,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066320004439,
+              39.91959080366
+            ],
+            [
+              -105.066140054032,
+              39.9195287237845
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777175,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9628,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.065772454707,
+              39.9200901237804
+            ],
+            [
+              -105.065775012553,
+              39.9200693946639
+            ],
+            [
+              -105.065824154094,
+              39.9196711239057
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777176,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9629,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.065759961971,
+              39.9203294127463
+            ],
+            [
+              -105.065763062019,
+              39.920216811326
+            ],
+            [
+              -105.065772454707,
+              39.9200901237804
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777177,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9630,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066280454368,
+              39.9196837233511
+            ],
+            [
+              -105.066037554367,
+              39.9196952240003
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777178,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9631,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066320004439,
+              39.91959080366
+            ],
+            [
+              -105.066280454368,
+              39.9196837233511
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777179,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9632,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066280454368,
+              39.9196837233511
+            ],
+            [
+              -105.066230054713,
+              39.919862123207
+            ],
+            [
+              -105.066209555061,
+              39.9201210238086
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777180,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9633,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066037554367,
+              39.9196952240003
+            ],
+            [
+              -105.065824154094,
+              39.9196711239057
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777181,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9634,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.065987054424,
+              39.9201020235456
+            ],
+            [
+              -105.066037554367,
+              39.9196952240003
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777190,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9637,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.067629038395,
+              39.9197779955494
+            ],
+            [
+              -105.06759063741,
+              39.9198459949376
+            ],
+            [
+              -105.067502038401,
+              39.9200026962371
+            ],
+            [
+              -105.067433738611,
+              39.9201674959567
+            ],
+            [
+              -105.067408437168,
+              39.9202627950671
+            ],
+            [
+              -105.067389337904,
+              39.9203345956503
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777192,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9638,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.070167500746,
+              39.9180428997661
+            ],
+            [
+              -105.070521445751,
+              39.9180412652189
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777193,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9639,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.070167500746,
+              39.9180428997661
+            ],
+            [
+              -105.070165399791,
+              39.9181244986614
+            ],
+            [
+              -105.070166299215,
+              39.9181887988356
+            ],
+            [
+              -105.070162499525,
+              39.9181951992039
+            ],
+            [
+              -105.070157000351,
+              39.9181987993595
+            ],
+            [
+              -105.070144399422,
+              39.9182022991521
+            ],
+            [
+              -105.069828700282,
+              39.9182016994536
+            ],
+            [
+              -105.069818600431,
+              39.9181980986874
+            ],
+            [
+              -105.069810199519,
+              39.9181906989487
+            ],
+            [
+              -105.069805999435,
+              39.918180999287
+            ],
+            [
+              -105.069803500013,
+              39.9181235994466
+            ],
+            [
+              -105.069804700656,
+              39.9180447982676
+            ],
+            [
+              -105.070167500746,
+              39.9180428997661
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777196,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9641,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.06983870012,
+              39.9201778983059
+            ],
+            [
+              -105.069805500443,
+              39.9202564988857
+            ],
+            [
+              -105.069745999235,
+              39.9203816989736
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777198,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9642,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.069308400254,
+              39.9212383997209
+            ],
+            [
+              -105.068769999974,
+              39.9211803986292
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777199,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9643,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.069402600216,
+              39.9207486991217
+            ],
+            [
+              -105.068951500426,
+              39.9207011991753
+            ],
+            [
+              -105.068932700208,
+              39.920828699268
+            ],
+            [
+              -105.068964900054,
+              39.9208554993433
+            ],
+            [
+              -105.069291099728,
+              39.9208921997347
+            ],
+            [
+              -105.069369700478,
+              39.9209010986392
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777200,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9644,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068318300903,
+              39.9213025985288
+            ],
+            [
+              -105.068331800183,
+              39.9212177991
+            ],
+            [
+              -105.068340999723,
+              39.9211595991612
+            ],
+            [
+              -105.068338699672,
+              39.9211392994153
+            ],
+            [
+              -105.068322600027,
+              39.9211278987729
+            ],
+            [
+              -105.06829279989,
+              39.9211198990281
+            ],
+            [
+              -105.067939599821,
+              39.9210851993778
+            ],
+            [
+              -105.067711600598,
+              39.9210627989277
+            ],
+            [
+              -105.067606799467,
+              39.9210524990607
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777203,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9645,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.069369700478,
+              39.9209010986392
+            ],
+            [
+              -105.069402600216,
+              39.9207486991217
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777204,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9646,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.069338399517,
+              39.9210753993363
+            ],
+            [
+              -105.069352599737,
+              39.9209960991824
+            ],
+            [
+              -105.069369700478,
+              39.9209010986392
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777205,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9647,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.069308400254,
+              39.9212383997209
+            ],
+            [
+              -105.069314400284,
+              39.921205699131
+            ],
+            [
+              -105.069329700695,
+              39.921122598678
+            ],
+            [
+              -105.069338399517,
+              39.9210753993363
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777206,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9648,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068794400348,
+              39.9210148987808
+            ],
+            [
+              -105.068787399785,
+              39.921062998804
+            ],
+            [
+              -105.068783399687,
+              39.9210908981955
+            ],
+            [
+              -105.068773499717,
+              39.9211568989238
+            ],
+            [
+              -105.068769999974,
+              39.9211803986292
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777207,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9649,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068769999974,
+              39.9211803986292
+            ],
+            [
+              -105.068760199244,
+              39.9212454990607
+            ],
+            [
+              -105.068744500737,
+              39.9213503985911
+            ],
+            [
+              -105.069283800549,
+              39.9214061992288
+            ],
+            [
+              -105.06928969982,
+              39.9213649986705
+            ],
+            [
+              -105.069308400254,
+              39.9212383997209
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777208,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9650,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.069338399517,
+              39.9210753993363
+            ],
+            [
+              -105.068794400348,
+              39.9210148987808
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777209,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9651,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068794400348,
+              39.9210148987808
+            ],
+            [
+              -105.068620899222,
+              39.9209965986545
+            ],
+            [
+              -105.06857299953,
+              39.9209913998088
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777210,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9652,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.06857299953,
+              39.9209913998088
+            ],
+            [
+              -105.068422899759,
+              39.9209768995952
+            ],
+            [
+              -105.068343200094,
+              39.9209691992166
+            ],
+            [
+              -105.068150600669,
+              39.9209499990833
+            ],
+            [
+              -105.068096199723,
+              39.9209445991295
+            ],
+            [
+              -105.067982500628,
+              39.9209327990472
+            ],
+            [
+              -105.067632399937,
+              39.920898899061
+            ],
+            [
+              -105.067626599993,
+              39.9209334989241
+            ],
+            [
+              -105.067606799467,
+              39.9210524990607
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777211,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9653,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068318300903,
+              39.9213025985288
+            ],
+            [
+              -105.068345999835,
+              39.9213052989731
+            ],
+            [
+              -105.068518999788,
+              39.9213224988191
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777212,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9654,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.067606799467,
+              39.9210524990607
+            ],
+            [
+              -105.067589200053,
+              39.921158799047
+            ],
+            [
+              -105.067583200531,
+              39.9211947986952
+            ],
+            [
+              -105.067592400539,
+              39.921214199379
+            ],
+            [
+              -105.067610699361,
+              39.9212264991402
+            ],
+            [
+              -105.067632599627,
+              39.9212343991515
+            ],
+            [
+              -105.067908399885,
+              39.9212617994796
+            ],
+            [
+              -105.068318300903,
+              39.9213025985288
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777213,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9655,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068473969022,
+              39.9216082810265
+            ],
+            [
+              -105.068471564268,
+              39.9215556784742
+            ],
+            [
+              -105.068518999788,
+              39.9213224988191
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777214,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9656,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068518999788,
+              39.9213224988191
+            ],
+            [
+              -105.06857299953,
+              39.9209913998088
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777215,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9657,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.06983870012,
+              39.9201778983059
+            ],
+            [
+              -105.069617199525,
+              39.9201397993463
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777216,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9658,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.070552162592,
+              39.9201301876212
+            ],
+            [
+              -105.070225244037,
+              39.9201942312997
+            ],
+            [
+              -105.070108709612,
+              39.9202016943009
+            ],
+            [
+              -105.069972799681,
+              39.9201983993252
+            ],
+            [
+              -105.06983870012,
+              39.9201778983059
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777217,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9659,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.06951068984,
+              39.9204335014281
+            ],
+            [
+              -105.069745999235,
+              39.9203816989736
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777218,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9660,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.069745999235,
+              39.9203816989736
+            ],
+            [
+              -105.069977999835,
+              39.9204010985143
+            ],
+            [
+              -105.070191000243,
+              39.9204500991477
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777219,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9661,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068628424811,
+              39.9191928250797
+            ],
+            [
+              -105.068630439118,
+              39.9192940892143
+            ],
+            [
+              -105.068684737199,
+              39.9194625948284
+            ],
+            [
+              -105.068695438025,
+              39.9194869961464
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777220,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9662,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068768337458,
+              39.9196539952137
+            ],
+            [
+              -105.068826238187,
+              39.9197864956713
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777221,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9663,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068695438025,
+              39.9194869961464
+            ],
+            [
+              -105.068768337458,
+              39.9196539952137
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777222,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9664,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.069321837958,
+              39.9198379957984
+            ],
+            [
+              -105.06935593751,
+              39.9198613956489
+            ],
+            [
+              -105.069385237769,
+              39.9198884954971
+            ],
+            [
+              -105.069423137408,
+              39.9199165948058
+            ],
+            [
+              -105.069456838277,
+              39.9199473957169
+            ],
+            [
+              -105.069485337159,
+              39.9199633954259
+            ],
+            [
+              -105.069529337597,
+              39.919967095021
+            ],
+            [
+              -105.069565937328,
+              39.9199614954735
+            ],
+            [
+              -105.069618436579,
+              39.9199390948489
+            ],
+            [
+              -105.069652537239,
+              39.919928195417
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777223,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9665,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.069652537239,
+              39.919928195417
+            ],
+            [
+              -105.069863738138,
+              39.9198603959566
+            ],
+            [
+              -105.069805437528,
+              39.9197746958911
+            ],
+            [
+              -105.069730637774,
+              39.9196975958667
+            ],
+            [
+              -105.069673338125,
+              39.9196544956145
+            ],
+            [
+              -105.06957443724,
+              39.9195926960234
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777224,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9666,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.06957443724,
+              39.9195926960234
+            ],
+            [
+              -105.0693193383,
+              39.9194850952273
+            ],
+            [
+              -105.069263237286,
+              39.9194728948307
+            ],
+            [
+              -105.06914413768,
+              39.9194556951016
+            ],
+            [
+              -105.06898373838,
+              39.9194485956802
+            ],
+            [
+              -105.068881237662,
+              39.9194503961266
+            ],
+            [
+              -105.068797036837,
+              39.9194653958274
+            ],
+            [
+              -105.068695438025,
+              39.9194869961464
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777225,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9667,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068695438025,
+              39.9194869961464
+            ],
+            [
+              -105.068554137386,
+              39.9195280956951
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777226,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9668,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.06764823824,
+              39.9203607955899
+            ],
+            [
+              -105.067681937654,
+              39.9202638959456
+            ],
+            [
+              -105.067732737581,
+              39.9201177948941
+            ],
+            [
+              -105.067820037728,
+              39.9199490952635
+            ],
+            [
+              -105.067861237783,
+              39.9198723950518
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777227,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9669,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.067861237783,
+              39.9198723950518
+            ],
+            [
+              -105.067906037966,
+              39.919843595898
+            ],
+            [
+              -105.068036636767,
+              39.9196591951031
+            ],
+            [
+              -105.068084237777,
+              39.9196067963004
+            ],
+            [
+              -105.068141437961,
+              39.9195581955613
+            ],
+            [
+              -105.068235537839,
+              39.9194925961509
+            ],
+            [
+              -105.068460138047,
+              39.9193773960541
+            ],
+            [
+              -105.068554137386,
+              39.9195280956951
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777228,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9670,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.06807143814,
+              39.9199411956804
+            ],
+            [
+              -105.068031336541,
+              39.9200058959965
+            ],
+            [
+              -105.068022737523,
+              39.920018895493
+            ],
+            [
+              -105.067942637484,
+              39.9201655955754
+            ],
+            [
+              -105.067902338199,
+              39.9202638953877
+            ],
+            [
+              -105.067893537494,
+              39.9202972951258
+            ],
+            [
+              -105.067888837688,
+              39.9203151962614
+            ],
+            [
+              -105.067870837234,
+              39.9203834947486
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777229,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9671,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068554137386,
+              39.9195280956951
+            ],
+            [
+              -105.068456437889,
+              39.9195739959973
+            ],
+            [
+              -105.068362536894,
+              39.9196347957777
+            ],
+            [
+              -105.06830633762,
+              39.9196769948341
+            ],
+            [
+              -105.068183037379,
+              39.9197901949492
+            ],
+            [
+              -105.068141537949,
+              39.9198454961056
+            ],
+            [
+              -105.06807143814,
+              39.9199411956804
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777230,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9672,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.069434137455,
+              39.9197312957877
+            ],
+            [
+              -105.069519537544,
+              39.9197826963701
+            ],
+            [
+              -105.069610438327,
+              39.9198740953491
+            ],
+            [
+              -105.069652537239,
+              39.919928195417
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777231,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9673,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068768337458,
+              39.9196539952137
+            ],
+            [
+              -105.06886653848,
+              39.9196310950566
+            ],
+            [
+              -105.068964237323,
+              39.9196226954762
+            ],
+            [
+              -105.069024837737,
+              39.919624795664
+            ],
+            [
+              -105.069083737383,
+              39.9196268957608
+            ],
+            [
+              -105.069110037521,
+              39.9196277948601
+            ],
+            [
+              -105.069152437744,
+              39.9196373951869
+            ],
+            [
+              -105.069224137582,
+              39.919653595305
+            ],
+            [
+              -105.069353537197,
+              39.9196918955632
+            ],
+            [
+              -105.069369937687,
+              39.9196998953692
+            ],
+            [
+              -105.069434137455,
+              39.9197312957877
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777232,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9674,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068096438286,
+              39.9204016959964
+            ],
+            [
+              -105.06811253707,
+              39.9203506957585
+            ],
+            [
+              -105.068146237422,
+              39.920244295749
+            ],
+            [
+              -105.068150137897,
+              39.9202319955556
+            ],
+            [
+              -105.068229137177,
+              39.9200796953601
+            ],
+            [
+              -105.06824393664,
+              39.9200511960988
+            ],
+            [
+              -105.068252637391,
+              39.9200344961267
+            ],
+            [
+              -105.068288737895,
+              39.9199990956448
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777233,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9675,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068288737895,
+              39.9199990956448
+            ],
+            [
+              -105.0683637375,
+              39.9199081959448
+            ],
+            [
+              -105.068410437696,
+              39.9198583956591
+            ],
+            [
+              -105.068442436945,
+              39.9198242956338
+            ],
+            [
+              -105.068469938121,
+              39.9197948955381
+            ],
+            [
+              -105.068507936805,
+              39.9197694959015
+            ],
+            [
+              -105.068548037482,
+              39.9197427954583
+            ],
+            [
+              -105.068582137377,
+              39.919719995827
+            ],
+            [
+              -105.068667638424,
+              39.9196843956926
+            ],
+            [
+              -105.068768337458,
+              39.9196539952137
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777234,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9676,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.067870837234,
+              39.9203834947486
+            ],
+            [
+              -105.068019538004,
+              39.9203986956623
+            ],
+            [
+              -105.068079338221,
+              39.9204023956301
+            ],
+            [
+              -105.068096438286,
+              39.9204016959964
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777235,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9677,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.06764823824,
+              39.9203607955899
+            ],
+            [
+              -105.067870837234,
+              39.9203834947486
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777236,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9678,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.067389337904,
+              39.9203345956503
+            ],
+            [
+              -105.067541737697,
+              39.9203498957396
+            ],
+            [
+              -105.067591537138,
+              39.9203549949702
+            ],
+            [
+              -105.06764823824,
+              39.9203607955899
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777237,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9679,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.067151738021,
+              39.9203106953324
+            ],
+            [
+              -105.067389337904,
+              39.9203345956503
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777238,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9680,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.067359937648,
+              39.9198147949243
+            ],
+            [
+              -105.067289137844,
+              39.9197920951111
+            ],
+            [
+              -105.067154237994,
+              39.9197489956197
+            ],
+            [
+              -105.066962537784,
+              39.9201964955134
+            ],
+            [
+              -105.066952837505,
+              39.9202432955259
+            ],
+            [
+              -105.066964237115,
+              39.920272895581
+            ],
+            [
+              -105.066972338295,
+              39.9202937953983
+            ],
+            [
+              -105.067151738021,
+              39.9203106953324
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777239,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9681,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.067441937622,
+              39.919679995685
+            ],
+            [
+              -105.067390037722,
+              39.9197651956808
+            ],
+            [
+              -105.067359937648,
+              39.9198147949243
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777240,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9682,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.067359937648,
+              39.9198147949243
+            ],
+            [
+              -105.067338537301,
+              39.9198500954304
+            ],
+            [
+              -105.067255538233,
+              39.9200213957776
+            ],
+            [
+              -105.067184537116,
+              39.9202191955483
+            ],
+            [
+              -105.067176936877,
+              39.9202404956805
+            ],
+            [
+              -105.067151738021,
+              39.9203106953324
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777241,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9683,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.067441937622,
+              39.919679995685
+            ],
+            [
+              -105.067351937785,
+              39.9196244953524
+            ],
+            [
+              -105.067075647778,
+              39.9193966627727
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777242,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9684,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.067629038395,
+              39.9197779955494
+            ],
+            [
+              -105.067482536982,
+              39.9197049957731
+            ],
+            [
+              -105.067441937622,
+              39.919679995685
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777243,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9685,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.067861237783,
+              39.9198723950518
+            ],
+            [
+              -105.067853537576,
+              39.9198697947531
+            ],
+            [
+              -105.067761637913,
+              39.9198328953955
+            ],
+            [
+              -105.067646037942,
+              39.9197864959195
+            ],
+            [
+              -105.067629038395,
+              39.9197779955494
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777244,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9686,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.06807143814,
+              39.9199411956804
+            ],
+            [
+              -105.068041537862,
+              39.9199333954403
+            ],
+            [
+              -105.067861237783,
+              39.9198723950518
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777245,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9687,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068473537622,
+              39.9200522962332
+            ],
+            [
+              -105.068288737895,
+              39.9199990956448
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777246,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9688,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068288737895,
+              39.9199990956448
+            ],
+            [
+              -105.068252638086,
+              39.9199886954114
+            ],
+            [
+              -105.06807143814,
+              39.9199411956804
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777247,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9689,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068096438286,
+              39.9204016959964
+            ],
+            [
+              -105.068128137441,
+              39.9204004953966
+            ],
+            [
+              -105.068172137733,
+              39.9203901955415
+            ],
+            [
+              -105.06821363681,
+              39.9203780957658
+            ],
+            [
+              -105.068250237991,
+              39.9203602953053
+            ],
+            [
+              -105.068286837824,
+              39.9203415950619
+            ],
+            [
+              -105.068317338117,
+              39.9203190954469
+            ],
+            [
+              -105.068336837927,
+              39.9202947955895
+            ],
+            [
+              -105.068357638075,
+              39.9202638960117
+            ],
+            [
+              -105.068389337587,
+              39.9202085958794
+            ],
+            [
+              -105.068429638414,
+              39.9201252956126
+            ],
+            [
+              -105.068473537622,
+              39.9200522962332
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777248,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9690,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068473537622,
+              39.9200522962332
+            ],
+            [
+              -105.068521138313,
+              39.9199867961485
+            ],
+            [
+              -105.068611837187,
+              39.9198955957405
+            ],
+            [
+              -105.068661538301,
+              39.9198528948439
+            ],
+            [
+              -105.068710337038,
+              39.9198248957363
+            ],
+            [
+              -105.068759137434,
+              39.9198032949525
+            ],
+            [
+              -105.068826238187,
+              39.9197864956713
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777249,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9691,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.068826238187,
+              39.9197864956713
+            ],
+            [
+              -105.068886137136,
+              39.9197742952171
+            ],
+            [
+              -105.068944637813,
+              39.919766795483
+            ],
+            [
+              -105.068988638013,
+              39.9197630963053
+            ],
+            [
+              -105.069027636824,
+              39.9197611959403
+            ],
+            [
+              -105.069060637881,
+              39.9197630955495
+            ],
+            [
+              -105.069078637803,
+              39.919765094834
+            ],
+            [
+              -105.069109437239,
+              39.9197686956569
+            ],
+            [
+              -105.069163137324,
+              39.9197789957447
+            ],
+            [
+              -105.069208337109,
+              39.9197929954739
+            ],
+            [
+              -105.069262037873,
+              39.9198107953717
+            ],
+            [
+              -105.069321837958,
+              39.9198379957984
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777250,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9692,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.06957443724,
+              39.9195926960234
+            ],
+            [
+              -105.069703091074,
+              39.9194486638851
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777251,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9693,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.069321837958,
+              39.9198379957984
+            ],
+            [
+              -105.069434137455,
+              39.9197312957877
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777252,
+        "LAST_UPDATE": 1722368556000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 9694,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.069434137455,
+              39.9197312957877
+            ],
+            [
+              -105.06957443724,
+              39.9195926960234
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777202,
+        "LAST_UPDATE": 1723234681000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 10156,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071620962533,
+              39.9205010170162
+            ],
+            [
+              -105.071539761766,
+              39.9204740173795
+            ],
+            [
+              -105.070828260876,
+              39.9202157174261
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006275600000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Spader Way",
+        "FUNCTIONAL_CLASS": "Connector",
+        "GIS_ID": 48222,
+        "LAST_UPDATE": 1747343803000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 10601,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 25,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.067138659622,
+              39.9177948874934
+            ],
+            [
+              -105.067143124083,
+              39.9178960356895
+            ],
+            [
+              -105.067130381735,
+              39.9179875099902
+            ],
+            [
+              -105.067109933433,
+              39.9180920807453
+            ],
+            [
+              -105.067076436026,
+              39.9181638028452
+            ],
+            [
+              -105.067009214302,
+              39.9182666323777
+            ],
+            [
+              -105.066814687098,
+              39.9184712430236
+            ],
+            [
+              -105.066724696404,
+              39.9185832951368
+            ],
+            [
+              -105.066696761285,
+              39.918637165214
+            ],
+            [
+              -105.066671312619,
+              39.9187146727426
+            ],
+            [
+              -105.066660562419,
+              39.9187964173723
+            ],
+            [
+              -105.066666215653,
+              39.9188769510822
+            ],
+            [
+              -105.066690962192,
+              39.9189672297983
+            ],
+            [
+              -105.066733650837,
+              39.9190494186697
+            ],
+            [
+              -105.066794318166,
+              39.919129559489
+            ],
+            [
+              -105.067075647778,
+              39.9193966627727
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006275600000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Main St",
+        "FUNCTIONAL_CLASS": "Minor Arterial",
+        "GIS_ID": 776964,
+        "LAST_UPDATE": 1752875356000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": 1,
+        "OBJECTID": 10974,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 30,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071812940035,
+              39.9205187994916
+            ],
+            [
+              -105.071814958662,
+              39.9211586226514
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Main St",
+        "FUNCTIONAL_CLASS": "Minor Arterial",
+        "GIS_ID": 48377,
+        "LAST_UPDATE": 1753133278000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": 1,
+        "OBJECTID": 10979,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215649000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 30,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071791278564,
+              39.9159881138956
+            ],
+            [
+              -105.07179129302,
+              39.9159887930523
+            ],
+            [
+              -105.071805033917,
+              39.9183648766519
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": null,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Unnamed Street",
+        "FUNCTIONAL_CLASS": "Parking Lot",
+        "GIS_ID": 777191,
+        "LAST_UPDATE": 1764800337000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": 1,
+        "OBJECTID": 13277,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215650000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "Planimetrics_2020_Parking",
+        "SPEED_LIMIT": 15,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071811220104,
+              39.919973668118
+            ],
+            [
+              -105.072417992595,
+              39.9199764764581
+            ],
+            [
+              -105.072447692417,
+              39.9199681762976
+            ],
+            [
+              -105.072466593366,
+              39.9199484759302
+            ],
+            [
+              -105.072474693076,
+              39.9199216760362
+            ],
+            [
+              -105.072468020048,
+              39.9183625474242
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006275600000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Main St",
+        "FUNCTIONAL_CLASS": "Minor Arterial",
+        "GIS_ID": 49799,
+        "LAST_UPDATE": 1780332364000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": 1,
+        "OBJECTID": 14754,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215650000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 30,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071811220104,
+              39.919973668118
+            ],
+            [
+              -105.071812940035,
+              39.9205187994916
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006275600000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Main St",
+        "FUNCTIONAL_CLASS": "Minor Arterial",
+        "GIS_ID": 777706,
+        "LAST_UPDATE": 1785873269000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": 1,
+        "OBJECTID": 14826,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215650000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 30,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.071816522417,
+              39.92165405731
+            ],
+            [
+              -105.071816523299,
+              39.9216542896853
+            ],
+            [
+              -105.071819691182,
+              39.9224223647916
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006300800000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Spader Way",
+        "FUNCTIONAL_CLASS": "Connector",
+        "GIS_ID": 47864,
+        "LAST_UPDATE": 1787949072000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 14831,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215650000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 25,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066382538901,
+              39.9239736503742
+            ],
+            [
+              -105.066334938549,
+              39.923894318747
+            ],
+            [
+              -105.066263000059,
+              39.9237917194842
+            ],
+            [
+              -105.066107548164,
+              39.9236000394538
+            ],
+            [
+              -105.06604950162,
+              39.9235161983391
+            ],
+            [
+              -105.066006419989,
+              39.9234325856145
+            ],
+            [
+              -105.065972446108,
+              39.9233346649772
+            ],
+            [
+              -105.065957835142,
+              39.9232624106544
+            ],
+            [
+              -105.06595118394,
+              39.9231812382025
+            ],
+            [
+              -105.065956169977,
+              39.9230919279499
+            ],
+            [
+              -105.065973220516,
+              39.9230067548934
+            ],
+            [
+              -105.065992469228,
+              39.9229467601551
+            ],
+            [
+              -105.066033937511,
+              39.9228560742531
+            ],
+            [
+              -105.066082949223,
+              39.9227764832518
+            ],
+            [
+              -105.066134118867,
+              39.922712383724
+            ],
+            [
+              -105.066613284271,
+              39.9222120804584
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "attributes": {
+        "ACCEPTANCE_DATE": 1006275600000,
+        "FROM_Z_LEVEL": 0,
+        "FULL_STREETNAME": "Spader Way",
+        "FUNCTIONAL_CLASS": "Connector",
+        "GIS_ID": 777668,
+        "LAST_UPDATE": 1787949138000,
+        "MAINTENANCE_RESPONSIBILITY": "CCOB",
+        "MANEUVER_CLASS": 0,
+        "MAX_HEIGHT": null,
+        "MAX_WEIGHT": null,
+        "NUMBER_OF_LANES": null,
+        "OBJECTID": 14832,
+        "ONE_WAY": null,
+        "PUBLISH_DATE": 1793215650000,
+        "RAMP": 0,
+        "ROAD_CLASS": 1,
+        "SOURCE": "PAVE_CTL",
+        "SPEED_LIMIT": 25,
+        "STREET_STATUS": "Constructed",
+        "SURFACE_TYPE": null,
+        "SURFACE_WIDTH": null,
+        "TO_Z_LEVEL": 0
+      },
+      "geometry": {
+        "paths": [
+          [
+            [
+              -105.066964684598,
+              39.9210771046401
+            ],
+            [
+              -105.06699036321,
+              39.921160042739
+            ],
+            [
+              -105.067004537683,
+              39.9212309506028
+            ],
+            [
+              -105.067017865333,
+              39.9213942637111
+            ],
+            [
+              -105.067017548769,
+              39.9215292157559
+            ],
+            [
+              -105.067010461572,
+              39.9216407574276
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "fields": [
+    {
+      "alias": "OBJECTID",
+      "defaultValue": null,
+      "domain": null,
+      "name": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeOID"
+    },
+    {
+      "alias": "GIS_ID",
+      "defaultValue": null,
+      "domain": null,
+      "name": "GIS_ID",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "alias": "FULL_STREETNAME",
+      "defaultValue": null,
+      "domain": null,
+      "length": 50,
+      "name": "FULL_STREETNAME",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "alias": "FUNCTIONAL_CLASS",
+      "defaultValue": null,
+      "domain": null,
+      "length": 50,
+      "name": "FUNCTIONAL_CLASS",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "alias": "FROM_Z_LEVEL",
+      "defaultValue": null,
+      "domain": null,
+      "name": "FROM_Z_LEVEL",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "alias": "TO_Z_LEVEL",
+      "defaultValue": null,
+      "domain": null,
+      "name": "TO_Z_LEVEL",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "alias": "ONE_WAY",
+      "defaultValue": null,
+      "domain": null,
+      "length": 10,
+      "name": "ONE_WAY",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "alias": "RAMP",
+      "defaultValue": null,
+      "domain": null,
+      "name": "RAMP",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "alias": "ROAD_CLASS",
+      "defaultValue": null,
+      "domain": null,
+      "name": "ROAD_CLASS",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "alias": "MANEUVER_CLASS",
+      "defaultValue": null,
+      "domain": null,
+      "name": "MANEUVER_CLASS",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "alias": "MAX_HEIGHT",
+      "defaultValue": null,
+      "domain": null,
+      "name": "MAX_HEIGHT",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "alias": "MAX_WEIGHT",
+      "defaultValue": null,
+      "domain": null,
+      "name": "MAX_WEIGHT",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "alias": "NUMBER_OF_LANES",
+      "defaultValue": null,
+      "domain": null,
+      "name": "NUMBER_OF_LANES",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "alias": "SURFACE_TYPE",
+      "defaultValue": null,
+      "domain": null,
+      "length": 50,
+      "name": "SURFACE_TYPE",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "alias": "SURFACE_WIDTH",
+      "defaultValue": null,
+      "domain": null,
+      "name": "SURFACE_WIDTH",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "alias": "SPEED_LIMIT",
+      "defaultValue": null,
+      "domain": null,
+      "name": "SPEED_LIMIT",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "alias": "MAINTENANCE_RESPONSIBILITY",
+      "defaultValue": null,
+      "domain": null,
+      "length": 20,
+      "name": "MAINTENANCE_RESPONSIBILITY",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "alias": "ACCEPTANCE_DATE",
+      "defaultValue": null,
+      "domain": null,
+      "length": 8,
+      "name": "ACCEPTANCE_DATE",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeDate"
+    },
+    {
+      "alias": "STREET_STATUS",
+      "defaultValue": null,
+      "domain": null,
+      "length": 20,
+      "name": "STREET_STATUS",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "alias": "SOURCE",
+      "defaultValue": null,
+      "domain": null,
+      "length": 50,
+      "name": "SOURCE",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "alias": "LAST_UPDATE",
+      "defaultValue": null,
+      "domain": null,
+      "length": 8,
+      "name": "LAST_UPDATE",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeDate"
+    },
+    {
+      "alias": "PUBLISH_DATE",
+      "defaultValue": null,
+      "domain": null,
+      "length": 8,
+      "name": "PUBLISH_DATE",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeDate"
+    }
+  ],
+  "geometryProperties": {
+    "shapeLengthFieldName": "Shape__Length",
+    "units": "esriFeet"
+  },
+  "geometryType": "esriGeometryPolyline",
+  "globalIdFieldName": "",
+  "objectIdFieldName": "OBJECTID",
+  "spatialReference": {
+    "latestWkid": 4326,
+    "wkid": 4326
+  },
+  "uniqueIdField": {
+    "isSystemMaintained": true,
+    "name": "OBJECTID"
+  }
+}

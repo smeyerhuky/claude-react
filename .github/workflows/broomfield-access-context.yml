@@ -1,0 +1,42 @@
+name: Broomfield unadopted access context
+on:
+  pull_request:
+    paths:
+      - 'scripts/broomfield_*context.py'
+      - 'scripts/test_broomfield_access_context.py'
+      - 'docs/research/broomfield-access-context/**'
+      - '.github/workflows/broomfield-access-context.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  retained-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s scripts -p test_broomfield_access_context.py -v
+      - run: python scripts/broomfield_access_context.py --check
+      - run: python scripts/las_vegas_ui_checkpoint.py --check-frozen
+      - run: python scripts/colorado_principal_city_source_screen.py
+  original-osm-context:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'osmium==4.3.2'
+      - name: Fetch exact original public Colorado input
+        run: |
+          mkdir -p local-data
+          curl -fLSs --retry 3 --connect-timeout 20 --max-time 600 --output local-data/colorado.osm.pbf https://download.geofabrik.de/north-america/us/colorado-261027.osm.pbf
+          python scripts/fetch_research_source.py --source colorado.osm.pbf --output local-data/colorado.osm.pbf
+      - name: Re-extract bounded raw context and compare every retained byte
+        run: |
+          python scripts/broomfield_raw_context.py --osm local-data/colorado.osm.pbf --output /tmp/broomfield-context.json
+          cmp /tmp/broomfield-context.json docs/research/broomfield-access-context/raw-osm-context.json

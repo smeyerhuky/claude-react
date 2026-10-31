@@ -1,0 +1,24 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "files": {
+    "broomfield-addresses-context.json": {
+      "kind": "normalized_public_agency_query",
+      "sha256": "666d52088a280f7dcbc1f05ac74b930100dea952f264c5b0d83435c6c3335abb",
+      "url": "https://services1.arcgis.com/vXSRPZbyyOmH9pek/arcgis/rest/services/Addresses/FeatureServer/0/query?where=ADDRESS_NUMBER%3D1+AND+UPPER%28STREET_NAME%29%3D%27DESCOMBES%27&outFields=OBJECTID%2CGIS_ID%2CADDRESS_TYPE%2CFEATURE_TYPE%2CPOSITIONED_METHOD%2CLIFECYCLE_STATUS%2CFULL_ADDRESS%2CSTREET_NAME%2CLONGITUDE%2CLATITUDE%2CLAST_UPDATE&outSR=4326&returnGeometry=true&resultRecordCount=1000&f=pjson"
+    },
+    "broomfield-streets-context.json": {
+      "kind": "normalized_public_agency_query",
+      "sha256": "50bc35924324672eea713732f3b7204d01c808fb341d6461fe64cac37db2e959",
+      "url": "https://services1.arcgis.com/vXSRPZbyyOmH9pek/arcgis/rest/services/Streets/FeatureServer/0/query?where=1%3D1&geometry=-105.072%2C39.918%2C-105.065%2C39.923&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID%2CGIS_ID%2CFULL_STREETNAME%2CFUNCTIONAL_CLASS%2CFROM_Z_LEVEL%2CTO_Z_LEVEL%2CONE_WAY%2CRAMP%2CROAD_CLASS%2CMANEUVER_CLASS%2CMAX_HEIGHT%2CMAX_WEIGHT%2CNUMBER_OF_LANES%2CSURFACE_TYPE%2CSURFACE_WIDTH%2CSPEED_LIMIT%2CMAINTENANCE_RESPONSIBILITY%2CACCEPTANCE_DATE%2CSTREET_STATUS%2CSOURCE%2CLAST_UPDATE%2CPUBLISH_DATE&outSR=4326&returnGeometry=true&resultRecordCount=1000&f=pjson"
+    },
+    "raw-osm-context.json": {
+      "kind": "raw_osm_subset",
+      "sha256": "543ac890666489e584c841247aafc2a7beccdef9cc4411e8bddb6517f67a606a"
+    }
+  },
+  "release_eligible": false,
+  "retention": "Agency JSON reserialized with sorted keys, not original HTTP bytes. Public OSM subset only, not source PBF archive. No app configuration or basemap raster retained.",
+  "schema": "broomfield-access-context-manifest-v1"
+}

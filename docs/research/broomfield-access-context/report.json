@@ -1,0 +1,36 @@
+{
+  "access_verified": false,
+  "agency_address_features": 5,
+  "agency_parking_lot_features": 110,
+  "agency_street_features": 136,
+  "anchor_adopted": false,
+  "building_door_incident_highways": [
+    "path",
+    "pedestrian"
+  ],
+  "connector_costs_included": false,
+  "decision": "needs_evidence",
+  "findings": {
+    "connector_cost": "unknown",
+    "direction_and_turns": "unknown",
+    "legal_motor_access": "unknown",
+    "physical_connection": "unknown",
+    "same_grade": "unknown"
+  },
+  "raw_highway_ways": 275,
+  "raw_restrictions": 1,
+  "raw_tagged_nodes": 235,
+  "reference_junction": {
+    "adopted": false,
+    "incident_ways": [
+      16984817,
+      132723727,
+      132723728,
+      332347408
+    ],
+    "node": 3428618002
+  },
+  "release_eligible": false,
+  "schema": "broomfield-access-context-audit-v1",
+  "warning": "Source/model consistency only; no real-world access certification or chosen anchor."
+}
