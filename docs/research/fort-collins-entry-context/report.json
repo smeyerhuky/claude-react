@@ -1,0 +1,153 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "cbsa": "22660",
+  "conditional_maneuver_evaluated": false,
+  "connector_costs_included": false,
+  "findings": {
+    "connector_cost": {
+      "reason": "No exact physical path/anchor is adopted; raw connection geometry and address displacement cannot be called reviewed connector cost.",
+      "status": "unknown"
+    },
+    "direction_and_turns": {
+      "reason": "Old null city fields are not current directions; raw one-way streets and conditional maneuver require separate evaluation and independent review.",
+      "status": "unknown"
+    },
+    "legal_motor_access": {
+      "reason": "Public hourly/gateless terms are useful, but current posted vehicle/path restrictions and the complete applicable entry conditions remain unresolved.",
+      "status": "unknown"
+    },
+    "physical_connection": {
+      "reason": "The publications/photo do not independently match the full precise path to the raw entrance nodes.",
+      "status": "unknown"
+    },
+    "same_grade": {
+      "reason": "City centerlines and an undated exterior photograph do not establish same-grade connectivity along the entire entry/exit.",
+      "status": "unknown"
+    }
+  },
+  "geographic_coverage_certified": false,
+  "implementation_sha256": {
+    "fort_collins_entry_context.py": "85b334145c5ed20f9d0f3c0f2220b2f31c4fb347f71050a4956bdabe1f3f281e",
+    "fort_collins_raw_context.py": "4dfd2715bf2d732673bb9e89d4cabe1c13c0a0e3845eb4816df6697f7b8a1d01",
+    "road_reference_conditionals.py": "5004e35f9f7810e9ecfe10de04494c8d1b539796d05910a2f488355957147a4e",
+    "road_reference_scenario.py": "001e0ed6649f172a378df4e7ca0d6f7ebcb49f6c5d56d286215074328af40488",
+    "road_reference_way_permissions.py": "b40f96e439c531071e980bdbd7dc6e6c0bb08ec7e66a8713068c275572a014c7",
+    "stream_osm_roads.py": "25e8bbe7ce8ccd54e7a0237165b4e8370f69a1828af6e4ec0e063559a618ec3c"
+  },
+  "mapped_footprint_way": 54882910,
+  "mapped_street_to_footprint_connections": [
+    {
+      "independently_matched_to_physical_entry": false,
+      "mapped_entrance_node": 6543050321,
+      "road_node": 6543050320,
+      "way_id": 696728762
+    },
+    {
+      "independently_matched_to_physical_entry": false,
+      "mapped_entrance_node": 6543050323,
+      "road_node": 6543050322,
+      "way_id": 696728763
+    }
+  ],
+  "municipal_mason_rows": [
+    {
+      "objectid": 1175,
+      "raw_oneway": null,
+      "raw_revision_date_utc": "2013-10-30"
+    },
+    {
+      "objectid": 1179,
+      "raw_oneway": null,
+      "raw_revision_date_utc": "2013-10-30"
+    },
+    {
+      "objectid": 7303,
+      "raw_oneway": null,
+      "raw_revision_date_utc": "2013-10-30"
+    }
+  ],
+  "municipal_null_oneway_interpreted_as_two_way": false,
+  "node_control_counterexample": {
+    "legacy_way_predicate_accepts": true,
+    "node_id": 7614361913,
+    "previously_sampled_route_crossing_claimed": false,
+    "raw_control": {
+      "barrier": "bollard",
+      "bollard": "removable"
+    },
+    "real_world_closure_claimed": false,
+    "reference_way_projection": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": null,
+      "eligible_directions": [],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "input_sha256": "5d144332b7fdbda6c1dfbf1d32b12e2b1347743cc71735d619aa730d42514c46",
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "reason": "Physical barrier operation is not evaluated",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-way-permissions-v1",
+      "scope": "Entire declared raw-way traversal with the supplied complete vertex-node records. Not partial-way reachability, lane/turn routing, real-world access, source/geographic coverage or an adopted anchor.",
+      "speed_profile_evaluated": false,
+      "status": "unsupported",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "way_id": 815164359
+  },
+  "principal_city_id": "0827425",
+  "raw_conditional_maneuver": {
+    "id": 20193102,
+    "members": [
+      {
+        "ref": 696728766,
+        "role": "from",
+        "type": "w"
+      },
+      {
+        "ref": 6543050322,
+        "role": "via",
+        "type": "n"
+      },
+      {
+        "ref": 1475543490,
+        "role": "to",
+        "type": "w"
+      }
+    ],
+    "tags": {
+      "restriction:conditional": "no_u_turn @ (Th-Sa 19:00-00:00)",
+      "type": "restriction"
+    },
+    "timestamp": "2026-02-09 11:58:26+00:00",
+    "version": 1
+  },
+  "raw_context_counts": {
+    "nearby_tagged_nodes": 23,
+    "nodes": 187,
+    "restrictions": 1,
+    "ways": 40
+  },
+  "release_eligible": false,
+  "required_anchor_set_accounted": false,
+  "required_principal_cities": [
+    {
+      "name": "Fort Collins",
+      "principal_city_id": "0827425"
+    },
+    {
+      "name": "Loveland",
+      "principal_city_id": "0846465"
+    }
+  ],
+  "retained_city_street_features": 12,
+  "schema": "fort-collins-entry-context-report-v1",
+  "source_manifest_sha256": "b4ef0fbe2becd9a8ba3f49edabebb6d137cd243c5cd721f8d353cafbdcccd8b6",
+  "warning": "Candidate-specific evidence and raw-tag regressions, not independently approved access or real-world closure. The old costs/public map are unchanged; zero connectors approved; no Loveland anchor or complete metro anchor set adopted."
+}

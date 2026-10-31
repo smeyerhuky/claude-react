@@ -1,0 +1,18 @@
+{
+  "capture": {
+    "bytes": 25900,
+    "final_url": "https://fcgov.maps.arcgis.com/sharing/rest/portals/self?f=pjson",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-10-31T19:05:36.203087+00:00",
+    "sha256": "3cc42b3d09254235803f61f99d106f1dcd02f4ce241d543806c9bba14aed1579",
+    "url": "https://fcgov.maps.arcgis.com/sharing/rest/portals/self?f=pjson"
+  },
+  "identity": {
+    "customBaseUrl": "maps.arcgis.com",
+    "id": "dLpFH5mwVvxSN4OE",
+    "name": "City of Fort Collins",
+    "urlKey": "fcgov"
+  },
+  "schema": "fort-collins-publisher-projection-v1",
+  "scope": "Selected public organization identity only; full portal configuration omitted."
+}

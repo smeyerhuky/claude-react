@@ -1,0 +1,20 @@
+{
+  "access_verified": false,
+  "clearance_or_direction_decoded": false,
+  "geometry_or_grade_verified": false,
+  "image_bytes": 146185,
+  "image_capture_date_known": false,
+  "image_sha256": "06ead2b47b308debb5494f4fcd134217ba597e6008374700dc967a0fe774ddad",
+  "image_url": "https://www.fortcollins.gov/files/sharedassets/city/v/2/04-images-amp-icons/25-28201-new-website-image-suite-size-480x316/civic-center-parking-480x316.jpg",
+  "observations": [
+    "The city-published exterior image shows two street-facing ground-level vehicle-sized openings below the garage name, with roadway in the foreground.",
+    "The observation is AI-authored from an undated 480-by-316 image. Capture date, exact location/orientation, clearance text, current gate operation, grade of the entire path and legal entry/exit directions are not verified."
+  ],
+  "publication_response_sha256": "44833656120179219cf26b7e20757a1d1a19088de9e7f98df591bec62d6be93b",
+  "publication_url": "https://www.fortcollins.gov/Business/Bids-and-Contracts/City-Facility-Design-Standards",
+  "published_caption": "Civic Center Parking Structure",
+  "release_eligible": false,
+  "retention": "Source photo URL, byte identity, caption and disclosed AI observations only; neither complete source page/app state nor the original photograph is republished. Fetching the same image bytes is necessary for independent visual inspection.",
+  "retrieved_at_utc": "2026-10-31T19:05:51.673457+00:00",
+  "schema": "fort-collins-agency-photo-observation-v1"
+}
