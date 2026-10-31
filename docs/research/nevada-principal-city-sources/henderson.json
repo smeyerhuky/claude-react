@@ -1,0 +1,39 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "29820",
+  "city_name": "Henderson",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.cityofhenderson.com/government/departments/parks-and-recreation/facilities/other-venues/water-street-plaza/-toggle-all-1287",
+    "http_status": 403,
+    "response_bytes": 574,
+    "response_sha256": "de96483a0d0b39a2b16d06ebc6c76c0121e99e85af94b3c85ac848e8354dee0d",
+    "url": "https://www.cityofhenderson.com/government/departments/parks-and-recreation/facilities/other-venues/water-street-plaza/-toggle-all-1287"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No independently verified ordinary-car entry, full physical/legal/grade/direction findings, connector cost or approved anchor.",
+    "Primary publication inspected through the renderer, which may use cached content. A failed direct HTTP attempt is recorded separately; no successful original HTTP identity is invented."
+  ],
+  "observations": [
+    "The city describes free public parking at the Water Street Parking Garage, 235 South Water Street, across from the plaza at 240 South Water Street.",
+    "It names Water Street and Texas Avenue for vehicle entry and explicitly asks visitors to check each event webpage for applicable road closures. Neither named street is assumed unconditionally available at the fixed reference instant.",
+    "The selected published event-view URL was inspected through the renderer after the base page was unavailable. No exact entry coordinate, event-closure evaluation, clearance, maneuver or connector cost is adopted."
+  ],
+  "principal_city_id": "3231900",
+  "publication_status": "retained_publication_observation",
+  "published_scope": {
+    "event_closure_check_required": true,
+    "texas_avenue_guaranteed_unrestricted": false
+  },
+  "release_eligible": false,
+  "retention": "Short selected literal quote and factual observations only. Original response hashes identify bytes not retained here. Rendered content is not an original HTTP capture. HTML, app/runtime state, search snippets, error bodies and private archives omitted.",
+  "retrieval_method": "web_rendered",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "Please check the event's webpage for information on any applicable road closures.",
+  "source_http_status": null,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.cityofhenderson.com/government/departments/parks-and-recreation/facilities/other-venues/water-street-plaza/-toggle-all-1287"
+}

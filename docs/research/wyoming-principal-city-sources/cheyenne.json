@@ -1,0 +1,38 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "16940",
+  "city_name": "Cheyenne",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.cheyennepd.org/Services/Parking/Parking-Frequently-Asked-Questions",
+    "http_status": 200,
+    "response_bytes": 53105,
+    "response_sha256": "c16102a9664b17cfa13bd1a3b24d069fb9a1c308c964ba29aec221f8c7246239",
+    "url": "https://www.cheyennepd.org/Services/Parking/Parking-Frequently-Asked-Questions"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No independently verified ordinary-car entry, full physical/legal/grade/direction findings, connector cost or approved anchor."
+  ],
+  "observations": [
+    "The police FAQ names Cox Parking Structure, Jack R. Spiker Parking Structure and the East Lot at East 17th Street and Warren Avenue, with two free hours followed by a flat charge or monthly permit option.",
+    "It separately discusses on-street time limits, specifically designated back-in angle spaces and overnight street parking after posted enforcement hours. The street overnight answer is not generalized to every garage or reserved space.",
+    "No exact entry, vehicle clearance, local maneuver or connector cost is verified. The separate Census-origin gap and frozen Cheyenne graph experiment remain unchanged."
+  ],
+  "principal_city_id": "5613900",
+  "publication_status": "retained_publication_observation",
+  "published_scope": {
+    "origin_replaced": false,
+    "overnight_street_answer_generalized_to_garages": false
+  },
+  "release_eligible": false,
+  "retention": "Short selected literal quote and factual observations only. Original response hashes identify bytes not retained here. Rendered content is not an original HTTP capture. HTML, app/runtime state, search snippets, error bodies and private archives omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "Anyone may park in City of Cheyenne parking structures",
+  "source_http_status": 200,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.cheyennepd.org/Services/Parking/Parking-Frequently-Asked-Questions"
+}

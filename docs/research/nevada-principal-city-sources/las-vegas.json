@@ -1,0 +1,35 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "29820",
+  "city_name": "Las Vegas",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.lasvegasnevada.gov/Residents/Parks-Facilities/City-Hall",
+    "http_status": 403,
+    "response_bytes": 17,
+    "response_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+    "url": "https://www.lasvegasnevada.gov/Residents/Parks-Facilities/City-Hall"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No independently verified ordinary-car entry, full physical/legal/grade/direction findings, connector cost or approved anchor.",
+    "Primary publication inspected through the renderer, which may use cached content. A failed direct HTTP attempt is recorded separately; no successful original HTTP identity is invented."
+  ],
+  "observations": [
+    "The city identifies its City Hall parking garage at 500 South Main Street. Visitors take an entry ticket, and the first two hours are free with City Hall validation; payment machines and the returned ticket support exit.",
+    "The Customer Care Center service-payment hours are not automatically garage vehicle-access hours. Likewise, restrictions on weekend building rentals do not establish weekend garage closure.",
+    "This current publication context leaves the exact driveway, one-way approach, clearance, grade and full connector cost unresolved. Earlier retained Las Vegas negative evidence and graph costs remain unchanged."
+  ],
+  "principal_city_id": "3240000",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short selected literal quote and factual observations only. Original response hashes identify bytes not retained here. Rendered content is not an original HTTP capture. HTML, app/runtime state, search snippets, error bodies and private archives omitted.",
+  "retrieval_method": "web_rendered",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "the first two hours of parking are free with validation.",
+  "source_http_status": null,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.lasvegasnevada.gov/Residents/Parks-Facilities/City-Hall"
+}

@@ -15,7 +15,7 @@ class SourceWorkTests(unittest.TestCase):
     def test_complete_official_membership_and_explicit_gaps(self):
         report = self.report
         self.assertEqual((report['membership_count'], report['metro_count'], len(report['states'])), (698, 367, 52))
-        self.assertEqual(report['counts'], dict(context_retained=44, selected_publication_unavailable=6, not_recorded_here=648))
+        self.assertEqual(report['counts'], dict(context_retained=49, selected_publication_unavailable=7, not_recorded_here=642))
         self.assertEqual(sum(s['memberships'] for s in report['states']), 698)
         self.assertTrue(all(not r['anchor_adopted'] and r['access_review_status'] == 'unresolved' for r in report['cities']))
         dc = next(s for s in report['states'] if s['state'] == 'DC')
@@ -26,6 +26,13 @@ class SourceWorkTests(unittest.TestCase):
         self.assertEqual(report['counts']['not_recorded_here'], 698)
         self.assertEqual(report['approved_anchors'], 0)
         self.assertFalse(report['release_eligible'])
+
+    def test_capture_dates_preserved_without_inventing_review_dates(self):
+        rows = {r['principal_city_id']: r for r in self.report['cities']}
+        self.assertEqual(rows['3260600']['recorded_at_utc'], '2026-10-31')
+        self.assertTrue(rows['3502000']['recorded_at_utc'].startswith('2026-10-30T'))
+        self.assertIsNone(rows['0820000']['recorded_at_utc'])  # The retained Denver proposal has no capture timestamp.
+        self.assertIsNone(rows['0101852']['recorded_at_utc'])  # No source record registered here.
 
     def test_foreign_duplicate_or_cross_city_assignment_rejected(self):
         base = next(r for r in self.report['cities'] if r['source_path'])

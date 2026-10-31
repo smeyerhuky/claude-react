@@ -1,0 +1,18 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "geographic_coverage_certified": false,
+  "principal_inventory_sha256": "22f509906e005e1c6215c5f857fa0865278f4289753fad887ee05b730f8cd9cd",
+  "records": [
+    {
+      "cbsa": "16940",
+      "city_name": "Cheyenne",
+      "principal_city_id": "5613900",
+      "source_path": "docs/research/wyoming-principal-city-sources/cheyenne.json",
+      "source_sha256": "39418f36cef14873916939cc022ad28250bf244c611a7ddb313a3e90112aabfb"
+    }
+  ],
+  "release_eligible": false,
+  "schema": "principal-city-source-batch-v1",
+  "state": "WY"
+}

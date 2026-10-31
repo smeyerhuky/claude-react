@@ -42,6 +42,7 @@ for(const state of data.states){const option=document.createElement('option');op
 function inspect(row){byId('detail-title').textContent=row.city_name+' · '+row.state+' · CBSA '+row.cbsa;const panel=byId('detail');panel.replaceChildren();text('p','City FIPS '+row.principal_city_id+' · '+labels[row.status]+' · Access review unresolved',panel);text('p','No adopted anchor. No verified entry or approved connector.',panel);
  if(!row.source_path){text('p','No city source record is registered in this inventory. This does not mean no evidence exists. An existing Census road lead is not a reviewed urban anchor.',panel);return;}
  text('p','Source kind: '+row.source_kind+' · Retrieval: '+row.retrieval_method,panel);
+ text('p','Source record capture (UTC): '+(row.recorded_at_utc||'Not stated on this record; inspect its provenance.'),panel);
  if(row.url){text('p','Primary publication URL (copy to inspect):',panel);text('pre',row.url,panel);}
  const list=document.createElement('ul');for(const item of row.observations)text('li',item,list);panel.append(list);
  text('p','Retained record and SHA-256:',panel);text('pre',row.source_path+'\n'+row.source_sha256,panel);
