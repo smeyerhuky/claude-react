@@ -1,0 +1,35 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "39340",
+  "city_name": "Orem",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://orem.gov/parking-at-city-hall/",
+    "http_status": 403,
+    "response_bytes": 17,
+    "response_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+    "url": "https://orem.gov/parking-at-city-hall/"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No exact ordinary-car entry or full connection is verified. No independent physical, legal, grade, direction/maneuver or connector-cost certification.",
+    "Primary publication inspected through web renderer, which may use an earlier cached crawl. The direct HTTP attempt failed; source_http_status remains null and no original HTTP success or raw hash is invented for the rendered content."
+  ],
+  "observations": [
+    "The city advises visitors to park near the police station because of ongoing construction, then follow the Center Street sidewalk to the south City Hall entrance.",
+    "The page gives City Hall hours of 7:30 a.m. to 5:30 p.m. Monday through Thursday and 8 a.m. to 5 p.m. Friday. These are building hours, not automatically parking hours.",
+    "The linked grand-opening image was identified but not visually verified in this retained review. The sidewalk and south building door are pedestrian instructions, not a drivable connector."
+  ],
+  "principal_city_id": "4957300",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Direct HTTP attempt hash identifies bytes not retained here; a successful renderer is not an original HTTP response capture. Full HTML, app state, source archives and error bodies omitted.",
+  "retrieval_method": "web_rendered",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "Due to ongoing construction, visitors to City Hall are encouraged to park as close to the Police Station as possible.",
+  "source_http_status": null,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://orem.gov/parking-at-city-hall/"
+}

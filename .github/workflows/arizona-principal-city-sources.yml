@@ -6,6 +6,7 @@ on:
       - 'docs/research/principal-city-inventory/report.json'
       - 'docs/research/tucson-parking-publication/**'
       - 'scripts/arizona_principal_city_source_screen.py'
+      - 'scripts/principal_city_source_screen.py'
       - 'scripts/test_arizona_principal_city_source_screen.py'
       - '.github/workflows/arizona-principal-city-sources.yml'
   workflow_dispatch:

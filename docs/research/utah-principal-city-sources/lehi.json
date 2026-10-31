@@ -1,0 +1,33 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "39340",
+  "city_name": "Lehi",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.lehi-ut.gov/government/contact-us/",
+    "http_status": 200,
+    "response_bytes": 67371,
+    "response_sha256": "73d55e5ffdcff8d55b7a9756676554e15f3b1f44e639d6c2747a529c222430a9",
+    "url": "https://www.lehi-ut.gov/government/contact-us/"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No exact ordinary-car entry or full connection is verified. No independent physical, legal, grade, direction/maneuver or connector-cost certification."
+  ],
+  "observations": [
+    "The current municipal contact directory lists Administration at 153 North 100 East, separately from other department addresses.",
+    "This is a department-contact location only. It does not establish a current City Hall vehicle entry, parking permission or path, and no civic-center anchor is selected."
+  ],
+  "principal_city_id": "4944320",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Direct HTTP attempt hash identifies bytes not retained here; a successful renderer is not an original HTTP response capture. Full HTML, app state, source archives and error bodies omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "153 North 100 East",
+  "source_http_status": 200,
+  "source_kind": "municipal_facility_location",
+  "url": "https://www.lehi-ut.gov/government/contact-us/"
+}

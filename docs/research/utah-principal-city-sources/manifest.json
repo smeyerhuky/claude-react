@@ -1,0 +1,67 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "geographic_coverage_certified": false,
+  "principal_inventory_sha256": "22f509906e005e1c6215c5f857fa0865278f4289753fad887ee05b730f8cd9cd",
+  "records": [
+    {
+      "cbsa": "39340",
+      "city_name": "Lehi",
+      "principal_city_id": "4944320",
+      "source_path": "docs/research/utah-principal-city-sources/lehi.json",
+      "source_sha256": "7c7416143f15db49c6e03af92a266c0dd6155ebfd6671b09498409d85b9a5a30"
+    },
+    {
+      "cbsa": "30860",
+      "city_name": "Logan",
+      "principal_city_id": "4945860",
+      "source_path": "docs/research/utah-principal-city-sources/logan.json",
+      "source_sha256": "b4f4a2dc3f4372e671f1ec8500d716f51ce321b0fb8ee0fc3b8baeec88d07e0e"
+    },
+    {
+      "cbsa": "41620",
+      "city_name": "Murray",
+      "principal_city_id": "4953230",
+      "source_path": "docs/research/utah-principal-city-sources/murray.json",
+      "source_sha256": "d5178b41ab84b9429cc07ba2504caf0c954d02ce0405097074419b0dd89cb487"
+    },
+    {
+      "cbsa": "36260",
+      "city_name": "Ogden",
+      "principal_city_id": "4955980",
+      "source_path": "docs/research/utah-principal-city-sources/ogden.json",
+      "source_sha256": "cdda01eaeaee752eb72251ae277bf389761746a3ab92b9bfa58f08d97d81835b"
+    },
+    {
+      "cbsa": "39340",
+      "city_name": "Orem",
+      "principal_city_id": "4957300",
+      "source_path": "docs/research/utah-principal-city-sources/orem.json",
+      "source_sha256": "fc4ac98fd50f445c8253290cdc8a582e98380e027c8e70a4b22205b2a66e575c"
+    },
+    {
+      "cbsa": "39340",
+      "city_name": "Provo",
+      "principal_city_id": "4962470",
+      "source_path": "docs/research/utah-principal-city-sources/provo.json",
+      "source_sha256": "805e1b66101e953a860ba1eb34242fb4f8eba0571bb354b2e5033bfe35a338bb"
+    },
+    {
+      "cbsa": "41100",
+      "city_name": "St. George",
+      "principal_city_id": "4965330",
+      "source_path": "docs/research/utah-principal-city-sources/st-george.json",
+      "source_sha256": "67f6c2593243901ddc8490f46aeac37bc37e1f746fe5bae47f479122f6bb1633"
+    },
+    {
+      "cbsa": "41620",
+      "city_name": "Salt Lake City",
+      "principal_city_id": "4967000",
+      "source_path": "docs/research/utah-principal-city-sources/salt-lake-city.json",
+      "source_sha256": "4a4c7ad44b443feee2a07b2d3314c6ffe33481240fb8e31a63eb4ed87fd215db"
+    }
+  ],
+  "release_eligible": false,
+  "schema": "principal-city-source-batch-v1",
+  "state": "UT"
+}
