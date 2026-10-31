@@ -1,0 +1,331 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "complete_node_parent_report_sha256": "cc068103f07bba61e4df727ca644cac7ed5ce3aa62254ced52dd7d8078e5cb1c",
+  "denied_directed_segments": 3,
+  "eligible_directed_segments": 3,
+  "geographic_coverage_certified": false,
+  "implementation_sha256": {
+    "reference_segment_permission_checkpoint.py": "be42d673a2d76097ccc26706589536d27a9000da74ca6bd70003c4729b94f148",
+    "road_reference_segment_permissions.py": "32052a563cf142c487fd921bbe6cb0cf0730c1f38518e7d9c9e11b8040e4fbc3"
+  },
+  "parent_context_sha256": {
+    "arizona": "637241faccfc64f61e93563604ec89e8db4bffbaa645aa5cfc43814d31913d6f",
+    "colorado": "b02be93b839cef1dbea90fae01a3b3d92fdd7ec3863f486501729ae902bb9196"
+  },
+  "release_eligible": false,
+  "results": [
+    {
+      "projection": {
+        "access_verified": false,
+        "anchors_adopted": false,
+        "default_policy": "declared-us-common-road-car-defaults-v1",
+        "denied_directed_segments": 1,
+        "eligible_directed_segments": 1,
+        "geographic_coverage_certified": false,
+        "geographic_timezone_assignment_verified": false,
+        "raw_input_sha256": "028f3bb42d9c0350fab26d8cefd0dc12286b1f885200374b10a42cce5d8612df",
+        "release_eligible": false,
+        "route_cost_emitted": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+        "schema": "reference-car-segment-permissions-v1",
+        "scope": "Exact consecutive raw vertex segments only. Complete whole-way context required; unknown controls reject every segment. No turn transitions, vertex attachment, partial-edge geometry, route reachability or real-world access certification.",
+        "segments": [
+          {
+            "directions": {
+              "backward": {
+                "access_selection": {
+                  "basis": "declared_US_highway_default",
+                  "key": null,
+                  "modeled_permitted": true,
+                  "raw_value": null
+                },
+                "endpoint_node_denials": [],
+                "from_node": 1753580586,
+                "modeled_permitted": false,
+                "oneway_allows": false,
+                "to_node": 51158764
+              },
+              "forward": {
+                "access_selection": {
+                  "basis": "declared_US_highway_default",
+                  "key": null,
+                  "modeled_permitted": true,
+                  "raw_value": null
+                },
+                "endpoint_node_denials": [],
+                "from_node": 51158764,
+                "modeled_permitted": true,
+                "oneway_allows": true,
+                "to_node": 1753580586
+              }
+            },
+            "raw_geometry": [
+              [
+                51158764,
+                -105.096088,
+                40.5382108
+              ],
+              [
+                1753580586,
+                -105.0962142,
+                40.5382091
+              ]
+            ],
+            "raw_segment_index": 0,
+            "way_id": 186839303
+          }
+        ],
+        "speed_profile_evaluated": false,
+        "status": "supported_segment_projection",
+        "turn_restrictions_evaluated": false,
+        "whole_way_projection_sha256": "8aed723085d4ca9efbfb04e1756b56ed84542209cc9f4d4c992ffb89bcb9f6b1"
+      },
+      "state": "colorado",
+      "way_id": 186839303
+    },
+    {
+      "projection": {
+        "access_verified": false,
+        "anchors_adopted": false,
+        "default_policy": "declared-us-common-road-car-defaults-v1",
+        "denied_directed_segments": 1,
+        "eligible_directed_segments": 1,
+        "geographic_coverage_certified": false,
+        "geographic_timezone_assignment_verified": false,
+        "raw_input_sha256": "cd6cfb087a0a2cab89b6439c825104e2d15db8fddb8f0068082b22b64dc0aec0",
+        "release_eligible": false,
+        "route_cost_emitted": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+        "schema": "reference-car-segment-permissions-v1",
+        "scope": "Exact consecutive raw vertex segments only. Complete whole-way context required; unknown controls reject every segment. No turn transitions, vertex attachment, partial-edge geometry, route reachability or real-world access certification.",
+        "segments": [
+          {
+            "directions": {
+              "backward": {
+                "access_selection": {
+                  "basis": "declared_US_highway_default",
+                  "key": null,
+                  "modeled_permitted": true,
+                  "raw_value": null
+                },
+                "endpoint_node_denials": [],
+                "from_node": 1753580525,
+                "modeled_permitted": false,
+                "oneway_allows": false,
+                "to_node": 1753580586
+              },
+              "forward": {
+                "access_selection": {
+                  "basis": "declared_US_highway_default",
+                  "key": null,
+                  "modeled_permitted": true,
+                  "raw_value": null
+                },
+                "endpoint_node_denials": [],
+                "from_node": 1753580586,
+                "modeled_permitted": true,
+                "oneway_allows": true,
+                "to_node": 1753580525
+              }
+            },
+            "raw_geometry": [
+              [
+                1753580586,
+                -105.0962142,
+                40.5382091
+              ],
+              [
+                1753580525,
+                -105.096221,
+                40.5381065
+              ]
+            ],
+            "raw_segment_index": 0,
+            "way_id": 800937105
+          }
+        ],
+        "speed_profile_evaluated": false,
+        "status": "supported_segment_projection",
+        "turn_restrictions_evaluated": false,
+        "whole_way_projection_sha256": "15f2dabf383a3fd7be8df7e0db3608ab36b0c5e7d618abf2b8877708027cf5b8"
+      },
+      "state": "colorado",
+      "way_id": 800937105
+    },
+    {
+      "projection": {
+        "access_verified": false,
+        "anchors_adopted": false,
+        "default_policy": "declared-us-common-road-car-defaults-v1",
+        "denied_directed_segments": 1,
+        "eligible_directed_segments": 1,
+        "geographic_coverage_certified": false,
+        "geographic_timezone_assignment_verified": false,
+        "raw_input_sha256": "8fbdc5b68a457786c16a48285f8d855a1cbdf9838b0590b164f74c985141ffb3",
+        "release_eligible": false,
+        "route_cost_emitted": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+        "schema": "reference-car-segment-permissions-v1",
+        "scope": "Exact consecutive raw vertex segments only. Complete whole-way context required; unknown controls reject every segment. No turn transitions, vertex attachment, partial-edge geometry, route reachability or real-world access certification.",
+        "segments": [
+          {
+            "directions": {
+              "backward": {
+                "access_selection": {
+                  "basis": "declared_US_highway_default",
+                  "key": null,
+                  "modeled_permitted": true,
+                  "raw_value": null
+                },
+                "endpoint_node_denials": [],
+                "from_node": 51158764,
+                "modeled_permitted": false,
+                "oneway_allows": false,
+                "to_node": 1716436337
+              },
+              "forward": {
+                "access_selection": {
+                  "basis": "declared_US_highway_default",
+                  "key": null,
+                  "modeled_permitted": true,
+                  "raw_value": null
+                },
+                "endpoint_node_denials": [],
+                "from_node": 1716436337,
+                "modeled_permitted": true,
+                "oneway_allows": true,
+                "to_node": 51158764
+              }
+            },
+            "raw_geometry": [
+              [
+                1716436337,
+                -105.096084,
+                40.5381056
+              ],
+              [
+                51158764,
+                -105.096088,
+                40.5382108
+              ]
+            ],
+            "raw_segment_index": 0,
+            "way_id": 800937106
+          }
+        ],
+        "speed_profile_evaluated": false,
+        "status": "supported_segment_projection",
+        "turn_restrictions_evaluated": false,
+        "whole_way_projection_sha256": "2a5a24328d6f861ff792ba2941710d0597200580c226ed9feb5bdf8275a0f340"
+      },
+      "state": "colorado",
+      "way_id": 800937106
+    },
+    {
+      "projection": {
+        "access_verified": false,
+        "anchors_adopted": false,
+        "default_policy": "declared-us-common-road-car-defaults-v1",
+        "denied_directed_segments": null,
+        "eligible_directed_segments": null,
+        "geographic_coverage_certified": false,
+        "geographic_timezone_assignment_verified": false,
+        "raw_input_sha256": "8b9061212d79e3990a47dba16c8f0de445a8cadb736d41c1bce0beae6256d4bf",
+        "reason": "Lane context requires separate lane and maneuver evaluation",
+        "release_eligible": false,
+        "route_cost_emitted": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+        "schema": "reference-car-segment-permissions-v1",
+        "scope": "Exact consecutive raw vertex segments only. Complete whole-way context required; unknown controls reject every segment. No turn transitions, vertex attachment, partial-edge geometry, route reachability or real-world access certification.",
+        "segments": null,
+        "speed_profile_evaluated": false,
+        "status": "unsupported",
+        "turn_restrictions_evaluated": false,
+        "whole_way_projection_sha256": "761d486ae1cebbbaa7c38ceb9e93942bd9dbbc8dc60b500ce37e6dcd0423192b"
+      },
+      "state": "arizona",
+      "way_id": 123445153
+    },
+    {
+      "projection": {
+        "access_verified": false,
+        "anchors_adopted": false,
+        "default_policy": "declared-us-common-road-car-defaults-v1",
+        "denied_directed_segments": null,
+        "eligible_directed_segments": null,
+        "geographic_coverage_certified": false,
+        "geographic_timezone_assignment_verified": false,
+        "raw_input_sha256": "97cc780723746a4a5c74608229b3d2379440515673b93dbfa330ae6675a693b6",
+        "reason": "Traffic-sign meaning and orientation require separate evaluation",
+        "release_eligible": false,
+        "route_cost_emitted": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+        "schema": "reference-car-segment-permissions-v1",
+        "scope": "Exact consecutive raw vertex segments only. Complete whole-way context required; unknown controls reject every segment. No turn transitions, vertex attachment, partial-edge geometry, route reachability or real-world access certification.",
+        "segments": null,
+        "speed_profile_evaluated": false,
+        "status": "unsupported",
+        "turn_restrictions_evaluated": false,
+        "whole_way_projection_sha256": "fe79f4c53a584b103cc3605d7aa2295c10b8746f36d6eeba145d4b9d12e399f3"
+      },
+      "state": "arizona",
+      "way_id": 437327478
+    },
+    {
+      "projection": {
+        "access_verified": false,
+        "anchors_adopted": false,
+        "default_policy": "declared-us-common-road-car-defaults-v1",
+        "denied_directed_segments": null,
+        "eligible_directed_segments": null,
+        "geographic_coverage_certified": false,
+        "geographic_timezone_assignment_verified": false,
+        "raw_input_sha256": "a82fc695ed78639a7b8d4e284b61d3930cfc93faa0a3007628bea455c3e4e1b4",
+        "reason": "Conditional control outside the supported permission/direction grammar",
+        "release_eligible": false,
+        "route_cost_emitted": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+        "schema": "reference-car-segment-permissions-v1",
+        "scope": "Exact consecutive raw vertex segments only. Complete whole-way context required; unknown controls reject every segment. No turn transitions, vertex attachment, partial-edge geometry, route reachability or real-world access certification.",
+        "segments": null,
+        "speed_profile_evaluated": false,
+        "status": "unsupported",
+        "turn_restrictions_evaluated": false,
+        "whole_way_projection_sha256": "eef7355f3687b5d76484bd18867bbd9c65725913ae215a2c092e60fc1cfc95e5"
+      },
+      "state": "arizona",
+      "way_id": 437327483
+    },
+    {
+      "projection": {
+        "access_verified": false,
+        "anchors_adopted": false,
+        "default_policy": "declared-us-common-road-car-defaults-v1",
+        "denied_directed_segments": null,
+        "eligible_directed_segments": null,
+        "geographic_coverage_certified": false,
+        "geographic_timezone_assignment_verified": false,
+        "raw_input_sha256": "09a21fd6cba90892338d35e341cd55822bb3d404f4f9b6d8616cc00cea1e437b",
+        "reason": "Lane context requires separate lane and maneuver evaluation",
+        "release_eligible": false,
+        "route_cost_emitted": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+        "schema": "reference-car-segment-permissions-v1",
+        "scope": "Exact consecutive raw vertex segments only. Complete whole-way context required; unknown controls reject every segment. No turn transitions, vertex attachment, partial-edge geometry, route reachability or real-world access certification.",
+        "segments": null,
+        "speed_profile_evaluated": false,
+        "status": "unsupported",
+        "turn_restrictions_evaluated": false,
+        "whole_way_projection_sha256": "7b17ae9223d7df28cbdf249533e7953609f8728b3a0d3502f2aef02ccf6e4682"
+      },
+      "state": "arizona",
+      "way_id": 1340007750
+    }
+  ],
+  "route_cost_emitted": false,
+  "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+  "schema": "reference-segment-permission-checkpoint-v1",
+  "unsupported_whole_way_contexts": 4,
+  "warning": "Exact adjacent raw-segment permission regression, not routing/turn legality, real-world access, independently reviewed anchors, source coverage or adoption of the fixed scenario by legacy costs."
+}

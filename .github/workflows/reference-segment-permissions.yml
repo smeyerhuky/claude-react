@@ -1,0 +1,40 @@
+name: Reference car raw-segment permissions
+on:
+  pull_request:
+    paths:
+      - 'scripts/road_reference*.py'
+      - 'scripts/test_road_reference*.py'
+      - 'scripts/reference_*permission*.py'
+      - 'scripts/test_reference_way_permission_checkpoint.py'
+      - 'scripts/reference_way_node_context.py'
+      - 'scripts/via_way_raw_context.py'
+      - 'docs/research/census-33-source-checkpoint/baseline.json'
+      - 'docs/research/raw-via-way-compiler/**'
+      - 'docs/research/reference-road-scenario/scenario.json'
+      - 'docs/research/reference-way-permissions/**'
+      - 'docs/research/reference-segment-permissions/**'
+      - '.github/workflows/reference-segment-permissions.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  segment-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'tzdata==2026.5' 'osmium==4.3.2' 'networkx==3.7'
+      - run: python -m unittest discover -s scripts -p 'test_road_reference*.py' -v
+      - run: python -m unittest discover -s scripts -p test_reference_way_permission_checkpoint.py -v
+      - run: python scripts/reference_segment_permission_checkpoint.py
+      - run: python scripts/reference_way_permission_checkpoint.py
+      - run: python scripts/via_way_compiler_checkpoint.py
+      - run: python scripts/las_vegas_ui_checkpoint.py --check-frozen
+      - uses: actions/upload-artifact@v6
+        with:
+          name: reference-segment-permissions
+          path: docs/research/reference-segment-permissions/
+          if-no-files-found: error
