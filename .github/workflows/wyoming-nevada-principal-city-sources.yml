@@ -1,0 +1,28 @@
+name: Wyoming and Nevada principal-city source work
+on:
+  pull_request:
+    paths:
+      - 'docs/research/wyoming-principal-city-sources/**'
+      - 'docs/research/nevada-principal-city-sources/**'
+      - 'docs/research/principal-city-inventory/report.json'
+      - 'scripts/principal_city_source_screen.py'
+      - 'scripts/wyoming_principal_city_source_screen.py'
+      - 'scripts/nevada_principal_city_source_screen.py'
+      - 'scripts/test_nevada_principal_city_source_screen.py'
+      - '.github/workflows/wyoming-nevada-principal-city-sources.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  principal-city-source-work:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s scripts -p 'test_*_principal_city_source_screen.py' -v
+      - run: python scripts/wyoming_principal_city_source_screen.py
+      - run: python scripts/nevada_principal_city_source_screen.py
+      - run: python scripts/las_vegas_ui_checkpoint.py --check-frozen

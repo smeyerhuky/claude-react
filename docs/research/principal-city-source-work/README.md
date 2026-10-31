@@ -6,12 +6,12 @@ Current work accounting:
 
 | Status | Memberships | Meaning |
 | --- | ---: | --- |
-| Context retained | 44 | A source context or prior review record is registered; no vehicle entry is certified |
-| Selected publication unavailable | 6 | A selected publication could not be inspected; no search snippet is promoted |
-| Not recorded here | 648 | No city-source record is registered in this inventory; this does not mean no evidence exists |
+| Context retained | 49 | A source context or prior review record is registered; no vehicle entry is certified |
+| Selected publication unavailable | 7 | A selected publication could not be inspected; no search snippet is promoted |
+| Not recorded here | 642 | No city-source record is registered in this inventory; this does not mean no evidence exists |
 | Approved anchors | **0** | No reviewed anchor set is adopted; zero connectors are approved |
 
-The 50 registered work records cover Colorado (12), New Mexico (4), Arizona (16), Utah (8), Oklahoma (3) and Kansas (7). Colorado's prior contexts and Denver AI proposal remain distinct from new publication observations. The four New Mexico context files map explicitly to its four official principal cities; no metro-title splitting or inferred additional city membership occurs. A named building, public parking description, modeled road lead or retained AI proposal is not a reviewed vehicle connector.
+The 56 registered work records cover Colorado (12), New Mexico (4), Arizona (16), Utah (8), Oklahoma (3), Kansas (7), Wyoming (1) and Nevada (5). Colorado's prior contexts and Denver AI proposal remain distinct from new publication observations. The four New Mexico context files map explicitly to its four official principal cities; no metro-title splitting or inferred additional city membership occurs. A named building, public parking description, modeled road lead or retained AI proposal is not a reviewed vehicle connector.
 
 `report.json` binds the official Census workbook/domain inventory, exact retained records, source manifests, approval ledger and relevant projection/checker code. State batches run their existing validators before projection. New state batches require registering their checker and regenerating this snapshot; they cannot silently disappear from the UI. The independent approval ledger must remain empty for this version. Changing it requires independent review and a new inventory version, not an automatic status upgrade.
 
@@ -27,7 +27,7 @@ cmp /tmp/principal-sources.html src/research/metro-principal-sources.html
 NODE_PATH=/path/to/playwright/node_modules node scripts/check_principal_city_source_explorer.cjs /tmp/principal-sources.html
 ```
 
-The generator verifies the frozen report before rendering. The standalone HTML embeds all data, uses no external scripts, styles, images or requests, and prohibits network resources through its content-security policy. Its filters cover every city state and source status. City details disclose the source kind, retrieval method, primary URL as selectable text, observations, limitations, retained record path and SHA-256. No external page is opened automatically. Source text is encoded into JSON and rendered through `textContent`, never executable HTML.
+The generator verifies the frozen report before rendering. The standalone HTML embeds all data, uses no external scripts, styles, images or requests, and prohibits network resources through its content-security policy. Its filters cover every city state and source status. City details disclose the source kind, retrieval method, source-record capture timestamp when present, primary URL as selectable text, observations, limitations, retained record path and SHA-256. A capture timestamp is not a review date or proof of current conditions; missing timestamps remain unstated. No external page is opened automatically. Source text is encoded into JSON and rendered through `textContent`, never executable HTML.
 
 The development inspector adds this as a seventh view, opt-in only, with its existing `allow-scripts` iframe sandbox. All six older experiments remain available. The planned fixed-reference assumptions remain explicitly unapplied to the frozen experiments. Production builds exclude the new HTML, schema marker and inspector even when the research flag is set. Browser checks cover all 52 city-state groups, all status counts, separate Lehi/Orem/Provo records in one CBSA, keyboard selection, empty searches, no external requests, all older views and unchanged public map state/canvas.
 

@@ -1,0 +1,38 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "29820",
+  "city_name": "Paradise",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.clarkcountynv.gov/government/departments/administrative_services/town___liaison_services/paradise-tab",
+    "http_status": 200,
+    "response_bytes": 100812,
+    "response_sha256": "80df351193f01253b232507b14c774680e0a6a4fba78fddf1f6ad8d6df374895",
+    "url": "https://www.clarkcountynv.gov/government/departments/administrative_services/town___liaison_services/paradise-tab"
+  },
+  "entry_review_status": "needs_evidence",
+  "geographic_identity": {
+    "cdp_boundary_alignment_verified": false,
+    "meeting_location_promoted_to_vehicle_entry": false
+  },
+  "limitations": [
+    "No independently verified ordinary-car entry, full physical/legal/grade/direction findings, connector cost or approved anchor."
+  ],
+  "observations": [
+    "Clark County identifies Paradise Park Community Center at 4775 McLeod as the Paradise Town Advisory Board meeting location and links a board-area map.",
+    "This is an administrative venue lead. The advisory-board area has not been reconciled here with the official Census principal-city/CDP geography, and the venue address does not establish a vehicle entry.",
+    "No meeting venue, point, boundary equivalence or urban anchor is adopted. The other Las Vegas-metro principal cities cannot substitute for Paradise."
+  ],
+  "principal_city_id": "3254600",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short selected literal quote and factual observations only. Original response hashes identify bytes not retained here. Rendered content is not an original HTTP capture. HTML, app/runtime state, search snippets, error bodies and private archives omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "Paradise Park Community Center",
+  "source_http_status": 200,
+  "source_kind": "county_administrative_context",
+  "url": "https://www.clarkcountynv.gov/government/departments/administrative_services/town___liaison_services/paradise-tab"
+}

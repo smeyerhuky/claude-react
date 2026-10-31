@@ -1,0 +1,46 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "geographic_coverage_certified": false,
+  "principal_inventory_sha256": "22f509906e005e1c6215c5f857fa0865278f4289753fad887ee05b730f8cd9cd",
+  "records": [
+    {
+      "cbsa": "29820",
+      "city_name": "Henderson",
+      "principal_city_id": "3231900",
+      "source_path": "docs/research/nevada-principal-city-sources/henderson.json",
+      "source_sha256": "81e8dd73de98cea02e9cf9aa19a25e6639862595220602c41d31e1aeb6c9d608"
+    },
+    {
+      "cbsa": "29820",
+      "city_name": "Las Vegas",
+      "principal_city_id": "3240000",
+      "source_path": "docs/research/nevada-principal-city-sources/las-vegas.json",
+      "source_sha256": "a7395b6d47ca56b888123d0ef4539474b8aa91ec9d4f37b929752fc3333537e6"
+    },
+    {
+      "cbsa": "29820",
+      "city_name": "North Las Vegas",
+      "principal_city_id": "3251800",
+      "source_path": "docs/research/nevada-principal-city-sources/north-las-vegas.json",
+      "source_sha256": "429a3b9ad15cf695762e05b988fc1fe986f4a9f88f8dc2dc4d6b1bb4d365a980"
+    },
+    {
+      "cbsa": "29820",
+      "city_name": "Paradise",
+      "principal_city_id": "3254600",
+      "source_path": "docs/research/nevada-principal-city-sources/paradise.json",
+      "source_sha256": "c02932d0648b840b7f96c6fc947554eea88831ffd975f774f581778259eb5ff0"
+    },
+    {
+      "cbsa": "39900",
+      "city_name": "Reno",
+      "principal_city_id": "3260600",
+      "source_path": "docs/research/nevada-principal-city-sources/reno.json",
+      "source_sha256": "f883b2e293419b9113bce852efb24317a8ac13771b27637c89a20d1f9ccd1ba1"
+    }
+  ],
+  "release_eligible": false,
+  "schema": "principal-city-source-batch-v1",
+  "state": "NV"
+}

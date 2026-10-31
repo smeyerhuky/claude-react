@@ -1,0 +1,31 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "29820",
+  "city_name": "North Las Vegas",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.cityofnorthlasvegas.com/residents/parking-services",
+    "http_status": 403,
+    "response_bytes": 453,
+    "response_sha256": "c325c6c0ba0a3ab980e8fa2464c83597563a22e5bd249ec1c0e8dec29761b89d",
+    "url": "https://www.cityofnorthlasvegas.com/residents/parking-services"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No independently verified ordinary-car entry, full physical/legal/grade/direction findings, connector cost or approved anchor.",
+    "Selected city publication unavailable through direct HTTP and renderer. Search snippets are not promoted into inspected publication content or a world-accessibility conclusion."
+  ],
+  "observations": [],
+  "principal_city_id": "3251800",
+  "publication_status": "selected_publication_unavailable",
+  "release_eligible": false,
+  "retention": "Short selected literal quote and factual observations only. Original response hashes identify bytes not retained here. Rendered content is not an original HTTP capture. HTML, app/runtime state, search snippets, error bodies and private archives omitted.",
+  "retrieval_method": "unavailable",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "",
+  "source_http_status": null,
+  "source_kind": "municipal_facility_location",
+  "url": "https://www.cityofnorthlasvegas.com/residents/parking-services"
+}

@@ -1,0 +1,34 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "39900",
+  "city_name": "Reno",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://reno.gov/police/resources/faqs/index.php",
+    "http_status": 403,
+    "response_bytes": 17,
+    "response_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+    "url": "https://reno.gov/police/resources/faqs/index.php"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No independently verified ordinary-car entry, full physical/legal/grade/direction findings, connector cost or approved anchor.",
+    "Primary publication inspected through the renderer, which may use cached content. A failed direct HTTP attempt is recorded separately; no successful original HTTP identity is invented."
+  ],
+  "observations": [
+    "The official police FAQ describes usual meter enforcement Monday through Saturday, 9 a.m. to 6 p.m., excluding holidays, and cautions that individual meter regulations can differ.",
+    "Enforcement hours and pricing do not establish unrestricted vehicle entry, all-space permission or the opening of a particular garage. No posted-rule inventory, exact entry or connector is selected."
+  ],
+  "principal_city_id": "3260600",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short selected literal quote and factual observations only. Original response hashes identify bytes not retained here. Rendered content is not an original HTTP capture. HTML, app/runtime state, search snippets, error bodies and private archives omitted.",
+  "retrieval_method": "web_rendered",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "each meter may have specific enforcement regulations.",
+  "source_http_status": null,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://reno.gov/police/resources/faqs/index.php"
+}

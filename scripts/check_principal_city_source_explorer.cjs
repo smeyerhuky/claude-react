@@ -15,7 +15,7 @@ const {chromium}=require('playwright');
   await page.locator('#status').selectOption('all');await page.locator('#state').selectOption('UT');await page.locator('#search').fill('39340');
   if(await page.locator('#rows tr').count()!==3)throw Error('Lehi/Orem/Provo collapsed into one metro source');
   await page.getByRole('button',{name:'Inspect Orem UT 4957300',exact:true}).focus();await page.keyboard.press('Enter');
-  const detail=await page.locator('#detail').innerText();if(!detail.includes('Access review unresolved')||!detail.includes('sidewalk')||!detail.includes('orem.json'))throw Error('Vehicle-entry caveat or provenance missing');
+  const detail=await page.locator('#detail').innerText();if(!detail.includes('Access review unresolved')||!detail.includes('sidewalk')||!detail.includes('orem.json')||!detail.includes('Source record capture (UTC): 2026-10-31'))throw Error('Vehicle-entry caveat or provenance missing');
   await page.locator('#state').selectOption('all');await page.locator('#search').fill('0809280');await page.locator('#rows button').click();
   if(!(await page.locator('#detail-title').innerText()).includes('Broomfield'))throw Error('City FIPS search failed');
   await page.locator('#search').fill('no matching principal city');if(await page.locator('#rows tr').count()!==0||!(await page.locator('#empty').isVisible()))throw Error('Empty search misrepresented');

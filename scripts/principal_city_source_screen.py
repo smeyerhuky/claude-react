@@ -12,7 +12,8 @@ INVENTORY = Path('docs/research/principal-city-inventory/report.json')
 # Explicit publisher assignments prevent same-CBSA sources being substituted for another city.
 
 KINDS = {'municipal_facility_location', 'municipal_parking_guidance', 'municipal_planning',
-         'operator_facility_location', 'operator_parking_guidance', 'county_parking_guidance'}
+         'operator_facility_location', 'operator_parking_guidance', 'county_parking_guidance',
+         'county_administrative_context'}
 
 
 def require(condition, message):
