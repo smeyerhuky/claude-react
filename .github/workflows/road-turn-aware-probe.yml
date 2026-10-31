@@ -1,0 +1,49 @@
+name: Bounded turn-aware road probe
+on:
+  pull_request:
+    paths:
+      - 'scripts/road_turn_aware_probe.py'
+      - 'scripts/test_road_turn_aware_probe.py'
+      - 'scripts/tucson_entry_osm_context.py'
+      - 'scripts/tucson_entry_evidence.py'
+      - 'scripts/tucson_turn_probe.py'
+      - 'scripts/stream_osm_roads.py'
+      - 'scripts/fetch_research_source.py'
+      - 'scripts/metro_scenario_checkpoint.py'
+      - 'docs/research/tucson-urban-entry-context/**'
+      - '.github/workflows/road-turn-aware-probe.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  turn-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r docs/research/tucson-urban-entry-context/probe-requirements.txt
+      - run: python -m unittest discover -s scripts -p test_road_turn_aware_probe.py -v
+      - run: python scripts/tucson_entry_evidence.py
+      - run: python scripts/tucson_turn_probe.py --compare docs/research/tucson-urban-entry-context/turn-probe.json
+      - run: python scripts/las_vegas_ui_checkpoint.py --check-frozen
+  exact-original-context:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r docs/research/tucson-urban-entry-context/probe-requirements.txt
+      - name: Fetch exact original public Arizona input with bounded retries
+        run: |
+          mkdir -p local-data
+          curl -fLSs --retry 3 --connect-timeout 20 --max-time 600 --output local-data/arizona.osm.pbf https://download.geofabrik.de/north-america/us/arizona-261027.osm.pbf
+          python scripts/fetch_research_source.py --source arizona.osm.pbf --output local-data/arizona.osm.pbf
+      - name: Replay every selected raw way, node and referencing restriction
+        run: |
+          python scripts/tucson_entry_osm_context.py --osm local-data/arizona.osm.pbf --municipal-lots docs/research/tucson-urban-entry-context/municipal-lots.json --output /tmp/tucson-context.json
+          cmp /tmp/tucson-context.json docs/research/tucson-urban-entry-context/osm-context.json

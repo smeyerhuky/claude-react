@@ -1,0 +1,11 @@
+{
+  "city_page_url": "https://www.tucsonaz.gov/Departments/Transportation-Mobility/Park-Tucson",
+  "city_page_response_sha256": "ea1b6bb1a7cb22ce3196681ee6b39437c45bbc862c8c4fcc4c37f9c09340a385",
+  "published_experience_id": "2faefeade9e545f9af2e32e374006673",
+  "experience_data_url": "https://www.arcgis.com/sharing/rest/content/items/2faefeade9e545f9af2e32e374006673/data?f=json",
+  "experience_data_response_sha256": "a30239ffb150ae961f2e18976cce05cda2f2344d56de9b95633a517b4bf9291c",
+  "linked_webmap_id": "4fd1d2ad7f1b44a38884b8f3530c1436",
+  "retention": "Selected source-link identities only; original city HTML and full app UI/runtime config not published. Response hashes cannot be recomputed from the projections.",
+  "access_verified": false,
+  "release_eligible": false
+}

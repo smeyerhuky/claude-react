@@ -1,0 +1,7064 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "arbitrary_endpoint_coverage": false,
+  "bounds_lonlat": [
+    -110.9713653898965,
+    32.22140894902928,
+    -110.96836538989652,
+    32.22440894902928
+  ],
+  "municipal_feature_id": 1,
+  "municipal_feature_name": "Pennington Street Garage",
+  "municipal_point_lonlat": [
+    -110.96986538989651,
+    32.22290894902928
+  ],
+  "release_eligible": false,
+  "restrictions": [
+    {
+      "id": 18843106,
+      "members": [
+        {
+          "ref": 236722007,
+          "role": "from",
+          "type": "w"
+        },
+        {
+          "ref": 175311383,
+          "role": "via",
+          "type": "n"
+        },
+        {
+          "ref": 34617543,
+          "role": "to",
+          "type": "w"
+        }
+      ],
+      "tags": {
+        "restriction": "no_left_turn",
+        "type": "restriction"
+      },
+      "timestamp": "2025-03-16 05:01:35+00:00",
+      "version": 1
+    }
+  ],
+  "schema": "tucson-urban-entry-raw-osm-context-v1",
+  "selection": "All raw highway ways with at least one vertex in the declared neighborhood; full selected way node coordinates retained. Restrictions referencing any selected way retained in a second original-source pass.",
+  "source_bytes": 304245283,
+  "source_sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
+  "tagged_nodes": [
+    {
+      "id": 175311383,
+      "lonlat": [
+        -110.9686436,
+        32.2234115
+      ],
+      "tags": {
+        "highway": "traffic_signals",
+        "traffic_signals": "traffic_lights"
+      },
+      "timestamp": "2024-03-30 01:14:21+00:00",
+      "version": 8
+    },
+    {
+      "id": 175324547,
+      "lonlat": [
+        -110.9703939,
+        32.224364
+      ],
+      "tags": {
+        "crossing": "marked",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2026-08-05 23:18:06+00:00",
+      "version": 7
+    },
+    {
+      "id": 175513842,
+      "lonlat": [
+        -110.9686516,
+        32.2243532
+      ],
+      "tags": {
+        "highway": "traffic_signals",
+        "traffic_signals": "traffic_lights"
+      },
+      "timestamp": "2024-03-30 01:14:21+00:00",
+      "version": 12
+    },
+    {
+      "id": 373594456,
+      "lonlat": [
+        -110.9696579,
+        32.2230502
+      ],
+      "tags": {
+        "amenity": "restaurant",
+        "created_by": "Potlatch 0.10f",
+        "name": "Caf\u00e9 Poca Cosa",
+        "source": "local_knowledge"
+      },
+      "timestamp": "2009-04-13 02:28:09+00:00",
+      "version": 2
+    },
+    {
+      "id": 402336490,
+      "lonlat": [
+        -110.9710376,
+        32.2216702
+      ],
+      "tags": {
+        "amenity": "bank",
+        "atm": "yes",
+        "brand": "Chase",
+        "brand:wikidata": "Q524629",
+        "name": "Chase"
+      },
+      "timestamp": "2024-01-16 00:45:05+00:00",
+      "version": 4
+    },
+    {
+      "id": 5140592855,
+      "lonlat": [
+        -110.9698197,
+        32.2232456
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:island": "no",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-01-04 00:25:56+00:00",
+      "version": 3
+    },
+    {
+      "id": 6212061896,
+      "lonlat": [
+        -110.9692911,
+        32.2218595
+      ],
+      "tags": {
+        "addr:city": "Tucson",
+        "addr:housenumber": "118",
+        "addr:postcode": "85701",
+        "addr:state": "AZ",
+        "addr:street": "East Congress Street",
+        "amenity": "cafe",
+        "indoor_seating": "yes",
+        "name": "Hatch",
+        "outdoor_seating": "yes"
+      },
+      "timestamp": "2024-01-28 15:19:28+00:00",
+      "version": 2
+    },
+    {
+      "id": 6226359088,
+      "lonlat": [
+        -110.9713466,
+        32.2217963
+      ],
+      "tags": {
+        "barrier": "kerb",
+        "kerb": "lowered",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2023-11-15 23:28:11+00:00",
+      "version": 3
+    },
+    {
+      "id": 6226359099,
+      "lonlat": [
+        -110.97127,
+        32.221949
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:markings": "yes",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2023-12-24 10:26:06+00:00",
+      "version": 5
+    },
+    {
+      "id": 6226359100,
+      "lonlat": [
+        -110.97125,
+        32.2218143
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:markings": "yes",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2024-11-29 01:35:25+00:00",
+      "version": 5
+    },
+    {
+      "id": 6226359123,
+      "lonlat": [
+        -110.9713104,
+        32.2228645
+      ],
+      "tags": {
+        "button_operated": "yes",
+        "crossing": "traffic_signals",
+        "highway": "crossing",
+        "tactile_paving": "yes",
+        "traffic_signals:sound": "yes",
+        "traffic_signals:vibration": "no"
+      },
+      "timestamp": "2024-01-04 00:23:36+00:00",
+      "version": 7
+    },
+    {
+      "id": 6226359134,
+      "lonlat": [
+        -110.9700952,
+        32.2231017
+      ],
+      "tags": {
+        "crossing:markings": "no",
+        "crossing:signals": "no",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2025-10-28 23:41:54+00:00",
+      "version": 7
+    },
+    {
+      "id": 6226463293,
+      "lonlat": [
+        -110.9698507,
+        32.2220058
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:island": "no",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2023-11-15 23:30:03+00:00",
+      "version": 4
+    },
+    {
+      "id": 6226773433,
+      "lonlat": [
+        -110.9687952,
+        32.2243384
+      ],
+      "tags": {
+        "barrier": "kerb",
+        "kerb": "lowered",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2025-09-12 01:54:19+00:00",
+      "version": 3
+    },
+    {
+      "id": 6226773438,
+      "lonlat": [
+        -110.9688166,
+        32.2243728
+      ],
+      "tags": {
+        "crossing:signals": "yes",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2025-09-12 01:54:11+00:00",
+      "version": 4
+    },
+    {
+      "id": 6226773440,
+      "lonlat": [
+        -110.9686494,
+        32.2241357
+      ],
+      "tags": {
+        "crossing:island": "no",
+        "crossing:signals": "yes",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2025-10-13 23:21:00+00:00",
+      "version": 5
+    },
+    {
+      "id": 6226773442,
+      "lonlat": [
+        -110.9685271,
+        32.224234
+      ],
+      "tags": {
+        "crossing:island": "no",
+        "crossing:signals": "yes",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2025-10-13 23:21:46+00:00",
+      "version": 6
+    },
+    {
+      "id": 6226787841,
+      "lonlat": [
+        -110.9698743,
+        32.2243697
+      ],
+      "tags": {
+        "crossing:signals": "no",
+        "highway": "crossing"
+      },
+      "timestamp": "2026-08-03 23:34:07+00:00",
+      "version": 3
+    },
+    {
+      "id": 6228373557,
+      "lonlat": [
+        -110.9699615,
+        32.2230761
+      ],
+      "tags": {
+        "highway": "crossing"
+      },
+      "timestamp": "2025-09-12 02:00:30+00:00",
+      "version": 3
+    },
+    {
+      "id": 6228373562,
+      "lonlat": [
+        -110.9686275,
+        32.2220808
+      ],
+      "tags": {
+        "crossing:island": "no",
+        "crossing:signals": "yes",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2025-09-26 18:44:16+00:00",
+      "version": 5
+    },
+    {
+      "id": 6228373583,
+      "lonlat": [
+        -110.9686266,
+        32.2219719
+      ],
+      "tags": {
+        "button_operated": "no",
+        "crossing": "traffic_signals",
+        "crossing:island": "no",
+        "highway": "crossing",
+        "tactile_paving": "yes",
+        "traffic_signals:sound": "no",
+        "traffic_signals:vibration": "yes"
+      },
+      "timestamp": "2023-11-15 23:31:55+00:00",
+      "version": 9
+    },
+    {
+      "id": 6394782835,
+      "lonlat": [
+        -110.970018,
+        32.2220617
+      ],
+      "tags": {
+        "addr:city": "Tucson",
+        "addr:housenumber": "63",
+        "addr:postcode": "85701",
+        "addr:state": "AZ",
+        "addr:street": "East Congress",
+        "amenity": "fast_food",
+        "brand": "Jimmy John's",
+        "brand:wikidata": "Q1689380",
+        "cuisine": "sandwich",
+        "indoor_seating": "yes",
+        "name": "Jimmy John's",
+        "official_name": "Jimmy John's Gourmet Sandwiches",
+        "outdoor_seating": "no",
+        "phone": "+1 520-884-0600",
+        "takeaway": "yes",
+        "website": "https://locations.jimmyjohns.com/az/tucson/sandwiches-1180.html"
+      },
+      "timestamp": "2024-05-20 10:43:04+00:00",
+      "version": 6
+    },
+    {
+      "id": 6496477129,
+      "lonlat": [
+        -110.968532,
+        32.2237682
+      ],
+      "tags": {
+        "bench": "yes",
+        "bin": "no",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "lit": "yes",
+        "name": "6th Ave/Pennington",
+        "public_transport": "platform",
+        "ref": "15933",
+        "route_ref": "102X (AM);103X;105X (PM);107X;109X;110X",
+        "shelter": "yes",
+        "tactile_paving": "no"
+      },
+      "timestamp": "2026-03-10 05:55:15+00:00",
+      "version": 9
+    },
+    {
+      "id": 6496477131,
+      "lonlat": [
+        -110.968541,
+        32.2233002
+      ],
+      "tags": {
+        "bench": "no",
+        "bin": "yes",
+        "bus": "yes",
+        "fixme": "approximate location",
+        "highway": "bus_stop",
+        "lit": "yes",
+        "public_transport": "platform",
+        "ref": "42",
+        "route_ref": "6;22;25;Sun Van",
+        "shelter": "no",
+        "tactile_paving": "no"
+      },
+      "timestamp": "2024-01-28 15:26:45+00:00",
+      "version": 10
+    },
+    {
+      "id": 8079422168,
+      "lonlat": [
+        -110.968523,
+        32.2219255
+      ],
+      "tags": {
+        "amenity": "waste_basket",
+        "waste": "trash"
+      },
+      "timestamp": "2026-04-19 08:09:31+00:00",
+      "version": 3
+    },
+    {
+      "id": 8079422169,
+      "lonlat": [
+        -110.9685189,
+        32.2216087
+      ],
+      "tags": {
+        "amenity": "waste_basket",
+        "waste": "trash"
+      },
+      "timestamp": "2022-08-29 06:25:11+00:00",
+      "version": 2
+    },
+    {
+      "id": 8094421182,
+      "lonlat": [
+        -110.9697915,
+        32.2218825
+      ],
+      "tags": {
+        "button_operated": "yes",
+        "crossing": "traffic_signals",
+        "crossing:island": "no",
+        "highway": "crossing",
+        "tactile_paving": "yes",
+        "traffic_signals:sound": "yes",
+        "traffic_signals:vibration": "no"
+      },
+      "timestamp": "2024-01-28 15:18:59+00:00",
+      "version": 14
+    },
+    {
+      "id": 8140711668,
+      "lonlat": [
+        -110.9698591,
+        32.2216201
+      ],
+      "tags": {
+        "highway": "crossing"
+      },
+      "timestamp": "2022-09-18 04:53:44+00:00",
+      "version": 2
+    },
+    {
+      "id": 8248450260,
+      "lonlat": [
+        -110.9687419,
+        32.2242828
+      ],
+      "tags": {
+        "highway": "street_lamp",
+        "lamp_mount": "bent_mast",
+        "lamp_type": "electric",
+        "mapillary:image": "6wRvQO_9tdSOpCHjoJn-hg",
+        "mapillary:map_feature": "33p8zry97j9lco7a5iepcb0jyo"
+      },
+      "timestamp": "2024-07-03 04:23:38+00:00",
+      "version": 3
+    },
+    {
+      "id": 8248518453,
+      "lonlat": [
+        -110.9687475,
+        32.2220551
+      ],
+      "tags": {
+        "highway": "street_lamp",
+        "lamp_mount": "bent_mast",
+        "lamp_type": "electric",
+        "mapillary:image": "RPfhTtSuScHl4ad0gHaKOg",
+        "mapillary:map_feature": "n4elxzsv7h51bjl6sxfl00icpt"
+      },
+      "timestamp": "2020-12-21 16:54:22+00:00",
+      "version": 1
+    },
+    {
+      "id": 8365097505,
+      "lonlat": [
+        -110.9686422,
+        32.223317
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:island": "no",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2024-01-28 15:27:03+00:00",
+      "version": 3
+    },
+    {
+      "id": 8365097506,
+      "lonlat": [
+        -110.9685322,
+        32.2234338
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:island": "no",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2024-01-04 00:27:13+00:00",
+      "version": 3
+    },
+    {
+      "id": 8365097507,
+      "lonlat": [
+        -110.9686437,
+        32.2235007
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:island": "no",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2024-01-04 00:26:58+00:00",
+      "version": 3
+    },
+    {
+      "id": 8365097513,
+      "lonlat": [
+        -110.9687662,
+        32.223387
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:island": "no",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2024-01-04 00:26:48+00:00",
+      "version": 3
+    },
+    {
+      "id": 8365110318,
+      "lonlat": [
+        -110.9696928,
+        32.2232024
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:island": "no",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2025-09-12 02:00:39+00:00",
+      "version": 3
+    },
+    {
+      "id": 8365110344,
+      "lonlat": [
+        -110.9699652,
+        32.224294
+      ],
+      "tags": {
+        "crossing": "marked",
+        "highway": "crossing"
+      },
+      "timestamp": "2021-01-26 18:34:03+00:00",
+      "version": 1
+    },
+    {
+      "id": 8501509008,
+      "lonlat": [
+        -110.9686278,
+        32.2220175
+      ],
+      "tags": {
+        "highway": "traffic_signals",
+        "traffic_signals": "traffic_lights"
+      },
+      "timestamp": "2024-03-30 01:14:21+00:00",
+      "version": 2
+    },
+    {
+      "id": 8501509009,
+      "lonlat": [
+        -110.9698178,
+        32.2219426
+      ],
+      "tags": {
+        "highway": "traffic_signals",
+        "traffic_signals": "traffic_lights"
+      },
+      "timestamp": "2024-03-30 01:14:21+00:00",
+      "version": 2
+    },
+    {
+      "id": 8501509010,
+      "lonlat": [
+        -110.9712569,
+        32.2218628
+      ],
+      "tags": {
+        "highway": "traffic_signals",
+        "traffic_signals": "traffic_lights"
+      },
+      "timestamp": "2024-03-30 01:14:21+00:00",
+      "version": 2
+    },
+    {
+      "id": 8501586155,
+      "lonlat": [
+        -110.9685125,
+        32.2220239
+      ],
+      "tags": {
+        "button_operated": "no",
+        "crossing": "traffic_signals",
+        "highway": "crossing",
+        "tactile_paving": "yes",
+        "traffic_signals:sound": "no",
+        "traffic_signals:vibration": "no"
+      },
+      "timestamp": "2024-01-28 15:25:23+00:00",
+      "version": 7
+    },
+    {
+      "id": 8501586156,
+      "lonlat": [
+        -110.9697039,
+        32.2219501
+      ],
+      "tags": {
+        "crossing": "marked",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2024-01-28 15:18:54+00:00",
+      "version": 2
+    },
+    {
+      "id": 8501586157,
+      "lonlat": [
+        -110.9687354,
+        32.2220103
+      ],
+      "tags": {
+        "crossing": "traffic_signals",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2024-01-28 15:20:16+00:00",
+      "version": 4
+    },
+    {
+      "id": 8501586158,
+      "lonlat": [
+        -110.9711844,
+        32.2218666
+      ],
+      "tags": {
+        "button_operated": "no",
+        "crossing": "traffic_signals",
+        "highway": "crossing",
+        "tactile_paving": "yes",
+        "traffic_signals:sound": "no",
+        "traffic_signals:vibration": "no"
+      },
+      "timestamp": "2024-01-28 15:17:00+00:00",
+      "version": 9
+    },
+    {
+      "id": 8501586159,
+      "lonlat": [
+        -110.9699014,
+        32.221939
+      ],
+      "tags": {
+        "crossing": "marked",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2023-11-15 23:29:48+00:00",
+      "version": 3
+    },
+    {
+      "id": 8501586162,
+      "lonlat": [
+        -110.9713408,
+        32.2218561
+      ],
+      "tags": {
+        "button_operated": "no",
+        "crossing": "traffic_signals",
+        "highway": "crossing",
+        "tactile_paving": "yes",
+        "traffic_signals:sound": "no",
+        "traffic_signals:vibration": "yes"
+      },
+      "timestamp": "2023-11-15 23:27:44+00:00",
+      "version": 7
+    },
+    {
+      "id": 9457044379,
+      "lonlat": [
+        -110.9700607,
+        32.2241962
+      ],
+      "tags": {
+        "amenity": "parking_space",
+        "capacity": "3",
+        "parking_space": "disabled"
+      },
+      "timestamp": "2022-01-29 02:46:29+00:00",
+      "version": 1
+    },
+    {
+      "id": 9457044380,
+      "lonlat": [
+        -110.9704888,
+        32.2241952
+      ],
+      "tags": {
+        "amenity": "parking_space",
+        "capacity": "2",
+        "parking_space": "disabled"
+      },
+      "timestamp": "2022-01-29 02:46:29+00:00",
+      "version": 1
+    },
+    {
+      "id": 9563763607,
+      "lonlat": [
+        -110.9689033,
+        32.2221178
+      ],
+      "tags": {
+        "amenity": "restaurant",
+        "cuisine": "pizza",
+        "indoor_seating": "yes",
+        "name": "Empire Pizza",
+        "outdoor_seating": "yes",
+        "website": "https://www.empire.pizza/"
+      },
+      "timestamp": "2026-01-16 01:51:24+00:00",
+      "version": 4
+    },
+    {
+      "id": 9563763608,
+      "lonlat": [
+        -110.9689693,
+        32.2221403
+      ],
+      "tags": {
+        "amenity": "restaurant",
+        "indoor_seating": "yes",
+        "name": "Elliott's",
+        "outdoor_seating": "patio",
+        "website": "https://elliottsoncongress.com"
+      },
+      "timestamp": "2026-01-16 01:51:41+00:00",
+      "version": 3
+    },
+    {
+      "id": 9563763612,
+      "lonlat": [
+        -110.969783,
+        32.2224726
+      ],
+      "tags": {
+        "amenity": "parking_entrance"
+      },
+      "timestamp": "2022-03-09 00:47:58+00:00",
+      "version": 1
+    },
+    {
+      "id": 9563787919,
+      "lonlat": [
+        -110.9695483,
+        32.2227522
+      ],
+      "tags": {
+        "amenity": "parking_entrance"
+      },
+      "timestamp": "2022-09-15 05:54:00+00:00",
+      "version": 2
+    },
+    {
+      "id": 9563787922,
+      "lonlat": [
+        -110.969324,
+        32.2227624
+      ],
+      "tags": {
+        "amenity": "parking_entrance"
+      },
+      "timestamp": "2022-09-15 05:54:00+00:00",
+      "version": 2
+    },
+    {
+      "id": 9630669318,
+      "lonlat": [
+        -110.970628,
+        32.2217939
+      ],
+      "tags": {
+        "amenity": "restaurant",
+        "indoor_seating": "yes",
+        "name": "The Monica",
+        "outdoor_seating": "yes"
+      },
+      "timestamp": "2024-01-28 15:17:41+00:00",
+      "version": 3
+    },
+    {
+      "id": 9634576918,
+      "lonlat": [
+        -110.9708067,
+        32.2217738
+      ],
+      "tags": {
+        "addr:housenumber": "20, Ste #110",
+        "addr:postcode": "85701",
+        "addr:street": "East Congress Street",
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "check_date:opening_hours": "2023-11-15",
+        "diet:vegetarian": "yes",
+        "indoor_seating": "yes",
+        "internet_access": "wlan",
+        "name": "HeeMee Coffee + Bakery on Congress",
+        "opening_hours": "Tu-Fr 08:00-17:00; Sa-Su 09:00-17:00",
+        "outdoor_seating": "yes",
+        "phone": "+1 520-207-1193",
+        "smoking": "no",
+        "website": "https://heemee.online/"
+      },
+      "timestamp": "2026-04-23 00:30:34+00:00",
+      "version": 14
+    },
+    {
+      "id": 9984673081,
+      "lonlat": [
+        -110.9694289,
+        32.2219112
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673087,
+      "lonlat": [
+        -110.969273,
+        32.2219208
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673088,
+      "lonlat": [
+        -110.9691292,
+        32.221931
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673089,
+      "lonlat": [
+        -110.9689649,
+        32.2219418
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673131,
+      "lonlat": [
+        -110.969089,
+        32.2220522
+      ],
+      "tags": {
+        "amenity": "bicycle_parking",
+        "bicycle_parking": "stands",
+        "capacity": "2",
+        "covered": "no"
+      },
+      "timestamp": "2023-11-15 23:30:51+00:00",
+      "version": 2
+    },
+    {
+      "id": 9984673132,
+      "lonlat": [
+        -110.9693756,
+        32.2220315
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673140,
+      "lonlat": [
+        -110.9694947,
+        32.2220231
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673167,
+      "lonlat": [
+        -110.970009,
+        32.2220126
+      ],
+      "tags": {
+        "amenity": "bicycle_parking",
+        "bicycle_parking": "stands",
+        "capacity": "2",
+        "covered": "no"
+      },
+      "timestamp": "2023-11-15 23:29:37+00:00",
+      "version": 2
+    },
+    {
+      "id": 9984673179,
+      "lonlat": [
+        -110.9701089,
+        32.2220089
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673180,
+      "lonlat": [
+        -110.9701444,
+        32.2220085
+      ],
+      "tags": {
+        "amenity": "bicycle_parking",
+        "bicycle_parking": "stands",
+        "capacity": "2",
+        "covered": "no"
+      },
+      "timestamp": "2023-11-15 23:29:35+00:00",
+      "version": 2
+    },
+    {
+      "id": 9984673181,
+      "lonlat": [
+        -110.9702427,
+        32.2220038
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "check_date": "2026-10-08",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2026-10-09 01:38:39+00:00",
+      "version": 2
+    },
+    {
+      "id": 9984673185,
+      "lonlat": [
+        -110.9708098,
+        32.2219764
+      ],
+      "tags": {
+        "highway": "street_lamp"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673186,
+      "lonlat": [
+        -110.9708143,
+        32.2219764
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "check_date": "2026-10-08",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2026-10-09 01:38:48+00:00",
+      "version": 2
+    },
+    {
+      "id": 9984673187,
+      "lonlat": [
+        -110.9708651,
+        32.2219744
+      ],
+      "tags": {
+        "amenity": "bicycle_parking",
+        "bicycle_parking": "stands",
+        "capacity": "2",
+        "covered": "no"
+      },
+      "timestamp": "2026-10-09 01:39:00+00:00",
+      "version": 2
+    },
+    {
+      "id": 9984673189,
+      "lonlat": [
+        -110.9708993,
+        32.2219729
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "check_date": "2026-10-08",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2026-10-09 01:38:51+00:00",
+      "version": 2
+    },
+    {
+      "id": 9984673190,
+      "lonlat": [
+        -110.9709637,
+        32.22197
+      ],
+      "tags": {
+        "amenity": "bicycle_parking",
+        "bicycle_parking": "stands",
+        "capacity": "2",
+        "covered": "no"
+      },
+      "timestamp": "2026-10-09 01:39:03+00:00",
+      "version": 2
+    },
+    {
+      "id": 9984673192,
+      "lonlat": [
+        -110.9710213,
+        32.2219665
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "check_date": "2026-10-08",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2026-10-09 01:38:50+00:00",
+      "version": 2
+    },
+    {
+      "id": 9984673204,
+      "lonlat": [
+        -110.9698432,
+        32.2215481
+      ],
+      "tags": {
+        "barrier": "bollard"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673205,
+      "lonlat": [
+        -110.9698531,
+        32.2215477
+      ],
+      "tags": {
+        "barrier": "bollard"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673206,
+      "lonlat": [
+        -110.9698665,
+        32.2215474
+      ],
+      "tags": {
+        "barrier": "bollard"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673207,
+      "lonlat": [
+        -110.9698782,
+        32.2215466
+      ],
+      "tags": {
+        "barrier": "bollard"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673208,
+      "lonlat": [
+        -110.9698916,
+        32.2215459
+      ],
+      "tags": {
+        "barrier": "bollard"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673238,
+      "lonlat": [
+        -110.9698403,
+        32.2215162
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes",
+        "seats": "3"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673239,
+      "lonlat": [
+        -110.9698405,
+        32.2214947
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes",
+        "seats": "3"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673240,
+      "lonlat": [
+        -110.9698249,
+        32.2214989
+      ],
+      "tags": {
+        "barrier": "bollard"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673241,
+      "lonlat": [
+        -110.9698247,
+        32.2215043
+      ],
+      "tags": {
+        "highway": "street_lamp"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673242,
+      "lonlat": [
+        -110.9698249,
+        32.2215114
+      ],
+      "tags": {
+        "barrier": "bollard"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673245,
+      "lonlat": [
+        -110.9698321,
+        32.2214379
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes",
+        "seats": "3"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673246,
+      "lonlat": [
+        -110.9698323,
+        32.2214165
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes",
+        "seats": "3"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673249,
+      "lonlat": [
+        -110.9698167,
+        32.2214207
+      ],
+      "tags": {
+        "barrier": "bollard"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673250,
+      "lonlat": [
+        -110.9698165,
+        32.2214261
+      ],
+      "tags": {
+        "highway": "street_lamp"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673251,
+      "lonlat": [
+        -110.9698167,
+        32.2214332
+      ],
+      "tags": {
+        "barrier": "bollard"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673299,
+      "lonlat": [
+        -110.9701645,
+        32.2218706
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "no"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673300,
+      "lonlat": [
+        -110.9701914,
+        32.2218695
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "no"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673303,
+      "lonlat": [
+        -110.9701501,
+        32.2218871
+      ],
+      "tags": {
+        "amenity": "bicycle_parking",
+        "bicycle_parking": "stands",
+        "capacity": "8",
+        "covered": "no"
+      },
+      "timestamp": "2023-11-15 23:29:32+00:00",
+      "version": 2
+    },
+    {
+      "id": 9984673304,
+      "lonlat": [
+        -110.9706312,
+        32.2218434
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "no"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673317,
+      "lonlat": [
+        -110.9703359,
+        32.2218516
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673318,
+      "lonlat": [
+        -110.9704686,
+        32.2218427
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673319,
+      "lonlat": [
+        -110.9706535,
+        32.2218576
+      ],
+      "tags": {
+        "amenity": "bicycle_parking",
+        "bicycle_parking": "stands",
+        "capacity": "6",
+        "covered": "no"
+      },
+      "timestamp": "2023-11-15 23:29:17+00:00",
+      "version": 3
+    },
+    {
+      "id": 9984673453,
+      "lonlat": [
+        -110.969677,
+        32.2218522
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673454,
+      "lonlat": [
+        -110.9696734,
+        32.2217784
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673455,
+      "lonlat": [
+        -110.9696707,
+        32.2217231
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673456,
+      "lonlat": [
+        -110.9696667,
+        32.2216673
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673484,
+      "lonlat": [
+        -110.9699136,
+        32.2216155
+      ],
+      "tags": {
+        "barrier": "gate"
+      },
+      "timestamp": "2022-09-18 04:53:44+00:00",
+      "version": 2
+    },
+    {
+      "id": 9984673505,
+      "lonlat": [
+        -110.9713279,
+        32.2216154
+      ],
+      "tags": {
+        "amenity": "bicycle_parking",
+        "bicycle_parking": "stands",
+        "capacity": "2"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673507,
+      "lonlat": [
+        -110.9713189,
+        32.2215606
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "check_date": "2026-10-08",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2026-10-09 04:19:50+00:00",
+      "version": 2
+    },
+    {
+      "id": 9984673508,
+      "lonlat": [
+        -110.9712994,
+        32.2214381
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "check_date": "2026-10-08",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2026-10-09 04:19:53+00:00",
+      "version": 2
+    },
+    {
+      "id": 9984673639,
+      "lonlat": [
+        -110.9696589,
+        32.2214906
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673640,
+      "lonlat": [
+        -110.9696569,
+        32.221431
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "payment:american_express": "yes",
+        "payment:coins": "yes",
+        "payment:discover_card": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "vending": "parking_tickets"
+      },
+      "timestamp": "2022-08-29 06:25:10+00:00",
+      "version": 1
+    },
+    {
+      "id": 9984673641,
+      "lonlat": [
+        -110.9711135,
+        32.2218205
+      ],
+      "tags": {
+        "amenity": "post_box",
+        "collection_times": "Mo-Fr 14:30",
+        "drive_through": "no",
+        "operator": "United States Postal Service",
+        "operator:short": "USPS",
+        "operator:type": "public",
+        "operator:website": "https://www.usps.com",
+        "operator:wikidata": "Q668687",
+        "operator:wikipedia": "en:United States Postal Service"
+      },
+      "timestamp": "2024-07-04 10:54:05+00:00",
+      "version": 3
+    },
+    {
+      "id": 9984673642,
+      "lonlat": [
+        -110.9709964,
+        32.2217845
+      ],
+      "tags": {
+        "amenity": "atm",
+        "brand": "Chase",
+        "brand:wikidata": "Q524629",
+        "name": "Chase",
+        "operator": "Chase",
+        "operator:wikidata": "Q524629"
+      },
+      "timestamp": "2022-09-18 04:53:46+00:00",
+      "version": 2
+    },
+    {
+      "id": 9991828311,
+      "lonlat": [
+        -110.9687445,
+        32.221634
+      ],
+      "tags": {
+        "highway": "crossing"
+      },
+      "timestamp": "2022-09-01 02:44:43+00:00",
+      "version": 1
+    },
+    {
+      "id": 9991828312,
+      "lonlat": [
+        -110.9696496,
+        32.2215762
+      ],
+      "tags": {
+        "highway": "crossing"
+      },
+      "timestamp": "2022-09-01 02:44:43+00:00",
+      "version": 1
+    },
+    {
+      "id": 10032763697,
+      "lonlat": [
+        -110.9699175,
+        32.2216385
+      ],
+      "tags": {
+        "barrier": "gate"
+      },
+      "timestamp": "2022-09-18 04:53:44+00:00",
+      "version": 1
+    },
+    {
+      "id": 10032763705,
+      "lonlat": [
+        -110.9699101,
+        32.2216344
+      ],
+      "tags": {
+        "barrier": "bollard"
+      },
+      "timestamp": "2022-09-18 04:53:44+00:00",
+      "version": 1
+    },
+    {
+      "id": 10032763706,
+      "lonlat": [
+        -110.9699054,
+        32.2215983
+      ],
+      "tags": {
+        "barrier": "bollard"
+      },
+      "timestamp": "2022-09-18 04:53:44+00:00",
+      "version": 1
+    },
+    {
+      "id": 10032763780,
+      "lonlat": [
+        -110.9710631,
+        32.2218265
+      ],
+      "tags": {
+        "amenity": "vending_machine",
+        "vending": "public_transport_tickets"
+      },
+      "timestamp": "2022-09-18 04:53:44+00:00",
+      "version": 1
+    },
+    {
+      "id": 10032763781,
+      "lonlat": [
+        -110.9710267,
+        32.2218294
+      ],
+      "tags": {
+        "access": "customers",
+        "amenity": "bench",
+        "backrest": "no",
+        "colour": "white",
+        "material": "metal",
+        "seats": "3"
+      },
+      "timestamp": "2022-09-18 04:53:44+00:00",
+      "version": 1
+    },
+    {
+      "id": 10032763782,
+      "lonlat": [
+        -110.9710069,
+        32.2218299
+      ],
+      "tags": {
+        "amenity": "waste_basket",
+        "waste": "recycling"
+      },
+      "timestamp": "2022-09-18 04:53:44+00:00",
+      "version": 1
+    },
+    {
+      "id": 10032763791,
+      "lonlat": [
+        -110.9705987,
+        32.2218591
+      ],
+      "tags": {
+        "amenity": "bicycle_parking",
+        "bicycle_parking": "stands",
+        "capacity": "6",
+        "covered": "no"
+      },
+      "timestamp": "2023-11-15 23:29:15+00:00",
+      "version": 2
+    },
+    {
+      "id": 10035744669,
+      "lonlat": [
+        -110.9713617,
+        32.2230624
+      ],
+      "tags": {
+        "amenity": "post_box",
+        "drive_through": "no",
+        "operator": "United States Postal Service",
+        "operator:short": "USPS",
+        "operator:type": "public",
+        "operator:website": "https://www.usps.com",
+        "operator:wikidata": "Q668687",
+        "operator:wikipedia": "en:United States Postal Service"
+      },
+      "timestamp": "2024-07-04 10:54:05+00:00",
+      "version": 2
+    },
+    {
+      "id": 10035744679,
+      "lonlat": [
+        -110.9712623,
+        32.2225342
+      ],
+      "tags": {
+        "amenity": "post_box",
+        "collection_times": "Mo-Fr 14:30",
+        "drive_through": "no",
+        "operator": "United States Postal Service",
+        "operator:short": "USPS",
+        "operator:type": "public",
+        "operator:website": "https://www.usps.com",
+        "operator:wikidata": "Q668687",
+        "operator:wikipedia": "en:United States Postal Service"
+      },
+      "timestamp": "2024-07-04 10:54:05+00:00",
+      "version": 4
+    },
+    {
+      "id": 10035744682,
+      "lonlat": [
+        -110.9713346,
+        32.2227331
+      ],
+      "tags": {
+        "amenity": "bicycle_parking",
+        "bicycle_parking": "stands",
+        "capacity": "14",
+        "covered": "no"
+      },
+      "timestamp": "2024-01-04 00:23:48+00:00",
+      "version": 2
+    },
+    {
+      "id": 11259036022,
+      "lonlat": [
+        -110.9683952,
+        32.2222515
+      ],
+      "tags": {
+        "amenity": "bicycle_rental",
+        "name": "Tugo Bike Share"
+      },
+      "timestamp": "2023-10-13 05:20:44+00:00",
+      "version": 1
+    },
+    {
+      "id": 11259036023,
+      "lonlat": [
+        -110.9684509,
+        32.2240173
+      ],
+      "tags": {
+        "amenity": "bicycle_rental",
+        "bicycle_rental": "docking_station",
+        "capacity": "14",
+        "name": "Tugo Bike Share"
+      },
+      "timestamp": "2025-10-13 23:21:27+00:00",
+      "version": 3
+    },
+    {
+      "id": 11900084669,
+      "lonlat": [
+        -110.9699709,
+        32.2221423
+      ],
+      "tags": {
+        "addr:postcode": "85701",
+        "amenity": "bar",
+        "contact:facebook": "cobraarcade",
+        "contact:instagram": "cobraarcadebar",
+        "email": "tuscon@cobraarcadebar.com",
+        "name": "Cobra Arcade Bar",
+        "opening_hours": "Tu-Su 16:00-02:00",
+        "phone": "+1 520 499 3999",
+        "website": "https://cobraarcadebar.com"
+      },
+      "timestamp": "2024-05-13 03:46:40+00:00",
+      "version": 1
+    },
+    {
+      "id": 12030051170,
+      "lonlat": [
+        -110.9687905,
+        32.2230848
+      ],
+      "tags": {
+        "amenity": "parking_entrance"
+      },
+      "timestamp": "2024-07-02 22:34:35+00:00",
+      "version": 1
+    },
+    {
+      "id": 12030051172,
+      "lonlat": [
+        -110.9698156,
+        32.2228722
+      ],
+      "tags": {
+        "amenity": "parking_entrance"
+      },
+      "timestamp": "2024-07-02 22:34:35+00:00",
+      "version": 1
+    },
+    {
+      "id": 12315758179,
+      "lonlat": [
+        -110.9695873,
+        32.2217553
+      ],
+      "tags": {
+        "addr:city": "Tucson",
+        "addr:housenumber": "98",
+        "addr:postcode": "85701",
+        "addr:state": "AZ",
+        "addr:street": "East Congress Street",
+        "amenity": "restaurant",
+        "cuisine": "breakfast;brunch;pastry",
+        "name": "The National",
+        "opening_hours": "Mo-Su 07:00-16:00",
+        "phone": "+1-520-203-7290",
+        "website": "https://thenationaltucson.com/"
+      },
+      "timestamp": "2024-11-05 21:51:22+00:00",
+      "version": 2
+    },
+    {
+      "id": 13174126438,
+      "lonlat": [
+        -110.9699415,
+        32.2232856
+      ],
+      "tags": {
+        "addr:city": "Tucson",
+        "addr:housenumber": "75",
+        "addr:postcode": "85701",
+        "addr:state": "AZ",
+        "addr:street": "East Pennington Street",
+        "amenity": "cafe",
+        "bar": "no",
+        "contact:facebook": "https://www.facebook.com/RaptorCanyonCafe/",
+        "cuisine": "american;brunch;fries;pastry;coffee_shop",
+        "description": "Brunch eatery serving breakfast, lunch, and baked goods in a cozy indoor space",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "name": "Raptor Canyon Cafe",
+        "opening_hours": "Mo-Fr 07:00-14:00",
+        "outdoor_seating": "no",
+        "phone": "+1 520-336-5698",
+        "website": "https://www.raptorcanyoncafe.com/"
+      },
+      "timestamp": "2025-09-26 19:52:07+00:00",
+      "version": 1
+    },
+    {
+      "id": 13231888735,
+      "lonlat": [
+        -110.9705688,
+        32.2232908
+      ],
+      "tags": {
+        "amenity": "school",
+        "education": "school",
+        "name": "City High School"
+      },
+      "timestamp": "2025-10-29 22:54:36+00:00",
+      "version": 2
+    },
+    {
+      "id": 13265978062,
+      "lonlat": [
+        -110.9712533,
+        32.2228259
+      ],
+      "tags": {
+        "amenity": "bicycle_parking",
+        "bicycle_parking": "stands",
+        "capacity": "6",
+        "covered": "no"
+      },
+      "timestamp": "2025-10-30 23:27:36+00:00",
+      "version": 4
+    },
+    {
+      "id": 13265996250,
+      "lonlat": [
+        -110.9705105,
+        32.2230765
+      ],
+      "tags": {
+        "amenity": "bicycle_parking",
+        "bicycle_parking": "stands",
+        "capacity": "2",
+        "covered": "no"
+      },
+      "timestamp": "2026-01-07 23:10:17+00:00",
+      "version": 4
+    },
+    {
+      "id": 13271340435,
+      "lonlat": [
+        -110.9701308,
+        32.2231962
+      ],
+      "tags": {
+        "amenity": "bicycle_parking",
+        "bicycle_parking": "stands",
+        "capacity": "4",
+        "covered": "no"
+      },
+      "timestamp": "2025-10-30 23:29:37+00:00",
+      "version": 1
+    },
+    {
+      "id": 13742008218,
+      "lonlat": [
+        -110.9702413,
+        32.2218599
+      ],
+      "tags": {
+        "highway": "street_lamp"
+      },
+      "timestamp": "2026-04-19 08:09:31+00:00",
+      "version": 1
+    },
+    {
+      "id": 13742008225,
+      "lonlat": [
+        -110.9685203,
+        32.22149
+      ],
+      "tags": {
+        "highway": "street_lamp"
+      },
+      "timestamp": "2026-04-19 08:09:31+00:00",
+      "version": 1
+    },
+    {
+      "id": 13742008226,
+      "lonlat": [
+        -110.9687255,
+        32.2216829
+      ],
+      "tags": {
+        "highway": "street_lamp"
+      },
+      "timestamp": "2026-04-19 08:09:31+00:00",
+      "version": 1
+    },
+    {
+      "id": 13742008227,
+      "lonlat": [
+        -110.9685237,
+        32.2216755
+      ],
+      "tags": {
+        "highway": "street_lamp"
+      },
+      "timestamp": "2026-04-19 08:09:31+00:00",
+      "version": 1
+    },
+    {
+      "id": 13742008228,
+      "lonlat": [
+        -110.9685217,
+        32.221874
+      ],
+      "tags": {
+        "highway": "street_lamp"
+      },
+      "timestamp": "2026-04-19 08:09:31+00:00",
+      "version": 1
+    },
+    {
+      "id": 14067503205,
+      "lonlat": [
+        -110.9700857,
+        32.2232695
+      ],
+      "tags": {
+        "addr:city": "Tucson",
+        "addr:housenumber": "73",
+        "addr:state": "AZ",
+        "addr:street": "East Pennington Street",
+        "addr:unit": "Floor 1",
+        "amenity": "cafe",
+        "diet:gluten_free": "yes",
+        "diet:vegan": "only",
+        "name": "Urban Fresh",
+        "website": "https://urbanfreshaz.com"
+      },
+      "timestamp": "2026-08-02 04:15:23+00:00",
+      "version": 1
+    }
+  ],
+  "warning": "Municipal map point and raw OSM context only. No chosen vehicle entry, datum alignment, grade, public motor rights, legal turn, connector length/cost or complete neighborhood road coverage is established. Census-origin regression unchanged. OSM data copyright OpenStreetMap contributors, ODbL.",
+  "ways": [
+    {
+      "id": 16900783,
+      "nodes": [
+        [
+          175299921,
+          -110.9698067,
+          32.2231799
+        ],
+        [
+          5140592855,
+          -110.9698197,
+          32.2232456
+        ],
+        [
+          5140592617,
+          -110.9698395,
+          32.2233509
+        ],
+        [
+          5140592824,
+          -110.9698757,
+          32.2235426
+        ],
+        [
+          1966015643,
+          -110.9698938,
+          32.2236788
+        ],
+        [
+          8365110344,
+          -110.9699652,
+          32.224294
+        ],
+        [
+          175299923,
+          -110.9699716,
+          32.2243609
+        ],
+        [
+          8990329438,
+          -110.9699717,
+          32.2243694
+        ]
+      ],
+      "tags": {
+        "highway": "unclassified",
+        "name": "North Scott Avenue",
+        "sidewalk:both": "separate",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:name_base": "Scott",
+        "tiger:name_direction_prefix": "N",
+        "tiger:name_type": "Ave"
+      },
+      "timestamp": "2026-02-01 11:11:35+00:00",
+      "version": 11
+    },
+    {
+      "id": 16900785,
+      "nodes": [
+        [
+          8501509009,
+          -110.9698178,
+          32.2219426
+        ],
+        [
+          6226463293,
+          -110.9698507,
+          32.2220058
+        ],
+        [
+          6226463294,
+          -110.9698566,
+          32.2220189
+        ],
+        [
+          6226463289,
+          -110.969861,
+          32.2220352
+        ],
+        [
+          6947970701,
+          -110.969891,
+          32.2223593
+        ],
+        [
+          9563763611,
+          -110.9699025,
+          32.2224691
+        ],
+        [
+          12030510705,
+          -110.9699229,
+          32.2227133
+        ],
+        [
+          9563763614,
+          -110.9699264,
+          32.2227545
+        ],
+        [
+          12030051171,
+          -110.9699306,
+          32.2228527
+        ],
+        [
+          9958426301,
+          -110.9699325,
+          32.2228958
+        ],
+        [
+          9958426300,
+          -110.9699458,
+          32.2229969
+        ],
+        [
+          6228373557,
+          -110.9699615,
+          32.2230761
+        ],
+        [
+          175299929,
+          -110.9699763,
+          32.2231248
+        ]
+      ],
+      "tags": {
+        "highway": "unclassified",
+        "name": "North Scott Avenue",
+        "sidewalk:both": "separate",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:name_base": "Scott",
+        "tiger:name_direction_prefix": "N",
+        "tiger:name_type": "Ave"
+      },
+      "timestamp": "2024-07-03 04:38:13+00:00",
+      "version": 15
+    },
+    {
+      "id": 16901825,
+      "nodes": [
+        [
+          175311380,
+          -110.9714133,
+          32.2228444
+        ],
+        [
+          12383538712,
+          -110.971369,
+          32.2228533
+        ],
+        [
+          6226359123,
+          -110.9713104,
+          32.2228645
+        ],
+        [
+          6947970690,
+          -110.9705515,
+          32.2230126
+        ],
+        [
+          6226359134,
+          -110.9700952,
+          32.2231017
+        ],
+        [
+          175299929,
+          -110.9699763,
+          32.2231248
+        ]
+      ],
+      "tags": {
+        "cycleway:right": "shared_lane",
+        "cycleway:right:lane": "pictogram",
+        "highway": "tertiary",
+        "lane_markings": "no",
+        "lit": "yes",
+        "name": "East Pennington Street",
+        "oneway": "yes",
+        "sidewalk:both": "separate",
+        "smoothness": "intermediate",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:name_base": "Pennington",
+        "tiger:name_direction_prefix": "E",
+        "tiger:name_type": "St"
+      },
+      "timestamp": "2026-01-07 23:09:35+00:00",
+      "version": 24
+    },
+    {
+      "id": 16910418,
+      "nodes": [
+        [
+          175393543,
+          -110.9716446,
+          32.2243097
+        ],
+        [
+          6212660394,
+          -110.9716323,
+          32.2242322
+        ],
+        [
+          12383538734,
+          -110.9715285,
+          32.2235743
+        ],
+        [
+          6226359126,
+          -110.9714293,
+          32.2229457
+        ],
+        [
+          175311380,
+          -110.9714133,
+          32.2228444
+        ],
+        [
+          8365110343,
+          -110.971402,
+          32.2227805
+        ],
+        [
+          6226359099,
+          -110.97127,
+          32.221949
+        ],
+        [
+          8501509010,
+          -110.9712569,
+          32.2218628
+        ]
+      ],
+      "tags": {
+        "hgv": "designated",
+        "highway": "tertiary",
+        "lanes": "3",
+        "name": "North Stone Avenue",
+        "name_1": "I-10 (Bus)",
+        "old_ref": "US 89 (old AZ 93 (old I 10 BUS (old US 80 (old AZ 84 (old AZ 789)))))",
+        "oneway": "yes",
+        "ref": "US 80 Historic",
+        "sidewalk:both": "separate",
+        "smoothness": "good",
+        "source:hgv": "https://www.tucsonaz.gov/files/sharedassets/public/v/2/government/departments/transportation-and-mobility/dtm/documents/linked-documents/msr_map.pdf",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:name_base": "Stone",
+        "tiger:name_base_1": "I-10 (Bus)",
+        "tiger:name_direction_prefix": "N",
+        "tiger:name_type": "Ave",
+        "tiger:reviewed": "no"
+      },
+      "timestamp": "2025-11-16 06:59:31+00:00",
+      "version": 24
+    },
+    {
+      "id": 16918706,
+      "nodes": [
+        [
+          8501509010,
+          -110.9712569,
+          32.2218628
+        ],
+        [
+          175294677,
+          -110.9712554,
+          32.2218464
+        ],
+        [
+          6226359100,
+          -110.97125,
+          32.2218143
+        ],
+        [
+          10032763928,
+          -110.9711771,
+          32.2213199
+        ],
+        [
+          8426759377,
+          -110.9711425,
+          32.2210853
+        ],
+        [
+          8988204658,
+          -110.9711354,
+          32.2210337
+        ]
+      ],
+      "tags": {
+        "cycleway:right": "separate",
+        "hgv": "designated",
+        "highway": "tertiary",
+        "name": "South Stone Avenue",
+        "old_ref": "US 89 (old AZ 93 (old I 10 BUS (old US 80 (old AZ 84 (old AZ 789)))))",
+        "oneway": "yes",
+        "ref": "US 80 Historic",
+        "sidewalk:both": "separate",
+        "source:hgv": "https://www.tucsonaz.gov/files/sharedassets/public/v/2/government/departments/transportation-and-mobility/dtm/documents/linked-documents/msr_map.pdf"
+      },
+      "timestamp": "2026-10-09 04:20:38+00:00",
+      "version": 19
+    },
+    {
+      "id": 16925670,
+      "nodes": [
+        [
+          8501509008,
+          -110.9686278,
+          32.2220175
+        ],
+        [
+          6228373562,
+          -110.9686275,
+          32.2220808
+        ],
+        [
+          6947970704,
+          -110.9686322,
+          32.2224195
+        ],
+        [
+          402288194,
+          -110.9686348,
+          32.2226169
+        ]
+      ],
+      "tags": {
+        "cycleway": "shared_lane",
+        "hgv": "designated",
+        "highway": "secondary",
+        "lanes": "3",
+        "lanes:backward": "1",
+        "lanes:forward": "2",
+        "name": "North 6th Avenue",
+        "old_ref": "US 89;US 80",
+        "ref": "US 80 Historic",
+        "sidewalk:both": "separate",
+        "smoothness": "good",
+        "source:hgv": "https://www.tucsonaz.gov/files/sharedassets/public/v/2/government/departments/transportation-and-mobility/dtm/documents/linked-documents/msr_map.pdf",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:name_base": "6th",
+        "tiger:name_direction_prefix": "N",
+        "tiger:name_type": "Ave"
+      },
+      "timestamp": "2025-09-26 18:43:38+00:00",
+      "version": 33
+    },
+    {
+      "id": 16939108,
+      "nodes": [
+        [
+          8988204670,
+          -110.9686141,
+          32.221214
+        ],
+        [
+          6228399099,
+          -110.968621,
+          32.2212797
+        ],
+        [
+          7483534969,
+          -110.9686223,
+          32.2213792
+        ],
+        [
+          7483534962,
+          -110.9686235,
+          32.2215341
+        ],
+        [
+          9984673447,
+          -110.9686242,
+          32.2216361
+        ],
+        [
+          6228373583,
+          -110.9686266,
+          32.2219719
+        ],
+        [
+          175299327,
+          -110.9686266,
+          32.2220006
+        ],
+        [
+          8501509008,
+          -110.9686278,
+          32.2220175
+        ]
+      ],
+      "tags": {
+        "cycleway": "shared_lane",
+        "hgv": "designated",
+        "highway": "secondary",
+        "lanes": "4",
+        "name": "South 6th Avenue",
+        "old_ref": "US 89;US 80",
+        "oneway": "no",
+        "ref": "US 80 Historic",
+        "sidewalk:both": "separate",
+        "smoothness": "good",
+        "source:hgv": "https://www.tucsonaz.gov/files/sharedassets/public/v/2/government/departments/transportation-and-mobility/dtm/documents/linked-documents/msr_map.pdf",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:name_base": "6th",
+        "tiger:name_direction_prefix": "S",
+        "tiger:name_type": "Ave"
+      },
+      "timestamp": "2025-09-26 18:45:10+00:00",
+      "version": 35
+    },
+    {
+      "id": 34617543,
+      "nodes": [
+        [
+          175311383,
+          -110.9686436,
+          32.2234115
+        ],
+        [
+          8365097506,
+          -110.9685322,
+          32.2234338
+        ],
+        [
+          402288267,
+          -110.9683321,
+          32.223474
+        ]
+      ],
+      "tags": {
+        "highway": "tertiary",
+        "lanes": "2",
+        "name": "East Pennington Street",
+        "sidewalk:both": "separate",
+        "smoothness": "good",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:name_base": "Pennington",
+        "tiger:name_direction_prefix": "E",
+        "tiger:name_type": "St"
+      },
+      "timestamp": "2025-10-13 23:20:44+00:00",
+      "version": 20
+    },
+    {
+      "id": 236722003,
+      "nodes": [
+        [
+          402288194,
+          -110.9686348,
+          32.2226169
+        ],
+        [
+          12030051168,
+          -110.9686401,
+          32.2230959
+        ],
+        [
+          6496477130,
+          -110.9686423,
+          32.2232968
+        ]
+      ],
+      "tags": {
+        "cycleway": "shared_lane",
+        "hgv": "designated",
+        "highway": "secondary",
+        "lanes": "3",
+        "lanes:backward": "1",
+        "lanes:bus:forward": "1",
+        "lanes:forward": "2",
+        "name": "North 6th Avenue",
+        "old_ref": "US 89;US 80",
+        "ref": "US 80 Historic",
+        "sidewalk:both": "separate",
+        "source:hgv": "https://www.tucsonaz.gov/files/sharedassets/public/v/2/government/departments/transportation-and-mobility/dtm/documents/linked-documents/msr_map.pdf",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:name_base": "6th",
+        "tiger:name_direction_prefix": "N",
+        "tiger:name_type": "Ave"
+      },
+      "timestamp": "2025-03-24 19:11:16+00:00",
+      "version": 17
+    },
+    {
+      "id": 236722004,
+      "nodes": [
+        [
+          402288192,
+          -110.9682869,
+          32.2223436
+        ],
+        [
+          402288193,
+          -110.9683692,
+          32.2224579
+        ],
+        [
+          6226546534,
+          -110.9685204,
+          32.2225497
+        ],
+        [
+          402288194,
+          -110.9686348,
+          32.2226169
+        ]
+      ],
+      "tags": {
+        "access": "no",
+        "bus": "designated",
+        "highway": "busway",
+        "oneway": "yes",
+        "surface": "asphalt"
+      },
+      "timestamp": "2026-09-03 22:41:48+00:00",
+      "version": 6
+    },
+    {
+      "id": 236722007,
+      "nodes": [
+        [
+          175311383,
+          -110.9686436,
+          32.2234115
+        ],
+        [
+          8365097507,
+          -110.9686437,
+          32.2235007
+        ],
+        [
+          6226773440,
+          -110.9686494,
+          32.2241357
+        ],
+        [
+          175513842,
+          -110.9686516,
+          32.2243532
+        ]
+      ],
+      "tags": {
+        "cycleway:both": "share_busway",
+        "hgv": "designated",
+        "highway": "secondary",
+        "lanes": "2",
+        "lanes:bus:forward": "1",
+        "lit": "no",
+        "name": "North 6th Avenue",
+        "old_ref": "US 89; US 80",
+        "ref": "US 80 Historic",
+        "sidewalk:both": "separate",
+        "smoothness": "good",
+        "source:hgv": "https://www.tucsonaz.gov/files/sharedassets/public/v/2/government/departments/transportation-and-mobility/dtm/documents/linked-documents/msr_map.pdf",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:name_base": "6th",
+        "tiger:name_direction_prefix": "N",
+        "tiger:name_type": "Ave"
+      },
+      "timestamp": "2026-02-28 02:05:37+00:00",
+      "version": 20
+    },
+    {
+      "id": 282123360,
+      "nodes": [
+        [
+          175513842,
+          -110.9686516,
+          32.2243532
+        ],
+        [
+          6226773436,
+          -110.9686514,
+          32.2244966
+        ],
+        [
+          175449805,
+          -110.9686563,
+          32.2250308
+        ]
+      ],
+      "tags": {
+        "cycleway:both": "no",
+        "hgv": "designated",
+        "highway": "secondary",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "North 6th Avenue",
+        "old_ref": "US 89;US 80",
+        "sidewalk:both": "separate",
+        "sidewalk:both:bicycle": "yes",
+        "sidewalk:both:bicycle:signed": "yes",
+        "smoothness": "good",
+        "source:hgv": "https://www.tucsonaz.gov/files/sharedassets/public/v/2/government/departments/transportation-and-mobility/dtm/documents/linked-documents/msr_map.pdf",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:name_base": "6th",
+        "tiger:name_direction_prefix": "N",
+        "tiger:name_type": "Ave",
+        "tiger:reviewed": "no"
+      },
+      "timestamp": "2026-01-04 15:55:56+00:00",
+      "version": 13
+    },
+    {
+      "id": 369244296,
+      "nodes": [
+        [
+          3730513196,
+          -110.970315,
+          32.2242016
+        ],
+        [
+          3730513193,
+          -110.9702128,
+          32.2236229
+        ]
+      ],
+      "tags": {
+        "highway": "service",
+        "service": "parking_aisle"
+      },
+      "timestamp": "2015-09-05 12:43:22+00:00",
+      "version": 1
+    },
+    {
+      "id": 369244298,
+      "nodes": [
+        [
+          3730513195,
+          -110.9704529,
+          32.2242001
+        ],
+        [
+          3730513196,
+          -110.970315,
+          32.2242016
+        ],
+        [
+          3730513197,
+          -110.9701222,
+          32.2242037
+        ]
+      ],
+      "tags": {
+        "highway": "service",
+        "service": "parking_aisle"
+      },
+      "timestamp": "2015-09-05 12:43:22+00:00",
+      "version": 1
+    },
+    {
+      "id": 369244305,
+      "nodes": [
+        [
+          3730513198,
+          -110.9704866,
+          32.2243628
+        ],
+        [
+          6212660281,
+          -110.9704717,
+          32.2242908
+        ],
+        [
+          3730513195,
+          -110.9704529,
+          32.2242001
+        ],
+        [
+          3730513192,
+          -110.9703289,
+          32.2236007
+        ],
+        [
+          3730513193,
+          -110.9702128,
+          32.2236229
+        ],
+        [
+          3730513194,
+          -110.9700551,
+          32.223653
+        ],
+        [
+          3730513197,
+          -110.9701222,
+          32.2242037
+        ],
+        [
+          6212660282,
+          -110.9701339,
+          32.224294
+        ],
+        [
+          8990329434,
+          -110.9701389,
+          32.2243597
+        ],
+        [
+          3730513199,
+          -110.9701398,
+          32.2243672
+        ]
+      ],
+      "tags": {
+        "highway": "service",
+        "service": "parking_aisle"
+      },
+      "timestamp": "2021-08-08 16:10:46+00:00",
+      "version": 3
+    },
+    {
+      "id": 378058543,
+      "nodes": [
+        [
+          3814734781,
+          -110.9705547,
+          32.2243621
+        ],
+        [
+          8172744384,
+          -110.9705548,
+          32.224429
+        ],
+        [
+          4401793219,
+          -110.9705634,
+          32.2250974
+        ],
+        [
+          4401793213,
+          -110.9705636,
+          32.2252375
+        ],
+        [
+          6211757547,
+          -110.9703491,
+          32.2254719
+        ],
+        [
+          4401793221,
+          -110.9702778,
+          32.2255528
+        ]
+      ],
+      "tags": {
+        "highway": "unclassified",
+        "name": "North Grossetta Avenue",
+        "oneway": "no",
+        "surface": "asphalt"
+      },
+      "timestamp": "2024-07-03 04:23:38+00:00",
+      "version": 8
+    },
+    {
+      "id": 442529136,
+      "nodes": [
+        [
+          4402077370,
+          -110.971083,
+          32.2243525
+        ],
+        [
+          6212660253,
+          -110.9710873,
+          32.2244272
+        ],
+        [
+          4402077352,
+          -110.9710891,
+          32.2246478
+        ],
+        [
+          6226759789,
+          -110.9711567,
+          32.2246831
+        ],
+        [
+          6212660249,
+          -110.9715624,
+          32.2246821
+        ],
+        [
+          4402077372,
+          -110.9716015,
+          32.2246823
+        ],
+        [
+          4402077376,
+          -110.9717143,
+          32.2246809
+        ]
+      ],
+      "tags": {
+        "highway": "service"
+      },
+      "timestamp": "2022-05-19 14:30:30+00:00",
+      "version": 5
+    },
+    {
+      "id": 442529601,
+      "nodes": [
+        [
+          4402087820,
+          -110.9692052,
+          32.2243719
+        ],
+        [
+          6226773418,
+          -110.9692068,
+          32.2244394
+        ],
+        [
+          4402087859,
+          -110.9692141,
+          32.2247404
+        ],
+        [
+          6211757554,
+          -110.9692071,
+          32.2247499
+        ],
+        [
+          4402087854,
+          -110.9691461,
+          32.2248256
+        ]
+      ],
+      "tags": {
+        "highway": "service"
+      },
+      "timestamp": "2019-01-22 09:24:19+00:00",
+      "version": 3
+    },
+    {
+      "id": 442529611,
+      "nodes": [
+        [
+          4402087818,
+          -110.9693353,
+          32.2249485
+        ],
+        [
+          6211757553,
+          -110.9693931,
+          32.2248712
+        ],
+        [
+          4402087865,
+          -110.9694077,
+          32.2248502
+        ],
+        [
+          8365110345,
+          -110.9694061,
+          32.2244369
+        ],
+        [
+          4402087848,
+          -110.9694064,
+          32.2243713
+        ]
+      ],
+      "tags": {
+        "highway": "service"
+      },
+      "timestamp": "2021-01-26 18:34:03+00:00",
+      "version": 3
+    },
+    {
+      "id": 442529612,
+      "nodes": [
+        [
+          4402087858,
+          -110.9690564,
+          32.2243724
+        ],
+        [
+          6226773419,
+          -110.9690567,
+          32.224441
+        ],
+        [
+          4402087838,
+          -110.9690574,
+          32.2246437
+        ],
+        [
+          6211757555,
+          -110.9690512,
+          32.2246527
+        ],
+        [
+          4402087827,
+          -110.969004,
+          32.2247244
+        ]
+      ],
+      "tags": {
+        "highway": "service",
+        "oneway": "yes"
+      },
+      "timestamp": "2022-05-09 15:47:13+00:00",
+      "version": 4
+    },
+    {
+      "id": 442529613,
+      "nodes": [
+        [
+          4402087823,
+          -110.9700501,
+          32.2243684
+        ],
+        [
+          6226773416,
+          -110.9700511,
+          32.224431
+        ],
+        [
+          4402087860,
+          -110.9700528,
+          32.2245326
+        ],
+        [
+          4402087847,
+          -110.9702593,
+          32.2245326
+        ]
+      ],
+      "tags": {
+        "highway": "service"
+      },
+      "timestamp": "2019-01-22 09:24:19+00:00",
+      "version": 2
+    },
+    {
+      "id": 443867009,
+      "nodes": [
+        [
+          4414001862,
+          -110.9710113,
+          32.2237356
+        ],
+        [
+          4414001873,
+          -110.9709094,
+          32.2237493
+        ],
+        [
+          6212660280,
+          -110.9710063,
+          32.224287
+        ],
+        [
+          4414001883,
+          -110.9710182,
+          32.224353
+        ]
+      ],
+      "tags": {
+        "highway": "service"
+      },
+      "timestamp": "2019-01-16 08:20:07+00:00",
+      "version": 2
+    },
+    {
+      "id": 525065883,
+      "nodes": [
+        [
+          175299929,
+          -110.9699763,
+          32.2231248
+        ],
+        [
+          6253271711,
+          -110.9699563,
+          32.2231304
+        ],
+        [
+          5140592827,
+          -110.9699315,
+          32.2231393
+        ],
+        [
+          5140592852,
+          -110.9699074,
+          32.2231503
+        ],
+        [
+          5140592826,
+          -110.9698833,
+          32.2231605
+        ],
+        [
+          6253271712,
+          -110.9698627,
+          32.2231673
+        ],
+        [
+          5140592615,
+          -110.9698427,
+          32.2231723
+        ],
+        [
+          175299921,
+          -110.9698067,
+          32.2231799
+        ],
+        [
+          8365110318,
+          -110.9696928,
+          32.2232024
+        ],
+        [
+          8365097513,
+          -110.9687662,
+          32.223387
+        ],
+        [
+          175311383,
+          -110.9686436,
+          32.2234115
+        ]
+      ],
+      "tags": {
+        "highway": "tertiary",
+        "lanes": "2",
+        "lit": "yes",
+        "name": "East Pennington Street",
+        "oneway": "no",
+        "sidewalk:both": "separate",
+        "smoothness": "good",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:name_base": "Pennington",
+        "tiger:name_direction_prefix": "E",
+        "tiger:name_type": "St"
+      },
+      "timestamp": "2025-10-02 23:40:54+00:00",
+      "version": 12
+    },
+    {
+      "id": 663750207,
+      "nodes": [
+        [
+          6212660388,
+          -110.9702614,
+          32.223157
+        ],
+        [
+          6226359130,
+          -110.9706468,
+          32.2230807
+        ],
+        [
+          6212660271,
+          -110.9710674,
+          32.2229876
+        ],
+        [
+          6226359124,
+          -110.9713259,
+          32.2229333
+        ],
+        [
+          6226359127,
+          -110.9713378,
+          32.2229569
+        ],
+        [
+          6212660273,
+          -110.97136,
+          32.2231209
+        ],
+        [
+          6212660274,
+          -110.9713926,
+          32.2233697
+        ],
+        [
+          12383538732,
+          -110.9714236,
+          32.2235854
+        ],
+        [
+          6212660277,
+          -110.9715156,
+          32.2242264
+        ],
+        [
+          6212660395,
+          -110.9715227,
+          32.2242727
+        ],
+        [
+          6212660278,
+          -110.9715241,
+          32.2242821
+        ],
+        [
+          6212660279,
+          -110.9712491,
+          32.2242863
+        ],
+        [
+          6212660280,
+          -110.9710063,
+          32.224287
+        ],
+        [
+          8172744383,
+          -110.9704901,
+          32.2242907
+        ],
+        [
+          6212660281,
+          -110.9704717,
+          32.2242908
+        ],
+        [
+          12030506731,
+          -110.9703955,
+          32.2242909
+        ],
+        [
+          6212660282,
+          -110.9701339,
+          32.224294
+        ],
+        [
+          6212660283,
+          -110.9700288,
+          32.2242946
+        ],
+        [
+          6212660284,
+          -110.9699668,
+          32.2237132
+        ],
+        [
+          6212660385,
+          -110.9699518,
+          32.2236185
+        ],
+        [
+          6212660386,
+          -110.9699377,
+          32.2235361
+        ],
+        [
+          6212660387,
+          -110.9698757,
+          32.223235
+        ],
+        [
+          6226359135,
+          -110.9700922,
+          32.2231912
+        ],
+        [
+          6212660388,
+          -110.9702614,
+          32.223157
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway",
+        "smoothness": "good",
+        "surface": "paving_stones"
+      },
+      "timestamp": "2025-10-13 23:18:07+00:00",
+      "version": 8
+    },
+    {
+      "id": 665222819,
+      "nodes": [
+        [
+          6226359086,
+          -110.9712362,
+          32.2210721
+        ],
+        [
+          6226359087,
+          -110.9712656,
+          32.2210918
+        ],
+        [
+          9718539107,
+          -110.9712812,
+          32.2211293
+        ],
+        [
+          6228274740,
+          -110.9713245,
+          32.221443
+        ],
+        [
+          403750817,
+          -110.9713798,
+          32.2217728
+        ],
+        [
+          6226359088,
+          -110.9713466,
+          32.2217963
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway"
+      },
+      "timestamp": "2022-05-05 16:36:52+00:00",
+      "version": 3
+    },
+    {
+      "id": 665222820,
+      "nodes": [
+        [
+          6226359089,
+          -110.9711791,
+          32.2218229
+        ],
+        [
+          6226359090,
+          -110.9711362,
+          32.221558
+        ],
+        [
+          10032763927,
+          -110.9710941,
+          32.2213283
+        ],
+        [
+          6226460482,
+          -110.9710535,
+          32.2211069
+        ],
+        [
+          6226359091,
+          -110.9710519,
+          32.2210982
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway"
+      },
+      "timestamp": "2022-09-18 04:53:46+00:00",
+      "version": 3
+    },
+    {
+      "id": 665222825,
+      "nodes": [
+        [
+          6226359088,
+          -110.9713466,
+          32.2217963
+        ],
+        [
+          6226359094,
+          -110.9713336,
+          32.2218043
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2023-11-15 23:28:18+00:00",
+      "version": 2
+    },
+    {
+      "id": 665222826,
+      "nodes": [
+        [
+          6226359095,
+          -110.9713595,
+          32.2219545
+        ],
+        [
+          8501586162,
+          -110.9713408,
+          32.2218561
+        ],
+        [
+          6226359096,
+          -110.9713388,
+          32.2218397
+        ],
+        [
+          6226359094,
+          -110.9713336,
+          32.2218043
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "surface": "asphalt"
+      },
+      "timestamp": "2023-11-15 23:27:47+00:00",
+      "version": 3
+    },
+    {
+      "id": 665222827,
+      "nodes": [
+        [
+          6226359097,
+          -110.9712017,
+          32.2219441
+        ],
+        [
+          8501586158,
+          -110.9711844,
+          32.2218666
+        ],
+        [
+          6226359098,
+          -110.9711833,
+          32.2218502
+        ],
+        [
+          6226359089,
+          -110.9711791,
+          32.2218229
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:markings": "yes",
+        "footway": "crossing",
+        "highway": "footway"
+      },
+      "timestamp": "2024-11-29 01:35:25+00:00",
+      "version": 5
+    },
+    {
+      "id": 665222828,
+      "nodes": [
+        [
+          6226359101,
+          -110.9711984,
+          32.2219634
+        ],
+        [
+          6226359102,
+          -110.9713184,
+          32.2227918
+        ],
+        [
+          6226359122,
+          -110.9712946,
+          32.2227966
+        ],
+        [
+          6226359103,
+          -110.9709445,
+          32.2228671
+        ],
+        [
+          6947970691,
+          -110.9705325,
+          32.2229518
+        ],
+        [
+          6226359133,
+          -110.9700968,
+          32.2230414
+        ],
+        [
+          6226359131,
+          -110.9700613,
+          32.2230487
+        ],
+        [
+          6228373554,
+          -110.9700505,
+          32.2230439
+        ],
+        [
+          6226359132,
+          -110.9700387,
+          32.2230387
+        ],
+        [
+          6226359119,
+          -110.9699635,
+          32.2224742
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "paving_stones"
+      },
+      "timestamp": "2024-01-04 00:23:59+00:00",
+      "version": 5
+    },
+    {
+      "id": 665222830,
+      "nodes": [
+        [
+          6226359095,
+          -110.9713595,
+          32.2219545
+        ],
+        [
+          6226359113,
+          -110.9713944,
+          32.2219568
+        ],
+        [
+          6226359112,
+          -110.9714899,
+          32.2219492
+        ],
+        [
+          6226359111,
+          -110.9722588,
+          32.2218707
+        ],
+        [
+          12030051181,
+          -110.9722764,
+          32.2218925
+        ],
+        [
+          6226359110,
+          -110.9723441,
+          32.2221882
+        ],
+        [
+          12030051207,
+          -110.9723538,
+          32.2222274
+        ],
+        [
+          12030051176,
+          -110.9723853,
+          32.2223546
+        ],
+        [
+          12030051177,
+          -110.9724135,
+          32.2224554
+        ],
+        [
+          6226359109,
+          -110.9724381,
+          32.2225569
+        ],
+        [
+          6226359136,
+          -110.9724283,
+          32.2225764
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway"
+      },
+      "timestamp": "2024-07-02 22:34:35+00:00",
+      "version": 3
+    },
+    {
+      "id": 665222831,
+      "nodes": [
+        [
+          6226359101,
+          -110.9711984,
+          32.2219634
+        ],
+        [
+          6226359114,
+          -110.9711612,
+          32.2219685
+        ],
+        [
+          6226359115,
+          -110.9710915,
+          32.2219765
+        ],
+        [
+          6226359116,
+          -110.9708753,
+          32.221986
+        ],
+        [
+          6226463287,
+          -110.9699338,
+          32.2220249
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "paving_stones"
+      },
+      "timestamp": "2024-01-28 15:17:59+00:00",
+      "version": 4
+    },
+    {
+      "id": 665222833,
+      "nodes": [
+        [
+          6226359120,
+          -110.971505,
+          32.2227669
+        ],
+        [
+          8365110343,
+          -110.971402,
+          32.2227805
+        ],
+        [
+          12383538711,
+          -110.9713589,
+          32.2227869
+        ],
+        [
+          6226359102,
+          -110.9713184,
+          32.2227918
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:markings": "yes",
+        "footway": "crossing",
+        "highway": "footway",
+        "smoothness": "good",
+        "surface": "paving_stones"
+      },
+      "timestamp": "2026-08-03 23:36:28+00:00",
+      "version": 6
+    },
+    {
+      "id": 665222834,
+      "nodes": [
+        [
+          6226359122,
+          -110.9712946,
+          32.2227966
+        ],
+        [
+          6226359123,
+          -110.9713104,
+          32.2228645
+        ],
+        [
+          6226359124,
+          -110.9713259,
+          32.2229333
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "smoothness": "good",
+        "surface": "paving_stones"
+      },
+      "timestamp": "2025-10-13 23:17:33+00:00",
+      "version": 3
+    },
+    {
+      "id": 665222835,
+      "nodes": [
+        [
+          6226359125,
+          -110.9715318,
+          32.2229331
+        ],
+        [
+          6226359126,
+          -110.9714293,
+          32.2229457
+        ],
+        [
+          12383538713,
+          -110.9713841,
+          32.2229506
+        ],
+        [
+          6226359127,
+          -110.9713378,
+          32.2229569
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:markings": "yes",
+        "footway": "crossing",
+        "highway": "footway",
+        "smoothness": "good",
+        "surface": "asphalt"
+      },
+      "timestamp": "2025-10-13 23:17:19+00:00",
+      "version": 4
+    },
+    {
+      "id": 665222837,
+      "nodes": [
+        [
+          6226359133,
+          -110.9700968,
+          32.2230414
+        ],
+        [
+          6226359134,
+          -110.9700952,
+          32.2231017
+        ],
+        [
+          6226359135,
+          -110.9700922,
+          32.2231912
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "smoothness": "intermediate",
+        "surface": "asphalt"
+      },
+      "timestamp": "2026-01-07 23:12:27+00:00",
+      "version": 3
+    },
+    {
+      "id": 665232871,
+      "nodes": [
+        [
+          6226359089,
+          -110.9711791,
+          32.2218229
+        ],
+        [
+          8504059019,
+          -110.9711375,
+          32.221798
+        ],
+        [
+          8504059020,
+          -110.9706952,
+          32.2218221
+        ],
+        [
+          6226460479,
+          -110.9699218,
+          32.2218695
+        ],
+        [
+          6226463286,
+          -110.9698926,
+          32.2218729
+        ],
+        [
+          6226460480,
+          -110.9698681,
+          32.2218747
+        ],
+        [
+          402338265,
+          -110.9698668,
+          32.2218389
+        ],
+        [
+          402338266,
+          -110.9698601,
+          32.2216664
+        ],
+        [
+          8140711668,
+          -110.9698591,
+          32.2216201
+        ],
+        [
+          6226460483,
+          -110.9698508,
+          32.221382
+        ],
+        [
+          10032763684,
+          -110.9698387,
+          32.2213034
+        ],
+        [
+          10032763680,
+          -110.9698321,
+          32.2212612
+        ],
+        [
+          6226460481,
+          -110.9698266,
+          32.2212254
+        ],
+        [
+          8140711667,
+          -110.9703948,
+          32.2211683
+        ],
+        [
+          10032749027,
+          -110.9704878,
+          32.2211596
+        ],
+        [
+          6226460482,
+          -110.9710535,
+          32.2211069
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway"
+      },
+      "timestamp": "2022-09-18 04:53:46+00:00",
+      "version": 5
+    },
+    {
+      "id": 665232875,
+      "nodes": [
+        [
+          6226463286,
+          -110.9698926,
+          32.2218729
+        ],
+        [
+          8365110328,
+          -110.9698986,
+          32.2219217
+        ],
+        [
+          8501586159,
+          -110.9699014,
+          32.221939
+        ],
+        [
+          6228373558,
+          -110.9699124,
+          32.2219985
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "surface": "asphalt"
+      },
+      "timestamp": "2023-11-15 23:29:50+00:00",
+      "version": 6
+    },
+    {
+      "id": 665242026,
+      "nodes": [
+        [
+          6226545832,
+          -110.9685346,
+          32.2235156
+        ],
+        [
+          6226545833,
+          -110.9684911,
+          32.2235161
+        ],
+        [
+          6226545834,
+          -110.9684271,
+          32.2235284
+        ],
+        [
+          6226545835,
+          -110.9683643,
+          32.2235458
+        ],
+        [
+          6226545836,
+          -110.9683402,
+          32.223559
+        ],
+        [
+          6226545837,
+          -110.9681548,
+          32.223724
+        ],
+        [
+          6226773459,
+          -110.9681505,
+          32.2237312
+        ],
+        [
+          6226545838,
+          -110.9681452,
+          32.2237399
+        ],
+        [
+          6226545839,
+          -110.9681385,
+          32.2237623
+        ],
+        [
+          6226545840,
+          -110.9681385,
+          32.2237782
+        ],
+        [
+          6226545841,
+          -110.968147,
+          32.2237945
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2024-01-04 00:27:34+00:00",
+      "version": 4
+    },
+    {
+      "id": 665242027,
+      "nodes": [
+        [
+          6226545852,
+          -110.9690003,
+          32.2234213
+        ],
+        [
+          6253271714,
+          -110.9697116,
+          32.2232677
+        ],
+        [
+          6226787839,
+          -110.9697638,
+          32.2232564
+        ],
+        [
+          12030506686,
+          -110.9697706,
+          32.2232749
+        ],
+        [
+          6226787838,
+          -110.9698189,
+          32.223514
+        ],
+        [
+          6226787837,
+          -110.9698427,
+          32.2236377
+        ],
+        [
+          6226787836,
+          -110.9698478,
+          32.2236726
+        ],
+        [
+          6226545843,
+          -110.969909,
+          32.2242956
+        ],
+        [
+          6226787840,
+          -110.9698736,
+          32.2242959
+        ],
+        [
+          6226773432,
+          -110.9687761,
+          32.2243051
+        ],
+        [
+          6226545844,
+          -110.9687589,
+          32.2243048
+        ],
+        [
+          6226773439,
+          -110.9687583,
+          32.2241353
+        ],
+        [
+          6226545845,
+          -110.9687573,
+          32.2238308
+        ],
+        [
+          8365097512,
+          -110.9687433,
+          32.2236561
+        ],
+        [
+          8365097511,
+          -110.9687392,
+          32.2234842
+        ],
+        [
+          6226546544,
+          -110.9687468,
+          32.223473
+        ],
+        [
+          6226545846,
+          -110.9687543,
+          32.2234563
+        ],
+        [
+          6226546543,
+          -110.9687648,
+          32.223448
+        ],
+        [
+          6226545847,
+          -110.9687831,
+          32.2234336
+        ],
+        [
+          6226545848,
+          -110.9688295,
+          32.2234259
+        ],
+        [
+          6226545849,
+          -110.9688627,
+          32.2234335
+        ],
+        [
+          6226545850,
+          -110.9688856,
+          32.2234391
+        ],
+        [
+          6226545851,
+          -110.9689134,
+          32.2234381
+        ],
+        [
+          6226545852,
+          -110.9690003,
+          32.2234213
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway"
+      },
+      "timestamp": "2024-07-03 04:23:38+00:00",
+      "version": 6
+    },
+    {
+      "id": 665242028,
+      "nodes": [
+        [
+          6226545868,
+          -110.9685157,
+          32.223328
+        ],
+        [
+          6226545867,
+          -110.9684919,
+          32.2233507
+        ],
+        [
+          6226545866,
+          -110.9684503,
+          32.2233676
+        ],
+        [
+          6226545865,
+          -110.9684174,
+          32.223375
+        ],
+        [
+          6226545864,
+          -110.9684016,
+          32.2233746
+        ],
+        [
+          6226545863,
+          -110.9683962,
+          32.2233658
+        ],
+        [
+          6226545862,
+          -110.9683912,
+          32.223325
+        ],
+        [
+          6226545861,
+          -110.9684008,
+          32.2233166
+        ],
+        [
+          6226545860,
+          -110.9684066,
+          32.2233067
+        ],
+        [
+          6226545859,
+          -110.9684104,
+          32.2232955
+        ],
+        [
+          6226545856,
+          -110.9684108,
+          32.2232814
+        ],
+        [
+          6226545855,
+          -110.9683828,
+          32.2231518
+        ],
+        [
+          6226545854,
+          -110.9683546,
+          32.2231512
+        ],
+        [
+          8504012813,
+          -110.9683536,
+          32.2230108
+        ],
+        [
+          6226546527,
+          -110.9683513,
+          32.2226796
+        ],
+        [
+          6226545853,
+          -110.9683508,
+          32.2226003
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway"
+      },
+      "timestamp": "2024-07-02 22:34:35+00:00",
+      "version": 4
+    },
+    {
+      "id": 665242029,
+      "nodes": [
+        [
+          6226545875,
+          -110.9684954,
+          32.2221119
+        ],
+        [
+          9231314999,
+          -110.9684776,
+          32.2220958
+        ],
+        [
+          9231314998,
+          -110.9684074,
+          32.222099
+        ],
+        [
+          9627443291,
+          -110.9683358,
+          32.2221024
+        ],
+        [
+          9627443292,
+          -110.9682457,
+          32.2221067
+        ],
+        [
+          6226545882,
+          -110.9681658,
+          32.2221106
+        ],
+        [
+          9627443293,
+          -110.9681016,
+          32.2221134
+        ],
+        [
+          6226546514,
+          -110.9679943,
+          32.2221182
+        ],
+        [
+          6226545878,
+          -110.9679827,
+          32.2221188
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway"
+      },
+      "timestamp": "2022-08-17 05:12:19+00:00",
+      "version": 4
+    },
+    {
+      "id": 665242030,
+      "nodes": [
+        [
+          6226545875,
+          -110.9684954,
+          32.2221119
+        ],
+        [
+          6226546525,
+          -110.9683263,
+          32.2222616
+        ],
+        [
+          6226545880,
+          -110.9683198,
+          32.222267
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway"
+      },
+      "timestamp": "2021-11-06 23:53:15+00:00",
+      "version": 2
+    },
+    {
+      "id": 665242037,
+      "nodes": [
+        [
+          6226546526,
+          -110.9685179,
+          32.2226797
+        ],
+        [
+          6226546527,
+          -110.9683513,
+          32.2226796
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway"
+      },
+      "timestamp": "2019-01-22 06:40:54+00:00",
+      "version": 1
+    },
+    {
+      "id": 665242040,
+      "nodes": [
+        [
+          6226545872,
+          -110.9685217,
+          32.2225143
+        ],
+        [
+          6226546534,
+          -110.9685204,
+          32.2225497
+        ],
+        [
+          6226545871,
+          -110.9685198,
+          32.2225971
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway"
+      },
+      "timestamp": "2019-01-22 06:40:54+00:00",
+      "version": 1
+    },
+    {
+      "id": 665242046,
+      "nodes": [
+        [
+          6226545832,
+          -110.9685346,
+          32.2235156
+        ],
+        [
+          8365097506,
+          -110.9685322,
+          32.2234338
+        ],
+        [
+          6226546540,
+          -110.9685276,
+          32.2233329
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "smoothness": "good",
+        "surface": "asphalt"
+      },
+      "timestamp": "2025-10-13 23:20:46+00:00",
+      "version": 5
+    },
+    {
+      "id": 665242047,
+      "nodes": [
+        [
+          6226546542,
+          -110.9687686,
+          32.2233349
+        ],
+        [
+          8365097513,
+          -110.9687662,
+          32.223387
+        ],
+        [
+          6226546543,
+          -110.9687648,
+          32.223448
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "smoothness": "good",
+        "surface": "asphalt"
+      },
+      "timestamp": "2025-09-26 18:42:39+00:00",
+      "version": 4
+    },
+    {
+      "id": 665242048,
+      "nodes": [
+        [
+          6226546544,
+          -110.9687468,
+          32.223473
+        ],
+        [
+          8365097507,
+          -110.9686437,
+          32.2235007
+        ],
+        [
+          6226546545,
+          -110.9685347,
+          32.2235306
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "surface": "asphalt"
+      },
+      "timestamp": "2024-01-04 00:27:06+00:00",
+      "version": 3
+    },
+    {
+      "id": 665265232,
+      "nodes": [
+        [
+          6226773432,
+          -110.9687761,
+          32.2243051
+        ],
+        [
+          6226773433,
+          -110.9687952,
+          32.2243384
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2025-10-13 23:21:54+00:00",
+      "version": 2
+    },
+    {
+      "id": 665265236,
+      "nodes": [
+        [
+          6226773433,
+          -110.9687952,
+          32.2243384
+        ],
+        [
+          6226773438,
+          -110.9688166,
+          32.2243728
+        ],
+        [
+          6226773422,
+          -110.9688441,
+          32.2244206
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway"
+      },
+      "timestamp": "2019-01-22 09:24:18+00:00",
+      "version": 1
+    },
+    {
+      "id": 665265237,
+      "nodes": [
+        [
+          6226773439,
+          -110.9687583,
+          32.2241353
+        ],
+        [
+          6226773440,
+          -110.9686494,
+          32.2241357
+        ],
+        [
+          6226545831,
+          -110.9685435,
+          32.2241352
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "lit": "yes",
+        "surface": "asphalt"
+      },
+      "timestamp": "2026-01-14 23:44:20+00:00",
+      "version": 3
+    },
+    {
+      "id": 665265238,
+      "nodes": [
+        [
+          6226773441,
+          -110.9685388,
+          32.2241312
+        ],
+        [
+          6226773442,
+          -110.9685271,
+          32.224234
+        ],
+        [
+          6226773443,
+          -110.9685198,
+          32.2243178
+        ],
+        [
+          6226773448,
+          -110.9685126,
+          32.2243255
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "surface": "asphalt"
+      },
+      "timestamp": "2026-09-09 01:06:49+00:00",
+      "version": 2
+    },
+    {
+      "id": 665265239,
+      "nodes": [
+        [
+          6226773444,
+          -110.9681577,
+          32.2240106
+        ],
+        [
+          6226773445,
+          -110.9681713,
+          32.2240349
+        ],
+        [
+          6226773448,
+          -110.9685126,
+          32.2243255
+        ],
+        [
+          6226773446,
+          -110.9685217,
+          32.2243333
+        ],
+        [
+          6226773447,
+          -110.9685514,
+          32.2243397
+        ],
+        [
+          6226773437,
+          -110.9685765,
+          32.2244313
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway"
+      },
+      "timestamp": "2019-01-22 09:24:18+00:00",
+      "version": 1
+    },
+    {
+      "id": 665265248,
+      "nodes": [
+        [
+          6226545864,
+          -110.9684016,
+          32.2233746
+        ],
+        [
+          6492900744,
+          -110.9683215,
+          32.2233916
+        ],
+        [
+          6226773462,
+          -110.96825,
+          32.2234067
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway"
+      },
+      "timestamp": "2019-05-22 21:20:11+00:00",
+      "version": 2
+    },
+    {
+      "id": 665266545,
+      "nodes": [
+        [
+          6212660387,
+          -110.9698757,
+          32.223235
+        ],
+        [
+          5140592855,
+          -110.9698197,
+          32.2232456
+        ],
+        [
+          6226787839,
+          -110.9697638,
+          32.2232564
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway"
+      },
+      "timestamp": "2021-01-26 18:34:03+00:00",
+      "version": 2
+    },
+    {
+      "id": 665266546,
+      "nodes": [
+        [
+          6212660283,
+          -110.9700288,
+          32.2242946
+        ],
+        [
+          8365110344,
+          -110.9699652,
+          32.224294
+        ],
+        [
+          6226545843,
+          -110.969909,
+          32.2242956
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "surface": "asphalt"
+      },
+      "timestamp": "2026-09-09 00:33:56+00:00",
+      "version": 3
+    },
+    {
+      "id": 665266547,
+      "nodes": [
+        [
+          6226787840,
+          -110.9698736,
+          32.2242959
+        ],
+        [
+          6226787841,
+          -110.9698743,
+          32.2243697
+        ],
+        [
+          6226787842,
+          -110.9698736,
+          32.2244326
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "surface": "asphalt"
+      },
+      "timestamp": "2026-09-04 23:12:45+00:00",
+      "version": 2
+    },
+    {
+      "id": 665446481,
+      "nodes": [
+        [
+          6228373461,
+          -110.9685012,
+          32.2212846
+        ],
+        [
+          6228373450,
+          -110.9685051,
+          32.2218533
+        ],
+        [
+          6228373451,
+          -110.9685051,
+          32.2219335
+        ],
+        [
+          6228373452,
+          -110.9685008,
+          32.2219471
+        ],
+        [
+          6228373453,
+          -110.9684894,
+          32.2219565
+        ],
+        [
+          6228373454,
+          -110.9684724,
+          32.2219624
+        ],
+        [
+          6228373455,
+          -110.9682817,
+          32.2219683
+        ],
+        [
+          6228373456,
+          -110.9680401,
+          32.2219782
+        ],
+        [
+          9833541748,
+          -110.9678568,
+          32.221985
+        ],
+        [
+          9231314995,
+          -110.9678284,
+          32.2219873
+        ],
+        [
+          6228373457,
+          -110.9676558,
+          32.2219946
+        ],
+        [
+          6228373485,
+          -110.9672231,
+          32.2220095
+        ],
+        [
+          6228373458,
+          -110.9671882,
+          32.2220094
+        ],
+        [
+          6228373488,
+          -110.9671882,
+          32.2220008
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway"
+      },
+      "timestamp": "2022-08-17 05:12:19+00:00",
+      "version": 5
+    },
+    {
+      "id": 665446495,
+      "nodes": [
+        [
+          6228373541,
+          -110.9687379,
+          32.2220785
+        ],
+        [
+          6947970703,
+          -110.9687412,
+          32.2224158
+        ],
+        [
+          12030028536,
+          -110.9687443,
+          32.2230923
+        ],
+        [
+          12030510727,
+          -110.968743,
+          32.2231785
+        ],
+        [
+          6226546541,
+          -110.9687508,
+          32.2233017
+        ],
+        [
+          6228373542,
+          -110.9687597,
+          32.2233191
+        ],
+        [
+          6226546542,
+          -110.9687686,
+          32.2233349
+        ],
+        [
+          6228373543,
+          -110.9687835,
+          32.2233388
+        ],
+        [
+          6228373544,
+          -110.9688133,
+          32.2233376
+        ],
+        [
+          6253271713,
+          -110.9696791,
+          32.2231527
+        ],
+        [
+          6228373545,
+          -110.9698629,
+          32.2231134
+        ],
+        [
+          6228373546,
+          -110.9698796,
+          32.2231045
+        ],
+        [
+          6228373556,
+          -110.969889,
+          32.2230886
+        ],
+        [
+          6228373547,
+          -110.9698932,
+          32.2230756
+        ],
+        [
+          6228373548,
+          -110.9698952,
+          32.2230433
+        ],
+        [
+          12030028535,
+          -110.9698789,
+          32.2228615
+        ],
+        [
+          6228373549,
+          -110.9698744,
+          32.2228117
+        ],
+        [
+          6228373550,
+          -110.9698693,
+          32.2227575
+        ],
+        [
+          12030510697,
+          -110.9698703,
+          32.2227091
+        ],
+        [
+          6228373551,
+          -110.9698708,
+          32.2226879
+        ],
+        [
+          6228373552,
+          -110.9698589,
+          32.2225726
+        ],
+        [
+          9563763613,
+          -110.969853,
+          32.222471
+        ],
+        [
+          6228373553,
+          -110.9698455,
+          32.22239
+        ],
+        [
+          6947970702,
+          -110.9698357,
+          32.2223632
+        ],
+        [
+          6228373535,
+          -110.9698326,
+          32.2223342
+        ],
+        [
+          6228373536,
+          -110.9698118,
+          32.2220373
+        ],
+        [
+          6228373537,
+          -110.9697989,
+          32.2220227
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2024-07-03 04:38:13+00:00",
+      "version": 10
+    },
+    {
+      "id": 665446496,
+      "nodes": [
+        [
+          6228373554,
+          -110.9700505,
+          32.2230439
+        ],
+        [
+          6228373555,
+          -110.9700263,
+          32.2230642
+        ],
+        [
+          6228373557,
+          -110.9699615,
+          32.2230761
+        ],
+        [
+          6228373556,
+          -110.969889,
+          32.2230886
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway"
+      },
+      "timestamp": "2019-01-22 22:36:14+00:00",
+      "version": 1
+    },
+    {
+      "id": 665446497,
+      "nodes": [
+        [
+          6228373558,
+          -110.9699124,
+          32.2219985
+        ],
+        [
+          6226463293,
+          -110.9698507,
+          32.2220058
+        ],
+        [
+          6228373559,
+          -110.9698108,
+          32.2220142
+        ],
+        [
+          6228373537,
+          -110.9697989,
+          32.2220227
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "surface": "asphalt"
+      },
+      "timestamp": "2024-01-28 15:18:48+00:00",
+      "version": 3
+    },
+    {
+      "id": 665446498,
+      "nodes": [
+        [
+          6228373541,
+          -110.9687379,
+          32.2220785
+        ],
+        [
+          6228373560,
+          -110.9687297,
+          32.2220701
+        ],
+        [
+          6228373562,
+          -110.9686275,
+          32.2220808
+        ],
+        [
+          6228373561,
+          -110.9685194,
+          32.2220928
+        ],
+        [
+          6226545875,
+          -110.9684954,
+          32.2221119
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway"
+      },
+      "timestamp": "2019-01-22 22:36:14+00:00",
+      "version": 1
+    },
+    {
+      "id": 665446499,
+      "nodes": [
+        [
+          6228373453,
+          -110.9684894,
+          32.2219565
+        ],
+        [
+          6228373563,
+          -110.9685087,
+          32.2219814
+        ],
+        [
+          6228373564,
+          -110.9685113,
+          32.2220075
+        ],
+        [
+          8501586155,
+          -110.9685125,
+          32.2220239
+        ],
+        [
+          6228373561,
+          -110.9685194,
+          32.2220928
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "smoothness": "good",
+        "surface": "asphalt"
+      },
+      "timestamp": "2025-09-26 18:45:00+00:00",
+      "version": 4
+    },
+    {
+      "id": 665446502,
+      "nodes": [
+        [
+          6228373570,
+          -110.9696529,
+          32.2217927
+        ],
+        [
+          6228373569,
+          -110.9696575,
+          32.2218765
+        ],
+        [
+          6228373571,
+          -110.96964,
+          32.2218863
+        ],
+        [
+          6228373572,
+          -110.9695774,
+          32.2218905
+        ],
+        [
+          6228373573,
+          -110.9687588,
+          32.2219493
+        ],
+        [
+          6228373580,
+          -110.9687513,
+          32.2219432
+        ],
+        [
+          6228373574,
+          -110.9687431,
+          32.2219365
+        ],
+        [
+          9991828311,
+          -110.9687445,
+          32.221634
+        ],
+        [
+          7483534963,
+          -110.9687451,
+          32.2215357
+        ],
+        [
+          7483534968,
+          -110.9687459,
+          32.2213811
+        ],
+        [
+          6228373575,
+          -110.9687464,
+          32.2212747
+        ],
+        [
+          6228373576,
+          -110.9696312,
+          32.2212552
+        ],
+        [
+          6228373577,
+          -110.9696327,
+          32.22128
+        ],
+        [
+          6228373579,
+          -110.9696441,
+          32.2214744
+        ],
+        [
+          9991828312,
+          -110.9696496,
+          32.2215762
+        ],
+        [
+          6228373578,
+          -110.9696554,
+          32.2216745
+        ],
+        [
+          6228373570,
+          -110.9696529,
+          32.2217927
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway"
+      },
+      "timestamp": "2022-09-01 02:44:43+00:00",
+      "version": 3
+    },
+    {
+      "id": 665446504,
+      "nodes": [
+        [
+          6228373580,
+          -110.9687513,
+          32.2219432
+        ],
+        [
+          6228373581,
+          -110.9687324,
+          32.2219646
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2023-11-15 23:31:07+00:00",
+      "version": 2
+    },
+    {
+      "id": 665446505,
+      "nodes": [
+        [
+          6228373581,
+          -110.9687324,
+          32.2219646
+        ],
+        [
+          6228373582,
+          -110.9687339,
+          32.221994
+        ],
+        [
+          8501586157,
+          -110.9687354,
+          32.2220103
+        ],
+        [
+          6228373541,
+          -110.9687379,
+          32.2220785
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway"
+      },
+      "timestamp": "2021-03-09 22:39:41+00:00",
+      "version": 2
+    },
+    {
+      "id": 665446506,
+      "nodes": [
+        [
+          6228373581,
+          -110.9687324,
+          32.2219646
+        ],
+        [
+          6228373583,
+          -110.9686266,
+          32.2219719
+        ],
+        [
+          6228373563,
+          -110.9685087,
+          32.2219814
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "smoothness": "good",
+        "surface": "asphalt"
+      },
+      "timestamp": "2025-09-26 18:44:33+00:00",
+      "version": 3
+    },
+    {
+      "id": 667826566,
+      "nodes": [
+        [
+          6253271713,
+          -110.9696791,
+          32.2231527
+        ],
+        [
+          8365110318,
+          -110.9696928,
+          32.2232024
+        ],
+        [
+          6253271714,
+          -110.9697116,
+          32.2232677
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway"
+      },
+      "timestamp": "2021-01-26 18:34:03+00:00",
+      "version": 2
+    },
+    {
+      "id": 667826896,
+      "nodes": [
+        [
+          6211771585,
+          -110.9678824,
+          32.2239565
+        ],
+        [
+          6211757584,
+          -110.9679611,
+          32.2240256
+        ],
+        [
+          6253277211,
+          -110.9684013,
+          32.2243967
+        ],
+        [
+          6253277210,
+          -110.9684152,
+          32.2244139
+        ],
+        [
+          6253277209,
+          -110.9684209,
+          32.2244388
+        ],
+        [
+          6211757579,
+          -110.9684207,
+          32.2246893
+        ],
+        [
+          6211757580,
+          -110.9684217,
+          32.2247779
+        ]
+      ],
+      "tags": {
+        "highway": "service",
+        "service": "parking_aisle"
+      },
+      "timestamp": "2019-02-02 07:50:01+00:00",
+      "version": 1
+    },
+    {
+      "id": 667827164,
+      "nodes": [
+        [
+          6253277252,
+          -110.9689481,
+          32.2246678
+        ],
+        [
+          12030510037,
+          -110.9689492,
+          32.2244721
+        ],
+        [
+          6253277251,
+          -110.9689493,
+          32.2244448
+        ],
+        [
+          6253277253,
+          -110.9689494,
+          32.2243726
+        ]
+      ],
+      "tags": {
+        "highway": "tertiary_link",
+        "lanes": "1",
+        "oneway": "yes",
+        "surface": "asphalt"
+      },
+      "timestamp": "2026-09-03 22:41:48+00:00",
+      "version": 3
+    },
+    {
+      "id": 692077433,
+      "nodes": [
+        [
+          13236471556,
+          -110.9682701,
+          32.224017
+        ],
+        [
+          6226773442,
+          -110.9685271,
+          32.224234
+        ],
+        [
+          6253277256,
+          -110.9685675,
+          32.2242704
+        ],
+        [
+          6253277249,
+          -110.9686056,
+          32.2243068
+        ],
+        [
+          175513842,
+          -110.9686516,
+          32.2243532
+        ]
+      ],
+      "tags": {
+        "cycleway": "shared_lane",
+        "hgv": "designated",
+        "highway": "tertiary",
+        "lanes": "3",
+        "lanes:backward": "1",
+        "lanes:forward": "2",
+        "name": "East Toole Avenue",
+        "source:hgv": "https://www.tucsonaz.gov/files/sharedassets/public/v/2/government/departments/transportation-and-mobility/dtm/documents/linked-documents/msr_map.pdf",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:name_base": "Toole",
+        "tiger:name_direction_prefix": "E",
+        "tiger:name_type": "Ave",
+        "turn:lanes:forward": "left|through;right"
+      },
+      "timestamp": "2025-10-28 23:43:05+00:00",
+      "version": 5
+    },
+    {
+      "id": 692094065,
+      "nodes": [
+        [
+          6496477130,
+          -110.9686423,
+          32.2232968
+        ],
+        [
+          8365097505,
+          -110.9686422,
+          32.223317
+        ],
+        [
+          175311383,
+          -110.9686436,
+          32.2234115
+        ]
+      ],
+      "tags": {
+        "cycleway": "shared_lane",
+        "hgv": "designated",
+        "highway": "secondary",
+        "lanes": "3",
+        "lanes:backward": "1",
+        "lanes:bus:forward": "1",
+        "lanes:forward": "2",
+        "lit": "yes",
+        "name": "North 6th Avenue",
+        "old_ref": "US 89;US 80",
+        "ref": "US 80 Historic",
+        "sidewalk:both": "separate",
+        "smoothness": "good",
+        "source:hgv": "https://www.tucsonaz.gov/files/sharedassets/public/v/2/government/departments/transportation-and-mobility/dtm/documents/linked-documents/msr_map.pdf",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:name_base": "6th",
+        "tiger:name_direction_prefix": "N",
+        "tiger:name_type": "Ave"
+      },
+      "timestamp": "2025-09-26 18:42:46+00:00",
+      "version": 9
+    },
+    {
+      "id": 742141121,
+      "nodes": [
+        [
+          6947970690,
+          -110.9705515,
+          32.2230126
+        ],
+        [
+          6947970691,
+          -110.9705325,
+          32.2229518
+        ],
+        [
+          6947970692,
+          -110.9705205,
+          32.2228987
+        ]
+      ],
+      "tags": {
+        "highway": "service",
+        "surface": "paving_stones"
+      },
+      "timestamp": "2025-09-12 01:58:07+00:00",
+      "version": 2
+    },
+    {
+      "id": 742141122,
+      "nodes": [
+        [
+          6947970692,
+          -110.9705205,
+          32.2228987
+        ],
+        [
+          6947970693,
+          -110.9705631,
+          32.2228417
+        ],
+        [
+          6947970694,
+          -110.9704627,
+          32.2221413
+        ],
+        [
+          6947970695,
+          -110.97045,
+          32.2221257
+        ],
+        [
+          6947970696,
+          -110.9704322,
+          32.2221155
+        ],
+        [
+          6947970697,
+          -110.9703731,
+          32.2221176
+        ],
+        [
+          6947970698,
+          -110.9703553,
+          32.2221268
+        ],
+        [
+          6947970699,
+          -110.9703458,
+          32.2221467
+        ],
+        [
+          6947970700,
+          -110.9704525,
+          32.2228524
+        ],
+        [
+          6947970692,
+          -110.9705205,
+          32.2228987
+        ]
+      ],
+      "tags": {
+        "highway": "service",
+        "oneway": "yes",
+        "surface": "asphalt"
+      },
+      "timestamp": "2024-01-28 15:18:02+00:00",
+      "version": 2
+    },
+    {
+      "id": 742141123,
+      "nodes": [
+        [
+          6947970701,
+          -110.969891,
+          32.2223593
+        ],
+        [
+          6947970702,
+          -110.9698357,
+          32.2223632
+        ],
+        [
+          9563787924,
+          -110.969179,
+          32.222394
+        ],
+        [
+          6947970703,
+          -110.9687412,
+          32.2224158
+        ],
+        [
+          6947970704,
+          -110.9686322,
+          32.2224195
+        ]
+      ],
+      "tags": {
+        "highway": "service",
+        "oneway": "yes"
+      },
+      "timestamp": "2022-03-09 00:47:58+00:00",
+      "version": 2
+    },
+    {
+      "id": 800196846,
+      "nodes": [
+        [
+          7483534962,
+          -110.9686235,
+          32.2215341
+        ],
+        [
+          7483534963,
+          -110.9687451,
+          32.2215357
+        ],
+        [
+          7483534964,
+          -110.969461,
+          32.2214855
+        ],
+        [
+          7483534965,
+          -110.9694958,
+          32.2214668
+        ],
+        [
+          7483534966,
+          -110.9694934,
+          32.2213818
+        ],
+        [
+          7483534967,
+          -110.9694729,
+          32.2213671
+        ],
+        [
+          7483534968,
+          -110.9687459,
+          32.2213811
+        ],
+        [
+          7483534969,
+          -110.9686223,
+          32.2213792
+        ]
+      ],
+      "tags": {
+        "highway": "service"
+      },
+      "timestamp": "2020-05-05 03:23:41+00:00",
+      "version": 1
+    },
+    {
+      "id": 868392297,
+      "nodes": [
+        [
+          175513842,
+          -110.9686516,
+          32.2243532
+        ],
+        [
+          6253277250,
+          -110.96872,
+          32.224368
+        ],
+        [
+          1966015644,
+          -110.9687866,
+          32.2243728
+        ],
+        [
+          6226773438,
+          -110.9688166,
+          32.2243728
+        ],
+        [
+          6253277253,
+          -110.9689494,
+          32.2243726
+        ],
+        [
+          4402087858,
+          -110.9690564,
+          32.2243724
+        ],
+        [
+          4402087820,
+          -110.9692052,
+          32.2243719
+        ],
+        [
+          4402087848,
+          -110.9694064,
+          32.2243713
+        ],
+        [
+          6226787841,
+          -110.9698743,
+          32.2243697
+        ],
+        [
+          8990329438,
+          -110.9699717,
+          32.2243694
+        ],
+        [
+          8990329436,
+          -110.969974,
+          32.2243694
+        ],
+        [
+          4402087823,
+          -110.9700501,
+          32.2243684
+        ],
+        [
+          3730513199,
+          -110.9701398,
+          32.2243672
+        ],
+        [
+          175324547,
+          -110.9703939,
+          32.224364
+        ],
+        [
+          3730513198,
+          -110.9704866,
+          32.2243628
+        ],
+        [
+          3814734781,
+          -110.9705547,
+          32.2243621
+        ],
+        [
+          4414001883,
+          -110.9710182,
+          32.224353
+        ],
+        [
+          4402077370,
+          -110.971083,
+          32.2243525
+        ],
+        [
+          6212660222,
+          -110.9714298,
+          32.2243488
+        ],
+        [
+          6212660229,
+          -110.9714815,
+          32.2243471
+        ],
+        [
+          6212660221,
+          -110.9715344,
+          32.2243403
+        ],
+        [
+          8990329433,
+          -110.971596,
+          32.2243257
+        ],
+        [
+          175393543,
+          -110.9716446,
+          32.2243097
+        ]
+      ],
+      "tags": {
+        "hgv": "designated",
+        "highway": "tertiary",
+        "lanes": "2",
+        "name": "East Alameda Street",
+        "oneway": "yes",
+        "sidewalk:both": "separate",
+        "source:hgv": "https://www.tucsonaz.gov/files/sharedassets/public/v/2/government/departments/transportation-and-mobility/dtm/documents/linked-documents/msr_map.pdf",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:name_base": "Alameda",
+        "tiger:name_direction_prefix": "E",
+        "tiger:name_type": "St",
+        "tiger:reviewed": "no"
+      },
+      "timestamp": "2026-02-01 11:11:34+00:00",
+      "version": 9
+    },
+    {
+      "id": 868399399,
+      "nodes": [
+        [
+          6226460480,
+          -110.9698681,
+          32.2218747
+        ],
+        [
+          8094421182,
+          -110.9697915,
+          32.2218825
+        ],
+        [
+          8094421181,
+          -110.9696993,
+          32.2218903
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "surface": "asphalt"
+      },
+      "timestamp": "2024-01-28 15:19:08+00:00",
+      "version": 2
+    },
+    {
+      "id": 868399400,
+      "nodes": [
+        [
+          8501509009,
+          -110.9698178,
+          32.2219426
+        ],
+        [
+          175299325,
+          -110.9698095,
+          32.2219272
+        ],
+        [
+          8094421182,
+          -110.9697915,
+          32.2218825
+        ],
+        [
+          8140711645,
+          -110.9697818,
+          32.2216237
+        ],
+        [
+          9984673445,
+          -110.9697764,
+          32.2215696
+        ],
+        [
+          8094421185,
+          -110.9697604,
+          32.2212363
+        ],
+        [
+          175376020,
+          -110.9697451,
+          32.2211766
+        ]
+      ],
+      "tags": {
+        "highway": "unclassified",
+        "lanes": "2",
+        "name": "South Scott Avenue",
+        "sidewalk:both": "separate",
+        "surface": "asphalt"
+      },
+      "timestamp": "2025-08-08 05:55:58+00:00",
+      "version": 8
+    },
+    {
+      "id": 868399401,
+      "nodes": [
+        [
+          8094421181,
+          -110.9696993,
+          32.2218903
+        ],
+        [
+          8094421184,
+          -110.9697025,
+          32.2219337
+        ],
+        [
+          8501586156,
+          -110.9697039,
+          32.2219501
+        ],
+        [
+          6228373566,
+          -110.9697072,
+          32.2220229
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "surface": "asphalt"
+      },
+      "timestamp": "2024-01-28 15:19:03+00:00",
+      "version": 3
+    },
+    {
+      "id": 874497636,
+      "nodes": [
+        [
+          8140711645,
+          -110.9697818,
+          32.2216237
+        ],
+        [
+          8140711668,
+          -110.9698591,
+          32.2216201
+        ],
+        [
+          9984673484,
+          -110.9699136,
+          32.2216155
+        ],
+        [
+          10032763704,
+          -110.9701706,
+          32.2215907
+        ],
+        [
+          8140711646,
+          -110.9703064,
+          32.2215697
+        ],
+        [
+          9984674100,
+          -110.970361,
+          32.2215507
+        ],
+        [
+          8140711647,
+          -110.9703898,
+          32.2215308
+        ],
+        [
+          9984674099,
+          -110.9704059,
+          32.2215013
+        ],
+        [
+          8140711648,
+          -110.9704127,
+          32.2214609
+        ],
+        [
+          9984673483,
+          -110.9703962,
+          32.2211804
+        ],
+        [
+          8140711667,
+          -110.9703948,
+          32.2211683
+        ],
+        [
+          8140711649,
+          -110.9703906,
+          32.2211038
+        ]
+      ],
+      "tags": {
+        "access": "private",
+        "highway": "service",
+        "service": "alley"
+      },
+      "timestamp": "2022-09-18 04:53:46+00:00",
+      "version": 4
+    },
+    {
+      "id": 915231451,
+      "nodes": [
+        [
+          8501509007,
+          -110.9678786,
+          32.2220543
+        ],
+        [
+          8501586155,
+          -110.9685125,
+          32.2220239
+        ],
+        [
+          8501509008,
+          -110.9686278,
+          32.2220175
+        ]
+      ],
+      "tags": {
+        "cycleway": "shared_lane",
+        "embedded_rails": "tram",
+        "hgv": "designated",
+        "highway": "primary",
+        "lanes": "2",
+        "maxspeed": "25 mph",
+        "name": "East Congress Street",
+        "oneway": "yes",
+        "sidewalk:both": "separate",
+        "source:hgv": "https://www.tucsonaz.gov/files/sharedassets/public/v/2/government/departments/transportation-and-mobility/dtm/documents/linked-documents/msr_map.pdf",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:name_base": "Congress",
+        "tiger:name_direction_prefix": "E",
+        "tiger:name_type": "St"
+      },
+      "timestamp": "2025-03-21 14:16:52+00:00",
+      "version": 7
+    },
+    {
+      "id": 915231452,
+      "nodes": [
+        [
+          8501509008,
+          -110.9686278,
+          32.2220175
+        ],
+        [
+          8501586157,
+          -110.9687354,
+          32.2220103
+        ],
+        [
+          8501586156,
+          -110.9697039,
+          32.2219501
+        ],
+        [
+          8501509009,
+          -110.9698178,
+          32.2219426
+        ]
+      ],
+      "tags": {
+        "cycleway": "shared_lane",
+        "embedded_rails": "tram",
+        "hgv": "designated",
+        "highway": "primary",
+        "lanes": "2",
+        "maxspeed": "25 mph",
+        "name": "East Congress Street",
+        "old_ref": "US 89",
+        "oneway": "yes",
+        "sidewalk:both": "separate",
+        "source:hgv": "https://www.tucsonaz.gov/files/sharedassets/public/v/2/government/departments/transportation-and-mobility/dtm/documents/linked-documents/msr_map.pdf",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:name_base": "Congress",
+        "tiger:name_direction_prefix": "W",
+        "tiger:name_type": "St"
+      },
+      "timestamp": "2025-03-21 14:16:52+00:00",
+      "version": 7
+    },
+    {
+      "id": 915231453,
+      "nodes": [
+        [
+          8501509009,
+          -110.9698178,
+          32.2219426
+        ],
+        [
+          8501586159,
+          -110.9699014,
+          32.221939
+        ],
+        [
+          8501586158,
+          -110.9711844,
+          32.2218666
+        ],
+        [
+          12383538709,
+          -110.9712115,
+          32.221866
+        ],
+        [
+          8501509010,
+          -110.9712569,
+          32.2218628
+        ]
+      ],
+      "tags": {
+        "cycleway": "lane",
+        "embedded_rails": "tram",
+        "hgv": "designated",
+        "highway": "primary",
+        "lanes": "2",
+        "maxspeed": "25 mph",
+        "name": "East Congress Street",
+        "old_ref": "US 89",
+        "oneway": "yes",
+        "sidewalk:both": "separate",
+        "source:hgv": "https://www.tucsonaz.gov/files/sharedassets/public/v/2/government/departments/transportation-and-mobility/dtm/documents/linked-documents/msr_map.pdf",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:name_base": "Congress",
+        "tiger:name_direction_prefix": "W",
+        "tiger:name_type": "St"
+      },
+      "timestamp": "2025-03-21 14:16:52+00:00",
+      "version": 8
+    },
+    {
+      "id": 915231454,
+      "nodes": [
+        [
+          8501509010,
+          -110.9712569,
+          32.2218628
+        ],
+        [
+          8501586162,
+          -110.9713408,
+          32.2218561
+        ],
+        [
+          8501586161,
+          -110.9721024,
+          32.2217838
+        ],
+        [
+          6228275286,
+          -110.9721341,
+          32.2217802
+        ],
+        [
+          9957804188,
+          -110.972218,
+          32.2217699
+        ],
+        [
+          8501586160,
+          -110.97225,
+          32.221766
+        ],
+        [
+          8501509012,
+          -110.9723833,
+          32.2217535
+        ]
+      ],
+      "tags": {
+        "cycleway": "lane",
+        "embedded_rails": "tram",
+        "hgv": "designated",
+        "highway": "primary",
+        "maxspeed": "25 mph",
+        "name": "West Congress Street",
+        "old_ref": "US 89",
+        "oneway": "yes",
+        "sidewalk:both": "separate",
+        "source:hgv": "https://www.tucsonaz.gov/files/sharedassets/public/v/2/government/departments/transportation-and-mobility/dtm/documents/linked-documents/msr_map.pdf",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:name_base": "Congress",
+        "tiger:name_direction_prefix": "W",
+        "tiger:name_type": "St"
+      },
+      "timestamp": "2026-10-09 02:28:57+00:00",
+      "version": 6
+    },
+    {
+      "id": 915513282,
+      "nodes": [
+        [
+          8504058920,
+          -110.9685221,
+          32.2230088
+        ],
+        [
+          8504012813,
+          -110.9683536,
+          32.2230108
+        ],
+        [
+          8504012814,
+          -110.9682911,
+          32.2230116
+        ],
+        [
+          8504012812,
+          -110.9682446,
+          32.2230121
+        ],
+        [
+          8504012815,
+          -110.9682025,
+          32.2230126
+        ],
+        [
+          8504012816,
+          -110.9681442,
+          32.2230133
+        ],
+        [
+          8504012811,
+          -110.9680942,
+          32.223014
+        ],
+        [
+          8504058917,
+          -110.9680203,
+          32.2230148
+        ],
+        [
+          8504058918,
+          -110.9679513,
+          32.2230157
+        ],
+        [
+          9231288356,
+          -110.9679301,
+          32.223016
+        ],
+        [
+          8504058919,
+          -110.9678782,
+          32.2230166
+        ],
+        [
+          6226546497,
+          -110.9678333,
+          32.2230171
+        ]
+      ],
+      "tags": {
+        "highway": "footway"
+      },
+      "timestamp": "2021-11-06 23:37:43+00:00",
+      "version": 2
+    },
+    {
+      "id": 1038394168,
+      "nodes": [
+        [
+          9563763611,
+          -110.9699025,
+          32.2224691
+        ],
+        [
+          9563763613,
+          -110.969853,
+          32.222471
+        ],
+        [
+          9563763612,
+          -110.969783,
+          32.2224726
+        ]
+      ],
+      "tags": {
+        "highway": "service"
+      },
+      "timestamp": "2022-03-09 00:47:58+00:00",
+      "version": 1
+    },
+    {
+      "id": 1038394169,
+      "nodes": [
+        [
+          9563763614,
+          -110.9699264,
+          32.2227545
+        ],
+        [
+          6228373550,
+          -110.9698693,
+          32.2227575
+        ],
+        [
+          9563763616,
+          -110.9695905,
+          32.2227786
+        ],
+        [
+          9563763615,
+          -110.9693901,
+          32.222794
+        ],
+        [
+          9563787920,
+          -110.9693661,
+          32.2227908
+        ],
+        [
+          9563787921,
+          -110.9693408,
+          32.2227814
+        ],
+        [
+          9563787922,
+          -110.969324,
+          32.2227624
+        ]
+      ],
+      "tags": {
+        "highway": "service"
+      },
+      "timestamp": "2022-03-09 00:47:58+00:00",
+      "version": 1
+    },
+    {
+      "id": 1038394170,
+      "nodes": [
+        [
+          9563763616,
+          -110.9695905,
+          32.2227786
+        ],
+        [
+          9563787917,
+          -110.9695627,
+          32.2227734
+        ],
+        [
+          9563787918,
+          -110.9695527,
+          32.2227664
+        ],
+        [
+          9563787919,
+          -110.9695483,
+          32.2227522
+        ]
+      ],
+      "tags": {
+        "highway": "service"
+      },
+      "timestamp": "2022-03-09 00:47:58+00:00",
+      "version": 1
+    },
+    {
+      "id": 1038394171,
+      "nodes": [
+        [
+          9563787923,
+          -110.9692009,
+          32.2226601
+        ],
+        [
+          9563787924,
+          -110.969179,
+          32.222394
+        ]
+      ],
+      "tags": {
+        "highway": "service",
+        "service": "parking_aisle"
+      },
+      "timestamp": "2022-03-09 00:47:58+00:00",
+      "version": 1
+    },
+    {
+      "id": 1086854892,
+      "nodes": [
+        [
+          6226545871,
+          -110.9685198,
+          32.2225971
+        ],
+        [
+          6226546526,
+          -110.9685179,
+          32.2226797
+        ],
+        [
+          8504058920,
+          -110.9685221,
+          32.2230088
+        ],
+        [
+          6226545870,
+          -110.9685256,
+          32.2232849
+        ],
+        [
+          6226545869,
+          -110.9685231,
+          32.2233074
+        ],
+        [
+          6226545868,
+          -110.9685157,
+          32.223328
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "paving_stones"
+      },
+      "timestamp": "2024-01-28 15:26:14+00:00",
+      "version": 2
+    },
+    {
+      "id": 1086854893,
+      "nodes": [
+        [
+          6226545841,
+          -110.968147,
+          32.2237945
+        ],
+        [
+          6226545842,
+          -110.968188,
+          32.2238328
+        ],
+        [
+          6226773441,
+          -110.9685388,
+          32.2241312
+        ],
+        [
+          6226545831,
+          -110.9685435,
+          32.2241352
+        ],
+        [
+          6226546545,
+          -110.9685347,
+          32.2235306
+        ],
+        [
+          6226545832,
+          -110.9685346,
+          32.2235156
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2025-10-13 23:21:09+00:00",
+      "version": 2
+    },
+    {
+      "id": 1086854894,
+      "nodes": [
+        [
+          6226546540,
+          -110.9685276,
+          32.2233329
+        ],
+        [
+          8365097505,
+          -110.9686422,
+          32.223317
+        ],
+        [
+          6226546541,
+          -110.9687508,
+          32.2233017
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "surface": "asphalt"
+      },
+      "timestamp": "2024-01-28 15:27:15+00:00",
+      "version": 2
+    },
+    {
+      "id": 1086854895,
+      "nodes": [
+        [
+          6226546540,
+          -110.9685276,
+          32.2233329
+        ],
+        [
+          6226545868,
+          -110.9685157,
+          32.223328
+        ]
+      ],
+      "tags": {
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2024-01-28 15:26:50+00:00",
+      "version": 2
+    },
+    {
+      "id": 1086854896,
+      "nodes": [
+        [
+          6226545872,
+          -110.9685217,
+          32.2225143
+        ],
+        [
+          6226545873,
+          -110.9685123,
+          32.2221507
+        ],
+        [
+          6226545874,
+          -110.968508,
+          32.2221292
+        ],
+        [
+          6226545879,
+          -110.9684994,
+          32.2221174
+        ],
+        [
+          6226545875,
+          -110.9684954,
+          32.2221119
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "paving_stones"
+      },
+      "timestamp": "2024-01-28 15:25:40+00:00",
+      "version": 2
+    },
+    {
+      "id": 1086854897,
+      "nodes": [
+        [
+          6228373537,
+          -110.9697989,
+          32.2220227
+        ],
+        [
+          6228373538,
+          -110.969783,
+          32.2220185
+        ],
+        [
+          6228373566,
+          -110.9697072,
+          32.2220229
+        ],
+        [
+          6228373539,
+          -110.9692729,
+          32.2220487
+        ],
+        [
+          6228373540,
+          -110.9688967,
+          32.2220702
+        ],
+        [
+          6228373541,
+          -110.9687379,
+          32.2220785
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "paving_stones"
+      },
+      "timestamp": "2024-01-28 15:19:31+00:00",
+      "version": 2
+    },
+    {
+      "id": 1086854898,
+      "nodes": [
+        [
+          6228373558,
+          -110.9699124,
+          32.2219985
+        ],
+        [
+          6226463287,
+          -110.9699338,
+          32.2220249
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "surface": "paving_stones"
+      },
+      "timestamp": "2023-11-15 23:29:55+00:00",
+      "version": 2
+    },
+    {
+      "id": 1086854899,
+      "nodes": [
+        [
+          6226463287,
+          -110.9699338,
+          32.2220249
+        ],
+        [
+          6226359118,
+          -110.9699043,
+          32.2220286
+        ],
+        [
+          6226359119,
+          -110.9699635,
+          32.2224742
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway"
+      },
+      "timestamp": "2022-08-17 05:12:17+00:00",
+      "version": 1
+    },
+    {
+      "id": 1086854900,
+      "nodes": [
+        [
+          6226359097,
+          -110.9712017,
+          32.2219441
+        ],
+        [
+          6226359101,
+          -110.9711984,
+          32.2219634
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "paving_stones"
+      },
+      "timestamp": "2026-10-09 01:39:24+00:00",
+      "version": 2
+    },
+    {
+      "id": 1086854901,
+      "nodes": [
+        [
+          6226359095,
+          -110.9713595,
+          32.2219545
+        ],
+        [
+          6226359099,
+          -110.97127,
+          32.221949
+        ],
+        [
+          12383538710,
+          -110.9712254,
+          32.2219458
+        ],
+        [
+          6226359097,
+          -110.9712017,
+          32.2219441
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:markings": "yes",
+        "footway": "crossing",
+        "highway": "footway",
+        "surface": "asphalt"
+      },
+      "timestamp": "2024-11-29 01:35:25+00:00",
+      "version": 4
+    },
+    {
+      "id": 1086854902,
+      "nodes": [
+        [
+          6226359136,
+          -110.9724283,
+          32.2225764
+        ],
+        [
+          6226359106,
+          -110.9724178,
+          32.2226
+        ],
+        [
+          6226359107,
+          -110.9715405,
+          32.2227778
+        ],
+        [
+          6226359121,
+          -110.9715153,
+          32.222755
+        ],
+        [
+          6226359108,
+          -110.9714995,
+          32.2227408
+        ],
+        [
+          6226359095,
+          -110.9713595,
+          32.2219545
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "paving_stones"
+      },
+      "timestamp": "2023-11-15 23:26:11+00:00",
+      "version": 2
+    },
+    {
+      "id": 1090004485,
+      "nodes": [
+        [
+          9984673445,
+          -110.9697764,
+          32.2215696
+        ],
+        [
+          9984673446,
+          -110.969671,
+          32.2215748
+        ],
+        [
+          9991828312,
+          -110.9696496,
+          32.2215762
+        ],
+        [
+          9984673448,
+          -110.9687557,
+          32.2216338
+        ],
+        [
+          9991828311,
+          -110.9687445,
+          32.221634
+        ],
+        [
+          9984673447,
+          -110.9686242,
+          32.2216361
+        ]
+      ],
+      "tags": {
+        "highway": "service",
+        "service": "alley"
+      },
+      "timestamp": "2022-09-01 02:44:43+00:00",
+      "version": 2
+    },
+    {
+      "id": 1227695212,
+      "nodes": [
+        [
+          8094421181,
+          -110.9696993,
+          32.2218903
+        ],
+        [
+          6228373569,
+          -110.9696575,
+          32.2218765
+        ]
+      ],
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "paving_stones"
+      },
+      "timestamp": "2024-01-28 15:19:06+00:00",
+      "version": 2
+    },
+    {
+      "id": 1298659966,
+      "nodes": [
+        [
+          12030051170,
+          -110.9687905,
+          32.2230848
+        ],
+        [
+          12030028536,
+          -110.9687443,
+          32.2230923
+        ],
+        [
+          12030051169,
+          -110.9687289,
+          32.2230965
+        ],
+        [
+          12030051168,
+          -110.9686401,
+          32.2230959
+        ]
+      ],
+      "tags": {
+        "highway": "service"
+      },
+      "timestamp": "2024-07-02 22:34:35+00:00",
+      "version": 1
+    },
+    {
+      "id": 1298659967,
+      "nodes": [
+        [
+          12030051172,
+          -110.9698156,
+          32.2228722
+        ],
+        [
+          12030028535,
+          -110.9698789,
+          32.2228615
+        ],
+        [
+          12030051171,
+          -110.9699306,
+          32.2228527
+        ]
+      ],
+      "tags": {
+        "highway": "service"
+      },
+      "timestamp": "2024-07-02 22:34:35+00:00",
+      "version": 1
+    },
+    {
+      "id": 1298705759,
+      "nodes": [
+        [
+          12030506731,
+          -110.9703955,
+          32.2242909
+        ],
+        [
+          175324547,
+          -110.9703939,
+          32.224364
+        ],
+        [
+          12030506730,
+          -110.9703947,
+          32.2244298
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "surface": "asphalt"
+      },
+      "timestamp": "2026-09-04 23:12:47+00:00",
+      "version": 2
+    },
+    {
+      "id": 1298707016,
+      "nodes": [
+        [
+          12030510707,
+          -110.969798,
+          32.2226954
+        ],
+        [
+          12030510706,
+          -110.969837,
+          32.2227065
+        ],
+        [
+          12030510697,
+          -110.9698703,
+          32.2227091
+        ],
+        [
+          12030510705,
+          -110.9699229,
+          32.2227133
+        ]
+      ],
+      "tags": {
+        "highway": "service"
+      },
+      "timestamp": "2024-07-03 04:38:13+00:00",
+      "version": 1
+    },
+    {
+      "id": 1304058738,
+      "nodes": [
+        [
+          6211789076,
+          -110.9682769,
+          32.2234928
+        ],
+        [
+          6226545836,
+          -110.9683402,
+          32.223559
+        ],
+        [
+          12076679852,
+          -110.9684117,
+          32.2238912
+        ]
+      ],
+      "tags": {
+        "highway": "service",
+        "surface": "asphalt"
+      },
+      "timestamp": "2026-01-13 15:51:08+00:00",
+      "version": 2
+    },
+    {
+      "id": 1338754195,
+      "nodes": [
+        [
+          6226359089,
+          -110.9711791,
+          32.2218229
+        ],
+        [
+          12383538708,
+          -110.9712037,
+          32.2218199
+        ],
+        [
+          6226359100,
+          -110.97125,
+          32.2218143
+        ],
+        [
+          9957807131,
+          -110.9713298,
+          32.2218048
+        ],
+        [
+          6226359094,
+          -110.9713336,
+          32.2218043
+        ]
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:markings": "yes",
+        "footway": "crossing",
+        "highway": "footway",
+        "surface": "asphalt"
+      },
+      "timestamp": "2026-10-09 04:19:39+00:00",
+      "version": 2
+    },
+    {
+      "id": 1338754196,
+      "nodes": [
+        [
+          12383538706,
+          -110.9710883,
+          32.2210931
+        ],
+        [
+          12383538707,
+          -110.9711275,
+          32.2213253
+        ],
+        [
+          12383538708,
+          -110.9712037,
+          32.2218199
+        ]
+      ],
+      "tags": {
+        "bicycle": "designated",
+        "foot": "no",
+        "highway": "cycleway",
+        "smoothness": "excellent",
+        "surface": "asphalt"
+      },
+      "timestamp": "2024-11-29 01:35:25+00:00",
+      "version": 1
+    },
+    {
+      "id": 1338754197,
+      "nodes": [
+        [
+          12383538708,
+          -110.9712037,
+          32.2218199
+        ],
+        [
+          12383538724,
+          -110.9712085,
+          32.2218489
+        ],
+        [
+          12383538709,
+          -110.9712115,
+          32.221866
+        ],
+        [
+          12383538710,
+          -110.9712254,
+          32.2219458
+        ]
+      ],
+      "tags": {
+        "bicycle": "designated",
+        "crossing": "traffic_signals",
+        "cycleway": "crossing",
+        "foot": "no",
+        "highway": "cycleway",
+        "smoothness": "excellent",
+        "surface": "asphalt"
+      },
+      "timestamp": "2024-11-29 01:35:25+00:00",
+      "version": 1
+    },
+    {
+      "id": 1338754198,
+      "nodes": [
+        [
+          12383538710,
+          -110.9712254,
+          32.2219458
+        ],
+        [
+          12383538711,
+          -110.9713589,
+          32.2227869
+        ]
+      ],
+      "tags": {
+        "bicycle": "designated",
+        "foot": "no",
+        "highway": "cycleway",
+        "smoothness": "excellent",
+        "surface": "asphalt"
+      },
+      "timestamp": "2024-11-29 01:35:25+00:00",
+      "version": 1
+    },
+    {
+      "id": 1338754199,
+      "nodes": [
+        [
+          12383538711,
+          -110.9713589,
+          32.2227869
+        ],
+        [
+          12383538712,
+          -110.971369,
+          32.2228533
+        ],
+        [
+          12383538713,
+          -110.9713841,
+          32.2229506
+        ]
+      ],
+      "tags": {
+        "bicycle": "designated",
+        "crossing": "traffic_signals",
+        "cycleway": "crossing",
+        "foot": "no",
+        "highway": "cycleway",
+        "smoothness": "excellent",
+        "surface": "asphalt"
+      },
+      "timestamp": "2024-11-29 01:35:25+00:00",
+      "version": 1
+    },
+    {
+      "id": 1447700887,
+      "nodes": [
+        [
+          175513842,
+          -110.9686516,
+          32.2243532
+        ],
+        [
+          6226773435,
+          -110.9687798,
+          32.2244866
+        ],
+        [
+          6253277252,
+          -110.9689481,
+          32.2246678
+        ],
+        [
+          359219109,
+          -110.968958,
+          32.2246784
+        ],
+        [
+          6253271715,
+          -110.9689808,
+          32.2247026
+        ],
+        [
+          4402087827,
+          -110.969004,
+          32.2247244
+        ],
+        [
+          6253277255,
+          -110.9690441,
+          32.2247564
+        ]
+      ],
+      "tags": {
+        "cycleway": "lane",
+        "hgv": "designated",
+        "highway": "tertiary",
+        "lanes": "3",
+        "lanes:backward": "2",
+        "lanes:forward": "1",
+        "name": "East Toole Avenue",
+        "ref": "US 80 Historic",
+        "source:hgv": "https://www.tucsonaz.gov/files/sharedassets/public/v/2/government/departments/transportation-and-mobility/dtm/documents/linked-documents/msr_map.pdf",
+        "surface": "asphalt",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Pima, AZ",
+        "tiger:name_base": "Toole",
+        "tiger:name_direction_prefix": "E",
+        "tiger:name_type": "Ave",
+        "tiger:reviewed": "no",
+        "turn:lanes:backward": "left|"
+      },
+      "timestamp": "2026-01-20 21:35:49+00:00",
+      "version": 2
+    }
+  ]
+}
