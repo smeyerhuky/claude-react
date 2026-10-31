@@ -1,0 +1,33 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "41620",
+  "city_name": "Murray",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.murray.utah.gov/",
+    "http_status": 200,
+    "response_bytes": 89220,
+    "response_sha256": "ebd9ce7e05fa71999142d72aa6d612035d2d4e1fcab71dcacdea895796308948",
+    "url": "https://www.murray.utah.gov/"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No exact ordinary-car entry or full connection is verified. No independent physical, legal, grade, direction/maneuver or connector-cost certification."
+  ],
+  "observations": [
+    "The official city website gives its contact address as 10 East 4800 South, Murray, Utah 84107.",
+    "The address alone does not establish a vehicle entry, parking permission, connection, grade, direction or operating hours."
+  ],
+  "principal_city_id": "4953230",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Direct HTTP attempt hash identifies bytes not retained here; a successful renderer is not an original HTTP response capture. Full HTML, app state, source archives and error bodies omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "10 East 4800 South",
+  "source_http_status": 200,
+  "source_kind": "municipal_facility_location",
+  "url": "https://www.murray.utah.gov/"
+}

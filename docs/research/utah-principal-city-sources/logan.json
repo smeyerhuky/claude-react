@@ -1,0 +1,33 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "30860",
+  "city_name": "Logan",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.loganutah.gov/",
+    "http_status": 200,
+    "response_bytes": 77545,
+    "response_sha256": "7483178391d3eef11d6cc13bb00738e9f53b6596a0fc7bed1b0f6f8894a385ec",
+    "url": "https://www.loganutah.gov/"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No exact ordinary-car entry or full connection is verified. No independent physical, legal, grade, direction/maneuver or connector-cost certification."
+  ],
+  "observations": [
+    "The official city website provides a contact location at 290 North 100 West.",
+    "This is an address lead only, not an exact vehicle entry, parking entitlement or operating-hours record. No nearest-road snap is selected."
+  ],
+  "principal_city_id": "4945860",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Direct HTTP attempt hash identifies bytes not retained here; a successful renderer is not an original HTTP response capture. Full HTML, app state, source archives and error bodies omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "290 N 100 W Logan, UT 84321",
+  "source_http_status": 200,
+  "source_kind": "municipal_facility_location",
+  "url": "https://www.loganutah.gov/"
+}

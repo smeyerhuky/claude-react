@@ -1,0 +1,35 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "41620",
+  "city_name": "Salt Lake City",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.slc.gov/mystreet/parking/",
+    "http_status": 403,
+    "response_bytes": 17,
+    "response_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+    "url": "https://www.slc.gov/mystreet/parking/"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No exact ordinary-car entry or full connection is verified. No independent physical, legal, grade, direction/maneuver or connector-cost certification.",
+    "Primary publication inspected through web renderer, which may use an earlier cached crawl. The direct HTTP attempt failed; source_http_status remains null and no original HTTP success or raw hash is invented for the rendered content."
+  ],
+  "observations": [
+    "The city publishes a $3.50 hourly pay-station rate, a two-hour per-space limit from 8 a.m. to 6 p.m. Monday through Saturday, and a four-hour limit from 6 p.m. to 10 p.m.",
+    "It states that Sunday parking is free and meters are not monitored on city holidays, and asks drivers to check posted signs after changes to paid parking.",
+    "Free pricing or unmonitored meters do not establish unrestricted vehicle entry, a universal parking entitlement or a particular anchor."
+  ],
+  "principal_city_id": "4967000",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Direct HTTP attempt hash identifies bytes not retained here; a successful renderer is not an original HTTP response capture. Full HTML, app state, source archives and error bodies omitted.",
+  "retrieval_method": "web_rendered",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "Pay stations are enforced Monday through Saturday, 8 a.m. to 10 p.m.",
+  "source_http_status": null,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.slc.gov/mystreet/parking/"
+}

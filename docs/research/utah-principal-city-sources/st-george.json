@@ -1,0 +1,35 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "41100",
+  "city_name": "St. George",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://sgcityutah.gov/government/city_hall_at_town_square.php",
+    "http_status": 403,
+    "response_bytes": 17,
+    "response_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+    "url": "https://sgcityutah.gov/government/city_hall_at_town_square.php"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No exact ordinary-car entry or full connection is verified. No independent physical, legal, grade, direction/maneuver or connector-cost certification.",
+    "Primary publication inspected through web renderer, which may use an earlier cached crawl. The direct HTTP attempt failed; source_http_status remains null and no original HTTP success or raw hash is invented for the rendered content."
+  ],
+  "observations": [
+    "The city identifies the new City Hall at 61 South Main Street and announces its official opening on January 17, 2026. The newer opening article describes a 290-stall parking structure open seven days each week.",
+    "The page also retains older project material promising 24-hour operation. That older future-tense statement is not automatically treated as verified current 24-hour access.",
+    "City Hall weekday 8 a.m. to 5 p.m. hours and the covered pedestrian atrium are distinct from vehicle parking hours and entry maneuvers. No garage clearance or exact entry path is verified."
+  ],
+  "principal_city_id": "4965330",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Direct HTTP attempt hash identifies bytes not retained here; a successful renderer is not an original HTTP response capture. Full HTML, app state, source archives and error bodies omitted.",
+  "retrieval_method": "web_rendered",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "A new structure with 290 stalls",
+  "source_http_status": null,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://sgcityutah.gov/government/city_hall_at_town_square.php"
+}

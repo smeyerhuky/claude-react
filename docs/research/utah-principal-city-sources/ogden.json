@@ -1,0 +1,35 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "36260",
+  "city_name": "Ogden",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.ogdencity.gov/3369/Parking-Services",
+    "http_status": 403,
+    "response_bytes": 17,
+    "response_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+    "url": "https://www.ogdencity.gov/3369/Parking-Services"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No exact ordinary-car entry or full connection is verified. No independent physical, legal, grade, direction/maneuver or connector-cost certification.",
+    "Primary publication inspected through web renderer, which may use an earlier cached crawl. The direct HTTP attempt failed; source_http_status remains null and no original HTTP success or raw hash is invented for the rendered content."
+  ],
+  "observations": [
+    "The city identifies ParkOgden as its official parking information service, with maps, rates, hours, permit and payment guidance.",
+    "The municipal publication expressly says paid and free options can vary by location. No individual lot, fee exemption, road entry or universal parking entitlement is selected.",
+    "The city service link does not establish an exact ordinary-car entry, complete local restrictions or full connector cost."
+  ],
+  "principal_city_id": "4955980",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Direct HTTP attempt hash identifies bytes not retained here; a successful renderer is not an original HTTP response capture. Full HTML, app state, source archives and error bodies omitted.",
+  "retrieval_method": "web_rendered",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "Use the ParkOgden parking map to find public parking locations in Ogden.",
+  "source_http_status": null,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.ogdencity.gov/3369/Parking-Services"
+}
