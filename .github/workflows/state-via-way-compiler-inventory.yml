@@ -5,6 +5,7 @@ on:
       - 'scripts/metro_via_way_compile_inventory.py'
       - 'scripts/test_metro_via_way_compile_inventory.py'
       - 'scripts/road_via_way_compile.py'
+      - 'scripts/road_turn_aware_probe.py'
       - 'scripts/metro_restriction_inventory.py'
       - 'scripts/stream_osm_roads.py'
       - 'docs/research/state-restriction-inventory/report.json'
@@ -30,11 +31,11 @@ jobs:
           import hashlib,json,sys
           from pathlib import Path
           sys.path.insert(0,'scripts')
-          from metro_via_way_compile_inventory import RAW_INVENTORY,REFERENCE,STATES
+          from metro_via_way_compile_inventory import RAW_INVENTORY,REFERENCE,STATES,verify_code_bindings
           report=json.loads((REFERENCE/'report.json').read_text())
           raw=json.loads(RAW_INVENTORY.read_text())
           assert report['raw_inventory_sha256']==hashlib.sha256(RAW_INVENTORY.read_bytes()).hexdigest()
-          assert report['schema']=='state-via-way-compiler-inventory-v1'
+          verify_code_bindings(report)
           assert [r['state'] for r in report['states']]==list(STATES)
           by_state={r['state']:r for r in raw['states']}
           for row in report['states']:

@@ -2,12 +2,19 @@
   "access_verified": false,
   "anchors_adopted": false,
   "compiled_meaning": "Declared strict topological shape accepted; not physically/legal verified, current, complete or approved",
+  "compiler_code_sha256": {
+    "scripts/metro_restriction_inventory.py": "b5f0b3a3b3e976dade88115c5a89b1d9d5d8aa197821cf27f03e6dcd68a48766",
+    "scripts/metro_via_way_compile_inventory.py": "e4e3f745f75b60751853c7585b87bef356d7e5f0915842616154889361a1530f",
+    "scripts/road_turn_aware_probe.py": "6a748ed33b1e12d0c1d60f06927a410621ff14b32f53166e435f7e91ef8a65cb",
+    "scripts/road_via_way_compile.py": "37647dfb8434da96cddc58983885b6c040fefb6720221096a03e2a4abbd46e32",
+    "scripts/stream_osm_roads.py": "25e8bbe7ce8ccd54e7a0237165b4e8370f69a1828af6e4ec0e063559a618ec3c"
+  },
   "diagnostic_policy": "One first compiler rejection reason per rejected candidate; overlapping additional limitations are not exhausted",
   "geographic_coverage_certified": false,
   "raw_inventory_sha256": "05a6dcc6b036afbe8020f6602dfefb12009371ae469fa66af275454cf7550f9f",
   "release_eligible": false,
   "route_costs_computed": false,
-  "schema": "state-via-way-compiler-inventory-v1",
+  "schema": "state-via-way-compiler-inventory-v2",
   "scope": "All raw via-way relation candidates in the five declared sources; counts are not applicable-car restriction or route coverage fractions",
   "selection": "Any type=restriction relation containing a via-way member; mixed or malformed candidates are retained and rejected, never dropped",
   "states": [

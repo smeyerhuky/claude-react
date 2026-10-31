@@ -52,9 +52,9 @@ Reproduce with `osmium==4.3.2`, `networkx==3.7` and all five pinned original inp
 python scripts/metro_via_way_compile_inventory.py --osm-dir /path/to/exact/inputs --compare docs/research/state-via-way-compiler-inventory/report.json
 ```
 
-These full-source passes were run locally. Three tests cover raw positive/negative
+These full-source passes were run locally. Four tests cover raw positive/negative
 classification without invented costs, full accounting for missing/mixed/oversized
-members, duplicate rejection, deterministic counts and bounded samples. CI checks
+members, duplicate rejection, deterministic counts, bounded samples and changed compiler dependency rejection. CI checks
 fixtures, identity/accounting and false certification flags; **it does not repeat
 the five full-source passes**. The separately required Colorado/Arizona exact-source
 context CI for the raw compiler remains intact and is not replaced by these checks.
@@ -65,3 +65,8 @@ access evidence, different-approver approval, complete competitor/exterior routi
 land/water masks and audited golden cases remain release requirements. Zero connectors
 are approved. The old graph, its frozen 2,508 costs and all older inspector views are
 unchanged. The public straight-line map remains unchanged and no road tab is enabled.
+
+The v2 report also binds the exact scanner, compiler, restriction helper and static
+direction/profile implementation by SHA-256. CI rejects a code/profile change
+until all five exact-source diagnostics are regenerated and reviewed. The report
+therefore cannot silently retain old support counts after a classifier change.

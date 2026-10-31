@@ -14,6 +14,17 @@ MAX_STORED_NODE_REFS=1_000_000
 ROOT=Path(__file__).resolve().parents[1]
 REFERENCE=ROOT/'docs/research/state-via-way-compiler-inventory'
 RAW_INVENTORY=ROOT/'docs/research/state-restriction-inventory/report.json'
+CODE_INPUTS=('scripts/metro_via_way_compile_inventory.py','scripts/metro_restriction_inventory.py',
+             'scripts/road_via_way_compile.py','scripts/road_turn_aware_probe.py','scripts/stream_osm_roads.py')
+
+
+def code_identities(root=ROOT):
+    return {name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in CODE_INPUTS}
+
+
+def verify_code_bindings(report,root=ROOT):
+    if report.get('schema')!='state-via-way-compiler-inventory-v2' or report.get('compiler_code_sha256')!=code_identities(root):
+        raise ValueError('Compiler/scanner profile changed; regenerate the full-source diagnostic inventory')
 
 
 def classify(relation,ways,oversized=()):
@@ -84,7 +95,7 @@ def inventory(osm_dir):
                            oversized_raw_member_way_ids=sorted(roads.oversized),**classified))
         print(dict(state=state,raw_via_way=classified['raw_via_way_relations'],compiled_shapes=classified['compiled_declared_shape_count'],
                    rejected=classified['rejected_relation_count']),flush=True)
-    return dict(schema='state-via-way-compiler-inventory-v1',states=result,
+    return dict(schema='state-via-way-compiler-inventory-v2',states=result,compiler_code_sha256=code_identities(),
                 raw_inventory_sha256=hashlib.sha256(raw_bytes).hexdigest(),
                 scope='All raw via-way relation candidates in the five declared sources; counts are not applicable-car restriction or route coverage fractions',
                 selection='Any type=restriction relation containing a via-way member; mixed or malformed candidates are retained and rejected, never dropped',
