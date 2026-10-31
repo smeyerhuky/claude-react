@@ -1,0 +1,34 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "30020",
+  "city_name": "Lawton",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.lawtonok.gov/",
+    "http_status": 403,
+    "response_bytes": 17,
+    "response_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+    "url": "https://www.lawtonok.gov/"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No independently verified ordinary-car entry, complete physical/legal/grade/direction findings or connector costs.",
+    "Inspected through web renderer, which may use cached content. Failed direct request is recorded separately; no successful raw-response identity is invented for rendered content."
+  ],
+  "observations": [
+    "The official city website gives its contact address as 212 SW 9th Street, Lawton, Oklahoma 73501.",
+    "This is a contact-location lead, not an exact vehicle entry or parking permission. A former utility-services URL returned 404; secondary reports about a drive-through are not promoted into primary access evidence."
+  ],
+  "principal_city_id": "4041850",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short selected literal quote and factual observations only. Direct HTTP attempt hash identifies original bytes not retained here. HTML, form/runtime state, error bodies and private archives omitted.",
+  "retrieval_method": "web_rendered",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "212 SW",
+  "source_http_status": null,
+  "source_kind": "municipal_facility_location",
+  "url": "https://www.lawtonok.gov/"
+}
