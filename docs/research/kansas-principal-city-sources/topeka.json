@@ -1,0 +1,34 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "45820",
+  "city_name": "Topeka",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://topeka.gov/community/parking_garages_lots/index.php",
+    "http_status": 200,
+    "response_bytes": 119188,
+    "response_sha256": "d3586aa364d49fd7b6157b8306332927e1a86ed500702fe07a2a65c99d15a8de",
+    "url": "https://topeka.gov/community/parking_garages_lots/index.php"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No independently verified ordinary-car entry, complete physical/legal/grade/direction findings, full connector costs or approved anchor."
+  ],
+  "observations": [
+    "The city lists seven garages and distinguishes hourly visitor spaces from monthly parking. The displayed 512 Jackson and Coronado records explicitly state that they have no hourly parking.",
+    "Other listed garages reserve only a subset of spaces for hourly parking and publish differing hours. A citywide garage count cannot establish visitor use of every stall or facility.",
+    "No particular garage, current price interpretation, entrance, clearance, maneuver or connector cost is selected."
+  ],
+  "principal_city_id": "2071000",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short selected literal quote and factual observations only. Direct HTTP capture hashes identify bytes not retained here; rendered content is not a raw HTTP response capture. HTML, form/runtime state, error bodies, search snippets and private source archives omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "no hourly parking",
+  "source_http_status": 200,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://topeka.gov/community/parking_garages_lots/index.php"
+}

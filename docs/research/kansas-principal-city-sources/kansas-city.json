@@ -1,0 +1,31 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "28140",
+  "city_name": "Kansas City",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.wycokck.org/",
+    "http_status": 403,
+    "response_bytes": 17,
+    "response_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+    "url": "https://www.wycokck.org/"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No independently verified ordinary-car entry, complete physical/legal/grade/direction findings, full connector costs or approved anchor.",
+    "Selected Unified Government publication unavailable through direct HTTP and renderer. No search snippet or Missouri Kansas City publication is promoted as Kansas City, Kansas evidence."
+  ],
+  "observations": [],
+  "principal_city_id": "2036000",
+  "publication_status": "selected_publication_unavailable",
+  "release_eligible": false,
+  "retention": "Short selected literal quote and factual observations only. Direct HTTP capture hashes identify bytes not retained here; rendered content is not a raw HTTP response capture. HTML, form/runtime state, error bodies, search snippets and private source archives omitted.",
+  "retrieval_method": "unavailable",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "",
+  "source_http_status": null,
+  "source_kind": "municipal_facility_location",
+  "url": "https://www.wycokck.org/"
+}

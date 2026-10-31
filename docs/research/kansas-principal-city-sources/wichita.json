@@ -1,0 +1,35 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "48620",
+  "city_name": "Wichita",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.wichita.gov/1038/Parking-at-City-Hall",
+    "http_status": 403,
+    "response_bytes": 17,
+    "response_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+    "url": "https://www.wichita.gov/1038/Parking-at-City-Hall"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No independently verified ordinary-car entry, complete physical/legal/grade/direction findings, full connector costs or approved anchor.",
+    "Primary page inspected through the web renderer, which can use an earlier cached crawl. The failed direct attempt remains separate; no successful original HTTP identity is invented for rendered content."
+  ],
+  "observations": [
+    "The city identifies paid surface lots south and southwest of City Hall off 3rd Street, with an additional public entrance from Central. It separately describes a free first-come lot east of Waco between Central and Third.",
+    "Published paid-parking hours differ between Monday through Thursday and Friday through Saturday. Payment registration and department-specific validation procedures are distinct from vehicle access and are not automatically assumed satisfied.",
+    "The linked map is not visually verified in this retained review. These street-level leads do not resolve a precise entry geometry or rehabilitate the separate modeled-unreachable Census-origin experiment. No urban anchor replaces that origin."
+  ],
+  "principal_city_id": "2079000",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short selected literal quote and factual observations only. Direct HTTP capture hashes identify bytes not retained here; rendered content is not a raw HTTP response capture. HTML, form/runtime state, error bodies, search snippets and private source archives omitted.",
+  "retrieval_method": "web_rendered",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "There is also a public entrance to the lots from Central.",
+  "source_http_status": null,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.wichita.gov/1038/Parking-at-City-Hall"
+}
