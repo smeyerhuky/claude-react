@@ -1,0 +1,25 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "19740",
+  "city_name": "Centennial",
+  "entry_review_status": "needs_evidence",
+  "http_status": 200,
+  "limitations": [
+    "A contact address and office hours establish location context only, not public motor access, parking permission, a driveway, grade, connector coordinates or costs."
+  ],
+  "observations": [
+    "The contact page lists Centennial Civic Center at 13133 East Arapahoe Road, Centennial, Colorado 80112, with office hours Monday through Friday, 8 a.m. to 5 p.m."
+  ],
+  "principal_city_id": "0812815",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "response_bytes": 98355,
+  "response_sha256": "8e4c3d1158a65609368977f7932c47a4e355fa7f1191610e6fbf942a2db57e09",
+  "retention": "Selected short literal quote and factual observations only. Original HTML, form/runtime state and unavailable error body omitted. The response hash identifies the capture and cannot be recomputed from this derived record.",
+  "schema": "principal-city-publication-observation-v1",
+  "selected_quote": "Centennial Civic Center",
+  "source_kind": "municipal_facility_location",
+  "url": "https://www.centennialco.gov/Online-Services/Contact-Us"
+}

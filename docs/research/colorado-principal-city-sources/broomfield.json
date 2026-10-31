@@ -1,0 +1,27 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "19740",
+  "city_name": "Broomfield",
+  "entry_review_status": "needs_evidence",
+  "http_status": 200,
+  "limitations": [
+    "The linked parking image and exact road-closure geometry are not independently surveyed here. Construction and visitor classifications do not verify an entire drivable connector."
+  ],
+  "observations": [
+    "Police-building construction began in late July 2026 and is described as taking about 20 months. Parking demand affects the police, courts and George Di Ciero City and County Building campus.",
+    "The page describes the rear police lot as closed, front spaces as visitor parking and back lots as employee parking.",
+    "A proposed secure police vehicular gate and perimeter fencing are project plans, not evidence of an existing public vehicle entrance."
+  ],
+  "principal_city_id": "0809280",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "response_bytes": 115147,
+  "response_sha256": "bebf062a44c4af1c71fcafc8c4878d36427aa964bd96642de1f94a4a014bd372",
+  "retention": "Selected short literal quote and factual observations only. Original HTML, form/runtime state and unavailable error body omitted. The response hash identifies the capture and cannot be recomputed from this derived record.",
+  "schema": "principal-city-publication-observation-v1",
+  "selected_quote": "the spaces toward the front of all lots are for visitor parking",
+  "source_kind": "municipal_construction_advisory",
+  "url": "https://www.broomfield.org/4390/Broomfield-Police-Building-Expansion"
+}
