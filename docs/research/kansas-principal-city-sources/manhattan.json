@@ -1,0 +1,40 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "31740",
+  "city_name": "Manhattan",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.manhattanks.gov/3833/Downtown-Parking",
+    "http_status": 200,
+    "response_bytes": 225799,
+    "response_sha256": "c6059b6486789716d1ffcc655f043f371155ff70174c68ac0a45ada5d3bff829",
+    "url": "https://www.manhattanks.gov/3833/Downtown-Parking"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No independently verified ordinary-car entry, complete physical/legal/grade/direction findings, full connector costs or approved anchor."
+  ],
+  "observations": [
+    "The city describes the Downtown Garage at 520 South 3rd Street as open to the public 24 hours a day, seven days each week, with registration required upon entrance.",
+    "Without a purchased permit, a visitor must register the vehicle license plate for each new session through the app or pay station. The first two hours are free with registration; the page prohibits more than 24 continuous hours in one spot.",
+    "Visitor registration remains required for the first two free hours; visitor sessions and discounted permits have separate conditions. No exact entrance path, clearance, grade, maneuver or connector cost is established."
+  ],
+  "principal_city_id": "2044250",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "access_approval_inferred": false,
+    "first_free_hours_with_registration": 2,
+    "max_continuous_parking_hours": 24,
+    "visitor_registration_required": true
+  },
+  "release_eligible": false,
+  "retention": "Short selected literal quote and factual observations only. Direct HTTP capture hashes identify bytes not retained here; rendered content is not a raw HTTP response capture. HTML, form/runtime state, error bodies, search snippets and private source archives omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "Registration is required upon entrance.",
+  "source_http_status": 200,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.manhattanks.gov/3833/Downtown-Parking"
+}

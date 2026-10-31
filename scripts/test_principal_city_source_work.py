@@ -15,7 +15,7 @@ class SourceWorkTests(unittest.TestCase):
     def test_complete_official_membership_and_explicit_gaps(self):
         report = self.report
         self.assertEqual((report['membership_count'], report['metro_count'], len(report['states'])), (698, 367, 52))
-        self.assertEqual(report['counts'], dict(context_retained=38, selected_publication_unavailable=5, not_recorded_here=655))
+        self.assertEqual(report['counts'], dict(context_retained=44, selected_publication_unavailable=6, not_recorded_here=648))
         self.assertEqual(sum(s['memberships'] for s in report['states']), 698)
         self.assertTrue(all(not r['anchor_adopted'] and r['access_review_status'] == 'unresolved' for r in report['cities']))
         dc = next(s for s in report['states'] if s['state'] == 'DC')

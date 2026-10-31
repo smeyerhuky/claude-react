@@ -1,0 +1,34 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "29940",
+  "city_name": "Lawrence",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.lawrenceks.gov/City/PARK",
+    "http_status": 200,
+    "response_bytes": 163270,
+    "response_sha256": "cfa00fc51f6c17c45db336aedafc16f5e8dd2563d99715f8593cd7aff3fd3a96",
+    "url": "https://www.lawrenceks.gov/City/PARK"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No independently verified ordinary-car entry, complete physical/legal/grade/direction findings, full connector costs or approved anchor."
+  ],
+  "observations": [
+    "The city describes different garage rates and rights by floor, pillar color and space marking. Some Riverfront upper-level white spaces are for Marriott hotel use and violations may be towed.",
+    "Its FAQ distinguishes garage opening, stated as 24 hours, from enforcement hours and notes that weather or construction can close portions. Free roof or blue-level parking does not establish unrestricted use of all other floors.",
+    "The service page was inspected successfully through direct HTTP even though the renderer could not retrieve it. No particular space, entry or connector is selected."
+  ],
+  "principal_city_id": "2038900",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short selected literal quote and factual observations only. Direct HTTP capture hashes identify bytes not retained here; rendered content is not a raw HTTP response capture. HTML, form/runtime state, error bodies, search snippets and private source archives omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "garages remain open 24 hours a day",
+  "source_http_status": 200,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.lawrenceks.gov/City/PARK"
+}

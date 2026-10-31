@@ -1,0 +1,41 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "28140",
+  "city_name": "Lenexa",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.lenexa.com/Parks-Places/City-Facility-Directory/Civic-Campus-Parking-Garage-Facility-Info",
+    "http_status": 200,
+    "response_bytes": 133636,
+    "response_sha256": "91f8051b6c427717753e602f8de2ba2b8b54e345dc6571668e0bf892faaa7ef7",
+    "url": "https://www.lenexa.com/Parks-Places/City-Facility-Directory/Civic-Campus-Parking-Garage-Facility-Info"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No independently verified ordinary-car entry, complete physical/legal/grade/direction findings, full connector costs or approved anchor."
+  ],
+  "observations": [
+    "The city describes the five-story civic campus garage as providing 500 free public parking stalls, with entry and exit from Winchester Street or 88th Street.",
+    "Parking is prohibited from 1 to 4 a.m.; unauthorized vehicles may be cited or towed. EV-charging spaces are reserved for vehicles charging, and the library drive-through guidance favors the 88th Street entrance.",
+    "These are distinct permissions and uses, not unrestricted access to every space or a verified vehicle path. No exact entry node, clearance, grade or connector cost is selected."
+  ],
+  "principal_city_id": "2039350",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "overnight_parking_prohibited_local": [
+      "01:00",
+      "04:00"
+    ],
+    "road_entry_closure_inferred": false
+  },
+  "release_eligible": false,
+  "retention": "Short selected literal quote and factual observations only. Direct HTTP capture hashes identify bytes not retained here; rendered content is not a raw HTTP response capture. HTML, form/runtime state, error bodies, search snippets and private source archives omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "No parking allowed overnight from 1 to 4 a.m.",
+  "source_http_status": 200,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.lenexa.com/Parks-Places/City-Facility-Directory/Civic-Campus-Parking-Garage-Facility-Info"
+}

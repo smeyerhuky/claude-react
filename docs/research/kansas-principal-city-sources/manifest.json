@@ -1,0 +1,60 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "geographic_coverage_certified": false,
+  "principal_inventory_sha256": "22f509906e005e1c6215c5f857fa0865278f4289753fad887ee05b730f8cd9cd",
+  "records": [
+    {
+      "cbsa": "28140",
+      "city_name": "Kansas City",
+      "principal_city_id": "2036000",
+      "source_path": "docs/research/kansas-principal-city-sources/kansas-city.json",
+      "source_sha256": "d53e3200dfeae5bba112f43ee7bff448c029f16288d9738127ae717c5a099bf8"
+    },
+    {
+      "cbsa": "29940",
+      "city_name": "Lawrence",
+      "principal_city_id": "2038900",
+      "source_path": "docs/research/kansas-principal-city-sources/lawrence.json",
+      "source_sha256": "422e586dbd588c0a3f8871925369125063601bf2e390cb3d28ba62d454d3311c"
+    },
+    {
+      "cbsa": "28140",
+      "city_name": "Lenexa",
+      "principal_city_id": "2039350",
+      "source_path": "docs/research/kansas-principal-city-sources/lenexa.json",
+      "source_sha256": "82c6e337c0c12965d3e94727129a96909e417d349110841d5b0a293a1a5a43cb"
+    },
+    {
+      "cbsa": "31740",
+      "city_name": "Manhattan",
+      "principal_city_id": "2044250",
+      "source_path": "docs/research/kansas-principal-city-sources/manhattan.json",
+      "source_sha256": "88faf08b709fd25427960131ff5e5c214920873ed229994b85067d0d373bf438"
+    },
+    {
+      "cbsa": "28140",
+      "city_name": "Overland Park",
+      "principal_city_id": "2053775",
+      "source_path": "docs/research/kansas-principal-city-sources/overland-park.json",
+      "source_sha256": "d9c20b0115cce89c038142ddaa3b64a8cdf16b9ff3fa1b14778f72ef3de2a8ee"
+    },
+    {
+      "cbsa": "45820",
+      "city_name": "Topeka",
+      "principal_city_id": "2071000",
+      "source_path": "docs/research/kansas-principal-city-sources/topeka.json",
+      "source_sha256": "c4f6e360bf48b8da8fc06a5b08716d97d127c5dcc34adf8165d09598b7fdca6d"
+    },
+    {
+      "cbsa": "48620",
+      "city_name": "Wichita",
+      "principal_city_id": "2079000",
+      "source_path": "docs/research/kansas-principal-city-sources/wichita.json",
+      "source_sha256": "d38f9833fa03019d11c931386824efc6077fce914292f2329158a9cb1c800caa"
+    }
+  ],
+  "release_eligible": false,
+  "schema": "principal-city-source-batch-v1",
+  "state": "KS"
+}

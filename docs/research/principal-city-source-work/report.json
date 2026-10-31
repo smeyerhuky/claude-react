@@ -5280,17 +5280,20 @@
       "anchor_adopted": false,
       "cbsa": "28140",
       "city_name": "Kansas City",
-      "limitations": [],
+      "limitations": [
+        "No independently verified ordinary-car entry, complete physical/legal/grade/direction findings, full connector costs or approved anchor.",
+        "Selected Unified Government publication unavailable through direct HTTP and renderer. No search snippet or Missouri Kansas City publication is promoted as Kansas City, Kansas evidence."
+      ],
       "observations": [],
       "principal_city_id": "2036000",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "unavailable",
+      "source_kind": "municipal_facility_location",
+      "source_path": "docs/research/kansas-principal-city-sources/kansas-city.json",
+      "source_sha256": "d53e3200dfeae5bba112f43ee7bff448c029f16288d9738127ae717c5a099bf8",
       "state": "KS",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "selected_publication_unavailable",
+      "url": "https://www.wycokck.org/"
     },
     {
       "access_review_status": "unresolved",
@@ -5298,17 +5301,23 @@
       "anchor_adopted": false,
       "cbsa": "29940",
       "city_name": "Lawrence",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "No independently verified ordinary-car entry, complete physical/legal/grade/direction findings, full connector costs or approved anchor."
+      ],
+      "observations": [
+        "The city describes different garage rates and rights by floor, pillar color and space marking. Some Riverfront upper-level white spaces are for Marriott hotel use and violations may be towed.",
+        "Its FAQ distinguishes garage opening, stated as 24 hours, from enforcement hours and notes that weather or construction can close portions. Free roof or blue-level parking does not establish unrestricted use of all other floors.",
+        "The service page was inspected successfully through direct HTTP even though the renderer could not retrieve it. No particular space, entry or connector is selected."
+      ],
       "principal_city_id": "2038900",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/kansas-principal-city-sources/lawrence.json",
+      "source_sha256": "422e586dbd588c0a3f8871925369125063601bf2e390cb3d28ba62d454d3311c",
       "state": "KS",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.lawrenceks.gov/City/PARK"
     },
     {
       "access_review_status": "unresolved",
@@ -5316,17 +5325,23 @@
       "anchor_adopted": false,
       "cbsa": "28140",
       "city_name": "Lenexa",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "No independently verified ordinary-car entry, complete physical/legal/grade/direction findings, full connector costs or approved anchor."
+      ],
+      "observations": [
+        "The city describes the five-story civic campus garage as providing 500 free public parking stalls, with entry and exit from Winchester Street or 88th Street.",
+        "Parking is prohibited from 1 to 4 a.m.; unauthorized vehicles may be cited or towed. EV-charging spaces are reserved for vehicles charging, and the library drive-through guidance favors the 88th Street entrance.",
+        "These are distinct permissions and uses, not unrestricted access to every space or a verified vehicle path. No exact entry node, clearance, grade or connector cost is selected."
+      ],
       "principal_city_id": "2039350",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/kansas-principal-city-sources/lenexa.json",
+      "source_sha256": "82c6e337c0c12965d3e94727129a96909e417d349110841d5b0a293a1a5a43cb",
       "state": "KS",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.lenexa.com/Parks-Places/City-Facility-Directory/Civic-Campus-Parking-Garage-Facility-Info"
     },
     {
       "access_review_status": "unresolved",
@@ -5334,17 +5349,23 @@
       "anchor_adopted": false,
       "cbsa": "31740",
       "city_name": "Manhattan",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "No independently verified ordinary-car entry, complete physical/legal/grade/direction findings, full connector costs or approved anchor."
+      ],
+      "observations": [
+        "The city describes the Downtown Garage at 520 South 3rd Street as open to the public 24 hours a day, seven days each week, with registration required upon entrance.",
+        "Without a purchased permit, a visitor must register the vehicle license plate for each new session through the app or pay station. The first two hours are free with registration; the page prohibits more than 24 continuous hours in one spot.",
+        "Visitor registration remains required for the first two free hours; visitor sessions and discounted permits have separate conditions. No exact entrance path, clearance, grade, maneuver or connector cost is established."
+      ],
       "principal_city_id": "2044250",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/kansas-principal-city-sources/manhattan.json",
+      "source_sha256": "88faf08b709fd25427960131ff5e5c214920873ed229994b85067d0d373bf438",
       "state": "KS",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.manhattanks.gov/3833/Downtown-Parking"
     },
     {
       "access_review_status": "unresolved",
@@ -5352,17 +5373,23 @@
       "anchor_adopted": false,
       "cbsa": "28140",
       "city_name": "Overland Park",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "No independently verified ordinary-car entry, complete physical/legal/grade/direction findings, full connector costs or approved anchor.",
+        "Primary page inspected through the web renderer, which can use an earlier cached crawl. The failed direct attempt remains separate; no successful original HTTP identity is invented for rendered content."
+      ],
+      "observations": [
+        "The canonical official city website identifies City Hall at 8500 Santa Fe Drive. The former opkansas.org homepage redirects to opkansas.gov.",
+        "This is a contact-location lead only, not a parking permission, vehicle entry or graph connection. It does not substitute for Lenexa or Kansas City, Kansas, in the shared metro."
+      ],
       "principal_city_id": "2053775",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "web_rendered",
+      "source_kind": "municipal_facility_location",
+      "source_path": "docs/research/kansas-principal-city-sources/overland-park.json",
+      "source_sha256": "d9c20b0115cce89c038142ddaa3b64a8cdf16b9ff3fa1b14778f72ef3de2a8ee",
       "state": "KS",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.opkansas.gov/"
     },
     {
       "access_review_status": "unresolved",
@@ -5370,17 +5397,23 @@
       "anchor_adopted": false,
       "cbsa": "45820",
       "city_name": "Topeka",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "No independently verified ordinary-car entry, complete physical/legal/grade/direction findings, full connector costs or approved anchor."
+      ],
+      "observations": [
+        "The city lists seven garages and distinguishes hourly visitor spaces from monthly parking. The displayed 512 Jackson and Coronado records explicitly state that they have no hourly parking.",
+        "Other listed garages reserve only a subset of spaces for hourly parking and publish differing hours. A citywide garage count cannot establish visitor use of every stall or facility.",
+        "No particular garage, current price interpretation, entrance, clearance, maneuver or connector cost is selected."
+      ],
       "principal_city_id": "2071000",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/kansas-principal-city-sources/topeka.json",
+      "source_sha256": "c4f6e360bf48b8da8fc06a5b08716d97d127c5dcc34adf8165d09598b7fdca6d",
       "state": "KS",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://topeka.gov/community/parking_garages_lots/index.php"
     },
     {
       "access_review_status": "unresolved",
@@ -5388,17 +5421,24 @@
       "anchor_adopted": false,
       "cbsa": "48620",
       "city_name": "Wichita",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "No independently verified ordinary-car entry, complete physical/legal/grade/direction findings, full connector costs or approved anchor.",
+        "Primary page inspected through the web renderer, which can use an earlier cached crawl. The failed direct attempt remains separate; no successful original HTTP identity is invented for rendered content."
+      ],
+      "observations": [
+        "The city identifies paid surface lots south and southwest of City Hall off 3rd Street, with an additional public entrance from Central. It separately describes a free first-come lot east of Waco between Central and Third.",
+        "Published paid-parking hours differ between Monday through Thursday and Friday through Saturday. Payment registration and department-specific validation procedures are distinct from vehicle access and are not automatically assumed satisfied.",
+        "The linked map is not visually verified in this retained review. These street-level leads do not resolve a precise entry geometry or rehabilitate the separate modeled-unreachable Census-origin experiment. No urban anchor replaces that origin."
+      ],
       "principal_city_id": "2079000",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "web_rendered",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/kansas-principal-city-sources/wichita.json",
+      "source_sha256": "d38f9833fa03019d11c931386824efc6077fce914292f2329158a9cb1c800caa",
       "state": "KS",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.wichita.gov/1038/Parking-at-City-Hall"
     },
     {
       "access_review_status": "unresolved",
@@ -12777,9 +12817,9 @@
   ],
   "connectors_approved": 0,
   "counts": {
-    "context_retained": 38,
-    "not_recorded_here": 655,
-    "selected_publication_unavailable": 5
+    "context_retained": 44,
+    "not_recorded_here": 648,
+    "selected_publication_unavailable": 6
   },
   "input_sha256": {
     "docs/research/arizona-principal-city-sources/casa-grande.json": "e9d81166b48a814782c5b1c89924be8afcdc9018ac0d789a5a7cbdb0f9132c6d",
@@ -12811,6 +12851,14 @@
     "docs/research/colorado-principal-city-sources/loveland.json": "da7ad13e43fdc9666346234f9c18a77a30de7049132a67d15ace18b204b8a4c6",
     "docs/research/colorado-principal-city-sources/manifest.json": "e5ca7b060005c83155f36f7150acc4dc78a16ee0537049055f4b35aa748e98a0",
     "docs/research/connector-reviews/denver-union-station-proposal.json": "a4659ca41fff778ae89bfb884d296a99d470557cd53b106efec5ee7dbd3bb2d9",
+    "docs/research/kansas-principal-city-sources/kansas-city.json": "d53e3200dfeae5bba112f43ee7bff448c029f16288d9738127ae717c5a099bf8",
+    "docs/research/kansas-principal-city-sources/lawrence.json": "422e586dbd588c0a3f8871925369125063601bf2e390cb3d28ba62d454d3311c",
+    "docs/research/kansas-principal-city-sources/lenexa.json": "82c6e337c0c12965d3e94727129a96909e417d349110841d5b0a293a1a5a43cb",
+    "docs/research/kansas-principal-city-sources/manhattan.json": "88faf08b709fd25427960131ff5e5c214920873ed229994b85067d0d373bf438",
+    "docs/research/kansas-principal-city-sources/manifest.json": "5e2eb8eae8d9cd180d8a371e5255017ece4e970aab72944d1ab24757a4d24c7a",
+    "docs/research/kansas-principal-city-sources/overland-park.json": "d9c20b0115cce89c038142ddaa3b64a8cdf16b9ff3fa1b14778f72ef3de2a8ee",
+    "docs/research/kansas-principal-city-sources/topeka.json": "c4f6e360bf48b8da8fc06a5b08716d97d127c5dcc34adf8165d09598b7fdca6d",
+    "docs/research/kansas-principal-city-sources/wichita.json": "d38f9833fa03019d11c931386824efc6077fce914292f2329158a9cb1c800caa",
     "docs/research/native-state-inventory/report.json": "85c2c60334f499fe9f1fc193fa9a05f020db5b0aea847f6814b6fd57547a95db",
     "docs/research/new-mexico-anchor-source-batch/albuquerque.json": "36482106fa26a23c1ad347de21709a05002e7afc802666331f0089147d9317b2",
     "docs/research/new-mexico-anchor-source-batch/farmington.json": "d8ad86702e306e744c7ab2ab3f8f81a5e019d6597b3501f009ffdf64e89f0275",
@@ -12837,16 +12885,17 @@
     "scripts/arizona_principal_city_source_screen.py": "d1403d1e9b0729aacb9c5d0dfada4f54181c91cdda5a4ccb5dd4e97594de97ed",
     "scripts/colorado_principal_city_source_screen.py": "5a8266ca0f5d5e860e4b69f2b77536c7f392f43a58734b482d9b038e8b937cf9",
     "scripts/colorado_reviewed_connectors.json": "cbac5c424e0c840a95de00ddf1f77a5627d35543b2d97a524222908590c62d38",
+    "scripts/kansas_principal_city_source_screen.py": "c0235c1d22cf68dabaaee4c44c014851b77edb1fb78b5836ef018133c0f0f4eb",
     "scripts/metro_principal_city_inventory.py": "cd1e6074b0698433681ee6f5bc41b98c45dbcc49bac2f41e373fcce9aa375a8e",
     "scripts/municipal_source_screen.py": "32b68b5a4f254c5db675f580fcfa5cc9bf2c96a09de4f61c1d36734f42c3941c",
     "scripts/oklahoma_principal_city_source_screen.py": "76c671aea851f5333ea549918a0e38d6c97a3d01e20dde83348dc5d9ec1c0a27",
     "scripts/principal_city_source_screen.py": "7c5ff4440a514df1ca81a6e1a79f0f6637b2307d21df098b27bb55437b1daa22",
-    "scripts/principal_city_source_work.py": "12035f7fd2275e755f1969a86a399257ef496829ba4de6342de660da5f9bb9e8",
+    "scripts/principal_city_source_work.py": "ed8b9a354ff551f21f14d461b94a2997b3f16ec1f9d3a9261ffd5d754146bf58",
     "scripts/utah_principal_city_source_screen.py": "8dd836ca3b07af78b9be9546aec15c34cabad1d4db85b1f493b265992a5814ed"
   },
   "membership_count": 698,
   "metro_count": 367,
-  "recorded_memberships": 43,
+  "recorded_memberships": 50,
   "release_eligible": false,
   "schema": "principal-city-source-work-v1",
   "scope": "Principal-city state membership, distinct from the state containing a Census representative point.",
@@ -13030,9 +13079,9 @@
     {
       "approved_anchors": 0,
       "counts": {
-        "context_retained": 0,
-        "not_recorded_here": 7,
-        "selected_publication_unavailable": 0
+        "context_retained": 6,
+        "not_recorded_here": 0,
+        "selected_publication_unavailable": 1
       },
       "memberships": 7,
       "release_eligible": false,
