@@ -1,0 +1,864 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "compiled_meaning": "Declared strict topological shape accepted; not physically/legal verified, current, complete or approved",
+  "diagnostic_policy": "One first compiler rejection reason per rejected candidate; overlapping additional limitations are not exhausted",
+  "geographic_coverage_certified": false,
+  "raw_inventory_sha256": "05a6dcc6b036afbe8020f6602dfefb12009371ae469fa66af275454cf7550f9f",
+  "release_eligible": false,
+  "route_costs_computed": false,
+  "schema": "state-via-way-compiler-inventory-v1",
+  "scope": "All raw via-way relation candidates in the five declared sources; counts are not applicable-car restriction or route coverage fractions",
+  "selection": "Any type=restriction relation containing a via-way member; mixed or malformed candidates are retained and rejected, never dropped",
+  "states": [
+    {
+      "compiled_declared_shape_count": 531,
+      "example_relation_results": {
+        "Bounded raw via-way member list required": [
+          {
+            "reason": "Bounded raw via-way member list required",
+            "relation_id": 9935051,
+            "status": "rejected"
+          },
+          {
+            "reason": "Bounded raw via-way member list required",
+            "relation_id": 17629926,
+            "status": "rejected"
+          },
+          {
+            "reason": "Bounded raw via-way member list required",
+            "relation_id": 19085030,
+            "status": "rejected"
+          }
+        ],
+        "Conditional member-way controls require a separately reviewed temporal profile": [
+          {
+            "reason": "Conditional member-way controls require a separately reviewed temporal profile",
+            "relation_id": 6293022,
+            "status": "rejected"
+          },
+          {
+            "reason": "Conditional member-way controls require a separately reviewed temporal profile",
+            "relation_id": 10844416,
+            "status": "rejected"
+          },
+          {
+            "reason": "Conditional member-way controls require a separately reviewed temporal profile",
+            "relation_id": 11752944,
+            "status": "rejected"
+          }
+        ],
+        "Conditional or exception semantics require separate review": [
+          {
+            "reason": "Conditional or exception semantics require separate review",
+            "relation_id": 8372012,
+            "status": "rejected"
+          },
+          {
+            "reason": "Conditional or exception semantics require separate review",
+            "relation_id": 11629714,
+            "status": "rejected"
+          },
+          {
+            "reason": "Conditional or exception semantics require separate review",
+            "relation_id": 11629715,
+            "status": "rejected"
+          }
+        ],
+        "Declared arc contradicts raw member-way direction": [
+          {
+            "reason": "Declared arc contradicts raw member-way direction",
+            "relation_id": 14471901,
+            "status": "rejected"
+          }
+        ],
+        "Interior member junction needs a separately reviewed split": [
+          {
+            "reason": "Interior member junction needs a separately reviewed split",
+            "relation_id": 10286536,
+            "status": "rejected"
+          },
+          {
+            "reason": "Interior member junction needs a separately reviewed split",
+            "relation_id": 10286537,
+            "status": "rejected"
+          },
+          {
+            "reason": "Interior member junction needs a separately reviewed split",
+            "relation_id": 18975284,
+            "status": "rejected"
+          }
+        ],
+        "Lane-specific maneuver/occupancy rules need separate review": [
+          {
+            "reason": "Lane-specific maneuver/occupancy rules need separate review",
+            "relation_id": 2999192,
+            "status": "rejected"
+          },
+          {
+            "reason": "Lane-specific maneuver/occupancy rules need separate review",
+            "relation_id": 5550325,
+            "status": "rejected"
+          },
+          {
+            "reason": "Lane-specific maneuver/occupancy rules need separate review",
+            "relation_id": 5563201,
+            "status": "rejected"
+          }
+        ],
+        "Member way outside declared static car-road classes": [
+          {
+            "reason": "Member way outside declared static car-road classes",
+            "relation_id": 18971010,
+            "status": "rejected"
+          },
+          {
+            "reason": "Member way outside declared static car-road classes",
+            "relation_id": 19908009,
+            "status": "rejected"
+          }
+        ],
+        "Member-way access-purpose restriction is not established by arc presence": [
+          {
+            "reason": "Member-way access-purpose restriction is not established by arc presence",
+            "relation_id": 7590676,
+            "status": "rejected"
+          },
+          {
+            "reason": "Member-way access-purpose restriction is not established by arc presence",
+            "relation_id": 8375164,
+            "status": "rejected"
+          },
+          {
+            "reason": "Member-way access-purpose restriction is not established by arc presence",
+            "relation_id": 10645507,
+            "status": "rejected"
+          }
+        ],
+        "Missing/ambiguous raw member junction": [
+          {
+            "reason": "Missing/ambiguous raw member junction",
+            "relation_id": 12505071,
+            "status": "rejected"
+          },
+          {
+            "reason": "Missing/ambiguous raw member junction",
+            "relation_id": 16051348,
+            "status": "rejected"
+          },
+          {
+            "reason": "Missing/ambiguous raw member junction",
+            "relation_id": 16051350,
+            "status": "rejected"
+          }
+        ],
+        "One from/to and ordered via ways required": [
+          {
+            "reason": "One from/to and ordered via ways required",
+            "relation_id": 12662813,
+            "status": "rejected"
+          },
+          {
+            "reason": "One from/to and ordered via ways required",
+            "relation_id": 14054787,
+            "status": "rejected"
+          },
+          {
+            "reason": "One from/to and ordered via ways required",
+            "relation_id": 20307330,
+            "status": "rejected"
+          }
+        ],
+        "Repeated member ways need separately reviewed semantics": [
+          {
+            "reason": "Repeated member ways need separately reviewed semantics",
+            "relation_id": 10187646,
+            "status": "rejected"
+          }
+        ],
+        "Repeated/invalid way nodes require separate treatment": [
+          {
+            "reason": "Repeated/invalid way nodes require separate treatment",
+            "relation_id": 10295731,
+            "status": "rejected"
+          }
+        ],
+        "compiled_declared_shape": [
+          {
+            "pattern_arc_count": 3,
+            "relation_id": 2516794,
+            "status": "compiled_declared_shape"
+          },
+          {
+            "pattern_arc_count": 3,
+            "relation_id": 2516795,
+            "status": "compiled_declared_shape"
+          },
+          {
+            "pattern_arc_count": 3,
+            "relation_id": 5650103,
+            "status": "compiled_declared_shape"
+          }
+        ]
+      },
+      "first_rejection_reason_counts": {
+        "Bounded raw via-way member list required": 3,
+        "Conditional member-way controls require a separately reviewed temporal profile": 8,
+        "Conditional or exception semantics require separate review": 14,
+        "Declared arc contradicts raw member-way direction": 1,
+        "Interior member junction needs a separately reviewed split": 3,
+        "Lane-specific maneuver/occupancy rules need separate review": 572,
+        "Member way outside declared static car-road classes": 2,
+        "Member-way access-purpose restriction is not established by arc presence": 21,
+        "Missing/ambiguous raw member junction": 3,
+        "One from/to and ordered via ways required": 3,
+        "Repeated member ways need separately reviewed semantics": 1,
+        "Repeated/invalid way nodes require separate treatment": 1
+      },
+      "missing_raw_member_way_ids": [],
+      "oversized_raw_member_way_ids": [],
+      "raw_via_way_relations": 1163,
+      "rejected_relation_count": 632,
+      "selected_member_way_ids": 3022,
+      "source": {
+        "name": "colorado.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+        "size_bytes": 386197077
+      },
+      "state": "colorado",
+      "total_compiled_pattern_arcs": 1774
+    },
+    {
+      "compiled_declared_shape_count": 336,
+      "example_relation_results": {
+        "Conditional or exception semantics require separate review": [
+          {
+            "reason": "Conditional or exception semantics require separate review",
+            "relation_id": 18855915,
+            "status": "rejected"
+          },
+          {
+            "reason": "Conditional or exception semantics require separate review",
+            "relation_id": 18929601,
+            "status": "rejected"
+          }
+        ],
+        "Interior member junction needs a separately reviewed split": [
+          {
+            "reason": "Interior member junction needs a separately reviewed split",
+            "relation_id": 9478435,
+            "status": "rejected"
+          },
+          {
+            "reason": "Interior member junction needs a separately reviewed split",
+            "relation_id": 9478659,
+            "status": "rejected"
+          }
+        ],
+        "Lane-specific maneuver/occupancy rules need separate review": [
+          {
+            "reason": "Lane-specific maneuver/occupancy rules need separate review",
+            "relation_id": 10347178,
+            "status": "rejected"
+          },
+          {
+            "reason": "Lane-specific maneuver/occupancy rules need separate review",
+            "relation_id": 10347179,
+            "status": "rejected"
+          },
+          {
+            "reason": "Lane-specific maneuver/occupancy rules need separate review",
+            "relation_id": 14017494,
+            "status": "rejected"
+          }
+        ],
+        "Member-way access-purpose restriction is not established by arc presence": [
+          {
+            "reason": "Member-way access-purpose restriction is not established by arc presence",
+            "relation_id": 18871769,
+            "status": "rejected"
+          },
+          {
+            "reason": "Member-way access-purpose restriction is not established by arc presence",
+            "relation_id": 18906271,
+            "status": "rejected"
+          }
+        ],
+        "Missing/ambiguous raw member junction": [
+          {
+            "reason": "Missing/ambiguous raw member junction",
+            "relation_id": 14254053,
+            "status": "rejected"
+          },
+          {
+            "reason": "Missing/ambiguous raw member junction",
+            "relation_id": 18901230,
+            "status": "rejected"
+          },
+          {
+            "reason": "Missing/ambiguous raw member junction",
+            "relation_id": 18936345,
+            "status": "rejected"
+          }
+        ],
+        "Unsupported declared car restriction kind": [
+          {
+            "reason": "Unsupported declared car restriction kind",
+            "relation_id": 18855553,
+            "status": "rejected"
+          }
+        ],
+        "compiled_declared_shape": [
+          {
+            "pattern_arc_count": 3,
+            "relation_id": 3800486,
+            "status": "compiled_declared_shape"
+          },
+          {
+            "pattern_arc_count": 3,
+            "relation_id": 3800489,
+            "status": "compiled_declared_shape"
+          },
+          {
+            "pattern_arc_count": 3,
+            "relation_id": 3800490,
+            "status": "compiled_declared_shape"
+          }
+        ]
+      },
+      "first_rejection_reason_counts": {
+        "Conditional or exception semantics require separate review": 2,
+        "Interior member junction needs a separately reviewed split": 2,
+        "Lane-specific maneuver/occupancy rules need separate review": 21,
+        "Member-way access-purpose restriction is not established by arc presence": 2,
+        "Missing/ambiguous raw member junction": 3,
+        "Unsupported declared car restriction kind": 1
+      },
+      "missing_raw_member_way_ids": [],
+      "oversized_raw_member_way_ids": [],
+      "raw_via_way_relations": 367,
+      "rejected_relation_count": 31,
+      "selected_member_way_ids": 842,
+      "source": {
+        "name": "new-mexico.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "2aa3ba0e91c0f19ffd0d614d98f112546552a51d02daf2474d8f06e54304508a",
+        "size_bytes": 136658631
+      },
+      "state": "new-mexico",
+      "total_compiled_pattern_arcs": 1132
+    },
+    {
+      "compiled_declared_shape_count": 862,
+      "example_relation_results": {
+        "Bounded raw via-way member list required": [
+          {
+            "reason": "Bounded raw via-way member list required",
+            "relation_id": 15362175,
+            "status": "rejected"
+          },
+          {
+            "reason": "Bounded raw via-way member list required",
+            "relation_id": 18893065,
+            "status": "rejected"
+          }
+        ],
+        "Conditional member-way controls require a separately reviewed temporal profile": [
+          {
+            "reason": "Conditional member-way controls require a separately reviewed temporal profile",
+            "relation_id": 2451750,
+            "status": "rejected"
+          },
+          {
+            "reason": "Conditional member-way controls require a separately reviewed temporal profile",
+            "relation_id": 8824274,
+            "status": "rejected"
+          },
+          {
+            "reason": "Conditional member-way controls require a separately reviewed temporal profile",
+            "relation_id": 13081865,
+            "status": "rejected"
+          }
+        ],
+        "Conditional or exception semantics require separate review": [
+          {
+            "reason": "Conditional or exception semantics require separate review",
+            "relation_id": 7676406,
+            "status": "rejected"
+          },
+          {
+            "reason": "Conditional or exception semantics require separate review",
+            "relation_id": 8381585,
+            "status": "rejected"
+          },
+          {
+            "reason": "Conditional or exception semantics require separate review",
+            "relation_id": 8381587,
+            "status": "rejected"
+          }
+        ],
+        "Declared arc contradicts raw member-way direction": [
+          {
+            "reason": "Declared arc contradicts raw member-way direction",
+            "relation_id": 7564527,
+            "status": "rejected"
+          },
+          {
+            "reason": "Declared arc contradicts raw member-way direction",
+            "relation_id": 9799541,
+            "status": "rejected"
+          },
+          {
+            "reason": "Declared arc contradicts raw member-way direction",
+            "relation_id": 14303161,
+            "status": "rejected"
+          }
+        ],
+        "Interior member junction needs a separately reviewed split": [
+          {
+            "reason": "Interior member junction needs a separately reviewed split",
+            "relation_id": 7439594,
+            "status": "rejected"
+          },
+          {
+            "reason": "Interior member junction needs a separately reviewed split",
+            "relation_id": 8831581,
+            "status": "rejected"
+          },
+          {
+            "reason": "Interior member junction needs a separately reviewed split",
+            "relation_id": 8831588,
+            "status": "rejected"
+          }
+        ],
+        "Lane-specific maneuver/occupancy rules need separate review": [
+          {
+            "reason": "Lane-specific maneuver/occupancy rules need separate review",
+            "relation_id": 2858574,
+            "status": "rejected"
+          },
+          {
+            "reason": "Lane-specific maneuver/occupancy rules need separate review",
+            "relation_id": 3252252,
+            "status": "rejected"
+          },
+          {
+            "reason": "Lane-specific maneuver/occupancy rules need separate review",
+            "relation_id": 3252253,
+            "status": "rejected"
+          }
+        ],
+        "Member way outside declared static car-road classes": [
+          {
+            "reason": "Member way outside declared static car-road classes",
+            "relation_id": 7655532,
+            "status": "rejected"
+          },
+          {
+            "reason": "Member way outside declared static car-road classes",
+            "relation_id": 7723321,
+            "status": "rejected"
+          },
+          {
+            "reason": "Member way outside declared static car-road classes",
+            "relation_id": 7723323,
+            "status": "rejected"
+          }
+        ],
+        "Member-way access-purpose restriction is not established by arc presence": [
+          {
+            "reason": "Member-way access-purpose restriction is not established by arc presence",
+            "relation_id": 6278112,
+            "status": "rejected"
+          },
+          {
+            "reason": "Member-way access-purpose restriction is not established by arc presence",
+            "relation_id": 6773070,
+            "status": "rejected"
+          },
+          {
+            "reason": "Member-way access-purpose restriction is not established by arc presence",
+            "relation_id": 7442329,
+            "status": "rejected"
+          }
+        ],
+        "Missing/ambiguous raw member junction": [
+          {
+            "reason": "Missing/ambiguous raw member junction",
+            "relation_id": 9799911,
+            "status": "rejected"
+          },
+          {
+            "reason": "Missing/ambiguous raw member junction",
+            "relation_id": 14890762,
+            "status": "rejected"
+          }
+        ],
+        "One from/to and ordered via ways required": [
+          {
+            "reason": "One from/to and ordered via ways required",
+            "relation_id": 18952697,
+            "status": "rejected"
+          }
+        ],
+        "Repeated member ways need separately reviewed semantics": [
+          {
+            "reason": "Repeated member ways need separately reviewed semantics",
+            "relation_id": 10699874,
+            "status": "rejected"
+          }
+        ],
+        "Repeated/invalid way nodes require separate treatment": [
+          {
+            "reason": "Repeated/invalid way nodes require separate treatment",
+            "relation_id": 18860030,
+            "status": "rejected"
+          }
+        ],
+        "compiled_declared_shape": [
+          {
+            "pattern_arc_count": 3,
+            "relation_id": 3118447,
+            "status": "compiled_declared_shape"
+          },
+          {
+            "pattern_arc_count": 3,
+            "relation_id": 3308163,
+            "status": "compiled_declared_shape"
+          },
+          {
+            "pattern_arc_count": 6,
+            "relation_id": 3958538,
+            "status": "compiled_declared_shape"
+          }
+        ]
+      },
+      "first_rejection_reason_counts": {
+        "Bounded raw via-way member list required": 2,
+        "Conditional member-way controls require a separately reviewed temporal profile": 4,
+        "Conditional or exception semantics require separate review": 13,
+        "Declared arc contradicts raw member-way direction": 4,
+        "Interior member junction needs a separately reviewed split": 15,
+        "Lane-specific maneuver/occupancy rules need separate review": 695,
+        "Member way outside declared static car-road classes": 4,
+        "Member-way access-purpose restriction is not established by arc presence": 87,
+        "Missing/ambiguous raw member junction": 2,
+        "One from/to and ordered via ways required": 1,
+        "Repeated member ways need separately reviewed semantics": 1,
+        "Repeated/invalid way nodes require separate treatment": 1
+      },
+      "missing_raw_member_way_ids": [],
+      "oversized_raw_member_way_ids": [],
+      "raw_via_way_relations": 1691,
+      "rejected_relation_count": 829,
+      "selected_member_way_ids": 4252,
+      "source": {
+        "name": "arizona.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
+        "size_bytes": 304245283
+      },
+      "state": "arizona",
+      "total_compiled_pattern_arcs": 2816
+    },
+    {
+      "compiled_declared_shape_count": 117,
+      "example_relation_results": {
+        "Bounded raw via-way member list required": [
+          {
+            "reason": "Bounded raw via-way member list required",
+            "relation_id": 8768276,
+            "status": "rejected"
+          },
+          {
+            "reason": "Bounded raw via-way member list required",
+            "relation_id": 16135243,
+            "status": "rejected"
+          },
+          {
+            "reason": "Bounded raw via-way member list required",
+            "relation_id": 16135244,
+            "status": "rejected"
+          }
+        ],
+        "Conditional or exception semantics require separate review": [
+          {
+            "reason": "Conditional or exception semantics require separate review",
+            "relation_id": 8156087,
+            "status": "rejected"
+          },
+          {
+            "reason": "Conditional or exception semantics require separate review",
+            "relation_id": 8156088,
+            "status": "rejected"
+          },
+          {
+            "reason": "Conditional or exception semantics require separate review",
+            "relation_id": 8156095,
+            "status": "rejected"
+          }
+        ],
+        "Declared arc contradicts raw member-way direction": [
+          {
+            "reason": "Declared arc contradicts raw member-way direction",
+            "relation_id": 8814991,
+            "status": "rejected"
+          },
+          {
+            "reason": "Declared arc contradicts raw member-way direction",
+            "relation_id": 9364870,
+            "status": "rejected"
+          }
+        ],
+        "Interior member junction needs a separately reviewed split": [
+          {
+            "reason": "Interior member junction needs a separately reviewed split",
+            "relation_id": 13758135,
+            "status": "rejected"
+          }
+        ],
+        "Lane-specific maneuver/occupancy rules need separate review": [
+          {
+            "reason": "Lane-specific maneuver/occupancy rules need separate review",
+            "relation_id": 3213538,
+            "status": "rejected"
+          },
+          {
+            "reason": "Lane-specific maneuver/occupancy rules need separate review",
+            "relation_id": 5688576,
+            "status": "rejected"
+          },
+          {
+            "reason": "Lane-specific maneuver/occupancy rules need separate review",
+            "relation_id": 5688577,
+            "status": "rejected"
+          }
+        ],
+        "Member way outside declared static car-road classes": [
+          {
+            "reason": "Member way outside declared static car-road classes",
+            "relation_id": 19924646,
+            "status": "rejected"
+          }
+        ],
+        "Member-way access-purpose restriction is not established by arc presence": [
+          {
+            "reason": "Member-way access-purpose restriction is not established by arc presence",
+            "relation_id": 7766077,
+            "status": "rejected"
+          },
+          {
+            "reason": "Member-way access-purpose restriction is not established by arc presence",
+            "relation_id": 7766078,
+            "status": "rejected"
+          },
+          {
+            "reason": "Member-way access-purpose restriction is not established by arc presence",
+            "relation_id": 7766318,
+            "status": "rejected"
+          }
+        ],
+        "One from/to and ordered via ways required": [
+          {
+            "reason": "One from/to and ordered via ways required",
+            "relation_id": 8617902,
+            "status": "rejected"
+          }
+        ],
+        "Repeated/invalid way nodes require separate treatment": [
+          {
+            "reason": "Repeated/invalid way nodes require separate treatment",
+            "relation_id": 18928610,
+            "status": "rejected"
+          }
+        ],
+        "compiled_declared_shape": [
+          {
+            "pattern_arc_count": 3,
+            "relation_id": 7604918,
+            "status": "compiled_declared_shape"
+          },
+          {
+            "pattern_arc_count": 3,
+            "relation_id": 7604920,
+            "status": "compiled_declared_shape"
+          },
+          {
+            "pattern_arc_count": 3,
+            "relation_id": 7604922,
+            "status": "compiled_declared_shape"
+          }
+        ]
+      },
+      "first_rejection_reason_counts": {
+        "Bounded raw via-way member list required": 3,
+        "Conditional or exception semantics require separate review": 5,
+        "Declared arc contradicts raw member-way direction": 2,
+        "Interior member junction needs a separately reviewed split": 1,
+        "Lane-specific maneuver/occupancy rules need separate review": 109,
+        "Member way outside declared static car-road classes": 1,
+        "Member-way access-purpose restriction is not established by arc presence": 37,
+        "One from/to and ordered via ways required": 1,
+        "Repeated/invalid way nodes require separate treatment": 1
+      },
+      "missing_raw_member_way_ids": [],
+      "oversized_raw_member_way_ids": [],
+      "raw_via_way_relations": 277,
+      "rejected_relation_count": 160,
+      "selected_member_way_ids": 750,
+      "source": {
+        "name": "utah.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "34f704431a8b3812372ec10083e151d4227a50caf19159fc9af730f942940c41",
+        "size_bytes": 170845020
+      },
+      "state": "utah",
+      "total_compiled_pattern_arcs": 452
+    },
+    {
+      "compiled_declared_shape_count": 33,
+      "example_relation_results": {
+        "Bounded raw via-way member list required": [
+          {
+            "reason": "Bounded raw via-way member list required",
+            "relation_id": 16227005,
+            "status": "rejected"
+          }
+        ],
+        "Conditional member-way controls require a separately reviewed temporal profile": [
+          {
+            "reason": "Conditional member-way controls require a separately reviewed temporal profile",
+            "relation_id": 9166329,
+            "status": "rejected"
+          },
+          {
+            "reason": "Conditional member-way controls require a separately reviewed temporal profile",
+            "relation_id": 9166330,
+            "status": "rejected"
+          },
+          {
+            "reason": "Conditional member-way controls require a separately reviewed temporal profile",
+            "relation_id": 9166332,
+            "status": "rejected"
+          }
+        ],
+        "Conditional or exception semantics require separate review": [
+          {
+            "reason": "Conditional or exception semantics require separate review",
+            "relation_id": 6624710,
+            "status": "rejected"
+          },
+          {
+            "reason": "Conditional or exception semantics require separate review",
+            "relation_id": 6624711,
+            "status": "rejected"
+          },
+          {
+            "reason": "Conditional or exception semantics require separate review",
+            "relation_id": 13505872,
+            "status": "rejected"
+          }
+        ],
+        "Lane-specific maneuver/occupancy rules need separate review": [
+          {
+            "reason": "Lane-specific maneuver/occupancy rules need separate review",
+            "relation_id": 1205968,
+            "status": "rejected"
+          },
+          {
+            "reason": "Lane-specific maneuver/occupancy rules need separate review",
+            "relation_id": 1531402,
+            "status": "rejected"
+          },
+          {
+            "reason": "Lane-specific maneuver/occupancy rules need separate review",
+            "relation_id": 2065180,
+            "status": "rejected"
+          }
+        ],
+        "Member way outside declared static car-road classes": [
+          {
+            "reason": "Member way outside declared static car-road classes",
+            "relation_id": 12106614,
+            "status": "rejected"
+          },
+          {
+            "reason": "Member way outside declared static car-road classes",
+            "relation_id": 15427934,
+            "status": "rejected"
+          },
+          {
+            "reason": "Member way outside declared static car-road classes",
+            "relation_id": 15427935,
+            "status": "rejected"
+          }
+        ],
+        "Member-way access-purpose restriction is not established by arc presence": [
+          {
+            "reason": "Member-way access-purpose restriction is not established by arc presence",
+            "relation_id": 10397382,
+            "status": "rejected"
+          },
+          {
+            "reason": "Member-way access-purpose restriction is not established by arc presence",
+            "relation_id": 12316883,
+            "status": "rejected"
+          },
+          {
+            "reason": "Member-way access-purpose restriction is not established by arc presence",
+            "relation_id": 12361541,
+            "status": "rejected"
+          }
+        ],
+        "One from/to and ordered via ways required": [
+          {
+            "reason": "One from/to and ordered via ways required",
+            "relation_id": 13152060,
+            "status": "rejected"
+          }
+        ],
+        "compiled_declared_shape": [
+          {
+            "pattern_arc_count": 3,
+            "relation_id": 1341304,
+            "status": "compiled_declared_shape"
+          },
+          {
+            "pattern_arc_count": 3,
+            "relation_id": 1341305,
+            "status": "compiled_declared_shape"
+          },
+          {
+            "pattern_arc_count": 3,
+            "relation_id": 2155309,
+            "status": "compiled_declared_shape"
+          }
+        ]
+      },
+      "first_rejection_reason_counts": {
+        "Bounded raw via-way member list required": 1,
+        "Conditional member-way controls require a separately reviewed temporal profile": 5,
+        "Conditional or exception semantics require separate review": 33,
+        "Lane-specific maneuver/occupancy rules need separate review": 303,
+        "Member way outside declared static car-road classes": 3,
+        "Member-way access-purpose restriction is not established by arc presence": 8,
+        "One from/to and ordered via ways required": 1
+      },
+      "missing_raw_member_way_ids": [],
+      "oversized_raw_member_way_ids": [],
+      "raw_via_way_relations": 387,
+      "rejected_relation_count": 354,
+      "selected_member_way_ids": 1007,
+      "source": {
+        "name": "oklahoma.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "4e76187cb20fd187d759de9565568381a76d87518377a0e03585d9865e498106",
+        "size_bytes": 169850063
+      },
+      "state": "oklahoma",
+      "total_compiled_pattern_arcs": 101
+    }
+  ],
+  "turn_support_certified": false
+}

@@ -1,0 +1,50 @@
+name: State via-way compiler diagnostics
+on:
+  pull_request:
+    paths:
+      - 'scripts/metro_via_way_compile_inventory.py'
+      - 'scripts/test_metro_via_way_compile_inventory.py'
+      - 'scripts/road_via_way_compile.py'
+      - 'scripts/metro_restriction_inventory.py'
+      - 'scripts/stream_osm_roads.py'
+      - 'docs/research/state-restriction-inventory/report.json'
+      - 'docs/research/state-via-way-compiler-inventory/**'
+      - '.github/workflows/state-via-way-compiler-inventory.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compiler-diagnostics-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'networkx==3.7' 'osmium==4.3.2'
+      - run: python -m unittest discover -s scripts -p test_metro_via_way_compile_inventory.py -v
+      - name: Check complete accounting and honest diagnostic scope
+        run: |
+          python - <<'PY'
+          import hashlib,json,sys
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          from metro_via_way_compile_inventory import RAW_INVENTORY,REFERENCE,STATES
+          report=json.loads((REFERENCE/'report.json').read_text())
+          raw=json.loads(RAW_INVENTORY.read_text())
+          assert report['raw_inventory_sha256']==hashlib.sha256(RAW_INVENTORY.read_bytes()).hexdigest()
+          assert report['schema']=='state-via-way-compiler-inventory-v1'
+          assert [r['state'] for r in report['states']]==list(STATES)
+          by_state={r['state']:r for r in raw['states']}
+          for row in report['states']:
+              parent=by_state[row['state']]
+              assert row['source']==parent['source']
+              assert row['raw_via_way_relations']==parent['overlapping_flag_counts']['via_way']
+              assert row['compiled_declared_shape_count']+row['rejected_relation_count']==row['raw_via_way_relations']
+              assert sum(row['first_rejection_reason_counts'].values())==row['rejected_relation_count']
+              assert all(len(samples)<=3 for samples in row['example_relation_results'].values())
+          assert all(report[k] is False for k in ('route_costs_computed','anchors_adopted','turn_support_certified','geographic_coverage_certified','access_verified','release_eligible'))
+          print('Offline contract/accounting only; no full-source rescan or state coverage certification.')
+          PY
+      - run: python scripts/las_vegas_ui_checkpoint.py --check-frozen
