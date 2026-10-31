@@ -1,0 +1,34 @@
+name: Reference weekly-clock conditional values
+on:
+  pull_request:
+    paths:
+      - 'scripts/road_reference_conditionals.py'
+      - 'scripts/test_road_reference_conditionals.py'
+      - 'scripts/check_reference_condition_oracle.cjs'
+      - 'scripts/road_reference_scenario.py'
+      - 'docs/research/reference-road-scenario/scenario.json'
+      - 'docs/research/reference-weekly-conditionals/**'
+      - '.github/workflows/road-reference-conditionals.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  conditional-values:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+      - run: python -m pip install 'tzdata==2026.5' 'osmium==4.3.2' 'networkx==3.7'
+      - run: python -m unittest discover -s scripts -p test_road_reference_conditionals.py -v
+      - name: Compare every declared weekly minute with an independent schedule interpreter
+        run: |
+          npm install --prefix "$RUNNER_TEMP/weekly-clock-oracle" --no-audit --no-fund opening_hours@3.15.0
+          python scripts/road_reference_conditionals.py --oracle-fixture /tmp/conditions.json
+          TZ=UTC NODE_PATH="$RUNNER_TEMP/weekly-clock-oracle/node_modules" node scripts/check_reference_condition_oracle.cjs /tmp/conditions.json
+      - run: python scripts/las_vegas_ui_checkpoint.py --check-frozen
