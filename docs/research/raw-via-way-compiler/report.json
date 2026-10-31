@@ -1,0 +1,307 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "context_sha256": {
+    "arizona": "edcfabf187b47e95d2562d2abc9fe65b469704c2d01c1cc4595dddece8cf050d",
+    "colorado": "c18a02251fe69fae94e857e04c28b37ddf1c0d686c387e000ad143c06b160ddc"
+  },
+  "geographic_coverage_certified": false,
+  "negative": {
+    "reason": "Conditional member-way controls require a separately reviewed temporal profile",
+    "rejected": true,
+    "relation_id": 2451750,
+    "route_cost_emitted": false
+  },
+  "positive": {
+    "arcs": 3,
+    "comparisons": [
+      {
+        "metric": "length",
+        "source": 1716436337,
+        "target": 1753580525,
+        "with_declared_rule": {
+          "access_certified": false,
+          "arc_path": [],
+          "converged": true,
+          "cost": null,
+          "discovered_states": 3,
+          "exact_stored_path_cost": null,
+          "geographic_coverage_certified": false,
+          "maneuver_count": 1,
+          "metric": "length",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 3,
+          "source": 1716436337,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [],
+          "stored_prefix_entries": 2,
+          "target": 1753580525,
+          "transitions_examined": 3,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        },
+        "without_rule": {
+          "access_certified": false,
+          "arc_path": [
+            "800937106:0:0",
+            "186839303:0:0",
+            "800937105:0:0"
+          ],
+          "converged": true,
+          "cost": 33.79187083301247,
+          "discovered_states": 4,
+          "exact_stored_path_cost": [
+            "9511566055731681",
+            "281474976710656"
+          ],
+          "geographic_coverage_certified": false,
+          "maneuver_count": 0,
+          "metric": "length",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 4,
+          "source": 1716436337,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [
+            {
+              "active_prefixes": [],
+              "incoming_arc": "800937106:0:0",
+              "node": 51158764
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "186839303:0:0",
+              "node": 1753580586
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "800937105:0:0",
+              "node": 1753580525
+            }
+          ],
+          "stored_prefix_entries": 0,
+          "target": 1753580525,
+          "transitions_examined": 3,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        }
+      },
+      {
+        "metric": "length",
+        "source": 1753580525,
+        "target": 1716436337,
+        "with_declared_rule": {
+          "access_certified": false,
+          "arc_path": [],
+          "converged": true,
+          "cost": null,
+          "discovered_states": 1,
+          "exact_stored_path_cost": null,
+          "geographic_coverage_certified": false,
+          "maneuver_count": 1,
+          "metric": "length",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 1,
+          "source": 1753580525,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [],
+          "stored_prefix_entries": 0,
+          "target": 1716436337,
+          "transitions_examined": 0,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        },
+        "without_rule": {
+          "access_certified": false,
+          "arc_path": [],
+          "converged": true,
+          "cost": null,
+          "discovered_states": 1,
+          "exact_stored_path_cost": null,
+          "geographic_coverage_certified": false,
+          "maneuver_count": 0,
+          "metric": "length",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 1,
+          "source": 1753580525,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [],
+          "stored_prefix_entries": 0,
+          "target": 1716436337,
+          "transitions_examined": 0,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        }
+      },
+      {
+        "metric": "travel_time",
+        "source": 1716436337,
+        "target": 1753580525,
+        "with_declared_rule": {
+          "access_certified": false,
+          "arc_path": [],
+          "converged": true,
+          "cost": null,
+          "discovered_states": 3,
+          "exact_stored_path_cost": null,
+          "geographic_coverage_certified": false,
+          "maneuver_count": 1,
+          "metric": "travel_time",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 3,
+          "source": 1716436337,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [],
+          "stored_prefix_entries": 2,
+          "target": 1753580525,
+          "transitions_examined": 3,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        },
+        "without_rule": {
+          "access_certified": false,
+          "arc_path": [
+            "800937106:0:0",
+            "186839303:0:0",
+            "800937105:0:0"
+          ],
+          "converged": true,
+          "cost": 1.8897565560695053,
+          "discovered_states": 4,
+          "exact_stored_path_cost": [
+            "1063838365216947",
+            "562949953421312"
+          ],
+          "geographic_coverage_certified": false,
+          "maneuver_count": 0,
+          "metric": "travel_time",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 4,
+          "source": 1716436337,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [
+            {
+              "active_prefixes": [],
+              "incoming_arc": "800937106:0:0",
+              "node": 51158764
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "186839303:0:0",
+              "node": 1753580586
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "800937105:0:0",
+              "node": 1753580525
+            }
+          ],
+          "stored_prefix_entries": 0,
+          "target": 1753580525,
+          "transitions_examined": 3,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        }
+      },
+      {
+        "metric": "travel_time",
+        "source": 1753580525,
+        "target": 1716436337,
+        "with_declared_rule": {
+          "access_certified": false,
+          "arc_path": [],
+          "converged": true,
+          "cost": null,
+          "discovered_states": 1,
+          "exact_stored_path_cost": null,
+          "geographic_coverage_certified": false,
+          "maneuver_count": 1,
+          "metric": "travel_time",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 1,
+          "source": 1753580525,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [],
+          "stored_prefix_entries": 0,
+          "target": 1716436337,
+          "transitions_examined": 0,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        },
+        "without_rule": {
+          "access_certified": false,
+          "arc_path": [],
+          "converged": true,
+          "cost": null,
+          "discovered_states": 1,
+          "exact_stored_path_cost": null,
+          "geographic_coverage_certified": false,
+          "maneuver_count": 0,
+          "metric": "travel_time",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 1,
+          "source": 1753580525,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [],
+          "stored_prefix_entries": 0,
+          "target": 1716436337,
+          "transitions_examined": 0,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        }
+      }
+    ],
+    "compiled_pattern": {
+      "access_verified": false,
+      "arc_sequence": [
+        "800937106:0:0",
+        "186839303:0:0",
+        "800937105:0:0"
+      ],
+      "id": "raw-relation-2516794",
+      "kind": "no",
+      "ordered_member_way_ids": [
+        800937106,
+        186839303,
+        800937105
+      ],
+      "raw_junction_node_ids": [
+        51158764,
+        1753580586
+      ],
+      "raw_relation_id": 2516794,
+      "raw_restriction_kind": "no_u_turn",
+      "release_eligible": false,
+      "scope": "Strict complete endpoint-connected via-way chain only",
+      "turn_legality_certified": false
+    },
+    "nodes": 4,
+    "relation_id": 2516794
+  },
+  "release_eligible": false,
+  "schema": "raw-via-way-compiler-checkpoint-v1",
+  "warning": "Raw-source topology regression only; not independently audited real-world routing truth. Colorado chain NoData is local declared-graph exclusion, never real-world inaccessibility. No connectors or anchors included."
+}
