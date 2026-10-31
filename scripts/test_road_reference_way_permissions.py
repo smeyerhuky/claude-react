@@ -129,6 +129,11 @@ class ReferenceWayPermissionTests(unittest.TestCase):
         changed = copy.deepcopy(nodes); changed[1]['lonlat'][0] += 0.001; variants.append(changed)
         for variant in variants:
             self.rejected(evaluate(way, variant, default_policy=DEFAULTS))
+        # Python considers False == 0; raw geometry must still be numeric.
+        way, nodes = fixture()
+        way['nodes'][0][1] = 0
+        nodes[0]['lonlat'][0] = False
+        self.rejected(evaluate(way, nodes, default_policy=DEFAULTS))
 
     def test_geometry_tag_budgets_and_mutation(self):
         way, nodes = fixture({'motorcar': 'yes'})

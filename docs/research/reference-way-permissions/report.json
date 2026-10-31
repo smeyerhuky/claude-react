@@ -9,7 +9,7 @@
     "reference_way_permission_checkpoint.py": "33987d158029a598073d6ea1c93a6f5bbe63256a42bd78bd867c19c3b5648a8f",
     "road_reference_conditionals.py": "5004e35f9f7810e9ecfe10de04494c8d1b539796d05910a2f488355957147a4e",
     "road_reference_scenario.py": "001e0ed6649f172a378df4e7ca0d6f7ebcb49f6c5d56d286215074328af40488",
-    "road_reference_way_permissions.py": "efa1aaebb2c1eaf7b3a83b8ae757c48dda687f9f3512fc08fc75066c83ed5744",
+    "road_reference_way_permissions.py": "b40f96e439c531071e980bdbd7dc6e6c0bb08ec7e66a8713068c275572a014c7",
     "via_way_raw_context.py": "37ff6453f08ad71f056507f4c8fada6541ea330bee5ff562c92229fc2e5cacff"
   },
   "release_eligible": false,

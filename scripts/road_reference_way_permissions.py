@@ -163,7 +163,10 @@ def evaluate(way, nodes, *, default_policy, scenario=None, feature_zones=None):
         for node in nodes:
             need(isinstance(node, dict) and type(node.get('id')) is int and node['id'] in geometry
                  and node['id'] not in indexed, 'Missing, duplicate or foreign node context')
-            need(node.get('lonlat') == geometry[node['id']], 'Node and way raw coordinates disagree')
+            coordinates = node.get('lonlat')
+            need(isinstance(coordinates, list) and len(coordinates) == 2
+                 and all(type(v) in (int, float) and math.isfinite(v) for v in coordinates)
+                 and coordinates == geometry[node['id']], 'Node and way raw coordinates disagree')
             characters += _tags(node.get('tags'))
             indexed[node['id']] = node
         need(characters <= MAX_TAG_CHARACTERS, 'Full-way tag context budget exceeded')
