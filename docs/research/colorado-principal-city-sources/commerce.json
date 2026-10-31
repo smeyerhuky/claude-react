@@ -1,0 +1,27 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "19740",
+  "city_name": "Commerce City",
+  "entry_review_status": "needs_evidence",
+  "http_status": 200,
+  "limitations": [
+    "This notice concerns entry into a building. It does not identify an approved vehicle driveway, convert a pedestrian door into car ingress or establish road-node alignment or connector costs."
+  ],
+  "observations": [
+    "The notice was published February 13, 2026 and describes a visitor-building entry change beginning February 17.",
+    "Visitors are directed to a northwest building entrance with security screening. The southeast building entrance nearest 60th and Trenton is described as permanently closed to the public and restricted to employee badges.",
+    "The notice gives weekday in-person service hours of 8 a.m. to 5 p.m.; the civic-center contact address is 7887 East 60th Avenue."
+  ],
+  "principal_city_id": "0816495",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "response_bytes": 113467,
+  "response_sha256": "a16f1c591112bf5eb9c7664716d6aef0f13fb2ca1d39bc966fa30cf8ef125b32",
+  "retention": "Selected short literal quote and factual observations only. Original HTML, form/runtime state and unavailable error body omitted. The response hash identifies the capture and cannot be recomputed from this derived record.",
+  "schema": "principal-city-publication-observation-v1",
+  "selected_quote": "will require badge access for employees",
+  "source_kind": "municipal_building_entry_notice",
+  "url": "https://www.c3gov.com/News-articles/City-News/Civic-Center-Entrance"
+}

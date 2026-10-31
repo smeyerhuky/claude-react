@@ -1,0 +1,27 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "19740",
+  "city_name": "Aurora",
+  "entry_review_status": "needs_evidence",
+  "http_status": 200,
+  "limitations": [
+    "Linked visitor/employee maps and rules were not successfully retrieved or inspected. No exact vehicle entry geometry, grade, datum alignment, turn path or connector cost is established."
+  ],
+  "observations": [
+    "The Municipal Center visitor destination is 15151 East Alameda Parkway. The page distinguishes visitor and employee parking maps and directs drivers to posted time, speed and reserved-space controls.",
+    "Iliff Station Garage is for RTD patrons; it must not become an unrestricted general-purpose car anchor.",
+    "The Hyatt-operated garage at 13200 East 14th Place is described as a paid public facility with 506 stalls and 24-hour operation. Large or tall accessible vans need valet assistance before entry."
+  ],
+  "principal_city_id": "0804000",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "response_bytes": 217061,
+  "response_sha256": "be2e5d439aa6ad139f06e267c555c0bf35bd53be3681bbf20392ba9c7746e071",
+  "retention": "Selected short literal quote and factual observations only. Original HTML, form/runtime state and unavailable error body omitted. The response hash identifies the capture and cannot be recomputed from this derived record.",
+  "schema": "principal-city-publication-observation-v1",
+  "selected_quote": "including all time-limitations, speed limits, and reserved parking restrictions",
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.auroragov.org/residents/park_aurora/aurora_parking_facilities"
+}

@@ -1,0 +1,23 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "22660",
+  "city_name": "Loveland",
+  "entry_review_status": "needs_evidence",
+  "http_status": 403,
+  "limitations": [
+    "The selected official publication returned HTTP 403 in both the web connector and normal download. Its content was not inspected. This says nothing about physical parking availability or all other Loveland sources."
+  ],
+  "observations": [],
+  "principal_city_id": "0846465",
+  "publication_status": "selected_publication_unavailable",
+  "release_eligible": false,
+  "response_bytes": 477,
+  "response_sha256": "eefbe0045c07bec4b42233955eb400fad9b6edba9b94e61d0c803108540dafb0",
+  "retention": "Selected short literal quote and factual observations only. Original HTML, form/runtime state and unavailable error body omitted. The response hash identifies the capture and cannot be recomputed from this derived record.",
+  "schema": "principal-city-publication-observation-v1",
+  "selected_quote": "",
+  "source_kind": null,
+  "url": "https://www.lovgov.org/services/cultural-services/pulliam-community-building"
+}

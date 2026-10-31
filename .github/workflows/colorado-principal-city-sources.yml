@@ -1,0 +1,28 @@
+name: Colorado principal-city source work
+on:
+  pull_request:
+    paths:
+      - 'scripts/colorado_principal_city_source_screen.py'
+      - 'scripts/test_colorado_principal_city_source_screen.py'
+      - 'docs/research/colorado-principal-city-sources/**'
+      - 'docs/research/principal-city-inventory/report.json'
+      - 'docs/research/colorado-anchor-source-batch/**'
+      - 'docs/research/connector-reviews/denver-union-station-proposal.json'
+      - '.github/workflows/colorado-principal-city-sources.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  principal-city-source-work:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s scripts -p test_colorado_principal_city_source_screen.py -v
+      - run: python scripts/colorado_principal_city_source_screen.py
+      - run: python scripts/colorado_anchor_source_batch.py
+      - run: python scripts/connector_review_packet.py docs/research/connector-reviews/denver-union-station-proposal.json
+      - run: python scripts/las_vegas_ui_checkpoint.py --check-frozen
