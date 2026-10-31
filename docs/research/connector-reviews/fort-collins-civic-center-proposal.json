@@ -1,0 +1,201 @@
+{
+  "access_verified": false,
+  "candidate": {
+    "complete_metro_anchor_set_accounted": false,
+    "facility": "Civic Center Parking Garage",
+    "independently_verified_entry_path": null,
+    "mapped_footprint_way_id": 54882910,
+    "other_required_principal_city": "Loveland",
+    "principal_city": "Fort Collins",
+    "principal_city_id": "0827425",
+    "proposed_anchor_lonlat": null
+  },
+  "cbsa": "22660",
+  "decision": "needs_evidence",
+  "findings": {
+    "connector_cost": {
+      "reason": "No exact physical path/anchor is adopted; raw connection geometry and address displacement cannot be called reviewed connector cost.",
+      "sources": [
+        "raw-osm-context",
+        "report"
+      ],
+      "status": "unknown"
+    },
+    "direction_and_turns": {
+      "reason": "Old null city fields are not current directions; raw one-way streets and conditional maneuver require separate evaluation and independent review.",
+      "sources": [
+        "streets-context",
+        "raw-osm-context",
+        "report"
+      ],
+      "status": "unknown"
+    },
+    "legal_motor_access": {
+      "reason": "Public hourly/gateless terms are useful, but current posted vehicle/path restrictions and the complete applicable entry conditions remain unresolved.",
+      "sources": [
+        "where-to-park",
+        "taste-directions",
+        "streets-context",
+        "raw-osm-context"
+      ],
+      "status": "unknown"
+    },
+    "physical_connection": {
+      "reason": "The publications/photo do not independently match the full precise path to the raw entrance nodes.",
+      "sources": [
+        "where-to-park",
+        "taste-directions",
+        "photo-observation",
+        "raw-osm-context"
+      ],
+      "status": "unknown"
+    },
+    "same_grade": {
+      "reason": "City centerlines and an undated exterior photograph do not establish same-grade connectivity along the entire entry/exit.",
+      "sources": [
+        "streets-context",
+        "photo-observation",
+        "raw-osm-context"
+      ],
+      "status": "unknown"
+    }
+  },
+  "limitations": [
+    "A public/gateless facility description, named street, undated exterior photo or mapped parking-entrance node does not establish the complete precise current vehicle path, grade, clearance, legal maneuvers or connector cost.",
+    "The city direction fields are null with October 2013 revisions. A mapped removable bollard is an unresolved physical control, not proof of actual closure or a claim about any old sampled route.",
+    "The original photograph is not republished. Independent visual inspection must retrieve the cited URL and match its retained SHA; unavailable/mismatched bytes do not support approval.",
+    "This Fort Collins candidate does not account for Loveland or adopt the required reviewed metro anchor set. All five full findings remain unresolved; zero connectors approved."
+  ],
+  "machine_assertions": [
+    {
+      "equals": 40,
+      "keys": [
+        "raw_context_counts",
+        "ways"
+      ],
+      "source": "report"
+    },
+    {
+      "equals": 187,
+      "keys": [
+        "raw_context_counts",
+        "nodes"
+      ],
+      "source": "report"
+    },
+    {
+      "equals": 1,
+      "keys": [
+        "raw_context_counts",
+        "restrictions"
+      ],
+      "source": "report"
+    },
+    {
+      "equals": false,
+      "keys": [
+        "municipal_null_oneway_interpreted_as_two_way"
+      ],
+      "source": "report"
+    },
+    {
+      "equals": true,
+      "keys": [
+        "node_control_counterexample",
+        "legacy_way_predicate_accepts"
+      ],
+      "source": "report"
+    },
+    {
+      "equals": "unsupported",
+      "keys": [
+        "node_control_counterexample",
+        "reference_way_projection",
+        "status"
+      ],
+      "source": "report"
+    },
+    {
+      "equals": false,
+      "keys": [
+        "node_control_counterexample",
+        "previously_sampled_route_crossing_claimed"
+      ],
+      "source": "report"
+    },
+    {
+      "equals": false,
+      "keys": [
+        "conditional_maneuver_evaluated"
+      ],
+      "source": "report"
+    },
+    {
+      "equals": false,
+      "keys": [
+        "required_anchor_set_accounted"
+      ],
+      "source": "report"
+    },
+    {
+      "equals": false,
+      "keys": [
+        "connector_costs_included"
+      ],
+      "source": "report"
+    }
+  ],
+  "origin_policy": "urban-access-anchor-v1",
+  "release_eligible": false,
+  "reviewed_at_utc": "2026-10-31",
+  "reviewer": {
+    "identity": "OpenAI Codex (AI source/context review)",
+    "kind": "ai",
+    "procedure": "Inspect primary municipal/event publications; visually inspect the retained municipal parking PDF page 2 and original city-published exterior photo; compare municipal street identity/date/null fields against exact original raw OSM ways, all selected vertex-node tags and touching restrictions. Treat AI interpretation, tags and CI as separate from independent physical/legal certification. Do not adopt an anchor, invent a connector, replace the native Census origin or claim an independent approver."
+  },
+  "schema": "ai-connector-review-v1",
+  "sources": [
+    {
+      "id": "report",
+      "kind": "routing_model",
+      "path": "docs/research/fort-collins-entry-context/report.json",
+      "provenance": "Reproducible candidate-context audit; code/source identity and model diagnostics, not ground truth.",
+      "sha256": "946d92aa1d3399fbe33e41eec8260dcbb582ae527541a5e8db258305cb1ebf4e"
+    },
+    {
+      "id": "raw-osm-context",
+      "kind": "routing_model",
+      "path": "docs/research/fort-collins-entry-context/raw-osm-context.json",
+      "provenance": "Exact original Colorado PBF subset: complete selected raw ways/member nodes plus nearby tagged nodes and touching restrictions; OSM contributors ODbL.",
+      "sha256": "813bdcf37be5edf665c7be6830f4fa699c16c4d664b5cc96a893e70ef33b5aa3"
+    },
+    {
+      "id": "where-to-park",
+      "kind": "independent_access_record",
+      "path": "docs/research/fort-collins-entry-context/where-to-park.json",
+      "provenance": "City of Fort Collins published hourly/gateless/session guidance, directly inspected October 31; factual excerpts only, not a surveyed entrance.",
+      "sha256": "174985fd1d829b7befd43b3be2b7e9cfe18321ebf64431d5302a48e213f402a8"
+    },
+    {
+      "id": "taste-directions",
+      "kind": "independent_access_record",
+      "path": "docs/research/fort-collins-entry-context/taste-directions.json",
+      "provenance": "Event organizer names North Mason Street for garage entry; undated event-specific publication, not the garage operator or a surveyed coordinate.",
+      "sha256": "52e2dca5bcba315a7aeaa164c36a9c29fb260a858ef3195ff5e115104fa7a91e"
+    },
+    {
+      "id": "streets-context",
+      "kind": "independent_access_record",
+      "path": "docs/research/fort-collins-entry-context/streets-context.json",
+      "provenance": "Municipal Street Centerlines response bound to the verified city organization/item/service; null directions and old record dates remain unknown.",
+      "sha256": "93ffa2def4cac1848ac8ef8d9f9a675170ce12d1adc187f04f689af2b52c14ff"
+    },
+    {
+      "id": "photo-observation",
+      "kind": "routing_model",
+      "path": "docs/research/fort-collins-entry-context/photo-observation.json",
+      "provenance": "AI visual observations of an undated city-published image, with original URL/SHA; AI observations are not an independent physical audit.",
+      "sha256": "f4f41cfa3d81f2dcb480571e1f58e9cef237801759ef9a6d539ffa734807097c"
+    }
+  ]
+}

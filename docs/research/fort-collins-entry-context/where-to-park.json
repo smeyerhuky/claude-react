@@ -1,0 +1,31 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture": {
+    "bytes": 113582,
+    "content_type": "text/html; charset=utf-8",
+    "final_url": "https://www.fortcollins.gov/Services/Parking/Where-to-Park",
+    "retrieved_at_utc": "2026-10-31T19:03:14.059146+00:00",
+    "sha256": "f26108d4061bb23f6ba9cb517b8d18f5bcbb1668de7ce7155e8c6021eeaeba72",
+    "status": 200,
+    "url": "https://www.fortcollins.gov/Services/Parking/Where-to-Park"
+  },
+  "observations": [
+    "The city describes Civic Center at the southeast corner of Laporte and Mason among three garages open around the clock, with paid hourly and permit parking.",
+    "A parking session is required even during the first free hour. Sunday/holiday pricing and posted signs remain applicable. Gateless operation does not establish clearance, unrestricted maneuvers or a complete physical connector."
+  ],
+  "published_conditions": {
+    "gateless_published": true,
+    "hours_24_published": true,
+    "office_address_is_vehicle_entrance": false,
+    "parking_office_address": "144 N. Mason St., Suite 5",
+    "parking_session_required": true,
+    "posted_signs_still_apply": true,
+    "terms_are_connector_approval": false
+  },
+  "release_eligible": false,
+  "retention": "Selected short literal text and factual observations only. Original response hash identifies bytes not retained here; full HTML, runtime/form state, error bodies and environment configuration omitted. Capture is not a field review or revalidation of statements.",
+  "schema": "fort-collins-publication-observation-v1",
+  "selected_quote": "All garages are gateless. You must initiate a parking session regardless of your length of stay.",
+  "source_kind": "municipal_parking_guidance"
+}

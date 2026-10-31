@@ -1,0 +1,60 @@
+name: Fort Collins entry context and node controls
+on:
+  pull_request:
+    paths:
+      - 'scripts/fort_collins_entry_context.py'
+      - 'scripts/fort_collins_raw_context.py'
+      - 'scripts/test_fort_collins_entry_context.py'
+      - 'scripts/road_reference_way_permissions.py'
+      - 'scripts/road_reference_conditionals.py'
+      - 'scripts/road_reference_scenario.py'
+      - 'scripts/stream_osm_roads.py'
+      - 'scripts/fetch_research_source.py'
+      - 'docs/research/fort-collins-entry-context/**'
+      - 'docs/research/connector-reviews/fort-collins-civic-center-proposal.json'
+      - 'docs/research/colorado-anchor-source-batch/fort-collins-map.pdf'
+      - 'docs/research/principal-city-inventory/report.json'
+      - 'docs/research/reference-road-scenario/scenario.json'
+      - 'docs/research/census-33-source-checkpoint/baseline.json'
+      - '.github/workflows/fort-collins-entry-context.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  retained-context:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'tzdata==2026.5' 'osmium==4.3.2' 'networkx==3.7'
+      - run: python -m unittest discover -s scripts -p test_fort_collins_entry_context.py -v
+      - run: python scripts/fort_collins_entry_context.py
+      - run: python scripts/connector_review_packet.py docs/research/connector-reviews/fort-collins-civic-center-proposal.json
+      - run: python scripts/metro_state_work_queue.py --check docs/research/state-release-work-queue/report.json
+      - run: python scripts/las_vegas_ui_checkpoint.py --check-frozen
+      - uses: actions/upload-artifact@v6
+        with:
+          name: fort-collins-entry-context
+          path: docs/research/fort-collins-entry-context/
+          if-no-files-found: error
+  exact-original-context:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'osmium==4.3.2'
+      - name: Recover and verify the exact original public Colorado input
+        run: |
+          mkdir -p local-data
+          curl -fLSs --retry 3 --connect-timeout 20 --max-time 600 --output local-data/colorado.osm.pbf https://download.geofabrik.de/north-america/us/colorado-261027.osm.pbf
+          python scripts/fetch_research_source.py --source colorado.osm.pbf --output local-data/colorado.osm.pbf
+      - name: Re-extract complete raw member-node tags and all touching restrictions
+        run: |
+          python scripts/fort_collins_raw_context.py --osm local-data/colorado.osm.pbf --output /tmp/fort-collins-context.json
+          cmp /tmp/fort-collins-context.json docs/research/fort-collins-entry-context/raw-osm-context.json
