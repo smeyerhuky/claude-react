@@ -1,0 +1,52 @@
+{
+  "access_verified": false,
+  "address_comparison": {
+    "city_literal": "520 E. 3rd St.",
+    "decision": "unresolved_address_and_facility_identity",
+    "limitations": "Matching facility names do not establish shared identity, surveyed vehicle entry or which address describes an entrance. Operator postal-code text is retained literally, not repaired.",
+    "operator_capture": {
+      "capture_date_utc": "2026-10-31",
+      "final_url": "https://www.americanparking.com/find-parking/tulsa/",
+      "http_status": 200,
+      "response_bytes": 131657,
+      "response_sha256": "4f6ec5f610697f373e213104256d0d66b5f8aac6fd80e7746d7cdbf68550bc10",
+      "url": "https://www.americanparking.com/find-parking/tulsa/"
+    },
+    "operator_facility_literal": "Lot 120 \u2013 Civic Center Parkade",
+    "operator_literal": "550 W. 3rd, Tulsa, OK 741035",
+    "operator_quote": "550 W. 3rd, Tulsa, OK 741035",
+    "same_facility_verified": false,
+    "selected_origin_lonlat": null
+  },
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "46140",
+  "city_name": "Tulsa",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.cityoftulsa.org/residents/arts-recreation/downtown-tulsa/downtown-parking/parking-garages/",
+    "http_status": 200,
+    "response_bytes": 23369,
+    "response_sha256": "8368d741a1e36797a785ef852a8afa41c1c89370bdd7522d5842b1d8f5449e3e",
+    "url": "https://www.cityoftulsa.org/residents/arts-recreation/downtown-tulsa/downtown-parking/parking-garages/"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No independently verified ordinary-car entry, complete physical/legal/grade/direction findings or connector costs."
+  ],
+  "observations": [
+    "The city lists several public parking facilities, including Civic Center Parkade at the literal address 520 East 3rd Street.",
+    "The named facility cannot be confidently geocoded from this record: the separately retained operator publication lists a Civic Center Parkade at 550 West 3rd. Different address numbers and cardinal directions remain unresolved.",
+    "The city list includes a Performing Arts Center surface lot as well as garages. Nearby-venue listings are not verified vehicle entry geometry or a rule inventory. No facility, address correction, entrance or anchor is selected."
+  ],
+  "principal_city_id": "4075000",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short selected literal quote and factual observations only. Direct HTTP attempt hash identifies original bytes not retained here. HTML, form/runtime state, error bodies and private archives omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "520 E. 3rd St.",
+  "source_http_status": 200,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.cityoftulsa.org/residents/arts-recreation/downtown-tulsa/downtown-parking/parking-garages/"
+}

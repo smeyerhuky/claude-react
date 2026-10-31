@@ -1,0 +1,34 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "36420",
+  "city_name": "Oklahoma City",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.embarkok.com/streetcar/park-and-ride-free",
+    "http_status": 200,
+    "response_bytes": 89801,
+    "response_sha256": "672c8a85d8a867c032838ab456531334e501c0a49cb4ba71f0e5093b366c5a8b",
+    "url": "https://www.embarkok.com/streetcar/park-and-ride-free"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No independently verified ordinary-car entry, complete physical/legal/grade/direction findings or connector costs."
+  ],
+  "observations": [
+    "EMBARK, the Central Oklahoma Transportation and Parking Authority, describes four public garages on the streetcar loops or at the RAPID line end as open 24/7.",
+    "Its table names entrance streets: Arts District at 431 West Main, entrances Main and Colcord; Sheridan Walker at 501 West Sheridan, entrances Walker and Sheridan; Century Center at 100 West Sheridan, entrance Sheridan; Convention Center at 15 SW 4th, entrance South Broadway.",
+    "The parking receipt offers transit rides. This is not a rule limiting garage access exclusively to transit riders, and no such requirement is inferred. It also does not verify garage clearance, an exact entrance node, grade, local maneuvers or full connector costs."
+  ],
+  "principal_city_id": "4055000",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short selected literal quote and factual observations only. Direct HTTP attempt hash identifies original bytes not retained here. HTML, form/runtime state, error bodies and private archives omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "four public garages",
+  "source_http_status": 200,
+  "source_kind": "operator_parking_guidance",
+  "url": "https://www.embarkok.com/streetcar/park-and-ride-free"
+}

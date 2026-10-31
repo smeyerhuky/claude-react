@@ -1,0 +1,32 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "geographic_coverage_certified": false,
+  "principal_inventory_sha256": "22f509906e005e1c6215c5f857fa0865278f4289753fad887ee05b730f8cd9cd",
+  "records": [
+    {
+      "cbsa": "30020",
+      "city_name": "Lawton",
+      "principal_city_id": "4041850",
+      "source_path": "docs/research/oklahoma-principal-city-sources/lawton.json",
+      "source_sha256": "8ee5c27d0c5eb23ac4d229bdfa99129bc4b058f19c70075bf34a472dcdc889b3"
+    },
+    {
+      "cbsa": "36420",
+      "city_name": "Oklahoma City",
+      "principal_city_id": "4055000",
+      "source_path": "docs/research/oklahoma-principal-city-sources/oklahoma-city.json",
+      "source_sha256": "f79336127f89201d01bbb0e09a3c5401b03b74929603d01a5461bac594fb891b"
+    },
+    {
+      "cbsa": "46140",
+      "city_name": "Tulsa",
+      "principal_city_id": "4075000",
+      "source_path": "docs/research/oklahoma-principal-city-sources/tulsa.json",
+      "source_sha256": "bf2286f6e51c53310f0d677ea5e7dc6568bdb7e670a8ad408f719048311a5975"
+    }
+  ],
+  "release_eligible": false,
+  "schema": "principal-city-source-batch-v1",
+  "state": "OK"
+}
