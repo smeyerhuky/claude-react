@@ -6,6 +6,7 @@ import sixStateHtml from '../research/metro-six-state-probes.html?raw'
 import cheyenneHtml from '../research/metro-cheyenne-probes.html?raw'
 import lasVegasHtml from '../research/metro-las-vegas-probes.html?raw'
 import referenceScenario from '../research/metro-reference-scenario.json'
+import principalSourcesHtml from '../research/metro-principal-sources.html?raw'
 
 const views = {
   probes: { title: 'Census road-node research experiment', html: probeHtml },
@@ -14,6 +15,7 @@ const views = {
   sixState: { title: 'Six-state Census road-node experiment', html: sixStateHtml },
   cheyenne: { title: 'Cheyenne seven-state Census road-node experiment', html: cheyenneHtml },
   lasVegas: { title: 'Las Vegas eight-state Census road-node experiment', html: lasVegasHtml },
+  principalSources: { title: 'Principal-city source work inventory', html: principalSourcesHtml },
 }
 
 export default function MetroRoadResearchPanel() {
@@ -34,7 +36,7 @@ export default function MetroRoadResearchPanel() {
         <button type="button" onClick={() => dialog.current.close()} className="rounded border px-3 py-2">Close research inspector</button>
       </header>
       <div className="space-y-2 border-b p-3 text-sm">
-        <p>Frozen experiments with unapproved road leads. These views do not follow the map’s population threshold, uploaded data or selected metro. They do not approve road regions or vehicle access.</p>
+        <p>Frozen research snapshots with unapproved road leads and incomplete source work. These views do not follow the map’s population threshold, uploaded data or selected metro. They do not approve road regions or vehicle access.</p>
         <details data-testid="metro-reference-scenario" data-scenario-sha256={referenceScenario.scenario_sha256} className="rounded border border-slate-300 bg-slate-50 p-2">
           <summary className="cursor-pointer font-medium">Planned road-model assumptions</summary>
           <p className="mt-2 font-medium">Not applied to the frozen experiments.</p>
@@ -48,6 +50,7 @@ export default function MetroRoadResearchPanel() {
             <option value="lasVegas">Separate 33-source Las Vegas experiment — 19 samples</option>
             <option value="denver">Denver through-road start sensitivity</option>
             <option value="inventory">Qualifying metros and missing competitors — 26-source baseline</option>
+            <option value="principalSources">Principal-city source work — 698 memberships, zero approved anchors</option>
           </select>
         </label>
       </div>

@@ -11,6 +11,18 @@ on:
       - 'src/components/MetroPopulationVoronoi.jsx'
       - 'src/components/MetroRoadResearchPanel.jsx'
       - 'src/research/**'
+      - 'scripts/principal_city_source_work.py'
+      - 'scripts/test_principal_city_source_work.py'
+      - 'scripts/build_principal_city_source_explorer.py'
+      - 'scripts/check_principal_city_source_explorer.cjs'
+      - 'scripts/*principal_city_source_screen.py'
+      - 'scripts/municipal_source_screen.py'
+      - 'docs/research/*-principal-city-sources/**'
+      - 'docs/research/principal-city-source-work/**'
+      - 'docs/research/principal-city-inventory/**'
+      - 'docs/research/new-mexico-anchor-source-batch/**'
+      - 'docs/research/colorado-anchor-source-batch/**'
+      - 'docs/research/tucson-parking-publication/**'
       - 'scripts/road_reference_scenario.py'
       - 'docs/research/reference-road-scenario/**'
       - 'scripts/check_metro_dev_research.cjs'
@@ -70,11 +82,15 @@ jobs:
       - run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - run: corepack enable
       - run: yarn install --frozen-lockfile --prefer-offline
-      - run: python -m pip install 'tzdata==2026.5'
+      - run: python -m pip install 'tzdata==2026.5' 'openpyxl==3.1.5'
       - name: Verify generated research views and lint changes
         env:
           RESEARCH_BASE_COMMIT: ${{ github.event.pull_request.base.sha || github.sha }}
         run: |
+          python scripts/principal_city_source_work.py
+          python -m unittest discover -s scripts -p test_principal_city_source_work.py -v
+          python scripts/build_principal_city_source_explorer.py --output /tmp/principal-sources.html
+          cmp /tmp/principal-sources.html src/research/metro-principal-sources.html
           python scripts/road_reference_scenario.py --output /tmp/reference-scenario.json
           cmp /tmp/reference-scenario.json src/research/metro-reference-scenario.json
           python scripts/las_vegas_ui_checkpoint.py --check-frozen
@@ -104,13 +120,20 @@ jobs:
           import json
           from pathlib import Path
           hashes=[json.loads(Path('docs/research/census-33-source-checkpoint/manifest.json').read_text())['baseline_sha256'],json.loads(Path('docs/research/denver-waypoint-hypothesis/manifest.json').read_text())['report_sha256'],json.loads(Path('docs/research/census-26-source-checkpoint/manifest.json').read_text())['baseline_sha256'],json.loads(Path('docs/research/census-31-source-checkpoint/manifest.json').read_text())['baseline_sha256'],json.loads(Path('docs/research/census-32-source-checkpoint/manifest.json').read_text())['baseline_sha256']]
-          markers=[json.loads(Path('src/research/metro-reference-scenario.json').read_text())['scenario_sha256'],'Planned road-model assumptions','Inspect road research (dev)','Road research inspector','MetroRoadResearchPanel','Metro competitor investigation inventory',*hashes]
+          markers=[json.loads(Path('src/research/metro-reference-scenario.json').read_text())['scenario_sha256'],'Principal-city source work inventory','principal-city-source-work-v1','Planned road-model assumptions','Inspect road research (dev)','Road research inspector','MetroRoadResearchPanel','Metro competitor investigation inventory',*hashes]
           for path in Path('dist').rglob('*.js'):
               text=path.read_text()
               assert not any(marker in text for marker in markers),str(path)
           PY
       - name: Install isolated browser driver
         run: npm install --prefix "$RUNNER_TEMP/metro-inspector-driver" --no-audit --no-fund playwright@1.56.1
+      - name: Check every principal-city state and source-work status without network requests
+        run: NODE_PATH="$RUNNER_TEMP/metro-inspector-driver/node_modules" node scripts/check_principal_city_source_explorer.cjs src/research/metro-principal-sources.html
+      - name: Retain the public standalone source-work explorer and frozen report
+        run: |
+          mkdir -p inspector-artifact
+          cp src/research/metro-principal-sources.html inspector-artifact/principal-city-source-work.html
+          cp docs/research/principal-city-source-work/report.json inspector-artifact/principal-city-source-work-report.json
       - name: Check all 2232 displayed six-state costs offline
         run: NODE_PATH="$RUNNER_TEMP/metro-inspector-driver/node_modules" node scripts/check_six_state_probe_explorer.cjs src/research/metro-six-state-probes.html
       - name: Check all 2508 displayed Las Vegas costs offline
