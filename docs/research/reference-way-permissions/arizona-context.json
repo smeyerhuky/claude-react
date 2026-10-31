@@ -1,0 +1,279 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "attribution": "OSM data copyright OpenStreetMap contributors, ODbL",
+  "nodes": [
+    {
+      "id": 257847108,
+      "lonlat": [
+        -111.9874218,
+        33.6727959
+      ],
+      "tags": {},
+      "timestamp": "2016-03-22 06:05:40+00:00",
+      "version": 15
+    },
+    {
+      "id": 257989156,
+      "lonlat": [
+        -111.9835228,
+        33.6728134
+      ],
+      "tags": {
+        "highway": "motorway_junction",
+        "ref": "31"
+      },
+      "timestamp": "2024-12-04 06:57:42+00:00",
+      "version": 22
+    },
+    {
+      "id": 793901585,
+      "lonlat": [
+        -111.9887828,
+        33.6728693
+      ],
+      "tags": {},
+      "timestamp": "2016-03-22 06:05:43+00:00",
+      "version": 3
+    },
+    {
+      "id": 3005905050,
+      "lonlat": [
+        -111.9880243,
+        33.6728797
+      ],
+      "tags": {},
+      "timestamp": "2016-03-22 06:05:41+00:00",
+      "version": 2
+    },
+    {
+      "id": 4351397640,
+      "lonlat": [
+        -111.9897659,
+        33.6728307
+      ],
+      "tags": {},
+      "timestamp": "2017-09-28 07:59:08+00:00",
+      "version": 2
+    },
+    {
+      "id": 5134612578,
+      "lonlat": [
+        -111.9830856,
+        33.6727288
+      ],
+      "tags": {},
+      "timestamp": "2024-12-04 06:57:42+00:00",
+      "version": 3
+    },
+    {
+      "id": 10229321984,
+      "lonlat": [
+        -111.9834288,
+        33.6727909
+      ],
+      "tags": {
+        "traffic_sign": "yes"
+      },
+      "timestamp": "2024-12-04 06:57:42+00:00",
+      "version": 2
+    },
+    {
+      "id": 12395419490,
+      "lonlat": [
+        -111.9854544,
+        33.6728085
+      ],
+      "tags": {},
+      "timestamp": "2024-12-04 06:57:42+00:00",
+      "version": 1
+    }
+  ],
+  "release_eligible": false,
+  "restrictions": [
+    {
+      "id": 2451750,
+      "members": [
+        {
+          "ref": 123445153,
+          "role": "via",
+          "type": "w"
+        },
+        {
+          "ref": 1340007750,
+          "role": "via",
+          "type": "w"
+        },
+        {
+          "ref": 437327478,
+          "role": "to",
+          "type": "w"
+        },
+        {
+          "ref": 437327483,
+          "role": "from",
+          "type": "w"
+        }
+      ],
+      "tags": {
+        "restriction": "no_right_turn",
+        "type": "restriction"
+      },
+      "timestamp": "2024-12-04 06:57:42+00:00",
+      "version": 4
+    }
+  ],
+  "schema": "complete-member-node-context-v1",
+  "scope": "Exact named member ways and EVERY vertex node with complete raw tags; no nearby ways, full incident-way set or geographic/exterior closure.",
+  "source": {
+    "name": "arizona.osm.pbf",
+    "replication_timestamp": "2026-10-27T21:23:59Z",
+    "sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
+    "size_bytes": 304245283
+  },
+  "ways": [
+    {
+      "id": 123445153,
+      "nodes": [
+        [
+          257847108,
+          -111.9874218,
+          33.6727959
+        ],
+        [
+          12395419490,
+          -111.9854544,
+          33.6728085
+        ]
+      ],
+      "tags": {
+        "bicycle": "no",
+        "destination:lanes": "none|none|none|none|56th Street;Tatum Boulevard|Tatum Boulevard",
+        "highway": "motorway",
+        "hov:lanes": "designated|yes|yes|yes|yes|yes",
+        "lanes": "6",
+        "lit": "yes",
+        "maxspeed": "65 mph",
+        "name": "Pima Freeway",
+        "note:lanes": "left lane is hov",
+        "oneway": "yes",
+        "ref": "AZ 101 Loop",
+        "smoothness": "good",
+        "surface": "asphalt",
+        "turn:lanes": "none|none|none|none|through;slight_right|slight_right"
+      },
+      "timestamp": "2024-12-04 06:57:42+00:00",
+      "version": 14
+    },
+    {
+      "id": 437327478,
+      "nodes": [
+        [
+          257989156,
+          -111.9835228,
+          33.6728134
+        ],
+        [
+          10229321984,
+          -111.9834288,
+          33.6727909
+        ],
+        [
+          5134612578,
+          -111.9830856,
+          33.6727288
+        ]
+      ],
+      "tags": {
+        "bicycle": "no",
+        "destination": "Tatum Boulevard",
+        "highway": "motorway_link",
+        "junction": "spui",
+        "junction:ref": "31",
+        "lanes": "2",
+        "lit": "yes",
+        "oneway": "yes",
+        "smoothness": "excellent",
+        "surface": "concrete"
+      },
+      "timestamp": "2024-12-04 06:57:42+00:00",
+      "version": 10
+    },
+    {
+      "id": 437327483,
+      "nodes": [
+        [
+          4351397640,
+          -111.9897659,
+          33.6728307
+        ],
+        [
+          793901585,
+          -111.9887828,
+          33.6728693
+        ],
+        [
+          3005905050,
+          -111.9880243,
+          33.6728797
+        ],
+        [
+          257847108,
+          -111.9874218,
+          33.6727959
+        ]
+      ],
+      "tags": {
+        "bicycle": "no",
+        "destination:ref": "AZ-101 Loop West",
+        "destination:street": "Black Mountain Boulevard",
+        "highway": "motorway_link",
+        "hov": "yes",
+        "hov:conditional": "designated @ (Mo-Fr 06:00-09:00,15:00-19:00)",
+        "lanes": "1",
+        "lit": "yes",
+        "maxspeed": "65 mph",
+        "motor_vehicle": "yes",
+        "motor_vehicle:conditional": "no @ (Mo-Fr 06:00-09:00,15:00-19:00)",
+        "oneway": "yes",
+        "surface": "asphalt"
+      },
+      "timestamp": "2023-03-20 12:40:11+00:00",
+      "version": 10
+    },
+    {
+      "id": 1340007750,
+      "nodes": [
+        [
+          12395419490,
+          -111.9854544,
+          33.6728085
+        ],
+        [
+          257989156,
+          -111.9835228,
+          33.6728134
+        ]
+      ],
+      "tags": {
+        "bicycle": "no",
+        "change:lanes": "no|not_left|yes|yes|not_right|no",
+        "destination:lanes": "none|none|none|none|56th Street;Tatum Boulevard|Tatum Boulevard",
+        "highway": "motorway",
+        "hov:lanes": "designated|yes|yes|yes|yes|yes",
+        "lanes": "6",
+        "lit": "yes",
+        "maxspeed": "65 mph",
+        "name": "Pima Freeway",
+        "note:lanes": "left lane is hov",
+        "oneway": "yes",
+        "ref": "AZ 101 Loop",
+        "smoothness": "good",
+        "surface": "asphalt",
+        "turn:lanes": "none|none|none|none|through;slight_right|slight_right"
+      },
+      "timestamp": "2024-12-04 06:57:42+00:00",
+      "version": 1
+    }
+  ]
+}
