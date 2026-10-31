@@ -1,0 +1,207 @@
+{
+  "features": [
+    {
+      "attributes": {
+        "ADDRESS_TYPE": "Address",
+        "FEATURE_TYPE": "Government",
+        "FULL_ADDRESS": "1 DESCOMBES DR",
+        "GIS_ID": 22443,
+        "LAST_UPDATE": 1761930021000,
+        "LATITUDE": 39.92015306,
+        "LIFECYCLE_STATUS": "Active",
+        "LONGITUDE": -105.06909181,
+        "OBJECTID": 170,
+        "POSITIONED_METHOD": "Building Footprint",
+        "STREET_NAME": "DESCOMBES"
+      },
+      "geometry": {
+        "x": -105.06909181094902,
+        "y": 39.920153058679865
+      }
+    },
+    {
+      "attributes": {
+        "ADDRESS_TYPE": "Subaddress",
+        "FEATURE_TYPE": "Sign",
+        "FULL_ADDRESS": "1 DESCOMBES DR SPC 5",
+        "GIS_ID": 939881,
+        "LAST_UPDATE": 1775845087000,
+        "LATITUDE": 39.91986426,
+        "LIFECYCLE_STATUS": "Active",
+        "LONGITUDE": -105.06889738,
+        "OBJECTID": 27339,
+        "POSITIONED_METHOD": "On Screen",
+        "STREET_NAME": "DESCOMBES"
+      },
+      "geometry": {
+        "x": -105.06889738095128,
+        "y": 39.919864259898254
+      }
+    },
+    {
+      "attributes": {
+        "ADDRESS_TYPE": "Subaddress",
+        "FEATURE_TYPE": "Sign",
+        "FULL_ADDRESS": "1 DESCOMBES DR SPC 10",
+        "GIS_ID": 939887,
+        "LAST_UPDATE": 1775848902000,
+        "LATITUDE": 39.91961151,
+        "LIFECYCLE_STATUS": "Active",
+        "LONGITUDE": -105.06777687,
+        "OBJECTID": 27340,
+        "POSITIONED_METHOD": "On Screen",
+        "STREET_NAME": "DESCOMBES"
+      },
+      "geometry": {
+        "x": -105.067776871331,
+        "y": 39.919611510969496
+      }
+    },
+    {
+      "attributes": {
+        "ADDRESS_TYPE": "Subaddress",
+        "FEATURE_TYPE": "Electrical",
+        "FULL_ADDRESS": "1 DESCOMBES DR IRRR 1/2R",
+        "GIS_ID": 655532,
+        "LAST_UPDATE": 1779916427000,
+        "LATITUDE": 39.91961642,
+        "LIFECYCLE_STATUS": "Active",
+        "LONGITUDE": -105.06776119,
+        "OBJECTID": 27341,
+        "POSITIONED_METHOD": "On Screen",
+        "STREET_NAME": "DESCOMBES"
+      },
+      "geometry": {
+        "x": -105.06776119409824,
+        "y": 39.91961641930849
+      }
+    },
+    {
+      "attributes": {
+        "ADDRESS_TYPE": "Subaddress",
+        "FEATURE_TYPE": "Sign",
+        "FULL_ADDRESS": "1 DESCOMBES DR SPC 1",
+        "GIS_ID": 939880,
+        "LAST_UPDATE": 1775845059000,
+        "LATITUDE": 39.91998251,
+        "LIFECYCLE_STATUS": "Active",
+        "LONGITUDE": -105.06892087,
+        "OBJECTID": 27342,
+        "POSITIONED_METHOD": "On Screen",
+        "STREET_NAME": "DESCOMBES"
+      },
+      "geometry": {
+        "x": -105.06892087102305,
+        "y": 39.91998251083073
+      }
+    }
+  ],
+  "fields": [
+    {
+      "alias": "OBJECTID",
+      "defaultValue": null,
+      "domain": null,
+      "name": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeOID"
+    },
+    {
+      "alias": "GIS_ID",
+      "defaultValue": null,
+      "domain": null,
+      "name": "GIS_ID",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "alias": "ADDRESS_TYPE",
+      "defaultValue": null,
+      "domain": null,
+      "length": 10,
+      "name": "ADDRESS_TYPE",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "alias": "FEATURE_TYPE",
+      "defaultValue": null,
+      "domain": null,
+      "length": 50,
+      "name": "FEATURE_TYPE",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "alias": "POSITIONED_METHOD",
+      "defaultValue": null,
+      "domain": null,
+      "length": 20,
+      "name": "POSITIONED_METHOD",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "alias": "LIFECYCLE_STATUS",
+      "defaultValue": null,
+      "domain": null,
+      "length": 10,
+      "name": "LIFECYCLE_STATUS",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "alias": "FULL_ADDRESS",
+      "defaultValue": null,
+      "domain": null,
+      "length": 100,
+      "name": "FULL_ADDRESS",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "alias": "STREET_NAME",
+      "defaultValue": null,
+      "domain": null,
+      "length": 50,
+      "name": "STREET_NAME",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "alias": "LONGITUDE",
+      "defaultValue": null,
+      "domain": null,
+      "name": "LONGITUDE",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "alias": "LATITUDE",
+      "defaultValue": null,
+      "domain": null,
+      "name": "LATITUDE",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "alias": "LAST_UPDATE",
+      "defaultValue": null,
+      "domain": null,
+      "length": 8,
+      "name": "LAST_UPDATE",
+      "sqlType": "sqlTypeOther",
+      "type": "esriFieldTypeDate"
+    }
+  ],
+  "geometryType": "esriGeometryPoint",
+  "globalIdFieldName": "",
+  "objectIdFieldName": "OBJECTID",
+  "spatialReference": {
+    "latestWkid": 4326,
+    "wkid": 4326
+  },
+  "uniqueIdField": {
+    "isSystemMaintained": true,
+    "name": "OBJECTID"
+  }
+}
