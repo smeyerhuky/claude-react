@@ -1,7 +1,7 @@
 import copy
 import json
 import unittest
-from metro_via_way_compile_inventory import classify,classify_all
+from metro_via_way_compile_inventory import classify,classify_all,code_identities,verify_code_bindings,CODE_INPUTS
 from via_way_compiler_checkpoint import REFERENCE
 
 
@@ -32,6 +32,18 @@ class ViaWaySupportInventoryTests(unittest.TestCase):
         self.assertEqual(sum(result['first_rejection_reason_counts'].values()),2)
         self.assertEqual(classify(relation,ways,{800937106}),dict(status='rejected',reason='Raw member way exceeds declared node budget'))
         with self.assertRaises(ValueError):classify_all([relation,relation],ways)
+
+    def test_altered_compiler_dependency_invalidates_frozen_count_binding(self):
+        from pathlib import Path
+        import tempfile
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder)
+            for name in CODE_INPUTS:
+                path=root/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_text('synthetic dependency')
+            report=dict(schema='state-via-way-compiler-inventory-v2',compiler_code_sha256=code_identities(root))
+            verify_code_bindings(report,root)
+            (root/'scripts/road_via_way_compile.py').write_text('changed profile')
+            with self.assertRaisesRegex(ValueError,'profile changed'):verify_code_bindings(report,root)
 
     def test_order_independent_counts_and_bounded_samples_preserve_full_totals(self):
         relation,ways=context('colorado')
