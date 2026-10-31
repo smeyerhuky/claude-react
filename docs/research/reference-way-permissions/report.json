@@ -1,0 +1,403 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "baseline_sha256": "d077818c69d25f23f7b8004937c58341207334655a23493c5856977b87f6e9c8",
+  "default_policy": "declared-us-common-road-car-defaults-v1",
+  "geographic_coverage_certified": false,
+  "implementation_sha256": {
+    "reference_way_node_context.py": "88698068f2ccd42cbab4aaa8eea05f7fe81eae374b9ce658ef4287a3de2427f7",
+    "reference_way_permission_checkpoint.py": "33987d158029a598073d6ea1c93a6f5bbe63256a42bd78bd867c19c3b5648a8f",
+    "road_reference_conditionals.py": "5004e35f9f7810e9ecfe10de04494c8d1b539796d05910a2f488355957147a4e",
+    "road_reference_scenario.py": "001e0ed6649f172a378df4e7ca0d6f7ebcb49f6c5d56d286215074328af40488",
+    "road_reference_way_permissions.py": "b40f96e439c531071e980bdbd7dc6e6c0bb08ec7e66a8713068c275572a014c7",
+    "via_way_raw_context.py": "37ff6453f08ad71f056507f4c8fada6541ea330bee5ff562c92229fc2e5cacff"
+  },
+  "release_eligible": false,
+  "route_cost_emitted": false,
+  "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+  "schema": "reference-way-permission-checkpoint-v1",
+  "states": {
+    "arizona": {
+      "complete_vertex_nodes": 8,
+      "context_sha256": "637241faccfc64f61e93563604ec89e8db4bffbaa645aa5cfc43814d31913d6f",
+      "original_member_context_sha256": "edcfabf187b47e95d2562d2abc9fe65b469704c2d01c1cc4595dddece8cf050d",
+      "results": [
+        {
+          "declared_feature_zones": {},
+          "projection": {
+            "access_verified": false,
+            "anchors_adopted": false,
+            "default_policy": "declared-us-common-road-car-defaults-v1",
+            "direction_permissions": null,
+            "eligible_directions": [],
+            "geographic_coverage_certified": false,
+            "geographic_timezone_assignment_verified": false,
+            "input_sha256": "8b9061212d79e3990a47dba16c8f0de445a8cadb736d41c1bce0beae6256d4bf",
+            "node_record_ids_match_way_geometry": true,
+            "raw_value_traces": [
+              {
+                "feature": "way:123445153",
+                "key": "oneway",
+                "matching_clause_indices": [],
+                "selected_raw_value": "yes",
+                "source": "base"
+              }
+            ],
+            "reason": "Lane context requires separate lane and maneuver evaluation",
+            "release_eligible": false,
+            "route_cost_emitted": false,
+            "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+            "schema": "reference-car-way-permissions-v1",
+            "scope": "Entire declared raw-way traversal with the supplied complete vertex-node records. Not partial-way reachability, lane/turn routing, real-world access, source/geographic coverage or an adopted anchor.",
+            "speed_profile_evaluated": false,
+            "status": "unsupported",
+            "tags_mutated": false,
+            "turn_restrictions_evaluated": false
+          },
+          "supplied_node_ids": [
+            257847108,
+            12395419490
+          ],
+          "way_id": 123445153
+        },
+        {
+          "declared_feature_zones": {},
+          "projection": {
+            "access_verified": false,
+            "anchors_adopted": false,
+            "default_policy": "declared-us-common-road-car-defaults-v1",
+            "direction_permissions": null,
+            "eligible_directions": [],
+            "geographic_coverage_certified": false,
+            "geographic_timezone_assignment_verified": false,
+            "input_sha256": "97cc780723746a4a5c74608229b3d2379440515673b93dbfa330ae6675a693b6",
+            "node_record_ids_match_way_geometry": true,
+            "raw_value_traces": [
+              {
+                "feature": "way:437327478",
+                "key": "oneway",
+                "matching_clause_indices": [],
+                "selected_raw_value": "yes",
+                "source": "base"
+              }
+            ],
+            "reason": "Traffic-sign meaning and orientation require separate evaluation",
+            "release_eligible": false,
+            "route_cost_emitted": false,
+            "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+            "schema": "reference-car-way-permissions-v1",
+            "scope": "Entire declared raw-way traversal with the supplied complete vertex-node records. Not partial-way reachability, lane/turn routing, real-world access, source/geographic coverage or an adopted anchor.",
+            "speed_profile_evaluated": false,
+            "status": "unsupported",
+            "tags_mutated": false,
+            "turn_restrictions_evaluated": false
+          },
+          "supplied_node_ids": [
+            257989156,
+            5134612578,
+            10229321984
+          ],
+          "way_id": 437327478
+        },
+        {
+          "declared_feature_zones": {
+            "way:437327483": "America/Phoenix"
+          },
+          "projection": {
+            "access_verified": false,
+            "anchors_adopted": false,
+            "default_policy": "declared-us-common-road-car-defaults-v1",
+            "direction_permissions": null,
+            "eligible_directions": [],
+            "geographic_coverage_certified": false,
+            "geographic_timezone_assignment_verified": false,
+            "input_sha256": "a82fc695ed78639a7b8d4e284b61d3930cfc93faa0a3007628bea455c3e4e1b4",
+            "node_record_ids_match_way_geometry": true,
+            "raw_value_traces": [],
+            "reason": "Conditional control outside the supported permission/direction grammar",
+            "release_eligible": false,
+            "route_cost_emitted": false,
+            "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+            "schema": "reference-car-way-permissions-v1",
+            "scope": "Entire declared raw-way traversal with the supplied complete vertex-node records. Not partial-way reachability, lane/turn routing, real-world access, source/geographic coverage or an adopted anchor.",
+            "speed_profile_evaluated": false,
+            "status": "unsupported",
+            "tags_mutated": false,
+            "turn_restrictions_evaluated": false
+          },
+          "supplied_node_ids": [
+            257847108,
+            793901585,
+            3005905050,
+            4351397640
+          ],
+          "way_id": 437327483
+        },
+        {
+          "declared_feature_zones": {},
+          "projection": {
+            "access_verified": false,
+            "anchors_adopted": false,
+            "default_policy": "declared-us-common-road-car-defaults-v1",
+            "direction_permissions": null,
+            "eligible_directions": [],
+            "geographic_coverage_certified": false,
+            "geographic_timezone_assignment_verified": false,
+            "input_sha256": "09a21fd6cba90892338d35e341cd55822bb3d404f4f9b6d8616cc00cea1e437b",
+            "node_record_ids_match_way_geometry": true,
+            "raw_value_traces": [
+              {
+                "feature": "way:1340007750",
+                "key": "oneway",
+                "matching_clause_indices": [],
+                "selected_raw_value": "yes",
+                "source": "base"
+              }
+            ],
+            "reason": "Lane context requires separate lane and maneuver evaluation",
+            "release_eligible": false,
+            "route_cost_emitted": false,
+            "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+            "schema": "reference-car-way-permissions-v1",
+            "scope": "Entire declared raw-way traversal with the supplied complete vertex-node records. Not partial-way reachability, lane/turn routing, real-world access, source/geographic coverage or an adopted anchor.",
+            "speed_profile_evaluated": false,
+            "status": "unsupported",
+            "tags_mutated": false,
+            "turn_restrictions_evaluated": false
+          },
+          "supplied_node_ids": [
+            257989156,
+            12395419490
+          ],
+          "way_id": 1340007750
+        }
+      ],
+      "source": {
+        "name": "arizona.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
+        "size_bytes": 304245283
+      }
+    },
+    "colorado": {
+      "complete_vertex_nodes": 4,
+      "context_sha256": "b02be93b839cef1dbea90fae01a3b3d92fdd7ec3863f486501729ae902bb9196",
+      "original_member_context_sha256": "c18a02251fe69fae94e857e04c28b37ddf1c0d686c387e000ad143c06b160ddc",
+      "results": [
+        {
+          "declared_feature_zones": {},
+          "projection": {
+            "access_verified": false,
+            "anchors_adopted": false,
+            "default_policy": "declared-us-common-road-car-defaults-v1",
+            "direction_permissions": {
+              "backward": {
+                "access_selection": {
+                  "basis": "declared_US_highway_default",
+                  "key": null,
+                  "modeled_permitted": true,
+                  "raw_value": null
+                },
+                "modeled_permitted": false,
+                "node_denials": [],
+                "oneway_allows": false
+              },
+              "forward": {
+                "access_selection": {
+                  "basis": "declared_US_highway_default",
+                  "key": null,
+                  "modeled_permitted": true,
+                  "raw_value": null
+                },
+                "modeled_permitted": true,
+                "node_denials": [],
+                "oneway_allows": true
+              }
+            },
+            "eligible_directions": [
+              "forward"
+            ],
+            "geographic_coverage_certified": false,
+            "geographic_timezone_assignment_verified": false,
+            "input_sha256": "028f3bb42d9c0350fab26d8cefd0dc12286b1f885200374b10a42cce5d8612df",
+            "node_record_ids_match_way_geometry": true,
+            "raw_value_traces": [
+              {
+                "feature": "way:186839303",
+                "key": "oneway",
+                "matching_clause_indices": [],
+                "selected_raw_value": "yes",
+                "source": "base"
+              }
+            ],
+            "release_eligible": false,
+            "route_cost_emitted": false,
+            "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+            "schema": "reference-car-way-permissions-v1",
+            "scope": "Entire declared raw-way traversal with the supplied complete vertex-node records. Not partial-way reachability, lane/turn routing, real-world access, source/geographic coverage or an adopted anchor.",
+            "selected_oneway": {
+              "backward": false,
+              "forward": true,
+              "key": "oneway",
+              "raw_value": "yes"
+            },
+            "speed_profile_evaluated": false,
+            "status": "supported_tag_projection",
+            "tags_mutated": false,
+            "turn_restrictions_evaluated": false
+          },
+          "supplied_node_ids": [
+            51158764,
+            1753580586
+          ],
+          "way_id": 186839303
+        },
+        {
+          "declared_feature_zones": {},
+          "projection": {
+            "access_verified": false,
+            "anchors_adopted": false,
+            "default_policy": "declared-us-common-road-car-defaults-v1",
+            "direction_permissions": {
+              "backward": {
+                "access_selection": {
+                  "basis": "declared_US_highway_default",
+                  "key": null,
+                  "modeled_permitted": true,
+                  "raw_value": null
+                },
+                "modeled_permitted": false,
+                "node_denials": [],
+                "oneway_allows": false
+              },
+              "forward": {
+                "access_selection": {
+                  "basis": "declared_US_highway_default",
+                  "key": null,
+                  "modeled_permitted": true,
+                  "raw_value": null
+                },
+                "modeled_permitted": true,
+                "node_denials": [],
+                "oneway_allows": true
+              }
+            },
+            "eligible_directions": [
+              "forward"
+            ],
+            "geographic_coverage_certified": false,
+            "geographic_timezone_assignment_verified": false,
+            "input_sha256": "cd6cfb087a0a2cab89b6439c825104e2d15db8fddb8f0068082b22b64dc0aec0",
+            "node_record_ids_match_way_geometry": true,
+            "raw_value_traces": [
+              {
+                "feature": "way:800937105",
+                "key": "oneway",
+                "matching_clause_indices": [],
+                "selected_raw_value": "yes",
+                "source": "base"
+              }
+            ],
+            "release_eligible": false,
+            "route_cost_emitted": false,
+            "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+            "schema": "reference-car-way-permissions-v1",
+            "scope": "Entire declared raw-way traversal with the supplied complete vertex-node records. Not partial-way reachability, lane/turn routing, real-world access, source/geographic coverage or an adopted anchor.",
+            "selected_oneway": {
+              "backward": false,
+              "forward": true,
+              "key": "oneway",
+              "raw_value": "yes"
+            },
+            "speed_profile_evaluated": false,
+            "status": "supported_tag_projection",
+            "tags_mutated": false,
+            "turn_restrictions_evaluated": false
+          },
+          "supplied_node_ids": [
+            1753580525,
+            1753580586
+          ],
+          "way_id": 800937105
+        },
+        {
+          "declared_feature_zones": {},
+          "projection": {
+            "access_verified": false,
+            "anchors_adopted": false,
+            "default_policy": "declared-us-common-road-car-defaults-v1",
+            "direction_permissions": {
+              "backward": {
+                "access_selection": {
+                  "basis": "declared_US_highway_default",
+                  "key": null,
+                  "modeled_permitted": true,
+                  "raw_value": null
+                },
+                "modeled_permitted": false,
+                "node_denials": [],
+                "oneway_allows": false
+              },
+              "forward": {
+                "access_selection": {
+                  "basis": "declared_US_highway_default",
+                  "key": null,
+                  "modeled_permitted": true,
+                  "raw_value": null
+                },
+                "modeled_permitted": true,
+                "node_denials": [],
+                "oneway_allows": true
+              }
+            },
+            "eligible_directions": [
+              "forward"
+            ],
+            "geographic_coverage_certified": false,
+            "geographic_timezone_assignment_verified": false,
+            "input_sha256": "8fbdc5b68a457786c16a48285f8d855a1cbdf9838b0590b164f74c985141ffb3",
+            "node_record_ids_match_way_geometry": true,
+            "raw_value_traces": [
+              {
+                "feature": "way:800937106",
+                "key": "oneway",
+                "matching_clause_indices": [],
+                "selected_raw_value": "yes",
+                "source": "base"
+              }
+            ],
+            "release_eligible": false,
+            "route_cost_emitted": false,
+            "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+            "schema": "reference-car-way-permissions-v1",
+            "scope": "Entire declared raw-way traversal with the supplied complete vertex-node records. Not partial-way reachability, lane/turn routing, real-world access, source/geographic coverage or an adopted anchor.",
+            "selected_oneway": {
+              "backward": false,
+              "forward": true,
+              "key": "oneway",
+              "raw_value": "yes"
+            },
+            "speed_profile_evaluated": false,
+            "status": "supported_tag_projection",
+            "tags_mutated": false,
+            "turn_restrictions_evaluated": false
+          },
+          "supplied_node_ids": [
+            51158764,
+            1716436337
+          ],
+          "way_id": 800937106
+        }
+      ],
+      "source": {
+        "name": "colorado.osm.pbf",
+        "replication_timestamp": "2026-10-27T21:23:59Z",
+        "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+        "size_bytes": 386197077
+      }
+    }
+  },
+  "supported_way_projections": 3,
+  "unsupported_way_projections": 4,
+  "warning": "Raw-tag permission composition only. Whole-way traversal is distinct from partial-way reachability. No lane/turn/speed routing, full incident-way context, geographic timezone proof, connector approval or real-world access claim. Original static graph costs remain unevaluated under the fixed-time scenario."
+}

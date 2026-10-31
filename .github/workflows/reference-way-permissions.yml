@@ -1,0 +1,64 @@
+name: Reference car whole-way permissions
+on:
+  pull_request:
+    paths:
+      - 'scripts/road_reference*.py'
+      - 'scripts/test_road_reference*.py'
+      - 'scripts/reference_way*.py'
+      - 'scripts/test_reference_way*.py'
+      - 'scripts/via_way_raw_context.py'
+      - 'scripts/fetch_research_source.py'
+      - 'docs/research/census-33-source-checkpoint/baseline.json'
+      - 'docs/research/raw-via-way-compiler/**'
+      - 'docs/research/reference-road-scenario/scenario.json'
+      - 'docs/research/reference-way-permissions/**'
+      - '.github/workflows/reference-way-permissions.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  permission-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'tzdata==2026.5' 'osmium==4.3.2' 'networkx==3.7'
+      - run: python -m unittest discover -s scripts -p 'test_road_reference*.py' -v
+      - run: python -m unittest discover -s scripts -p test_reference_way_permission_checkpoint.py -v
+      - run: python scripts/reference_way_permission_checkpoint.py
+      - run: python scripts/via_way_compiler_checkpoint.py
+      - run: python scripts/las_vegas_ui_checkpoint.py --check-frozen
+      - uses: actions/upload-artifact@v6
+        with:
+          name: reference-way-permissions
+          path: docs/research/reference-way-permissions/
+          if-no-files-found: error
+  exact-complete-node-context:
+    strategy:
+      fail-fast: false
+      matrix:
+        state: [colorado, arizona]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'osmium==4.3.2'
+      - name: Fetch and verify the exact original public input
+        env:
+          RESEARCH_STATE: ${{ matrix.state }}
+        run: |
+          mkdir -p local-data
+          curl -fLSs --retry 3 --connect-timeout 20 --max-time 600 --output "local-data/$RESEARCH_STATE.osm.pbf" "https://download.geofabrik.de/north-america/us/$RESEARCH_STATE-261027.osm.pbf"
+          python scripts/fetch_research_source.py --source "$RESEARCH_STATE.osm.pbf" --output "local-data/$RESEARCH_STATE.osm.pbf"
+      - name: Re-extract complete raw tags on every selected member-way vertex
+        env:
+          RESEARCH_STATE: ${{ matrix.state }}
+        run: |
+          python scripts/reference_way_node_context.py --state "$RESEARCH_STATE" --osm "local-data/$RESEARCH_STATE.osm.pbf" --output /tmp/complete-node-context.json
+          cmp /tmp/complete-node-context.json "docs/research/reference-way-permissions/$RESEARCH_STATE-context.json"
