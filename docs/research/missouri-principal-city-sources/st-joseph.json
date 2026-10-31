@@ -1,0 +1,40 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "41140",
+  "city_name": "St. Joseph",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.stjosephmo.gov/DocumentCenter/View/21856/Downtown-Parking-Garage-Closure-May-11-2026-PDF",
+    "http_status": 200,
+    "response_bytes": 135154,
+    "response_sha256": "51e1037de75e2a1d7f35496d7b11345b9407b32c8f6f67806fdeaaa9143821d7",
+    "url": "https://www.stjosephmo.gov/DocumentCenter/View/21856/Downtown-Parking-Garage-Closure-May-11-2026-PDF"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication context only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current maneuver/vehicle rules and full connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review or a revalidation of historical statements. Full maps, entrance photos and app geometry are not visually audited here."
+  ],
+  "observations": [
+    "A May 11, 2026 city release announces conversion of Fourth/Felix and Sixth/Jules garages into surface lots, starting with Fourth/Felix closure on May 18. Temporary nearby lane closures and changed parking limits are part of the notice.",
+    "Sixth/Jules work is to follow Fourth/Felix; new entrances and exits are planned. An end-of-year ARPA funding deadline does not verify completion. Neither the old garage geometry nor the planned new entries are adopted as current access."
+  ],
+  "principal_city_id": "2964550",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "first_announced_closure_date": "2026-05-18",
+    "notice_date": "2026-05-11",
+    "reference_date_access_confirmed": false,
+    "subsequent_completion_verified": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. HTTP response hashes identify bytes not retained here and cannot be recomputed from this derived record. Successful rendered text is not a successful original HTTP capture. Full HTML/PDF, form/runtime state, unavailable error bodies, source archives and environment configuration omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "Work will begin with the closure of the Fourth and Felix garage on Monday, May 18.",
+  "source_http_status": 200,
+  "source_kind": "municipal_planning",
+  "url": "https://www.stjosephmo.gov/DocumentCenter/View/21856/Downtown-Parking-Garage-Closure-May-11-2026-PDF"
+}

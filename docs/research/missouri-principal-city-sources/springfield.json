@@ -1,0 +1,40 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "44180",
+  "city_name": "Springfield",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.mow.uscourts.gov/jury/faq",
+    "http_status": 200,
+    "response_bytes": 53574,
+    "response_sha256": "b18c980ef8d9da57a5001778ca53a318c043d102bdee6d86414993166c32f6ed",
+    "url": "https://www.mow.uscourts.gov/jury/faq"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication context only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current maneuver/vehicle rules and full connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review or a revalidation of historical statements. Full maps, entrance photos and app geometry are not visually audited here."
+  ],
+  "observations": [
+    "The Western District of Missouri jury FAQ has a Springfield Division section describing parking north of the courthouse and accessible spaces near a ramp in that lot.",
+    "This is jury-service guidance, not general public motor permission or an ordinary-car garage. Kansas City and Jefferson City instructions elsewhere on the same page are not Springfield instructions. No same-named out-of-state city is substituted."
+  ],
+  "principal_city_id": "2970000",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "division": "Springfield, Missouri",
+    "general_public_motor_access_verified": false,
+    "guidance_scope": "juror parking",
+    "same_named_city_substitution_permitted": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. HTTP response hashes identify bytes not retained here and cannot be recomputed from this derived record. Successful rendered text is not a successful original HTTP capture. Full HTML/PDF, form/runtime state, unavailable error bodies, source archives and environment configuration omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "Parking is adjacent just north of the courthouse.",
+  "source_http_status": 200,
+  "source_kind": "federal_juror_parking_guidance",
+  "url": "https://www.mow.uscourts.gov/jury/faq"
+}

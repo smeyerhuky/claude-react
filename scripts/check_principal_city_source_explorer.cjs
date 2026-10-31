@@ -16,6 +16,12 @@ const {chromium}=require('playwright');
   if(await page.locator('#rows tr').count()!==3)throw Error('Lehi/Orem/Provo collapsed into one metro source');
   await page.getByRole('button',{name:'Inspect Orem UT 4957300',exact:true}).focus();await page.keyboard.press('Enter');
   const detail=await page.locator('#detail').innerText();if(!detail.includes('Access review unresolved')||!detail.includes('sidewalk')||!detail.includes('orem.json')||!detail.includes('Source record capture (UTC): 2026-10-31'))throw Error('Vehicle-entry caveat or provenance missing');
+  await page.locator('#state').selectOption('MO');await page.locator('#search').fill('41180');
+  if(await page.locator('#rows tr').count()!==2)throw Error('St. Charles and St. Louis source work collapsed');
+  for(const [id,claims] of [['2964082',['mid-August 2014','historical','st-charles.json']],['2964550',['May 11, 2026','May 18','not verify completion']],['2970000',['Springfield Division','jury-service guidance','not general public motor permission']]]){
+   await page.locator('#search').fill(id);await page.locator('#rows button').click();
+   const text=await page.locator('#detail').innerText();if(!claims.every(claim=>text.includes(claim)))throw Error('Missouri publication date or visitor scope lost '+id);
+  }
   await page.locator('#state').selectOption('all');await page.locator('#search').fill('0809280');await page.locator('#rows button').click();
   if(!(await page.locator('#detail-title').innerText()).includes('Broomfield'))throw Error('City FIPS search failed');
   await page.locator('#search').fill('no matching principal city');if(await page.locator('#rows tr').count()!==0||!(await page.locator('#empty').isVisible()))throw Error('Empty search misrepresented');

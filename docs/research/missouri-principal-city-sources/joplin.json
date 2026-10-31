@@ -1,0 +1,39 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "27900",
+  "city_name": "Joplin",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.joplinmo.org/m/newsflash/home/detail/4065",
+    "http_status": 403,
+    "response_bytes": 17,
+    "response_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+    "url": "https://www.joplinmo.org/m/newsflash/home/detail/4065"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication context only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current maneuver/vehicle rules and full connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review or a revalidation of historical statements. Full maps, entrance photos and app geometry are not visually audited here."
+  ],
+  "observations": [
+    "The October 12, 2026 spotlight notice scheduled an October 22 meeting about rehabilitation of the 6th Street/Virginia Avenue garage and anticipated advertising bids in mid-November.",
+    "It describes structural and drainage deficiencies and an estimated nine-month project if approved. A proposed duration establishes neither work commencement nor garage closure, completion or current motor access."
+  ],
+  "principal_city_id": "2937592",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "proposed_duration_months": 9,
+    "publication_date": "2026-10-12",
+    "work_start_or_completion_inferred": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. HTTP response hashes identify bytes not retained here and cannot be recomputed from this derived record. Successful rendered text is not a successful original HTTP capture. Full HTML/PDF, form/runtime state, unavailable error bodies, source archives and environment configuration omitted.",
+  "retrieval_method": "web_rendered",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "If approved, the project is estimated to take approximately nine months.",
+  "source_http_status": null,
+  "source_kind": "municipal_planning",
+  "url": "https://www.joplinmo.org/m/newsflash/home/detail/4065"
+}
