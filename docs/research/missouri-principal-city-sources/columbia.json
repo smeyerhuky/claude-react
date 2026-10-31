@@ -1,0 +1,38 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "17860",
+  "city_name": "Columbia",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.como.gov/public-works/parking/parking-garages/",
+    "http_status": 403,
+    "response_bytes": 17,
+    "response_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+    "url": "https://www.como.gov/public-works/parking/parking-garages/"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication context only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current maneuver/vehicle rules and full connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review or a revalidation of historical statements. Full maps, entrance photos and app geometry are not visually audited here."
+  ],
+  "observations": [
+    "The city inventories six garages with separate hourly, permit, reserved, hotel and accessible allocations. An available hourly allocation is not unrestricted use of every space.",
+    "Fifth and Walnut has a published 8-foot-2-inch entry/exit clearance for part of the hourly area, but 7 feet through the remainder. Short Street has separate hourly/ADA, permit and valet clearances."
+  ],
+  "principal_city_id": "2915670",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "entry_clearance_applies_to_entire_facility": false,
+    "vehicle_dimensions_assumed": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. HTTP response hashes identify bytes not retained here and cannot be recomputed from this derived record. Successful rendered text is not a successful original HTTP capture. Full HTML/PDF, form/runtime state, unavailable error bodies, source archives and environment configuration omitted.",
+  "retrieval_method": "web_rendered",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "Ceiling clearance: 7 feet 10 inches",
+  "source_http_status": null,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.como.gov/public-works/parking/parking-garages/"
+}

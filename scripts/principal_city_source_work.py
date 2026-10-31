@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = Path('docs/research/principal-city-source-work/report.json')
 PRINCIPAL = Path('docs/research/principal-city-inventory/report.json')
 CHECKERS = {'CO': 'colorado', 'AZ': 'arizona', 'UT': 'utah', 'OK': 'oklahoma', 'KS': 'kansas',
-            'WY': 'wyoming', 'NV': 'nevada'}
+            'WY': 'wyoming', 'NV': 'nevada', 'MO': 'missouri'}
 NM = {'10740': ('3502000', 'albuquerque'), '22140': ('3525800', 'farmington'),
       '29740': ('3539380', 'las-cruces'), '42140': ('3570500', 'santa-fe')}
 STATUSES = ('context_retained', 'selected_publication_unavailable', 'not_recorded_here')

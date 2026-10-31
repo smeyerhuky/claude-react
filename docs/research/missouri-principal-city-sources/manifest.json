@@ -1,0 +1,68 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "geographic_coverage_certified": false,
+  "principal_inventory_sha256": "22f509906e005e1c6215c5f857fa0865278f4289753fad887ee05b730f8cd9cd",
+  "records": [
+    {
+      "cbsa": "17860",
+      "city_name": "Columbia",
+      "principal_city_id": "2915670",
+      "source_path": "docs/research/missouri-principal-city-sources/columbia.json",
+      "source_sha256": "67308232ca0015cfc0240cf51dce3ffab2313b92e5131cac42df443ee56d6655"
+    },
+    {
+      "cbsa": "27620",
+      "city_name": "Jefferson City",
+      "principal_city_id": "2937000",
+      "source_path": "docs/research/missouri-principal-city-sources/jefferson-city.json",
+      "source_sha256": "5d1ed4b76a25e45188fc7f384907b5fe26593a1a21dbcb6b541a2c84ba58dc87"
+    },
+    {
+      "cbsa": "27900",
+      "city_name": "Joplin",
+      "principal_city_id": "2937592",
+      "source_path": "docs/research/missouri-principal-city-sources/joplin.json",
+      "source_sha256": "8ef817a9fd7cd96bb4cd4c81de24b608d4a28377eefa258b24ca5b86361a79ca"
+    },
+    {
+      "cbsa": "28140",
+      "city_name": "Kansas City",
+      "principal_city_id": "2938000",
+      "source_path": "docs/research/missouri-principal-city-sources/kansas-city.json",
+      "source_sha256": "59d8ae55346c76aa75cd9b12b5fca53df93235810a68d47f87d0cee3f27b0699"
+    },
+    {
+      "cbsa": "41140",
+      "city_name": "St. Joseph",
+      "principal_city_id": "2964550",
+      "source_path": "docs/research/missouri-principal-city-sources/st-joseph.json",
+      "source_sha256": "d736f83eaf2c074437baa122d688ce2f5707c5bb290a0aa3df05a9c63eb99f7a"
+    },
+    {
+      "cbsa": "41180",
+      "city_name": "St. Charles",
+      "principal_city_id": "2964082",
+      "source_path": "docs/research/missouri-principal-city-sources/st-charles.json",
+      "source_sha256": "800bf71f1db3fa171fe5cbf748b4bcb4cb8e1521defe1b74c5eee15d4e2a05f7"
+    },
+    {
+      "cbsa": "41180",
+      "city_name": "St. Louis",
+      "principal_city_id": "2965000",
+      "source_path": "docs/research/missouri-principal-city-sources/st-louis.json",
+      "source_sha256": "5de9d1b0c016a6c056e3c8295f1f261d562bb0e5c5e1f2c7aacbdda67c07c03e"
+    },
+    {
+      "cbsa": "44180",
+      "city_name": "Springfield",
+      "principal_city_id": "2970000",
+      "source_path": "docs/research/missouri-principal-city-sources/springfield.json",
+      "source_sha256": "db0d31cdb1687e100ff12f5d7176a0f5513bdda17bd2221d0112356913611411"
+    }
+  ],
+  "release_eligible": false,
+  "schema": "principal-city-source-batch-v1",
+  "state": "MO",
+  "warning": "Complete work accounting for eight Missouri principal cities in seven CBSAs; current or historical publication context is not car access, an approved anchor set, a routed competitor, coverage or public readiness."
+}

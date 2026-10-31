@@ -7468,18 +7468,24 @@
       "anchor_adopted": false,
       "cbsa": "17860",
       "city_name": "Columbia",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication context only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current maneuver/vehicle rules and full connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review or a revalidation of historical statements. Full maps, entrance photos and app geometry are not visually audited here."
+      ],
+      "observations": [
+        "The city inventories six garages with separate hourly, permit, reserved, hotel and accessible allocations. An available hourly allocation is not unrestricted use of every space.",
+        "Fifth and Walnut has a published 8-foot-2-inch entry/exit clearance for part of the hourly area, but 7 feet through the remainder. Short Street has separate hourly/ADA, permit and valet clearances."
+      ],
       "principal_city_id": "2915670",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-10-31",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "web_rendered",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/missouri-principal-city-sources/columbia.json",
+      "source_sha256": "67308232ca0015cfc0240cf51dce3ffab2313b92e5131cac42df443ee56d6655",
       "state": "MO",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.como.gov/public-works/parking/parking-garages/"
     },
     {
       "access_review_status": "unresolved",
@@ -7487,18 +7493,24 @@
       "anchor_adopted": false,
       "cbsa": "27620",
       "city_name": "Jefferson City",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication context only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current maneuver/vehicle rules and full connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review or a revalidation of historical statements. Full maps, entrance photos and app geometry are not visually audited here."
+      ],
+      "observations": [
+        "Park JCMO identifies PCI Municipal Services as the city-contracted operator working under City direction. Its FAQ retains displacement from closure of the Madison Street Parking Garage; that garage is not selected as an open anchor.",
+        "Payment rates apply Monday-Friday 08:00-17:00 excluding city holidays. Meter coins and Oobeo browser payment are described; future kiosk installation is not treated as a completed project. Payment hours do not establish road-entry closure."
+      ],
       "principal_city_id": "2937000",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-10-31",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "operator_parking_guidance",
+      "source_path": "docs/research/missouri-principal-city-sources/jefferson-city.json",
+      "source_sha256": "5d1ed4b76a25e45188fc7f384907b5fe26593a1a21dbcb6b541a2c84ba58dc87",
       "state": "MO",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.parkjcmo.org/faqs"
     },
     {
       "access_review_status": "unresolved",
@@ -7506,18 +7518,24 @@
       "anchor_adopted": false,
       "cbsa": "27900",
       "city_name": "Joplin",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication context only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current maneuver/vehicle rules and full connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review or a revalidation of historical statements. Full maps, entrance photos and app geometry are not visually audited here."
+      ],
+      "observations": [
+        "The October 12, 2026 spotlight notice scheduled an October 22 meeting about rehabilitation of the 6th Street/Virginia Avenue garage and anticipated advertising bids in mid-November.",
+        "It describes structural and drainage deficiencies and an estimated nine-month project if approved. A proposed duration establishes neither work commencement nor garage closure, completion or current motor access."
+      ],
       "principal_city_id": "2937592",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-10-31",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "web_rendered",
+      "source_kind": "municipal_planning",
+      "source_path": "docs/research/missouri-principal-city-sources/joplin.json",
+      "source_sha256": "8ef817a9fd7cd96bb4cd4c81de24b608d4a28377eefa258b24ca5b86361a79ca",
       "state": "MO",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.joplinmo.org/m/newsflash/home/detail/4065"
     },
     {
       "access_review_status": "unresolved",
@@ -7525,18 +7543,24 @@
       "anchor_adopted": false,
       "cbsa": "28140",
       "city_name": "Kansas City",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication context only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current maneuver/vehicle rules and full connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review or a revalidation of historical statements. Full maps, entrance photos and app geometry are not visually audited here."
+      ],
+      "observations": [
+        "The city describes the 18th and Lydia/Jazz District garage at 1819 Lydia Avenue as opened to the public May 22, 2026, with up to 470 spaces.",
+        "An introductory free period is followed by published paid rates effective June 8, 2026. The World Cup park-and-ride is event-specific. Older construction progress and design-phase labels coexist on the page and do not independently establish current lane or entrance conditions."
+      ],
       "principal_city_id": "2938000",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-10-31",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "web_rendered",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/missouri-principal-city-sources/kansas-city.json",
+      "source_sha256": "59d8ae55346c76aa75cd9b12b5fca53df93235810a68d47f87d0cee3f27b0699",
       "state": "MO",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.kcmo.gov/Home/Components/FacilityDirectory/FacilityDirectory/354/2007"
     },
     {
       "access_review_status": "unresolved",
@@ -7544,18 +7568,24 @@
       "anchor_adopted": false,
       "cbsa": "44180",
       "city_name": "Springfield",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication context only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current maneuver/vehicle rules and full connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review or a revalidation of historical statements. Full maps, entrance photos and app geometry are not visually audited here."
+      ],
+      "observations": [
+        "The Western District of Missouri jury FAQ has a Springfield Division section describing parking north of the courthouse and accessible spaces near a ramp in that lot.",
+        "This is jury-service guidance, not general public motor permission or an ordinary-car garage. Kansas City and Jefferson City instructions elsewhere on the same page are not Springfield instructions. No same-named out-of-state city is substituted."
+      ],
       "principal_city_id": "2970000",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-10-31",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "federal_juror_parking_guidance",
+      "source_path": "docs/research/missouri-principal-city-sources/springfield.json",
+      "source_sha256": "db0d31cdb1687e100ff12f5d7176a0f5513bdda17bd2221d0112356913611411",
       "state": "MO",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.mow.uscourts.gov/jury/faq"
     },
     {
       "access_review_status": "unresolved",
@@ -7563,18 +7593,24 @@
       "anchor_adopted": false,
       "cbsa": "41180",
       "city_name": "St. Charles",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication context only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current maneuver/vehicle rules and full connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review or a revalidation of historical statements. Full maps, entrance photos and app geometry are not visually audited here."
+      ],
+      "observations": [
+        "The archived Project Quick Facts names the City Hall garage at 200 North Second Street and approaches from Monroe and Second Streets.",
+        "It discusses April 2013 voter approval, a full closure for renovation and an anticipated reopening in mid-August 2014. The stated project period is historical; retrieval in 2026 establishes neither current closure nor confirmed reopening or entrance operation. Its map and image are not surveyed entry geometry."
+      ],
       "principal_city_id": "2964082",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-10-31",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_planning",
+      "source_path": "docs/research/missouri-principal-city-sources/st-charles.json",
+      "source_sha256": "800bf71f1db3fa171fe5cbf748b4bcb4cb8e1521defe1b74c5eee15d4e2a05f7",
       "state": "MO",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.stcharlescitymo.gov/DocumentCenter/View/115"
     },
     {
       "access_review_status": "unresolved",
@@ -7582,18 +7618,24 @@
       "anchor_adopted": false,
       "cbsa": "41140",
       "city_name": "St. Joseph",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication context only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current maneuver/vehicle rules and full connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review or a revalidation of historical statements. Full maps, entrance photos and app geometry are not visually audited here."
+      ],
+      "observations": [
+        "A May 11, 2026 city release announces conversion of Fourth/Felix and Sixth/Jules garages into surface lots, starting with Fourth/Felix closure on May 18. Temporary nearby lane closures and changed parking limits are part of the notice.",
+        "Sixth/Jules work is to follow Fourth/Felix; new entrances and exits are planned. An end-of-year ARPA funding deadline does not verify completion. Neither the old garage geometry nor the planned new entries are adopted as current access."
+      ],
       "principal_city_id": "2964550",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-10-31",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_planning",
+      "source_path": "docs/research/missouri-principal-city-sources/st-joseph.json",
+      "source_sha256": "d736f83eaf2c074437baa122d688ce2f5707c5bb290a0aa3df05a9c63eb99f7a",
       "state": "MO",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.stjosephmo.gov/DocumentCenter/View/21856/Downtown-Parking-Garage-Closure-May-11-2026-PDF"
     },
     {
       "access_review_status": "unresolved",
@@ -7601,18 +7643,24 @@
       "anchor_adopted": false,
       "cbsa": "41180",
       "city_name": "St. Louis",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication context only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current maneuver/vehicle rules and full connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review or a revalidation of historical statements. Full maps, entrance photos and app geometry are not visually audited here."
+      ],
+      "observations": [
+        "The Treasurer lists downtown and midtown public facilities with different normal business hours, monthly arrangements and hourly/event options; rates may change.",
+        "Williams Paper Lot has no ordinary hourly option in the listing, and a 24/7 arrangement is specifically for Greyhound employees. Central Downtown lists weekday public hours separately from a monthly 24/7 rate. Those arrangements are not unrestricted all-day public car entry."
+      ],
       "principal_city_id": "2965000",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-10-31",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/missouri-principal-city-sources/st-louis.json",
+      "source_sha256": "5de9d1b0c016a6c056e3c8295f1f261d562bb0e5c5e1f2c7aacbdda67c07c03e",
       "state": "MO",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.stlouis-mo.gov/government/departments/treasurer/Off-Street-Parking.cfm"
     },
     {
       "access_review_status": "unresolved",
@@ -13550,8 +13598,8 @@
   ],
   "connectors_approved": 0,
   "counts": {
-    "context_retained": 49,
-    "not_recorded_here": 642,
+    "context_retained": 57,
+    "not_recorded_here": 634,
     "selected_publication_unavailable": 7
   },
   "input_sha256": {
@@ -13592,6 +13640,15 @@
     "docs/research/kansas-principal-city-sources/overland-park.json": "d9c20b0115cce89c038142ddaa3b64a8cdf16b9ff3fa1b14778f72ef3de2a8ee",
     "docs/research/kansas-principal-city-sources/topeka.json": "c4f6e360bf48b8da8fc06a5b08716d97d127c5dcc34adf8165d09598b7fdca6d",
     "docs/research/kansas-principal-city-sources/wichita.json": "d38f9833fa03019d11c931386824efc6077fce914292f2329158a9cb1c800caa",
+    "docs/research/missouri-principal-city-sources/columbia.json": "67308232ca0015cfc0240cf51dce3ffab2313b92e5131cac42df443ee56d6655",
+    "docs/research/missouri-principal-city-sources/jefferson-city.json": "5d1ed4b76a25e45188fc7f384907b5fe26593a1a21dbcb6b541a2c84ba58dc87",
+    "docs/research/missouri-principal-city-sources/joplin.json": "8ef817a9fd7cd96bb4cd4c81de24b608d4a28377eefa258b24ca5b86361a79ca",
+    "docs/research/missouri-principal-city-sources/kansas-city.json": "59d8ae55346c76aa75cd9b12b5fca53df93235810a68d47f87d0cee3f27b0699",
+    "docs/research/missouri-principal-city-sources/manifest.json": "fd32a7b0851632b06f8fc82940d72af9cb23643c24d86b941b1487080eae9ee0",
+    "docs/research/missouri-principal-city-sources/springfield.json": "db0d31cdb1687e100ff12f5d7176a0f5513bdda17bd2221d0112356913611411",
+    "docs/research/missouri-principal-city-sources/st-charles.json": "800bf71f1db3fa171fe5cbf748b4bcb4cb8e1521defe1b74c5eee15d4e2a05f7",
+    "docs/research/missouri-principal-city-sources/st-joseph.json": "d736f83eaf2c074437baa122d688ce2f5707c5bb290a0aa3df05a9c63eb99f7a",
+    "docs/research/missouri-principal-city-sources/st-louis.json": "5de9d1b0c016a6c056e3c8295f1f261d562bb0e5c5e1f2c7aacbdda67c07c03e",
     "docs/research/native-state-inventory/report.json": "85c2c60334f499fe9f1fc193fa9a05f020db5b0aea847f6814b6fd57547a95db",
     "docs/research/nevada-principal-city-sources/henderson.json": "81e8dd73de98cea02e9cf9aa19a25e6639862595220602c41d31e1aeb6c9d608",
     "docs/research/nevada-principal-city-sources/las-vegas.json": "a7395b6d47ca56b888123d0ef4539474b8aa91ec9d4f37b929752fc3333537e6",
@@ -13628,17 +13685,18 @@
     "scripts/colorado_reviewed_connectors.json": "cbac5c424e0c840a95de00ddf1f77a5627d35543b2d97a524222908590c62d38",
     "scripts/kansas_principal_city_source_screen.py": "c0235c1d22cf68dabaaee4c44c014851b77edb1fb78b5836ef018133c0f0f4eb",
     "scripts/metro_principal_city_inventory.py": "cd1e6074b0698433681ee6f5bc41b98c45dbcc49bac2f41e373fcce9aa375a8e",
+    "scripts/missouri_principal_city_source_screen.py": "8b51356e6e2124b5856b03896bad815888521688422e41480196ff78d9509681",
     "scripts/municipal_source_screen.py": "32b68b5a4f254c5db675f580fcfa5cc9bf2c96a09de4f61c1d36734f42c3941c",
     "scripts/nevada_principal_city_source_screen.py": "fbf1e8e9e2532bb8006b872a4e3a05349024310df87007327f37bee5aed0e987",
     "scripts/oklahoma_principal_city_source_screen.py": "76c671aea851f5333ea549918a0e38d6c97a3d01e20dde83348dc5d9ec1c0a27",
-    "scripts/principal_city_source_screen.py": "e0698dd529a8ce2ba35b7983c06d4ab3cb8bbb6d04f6118d564b115187de8536",
-    "scripts/principal_city_source_work.py": "c5e8408f8c481c34c40bea74a02df0cd313d58631e99050bdd01c8aa9d95e7bd",
+    "scripts/principal_city_source_screen.py": "ae2cb4d19c4f95c9a5be92918fc0f0e41cd47d7b187bf176e60ac9e6cdca79e4",
+    "scripts/principal_city_source_work.py": "b75b3b5fddeb380de7c1cf4d72cf5058d4341ecc07217f718657bd81622ef49a",
     "scripts/utah_principal_city_source_screen.py": "8dd836ca3b07af78b9be9546aec15c34cabad1d4db85b1f493b265992a5814ed",
     "scripts/wyoming_principal_city_source_screen.py": "e95bdb9d93b7983401e0becb98e07d69e6b7a2be3531e7d9a635a58aaabc2d5e"
   },
   "membership_count": 698,
   "metro_count": 367,
-  "recorded_memberships": 56,
+  "recorded_memberships": 64,
   "release_eligible": false,
   "schema": "principal-city-source-work-v1",
   "scope": "Principal-city state membership, distinct from the state containing a Census representative point.",
@@ -13921,8 +13979,8 @@
     {
       "approved_anchors": 0,
       "counts": {
-        "context_retained": 0,
-        "not_recorded_here": 8,
+        "context_retained": 8,
+        "not_recorded_here": 0,
         "selected_publication_unavailable": 0
       },
       "memberships": 8,

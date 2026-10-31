@@ -6,12 +6,12 @@ Current work accounting:
 
 | Status | Memberships | Meaning |
 | --- | ---: | --- |
-| Context retained | 49 | A source context or prior review record is registered; no vehicle entry is certified |
+| Context retained | 57 | A source context or prior review record is registered; no vehicle entry is certified |
 | Selected publication unavailable | 7 | A selected publication could not be inspected; no search snippet is promoted |
-| Not recorded here | 642 | No city-source record is registered in this inventory; this does not mean no evidence exists |
+| Not recorded here | 634 | No city-source record is registered in this inventory; this does not mean no evidence exists |
 | Approved anchors | **0** | No reviewed anchor set is adopted; zero connectors are approved |
 
-The 56 registered work records cover Colorado (12), New Mexico (4), Arizona (16), Utah (8), Oklahoma (3), Kansas (7), Wyoming (1) and Nevada (5). Colorado's prior contexts and Denver AI proposal remain distinct from new publication observations. The four New Mexico context files map explicitly to its four official principal cities; no metro-title splitting or inferred additional city membership occurs. A named building, public parking description, modeled road lead or retained AI proposal is not a reviewed vehicle connector.
+The 64 registered work records cover Colorado (12), New Mexico (4), Arizona (16), Utah (8), Oklahoma (3), Kansas (7), Wyoming (1), Nevada (5) and Missouri (8). Colorado's prior contexts and Denver AI proposal remain distinct from new publication observations. The four New Mexico context files map explicitly to its four official principal cities; no metro-title splitting or inferred additional city membership occurs. Missouri's historical construction notices and court juror guidance retain their dates and visitor scope. A named building, public parking description, modeled road lead or retained AI proposal is not a reviewed vehicle connector.
 
 `report.json` binds the official Census workbook/domain inventory, exact retained records, source manifests, approval ledger and relevant projection/checker code. State batches run their existing validators before projection. New state batches require registering their checker and regenerating this snapshot; they cannot silently disappear from the UI. The independent approval ledger must remain empty for this version. Changing it requires independent review and a new inventory version, not an automatic status upgrade.
 

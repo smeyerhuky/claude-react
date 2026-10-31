@@ -1,0 +1,38 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "41180",
+  "city_name": "St. Louis",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.stlouis-mo.gov/government/departments/treasurer/Off-Street-Parking.cfm",
+    "http_status": 200,
+    "response_bytes": 39867,
+    "response_sha256": "9e8983bc14e64e2a485d6c713fe5b88345ceb09bd2049cf399e2614cbb95ef15",
+    "url": "https://www.stlouis-mo.gov/government/departments/treasurer/Off-Street-Parking.cfm"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication context only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current maneuver/vehicle rules and full connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review or a revalidation of historical statements. Full maps, entrance photos and app geometry are not visually audited here."
+  ],
+  "observations": [
+    "The Treasurer lists downtown and midtown public facilities with different normal business hours, monthly arrangements and hourly/event options; rates may change.",
+    "Williams Paper Lot has no ordinary hourly option in the listing, and a 24/7 arrangement is specifically for Greyhound employees. Central Downtown lists weekday public hours separately from a monthly 24/7 rate. Those arrangements are not unrestricted all-day public car entry."
+  ],
+  "principal_city_id": "2965000",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "monthly_or_employee_24h_is_unrestricted_hourly_access": false,
+    "payment_or_hours_are_connector_approval": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. HTTP response hashes identify bytes not retained here and cannot be recomputed from this derived record. Successful rendered text is not a successful original HTTP capture. Full HTML/PDF, form/runtime state, unavailable error bodies, source archives and environment configuration omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "for monthly parking only",
+  "source_http_status": 200,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.stlouis-mo.gov/government/departments/treasurer/Off-Street-Parking.cfm"
+}

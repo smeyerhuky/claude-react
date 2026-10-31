@@ -1,0 +1,39 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "41180",
+  "city_name": "St. Charles",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.stcharlescitymo.gov/DocumentCenter/View/115/Project-Quick-Facts-PDF?bidId=",
+    "http_status": 200,
+    "response_bytes": 284038,
+    "response_sha256": "0b53be33fb20f4e833b6765aec348e2310c6c0022951baf5e55c5823621dcf8d",
+    "url": "https://www.stcharlescitymo.gov/DocumentCenter/View/115"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication context only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current maneuver/vehicle rules and full connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review or a revalidation of historical statements. Full maps, entrance photos and app geometry are not visually audited here."
+  ],
+  "observations": [
+    "The archived Project Quick Facts names the City Hall garage at 200 North Second Street and approaches from Monroe and Second Streets.",
+    "It discusses April 2013 voter approval, a full closure for renovation and an anticipated reopening in mid-August 2014. The stated project period is historical; retrieval in 2026 establishes neither current closure nor confirmed reopening or entrance operation. Its map and image are not surveyed entry geometry."
+  ],
+  "principal_city_id": "2964082",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "anticipated_reopen_year_in_publication": 2014,
+    "project_is_current_2026": false,
+    "subsequent_reopening_or_entrance_operation_verified": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. HTTP response hashes identify bytes not retained here and cannot be recomputed from this derived record. Successful rendered text is not a successful original HTTP capture. Full HTML/PDF, form/runtime state, unavailable error bodies, source archives and environment configuration omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "There are entrances to the structure from Monroe and Second Streets.",
+  "source_http_status": 200,
+  "source_kind": "municipal_planning",
+  "url": "https://www.stcharlescitymo.gov/DocumentCenter/View/115"
+}

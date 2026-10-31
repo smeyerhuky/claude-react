@@ -13,7 +13,7 @@ INVENTORY = Path('docs/research/principal-city-inventory/report.json')
 
 KINDS = {'municipal_facility_location', 'municipal_parking_guidance', 'municipal_planning',
          'operator_facility_location', 'operator_parking_guidance', 'county_parking_guidance',
-         'county_administrative_context'}
+         'county_administrative_context', 'federal_juror_parking_guidance'}
 
 
 def require(condition, message):

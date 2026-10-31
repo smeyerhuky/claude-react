@@ -1,0 +1,39 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "27620",
+  "city_name": "Jefferson City",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.parkjcmo.org/faqs",
+    "http_status": 200,
+    "response_bytes": 254891,
+    "response_sha256": "c315334b1aec9c8ccd4a87a54a09a0e06963ba2531c1903bbfdaa08a7f7d768c",
+    "url": "https://www.parkjcmo.org/faqs"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication context only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current maneuver/vehicle rules and full connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review or a revalidation of historical statements. Full maps, entrance photos and app geometry are not visually audited here."
+  ],
+  "observations": [
+    "Park JCMO identifies PCI Municipal Services as the city-contracted operator working under City direction. Its FAQ retains displacement from closure of the Madison Street Parking Garage; that garage is not selected as an open anchor.",
+    "Payment rates apply Monday-Friday 08:00-17:00 excluding city holidays. Meter coins and Oobeo browser payment are described; future kiosk installation is not treated as a completed project. Payment hours do not establish road-entry closure."
+  ],
+  "principal_city_id": "2937000",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "future_kiosks_assumed_operational": false,
+    "madison_garage_selected_as_open": false,
+    "payment_hours_are_road_closure": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. HTTP response hashes identify bytes not retained here and cannot be recomputed from this derived record. Successful rendered text is not a successful original HTTP capture. Full HTML/PDF, form/runtime state, unavailable error bodies, source archives and environment configuration omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "including managing displaced daily and permit parking from closing the Madison Street Parking Garage.",
+  "source_http_status": 200,
+  "source_kind": "operator_parking_guidance",
+  "url": "https://www.parkjcmo.org/faqs"
+}

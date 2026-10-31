@@ -1,0 +1,40 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "28140",
+  "city_name": "Kansas City",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.kcmo.gov/Home/Components/FacilityDirectory/FacilityDirectory/354/2007",
+    "http_status": 403,
+    "response_bytes": 444,
+    "response_sha256": "d9c23fcd0abd2b5f78bf054bec7c3270f0d92bb3c2d009f3cc88e50cf76957eb",
+    "url": "https://www.kcmo.gov/Home/Components/FacilityDirectory/FacilityDirectory/354/2007"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication context only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current maneuver/vehicle rules and full connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review or a revalidation of historical statements. Full maps, entrance photos and app geometry are not visually audited here."
+  ],
+  "observations": [
+    "The city describes the 18th and Lydia/Jazz District garage at 1819 Lydia Avenue as opened to the public May 22, 2026, with up to 470 spaces.",
+    "An introductory free period is followed by published paid rates effective June 8, 2026. The World Cup park-and-ride is event-specific. Older construction progress and design-phase labels coexist on the page and do not independently establish current lane or entrance conditions."
+  ],
+  "principal_city_id": "2938000",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "announced_open_date": "2026-05-22",
+    "event_shuttle_is_general_access_proof": false,
+    "introductory_free_period_is_current_default": false,
+    "published_paid_rate_effective_date": "2026-06-08"
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. HTTP response hashes identify bytes not retained here and cannot be recomputed from this derived record. Successful rendered text is not a successful original HTTP capture. Full HTML/PDF, form/runtime state, unavailable error bodies, source archives and environment configuration omitted.",
+  "retrieval_method": "web_rendered",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "As of May 22, 2026, this parking garage is open to the public.",
+  "source_http_status": null,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.kcmo.gov/Home/Components/FacilityDirectory/FacilityDirectory/354/2007"
+}
