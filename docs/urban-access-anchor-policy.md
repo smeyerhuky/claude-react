@@ -97,3 +97,18 @@ straight-line map stays unchanged. This workflow does not close those issues.
 The [anchor-set research contract](research/metro-anchor-set-contract.md) tests
 full-cost minima, metric/direction identity, ties and required-anchor unknowns
 using synthetic fixtures. It does not install or approve a registry.
+
+## Fixed reference-time scenario
+
+On 2026-10-30 (America/Denver), the user selected a fixed-time approximation and
+requested its assumptions in a map info tooltip. The initial research scenario
+is 2026-10-28T18:00:00Z (noon MDT), an ordinary solo passenger car without special
+permits or HOV exemption. Access is frozen at that reference instant; traffic,
+waiting and access changes during the trip are not modeled. Unknown conditions
+remain unsupported. This is an explicit approximation, not a live itinerary.
+
+The [scenario contract and planned disclosure](research/reference-road-scenario/README.md)
+bind reference time, vehicle assumptions and pinned timezone data by SHA-256.
+Anchor-set query rows must carry the same scenario identity. No old checkpoint
+was rerouted or relabeled, no anchor adopted and no access gate relaxed. The
+inspector preview is marked not applied; the public straight-line map stays unchanged.

@@ -1,0 +1,31 @@
+{
+  "schema": "road-reference-scenario-v1",
+  "reference_instant_utc": "2026-10-28T18:00:00Z",
+  "access_time_policy": "frozen-at-reference-instant",
+  "local_clock_policy": "convert-reference-utc-at-each-controlled-feature-using-explicit-iana-zone",
+  "timezone_data": {
+    "package": "tzdata",
+    "version": "2026.5",
+    "iana_release": "2026e"
+  },
+  "vehicle": {
+    "kind": "ordinary-private-passenger-car",
+    "occupants": 1,
+    "special_permits": [],
+    "hov_exemption": false,
+    "tolls_allowed": true,
+    "height_m": null,
+    "width_m": null,
+    "length_m": null,
+    "mass_kg": null
+  },
+  "travel_time_policy": "modeled-free-flow",
+  "traffic_policy": "not-modeled",
+  "waiting_policy": "not-modeled",
+  "arrival_time_access_policy": "not-reevaluated",
+  "unknown_condition_policy": "unsupported-never-assumed-open",
+  "unknown_clearance_policy": "unsupported-until-vehicle-dimensions-are-specified",
+  "old_checkpoint_evaluated_under_scenario": false,
+  "access_verified": false,
+  "release_eligible": false
+}

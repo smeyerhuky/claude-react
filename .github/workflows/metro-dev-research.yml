@@ -11,6 +11,8 @@ on:
       - 'src/components/MetroPopulationVoronoi.jsx'
       - 'src/components/MetroRoadResearchPanel.jsx'
       - 'src/research/**'
+      - 'scripts/road_reference_scenario.py'
+      - 'docs/research/reference-road-scenario/**'
       - 'scripts/check_metro_dev_research.cjs'
       - 'scripts/build_metro_competitor_explorer.py'
       - 'scripts/build_six_state_probe_explorer.py'
@@ -68,10 +70,13 @@ jobs:
       - run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - run: corepack enable
       - run: yarn install --frozen-lockfile --prefer-offline
+      - run: python -m pip install 'tzdata==2026.5'
       - name: Verify generated research views and lint changes
         env:
           RESEARCH_BASE_COMMIT: ${{ github.event.pull_request.base.sha || github.sha }}
         run: |
+          python scripts/road_reference_scenario.py --output /tmp/reference-scenario.json
+          cmp /tmp/reference-scenario.json src/research/metro-reference-scenario.json
           python scripts/las_vegas_ui_checkpoint.py --check-frozen
           python -m unittest discover -s scripts -p 'test_las_vegas_ui_checkpoint.py' -v
           python scripts/build_las_vegas_probe_explorer.py --output /tmp/las-vegas.html
@@ -99,7 +104,7 @@ jobs:
           import json
           from pathlib import Path
           hashes=[json.loads(Path('docs/research/census-33-source-checkpoint/manifest.json').read_text())['baseline_sha256'],json.loads(Path('docs/research/denver-waypoint-hypothesis/manifest.json').read_text())['report_sha256'],json.loads(Path('docs/research/census-26-source-checkpoint/manifest.json').read_text())['baseline_sha256'],json.loads(Path('docs/research/census-31-source-checkpoint/manifest.json').read_text())['baseline_sha256'],json.loads(Path('docs/research/census-32-source-checkpoint/manifest.json').read_text())['baseline_sha256']]
-          markers=['Inspect road research (dev)','Road research inspector','MetroRoadResearchPanel','Metro competitor investigation inventory',*hashes]
+          markers=[json.loads(Path('src/research/metro-reference-scenario.json').read_text())['scenario_sha256'],'Planned road-model assumptions','Inspect road research (dev)','Road research inspector','MetroRoadResearchPanel','Metro competitor investigation inventory',*hashes]
           for path in Path('dist').rglob('*.js'):
               text=path.read_text()
               assert not any(marker in text for marker in markers),str(path)

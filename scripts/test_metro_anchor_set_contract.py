@@ -11,7 +11,7 @@ class AnchorSetTests(unittest.TestCase):
             principal_city_source=dict(url='https://example.org/synthetic-cities', sha256='1'*64),
             principal_city_ids=['city-a', 'city-b'],
             anchors=[dict(id='a', principal_city_id='city-a'), dict(id='b', principal_city_id='city-b')])
-        self.query = dict(graph_bundle_sha256='2'*64, sample_id='synthetic-sample', metric='length', direction='from_anchor')
+        self.query = dict(graph_bundle_sha256='2'*64, scenario_sha256='a'*64, sample_id='synthetic-sample', metric='length', direction='from_anchor')
 
     def row(self, aid, graph=1, connector=1, status='finite', reason='declared graph disconnected'):
         return dict(schema=SCHEMA, cbsa=self.registry['cbsa'], registry_sha256=registry_digest(self.registry),
@@ -69,7 +69,7 @@ class AnchorSetTests(unittest.TestCase):
 
     def test_mixed_identity_metric_direction_units_and_duplicate_anchor_rejected(self):
         for field, value in [('cbsa','88888'), ('registry_sha256','3'*64), ('graph_bundle_sha256','4'*64),
-                             ('sample_id','other'), ('metric','travel_time'), ('direction','to_anchor'),
+                             ('scenario_sha256','f'*64), ('sample_id','other'), ('metric','travel_time'), ('direction','to_anchor'),
                              ('unit','kilometers'), ('anchor_id','c'), ('schema','approval-ledger')]:
             row = self.row('a'); row[field] = value
             with self.subTest(field=field), self.assertRaises(ValueError): self.run_query([row])

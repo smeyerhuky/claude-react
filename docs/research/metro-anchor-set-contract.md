@@ -15,7 +15,7 @@ complete or appropriate; independent review must establish that separately.
 Population thresholds and eligibility remain attached to the CBSA. This helper
 never tests city populations or removes a CBSA from the competitor domain.
 
-For one sample, graph bundle, requested metric and direction, each required anchor
+For one sample, graph bundle, explicit scenario identity, requested metric and direction, each required anchor
 contributes an explicit status. Finite rows require both graph and connector costs
 in meters or seconds as requested. Neither a missing connector cost nor a missing
 row becomes zero. The minimum uses full costs and preserves exact stored-number
@@ -24,7 +24,8 @@ time are separate queries and may select different anchors. `from_anchor` means
 anchor to sample; `to_anchor` means sample to anchor. The connector cost must be
 for that same direction and metric, including all relevant directed connector
 segments. No units, directions, samples, CBSA IDs, registries or graph bundles can
-be mixed within a query.
+be mixed within a query. The v2 contract also requires one exact scenario SHA-256
+throughout; changing reference time or vehicle assumptions cannot reuse old costs.
 
 | Required-anchor results | Metro research result |
 | --- | --- |
