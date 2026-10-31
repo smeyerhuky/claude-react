@@ -1,0 +1,31 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "38060",
+  "city_name": "Gilbert",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.gilbertaz.gov/departments/economic-development/heritage-district/parking",
+    "http_status": 403,
+    "response_bytes": 485,
+    "response_sha256": "da463b0b52cc7a2b5769f098ee441f9ae6b7b0dd936bcf84e7cac78ac8ab1e6e",
+    "url": "https://www.gilbertaz.gov/departments/economic-development/heritage-district/parking"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No vehicle entry, connector, surveyed datum alignment, grade, maneuver, full connector cost or current independent access certification established.",
+    "Selected publication unavailable through direct HTTP and renderer. An indexed search snippet, if any, is not treated as inspected publication content or proof of parking availability/inaccessibility."
+  ],
+  "observations": [],
+  "principal_city_id": "0427400",
+  "publication_status": "selected_publication_unavailable",
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Direct HTTP attempt hash identifies bytes not retained here; a successful renderer is not an HTTP response capture. HTML, forms, app runtime, error bodies and search snippets omitted.",
+  "retrieval_method": "unavailable",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "",
+  "source_http_status": null,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.gilbertaz.gov/departments/economic-development/heritage-district/parking"
+}

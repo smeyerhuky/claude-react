@@ -1,0 +1,33 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "22380",
+  "city_name": "Flagstaff",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://flagstaff.az.gov/4532/Visit-Us",
+    "http_status": 200,
+    "response_bytes": 118344,
+    "response_sha256": "ded511310d81e6a915b99fef57e08fd429bcd22e56830a7452f638e378a7ddfd",
+    "url": "https://flagstaff.az.gov/4532/Visit-Us"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No vehicle entry, connector, surveyed datum alignment, grade, maneuver, full connector cost or current independent access certification established."
+  ],
+  "observations": [
+    "The municipal court visit page identifies the courthouse at 101 West Cherry Avenue and public parking nearby on West Cherry Avenue and North Beaver Street.",
+    "The page links ParkFlag for more locations. A nearby parking statement does not resolve a precise entry, complete local rules or a graph connection."
+  ],
+  "principal_city_id": "0423620",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Direct HTTP attempt hash identifies bytes not retained here; a successful renderer is not an HTTP response capture. HTML, forms, app runtime, error bodies and search snippets omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "Public parking is available near the courthouse on both West Cherry Avenue and North Beaver Street.",
+  "source_http_status": 200,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://flagstaff.az.gov/4532/Visit-Us"
+}

@@ -1,0 +1,35 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "38060",
+  "city_name": "Scottsdale",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.scottsdaleaz.gov/court/public-parking",
+    "http_status": 403,
+    "response_bytes": 17,
+    "response_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+    "url": "https://www.scottsdaleaz.gov/court/public-parking"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No vehicle entry, connector, surveyed datum alignment, grade, maneuver, full connector cost or current independent access certification established.",
+    "Primary page content inspected through web renderer; its cached crawl may predate retrieval. Raw HTTP attempt failed; no original HTTP status or response hash is asserted for rendered content."
+  ],
+  "observations": [
+    "The court page warns that ongoing construction has changed parking availability. General and accessible parking are described in the Civic Center garage; the front lot is described as limited accessible parking.",
+    "The page names Drinkwater Boulevard and 2nd Street as garage access roads. It discusses parking time limits, but one sentence is internally awkward; no precise time-limit interpretation is adopted.",
+    "The walking routes from garage to court do not establish vehicle entry or exit maneuvers. No exact path or anchor is selected."
+  ],
+  "principal_city_id": "0465000",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Direct HTTP attempt hash identifies bytes not retained here; a successful renderer is not an HTTP response capture. HTML, forms, app runtime, error bodies and search snippets omitted.",
+  "retrieval_method": "web_rendered",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "The Civic Center Parking Garage can be accessed from Drinkwater Blvd and from",
+  "source_http_status": null,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.scottsdaleaz.gov/court/public-parking"
+}

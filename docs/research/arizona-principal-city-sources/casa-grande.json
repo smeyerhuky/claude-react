@@ -1,0 +1,33 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "38060",
+  "city_name": "Casa Grande",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://casagrandeaz.gov/Facilities/Facility/Details/City-Hall-28",
+    "http_status": 200,
+    "response_bytes": 96624,
+    "response_sha256": "1a92b39c99d8ff0b86c1a594b96960458160640815cf0702f841bc36d891b1f0",
+    "url": "https://casagrandeaz.gov/Facilities/Facility/Details/City-Hall-28"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No vehicle entry, connector, surveyed datum alignment, grade, maneuver, full connector cost or current independent access certification established."
+  ],
+  "observations": [
+    "The city facility record identifies City Hall at 510 East Florence Boulevard and lists parking among its features.",
+    "The amenity label does not identify a particular vehicle entry, directions, grade, current opening or route geometry."
+  ],
+  "principal_city_id": "0410530",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Direct HTTP attempt hash identifies bytes not retained here; a successful renderer is not an HTTP response capture. HTML, forms, app runtime, error bodies and search snippets omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "510 East Florence Blvd",
+  "source_http_status": 200,
+  "source_kind": "municipal_facility_location",
+  "url": "https://casagrandeaz.gov/Facilities/Facility/Details/City-Hall-28"
+}

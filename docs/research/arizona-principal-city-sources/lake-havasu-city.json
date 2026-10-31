@@ -1,0 +1,35 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "29420",
+  "city_name": "Lake Havasu City",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.lhcaz.gov/338/London-Bridge-Beach",
+    "http_status": 403,
+    "response_bytes": 17,
+    "response_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+    "url": "https://www.lhcaz.gov/338/London-Bridge-Beach"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No vehicle entry, connector, surveyed datum alignment, grade, maneuver, full connector cost or current independent access certification established.",
+    "Primary page content inspected through web renderer; its cached crawl may predate retrieval. Raw HTTP attempt failed; no original HTTP status or response hash is asserted for rendered content."
+  ],
+  "observations": [
+    "The city identifies London Bridge Beach at 1340 McCulloch Boulevard and describes public parking serving the park and island side of Bridgewater Channel.",
+    "It gives a general 11 p.m. park closing time unless posted otherwise. Separate weekly dog-park maintenance closures are not interpreted as closure of the entire vehicle parking area.",
+    "No precise vehicle entry, local closure evaluation or connection is established."
+  ],
+  "principal_city_id": "0439370",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Direct HTTP attempt hash identifies bytes not retained here; a successful renderer is not an HTTP response capture. HTML, forms, app runtime, error bodies and search snippets omitted.",
+  "retrieval_method": "web_rendered",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "The public parking at London Bridge Beach provides access to the park",
+  "source_http_status": null,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.lhcaz.gov/338/London-Bridge-Beach"
+}

@@ -1,0 +1,31 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "39150",
+  "city_name": "Prescott",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://prescott-az.gov/traffic-transportation-parking/parking/",
+    "http_status": 403,
+    "response_bytes": 17,
+    "response_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+    "url": "https://prescott-az.gov/traffic-transportation-parking/parking/"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No vehicle entry, connector, surveyed datum alignment, grade, maneuver, full connector cost or current independent access certification established.",
+    "Selected publication unavailable through direct HTTP and renderer. An indexed search snippet, if any, is not treated as inspected publication content or proof of parking availability/inaccessibility."
+  ],
+  "observations": [],
+  "principal_city_id": "0457380",
+  "publication_status": "selected_publication_unavailable",
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Direct HTTP attempt hash identifies bytes not retained here; a successful renderer is not an HTTP response capture. HTML, forms, app runtime, error bodies and search snippets omitted.",
+  "retrieval_method": "unavailable",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "",
+  "source_http_status": null,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://prescott-az.gov/traffic-transportation-parking/parking/"
+}

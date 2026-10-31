@@ -1,0 +1,35 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "38060",
+  "city_name": "Phoenix",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://recorder.maricopa.gov/information/Parking-Options.html",
+    "http_status": 403,
+    "response_bytes": 17,
+    "response_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+    "url": "https://recorder.maricopa.gov/information/Parking-Options.html"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No vehicle entry, connector, surveyed datum alignment, grade, maneuver, full connector cost or current independent access certification established.",
+    "Primary page content inspected through web renderer; its cached crawl may predate retrieval. Raw HTTP attempt failed; no original HTTP status or response hash is asserted for rendered content."
+  ],
+  "observations": [
+    "The Maricopa County Recorder identifies free public parking at 501 West Jefferson Street and paid public parking in the City of Phoenix garage at 300 West Jefferson Street, without county validation.",
+    "It describes surrounding meters as enforced daily, including holidays, from 8 a.m. to 10 p.m. The office entrance and accessible walking route are not vehicle entry geometry.",
+    "No specific lot or garage connection is established."
+  ],
+  "principal_city_id": "0455000",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Direct HTTP attempt hash identifies bytes not retained here; a successful renderer is not an HTTP response capture. HTML, forms, app runtime, error bodies and search snippets omitted.",
+  "retrieval_method": "web_rendered",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "where pay public parking is available",
+  "source_http_status": null,
+  "source_kind": "county_parking_guidance",
+  "url": "https://recorder.maricopa.gov/information/Parking-Options.html"
+}
