@@ -1,0 +1,123 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "geographic_coverage_certified": false,
+  "principal_inventory_sha256": "22f509906e005e1c6215c5f857fa0865278f4289753fad887ee05b730f8cd9cd",
+  "records": [
+    {
+      "cbsa": "38060",
+      "city_name": "Casa Grande",
+      "principal_city_id": "0410530",
+      "source_path": "docs/research/arizona-principal-city-sources/casa-grande.json",
+      "source_sha256": "e9d81166b48a814782c5b1c89924be8afcdc9018ac0d789a5a7cbdb0f9132c6d"
+    },
+    {
+      "cbsa": "38060",
+      "city_name": "Chandler",
+      "principal_city_id": "0412000",
+      "source_path": "docs/research/arizona-principal-city-sources/chandler.json",
+      "source_sha256": "5dc38676b9dbdf9b277ecb81b89f250d78b5a1a4348b92b6ac8b0ea849be9b97"
+    },
+    {
+      "cbsa": "43420",
+      "city_name": "Douglas",
+      "principal_city_id": "0420050",
+      "source_path": "docs/research/arizona-principal-city-sources/douglas.json",
+      "source_sha256": "e38b6e3ad1e6b471d5d079b84673de5ae800de88d8f28689a539597ea57c5ceb"
+    },
+    {
+      "cbsa": "22380",
+      "city_name": "Flagstaff",
+      "principal_city_id": "0423620",
+      "source_path": "docs/research/arizona-principal-city-sources/flagstaff.json",
+      "source_sha256": "49aab9a931ee9142489bee6fe3cf70949722c94301333523fe6782b5c2d384c6"
+    },
+    {
+      "cbsa": "38060",
+      "city_name": "Gilbert",
+      "principal_city_id": "0427400",
+      "source_path": "docs/research/arizona-principal-city-sources/gilbert.json",
+      "source_sha256": "7b3be05f4de7150a4339f93cf4a10e9139d601768997956d871f126ebd9460e8"
+    },
+    {
+      "cbsa": "29420",
+      "city_name": "Kingman",
+      "principal_city_id": "0437620",
+      "source_path": "docs/research/arizona-principal-city-sources/kingman.json",
+      "source_sha256": "8be2b5eeee44c9e2d423062f650fc24cc736a0cacf1137771cba981f0a15924b"
+    },
+    {
+      "cbsa": "29420",
+      "city_name": "Lake Havasu City",
+      "principal_city_id": "0439370",
+      "source_path": "docs/research/arizona-principal-city-sources/lake-havasu-city.json",
+      "source_sha256": "e945ff7bdbf86b838ef6905653c3ea16cacac186749ef1ca90c377c45e6df51b"
+    },
+    {
+      "cbsa": "38060",
+      "city_name": "Mesa",
+      "principal_city_id": "0446000",
+      "source_path": "docs/research/arizona-principal-city-sources/mesa.json",
+      "source_sha256": "51a7721df77d0821bc1ac29ca554378b3e721580a50981699d15dfe65183b907"
+    },
+    {
+      "cbsa": "38060",
+      "city_name": "Phoenix",
+      "principal_city_id": "0455000",
+      "source_path": "docs/research/arizona-principal-city-sources/phoenix.json",
+      "source_sha256": "4744532f8bda2d6d25be2b6ad98e92f5f1b1d5ee3684ccae2414e7e48a90aa1c"
+    },
+    {
+      "cbsa": "39150",
+      "city_name": "Prescott",
+      "principal_city_id": "0457380",
+      "source_path": "docs/research/arizona-principal-city-sources/prescott.json",
+      "source_sha256": "251cf28394a38d5032e0ce006a458f43ee56fad03afe6cccea573c6e0556113f"
+    },
+    {
+      "cbsa": "39150",
+      "city_name": "Prescott Valley",
+      "principal_city_id": "0457450",
+      "source_path": "docs/research/arizona-principal-city-sources/prescott-valley.json",
+      "source_sha256": "484c4a30393be07d369a908116a607608877a9a16ec879c0b0161de1c490789f"
+    },
+    {
+      "cbsa": "38060",
+      "city_name": "Scottsdale",
+      "principal_city_id": "0465000",
+      "source_path": "docs/research/arizona-principal-city-sources/scottsdale.json",
+      "source_sha256": "971f5c75aa6031d73d0c8ab68e9d5b894985f98dd45ceb9e9474a65aa0145fac"
+    },
+    {
+      "cbsa": "43420",
+      "city_name": "Sierra Vista",
+      "principal_city_id": "0466820",
+      "source_path": "docs/research/arizona-principal-city-sources/sierra-vista.json",
+      "source_sha256": "abf59bd25bd4009645a7d9313b3d4662f3feea243d6684d509a8af48846073ce"
+    },
+    {
+      "cbsa": "38060",
+      "city_name": "Tempe",
+      "principal_city_id": "0473000",
+      "source_path": "docs/research/arizona-principal-city-sources/centercity-tempe.json",
+      "source_sha256": "149dbcc0c14a003f838f0ff9f14e269cce4a81527924312660bead1c28c1b7ef"
+    },
+    {
+      "cbsa": "46060",
+      "city_name": "Tucson",
+      "principal_city_id": "0477000",
+      "source_path": "docs/research/tucson-parking-publication/visitor-excerpts.json",
+      "source_sha256": "330257da7ca0197ee7de7a27d230575d8b8cb1d6b6bd095eb5965c471211e1f2"
+    },
+    {
+      "cbsa": "49740",
+      "city_name": "Yuma",
+      "principal_city_id": "0485540",
+      "source_path": "docs/research/arizona-principal-city-sources/yuma.json",
+      "source_sha256": "2fbcd574d69c0d9f77eac7f7368accc7f9f0eeef5a88cb1700ad7c073f06b7b7"
+    }
+  ],
+  "release_eligible": false,
+  "schema": "principal-city-source-batch-v1",
+  "state": "AZ"
+}

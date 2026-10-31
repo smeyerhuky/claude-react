@@ -1,0 +1,34 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "38060",
+  "city_name": "Chandler",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.chandleraz.gov/explore/downtown-chandler/parking",
+    "http_status": 200,
+    "response_bytes": 196380,
+    "response_sha256": "cf32466fc0eec87051e67176dd9e9463dd3dddf557655351963bd48a5d877ab4",
+    "url": "https://www.chandleraz.gov/explore/downtown-chandler/parking"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No vehicle entry, connector, surveyed datum alignment, grade, maneuver, full connector cost or current independent access certification established."
+  ],
+  "observations": [
+    "The city lists five downtown garages. Oregon Street, City Hall and Overstreet are described as free at any time, with an 8-foot-2-inch height limit.",
+    "Alexander and Johnathan have free public parking after 5 p.m. and on weekends, with height limits of 7 feet and 7 feet 6 inches respectively.",
+    "The free-parking schedule alone does not establish whether paid or otherwise permitted public access exists outside it. Garage clearance requires a specified vehicle profile; no entry path is selected."
+  ],
+  "principal_city_id": "0412000",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Direct HTTP attempt hash identifies bytes not retained here; a successful renderer is not an HTTP response capture. HTML, forms, app runtime, error bodies and search snippets omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "Free public parking after 5 p.m. and on weekends",
+  "source_http_status": 200,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.chandleraz.gov/explore/downtown-chandler/parking"
+}

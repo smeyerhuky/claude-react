@@ -1,0 +1,33 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-10-31",
+  "cbsa": "39150",
+  "city_name": "Prescott Valley",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-10-31",
+    "final_url": "https://www.prescottvalley-az.gov/",
+    "http_status": 200,
+    "response_bytes": 177478,
+    "response_sha256": "962c1547fad9a9b55f1776629311cc0248666eba6971004685f790665454c533",
+    "url": "https://www.prescottvalley-az.gov/"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "No vehicle entry, connector, surveyed datum alignment, grade, maneuver, full connector cost or current independent access certification established."
+  ],
+  "observations": [
+    "The official town website provides a contact address of 7501 East Skoog Boulevard.",
+    "This is an address lead only, not a parking, entry, opening-hours, grade or ordinary-car permission record."
+  ],
+  "principal_city_id": "0457450",
+  "publication_status": "retained_publication_observation",
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Direct HTTP attempt hash identifies bytes not retained here; a successful renderer is not an HTTP response capture. HTML, forms, app runtime, error bodies and search snippets omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "7501 E Skoog Blvd.",
+  "source_http_status": 200,
+  "source_kind": "municipal_facility_location",
+  "url": "https://www.prescottvalley-az.gov/"
+}
