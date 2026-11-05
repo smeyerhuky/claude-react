@@ -13,6 +13,8 @@ on:
       - 'docs/research/reference-via-node-compilation/**'
       - 'scripts/reference_segment_cost_checkpoint.py'
       - 'docs/research/reference-segment-costs/**'
+      - 'scripts/reference_declared_graph_checkpoint.py'
+      - 'docs/research/reference-declared-graph/**'
       - 'scripts/six_state_checkpoint.py'
       - 'scripts/test_six_state_checkpoint.py'
       - 'scripts/wichita_model_component.py'
