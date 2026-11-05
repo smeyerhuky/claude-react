@@ -1,0 +1,189 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "compilations": {
+    "9680890": {
+      "access_verified": false,
+      "active_pattern": {
+        "access_verified": false,
+        "arc_sequence": [
+          "raw:186582632:4:forward",
+          "raw:134584349:0:forward",
+          "raw:290286621:0:forward"
+        ],
+        "id": "reference-relation-9680890",
+        "kind": "no",
+        "raw_relation_id": 9680890,
+        "raw_restriction_kind": "no_u_turn",
+        "release_eligible": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4"
+      },
+      "all_incident_ways_accounted": false,
+      "anchors_adopted": false,
+      "declared_arc_sequence": [
+        "raw:186582632:4:forward",
+        "raw:134584349:0:forward",
+        "raw:290286621:0:forward"
+      ],
+      "declared_way_chain": [
+        186582632,
+        134584349,
+        290286621
+      ],
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "geographic_timezone_assignment_verified": false,
+      "independent_maneuver_geometry_verified": false,
+      "input_sha256": "ce705e3c52cba99ec3c8ae2f7f374385d06d667e68b74cc4f7f7a2ae0a8cdd48",
+      "join_node_ids": [
+        1479189816,
+        51193003
+      ],
+      "member_projection_sha256": {
+        "134584349": "1e4e1890ae688f6945f706eef752dfd74c0e3c717ad31a9064c338e2e59a6ea0",
+        "186582632": "91e17ad850ec7a9ce405fff7a373e5d2e7aa5f9eb5c80d7ef067ba3181327bc8",
+        "290286621": "3944295bcd8ae7c7536529c23789dafe841aa5043b03167a48940522e7161bc4"
+      },
+      "other_relations_accounted": false,
+      "relation_time_policy": "static-only; conditional/exception/legacy relation rules unsupported",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-static-via-way-segment-compiler-v1",
+      "scope": "One declared endpoint-connected ordered via-way chain with complete member-way/node permissions at the same fixed instant. No physical turn-label, grade/access, all-incident/other-restriction or geographic graph certification.",
+      "selected_key": "restriction",
+      "selected_raw_value": "no_u_turn",
+      "speed_profile_evaluated": false,
+      "status": "compiled_declared_maneuver",
+      "topology_compiled": true,
+      "transition": [
+        {
+          "direction": "forward",
+          "from": 5481546066,
+          "id": "raw:186582632:4:forward",
+          "raw_segment_index": 4,
+          "to": 1479189816,
+          "way": 186582632
+        },
+        {
+          "direction": "forward",
+          "from": 1479189816,
+          "id": "raw:134584349:0:forward",
+          "raw_segment_index": 0,
+          "to": 51193003,
+          "way": 134584349
+        },
+        {
+          "direction": "forward",
+          "from": 51193003,
+          "id": "raw:290286621:0:forward",
+          "raw_segment_index": 0,
+          "to": 51193002,
+          "way": 290286621
+        }
+      ]
+    },
+    "9680891": {
+      "access_verified": false,
+      "active_pattern": {
+        "access_verified": false,
+        "arc_sequence": [
+          "raw:290286621:0:forward",
+          "raw:6172542:0:forward",
+          "raw:134584350:0:forward"
+        ],
+        "id": "reference-relation-9680891",
+        "kind": "no",
+        "raw_relation_id": 9680891,
+        "raw_restriction_kind": "no_u_turn",
+        "release_eligible": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4"
+      },
+      "all_incident_ways_accounted": false,
+      "anchors_adopted": false,
+      "declared_arc_sequence": [
+        "raw:290286621:0:forward",
+        "raw:6172542:0:forward",
+        "raw:134584350:0:forward"
+      ],
+      "declared_way_chain": [
+        290286621,
+        6172542,
+        134584350
+      ],
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "geographic_timezone_assignment_verified": false,
+      "independent_maneuver_geometry_verified": false,
+      "input_sha256": "404ba7bd6c0edbaf0a37a50ef70417f8ab7a30c7555a420f64deced93c78269f",
+      "join_node_ids": [
+        51193002,
+        1479189816
+      ],
+      "member_projection_sha256": {
+        "134584350": "fb5f643461e4cb197d8154107e3fb1feab3e114add0957fd6a1a725e5b851031",
+        "290286621": "3944295bcd8ae7c7536529c23789dafe841aa5043b03167a48940522e7161bc4",
+        "6172542": "b6adaaa6853d7a157eb8d7632b2b764909901e7880c2d836ca9df23ad485cd77"
+      },
+      "other_relations_accounted": false,
+      "relation_time_policy": "static-only; conditional/exception/legacy relation rules unsupported",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-static-via-way-segment-compiler-v1",
+      "scope": "One declared endpoint-connected ordered via-way chain with complete member-way/node permissions at the same fixed instant. No physical turn-label, grade/access, all-incident/other-restriction or geographic graph certification.",
+      "selected_key": "restriction",
+      "selected_raw_value": "no_u_turn",
+      "speed_profile_evaluated": false,
+      "status": "compiled_declared_maneuver",
+      "topology_compiled": true,
+      "transition": [
+        {
+          "direction": "forward",
+          "from": 51193003,
+          "id": "raw:290286621:0:forward",
+          "raw_segment_index": 0,
+          "to": 51193002,
+          "way": 290286621
+        },
+        {
+          "direction": "forward",
+          "from": 51193002,
+          "id": "raw:6172542:0:forward",
+          "raw_segment_index": 0,
+          "to": 1479189816,
+          "way": 6172542
+        },
+        {
+          "direction": "forward",
+          "from": 1479189816,
+          "id": "raw:134584350:0:forward",
+          "raw_segment_index": 0,
+          "to": 7416599567,
+          "way": 134584350
+        }
+      ]
+    }
+  },
+  "complete_geographic_graph_constructed": false,
+  "complete_member_nodes": 15,
+  "complete_member_ways": 5,
+  "connector_costs_included": false,
+  "implementation_sha256": {
+    "fort_collins_via_way_context.py": "2a219ae36510ba202682b70c3a5f5b813f9b780b065e73d7a100873a0b95b095",
+    "reference_via_node_compile.py": "b85e0811d273961e4ec56f8685db9cb2237c046b2cfe8b3c2cf5b63723a8479f",
+    "reference_via_way_checkpoint.py": "bc979390a9f8d9a01661946edeb2f08f9dc4c70ea6d648a26928b5b096339f33",
+    "reference_via_way_compile.py": "c8d21c653dd2c27e4dbfe92a5236323bde868253ea1d6a993a04100e2f0081fc",
+    "road_reference_conditionals.py": "5004e35f9f7810e9ecfe10de04494c8d1b539796d05910a2f488355957147a4e",
+    "road_reference_scenario.py": "001e0ed6649f172a378df4e7ca0d6f7ebcb49f6c5d56d286215074328af40488",
+    "road_reference_segment_permissions.py": "32052a563cf142c487fd921bbe6cb0cf0730c1f38518e7d9c9e11b8040e4fbc3",
+    "road_reference_way_permissions.py": "b40f96e439c531071e980bdbd7dc6e6c0bb08ec7e66a8713068c275572a014c7",
+    "road_turn_aware_probe.py": "6a748ed33b1e12d0c1d60f06927a410621ff14b32f53166e435f7e91ef8a65cb"
+  },
+  "independent_maneuver_geometry_verified": false,
+  "release_eligible": false,
+  "route_cost_emitted": false,
+  "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+  "schema": "reference-static-via-way-checkpoint-v1",
+  "seed_incidence_report_sha256": "f1a4e7a913e3cfc3f3648851d8a05445c9efe2fba7dbc40630b40e8d28e75765",
+  "source_context_sha256": "d3645bf5fd56cb38b40f874ccf7a35e5d5d6addc7950ec18c57ee986c7521e73",
+  "warning": "Two static raw-source via-way declarations only. Full member-node permissions use the fixed scenario, but physical maneuver labels, signs, grade/access, all incident roads/other controls, anchor attachments and exterior closure remain unverified. No weights, route costs, connectors, anchors or public road layer are emitted. Historical checkpoints are unchanged."
+}

@@ -1,0 +1,451 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "attribution": "OSM data copyright OpenStreetMap contributors, ODbL",
+  "connector_costs_included": false,
+  "nodes": [
+    {
+      "id": 51193002,
+      "lonlat": [
+        -105.0771078,
+        40.588898
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:25:04+00:00",
+      "version": 4
+    },
+    {
+      "id": 51193003,
+      "lonlat": [
+        -105.0771021,
+        40.5891118
+      ],
+      "tags": {},
+      "timestamp": "2021-08-21 01:00:46+00:00",
+      "version": 5
+    },
+    {
+      "id": 1479189754,
+      "lonlat": [
+        -105.0769353,
+        40.5870907
+      ],
+      "tags": {},
+      "timestamp": "2015-11-22 15:51:22+00:00",
+      "version": 3
+    },
+    {
+      "id": 1479189816,
+      "lonlat": [
+        -105.0769405,
+        40.5889855
+      ],
+      "tags": {},
+      "timestamp": "2021-09-22 21:25:50+00:00",
+      "version": 4
+    },
+    {
+      "id": 1479189914,
+      "lonlat": [
+        -105.0769408,
+        40.5907762
+      ],
+      "tags": {
+        "source": "Bing"
+      },
+      "timestamp": "2023-10-17 02:07:34+00:00",
+      "version": 4
+    },
+    {
+      "id": 1819705125,
+      "lonlat": [
+        -105.0769433,
+        40.587721
+      ],
+      "tags": {},
+      "timestamp": "2021-09-22 21:25:50+00:00",
+      "version": 2
+    },
+    {
+      "id": 1819705140,
+      "lonlat": [
+        -105.0769314,
+        40.5892822
+      ],
+      "tags": {},
+      "timestamp": "2012-07-10 03:54:07+00:00",
+      "version": 1
+    },
+    {
+      "id": 1829343894,
+      "lonlat": [
+        -105.0769479,
+        40.5871983
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:island": "yes",
+        "crossing:markings": "zebra",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-03-15 22:09:21+00:00",
+      "version": 4
+    },
+    {
+      "id": 3360111656,
+      "lonlat": [
+        -105.0769336,
+        40.5897055
+      ],
+      "tags": {},
+      "timestamp": "2015-02-19 20:20:30+00:00",
+      "version": 1
+    },
+    {
+      "id": 3360111659,
+      "lonlat": [
+        -105.0769343,
+        40.5898466
+      ],
+      "tags": {},
+      "timestamp": "2015-02-19 20:20:30+00:00",
+      "version": 1
+    },
+    {
+      "id": 3707437468,
+      "lonlat": [
+        -105.0769404,
+        40.5887725
+      ],
+      "tags": {
+        "highway": "traffic_signals",
+        "traffic_signals:direction": "forward"
+      },
+      "timestamp": "2021-09-22 21:25:50+00:00",
+      "version": 3
+    },
+    {
+      "id": 3851825570,
+      "lonlat": [
+        -105.0769449,
+        40.5906238
+      ],
+      "tags": {
+        "highway": "traffic_signals",
+        "traffic_signals:direction": "forward"
+      },
+      "timestamp": "2021-08-20 23:39:23+00:00",
+      "version": 2
+    },
+    {
+      "id": 3851825571,
+      "lonlat": [
+        -105.0769449,
+        40.5906584
+      ],
+      "tags": {
+        "highway": "crossing"
+      },
+      "timestamp": "2021-08-20 23:39:23+00:00",
+      "version": 3
+    },
+    {
+      "id": 5481546066,
+      "lonlat": [
+        -105.0769406,
+        40.5888109
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:markings": "yes",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-03-15 22:12:38+00:00",
+      "version": 4
+    },
+    {
+      "id": 7416599567,
+      "lonlat": [
+        -105.07693,
+        40.5892102
+      ],
+      "tags": {
+        "crossing": "uncontrolled",
+        "crossing:island": "yes",
+        "crossing:markings": "yes",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-03-15 22:12:38+00:00",
+      "version": 3
+    }
+  ],
+  "release_eligible": false,
+  "restrictions": [
+    {
+      "id": 9680890,
+      "members": [
+        {
+          "ref": 186582632,
+          "role": "from",
+          "type": "w"
+        },
+        {
+          "ref": 134584349,
+          "role": "via",
+          "type": "w"
+        },
+        {
+          "ref": 290286621,
+          "role": "to",
+          "type": "w"
+        }
+      ],
+      "tags": {
+        "restriction": "no_u_turn",
+        "type": "restriction"
+      },
+      "timestamp": "2019-06-16 02:10:38+00:00",
+      "version": 2
+    },
+    {
+      "id": 9680891,
+      "members": [
+        {
+          "ref": 290286621,
+          "role": "from",
+          "type": "w"
+        },
+        {
+          "ref": 6172542,
+          "role": "via",
+          "type": "w"
+        },
+        {
+          "ref": 134584350,
+          "role": "to",
+          "type": "w"
+        }
+      ],
+      "tags": {
+        "restriction": "no_u_turn",
+        "type": "restriction"
+      },
+      "timestamp": "2019-06-12 04:38:05+00:00",
+      "version": 1
+    }
+  ],
+  "schema": "fort-collins-via-way-member-context-v1",
+  "scope": "Only the five complete member ways and every raw member vertex of two named source relations. No incident-road enumeration, neighborhood/exterior closure, physical turn geometry, grade/access approval, graph weights or route costs.",
+  "source": {
+    "name": "colorado.osm.pbf",
+    "replication_timestamp": "2026-10-27T21:23:59Z",
+    "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+    "size_bytes": 386197077
+  },
+  "ways": [
+    {
+      "id": 6172542,
+      "nodes": [
+        [
+          51193002,
+          -105.0771078,
+          40.588898
+        ],
+        [
+          1479189816,
+          -105.0769405,
+          40.5889855
+        ]
+      ],
+      "tags": {
+        "highway": "secondary",
+        "maxspeed": "25 mph",
+        "name": "Walnut Street",
+        "oneway": "yes",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Larimer, CO",
+        "tiger:name_base": "Walnut",
+        "tiger:name_type": "St",
+        "tiger:reviewed": "no"
+      },
+      "timestamp": "2026-08-24 13:59:35+00:00",
+      "version": 9
+    },
+    {
+      "id": 134584349,
+      "nodes": [
+        [
+          1479189816,
+          -105.0769405,
+          40.5889855
+        ],
+        [
+          51193003,
+          -105.0771021,
+          40.5891118
+        ]
+      ],
+      "tags": {
+        "cycleway:right": "lane",
+        "cycleway:right:buffer": "no",
+        "highway": "secondary",
+        "maxspeed": "25 mph",
+        "name": "LaPorte Avenue",
+        "oneway": "yes",
+        "source:name": "Bing, TIGER 2018"
+      },
+      "timestamp": "2026-08-24 13:59:35+00:00",
+      "version": 8
+    },
+    {
+      "id": 134584350,
+      "nodes": [
+        [
+          1479189816,
+          -105.0769405,
+          40.5889855
+        ],
+        [
+          7416599567,
+          -105.07693,
+          40.5892102
+        ],
+        [
+          1819705140,
+          -105.0769314,
+          40.5892822
+        ],
+        [
+          3360111656,
+          -105.0769336,
+          40.5897055
+        ],
+        [
+          3360111659,
+          -105.0769343,
+          40.5898466
+        ],
+        [
+          3851825570,
+          -105.0769449,
+          40.5906238
+        ],
+        [
+          3851825571,
+          -105.0769449,
+          40.5906584
+        ],
+        [
+          1479189914,
+          -105.0769408,
+          40.5907762
+        ]
+      ],
+      "tags": {
+        "CDOT_route": "287C",
+        "NHS": "yes",
+        "hgv": "designated",
+        "hgv:national_network": "yes",
+        "highway": "trunk",
+        "lanes": "2",
+        "maxspeed": "25 mph",
+        "name": "North College Avenue",
+        "oneway": "yes",
+        "ref": "US 287",
+        "sidewalk:right": "separate",
+        "source:hgv:national_network": "CDOT \"Highway Data Explorer\"",
+        "source:maxspeed": "sign",
+        "surface": "paved"
+      },
+      "timestamp": "2024-01-29 05:17:34+00:00",
+      "version": 15
+    },
+    {
+      "id": 186582632,
+      "nodes": [
+        [
+          1479189754,
+          -105.0769353,
+          40.5870907
+        ],
+        [
+          1829343894,
+          -105.0769479,
+          40.5871983
+        ],
+        [
+          1819705125,
+          -105.0769433,
+          40.587721
+        ],
+        [
+          3707437468,
+          -105.0769404,
+          40.5887725
+        ],
+        [
+          5481546066,
+          -105.0769406,
+          40.5888109
+        ],
+        [
+          1479189816,
+          -105.0769405,
+          40.5889855
+        ]
+      ],
+      "tags": {
+        "CDOT_route": "287C",
+        "NHS": "yes",
+        "cycleway:both": "no",
+        "hgv": "designated",
+        "hgv:national_network": "yes",
+        "highway": "trunk",
+        "lanes": "2",
+        "maxspeed": "25 mph",
+        "name": "North College Avenue",
+        "oneway": "yes",
+        "ref": "US 287",
+        "sidewalk:right": "separate",
+        "source:hgv:national_network": "CDOT \"Highway Data Explorer\"",
+        "source:maxspeed": "sign",
+        "surface": "paved"
+      },
+      "timestamp": "2024-02-10 20:05:35+00:00",
+      "version": 11
+    },
+    {
+      "id": 290286621,
+      "nodes": [
+        [
+          51193003,
+          -105.0771021,
+          40.5891118
+        ],
+        [
+          51193002,
+          -105.0771078,
+          40.588898
+        ]
+      ],
+      "tags": {
+        "CDOT_route": "287C",
+        "NHS": "yes",
+        "hgv": "designated",
+        "hgv:national_network": "yes",
+        "highway": "trunk",
+        "lanes": "2",
+        "maxspeed": "25 mph",
+        "name": "North College Avenue",
+        "oneway": "yes",
+        "ref": "US 287",
+        "sidewalk:right": "separate",
+        "source:hgv:national_network": "CDOT \"Highway Data Explorer\"",
+        "source:maxspeed": "sign",
+        "surface": "paved"
+      },
+      "timestamp": "2024-01-29 05:17:34+00:00",
+      "version": 7
+    }
+  ]
+}
