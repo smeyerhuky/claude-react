@@ -1,0 +1,381 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "boundary_regressions": [
+    {
+      "selection": {
+        "access_verified": false,
+        "anchors_adopted": false,
+        "applies": false,
+        "basis": "no_active_clause_and_no_applicable_static_rule",
+        "declared_members": [
+          {
+            "ref": 696728766,
+            "role": "from",
+            "type": "w"
+          },
+          {
+            "ref": 6543050322,
+            "role": "via",
+            "type": "n"
+          },
+          {
+            "ref": 1475543490,
+            "role": "to",
+            "type": "w"
+          }
+        ],
+        "declared_zone": "America/Denver",
+        "explicit_exceptions": [],
+        "geographic_timezone_assignment_verified": false,
+        "inactive_conditional_only_policy": "no_rule_from_this_relation",
+        "input_sha256": "f19b9474be617166172dd9b723944e566af761b2f4846db6219c5ce2bb00b4a3",
+        "other_relations_accounted": false,
+        "raw_value_traces": [
+          {
+            "key": "restriction",
+            "matching_clause_indices": [],
+            "selected_raw_value": null,
+            "source": "no_active_clause_and_no_explicit_base"
+          }
+        ],
+        "release_eligible": false,
+        "route_cost_emitted": false,
+        "scenario_sha256": "18789c299bcce59a2e28b0022525c4a0c0c2959b876be73ea76f3312df12d037",
+        "schema": "reference-via-node-car-rule-selection-v1",
+        "scope": "One structurally declared via-node relation only. Rule-value/applicability selection is not geometric maneuver compilation, general turn permission, lane/grade/access proof or a route cost.",
+        "selected_key": null,
+        "selected_raw_value": null,
+        "status": "resolved_relation_applicability",
+        "topology_compiled": false,
+        "turn_legality_certified": false
+      },
+      "test_instant_utc": "2026-10-30T00:59:59Z"
+    },
+    {
+      "selection": {
+        "access_verified": false,
+        "anchors_adopted": false,
+        "applies": true,
+        "basis": "selected_raw_rule",
+        "declared_members": [
+          {
+            "ref": 696728766,
+            "role": "from",
+            "type": "w"
+          },
+          {
+            "ref": 6543050322,
+            "role": "via",
+            "type": "n"
+          },
+          {
+            "ref": 1475543490,
+            "role": "to",
+            "type": "w"
+          }
+        ],
+        "declared_zone": "America/Denver",
+        "explicit_exceptions": [],
+        "geographic_timezone_assignment_verified": false,
+        "inactive_conditional_only_policy": "no_rule_from_this_relation",
+        "input_sha256": "f19b9474be617166172dd9b723944e566af761b2f4846db6219c5ce2bb00b4a3",
+        "other_relations_accounted": false,
+        "raw_value_traces": [
+          {
+            "key": "restriction",
+            "matching_clause_indices": [
+              0
+            ],
+            "selected_raw_value": "no_u_turn",
+            "source": "conditional"
+          }
+        ],
+        "release_eligible": false,
+        "route_cost_emitted": false,
+        "scenario_sha256": "8993deacc8c56ab17fcbbe7919c4a62089bbef5cf7953b18c5089e16e09685bd",
+        "schema": "reference-via-node-car-rule-selection-v1",
+        "scope": "One structurally declared via-node relation only. Rule-value/applicability selection is not geometric maneuver compilation, general turn permission, lane/grade/access proof or a route cost.",
+        "selected_key": "restriction",
+        "selected_raw_value": "no_u_turn",
+        "status": "resolved_relation_applicability",
+        "topology_compiled": false,
+        "turn_legality_certified": false
+      },
+      "test_instant_utc": "2026-10-30T01:00:00Z"
+    },
+    {
+      "selection": {
+        "access_verified": false,
+        "anchors_adopted": false,
+        "applies": true,
+        "basis": "selected_raw_rule",
+        "declared_members": [
+          {
+            "ref": 696728766,
+            "role": "from",
+            "type": "w"
+          },
+          {
+            "ref": 6543050322,
+            "role": "via",
+            "type": "n"
+          },
+          {
+            "ref": 1475543490,
+            "role": "to",
+            "type": "w"
+          }
+        ],
+        "declared_zone": "America/Denver",
+        "explicit_exceptions": [],
+        "geographic_timezone_assignment_verified": false,
+        "inactive_conditional_only_policy": "no_rule_from_this_relation",
+        "input_sha256": "f19b9474be617166172dd9b723944e566af761b2f4846db6219c5ce2bb00b4a3",
+        "other_relations_accounted": false,
+        "raw_value_traces": [
+          {
+            "key": "restriction",
+            "matching_clause_indices": [
+              0
+            ],
+            "selected_raw_value": "no_u_turn",
+            "source": "conditional"
+          }
+        ],
+        "release_eligible": false,
+        "route_cost_emitted": false,
+        "scenario_sha256": "39a5a6d42d6110cc07c083afecdd742f284d7d647bf5ef42165a2e09c93ac26c",
+        "schema": "reference-via-node-car-rule-selection-v1",
+        "scope": "One structurally declared via-node relation only. Rule-value/applicability selection is not geometric maneuver compilation, general turn permission, lane/grade/access proof or a route cost.",
+        "selected_key": "restriction",
+        "selected_raw_value": "no_u_turn",
+        "status": "resolved_relation_applicability",
+        "topology_compiled": false,
+        "turn_legality_certified": false
+      },
+      "test_instant_utc": "2026-10-30T05:59:59Z"
+    },
+    {
+      "selection": {
+        "access_verified": false,
+        "anchors_adopted": false,
+        "applies": false,
+        "basis": "no_active_clause_and_no_applicable_static_rule",
+        "declared_members": [
+          {
+            "ref": 696728766,
+            "role": "from",
+            "type": "w"
+          },
+          {
+            "ref": 6543050322,
+            "role": "via",
+            "type": "n"
+          },
+          {
+            "ref": 1475543490,
+            "role": "to",
+            "type": "w"
+          }
+        ],
+        "declared_zone": "America/Denver",
+        "explicit_exceptions": [],
+        "geographic_timezone_assignment_verified": false,
+        "inactive_conditional_only_policy": "no_rule_from_this_relation",
+        "input_sha256": "f19b9474be617166172dd9b723944e566af761b2f4846db6219c5ce2bb00b4a3",
+        "other_relations_accounted": false,
+        "raw_value_traces": [
+          {
+            "key": "restriction",
+            "matching_clause_indices": [],
+            "selected_raw_value": null,
+            "source": "no_active_clause_and_no_explicit_base"
+          }
+        ],
+        "release_eligible": false,
+        "route_cost_emitted": false,
+        "scenario_sha256": "2a76894877c2a59d059d0a88a8f2a608e87b0c072e3275b261f103f67e9f99e8",
+        "schema": "reference-via-node-car-rule-selection-v1",
+        "scope": "One structurally declared via-node relation only. Rule-value/applicability selection is not geometric maneuver compilation, general turn permission, lane/grade/access proof or a route cost.",
+        "selected_key": null,
+        "selected_raw_value": null,
+        "status": "resolved_relation_applicability",
+        "topology_compiled": false,
+        "turn_legality_certified": false
+      },
+      "test_instant_utc": "2026-10-30T06:00:00Z"
+    },
+    {
+      "selection": {
+        "access_verified": false,
+        "anchors_adopted": false,
+        "applies": true,
+        "basis": "selected_raw_rule",
+        "declared_members": [
+          {
+            "ref": 696728766,
+            "role": "from",
+            "type": "w"
+          },
+          {
+            "ref": 6543050322,
+            "role": "via",
+            "type": "n"
+          },
+          {
+            "ref": 1475543490,
+            "role": "to",
+            "type": "w"
+          }
+        ],
+        "declared_zone": "America/Denver",
+        "explicit_exceptions": [],
+        "geographic_timezone_assignment_verified": false,
+        "inactive_conditional_only_policy": "no_rule_from_this_relation",
+        "input_sha256": "f19b9474be617166172dd9b723944e566af761b2f4846db6219c5ce2bb00b4a3",
+        "other_relations_accounted": false,
+        "raw_value_traces": [
+          {
+            "key": "restriction",
+            "matching_clause_indices": [
+              0
+            ],
+            "selected_raw_value": "no_u_turn",
+            "source": "conditional"
+          }
+        ],
+        "release_eligible": false,
+        "route_cost_emitted": false,
+        "scenario_sha256": "dff196826472207140ec6164cb70dfda742f75feaf16ae4435a5c304f9dadd73",
+        "schema": "reference-via-node-car-rule-selection-v1",
+        "scope": "One structurally declared via-node relation only. Rule-value/applicability selection is not geometric maneuver compilation, general turn permission, lane/grade/access proof or a route cost.",
+        "selected_key": "restriction",
+        "selected_raw_value": "no_u_turn",
+        "status": "resolved_relation_applicability",
+        "topology_compiled": false,
+        "turn_legality_certified": false
+      },
+      "test_instant_utc": "2026-11-01T05:59:59Z"
+    },
+    {
+      "selection": {
+        "access_verified": false,
+        "anchors_adopted": false,
+        "applies": false,
+        "basis": "no_active_clause_and_no_applicable_static_rule",
+        "declared_members": [
+          {
+            "ref": 696728766,
+            "role": "from",
+            "type": "w"
+          },
+          {
+            "ref": 6543050322,
+            "role": "via",
+            "type": "n"
+          },
+          {
+            "ref": 1475543490,
+            "role": "to",
+            "type": "w"
+          }
+        ],
+        "declared_zone": "America/Denver",
+        "explicit_exceptions": [],
+        "geographic_timezone_assignment_verified": false,
+        "inactive_conditional_only_policy": "no_rule_from_this_relation",
+        "input_sha256": "f19b9474be617166172dd9b723944e566af761b2f4846db6219c5ce2bb00b4a3",
+        "other_relations_accounted": false,
+        "raw_value_traces": [
+          {
+            "key": "restriction",
+            "matching_clause_indices": [],
+            "selected_raw_value": null,
+            "source": "no_active_clause_and_no_explicit_base"
+          }
+        ],
+        "release_eligible": false,
+        "route_cost_emitted": false,
+        "scenario_sha256": "b760e154af1efff254fc6b8fcf10eb5602cfcd9cfcb8975f680af564db12d712",
+        "schema": "reference-via-node-car-rule-selection-v1",
+        "scope": "One structurally declared via-node relation only. Rule-value/applicability selection is not geometric maneuver compilation, general turn permission, lane/grade/access proof or a route cost.",
+        "selected_key": null,
+        "selected_raw_value": null,
+        "status": "resolved_relation_applicability",
+        "topology_compiled": false,
+        "turn_legality_certified": false
+      },
+      "test_instant_utc": "2026-11-01T06:00:00Z"
+    }
+  ],
+  "implementation_sha256": {
+    "check_reference_turn_rule_oracle.cjs": "a9d21f64eb1e59cc99a8a8dac8e5353bd40033a22d8a407138dc0c8dc96cf936",
+    "reference_turn_rule_checkpoint.py": "e2fe9caa8dc54151d799f7ddc5ca7e09e54fceb4c82fb424290c8c2320e939d5",
+    "road_reference_conditionals.py": "5004e35f9f7810e9ecfe10de04494c8d1b539796d05910a2f488355957147a4e",
+    "road_reference_scenario.py": "001e0ed6649f172a378df4e7ca0d6f7ebcb49f6c5d56d286215074328af40488",
+    "road_reference_turn_rules.py": "93d7b3ff7a57675a55c32201f7ea39b298887aa7efb4de5ea17bbad6f900a437",
+    "road_turn_aware_probe.py": "6a748ed33b1e12d0c1d60f06927a410621ff14b32f53166e435f7e91ef8a65cb"
+  },
+  "independent_clock_oracle_required": {
+    "library": "opening_hours",
+    "version": "3.15.0",
+    "weekly_minutes": 10080
+  },
+  "reference_selection": {
+    "access_verified": false,
+    "anchors_adopted": false,
+    "applies": false,
+    "basis": "no_active_clause_and_no_applicable_static_rule",
+    "declared_members": [
+      {
+        "ref": 696728766,
+        "role": "from",
+        "type": "w"
+      },
+      {
+        "ref": 6543050322,
+        "role": "via",
+        "type": "n"
+      },
+      {
+        "ref": 1475543490,
+        "role": "to",
+        "type": "w"
+      }
+    ],
+    "declared_zone": "America/Denver",
+    "explicit_exceptions": [],
+    "geographic_timezone_assignment_verified": false,
+    "inactive_conditional_only_policy": "no_rule_from_this_relation",
+    "input_sha256": "f19b9474be617166172dd9b723944e566af761b2f4846db6219c5ce2bb00b4a3",
+    "other_relations_accounted": false,
+    "raw_value_traces": [
+      {
+        "key": "restriction",
+        "matching_clause_indices": [],
+        "selected_raw_value": null,
+        "source": "no_active_clause_and_no_explicit_base"
+      }
+    ],
+    "release_eligible": false,
+    "route_cost_emitted": false,
+    "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+    "schema": "reference-via-node-car-rule-selection-v1",
+    "scope": "One structurally declared via-node relation only. Rule-value/applicability selection is not geometric maneuver compilation, general turn permission, lane/grade/access proof or a route cost.",
+    "selected_key": null,
+    "selected_raw_value": null,
+    "status": "resolved_relation_applicability",
+    "topology_compiled": false,
+    "turn_legality_certified": false
+  },
+  "relation_id": 20193102,
+  "release_eligible": false,
+  "route_cost_emitted": false,
+  "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+  "schema": "reference-turn-rule-checkpoint-v1",
+  "source_context_sha256": "813bdcf37be5edf665c7be6830f4fa699c16c4d664b5cc96a893e70ef33b5aa3",
+  "source_parent_report_sha256": "946d92aa1d3399fbe33e41eec8260dcbb582ae527541a5e8db258305cb1ebf4e",
+  "topology_compiled": false,
+  "warning": "One raw via-node relation applicability selection, not general turn permission or geometric routing. Boundary-regression scenarios are tests, not adopted map scenarios. An inactive relation does not establish absence of other restrictions. Original costs and Fort Collins access findings remain unchanged."
+}
