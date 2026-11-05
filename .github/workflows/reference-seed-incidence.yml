@@ -1,0 +1,56 @@
+name: Exact-source seed incident-way enumeration
+on:
+  pull_request:
+    paths:
+      - 'scripts/reference_seed_incidence*.py'
+      - 'scripts/test_reference_seed_incidence.py'
+      - 'scripts/reference_declared_graph_checkpoint.py'
+      - 'scripts/fetch_research_source.py'
+      - 'scripts/research_source_cache.py'
+      - 'scripts/research-source-snapshots/co-nm-az-20261027.json'
+      - 'docs/research/reference-seed-incidence/**'
+      - 'docs/research/reference-declared-graph/report.json'
+      - 'docs/research/fort-collins-entry-context/raw-osm-context.json'
+      - '.github/workflows/reference-seed-incidence.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-source-membership:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'tzdata==2026.5' 'osmium==4.3.2' 'networkx==3.7'
+      - run: python -m unittest discover -s scripts -p test_reference_seed_incidence.py -v
+      - run: python scripts/reference_seed_incidence_checkpoint.py
+      - run: python scripts/las_vegas_ui_checkpoint.py --check-frozen
+      - id: source_cache
+        name: Derive the existing hash-bound original-source cache identity
+        run: |
+          python - <<'PY'
+          import json, os, sys
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          from research_source_cache import cache_key, MANIFEST
+          with Path(os.environ['GITHUB_OUTPUT']).open('a') as handle:
+              handle.write('key=' + cache_key(json.loads(MANIFEST.read_text())) + '\n')
+          PY
+      - uses: actions/cache/restore@v4
+        with:
+          path: local-data/*.osm.pbf
+          key: ${{ steps.source_cache.outputs.key }}
+      - name: Recover and verify the exact original Colorado source
+        run: python scripts/fetch_research_source.py --source colorado.osm.pbf --output local-data/colorado.osm.pbf
+      - name: Enumerate all source ways at every seed, then complete nodes and touching restriction namespace
+        run: |
+          python scripts/reference_seed_incidence.py --osm local-data/colorado.osm.pbf --output /tmp/source-incidence.json
+          cmp /tmp/source-incidence.json docs/research/reference-seed-incidence/source-incidence.json
+      - uses: actions/upload-artifact@v6
+        with:
+          name: reference-seed-incidence
+          path: docs/research/reference-seed-incidence/
+          if-no-files-found: error
