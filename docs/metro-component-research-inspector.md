@@ -29,7 +29,7 @@ python scripts/build_denver_waypoint_explorer.py --output src/research/denver-wa
 python scripts/build_metro_competitor_explorer.py --output src/research/metro-competitor-inventory.html
 ```
 
-CI regenerates and compares all three files, strictly lints the new panel and rejects
+CI regenerates and compares every embedded file, strictly lints the panel and rejects
 new lint diagnostics in the existing component. The old component currently has
 six unused-variable errors and two hook-dependency warnings; this change adds
 none and does not claim a clean global lint run. CI also builds production with
@@ -87,3 +87,31 @@ membership counts do not silently switch to the separate 31-source experiment.
 The new generated view binds the separate checkpoint and exact Wichita candidate
 before displaying its model-negative note. Browser checks compare all 2,232
 visible values/no-data entries over every direction/metric/probe combination.
+
+The inspector now retains eight separate views: the 26-, 31-, 32- and 33-source
+Census experiments, Denver start sensitivity, the 26-source competitor inventory,
+the 698-membership principal-city source inventory and the declared road-model
+kernel. The frozen Las Vegas view still contains exactly 2,508 costs: 2,356 finite
+and 152 modeled NoData. No later scenario or kernel result rewrites those values.
+
+Select **Declared road-model kernel — two ways, unverified access** to inspect
+the composed permission/weight/timed-turn regression. Switch distance/time,
+forward/reverse raw-node queries and the adopted Wednesday-noon instant versus
+a separate Thursday-evening test. The offline diagram shows only the two supplied
+raw ways and selected path. Eight displayed results bind the exact graph and
+scenario hashes. A missing path means no path in this supplied network, not
+real-world inaccessibility. Adding the unresolved Tenney Court bollard context
+rejects the whole bundle. No surrounding-road completeness, physical/legal
+access, geographic regions, adopted anchors or approved connectors are claimed.
+
+```sh
+python scripts/build_reference_kernel_explorer.py --output src/research/metro-reference-kernel.html
+```
+
+Generating this view requires the backend's pinned `tzdata==2026.5`,
+`osmium==4.3.2` and `networkx==3.7`; simply running the committed UI requires
+only the app's usual Node dependencies. CI checks all eight kernel cases,
+displayed segment weights and identities, keyboard selection, mobile layout and
+zero external requests, then exercises the view inside the sandbox and confirms
+the parent map state/canvas remains identical. Production excludes the new view
+even with the development opt-in flag set.

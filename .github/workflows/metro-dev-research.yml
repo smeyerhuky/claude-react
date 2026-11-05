@@ -14,6 +14,19 @@ on:
       - 'scripts/principal_city_source_work.py'
       - 'scripts/test_principal_city_source_work.py'
       - 'scripts/build_principal_city_source_explorer.py'
+      - 'scripts/build_reference_kernel_explorer.py'
+      - 'scripts/check_reference_kernel_explorer.cjs'
+      - 'scripts/reference_declared_graph_checkpoint.py'
+      - 'scripts/reference_segment_cost_checkpoint.py'
+      - 'scripts/reference_via_node*.py'
+      - 'scripts/road_reference*.py'
+      - 'scripts/road_maneuver_probe.py'
+      - 'scripts/road_turn_aware_probe.py'
+      - 'docs/research/reference-declared-graph/**'
+      - 'docs/research/reference-segment-costs/**'
+      - 'docs/research/reference-via-node-compilation/**'
+      - 'docs/research/reference-turn-rules/**'
+      - 'docs/research/fort-collins-entry-context/**'
       - 'scripts/check_principal_city_source_explorer.cjs'
       - 'scripts/*principal_city_source_screen.py'
       - 'scripts/municipal_source_screen.py'
@@ -82,7 +95,7 @@ jobs:
       - run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - run: corepack enable
       - run: yarn install --frozen-lockfile --prefer-offline
-      - run: python -m pip install 'tzdata==2026.5' 'openpyxl==3.1.5'
+      - run: python -m pip install 'tzdata==2026.5' 'openpyxl==3.1.5' 'osmium==4.3.2' 'networkx==3.7'
       - name: Verify generated research views and lint changes
         env:
           RESEARCH_BASE_COMMIT: ${{ github.event.pull_request.base.sha || github.sha }}
@@ -91,6 +104,8 @@ jobs:
           python -m unittest discover -s scripts -p test_principal_city_source_work.py -v
           python scripts/build_principal_city_source_explorer.py --output /tmp/principal-sources.html
           cmp /tmp/principal-sources.html src/research/metro-principal-sources.html
+          python scripts/build_reference_kernel_explorer.py --output /tmp/reference-kernel.html
+          cmp /tmp/reference-kernel.html src/research/metro-reference-kernel.html
           python scripts/road_reference_scenario.py --output /tmp/reference-scenario.json
           cmp /tmp/reference-scenario.json src/research/metro-reference-scenario.json
           python scripts/las_vegas_ui_checkpoint.py --check-frozen
@@ -120,7 +135,7 @@ jobs:
           import json
           from pathlib import Path
           hashes=[json.loads(Path('docs/research/census-33-source-checkpoint/manifest.json').read_text())['baseline_sha256'],json.loads(Path('docs/research/denver-waypoint-hypothesis/manifest.json').read_text())['report_sha256'],json.loads(Path('docs/research/census-26-source-checkpoint/manifest.json').read_text())['baseline_sha256'],json.loads(Path('docs/research/census-31-source-checkpoint/manifest.json').read_text())['baseline_sha256'],json.loads(Path('docs/research/census-32-source-checkpoint/manifest.json').read_text())['baseline_sha256']]
-          markers=[json.loads(Path('src/research/metro-reference-scenario.json').read_text())['scenario_sha256'],'Principal-city source work inventory','principal-city-source-work-v1','Planned road-model assumptions','Inspect road research (dev)','Road research inspector','MetroRoadResearchPanel','Metro competitor investigation inventory',*hashes]
+          markers=[json.loads(Path('src/research/metro-reference-scenario.json').read_text())['scenario_sha256'],'Declared road-model kernel','reference-declared-graph-checkpoint-v1','Principal-city source work inventory','principal-city-source-work-v1','Planned road-model assumptions','Inspect road research (dev)','Road research inspector','MetroRoadResearchPanel','Metro competitor investigation inventory',*hashes]
           for path in Path('dist').rglob('*.js'):
               text=path.read_text()
               assert not any(marker in text for marker in markers),str(path)
@@ -129,10 +144,14 @@ jobs:
         run: npm install --prefix "$RUNNER_TEMP/metro-inspector-driver" --no-audit --no-fund playwright@1.56.1
       - name: Check every principal-city state and source-work status without network requests
         run: NODE_PATH="$RUNNER_TEMP/metro-inspector-driver/node_modules" node scripts/check_principal_city_source_explorer.cjs src/research/metro-principal-sources.html
+      - name: Check all declared-kernel metrics, clocks and directions offline
+        run: NODE_PATH="$RUNNER_TEMP/metro-inspector-driver/node_modules" node scripts/check_reference_kernel_explorer.cjs src/research/metro-reference-kernel.html
       - name: Retain the public standalone source-work explorer and frozen report
         run: |
           mkdir -p inspector-artifact
           cp src/research/metro-principal-sources.html inspector-artifact/principal-city-source-work.html
+          cp src/research/metro-reference-kernel.html inspector-artifact/reference-kernel.html
+          cp docs/research/reference-declared-graph/report.json inspector-artifact/reference-kernel-report.json
           cp docs/research/principal-city-source-work/report.json inspector-artifact/principal-city-source-work-report.json
       - name: Check all 2232 displayed six-state costs offline
         run: NODE_PATH="$RUNNER_TEMP/metro-inspector-driver/node_modules" node scripts/check_six_state_probe_explorer.cjs src/research/metro-six-state-probes.html
