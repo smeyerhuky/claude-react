@@ -1,0 +1,73 @@
+{
+  "id": "f6380ef587ac4e54aaf988b15d8d1746",
+  "owner": "ftc_geoevent",
+  "ownerId": "93b4eacdc07fb52489e9fa2819cc94fb",
+  "orgId": "dLpFH5mwVvxSN4OE",
+  "created": 1491428299000,
+  "modified": 1782400518000,
+  "guid": null,
+  "name": "Street_Centerlines",
+  "title": "Street_Centerlines",
+  "type": "Feature Service",
+  "typeKeywords": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Hosted Service"
+  ],
+  "description": "Street centerlines with address ranges",
+  "tags": [
+    "fort collins",
+    "centerline",
+    "street",
+    "data",
+    "transportation",
+    "gis"
+  ],
+  "snippet": "Street Centerlines",
+  "thumbnail": "thumbnail/thumbnail.png",
+  "documentation": null,
+  "extent": [
+    [
+      -105.1761918898728,
+      40.46437741134586
+    ],
+    [
+      -104.94263112244364,
+      40.659338068274884
+    ]
+  ],
+  "categories": [],
+  "spatialReference": "102653",
+  "accessInformation": "City of Fort Collins GIS",
+  "classification": null,
+  "licenseInfo": "<span style='font-family: Verdana, Helvetica, sans-serif; font-size: 12px; line-height: 18px; background-color: rgb(255, 255, 255);'>CITY OF FORT COLLINS<\/span><div style='margin: 0px; padding: 0px; font-family: Verdana, Helvetica, sans-serif; font-size: 12px; line-height: 18px; background-color: rgb(255, 255, 255);'>GEOGRAPHIC INFORMATION SYSTEM MAP AND COMPUTER PRODUCTS<\/div><div style='margin: 0px; padding: 0px; font-family: Verdana, Helvetica, sans-serif; font-size: 12px; line-height: 18px; background-color: rgb(255, 255, 255);'>These map products and all underlying data were developed for use by the City of Fort Collins for its internal purposes only, and were not designed or intended for general use by members of the public. The City makes no representation or warranty as to its accuracy, timeliness, or completeness, and in particular, its accuracy in labeling or displaying dimensions, contours, property boundaries, or placement or location of any map features thereon. THE CITY OF FORT COLLINS MAKES NO WARRANTY OF MERCHANTABILITY OR WARRANTY FOR FITNESS OF USE FOR A PARTICULAR PURPOSE, EXPRESSED OR IMPLIED, WITH RESPECT TO THESE MAP PRODUCTS OR THE UNDERLYING DATA. Any users of these map products, map applications, or data, accepts same AS IS, WITH ALL FAULTS, and assumes all responsibility for the use thereof, and further covenants and agrees to hold the City harmless from and against all damage, loss, or liability arising from any use of this map product, in consideration of the City's having made this information available.Independent verification of all data contained herein should be obtained by any user of these map products, or the underlying data. The City disclaims, and shall not be held liable for, any and all damage, loss, or liability, whether direct, indirect, or consequential, which arises or may arise from these map products or the use thereof by any person or entity.<\/div>",
+  "culture": "en-us",
+  "properties": null,
+  "advancedSettings": null,
+  "url": "https://services1.arcgis.com/dLpFH5mwVvxSN4OE/arcgis/rest/services/Street_Centerlines/FeatureServer",
+  "proxyFilter": null,
+  "access": "public",
+  "size": 21594112,
+  "subInfo": 0,
+  "appCategories": [],
+  "industries": [],
+  "languages": [],
+  "largeThumbnail": null,
+  "banner": null,
+  "screenshots": [],
+  "listed": false,
+  "commentsEnabled": true,
+  "numComments": 0,
+  "numRatings": 0,
+  "avgRating": 0,
+  "numViews": 188751,
+  "scoreCompleteness": 75,
+  "groupDesignations": null,
+  "apiToken1ExpirationDate": -1,
+  "apiToken2ExpirationDate": -1,
+  "lastViewed": 1793469600000
+}

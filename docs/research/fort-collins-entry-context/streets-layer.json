@@ -1,0 +1,1131 @@
+{
+  "currentVersion" : 12, 
+  "id" : 0, 
+  "name" : "Street Centerlines", 
+  "type" : "Feature Layer", 
+  "serviceItemId" : "f6380ef587ac4e54aaf988b15d8d1746", 
+  "cacheMaxAge" : 30, 
+  "displayField" : "STRNAME", 
+  "description" : "", 
+  "copyrightText" : "", 
+  "defaultVisibility" : true, 
+  "editingInfo" : {
+    "lastEditDate" : 1792998240346, 
+    "schemaLastEditDate" : 1792998240346, 
+    "dataLastEditDate" : 1792998240346
+  }, 
+  "relationships" : [], 
+  "isDataVersioned" : false, 
+  "hasContingentValuesDefinition" : false, 
+  "supportsAppend" : true, 
+  "supportsCalculate" : true, 
+  "supportsASyncCalculate" : true, 
+  "supportsTruncate" : true, 
+  "supportsAttachmentsByUploadId" : true, 
+  "supportsAttachmentsResizing" : true, 
+  "supportsRollbackOnFailureParameter" : true, 
+  "supportsStatistics" : true, 
+  "supportsExceedsLimitStatistics" : true, 
+  "supportsAdvancedQueries" : true, 
+  "supportsValidateSql" : true, 
+  "supportsCoordinatesQuantization" : true, 
+  "supportsLayerOverrides" : true, 
+  "supportsTilesAndBasicQueriesMode" : true, 
+  "supportsFieldDescriptionProperty" : true, 
+  "supportsQuantizationEditMode" : true, 
+  "supportsColumnStoreIndex" : true, 
+  "supportsApplyEditsWithGlobalIds" : false, 
+  "supportsMultiScaleGeometry" : true, 
+  "supportsReturningQueryGeometry" : true, 
+  "enableNullGeometry" : false, 
+  "hasGeometryProperties" : true, 
+  "geometryProperties" : 
+  {
+    "shapeLengthFieldName" : "Shape__Length", 
+    "units" : "esriFeet"
+  }, 
+  "advancedQueryCapabilities" : {
+    "supportsPagination" : true, 
+    "supportsPaginationOnAggregatedQueries" : true, 
+    "supportsQueryRelatedPagination" : true, 
+    "supportsQueryWithDistance" : true, 
+    "supportsOutDistance" : true, 
+    "supportsReturningQueryExtent" : true, 
+    "supportsStatistics" : true, 
+    "supportsOrderBy" : true, 
+    "supportsDistinct" : true, 
+    "supportsQueryWithResultType" : true, 
+    "supportsSqlExpression" : true, 
+    "supportsTimeRelation" : true, 
+    "supportsAdvancedQueryRelated" : true, 
+    "supportsCountDistinct" : true, 
+    "supportsPercentileStatistics" : true, 
+    "supportsApproxPercentileStatistics" : true, 
+    "supportsSpatialAggregationStatistics" : true, 
+    "supportsTrueCurve" : true, 
+    "supportedSpatialAggregationStatistics" : [
+      "EnvelopeAggregate", 
+      "CentroidAggregate", 
+      "ConvexHullAggregate"
+    ], 
+    "supportsLod" : true, 
+    "supportsQueryWithLodSR" : false, 
+    "supportedLodTypes" : [
+      "geohash"
+    ], 
+    "supportsReturningGeometryCentroid" : false, 
+    "supportsReturningGeometryEnvelope" : true, 
+    "supportsReturningGeometryProperties" : true, 
+    "supportsQueryWithDatumTransformation" : true, 
+    "supportsCurrentUserQueries" : true, 
+    "supportsHavingClause" : true, 
+    "supportsOutFieldSQLExpression" : true, 
+    "supportsMaxRecordCountFactor" : true, 
+    "supportsTopFeaturesQuery" : true, 
+    "supportsDisjointSpatialRel" : true, 
+    "supportsQueryWithCacheHint" : true, 
+    "supportedOperationsWithCacheHint" : [
+      "query", 
+      "queryTopFilter", 
+      "queryAnalytics", 
+      "queryAttachments", 
+      "queryRelated", 
+      "queryBins", 
+      "queryPivot"
+    ], 
+    "supportsQueryAnalytic" : true, 
+    "supportsQueryPivot" : true, 
+    "supportsQueryBins" : true, 
+    "supportsDefaultSR" : true, 
+    "supportsTranslations" : false, 
+    "supportsAggIds" : true, 
+    "supportsQueryWithCollation" : true, 
+    "supportsISODOW" : true, 
+    "supportsISOWeek" : true, 
+    "supportsFullTextSearch" : true, 
+    "fullTextSearchCapabilities" : {
+      "supportsAccentSensitivity" : true, 
+      "supportsStopWords" : true, 
+      "supportsSearchOperator" : true, 
+      "supportsOperator" : true
+    }, 
+    "fullTextSearchableFields" : [
+      "STRNAME"
+    ]
+  }, 
+  "advancedQueryAnalyticCapabilities" : {
+    "supportsLinearRegression" : true, 
+    "supportsTrendlineRegression" : true, 
+    "supportsAsync" : true, 
+    "supportsPercentileAnalytic" : true
+  }, 
+  "queryBinsCapabilities" : {
+    "supportsAsync" : true, 
+    "supportsAutoIntervalBin" : true, 
+    "supportsFixedIntervalBin" : true, 
+    "supportsFixedBoundariesBin" : true, 
+    "supportsDateBin" : true, 
+    "supportsClassificationBin" : true, 
+    "supportsStackBy" : true, 
+    "supportsSplitBy" : true, 
+    "supportsFirstDayOfWeek" : true, 
+    "supportsSnapToData" : true, 
+    "supportsReturnFullIntervalBin" : true, 
+    "supportsReturnStackValueRange" : true, 
+    "supportsNormalization" : true, 
+    "supportedStatisticTypes" : [
+      "COUNT", 
+      "SUM", 
+      "AVG", 
+      "VAR", 
+      "STDDEV", 
+      "MIN", 
+      "MAX", 
+      "PERCENTILE_CONT", 
+      "PERCENTILE_DISC", 
+      "APPROX_PERCENTILE_CONT", 
+      "APPROX_PERCENTILE_DISC", 
+      "CentroidAggregate", 
+      "EnvelopeAggregate", 
+      "ConvexHullAggregate"
+    ], 
+    "supportedNormalizationTypes" : [
+      "boxCox", 
+      "field", 
+      "inverse", 
+      "log", 
+      "naturalLog", 
+      "percentOfTotal", 
+      "squareRoot"
+    ]
+  }, 
+  "supportedOperationsWithCollation" : "query,addField,updateField", 
+  "advancedEditingCapabilities" : {
+    "supportedSqlFormatsInCalculate" : [
+      "standard"
+    ], 
+    "supportsAsyncApplyEdits" : true, 
+    "supportsReturnEditResults" : true, 
+    "supportsApplyEditsbyUploadID" : true, 
+    "supportedApplyEditsUploadIDFormats" : "JSON,PBF", 
+    "supportsTranslation" : false, 
+    "supportsMaxTranslations" : 10
+  }, 
+  "infoInEstimates" : [
+    "extent", 
+    "count"
+  ], 
+  "useStandardizedQueries" : true, 
+  "geometryType" : "esriGeometryPolyline", 
+  "minScale" : 0, 
+  "maxScale" : 0, 
+  "extent" : {
+    "xmin" : 3090988.4987500012, 
+    "ymin" : 1412572.0337499976, 
+    "xmax" : 3154533.4037500024, 
+    "ymax" : 1480025.2900000066, 
+    "spatialReference" : {
+      "wkid" : 102653, 
+      "latestWkid" : 2231
+    }
+  }, 
+  "spatialReference" : {
+    "wkid" : 102653, 
+    "latestWkid" : 2231
+  }, 
+  "drawingInfo":{"renderer":{"type":"uniqueValue","field1":"STREETTYPE","field2":null,"field3":null,"defaultSymbol":null,"defaultLabel":null,"uniqueValueInfos":[{"symbol":{"type":"esriSLS","style":"esriSLSSolid","color":[52,52,52,255],"width":2},"value":"INTERSTATE","label":"INTERSTATE","description":""},{"symbol":{"type":"esriSLS","style":"esriSLSSolid","color":[104,104,104,255],"width":1.25},"value":"ARTERIAL","label":"ARTERIAL; HIGHWAY","description":""},{"symbol":{"type":"esriSLS","style":"esriSLSSolid","color":[104,104,104,255],"width":1.25},"value":"ARTERIAL MAJOR","label":"ARTERIAL; HIGHWAY","description":""},{"symbol":{"type":"esriSLS","style":"esriSLSSolid","color":[104,104,104,255],"width":1.25},"value":"HIGHWAY","label":"ARTERIAL; HIGHWAY","description":""},{"symbol":{"type":"esriSLS","style":"esriSLSSolid","color":[104,104,104,255],"width":1.25},"value":"HIGHWAY DIVIDED","label":"ARTERIAL; HIGHWAY","description":""},{"symbol":{"type":"esriSLS","style":"esriSLSSolid","color":[130,130,130,255],"width":1},"value":"COLLECTOR","label":"COLLECTOR","description":""},{"symbol":{"type":"esriSLS","style":"esriSLSSolid","color":[178,178,178,255],"width":0.5},"value":"LOCAL","label":"LOCAL; RAMP; ROUNDABOUT","description":""},{"symbol":{"type":"esriSLS","style":"esriSLSSolid","color":[178,178,178,255],"width":0.5},"value":"RAMP","label":"LOCAL; RAMP; ROUNDABOUT","description":""},{"symbol":{"type":"esriSLS","style":"esriSLSSolid","color":[178,178,178,255],"width":0.5},"value":"ROUNDABOUT","label":"LOCAL; RAMP; ROUNDABOUT","description":""},{"symbol":{"type":"esriSLS","style":"esriSLSDash","color":[178,178,178,255],"width":0.5},"value":"ALLEY","label":"ALLEY","description":""}],"fieldDelimiter":","},"transparency":0,"labelingInfo":null}, 
+  "allowGeometryUpdates" : true, 
+  "trueCurveSupportMode" : "OGC", 
+  "supportedCurveTypes" : [
+    "esriGeometryCircularArc"
+  ], 
+  "supportedTrueCurvePbfFeatureEncodings" : [
+    "esriCompressedShapeBuffer", 
+    "esriDefault"
+  ], 
+  "allowTrueCurvesUpdates" : true, 
+  "onlyAllowTrueCurveUpdatesByTrueCurveClients" : false, 
+  "hasAttachments" : false, 
+  "htmlPopupType" : "esriServerHTMLPopupTypeAsHTMLText", 
+  "hasM" : false, 
+  "hasZ" : false, 
+  "objectIdField" : "OBJECTID", 
+  "uniqueIdField" : 
+  {
+    "name" : "OBJECTID", 
+    "isSystemMaintained" : true
+  }, 
+  "globalIdField" : "", 
+  "typeIdField" : "STREETTYPE", 
+  "collation" : {
+    "locale" : "neutral", 
+    "caseSensitive" : false, 
+    "accentSensitive" : true
+  }, 
+  "fields" : [
+    {
+      "name" : "OBJECTID", 
+      "type" : "esriFieldTypeOID", 
+      "alias" : "OBJECTID", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : false, 
+      "editable" : false, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "CENTLNID", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "CENTLNID", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "MSTRID", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "MSTRID", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "STRNAME", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "FULLNAME", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 40, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "LEFTADD1", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "LEFTADD1", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "range", 
+        "name" : "DMNADDRESS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "range" : [
+          0, 
+          99999
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "LEFTADD2", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "LEFTADD2", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "range", 
+        "name" : "DMNADDRESS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "range" : [
+          0, 
+          99999
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "RGTADD1", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "RGTADD1", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "range", 
+        "name" : "DMNADDRESS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "range" : [
+          0, 
+          99999
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "RGTADD2", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "RGTADD2", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : 
+      {
+        "type" : "range", 
+        "name" : "DMNADDRESS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "range" : [
+          0, 
+          99999
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "REVDATE", 
+      "type" : "esriFieldTypeDate", 
+      "alias" : "REVDATE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 8, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null, 
+      "precision" : 1
+    }, 
+    {
+      "name" : "TOFROMIMPEDANCE", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "TOFROMIMPEDANCE", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FROMTOIMPEDANCE", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "FROMTOIMPEDANCE", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ST_HWY", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "ST_HWY", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "US_HWY", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "US_HWY", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "I_HWY", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "I_HWY", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "CFCC", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "CFCC", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 5, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "LENGTH", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "SHAPE.LEN", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : false, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FDPRE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "FDPRE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "PRE_TYPE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "PRE_TYPE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FENAME", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "FENAME", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FNAME", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "FNAME", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FTYPE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "FTYPE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FDSUF", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "FDSUF", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "PRIVSTRT", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "PRIVSTRT", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ONEWAY", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "ONEWAY", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "STATUS", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "STATUS", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "STREETTYPE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "STREETTYPE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "MBASENMID", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "MBASENMID", 
+      "sqlType" : "sqlTypeOther", 
+      "nullable" : true, 
+      "editable" : true, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Shape__Length", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "Shape__Length", 
+      "sqlType" : "sqlTypeDouble", 
+      "nullable" : true, 
+      "editable" : false, 
+      "domain" : null, 
+      "defaultValue" : null
+    }
+  ], 
+  "indexes" : [
+    {
+      "name" : "PK__STREET_C__F4B70D85F92A86CE", 
+      "fields" : "OBJECTID", 
+      "isAscending" : true, 
+      "isUnique" : true, 
+      "description" : "", 
+      "indexType" : "Attribute"
+    }, 
+    {
+      "name" : "STREET_CENTERLINES_STREET_CENTERLINES2_Shape_sidx", 
+      "fields" : "SHAPE", 
+      "isAscending" : true, 
+      "isUnique" : false, 
+      "description" : "", 
+      "indexType" : "Spatial"
+    }, 
+    {
+      "name" : "Shape__Length_Index", 
+      "fields" : "Shape__Length", 
+      "isAscending" : true, 
+      "isUnique" : false, 
+      "description" : "", 
+      "indexType" : "Attribute"
+    }, 
+    {
+      "name" : "STRNAME_Index", 
+      "fields" : "STRNAME", 
+      "isAscending" : true, 
+      "isUnique" : false, 
+      "description" : "STRNAME_Index", 
+      "indexType" : "Attribute"
+    }, 
+    {
+      "name" : "exb_STRNAME", 
+      "fields" : "STRNAME", 
+      "isAscending" : true, 
+      "isUnique" : false, 
+      "description" : "", 
+      "indexType" : "Attribute"
+    }, 
+    {
+      "name" : "exb_STRNAME_total", 
+      "fields" : "STRNAME", 
+      "description" : "", 
+      "locale" : "neutral", 
+      "indexType" : "FullText"
+    }
+  ], 
+  "dateFieldsTimeReference" : {
+    "timeZone" : "UTC", 
+    "timeZoneIANA" : "Etc/UTC", 
+    "respectsDaylightSaving" : false
+  }, 
+  "preferredTimeReference" : null, 
+  "types" : [
+    {
+      "id" : "INTERSTATE", 
+      "name" : "INTERSTATE", 
+      "domains" : 
+      {
+        "LEFTADD1" : {"type" : "inherited"}, 
+        "LEFTADD2" : {"type" : "inherited"}, 
+        "RGTADD1" : {"type" : "inherited"}, 
+        "RGTADD2" : {"type" : "inherited"}
+      }, 
+      "templates" : [
+        {
+          "name" : "INTERSTATE", 
+          "description" : "", 
+          "drawingTool" : "esriFeatureEditToolLine", 
+          "prototype" : {
+            "attributes" : {
+              "STREETTYPE" : "INTERSTATE", 
+              "MBASENMID" : null, 
+              "CENTLNID" : null, 
+              "MSTRID" : null, 
+              "STRNAME" : null, 
+              "LEFTADD1" : null, 
+              "LEFTADD2" : null, 
+              "RGTADD1" : null, 
+              "RGTADD2" : null, 
+              "REVDATE" : null, 
+              "TOFROMIMPEDANCE" : null, 
+              "FROMTOIMPEDANCE" : null, 
+              "ST_HWY" : null, 
+              "US_HWY" : null, 
+              "I_HWY" : null, 
+              "CFCC" : "A41", 
+              "LENGTH" : 0, 
+              "FDPRE" : null, 
+              "PRE_TYPE" : null, 
+              "FENAME" : null, 
+              "FNAME" : null, 
+              "FTYPE" : null, 
+              "FDSUF" : null, 
+              "PRIVSTRT" : null, 
+              "ONEWAY" : null, 
+              "STATUS" : null
+            }
+          }
+        }
+      ]
+    }, 
+    {
+      "id" : "ARTERIAL", 
+      "name" : "ARTERIAL", 
+      "domains" : 
+      {
+        "LEFTADD1" : {"type" : "inherited"}, 
+        "LEFTADD2" : {"type" : "inherited"}, 
+        "RGTADD1" : {"type" : "inherited"}, 
+        "RGTADD2" : {"type" : "inherited"}
+      }, 
+      "templates" : [
+        {
+          "name" : "ARTERIAL", 
+          "description" : "", 
+          "drawingTool" : "esriFeatureEditToolLine", 
+          "prototype" : {
+            "attributes" : {
+              "STREETTYPE" : "ARTERIAL", 
+              "MBASENMID" : null, 
+              "CENTLNID" : null, 
+              "MSTRID" : null, 
+              "STRNAME" : null, 
+              "LEFTADD1" : null, 
+              "LEFTADD2" : null, 
+              "RGTADD1" : null, 
+              "RGTADD2" : null, 
+              "REVDATE" : null, 
+              "TOFROMIMPEDANCE" : null, 
+              "FROMTOIMPEDANCE" : null, 
+              "ST_HWY" : null, 
+              "US_HWY" : null, 
+              "I_HWY" : null, 
+              "CFCC" : "A41", 
+              "LENGTH" : 0, 
+              "FDPRE" : null, 
+              "PRE_TYPE" : null, 
+              "FENAME" : null, 
+              "FNAME" : null, 
+              "FTYPE" : null, 
+              "FDSUF" : null, 
+              "PRIVSTRT" : null, 
+              "ONEWAY" : null, 
+              "STATUS" : null
+            }
+          }
+        }
+      ]
+    }, 
+    {
+      "id" : "ARTERIAL MAJOR", 
+      "name" : "ARTERIAL MAJOR", 
+      "domains" : 
+      {
+        "LEFTADD1" : {"type" : "inherited"}, 
+        "LEFTADD2" : {"type" : "inherited"}, 
+        "RGTADD1" : {"type" : "inherited"}, 
+        "RGTADD2" : {"type" : "inherited"}
+      }, 
+      "templates" : [
+        {
+          "name" : "ARTERIAL MAJOR", 
+          "description" : "", 
+          "drawingTool" : "esriFeatureEditToolLine", 
+          "prototype" : {
+            "attributes" : {
+              "STREETTYPE" : "ARTERIAL MAJOR", 
+              "MBASENMID" : null, 
+              "CENTLNID" : null, 
+              "MSTRID" : null, 
+              "STRNAME" : null, 
+              "LEFTADD1" : null, 
+              "LEFTADD2" : null, 
+              "RGTADD1" : null, 
+              "RGTADD2" : null, 
+              "REVDATE" : null, 
+              "TOFROMIMPEDANCE" : null, 
+              "FROMTOIMPEDANCE" : null, 
+              "ST_HWY" : null, 
+              "US_HWY" : null, 
+              "I_HWY" : null, 
+              "CFCC" : "A41", 
+              "LENGTH" : 0, 
+              "FDPRE" : null, 
+              "PRE_TYPE" : null, 
+              "FENAME" : null, 
+              "FNAME" : null, 
+              "FTYPE" : null, 
+              "FDSUF" : null, 
+              "PRIVSTRT" : null, 
+              "ONEWAY" : null, 
+              "STATUS" : null
+            }
+          }
+        }
+      ]
+    }, 
+    {
+      "id" : "HIGHWAY", 
+      "name" : "HIGHWAY", 
+      "domains" : 
+      {
+        "LEFTADD1" : {"type" : "inherited"}, 
+        "LEFTADD2" : {"type" : "inherited"}, 
+        "RGTADD1" : {"type" : "inherited"}, 
+        "RGTADD2" : {"type" : "inherited"}
+      }, 
+      "templates" : [
+        {
+          "name" : "HIGHWAY", 
+          "description" : "", 
+          "drawingTool" : "esriFeatureEditToolLine", 
+          "prototype" : {
+            "attributes" : {
+              "STREETTYPE" : "HIGHWAY", 
+              "MBASENMID" : null, 
+              "CENTLNID" : null, 
+              "MSTRID" : null, 
+              "STRNAME" : null, 
+              "LEFTADD1" : null, 
+              "LEFTADD2" : null, 
+              "RGTADD1" : null, 
+              "RGTADD2" : null, 
+              "REVDATE" : null, 
+              "TOFROMIMPEDANCE" : null, 
+              "FROMTOIMPEDANCE" : null, 
+              "ST_HWY" : null, 
+              "US_HWY" : null, 
+              "I_HWY" : null, 
+              "CFCC" : "A41", 
+              "LENGTH" : 0, 
+              "FDPRE" : null, 
+              "PRE_TYPE" : null, 
+              "FENAME" : null, 
+              "FNAME" : null, 
+              "FTYPE" : null, 
+              "FDSUF" : null, 
+              "PRIVSTRT" : null, 
+              "ONEWAY" : null, 
+              "STATUS" : null
+            }
+          }
+        }
+      ]
+    }, 
+    {
+      "id" : "HIGHWAY DIVIDED", 
+      "name" : "HIGHWAY DIVIDED", 
+      "domains" : 
+      {
+        "LEFTADD1" : {"type" : "inherited"}, 
+        "LEFTADD2" : {"type" : "inherited"}, 
+        "RGTADD1" : {"type" : "inherited"}, 
+        "RGTADD2" : {"type" : "inherited"}
+      }, 
+      "templates" : [
+        {
+          "name" : "HIGHWAY DIVIDED", 
+          "description" : "", 
+          "drawingTool" : "esriFeatureEditToolLine", 
+          "prototype" : {
+            "attributes" : {
+              "STREETTYPE" : "HIGHWAY DIVIDED", 
+              "MBASENMID" : null, 
+              "CENTLNID" : null, 
+              "MSTRID" : null, 
+              "STRNAME" : null, 
+              "LEFTADD1" : null, 
+              "LEFTADD2" : null, 
+              "RGTADD1" : null, 
+              "RGTADD2" : null, 
+              "REVDATE" : null, 
+              "TOFROMIMPEDANCE" : null, 
+              "FROMTOIMPEDANCE" : null, 
+              "ST_HWY" : null, 
+              "US_HWY" : null, 
+              "I_HWY" : null, 
+              "CFCC" : "A41", 
+              "LENGTH" : 0, 
+              "FDPRE" : null, 
+              "PRE_TYPE" : null, 
+              "FENAME" : null, 
+              "FNAME" : null, 
+              "FTYPE" : null, 
+              "FDSUF" : null, 
+              "PRIVSTRT" : null, 
+              "ONEWAY" : null, 
+              "STATUS" : null
+            }
+          }
+        }
+      ]
+    }, 
+    {
+      "id" : "COLLECTOR", 
+      "name" : "COLLECTOR", 
+      "domains" : 
+      {
+        "LEFTADD1" : {"type" : "inherited"}, 
+        "LEFTADD2" : {"type" : "inherited"}, 
+        "RGTADD1" : {"type" : "inherited"}, 
+        "RGTADD2" : {"type" : "inherited"}
+      }, 
+      "templates" : [
+        {
+          "name" : "COLLECTOR", 
+          "description" : "", 
+          "drawingTool" : "esriFeatureEditToolLine", 
+          "prototype" : {
+            "attributes" : {
+              "STREETTYPE" : "COLLECTOR", 
+              "MBASENMID" : null, 
+              "CENTLNID" : null, 
+              "MSTRID" : null, 
+              "STRNAME" : null, 
+              "LEFTADD1" : null, 
+              "LEFTADD2" : null, 
+              "RGTADD1" : null, 
+              "RGTADD2" : null, 
+              "REVDATE" : null, 
+              "TOFROMIMPEDANCE" : null, 
+              "FROMTOIMPEDANCE" : null, 
+              "ST_HWY" : null, 
+              "US_HWY" : null, 
+              "I_HWY" : null, 
+              "CFCC" : "A41", 
+              "LENGTH" : 0, 
+              "FDPRE" : null, 
+              "PRE_TYPE" : null, 
+              "FENAME" : null, 
+              "FNAME" : null, 
+              "FTYPE" : null, 
+              "FDSUF" : null, 
+              "PRIVSTRT" : null, 
+              "ONEWAY" : null, 
+              "STATUS" : null
+            }
+          }
+        }
+      ]
+    }, 
+    {
+      "id" : "LOCAL", 
+      "name" : "LOCAL", 
+      "domains" : 
+      {
+        "LEFTADD1" : {"type" : "inherited"}, 
+        "LEFTADD2" : {"type" : "inherited"}, 
+        "RGTADD1" : {"type" : "inherited"}, 
+        "RGTADD2" : {"type" : "inherited"}
+      }, 
+      "templates" : [
+        {
+          "name" : "LOCAL", 
+          "description" : "", 
+          "drawingTool" : "esriFeatureEditToolLine", 
+          "prototype" : {
+            "attributes" : {
+              "STREETTYPE" : "LOCAL", 
+              "MBASENMID" : null, 
+              "CENTLNID" : null, 
+              "MSTRID" : null, 
+              "STRNAME" : null, 
+              "LEFTADD1" : null, 
+              "LEFTADD2" : null, 
+              "RGTADD1" : null, 
+              "RGTADD2" : null, 
+              "REVDATE" : null, 
+              "TOFROMIMPEDANCE" : null, 
+              "FROMTOIMPEDANCE" : null, 
+              "ST_HWY" : null, 
+              "US_HWY" : null, 
+              "I_HWY" : null, 
+              "CFCC" : "A41", 
+              "LENGTH" : 0, 
+              "FDPRE" : null, 
+              "PRE_TYPE" : null, 
+              "FENAME" : null, 
+              "FNAME" : null, 
+              "FTYPE" : null, 
+              "FDSUF" : null, 
+              "PRIVSTRT" : null, 
+              "ONEWAY" : null, 
+              "STATUS" : null
+            }
+          }
+        }
+      ]
+    }, 
+    {
+      "id" : "RAMP", 
+      "name" : "RAMP", 
+      "domains" : 
+      {
+        "LEFTADD1" : {"type" : "inherited"}, 
+        "LEFTADD2" : {"type" : "inherited"}, 
+        "RGTADD1" : {"type" : "inherited"}, 
+        "RGTADD2" : {"type" : "inherited"}
+      }, 
+      "templates" : [
+        {
+          "name" : "RAMP", 
+          "description" : "", 
+          "drawingTool" : "esriFeatureEditToolLine", 
+          "prototype" : {
+            "attributes" : {
+              "STREETTYPE" : "RAMP", 
+              "MBASENMID" : null, 
+              "CENTLNID" : null, 
+              "MSTRID" : null, 
+              "STRNAME" : null, 
+              "LEFTADD1" : null, 
+              "LEFTADD2" : null, 
+              "RGTADD1" : null, 
+              "RGTADD2" : null, 
+              "REVDATE" : null, 
+              "TOFROMIMPEDANCE" : null, 
+              "FROMTOIMPEDANCE" : null, 
+              "ST_HWY" : null, 
+              "US_HWY" : null, 
+              "I_HWY" : null, 
+              "CFCC" : "A41", 
+              "LENGTH" : 0, 
+              "FDPRE" : null, 
+              "PRE_TYPE" : null, 
+              "FENAME" : null, 
+              "FNAME" : null, 
+              "FTYPE" : null, 
+              "FDSUF" : null, 
+              "PRIVSTRT" : null, 
+              "ONEWAY" : null, 
+              "STATUS" : null
+            }
+          }
+        }
+      ]
+    }, 
+    {
+      "id" : "ROUNDABOUT", 
+      "name" : "ROUNDABOUT", 
+      "domains" : 
+      {
+        "LEFTADD1" : {"type" : "inherited"}, 
+        "LEFTADD2" : {"type" : "inherited"}, 
+        "RGTADD1" : {"type" : "inherited"}, 
+        "RGTADD2" : {"type" : "inherited"}
+      }, 
+      "templates" : [
+        {
+          "name" : "ROUNDABOUT", 
+          "description" : "", 
+          "drawingTool" : "esriFeatureEditToolLine", 
+          "prototype" : {
+            "attributes" : {
+              "STREETTYPE" : "ROUNDABOUT", 
+              "MBASENMID" : null, 
+              "CENTLNID" : null, 
+              "MSTRID" : null, 
+              "STRNAME" : null, 
+              "LEFTADD1" : null, 
+              "LEFTADD2" : null, 
+              "RGTADD1" : null, 
+              "RGTADD2" : null, 
+              "REVDATE" : null, 
+              "TOFROMIMPEDANCE" : null, 
+              "FROMTOIMPEDANCE" : null, 
+              "ST_HWY" : null, 
+              "US_HWY" : null, 
+              "I_HWY" : null, 
+              "CFCC" : "A41", 
+              "LENGTH" : 0, 
+              "FDPRE" : null, 
+              "PRE_TYPE" : null, 
+              "FENAME" : null, 
+              "FNAME" : null, 
+              "FTYPE" : null, 
+              "FDSUF" : null, 
+              "PRIVSTRT" : null, 
+              "ONEWAY" : null, 
+              "STATUS" : null
+            }
+          }
+        }
+      ]
+    }, 
+    {
+      "id" : "ALLEY", 
+      "name" : "ALLEY", 
+      "domains" : 
+      {
+        "LEFTADD1" : {"type" : "inherited"}, 
+        "LEFTADD2" : {"type" : "inherited"}, 
+        "RGTADD1" : {"type" : "inherited"}, 
+        "RGTADD2" : {"type" : "inherited"}
+      }, 
+      "templates" : [
+        {
+          "name" : "ALLEY", 
+          "description" : "", 
+          "drawingTool" : "esriFeatureEditToolLine", 
+          "prototype" : {
+            "attributes" : {
+              "STREETTYPE" : "ALLEY", 
+              "MBASENMID" : null, 
+              "CENTLNID" : null, 
+              "MSTRID" : null, 
+              "STRNAME" : null, 
+              "LEFTADD1" : null, 
+              "LEFTADD2" : null, 
+              "RGTADD1" : null, 
+              "RGTADD2" : null, 
+              "REVDATE" : null, 
+              "TOFROMIMPEDANCE" : null, 
+              "FROMTOIMPEDANCE" : null, 
+              "ST_HWY" : null, 
+              "US_HWY" : null, 
+              "I_HWY" : null, 
+              "CFCC" : "A41", 
+              "LENGTH" : 0, 
+              "FDPRE" : null, 
+              "PRE_TYPE" : null, 
+              "FENAME" : null, 
+              "FNAME" : null, 
+              "FTYPE" : null, 
+              "FDSUF" : null, 
+              "PRIVSTRT" : null, 
+              "ONEWAY" : null, 
+              "STATUS" : null
+            }
+          }
+        }
+      ]
+    }
+  ], 
+  "templates" : [], 
+  "supportedQueryFormats" : "JSON, geoJSON, PBF", 
+  "supportedAppendFormats" : "sqlite,geoPackage,shapefile,filegdb,featureCollection,geojson,csv,excel,jsonl,featureService,pbf", 
+  "supportedAppendSourceFilterFormats" : "sqlite,geoPackage,shapefile,filegdb,featureService", 
+  "supportedExportFormats" : "csv,shapefile,sqlite,geoPackage,filegdb,featureCollection,geojson,kml,excel,parquet", 
+  "supportedConvertFileFormats" : "JSON,PBF,Parquet", 
+  "supportedConvertContentFormats" : "LayerEditCollection,FeatureCollection", 
+  "supportedSpatialRelationships" : [
+    "esriSpatialRelIntersects", 
+    "esriSpatialRelContains", 
+    "esriSpatialRelCrosses", 
+    "esriSpatialRelEnvelopeIntersects", 
+    "esriSpatialRelIndexIntersects", 
+    "esriSpatialRelOverlaps", 
+    "esriSpatialRelTouches", 
+    "esriSpatialRelWithin", 
+    "esriSpatialRelDisjoint", 
+    "esriSpatialRelRelation"
+  ], 
+  "guidFormat" : "", 
+  "supportsContingentValues" : true, 
+  "supportsEditingContingentValues" : true, 
+  "supportedContingentValuesFormats" : "JSON, PBF", 
+  "supportsFieldGroups" : true, 
+  "supportedSyncDataOptions" : 260, 
+  "hasStaticData" : false, 
+  "maxRecordCount" : 2000, 
+  "standardMaxRecordCount" : 2000, 
+  "maxIdsCount" : 1000000, 
+  "standardMaxRecordCountNoGeometry" : 32000, 
+  "tileMaxRecordCount" : 4000, 
+  "maxRecordCountFactor" : 1, 
+  "capabilities" : "Query"
+}

@@ -1,0 +1,26 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture": {
+    "bytes": 105497,
+    "final_url": "https://www.fortcollins.gov/News-Articles/News/2026-Q1/215-N.-Mason-St.-Office-Building-Open-by-Appointment-Only",
+    "retrieved_at_utc": "2026-10-31T19:10:08.265614+00:00",
+    "sha256": "5fdc608a566cb3465a63f04a950de290e360bbefd6f156614ffcf34a7c89cfc6",
+    "status": 200,
+    "url": "https://www.fortcollins.gov/News-Articles/News/2026-Q1/215-N.-Mason-St.-Office-Building-Open-by-Appointment-Only"
+  },
+  "observations": [
+    "The 2026-Q1 city notice describes 215 North Mason office-building access by appointment and identifies the Parking Services office on the west side of Civic Center following its December 2025 move.",
+    "It prints 114 North Mason, Suite 5, while Where to Park prints 144. Those office-contact statements are retained without correcting either or treating an office or courthouse pedestrian door as a car entrance."
+  ],
+  "published_conditions": {
+    "corrected_address_selected": false,
+    "office_or_court_door_is_vehicle_entrance": false,
+    "printed_office_address": "114 N. Mason St., Ste 5."
+  },
+  "release_eligible": false,
+  "retention": "Selected short literal text and factual observations only. Original response hash identifies bytes not retained here; full HTML, runtime/form state, error bodies and environment configuration omitted. Capture is not a field review or revalidation of statements.",
+  "schema": "fort-collins-publication-observation-v1",
+  "selected_quote": "114 N. Mason St., Ste 5.",
+  "source_kind": "municipal_office_notice"
+}

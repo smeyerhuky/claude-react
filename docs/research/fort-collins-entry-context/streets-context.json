@@ -1,0 +1,808 @@
+{
+  "objectIdFieldName" : "OBJECTID", 
+  "uniqueIdField" : 
+  {
+    "name" : "OBJECTID", 
+    "isSystemMaintained" : true
+  }, 
+  "globalIdFieldName" : "", 
+  "geometryProperties" : 
+  {
+    "shapeLengthFieldName" : "Shape__Length", 
+    "units" : "esriFeet"
+  }, 
+  "geometryType" : "esriGeometryPolyline", 
+  "spatialReference" : {
+    "wkid" : 4326, 
+    "latestWkid" : 4326
+  }, 
+  "fields" : [
+    {
+      "name" : "OBJECTID", 
+      "type" : "esriFieldTypeOID", 
+      "alias" : "OBJECTID", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "CENTLNID", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "CENTLNID", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "MSTRID", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "MSTRID", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "STRNAME", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "FULLNAME", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 40, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "LEFTADD1", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "LEFTADD1", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : 
+      {
+        "type" : "range", 
+        "name" : "DMNADDRESS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "range" : [
+          0, 
+          99999
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "LEFTADD2", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "LEFTADD2", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : 
+      {
+        "type" : "range", 
+        "name" : "DMNADDRESS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "range" : [
+          0, 
+          99999
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "RGTADD1", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "RGTADD1", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : 
+      {
+        "type" : "range", 
+        "name" : "DMNADDRESS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "range" : [
+          0, 
+          99999
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "RGTADD2", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "RGTADD2", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : 
+      {
+        "type" : "range", 
+        "name" : "DMNADDRESS", 
+        "mergePolicy" : "esriMPTDefaultValue", 
+        "splitPolicy" : "esriSPTDefaultValue", 
+        "range" : [
+          0, 
+          99999
+        ]
+      }, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "REVDATE", 
+      "type" : "esriFieldTypeDate", 
+      "alias" : "REVDATE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 8, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "TOFROMIMPEDANCE", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "TOFROMIMPEDANCE", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FROMTOIMPEDANCE", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "FROMTOIMPEDANCE", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ST_HWY", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "ST_HWY", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "US_HWY", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "US_HWY", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "I_HWY", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "I_HWY", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "CFCC", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "CFCC", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 5, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "LENGTH", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "SHAPE.LEN", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FDPRE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "FDPRE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "PRE_TYPE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "PRE_TYPE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FENAME", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "FENAME", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FNAME", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "FNAME", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FTYPE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "FTYPE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "FDSUF", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "FDSUF", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "PRIVSTRT", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "PRIVSTRT", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ONEWAY", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "ONEWAY", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "STATUS", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "STATUS", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "STREETTYPE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "STREETTYPE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "MBASENMID", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "MBASENMID", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "Shape__Length", 
+      "type" : "esriFieldTypeDouble", 
+      "alias" : "Shape__Length", 
+      "sqlType" : "sqlTypeDouble", 
+      "domain" : null, 
+      "defaultValue" : null
+    }
+  ], 
+  "features" : [
+    {
+      "attributes" : {
+        "OBJECTID" : 1120, 
+        "CENTLNID" : 6897, 
+        "MSTRID" : 1, 
+        "STRNAME" : " ", 
+        "LEFTADD1" : 0, 
+        "LEFTADD2" : 0, 
+        "RGTADD1" : 0, 
+        "RGTADD2" : 0, 
+        "REVDATE" : 946339200000, 
+        "TOFROMIMPEDANCE" : 102.46255236, 
+        "FROMTOIMPEDANCE" : 102.46255236, 
+        "ST_HWY" : null, 
+        "US_HWY" : null, 
+        "I_HWY" : null, 
+        "CFCC" : "A73", 
+        "LENGTH" : 0, 
+        "FDPRE" : null, 
+        "PRE_TYPE" : null, 
+        "FENAME" : "MAPLE", 
+        "FNAME" : "MAPLE", 
+        "FTYPE" : null, 
+        "FDSUF" : null, 
+        "PRIVSTRT" : "NO", 
+        "ONEWAY" : null, 
+        "STATUS" : "BUILT", 
+        "STREETTYPE" : "ALLEY", 
+        "MBASENMID" : 1278, 
+        "Shape__Length" : 751.3578964284477
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.077789550565, 40.5888889199772], 
+            [-105.077784605638, 40.5896806457783], 
+            [-105.077992034184, 40.5896813985257], 
+            [-105.077975979483, 40.5907938546793]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 1149, 
+        "CENTLNID" : 6920, 
+        "MSTRID" : 1, 
+        "STRNAME" : " ", 
+        "LEFTADD1" : 0, 
+        "LEFTADD2" : 0, 
+        "RGTADD1" : 0, 
+        "RGTADD2" : 0, 
+        "REVDATE" : 946339200000, 
+        "TOFROMIMPEDANCE" : 8.25855721, 
+        "FROMTOIMPEDANCE" : 8.25855721, 
+        "ST_HWY" : null, 
+        "US_HWY" : null, 
+        "I_HWY" : null, 
+        "CFCC" : "A73", 
+        "LENGTH" : 0, 
+        "FDPRE" : null, 
+        "PRE_TYPE" : null, 
+        "FENAME" : "MAPLE", 
+        "FNAME" : "MAPLE", 
+        "FTYPE" : null, 
+        "FDSUF" : null, 
+        "PRIVSTRT" : "NO", 
+        "ONEWAY" : null, 
+        "STATUS" : "BUILT", 
+        "STREETTYPE" : "ALLEY", 
+        "MBASENMID" : 1278, 
+        "Shape__Length" : 60.560000002384186
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.077777296701, 40.5876744416986], 
+            [-105.077995340443, 40.5876752329958]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 1153, 
+        "CENTLNID" : 6921, 
+        "MSTRID" : 1, 
+        "STRNAME" : " ", 
+        "LEFTADD1" : 0, 
+        "LEFTADD2" : 0, 
+        "RGTADD1" : 0, 
+        "RGTADD2" : 0, 
+        "REVDATE" : 946339200000, 
+        "TOFROMIMPEDANCE" : 36.83212873, 
+        "FROMTOIMPEDANCE" : 36.83212873, 
+        "ST_HWY" : null, 
+        "US_HWY" : null, 
+        "I_HWY" : null, 
+        "CFCC" : "A73", 
+        "LENGTH" : 0, 
+        "FDPRE" : null, 
+        "PRE_TYPE" : null, 
+        "FENAME" : "MAPLE", 
+        "FNAME" : "MAPLE", 
+        "FTYPE" : null, 
+        "FDSUF" : null, 
+        "PRIVSTRT" : "NO", 
+        "ONEWAY" : null, 
+        "STATUS" : "BUILT", 
+        "STREETTYPE" : "ALLEY", 
+        "MBASENMID" : 1278, 
+        "Shape__Length" : 270.09000000357628
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.077995340443, 40.5876752329958], 
+            [-105.078893870817, 40.5876784895171], 
+            [-105.07896778823, 40.5876787571052]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 1157, 
+        "CENTLNID" : 6922, 
+        "MSTRID" : 700015926, 
+        "STRNAME" : "TENNEY CT", 
+        "LEFTADD1" : 115, 
+        "LEFTADD2" : 199, 
+        "RGTADD1" : 114, 
+        "RGTADD2" : 198, 
+        "REVDATE" : 1382659200000, 
+        "TOFROMIMPEDANCE" : 60.33410611, 
+        "FROMTOIMPEDANCE" : 60.33410611, 
+        "ST_HWY" : null, 
+        "US_HWY" : null, 
+        "I_HWY" : null, 
+        "CFCC" : "A73", 
+        "LENGTH" : 0, 
+        "FDPRE" : null, 
+        "PRE_TYPE" : null, 
+        "FENAME" : "TENNEY", 
+        "FNAME" : "TENNEY", 
+        "FTYPE" : "CT", 
+        "FDSUF" : null, 
+        "PRIVSTRT" : "NO", 
+        "ONEWAY" : null, 
+        "STATUS" : "BUILT", 
+        "STREETTYPE" : "ALLEY", 
+        "MBASENMID" : 700015925, 
+        "Shape__Length" : 442.43000010526339
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.077995340443, 40.5876752329958], 
+            [-105.077987723338, 40.588889639144]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 1161, 
+        "CENTLNID" : 6923, 
+        "MSTRID" : 1397, 
+        "STRNAME" : "LAPORTE AVE", 
+        "LEFTADD1" : 133, 
+        "LEFTADD2" : 135, 
+        "RGTADD1" : 134, 
+        "RGTADD2" : 136, 
+        "REVDATE" : 1383091200000, 
+        "TOFROMIMPEDANCE" : 0.93822446, 
+        "FROMTOIMPEDANCE" : 0.93822446, 
+        "ST_HWY" : null, 
+        "US_HWY" : null, 
+        "I_HWY" : null, 
+        "CFCC" : "A31", 
+        "LENGTH" : 0, 
+        "FDPRE" : null, 
+        "PRE_TYPE" : null, 
+        "FENAME" : "LAPORTE", 
+        "FNAME" : "LAPORTE", 
+        "FTYPE" : "AVE", 
+        "FDSUF" : null, 
+        "PRIVSTRT" : "NO", 
+        "ONEWAY" : null, 
+        "STATUS" : "BUILT", 
+        "STREETTYPE" : "ARTERIAL", 
+        "MBASENMID" : 1159, 
+        "Shape__Length" : 55.040000006556511
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.077789550565, 40.5888889199772], 
+            [-105.077987723338, 40.588889639144]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 1165, 
+        "CENTLNID" : 6925, 
+        "MSTRID" : 1397, 
+        "STRNAME" : "LAPORTE AVE", 
+        "LEFTADD1" : 201, 
+        "LEFTADD2" : 211, 
+        "RGTADD1" : 200, 
+        "RGTADD2" : 210, 
+        "REVDATE" : 1383091200000, 
+        "TOFROMIMPEDANCE" : 2.90377184, 
+        "FROMTOIMPEDANCE" : 2.90377184, 
+        "ST_HWY" : null, 
+        "US_HWY" : null, 
+        "I_HWY" : null, 
+        "CFCC" : "A31", 
+        "LENGTH" : 0, 
+        "FDPRE" : null, 
+        "PRE_TYPE" : null, 
+        "FENAME" : "LAPORTE", 
+        "FNAME" : "LAPORTE", 
+        "FTYPE" : "AVE", 
+        "FDSUF" : null, 
+        "PRIVSTRT" : "NO", 
+        "ONEWAY" : null, 
+        "STATUS" : "BUILT", 
+        "STREETTYPE" : "ARTERIAL", 
+        "MBASENMID" : 1159, 
+        "Shape__Length" : 170.34687110758884
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.078960260434, 40.588893191025], 
+            [-105.079573547455, 40.588899609092]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 1175, 
+        "CENTLNID" : 6935, 
+        "MSTRID" : 1568, 
+        "STRNAME" : "N MASON ST", 
+        "LEFTADD1" : 101, 
+        "LEFTADD2" : 115, 
+        "RGTADD1" : 100, 
+        "RGTADD2" : 116, 
+        "REVDATE" : 1383091200000, 
+        "TOFROMIMPEDANCE" : 3.94841811, 
+        "FROMTOIMPEDANCE" : 3.94841811, 
+        "ST_HWY" : null, 
+        "US_HWY" : null, 
+        "I_HWY" : null, 
+        "CFCC" : "A04", 
+        "LENGTH" : 0, 
+        "FDPRE" : "N", 
+        "PRE_TYPE" : null, 
+        "FENAME" : "MASON", 
+        "FNAME" : "MASON", 
+        "FTYPE" : "ST", 
+        "FDSUF" : null, 
+        "PRIVSTRT" : "NO", 
+        "ONEWAY" : null, 
+        "STATUS" : "BUILT", 
+        "STREETTYPE" : "ARTERIAL", 
+        "MBASENMID" : 1301, 
+        "Shape__Length" : 231.63000022599454
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.078971711983, 40.5870429659734], 
+            [-105.07896778823, 40.5876787571052]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 1179, 
+        "CENTLNID" : 6936, 
+        "MSTRID" : 1568, 
+        "STRNAME" : "N MASON ST", 
+        "LEFTADD1" : 117, 
+        "LEFTADD2" : 199, 
+        "RGTADD1" : 118, 
+        "RGTADD2" : 198, 
+        "REVDATE" : 1383091200000, 
+        "TOFROMIMPEDANCE" : 7.54193373, 
+        "FROMTOIMPEDANCE" : 7.54193373, 
+        "ST_HWY" : null, 
+        "US_HWY" : null, 
+        "I_HWY" : null, 
+        "CFCC" : "A04", 
+        "LENGTH" : 0, 
+        "FDPRE" : "N", 
+        "PRE_TYPE" : null, 
+        "FENAME" : "MASON", 
+        "FNAME" : "MASON", 
+        "FTYPE" : "ST", 
+        "FDSUF" : null, 
+        "PRIVSTRT" : "NO", 
+        "ONEWAY" : null, 
+        "STATUS" : "BUILT", 
+        "STREETTYPE" : "ARTERIAL", 
+        "MBASENMID" : 1301, 
+        "Shape__Length" : 442.44000011062565
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.07896778823, 40.5876787571052], 
+            [-105.078960260434, 40.588893191025]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 5209, 
+        "CENTLNID" : 6919, 
+        "MSTRID" : 700015926, 
+        "STRNAME" : "TENNEY CT", 
+        "LEFTADD1" : 101, 
+        "LEFTADD2" : 113, 
+        "RGTADD1" : 100, 
+        "RGTADD2" : 112, 
+        "REVDATE" : 1382659200000, 
+        "TOFROMIMPEDANCE" : 31.60524739, 
+        "FROMTOIMPEDANCE" : 31.60524739, 
+        "ST_HWY" : null, 
+        "US_HWY" : null, 
+        "I_HWY" : null, 
+        "CFCC" : "A73", 
+        "LENGTH" : 0, 
+        "FDPRE" : null, 
+        "PRE_TYPE" : null, 
+        "FENAME" : "TENNEY", 
+        "FNAME" : "TENNEY", 
+        "FTYPE" : "CT", 
+        "FDSUF" : null, 
+        "PRIVSTRT" : "NO", 
+        "ONEWAY" : null, 
+        "STATUS" : "BUILT", 
+        "STREETTYPE" : "ALLEY", 
+        "MBASENMID" : 700015925, 
+        "Shape__Length" : 231.76127912682705
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.07778404221, 40.5870383039693], 
+            [-105.077777296701, 40.5876744416986]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 7303, 
+        "CENTLNID" : 6938, 
+        "MSTRID" : 1568, 
+        "STRNAME" : "N MASON ST", 
+        "LEFTADD1" : 201, 
+        "LEFTADD2" : 299, 
+        "RGTADD1" : 200, 
+        "RGTADD2" : 298, 
+        "REVDATE" : 1383091200000, 
+        "TOFROMIMPEDANCE" : 11.82343516, 
+        "FROMTOIMPEDANCE" : 11.82343516, 
+        "ST_HWY" : null, 
+        "US_HWY" : null, 
+        "I_HWY" : null, 
+        "CFCC" : "A04", 
+        "LENGTH" : 0, 
+        "FDPRE" : "N", 
+        "PRE_TYPE" : null, 
+        "FENAME" : "MASON", 
+        "FNAME" : "MASON", 
+        "FTYPE" : "ST", 
+        "FDSUF" : null, 
+        "PRIVSTRT" : "NO", 
+        "ONEWAY" : null, 
+        "STATUS" : "BUILT", 
+        "STREETTYPE" : "ARTERIAL", 
+        "MBASENMID" : 1301, 
+        "Shape__Length" : 693.61000028775027
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.078960260434, 40.588893191025], 
+            [-105.078948474184, 40.5907970495649]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 7733, 
+        "CENTLNID" : 6924, 
+        "MSTRID" : 1397, 
+        "STRNAME" : "LAPORTE AVE", 
+        "LEFTADD1" : 137, 
+        "LEFTADD2" : 199, 
+        "RGTADD1" : 138, 
+        "RGTADD2" : 198, 
+        "REVDATE" : 1383091200000, 
+        "TOFROMIMPEDANCE" : 4.60435702, 
+        "FROMTOIMPEDANCE" : 4.60435702, 
+        "ST_HWY" : null, 
+        "US_HWY" : null, 
+        "I_HWY" : null, 
+        "CFCC" : "A31", 
+        "LENGTH" : 0, 
+        "FDPRE" : null, 
+        "PRE_TYPE" : null, 
+        "FENAME" : "LAPORTE", 
+        "FNAME" : "LAPORTE", 
+        "FTYPE" : "AVE", 
+        "FDSUF" : null, 
+        "PRIVSTRT" : "NO", 
+        "ONEWAY" : null, 
+        "STATUS" : "BUILT", 
+        "STREETTYPE" : "ARTERIAL", 
+        "MBASENMID" : 1159, 
+        "Shape__Length" : 270.11000020261491
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.077987723338, 40.588889639144], 
+            [-105.078873631847, 40.5888928774168], 
+            [-105.078960260434, 40.588893191025]
+          ]
+        ]
+      }
+    }, 
+    {
+      "attributes" : {
+        "OBJECTID" : 9542, 
+        "CENTLNID" : 6914, 
+        "MSTRID" : 1397, 
+        "STRNAME" : "LAPORTE AVE", 
+        "LEFTADD1" : 101, 
+        "LEFTADD2" : 131, 
+        "RGTADD1" : 100, 
+        "RGTADD2" : 132, 
+        "REVDATE" : 1383091200000, 
+        "TOFROMIMPEDANCE" : 3.62198282, 
+        "FROMTOIMPEDANCE" : 3.62198282, 
+        "ST_HWY" : null, 
+        "US_HWY" : null, 
+        "I_HWY" : null, 
+        "CFCC" : "A31", 
+        "LENGTH" : 0, 
+        "FDPRE" : null, 
+        "PRE_TYPE" : null, 
+        "FENAME" : "LAPORTE", 
+        "FNAME" : "LAPORTE", 
+        "FTYPE" : "AVE", 
+        "FDSUF" : null, 
+        "PRIVSTRT" : "NO", 
+        "ONEWAY" : null, 
+        "STATUS" : "BUILT", 
+        "STREETTYPE" : "ARTERIAL", 
+        "MBASENMID" : 1159, 
+        "Shape__Length" : 212.48000000417233
+      }, 
+      "geometry" : 
+      {
+        "paths" : 
+        [
+          [
+            [-105.077024511526, 40.5888861404914], 
+            [-105.077789550565, 40.5888889199772]
+          ]
+        ]
+      }
+    }
+  ]
+}

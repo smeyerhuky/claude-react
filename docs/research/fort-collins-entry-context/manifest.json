@@ -1,0 +1,92 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "cbsa": "22660",
+  "connector_costs_included": false,
+  "files": {
+    "office-notice.json": {
+      "sha256": "26e4d52f74b3d68f58c6942c2e1bee4febfa288aa30149b8a7a9f03a4743ed1d",
+      "size_bytes": 1607
+    },
+    "photo-observation.json": {
+      "sha256": "f4f41cfa3d81f2dcb480571e1f58e9cef237801759ef9a6d539ffa734807097c",
+      "size_bytes": 1511
+    },
+    "publisher.json": {
+      "sha256": "1f90e4ce268d0aa48d8e0314474ac8ac925d3031ecd4cfd4affdd19a3c138f22",
+      "size_bytes": 664
+    },
+    "raw-osm-context.json": {
+      "sha256": "813bdcf37be5edf665c7be6830f4fa699c16c4d664b5cc96a893e70ef33b5aa3",
+      "size_bytes": 86628
+    },
+    "streets-context.json": {
+      "capture": {
+        "bytes": 20901,
+        "http_status": 200,
+        "retrieved_at_utc": "2026-10-31T19:07:30.257667+00:00",
+        "sha256": "93ffa2def4cac1848ac8ef8d9f9a675170ce12d1adc187f04f689af2b52c14ff",
+        "url": "https://services1.arcgis.com/dLpFH5mwVvxSN4OE/arcgis/rest/services/Street_Centerlines/FeatureServer/0/query?f=pjson&where=1%3D1&geometry=-105.0795%2C40.5874%2C-105.0776%2C40.5892&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&outSR=4326&returnGeometry=true&resultRecordCount=1000"
+      },
+      "sha256": "93ffa2def4cac1848ac8ef8d9f9a675170ce12d1adc187f04f689af2b52c14ff",
+      "size_bytes": 20901
+    },
+    "streets-item.json": {
+      "capture": {
+        "bytes": 3648,
+        "final_url": "https://www.arcgis.com/sharing/rest/content/items/f6380ef587ac4e54aaf988b15d8d1746?f=pjson",
+        "http_status": 200,
+        "retrieved_at_utc": "2026-10-31T19:05:35.260081+00:00",
+        "sha256": "e2b32001d00f67d48d3ae4004df653940a2821b8f3c42432d7ef7dbfa107ad40",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/f6380ef587ac4e54aaf988b15d8d1746?f=pjson"
+      },
+      "sha256": "e2b32001d00f67d48d3ae4004df653940a2821b8f3c42432d7ef7dbfa107ad40",
+      "size_bytes": 3648
+    },
+    "streets-layer.json": {
+      "capture": {
+        "bytes": 34644,
+        "final_url": "https://services1.arcgis.com/dLpFH5mwVvxSN4OE/arcgis/rest/services/Street_Centerlines/FeatureServer/0?f=pjson",
+        "http_status": 200,
+        "retrieved_at_utc": "2026-10-31T19:05:35.703313+00:00",
+        "sha256": "67b33460667e027adeeaa521e19676b63fbb0d6c742498c327272894c1ab9cbb",
+        "url": "https://services1.arcgis.com/dLpFH5mwVvxSN4OE/arcgis/rest/services/Street_Centerlines/FeatureServer/0?f=pjson"
+      },
+      "sha256": "67b33460667e027adeeaa521e19676b63fbb0d6c742498c327272894c1ab9cbb",
+      "size_bytes": 34644
+    },
+    "streets-service.json": {
+      "capture": {
+        "bytes": 4379,
+        "final_url": "https://services1.arcgis.com/dLpFH5mwVvxSN4OE/arcgis/rest/services/Street_Centerlines/FeatureServer?f=pjson",
+        "http_status": 200,
+        "retrieved_at_utc": "2026-10-31T19:05:35.515782+00:00",
+        "sha256": "76df794d21528918fdb3d129737d89fc93cea59ba708102b7323c7a4e76ad88d",
+        "url": "https://services1.arcgis.com/dLpFH5mwVvxSN4OE/arcgis/rest/services/Street_Centerlines/FeatureServer?f=pjson"
+      },
+      "sha256": "76df794d21528918fdb3d129737d89fc93cea59ba708102b7323c7a4e76ad88d",
+      "size_bytes": 4379
+    },
+    "taste-directions.json": {
+      "sha256": "52e2dca5bcba315a7aeaa164c36a9c29fb260a858ef3195ff5e115104fa7a91e",
+      "size_bytes": 1643
+    },
+    "where-to-park.json": {
+      "sha256": "174985fd1d829b7befd43b3be2b7e9cfe18321ebf64431d5302a48e213f402a8",
+      "size_bytes": 1736
+    }
+  },
+  "geographic_coverage_certified": false,
+  "municipal_parking_map": {
+    "path": "docs/research/colorado-anchor-source-batch/fort-collins-map.pdf",
+    "sha256": "f222dee1a4ecb58e1dd006fc703d492483f3e76387ef4f78e22e71ef0058bfc0"
+  },
+  "principal_city_id": "0827425",
+  "principal_inventory": {
+    "path": "docs/research/principal-city-inventory/report.json",
+    "sha256": "22f509906e005e1c6215c5f857fa0865278f4289753fad887ee05b730f8cd9cd"
+  },
+  "release_eligible": false,
+  "schema": "fort-collins-entry-context-manifest-v1",
+  "warning": "Candidate-specific Fort Collins context only; does not account for the complete Fort Collins-Loveland anchor set, adopt coordinates, emit connector costs or establish physical/legal/grade/turn access."
+}

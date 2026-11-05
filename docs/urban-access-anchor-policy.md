@@ -87,6 +87,13 @@ nearest-road snap for evidence.
 
 ## Remaining release work
 
+The [Fort Collins Civic Center review](research/fort-collins-entry-context/README.md)
+retains candidate-specific municipal/event context, complete raw vertex controls,
+an undated city-photo observation and a conditional maneuver. Old null direction
+fields, a mapped removable bollard and a named entrance street do not establish
+current full entry access. Its AI packet remains `needs_evidence`; Loveland and
+the complete metro anchor set remain unadopted.
+
 The current approval gate binds one OSM file. Multi-source research needs an
 explicit graph-bundle/anchor-policy binding extension before release; a manifest
 must not be passed off as an OSM file. Audited real-world positive and negative

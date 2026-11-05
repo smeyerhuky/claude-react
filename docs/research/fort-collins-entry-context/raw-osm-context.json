@@ -1,0 +1,4323 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "attribution": "OSM data copyright OpenStreetMap contributors, ODbL",
+  "bounds_lonlat": [
+    -105.0795,
+    40.5874,
+    -105.0776,
+    40.5892
+  ],
+  "connector_costs_included": false,
+  "datum_alignment_verified": false,
+  "garage_footprint_way": 54882910,
+  "nearby_tagged_nodes": [
+    {
+      "id": 535451032,
+      "lonlat": [
+        -105.0786832,
+        40.5882262
+      ],
+      "tags": {
+        "addr:city": "Fort Collins",
+        "addr:housenumber": "144",
+        "addr:postcode": "80524",
+        "addr:state": "CO",
+        "addr:street": "North Mason Street",
+        "addr:unit": "Suite 1",
+        "amenity": "police",
+        "name": "Fort Collins Police - Downtown",
+        "operator": "City of Fort Collins",
+        "website": "https://www.fcgov.com/police/district-one.php"
+      },
+      "timestamp": "2017-12-03 18:23:50+00:00",
+      "version": 5
+    },
+    {
+      "id": 3196544742,
+      "lonlat": [
+        -105.0783984,
+        40.5877523
+      ],
+      "tags": {
+        "access": "customers",
+        "amenity": "bicycle_parking",
+        "bicycle_parking": "shed",
+        "covered": "yes",
+        "fee": "yes"
+      },
+      "timestamp": "2024-11-06 17:48:58+00:00",
+      "version": 2
+    },
+    {
+      "id": 4646155525,
+      "lonlat": [
+        -105.0786335,
+        40.5887007
+      ],
+      "tags": {
+        "addr:city": "Fort Collins",
+        "addr:housenumber": "144",
+        "addr:postcode": "80524",
+        "addr:state": "CO",
+        "addr:street": "North Mason Street",
+        "addr:unit": "8",
+        "disused:amenity": "restaurant",
+        "disused:contact:email": "info@ramenmaster.com",
+        "disused:contact:phone": "+1-970-482-2276",
+        "disused:contact:website": "http://www.ramenmaster.com/",
+        "disused:cuisine": "asian",
+        "disused:name": "Ramen Master",
+        "disused:opening_hours": "Mo-Th 11:00-21:00; Fr-Sa 11:00-21:30"
+      },
+      "timestamp": "2018-08-28 00:39:42+00:00",
+      "version": 2
+    },
+    {
+      "id": 4775725189,
+      "lonlat": [
+        -105.0779145,
+        40.5890038
+      ],
+      "tags": {
+        "natural": "tree"
+      },
+      "timestamp": "2017-04-04 21:00:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 4775725190,
+      "lonlat": [
+        -105.0780823,
+        40.5890133
+      ],
+      "tags": {
+        "natural": "tree"
+      },
+      "timestamp": "2017-04-04 21:00:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 4775725193,
+      "lonlat": [
+        -105.0776728,
+        40.589019
+      ],
+      "tags": {
+        "natural": "tree"
+      },
+      "timestamp": "2017-04-04 21:00:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 4775725194,
+      "lonlat": [
+        -105.077778,
+        40.589019
+      ],
+      "tags": {
+        "natural": "tree"
+      },
+      "timestamp": "2017-04-04 21:00:12+00:00",
+      "version": 1
+    },
+    {
+      "id": 11968207781,
+      "lonlat": [
+        -105.0785998,
+        40.58854
+      ],
+      "tags": {
+        "addr:city": "Fort Collins",
+        "addr:housenumber": "144",
+        "addr:postcode": "80524",
+        "addr:street": "North Mason Street",
+        "addr:unit": "7"
+      },
+      "timestamp": "2024-06-10 04:22:58+00:00",
+      "version": 1
+    },
+    {
+      "id": 11968207842,
+      "lonlat": [
+        -105.0786031,
+        40.5880085
+      ],
+      "tags": {
+        "addr:city": "Fort Collins",
+        "addr:housenumber": "144",
+        "addr:postcode": "80521",
+        "addr:street": "North Mason Street"
+      },
+      "timestamp": "2024-06-10 04:22:58+00:00",
+      "version": 1
+    },
+    {
+      "id": 11968207995,
+      "lonlat": [
+        -105.0778775,
+        40.5874337
+      ],
+      "tags": {
+        "addr:city": "Fort Collins",
+        "addr:housenumber": "126",
+        "addr:postcode": "80524",
+        "addr:street": "West Mountain Avenue",
+        "addr:unit": "A"
+      },
+      "timestamp": "2024-06-10 04:22:58+00:00",
+      "version": 1
+    },
+    {
+      "id": 11968207996,
+      "lonlat": [
+        -105.0781278,
+        40.5874346
+      ],
+      "tags": {
+        "addr:city": "Fort Collins",
+        "addr:housenumber": "140",
+        "addr:postcode": "80524",
+        "addr:street": "West Mountain Avenue"
+      },
+      "timestamp": "2024-06-10 04:22:58+00:00",
+      "version": 1
+    },
+    {
+      "id": 11968207997,
+      "lonlat": [
+        -105.0780198,
+        40.5874342
+      ],
+      "tags": {
+        "addr:city": "Fort Collins",
+        "addr:housenumber": "132",
+        "addr:postcode": "80524",
+        "addr:street": "West Mountain Avenue"
+      },
+      "timestamp": "2024-06-10 04:22:58+00:00",
+      "version": 1
+    },
+    {
+      "id": 11968208003,
+      "lonlat": [
+        -105.0776846,
+        40.5887299
+      ],
+      "tags": {
+        "addr:city": "Fort Collins",
+        "addr:housenumber": "121",
+        "addr:postcode": "80524",
+        "addr:street": "Laporte Avenue",
+        "healthcare": "optometrist",
+        "name": "Edge Optics",
+        "opening_hours": "Mo-Fr 10:00-18:00; Sa 10:00-16:00",
+        "phone": "+1 970-682-2627",
+        "source": "local knowledge",
+        "website": "https://edgeopticseyewear.com",
+        "wheelchair": "yes"
+      },
+      "timestamp": "2025-11-09 15:35:14+00:00",
+      "version": 3
+    },
+    {
+      "id": 11968208005,
+      "lonlat": [
+        -105.0776052,
+        40.5878039
+      ],
+      "tags": {
+        "addr:city": "Fort Collins",
+        "addr:housenumber": "123",
+        "addr:postcode": "80524",
+        "addr:street": "North College Avenue",
+        "addr:unit": "110"
+      },
+      "timestamp": "2024-06-10 04:22:58+00:00",
+      "version": 1
+    },
+    {
+      "id": 11968208053,
+      "lonlat": [
+        -105.0786025,
+        40.5881015
+      ],
+      "tags": {
+        "addr:city": "Fort Collins",
+        "addr:housenumber": "144",
+        "addr:postcode": "80524",
+        "addr:street": "North Mason Street",
+        "addr:unit": "3"
+      },
+      "timestamp": "2024-06-10 04:22:58+00:00",
+      "version": 1
+    },
+    {
+      "id": 11968208175,
+      "lonlat": [
+        -105.0786037,
+        40.5879172
+      ],
+      "tags": {
+        "addr:city": "Fort Collins",
+        "addr:housenumber": "144",
+        "addr:postcode": "80521",
+        "addr:street": "North Mason Street"
+      },
+      "timestamp": "2024-06-10 04:22:58+00:00",
+      "version": 1
+    },
+    {
+      "id": 11968208222,
+      "lonlat": [
+        -105.0786012,
+        40.5883079
+      ],
+      "tags": {
+        "addr:city": "Fort Collins",
+        "addr:housenumber": "144",
+        "addr:postcode": "80524",
+        "addr:street": "North Mason Street",
+        "addr:unit": "6"
+      },
+      "timestamp": "2024-06-10 04:22:58+00:00",
+      "version": 1
+    },
+    {
+      "id": 11982051050,
+      "lonlat": [
+        -105.0793876,
+        40.5888086
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes",
+        "material": "metal"
+      },
+      "timestamp": "2024-06-14 22:41:58+00:00",
+      "version": 1
+    },
+    {
+      "id": 11982051051,
+      "lonlat": [
+        -105.0793638,
+        40.5888053
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes",
+        "material": "metal"
+      },
+      "timestamp": "2024-06-14 22:41:58+00:00",
+      "version": 1
+    },
+    {
+      "id": 11982051052,
+      "lonlat": [
+        -105.0792964,
+        40.5888216
+      ],
+      "tags": {
+        "amenity": "bicycle_parking"
+      },
+      "timestamp": "2024-06-14 22:41:58+00:00",
+      "version": 1
+    },
+    {
+      "id": 11982051053,
+      "lonlat": [
+        -105.0792287,
+        40.5887636
+      ],
+      "tags": {
+        "amenity": "bicycle_parking"
+      },
+      "timestamp": "2024-06-14 22:41:58+00:00",
+      "version": 1
+    },
+    {
+      "id": 11982051054,
+      "lonlat": [
+        -105.0777946,
+        40.5888398
+      ],
+      "tags": {
+        "amenity": "bicycle_parking",
+        "bicycle_parking": "stands"
+      },
+      "timestamp": "2024-06-15 04:09:33+00:00",
+      "version": 2
+    },
+    {
+      "id": 13418856152,
+      "lonlat": [
+        -105.0776447,
+        40.5882487
+      ],
+      "tags": {
+        "addr:city": "Fort Collins",
+        "addr:housenumber": "155",
+        "addr:postcode": "80524",
+        "addr:state": "CO",
+        "addr:street": "North College Avenue",
+        "check_date": "2025-12-30",
+        "contact:email": "info@stirnertactical.com",
+        "contact:instagram": "https://www.instagram.com/stirnertactical/",
+        "contact:twitter": "https://x.com/stirnertactical",
+        "currency:XBT": "yes",
+        "name": "Stirner Tactical Concepts",
+        "office": "tutoring",
+        "opening_hours": "\"By appointment\"",
+        "payment:lightning": "yes",
+        "payment:lightning:operator": "square",
+        "payment:lightning_contactless": "no",
+        "payment:onchain": "no",
+        "phone": "+1-720-477-2496",
+        "website": "https://stirnertactical.com/"
+      },
+      "timestamp": "2025-12-30 20:18:48+00:00",
+      "version": 1
+    }
+  ],
+  "nodes": [
+    {
+      "id": 50914884,
+      "lonlat": [
+        -105.0833908,
+        40.5889648
+      ],
+      "tags": {},
+      "timestamp": "2021-08-20 22:58:21+00:00",
+      "version": 5
+    },
+    {
+      "id": 51052580,
+      "lonlat": [
+        -105.0780072,
+        40.5876759
+      ],
+      "tags": {},
+      "timestamp": "2021-07-14 00:11:32+00:00",
+      "version": 4
+    },
+    {
+      "id": 51052581,
+      "lonlat": [
+        -105.07799,
+        40.5889019
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:25:04+00:00",
+      "version": 4
+    },
+    {
+      "id": 51079913,
+      "lonlat": [
+        -105.0777847,
+        40.5876745
+      ],
+      "tags": {},
+      "timestamp": "2021-07-14 00:11:32+00:00",
+      "version": 4
+    },
+    {
+      "id": 51079914,
+      "lonlat": [
+        -105.0788544,
+        40.5876748
+      ],
+      "tags": {},
+      "timestamp": "2021-07-14 00:11:32+00:00",
+      "version": 5
+    },
+    {
+      "id": 51080039,
+      "lonlat": [
+        -105.079575,
+        40.5889535
+      ],
+      "tags": {},
+      "timestamp": "2021-08-18 05:38:15+00:00",
+      "version": 6
+    },
+    {
+      "id": 51082332,
+      "lonlat": [
+        -105.077774,
+        40.589674
+      ],
+      "tags": {},
+      "timestamp": "2009-12-15 05:24:34+00:00",
+      "version": 2
+    },
+    {
+      "id": 51082333,
+      "lonlat": [
+        -105.0780895,
+        40.5897408
+      ],
+      "tags": {},
+      "timestamp": "2021-09-22 20:29:04+00:00",
+      "version": 5
+    },
+    {
+      "id": 51082334,
+      "lonlat": [
+        -105.0781311,
+        40.5907853
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 05:12:13+00:00",
+      "version": 4
+    },
+    {
+      "id": 51101063,
+      "lonlat": [
+        -105.0806864,
+        40.5889576
+      ],
+      "tags": {
+        "highway": "traffic_signals"
+      },
+      "timestamp": "2021-09-22 21:09:18+00:00",
+      "version": 6
+    },
+    {
+      "id": 51112628,
+      "lonlat": [
+        -105.0911107,
+        40.5890199
+      ],
+      "tags": {
+        "bus": "yes",
+        "name": "LaPorte & Washington",
+        "operator": "Transfort",
+        "public_transport": "stop_position"
+      },
+      "timestamp": "2021-08-20 22:58:21+00:00",
+      "version": 5
+    },
+    {
+      "id": 51161729,
+      "lonlat": [
+        -105.0860701,
+        40.5889766
+      ],
+      "tags": {},
+      "timestamp": "2021-08-20 22:58:21+00:00",
+      "version": 5
+    },
+    {
+      "id": 51193002,
+      "lonlat": [
+        -105.0771078,
+        40.588898
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:25:04+00:00",
+      "version": 4
+    },
+    {
+      "id": 51193003,
+      "lonlat": [
+        -105.0771021,
+        40.5891118
+      ],
+      "tags": {},
+      "timestamp": "2021-08-21 01:00:46+00:00",
+      "version": 5
+    },
+    {
+      "id": 51201548,
+      "lonlat": [
+        -105.0895369,
+        40.5889918
+      ],
+      "tags": {
+        "crossing": "unmarked",
+        "crossing:markings": "no",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-12-13 21:58:11+00:00",
+      "version": 5
+    },
+    {
+      "id": 51203181,
+      "lonlat": [
+        -105.0842845,
+        40.5889663
+      ],
+      "tags": {},
+      "timestamp": "2021-08-20 22:58:21+00:00",
+      "version": 6
+    },
+    {
+      "id": 51236586,
+      "lonlat": [
+        -105.0824923,
+        40.5889615
+      ],
+      "tags": {},
+      "timestamp": "2021-09-22 21:09:18+00:00",
+      "version": 6
+    },
+    {
+      "id": 51236878,
+      "lonlat": [
+        -105.078841,
+        40.588948
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:16:39+00:00",
+      "version": 6
+    },
+    {
+      "id": 690824409,
+      "lonlat": [
+        -105.0786887,
+        40.5888066
+      ],
+      "tags": {},
+      "timestamp": "2021-07-11 10:32:51+00:00",
+      "version": 2
+    },
+    {
+      "id": 690824411,
+      "lonlat": [
+        -105.0787108,
+        40.5877199
+      ],
+      "tags": {},
+      "timestamp": "2021-07-11 10:32:51+00:00",
+      "version": 2
+    },
+    {
+      "id": 690824413,
+      "lonlat": [
+        -105.0780619,
+        40.5877234
+      ],
+      "tags": {},
+      "timestamp": "2021-07-11 10:32:51+00:00",
+      "version": 2
+    },
+    {
+      "id": 690824416,
+      "lonlat": [
+        -105.0780621,
+        40.5888014
+      ],
+      "tags": {},
+      "timestamp": "2021-07-11 10:32:51+00:00",
+      "version": 2
+    },
+    {
+      "id": 1386660393,
+      "lonlat": [
+        -105.0788551,
+        40.5871076
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 05:12:13+00:00",
+      "version": 4
+    },
+    {
+      "id": 1463571980,
+      "lonlat": [
+        -105.0784018,
+        40.5890743
+      ],
+      "tags": {},
+      "timestamp": "2021-08-18 05:38:15+00:00",
+      "version": 4
+    },
+    {
+      "id": 1463571987,
+      "lonlat": [
+        -105.077776,
+        40.5891216
+      ],
+      "tags": {},
+      "timestamp": "2021-08-18 05:38:15+00:00",
+      "version": 3
+    },
+    {
+      "id": 1479490026,
+      "lonlat": [
+        -105.078844,
+        40.5893973
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:16:39+00:00",
+      "version": 4
+    },
+    {
+      "id": 1672799568,
+      "lonlat": [
+        -105.0781746,
+        40.5891157
+      ],
+      "tags": {},
+      "timestamp": "2012-03-12 23:28:41+00:00",
+      "version": 1
+    },
+    {
+      "id": 1672799569,
+      "lonlat": [
+        -105.0781745,
+        40.5896181
+      ],
+      "tags": {},
+      "timestamp": "2021-09-22 20:29:04+00:00",
+      "version": 3
+    },
+    {
+      "id": 1795003051,
+      "lonlat": [
+        -105.0798114,
+        40.5889562
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:island": "no",
+        "crossing:markings": "surface",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2026-07-11 16:29:04+00:00",
+      "version": 6
+    },
+    {
+      "id": 1802377816,
+      "lonlat": [
+        -105.0781229,
+        40.5896755
+      ],
+      "tags": {},
+      "timestamp": "2021-09-22 20:29:04+00:00",
+      "version": 2
+    },
+    {
+      "id": 1802377858,
+      "lonlat": [
+        -105.0780891,
+        40.5902263
+      ],
+      "tags": {},
+      "timestamp": "2012-06-26 04:35:41+00:00",
+      "version": 1
+    },
+    {
+      "id": 1802377864,
+      "lonlat": [
+        -105.0781288,
+        40.590304
+      ],
+      "tags": {},
+      "timestamp": "2012-06-26 04:35:42+00:00",
+      "version": 1
+    },
+    {
+      "id": 1903244272,
+      "lonlat": [
+        -105.0789613,
+        40.5902667
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:16:39+00:00",
+      "version": 2
+    },
+    {
+      "id": 1903244274,
+      "lonlat": [
+        -105.078961,
+        40.5907855
+      ],
+      "tags": {},
+      "timestamp": "2012-09-06 23:26:51+00:00",
+      "version": 1
+    },
+    {
+      "id": 1903244290,
+      "lonlat": [
+        -105.0789609,
+        40.5889484
+      ],
+      "tags": {},
+      "timestamp": "2021-07-13 23:08:52+00:00",
+      "version": 3
+    },
+    {
+      "id": 1903244291,
+      "lonlat": [
+        -105.0789519,
+        40.5900926
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:16:39+00:00",
+      "version": 2
+    },
+    {
+      "id": 1903244293,
+      "lonlat": [
+        -105.0788991,
+        40.5889479
+      ],
+      "tags": {
+        "crossing:barrier": "no",
+        "railway": "level_crossing"
+      },
+      "timestamp": "2024-06-15 14:45:26+00:00",
+      "version": 4
+    },
+    {
+      "id": 1903244294,
+      "lonlat": [
+        -105.0789814,
+        40.5871074
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 05:12:13+00:00",
+      "version": 6
+    },
+    {
+      "id": 1991725810,
+      "lonlat": [
+        -105.0789549,
+        40.5901866
+      ],
+      "tags": {},
+      "timestamp": "2012-11-01 00:31:36+00:00",
+      "version": 1
+    },
+    {
+      "id": 2376302734,
+      "lonlat": [
+        -105.0788551,
+        40.5871743
+      ],
+      "tags": {
+        "crossing": "traffic_signals",
+        "crossing:island": "no",
+        "crossing:markings": "surface",
+        "crossing:signals": "yes",
+        "highway": "crossing",
+        "source": "Bing"
+      },
+      "timestamp": "2025-04-17 23:40:54+00:00",
+      "version": 5
+    },
+    {
+      "id": 2376302737,
+      "lonlat": [
+        -105.078983,
+        40.5871776
+      ],
+      "tags": {
+        "crossing": "traffic_signals",
+        "crossing:island": "no",
+        "crossing:markings": "surface",
+        "crossing:signals": "yes",
+        "highway": "crossing",
+        "source": "Bing"
+      },
+      "timestamp": "2025-04-17 23:40:54+00:00",
+      "version": 6
+    },
+    {
+      "id": 2376302749,
+      "lonlat": [
+        -105.0787579,
+        40.5871711
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 05:12:13+00:00",
+      "version": 3
+    },
+    {
+      "id": 3293789500,
+      "lonlat": [
+        -105.0882291,
+        40.5889828
+      ],
+      "tags": {
+        "name": "LaPorte & Loomis",
+        "operator": "Transfort",
+        "public_transport": "stop_position"
+      },
+      "timestamp": "2021-08-20 22:58:21+00:00",
+      "version": 3
+    },
+    {
+      "id": 3293789501,
+      "lonlat": [
+        -105.0873766,
+        40.5889799
+      ],
+      "tags": {
+        "name": "LaPorte & Loomis",
+        "operator": "Transfort",
+        "public_transport": "stop_position"
+      },
+      "timestamp": "2021-09-22 20:29:04+00:00",
+      "version": 4
+    },
+    {
+      "id": 3293789502,
+      "lonlat": [
+        -105.084735,
+        40.5889693
+      ],
+      "tags": {
+        "name": "LaPorte & Sherwood",
+        "operator": "Transfort",
+        "public_transport": "stop_position"
+      },
+      "timestamp": "2021-08-20 22:58:21+00:00",
+      "version": 4
+    },
+    {
+      "id": 3293789503,
+      "lonlat": [
+        -105.0840795,
+        40.588966
+      ],
+      "tags": {
+        "name": "LaPorte & Sherwood",
+        "operator": "Transfort",
+        "public_transport": "stop_position"
+      },
+      "timestamp": "2021-08-20 22:58:21+00:00",
+      "version": 4
+    },
+    {
+      "id": 3293789504,
+      "lonlat": [
+        -105.0814352,
+        40.5889634
+      ],
+      "tags": {
+        "name": "Laporte & Howes",
+        "operator": "Transfort",
+        "public_transport": "stop_position"
+      },
+      "timestamp": "2020-07-05 00:02:06+00:00",
+      "version": 3
+    },
+    {
+      "id": 3558431616,
+      "lonlat": [
+        -105.0790557,
+        40.5899755
+      ],
+      "tags": {},
+      "timestamp": "2021-07-13 23:26:10+00:00",
+      "version": 2
+    },
+    {
+      "id": 3558431633,
+      "lonlat": [
+        -105.0794857,
+        40.5899976
+      ],
+      "tags": {},
+      "timestamp": "2015-05-30 13:00:46+00:00",
+      "version": 1
+    },
+    {
+      "id": 3558432007,
+      "lonlat": [
+        -105.0790403,
+        40.5906902
+      ],
+      "tags": {},
+      "timestamp": "2021-08-18 05:38:15+00:00",
+      "version": 4
+    },
+    {
+      "id": 3558439054,
+      "lonlat": [
+        -105.07896,
+        40.5906812
+      ],
+      "tags": {},
+      "timestamp": "2021-08-18 05:38:15+00:00",
+      "version": 3
+    },
+    {
+      "id": 3558439062,
+      "lonlat": [
+        -105.0781311,
+        40.5907032
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 05:12:13+00:00",
+      "version": 3
+    },
+    {
+      "id": 3558441869,
+      "lonlat": [
+        -105.0790881,
+        40.5889502
+      ],
+      "tags": {
+        "crossing": "traffic_signals",
+        "crossing:island": "no",
+        "crossing:markings": "yes",
+        "crossing:signals": "yes",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2025-02-08 05:36:02+00:00",
+      "version": 8
+    },
+    {
+      "id": 3558441870,
+      "lonlat": [
+        -105.0790889,
+        40.5890322
+      ],
+      "tags": {},
+      "timestamp": "2021-07-13 23:46:44+00:00",
+      "version": 2
+    },
+    {
+      "id": 3558441874,
+      "lonlat": [
+        -105.0790496,
+        40.5901883
+      ],
+      "tags": {},
+      "timestamp": "2015-05-30 13:12:02+00:00",
+      "version": 1
+    },
+    {
+      "id": 3558441875,
+      "lonlat": [
+        -105.0790479,
+        40.5906457
+      ],
+      "tags": {},
+      "timestamp": "2021-07-13 23:26:10+00:00",
+      "version": 2
+    },
+    {
+      "id": 3707437464,
+      "lonlat": [
+        -105.0789847,
+        40.5872088
+      ],
+      "tags": {
+        "highway": "traffic_signals",
+        "traffic_signals:direction": "forward"
+      },
+      "timestamp": "2021-07-13 23:08:52+00:00",
+      "version": 2
+    },
+    {
+      "id": 3707437469,
+      "lonlat": [
+        -105.0788431,
+        40.5887809
+      ],
+      "tags": {
+        "highway": "traffic_signals",
+        "traffic_signals:direction": "forward"
+      },
+      "timestamp": "2021-08-08 01:16:39+00:00",
+      "version": 3
+    },
+    {
+      "id": 3707437470,
+      "lonlat": [
+        -105.077298,
+        40.5889018
+      ],
+      "tags": {
+        "highway": "traffic_signals",
+        "traffic_signals:direction": "forward"
+      },
+      "timestamp": "2021-08-18 05:38:15+00:00",
+      "version": 3
+    },
+    {
+      "id": 3707437472,
+      "lonlat": [
+        -105.079131,
+        40.5889503
+      ],
+      "tags": {
+        "highway": "traffic_signals",
+        "traffic_signals:direction": "forward"
+      },
+      "timestamp": "2021-08-18 05:38:15+00:00",
+      "version": 4
+    },
+    {
+      "id": 3707437473,
+      "lonlat": [
+        -105.078683,
+        40.589
+      ],
+      "tags": {
+        "highway": "traffic_signals",
+        "traffic_signals:direction": "forward"
+      },
+      "timestamp": "2021-08-18 05:38:15+00:00",
+      "version": 4
+    },
+    {
+      "id": 3707437474,
+      "lonlat": [
+        -105.0789608,
+        40.5891225
+      ],
+      "tags": {
+        "highway": "traffic_signals",
+        "traffic_signals:direction": "forward"
+      },
+      "timestamp": "2021-07-13 23:08:52+00:00",
+      "version": 2
+    },
+    {
+      "id": 6543050320,
+      "lonlat": [
+        -105.0788531,
+        40.5878197
+      ],
+      "tags": {},
+      "timestamp": "2019-06-12 17:48:04+00:00",
+      "version": 1
+    },
+    {
+      "id": 6543050321,
+      "lonlat": [
+        -105.0787113,
+        40.5878182
+      ],
+      "tags": {
+        "amenity": "parking_entrance"
+      },
+      "timestamp": "2021-07-11 10:32:51+00:00",
+      "version": 3
+    },
+    {
+      "id": 6543050322,
+      "lonlat": [
+        -105.0783805,
+        40.5889075
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:25:04+00:00",
+      "version": 2
+    },
+    {
+      "id": 6543050323,
+      "lonlat": [
+        -105.078382,
+        40.5888014
+      ],
+      "tags": {
+        "amenity": "parking_entrance"
+      },
+      "timestamp": "2021-07-11 10:32:51+00:00",
+      "version": 3
+    },
+    {
+      "id": 6543050328,
+      "lonlat": [
+        -105.0781715,
+        40.589084
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:25:04+00:00",
+      "version": 2
+    },
+    {
+      "id": 6543050329,
+      "lonlat": [
+        -105.0782555,
+        40.5890592
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:25:04+00:00",
+      "version": 3
+    },
+    {
+      "id": 6543050330,
+      "lonlat": [
+        -105.078376,
+        40.588965
+      ],
+      "tags": {},
+      "timestamp": "2019-06-12 17:48:04+00:00",
+      "version": 1
+    },
+    {
+      "id": 7058943361,
+      "lonlat": [
+        -105.085199,
+        40.5889698
+      ],
+      "tags": {},
+      "timestamp": "2021-08-20 22:58:21+00:00",
+      "version": 4
+    },
+    {
+      "id": 7180526223,
+      "lonlat": [
+        -105.081679,
+        40.5889615
+      ],
+      "tags": {},
+      "timestamp": "2021-08-20 22:58:21+00:00",
+      "version": 4
+    },
+    {
+      "id": 7287704281,
+      "lonlat": [
+        -105.0794601,
+        40.5881061
+      ],
+      "tags": {},
+      "timestamp": "2020-03-12 08:07:09+00:00",
+      "version": 1
+    },
+    {
+      "id": 7287704282,
+      "lonlat": [
+        -105.0789681,
+        40.588106
+      ],
+      "tags": {},
+      "timestamp": "2021-07-13 23:08:52+00:00",
+      "version": 2
+    },
+    {
+      "id": 7416599512,
+      "lonlat": [
+        -105.0772357,
+        40.5888222
+      ],
+      "tags": {},
+      "timestamp": "2021-08-21 01:00:46+00:00",
+      "version": 3
+    },
+    {
+      "id": 7416599513,
+      "lonlat": [
+        -105.0776691,
+        40.5888257
+      ],
+      "tags": {},
+      "timestamp": "2020-04-18 09:14:26+00:00",
+      "version": 1
+    },
+    {
+      "id": 7416599514,
+      "lonlat": [
+        -105.0779909,
+        40.5888257
+      ],
+      "tags": {},
+      "timestamp": "2020-04-18 09:14:26+00:00",
+      "version": 1
+    },
+    {
+      "id": 7416599515,
+      "lonlat": [
+        -105.0783821,
+        40.5888257
+      ],
+      "tags": {},
+      "timestamp": "2020-04-18 09:14:26+00:00",
+      "version": 1
+    },
+    {
+      "id": 7416599516,
+      "lonlat": [
+        -105.0787625,
+        40.588819
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 05:12:13+00:00",
+      "version": 3
+    },
+    {
+      "id": 7416599517,
+      "lonlat": [
+        -105.0787335,
+        40.5889064
+      ],
+      "tags": {
+        "crossing": "traffic_signals",
+        "crossing:markings": "yes",
+        "crossing:signals": "yes",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 4
+    },
+    {
+      "id": 7416599518,
+      "lonlat": [
+        -105.0787337,
+        40.5889963
+      ],
+      "tags": {
+        "crossing": "traffic_signals",
+        "crossing:markings": "yes",
+        "crossing:signals": "yes",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 4
+    },
+    {
+      "id": 7416599519,
+      "lonlat": [
+        -105.0787436,
+        40.5890943
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:25:04+00:00",
+      "version": 2
+    },
+    {
+      "id": 7416599520,
+      "lonlat": [
+        -105.0790546,
+        40.5890857
+      ],
+      "tags": {},
+      "timestamp": "2021-09-22 21:09:18+00:00",
+      "version": 2
+    },
+    {
+      "id": 7416599521,
+      "lonlat": [
+        -105.0789613,
+        40.5890939
+      ],
+      "tags": {
+        "crossing": "traffic_signals",
+        "crossing:markings": "yes",
+        "crossing:signals": "yes",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 3
+    },
+    {
+      "id": 7416599522,
+      "lonlat": [
+        -105.078897,
+        40.5890943
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:barrier": "no",
+        "railway": "crossing"
+      },
+      "timestamp": "2024-06-15 14:45:26+00:00",
+      "version": 4
+    },
+    {
+      "id": 7416599523,
+      "lonlat": [
+        -105.078843,
+        40.5890947
+      ],
+      "tags": {
+        "crossing": "traffic_signals",
+        "crossing:markings": "yes",
+        "crossing:signals": "yes",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 3
+    },
+    {
+      "id": 7416599524,
+      "lonlat": [
+        -105.0790872,
+        40.5888596
+      ],
+      "tags": {},
+      "timestamp": "2021-07-13 23:46:44+00:00",
+      "version": 2
+    },
+    {
+      "id": 7416599525,
+      "lonlat": [
+        -105.0789603,
+        40.5888137
+      ],
+      "tags": {
+        "crossing": "traffic_signals",
+        "crossing:markings": "yes",
+        "crossing:signals": "yes",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 3
+    },
+    {
+      "id": 7416599526,
+      "lonlat": [
+        -105.0788993,
+        40.5888143
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:barrier": "no",
+        "railway": "crossing"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 5
+    },
+    {
+      "id": 7416599527,
+      "lonlat": [
+        -105.0788421,
+        40.5888148
+      ],
+      "tags": {
+        "crossing": "traffic_signals",
+        "crossing:markings": "yes",
+        "crossing:signals": "yes",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 4
+    },
+    {
+      "id": 7416599528,
+      "lonlat": [
+        -105.0787821,
+        40.5888154
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:25:04+00:00",
+      "version": 2
+    },
+    {
+      "id": 7416599563,
+      "lonlat": [
+        -105.077246,
+        40.5889012
+      ],
+      "tags": {
+        "crossing": "uncontrolled",
+        "crossing:island": "yes",
+        "crossing:markings": "yes",
+        "highway": "crossing",
+        "tactile_paving": "yes"
+      },
+      "timestamp": "2024-07-28 03:43:49+00:00",
+      "version": 5
+    },
+    {
+      "id": 7416599564,
+      "lonlat": [
+        -105.077248,
+        40.5891146
+      ],
+      "tags": {
+        "crossing": "uncontrolled",
+        "crossing:island": "yes",
+        "crossing:markings": "yes",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-03-15 22:12:38+00:00",
+      "version": 3
+    },
+    {
+      "id": 7416599565,
+      "lonlat": [
+        -105.0772358,
+        40.5892045
+      ],
+      "tags": {},
+      "timestamp": "2021-08-09 22:38:51+00:00",
+      "version": 2
+    },
+    {
+      "id": 7550272608,
+      "lonlat": [
+        -105.0787272,
+        40.5901698
+      ],
+      "tags": {},
+      "timestamp": "2020-05-23 01:44:20+00:00",
+      "version": 1
+    },
+    {
+      "id": 7550272609,
+      "lonlat": [
+        -105.0787054,
+        40.5902433
+      ],
+      "tags": {},
+      "timestamp": "2020-05-23 01:44:20+00:00",
+      "version": 1
+    },
+    {
+      "id": 7550272610,
+      "lonlat": [
+        -105.078681,
+        40.5902955
+      ],
+      "tags": {},
+      "timestamp": "2021-07-13 23:46:44+00:00",
+      "version": 2
+    },
+    {
+      "id": 7550272615,
+      "lonlat": [
+        -105.0787311,
+        40.5894163
+      ],
+      "tags": {
+        "crossing": "unmarked",
+        "crossing:markings": "no",
+        "highway": "crossing"
+      },
+      "timestamp": "2026-02-25 01:16:11+00:00",
+      "version": 2
+    },
+    {
+      "id": 7550272616,
+      "lonlat": [
+        -105.0779639,
+        40.5891924
+      ],
+      "tags": {},
+      "timestamp": "2021-08-09 22:38:51+00:00",
+      "version": 3
+    },
+    {
+      "id": 7550272617,
+      "lonlat": [
+        -105.0782455,
+        40.5891849
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 05:12:13+00:00",
+      "version": 2
+    },
+    {
+      "id": 7550272618,
+      "lonlat": [
+        -105.0784536,
+        40.5891446
+      ],
+      "tags": {},
+      "timestamp": "2020-05-23 01:44:20+00:00",
+      "version": 1
+    },
+    {
+      "id": 7550272619,
+      "lonlat": [
+        -105.0786827,
+        40.5890827
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:25:04+00:00",
+      "version": 2
+    },
+    {
+      "id": 7550272620,
+      "lonlat": [
+        -105.0777773,
+        40.5891903
+      ],
+      "tags": {
+        "crossing": "unmarked",
+        "highway": "crossing",
+        "tactile_paving": "no"
+      },
+      "timestamp": "2024-07-28 03:44:33+00:00",
+      "version": 3
+    },
+    {
+      "id": 7550272621,
+      "lonlat": [
+        -105.0781793,
+        40.5891942
+      ],
+      "tags": {
+        "crossing": "marked",
+        "highway": "crossing",
+        "tactile_paving": "incorrect"
+      },
+      "timestamp": "2024-07-28 03:44:58+00:00",
+      "version": 3
+    },
+    {
+      "id": 7614361913,
+      "lonlat": [
+        -105.0779426,
+        40.5876763
+      ],
+      "tags": {
+        "barrier": "bollard",
+        "bollard": "removable"
+      },
+      "timestamp": "2026-07-08 22:25:10+00:00",
+      "version": 2
+    },
+    {
+      "id": 7614361914,
+      "lonlat": [
+        -105.0777896,
+        40.5872231
+      ],
+      "tags": {},
+      "timestamp": "2020-06-12 06:55:05+00:00",
+      "version": 1
+    },
+    {
+      "id": 8043486448,
+      "lonlat": [
+        -105.077176,
+        40.589211
+      ],
+      "tags": {},
+      "timestamp": "2021-08-09 22:38:51+00:00",
+      "version": 2
+    },
+    {
+      "id": 8288740016,
+      "lonlat": [
+        -105.084959,
+        40.5889701
+      ],
+      "tags": {},
+      "timestamp": "2021-08-20 22:58:21+00:00",
+      "version": 3
+    },
+    {
+      "id": 8911317529,
+      "lonlat": [
+        -105.0787141,
+        40.5887871
+      ],
+      "tags": {},
+      "timestamp": "2021-07-11 10:32:51+00:00",
+      "version": 1
+    },
+    {
+      "id": 8917743737,
+      "lonlat": [
+        -105.0778904,
+        40.5890906
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:25:04+00:00",
+      "version": 2
+    },
+    {
+      "id": 8917767393,
+      "lonlat": [
+        -105.0805727,
+        40.5888335
+      ],
+      "tags": {},
+      "timestamp": "2021-07-13 23:08:52+00:00",
+      "version": 1
+    },
+    {
+      "id": 8917767408,
+      "lonlat": [
+        -105.0805336,
+        40.5889573
+      ],
+      "tags": {
+        "crossing": "traffic_signals",
+        "crossing:signals": "yes",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 2
+    },
+    {
+      "id": 8917767409,
+      "lonlat": [
+        -105.0805309,
+        40.5890728
+      ],
+      "tags": {},
+      "timestamp": "2021-09-22 20:29:04+00:00",
+      "version": 3
+    },
+    {
+      "id": 8917767410,
+      "lonlat": [
+        -105.0805891,
+        40.589072
+      ],
+      "tags": {},
+      "timestamp": "2021-07-13 23:08:52+00:00",
+      "version": 1
+    },
+    {
+      "id": 8917767414,
+      "lonlat": [
+        -105.080847,
+        40.5889593
+      ],
+      "tags": {
+        "crossing": "traffic_signals",
+        "crossing:signals": "yes",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 2
+    },
+    {
+      "id": 8917805317,
+      "lonlat": [
+        -105.079008,
+        40.5890931
+      ],
+      "tags": {},
+      "timestamp": "2021-07-13 23:46:44+00:00",
+      "version": 1
+    },
+    {
+      "id": 8917805318,
+      "lonlat": [
+        -105.0805356,
+        40.5888597
+      ],
+      "tags": {},
+      "timestamp": "2021-07-13 23:46:44+00:00",
+      "version": 1
+    },
+    {
+      "id": 8917805319,
+      "lonlat": [
+        -105.0798153,
+        40.5888493
+      ],
+      "tags": {},
+      "timestamp": "2021-07-13 23:46:44+00:00",
+      "version": 1
+    },
+    {
+      "id": 8917805320,
+      "lonlat": [
+        -105.0791303,
+        40.5888385
+      ],
+      "tags": {},
+      "timestamp": "2021-07-13 23:46:44+00:00",
+      "version": 1
+    },
+    {
+      "id": 8917805321,
+      "lonlat": [
+        -105.0790496,
+        40.5888129
+      ],
+      "tags": {},
+      "timestamp": "2021-07-13 23:46:44+00:00",
+      "version": 1
+    },
+    {
+      "id": 8917805322,
+      "lonlat": [
+        -105.0790841,
+        40.5888239
+      ],
+      "tags": {},
+      "timestamp": "2021-07-13 23:46:44+00:00",
+      "version": 1
+    },
+    {
+      "id": 8917805323,
+      "lonlat": [
+        -105.0790504,
+        40.5887793
+      ],
+      "tags": {},
+      "timestamp": "2021-07-13 23:46:44+00:00",
+      "version": 1
+    },
+    {
+      "id": 8917805324,
+      "lonlat": [
+        -105.0790572,
+        40.588106
+      ],
+      "tags": {},
+      "timestamp": "2021-07-13 23:46:44+00:00",
+      "version": 1
+    },
+    {
+      "id": 8917805326,
+      "lonlat": [
+        -105.0790813,
+        40.587146
+      ],
+      "tags": {},
+      "timestamp": "2021-07-13 23:46:44+00:00",
+      "version": 1
+    },
+    {
+      "id": 8989131461,
+      "lonlat": [
+        -105.0787339,
+        40.5890754
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:25:04+00:00",
+      "version": 1
+    },
+    {
+      "id": 8989131462,
+      "lonlat": [
+        -105.0787716,
+        40.5890948
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:25:04+00:00",
+      "version": 1
+    },
+    {
+      "id": 8989131463,
+      "lonlat": [
+        -105.0787347,
+        40.5891382
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:25:04+00:00",
+      "version": 1
+    },
+    {
+      "id": 8989131464,
+      "lonlat": [
+        -105.0783327,
+        40.5890148
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:25:04+00:00",
+      "version": 1
+    },
+    {
+      "id": 8989131465,
+      "lonlat": [
+        -105.0785614,
+        40.5890226
+      ],
+      "tags": {},
+      "timestamp": "2021-08-18 05:38:15+00:00",
+      "version": 2
+    },
+    {
+      "id": 8989131466,
+      "lonlat": [
+        -105.0782963,
+        40.5890986
+      ],
+      "tags": {},
+      "timestamp": "2021-08-18 05:38:15+00:00",
+      "version": 2
+    },
+    {
+      "id": 8989131467,
+      "lonlat": [
+        -105.0787333,
+        40.588844
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:25:04+00:00",
+      "version": 1
+    },
+    {
+      "id": 8989131468,
+      "lonlat": [
+        -105.07871,
+        40.5888257
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 01:25:04+00:00",
+      "version": 1
+    },
+    {
+      "id": 8989243919,
+      "lonlat": [
+        -105.0790784,
+        40.5871805
+      ],
+      "tags": {},
+      "timestamp": "2021-08-14 02:39:14+00:00",
+      "version": 2
+    },
+    {
+      "id": 8989264499,
+      "lonlat": [
+        -105.0787614,
+        40.5876749
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 05:12:13+00:00",
+      "version": 1
+    },
+    {
+      "id": 8989264500,
+      "lonlat": [
+        -105.0787685,
+        40.5878188
+      ],
+      "tags": {},
+      "timestamp": "2021-08-08 05:12:13+00:00",
+      "version": 1
+    },
+    {
+      "id": 8994421331,
+      "lonlat": [
+        -105.0771789,
+        40.5888166
+      ],
+      "tags": {},
+      "timestamp": "2021-08-09 22:38:51+00:00",
+      "version": 1
+    },
+    {
+      "id": 8994421333,
+      "lonlat": [
+        -105.0772802,
+        40.5891879
+      ],
+      "tags": {},
+      "timestamp": "2021-08-09 22:38:51+00:00",
+      "version": 1
+    },
+    {
+      "id": 8994421334,
+      "lonlat": [
+        -105.0772019,
+        40.58921
+      ],
+      "tags": {},
+      "timestamp": "2021-08-09 22:38:51+00:00",
+      "version": 1
+    },
+    {
+      "id": 9005503393,
+      "lonlat": [
+        -105.0787552,
+        40.5871432
+      ],
+      "tags": {},
+      "timestamp": "2025-04-17 23:40:54+00:00",
+      "version": 3
+    },
+    {
+      "id": 9005503394,
+      "lonlat": [
+        -105.0790722,
+        40.5872225
+      ],
+      "tags": {},
+      "timestamp": "2021-08-14 02:39:14+00:00",
+      "version": 1
+    },
+    {
+      "id": 9016011065,
+      "lonlat": [
+        -105.0780297,
+        40.5891212
+      ],
+      "tags": {},
+      "timestamp": "2021-08-18 05:38:15+00:00",
+      "version": 1
+    },
+    {
+      "id": 9016011067,
+      "lonlat": [
+        -105.0790751,
+        40.5890678
+      ],
+      "tags": {},
+      "timestamp": "2021-09-22 21:09:18+00:00",
+      "version": 2
+    },
+    {
+      "id": 9016011068,
+      "lonlat": [
+        -105.0795741,
+        40.5890703
+      ],
+      "tags": {},
+      "timestamp": "2021-08-18 05:38:15+00:00",
+      "version": 1
+    },
+    {
+      "id": 9023920972,
+      "lonlat": [
+        -105.0909672,
+        40.5890077
+      ],
+      "tags": {},
+      "timestamp": "2021-08-20 22:58:21+00:00",
+      "version": 1
+    },
+    {
+      "id": 9115247659,
+      "lonlat": [
+        -105.080536,
+        40.5888365
+      ],
+      "tags": {},
+      "timestamp": "2021-09-22 20:29:04+00:00",
+      "version": 1
+    },
+    {
+      "id": 9115247681,
+      "lonlat": [
+        -105.0780989,
+        40.5897083
+      ],
+      "tags": {},
+      "timestamp": "2021-09-22 20:29:04+00:00",
+      "version": 1
+    },
+    {
+      "id": 9115247682,
+      "lonlat": [
+        -105.0781585,
+        40.5896433
+      ],
+      "tags": {},
+      "timestamp": "2021-09-22 20:29:04+00:00",
+      "version": 1
+    },
+    {
+      "id": 9115326599,
+      "lonlat": [
+        -105.0795841,
+        40.5875869
+      ],
+      "tags": {},
+      "timestamp": "2021-09-22 21:25:50+00:00",
+      "version": 1
+    },
+    {
+      "id": 9115326600,
+      "lonlat": [
+        -105.0790703,
+        40.5875849
+      ],
+      "tags": {},
+      "timestamp": "2021-09-22 21:25:50+00:00",
+      "version": 1
+    },
+    {
+      "id": 9115326601,
+      "lonlat": [
+        -105.0789796,
+        40.5875855
+      ],
+      "tags": {},
+      "timestamp": "2021-09-22 21:25:50+00:00",
+      "version": 1
+    },
+    {
+      "id": 9844921492,
+      "lonlat": [
+        -105.0787315,
+        40.5893672
+      ],
+      "tags": {},
+      "timestamp": "2022-06-24 19:52:35+00:00",
+      "version": 1
+    },
+    {
+      "id": 9844921493,
+      "lonlat": [
+        -105.0786784,
+        40.5893851
+      ],
+      "tags": {},
+      "timestamp": "2022-06-24 19:52:35+00:00",
+      "version": 1
+    },
+    {
+      "id": 9844921494,
+      "lonlat": [
+        -105.0785859,
+        40.5894201
+      ],
+      "tags": {},
+      "timestamp": "2022-06-24 19:52:35+00:00",
+      "version": 1
+    },
+    {
+      "id": 9844921495,
+      "lonlat": [
+        -105.0785136,
+        40.5894508
+      ],
+      "tags": {},
+      "timestamp": "2022-06-24 19:52:35+00:00",
+      "version": 1
+    },
+    {
+      "id": 9844921496,
+      "lonlat": [
+        -105.0784434,
+        40.5894831
+      ],
+      "tags": {},
+      "timestamp": "2022-06-24 19:52:35+00:00",
+      "version": 1
+    },
+    {
+      "id": 9844921497,
+      "lonlat": [
+        -105.0783886,
+        40.5895309
+      ],
+      "tags": {},
+      "timestamp": "2022-06-24 19:52:35+00:00",
+      "version": 1
+    },
+    {
+      "id": 9844921498,
+      "lonlat": [
+        -105.0783696,
+        40.589615
+      ],
+      "tags": {},
+      "timestamp": "2022-06-24 19:52:35+00:00",
+      "version": 1
+    },
+    {
+      "id": 9844921499,
+      "lonlat": [
+        -105.0782469,
+        40.5896172
+      ],
+      "tags": {},
+      "timestamp": "2022-06-24 19:52:35+00:00",
+      "version": 1
+    },
+    {
+      "id": 9844965554,
+      "lonlat": [
+        -105.0787284,
+        40.5899034
+      ],
+      "tags": {},
+      "timestamp": "2022-06-24 19:52:35+00:00",
+      "version": 1
+    },
+    {
+      "id": 9844965558,
+      "lonlat": [
+        -105.0787294,
+        40.5897224
+      ],
+      "tags": {},
+      "timestamp": "2022-06-24 19:52:35+00:00",
+      "version": 1
+    },
+    {
+      "id": 9844965563,
+      "lonlat": [
+        -105.0787275,
+        40.590081
+      ],
+      "tags": {},
+      "timestamp": "2022-06-24 19:52:35+00:00",
+      "version": 1
+    },
+    {
+      "id": 9933097690,
+      "lonlat": [
+        -105.0802278,
+        40.5889568
+      ],
+      "tags": {},
+      "timestamp": "2022-08-05 06:59:51+00:00",
+      "version": 1
+    },
+    {
+      "id": 9933097691,
+      "lonlat": [
+        -105.0802203,
+        40.5888552
+      ],
+      "tags": {},
+      "timestamp": "2022-08-05 06:59:51+00:00",
+      "version": 1
+    },
+    {
+      "id": 11701397410,
+      "lonlat": [
+        -105.0878147,
+        40.5889799
+      ],
+      "tags": {
+        "crossing": "uncontrolled",
+        "crossing:markings": "yes",
+        "crossing:signals": "no",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 3
+    },
+    {
+      "id": 11701397412,
+      "lonlat": [
+        -105.0878977,
+        40.5889805
+      ],
+      "tags": {},
+      "timestamp": "2024-03-07 17:21:18+00:00",
+      "version": 1
+    },
+    {
+      "id": 11701397413,
+      "lonlat": [
+        -105.0877523,
+        40.5889795
+      ],
+      "tags": {},
+      "timestamp": "2024-03-07 17:21:18+00:00",
+      "version": 1
+    },
+    {
+      "id": 11833234442,
+      "lonlat": [
+        -105.0859546,
+        40.5889757
+      ],
+      "tags": {
+        "crossing": "unmarked",
+        "crossing:markings": "no",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 2
+    },
+    {
+      "id": 11833234445,
+      "lonlat": [
+        -105.0862104,
+        40.588977
+      ],
+      "tags": {
+        "crossing": "unmarked",
+        "crossing:markings": "no",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 2
+    },
+    {
+      "id": 12421621432,
+      "lonlat": [
+        -105.0823297,
+        40.5889615
+      ],
+      "tags": {
+        "crossing": "marked",
+        "crossing:markings": "zebra",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-12-13 21:58:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 12421621434,
+      "lonlat": [
+        -105.0826508,
+        40.5889621
+      ],
+      "tags": {
+        "crossing": "unmarked",
+        "crossing:markings": "no",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-12-13 21:58:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 12421621444,
+      "lonlat": [
+        -105.0841369,
+        40.5889661
+      ],
+      "tags": {
+        "crossing": "unmarked",
+        "crossing:markings": "no",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-12-13 21:58:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 12421621446,
+      "lonlat": [
+        -105.0844501,
+        40.5889674
+      ],
+      "tags": {
+        "crossing": "unmarked",
+        "crossing:markings": "no",
+        "highway": "crossing"
+      },
+      "timestamp": "2024-12-13 21:58:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 12421621562,
+      "lonlat": [
+        -105.0798073,
+        40.5890709
+      ],
+      "tags": {},
+      "timestamp": "2024-12-13 21:58:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 13836633013,
+      "lonlat": [
+        -105.0794858,
+        40.5899759
+      ],
+      "tags": {},
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 13836633014,
+      "lonlat": [
+        -105.0794872,
+        40.5898634
+      ],
+      "tags": {},
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 13836633015,
+      "lonlat": [
+        -105.079479,
+        40.5898506
+      ],
+      "tags": {},
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 13836633016,
+      "lonlat": [
+        -105.0794814,
+        40.5896947
+      ],
+      "tags": {},
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 13836633017,
+      "lonlat": [
+        -105.0794807,
+        40.5895119
+      ],
+      "tags": {},
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 13836633018,
+      "lonlat": [
+        -105.0794838,
+        40.5892795
+      ],
+      "tags": {},
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 13836633019,
+      "lonlat": [
+        -105.0794848,
+        40.5890699
+      ],
+      "tags": {},
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 13836633054,
+      "lonlat": [
+        -105.0794814,
+        40.5896973
+      ],
+      "tags": {},
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 13836633065,
+      "lonlat": [
+        -105.0803819,
+        40.5890724
+      ],
+      "tags": {},
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 13836633066,
+      "lonlat": [
+        -105.0800811,
+        40.5890716
+      ],
+      "tags": {},
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 13836633073,
+      "lonlat": [
+        -105.0780624,
+        40.5891932
+      ],
+      "tags": {},
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 13836633074,
+      "lonlat": [
+        -105.0780574,
+        40.589649
+      ],
+      "tags": {
+        "barrier": "kerb",
+        "kerb": "lowered",
+        "wheelchair": "yes"
+      },
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 13836633077,
+      "lonlat": [
+        -105.0781646,
+        40.5896337
+      ],
+      "tags": {
+        "crossing": "uncontrolled",
+        "crossing:markings": "yes",
+        "highway": "crossing"
+      },
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 13836633081,
+      "lonlat": [
+        -105.0780579,
+        40.5895984
+      ],
+      "tags": {},
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 13836633085,
+      "lonlat": [
+        -105.078045,
+        40.5896752
+      ],
+      "tags": {
+        "crossing": "unmarked",
+        "crossing:markings": "no",
+        "highway": "crossing"
+      },
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 1
+    }
+  ],
+  "release_eligible": false,
+  "restrictions": [
+    {
+      "id": 20193102,
+      "members": [
+        {
+          "ref": 696728766,
+          "role": "from",
+          "type": "w"
+        },
+        {
+          "ref": 6543050322,
+          "role": "via",
+          "type": "n"
+        },
+        {
+          "ref": 1475543490,
+          "role": "to",
+          "type": "w"
+        }
+      ],
+      "tags": {
+        "restriction:conditional": "no_u_turn @ (Th-Sa 19:00-00:00)",
+        "type": "restriction"
+      },
+      "timestamp": "2026-02-09 11:58:26+00:00",
+      "version": 1
+    }
+  ],
+  "schema": "fort-collins-unadopted-raw-context-v1",
+  "selection": "All highway ways with a vertex in the declared investigation envelope, plus the named garage footprint; complete geometry and every member-node raw tag record. Additional tagged local nodes and restrictions touching selected ways are context only. Crossing ways with no local vertex, complete incident-way sets and exterior closure are not established.",
+  "source": {
+    "name": "colorado.osm.pbf",
+    "replication_timestamp": "2026-10-27T21:23:59Z",
+    "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+    "size_bytes": 386197077
+  },
+  "ways": [
+    {
+      "id": 6161921,
+      "nodes": [
+        [
+          51079914,
+          -105.0788544,
+          40.5876748
+        ],
+        [
+          8989264499,
+          -105.0787614,
+          40.5876749
+        ],
+        [
+          51052580,
+          -105.0780072,
+          40.5876759
+        ],
+        [
+          7416599514,
+          -105.0779909,
+          40.5888257
+        ],
+        [
+          51052581,
+          -105.07799,
+          40.5889019
+        ]
+      ],
+      "tags": {
+        "bicycle": "designated",
+        "covered": "no",
+        "foot": "designated",
+        "highway": "service",
+        "maxspeed": "15 mph",
+        "name": "Tenney Court North",
+        "oneway": "no",
+        "service": "alley",
+        "surface": "paved",
+        "tiger:cfcc": "A73",
+        "tiger:county": "Larimer, CO"
+      },
+      "timestamp": "2022-06-09 17:55:09+00:00",
+      "version": 7
+    },
+    {
+      "id": 54882910,
+      "nodes": [
+        [
+          690824409,
+          -105.0786887,
+          40.5888066
+        ],
+        [
+          8911317529,
+          -105.0787141,
+          40.5887871
+        ],
+        [
+          6543050321,
+          -105.0787113,
+          40.5878182
+        ],
+        [
+          690824411,
+          -105.0787108,
+          40.5877199
+        ],
+        [
+          690824413,
+          -105.0780619,
+          40.5877234
+        ],
+        [
+          690824416,
+          -105.0780621,
+          40.5888014
+        ],
+        [
+          6543050323,
+          -105.078382,
+          40.5888014
+        ],
+        [
+          690824409,
+          -105.0786887,
+          40.5888066
+        ]
+      ],
+      "tags": {
+        "access": "permissive",
+        "addr:city": "Fort Collins",
+        "addr:housenumber": "120",
+        "addr:postcode": "80524",
+        "addr:state": "CO",
+        "addr:street": "North Mason Street",
+        "amenity": "parking",
+        "building": "parking",
+        "building:levels": "5",
+        "capacity": "550",
+        "check_date": "2024-05-06",
+        "fee": "yes",
+        "name": "Civic Center Parking Garage",
+        "operator": "City of Fort Collins",
+        "park_ride": "yes",
+        "parking": "multi-storey",
+        "supervised": "yes"
+      },
+      "timestamp": "2024-05-06 23:10:57+00:00",
+      "version": 9
+    },
+    {
+      "id": 132998249,
+      "nodes": [
+        [
+          51193003,
+          -105.0771021,
+          40.5891118
+        ],
+        [
+          7416599564,
+          -105.077248,
+          40.5891146
+        ],
+        [
+          1463571987,
+          -105.077776,
+          40.5891216
+        ],
+        [
+          9016011065,
+          -105.0780297,
+          40.5891212
+        ],
+        [
+          1672799568,
+          -105.0781746,
+          40.5891157
+        ]
+      ],
+      "tags": {
+        "cycleway:left": "no",
+        "cycleway:right": "lane",
+        "cycleway:right:buffer": "no",
+        "highway": "secondary",
+        "lanes": "2",
+        "maxspeed": "25 mph",
+        "name": "Laporte Avenue",
+        "name_1": "Laporte Avenue",
+        "oneway": "yes",
+        "surface": "asphalt"
+      },
+      "timestamp": "2026-08-24 13:59:35+00:00",
+      "version": 21
+    },
+    {
+      "id": 132998250,
+      "nodes": [
+        [
+          1463571987,
+          -105.077776,
+          40.5891216
+        ],
+        [
+          7550272620,
+          -105.0777773,
+          40.5891903
+        ],
+        [
+          51082332,
+          -105.077774,
+          40.589674
+        ],
+        [
+          13836633085,
+          -105.078045,
+          40.5896752
+        ],
+        [
+          1802377816,
+          -105.0781229,
+          40.5896755
+        ]
+      ],
+      "tags": {
+        "highway": "service",
+        "service": "alley",
+        "tiger:cfcc": "A73",
+        "tiger:county": "Larimer, CO",
+        "tiger:reviewed": "no"
+      },
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 6
+    },
+    {
+      "id": 132998252,
+      "nodes": [
+        [
+          51052581,
+          -105.07799,
+          40.5889019
+        ],
+        [
+          3707437470,
+          -105.077298,
+          40.5889018
+        ],
+        [
+          7416599563,
+          -105.077246,
+          40.5889012
+        ],
+        [
+          51193002,
+          -105.0771078,
+          40.588898
+        ]
+      ],
+      "tags": {
+        "cycleway:left": "no",
+        "cycleway:right": "shared_lane",
+        "cycleway:right:lane": "pictogram",
+        "highway": "secondary",
+        "maxspeed": "30 mph",
+        "name": "Laporte Avenue",
+        "name_1": "Laporte Avenue",
+        "oneway": "yes",
+        "surface": "paved",
+        "tiger:cfcc": "A41",
+        "tiger:name_base": "La Porte",
+        "tiger:name_base_1": "Laporte",
+        "tiger:name_type": "Ave",
+        "tiger:name_type_1": "Ave"
+      },
+      "timestamp": "2026-08-24 13:59:35+00:00",
+      "version": 14
+    },
+    {
+      "id": 154806560,
+      "nodes": [
+        [
+          1672799568,
+          -105.0781746,
+          40.5891157
+        ],
+        [
+          7550272621,
+          -105.0781793,
+          40.5891942
+        ],
+        [
+          1672799569,
+          -105.0781745,
+          40.5896181
+        ],
+        [
+          13836633077,
+          -105.0781646,
+          40.5896337
+        ],
+        [
+          9115247682,
+          -105.0781585,
+          40.5896433
+        ],
+        [
+          1802377816,
+          -105.0781229,
+          40.5896755
+        ],
+        [
+          9115247681,
+          -105.0780989,
+          40.5897083
+        ],
+        [
+          51082333,
+          -105.0780895,
+          40.5897408
+        ],
+        [
+          1802377858,
+          -105.0780891,
+          40.5902263
+        ],
+        [
+          1802377864,
+          -105.0781288,
+          40.590304
+        ],
+        [
+          3558439062,
+          -105.0781311,
+          40.5907032
+        ],
+        [
+          51082334,
+          -105.0781311,
+          40.5907853
+        ]
+      ],
+      "tags": {
+        "highway": "service",
+        "maxspeed": "15 mph",
+        "service": "alley",
+        "tiger:cfcc": "A73",
+        "tiger:county": "Larimer, CO",
+        "tiger:reviewed": "no"
+      },
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 10
+    },
+    {
+      "id": 186982183,
+      "nodes": [
+        [
+          1903244290,
+          -105.0789609,
+          40.5889484
+        ],
+        [
+          7416599525,
+          -105.0789603,
+          40.5888137
+        ],
+        [
+          7287704282,
+          -105.0789681,
+          40.588106
+        ],
+        [
+          9115326601,
+          -105.0789796,
+          40.5875855
+        ],
+        [
+          3707437464,
+          -105.0789847,
+          40.5872088
+        ],
+        [
+          2376302737,
+          -105.078983,
+          40.5871776
+        ],
+        [
+          1903244294,
+          -105.0789814,
+          40.5871074
+        ]
+      ],
+      "tags": {
+        "cycleway:left": "no",
+        "cycleway:right": "lane",
+        "cycleway:right:buffer": "no",
+        "highway": "tertiary",
+        "maxspeed": "25 mph",
+        "name": "South Mason Street",
+        "oneway": "yes",
+        "surface": "paved"
+      },
+      "timestamp": "2024-02-10 19:53:40+00:00",
+      "version": 17
+    },
+    {
+      "id": 290286625,
+      "nodes": [
+        [
+          51236878,
+          -105.078841,
+          40.588948
+        ],
+        [
+          7416599523,
+          -105.078843,
+          40.5890947
+        ],
+        [
+          1479490026,
+          -105.078844,
+          40.5893973
+        ]
+      ],
+      "tags": {
+        "cycleway:left": "no",
+        "cycleway:right": "lane",
+        "cycleway:right:buffer": "yes",
+        "highway": "tertiary",
+        "lanes": "1",
+        "maxspeed": "25 mph",
+        "name": "North Mason Street",
+        "oneway": "yes",
+        "surface": "asphalt"
+      },
+      "timestamp": "2024-07-28 03:45:43+00:00",
+      "version": 12
+    },
+    {
+      "id": 319652349,
+      "nodes": [
+        [
+          1386660393,
+          -105.0788551,
+          40.5871076
+        ],
+        [
+          2376302734,
+          -105.0788551,
+          40.5871743
+        ],
+        [
+          51079914,
+          -105.0788544,
+          40.5876748
+        ],
+        [
+          6543050320,
+          -105.0788531,
+          40.5878197
+        ],
+        [
+          3707437469,
+          -105.0788431,
+          40.5887809
+        ],
+        [
+          7416599527,
+          -105.0788421,
+          40.5888148
+        ],
+        [
+          51236878,
+          -105.078841,
+          40.588948
+        ]
+      ],
+      "tags": {
+        "cycleway:left": "no",
+        "cycleway:right": "lane",
+        "cycleway:right:buffer": "no",
+        "highway": "tertiary",
+        "maxspeed": "25 mph",
+        "name": "North Mason Street",
+        "oneway": "yes",
+        "surface": "paved"
+      },
+      "timestamp": "2026-02-25 01:16:11+00:00",
+      "version": 14
+    },
+    {
+      "id": 350094203,
+      "nodes": [
+        [
+          3558432007,
+          -105.0790403,
+          40.5906902
+        ],
+        [
+          3558441875,
+          -105.0790479,
+          40.5906457
+        ],
+        [
+          3558441874,
+          -105.0790496,
+          40.5901883
+        ],
+        [
+          3558431616,
+          -105.0790557,
+          40.5899755
+        ],
+        [
+          7416599520,
+          -105.0790546,
+          40.5890857
+        ]
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2021-08-08 01:25:04+00:00",
+      "version": 6
+    },
+    {
+      "id": 553624373,
+      "nodes": [
+        [
+          51112628,
+          -105.0911107,
+          40.5890199
+        ],
+        [
+          9023920972,
+          -105.0909672,
+          40.5890077
+        ],
+        [
+          51201548,
+          -105.0895369,
+          40.5889918
+        ],
+        [
+          3293789500,
+          -105.0882291,
+          40.5889828
+        ],
+        [
+          11701397412,
+          -105.0878977,
+          40.5889805
+        ],
+        [
+          11701397410,
+          -105.0878147,
+          40.5889799
+        ],
+        [
+          11701397413,
+          -105.0877523,
+          40.5889795
+        ],
+        [
+          3293789501,
+          -105.0873766,
+          40.5889799
+        ],
+        [
+          11833234445,
+          -105.0862104,
+          40.588977
+        ],
+        [
+          51161729,
+          -105.0860701,
+          40.5889766
+        ],
+        [
+          11833234442,
+          -105.0859546,
+          40.5889757
+        ],
+        [
+          7058943361,
+          -105.085199,
+          40.5889698
+        ],
+        [
+          8288740016,
+          -105.084959,
+          40.5889701
+        ],
+        [
+          3293789502,
+          -105.084735,
+          40.5889693
+        ],
+        [
+          12421621446,
+          -105.0844501,
+          40.5889674
+        ],
+        [
+          51203181,
+          -105.0842845,
+          40.5889663
+        ],
+        [
+          12421621444,
+          -105.0841369,
+          40.5889661
+        ],
+        [
+          3293789503,
+          -105.0840795,
+          40.588966
+        ],
+        [
+          50914884,
+          -105.0833908,
+          40.5889648
+        ],
+        [
+          12421621434,
+          -105.0826508,
+          40.5889621
+        ],
+        [
+          51236586,
+          -105.0824923,
+          40.5889615
+        ],
+        [
+          12421621432,
+          -105.0823297,
+          40.5889615
+        ],
+        [
+          7180526223,
+          -105.081679,
+          40.5889615
+        ],
+        [
+          3293789504,
+          -105.0814352,
+          40.5889634
+        ],
+        [
+          8917767414,
+          -105.080847,
+          40.5889593
+        ],
+        [
+          51101063,
+          -105.0806864,
+          40.5889576
+        ],
+        [
+          8917767408,
+          -105.0805336,
+          40.5889573
+        ],
+        [
+          9933097690,
+          -105.0802278,
+          40.5889568
+        ],
+        [
+          1795003051,
+          -105.0798114,
+          40.5889562
+        ],
+        [
+          51080039,
+          -105.079575,
+          40.5889535
+        ],
+        [
+          3707437472,
+          -105.079131,
+          40.5889503
+        ],
+        [
+          3558441869,
+          -105.0790881,
+          40.5889502
+        ],
+        [
+          1903244290,
+          -105.0789609,
+          40.5889484
+        ]
+      ],
+      "tags": {
+        "cycleway": "lane",
+        "cycleway:buffer": "no",
+        "highway": "secondary",
+        "maxspeed": "30 mph",
+        "name": "Laporte Avenue",
+        "name_1": "Laporte Avenue",
+        "oneway": "no",
+        "surface": "asphalt"
+      },
+      "timestamp": "2026-08-24 13:59:35+00:00",
+      "version": 17
+    },
+    {
+      "id": 696728762,
+      "nodes": [
+        [
+          6543050320,
+          -105.0788531,
+          40.5878197
+        ],
+        [
+          8989264500,
+          -105.0787685,
+          40.5878188
+        ],
+        [
+          6543050321,
+          -105.0787113,
+          40.5878182
+        ]
+      ],
+      "tags": {
+        "highway": "service"
+      },
+      "timestamp": "2021-08-08 05:12:13+00:00",
+      "version": 2
+    },
+    {
+      "id": 696728763,
+      "nodes": [
+        [
+          6543050322,
+          -105.0783805,
+          40.5889075
+        ],
+        [
+          7416599515,
+          -105.0783821,
+          40.5888257
+        ],
+        [
+          6543050323,
+          -105.078382,
+          40.5888014
+        ]
+      ],
+      "tags": {
+        "highway": "service"
+      },
+      "timestamp": "2020-04-18 09:14:26+00:00",
+      "version": 2
+    },
+    {
+      "id": 696728766,
+      "nodes": [
+        [
+          1463571987,
+          -105.077776,
+          40.5891216
+        ],
+        [
+          8917743737,
+          -105.0778904,
+          40.5890906
+        ],
+        [
+          6543050328,
+          -105.0781715,
+          40.589084
+        ],
+        [
+          6543050329,
+          -105.0782555,
+          40.5890592
+        ],
+        [
+          8989131464,
+          -105.0783327,
+          40.5890148
+        ],
+        [
+          6543050330,
+          -105.078376,
+          40.588965
+        ],
+        [
+          6543050322,
+          -105.0783805,
+          40.5889075
+        ]
+      ],
+      "tags": {
+        "cycleway:both": "no",
+        "highway": "secondary_link",
+        "oneway": "yes",
+        "surface": "paved"
+      },
+      "timestamp": "2026-08-24 13:59:35+00:00",
+      "version": 6
+    },
+    {
+      "id": 780450424,
+      "nodes": [
+        [
+          7287704281,
+          -105.0794601,
+          40.5881061
+        ],
+        [
+          8917805324,
+          -105.0790572,
+          40.588106
+        ],
+        [
+          7287704282,
+          -105.0789681,
+          40.588106
+        ]
+      ],
+      "tags": {
+        "highway": "service"
+      },
+      "timestamp": "2021-07-13 23:46:44+00:00",
+      "version": 2
+    },
+    {
+      "id": 793154984,
+      "nodes": [
+        [
+          8994421331,
+          -105.0771789,
+          40.5888166
+        ],
+        [
+          7416599512,
+          -105.0772357,
+          40.5888222
+        ],
+        [
+          7416599513,
+          -105.0776691,
+          40.5888257
+        ],
+        [
+          7416599514,
+          -105.0779909,
+          40.5888257
+        ],
+        [
+          7416599515,
+          -105.0783821,
+          40.5888257
+        ],
+        [
+          8989131468,
+          -105.07871,
+          40.5888257
+        ],
+        [
+          7416599516,
+          -105.0787625,
+          40.588819
+        ]
+      ],
+      "tags": {
+        "bicycle": "dismount",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2021-08-25 02:50:55+00:00",
+      "version": 5
+    },
+    {
+      "id": 807408351,
+      "nodes": [
+        [
+          7416599519,
+          -105.0787436,
+          40.5890943
+        ],
+        [
+          8989131463,
+          -105.0787347,
+          40.5891382
+        ],
+        [
+          9844921492,
+          -105.0787315,
+          40.5893672
+        ],
+        [
+          7550272615,
+          -105.0787311,
+          40.5894163
+        ],
+        [
+          9844965558,
+          -105.0787294,
+          40.5897224
+        ],
+        [
+          9844965554,
+          -105.0787284,
+          40.5899034
+        ],
+        [
+          9844965563,
+          -105.0787275,
+          40.590081
+        ],
+        [
+          7550272608,
+          -105.0787272,
+          40.5901698
+        ],
+        [
+          7550272609,
+          -105.0787054,
+          40.5902433
+        ],
+        [
+          7550272610,
+          -105.078681,
+          40.5902955
+        ]
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2022-06-24 19:52:35+00:00",
+      "version": 7
+    },
+    {
+      "id": 807408352,
+      "nodes": [
+        [
+          8043486448,
+          -105.077176,
+          40.589211
+        ],
+        [
+          8994421334,
+          -105.0772019,
+          40.58921
+        ],
+        [
+          7416599565,
+          -105.0772358,
+          40.5892045
+        ],
+        [
+          8994421333,
+          -105.0772802,
+          40.5891879
+        ],
+        [
+          7550272620,
+          -105.0777773,
+          40.5891903
+        ],
+        [
+          7550272616,
+          -105.0779639,
+          40.5891924
+        ]
+      ],
+      "tags": {
+        "bicycle": "dismount",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2021-08-25 02:50:55+00:00",
+      "version": 5
+    },
+    {
+      "id": 815164359,
+      "nodes": [
+        [
+          7614361914,
+          -105.0777896,
+          40.5872231
+        ],
+        [
+          51079913,
+          -105.0777847,
+          40.5876745
+        ],
+        [
+          7614361913,
+          -105.0779426,
+          40.5876763
+        ],
+        [
+          51052580,
+          -105.0780072,
+          40.5876759
+        ]
+      ],
+      "tags": {
+        "bicycle": "designated",
+        "foot": "designated",
+        "highway": "service",
+        "maxspeed": "15 mph",
+        "name": "Tenney Court",
+        "service": "alley",
+        "surface": "paving_stones"
+      },
+      "timestamp": "2026-07-08 22:25:34+00:00",
+      "version": 5
+    },
+    {
+      "id": 935659654,
+      "nodes": [
+        [
+          1903244274,
+          -105.078961,
+          40.5907855
+        ],
+        [
+          3558439054,
+          -105.07896,
+          40.5906812
+        ],
+        [
+          1903244272,
+          -105.0789613,
+          40.5902667
+        ],
+        [
+          1991725810,
+          -105.0789549,
+          40.5901866
+        ],
+        [
+          1903244291,
+          -105.0789519,
+          40.5900926
+        ],
+        [
+          3707437474,
+          -105.0789608,
+          40.5891225
+        ],
+        [
+          7416599521,
+          -105.0789613,
+          40.5890939
+        ],
+        [
+          1903244290,
+          -105.0789609,
+          40.5889484
+        ]
+      ],
+      "tags": {
+        "cycleway:left": "no",
+        "cycleway:right": "lane",
+        "cycleway:right:buffer": "no",
+        "highway": "tertiary",
+        "lanes": "1",
+        "maxspeed": "25 mph",
+        "name": "South Mason Street",
+        "oneway": "yes",
+        "surface": "asphalt"
+      },
+      "timestamp": "2025-01-03 05:13:52+00:00",
+      "version": 8
+    },
+    {
+      "id": 935659655,
+      "nodes": [
+        [
+          1903244290,
+          -105.0789609,
+          40.5889484
+        ],
+        [
+          1903244293,
+          -105.0788991,
+          40.5889479
+        ],
+        [
+          51236878,
+          -105.078841,
+          40.588948
+        ]
+      ],
+      "tags": {
+        "cycleway:both": "lane",
+        "cycleway:both:buffer": "no",
+        "highway": "secondary",
+        "maxspeed": "30 mph",
+        "name": "Laporte Avenue",
+        "name_1": "Laporte Avenue",
+        "oneway": "no",
+        "surface": "paved"
+      },
+      "timestamp": "2026-08-24 13:59:35+00:00",
+      "version": 3
+    },
+    {
+      "id": 964096644,
+      "nodes": [
+        [
+          8917767393,
+          -105.0805727,
+          40.5888335
+        ],
+        [
+          9115247659,
+          -105.080536,
+          40.5888365
+        ],
+        [
+          8917805318,
+          -105.0805356,
+          40.5888597
+        ],
+        [
+          9933097691,
+          -105.0802203,
+          40.5888552
+        ],
+        [
+          8917805319,
+          -105.0798153,
+          40.5888493
+        ],
+        [
+          8917805320,
+          -105.0791303,
+          40.5888385
+        ],
+        [
+          8917805322,
+          -105.0790841,
+          40.5888239
+        ],
+        [
+          8917805321,
+          -105.0790496,
+          40.5888129
+        ]
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 4
+    },
+    {
+      "id": 964096645,
+      "nodes": [
+        [
+          8989131467,
+          -105.0787333,
+          40.588844
+        ],
+        [
+          7416599517,
+          -105.0787335,
+          40.5889064
+        ],
+        [
+          7416599518,
+          -105.0787337,
+          40.5889963
+        ],
+        [
+          8989131461,
+          -105.0787339,
+          40.5890754
+        ]
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "crossing": "traffic_signals",
+        "crossing:markings": "yes",
+        "crossing:signals": "yes",
+        "footway": "crossing",
+        "highway": "footway",
+        "surface": "paved"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 5
+    },
+    {
+      "id": 964096646,
+      "nodes": [
+        [
+          7416599524,
+          -105.0790872,
+          40.5888596
+        ],
+        [
+          8917805322,
+          -105.0790841,
+          40.5888239
+        ],
+        [
+          8917805323,
+          -105.0790504,
+          40.5887793
+        ],
+        [
+          8917805324,
+          -105.0790572,
+          40.588106
+        ],
+        [
+          9115326600,
+          -105.0790703,
+          40.5875849
+        ],
+        [
+          9005503394,
+          -105.0790722,
+          40.5872225
+        ],
+        [
+          8989243919,
+          -105.0790784,
+          40.5871805
+        ],
+        [
+          8917805326,
+          -105.0790813,
+          40.587146
+        ]
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2021-09-22 21:25:50+00:00",
+      "version": 6
+    },
+    {
+      "id": 971271377,
+      "nodes": [
+        [
+          7550272616,
+          -105.0779639,
+          40.5891924
+        ],
+        [
+          13836633073,
+          -105.0780624,
+          40.5891932
+        ],
+        [
+          7550272621,
+          -105.0781793,
+          40.5891942
+        ],
+        [
+          7550272617,
+          -105.0782455,
+          40.5891849
+        ],
+        [
+          7550272618,
+          -105.0784536,
+          40.5891446
+        ],
+        [
+          7550272619,
+          -105.0786827,
+          40.5890827
+        ],
+        [
+          7416599519,
+          -105.0787436,
+          40.5890943
+        ]
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 3
+    },
+    {
+      "id": 971271429,
+      "nodes": [
+        [
+          9005503393,
+          -105.0787552,
+          40.5871432
+        ],
+        [
+          2376302749,
+          -105.0787579,
+          40.5871711
+        ],
+        [
+          8989264499,
+          -105.0787614,
+          40.5876749
+        ],
+        [
+          8989264500,
+          -105.0787685,
+          40.5878188
+        ],
+        [
+          7416599516,
+          -105.0787625,
+          40.588819
+        ]
+      ],
+      "tags": {
+        "bicycle": "dismount",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2021-08-25 02:50:55+00:00",
+      "version": 4
+    },
+    {
+      "id": 974201510,
+      "nodes": [
+        [
+          51236878,
+          -105.078841,
+          40.588948
+        ],
+        [
+          7416599517,
+          -105.0787335,
+          40.5889064
+        ],
+        [
+          6543050322,
+          -105.0783805,
+          40.5889075
+        ]
+      ],
+      "tags": {
+        "cycleway:left": "no",
+        "cycleway:right": "lane",
+        "cycleway:right:buffer": "no",
+        "highway": "secondary",
+        "maxspeed": "30 mph",
+        "name": "Laporte Avenue",
+        "name_1": "Laporte Avenue",
+        "oneway": "yes",
+        "surface": "paved"
+      },
+      "timestamp": "2026-08-24 13:59:35+00:00",
+      "version": 5
+    },
+    {
+      "id": 974201511,
+      "nodes": [
+        [
+          9016011067,
+          -105.0790751,
+          40.5890678
+        ],
+        [
+          13836633019,
+          -105.0794848,
+          40.5890699
+        ],
+        [
+          9016011068,
+          -105.0795741,
+          40.5890703
+        ],
+        [
+          12421621562,
+          -105.0798073,
+          40.5890709
+        ],
+        [
+          13836633066,
+          -105.0800811,
+          40.5890716
+        ],
+        [
+          13836633065,
+          -105.0803819,
+          40.5890724
+        ],
+        [
+          8917767409,
+          -105.0805309,
+          40.5890728
+        ],
+        [
+          8917767410,
+          -105.0805891,
+          40.589072
+        ]
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 5
+    },
+    {
+      "id": 986038519,
+      "nodes": [
+        [
+          9115326599,
+          -105.0795841,
+          40.5875869
+        ],
+        [
+          9115326600,
+          -105.0790703,
+          40.5875849
+        ],
+        [
+          9115326601,
+          -105.0789796,
+          40.5875855
+        ]
+      ],
+      "tags": {
+        "highway": "service",
+        "service": "parking_aisle"
+      },
+      "timestamp": "2021-09-22 21:25:50+00:00",
+      "version": 1
+    },
+    {
+      "id": 1073147425,
+      "nodes": [
+        [
+          9844921492,
+          -105.0787315,
+          40.5893672
+        ],
+        [
+          9844921493,
+          -105.0786784,
+          40.5893851
+        ],
+        [
+          9844921494,
+          -105.0785859,
+          40.5894201
+        ],
+        [
+          9844921495,
+          -105.0785136,
+          40.5894508
+        ],
+        [
+          9844921496,
+          -105.0784434,
+          40.5894831
+        ],
+        [
+          9844921497,
+          -105.0783886,
+          40.5895309
+        ],
+        [
+          9844921498,
+          -105.0783696,
+          40.589615
+        ],
+        [
+          9844921499,
+          -105.0782469,
+          40.5896172
+        ],
+        [
+          7550272617,
+          -105.0782455,
+          40.5891849
+        ]
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "footway": "sidewalk",
+        "highway": "footway"
+      },
+      "timestamp": "2022-06-24 19:52:35+00:00",
+      "version": 1
+    },
+    {
+      "id": 1181515369,
+      "nodes": [
+        [
+          1672799568,
+          -105.0781746,
+          40.5891157
+        ],
+        [
+          8989131466,
+          -105.0782963,
+          40.5890986
+        ],
+        [
+          1463571980,
+          -105.0784018,
+          40.5890743
+        ],
+        [
+          8989131465,
+          -105.0785614,
+          40.5890226
+        ],
+        [
+          3707437473,
+          -105.078683,
+          40.589
+        ],
+        [
+          7416599518,
+          -105.0787337,
+          40.5889963
+        ],
+        [
+          51236878,
+          -105.078841,
+          40.588948
+        ]
+      ],
+      "tags": {
+        "cycleway:left": "no",
+        "cycleway:right": "lane",
+        "cycleway:right:buffer": "no",
+        "highway": "secondary",
+        "maxspeed": "30 mph",
+        "name": "Laporte Avenue",
+        "name_1": "Laporte Avenue",
+        "oneway": "yes",
+        "surface": "asphalt"
+      },
+      "timestamp": "2026-08-24 13:59:35+00:00",
+      "version": 4
+    },
+    {
+      "id": 1342265627,
+      "nodes": [
+        [
+          3558441870,
+          -105.0790889,
+          40.5890322
+        ],
+        [
+          3558441869,
+          -105.0790881,
+          40.5889502
+        ],
+        [
+          7416599524,
+          -105.0790872,
+          40.5888596
+        ]
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "crossing": "traffic_signals",
+        "crossing:markings": "yes",
+        "crossing:signals": "yes",
+        "footway": "crossing",
+        "highway": "footway",
+        "surface": "paved"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 1
+    },
+    {
+      "id": 1342265628,
+      "nodes": [
+        [
+          8917805317,
+          -105.079008,
+          40.5890931
+        ],
+        [
+          7416599520,
+          -105.0790546,
+          40.5890857
+        ],
+        [
+          9016011067,
+          -105.0790751,
+          40.5890678
+        ],
+        [
+          3558441870,
+          -105.0790889,
+          40.5890322
+        ]
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 1
+    },
+    {
+      "id": 1342265629,
+      "nodes": [
+        [
+          8917805321,
+          -105.0790496,
+          40.5888129
+        ],
+        [
+          7416599525,
+          -105.0789603,
+          40.5888137
+        ],
+        [
+          7416599526,
+          -105.0788993,
+          40.5888143
+        ],
+        [
+          7416599527,
+          -105.0788421,
+          40.5888148
+        ],
+        [
+          7416599528,
+          -105.0787821,
+          40.5888154
+        ]
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "crossing": "traffic_signals",
+        "crossing:markings": "yes",
+        "crossing:signals": "yes",
+        "footway": "crossing",
+        "highway": "footway",
+        "surface": "paved"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 1
+    },
+    {
+      "id": 1342265630,
+      "nodes": [
+        [
+          7416599528,
+          -105.0787821,
+          40.5888154
+        ],
+        [
+          7416599516,
+          -105.0787625,
+          40.588819
+        ],
+        [
+          8989131467,
+          -105.0787333,
+          40.588844
+        ]
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 1
+    },
+    {
+      "id": 1342265631,
+      "nodes": [
+        [
+          8989131462,
+          -105.0787716,
+          40.5890948
+        ],
+        [
+          7416599523,
+          -105.078843,
+          40.5890947
+        ],
+        [
+          7416599522,
+          -105.078897,
+          40.5890943
+        ],
+        [
+          7416599521,
+          -105.0789613,
+          40.5890939
+        ],
+        [
+          8917805317,
+          -105.079008,
+          40.5890931
+        ]
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "crossing": "traffic_signals",
+        "crossing:markings": "yes",
+        "crossing:signals": "yes",
+        "footway": "crossing",
+        "highway": "footway",
+        "surface": "paved"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 1
+    },
+    {
+      "id": 1342265632,
+      "nodes": [
+        [
+          8989131461,
+          -105.0787339,
+          40.5890754
+        ],
+        [
+          7416599519,
+          -105.0787436,
+          40.5890943
+        ],
+        [
+          8989131462,
+          -105.0787716,
+          40.5890948
+        ]
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2024-12-12 22:12:46+00:00",
+      "version": 1
+    },
+    {
+      "id": 1475543490,
+      "nodes": [
+        [
+          6543050322,
+          -105.0783805,
+          40.5889075
+        ],
+        [
+          51052581,
+          -105.07799,
+          40.5889019
+        ]
+      ],
+      "tags": {
+        "cycleway:left": "no",
+        "cycleway:right": "lane",
+        "cycleway:right:buffer": "no",
+        "highway": "secondary",
+        "maxspeed": "30 mph",
+        "name": "Laporte Avenue",
+        "name_1": "Laporte Avenue",
+        "oneway": "yes",
+        "surface": "paved"
+      },
+      "timestamp": "2026-08-24 13:59:35+00:00",
+      "version": 2
+    },
+    {
+      "id": 1514831216,
+      "nodes": [
+        [
+          3558431633,
+          -105.0794857,
+          40.5899976
+        ],
+        [
+          13836633013,
+          -105.0794858,
+          40.5899759
+        ],
+        [
+          13836633014,
+          -105.0794872,
+          40.5898634
+        ],
+        [
+          13836633015,
+          -105.079479,
+          40.5898506
+        ],
+        [
+          13836633054,
+          -105.0794814,
+          40.5896973
+        ],
+        [
+          13836633016,
+          -105.0794814,
+          40.5896947
+        ],
+        [
+          13836633017,
+          -105.0794807,
+          40.5895119
+        ],
+        [
+          13836633018,
+          -105.0794838,
+          40.5892795
+        ],
+        [
+          13836633019,
+          -105.0794848,
+          40.5890699
+        ]
+      ],
+      "tags": {
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 1
+    },
+    {
+      "id": 1514831238,
+      "nodes": [
+        [
+          13836633073,
+          -105.0780624,
+          40.5891932
+        ],
+        [
+          13836633081,
+          -105.0780579,
+          40.5895984
+        ],
+        [
+          13836633074,
+          -105.0780574,
+          40.589649
+        ]
+      ],
+      "tags": {
+        "highway": "footway",
+        "surface": "concrete"
+      },
+      "timestamp": "2026-05-16 20:02:11+00:00",
+      "version": 1
+    }
+  ]
+}

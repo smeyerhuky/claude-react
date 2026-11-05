@@ -16,6 +16,7 @@
     "docs/research/connector-reviews/44180-cross-border-census-lead.json": "556c627b44b08c8bbfa86d5e667688ac0f39bf27d5462990555adc3e78eafb46",
     "docs/research/connector-reviews/denver-blake-rtd-proposal.json": "697ee0a3ee9bfb91e238f976ddabbf4889af5ad30775ecb8edd87bedef96231b",
     "docs/research/connector-reviews/denver-union-station-proposal.json": "a4659ca41fff778ae89bfb884d296a99d470557cd53b106efec5ee7dbd3bb2d9",
+    "docs/research/connector-reviews/fort-collins-civic-center-proposal.json": "8709db3555301afb21958de9ccc60ce3f37a2e7ccca510291383f289326c49eb",
     "docs/research/connector-reviews/tucson-census-lead.json": "9daa5e17d0802cb360c6ef522c2232acf0d4fb68bd69b3b6b697afe036ab7e28",
     "docs/research/connector-reviews/wichita-census-lead.json": "4eb862ab09a99a0406283edf51d76417151101cf125aa6427f413b22e9ee9d1f",
     "docs/research/kansas-texas-source-preflight/kansas-origins.json": "e65727e29ef5446a126e3799a93d7c37c9ecf917efe1f5265da8ae11da93f1e0",
@@ -91,7 +92,14 @@
           "modeled_nodata_costs": 0,
           "name": "Fort Collins-Loveland, CO Metro Area",
           "retained_lead_scan": false,
-          "review_packets": [],
+          "review_packets": [
+            {
+              "decision": "needs_evidence",
+              "origin_policy": "urban-access-anchor-v1",
+              "path": "docs/research/connector-reviews/fort-collins-civic-center-proposal.json",
+              "sha256": "8709db3555301afb21958de9ccc60ce3f37a2e7ccca510291383f289326c49eb"
+            }
+          ],
           "routed_research_lead": true
         },
         {

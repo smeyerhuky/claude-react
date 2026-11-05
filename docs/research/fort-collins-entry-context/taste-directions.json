@@ -1,0 +1,29 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture": {
+    "bytes": 26133,
+    "content_type": "text/html; charset=UTF-8",
+    "final_url": "https://tasteoffortcollins.com/directions-and-parking",
+    "retrieved_at_utc": "2026-10-31T19:03:15.498878+00:00",
+    "sha256": "9ce75037a3372168f54bba73dcd5b69aeea900e63a96cb43531187c98312fdbd",
+    "status": 200,
+    "url": "https://tasteoffortcollins.com/directions-and-parking"
+  },
+  "observations": [
+    "The event organizer recommends the Civic Center structure and names North Mason Street as its entrance street. This does not identify an exact coordinate or independently validate every possible garage entrance.",
+    "The selected page names 301 Maple Street as a Washington Park event reference and describes event fencing. That venue address is not used as a garage entry or metro anchor. The page does not date its entrance statement."
+  ],
+  "published_conditions": {
+    "event_date_in_selected_page": null,
+    "event_reference_address_is_garage_entry": false,
+    "exact_entrance_lonlat": null,
+    "named_entrance_street": "N Mason St",
+    "only_entrance_proven": false
+  },
+  "release_eligible": false,
+  "retention": "Selected short literal text and factual observations only. Original response hash identifies bytes not retained here; full HTML, runtime/form state, error bodies and environment configuration omitted. Capture is not a field review or revalidation of statements.",
+  "schema": "fort-collins-publication-observation-v1",
+  "selected_quote": "The Entrance to the garage is on N Mason St.",
+  "source_kind": "event_organizer_parking_guidance"
+}
