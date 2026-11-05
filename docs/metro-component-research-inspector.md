@@ -88,10 +88,10 @@ The new generated view binds the separate checkpoint and exact Wichita candidate
 before displaying its model-negative note. Browser checks compare all 2,232
 visible values/no-data entries over every direction/metric/probe combination.
 
-The inspector now retains eight separate views: the 26-, 31-, 32- and 33-source
+The inspector now retains nine separate views: the 26-, 31-, 32- and 33-source
 Census experiments, Denver start sensitivity, the 26-source competitor inventory,
-the 698-membership principal-city source inventory and the declared road-model
-kernel. The frozen Las Vegas view still contains exactly 2,508 costs: 2,356 finite
+the 698-membership principal-city source inventory, the declared road-model
+kernel and mixed maneuver histories. The frozen Las Vegas view still contains exactly 2,508 costs: 2,356 finite
 and 152 modeled NoData. No later scenario or kernel result rewrites those values.
 
 Select **Declared road-model kernel — two ways, unverified access** to inspect
@@ -115,3 +115,22 @@ displayed segment weights and identities, keyboard selection, mobile layout and
 zero external requests, then exercises the view inside the sandbox and confirms
 the parent map state/canvas remains identical. Production excludes the new view
 even with the development opt-in flag set.
+
+Select **Mixed road maneuver histories — unverified access** for a separate
+twenty-result view of the seven-way mixed kernel. Six static via-way history
+cases and four timed via-node/direction cases each retain both metrics. Compare
+a complete prohibited approach with an unconstrained start inside the via road
+or an endpoint inside the sequence prefix. Orange dashed segments identify the
+raw declaration; blue segments show the selected supplied-network path.
+Applicability and adopted versus regression clocks remain explicit. These are
+declared source semantics, not actual turn/access approval or complete road
+coverage. All eight older views stay available and their files are unchanged.
+
+```sh
+python scripts/build_mixed_maneuver_explorer.py --output src/research/metro-mixed-maneuvers.html
+```
+
+CI checks every displayed mixed result, selected arc and weight, diagram
+declaration, scenario/graph binding, keyboard use, mobile layout and zero external
+requests. The normal inspector checks exercise all nine views and preserve the
+parent map state/canvas; production excludes the new view and embedded data.

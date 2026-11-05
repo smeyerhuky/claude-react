@@ -8,6 +8,7 @@ import lasVegasHtml from '../research/metro-las-vegas-probes.html?raw'
 import referenceScenario from '../research/metro-reference-scenario.json'
 import principalSourcesHtml from '../research/metro-principal-sources.html?raw'
 import kernelHtml from '../research/metro-reference-kernel.html?raw'
+import mixedManeuverHtml from '../research/metro-mixed-maneuvers.html?raw'
 
 const views = {
   probes: { title: 'Census road-node research experiment', html: probeHtml },
@@ -18,6 +19,7 @@ const views = {
   lasVegas: { title: 'Las Vegas eight-state Census road-node experiment', html: lasVegasHtml },
   principalSources: { title: 'Principal-city source work inventory', html: principalSourcesHtml },
   kernel: { title: 'Declared road-model kernel', html: kernelHtml },
+  mixedManeuvers: { title: 'Mixed road maneuver histories', html: mixedManeuverHtml },
 }
 
 export default function MetroRoadResearchPanel() {
@@ -54,6 +56,7 @@ export default function MetroRoadResearchPanel() {
             <option value="inventory">Qualifying metros and missing competitors — 26-source baseline</option>
             <option value="principalSources">Principal-city source work — 698 memberships, zero approved anchors</option>
             <option value="kernel">Declared road-model kernel — two ways, unverified access</option>
+            <option value="mixedManeuvers">Mixed road maneuver histories — unverified access</option>
           </select>
         </label>
       </div>
