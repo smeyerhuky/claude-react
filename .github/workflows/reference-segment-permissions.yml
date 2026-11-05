@@ -26,7 +26,7 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-      - run: python -m pip install 'tzdata==2026.5' 'osmium==4.3.2' 'networkx==3.7'
+      - run: python -m pip install 'tzdata==2026.5' 'osmium==4.3.2' 'networkx==3.7' 'pyproj==3.8.0'
       - run: python -m unittest discover -s scripts -p 'test_road_reference*.py' -v
       - run: python -m unittest discover -s scripts -p test_reference_way_permission_checkpoint.py -v
       - run: python scripts/reference_segment_permission_checkpoint.py
