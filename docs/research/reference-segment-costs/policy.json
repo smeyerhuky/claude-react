@@ -1,0 +1,25 @@
+{
+  "schema": "reference-car-segment-cost-policy-v1",
+  "distance": "shortest-spherical-arc-between-consecutive-raw-vertices",
+  "earth_radius_m": 6371000,
+  "elevation": "not-modeled",
+  "speed": "static-directional-posted-limit-else-explicit-highway-default",
+  "default_speed_kph": {
+    "motorway": 100, "motorway_link": 50,
+    "trunk": 80, "trunk_link": 45,
+    "primary": 65, "primary_link": 35,
+    "secondary": 55, "secondary_link": 30,
+    "tertiary": 45, "tertiary_link": 25,
+    "residential": 30, "unclassified": 35,
+    "living_street": 12, "service": 15
+  },
+  "supported_numeric_speed_kph": {"exclusive_min": 0, "inclusive_max": 160},
+  "mph_to_kph": "1.609344",
+  "intersection_and_turn_delay": "not-modeled",
+  "acceleration_and_surface_delay": "not-modeled",
+  "traffic": "not-modeled",
+  "unknown_speed_control": "unsupported-no-default-fallback",
+  "global_speed_ceiling_certified": false,
+  "access_verified": false,
+  "release_eligible": false
+}

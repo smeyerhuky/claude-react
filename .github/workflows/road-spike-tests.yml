@@ -11,6 +11,8 @@ on:
       - 'scripts/reference_via_node_checkpoint.py'
       - 'scripts/test_reference_via_node_compile.py'
       - 'docs/research/reference-via-node-compilation/**'
+      - 'scripts/reference_segment_cost_checkpoint.py'
+      - 'docs/research/reference-segment-costs/**'
       - 'scripts/six_state_checkpoint.py'
       - 'scripts/test_six_state_checkpoint.py'
       - 'scripts/wichita_model_component.py'
