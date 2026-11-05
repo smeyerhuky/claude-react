@@ -2,6 +2,11 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/road_reference*.py'
+      - 'scripts/test_road_reference*.py'
+      - 'scripts/reference_turn_rule_checkpoint.py'
+      - 'scripts/check_reference_turn_rule_oracle.cjs'
+      - 'docs/research/reference-turn-rules/**'
       - 'scripts/six_state_checkpoint.py'
       - 'scripts/test_six_state_checkpoint.py'
       - 'scripts/wichita_model_component.py'
