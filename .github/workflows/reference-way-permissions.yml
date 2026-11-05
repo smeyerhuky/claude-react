@@ -8,6 +8,8 @@ on:
       - 'scripts/test_reference_way*.py'
       - 'scripts/via_way_raw_context.py'
       - 'scripts/fetch_research_source.py'
+      - 'scripts/research_source_cache.py'
+      - 'scripts/research-source-snapshots/co-nm-az-20261027.json'
       - 'docs/research/census-33-source-checkpoint/baseline.json'
       - 'docs/research/raw-via-way-compiler/**'
       - 'docs/research/reference-road-scenario/scenario.json'
@@ -49,12 +51,25 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install 'osmium==4.3.2'
-      - name: Fetch and verify the exact original public input
+      - id: source_cache
+        name: Derive the existing hash-bound original-source cache identity
+        run: |
+          python - <<'PY'
+          import json, os, sys
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          from research_source_cache import cache_key, MANIFEST
+          with Path(os.environ['GITHUB_OUTPUT']).open('a') as handle:
+              handle.write('key=' + cache_key(json.loads(MANIFEST.read_text())) + '\n')
+          PY
+      - uses: actions/cache/restore@v4
+        with:
+          path: local-data/*.osm.pbf
+          key: ${{ steps.source_cache.outputs.key }}
+      - name: Recover and verify exact originals; cache bytes are untrusted until checked
         env:
           RESEARCH_STATE: ${{ matrix.state }}
         run: |
-          mkdir -p local-data
-          curl -fLSs --retry 3 --connect-timeout 20 --max-time 600 --output "local-data/$RESEARCH_STATE.osm.pbf" "https://download.geofabrik.de/north-america/us/$RESEARCH_STATE-261027.osm.pbf"
           python scripts/fetch_research_source.py --source "$RESEARCH_STATE.osm.pbf" --output "local-data/$RESEARCH_STATE.osm.pbf"
       - name: Re-extract complete raw tags on every selected member-way vertex
         env:

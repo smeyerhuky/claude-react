@@ -86,6 +86,13 @@ TZ=UTC NODE_PATH=/path/to/opening-hours/node_modules node scripts/check_referenc
 
 CI runs the independent weekly comparison, parent/way/segment checkpoints and
 unchanged frozen costs. The full regression workflow also covers future
-reference-profile changes. No connector, anchor, geographic coverage or public
+reference-profile changes. Exact Colorado/Arizona and Fort Collins raw-source
+replays restore the existing six-source, hash-keyed cache and verify each file's
+original size/SHA before extraction. Cache priming uses the existing manual
+draft-reader recovery workflow; PR jobs stay read-only and never publish a
+source release. Cache absence or mismatched bytes still fail closed; no newer
+provider snapshot or changed expected digest is substituted.
+
+No connector, anchor, geographic coverage or public
 road layer is adopted; #137's independent evidence and different approver remain
 required. Source OSM data © OpenStreetMap contributors, ODbL.
