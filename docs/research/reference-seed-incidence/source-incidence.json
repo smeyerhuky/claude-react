@@ -1,0 +1,121 @@
+{
+  "access_verified": false,
+  "all_graph_node_incidence_enumerated": false,
+  "all_source_way_ids_at_seed_nodes": {
+    "1463571987": [
+      132998249,
+      132998250,
+      696728766
+    ],
+    "51052581": [
+      6161921,
+      132998252,
+      1475543490
+    ],
+    "6543050322": [
+      696728763,
+      696728766,
+      974201510,
+      1475543490
+    ],
+    "6543050328": [
+      696728766
+    ],
+    "6543050329": [
+      696728766
+    ],
+    "6543050330": [
+      696728766
+    ],
+    "8917743737": [
+      696728766
+    ],
+    "8989131464": [
+      696728766
+    ]
+  },
+  "anchors_adopted": false,
+  "complete_node_record_sha256": {
+    "13836633085": "2e1a3828b467ee02ea8cde94aede6ab059d9bc087be4e30f1dca353681475828",
+    "1463571987": "ae68cea529de1e4de10551c5b3e42b882e041b96c23bad6ba2e5dcc6c4caac8c",
+    "1672799568": "78aba9444f97a02924a42fa63a9c3708d22e09ebbde952e280885e6d10946c5a",
+    "1802377816": "290932739c0351735cdf89c5f0cfb20d258e044c6e9eae9768158970f02ca9e9",
+    "3707437470": "cdec17cdf990bd9cd21bb15002a839a956778b351f1c1ddd93f7bff04844f7e0",
+    "51052580": "29b5c33be777ad354366036f251ba4c36bed8d04fabcd0597615dea819821ca7",
+    "51052581": "8e774996603f4b29aaf9dd177b1f998f6afac125660732993b2deefcc3708453",
+    "51079914": "35d1fe09c37a99102514773a0017a5c05dca9df1df3678e7daad7c477128ccd5",
+    "51082332": "0ca5811d54fd91fd8109d0df056c38f423ad32c2f286f1cd4567bbc1d9c2e844",
+    "51193002": "68f697b451589cc265a22afafc576d1c7744b887cc2ef78f8195de56898bf2bf",
+    "51193003": "545b1fc0f8da66cfc3598b46d523e9245a623e99fd8d22ed1f877c8a2467a03f",
+    "51236878": "ae4204d1261bfc3fda98112f37ef2f5720866f7511cd7c39ff50136b70644bfe",
+    "6543050322": "38e71feba1988ef5f93b2d0b92368fd260bbb8420a19018cd30722655fafc076",
+    "6543050323": "08459a4d641199b61696cba4ba630d1b4820f2a9f42182326f9815826e440fed",
+    "6543050328": "f322d8dacdac50b74de331eaca8885818a69fd081f7142c579c71ad908171029",
+    "6543050329": "992c9379d6335712b0dad9d6217fd80a78bd554c801c83e10acd4bcf8b6a3505",
+    "6543050330": "1ca13b1faa4f20f8b3944150e958202b6476627a76d0de090e2feddb6ca1a310",
+    "7416599514": "7771151c3ad69f5bb106baf8b2a295729fbc80b09b52460debd867c0378ccd31",
+    "7416599515": "a75760be1445502522565a03ff33e4e269eafb9e3a104e952a1cf4c4f4e3972a",
+    "7416599517": "562310aee2606e64f5e3fb3406f50d6920eccbc33ac749877a59f459bd62c30b",
+    "7416599563": "ccb59b78fc837a0e16c1d755be7972e56d56907ff9d531143971ebba8b758d6b",
+    "7416599564": "3d8e5105f9e8b99baaeb23e0b0b32fb3df1e5f716e5b80b6d134a394fd0347c7",
+    "7550272620": "435a8e4f7e413571f79ea22be4ef3dbcd9ac92e1503285d3def5b30c4b166bf5",
+    "8917743737": "5b1e14b15a4322331d022478f7ee8629382505cf19619a2435068739155db7b3",
+    "8989131464": "74e81116e6a86ee95c837243511df8de8bc1fa0e978412c26854d4bddccd2c16",
+    "8989264499": "d0ac9df54b523f4df811a60c3ae1f479ebfdfc7af43a3289e502a68da759ec6c",
+    "9016011065": "99c985f76ed8e6bcb820d87efd5bad1f1d3a6f7809af6e7f936301f128d82943"
+  },
+  "complete_way_record_sha256": {
+    "132998249": "5f8ecb463f9f62739da6a903af15b81d1f150a22ec78090895aa963c73ab50fe",
+    "132998250": "481fc439f9ca5db8024c96b43629499bef9b419b30473e2d7cf7232b4f3d7a23",
+    "132998252": "c2bb84d3394c5716deb7dab76b8feba98f14b81b9678760c55183af30bd0d542",
+    "1475543490": "d02b03414ece70953f3f4125b6bc6382993d21f2c12fc5664d2e6c1a0e1ea6c7",
+    "6161921": "89d2775f52e8a19388a1bbcf040b8160c1336d817a627f97b3e427fdb4250c2a",
+    "696728763": "958b5f886c0409fd6200355b0401d7e0273d00c33cc2ed11a8084cdde83ff4a8",
+    "696728766": "0d52b27b82d780073782f31c4bd279f70752c578f9c06be9e7ad1be18e7b92e9",
+    "974201510": "775a6437177526c1fce5cfe1f7b3fbdb34fed4f05ad116aeabf80bcb03feb774"
+  },
+  "connector_costs_included": false,
+  "exterior_closure_verified": false,
+  "geographic_coverage_certified": false,
+  "kernel_report_sha256": "e89ec83a7f91a6a01bbb71c12b32a6ef1deaf5a7348910b32a0698d4d5ae00c2",
+  "raw_context_sha256": "813bdcf37be5edf665c7be6830f4fa699c16c4d664b5cc96a893e70ef33b5aa3",
+  "release_eligible": false,
+  "schema": "reference-seed-source-incidence-v1",
+  "scope": "All original-PBF way memberships at the eight named seed IDs only, without geographic/highway/access filtering. Every returned member way/node record and touching type=restriction or restriction-namespace relation is hashed in full. Other member-node incidence, crossing roads without a shared seed ID, untagged/other relation semantics, real-world connectivity, grade/access and exterior closure are not established.",
+  "seed_incidence_enumerated_in_original_source": true,
+  "seed_node_ids": [
+    51052581,
+    1463571987,
+    6543050322,
+    6543050328,
+    6543050329,
+    6543050330,
+    8917743737,
+    8989131464
+  ],
+  "source_sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+  "touching_restriction_namespace_record_sha256": {
+    "20193102": "f5d49ac11d8fc57643c5d915076ddb11cec6845b583bcb6d9a929184e8c24067"
+  },
+  "unenumerated_new_member_node_ids": [
+    51052580,
+    51079914,
+    51082332,
+    51193002,
+    51193003,
+    51236878,
+    1672799568,
+    1802377816,
+    3707437470,
+    6543050323,
+    7416599514,
+    7416599515,
+    7416599517,
+    7416599563,
+    7416599564,
+    7550272620,
+    8989264499,
+    9016011065,
+    13836633085
+  ]
+}

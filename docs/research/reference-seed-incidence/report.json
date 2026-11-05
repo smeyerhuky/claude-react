@@ -1,0 +1,22 @@
+{
+  "access_verified": false,
+  "all_graph_node_incidence_enumerated": false,
+  "anchors_adopted": false,
+  "complete_member_nodes": 27,
+  "geographic_coverage_certified": false,
+  "implementation_sha256": {
+    "reference_seed_incidence.py": "0cd0501cf28c74c9a875fe2d86e1e09a106f05d964310eab46a699a4f6332ac6",
+    "reference_seed_incidence_checkpoint.py": "ebd6d657e4ea20995a6be99299114403300e558c24de428b80c03c95b473f03d"
+  },
+  "kernel_report_sha256": "e89ec83a7f91a6a01bbb71c12b32a6ef1deaf5a7348910b32a0698d4d5ae00c2",
+  "raw_context_sha256": "813bdcf37be5edf665c7be6830f4fa699c16c4d664b5cc96a893e70ef33b5aa3",
+  "release_eligible": false,
+  "schema": "reference-seed-incidence-checkpoint-v1",
+  "seed_incidence_enumerated_in_original_source": true,
+  "seed_nodes": 8,
+  "source_incidence_sha256": "59aec5bad34f0edf74b7aa9c543a88546c69ae006874dd57d4f8b68a594bb2cb",
+  "source_incident_ways": 8,
+  "touching_restriction_namespace_relations": 1,
+  "unenumerated_new_member_nodes": 19,
+  "warning": "Enumeration proves original-PBF membership at eight named raw seed nodes only. Nineteen additional member nodes still lack incident-way enumeration; complete geographic graph, exterior paths, other semantics, physical/grade/access evidence, reviewed anchor sets and approvals remain absent. No new routes, costs, adopted anchors or public map changes."
+}
