@@ -1,0 +1,41 @@
+name: Atomic declared static-guidance graph admission
+on:
+  pull_request:
+    paths:
+      - 'scripts/road_guidance*.py'
+      - 'scripts/road_static_lane_guidance.py'
+      - 'scripts/guidance_via_node_compile.py'
+      - 'scripts/fort_collins_guidance*.py'
+      - 'scripts/test_road_guidance_mixed_graph.py'
+      - 'scripts/road_reference*.py'
+      - 'scripts/reference_via*.py'
+      - 'scripts/road_maneuver_probe.py'
+      - 'scripts/road_turn_aware_probe.py'
+      - 'docs/research/fort-collins-guidance-graph/**'
+      - 'docs/research/fort-collins-guidance-maneuvers/**'
+      - 'docs/research/fort-collins-static-guidance/**'
+      - 'docs/research/fort-collins-control-corpus/**'
+      - '.github/workflows/fort-collins-guidance-graph.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  atomic-admission:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'tzdata==2026.5' 'osmium==4.3.2' 'networkx==3.7'
+      - run: python -m unittest discover -s scripts -p test_road_guidance_mixed_graph.py -v
+      - run: python scripts/fort_collins_guidance_graph_checkpoint.py
+      - run: python scripts/fort_collins_guidance_maneuver_checkpoint.py
+      - run: python scripts/fort_collins_control_checkpoint.py
+      - run: python scripts/las_vegas_ui_checkpoint.py --check-frozen
+      - uses: actions/upload-artifact@v6
+        with:
+          name: fort-collins-guidance-graph
+          path: docs/research/fort-collins-guidance-graph/
+          if-no-files-found: error
