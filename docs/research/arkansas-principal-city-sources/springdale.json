@@ -1,0 +1,38 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-11-06",
+  "cbsa": "22220",
+  "city_name": "Springdale",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-11-06",
+    "final_url": "https://www.springdalear.gov/page/city-clerk/",
+    "http_status": 200,
+    "response_bytes": 1556617,
+    "response_sha256": "39a40abe09bf42ac36858cc456e39097731188511e67b74876a0c798970a6f12",
+    "url": "https://www.springdalear.gov/page/city-clerk/"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and full connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review, reference-scenario evaluation or revalidation of historical statements. Full maps, entrance photos and dynamic page content have not been visually audited."
+  ],
+  "observations": [
+    "The retrieved City Clerk page includes a municipal contact section identifying Springdale City Hall at 201 Spring Street, Springdale, Arkansas 72764.",
+    "The ordinary HTTP text does not expose clerk office hours. No hours are inferred from search results or dynamic content. A contact address is not a reviewed ordinary-car entrance."
+  ],
+  "principal_city_id": "0566080",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "contact_address_is_reviewed_vehicle_entry": false,
+    "office_hours_inferred_from_unrendered_page": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Response hashes identify external bytes not retained in this repository and cannot be recomputed from this derived record. Full HTML/PDF, error bodies, form/runtime state, private source archives and environment configuration omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "Springdale City Hall 201 Spring Street",
+  "source_http_status": 200,
+  "source_kind": "municipal_facility_location",
+  "url": "https://www.springdalear.gov/page/city-clerk/"
+}

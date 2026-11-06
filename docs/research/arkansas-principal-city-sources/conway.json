@@ -1,0 +1,41 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-11-06",
+  "cbsa": "30780",
+  "city_name": "Conway",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-11-06",
+    "final_url": "https://conwayarkansas.gov/court-street-alleyway-improvement-project-to-begin-may-26/",
+    "http_status": 200,
+    "response_bytes": 113251,
+    "response_sha256": "cf8b3769f6572e93a8d1b3b4f0a1bcc762432174edbbf8986d8a8721410cf4cb",
+    "url": "https://conwayarkansas.gov/court-street-alleyway-improvement-project-to-begin-may-26/"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and full connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review, reference-scenario evaluation or revalidation of historical statements. Full maps, entrance photos and dynamic page content have not been visually audited."
+  ],
+  "observations": [
+    "The May 19, 2026 notice schedules Court Street alleyway work from May 26 through the end of 2026, within the block bounded by Oak, Court, Main and Chestnut streets.",
+    "It describes parking unavailable in the project area during construction, pedestrian alley closure and possible sidewalk disruption, while expecting no major road closures. The notice does not verify actual work start, completion, reopening or operation at the fixed October 28 reference instant."
+  ],
+  "principal_city_id": "0515190",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "actual_start_or_completion_verified": false,
+    "construction_notice_is_reference_date_access_proof": false,
+    "publication_date": "2026-05-19",
+    "scheduled_completion_year": 2026,
+    "scheduled_start_date": "2026-05-26"
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Response hashes identify external bytes not retained in this repository and cannot be recomputed from this derived record. Full HTML/PDF, error bodies, form/runtime state, private source archives and environment configuration omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "Construction is scheduled to begin May 26 and be completed by the end of 2026.",
+  "source_http_status": 200,
+  "source_kind": "municipal_planning",
+  "url": "https://conwayarkansas.gov/court-street-alleyway-improvement-project-to-begin-may-26/"
+}

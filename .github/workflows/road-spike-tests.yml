@@ -2,6 +2,9 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/*principal_city_source*.py'
+      - 'docs/research/*-principal-city-sources/**'
+      - 'docs/research/principal-city-source-work/**'
       - 'scripts/build_native_query_explorer.py'
       - 'scripts/test_native_query_explorer.py'
       - 'src/research/metro-native-directional-bounds.html'

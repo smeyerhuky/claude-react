@@ -369,18 +369,24 @@
       "anchor_adopted": false,
       "cbsa": "22220",
       "city_name": "Bentonville",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and full connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, reference-scenario evaluation or revalidation of historical statements. Full maps, entrance photos and dynamic page content have not been visually audited."
+      ],
+      "observations": [
+        "The city website contact section identifies the City of Bentonville at 305 SW A Street, Bentonville, Arkansas 72712. This is a municipal contact address, not a surveyed car entrance.",
+        "No historical Downtown by Design parking count is used as a current facility inventory."
+      ],
       "principal_city_id": "0505320",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-06",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_facility_location",
+      "source_path": "docs/research/arkansas-principal-city-sources/bentonville.json",
+      "source_sha256": "7759760b167016d4e31b04790127c159526af32325ed6c3dc754470963c9369e",
       "state": "AR",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.bentonville.ar.gov/"
     },
     {
       "access_review_status": "unresolved",
@@ -388,18 +394,24 @@
       "anchor_adopted": false,
       "cbsa": "30780",
       "city_name": "Conway",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and full connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, reference-scenario evaluation or revalidation of historical statements. Full maps, entrance photos and dynamic page content have not been visually audited."
+      ],
+      "observations": [
+        "The May 19, 2026 notice schedules Court Street alleyway work from May 26 through the end of 2026, within the block bounded by Oak, Court, Main and Chestnut streets.",
+        "It describes parking unavailable in the project area during construction, pedestrian alley closure and possible sidewalk disruption, while expecting no major road closures. The notice does not verify actual work start, completion, reopening or operation at the fixed October 28 reference instant."
+      ],
       "principal_city_id": "0515190",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-06",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_planning",
+      "source_path": "docs/research/arkansas-principal-city-sources/conway.json",
+      "source_sha256": "29160e52018d21664abe4d15049d97432c600249063cf5b61343d924b9483e68",
       "state": "AR",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://conwayarkansas.gov/court-street-alleyway-improvement-project-to-begin-may-26/"
     },
     {
       "access_review_status": "unresolved",
@@ -407,18 +419,24 @@
       "anchor_adopted": false,
       "cbsa": "22220",
       "city_name": "Fayetteville",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and full connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, reference-scenario evaluation or revalidation of historical statements. Full maps, entrance photos and dynamic page content have not been visually audited."
+      ],
+      "observations": [
+        "The Downtown Business District page distinguishes Square parking with a two-hour stay within a four-hour window, timed on-street and surface-lot payment, and deck entry charges.",
+        "Town Center deck is described on West Rock Street. Meadow Street deck has paid entry on levels one and three and a reserved monthly-program level two. Employee and permit lots have separate windows. Payment or free periods do not establish unrestricted car entry."
+      ],
       "principal_city_id": "0523290",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-06",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/arkansas-principal-city-sources/fayetteville.json",
+      "source_sha256": "dc7271d5336373aaaa7d4dc315c427f7536f4c8d64397cf90649fccd040e5073",
       "state": "AR",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.fayetteville-ar.gov/4163/Downtown-Business-District"
     },
     {
       "access_review_status": "unresolved",
@@ -426,18 +444,22 @@
       "anchor_adopted": false,
       "cbsa": "22900",
       "city_name": "Fort Smith",
-      "limitations": [],
+      "limitations": [
+        "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and full connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, reference-scenario evaluation or revalidation of historical statements. Full maps, entrance photos and dynamic page content have not been visually audited.",
+        "The selected official publication returned HTTP 403. Search-result text is not promoted into inspected evidence; this is a retrieval gap, not a finding that car access is unavailable."
+      ],
       "observations": [],
       "principal_city_id": "0524550",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-06",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "unavailable",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/arkansas-principal-city-sources/fort-smith.json",
+      "source_sha256": "dce0f7d2383214fa8488c974ca4ce8b33b956d1498b591865570e69af7fed57c",
       "state": "AR",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "selected_publication_unavailable",
+      "url": "https://www.fortsmithar.gov/resident-services/transportation-and-mobility/parking"
     },
     {
       "access_review_status": "unresolved",
@@ -445,18 +467,24 @@
       "anchor_adopted": false,
       "cbsa": "27860",
       "city_name": "Jonesboro",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and full connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, reference-scenario evaluation or revalidation of historical statements. Full maps, entrance photos and dynamic page content have not been visually audited."
+      ],
+      "observations": [
+        "The official City Clerk directory lists 300 South Church Street, Jonesboro, Arkansas 72401, and Monday through Friday office hours of 8 a.m. to 5 p.m.",
+        "This identifies office context only. Office service hours do not establish driving entry or exit hours. The former jonesboro.org directory redirects to the city publisher jonesboroar.gov; this record binds a fresh request to the final official URL."
+      ],
       "principal_city_id": "0535710",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-06",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_facility_location",
+      "source_path": "docs/research/arkansas-principal-city-sources/jonesboro.json",
+      "source_sha256": "5a87db638abd1724f0fd60832c86c05e013a8f57985888709a1304fa1952a69d",
       "state": "AR",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.jonesboroar.gov/m/directory/department?did=28"
     },
     {
       "access_review_status": "unresolved",
@@ -464,18 +492,24 @@
       "anchor_adopted": false,
       "cbsa": "30780",
       "city_name": "Little Rock",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and full connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, reference-scenario evaluation or revalidation of historical statements. Full maps, entrance photos and dynamic page content have not been visually audited."
+      ],
+      "observations": [
+        "The city parking-enforcement page describes metered parking payment periods and free days. Its violation list separately includes alley noncommercial-vehicle, unloading/loading and obstruction categories.",
+        "Meter payment or free periods cannot be treated as permission for an ordinary private car to use an alley. This is publication context, not a legal interpretation, signed-road audit or compiled access rule."
+      ],
       "principal_city_id": "0541000",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-06",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/arkansas-principal-city-sources/little-rock.json",
+      "source_sha256": "5c8870f4e8c858555ce462597004a970c5e4633bee4dbbcba9fd3fe1f674db0c",
       "state": "AR",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://littlerock.gov/government/city-departments/public-works/parking-enforcement/"
     },
     {
       "access_review_status": "unresolved",
@@ -483,18 +517,24 @@
       "anchor_adopted": false,
       "cbsa": "30780",
       "city_name": "North Little Rock",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and full connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, reference-scenario evaluation or revalidation of historical statements. Full maps, entrance photos and dynamic page content have not been visually audited."
+      ],
+      "observations": [
+        "The city contact page identifies North Little Rock City Hall at 300 Main Street. Its parking-ticket FAQ directs inquiries about the lot opposite Argenta Community Theater to a separate operator and says the city does not own that lot.",
+        "This is North Little Rock context, separately retained from Little Rock within the same metro. An operator referral establishes neither ordinary-car permission nor exact access geometry."
+      ],
       "principal_city_id": "0550450",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-06",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/arkansas-principal-city-sources/north-little-rock.json",
+      "source_sha256": "fe7b80e9bc7bfd00e016a302009bbff68e10aa172a3b8fcca3bfcd183cb1b215",
       "state": "AR",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://nlr.ar.gov/contact-us/"
     },
     {
       "access_review_status": "unresolved",
@@ -502,18 +542,24 @@
       "anchor_adopted": false,
       "cbsa": "22220",
       "city_name": "Rogers",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and full connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, reference-scenario evaluation or revalidation of historical statements. Full maps, entrance photos and dynamic page content have not been visually audited."
+      ],
+      "observations": [
+        "The city FAQ identifies Rogers Historical Museum at 313 South Second Street, with street-parking guidance at the front and side. It separately describes museum visitor hours and wheelchair accessibility.",
+        "Museum accessibility and visitor hours do not prove the grade, geometry, legality or operating hours of a vehicle connector. No museum point is adopted as an anchor."
+      ],
       "principal_city_id": "0560410",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-06",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/arkansas-principal-city-sources/rogers.json",
+      "source_sha256": "cea9c6659e0ce4ef777ee31bc65be5a4bf46ad9c211ba02565cb61f075446080",
       "state": "AR",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.rogersar.gov/m/faq"
     },
     {
       "access_review_status": "unresolved",
@@ -521,18 +567,24 @@
       "anchor_adopted": false,
       "cbsa": "22220",
       "city_name": "Springdale",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and full connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, reference-scenario evaluation or revalidation of historical statements. Full maps, entrance photos and dynamic page content have not been visually audited."
+      ],
+      "observations": [
+        "The retrieved City Clerk page includes a municipal contact section identifying Springdale City Hall at 201 Spring Street, Springdale, Arkansas 72764.",
+        "The ordinary HTTP text does not expose clerk office hours. No hours are inferred from search results or dynamic content. A contact address is not a reviewed ordinary-car entrance."
+      ],
       "principal_city_id": "0566080",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-06",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_facility_location",
+      "source_path": "docs/research/arkansas-principal-city-sources/springdale.json",
+      "source_sha256": "c63501ef4c014d4f19bbbc394c11251342c12bb96fc9270eda64480bd653f308",
       "state": "AR",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.springdalear.gov/page/city-clerk/"
     },
     {
       "access_review_status": "unresolved",
@@ -13598,9 +13650,9 @@
   ],
   "connectors_approved": 0,
   "counts": {
-    "context_retained": 57,
-    "not_recorded_here": 634,
-    "selected_publication_unavailable": 7
+    "context_retained": 65,
+    "not_recorded_here": 625,
+    "selected_publication_unavailable": 8
   },
   "input_sha256": {
     "docs/research/arizona-principal-city-sources/casa-grande.json": "e9d81166b48a814782c5b1c89924be8afcdc9018ac0d789a5a7cbdb0f9132c6d",
@@ -13619,6 +13671,16 @@
     "docs/research/arizona-principal-city-sources/scottsdale.json": "971f5c75aa6031d73d0c8ab68e9d5b894985f98dd45ceb9e9474a65aa0145fac",
     "docs/research/arizona-principal-city-sources/sierra-vista.json": "abf59bd25bd4009645a7d9313b3d4662f3feea243d6684d509a8af48846073ce",
     "docs/research/arizona-principal-city-sources/yuma.json": "2fbcd574d69c0d9f77eac7f7368accc7f9f0eeef5a88cb1700ad7c073f06b7b7",
+    "docs/research/arkansas-principal-city-sources/bentonville.json": "7759760b167016d4e31b04790127c159526af32325ed6c3dc754470963c9369e",
+    "docs/research/arkansas-principal-city-sources/conway.json": "29160e52018d21664abe4d15049d97432c600249063cf5b61343d924b9483e68",
+    "docs/research/arkansas-principal-city-sources/fayetteville.json": "dc7271d5336373aaaa7d4dc315c427f7536f4c8d64397cf90649fccd040e5073",
+    "docs/research/arkansas-principal-city-sources/fort-smith.json": "dce0f7d2383214fa8488c974ca4ce8b33b956d1498b591865570e69af7fed57c",
+    "docs/research/arkansas-principal-city-sources/jonesboro.json": "5a87db638abd1724f0fd60832c86c05e013a8f57985888709a1304fa1952a69d",
+    "docs/research/arkansas-principal-city-sources/little-rock.json": "5c8870f4e8c858555ce462597004a970c5e4633bee4dbbcba9fd3fe1f674db0c",
+    "docs/research/arkansas-principal-city-sources/manifest.json": "4960aabfe0de766864a1297db40e90bef316d5d90ce16999d63f1e43c02802df",
+    "docs/research/arkansas-principal-city-sources/north-little-rock.json": "fe7b80e9bc7bfd00e016a302009bbff68e10aa172a3b8fcca3bfcd183cb1b215",
+    "docs/research/arkansas-principal-city-sources/rogers.json": "cea9c6659e0ce4ef777ee31bc65be5a4bf46ad9c211ba02565cb61f075446080",
+    "docs/research/arkansas-principal-city-sources/springdale.json": "c63501ef4c014d4f19bbbc394c11251342c12bb96fc9270eda64480bd653f308",
     "docs/research/colorado-anchor-source-batch/boulder.json": "eabbdd248b66dd6d8b613e199cc8547988763295b71129ea8d5821cb4af3e032",
     "docs/research/colorado-anchor-source-batch/colorado-springs.json": "a659797dfdf928293879f8d9930b692b34d7198e75345f4ca6a4d8fb791b1c6a",
     "docs/research/colorado-anchor-source-batch/fort-collins.json": "cf823c199273d7a024af0f7e9aaedc1a06f10c7cfb283e5c21c9e4bb56134c9d",
@@ -13681,6 +13743,7 @@
     "docs/research/wyoming-principal-city-sources/cheyenne.json": "39418f36cef14873916939cc022ad28250bf244c611a7ddb313a3e90112aabfb",
     "docs/research/wyoming-principal-city-sources/manifest.json": "307f60ec874f92a0e2618e36812520cf2b5c63148b86bdba41312b76d4e6ed36",
     "scripts/arizona_principal_city_source_screen.py": "d1403d1e9b0729aacb9c5d0dfada4f54181c91cdda5a4ccb5dd4e97594de97ed",
+    "scripts/arkansas_principal_city_source_screen.py": "ffb70c40a35cdd6c90b5798341001c22c5bb26e64512294ce0beb97b71b43b4a",
     "scripts/colorado_principal_city_source_screen.py": "5a8266ca0f5d5e860e4b69f2b77536c7f392f43a58734b482d9b038e8b937cf9",
     "scripts/colorado_reviewed_connectors.json": "cbac5c424e0c840a95de00ddf1f77a5627d35543b2d97a524222908590c62d38",
     "scripts/kansas_principal_city_source_screen.py": "c0235c1d22cf68dabaaee4c44c014851b77edb1fb78b5836ef018133c0f0f4eb",
@@ -13690,13 +13753,13 @@
     "scripts/nevada_principal_city_source_screen.py": "fbf1e8e9e2532bb8006b872a4e3a05349024310df87007327f37bee5aed0e987",
     "scripts/oklahoma_principal_city_source_screen.py": "76c671aea851f5333ea549918a0e38d6c97a3d01e20dde83348dc5d9ec1c0a27",
     "scripts/principal_city_source_screen.py": "ae2cb4d19c4f95c9a5be92918fc0f0e41cd47d7b187bf176e60ac9e6cdca79e4",
-    "scripts/principal_city_source_work.py": "b75b3b5fddeb380de7c1cf4d72cf5058d4341ecc07217f718657bd81622ef49a",
+    "scripts/principal_city_source_work.py": "b4f35ae49848d3b3b1e3ed3d77e557b7c56b02ac9602faa506c5fb66ff54d73f",
     "scripts/utah_principal_city_source_screen.py": "8dd836ca3b07af78b9be9546aec15c34cabad1d4db85b1f493b265992a5814ed",
     "scripts/wyoming_principal_city_source_screen.py": "e95bdb9d93b7983401e0becb98e07d69e6b7a2be3531e7d9a635a58aaabc2d5e"
   },
   "membership_count": 698,
   "metro_count": 367,
-  "recorded_memberships": 64,
+  "recorded_memberships": 73,
   "release_eligible": false,
   "schema": "principal-city-source-work-v1",
   "scope": "Principal-city state membership, distinct from the state containing a Census representative point.",
@@ -13737,9 +13800,9 @@
     {
       "approved_anchors": 0,
       "counts": {
-        "context_retained": 0,
-        "not_recorded_here": 9,
-        "selected_publication_unavailable": 0
+        "context_retained": 8,
+        "not_recorded_here": 0,
+        "selected_publication_unavailable": 1
       },
       "memberships": 9,
       "release_eligible": false,
