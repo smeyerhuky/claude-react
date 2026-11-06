@@ -2,6 +2,12 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/road_opaque_control_bounds.py'
+      - 'scripts/test_road_opaque_control_bounds.py'
+      - 'scripts/fort_collins_gate_bounds_checkpoint.py'
+      - 'scripts/test_fort_collins_gate_bounds.py'
+      - 'docs/research/fort-collins-gate-uncertainty/**'
+      - '.github/workflows/fort-collins-gate-bounds.yml'
       - 'scripts/road_source_partition_union.py'
       - 'scripts/test_road_source_partition_union.py'
       - 'scripts/fort_collins_partition*.py'

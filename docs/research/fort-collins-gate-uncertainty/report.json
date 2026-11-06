@@ -1,0 +1,660 @@
+{
+  "active_known_maneuvers": 12,
+  "actual_access_verified": false,
+  "anchors_adopted": false,
+  "applied_exterior_route_exclusions": [],
+  "connector_costs_included": false,
+  "gate_review_context": {
+    "access_verified": false,
+    "anchors_adopted": false,
+    "complete_raw_way": {
+      "id": 201855578,
+      "nodes": [
+        [
+          2118741415,
+          -105.0760821,
+          40.5885125
+        ],
+        [
+          7416599557,
+          -105.0759826,
+          40.5885967
+        ],
+        [
+          8917794985,
+          -105.0759544,
+          40.5886236
+        ],
+        [
+          8917794982,
+          -105.0759063,
+          40.5886825
+        ],
+        [
+          8917794984,
+          -105.0756466,
+          40.588912
+        ],
+        [
+          8917794983,
+          -105.0755353,
+          40.5889758
+        ],
+        [
+          2118741416,
+          -105.0754808,
+          40.5890262
+        ]
+      ],
+      "tags": {
+        "highway": "service",
+        "name": "Old Firehouse Alley",
+        "oneway": "yes",
+        "surface": "asphalt"
+      },
+      "timestamp": "2025-07-27 02:55:59+00:00",
+      "version": 6
+    },
+    "connector_approved": false,
+    "evidence_status": "independent_operation_and_access_evidence_required",
+    "field_evidence_obtained": false,
+    "gate_assumed_closed": false,
+    "gate_assumed_open": false,
+    "operation_status": "unknown",
+    "raw_node": {
+      "id": 8917794983,
+      "lonlat": [
+        -105.0755353,
+        40.5889758
+      ],
+      "tags": {
+        "barrier": "gate"
+      },
+      "timestamp": "2021-07-14 00:11:32+00:00",
+      "version": 1
+    },
+    "release_eligible": false
+  },
+  "gate_state_assumed": false,
+  "geographic_coverage_certified": false,
+  "global_route_optimality_certified": false,
+  "implementation_sha256": {
+    "fort_collins_gate_bounds_checkpoint.py": "2825b5ca6959c32f8fed40ae41542a8d20e51d33bd7dc68743be053f51c54019",
+    "road_guidance_way_permissions.py": "07a39977eca8b254156660068dd8b480dcf1ef3247c950d1ae439a545397f97d",
+    "road_maneuver_probe.py": "86ba6303ba6bd7c5e84afe3fc7e1d15214f934404091d08d09e8ab075731abff",
+    "road_opaque_control_bounds.py": "a8860e6a3685f37d70b24e6dfcb4ee639922307f21ddddbec4d67a277fc0aa27",
+    "road_posted_speed_graph.py": "ead4cf169b8992ea676c89efeccab4cf07718526bfecf536db9fd804576e7add",
+    "road_posted_speed_weights.py": "b133d3451995b2de503ca70410cb450cd4b26656ab89fb0a120e6a03ab3d0581",
+    "road_reference_segment_costs.py": "599bd7bd8999893fbf926e3d1a837eb01a2995cf91f1ddc090fd6074e88c6fc9"
+  },
+  "known_supported_arcs": 606,
+  "metric_brackets": {
+    "length": {
+      "access_verified": false,
+      "actual_gate_state_evaluated": false,
+      "anchors_adopted": false,
+      "completion_domain": [
+        "Exactly this finite raw adjacent-geometry universe; no additional roads, attachments or connector edges.",
+        "Known supported arcs, stored weights, active maneuver declarations, source/target, unconstrained start and same-way reversal policy stay unchanged.",
+        "Opaque controls may remove potential arcs and add nonnegative costs; any included unknown-way distance is at least its stored geometry lower bound and time is nonnegative.",
+        "No independent physical/legal access, lane/grade truth, external geography, reviewed anchor or release approval is implied."
+      ],
+      "conditional_only": true,
+      "conditional_stored_cost_stable_within_supplied_universe": true,
+      "connector_costs_included": false,
+      "gap_exact": [
+        "0",
+        "1"
+      ],
+      "geographic_coverage_certified": false,
+      "global_route_optimality_certified": false,
+      "known_arcs": 606,
+      "known_maneuvers": 12,
+      "metric": "length",
+      "normal_graph_admitted": false,
+      "optimistic_lower_bound_exact": [
+        "123489447701449059",
+        "562949953421312"
+      ],
+      "optimistic_walk_sha256": "47c2894f542c9e6659af57c8bc10182f70c08a1f33b31938f00a0b81a44f2618",
+      "optimistic_walk_uses_possible_geometry": false,
+      "possible_geometry_steps_in_optimistic_walk": [],
+      "potential_geometry_arcs": 12,
+      "release_eligible": false,
+      "route_query_result_returned": false,
+      "schema": "opaque-control-stored-cost-bracket-v1",
+      "source": 11268369829,
+      "supported_witness": {
+        "actual_access_verified": false,
+        "known_declared_maneuvers_respected": true,
+        "metric": "length",
+        "normal_graph_admitted": false,
+        "release_eligible": false,
+        "route_query_result_returned": false,
+        "source": 11268369829,
+        "source_approach": "unconstrained-declared-node-start",
+        "stored_cost_exact": [
+          "123489447701449059",
+          "562949953421312"
+        ],
+        "strict_supported_path_sha256": "fc70ba3f6e976c17e99b6dd5440d71d5d12eb4d4c0c962590850073f249024af",
+        "supported_arc_count": 11,
+        "target": 11268369827
+      },
+      "supported_witness_upper_bound_exact": [
+        "123489447701449059",
+        "562949953421312"
+      ],
+      "target": 11268369827,
+      "warning": "Optimistic possibilities are lower bounds, not feasible routes or a decision that a gate is open/closed. An equal bracket proves stored-cost stability only across the stated finite-model completions. The strict raw-input graph may remain unsupported; no ordinary query result is returned."
+    },
+    "travel_time": {
+      "access_verified": false,
+      "actual_gate_state_evaluated": false,
+      "anchors_adopted": false,
+      "completion_domain": [
+        "Exactly this finite raw adjacent-geometry universe; no additional roads, attachments or connector edges.",
+        "Known supported arcs, stored weights, active maneuver declarations, source/target, unconstrained start and same-way reversal policy stay unchanged.",
+        "Opaque controls may remove potential arcs and add nonnegative costs; any included unknown-way distance is at least its stored geometry lower bound and time is nonnegative.",
+        "No independent physical/legal access, lane/grade truth, external geography, reviewed anchor or release approval is implied."
+      ],
+      "conditional_only": true,
+      "conditional_stored_cost_stable_within_supplied_universe": true,
+      "connector_costs_included": false,
+      "gap_exact": [
+        "0",
+        "1"
+      ],
+      "geographic_coverage_certified": false,
+      "global_route_optimality_certified": false,
+      "known_arcs": 606,
+      "known_maneuvers": 12,
+      "metric": "travel_time",
+      "normal_graph_admitted": false,
+      "optimistic_lower_bound_exact": [
+        "615133308006312217",
+        "18014398509481984"
+      ],
+      "optimistic_walk_sha256": "12bc7a09a3e2385012c853c29e88ac47f870ae0ba1a9d7428b81753e8860c483",
+      "optimistic_walk_uses_possible_geometry": false,
+      "possible_geometry_steps_in_optimistic_walk": [],
+      "potential_geometry_arcs": 12,
+      "release_eligible": false,
+      "route_query_result_returned": false,
+      "schema": "opaque-control-stored-cost-bracket-v1",
+      "source": 11268369829,
+      "supported_witness": {
+        "actual_access_verified": false,
+        "known_declared_maneuvers_respected": true,
+        "metric": "travel_time",
+        "normal_graph_admitted": false,
+        "release_eligible": false,
+        "route_query_result_returned": false,
+        "source": 11268369829,
+        "source_approach": "unconstrained-declared-node-start",
+        "stored_cost_exact": [
+          "615133308006312217",
+          "18014398509481984"
+        ],
+        "strict_supported_path_sha256": "8db43c5caad51d73fb5ca6f09ac63e64b841e09b3e57e4f7803e738929595e85",
+        "supported_arc_count": 13,
+        "target": 11268369827
+      },
+      "supported_witness_upper_bound_exact": [
+        "615133308006312217",
+        "18014398509481984"
+      ],
+      "target": 11268369827,
+      "warning": "Optimistic possibilities are lower bounds, not feasible routes or a decision that a gate is open/closed. An equal bracket proves stored-cost stability only across the stated finite-model completions. The strict raw-input graph may remain unsupported; no ordinary query result is returned."
+    }
+  },
+  "municipal_source_observations_sha256": "3e58ca791b4f06aacf7f075529f59ec310550413164cb4b553177923fc10fd19",
+  "normal_graph_admitted": false,
+  "opaque_geometry_possibilities": 12,
+  "opaque_way_geometry_catalogues": {
+    "201855578": {
+      "access_verified": false,
+      "actual_gate_state_evaluated": false,
+      "geographic_coverage_certified": false,
+      "ignores_direction_and_access_for_lower_bound": true,
+      "normal_graph_admitted": false,
+      "original_input_sha256": "8ad4d80f74e11dc74df08381ddb04e95056dd3b0cca3dfb3d5fb7b2abf4e5bdc",
+      "permission_claimed": false,
+      "potential_arcs": [
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 2118741415,
+          "id": "possible-geometry:201855578:0:forward",
+          "length": 12.579787453913085,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              2118741415,
+              -105.0760821,
+              40.5885125
+            ],
+            [
+              7416599557,
+              -105.0759826,
+              40.5885967
+            ]
+          ],
+          "raw_segment_index": 0,
+          "release_eligible": false,
+          "to": 7416599557,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 7416599557,
+          "id": "possible-geometry:201855578:0:backward",
+          "length": 12.579787453913085,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              7416599557,
+              -105.0759826,
+              40.5885967
+            ],
+            [
+              2118741415,
+              -105.0760821,
+              40.5885125
+            ]
+          ],
+          "raw_segment_index": 0,
+          "release_eligible": false,
+          "to": 2118741415,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 7416599557,
+          "id": "possible-geometry:201855578:1:forward",
+          "length": 3.8232568161891964,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              7416599557,
+              -105.0759826,
+              40.5885967
+            ],
+            [
+              8917794985,
+              -105.0759544,
+              40.5886236
+            ]
+          ],
+          "raw_segment_index": 1,
+          "release_eligible": false,
+          "to": 8917794985,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 8917794985,
+          "id": "possible-geometry:201855578:1:backward",
+          "length": 3.8232568161891964,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              8917794985,
+              -105.0759544,
+              40.5886236
+            ],
+            [
+              7416599557,
+              -105.0759826,
+              40.5885967
+            ]
+          ],
+          "raw_segment_index": 1,
+          "release_eligible": false,
+          "to": 7416599557,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 8917794985,
+          "id": "possible-geometry:201855578:2:forward",
+          "length": 7.706572593556407,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              8917794985,
+              -105.0759544,
+              40.5886236
+            ],
+            [
+              8917794982,
+              -105.0759063,
+              40.5886825
+            ]
+          ],
+          "raw_segment_index": 2,
+          "release_eligible": false,
+          "to": 8917794982,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 8917794982,
+          "id": "possible-geometry:201855578:2:backward",
+          "length": 7.706572593556407,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              8917794982,
+              -105.0759063,
+              40.5886825
+            ],
+            [
+              8917794985,
+              -105.0759544,
+              40.5886236
+            ]
+          ],
+          "raw_segment_index": 2,
+          "release_eligible": false,
+          "to": 8917794985,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 8917794982,
+          "id": "possible-geometry:201855578:3:forward",
+          "length": 33.647136790801,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              8917794982,
+              -105.0759063,
+              40.5886825
+            ],
+            [
+              8917794984,
+              -105.0756466,
+              40.588912
+            ]
+          ],
+          "raw_segment_index": 3,
+          "release_eligible": false,
+          "to": 8917794984,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 8917794984,
+          "id": "possible-geometry:201855578:3:backward",
+          "length": 33.647136790801,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              8917794984,
+              -105.0756466,
+              40.588912
+            ],
+            [
+              8917794982,
+              -105.0759063,
+              40.5886825
+            ]
+          ],
+          "raw_segment_index": 3,
+          "release_eligible": false,
+          "to": 8917794982,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 8917794984,
+          "id": "possible-geometry:201855578:4:forward",
+          "length": 11.775231792749965,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              8917794984,
+              -105.0756466,
+              40.588912
+            ],
+            [
+              8917794983,
+              -105.0755353,
+              40.5889758
+            ]
+          ],
+          "raw_segment_index": 4,
+          "release_eligible": false,
+          "to": 8917794983,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 8917794983,
+          "id": "possible-geometry:201855578:4:backward",
+          "length": 11.775231792749965,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              8917794983,
+              -105.0755353,
+              40.5889758
+            ],
+            [
+              8917794984,
+              -105.0756466,
+              40.588912
+            ]
+          ],
+          "raw_segment_index": 4,
+          "release_eligible": false,
+          "to": 8917794984,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 8917794983,
+          "id": "possible-geometry:201855578:5:forward",
+          "length": 7.251624312922738,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              8917794983,
+              -105.0755353,
+              40.5889758
+            ],
+            [
+              2118741416,
+              -105.0754808,
+              40.5890262
+            ]
+          ],
+          "raw_segment_index": 5,
+          "release_eligible": false,
+          "to": 2118741416,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 2118741416,
+          "id": "possible-geometry:201855578:5:backward",
+          "length": 7.251624312922738,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              2118741416,
+              -105.0754808,
+              40.5890262
+            ],
+            [
+              8917794983,
+              -105.0755353,
+              40.5889758
+            ]
+          ],
+          "raw_segment_index": 5,
+          "release_eligible": false,
+          "to": 8917794983,
+          "travel_time": 0.0,
+          "way": 201855578
+        }
+      ],
+      "release_eligible": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "opaque-raw-way-geometry-lower-bounds-v1",
+      "scope": "Hypothetical raw adjacent geometry in BOTH directions, even where known tags might forbid travel; zero time creates no speed assumption. These are lower-bound possibilities, not permissions, navigation edges, an open-gate scenario or a graph admitted by the strict raw-input API.",
+      "strict_permission_reason": "Physical barrier operation is not evaluated",
+      "strict_permission_status": "unsupported",
+      "unknown_way_time_lower_bound_seconds": 0
+    }
+  },
+  "partition_parent_report_sha256": "1a5616413093d3182365a3938a30ec3e0ec86b4e270b224720943f03996bf92e",
+  "raw_endpoint_attachments": [
+    {
+      "raw_name": "Walnut Street",
+      "raw_way_id": 524168682,
+      "shared_node_ids": [
+        2118741415
+      ]
+    },
+    {
+      "raw_name": "Old Firehouse Alley",
+      "raw_way_id": 1068300299,
+      "shared_node_ids": [
+        2118741416
+      ]
+    }
+  ],
+  "release_eligible": false,
+  "route_query_result_returned": false,
+  "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+  "schema": "fort-collins-opaque-gate-stored-cost-bracket-v1",
+  "source_context_sha256": "bf9d89b7f1edbd60be63afa217bfe1b5a22ee80d58c7771e9c73799baddf8a1c",
+  "source_scope_findings": {
+    "city-parking": {
+      "exact_gate_operation_established": false,
+      "source_scope": "parking_garage_guidance",
+      "url": "https://www.fortcollins.gov/Services/Parking/Where-to-Park"
+    },
+    "dda-east": {
+      "exact_gate_operation_established": false,
+      "source_scope": "neighboring_alley_design_context",
+      "url": "https://downtownfortcollins.com/alley-project/old-firehouse-alley-east-and-seckner-alley"
+    },
+    "dda-west": {
+      "exact_gate_operation_established": false,
+      "source_scope": "alley_design_context",
+      "url": "https://downtownfortcollins.com/alley-project/old-firehouse-alley-west"
+    }
+  },
+  "source_seed_nodes": 177,
+  "strict_parent_graph": null,
+  "strict_parent_queries": {
+    "length": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "compilation": {
+        "access_verified": false,
+        "actual_speed_sign_verified": false,
+        "all_incident_ways_accounted": false,
+        "anchors_adopted": false,
+        "complete_geographic_graph_constructed": false,
+        "connector_costs_included": false,
+        "declared_graph_compiled": false,
+        "geographic_timezone_assignment_verified": false,
+        "graph": null,
+        "input_sha256": null,
+        "lane_connectivity_evaluated": false,
+        "lane_indications_used_as_restrictions": false,
+        "other_relations_accounted": false,
+        "reason": "Unsupported supplied raw way 201855578: Physical barrier operation is not evaluated",
+        "release_eligible": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+        "schema": "posted-sign-declared-mixed-graph-v1",
+        "scope": "Posted numeric speed-limit metadata profile; only the complete supplied raw-way/node/control universe. Via-node controls use the static-guidance profile; static via-way controls use the stricter unchanged historical profile. Unknown supplied controls reject the entire bundle. No incident/exterior closure, physical access or geographic graph certification.",
+        "status": "unsupported"
+      },
+      "connector_costs_included": false,
+      "geographic_coverage_certified": false,
+      "reason": "Unsupported supplied raw way 201855578: Physical barrier operation is not evaluated",
+      "release_eligible": false,
+      "result": null,
+      "route_cost_emitted": false,
+      "schema": "posted-sign-declared-mixed-query-v1",
+      "status": "unsupported"
+    },
+    "travel_time": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "compilation": {
+        "access_verified": false,
+        "actual_speed_sign_verified": false,
+        "all_incident_ways_accounted": false,
+        "anchors_adopted": false,
+        "complete_geographic_graph_constructed": false,
+        "connector_costs_included": false,
+        "declared_graph_compiled": false,
+        "geographic_timezone_assignment_verified": false,
+        "graph": null,
+        "input_sha256": null,
+        "lane_connectivity_evaluated": false,
+        "lane_indications_used_as_restrictions": false,
+        "other_relations_accounted": false,
+        "reason": "Unsupported supplied raw way 201855578: Physical barrier operation is not evaluated",
+        "release_eligible": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+        "schema": "posted-sign-declared-mixed-graph-v1",
+        "scope": "Posted numeric speed-limit metadata profile; only the complete supplied raw-way/node/control universe. Via-node controls use the static-guidance profile; static via-way controls use the stricter unchanged historical profile. Unknown supplied controls reject the entire bundle. No incident/exterior closure, physical access or geographic graph certification.",
+        "status": "unsupported"
+      },
+      "connector_costs_included": false,
+      "geographic_coverage_certified": false,
+      "reason": "Unsupported supplied raw way 201855578: Physical barrier operation is not evaluated",
+      "release_eligible": false,
+      "result": null,
+      "route_cost_emitted": false,
+      "schema": "posted-sign-declared-mixed-query-v1",
+      "status": "unsupported"
+    }
+  },
+  "strict_parent_status": "unsupported",
+  "strict_profile_or_source_tags_changed": false,
+  "supported_witness_report_sha256": "6b61eb94355582b44811bfd5565e31a42df2a8eff756343dabc9fa5d393e218b",
+  "unenumerated_outer_source_nodes": 436,
+  "warning": "Equal exact brackets show that the two retained query costs do not depend on opaque gate operation within the stated finite stored-weight completion domain. Potential geometry is not a feasible route or a gate-open/closed decision. The strict wider graph remains unsupported; no normal query result or geographic/global optimum is admitted. Municipal alley-design and garage guidance do not establish operation of the exact retained gate. Independent access/anchor and public release gates remain unresolved."
+}
