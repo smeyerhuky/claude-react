@@ -8366,18 +8366,24 @@
       "anchor_adopted": false,
       "cbsa": "30700",
       "city_name": "Lincoln",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication context only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and full connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, reference-scenario evaluation or revalidation of printed hours and rates. Embedded maps and entrance images have not been visually audited."
+      ],
+      "observations": [
+        "The municipal Center Park Garage page locates the facility at 1120 N Street and distinguishes regular and reserved monthly parking, with keycard pickup at the office and no proration of monthly rates.",
+        "The listing includes a six-foot-ten-inch clearance, accessibility features and a map point. These do not establish the clearance of a complete connector, ordinary-car dimensions, a surveyed vehicle entrance or unrestricted public entry. No displayed coordinate is adopted."
+      ],
       "principal_city_id": "3128000",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-06",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/nebraska-principal-city-sources/lincoln.json",
+      "source_sha256": "99b7458feb54a3953151c171f1fa20877e908dcc48f3f6cc736496838a35867d",
       "state": "NE",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.lincoln.ne.gov/City/Departments/Urban-Development/Park-and-Go/Find-Parking/Center-Park-Garage"
     },
     {
       "access_review_status": "unresolved",
@@ -8385,18 +8391,24 @@
       "anchor_adopted": false,
       "cbsa": "36540",
       "city_name": "Omaha",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication context only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and full connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, reference-scenario evaluation or revalidation of printed hours and rates. Embedded maps and entrance images have not been visually audited."
+      ],
+      "observations": [
+        "The federal court jury publication describes paid on-street and off-street parking near the Hruska U.S. Courthouse, with parking-fee reimbursement in the jury-service context. It lists Tower Parking, 19th and Capitol Street Parking and 15th and Douglas Garage, with printed hours and rates.",
+        "The attachment distinguishes the federal courthouse at 111 South 18th Plaza from the Douglas County Courthouse. Its west-side building entrance is not a vehicle connector. Garage listings, clearance warnings and reimbursement guidance are not a current car-entry audit or a general public reimbursement entitlement. No publication or revision date is inferred from a crawl date."
+      ],
       "principal_city_id": "3137000",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-06",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "federal_juror_parking_guidance",
+      "source_path": "docs/research/nebraska-principal-city-sources/omaha.json",
+      "source_sha256": "70cb0d27c54424b50b62abecbffbcdc535ed732f59b479893ddcad68ccedc34c",
       "state": "NE",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.ned.uscourts.gov/internetDocs/jury/Parking_Information-Omaha_with_attachment.pdf"
     },
     {
       "access_review_status": "unresolved",
@@ -13650,8 +13662,8 @@
   ],
   "connectors_approved": 0,
   "counts": {
-    "context_retained": 65,
-    "not_recorded_here": 625,
+    "context_retained": 67,
+    "not_recorded_here": 623,
     "selected_publication_unavailable": 8
   },
   "input_sha256": {
@@ -13712,6 +13724,9 @@
     "docs/research/missouri-principal-city-sources/st-joseph.json": "d736f83eaf2c074437baa122d688ce2f5707c5bb290a0aa3df05a9c63eb99f7a",
     "docs/research/missouri-principal-city-sources/st-louis.json": "5de9d1b0c016a6c056e3c8295f1f261d562bb0e5c5e1f2c7aacbdda67c07c03e",
     "docs/research/native-state-inventory/report.json": "85c2c60334f499fe9f1fc193fa9a05f020db5b0aea847f6814b6fd57547a95db",
+    "docs/research/nebraska-principal-city-sources/lincoln.json": "99b7458feb54a3953151c171f1fa20877e908dcc48f3f6cc736496838a35867d",
+    "docs/research/nebraska-principal-city-sources/manifest.json": "60eb8294b466816faf69c4d8dd0c6d2e4ec7963d9f966e832a77c252371a30fd",
+    "docs/research/nebraska-principal-city-sources/omaha.json": "70cb0d27c54424b50b62abecbffbcdc535ed732f59b479893ddcad68ccedc34c",
     "docs/research/nevada-principal-city-sources/henderson.json": "81e8dd73de98cea02e9cf9aa19a25e6639862595220602c41d31e1aeb6c9d608",
     "docs/research/nevada-principal-city-sources/las-vegas.json": "a7395b6d47ca56b888123d0ef4539474b8aa91ec9d4f37b929752fc3333537e6",
     "docs/research/nevada-principal-city-sources/manifest.json": "a2f7ad5937d06424fadd003a9585cdffc2c3633593475005839c33ab8537967d",
@@ -13750,16 +13765,17 @@
     "scripts/metro_principal_city_inventory.py": "cd1e6074b0698433681ee6f5bc41b98c45dbcc49bac2f41e373fcce9aa375a8e",
     "scripts/missouri_principal_city_source_screen.py": "8b51356e6e2124b5856b03896bad815888521688422e41480196ff78d9509681",
     "scripts/municipal_source_screen.py": "32b68b5a4f254c5db675f580fcfa5cc9bf2c96a09de4f61c1d36734f42c3941c",
+    "scripts/nebraska_principal_city_source_screen.py": "2314c84e585a21d1d26bbfa8d936d2eeb8cf41a3587d05847f8870ce07cba24e",
     "scripts/nevada_principal_city_source_screen.py": "fbf1e8e9e2532bb8006b872a4e3a05349024310df87007327f37bee5aed0e987",
     "scripts/oklahoma_principal_city_source_screen.py": "76c671aea851f5333ea549918a0e38d6c97a3d01e20dde83348dc5d9ec1c0a27",
     "scripts/principal_city_source_screen.py": "ae2cb4d19c4f95c9a5be92918fc0f0e41cd47d7b187bf176e60ac9e6cdca79e4",
-    "scripts/principal_city_source_work.py": "b4f35ae49848d3b3b1e3ed3d77e557b7c56b02ac9602faa506c5fb66ff54d73f",
+    "scripts/principal_city_source_work.py": "733942ea79f42b52882f894de37a95d659d7756ab95e2968cb4c722970a7345e",
     "scripts/utah_principal_city_source_screen.py": "8dd836ca3b07af78b9be9546aec15c34cabad1d4db85b1f493b265992a5814ed",
     "scripts/wyoming_principal_city_source_screen.py": "e95bdb9d93b7983401e0becb98e07d69e6b7a2be3531e7d9a635a58aaabc2d5e"
   },
   "membership_count": 698,
   "metro_count": 367,
-  "recorded_memberships": 73,
+  "recorded_memberships": 75,
   "release_eligible": false,
   "schema": "principal-city-source-work-v1",
   "scope": "Principal-city state membership, distinct from the state containing a Census representative point.",
@@ -14064,8 +14080,8 @@
     {
       "approved_anchors": 0,
       "counts": {
-        "context_retained": 0,
-        "not_recorded_here": 2,
+        "context_retained": 2,
+        "not_recorded_here": 0,
         "selected_publication_unavailable": 0
       },
       "memberships": 2,

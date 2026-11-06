@@ -30,6 +30,12 @@ const {chromium}=require('playwright');
    await page.locator('#search').fill(id);await page.locator('#rows button').click();
    const text=await page.locator('#detail').innerText();if(!claims.every(claim=>text.includes(claim)))throw Error('Arkansas publication timing/retrieval/scope lost '+id);
   }
+  await page.locator('#state').selectOption('NE');await page.locator('#search').fill('');
+  if(await page.locator('#rows tr').count()!==2)throw Error('Incomplete Nebraska qualifying city scope');
+  for(const [id,claims] of [['3128000',['1120 N Street','six-foot-ten-inch','No displayed coordinate is adopted']],['3137000',['jury-service context','19th and Capitol','west-side building entrance is not a vehicle connector']]]){
+   await page.locator('#search').fill(id);await page.locator('#rows button').click();
+   const text=await page.locator('#detail').innerText();if(!claims.every(claim=>text.includes(claim)))throw Error('Nebraska publication scope or vehicle-entry limits lost '+id);
+  }
   await page.locator('#state').selectOption('all');await page.locator('#search').fill('0809280');await page.locator('#rows button').click();
   if(!(await page.locator('#detail-title').innerText()).includes('Broomfield'))throw Error('City FIPS search failed');
   await page.locator('#search').fill('no matching principal city');if(await page.locator('#rows tr').count()!==0||!(await page.locator('#empty').isVisible()))throw Error('Empty search misrepresented');

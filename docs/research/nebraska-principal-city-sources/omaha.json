@@ -1,0 +1,41 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-11-06",
+  "cbsa": "36540",
+  "city_name": "Omaha",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-11-06",
+    "final_url": "https://www.ned.uscourts.gov/internetDocs/jury/Parking_Information-Omaha_with_attachment.pdf",
+    "http_status": 200,
+    "response_bytes": 888605,
+    "response_sha256": "c2c8fb7420a55a15a77f031ba3e421113d1d4158598899480150d5253773976a",
+    "url": "https://www.ned.uscourts.gov/internetDocs/jury/Parking_Information-Omaha_with_attachment.pdf"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication context only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and full connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review, reference-scenario evaluation or revalidation of printed hours and rates. Embedded maps and entrance images have not been visually audited."
+  ],
+  "observations": [
+    "The federal court jury publication describes paid on-street and off-street parking near the Hruska U.S. Courthouse, with parking-fee reimbursement in the jury-service context. It lists Tower Parking, 19th and Capitol Street Parking and 15th and Douglas Garage, with printed hours and rates.",
+    "The attachment distinguishes the federal courthouse at 111 South 18th Plaza from the Douglas County Courthouse. Its west-side building entrance is not a vehicle connector. Garage listings, clearance warnings and reimbursement guidance are not a current car-entry audit or a general public reimbursement entitlement. No publication or revision date is inferred from a crawl date."
+  ],
+  "principal_city_id": "3137000",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "courthouse_building_entrance_is_vehicle_connector": false,
+    "guidance_scope": "federal juror parking",
+    "printed_garage_hours_are_reference_date_access_proof": false,
+    "publication_or_revision_date_inferred": false,
+    "reimbursement_is_general_public_entitlement": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and limited factual observations only. HTTP response hashes identify external bytes not retained in this repository; these bytes cannot be reconstructed from the derived record. Raw HTML/PDF, embedded maps, application state, environment configuration and private archives omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "Pay attention to clearance levels in the parking garages, garage signage, and reserved spaces.",
+  "source_http_status": 200,
+  "source_kind": "federal_juror_parking_guidance",
+  "url": "https://www.ned.uscourts.gov/internetDocs/jury/Parking_Information-Omaha_with_attachment.pdf"
+}
