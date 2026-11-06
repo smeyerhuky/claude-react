@@ -2,6 +2,12 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/road_witness_core_exclusion.py'
+      - 'scripts/test_road_witness_core_exclusion.py'
+      - 'scripts/fort_collins_core_exclusion*.py'
+      - 'scripts/test_fort_collins_core_exclusion.py'
+      - 'docs/research/fort-collins-conditional-core-exits/**'
+      - '.github/workflows/fort-collins-core-exclusion.yml'
       - 'scripts/fort_collins_bounded_frontier*.py'
       - 'scripts/test_fort_collins_bounded_frontier.py'
       - 'docs/research/fort-collins-bounded-cost-frontier/**'
