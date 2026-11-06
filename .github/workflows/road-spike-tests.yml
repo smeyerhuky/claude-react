@@ -2,6 +2,10 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/fort_collins_bidirectional_checkpoint.py'
+      - 'scripts/test_fort_collins_bidirectional_bounds.py'
+      - 'docs/research/fort-collins-bidirectional-query-bounds/**'
+      - '.github/workflows/fort-collins-bidirectional-bounds.yml'
       - 'scripts/road_witness_core_exclusion.py'
       - 'scripts/test_road_witness_core_exclusion.py'
       - 'scripts/fort_collins_core_exclusion*.py'

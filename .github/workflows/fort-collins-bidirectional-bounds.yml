@@ -1,0 +1,41 @@
+name: Bidirectional native model query bounds
+on:
+  pull_request:
+    paths:
+      - 'scripts/fort_collins_*.py'
+      - 'scripts/test_fort_collins_bidirectional_bounds.py'
+      - 'scripts/road_witness_core_exclusion.py'
+      - 'scripts/road_opaque_control_bounds.py'
+      - 'scripts/road_core_exit_bounds.py'
+      - 'scripts/road_maneuver_probe.py'
+      - 'scripts/road_turn_aware_probe.py'
+      - 'scripts/road_inert_no_prohibition.py'
+      - 'scripts/road_reference*.py'
+      - 'scripts/reference_*.py'
+      - 'scripts/road_guidance*.py'
+      - 'scripts/road_posted_speed*.py'
+      - 'docs/research/fort-collins-*/**'
+      - 'docs/research/reference-*/**'
+      - '.github/workflows/fort-collins-bidirectional-bounds.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bidirectional-bounds:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'tzdata==2026.5' 'osmium==4.3.2' 'networkx==3.7'
+      - run: python -m unittest discover -s scripts -p test_fort_collins_bidirectional_bounds.py -v
+      - run: python scripts/fort_collins_bidirectional_checkpoint.py
+      - run: python scripts/fort_collins_core_exclusion_checkpoint.py
+      - run: python scripts/las_vegas_ui_checkpoint.py --check-frozen
+      - uses: actions/upload-artifact@v6
+        with:
+          name: fort-collins-bidirectional-query-bounds
+          path: docs/research/fort-collins-bidirectional-query-bounds/
+          if-no-files-found: error
