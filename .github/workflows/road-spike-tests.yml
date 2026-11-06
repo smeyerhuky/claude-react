@@ -2,6 +2,11 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/road_source_partition_union.py'
+      - 'scripts/test_road_source_partition_union.py'
+      - 'scripts/fort_collins_partition*.py'
+      - 'scripts/test_fort_collins_partitioned_core.py'
+      - 'docs/research/fort-collins-partitioned-core/**'
       - 'scripts/road_competitive_core.py'
       - 'scripts/test_road_competitive_core.py'
       - 'scripts/fort_collins_competitive*.py'

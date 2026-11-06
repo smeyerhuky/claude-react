@@ -1,0 +1,76 @@
+name: Reconciled bounded source partitions and gate admission
+on:
+  pull_request:
+    paths:
+      - 'scripts/road_source_incidence.py'
+      - 'scripts/fort_collins_partition*.py'
+      - 'scripts/fort_collins_competitive*.py'
+      - 'scripts/road_source_partition_union.py'
+      - 'scripts/test_road_source_partition_union.py'
+      - 'scripts/road_competitive_core.py'
+      - 'scripts/test_road_competitive_core.py'
+      - 'scripts/road_core_exit_bounds.py'
+      - 'scripts/road_posted_speed*.py'
+      - 'scripts/fort_collins_posted_speed_checkpoint.py'
+      - 'scripts/test_fort_collins_partitioned_core.py'
+      - 'scripts/road_guidance*.py'
+      - 'scripts/road_static_lane_guidance.py'
+      - 'scripts/guidance_via_node_compile.py'
+      - 'scripts/fort_collins_frontier_checkpoint.py'
+      - 'scripts/fort_collins_road_frontier.py'
+      - 'scripts/reference_*.py'
+      - 'scripts/road_reference*.py'
+      - 'scripts/road_maneuver_probe.py'
+      - 'scripts/road_turn_aware_probe.py'
+      - 'scripts/fort_collins_entry_context.py'
+      - 'scripts/fort_collins_raw_context.py'
+      - 'scripts/fort_collins_via_way_context.py'
+      - 'scripts/stream_osm_roads.py'
+      - 'scripts/fetch_research_source.py'
+      - 'scripts/research_source_cache.py'
+      - 'docs/research/reference-*/**'
+      - 'docs/research/fort-collins-*/**'
+      - '.github/workflows/fort-collins-partitioned-core.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reconciled-source-partitions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'tzdata==2026.5' 'osmium==4.3.2' 'networkx==3.7'
+      - run: python -m unittest discover -s scripts -p test_road_source_partition_union.py -v
+      - run: python -m unittest discover -s scripts -p test_fort_collins_partitioned_core.py -v
+      - run: python scripts/fort_collins_control_checkpoint.py
+      - run: python scripts/fort_collins_partition_checkpoint.py
+      - run: python scripts/las_vegas_ui_checkpoint.py --check-frozen
+      - id: source_cache
+        name: Derive existing original-source cache identity
+        run: |
+          python - <<'PY'
+          import json, os, sys
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          from research_source_cache import cache_key, MANIFEST
+          with Path(os.environ['GITHUB_OUTPUT']).open('a') as handle:
+              handle.write('key=' + cache_key(json.loads(MANIFEST.read_text())) + '\n')
+          PY
+      - uses: actions/cache/restore@v4
+        with:
+          path: local-data/*.osm.pbf
+          key: ${{ steps.source_cache.outputs.key }}
+      - run: python scripts/fetch_research_source.py --source colorado.osm.pbf --output local-data/colorado.osm.pbf
+      - name: Reproduce every seed way, explicit member, node and touching control namespace
+        run: |
+          python scripts/fort_collins_partitioned_core.py --osm local-data/colorado.osm.pbf --output /tmp/new-node-source-context.json
+          cmp /tmp/new-node-source-context.json docs/research/fort-collins-partitioned-core/new-node-source-context.json
+      - uses: actions/upload-artifact@v6
+        with:
+          name: fort-collins-partitioned-core
+          path: docs/research/fort-collins-partitioned-core/
+          if-no-files-found: error
