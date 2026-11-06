@@ -1,0 +1,3174 @@
+{
+  "access_verified": false,
+  "all_graph_node_incidence_enumerated": false,
+  "anchors_adopted": false,
+  "complete_source_nodes": 58,
+  "complete_source_ways": 14,
+  "connector_costs_included": false,
+  "declared_compilation": {
+    "access_verified": false,
+    "all_incident_ways_accounted": false,
+    "anchors_adopted": false,
+    "complete_geographic_graph_constructed": false,
+    "connector_costs_included": false,
+    "declared_graph_compiled": true,
+    "geographic_timezone_assignment_verified": false,
+    "graph": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "arcs": [
+        {
+          "direction": "forward",
+          "from": 51114796,
+          "id": "raw:6166084:0:forward",
+          "length": 12.723829475837425,
+          "raw_geometry": [
+            [
+              51114796,
+              -105.0770913,
+              40.5907819
+            ],
+            [
+              1479189914,
+              -105.0769408,
+              40.5907762
+            ]
+          ],
+          "raw_segment_index": 0,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 1479189914,
+          "travel_time": 1.138495837136491,
+          "way": 6166084
+        },
+        {
+          "direction": "backward",
+          "from": 1479189914,
+          "id": "raw:6166084:0:backward",
+          "length": 12.723829475837425,
+          "raw_geometry": [
+            [
+              1479189914,
+              -105.0769408,
+              40.5907762
+            ],
+            [
+              51114796,
+              -105.0770913,
+              40.5907819
+            ]
+          ],
+          "raw_segment_index": 0,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 51114796,
+          "travel_time": 1.138495837136491,
+          "way": 6166084
+        },
+        {
+          "direction": "forward",
+          "from": 51193002,
+          "id": "raw:6172542:0:forward",
+          "length": 17.153314349556105,
+          "raw_geometry": [
+            [
+              51193002,
+              -105.0771078,
+              40.588898
+            ],
+            [
+              1479189816,
+              -105.0769405,
+              40.5889855
+            ]
+          ],
+          "raw_segment_index": 0,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 1479189816,
+          "travel_time": 1.534834855901584,
+          "way": 6172542
+        },
+        {
+          "direction": "forward",
+          "from": 1479189914,
+          "id": "raw:134552324:0:forward",
+          "length": 15.825642326121,
+          "raw_geometry": [
+            [
+              1479189914,
+              -105.0769408,
+              40.5907762
+            ],
+            [
+              3296887983,
+              -105.0769374,
+              40.5909185
+            ]
+          ],
+          "raw_segment_index": 0,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 3296887983,
+          "travel_time": 1.4160381465748926,
+          "way": 134552324
+        },
+        {
+          "direction": "forward",
+          "from": 3296887983,
+          "id": "raw:134552324:1:forward",
+          "length": 35.374044970603954,
+          "raw_geometry": [
+            [
+              3296887983,
+              -105.0769374,
+              40.5909185
+            ],
+            [
+              9024006498,
+              -105.076932,
+              40.5912366
+            ]
+          ],
+          "raw_segment_index": 1,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 9024006498,
+          "travel_time": 3.1651793996603397,
+          "way": 134552324
+        },
+        {
+          "direction": "forward",
+          "from": 9024006498,
+          "id": "raw:134552324:2:forward",
+          "length": 20.07940367888379,
+          "raw_geometry": [
+            [
+              9024006498,
+              -105.076932,
+              40.5912366
+            ],
+            [
+              1479189796,
+              -105.0769188,
+              40.5914169
+            ]
+          ],
+          "raw_segment_index": 2,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 1479189796,
+          "travel_time": 1.7966538724842331,
+          "way": 134552324
+        },
+        {
+          "direction": "forward",
+          "from": 1479189816,
+          "id": "raw:134584349:0:forward",
+          "length": 19.58151228489885,
+          "raw_geometry": [
+            [
+              1479189816,
+              -105.0769405,
+              40.5889855
+            ],
+            [
+              51193003,
+              -105.0771021,
+              40.5891118
+            ]
+          ],
+          "raw_segment_index": 0,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 51193003,
+          "travel_time": 1.7521038193359744,
+          "way": 134584349
+        },
+        {
+          "direction": "forward",
+          "from": 1479189816,
+          "id": "raw:134584350:0:forward",
+          "length": 25.001226420698966,
+          "raw_geometry": [
+            [
+              1479189816,
+              -105.0769405,
+              40.5889855
+            ],
+            [
+              7416599567,
+              -105.07693,
+              40.5892102
+            ]
+          ],
+          "raw_segment_index": 0,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 7416599567,
+          "travel_time": 2.237046029053236,
+          "way": 134584350
+        },
+        {
+          "direction": "forward",
+          "from": 7416599567,
+          "id": "raw:134584350:1:forward",
+          "length": 8.006907466114928,
+          "raw_geometry": [
+            [
+              7416599567,
+              -105.07693,
+              40.5892102
+            ],
+            [
+              1819705140,
+              -105.0769314,
+              40.5892822
+            ]
+          ],
+          "raw_segment_index": 1,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 1819705140,
+          "travel_time": 0.7164376759229535,
+          "way": 134584350
+        },
+        {
+          "direction": "forward",
+          "from": 1819705140,
+          "id": "raw:134584350:2:forward",
+          "length": 47.06917903935697,
+          "raw_geometry": [
+            [
+              1819705140,
+              -105.0769314,
+              40.5892822
+            ],
+            [
+              3360111656,
+              -105.0769336,
+              40.5897055
+            ]
+          ],
+          "raw_segment_index": 2,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 3360111656,
+          "travel_time": 4.211630193213758,
+          "way": 134584350
+        },
+        {
+          "direction": "forward",
+          "from": 3360111656,
+          "id": "raw:134584350:3:forward",
+          "length": 15.689715489056612,
+          "raw_geometry": [
+            [
+              3360111656,
+              -105.0769336,
+              40.5897055
+            ],
+            [
+              3360111659,
+              -105.0769343,
+              40.5898466
+            ]
+          ],
+          "raw_segment_index": 3,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 3360111659,
+          "travel_time": 1.403875759579153,
+          "way": 134584350
+        },
+        {
+          "direction": "forward",
+          "from": 3360111659,
+          "id": "raw:134584350:4:forward",
+          "length": 86.42533191724485,
+          "raw_geometry": [
+            [
+              3360111659,
+              -105.0769343,
+              40.5898466
+            ],
+            [
+              3851825570,
+              -105.0769449,
+              40.5906238
+            ]
+          ],
+          "raw_segment_index": 4,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 3851825570,
+          "travel_time": 7.733118460741307,
+          "way": 134584350
+        },
+        {
+          "direction": "forward",
+          "from": 3851825570,
+          "id": "raw:134584350:5:forward",
+          "length": 3.847344462331326,
+          "raw_geometry": [
+            [
+              3851825570,
+              -105.0769449,
+              40.5906238
+            ],
+            [
+              3851825571,
+              -105.0769449,
+              40.5906584
+            ]
+          ],
+          "raw_segment_index": 5,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 3851825571,
+          "travel_time": 0.344250578232939,
+          "way": 134584350
+        },
+        {
+          "direction": "forward",
+          "from": 3851825571,
+          "id": "raw:134584350:6:forward",
+          "length": 13.103336568259413,
+          "raw_geometry": [
+            [
+              3851825571,
+              -105.0769449,
+              40.5906584
+            ],
+            [
+              1479189914,
+              -105.0769408,
+              40.5907762
+            ]
+          ],
+          "raw_segment_index": 6,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 1479189914,
+          "travel_time": 1.1724531646617227,
+          "way": 134584350
+        },
+        {
+          "direction": "forward",
+          "from": 1479189914,
+          "id": "raw:140486410:0:forward",
+          "length": 7.329497410183099,
+          "raw_geometry": [
+            [
+              1479189914,
+              -105.0769408,
+              40.5907762
+            ],
+            [
+              51123935,
+              -105.0768542,
+              40.5907717
+            ]
+          ],
+          "raw_segment_index": 0,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 51123935,
+          "travel_time": 0.655824750374293,
+          "way": 140486410
+        },
+        {
+          "direction": "backward",
+          "from": 51123935,
+          "id": "raw:140486410:0:backward",
+          "length": 7.329497410183099,
+          "raw_geometry": [
+            [
+              51123935,
+              -105.0768542,
+              40.5907717
+            ],
+            [
+              1479189914,
+              -105.0769408,
+              40.5907762
+            ]
+          ],
+          "raw_segment_index": 0,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 1479189914,
+          "travel_time": 0.655824750374293,
+          "way": 140486410
+        },
+        {
+          "direction": "forward",
+          "from": 51123935,
+          "id": "raw:140486410:1:forward",
+          "length": 4.363094552479284,
+          "raw_geometry": [
+            [
+              51123935,
+              -105.0768542,
+              40.5907717
+            ],
+            [
+              3851825574,
+              -105.0768042,
+              40.5907618
+            ]
+          ],
+          "raw_segment_index": 1,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 3851825574,
+          "travel_time": 0.39039858200423083,
+          "way": 140486410
+        },
+        {
+          "direction": "backward",
+          "from": 3851825574,
+          "id": "raw:140486410:1:backward",
+          "length": 4.363094552479284,
+          "raw_geometry": [
+            [
+              3851825574,
+              -105.0768042,
+              40.5907618
+            ],
+            [
+              51123935,
+              -105.0768542,
+              40.5907717
+            ]
+          ],
+          "raw_segment_index": 1,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 51123935,
+          "travel_time": 0.39039858200423083,
+          "way": 140486410
+        },
+        {
+          "direction": "forward",
+          "from": 3851825574,
+          "id": "raw:140486410:2:forward",
+          "length": 2.691859763302537,
+          "raw_geometry": [
+            [
+              3851825574,
+              -105.0768042,
+              40.5907618
+            ],
+            [
+              11268369831,
+              -105.0767744,
+              40.5907532
+            ]
+          ],
+          "raw_segment_index": 2,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 11268369831,
+          "travel_time": 0.24086075190609674,
+          "way": 140486410
+        },
+        {
+          "direction": "backward",
+          "from": 11268369831,
+          "id": "raw:140486410:2:backward",
+          "length": 2.691859763302537,
+          "raw_geometry": [
+            [
+              11268369831,
+              -105.0767744,
+              40.5907532
+            ],
+            [
+              3851825574,
+              -105.0768042,
+              40.5907618
+            ]
+          ],
+          "raw_segment_index": 2,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 3851825574,
+          "travel_time": 0.24086075190609674,
+          "way": 140486410
+        },
+        {
+          "direction": "forward",
+          "from": 11268369831,
+          "id": "raw:140486410:3:forward",
+          "length": 3.834555591653143,
+          "raw_geometry": [
+            [
+              11268369831,
+              -105.0767744,
+              40.5907532
+            ],
+            [
+              3851825573,
+              -105.0767339,
+              40.5907376
+            ]
+          ],
+          "raw_segment_index": 3,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 3851825573,
+          "travel_time": 0.34310626267476224,
+          "way": 140486410
+        },
+        {
+          "direction": "backward",
+          "from": 3851825573,
+          "id": "raw:140486410:3:backward",
+          "length": 3.834555591653143,
+          "raw_geometry": [
+            [
+              3851825573,
+              -105.0767339,
+              40.5907376
+            ],
+            [
+              11268369831,
+              -105.0767744,
+              40.5907532
+            ]
+          ],
+          "raw_segment_index": 3,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 11268369831,
+          "travel_time": 0.34310626267476224,
+          "way": 140486410
+        },
+        {
+          "direction": "forward",
+          "from": 3851825573,
+          "id": "raw:140486410:4:forward",
+          "length": 4.531192640284137,
+          "raw_geometry": [
+            [
+              3851825573,
+              -105.0767339,
+              40.5907376
+            ],
+            [
+              11268369832,
+              -105.0766889,
+              40.5907154
+            ]
+          ],
+          "raw_segment_index": 4,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 11268369832,
+          "travel_time": 0.40543957053365576,
+          "way": 140486410
+        },
+        {
+          "direction": "backward",
+          "from": 11268369832,
+          "id": "raw:140486410:4:backward",
+          "length": 4.531192640284137,
+          "raw_geometry": [
+            [
+              11268369832,
+              -105.0766889,
+              40.5907154
+            ],
+            [
+              3851825573,
+              -105.0767339,
+              40.5907376
+            ]
+          ],
+          "raw_segment_index": 4,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 3851825573,
+          "travel_time": 0.40543957053365576,
+          "way": 140486410
+        },
+        {
+          "direction": "forward",
+          "from": 11268369832,
+          "id": "raw:140486410:5:forward",
+          "length": 5.283934076362274,
+          "raw_geometry": [
+            [
+              11268369832,
+              -105.0766889,
+              40.5907154
+            ],
+            [
+              11268369828,
+              -105.0766424,
+              40.5906836
+            ]
+          ],
+          "raw_segment_index": 5,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 11268369828,
+          "travel_time": 0.47279295600950916,
+          "way": 140486410
+        },
+        {
+          "direction": "backward",
+          "from": 11268369828,
+          "id": "raw:140486410:5:backward",
+          "length": 5.283934076362274,
+          "raw_geometry": [
+            [
+              11268369828,
+              -105.0766424,
+              40.5906836
+            ],
+            [
+              11268369832,
+              -105.0766889,
+              40.5907154
+            ]
+          ],
+          "raw_segment_index": 5,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 11268369832,
+          "travel_time": 0.47279295600950916,
+          "way": 140486410
+        },
+        {
+          "direction": "forward",
+          "from": 11268369828,
+          "id": "raw:140486410:6:forward",
+          "length": 11.634403510968596,
+          "raw_geometry": [
+            [
+              11268369828,
+              -105.0766424,
+              40.5906836
+            ],
+            [
+              11268369826,
+              -105.0765357,
+              40.5906174
+            ]
+          ],
+          "raw_segment_index": 6,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 11268369826,
+          "travel_time": 1.0410167780036323,
+          "way": 140486410
+        },
+        {
+          "direction": "backward",
+          "from": 11268369826,
+          "id": "raw:140486410:6:backward",
+          "length": 11.634403510968596,
+          "raw_geometry": [
+            [
+              11268369826,
+              -105.0765357,
+              40.5906174
+            ],
+            [
+              11268369828,
+              -105.0766424,
+              40.5906836
+            ]
+          ],
+          "raw_segment_index": 6,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 11268369828,
+          "travel_time": 1.0410167780036323,
+          "way": 140486410
+        },
+        {
+          "direction": "forward",
+          "from": 11268369826,
+          "id": "raw:140486410:7:forward",
+          "length": 4.130286059163835,
+          "raw_geometry": [
+            [
+              11268369826,
+              -105.0765357,
+              40.5906174
+            ],
+            [
+              11268369829,
+              -105.0764975,
+              40.5905942
+            ]
+          ],
+          "raw_segment_index": 7,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 11268369829,
+          "travel_time": 0.36956747129239753,
+          "way": 140486410
+        },
+        {
+          "direction": "backward",
+          "from": 11268369829,
+          "id": "raw:140486410:7:backward",
+          "length": 4.130286059163835,
+          "raw_geometry": [
+            [
+              11268369829,
+              -105.0764975,
+              40.5905942
+            ],
+            [
+              11268369826,
+              -105.0765357,
+              40.5906174
+            ]
+          ],
+          "raw_segment_index": 7,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 11268369826,
+          "travel_time": 0.36956747129239753,
+          "way": 140486410
+        },
+        {
+          "direction": "forward",
+          "from": 11268369829,
+          "id": "raw:140486410:8:forward",
+          "length": 10.632669876659847,
+          "raw_geometry": [
+            [
+              11268369829,
+              -105.0764975,
+              40.5905942
+            ],
+            [
+              2009850347,
+              -105.0763982,
+              40.5905354
+            ]
+          ],
+          "raw_segment_index": 8,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 2009850347,
+          "travel_time": 0.9513842051413607,
+          "way": 140486410
+        },
+        {
+          "direction": "backward",
+          "from": 2009850347,
+          "id": "raw:140486410:8:backward",
+          "length": 10.632669876659847,
+          "raw_geometry": [
+            [
+              2009850347,
+              -105.0763982,
+              40.5905354
+            ],
+            [
+              11268369829,
+              -105.0764975,
+              40.5905942
+            ]
+          ],
+          "raw_segment_index": 8,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 11268369829,
+          "travel_time": 0.9513842051413607,
+          "way": 140486410
+        },
+        {
+          "direction": "forward",
+          "from": 1479189754,
+          "id": "raw:186582632:0:forward",
+          "length": 12.011790050719979,
+          "raw_geometry": [
+            [
+              1479189754,
+              -105.0769353,
+              40.5870907
+            ],
+            [
+              1829343894,
+              -105.0769479,
+              40.5871983
+            ]
+          ],
+          "raw_segment_index": 0,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 1829343894,
+          "travel_time": 1.0747843638797405,
+          "way": 186582632
+        },
+        {
+          "direction": "forward",
+          "from": 1829343894,
+          "id": "raw:186582632:1:forward",
+          "length": 58.12288614495384,
+          "raw_geometry": [
+            [
+              1829343894,
+              -105.0769479,
+              40.5871983
+            ],
+            [
+              1819705125,
+              -105.0769433,
+              40.587721
+            ]
+          ],
+          "raw_segment_index": 1,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 1819705125,
+          "travel_time": 5.200687736663729,
+          "way": 186582632
+        },
+        {
+          "direction": "forward",
+          "from": 1819705125,
+          "id": "raw:186582632:2:forward",
+          "length": 116.92172180777477,
+          "raw_geometry": [
+            [
+              1819705125,
+              -105.0769433,
+              40.587721
+            ],
+            [
+              3707437468,
+              -105.0769404,
+              40.5887725
+            ]
+          ],
+          "raw_segment_index": 2,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 3707437468,
+          "travel_time": 10.461857713652002,
+          "way": 186582632
+        },
+        {
+          "direction": "forward",
+          "from": 3707437468,
+          "id": "raw:186582632:3:forward",
+          "length": 4.2699185810614555,
+          "raw_geometry": [
+            [
+              3707437468,
+              -105.0769404,
+              40.5887725
+            ],
+            [
+              5481546066,
+              -105.0769406,
+              40.5888109
+            ]
+          ],
+          "raw_segment_index": 3,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 5481546066,
+          "travel_time": 0.38206143352375227,
+          "way": 186582632
+        },
+        {
+          "direction": "forward",
+          "from": 5481546066,
+          "id": "raw:186582632:4:forward",
+          "length": 19.414636028932833,
+          "raw_geometry": [
+            [
+              5481546066,
+              -105.0769406,
+              40.5888109
+            ],
+            [
+              1479189816,
+              -105.0769405,
+              40.5889855
+            ]
+          ],
+          "raw_segment_index": 4,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 1479189816,
+          "travel_time": 1.7371721572058727,
+          "way": 186582632
+        },
+        {
+          "direction": "forward",
+          "from": 11268369826,
+          "id": "raw:190362906:0:forward",
+          "length": 6.663572324802125,
+          "raw_geometry": [
+            [
+              11268369826,
+              -105.0765357,
+              40.5906174
+            ],
+            [
+              11268369830,
+              -105.0764926,
+              40.5906676
+            ]
+          ],
+          "raw_segment_index": 0,
+          "selected_raw_speed": null,
+          "selected_speed_key": null,
+          "selected_speed_kph": 15.0,
+          "speed_basis": "declared_highway_model_default",
+          "speed_mps_fraction": [
+            25,
+            6
+          ],
+          "to": 11268369830,
+          "travel_time": 1.59925735795251,
+          "way": 190362906
+        },
+        {
+          "direction": "backward",
+          "from": 11268369830,
+          "id": "raw:190362906:0:backward",
+          "length": 6.663572324802125,
+          "raw_geometry": [
+            [
+              11268369830,
+              -105.0764926,
+              40.5906676
+            ],
+            [
+              11268369826,
+              -105.0765357,
+              40.5906174
+            ]
+          ],
+          "raw_segment_index": 0,
+          "selected_raw_speed": null,
+          "selected_speed_key": null,
+          "selected_speed_kph": 15.0,
+          "speed_basis": "declared_highway_model_default",
+          "speed_mps_fraction": [
+            25,
+            6
+          ],
+          "to": 11268369826,
+          "travel_time": 1.59925735795251,
+          "way": 190362906
+        },
+        {
+          "direction": "forward",
+          "from": 11268369830,
+          "id": "raw:190362906:1:forward",
+          "length": 3.9277696453989215,
+          "raw_geometry": [
+            [
+              11268369830,
+              -105.0764926,
+              40.5906676
+            ],
+            [
+              8989243932,
+              -105.0764653,
+              40.5906962
+            ]
+          ],
+          "raw_segment_index": 1,
+          "selected_raw_speed": null,
+          "selected_speed_key": null,
+          "selected_speed_kph": 15.0,
+          "speed_basis": "declared_highway_model_default",
+          "speed_mps_fraction": [
+            25,
+            6
+          ],
+          "to": 8989243932,
+          "travel_time": 0.9426647148957411,
+          "way": 190362906
+        },
+        {
+          "direction": "backward",
+          "from": 8989243932,
+          "id": "raw:190362906:1:backward",
+          "length": 3.9277696453989215,
+          "raw_geometry": [
+            [
+              8989243932,
+              -105.0764653,
+              40.5906962
+            ],
+            [
+              11268369830,
+              -105.0764926,
+              40.5906676
+            ]
+          ],
+          "raw_segment_index": 1,
+          "selected_raw_speed": null,
+          "selected_speed_key": null,
+          "selected_speed_kph": 15.0,
+          "speed_basis": "declared_highway_model_default",
+          "speed_mps_fraction": [
+            25,
+            6
+          ],
+          "to": 11268369830,
+          "travel_time": 0.9426647148957411,
+          "way": 190362906
+        },
+        {
+          "direction": "forward",
+          "from": 8989243932,
+          "id": "raw:190362906:2:forward",
+          "length": 14.526791543254324,
+          "raw_geometry": [
+            [
+              8989243932,
+              -105.0764653,
+              40.5906962
+            ],
+            [
+              8989264479,
+              -105.0763489,
+              40.5907924
+            ]
+          ],
+          "raw_segment_index": 2,
+          "selected_raw_speed": null,
+          "selected_speed_key": null,
+          "selected_speed_kph": 15.0,
+          "speed_basis": "declared_highway_model_default",
+          "speed_mps_fraction": [
+            25,
+            6
+          ],
+          "to": 8989264479,
+          "travel_time": 3.486429970381038,
+          "way": 190362906
+        },
+        {
+          "direction": "backward",
+          "from": 8989264479,
+          "id": "raw:190362906:2:backward",
+          "length": 14.526791543254324,
+          "raw_geometry": [
+            [
+              8989264479,
+              -105.0763489,
+              40.5907924
+            ],
+            [
+              8989243932,
+              -105.0764653,
+              40.5906962
+            ]
+          ],
+          "raw_segment_index": 2,
+          "selected_raw_speed": null,
+          "selected_speed_key": null,
+          "selected_speed_kph": 15.0,
+          "speed_basis": "declared_highway_model_default",
+          "speed_mps_fraction": [
+            25,
+            6
+          ],
+          "to": 8989243932,
+          "travel_time": 3.486429970381038,
+          "way": 190362906
+        },
+        {
+          "direction": "forward",
+          "from": 8989264479,
+          "id": "raw:190362906:3:forward",
+          "length": 3.5051067138257945,
+          "raw_geometry": [
+            [
+              8989264479,
+              -105.0763489,
+              40.5907924
+            ],
+            [
+              2009850339,
+              -105.0763075,
+              40.5907947
+            ]
+          ],
+          "raw_segment_index": 3,
+          "selected_raw_speed": null,
+          "selected_speed_key": null,
+          "selected_speed_kph": 15.0,
+          "speed_basis": "declared_highway_model_default",
+          "speed_mps_fraction": [
+            25,
+            6
+          ],
+          "to": 2009850339,
+          "travel_time": 0.8412256113181907,
+          "way": 190362906
+        },
+        {
+          "direction": "backward",
+          "from": 2009850339,
+          "id": "raw:190362906:3:backward",
+          "length": 3.5051067138257945,
+          "raw_geometry": [
+            [
+              2009850339,
+              -105.0763075,
+              40.5907947
+            ],
+            [
+              8989264479,
+              -105.0763489,
+              40.5907924
+            ]
+          ],
+          "raw_segment_index": 3,
+          "selected_raw_speed": null,
+          "selected_speed_key": null,
+          "selected_speed_kph": 15.0,
+          "speed_basis": "declared_highway_model_default",
+          "speed_mps_fraction": [
+            25,
+            6
+          ],
+          "to": 8989264479,
+          "travel_time": 0.8412256113181907,
+          "way": 190362906
+        },
+        {
+          "direction": "forward",
+          "from": 2009850339,
+          "id": "raw:190362906:4:forward",
+          "length": 79.60412841459762,
+          "raw_geometry": [
+            [
+              2009850339,
+              -105.0763075,
+              40.5907947
+            ],
+            [
+              2009850360,
+              -105.0756024,
+              40.5903195
+            ]
+          ],
+          "raw_segment_index": 4,
+          "selected_raw_speed": null,
+          "selected_speed_key": null,
+          "selected_speed_kph": 15.0,
+          "speed_basis": "declared_highway_model_default",
+          "speed_mps_fraction": [
+            25,
+            6
+          ],
+          "to": 2009850360,
+          "travel_time": 19.10499081950343,
+          "way": 190362906
+        },
+        {
+          "direction": "backward",
+          "from": 2009850360,
+          "id": "raw:190362906:4:backward",
+          "length": 79.60412841459762,
+          "raw_geometry": [
+            [
+              2009850360,
+              -105.0756024,
+              40.5903195
+            ],
+            [
+              2009850339,
+              -105.0763075,
+              40.5907947
+            ]
+          ],
+          "raw_segment_index": 4,
+          "selected_raw_speed": null,
+          "selected_speed_key": null,
+          "selected_speed_kph": 15.0,
+          "speed_basis": "declared_highway_model_default",
+          "speed_mps_fraction": [
+            25,
+            6
+          ],
+          "to": 2009850339,
+          "travel_time": 19.10499081950343,
+          "way": 190362906
+        },
+        {
+          "direction": "forward",
+          "from": 2009850360,
+          "id": "raw:190362906:5:forward",
+          "length": 17.031870151622787,
+          "raw_geometry": [
+            [
+              2009850360,
+              -105.0756024,
+              40.5903195
+            ],
+            [
+              8989243931,
+              -105.0757332,
+              40.5902029
+            ]
+          ],
+          "raw_segment_index": 5,
+          "selected_raw_speed": null,
+          "selected_speed_key": null,
+          "selected_speed_kph": 15.0,
+          "speed_basis": "declared_highway_model_default",
+          "speed_mps_fraction": [
+            25,
+            6
+          ],
+          "to": 8989243931,
+          "travel_time": 4.0876488363894685,
+          "way": 190362906
+        },
+        {
+          "direction": "backward",
+          "from": 8989243931,
+          "id": "raw:190362906:5:backward",
+          "length": 17.031870151622787,
+          "raw_geometry": [
+            [
+              8989243931,
+              -105.0757332,
+              40.5902029
+            ],
+            [
+              2009850360,
+              -105.0756024,
+              40.5903195
+            ]
+          ],
+          "raw_segment_index": 5,
+          "selected_raw_speed": null,
+          "selected_speed_key": null,
+          "selected_speed_kph": 15.0,
+          "speed_basis": "declared_highway_model_default",
+          "speed_mps_fraction": [
+            25,
+            6
+          ],
+          "to": 2009850360,
+          "travel_time": 4.0876488363894685,
+          "way": 190362906
+        },
+        {
+          "direction": "forward",
+          "from": 8989243931,
+          "id": "raw:190362906:6:forward",
+          "length": 10.00016234722184,
+          "raw_geometry": [
+            [
+              8989243931,
+              -105.0757332,
+              40.5902029
+            ],
+            [
+              2009850355,
+              -105.0758104,
+              40.5901347
+            ]
+          ],
+          "raw_segment_index": 6,
+          "selected_raw_speed": null,
+          "selected_speed_key": null,
+          "selected_speed_kph": 15.0,
+          "speed_basis": "declared_highway_model_default",
+          "speed_mps_fraction": [
+            25,
+            6
+          ],
+          "to": 2009850355,
+          "travel_time": 2.4000389633332415,
+          "way": 190362906
+        },
+        {
+          "direction": "backward",
+          "from": 2009850355,
+          "id": "raw:190362906:6:backward",
+          "length": 10.00016234722184,
+          "raw_geometry": [
+            [
+              2009850355,
+              -105.0758104,
+              40.5901347
+            ],
+            [
+              8989243931,
+              -105.0757332,
+              40.5902029
+            ]
+          ],
+          "raw_segment_index": 6,
+          "selected_raw_speed": null,
+          "selected_speed_key": null,
+          "selected_speed_kph": 15.0,
+          "speed_basis": "declared_highway_model_default",
+          "speed_mps_fraction": [
+            25,
+            6
+          ],
+          "to": 8989243931,
+          "travel_time": 2.4000389633332415,
+          "way": 190362906
+        },
+        {
+          "direction": "forward",
+          "from": 51193003,
+          "id": "raw:290286621:0:forward",
+          "length": 23.77834711479961,
+          "raw_geometry": [
+            [
+              51193003,
+              -105.0771021,
+              40.5891118
+            ],
+            [
+              51193002,
+              -105.0771078,
+              40.588898
+            ]
+          ],
+          "raw_segment_index": 0,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 51193002,
+          "travel_time": 2.1276259050464934,
+          "way": 290286621
+        },
+        {
+          "direction": "forward",
+          "from": 2009850347,
+          "id": "raw:322900293:0:forward",
+          "length": 13.256848468638106,
+          "raw_geometry": [
+            [
+              2009850347,
+              -105.0763982,
+              40.5905354
+            ],
+            [
+              11268369827,
+              -105.0764621,
+              40.5906443
+            ]
+          ],
+          "raw_segment_index": 0,
+          "selected_raw_speed": "30 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 48.28032,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            8382,
+            625
+          ],
+          "to": 11268369827,
+          "travel_time": 0.9884908485920801,
+          "way": 322900293
+        },
+        {
+          "direction": "forward",
+          "from": 11268369827,
+          "id": "raw:322900293:1:forward",
+          "length": 3.653091744046318,
+          "raw_geometry": [
+            [
+              11268369827,
+              -105.0764621,
+              40.5906443
+            ],
+            [
+              11268369830,
+              -105.0764926,
+              40.5906676
+            ]
+          ],
+          "raw_segment_index": 1,
+          "selected_raw_speed": "30 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 48.28032,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            8382,
+            625
+          ],
+          "to": 11268369830,
+          "travel_time": 0.2723911166820507,
+          "way": 322900293
+        },
+        {
+          "direction": "forward",
+          "from": 11268369830,
+          "id": "raw:322900293:2:forward",
+          "length": 11.240264472271981,
+          "raw_geometry": [
+            [
+              11268369830,
+              -105.0764926,
+              40.5906676
+            ],
+            [
+              9024006496,
+              -105.0765867,
+              40.5907391
+            ]
+          ],
+          "raw_segment_index": 2,
+          "selected_raw_speed": "30 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 48.28032,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            8382,
+            625
+          ],
+          "to": 9024006496,
+          "travel_time": 0.8381251843438307,
+          "way": 322900293
+        },
+        {
+          "direction": "forward",
+          "from": 9024006496,
+          "id": "raw:322900293:3:forward",
+          "length": 15.083986261010118,
+          "raw_geometry": [
+            [
+              9024006496,
+              -105.0765867,
+              40.5907391
+            ],
+            [
+              3296887982,
+              -105.0767242,
+              40.5908257
+            ]
+          ],
+          "raw_segment_index": 3,
+          "selected_raw_speed": "30 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 48.28032,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            8382,
+            625
+          ],
+          "to": 3296887982,
+          "travel_time": 1.1247305432034507,
+          "way": 322900293
+        },
+        {
+          "direction": "forward",
+          "from": 3296887982,
+          "id": "raw:322900293:4:forward",
+          "length": 7.5278760762211885,
+          "raw_geometry": [
+            [
+              3296887982,
+              -105.0767242,
+              40.5908257
+            ],
+            [
+              9024006497,
+              -105.076779,
+              40.5908791
+            ]
+          ],
+          "raw_segment_index": 4,
+          "selected_raw_speed": "30 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 48.28032,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            8382,
+            625
+          ],
+          "to": 9024006497,
+          "travel_time": 0.5613126398995756,
+          "way": 322900293
+        },
+        {
+          "direction": "forward",
+          "from": 9024006497,
+          "id": "raw:322900293:5:forward",
+          "length": 6.442711531990926,
+          "raw_geometry": [
+            [
+              9024006497,
+              -105.076779,
+              40.5908791
+            ],
+            [
+              3296887981,
+              -105.076818,
+              40.5909289
+            ]
+          ],
+          "raw_segment_index": 5,
+          "selected_raw_speed": "30 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 48.28032,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            8382,
+            625
+          ],
+          "to": 3296887981,
+          "travel_time": 0.48039784150493064,
+          "way": 322900293
+        },
+        {
+          "direction": "forward",
+          "from": 3296887981,
+          "id": "raw:322900293:6:forward",
+          "length": 8.810251359608136,
+          "raw_geometry": [
+            [
+              3296887981,
+              -105.076818,
+              40.5909289
+            ],
+            [
+              3296887980,
+              -105.0768397,
+              40.5910064
+            ]
+          ],
+          "raw_segment_index": 6,
+          "selected_raw_speed": "30 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 48.28032,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            8382,
+            625
+          ],
+          "to": 3296887980,
+          "travel_time": 0.656932366947636,
+          "way": 322900293
+        },
+        {
+          "direction": "forward",
+          "from": 3296887980,
+          "id": "raw:322900293:7:forward",
+          "length": 23.97043336651545,
+          "raw_geometry": [
+            [
+              3296887980,
+              -105.0768397,
+              40.5910064
+            ],
+            [
+              8989264483,
+              -105.076847,
+              40.5912219
+            ]
+          ],
+          "raw_segment_index": 7,
+          "selected_raw_speed": "30 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 48.28032,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            8382,
+            625
+          ],
+          "to": 8989264483,
+          "travel_time": 1.7873444111276733,
+          "way": 322900293
+        },
+        {
+          "direction": "forward",
+          "from": 8989264483,
+          "id": "raw:322900293:8:forward",
+          "length": 22.514633636471494,
+          "raw_geometry": [
+            [
+              8989264483,
+              -105.076847,
+              40.5912219
+            ],
+            [
+              1479189796,
+              -105.0769188,
+              40.5914169
+            ]
+          ],
+          "raw_segment_index": 8,
+          "selected_raw_speed": "30 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 48.28032,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            8382,
+            625
+          ],
+          "to": 1479189796,
+          "travel_time": 1.6787933694577288,
+          "way": 322900293
+        },
+        {
+          "direction": "forward",
+          "from": 1479189796,
+          "id": "raw:322900298:0:forward",
+          "length": 22.17167518877456,
+          "raw_geometry": [
+            [
+              1479189796,
+              -105.0769188,
+              40.5914169
+            ],
+            [
+              51216143,
+              -105.0769072,
+              40.5916161
+            ]
+          ],
+          "raw_segment_index": 0,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 51216143,
+          "travel_time": 1.9838649954164782,
+          "way": 322900298
+        },
+        {
+          "direction": "forward",
+          "from": 51216143,
+          "id": "raw:322900298:1:forward",
+          "length": 6.249089281198329,
+          "raw_geometry": [
+            [
+              51216143,
+              -105.0769072,
+              40.5916161
+            ],
+            [
+              2057002304,
+              -105.0769028,
+              40.5916722
+            ]
+          ],
+          "raw_segment_index": 1,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 2057002304,
+          "travel_time": 0.559152584216028,
+          "way": 322900298
+        },
+        {
+          "direction": "forward",
+          "from": 2009850347,
+          "id": "raw:1181513189:0:forward",
+          "length": 31.316428037304924,
+          "raw_geometry": [
+            [
+              2009850347,
+              -105.0763982,
+              40.5905354
+            ],
+            [
+              50959325,
+              -105.0761281,
+              40.5903424
+            ]
+          ],
+          "raw_segment_index": 0,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 50959325,
+          "travel_time": 2.802114176566296,
+          "way": 1181513189
+        },
+        {
+          "direction": "backward",
+          "from": 50959325,
+          "id": "raw:1181513189:0:backward",
+          "length": 31.316428037304924,
+          "raw_geometry": [
+            [
+              50959325,
+              -105.0761281,
+              40.5903424
+            ],
+            [
+              2009850347,
+              -105.0763982,
+              40.5905354
+            ]
+          ],
+          "raw_segment_index": 0,
+          "selected_raw_speed": "25 mph",
+          "selected_speed_key": "maxspeed",
+          "selected_speed_kph": 40.2336,
+          "speed_basis": "explicit_raw_limit",
+          "speed_mps_fraction": [
+            1397,
+            125
+          ],
+          "to": 2009850347,
+          "travel_time": 2.802114176566296,
+          "way": 1181513189
+        }
+      ],
+      "connector_costs_included": false,
+      "cost_policy_sha256": "f93b824ddc6861f9d02dd6047e20a6d632ac2499c1163c5d6e54ffb18174cdb6",
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "maneuvers": [
+        {
+          "access_verified": false,
+          "arc_sequence": [
+            "raw:186582632:4:forward",
+            "raw:134584349:0:forward",
+            "raw:290286621:0:forward"
+          ],
+          "id": "reference-relation-9680890",
+          "kind": "no",
+          "raw_relation_id": 9680890,
+          "raw_restriction_kind": "no_u_turn",
+          "release_eligible": false,
+          "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4"
+        },
+        {
+          "access_verified": false,
+          "arc_sequence": [
+            "raw:290286621:0:forward",
+            "raw:6172542:0:forward",
+            "raw:134584350:0:forward"
+          ],
+          "id": "reference-relation-9680891",
+          "kind": "no",
+          "raw_relation_id": 9680891,
+          "raw_restriction_kind": "no_u_turn",
+          "release_eligible": false,
+          "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4"
+        },
+        {
+          "access_verified": false,
+          "arc_sequence": [
+            "raw:140486410:8:forward",
+            "raw:322900293:0:forward"
+          ],
+          "id": "reference-relation-10475907",
+          "kind": "no",
+          "raw_relation_id": 10475907,
+          "raw_restriction_kind": "no_left_turn",
+          "release_eligible": false,
+          "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4"
+        }
+      ],
+      "nodes": [
+        50959325,
+        51114796,
+        51123935,
+        51193002,
+        51193003,
+        51216143,
+        1479189754,
+        1479189796,
+        1479189816,
+        1479189914,
+        1819705125,
+        1819705140,
+        1829343894,
+        2009850339,
+        2009850347,
+        2009850355,
+        2009850360,
+        2057002304,
+        3296887980,
+        3296887981,
+        3296887982,
+        3296887983,
+        3360111656,
+        3360111659,
+        3707437468,
+        3851825570,
+        3851825571,
+        3851825573,
+        3851825574,
+        5481546066,
+        7416599567,
+        8989243931,
+        8989243932,
+        8989264479,
+        8989264483,
+        9024006496,
+        9024006497,
+        9024006498,
+        11268369826,
+        11268369827,
+        11268369828,
+        11268369829,
+        11268369830,
+        11268369831,
+        11268369832
+      ],
+      "relation_compilations": [
+        {
+          "access_verified": false,
+          "active_pattern": {
+            "access_verified": false,
+            "arc_sequence": [
+              "raw:186582632:4:forward",
+              "raw:134584349:0:forward",
+              "raw:290286621:0:forward"
+            ],
+            "id": "reference-relation-9680890",
+            "kind": "no",
+            "raw_relation_id": 9680890,
+            "raw_restriction_kind": "no_u_turn",
+            "release_eligible": false,
+            "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4"
+          },
+          "all_incident_ways_accounted": false,
+          "anchors_adopted": false,
+          "declared_arc_sequence": [
+            "raw:186582632:4:forward",
+            "raw:134584349:0:forward",
+            "raw:290286621:0:forward"
+          ],
+          "declared_way_chain": [
+            186582632,
+            134584349,
+            290286621
+          ],
+          "default_policy": "declared-us-common-road-car-defaults-v1",
+          "geographic_timezone_assignment_verified": false,
+          "independent_maneuver_geometry_verified": false,
+          "input_sha256": "ce705e3c52cba99ec3c8ae2f7f374385d06d667e68b74cc4f7f7a2ae0a8cdd48",
+          "join_node_ids": [
+            1479189816,
+            51193003
+          ],
+          "member_projection_sha256": {
+            "134584349": "1e4e1890ae688f6945f706eef752dfd74c0e3c717ad31a9064c338e2e59a6ea0",
+            "186582632": "91e17ad850ec7a9ce405fff7a373e5d2e7aa5f9eb5c80d7ef067ba3181327bc8",
+            "290286621": "3944295bcd8ae7c7536529c23789dafe841aa5043b03167a48940522e7161bc4"
+          },
+          "other_relations_accounted": false,
+          "relation_time_policy": "static-only; conditional/exception/legacy relation rules unsupported",
+          "release_eligible": false,
+          "route_cost_emitted": false,
+          "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+          "schema": "reference-static-via-way-segment-compiler-v1",
+          "scope": "One declared endpoint-connected ordered via-way chain with complete member-way/node permissions at the same fixed instant. No physical turn-label, grade/access, all-incident/other-restriction or geographic graph certification.",
+          "selected_key": "restriction",
+          "selected_raw_value": "no_u_turn",
+          "speed_profile_evaluated": false,
+          "status": "compiled_declared_maneuver",
+          "topology_compiled": true,
+          "transition": [
+            {
+              "direction": "forward",
+              "from": 5481546066,
+              "id": "raw:186582632:4:forward",
+              "raw_segment_index": 4,
+              "to": 1479189816,
+              "way": 186582632
+            },
+            {
+              "direction": "forward",
+              "from": 1479189816,
+              "id": "raw:134584349:0:forward",
+              "raw_segment_index": 0,
+              "to": 51193003,
+              "way": 134584349
+            },
+            {
+              "direction": "forward",
+              "from": 51193003,
+              "id": "raw:290286621:0:forward",
+              "raw_segment_index": 0,
+              "to": 51193002,
+              "way": 290286621
+            }
+          ]
+        },
+        {
+          "access_verified": false,
+          "active_pattern": {
+            "access_verified": false,
+            "arc_sequence": [
+              "raw:290286621:0:forward",
+              "raw:6172542:0:forward",
+              "raw:134584350:0:forward"
+            ],
+            "id": "reference-relation-9680891",
+            "kind": "no",
+            "raw_relation_id": 9680891,
+            "raw_restriction_kind": "no_u_turn",
+            "release_eligible": false,
+            "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4"
+          },
+          "all_incident_ways_accounted": false,
+          "anchors_adopted": false,
+          "declared_arc_sequence": [
+            "raw:290286621:0:forward",
+            "raw:6172542:0:forward",
+            "raw:134584350:0:forward"
+          ],
+          "declared_way_chain": [
+            290286621,
+            6172542,
+            134584350
+          ],
+          "default_policy": "declared-us-common-road-car-defaults-v1",
+          "geographic_timezone_assignment_verified": false,
+          "independent_maneuver_geometry_verified": false,
+          "input_sha256": "404ba7bd6c0edbaf0a37a50ef70417f8ab7a30c7555a420f64deced93c78269f",
+          "join_node_ids": [
+            51193002,
+            1479189816
+          ],
+          "member_projection_sha256": {
+            "134584350": "fb5f643461e4cb197d8154107e3fb1feab3e114add0957fd6a1a725e5b851031",
+            "290286621": "3944295bcd8ae7c7536529c23789dafe841aa5043b03167a48940522e7161bc4",
+            "6172542": "b6adaaa6853d7a157eb8d7632b2b764909901e7880c2d836ca9df23ad485cd77"
+          },
+          "other_relations_accounted": false,
+          "relation_time_policy": "static-only; conditional/exception/legacy relation rules unsupported",
+          "release_eligible": false,
+          "route_cost_emitted": false,
+          "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+          "schema": "reference-static-via-way-segment-compiler-v1",
+          "scope": "One declared endpoint-connected ordered via-way chain with complete member-way/node permissions at the same fixed instant. No physical turn-label, grade/access, all-incident/other-restriction or geographic graph certification.",
+          "selected_key": "restriction",
+          "selected_raw_value": "no_u_turn",
+          "speed_profile_evaluated": false,
+          "status": "compiled_declared_maneuver",
+          "topology_compiled": true,
+          "transition": [
+            {
+              "direction": "forward",
+              "from": 51193003,
+              "id": "raw:290286621:0:forward",
+              "raw_segment_index": 0,
+              "to": 51193002,
+              "way": 290286621
+            },
+            {
+              "direction": "forward",
+              "from": 51193002,
+              "id": "raw:6172542:0:forward",
+              "raw_segment_index": 0,
+              "to": 1479189816,
+              "way": 6172542
+            },
+            {
+              "direction": "forward",
+              "from": 1479189816,
+              "id": "raw:134584350:0:forward",
+              "raw_segment_index": 0,
+              "to": 7416599567,
+              "way": 134584350
+            }
+          ]
+        },
+        {
+          "access_verified": false,
+          "active_pattern": {
+            "access_verified": false,
+            "arc_sequence": [
+              "raw:140486410:8:forward",
+              "raw:322900293:0:forward"
+            ],
+            "id": "reference-relation-10475907",
+            "kind": "no",
+            "raw_relation_id": 10475907,
+            "raw_restriction_kind": "no_left_turn",
+            "release_eligible": false,
+            "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4"
+          },
+          "all_incident_ways_accounted": false,
+          "anchors_adopted": false,
+          "declared_arc_sequence": [
+            "raw:140486410:8:forward",
+            "raw:322900293:0:forward"
+          ],
+          "default_policy": "declared-us-common-road-car-defaults-v1",
+          "geographic_timezone_assignment_verified": false,
+          "independent_maneuver_geometry_verified": false,
+          "input_sha256": "5426c78e4fa29b5ecdee5ca9b059853f4906f1d1fc3c270ab9e35ce9818b88c9",
+          "lane_changes_evaluated": false,
+          "lane_connectivity_evaluated": false,
+          "lane_indications_used_as_restrictions": false,
+          "member_projection_sha256": {
+            "140486410": "55026552a05c2a35a36be64705aacab64b24dc47078c54188d6523917f87d4c5",
+            "322900293": "1a7d08c044c10b7bac8559c5f42932cd377b1420392ace6cd18fee808957e306"
+          },
+          "other_relations_accounted": false,
+          "permission_profile": "reference-car-road-permissions-with-static-guidance-v1",
+          "release_eligible": false,
+          "route_cost_emitted": false,
+          "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+          "schema": "static-guidance-via-node-segment-compiler-v1",
+          "scope": "Exact endpoint-connected from-way/via-node/to-way declaration and supplied complete member-node records only; not all incident ways, signed turn geometry, grade/access certification, an approved graph or a route cost.",
+          "selection": {
+            "access_verified": false,
+            "anchors_adopted": false,
+            "applies": true,
+            "basis": "selected_raw_rule",
+            "declared_members": [
+              {
+                "ref": 140486410,
+                "role": "from",
+                "type": "w"
+              },
+              {
+                "ref": 2009850347,
+                "role": "via",
+                "type": "n"
+              },
+              {
+                "ref": 322900293,
+                "role": "to",
+                "type": "w"
+              }
+            ],
+            "declared_zone": null,
+            "explicit_exceptions": [],
+            "geographic_timezone_assignment_verified": false,
+            "inactive_conditional_only_policy": "no_rule_from_this_relation",
+            "input_sha256": "68fb4cea0f3932fae54c1a185ebd41fb67086374557c2b8176121db386a965a2",
+            "other_relations_accounted": false,
+            "raw_value_traces": [
+              {
+                "key": "restriction",
+                "matching_clause_indices": [],
+                "selected_raw_value": "no_left_turn",
+                "source": "base"
+              }
+            ],
+            "release_eligible": false,
+            "route_cost_emitted": false,
+            "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+            "schema": "reference-via-node-car-rule-selection-v1",
+            "scope": "One structurally declared via-node relation only. Rule-value/applicability selection is not geometric maneuver compilation, general turn permission, lane/grade/access proof or a route cost.",
+            "selected_key": "restriction",
+            "selected_raw_value": "no_left_turn",
+            "status": "resolved_relation_applicability",
+            "topology_compiled": false,
+            "turn_legality_certified": false
+          },
+          "speed_profile_evaluated": false,
+          "status": "compiled_declared_transition",
+          "topology_compiled": true,
+          "transition": [
+            {
+              "direction": "forward",
+              "from": 11268369829,
+              "id": "raw:140486410:8:forward",
+              "raw_segment_index": 8,
+              "to": 2009850347,
+              "way": 140486410
+            },
+            {
+              "direction": "forward",
+              "from": 2009850347,
+              "id": "raw:322900293:0:forward",
+              "raw_segment_index": 0,
+              "to": 11268369827,
+              "way": 322900293
+            }
+          ]
+        }
+      ],
+      "release_eligible": false,
+      "same_way_reversals": "disallowed",
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "source_approach": "unconstrained-declared-node-start",
+      "supplied_raw_relation_ids": [
+        9680890,
+        9680891,
+        10475907
+      ],
+      "way_projection_sha256": {
+        "1181513189": "e3f5f57f6277dfdbd9d12d1ff620346e73a1677b8ae9442b3f0d60a45f0f053a",
+        "134552324": "58c273b50a09471a441e24b0dadbe2ce78f58897913151441231b5ea4a259fb7",
+        "134584349": "9b4a0a4be28190f78b9934208669c354471f4e0e95767f9b2d15e78fcf9e6c23",
+        "134584350": "e0ad9d488c2c392df775c7a76b50afe8f1d50173314e6a6182b8320126596dad",
+        "140486410": "74ca8bebdcd6ffb3bc985f2a746db06b9a8ae9b500792f9fe43ce5797999d8bd",
+        "186582632": "3ad898791c332933424ec080f174c798b2091e8e0f1107f0330f72bf3cdc34a2",
+        "190362906": "c6fd9f95f06d1b0d739f30bb3ba0a34934a45486b9bae7b96587fc05d8ee9283",
+        "290286621": "16b7cdcfc47cb62250bed54d6f2d27c1b12a5fddc8a0e780f2aee386c256d466",
+        "322900293": "7a60d6776da47c1f226eb9eef84aa8b82e1395796a7bd5a543764b1c8ab68dc6",
+        "322900298": "88972fe565a2c17b3f33374adef965c8d96013ddb8dcc60e70eba931fcf49332",
+        "6166084": "e36783bef128f177d93f038d1908a07b6b79a2a4042e482fc33a1156c9963791",
+        "6172542": "ed6e324d3a5e6b2577c2ecc6e6fafe5389e5fa718596bb50f32ce74b9a5df602"
+      }
+    },
+    "graph_sha256": "6fc1012bc241f91bc8527a39a1688d943d0fd64170c3814230f88b5dd4dbf0d6",
+    "input_sha256": "4defad56677797911d073f8eb72376040ddf33f239e9a266d8619dc1455504c1",
+    "lane_connectivity_evaluated": false,
+    "lane_indications_used_as_restrictions": false,
+    "other_relations_accounted": false,
+    "release_eligible": false,
+    "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+    "schema": "static-guidance-declared-mixed-graph-v1",
+    "scope": "Only the complete supplied raw-way/node/control universe. Via-node controls use the static-guidance profile; static via-way controls use the stricter unchanged historical profile. Unknown supplied controls reject the entire bundle. No incident/exterior closure, physical access or geographic graph certification.",
+    "status": "compiled_declared_guidance_graph"
+  },
+  "explicit_member_way_ids": [
+    6172542,
+    134584349,
+    186582632,
+    290286621
+  ],
+  "focused_pair_comparison": {
+    "length": {
+      "new_finite": 246,
+      "newly_finite": 92,
+      "old_finite": 154,
+      "queries": 361,
+      "shorter": 0,
+      "unchanged_cost": 269
+    },
+    "travel_time": {
+      "new_finite": 246,
+      "newly_finite": 92,
+      "old_finite": 154,
+      "queries": 361,
+      "shorter": 0,
+      "unchanged_cost": 269
+    }
+  },
+  "focused_report_sha256": "8024bfdd72ecf77d90558c9c62dfc88ab9db9ad58ca1b280c1da306f28d64137",
+  "geographic_coverage_certified": false,
+  "implementation_sha256": {
+    "fort_collins_guidance_incidence_checkpoint.py": "30d8b665542eab269ba199fbcb2248f25f42052f803dee270baeb8ec64a31c94",
+    "fort_collins_guidance_query_incidence.py": "88288ee8791f777370785c8afce83fadfd20959e15fadd21ed30031e35800d81",
+    "guidance_via_node_compile.py": "8fd1918d7c50fce1df2fdc5ebb16552047fcb571d38238ad724d487dd2992482",
+    "reference_via_way_compile.py": "c8d21c653dd2c27e4dbfe92a5236323bde868253ea1d6a993a04100e2f0081fc",
+    "road_guidance_mixed_graph.py": "19d4352e0ec9702b8ad8c78508478849a792340b81e74282581407f242a331a0",
+    "road_guidance_segments.py": "2895a4ca763f7c4dcba42c85dbdc5e7e52bd51918d3e6fb98a9898ffa2b0315e",
+    "road_guidance_way_permissions.py": "07a39977eca8b254156660068dd8b480dcf1ef3247c950d1ae439a545397f97d",
+    "road_maneuver_probe.py": "86ba6303ba6bd7c5e84afe3fc7e1d15214f934404091d08d09e8ab075731abff",
+    "road_source_incidence.py": "555cadfc86e47202756c529b4fa37b73bc2bc92d9b65dff709ecd2cd37a05a6f",
+    "road_static_lane_guidance.py": "bb9f8a15f58c9607084de40e70a0fb254fcea93543a4900b47e4e2528e1dec05"
+  },
+  "incident_ways": 10,
+  "independent_maneuver_geometry_verified": false,
+  "newly_enumerated_seed_nodes": 18,
+  "newly_finite_local_witnesses": {
+    "length": [
+      {
+        "expanded_local_result": {
+          "access_certified": false,
+          "arc_path": [
+            "raw:140486410:0:backward",
+            "raw:134552324:0:forward",
+            "raw:134552324:1:forward",
+            "raw:134552324:2:forward"
+          ],
+          "converged": true,
+          "cost": 78.60858838579185,
+          "discovered_states": 24,
+          "exact_stored_path_cost": [
+            "88505402340593211",
+            "1125899906842624"
+          ],
+          "geographic_coverage_certified": false,
+          "maneuver_count": 3,
+          "metric": "length",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 22,
+          "source": 51123935,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:0:backward",
+              "node": 1479189914
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:134552324:0:forward",
+              "node": 3296887983
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:134552324:1:forward",
+              "node": 9024006498
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:134552324:2:forward",
+              "node": 1479189796
+            }
+          ],
+          "stored_prefix_entries": 1,
+          "target": 1479189796,
+          "transitions_examined": 39,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        },
+        "old_local_result": {
+          "access_certified": false,
+          "arc_path": [],
+          "converged": true,
+          "cost": null,
+          "discovered_states": 10,
+          "exact_stored_path_cost": null,
+          "geographic_coverage_certified": false,
+          "maneuver_count": 1,
+          "metric": "length",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 10,
+          "source": 51123935,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [],
+          "stored_prefix_entries": 1,
+          "target": 1479189796,
+          "transitions_examined": 19,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        }
+      },
+      {
+        "expanded_local_result": {
+          "access_certified": false,
+          "arc_path": [
+            "raw:140486410:1:forward",
+            "raw:140486410:2:forward",
+            "raw:140486410:3:forward",
+            "raw:140486410:4:forward",
+            "raw:140486410:5:forward",
+            "raw:140486410:6:forward",
+            "raw:190362906:0:forward",
+            "raw:322900293:2:forward",
+            "raw:322900293:3:forward",
+            "raw:322900293:4:forward",
+            "raw:322900293:5:forward",
+            "raw:322900293:6:forward"
+          ],
+          "converged": true,
+          "cost": 88.10770216095445,
+          "discovered_states": 26,
+          "exact_stored_path_cost": [
+            "6200028353446017",
+            "70368744177664"
+          ],
+          "geographic_coverage_certified": false,
+          "maneuver_count": 3,
+          "metric": "length",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 24,
+          "source": 51123935,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:1:forward",
+              "node": 3851825574
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:2:forward",
+              "node": 11268369831
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:3:forward",
+              "node": 3851825573
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:4:forward",
+              "node": 11268369832
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:5:forward",
+              "node": 11268369828
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:6:forward",
+              "node": 11268369826
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:190362906:0:forward",
+              "node": 11268369830
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:322900293:2:forward",
+              "node": 9024006496
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:322900293:3:forward",
+              "node": 3296887982
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:322900293:4:forward",
+              "node": 9024006497
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:322900293:5:forward",
+              "node": 3296887981
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:322900293:6:forward",
+              "node": 3296887980
+            }
+          ],
+          "stored_prefix_entries": 1,
+          "target": 3296887980,
+          "transitions_examined": 41,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        },
+        "old_local_result": {
+          "access_certified": false,
+          "arc_path": [],
+          "converged": true,
+          "cost": null,
+          "discovered_states": 10,
+          "exact_stored_path_cost": null,
+          "geographic_coverage_certified": false,
+          "maneuver_count": 1,
+          "metric": "length",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 10,
+          "source": 51123935,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [],
+          "stored_prefix_entries": 1,
+          "target": 3296887980,
+          "transitions_examined": 19,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        }
+      },
+      {
+        "expanded_local_result": {
+          "access_certified": false,
+          "arc_path": [
+            "raw:140486410:1:forward",
+            "raw:140486410:2:forward",
+            "raw:140486410:3:forward",
+            "raw:140486410:4:forward",
+            "raw:140486410:5:forward",
+            "raw:140486410:6:forward",
+            "raw:190362906:0:forward",
+            "raw:322900293:2:forward",
+            "raw:322900293:3:forward",
+            "raw:322900293:4:forward",
+            "raw:322900293:5:forward"
+          ],
+          "converged": true,
+          "cost": 79.29745080134632,
+          "discovered_states": 25,
+          "exact_stored_path_cost": [
+            "44640496235046685",
+            "562949953421312"
+          ],
+          "geographic_coverage_certified": false,
+          "maneuver_count": 3,
+          "metric": "length",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 23,
+          "source": 51123935,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:1:forward",
+              "node": 3851825574
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:2:forward",
+              "node": 11268369831
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:3:forward",
+              "node": 3851825573
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:4:forward",
+              "node": 11268369832
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:5:forward",
+              "node": 11268369828
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:6:forward",
+              "node": 11268369826
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:190362906:0:forward",
+              "node": 11268369830
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:322900293:2:forward",
+              "node": 9024006496
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:322900293:3:forward",
+              "node": 3296887982
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:322900293:4:forward",
+              "node": 9024006497
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:322900293:5:forward",
+              "node": 3296887981
+            }
+          ],
+          "stored_prefix_entries": 1,
+          "target": 3296887981,
+          "transitions_examined": 40,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        },
+        "old_local_result": {
+          "access_certified": false,
+          "arc_path": [],
+          "converged": true,
+          "cost": null,
+          "discovered_states": 10,
+          "exact_stored_path_cost": null,
+          "geographic_coverage_certified": false,
+          "maneuver_count": 1,
+          "metric": "length",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 10,
+          "source": 51123935,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [],
+          "stored_prefix_entries": 1,
+          "target": 3296887981,
+          "transitions_examined": 19,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        }
+      }
+    ],
+    "travel_time": [
+      {
+        "expanded_local_result": {
+          "access_certified": false,
+          "arc_path": [
+            "raw:140486410:0:backward",
+            "raw:134552324:0:forward",
+            "raw:134552324:1:forward",
+            "raw:134552324:2:forward"
+          ],
+          "converged": true,
+          "cost": 7.0336961690937585,
+          "discovered_states": 22,
+          "exact_stored_path_cost": [
+            "63353902892335871",
+            "9007199254740992"
+          ],
+          "geographic_coverage_certified": false,
+          "maneuver_count": 3,
+          "metric": "travel_time",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 20,
+          "source": 51123935,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:0:backward",
+              "node": 1479189914
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:134552324:0:forward",
+              "node": 3296887983
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:134552324:1:forward",
+              "node": 9024006498
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:134552324:2:forward",
+              "node": 1479189796
+            }
+          ],
+          "stored_prefix_entries": 1,
+          "target": 1479189796,
+          "transitions_examined": 35,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        },
+        "old_local_result": {
+          "access_certified": false,
+          "arc_path": [],
+          "converged": true,
+          "cost": null,
+          "discovered_states": 10,
+          "exact_stored_path_cost": null,
+          "geographic_coverage_certified": false,
+          "maneuver_count": 1,
+          "metric": "travel_time",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 10,
+          "source": 51123935,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [],
+          "stored_prefix_entries": 1,
+          "target": 1479189796,
+          "transitions_examined": 19,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        }
+      },
+      {
+        "expanded_local_result": {
+          "access_certified": false,
+          "arc_path": [
+            "raw:140486410:1:forward",
+            "raw:140486410:2:forward",
+            "raw:140486410:3:forward",
+            "raw:140486410:4:forward",
+            "raw:140486410:5:forward",
+            "raw:140486410:6:forward",
+            "raw:190362906:0:forward",
+            "raw:322900293:2:forward",
+            "raw:322900293:3:forward",
+            "raw:322900293:4:forward",
+            "raw:322900293:5:forward",
+            "raw:322900293:6:forward"
+          ],
+          "converged": true,
+          "cost": 8.15437083498382,
+          "discovered_states": 24,
+          "exact_stored_path_cost": [
+            "36724021453873975",
+            "4503599627370496"
+          ],
+          "geographic_coverage_certified": false,
+          "maneuver_count": 3,
+          "metric": "travel_time",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 22,
+          "source": 51123935,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:1:forward",
+              "node": 3851825574
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:2:forward",
+              "node": 11268369831
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:3:forward",
+              "node": 3851825573
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:4:forward",
+              "node": 11268369832
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:5:forward",
+              "node": 11268369828
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:6:forward",
+              "node": 11268369826
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:190362906:0:forward",
+              "node": 11268369830
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:322900293:2:forward",
+              "node": 9024006496
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:322900293:3:forward",
+              "node": 3296887982
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:322900293:4:forward",
+              "node": 9024006497
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:322900293:5:forward",
+              "node": 3296887981
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:322900293:6:forward",
+              "node": 3296887980
+            }
+          ],
+          "stored_prefix_entries": 1,
+          "target": 3296887980,
+          "transitions_examined": 37,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        },
+        "old_local_result": {
+          "access_certified": false,
+          "arc_path": [],
+          "converged": true,
+          "cost": null,
+          "discovered_states": 10,
+          "exact_stored_path_cost": null,
+          "geographic_coverage_certified": false,
+          "maneuver_count": 1,
+          "metric": "travel_time",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 10,
+          "source": 51123935,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [],
+          "stored_prefix_entries": 1,
+          "target": 3296887980,
+          "transitions_examined": 19,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        }
+      },
+      {
+        "expanded_local_result": {
+          "access_certified": false,
+          "arc_path": [
+            "raw:140486410:1:forward",
+            "raw:140486410:2:forward",
+            "raw:140486410:3:forward",
+            "raw:140486410:4:forward",
+            "raw:140486410:5:forward",
+            "raw:140486410:6:forward",
+            "raw:190362906:0:forward",
+            "raw:322900293:2:forward",
+            "raw:322900293:3:forward",
+            "raw:322900293:4:forward",
+            "raw:322900293:5:forward"
+          ],
+          "converged": true,
+          "cost": 7.497438468036185,
+          "discovered_states": 23,
+          "exact_stored_path_cost": [
+            "67530922181761967",
+            "9007199254740992"
+          ],
+          "geographic_coverage_certified": false,
+          "maneuver_count": 3,
+          "metric": "travel_time",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 21,
+          "source": 51123935,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:1:forward",
+              "node": 3851825574
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:2:forward",
+              "node": 11268369831
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:3:forward",
+              "node": 3851825573
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:4:forward",
+              "node": 11268369832
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:5:forward",
+              "node": 11268369828
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:140486410:6:forward",
+              "node": 11268369826
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:190362906:0:forward",
+              "node": 11268369830
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:322900293:2:forward",
+              "node": 9024006496
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:322900293:3:forward",
+              "node": 3296887982
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:322900293:4:forward",
+              "node": 9024006497
+            },
+            {
+              "active_prefixes": [],
+              "incoming_arc": "raw:322900293:5:forward",
+              "node": 3296887981
+            }
+          ],
+          "stored_prefix_entries": 1,
+          "target": 3296887981,
+          "transitions_examined": 36,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        },
+        "old_local_result": {
+          "access_certified": false,
+          "arc_path": [],
+          "converged": true,
+          "cost": null,
+          "discovered_states": 10,
+          "exact_stored_path_cost": null,
+          "geographic_coverage_certified": false,
+          "maneuver_count": 1,
+          "metric": "travel_time",
+          "orientation": "explicit-forward-source-to-target",
+          "partial_results_returned": false,
+          "release_eligible": false,
+          "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+          "schema": "bounded-explicit-arc-maneuver-history-v1",
+          "settled_states": 10,
+          "source": 51123935,
+          "source_approach": "unconstrained-declared-node-start",
+          "state_trace": [],
+          "stored_prefix_entries": 1,
+          "target": 3296887981,
+          "transitions_examined": 19,
+          "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+        }
+      }
+    ]
+  },
+  "outside_declared_road_class_ids": [
+    793155013,
+    793155015
+  ],
+  "parent_report_sha256": "c947c64c4b6cf98e6799c02ac3aa03d54c6938d56e26323e0045ea52ad42a946",
+  "previously_enumerated_seed_nodes": 1,
+  "protected_original_query_replays": {
+    "length": {
+      "access_certified": false,
+      "arc_path": [],
+      "converged": true,
+      "cost": null,
+      "discovered_states": 31,
+      "exact_stored_path_cost": null,
+      "geographic_coverage_certified": false,
+      "maneuver_count": 3,
+      "metric": "length",
+      "orientation": "explicit-forward-source-to-target",
+      "partial_results_returned": false,
+      "release_eligible": false,
+      "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+      "schema": "bounded-explicit-arc-maneuver-history-v1",
+      "settled_states": 31,
+      "source": 11268369829,
+      "source_approach": "unconstrained-declared-node-start",
+      "state_trace": [],
+      "stored_prefix_entries": 1,
+      "target": 11268369827,
+      "transitions_examined": 50,
+      "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+    },
+    "travel_time": {
+      "access_certified": false,
+      "arc_path": [],
+      "converged": true,
+      "cost": null,
+      "discovered_states": 31,
+      "exact_stored_path_cost": null,
+      "geographic_coverage_certified": false,
+      "maneuver_count": 3,
+      "metric": "travel_time",
+      "orientation": "explicit-forward-source-to-target",
+      "partial_results_returned": false,
+      "release_eligible": false,
+      "reversal_policy": "same-way-immediate-reversals-require-declared-pair",
+      "schema": "bounded-explicit-arc-maneuver-history-v1",
+      "settled_states": 31,
+      "source": 11268369829,
+      "source_approach": "unconstrained-declared-node-start",
+      "state_trace": [],
+      "stored_prefix_entries": 1,
+      "target": 11268369827,
+      "transitions_examined": 50,
+      "warning": "Declared directed sequences only; not a raw OSM compiler or a state graph/turn/access certificate. An only sequence constrains continuation once its first arc is traversed; a route may end inside it. Temporal/mode semantics and connector orientation require separate review."
+    }
+  },
+  "release_eligible": false,
+  "road_graph_nodes": 45,
+  "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+  "schema": "fort-collins-guidance-query-incidence-checkpoint-v1",
+  "source_context_sha256": "7c9d70de13f14bdbcd90077a9fb99ecac331338a7ef974da854e61b72ff1d895",
+  "source_identity": {
+    "name": "colorado.osm.pbf",
+    "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+    "size_bytes": 386197077
+  },
+  "source_seed_nodes": 19,
+  "supported_road_ids": [
+    6166084,
+    6172542,
+    134552324,
+    134584349,
+    134584350,
+    140486410,
+    186582632,
+    190362906,
+    290286621,
+    322900293,
+    322900298,
+    1181513189
+  ],
+  "touching_controls": 3,
+  "unenumerated_outer_nodes": 39,
+  "unknown_controls_omitted": false,
+  "warning": "Source incidence is enumerated only at the 19 named nodes. All touching controls and complete requested member context are retained, but 39 outer member nodes remain unenumerated. The declared 12-road graph is not a complete geographic graph or actual access certificate. Newly finite paths prove that earlier two-way NoData was local model reachability, not geographic disconnection. No physical/legal access, lane connectivity, approved connectors, adopted anchors or public release is asserted; the separate larger bollard-bearing candidate remains unsupported.",
+  "weight_projection_sha256": {
+    "1181513189": "e3f5f57f6277dfdbd9d12d1ff620346e73a1677b8ae9442b3f0d60a45f0f053a",
+    "134552324": "58c273b50a09471a441e24b0dadbe2ce78f58897913151441231b5ea4a259fb7",
+    "134584349": "9b4a0a4be28190f78b9934208669c354471f4e0e95767f9b2d15e78fcf9e6c23",
+    "134584350": "e0ad9d488c2c392df775c7a76b50afe8f1d50173314e6a6182b8320126596dad",
+    "140486410": "74ca8bebdcd6ffb3bc985f2a746db06b9a8ae9b500792f9fe43ce5797999d8bd",
+    "186582632": "3ad898791c332933424ec080f174c798b2091e8e0f1107f0330f72bf3cdc34a2",
+    "190362906": "c6fd9f95f06d1b0d739f30bb3ba0a34934a45486b9bae7b96587fc05d8ee9283",
+    "290286621": "16b7cdcfc47cb62250bed54d6f2d27c1b12a5fddc8a0e780f2aee386c256d466",
+    "322900293": "7a60d6776da47c1f226eb9eef84aa8b82e1395796a7bd5a543764b1c8ab68dc6",
+    "322900298": "88972fe565a2c17b3f33374adef965c8d96013ddb8dcc60e70eba931fcf49332",
+    "6166084": "e36783bef128f177d93f038d1908a07b6b79a2a4042e482fc33a1156c9963791",
+    "6172542": "ed6e324d3a5e6b2577c2ecc6e6fafe5389e5fa718596bb50f32ce74b9a5df602",
+    "793155013": "1630fc17981279b3e68b7bf21b8dfe3a7cc10f9e8bcba1e5ead3dd63b3327d04",
+    "793155015": "ed7c454c3ebec08a2e85bc542520393f0d4c79664d84ff659617cf117d078d93"
+  },
+  "weighted_arcs": 65
+}
