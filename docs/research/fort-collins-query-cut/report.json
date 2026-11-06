@@ -652,7 +652,8 @@
   "geographic_coverage_certified": false,
   "global_route_optimality_certified": false,
   "implementation_sha256": {
-    "fort_collins_query_cut_checkpoint.py": "28ca0b6c54dbc4245a8f8dc1aa841b589807531d2f8c39952755ee914be876cf",
+    "fort_collins_query_cut_checkpoint.py": "ecc605cffc991cb75daa3aa4ad43707cd1a7ffd948f3dfa088cb4d961a522737",
+    "metro_competition_bounds.py": "6be0a3adc4c1ac0b226797fccf1078867a37b51a48c5ebbcf91de5039b01e8d1",
     "road_core_exit_bounds.py": "6fee9cb0adbe5c69a833129c166b3439ff5803f93d1400ebf70568759af24cd7",
     "road_maneuver_probe.py": "86ba6303ba6bd7c5e84afe3fc7e1d15214f934404091d08d09e8ab075731abff",
     "road_reference_declared_graph.py": "1798bfdabd33449d7802399e9f475bfe2a6c7d7793f9fbf69e184627f89c81d4",

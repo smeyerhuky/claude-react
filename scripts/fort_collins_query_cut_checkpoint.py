@@ -87,7 +87,7 @@ def project():
         frontier_report_sha256=file_sha(parent_path),frontier_context_sha256=file_sha(CONTEXT),
         incumbent_report_sha256=file_sha(incumbent_path),cores=cases,
         implementation_sha256={name:file_sha(ROOT/'scripts'/name) for name in
-            ('road_core_exit_bounds.py','fort_collins_query_cut_checkpoint.py','road_reference_mixed_graph.py',
+            ('road_core_exit_bounds.py','fort_collins_query_cut_checkpoint.py','metro_competition_bounds.py','road_reference_mixed_graph.py',
              'road_reference_declared_graph.py','road_reference_segment_costs.py','road_reference_way_permissions.py',
              'road_reference_segment_permissions.py','road_reference_scenario.py','road_maneuver_probe.py')},
         wider_candidate_status=frontier['road_model_preflight']['status'],wider_candidate_graph=None,
