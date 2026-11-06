@@ -1,0 +1,71 @@
+name: Fort Collins exact-source road frontier
+on:
+  pull_request:
+    paths:
+      - 'scripts/fort_collins_road_frontier.py'
+      - 'scripts/fort_collins_frontier_checkpoint.py'
+      - 'scripts/test_fort_collins_road_frontier.py'
+      - 'scripts/reference_seed_incidence*.py'
+      - 'scripts/reference_via_way*.py'
+      - 'scripts/reference_via_node*.py'
+      - 'scripts/road_reference*.py'
+      - 'scripts/road_maneuver_probe.py'
+      - 'scripts/road_turn_aware_probe.py'
+      - 'scripts/fort_collins_entry_context.py'
+      - 'scripts/fort_collins_raw_context.py'
+      - 'scripts/fort_collins_via_way_context.py'
+      - 'scripts/reference_declared_graph_checkpoint.py'
+      - 'scripts/reference_segment_cost_checkpoint.py'
+      - 'scripts/reference_turn_rule_checkpoint.py'
+      - 'scripts/stream_osm_roads.py'
+      - 'scripts/fetch_research_source.py'
+      - 'scripts/research_source_cache.py'
+      - 'scripts/research-source-snapshots/co-nm-az-20261027.json'
+      - 'docs/research/reference-*/**'
+      - 'docs/research/fort-collins-road-frontier/**'
+      - 'docs/research/fort-collins-entry-context/**'
+      - 'docs/research/census-33-source-checkpoint/baseline.json'
+      - '.github/workflows/fort-collins-road-frontier.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-source-frontier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'tzdata==2026.5' 'osmium==4.3.2' 'networkx==3.7'
+      - run: python -m unittest discover -s scripts -p test_fort_collins_road_frontier.py -v
+      - run: python scripts/fort_collins_frontier_checkpoint.py
+      - run: python scripts/reference_mixed_graph_checkpoint.py
+      - run: python scripts/las_vegas_ui_checkpoint.py --check-frozen
+      - id: source_cache
+        name: Derive existing exact-original cache identity
+        run: |
+          python - <<'PY'
+          import json, os, sys
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          from research_source_cache import cache_key, MANIFEST
+          with Path(os.environ['GITHUB_OUTPUT']).open('a') as handle:
+              handle.write('key=' + cache_key(json.loads(MANIFEST.read_text())) + '\n')
+          PY
+      - uses: actions/cache/restore@v4
+        with:
+          path: local-data/*.osm.pbf
+          key: ${{ steps.source_cache.outputs.key }}
+      - name: Verify exact original Colorado bytes
+        run: python scripts/fetch_research_source.py --source colorado.osm.pbf --output local-data/colorado.osm.pbf
+      - name: Reproduce every source way at all 27 seeds and all returned node/namespace records
+        run: |
+          python scripts/fort_collins_road_frontier.py --osm local-data/colorado.osm.pbf --output /tmp/road-frontier.json
+          cmp /tmp/road-frontier.json docs/research/fort-collins-road-frontier/source-context.json
+      - uses: actions/upload-artifact@v6
+        with:
+          name: fort-collins-road-frontier
+          path: docs/research/fort-collins-road-frontier/
+          if-no-files-found: error
