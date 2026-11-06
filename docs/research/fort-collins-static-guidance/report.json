@@ -1,0 +1,3339 @@
+{
+  "access_verified": false,
+  "all_graph_node_incidence_enumerated": false,
+  "anchors_adopted": false,
+  "complete_member_nodes": 175,
+  "complete_member_ways": 48,
+  "connector_costs_included": false,
+  "geographic_coverage_certified": false,
+  "graph_returned": false,
+  "historical_reports_changed": false,
+  "implementation_sha256": {
+    "fort_collins_guidance_checkpoint.py": "340489b638fd836c024aeabe172a59ea3d75ba7c19dcba2a9a4e0e5aa95d6bd3",
+    "reference_via_node_compile.py": "b85e0811d273961e4ec56f8685db9cb2237c046b2cfe8b3c2cf5b63723a8479f",
+    "road_guidance_way_permissions.py": "07a39977eca8b254156660068dd8b480dcf1ef3247c950d1ae439a545397f97d",
+    "road_reference_conditionals.py": "5004e35f9f7810e9ecfe10de04494c8d1b539796d05910a2f488355957147a4e",
+    "road_reference_scenario.py": "001e0ed6649f172a378df4e7ca0d6f7ebcb49f6c5d56d286215074328af40488",
+    "road_reference_way_permissions.py": "b40f96e439c531071e980bdbd7dc6e6c0bb08ec7e66a8713068c275572a014c7",
+    "road_static_lane_guidance.py": "bb9f8a15f58c9607084de40e70a0fb254fcea93543a4900b47e4e2528e1dec05"
+  },
+  "lane_changes_evaluated": false,
+  "lane_connectivity_evaluated": false,
+  "lane_indications_used_as_restrictions": false,
+  "lane_level_graph_constructed": false,
+  "outside_declared_road_class_ids": [
+    54882910,
+    170833651,
+    570104011,
+    793154984,
+    793155008,
+    793155015,
+    807408352,
+    863454516,
+    863454520,
+    863454523,
+    964096645,
+    971271429,
+    1514831244
+  ],
+  "parent_report_sha256": "2d0b3a3834b51e5ead14304bc75c7b0b89303be0168847c096f50f5f672d5e8f",
+  "policy": "reference-car-road-permissions-with-static-guidance-v1",
+  "query_result": null,
+  "raw_tags_mutated": false,
+  "release_eligible": false,
+  "retained_controls": 10,
+  "route_cost_emitted": false,
+  "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+  "schema": "fort-collins-static-guidance-checkpoint-v1",
+  "semantic_source_notes_sha256": "ab3b46dd9be746bac8bcafe2deb36c63d4b92f4d007394727ff4bc6bcb71d1e5",
+  "source_context_sha256": "64eb649da1f1074c310fe32ee4f0c86de9a9017b7c4acfcbb2e1a7aea5c8abad",
+  "supported_permission_way_ids": [
+    6161921,
+    6166084,
+    6167040,
+    6167072,
+    6169351,
+    6172542,
+    132998244,
+    132998249,
+    132998250,
+    132998251,
+    132998252,
+    134552324,
+    134552329,
+    134584349,
+    134584350,
+    140486410,
+    154806560,
+    170833645,
+    170833649,
+    170833650,
+    186582631,
+    186582632,
+    186713480,
+    290286621,
+    290286625,
+    319652349,
+    322900293,
+    696284588,
+    696728763,
+    696728766,
+    935659655,
+    974201510,
+    1181515369,
+    1475543490
+  ],
+  "turn_restrictions_evaluated": false,
+  "unsupported_model_road_ids": [
+    815164359
+  ],
+  "warning": "Road-level static indication metadata only. Restriction 10475907 is retained separately and has not been recompiled under this profile. Indications do not establish legal turn permissions or bans. Per-lane access, lane changes, speeds, HOV, dynamic guidance and connectivity controls remain unsupported. The removable bollard is still unknown. No graph, route, geographic closure, actual access, adopted anchors or public-map release is asserted.",
+  "way_permission_projections": {
+    "1181515369": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "a5446da54a9a215da4c3086c12519b25a3ce206ce14fc8c2e4a9aa19a9db7b75",
+      "input_sha256": "77da7b54c39cfe97b14957b04e4d0ebf78e292d5bc98ed3bf06b9cd8b157a791",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:1181515369",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {},
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {},
+        "raw_lane_keys": {},
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "132998244": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward",
+        "backward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "926229fdc9dedaee46009a6c14b8b5fcfb71c20cec5c90fde84e381f22f131c3",
+      "input_sha256": "3e70373725050a892ec44a6651a4fb0c3ede1558878bab5c08500b186de3563f",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": true,
+        "forward": true,
+        "key": null,
+        "raw_value": null
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {},
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {},
+        "raw_lane_keys": {},
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "132998249": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "0ed6ebe194a3b3ffc015679ab139f90f31076377ee497be0ed0f1b8ff4cb238e",
+      "input_sha256": "6f53c370513ff3cd7cf222ac756fdb71d7bcc9feedbad21cb1917e2e1aac17df",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:132998249",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {
+          "lanes": 2
+        },
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {
+          "lanes": "2"
+        },
+        "raw_lane_keys": {
+          "lanes": "2"
+        },
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "132998250": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward",
+        "backward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "d00bbeee31e579045baffddbd4a236fccd31fcb8a64fc1569152117cf8eadc0e",
+      "input_sha256": "03a0dc8b22d7210c42cd915bf605393258b68b4b4a87b37ee565cf4c3e08f9e5",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": true,
+        "forward": true,
+        "key": null,
+        "raw_value": null
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {},
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {},
+        "raw_lane_keys": {},
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "132998251": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "9bc7ecc6a0fc9f95a9a4b91bd4df7221e6410b6f9af10edd9b652b81113286a6",
+      "input_sha256": "959755bb94fe121dce25f2359841b31c5581b14dee2f3f94dccf4c806625089b",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:132998251",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {
+          "lanes": 2
+        },
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {
+          "lanes": "2"
+        },
+        "raw_lane_keys": {
+          "lanes": "2"
+        },
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "132998252": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "4c9a04d87f0db86aa8eeac243b8897200cddaf3aef037c14c2db05583e8bef38",
+      "input_sha256": "81884b0a21c0e3acd02fd7c29a92e2cb2f2b1dba9228e65be61359fa1a1bdb87",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:132998252",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {},
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {},
+        "raw_lane_keys": {},
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "134552324": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "e84cb57c55c318f19283625d4e6b41bff075680aeef1a9912f5be7dab0ffc860",
+      "input_sha256": "469a3cb8740ea94e6f5121d2350a55ba2d4325ff90af4d6943aaf3f7111fc3f2",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:134552324",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {
+          "lanes": 2
+        },
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {
+          "lanes": "2"
+        },
+        "raw_lane_keys": {
+          "lanes": "2"
+        },
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "134552329": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "8b26f586358274b41750532fcd8d250ab1caae018c3c2c7752a9a9e0f1a3cf3e",
+      "input_sha256": "15111f337dcd461476448c7c0671ae387d4568510f03efc80936b4a4b141d57e",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:134552329",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {
+          "lanes": 2
+        },
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {
+          "lanes": "2"
+        },
+        "raw_lane_keys": {
+          "lanes": "2"
+        },
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "134584349": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "b91befa4bcaaf6002886273a6b4f91ce1bff615d2c51598c88f88a1a1cab3e4a",
+      "input_sha256": "9b36e556fd211e4ed286c8fcd6428e4c6a4b0f8588f71b7c49db249f6fbee399",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:134584349",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {},
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {},
+        "raw_lane_keys": {},
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "134584350": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "a288af311cc7de625542706a9bda622689f64c96f973929b89a8242de7dea730",
+      "input_sha256": "623c557ac4cc2f8cba753c5f4a5030ef3a92b43d5a13827314bae08f0fef708d",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:134584350",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {
+          "lanes": 2
+        },
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {
+          "lanes": "2"
+        },
+        "raw_lane_keys": {
+          "lanes": "2"
+        },
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "140486410": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward",
+        "backward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "bd495131e73eaab06ab979341bb46a52a7dc1af3061ef7a4f1c65334c894b6de",
+      "input_sha256": "3a002b973eacfbbdc9b63d62401bac6e705a66f0d268850ce62017715b66862b",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": true,
+        "forward": true,
+        "key": null,
+        "raw_value": null
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {
+          "lanes": 4,
+          "lanes:backward": 2,
+          "lanes:forward": 2
+        },
+        "indications_by_raw_direction": {
+          "backward": {
+            "key": "turn:lanes:backward",
+            "lanes": [
+              {
+                "indication_absent": false,
+                "indications": [
+                  "left"
+                ],
+                "lane_index_left_to_right_in_driving_direction": 1,
+                "raw_value": "left"
+              },
+              {
+                "indication_absent": false,
+                "indications": [
+                  "through"
+                ],
+                "lane_index_left_to_right_in_driving_direction": 2,
+                "raw_value": "through"
+              }
+            ],
+            "raw_value": "left|through"
+          }
+        },
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {
+          "lanes": "4",
+          "lanes:backward": "2",
+          "lanes:forward": "2"
+        },
+        "raw_lane_keys": {
+          "lanes": "4",
+          "lanes:backward": "2",
+          "lanes:forward": "2",
+          "turn:lanes:backward": "left|through"
+        },
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "1475543490": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "b3b3755dc355d95d8a8284e268c71b56e4200dbcb32f505e9f394298b2cd7ecd",
+      "input_sha256": "60b7294da8699b04931a3abefbc10ff1eafe4e5e247c605b393ac70c7242af1b",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:1475543490",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {},
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {},
+        "raw_lane_keys": {},
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "1514831244": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": null,
+      "eligible_directions": [],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "d09d2e493acda4ad1e96690ba6a191d5cb07ae09264d5235efaf82956c741238",
+      "input_sha256": null,
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": null,
+      "status": "unsupported",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "154806560": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward",
+        "backward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "c929edda878d83273eda5478ad23b923c5d761345b1f680a42d91b4cc44c1161",
+      "input_sha256": "76af2928596297eb935892949eb3b0717ffc4a061f40433e98f8307b18220f23",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": true,
+        "forward": true,
+        "key": null,
+        "raw_value": null
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {},
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {},
+        "raw_lane_keys": {},
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "170833645": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "61236bd8299313f8511b2503d3c722f6a57f1e4a77413953007e932d85379335",
+      "input_sha256": "6f77eb4a3d6ed9e942e06b08ac7a93b2af6be38090e76383600d40a50a4d5839",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:170833645",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {
+          "lanes": 2
+        },
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {
+          "lanes": "2"
+        },
+        "raw_lane_keys": {
+          "lanes": "2"
+        },
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "170833649": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "35b6b26a9d262538ddd3db894868ed391fb01dc26629fea372f62b5c311e8665",
+      "input_sha256": "03950733b1ce754254e117078a1882e97c2226eb5a875561e10c1aee3a1cbe54",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:170833649",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {},
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {},
+        "raw_lane_keys": {},
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "170833650": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "afc2eb630b7f9d8f3bb0dd046a930d6ef2023dee9f83b26f61e1ac7cfd97ee95",
+      "input_sha256": "8edf3e9046ebb0fe702e744ca842927b15d67d255b143d2f5e5db15dec9a68f0",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:170833650",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {},
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {},
+        "raw_lane_keys": {},
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "170833651": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": null,
+      "eligible_directions": [],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "61b9282bb6db0e66df11e95204caa182cb13d70b5ffa4de18ea913281daa3c2d",
+      "input_sha256": null,
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": null,
+      "status": "unsupported",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "186582631": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "33b6528f147dbf748be1d23301102cd8bedb7f381ab5ca5af93ff162d4989e53",
+      "input_sha256": "cfcf6c65d1f0cac4fe27a04921660750cbc65cf1111c2071a4596cc47d95fc39",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:186582631",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {
+          "lanes": 2
+        },
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {
+          "lanes": "2"
+        },
+        "raw_lane_keys": {
+          "lanes": "2"
+        },
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "186582632": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "b3590b87ccf65c15a9396983e6815fa31ea26d03fbfbd2a6eb041f2b06fa217b",
+      "input_sha256": "4f80d0f4545bc15fef0397710971668622c3802279d3d7feda410e4a7dc80db6",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:186582632",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {
+          "lanes": 2
+        },
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {
+          "lanes": "2"
+        },
+        "raw_lane_keys": {
+          "lanes": "2"
+        },
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "186713480": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "c87de1f8910e62a9b6468c0fc919747f24846047f27a505f1595684993e59392",
+      "input_sha256": "a6f2929f3cd8f6c3a16da38488d4cdab5f8cb3d3ee8d9713248eefccff56bdae",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:186713480",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {
+          "lanes": 2
+        },
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {
+          "lanes": "2"
+        },
+        "raw_lane_keys": {
+          "lanes": "2"
+        },
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "290286621": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "4b200300c59a313b11a5be96431c40f09e87ae6960c9e7a2d1b52d6cb91adc83",
+      "input_sha256": "2e9a8eeed26fcc1f1ce614668b129b94cae45df5d3eeae43ce2ff88b72807cce",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:290286621",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {
+          "lanes": 2
+        },
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {
+          "lanes": "2"
+        },
+        "raw_lane_keys": {
+          "lanes": "2"
+        },
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "290286625": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "2e3135751bb57a3d1f120d0abeb9074832d36e64a7821e188a151bd840e3e1a2",
+      "input_sha256": "8b83c19a66a5e7311f0317e93b63e129b4f826f79ee91dcedf8580d16b9b4f6b",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:290286625",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {
+          "lanes": 1
+        },
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {
+          "lanes": "1"
+        },
+        "raw_lane_keys": {
+          "lanes": "1"
+        },
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "319652349": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "2aa838257e317162156a836f4a122c51021e9e29ca2fa0684b2c2a9a3e418899",
+      "input_sha256": "6c167e8aedb30238d8f5bd4280f8eafc27ef22b4df6e0cb360b0f70bc3ded85d",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:319652349",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {},
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {},
+        "raw_lane_keys": {},
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "322900293": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "0d43ef82424abdc8e6aae5a38c0890fb3cf837c0ca16e416ff463b2ccaeddba1",
+      "input_sha256": "320a0c0651247d2273e71e1642f83836efdd0ce4200bdeeac44c6ba88db66e59",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:322900293",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {
+          "lanes": 1
+        },
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {
+          "lanes": "1"
+        },
+        "raw_lane_keys": {
+          "lanes": "1"
+        },
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "54882910": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": null,
+      "eligible_directions": [],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "680a5d7da1ef577e4346dcf027757dd09820c51390b1e7dd640ff7f8a6b3bd52",
+      "input_sha256": null,
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": null,
+      "status": "unsupported",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "570104011": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": null,
+      "eligible_directions": [],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "dd691e6f14023225d397eb0b013c50f35b07c31ca7d0ca4bb56d9f31ffabb260",
+      "input_sha256": null,
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": null,
+      "status": "unsupported",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "6161921": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward",
+        "backward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "c09e41e5e5c66354f090392835d8f9881ab9731a86d717614d84b586c6a57805",
+      "input_sha256": "d724aa22f7c3f4735ba385bf55178378cbda4b74e20fa5f6fa2175470d4ef2a2",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:6161921",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "no",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": true,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "no"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {},
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {},
+        "raw_lane_keys": {},
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "6166084": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward",
+        "backward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "f8c7741b7544703b669d6564f5c9faca604c2658f229e2a14c5842680264b0b0",
+      "input_sha256": "9f47abd2c23465b1905ca309ba35ca96f0af97d148789b302486477afe174c19",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": true,
+        "forward": true,
+        "key": null,
+        "raw_value": null
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {
+          "lanes": 4
+        },
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {
+          "lanes": "4"
+        },
+        "raw_lane_keys": {
+          "lanes": "4"
+        },
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "6167040": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "0d8c43e00384518bf1aa1a7564db91fdb2fe8ef75cc8993ce3179605d6d8abc9",
+      "input_sha256": "78241425ad412deebf7a654f216cbd7278edc3b047886441e177003c263d81da",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:6167040",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {},
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {},
+        "raw_lane_keys": {},
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "6167072": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "1099dbe1f35d5fe2f581627f8be3acd009bc587a39f727faab39921bf6ffaece",
+      "input_sha256": "d32d97eac217c22e8e55265127724602e558b2c2377e481ac8a072ea52dec42a",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:6167072",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {},
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {},
+        "raw_lane_keys": {},
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "6169351": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "485921ffeb4ac76489563b517deec1f969bcfd8560eccfeaa27029fb3fa66bd2",
+      "input_sha256": "90fd007e827353f852de050310e4ae9e284e79246ab603944c5bf8a86cebd5ee",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:6169351",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {
+          "lanes": 2
+        },
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {
+          "lanes": "2"
+        },
+        "raw_lane_keys": {
+          "lanes": "2"
+        },
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "6172542": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "71b6d479102cc6e1d60219fcdacb7547af7bb2dfed469447fd7e15055bbfcc40",
+      "input_sha256": "e3a74dbd563d7942b2f861810ef53bcac69ee48fd59c30e02e1bf0d0225c590f",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:6172542",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {},
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {},
+        "raw_lane_keys": {},
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "696284588": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "73eaa557324872ac98f90125b2b9e11f5f07908956945e8cd9486fced6647cd9",
+      "input_sha256": "2f887612a571b766384fa40d42c2866f6aab484746f2e3e44c9648c2a1ebb2b8",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:696284588",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {
+          "lanes": 2
+        },
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {
+          "lanes": "2"
+        },
+        "raw_lane_keys": {
+          "lanes": "2"
+        },
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "696728763": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward",
+        "backward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "5fc231cfcec3128dccc146893dd9598b958ad8e59a0632b4007403fdb206d120",
+      "input_sha256": "da4add35f7afeb6c02c71a6bdd69af6a11a232b5665c0b8fb3c50dc13e107f0a",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": true,
+        "forward": true,
+        "key": null,
+        "raw_value": null
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {},
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {},
+        "raw_lane_keys": {},
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "696728766": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "7128c2686d8574c935d10a25901cd6df2475acebd6d2f9b6fd027346b71a00bb",
+      "input_sha256": "b8b6e178a0f8716e9bbd00ed0cdfa003d8ff5651930ec4c6e33b180ec54d5173",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:696728766",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {},
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {},
+        "raw_lane_keys": {},
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "793154984": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": null,
+      "eligible_directions": [],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "43acd3ad84f225698a88c8d8f89207215fbfce72362c30f9284dac9d01368648",
+      "input_sha256": null,
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": null,
+      "status": "unsupported",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "793155008": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": null,
+      "eligible_directions": [],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "3879fc7cef7fc1be18a3afa017dc254eded38f151b7a8a758326af66dfe69054",
+      "input_sha256": null,
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": null,
+      "status": "unsupported",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "793155015": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": null,
+      "eligible_directions": [],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "8a5c6d4eb1a08d97e5775860bf904bcc444a4132dc44735a24a2a2d34937680d",
+      "input_sha256": null,
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": null,
+      "status": "unsupported",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "807408352": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": null,
+      "eligible_directions": [],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "de51a426e4ad3a0a25a8c1b1f39c1c882213286ab1a88d30a8e15c042563a74f",
+      "input_sha256": null,
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": null,
+      "status": "unsupported",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "815164359": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": null,
+      "eligible_directions": [],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "2122b4feff1952300b3de528af59dfbd17439b2d7ca2183b82aa9bf56c5d422c",
+      "input_sha256": null,
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "reason": "Physical barrier operation is not evaluated",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": null,
+      "status": "unsupported",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "863454516": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": null,
+      "eligible_directions": [],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "39d27671b44b76f969a30a83a3055756d08536a84a60381c047455a318d7dd8a",
+      "input_sha256": null,
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": null,
+      "status": "unsupported",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "863454520": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": null,
+      "eligible_directions": [],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "c8b2a80f576f29f3641e6ba69e58db576697781919404e0484a271d70b33f358",
+      "input_sha256": null,
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": null,
+      "status": "unsupported",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "863454523": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": null,
+      "eligible_directions": [],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "31ef0def1e13bda823462daed83077f1086d1f41da9ee2e59e12928cdce0478a",
+      "input_sha256": null,
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": null,
+      "status": "unsupported",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "935659655": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward",
+        "backward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "2eeb48832070bd6b93956fb6eb53efd8f007b758d1819cf97df4ceda9fdf37c7",
+      "input_sha256": "d2f1b3d943eadc262526bdadc9d5beef691972c3195a087c0c3ccde9ddd5514a",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:935659655",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "no",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": true,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "no"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {},
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {},
+        "raw_lane_keys": {},
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "964096645": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": null,
+      "eligible_directions": [],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "74334d596b584f3593a7af3a9b4713c1583db6e781b3a51db3d5df106bc20d8f",
+      "input_sha256": null,
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": null,
+      "status": "unsupported",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "971271429": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": null,
+      "eligible_directions": [],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "e8a0f43a817d8c7bd0c8cc6c57492da16fa1b6e9af45688be152f262d3288e34",
+      "input_sha256": null,
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [],
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": null,
+      "status": "unsupported",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    },
+    "974201510": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "connector_costs_included": false,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "direction_permissions": {
+        "backward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": false,
+          "node_denials": [],
+          "oneway_allows": false
+        },
+        "forward": {
+          "access_selection": {
+            "basis": "declared_US_highway_default",
+            "key": null,
+            "modeled_permitted": true,
+            "raw_value": null
+          },
+          "modeled_permitted": true,
+          "node_denials": [],
+          "oneway_allows": true
+        }
+      },
+      "eligible_directions": [
+        "forward"
+      ],
+      "geographic_coverage_certified": false,
+      "geographic_timezone_assignment_verified": false,
+      "historical_projection_sha256": "7057221d47370cbdb276de7da2e5ba5cdf8459a9df6cb5c267bee9b7a33fefe9",
+      "input_sha256": "f2bb7a883abedd5c1e28ece26ecbe3ff642955e576308c07b29a03309d7dcd1e",
+      "lane_changes_evaluated": false,
+      "lane_connectivity_evaluated": false,
+      "lane_indications_used_as_restrictions": false,
+      "lane_level_graph_constructed": false,
+      "node_record_ids_match_way_geometry": true,
+      "raw_value_traces": [
+        {
+          "feature": "way:974201510",
+          "key": "oneway",
+          "matching_clause_indices": [],
+          "selected_raw_value": "yes",
+          "source": "base"
+        }
+      ],
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-car-road-permissions-with-static-guidance-v1",
+      "scope": "Road-level modeled car access/direction under the fixed scenario, retaining validated static lane-indication metadata. No inferred legal turn bans/permissions, lane links/changes/occupancy, physical access, approved anchors or geographic graph.",
+      "selected_oneway": {
+        "backward": false,
+        "forward": true,
+        "key": "oneway",
+        "raw_value": "yes"
+      },
+      "speed_profile_evaluated": false,
+      "static_lane_guidance": {
+        "access_verified": false,
+        "counts": {},
+        "indications_by_raw_direction": {},
+        "indications_create_turn_permissions": false,
+        "indications_create_turn_prohibitions": false,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_level_graph_constructed": false,
+        "raw_counts": {},
+        "raw_lane_keys": {},
+        "release_eligible": false,
+        "schema": "static-lane-indication-metadata-v1",
+        "scope": "Static source indications/counts in the driver-facing lane order for each original raw-way direction. Empty/none means no indication, not a turn ban. No inferred lane links, car-lane occupancy, legal turning rights or absence of independent restrictions."
+      },
+      "status": "supported_tag_projection",
+      "tags_mutated": false,
+      "turn_restrictions_evaluated": false
+    }
+  }
+}
