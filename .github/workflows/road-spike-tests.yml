@@ -2,6 +2,11 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/road_guidance_segments.py'
+      - 'scripts/guidance_via_node_compile.py'
+      - 'scripts/fort_collins_guidance_maneuver_checkpoint.py'
+      - 'scripts/test_road_guidance_maneuvers.py'
+      - 'docs/research/fort-collins-guidance-maneuvers/**'
       - 'scripts/road_static_lane_guidance.py'
       - 'scripts/road_guidance_way_permissions.py'
       - 'scripts/test_road_static_lane_guidance.py'
