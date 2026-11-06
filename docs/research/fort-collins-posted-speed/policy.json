@@ -1,0 +1,26 @@
+{
+  "schema": "explicit-numeric-posted-sign-speed-metadata-v1",
+  "accepted_key": "maxspeed:type",
+  "accepted_static_value": "sign",
+  "requires_explicit_valid_numeric_base_maxspeed": true,
+  "source_maxspeed_when_present_must_equal": "sign",
+  "creates_numeric_speed": false,
+  "other_speed_namespace_fallback": false,
+  "node_speed_control_extent_supported": false,
+  "numeric_units_bounds_distance_and_time_policy": "unchanged reference-segment-costs/policy.json",
+  "semantic_sources_observed_utc_date": "2026-11-06",
+  "semantic_sources": [
+    {
+      "url": "https://wiki.openstreetmap.org/wiki/Key:maxspeed:type",
+      "observation": "The sign value describes a speed limit prescribed by a numeric sign and accompanies an explicit numeric maxspeed. Other contexts and electronic or construction values need their own interpretation."
+    },
+    {
+      "url": "https://wiki.openstreetmap.org/wiki/Key:source:maxspeed",
+      "observation": "The sign value can record a numeric sign as the source of the separately tagged speed limit."
+    }
+  ],
+  "scope": "Narrow static source metadata grammar, not legal advice, field verification, dynamic speed evaluation, a global speed ceiling or independent access evidence.",
+  "actual_speed_sign_verified": false,
+  "access_verified": false,
+  "release_eligible": false
+}
