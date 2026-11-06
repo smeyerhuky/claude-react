@@ -1,0 +1,1262 @@
+{
+  "access_verified": false,
+  "all_relation_semantics_evaluated": false,
+  "all_retained_way_and_node_members_present": true,
+  "anchors_adopted": false,
+  "classifications": {
+    "1181515369": {
+      "projection_sha256": "c319a6899bc71fe134fedb9c8167200d8ec3fc511cfbd9138f3f8020d376fdef",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "132998244": {
+      "projection_sha256": "a2d8bf5a4546743c376192e2372fe5f4b7149e525c9528593ccf5d7eb2b51453",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "132998249": {
+      "projection_sha256": "4fb3dca1ff9871fcb0fc7e01c48553299b3e3714adb292e9a108911e7a13324f",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "132998250": {
+      "projection_sha256": "cadeed29d34f5b06c90583be49dc5ed4686e638d5f83f030e31b0d62ea6c146c",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "132998251": {
+      "projection_sha256": "35f0356a16a8c37d332e3dae5d9e2e0bdcb0f716912e2509ee2c557a040f9ba5",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "132998252": {
+      "projection_sha256": "0f5f4809f6f19e077890c65ac090b6a1335862db17a5e201531fbf1c7299507a",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "134552324": {
+      "projection_sha256": "06de48700736d6a7bb895d01d3060dbe9ab7252cfadf9c31cfe361f6b4164961",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "134552329": {
+      "projection_sha256": "b4e593321040cde45296a1cf8b0912ce44bbf5d636d666a74f441cd1534ed691",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "134584349": {
+      "projection_sha256": "6f1d4ca881256777040fa03a7ba6e573b8315423778a6f51a0d76ccfae8eb675",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "134584350": {
+      "projection_sha256": "a0aeb3b95ffe0485f44b26da1aac50dedf700eeee83bd5c016d89c20aec3b8aa",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "140486410": {
+      "projection_sha256": "da01d71b29a5ecc8b1dcdc8a0a7805867c805fc3ed656ad2cacae6d93b1e91d2",
+      "reason": "Lane context requires separate lane and maneuver evaluation",
+      "status": "unsupported"
+    },
+    "1475543490": {
+      "projection_sha256": "e2656ad80314c79242fe7dc00b3d36eef74d6a950b57382af23d589a26635766",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "1514831244": {
+      "projection_sha256": "dee9b54c38a86442f7db9613c64c647b0034a472588dd0826789c3f7e4ecde01",
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "status": "unsupported"
+    },
+    "154806560": {
+      "projection_sha256": "acf85af9ff9af07cba371e317a158a4f0c48be30d04829005bb1e7626e4e03d0",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "170833645": {
+      "projection_sha256": "5f272839c61c9e73cbd638f9af79037b3f585dd19db073f8701e58fcafefc05f",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "170833649": {
+      "projection_sha256": "ad76c468f193f91e996fb29fb94fb186c6aeb487a217d0e0b7f089fbcffe2cb0",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "170833650": {
+      "projection_sha256": "edb428898bc38a4c796120d0a84574a5eaf3a7f28a0b97b8fe819f2babbaa41b",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "170833651": {
+      "projection_sha256": "88b8f85569a2e34ea06d6539456150e3f075e5669b38910e8123e013dc5c93f9",
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "status": "unsupported"
+    },
+    "186582631": {
+      "projection_sha256": "dfca7c1a3a9ba367973647a063755dfc6fd90985a29ec9bf2c8dfbbad3ee0579",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "186582632": {
+      "projection_sha256": "d5055b4f058d9b404383a178b23f9ca2e4e70c3be65b400e25dced1efb6cc38a",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "186713480": {
+      "projection_sha256": "1b1f590f0b47f5adb798c42ff2f633684f84e24dc48f648c03369edd378d5d25",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "290286621": {
+      "projection_sha256": "145c2d4d4a6471bfa7b92958c7c2a58b5b9b486921432cc679cc6395e9dc2e08",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "290286625": {
+      "projection_sha256": "5c976f65bbdb1bca358f0334569daceef5f37fb76c2510edb35caf819f5b9e9c",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "319652349": {
+      "projection_sha256": "7b786a8b070d9ed52197fcc3bca61532004b80a680c9fd1d98e281ba292e1d2e",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "322900293": {
+      "projection_sha256": "739719b0d5ad491f5933e74fd4ad64cf4d1439c01bc8bd2f1ab7ea9c31874863",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "54882910": {
+      "projection_sha256": "3c814ba467e5df5a85f5a530dbf1eeda7618626ed9574d6ada4505675fafc44a",
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "status": "unsupported"
+    },
+    "570104011": {
+      "projection_sha256": "7a46a9686e619248f95a5b175e3bd22faebb2e886a247b57bbd005b60f9a2027",
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "status": "unsupported"
+    },
+    "6161921": {
+      "projection_sha256": "cabd2921c4753f746f0fd21e4d47ae7e7c54457780209a6be49f058b6f35a8bc",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "6166084": {
+      "projection_sha256": "fbf992a562f38b2bda45c668d88eb9522e9df5083337cff86c44a2347de0e15b",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "6167040": {
+      "projection_sha256": "c731b803b912b0cd62f858edf3bfa4dbe17cabd16452a97c9ac3993c63144121",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "6167072": {
+      "projection_sha256": "bba2a204567240fc85efe6179fe961e25b4d93e837a7ea1c9a8146a35b5c7db7",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "6169351": {
+      "projection_sha256": "14fca79b0f615870c02b218561b1263e11768cdecc456ec6705f9f458b189343",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "6172542": {
+      "projection_sha256": "14155bcac5b168a53b77f12ce0b51caa41c2ddff37ba0621a35cd0c9dedf2e31",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "696284588": {
+      "projection_sha256": "cd3e8e17fc7ca5af9047f4f6fa342f0b889236cab63e7119280aa0eb4d27dfc2",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "696728763": {
+      "projection_sha256": "107894a3b64df72693520f98bbba7277355aaddd41d0eb04be853f71c5ae494f",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "696728766": {
+      "projection_sha256": "48d87a99a5d38dd2c3578282226dc8733cb178df4d7580867bfcc0e1cec0e71d",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "793154984": {
+      "projection_sha256": "9d12ec6a9de1929e21e5bf6b4f9bd2dae13edc46803ea7806fb3702406370163",
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "status": "unsupported"
+    },
+    "793155008": {
+      "projection_sha256": "cda5299c7f4f78574f252831f8ca1d356f4ea788c2c717b666b99002679dbac1",
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "status": "unsupported"
+    },
+    "793155015": {
+      "projection_sha256": "c574ca2bf02a9d59c30b341b8851a40a420f4bf68200e228cddb7b0eb13029bf",
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "status": "unsupported"
+    },
+    "807408352": {
+      "projection_sha256": "2289e6b01484c8be0b8ee8bb9d562600850011fa09ff71b9f3e57e3d8c8e0a71",
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "status": "unsupported"
+    },
+    "815164359": {
+      "projection_sha256": "18839002bb10fe606ac6da7a1f7a4fed2de1e8542f75738936e255e9a1951ab6",
+      "reason": "Physical barrier operation is not evaluated",
+      "status": "unsupported"
+    },
+    "863454516": {
+      "projection_sha256": "b4ff7d12679f9f675fe0782a2ac545448b184bd92a05f8a92c6c2040de5e1086",
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "status": "unsupported"
+    },
+    "863454520": {
+      "projection_sha256": "c009aecbc5e7d2405b0235d73bf2836559f0970c29fd4636dfa659b274f6ab6b",
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "status": "unsupported"
+    },
+    "863454523": {
+      "projection_sha256": "ea5746250cb41fe45c781414d3ff0291d3c8427e1cad2d591176711844a8f2dd",
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "status": "unsupported"
+    },
+    "935659655": {
+      "projection_sha256": "07cd626c490d2dfa39f838c303dfc45f2b46d8e1e1243b86cd78e6078e5f4df6",
+      "reason": null,
+      "status": "supported_segment_weights"
+    },
+    "964096645": {
+      "projection_sha256": "fbce50b95c484d040201048412c7449896f5e608b9bb4c1949783c596bd4c650",
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "status": "unsupported"
+    },
+    "971271429": {
+      "projection_sha256": "0667c3c1093e5818fbb99dbf3e2d1bb3e8219a9e1f420575ea5465ff321faff4",
+      "reason": "Highway class outside the explicit modeled road defaults",
+      "status": "unsupported"
+    },
+    "974201510": {
+      "projection_sha256": "f2d3d48fa7c996baf0763ef4f84941dcd90bb93cce8cc1cc4039895594f9f6a0",
+      "reason": null,
+      "status": "supported_segment_weights"
+    }
+  },
+  "complete_member_nodes": 175,
+  "complete_member_ways": 48,
+  "connector_costs_included": false,
+  "frontier_report_sha256": "b85d46fa8ef73ca6674a9fd6a12bac3dfe079e95af15e9f1baf05ef446cec51f",
+  "geographic_coverage_certified": false,
+  "graph_returned": false,
+  "historical_road_model_preflight": {
+    "access_verified": false,
+    "all_incident_ways_accounted": false,
+    "anchors_adopted": false,
+    "complete_geographic_graph_constructed": false,
+    "connector_costs_included": false,
+    "declared_graph_compiled": false,
+    "geographic_timezone_assignment_verified": false,
+    "graph": null,
+    "input_sha256": null,
+    "other_relations_accounted": false,
+    "reason": "Unsupported supplied road-weight context: Unsupported supplied raw way 140486410: Lane context requires separate lane and maneuver evaluation",
+    "release_eligible": false,
+    "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+    "schema": "reference-declared-mixed-graph-v1",
+    "scope": "Only the supplied raw way/node/relation universe, compiling every supplied via-node or supported static via-way control. No incident/exterior completeness, other semantics, physical/grade/access truth or reviewed anchor costs.",
+    "status": "unsupported"
+  },
+  "implementation_sha256": {
+    "fort_collins_control_checkpoint.py": "a233c693ea6fff27085dc30dcd21585725137a2c5e6c95520abe08942f1a6da7",
+    "fort_collins_control_corpus.py": "8f17ddec706155961c6496f4f2abb6002d1d7adcd8147aabdef8035113b09cd5",
+    "reference_via_node_compile.py": "b85e0811d273961e4ec56f8685db9cb2237c046b2cfe8b3c2cf5b63723a8479f",
+    "reference_via_way_compile.py": "c8d21c653dd2c27e4dbfe92a5236323bde868253ea1d6a993a04100e2f0081fc",
+    "road_reference_mixed_graph.py": "ca1d70ba87e0cb6ff6920148053b5ac0d75ebebbb9686e2e1ce96f1e3a200cd2",
+    "road_reference_segment_costs.py": "599bd7bd8999893fbf926e3d1a837eb01a2995cf91f1ddc090fd6074e88c6fc9",
+    "road_reference_segment_permissions.py": "32052a563cf142c487fd921bbe6cb0cf0730c1f38518e7d9c9e11b8040e4fbc3",
+    "road_reference_way_permissions.py": "b40f96e439c531071e980bdbd7dc6e6c0bb08ec7e66a8713068c275572a014c7",
+    "road_source_incidence.py": "555cadfc86e47202756c529b4fa37b73bc2bc92d9b65dff709ecd2cd37a05a6f"
+  },
+  "incident_ways": 42,
+  "individual_restriction_compilations": {
+    "10475907": {
+      "access_verified": false,
+      "active_pattern": null,
+      "all_incident_ways_accounted": false,
+      "anchors_adopted": false,
+      "declared_arc_sequence": null,
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "geographic_timezone_assignment_verified": false,
+      "independent_maneuver_geometry_verified": false,
+      "input_sha256": null,
+      "other_relations_accounted": false,
+      "reason": "Unsupported complete member-way context: Lane context requires separate lane and maneuver evaluation",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-via-node-segment-compiler-v1",
+      "scope": "Exact endpoint-connected from-way/via-node/to-way declaration and supplied complete member-node records only; not all incident ways, signed turn geometry, grade/access certification, an approved graph or a route cost.",
+      "selection": {
+        "access_verified": false,
+        "anchors_adopted": false,
+        "applies": true,
+        "basis": "selected_raw_rule",
+        "declared_members": [
+          {
+            "ref": 140486410,
+            "role": "from",
+            "type": "w"
+          },
+          {
+            "ref": 2009850347,
+            "role": "via",
+            "type": "n"
+          },
+          {
+            "ref": 322900293,
+            "role": "to",
+            "type": "w"
+          }
+        ],
+        "declared_zone": null,
+        "explicit_exceptions": [],
+        "geographic_timezone_assignment_verified": false,
+        "inactive_conditional_only_policy": "no_rule_from_this_relation",
+        "input_sha256": "68fb4cea0f3932fae54c1a185ebd41fb67086374557c2b8176121db386a965a2",
+        "other_relations_accounted": false,
+        "raw_value_traces": [
+          {
+            "key": "restriction",
+            "matching_clause_indices": [],
+            "selected_raw_value": "no_left_turn",
+            "source": "base"
+          }
+        ],
+        "release_eligible": false,
+        "route_cost_emitted": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+        "schema": "reference-via-node-car-rule-selection-v1",
+        "scope": "One structurally declared via-node relation only. Rule-value/applicability selection is not geometric maneuver compilation, general turn permission, lane/grade/access proof or a route cost.",
+        "selected_key": "restriction",
+        "selected_raw_value": "no_left_turn",
+        "status": "resolved_relation_applicability",
+        "topology_compiled": false,
+        "turn_legality_certified": false
+      },
+      "speed_profile_evaluated": false,
+      "status": "unsupported",
+      "topology_compiled": false,
+      "transition": null
+    },
+    "13135778": {
+      "access_verified": false,
+      "active_pattern": {
+        "access_verified": false,
+        "arc_sequence": [
+          "raw:132998251:1:forward",
+          "raw:6167040:0:forward",
+          "raw:6167040:1:forward",
+          "raw:6167040:2:forward",
+          "raw:6167040:3:forward",
+          "raw:170833645:0:forward"
+        ],
+        "id": "reference-relation-13135778",
+        "kind": "no",
+        "raw_relation_id": 13135778,
+        "raw_restriction_kind": "no_u_turn",
+        "release_eligible": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4"
+      },
+      "all_incident_ways_accounted": false,
+      "anchors_adopted": false,
+      "declared_arc_sequence": [
+        "raw:132998251:1:forward",
+        "raw:6167040:0:forward",
+        "raw:6167040:1:forward",
+        "raw:6167040:2:forward",
+        "raw:6167040:3:forward",
+        "raw:170833645:0:forward"
+      ],
+      "declared_way_chain": [
+        132998251,
+        6167040,
+        170833645
+      ],
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "geographic_timezone_assignment_verified": false,
+      "independent_maneuver_geometry_verified": false,
+      "input_sha256": "53d5295e1beba7f28224eb10bb9173ed922e582b697b154d720ce6e6068947c9",
+      "join_node_ids": [
+        51141289,
+        8994369504
+      ],
+      "member_projection_sha256": {
+        "132998251": "9c3c837cf4c640717bc8de5774518fa6c25cbcd4e57301a22c1a3196b5d70d95",
+        "170833645": "87d962a7e2ffb3cde5e2f6518e94153c6c97abd039a547b3918efa93052c4612",
+        "6167040": "0b7b5d16eeb858fd624b14d69023611c2f70caef0185b691ab1bb09dffc7c64a"
+      },
+      "other_relations_accounted": false,
+      "relation_time_policy": "static-only; conditional/exception/legacy relation rules unsupported",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-static-via-way-segment-compiler-v1",
+      "scope": "One declared endpoint-connected ordered via-way chain with complete member-way/node permissions at the same fixed instant. No physical turn-label, grade/access, all-incident/other-restriction or geographic graph certification.",
+      "selected_key": "restriction",
+      "selected_raw_value": "no_u_turn",
+      "speed_profile_evaluated": false,
+      "status": "compiled_declared_maneuver",
+      "topology_compiled": true,
+      "transition": [
+        {
+          "direction": "forward",
+          "from": 1829332995,
+          "id": "raw:132998251:1:forward",
+          "raw_segment_index": 1,
+          "to": 51141289,
+          "way": 132998251
+        },
+        {
+          "direction": "forward",
+          "from": 51141289,
+          "id": "raw:6167040:0:forward",
+          "raw_segment_index": 0,
+          "to": 8994369503,
+          "way": 6167040
+        },
+        {
+          "direction": "forward",
+          "from": 8994369503,
+          "id": "raw:6167040:1:forward",
+          "raw_segment_index": 1,
+          "to": 8994369458,
+          "way": 6167040
+        },
+        {
+          "direction": "forward",
+          "from": 8994369458,
+          "id": "raw:6167040:2:forward",
+          "raw_segment_index": 2,
+          "to": 8994369505,
+          "way": 6167040
+        },
+        {
+          "direction": "forward",
+          "from": 8994369505,
+          "id": "raw:6167040:3:forward",
+          "raw_segment_index": 3,
+          "to": 8994369504,
+          "way": 6167040
+        },
+        {
+          "direction": "forward",
+          "from": 8994369504,
+          "id": "raw:170833645:0:forward",
+          "raw_segment_index": 0,
+          "to": 3851811945,
+          "way": 170833645
+        }
+      ]
+    },
+    "20193102": {
+      "access_verified": false,
+      "active_pattern": null,
+      "all_incident_ways_accounted": false,
+      "anchors_adopted": false,
+      "declared_arc_sequence": [
+        "raw:696728766:5:forward",
+        "raw:1475543490:0:forward"
+      ],
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "geographic_timezone_assignment_verified": false,
+      "independent_maneuver_geometry_verified": false,
+      "input_sha256": "8fd4fa4e7140aa6ce06e646d1ec1fa4d669b3dfa26f20979afe5494bfa3c05a2",
+      "member_projection_sha256": {
+        "1475543490": "bfbf7a75e679e2398233c1b6dd54dd2c92488bb4d2879b63a660eb1bfd844a36",
+        "696728766": "8b8e12984df6563bdde4241bad8e650f971312c4eb8dbf41e2c044d4b5b8f63a"
+      },
+      "other_relations_accounted": false,
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-via-node-segment-compiler-v1",
+      "scope": "Exact endpoint-connected from-way/via-node/to-way declaration and supplied complete member-node records only; not all incident ways, signed turn geometry, grade/access certification, an approved graph or a route cost.",
+      "selection": {
+        "access_verified": false,
+        "anchors_adopted": false,
+        "applies": false,
+        "basis": "no_active_clause_and_no_applicable_static_rule",
+        "declared_members": [
+          {
+            "ref": 696728766,
+            "role": "from",
+            "type": "w"
+          },
+          {
+            "ref": 6543050322,
+            "role": "via",
+            "type": "n"
+          },
+          {
+            "ref": 1475543490,
+            "role": "to",
+            "type": "w"
+          }
+        ],
+        "declared_zone": "America/Denver",
+        "explicit_exceptions": [],
+        "geographic_timezone_assignment_verified": false,
+        "inactive_conditional_only_policy": "no_rule_from_this_relation",
+        "input_sha256": "f19b9474be617166172dd9b723944e566af761b2f4846db6219c5ce2bb00b4a3",
+        "other_relations_accounted": false,
+        "raw_value_traces": [
+          {
+            "key": "restriction",
+            "matching_clause_indices": [],
+            "selected_raw_value": null,
+            "source": "no_active_clause_and_no_explicit_base"
+          }
+        ],
+        "release_eligible": false,
+        "route_cost_emitted": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+        "schema": "reference-via-node-car-rule-selection-v1",
+        "scope": "One structurally declared via-node relation only. Rule-value/applicability selection is not geometric maneuver compilation, general turn permission, lane/grade/access proof or a route cost.",
+        "selected_key": null,
+        "selected_raw_value": null,
+        "status": "resolved_relation_applicability",
+        "topology_compiled": false,
+        "turn_legality_certified": false
+      },
+      "speed_profile_evaluated": false,
+      "status": "compiled_declared_transition",
+      "topology_compiled": true,
+      "transition": [
+        {
+          "direction": "forward",
+          "from": 6543050330,
+          "id": "raw:696728766:5:forward",
+          "raw_segment_index": 5,
+          "to": 6543050322,
+          "way": 696728766
+        },
+        {
+          "direction": "forward",
+          "from": 6543050322,
+          "id": "raw:1475543490:0:forward",
+          "raw_segment_index": 0,
+          "to": 51052581,
+          "way": 1475543490
+        }
+      ]
+    },
+    "2512694": {
+      "access_verified": false,
+      "active_pattern": {
+        "access_verified": false,
+        "arc_sequence": [
+          "raw:134552329:0:forward",
+          "raw:186582631:0:forward"
+        ],
+        "id": "reference-relation-2512694",
+        "kind": "no",
+        "raw_relation_id": 2512694,
+        "raw_restriction_kind": "no_left_turn",
+        "release_eligible": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4"
+      },
+      "all_incident_ways_accounted": false,
+      "anchors_adopted": false,
+      "declared_arc_sequence": [
+        "raw:134552329:0:forward",
+        "raw:186582631:0:forward"
+      ],
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "geographic_timezone_assignment_verified": false,
+      "independent_maneuver_geometry_verified": false,
+      "input_sha256": "b956c7f1a52b9d8e50110f72dca3b53c49b8d57bf5b682e10a94aee13a2113c3",
+      "member_projection_sha256": {
+        "134552329": "6b066c3d74d0d7776c6f429ce853e499cc83ae7ab88d04e749d99ea5fdb5741f",
+        "186582631": "80bb227f37f98b02f81cd43725abc8f1182b47a885aa0ec2ff1100affcb2124a"
+      },
+      "other_relations_accounted": false,
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-via-node-segment-compiler-v1",
+      "scope": "Exact endpoint-connected from-way/via-node/to-way declaration and supplied complete member-node records only; not all incident ways, signed turn geometry, grade/access certification, an approved graph or a route cost.",
+      "selection": {
+        "access_verified": false,
+        "anchors_adopted": false,
+        "applies": true,
+        "basis": "selected_raw_rule",
+        "declared_members": [
+          {
+            "ref": 1479189754,
+            "role": "via",
+            "type": "n"
+          },
+          {
+            "ref": 134552329,
+            "role": "from",
+            "type": "w"
+          },
+          {
+            "ref": 186582631,
+            "role": "to",
+            "type": "w"
+          }
+        ],
+        "declared_zone": null,
+        "explicit_exceptions": [
+          "bus"
+        ],
+        "geographic_timezone_assignment_verified": false,
+        "inactive_conditional_only_policy": "no_rule_from_this_relation",
+        "input_sha256": "e824bafb9aba369501fa628e33bdd5fbf2414a55b1912b2916b4f530d5a8e06f",
+        "other_relations_accounted": false,
+        "raw_value_traces": [
+          {
+            "key": "restriction",
+            "matching_clause_indices": [],
+            "selected_raw_value": "no_left_turn",
+            "source": "base"
+          }
+        ],
+        "release_eligible": false,
+        "route_cost_emitted": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+        "schema": "reference-via-node-car-rule-selection-v1",
+        "scope": "One structurally declared via-node relation only. Rule-value/applicability selection is not geometric maneuver compilation, general turn permission, lane/grade/access proof or a route cost.",
+        "selected_key": "restriction",
+        "selected_raw_value": "no_left_turn",
+        "status": "resolved_relation_applicability",
+        "topology_compiled": false,
+        "turn_legality_certified": false
+      },
+      "speed_profile_evaluated": false,
+      "status": "compiled_declared_transition",
+      "topology_compiled": true,
+      "transition": [
+        {
+          "direction": "forward",
+          "from": 1479189860,
+          "id": "raw:134552329:0:forward",
+          "raw_segment_index": 0,
+          "to": 1479189754,
+          "way": 134552329
+        },
+        {
+          "direction": "forward",
+          "from": 1479189754,
+          "id": "raw:186582631:0:forward",
+          "raw_segment_index": 0,
+          "to": 1386660390,
+          "way": 186582631
+        }
+      ]
+    },
+    "2569447": {
+      "access_verified": false,
+      "active_pattern": {
+        "access_verified": false,
+        "arc_sequence": [
+          "raw:132998244:3:forward",
+          "raw:170833649:0:forward"
+        ],
+        "id": "reference-relation-2569447",
+        "kind": "no",
+        "raw_relation_id": 2569447,
+        "raw_restriction_kind": "no_left_turn",
+        "release_eligible": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4"
+      },
+      "all_incident_ways_accounted": false,
+      "anchors_adopted": false,
+      "declared_arc_sequence": [
+        "raw:132998244:3:forward",
+        "raw:170833649:0:forward"
+      ],
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "geographic_timezone_assignment_verified": false,
+      "independent_maneuver_geometry_verified": false,
+      "input_sha256": "a8aacd31ad9847f5346cb2a1c006fe48d3f1b0e1656f9cba652ac56536b3a165",
+      "member_projection_sha256": {
+        "132998244": "76de9d5500ac0027ab2762435ad9e1578d662c0b9bc69514f058f457859a4fd8",
+        "170833649": "6d7357a8f1673f10f8dd0723847723c516a2b309ec4dc3ae8934d7e1e44bbd21"
+      },
+      "other_relations_accounted": false,
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-via-node-segment-compiler-v1",
+      "scope": "Exact endpoint-connected from-way/via-node/to-way declaration and supplied complete member-node records only; not all incident ways, signed turn geometry, grade/access certification, an approved graph or a route cost.",
+      "selection": {
+        "access_verified": false,
+        "anchors_adopted": false,
+        "applies": true,
+        "basis": "selected_raw_rule",
+        "declared_members": [
+          {
+            "ref": 1819705127,
+            "role": "via",
+            "type": "n"
+          },
+          {
+            "ref": 170833649,
+            "role": "to",
+            "type": "w"
+          },
+          {
+            "ref": 132998244,
+            "role": "from",
+            "type": "w"
+          }
+        ],
+        "declared_zone": null,
+        "explicit_exceptions": [],
+        "geographic_timezone_assignment_verified": false,
+        "inactive_conditional_only_policy": "no_rule_from_this_relation",
+        "input_sha256": "3996eab4176524bb6899c84497fcd7160675eb5fbb68bdcdb6030fb63569802c",
+        "other_relations_accounted": false,
+        "raw_value_traces": [
+          {
+            "key": "restriction",
+            "matching_clause_indices": [],
+            "selected_raw_value": "no_left_turn",
+            "source": "base"
+          }
+        ],
+        "release_eligible": false,
+        "route_cost_emitted": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+        "schema": "reference-via-node-car-rule-selection-v1",
+        "scope": "One structurally declared via-node relation only. Rule-value/applicability selection is not geometric maneuver compilation, general turn permission, lane/grade/access proof or a route cost.",
+        "selected_key": "restriction",
+        "selected_raw_value": "no_left_turn",
+        "status": "resolved_relation_applicability",
+        "topology_compiled": false,
+        "turn_legality_certified": false
+      },
+      "speed_profile_evaluated": false,
+      "status": "compiled_declared_transition",
+      "topology_compiled": true,
+      "transition": [
+        {
+          "direction": "forward",
+          "from": 51261580,
+          "id": "raw:132998244:3:forward",
+          "raw_segment_index": 3,
+          "to": 1819705127,
+          "way": 132998244
+        },
+        {
+          "direction": "forward",
+          "from": 1819705127,
+          "id": "raw:170833649:0:forward",
+          "raw_segment_index": 0,
+          "to": 1819705128,
+          "way": 170833649
+        }
+      ]
+    },
+    "9677656": {
+      "access_verified": false,
+      "active_pattern": {
+        "access_verified": false,
+        "arc_sequence": [
+          "raw:134552329:0:forward",
+          "raw:186582631:0:forward",
+          "raw:696284588:0:forward"
+        ],
+        "id": "reference-relation-9677656",
+        "kind": "no",
+        "raw_relation_id": 9677656,
+        "raw_restriction_kind": "no_u_turn",
+        "release_eligible": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4"
+      },
+      "all_incident_ways_accounted": false,
+      "anchors_adopted": false,
+      "declared_arc_sequence": [
+        "raw:134552329:0:forward",
+        "raw:186582631:0:forward",
+        "raw:696284588:0:forward"
+      ],
+      "declared_way_chain": [
+        134552329,
+        186582631,
+        696284588
+      ],
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "geographic_timezone_assignment_verified": false,
+      "independent_maneuver_geometry_verified": false,
+      "input_sha256": "36d6ee5a95cc7da722455811af29498fdc8a56799c63ad5d15ec38dd7e9f369a",
+      "join_node_ids": [
+        1479189754,
+        1386660390
+      ],
+      "member_projection_sha256": {
+        "134552329": "6b066c3d74d0d7776c6f429ce853e499cc83ae7ab88d04e749d99ea5fdb5741f",
+        "186582631": "80bb227f37f98b02f81cd43725abc8f1182b47a885aa0ec2ff1100affcb2124a",
+        "696284588": "7a7ddfdc890fa7486acabeb793a4a782def42112910f0ecf7d0aaaad2a3382de"
+      },
+      "other_relations_accounted": false,
+      "relation_time_policy": "static-only; conditional/exception/legacy relation rules unsupported",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-static-via-way-segment-compiler-v1",
+      "scope": "One declared endpoint-connected ordered via-way chain with complete member-way/node permissions at the same fixed instant. No physical turn-label, grade/access, all-incident/other-restriction or geographic graph certification.",
+      "selected_key": "restriction",
+      "selected_raw_value": "no_u_turn",
+      "speed_profile_evaluated": false,
+      "status": "compiled_declared_maneuver",
+      "topology_compiled": true,
+      "transition": [
+        {
+          "direction": "forward",
+          "from": 1479189860,
+          "id": "raw:134552329:0:forward",
+          "raw_segment_index": 0,
+          "to": 1479189754,
+          "way": 134552329
+        },
+        {
+          "direction": "forward",
+          "from": 1479189754,
+          "id": "raw:186582631:0:forward",
+          "raw_segment_index": 0,
+          "to": 1386660390,
+          "way": 186582631
+        },
+        {
+          "direction": "forward",
+          "from": 1386660390,
+          "id": "raw:696284588:0:forward",
+          "raw_segment_index": 0,
+          "to": 51142457,
+          "way": 696284588
+        }
+      ]
+    },
+    "9677657": {
+      "access_verified": false,
+      "active_pattern": {
+        "access_verified": false,
+        "arc_sequence": [
+          "raw:696284588:0:forward",
+          "raw:6167072:0:forward",
+          "raw:134552329:0:forward"
+        ],
+        "id": "reference-relation-9677657",
+        "kind": "no",
+        "raw_relation_id": 9677657,
+        "raw_restriction_kind": "no_u_turn",
+        "release_eligible": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4"
+      },
+      "all_incident_ways_accounted": false,
+      "anchors_adopted": false,
+      "declared_arc_sequence": [
+        "raw:696284588:0:forward",
+        "raw:6167072:0:forward",
+        "raw:134552329:0:forward"
+      ],
+      "declared_way_chain": [
+        696284588,
+        6167072,
+        134552329
+      ],
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "geographic_timezone_assignment_verified": false,
+      "independent_maneuver_geometry_verified": false,
+      "input_sha256": "a0f26bb973ad35b4db551c7ff160db132bb01f4e76e386b1c708084cb6c59d28",
+      "join_node_ids": [
+        51142457,
+        1479189860
+      ],
+      "member_projection_sha256": {
+        "134552329": "6b066c3d74d0d7776c6f429ce853e499cc83ae7ab88d04e749d99ea5fdb5741f",
+        "6167072": "add2504280ad9cc49806d2540b037ce42ecc6ebeda352e31b641dea5b6314797",
+        "696284588": "7a7ddfdc890fa7486acabeb793a4a782def42112910f0ecf7d0aaaad2a3382de"
+      },
+      "other_relations_accounted": false,
+      "relation_time_policy": "static-only; conditional/exception/legacy relation rules unsupported",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-static-via-way-segment-compiler-v1",
+      "scope": "One declared endpoint-connected ordered via-way chain with complete member-way/node permissions at the same fixed instant. No physical turn-label, grade/access, all-incident/other-restriction or geographic graph certification.",
+      "selected_key": "restriction",
+      "selected_raw_value": "no_u_turn",
+      "speed_profile_evaluated": false,
+      "status": "compiled_declared_maneuver",
+      "topology_compiled": true,
+      "transition": [
+        {
+          "direction": "forward",
+          "from": 1386660390,
+          "id": "raw:696284588:0:forward",
+          "raw_segment_index": 0,
+          "to": 51142457,
+          "way": 696284588
+        },
+        {
+          "direction": "forward",
+          "from": 51142457,
+          "id": "raw:6167072:0:forward",
+          "raw_segment_index": 0,
+          "to": 1479189860,
+          "way": 6167072
+        },
+        {
+          "direction": "forward",
+          "from": 1479189860,
+          "id": "raw:134552329:0:forward",
+          "raw_segment_index": 0,
+          "to": 1479189754,
+          "way": 134552329
+        }
+      ]
+    },
+    "9677658": {
+      "access_verified": false,
+      "active_pattern": {
+        "access_verified": false,
+        "arc_sequence": [
+          "raw:696284588:0:forward",
+          "raw:6167072:0:forward"
+        ],
+        "id": "reference-relation-9677658",
+        "kind": "no",
+        "raw_relation_id": 9677658,
+        "raw_restriction_kind": "no_left_turn",
+        "release_eligible": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4"
+      },
+      "all_incident_ways_accounted": false,
+      "anchors_adopted": false,
+      "declared_arc_sequence": [
+        "raw:696284588:0:forward",
+        "raw:6167072:0:forward"
+      ],
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "geographic_timezone_assignment_verified": false,
+      "independent_maneuver_geometry_verified": false,
+      "input_sha256": "b65ed984dbadbd6246bce27f4d8a5a82d7091774d56bffb5341228847b6b5938",
+      "member_projection_sha256": {
+        "6167072": "add2504280ad9cc49806d2540b037ce42ecc6ebeda352e31b641dea5b6314797",
+        "696284588": "7a7ddfdc890fa7486acabeb793a4a782def42112910f0ecf7d0aaaad2a3382de"
+      },
+      "other_relations_accounted": false,
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-via-node-segment-compiler-v1",
+      "scope": "Exact endpoint-connected from-way/via-node/to-way declaration and supplied complete member-node records only; not all incident ways, signed turn geometry, grade/access certification, an approved graph or a route cost.",
+      "selection": {
+        "access_verified": false,
+        "anchors_adopted": false,
+        "applies": true,
+        "basis": "selected_raw_rule",
+        "declared_members": [
+          {
+            "ref": 51142457,
+            "role": "via",
+            "type": "n"
+          },
+          {
+            "ref": 696284588,
+            "role": "from",
+            "type": "w"
+          },
+          {
+            "ref": 6167072,
+            "role": "to",
+            "type": "w"
+          }
+        ],
+        "declared_zone": null,
+        "explicit_exceptions": [
+          "bus"
+        ],
+        "geographic_timezone_assignment_verified": false,
+        "inactive_conditional_only_policy": "no_rule_from_this_relation",
+        "input_sha256": "8dd2f43a629aa47191f26e46c639a59c5337ca7e6423bda8117a0aa766c4ed2a",
+        "other_relations_accounted": false,
+        "raw_value_traces": [
+          {
+            "key": "restriction",
+            "matching_clause_indices": [],
+            "selected_raw_value": "no_left_turn",
+            "source": "base"
+          }
+        ],
+        "release_eligible": false,
+        "route_cost_emitted": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+        "schema": "reference-via-node-car-rule-selection-v1",
+        "scope": "One structurally declared via-node relation only. Rule-value/applicability selection is not geometric maneuver compilation, general turn permission, lane/grade/access proof or a route cost.",
+        "selected_key": "restriction",
+        "selected_raw_value": "no_left_turn",
+        "status": "resolved_relation_applicability",
+        "topology_compiled": false,
+        "turn_legality_certified": false
+      },
+      "speed_profile_evaluated": false,
+      "status": "compiled_declared_transition",
+      "topology_compiled": true,
+      "transition": [
+        {
+          "direction": "forward",
+          "from": 1386660390,
+          "id": "raw:696284588:0:forward",
+          "raw_segment_index": 0,
+          "to": 51142457,
+          "way": 696284588
+        },
+        {
+          "direction": "forward",
+          "from": 51142457,
+          "id": "raw:6167072:0:forward",
+          "raw_segment_index": 0,
+          "to": 1479189860,
+          "way": 6167072
+        }
+      ]
+    },
+    "9680890": {
+      "access_verified": false,
+      "active_pattern": {
+        "access_verified": false,
+        "arc_sequence": [
+          "raw:186582632:4:forward",
+          "raw:134584349:0:forward",
+          "raw:290286621:0:forward"
+        ],
+        "id": "reference-relation-9680890",
+        "kind": "no",
+        "raw_relation_id": 9680890,
+        "raw_restriction_kind": "no_u_turn",
+        "release_eligible": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4"
+      },
+      "all_incident_ways_accounted": false,
+      "anchors_adopted": false,
+      "declared_arc_sequence": [
+        "raw:186582632:4:forward",
+        "raw:134584349:0:forward",
+        "raw:290286621:0:forward"
+      ],
+      "declared_way_chain": [
+        186582632,
+        134584349,
+        290286621
+      ],
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "geographic_timezone_assignment_verified": false,
+      "independent_maneuver_geometry_verified": false,
+      "input_sha256": "ce705e3c52cba99ec3c8ae2f7f374385d06d667e68b74cc4f7f7a2ae0a8cdd48",
+      "join_node_ids": [
+        1479189816,
+        51193003
+      ],
+      "member_projection_sha256": {
+        "134584349": "1e4e1890ae688f6945f706eef752dfd74c0e3c717ad31a9064c338e2e59a6ea0",
+        "186582632": "91e17ad850ec7a9ce405fff7a373e5d2e7aa5f9eb5c80d7ef067ba3181327bc8",
+        "290286621": "3944295bcd8ae7c7536529c23789dafe841aa5043b03167a48940522e7161bc4"
+      },
+      "other_relations_accounted": false,
+      "relation_time_policy": "static-only; conditional/exception/legacy relation rules unsupported",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-static-via-way-segment-compiler-v1",
+      "scope": "One declared endpoint-connected ordered via-way chain with complete member-way/node permissions at the same fixed instant. No physical turn-label, grade/access, all-incident/other-restriction or geographic graph certification.",
+      "selected_key": "restriction",
+      "selected_raw_value": "no_u_turn",
+      "speed_profile_evaluated": false,
+      "status": "compiled_declared_maneuver",
+      "topology_compiled": true,
+      "transition": [
+        {
+          "direction": "forward",
+          "from": 5481546066,
+          "id": "raw:186582632:4:forward",
+          "raw_segment_index": 4,
+          "to": 1479189816,
+          "way": 186582632
+        },
+        {
+          "direction": "forward",
+          "from": 1479189816,
+          "id": "raw:134584349:0:forward",
+          "raw_segment_index": 0,
+          "to": 51193003,
+          "way": 134584349
+        },
+        {
+          "direction": "forward",
+          "from": 51193003,
+          "id": "raw:290286621:0:forward",
+          "raw_segment_index": 0,
+          "to": 51193002,
+          "way": 290286621
+        }
+      ]
+    },
+    "9680891": {
+      "access_verified": false,
+      "active_pattern": {
+        "access_verified": false,
+        "arc_sequence": [
+          "raw:290286621:0:forward",
+          "raw:6172542:0:forward",
+          "raw:134584350:0:forward"
+        ],
+        "id": "reference-relation-9680891",
+        "kind": "no",
+        "raw_relation_id": 9680891,
+        "raw_restriction_kind": "no_u_turn",
+        "release_eligible": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4"
+      },
+      "all_incident_ways_accounted": false,
+      "anchors_adopted": false,
+      "declared_arc_sequence": [
+        "raw:290286621:0:forward",
+        "raw:6172542:0:forward",
+        "raw:134584350:0:forward"
+      ],
+      "declared_way_chain": [
+        290286621,
+        6172542,
+        134584350
+      ],
+      "default_policy": "declared-us-common-road-car-defaults-v1",
+      "geographic_timezone_assignment_verified": false,
+      "independent_maneuver_geometry_verified": false,
+      "input_sha256": "404ba7bd6c0edbaf0a37a50ef70417f8ab7a30c7555a420f64deced93c78269f",
+      "join_node_ids": [
+        51193002,
+        1479189816
+      ],
+      "member_projection_sha256": {
+        "134584350": "fb5f643461e4cb197d8154107e3fb1feab3e114add0957fd6a1a725e5b851031",
+        "290286621": "3944295bcd8ae7c7536529c23789dafe841aa5043b03167a48940522e7161bc4",
+        "6172542": "b6adaaa6853d7a157eb8d7632b2b764909901e7880c2d836ca9df23ad485cd77"
+      },
+      "other_relations_accounted": false,
+      "relation_time_policy": "static-only; conditional/exception/legacy relation rules unsupported",
+      "release_eligible": false,
+      "route_cost_emitted": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "reference-static-via-way-segment-compiler-v1",
+      "scope": "One declared endpoint-connected ordered via-way chain with complete member-way/node permissions at the same fixed instant. No physical turn-label, grade/access, all-incident/other-restriction or geographic graph certification.",
+      "selected_key": "restriction",
+      "selected_raw_value": "no_u_turn",
+      "speed_profile_evaluated": false,
+      "status": "compiled_declared_maneuver",
+      "topology_compiled": true,
+      "transition": [
+        {
+          "direction": "forward",
+          "from": 51193003,
+          "id": "raw:290286621:0:forward",
+          "raw_segment_index": 0,
+          "to": 51193002,
+          "way": 290286621
+        },
+        {
+          "direction": "forward",
+          "from": 51193002,
+          "id": "raw:6172542:0:forward",
+          "raw_segment_index": 0,
+          "to": 1479189816,
+          "way": 6172542
+        },
+        {
+          "direction": "forward",
+          "from": 1479189816,
+          "id": "raw:134584350:0:forward",
+          "raw_segment_index": 0,
+          "to": 7416599567,
+          "way": 134584350
+        }
+      ]
+    }
+  },
+  "member_report_sha256": "b7595018b8d96be6f33fea11aff8207e0e6f99602c1e89f11ccc849481aa461a",
+  "missing_node_members": [],
+  "missing_way_members": [],
+  "outside_declared_road_class_ids": [
+    54882910,
+    170833651,
+    570104011,
+    793154984,
+    793155008,
+    793155015,
+    807408352,
+    863454516,
+    863454520,
+    863454523,
+    964096645,
+    971271429,
+    1514831244
+  ],
+  "query_result": null,
+  "release_eligible": false,
+  "retained_connectivity_relations": 0,
+  "retained_restrictions": 10,
+  "route_cost_emitted": false,
+  "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+  "schema": "fort-collins-control-corpus-checkpoint-v1",
+  "seeds": 40,
+  "source_context_sha256": "90841abe4fe28af4679f7e7262bed836ae3cffa58c1697014abbfb62725d2c89",
+  "supported_directed_weights": 151,
+  "supported_weight_way_ids": [
+    6161921,
+    6166084,
+    6167040,
+    6167072,
+    6169351,
+    6172542,
+    132998244,
+    132998249,
+    132998250,
+    132998251,
+    132998252,
+    134552324,
+    134552329,
+    134584349,
+    134584350,
+    154806560,
+    170833645,
+    170833649,
+    170833650,
+    186582631,
+    186582632,
+    186713480,
+    290286621,
+    290286625,
+    319652349,
+    322900293,
+    696284588,
+    696728763,
+    696728766,
+    935659655,
+    974201510,
+    1181515369,
+    1475543490
+  ],
+  "unenumerated_member_nodes": 135,
+  "unsupported_model_road_ids": [
+    140486410,
+    815164359
+  ],
+  "warning": "All retained raw member identities are present, not all control semantics or geographic closure. Original-source enumeration covers only the 40 named seeds; 135 outer nodes remain unenumerated. Zero captured connectivity records is not a physical connectivity certificate. The historical road profile keeps the lane-bearing road and bollard unsupported, and returns no graph or route. No anchors/connectors are approved and no public-map behavior changes."
+}
