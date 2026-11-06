@@ -1,0 +1,685 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "applied_exterior_route_exclusions": [],
+  "conditional_only": true,
+  "connector_costs_included": false,
+  "cores": {
+    "garage_branch_included_core": {
+      "all_source_incident_way_ids": [
+        6161921,
+        54882910,
+        132998249,
+        132998250,
+        132998252,
+        696728763,
+        696728766,
+        793154984,
+        974201510,
+        1475543490
+      ],
+      "core_node_ids": [
+        51052581,
+        1463571987,
+        6543050322,
+        6543050323,
+        6543050328,
+        6543050329,
+        6543050330,
+        7416599515,
+        8917743737,
+        8989131464
+      ],
+      "incident_model_way_ids": [
+        6161921,
+        132998249,
+        132998250,
+        132998252,
+        696728763,
+        696728766,
+        974201510,
+        1475543490
+      ],
+      "metrics": {
+        "length": {
+          "access_verified": false,
+          "applied_exterior_route_exclusions": [],
+          "conditional_exterior_routes_cannot_improve": true,
+          "conditional_only": true,
+          "core_node_ids": [
+            51052581,
+            1463571987,
+            6543050322,
+            6543050323,
+            6543050328,
+            6543050329,
+            6543050330,
+            7416599515,
+            8917743737,
+            8989131464
+          ],
+          "exits": [
+            {
+              "arc_id": "raw:132998249:2:forward",
+              "conditional_dominated": false,
+              "first_exit_arc_cost_exact": [
+                "6029951484355901",
+                "281474976710656"
+              ],
+              "first_exit_cost_lower_bound_exact": null,
+              "from_node": 1463571987,
+              "prefix_lower_bound_exact": null,
+              "reason": "unreachable_in_prefix_relaxation",
+              "to_node": 9016011065
+            },
+            {
+              "arc_id": "raw:132998250:0:forward",
+              "conditional_dominated": false,
+              "first_exit_arc_cost_exact": [
+                "8601740330810481",
+                "1125899906842624"
+              ],
+              "first_exit_cost_lower_bound_exact": null,
+              "from_node": 1463571987,
+              "prefix_lower_bound_exact": null,
+              "reason": "unreachable_in_prefix_relaxation",
+              "to_node": 7550272620
+            },
+            {
+              "arc_id": "raw:132998252:0:forward",
+              "conditional_dominated": true,
+              "first_exit_arc_cost_exact": [
+                "8223750903147119",
+                "140737488355328"
+              ],
+              "first_exit_cost_lower_bound_exact": [
+                "110133720912577243",
+                "1125899906842624"
+              ],
+              "from_node": 51052581,
+              "prefix_lower_bound_exact": [
+                "44343713687400291",
+                "1125899906842624"
+              ],
+              "reason": "strictly_exceeds_incumbent",
+              "to_node": 3707437470
+            },
+            {
+              "arc_id": "raw:6161921:3:backward",
+              "conditional_dominated": true,
+              "first_exit_arc_cost_exact": [
+                "2385048441501383",
+                "281474976710656"
+              ],
+              "first_exit_cost_lower_bound_exact": [
+                "53883907453405823",
+                "1125899906842624"
+              ],
+              "from_node": 51052581,
+              "prefix_lower_bound_exact": [
+                "44343713687400291",
+                "1125899906842624"
+              ],
+              "reason": "strictly_exceeds_incumbent",
+              "to_node": 7416599514
+            }
+          ],
+          "geographic_coverage_certified": false,
+          "incumbent_feasibility_certified": false,
+          "incumbent_upper_bound_exact": [
+            "44343713687400291",
+            "1125899906842624"
+          ],
+          "margin_exact": [
+            "0",
+            "1"
+          ],
+          "metric": "length",
+          "preconditions_not_certified": [
+            "Every possible model transition leaving the exact core is enumerated with unchanged endpoints, permissions and weights; no new attachment/interior/connector edges may touch the core.",
+            "The supplied full incumbent is feasible with exactly these endpoints, direction, metric, approach history, fixed scenario and model policies.",
+            "All exterior continuation costs and additional penalties are nonnegative; the model and temporal/vehicle policies remain unchanged.",
+            "Raw source interpretation, physical/grade/access truth, all metro competitors, geographic masks and independent release approvals remain separate."
+          ],
+          "prefix_relaxation": "exact stored weights; ignores all maneuver/reversal constraints",
+          "reachable_first_exits": 2,
+          "release_eligible": false,
+          "schema": "conditional-first-exit-prefix-bound-v1",
+          "source": 6543050330,
+          "source_incidence_certified": false,
+          "target": 51052581
+        },
+        "travel_time": {
+          "access_verified": false,
+          "applied_exterior_route_exclusions": [],
+          "conditional_exterior_routes_cannot_improve": true,
+          "conditional_only": true,
+          "core_node_ids": [
+            51052581,
+            1463571987,
+            6543050322,
+            6543050323,
+            6543050328,
+            6543050329,
+            6543050330,
+            7416599515,
+            8917743737,
+            8989131464
+          ],
+          "exits": [
+            {
+              "arc_id": "raw:132998249:2:forward",
+              "conditional_dominated": false,
+              "first_exit_arc_cost_exact": [
+                "4316357540698569",
+                "2251799813685248"
+              ],
+              "first_exit_cost_lower_bound_exact": null,
+              "from_node": 1463571987,
+              "prefix_lower_bound_exact": null,
+              "reason": "unreachable_in_prefix_relaxation",
+              "to_node": 9016011065
+            },
+            {
+              "arc_id": "raw:132998250:0:forward",
+              "conditional_dominated": false,
+              "first_exit_arc_cost_exact": [
+                "4128835358789031",
+                "2251799813685248"
+              ],
+              "first_exit_cost_lower_bound_exact": null,
+              "from_node": 1463571987,
+              "prefix_lower_bound_exact": null,
+              "reason": "unreachable_in_prefix_relaxation",
+              "to_node": 7550272620
+            },
+            {
+              "arc_id": "raw:132998252:0:forward",
+              "conditional_dominated": true,
+              "first_exit_arc_cost_exact": [
+                "2452800913608661",
+                "562949953421312"
+              ],
+              "first_exit_cost_lower_bound_exact": [
+                "68317782428690433",
+                "9007199254740992"
+              ],
+              "from_node": 51052581,
+              "prefix_lower_bound_exact": [
+                "29072967810951857",
+                "9007199254740992"
+              ],
+              "reason": "strictly_exceeds_incumbent",
+              "to_node": 3707437470
+            },
+            {
+              "arc_id": "raw:6161921:3:backward",
+              "conditional_dominated": true,
+              "first_exit_arc_cost_exact": [
+                "5690881511575717",
+                "4503599627370496"
+              ],
+              "first_exit_cost_lower_bound_exact": [
+                "40454730834103291",
+                "9007199254740992"
+              ],
+              "from_node": 51052581,
+              "prefix_lower_bound_exact": [
+                "29072967810951857",
+                "9007199254740992"
+              ],
+              "reason": "strictly_exceeds_incumbent",
+              "to_node": 7416599514
+            }
+          ],
+          "geographic_coverage_certified": false,
+          "incumbent_feasibility_certified": false,
+          "incumbent_upper_bound_exact": [
+            "29072967810951857",
+            "9007199254740992"
+          ],
+          "margin_exact": [
+            "0",
+            "1"
+          ],
+          "metric": "travel_time",
+          "preconditions_not_certified": [
+            "Every possible model transition leaving the exact core is enumerated with unchanged endpoints, permissions and weights; no new attachment/interior/connector edges may touch the core.",
+            "The supplied full incumbent is feasible with exactly these endpoints, direction, metric, approach history, fixed scenario and model policies.",
+            "All exterior continuation costs and additional penalties are nonnegative; the model and temporal/vehicle policies remain unchanged.",
+            "Raw source interpretation, physical/grade/access truth, all metro competitors, geographic masks and independent release approvals remain separate."
+          ],
+          "prefix_relaxation": "exact stored weights; ignores all maneuver/reversal constraints",
+          "reachable_first_exits": 2,
+          "release_eligible": false,
+          "schema": "conditional-first-exit-prefix-bound-v1",
+          "source": 6543050330,
+          "source_incidence_certified": false,
+          "target": 51052581
+        }
+      },
+      "model_graph_sha256": "48a54d5c015fbbeb18f37ead6caddf5699ff36352d7bfc20128220f432f720f6",
+      "original_source_incidence_enumerated_at_core": true,
+      "outside_declared_road_class_incident_way_ids": [
+        54882910,
+        793154984
+      ],
+      "source_memberships": {
+        "1463571987": [
+          132998249,
+          132998250,
+          696728766
+        ],
+        "51052581": [
+          6161921,
+          132998252,
+          1475543490
+        ],
+        "6543050322": [
+          696728763,
+          696728766,
+          974201510,
+          1475543490
+        ],
+        "6543050323": [
+          54882910,
+          696728763
+        ],
+        "6543050328": [
+          696728766
+        ],
+        "6543050329": [
+          696728766
+        ],
+        "6543050330": [
+          696728766
+        ],
+        "7416599515": [
+          696728763,
+          793154984
+        ],
+        "8917743737": [
+          696728766
+        ],
+        "8989131464": [
+          696728766
+        ]
+      },
+      "way_projection_sha256": {
+        "132998249": "4fb3dca1ff9871fcb0fc7e01c48553299b3e3714adb292e9a108911e7a13324f",
+        "132998250": "cadeed29d34f5b06c90583be49dc5ed4686e638d5f83f030e31b0d62ea6c146c",
+        "132998252": "0f5f4809f6f19e077890c65ac090b6a1335862db17a5e201531fbf1c7299507a",
+        "1475543490": "e2656ad80314c79242fe7dc00b3d36eef74d6a950b57382af23d589a26635766",
+        "6161921": "cabd2921c4753f746f0fd21e4d47ae7e7c54457780209a6be49f058b6f35a8bc",
+        "696728763": "107894a3b64df72693520f98bbba7277355aaddd41d0eb04be853f71c5ae494f",
+        "696728766": "48d87a99a5d38dd2c3578282226dc8733cb178df4d7580867bfcc0e1cec0e71d",
+        "974201510": "f2d3d48fa7c996baf0763ef4f84941dcd90bb93cce8cc1cc4039895594f9f6a0"
+      }
+    },
+    "original_eight_node_core": {
+      "all_source_incident_way_ids": [
+        6161921,
+        132998249,
+        132998250,
+        132998252,
+        696728763,
+        696728766,
+        974201510,
+        1475543490
+      ],
+      "core_node_ids": [
+        51052581,
+        1463571987,
+        6543050322,
+        6543050328,
+        6543050329,
+        6543050330,
+        8917743737,
+        8989131464
+      ],
+      "incident_model_way_ids": [
+        6161921,
+        132998249,
+        132998250,
+        132998252,
+        696728763,
+        696728766,
+        974201510,
+        1475543490
+      ],
+      "metrics": {
+        "length": {
+          "access_verified": false,
+          "applied_exterior_route_exclusions": [],
+          "conditional_exterior_routes_cannot_improve": false,
+          "conditional_only": true,
+          "core_node_ids": [
+            51052581,
+            1463571987,
+            6543050322,
+            6543050328,
+            6543050329,
+            6543050330,
+            8917743737,
+            8989131464
+          ],
+          "exits": [
+            {
+              "arc_id": "raw:132998249:2:forward",
+              "conditional_dominated": false,
+              "first_exit_arc_cost_exact": [
+                "6029951484355901",
+                "281474976710656"
+              ],
+              "first_exit_cost_lower_bound_exact": null,
+              "from_node": 1463571987,
+              "prefix_lower_bound_exact": null,
+              "reason": "unreachable_in_prefix_relaxation",
+              "to_node": 9016011065
+            },
+            {
+              "arc_id": "raw:132998250:0:forward",
+              "conditional_dominated": false,
+              "first_exit_arc_cost_exact": [
+                "8601740330810481",
+                "1125899906842624"
+              ],
+              "first_exit_cost_lower_bound_exact": null,
+              "from_node": 1463571987,
+              "prefix_lower_bound_exact": null,
+              "reason": "unreachable_in_prefix_relaxation",
+              "to_node": 7550272620
+            },
+            {
+              "arc_id": "raw:132998252:0:forward",
+              "conditional_dominated": true,
+              "first_exit_arc_cost_exact": [
+                "8223750903147119",
+                "140737488355328"
+              ],
+              "first_exit_cost_lower_bound_exact": [
+                "110133720912577243",
+                "1125899906842624"
+              ],
+              "from_node": 51052581,
+              "prefix_lower_bound_exact": [
+                "44343713687400291",
+                "1125899906842624"
+              ],
+              "reason": "strictly_exceeds_incumbent",
+              "to_node": 3707437470
+            },
+            {
+              "arc_id": "raw:6161921:3:backward",
+              "conditional_dominated": true,
+              "first_exit_arc_cost_exact": [
+                "2385048441501383",
+                "281474976710656"
+              ],
+              "first_exit_cost_lower_bound_exact": [
+                "53883907453405823",
+                "1125899906842624"
+              ],
+              "from_node": 51052581,
+              "prefix_lower_bound_exact": [
+                "44343713687400291",
+                "1125899906842624"
+              ],
+              "reason": "strictly_exceeds_incumbent",
+              "to_node": 7416599514
+            },
+            {
+              "arc_id": "raw:696728763:0:forward",
+              "conditional_dominated": false,
+              "first_exit_arc_cost_exact": [
+                "5121014064204045",
+                "562949953421312"
+              ],
+              "first_exit_cost_lower_bound_exact": [
+                "17453405529152829",
+                "1125899906842624"
+              ],
+              "from_node": 6543050322,
+              "prefix_lower_bound_exact": [
+                "7211377400744739",
+                "1125899906842624"
+              ],
+              "reason": "may_compete_or_tie",
+              "to_node": 7416599515
+            }
+          ],
+          "geographic_coverage_certified": false,
+          "incumbent_feasibility_certified": false,
+          "incumbent_upper_bound_exact": [
+            "44343713687400291",
+            "1125899906842624"
+          ],
+          "margin_exact": [
+            "0",
+            "1"
+          ],
+          "metric": "length",
+          "preconditions_not_certified": [
+            "Every possible model transition leaving the exact core is enumerated with unchanged endpoints, permissions and weights; no new attachment/interior/connector edges may touch the core.",
+            "The supplied full incumbent is feasible with exactly these endpoints, direction, metric, approach history, fixed scenario and model policies.",
+            "All exterior continuation costs and additional penalties are nonnegative; the model and temporal/vehicle policies remain unchanged.",
+            "Raw source interpretation, physical/grade/access truth, all metro competitors, geographic masks and independent release approvals remain separate."
+          ],
+          "prefix_relaxation": "exact stored weights; ignores all maneuver/reversal constraints",
+          "reachable_first_exits": 3,
+          "release_eligible": false,
+          "schema": "conditional-first-exit-prefix-bound-v1",
+          "source": 6543050330,
+          "source_incidence_certified": false,
+          "target": 51052581
+        },
+        "travel_time": {
+          "access_verified": false,
+          "applied_exterior_route_exclusions": [],
+          "conditional_exterior_routes_cannot_improve": false,
+          "conditional_only": true,
+          "core_node_ids": [
+            51052581,
+            1463571987,
+            6543050322,
+            6543050328,
+            6543050329,
+            6543050330,
+            8917743737,
+            8989131464
+          ],
+          "exits": [
+            {
+              "arc_id": "raw:132998249:2:forward",
+              "conditional_dominated": false,
+              "first_exit_arc_cost_exact": [
+                "4316357540698569",
+                "2251799813685248"
+              ],
+              "first_exit_cost_lower_bound_exact": null,
+              "from_node": 1463571987,
+              "prefix_lower_bound_exact": null,
+              "reason": "unreachable_in_prefix_relaxation",
+              "to_node": 9016011065
+            },
+            {
+              "arc_id": "raw:132998250:0:forward",
+              "conditional_dominated": false,
+              "first_exit_arc_cost_exact": [
+                "4128835358789031",
+                "2251799813685248"
+              ],
+              "first_exit_cost_lower_bound_exact": null,
+              "from_node": 1463571987,
+              "prefix_lower_bound_exact": null,
+              "reason": "unreachable_in_prefix_relaxation",
+              "to_node": 7550272620
+            },
+            {
+              "arc_id": "raw:132998252:0:forward",
+              "conditional_dominated": true,
+              "first_exit_arc_cost_exact": [
+                "2452800913608661",
+                "562949953421312"
+              ],
+              "first_exit_cost_lower_bound_exact": [
+                "68317782428690433",
+                "9007199254740992"
+              ],
+              "from_node": 51052581,
+              "prefix_lower_bound_exact": [
+                "29072967810951857",
+                "9007199254740992"
+              ],
+              "reason": "strictly_exceeds_incumbent",
+              "to_node": 3707437470
+            },
+            {
+              "arc_id": "raw:6161921:3:backward",
+              "conditional_dominated": true,
+              "first_exit_arc_cost_exact": [
+                "5690881511575717",
+                "4503599627370496"
+              ],
+              "first_exit_cost_lower_bound_exact": [
+                "40454730834103291",
+                "9007199254740992"
+              ],
+              "from_node": 51052581,
+              "prefix_lower_bound_exact": [
+                "29072967810951857",
+                "9007199254740992"
+              ],
+              "reason": "strictly_exceeds_incumbent",
+              "to_node": 7416599514
+            },
+            {
+              "arc_id": "raw:696728763:0:forward",
+              "conditional_dominated": false,
+              "first_exit_arc_cost_exact": [
+                "4916173501635883",
+                "2251799813685248"
+              ],
+              "first_exit_cost_lower_bound_exact": [
+                "26587616311258481",
+                "9007199254740992"
+              ],
+              "from_node": 6543050322,
+              "prefix_lower_bound_exact": [
+                "6922922304714949",
+                "9007199254740992"
+              ],
+              "reason": "may_compete_or_tie",
+              "to_node": 7416599515
+            }
+          ],
+          "geographic_coverage_certified": false,
+          "incumbent_feasibility_certified": false,
+          "incumbent_upper_bound_exact": [
+            "29072967810951857",
+            "9007199254740992"
+          ],
+          "margin_exact": [
+            "0",
+            "1"
+          ],
+          "metric": "travel_time",
+          "preconditions_not_certified": [
+            "Every possible model transition leaving the exact core is enumerated with unchanged endpoints, permissions and weights; no new attachment/interior/connector edges may touch the core.",
+            "The supplied full incumbent is feasible with exactly these endpoints, direction, metric, approach history, fixed scenario and model policies.",
+            "All exterior continuation costs and additional penalties are nonnegative; the model and temporal/vehicle policies remain unchanged.",
+            "Raw source interpretation, physical/grade/access truth, all metro competitors, geographic masks and independent release approvals remain separate."
+          ],
+          "prefix_relaxation": "exact stored weights; ignores all maneuver/reversal constraints",
+          "reachable_first_exits": 3,
+          "release_eligible": false,
+          "schema": "conditional-first-exit-prefix-bound-v1",
+          "source": 6543050330,
+          "source_incidence_certified": false,
+          "target": 51052581
+        }
+      },
+      "model_graph_sha256": "48a54d5c015fbbeb18f37ead6caddf5699ff36352d7bfc20128220f432f720f6",
+      "original_source_incidence_enumerated_at_core": true,
+      "outside_declared_road_class_incident_way_ids": [],
+      "source_memberships": {
+        "1463571987": [
+          132998249,
+          132998250,
+          696728766
+        ],
+        "51052581": [
+          6161921,
+          132998252,
+          1475543490
+        ],
+        "6543050322": [
+          696728763,
+          696728766,
+          974201510,
+          1475543490
+        ],
+        "6543050328": [
+          696728766
+        ],
+        "6543050329": [
+          696728766
+        ],
+        "6543050330": [
+          696728766
+        ],
+        "8917743737": [
+          696728766
+        ],
+        "8989131464": [
+          696728766
+        ]
+      },
+      "way_projection_sha256": {
+        "132998249": "4fb3dca1ff9871fcb0fc7e01c48553299b3e3714adb292e9a108911e7a13324f",
+        "132998250": "cadeed29d34f5b06c90583be49dc5ed4686e638d5f83f030e31b0d62ea6c146c",
+        "132998252": "0f5f4809f6f19e077890c65ac090b6a1335862db17a5e201531fbf1c7299507a",
+        "1475543490": "e2656ad80314c79242fe7dc00b3d36eef74d6a950b57382af23d589a26635766",
+        "6161921": "cabd2921c4753f746f0fd21e4d47ae7e7c54457780209a6be49f058b6f35a8bc",
+        "696728763": "107894a3b64df72693520f98bbba7277355aaddd41d0eb04be853f71c5ae494f",
+        "696728766": "48d87a99a5d38dd2c3578282226dc8733cb178df4d7580867bfcc0e1cec0e71d",
+        "974201510": "f2d3d48fa7c996baf0763ef4f84941dcd90bb93cce8cc1cc4039895594f9f6a0"
+      }
+    }
+  },
+  "frontier_context_sha256": "9d0f0ae908fce3c968bffd2f8ceb059cef19bd1ebff903652dff710da28038f7",
+  "frontier_report_sha256": "b85d46fa8ef73ca6674a9fd6a12bac3dfe079e95af15e9f1baf05ef446cec51f",
+  "geographic_coverage_certified": false,
+  "global_route_optimality_certified": false,
+  "implementation_sha256": {
+    "fort_collins_query_cut_checkpoint.py": "ecc605cffc991cb75daa3aa4ad43707cd1a7ffd948f3dfa088cb4d961a522737",
+    "metro_competition_bounds.py": "6be0a3adc4c1ac0b226797fccf1078867a37b51a48c5ebbcf91de5039b01e8d1",
+    "road_core_exit_bounds.py": "6fee9cb0adbe5c69a833129c166b3439ff5803f93d1400ebf70568759af24cd7",
+    "road_maneuver_probe.py": "86ba6303ba6bd7c5e84afe3fc7e1d15214f934404091d08d09e8ab075731abff",
+    "road_reference_declared_graph.py": "1798bfdabd33449d7802399e9f475bfe2a6c7d7793f9fbf69e184627f89c81d4",
+    "road_reference_mixed_graph.py": "ca1d70ba87e0cb6ff6920148053b5ac0d75ebebbb9686e2e1ce96f1e3a200cd2",
+    "road_reference_scenario.py": "001e0ed6649f172a378df4e7ca0d6f7ebcb49f6c5d56d286215074328af40488",
+    "road_reference_segment_costs.py": "599bd7bd8999893fbf926e3d1a837eb01a2995cf91f1ddc090fd6074e88c6fc9",
+    "road_reference_segment_permissions.py": "32052a563cf142c487fd921bbe6cb0cf0730c1f38518e7d9c9e11b8040e4fbc3",
+    "road_reference_way_permissions.py": "b40f96e439c531071e980bdbd7dc6e6c0bb08ec7e66a8713068c275572a014c7"
+  },
+  "incumbent_physical_access_certified": false,
+  "incumbent_report_sha256": "e89ec83a7f91a6a01bbb71c12b32a6ef1deaf5a7348910b32a0698d4d5ae00c2",
+  "release_eligible": false,
+  "retained_unknown_model_road_ids": [
+    815164359
+  ],
+  "route_query_result_returned": false,
+  "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+  "schema": "fort-collins-conditional-query-cut-v1",
+  "unscreened_cases": [
+    "reverse query",
+    "active-window regression",
+    "other endpoints",
+    "metro/anchor or attachment costs",
+    "other source/model completions"
+  ],
+  "warning": "Only a conditional first-exit argument for the existing unconstrained raw-node forward query. The eight-node core leaves a potentially competitive garage-service exit. Explicitly including its two source-enumerated nodes makes all remaining first-exit prefixes strictly exceed the retained incumbent for both metrics, assuming unchanged incident transitions/model and nonnegative continuation costs. No global speed ceiling or geometric-distance bound is inferred. Outside-class building/footway records remain retained context, not proof of real-world car exclusion. The full wider candidate remains blocked by the unresolved bollard; no graph, new query, public region, connector approval or geographic/global-access certificate is returned.",
+  "wider_candidate_graph": null,
+  "wider_candidate_status": "unsupported"
+}
