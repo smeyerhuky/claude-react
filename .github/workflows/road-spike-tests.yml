@@ -2,6 +2,10 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/fort_collins_guidance_road_frontier.py'
+      - 'scripts/fort_collins_guidance_frontier_checkpoint.py'
+      - 'scripts/test_fort_collins_guidance_frontier.py'
+      - 'docs/research/fort-collins-guidance-road-frontier/**'
       - 'scripts/fort_collins_guidance_query_incidence.py'
       - 'scripts/fort_collins_guidance_incidence_checkpoint.py'
       - 'scripts/test_fort_collins_guidance_incidence.py'
