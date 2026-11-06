@@ -1,0 +1,1512 @@
+{
+  "active_compiled_patterns": 13,
+  "actual_access_verified": false,
+  "anchors_adopted": false,
+  "applied_exterior_route_exclusions": [],
+  "connector_costs_included": false,
+  "declaration_accounting": {
+    "10475907": {
+      "active": true,
+      "compilation_sha256": "9569f506acadf825f990f736860bb8c5f6798633b7911bce5952460f370a9227",
+      "kind": "compiled_declaration"
+    },
+    "11978581": {
+      "audit": {
+        "active_pattern": null,
+        "anchors_adopted": false,
+        "input_sha256": "1b6936082b13159db642629e4ecbb461b076d0bb2197ae3ccd5c1b591eb49caf",
+        "member_permission_projection_sha256": {
+          "1216151139": "5ae4d59bcf84a7735cd5859972bb7b2ea37d47d6c66ee17840245bd30974659c",
+          "880882424": "8ee176bff3b0580e6e0d9e08be359e68bffb1e39fb4955b56b0baa477799ddc9"
+        },
+        "normal_graph_admitted": false,
+        "oneway_denied_arc_ids": [
+          "raw:1216151139:3:backward"
+        ],
+        "physical_or_legal_access_verified": false,
+        "prohibition_inert_under_unchanged_member_directions": true,
+        "raw_relation_retained": true,
+        "release_eligible": false,
+        "required_raw_transitions": [
+          {
+            "direction": "backward",
+            "from": 3281390045,
+            "id": "raw:880882424:0:backward",
+            "permission_projection": {
+              "access_selection": {
+                "basis": "declared_US_highway_default",
+                "key": null,
+                "modeled_permitted": true,
+                "raw_value": null
+              },
+              "endpoint_node_denials": [],
+              "from_node": 3281390045,
+              "modeled_permitted": true,
+              "oneway_allows": true,
+              "to_node": 51123941
+            },
+            "raw_segment_index": 0,
+            "role": "from",
+            "to": 51123941,
+            "way": 880882424
+          },
+          {
+            "direction": "backward",
+            "from": 51123941,
+            "id": "raw:1216151139:3:backward",
+            "permission_projection": {
+              "access_selection": {
+                "basis": "declared_US_highway_default",
+                "key": null,
+                "modeled_permitted": true,
+                "raw_value": null
+              },
+              "endpoint_node_denials": [],
+              "from_node": 51123941,
+              "modeled_permitted": false,
+              "oneway_allows": false,
+              "to_node": 11268369821
+            },
+            "raw_segment_index": 3,
+            "role": "to",
+            "to": 11268369821,
+            "way": 1216151139
+          }
+        ],
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+        "schema": "oneway-inert-no-prohibition-audit-v1",
+        "scope": "Only a currently applicable declared NO prohibition with complete endpoint topology and supported member permissions, where at least one required raw direction is already denied by the one-way model. No ONLY rules, unknown gate semantics, new geometry or permission changes are covered.",
+        "selection": {
+          "access_verified": false,
+          "anchors_adopted": false,
+          "applies": true,
+          "basis": "selected_raw_rule",
+          "declared_members": [
+            {
+              "ref": 880882424,
+              "role": "from",
+              "type": "w"
+            },
+            {
+              "ref": 51123941,
+              "role": "via",
+              "type": "n"
+            },
+            {
+              "ref": 1216151139,
+              "role": "to",
+              "type": "w"
+            }
+          ],
+          "declared_zone": null,
+          "explicit_exceptions": [],
+          "geographic_timezone_assignment_verified": false,
+          "inactive_conditional_only_policy": "no_rule_from_this_relation",
+          "input_sha256": "a2e4b38c5feaf3f4e5915cc4ca684a5780465206eb3e94fd1b27ccf2afca756a",
+          "other_relations_accounted": false,
+          "raw_value_traces": [
+            {
+              "key": "restriction",
+              "matching_clause_indices": [],
+              "selected_raw_value": "no_left_turn",
+              "source": "base"
+            }
+          ],
+          "release_eligible": false,
+          "route_cost_emitted": false,
+          "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+          "schema": "reference-via-node-car-rule-selection-v1",
+          "scope": "One structurally declared via-node relation only. Rule-value/applicability selection is not geometric maneuver compilation, general turn permission, lane/grade/access proof or a route cost.",
+          "selected_key": "restriction",
+          "selected_raw_value": "no_left_turn",
+          "status": "resolved_relation_applicability",
+          "topology_compiled": false,
+          "turn_legality_certified": false
+        },
+        "status": "inert_declared_no_prohibition",
+        "strict_compiler_replaced": false
+      },
+      "kind": "oneway_inert_no_prohibition",
+      "original_strict_compilation": {
+        "access_verified": false,
+        "active_pattern": null,
+        "all_incident_ways_accounted": false,
+        "anchors_adopted": false,
+        "declared_arc_sequence": null,
+        "default_policy": "declared-us-common-road-car-defaults-v1",
+        "geographic_timezone_assignment_verified": false,
+        "independent_maneuver_geometry_verified": false,
+        "input_sha256": null,
+        "lane_changes_evaluated": false,
+        "lane_connectivity_evaluated": false,
+        "lane_indications_used_as_restrictions": false,
+        "other_relations_accounted": false,
+        "permission_profile": "reference-car-road-permissions-with-static-guidance-v1",
+        "reason": "Raw approach/departure direction or node access is not permitted by the declared profile",
+        "release_eligible": false,
+        "route_cost_emitted": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+        "schema": "static-guidance-via-node-segment-compiler-v1",
+        "scope": "Exact endpoint-connected from-way/via-node/to-way declaration and supplied complete member-node records only; not all incident ways, signed turn geometry, grade/access certification, an approved graph or a route cost.",
+        "selection": {
+          "access_verified": false,
+          "anchors_adopted": false,
+          "applies": true,
+          "basis": "selected_raw_rule",
+          "declared_members": [
+            {
+              "ref": 880882424,
+              "role": "from",
+              "type": "w"
+            },
+            {
+              "ref": 51123941,
+              "role": "via",
+              "type": "n"
+            },
+            {
+              "ref": 1216151139,
+              "role": "to",
+              "type": "w"
+            }
+          ],
+          "declared_zone": null,
+          "explicit_exceptions": [],
+          "geographic_timezone_assignment_verified": false,
+          "inactive_conditional_only_policy": "no_rule_from_this_relation",
+          "input_sha256": "a2e4b38c5feaf3f4e5915cc4ca684a5780465206eb3e94fd1b27ccf2afca756a",
+          "other_relations_accounted": false,
+          "raw_value_traces": [
+            {
+              "key": "restriction",
+              "matching_clause_indices": [],
+              "selected_raw_value": "no_left_turn",
+              "source": "base"
+            }
+          ],
+          "release_eligible": false,
+          "route_cost_emitted": false,
+          "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+          "schema": "reference-via-node-car-rule-selection-v1",
+          "scope": "One structurally declared via-node relation only. Rule-value/applicability selection is not geometric maneuver compilation, general turn permission, lane/grade/access proof or a route cost.",
+          "selected_key": "restriction",
+          "selected_raw_value": "no_left_turn",
+          "status": "resolved_relation_applicability",
+          "topology_compiled": false,
+          "turn_legality_certified": false
+        },
+        "speed_profile_evaluated": false,
+        "status": "unsupported",
+        "topology_compiled": false,
+        "transition": null
+      }
+    },
+    "11978582": {
+      "active": true,
+      "compilation_sha256": "a4456cfd0a83101b6f95cc55ed6c9176ee07142a997c599c2a808a9c9331846a",
+      "kind": "compiled_declaration"
+    },
+    "13135778": {
+      "active": true,
+      "compilation_sha256": "7a6e4af65234f894c6bf81400babe69e8e0cdff25045c8cae019b395fc95911c",
+      "kind": "compiled_declaration"
+    },
+    "20193102": {
+      "active": false,
+      "compilation_sha256": "85fe6e1fbc46bef42edac7237b52d4f6c571a908e3dadb9d25b7e80f132244d2",
+      "kind": "compiled_declaration"
+    },
+    "21015302": {
+      "active": true,
+      "compilation_sha256": "795448cf142dc69eaf2fe06e0b65390923ef2b4512dd31f61a5aa0b3efc31314",
+      "kind": "compiled_declaration"
+    },
+    "2512694": {
+      "active": true,
+      "compilation_sha256": "ce47d0b28a1b38441ac326c291c3a639c7a995c6e9ea0bcd03308776dac65fb1",
+      "kind": "compiled_declaration"
+    },
+    "2519089": {
+      "active": true,
+      "compilation_sha256": "e8073fe8c061e4c72ada85d74617b244684d92dd1e12bf17d473c6870201855e",
+      "kind": "compiled_declaration"
+    },
+    "2519095": {
+      "active": true,
+      "compilation_sha256": "7c16aea60f0848b506163d636a3b876a14a7f90283dfaed6de3fa263eeb16dd2",
+      "kind": "compiled_declaration"
+    },
+    "2569447": {
+      "active": true,
+      "compilation_sha256": "20b6725323cf69250ff903dd6e98456d0bcbd953671ccc41004a8c68c3ddab1e",
+      "kind": "compiled_declaration"
+    },
+    "9677656": {
+      "active": true,
+      "compilation_sha256": "7fd6bb2a2069ac437ca7f74e13af673b82b1b7a0f02f6f2a787ef319b8ef241e",
+      "kind": "compiled_declaration"
+    },
+    "9677657": {
+      "active": true,
+      "compilation_sha256": "28518e94af6eadf386ed8041e7b4eec32a32c2e330647a1117415281195eb41d",
+      "kind": "compiled_declaration"
+    },
+    "9677658": {
+      "active": true,
+      "compilation_sha256": "f176f753a5355f1ce8e085cd182b75c077aea0f85190ca9aa460009dc3f20835",
+      "kind": "compiled_declaration"
+    },
+    "9680890": {
+      "active": true,
+      "compilation_sha256": "c76dfbb5d64a708a5791bb2fbc32241ed31b4cafd4c1be98c8f3253fd853b309",
+      "kind": "compiled_declaration"
+    },
+    "9680891": {
+      "active": true,
+      "compilation_sha256": "d1a364795fd71d22f6c326854e85cf36d2cb4af70f066a31761bdee672d5a4c5",
+      "kind": "compiled_declaration"
+    }
+  },
+  "gate_state_assumed": false,
+  "geographic_coverage_certified": false,
+  "global_route_optimality_certified": false,
+  "implementation_sha256": {
+    "fort_collins_inert_bounds_checkpoint.py": "f4ffcdd03d85fd2335788bd4895ea5507cb2ef6065b4bb3d19d990c8f4421192",
+    "road_guidance_segments.py": "2895a4ca763f7c4dcba42c85dbdc5e7e52bd51918d3e6fb98a9898ffa2b0315e",
+    "road_guidance_way_permissions.py": "07a39977eca8b254156660068dd8b480dcf1ef3247c950d1ae439a545397f97d",
+    "road_inert_no_prohibition.py": "51759a98ebab71934f555bd829c4d0474b87fb8bf648e08ad9f84ff81c3afffa",
+    "road_maneuver_probe.py": "86ba6303ba6bd7c5e84afe3fc7e1d15214f934404091d08d09e8ab075731abff",
+    "road_opaque_control_bounds.py": "a8860e6a3685f37d70b24e6dfcb4ee639922307f21ddddbec4d67a277fc0aa27",
+    "road_posted_speed_weights.py": "b133d3451995b2de503ca70410cb450cd4b26656ab89fb0a120e6a03ab3d0581",
+    "road_reference_turn_rules.py": "93d7b3ff7a57675a55c32201f7ea39b298887aa7efb4de5ea17bbad6f900a437"
+  },
+  "inactive_compiled_declarations": 1,
+  "inert_no_prohibitions": 1,
+  "inertness_precondition": "All audited member permissions, raw directions, scenario and geometry remain unchanged; no potential or new geometry may reintroduce a denied member transition.",
+  "known_supported_arcs": 743,
+  "metric_brackets": {
+    "length": {
+      "access_verified": false,
+      "actual_gate_state_evaluated": false,
+      "anchors_adopted": false,
+      "completion_domain": [
+        "Exactly this finite raw adjacent-geometry universe; no additional roads, attachments or connector edges.",
+        "Known supported arcs, stored weights, active maneuver declarations, source/target, unconstrained start and same-way reversal policy stay unchanged.",
+        "Opaque controls may remove potential arcs and add nonnegative costs; any included unknown-way distance is at least its stored geometry lower bound and time is nonnegative.",
+        "No independent physical/legal access, lane/grade truth, external geography, reviewed anchor or release approval is implied."
+      ],
+      "conditional_only": true,
+      "conditional_stored_cost_stable_within_supplied_universe": true,
+      "connector_costs_included": false,
+      "gap_exact": [
+        "0",
+        "1"
+      ],
+      "geographic_coverage_certified": false,
+      "global_route_optimality_certified": false,
+      "known_arcs": 743,
+      "known_maneuvers": 13,
+      "metric": "length",
+      "normal_graph_admitted": false,
+      "optimistic_lower_bound_exact": [
+        "123489447701449059",
+        "562949953421312"
+      ],
+      "optimistic_walk_sha256": "e35f045432dce57d3ec49c8ea41d260cc72b9d3c55baeed7e9c9e3c63a801a3b",
+      "optimistic_walk_uses_possible_geometry": false,
+      "possible_geometry_steps_in_optimistic_walk": [],
+      "potential_geometry_arcs": 32,
+      "release_eligible": false,
+      "route_query_result_returned": false,
+      "schema": "opaque-control-stored-cost-bracket-v1",
+      "source": 11268369829,
+      "supported_witness": {
+        "actual_access_verified": false,
+        "known_declared_maneuvers_respected": true,
+        "metric": "length",
+        "normal_graph_admitted": false,
+        "release_eligible": false,
+        "route_query_result_returned": false,
+        "source": 11268369829,
+        "source_approach": "unconstrained-declared-node-start",
+        "stored_cost_exact": [
+          "123489447701449059",
+          "562949953421312"
+        ],
+        "strict_supported_path_sha256": "fc70ba3f6e976c17e99b6dd5440d71d5d12eb4d4c0c962590850073f249024af",
+        "supported_arc_count": 11,
+        "target": 11268369827
+      },
+      "supported_witness_upper_bound_exact": [
+        "123489447701449059",
+        "562949953421312"
+      ],
+      "target": 11268369827,
+      "warning": "Optimistic possibilities are lower bounds, not feasible routes or a decision that a gate is open/closed. An equal bracket proves stored-cost stability only across the stated finite-model completions. The strict raw-input graph may remain unsupported; no ordinary query result is returned."
+    },
+    "travel_time": {
+      "access_verified": false,
+      "actual_gate_state_evaluated": false,
+      "anchors_adopted": false,
+      "completion_domain": [
+        "Exactly this finite raw adjacent-geometry universe; no additional roads, attachments or connector edges.",
+        "Known supported arcs, stored weights, active maneuver declarations, source/target, unconstrained start and same-way reversal policy stay unchanged.",
+        "Opaque controls may remove potential arcs and add nonnegative costs; any included unknown-way distance is at least its stored geometry lower bound and time is nonnegative.",
+        "No independent physical/legal access, lane/grade truth, external geography, reviewed anchor or release approval is implied."
+      ],
+      "conditional_only": true,
+      "conditional_stored_cost_stable_within_supplied_universe": true,
+      "connector_costs_included": false,
+      "gap_exact": [
+        "0",
+        "1"
+      ],
+      "geographic_coverage_certified": false,
+      "global_route_optimality_certified": false,
+      "known_arcs": 743,
+      "known_maneuvers": 13,
+      "metric": "travel_time",
+      "normal_graph_admitted": false,
+      "optimistic_lower_bound_exact": [
+        "615133308006312217",
+        "18014398509481984"
+      ],
+      "optimistic_walk_sha256": "6a9904cd6ba5f6e612a95befa256f81f2d9207f133fafd543013c3bd967b7e66",
+      "optimistic_walk_uses_possible_geometry": false,
+      "possible_geometry_steps_in_optimistic_walk": [],
+      "potential_geometry_arcs": 32,
+      "release_eligible": false,
+      "route_query_result_returned": false,
+      "schema": "opaque-control-stored-cost-bracket-v1",
+      "source": 11268369829,
+      "supported_witness": {
+        "actual_access_verified": false,
+        "known_declared_maneuvers_respected": true,
+        "metric": "travel_time",
+        "normal_graph_admitted": false,
+        "release_eligible": false,
+        "route_query_result_returned": false,
+        "source": 11268369829,
+        "source_approach": "unconstrained-declared-node-start",
+        "stored_cost_exact": [
+          "615133308006312217",
+          "18014398509481984"
+        ],
+        "strict_supported_path_sha256": "8db43c5caad51d73fb5ca6f09ac63e64b841e09b3e57e4f7803e738929595e85",
+        "supported_arc_count": 13,
+        "target": 11268369827
+      },
+      "supported_witness_upper_bound_exact": [
+        "615133308006312217",
+        "18014398509481984"
+      ],
+      "target": 11268369827,
+      "warning": "Optimistic possibilities are lower bounds, not feasible routes or a decision that a gate is open/closed. An equal bracket proves stored-cost stability only across the stated finite-model completions. The strict raw-input graph may remain unsupported; no ordinary query result is returned."
+    }
+  },
+  "normal_graph_admitted": false,
+  "old_strict_compiler_replaced": false,
+  "opaque_way_geometry_catalogues": {
+    "1216151141": {
+      "access_verified": false,
+      "actual_gate_state_evaluated": false,
+      "geographic_coverage_certified": false,
+      "ignores_direction_and_access_for_lower_bound": true,
+      "normal_graph_admitted": false,
+      "original_input_sha256": "b73795e617daaf60a7a17922e004da139689513d8a54798c926a46e44446cdaf",
+      "permission_claimed": false,
+      "potential_arcs": [
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 11268369833,
+          "id": "possible-geometry:1216151141:0:forward",
+          "length": 22.17924965208074,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369833,
+              -105.0779332,
+              40.592179
+            ],
+            [
+              11268369834,
+              -105.0776887,
+              40.5921061
+            ]
+          ],
+          "raw_segment_index": 0,
+          "release_eligible": false,
+          "to": 11268369834,
+          "travel_time": 0.0,
+          "way": 1216151141
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 11268369834,
+          "id": "possible-geometry:1216151141:0:backward",
+          "length": 22.17924965208074,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369834,
+              -105.0776887,
+              40.5921061
+            ],
+            [
+              11268369833,
+              -105.0779332,
+              40.592179
+            ]
+          ],
+          "raw_segment_index": 0,
+          "release_eligible": false,
+          "to": 11268369833,
+          "travel_time": 0.0,
+          "way": 1216151141
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 11268369834,
+          "id": "possible-geometry:1216151141:1:forward",
+          "length": 17.470796341258517,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369834,
+              -105.0776887,
+              40.5921061
+            ],
+            [
+              11268369835,
+              -105.0774819,
+              40.592101
+            ]
+          ],
+          "raw_segment_index": 1,
+          "release_eligible": false,
+          "to": 11268369835,
+          "travel_time": 0.0,
+          "way": 1216151141
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 11268369835,
+          "id": "possible-geometry:1216151141:1:backward",
+          "length": 17.470796341258517,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369835,
+              -105.0774819,
+              40.592101
+            ],
+            [
+              11268369834,
+              -105.0776887,
+              40.5921061
+            ]
+          ],
+          "raw_segment_index": 1,
+          "release_eligible": false,
+          "to": 11268369834,
+          "travel_time": 0.0,
+          "way": 1216151141
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 11268369835,
+          "id": "possible-geometry:1216151141:2:forward",
+          "length": 10.035166002408529,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369835,
+              -105.0774819,
+              40.592101
+            ],
+            [
+              11268369836,
+              -105.0773632,
+              40.5920965
+            ]
+          ],
+          "raw_segment_index": 2,
+          "release_eligible": false,
+          "to": 11268369836,
+          "travel_time": 0.0,
+          "way": 1216151141
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 11268369836,
+          "id": "possible-geometry:1216151141:2:backward",
+          "length": 10.035166002408529,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369836,
+              -105.0773632,
+              40.5920965
+            ],
+            [
+              11268369835,
+              -105.0774819,
+              40.592101
+            ]
+          ],
+          "raw_segment_index": 2,
+          "release_eligible": false,
+          "to": 11268369835,
+          "travel_time": 0.0,
+          "way": 1216151141
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 11268369836,
+          "id": "possible-geometry:1216151141:3:forward",
+          "length": 4.488045911295693,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369836,
+              -105.0773632,
+              40.5920965
+            ],
+            [
+              11268369837,
+              -105.0773109,
+              40.5920893
+            ]
+          ],
+          "raw_segment_index": 3,
+          "release_eligible": false,
+          "to": 11268369837,
+          "travel_time": 0.0,
+          "way": 1216151141
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 11268369837,
+          "id": "possible-geometry:1216151141:3:backward",
+          "length": 4.488045911295693,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369837,
+              -105.0773109,
+              40.5920893
+            ],
+            [
+              11268369836,
+              -105.0773632,
+              40.5920965
+            ]
+          ],
+          "raw_segment_index": 3,
+          "release_eligible": false,
+          "to": 11268369836,
+          "travel_time": 0.0,
+          "way": 1216151141
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 11268369837,
+          "id": "possible-geometry:1216151141:4:forward",
+          "length": 4.063375347729453,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369837,
+              -105.0773109,
+              40.5920893
+            ],
+            [
+              11268369838,
+              -105.0772654,
+              40.5920774
+            ]
+          ],
+          "raw_segment_index": 4,
+          "release_eligible": false,
+          "to": 11268369838,
+          "travel_time": 0.0,
+          "way": 1216151141
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 11268369838,
+          "id": "possible-geometry:1216151141:4:backward",
+          "length": 4.063375347729453,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369838,
+              -105.0772654,
+              40.5920774
+            ],
+            [
+              11268369837,
+              -105.0773109,
+              40.5920893
+            ]
+          ],
+          "raw_segment_index": 4,
+          "release_eligible": false,
+          "to": 11268369837,
+          "travel_time": 0.0,
+          "way": 1216151141
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 11268369838,
+          "id": "possible-geometry:1216151141:5:forward",
+          "length": 5.220650567037545,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369838,
+              -105.0772654,
+              40.5920774
+            ],
+            [
+              11268369839,
+              -105.0772103,
+              40.5920561
+            ]
+          ],
+          "raw_segment_index": 5,
+          "release_eligible": false,
+          "to": 11268369839,
+          "travel_time": 0.0,
+          "way": 1216151141
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 11268369839,
+          "id": "possible-geometry:1216151141:5:backward",
+          "length": 5.220650567037545,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369839,
+              -105.0772103,
+              40.5920561
+            ],
+            [
+              11268369838,
+              -105.0772654,
+              40.5920774
+            ]
+          ],
+          "raw_segment_index": 5,
+          "release_eligible": false,
+          "to": 11268369838,
+          "travel_time": 0.0,
+          "way": 1216151141
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 11268369839,
+          "id": "possible-geometry:1216151141:6:forward",
+          "length": 3.1069030993621367,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369839,
+              -105.0772103,
+              40.5920561
+            ],
+            [
+              11268369840,
+              -105.0771808,
+              40.5920394
+            ]
+          ],
+          "raw_segment_index": 6,
+          "release_eligible": false,
+          "to": 11268369840,
+          "travel_time": 0.0,
+          "way": 1216151141
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 11268369840,
+          "id": "possible-geometry:1216151141:6:backward",
+          "length": 3.1069030993621367,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369840,
+              -105.0771808,
+              40.5920394
+            ],
+            [
+              11268369839,
+              -105.0772103,
+              40.5920561
+            ]
+          ],
+          "raw_segment_index": 6,
+          "release_eligible": false,
+          "to": 11268369839,
+          "travel_time": 0.0,
+          "way": 1216151141
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 11268369840,
+          "id": "possible-geometry:1216151141:7:forward",
+          "length": 6.692525963971317,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369840,
+              -105.0771808,
+              40.5920394
+            ],
+            [
+              11268369841,
+              -105.0771239,
+              40.5919975
+            ]
+          ],
+          "raw_segment_index": 7,
+          "release_eligible": false,
+          "to": 11268369841,
+          "travel_time": 0.0,
+          "way": 1216151141
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 11268369841,
+          "id": "possible-geometry:1216151141:7:backward",
+          "length": 6.692525963971317,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369841,
+              -105.0771239,
+              40.5919975
+            ],
+            [
+              11268369840,
+              -105.0771808,
+              40.5920394
+            ]
+          ],
+          "raw_segment_index": 7,
+          "release_eligible": false,
+          "to": 11268369840,
+          "travel_time": 0.0,
+          "way": 1216151141
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 11268369841,
+          "id": "possible-geometry:1216151141:8:forward",
+          "length": 6.140925556994518,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369841,
+              -105.0771239,
+              40.5919975
+            ],
+            [
+              11268369842,
+              -105.0770823,
+              40.5919522
+            ]
+          ],
+          "raw_segment_index": 8,
+          "release_eligible": false,
+          "to": 11268369842,
+          "travel_time": 0.0,
+          "way": 1216151141
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 11268369842,
+          "id": "possible-geometry:1216151141:8:backward",
+          "length": 6.140925556994518,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369842,
+              -105.0770823,
+              40.5919522
+            ],
+            [
+              11268369841,
+              -105.0771239,
+              40.5919975
+            ]
+          ],
+          "raw_segment_index": 8,
+          "release_eligible": false,
+          "to": 11268369841,
+          "travel_time": 0.0,
+          "way": 1216151141
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 11268369842,
+          "id": "possible-geometry:1216151141:9:forward",
+          "length": 8.662255140994471,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369842,
+              -105.0770823,
+              40.5919522
+            ],
+            [
+              11268369843,
+              -105.0770425,
+              40.5918804
+            ]
+          ],
+          "raw_segment_index": 9,
+          "release_eligible": false,
+          "to": 11268369843,
+          "travel_time": 0.0,
+          "way": 1216151141
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 11268369843,
+          "id": "possible-geometry:1216151141:9:backward",
+          "length": 8.662255140994471,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              11268369843,
+              -105.0770425,
+              40.5918804
+            ],
+            [
+              11268369842,
+              -105.0770823,
+              40.5919522
+            ]
+          ],
+          "raw_segment_index": 9,
+          "release_eligible": false,
+          "to": 11268369842,
+          "travel_time": 0.0,
+          "way": 1216151141
+        }
+      ],
+      "release_eligible": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "opaque-raw-way-geometry-lower-bounds-v1",
+      "scope": "Hypothetical raw adjacent geometry in BOTH directions, even where known tags might forbid travel; zero time creates no speed assumption. These are lower-bound possibilities, not permissions, navigation edges, an open-gate scenario or a graph admitted by the strict raw-input API.",
+      "strict_permission_reason": "Unsupported non-lane/mode/conditional turn indication",
+      "strict_permission_status": "unsupported",
+      "unknown_way_time_lower_bound_seconds": 0
+    },
+    "201855578": {
+      "access_verified": false,
+      "actual_gate_state_evaluated": false,
+      "geographic_coverage_certified": false,
+      "ignores_direction_and_access_for_lower_bound": true,
+      "normal_graph_admitted": false,
+      "original_input_sha256": "8ad4d80f74e11dc74df08381ddb04e95056dd3b0cca3dfb3d5fb7b2abf4e5bdc",
+      "permission_claimed": false,
+      "potential_arcs": [
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 2118741415,
+          "id": "possible-geometry:201855578:0:forward",
+          "length": 12.579787453913085,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              2118741415,
+              -105.0760821,
+              40.5885125
+            ],
+            [
+              7416599557,
+              -105.0759826,
+              40.5885967
+            ]
+          ],
+          "raw_segment_index": 0,
+          "release_eligible": false,
+          "to": 7416599557,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 7416599557,
+          "id": "possible-geometry:201855578:0:backward",
+          "length": 12.579787453913085,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              7416599557,
+              -105.0759826,
+              40.5885967
+            ],
+            [
+              2118741415,
+              -105.0760821,
+              40.5885125
+            ]
+          ],
+          "raw_segment_index": 0,
+          "release_eligible": false,
+          "to": 2118741415,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 7416599557,
+          "id": "possible-geometry:201855578:1:forward",
+          "length": 3.8232568161891964,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              7416599557,
+              -105.0759826,
+              40.5885967
+            ],
+            [
+              8917794985,
+              -105.0759544,
+              40.5886236
+            ]
+          ],
+          "raw_segment_index": 1,
+          "release_eligible": false,
+          "to": 8917794985,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 8917794985,
+          "id": "possible-geometry:201855578:1:backward",
+          "length": 3.8232568161891964,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              8917794985,
+              -105.0759544,
+              40.5886236
+            ],
+            [
+              7416599557,
+              -105.0759826,
+              40.5885967
+            ]
+          ],
+          "raw_segment_index": 1,
+          "release_eligible": false,
+          "to": 7416599557,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 8917794985,
+          "id": "possible-geometry:201855578:2:forward",
+          "length": 7.706572593556407,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              8917794985,
+              -105.0759544,
+              40.5886236
+            ],
+            [
+              8917794982,
+              -105.0759063,
+              40.5886825
+            ]
+          ],
+          "raw_segment_index": 2,
+          "release_eligible": false,
+          "to": 8917794982,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 8917794982,
+          "id": "possible-geometry:201855578:2:backward",
+          "length": 7.706572593556407,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              8917794982,
+              -105.0759063,
+              40.5886825
+            ],
+            [
+              8917794985,
+              -105.0759544,
+              40.5886236
+            ]
+          ],
+          "raw_segment_index": 2,
+          "release_eligible": false,
+          "to": 8917794985,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 8917794982,
+          "id": "possible-geometry:201855578:3:forward",
+          "length": 33.647136790801,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              8917794982,
+              -105.0759063,
+              40.5886825
+            ],
+            [
+              8917794984,
+              -105.0756466,
+              40.588912
+            ]
+          ],
+          "raw_segment_index": 3,
+          "release_eligible": false,
+          "to": 8917794984,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 8917794984,
+          "id": "possible-geometry:201855578:3:backward",
+          "length": 33.647136790801,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              8917794984,
+              -105.0756466,
+              40.588912
+            ],
+            [
+              8917794982,
+              -105.0759063,
+              40.5886825
+            ]
+          ],
+          "raw_segment_index": 3,
+          "release_eligible": false,
+          "to": 8917794982,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 8917794984,
+          "id": "possible-geometry:201855578:4:forward",
+          "length": 11.775231792749965,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              8917794984,
+              -105.0756466,
+              40.588912
+            ],
+            [
+              8917794983,
+              -105.0755353,
+              40.5889758
+            ]
+          ],
+          "raw_segment_index": 4,
+          "release_eligible": false,
+          "to": 8917794983,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 8917794983,
+          "id": "possible-geometry:201855578:4:backward",
+          "length": 11.775231792749965,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              8917794983,
+              -105.0755353,
+              40.5889758
+            ],
+            [
+              8917794984,
+              -105.0756466,
+              40.588912
+            ]
+          ],
+          "raw_segment_index": 4,
+          "release_eligible": false,
+          "to": 8917794984,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "forward",
+          "from": 8917794983,
+          "id": "possible-geometry:201855578:5:forward",
+          "length": 7.251624312922738,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              8917794983,
+              -105.0755353,
+              40.5889758
+            ],
+            [
+              2118741416,
+              -105.0754808,
+              40.5890262
+            ]
+          ],
+          "raw_segment_index": 5,
+          "release_eligible": false,
+          "to": 2118741416,
+          "travel_time": 0.0,
+          "way": 201855578
+        },
+        {
+          "access_verified": false,
+          "bound_only": true,
+          "direction": "backward",
+          "from": 2118741416,
+          "id": "possible-geometry:201855578:5:backward",
+          "length": 7.251624312922738,
+          "modeled_permission": null,
+          "raw_geometry": [
+            [
+              2118741416,
+              -105.0754808,
+              40.5890262
+            ],
+            [
+              8917794983,
+              -105.0755353,
+              40.5889758
+            ]
+          ],
+          "raw_segment_index": 5,
+          "release_eligible": false,
+          "to": 8917794983,
+          "travel_time": 0.0,
+          "way": 201855578
+        }
+      ],
+      "release_eligible": false,
+      "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+      "schema": "opaque-raw-way-geometry-lower-bounds-v1",
+      "scope": "Hypothetical raw adjacent geometry in BOTH directions, even where known tags might forbid travel; zero time creates no speed assumption. These are lower-bound possibilities, not permissions, navigation edges, an open-gate scenario or a graph admitted by the strict raw-input API.",
+      "strict_permission_reason": "Physical barrier operation is not evaluated",
+      "strict_permission_status": "unsupported",
+      "unknown_way_time_lower_bound_seconds": 0
+    }
+  },
+  "original_declarations_or_tags_changed": false,
+  "parent_report_sha256": "0dee2e41e78b44807377157c1ff9f1e6609640a71ed6552d53e92698896b16c1",
+  "possible_geometry_arcs": 32,
+  "release_eligible": false,
+  "retained_declarations": 15,
+  "route_query_result_returned": false,
+  "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+  "schema": "expanded-opaque-cost-bounds-with-inert-no-prohibition-v1",
+  "source_context_sha256": "2053e2c306c2c1a09995b5425f58de6f172e5a7c48cbc898811c40fcb8877702",
+  "source_seed_nodes": 247,
+  "strict_parent_compilation": {
+    "access_verified": false,
+    "actual_speed_sign_verified": false,
+    "all_incident_ways_accounted": false,
+    "anchors_adopted": false,
+    "complete_geographic_graph_constructed": false,
+    "connector_costs_included": false,
+    "declared_graph_compiled": false,
+    "geographic_timezone_assignment_verified": false,
+    "graph": null,
+    "input_sha256": null,
+    "lane_connectivity_evaluated": false,
+    "lane_indications_used_as_restrictions": false,
+    "other_relations_accounted": false,
+    "reason": "Unsupported supplied raw way 201855578: Physical barrier operation is not evaluated",
+    "release_eligible": false,
+    "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+    "schema": "posted-sign-declared-mixed-graph-v1",
+    "scope": "Posted numeric speed-limit metadata profile; only the complete supplied raw-way/node/control universe. Via-node controls use the static-guidance profile; static via-way controls use the stricter unchanged historical profile. Unknown supplied controls reject the entire bundle. No incident/exterior closure, physical access or geographic graph certification.",
+    "status": "unsupported"
+  },
+  "strict_parent_queries": {
+    "length": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "compilation": {
+        "access_verified": false,
+        "actual_speed_sign_verified": false,
+        "all_incident_ways_accounted": false,
+        "anchors_adopted": false,
+        "complete_geographic_graph_constructed": false,
+        "connector_costs_included": false,
+        "declared_graph_compiled": false,
+        "geographic_timezone_assignment_verified": false,
+        "graph": null,
+        "input_sha256": null,
+        "lane_connectivity_evaluated": false,
+        "lane_indications_used_as_restrictions": false,
+        "other_relations_accounted": false,
+        "reason": "Unsupported supplied raw way 201855578: Physical barrier operation is not evaluated",
+        "release_eligible": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+        "schema": "posted-sign-declared-mixed-graph-v1",
+        "scope": "Posted numeric speed-limit metadata profile; only the complete supplied raw-way/node/control universe. Via-node controls use the static-guidance profile; static via-way controls use the stricter unchanged historical profile. Unknown supplied controls reject the entire bundle. No incident/exterior closure, physical access or geographic graph certification.",
+        "status": "unsupported"
+      },
+      "connector_costs_included": false,
+      "geographic_coverage_certified": false,
+      "reason": "Unsupported supplied raw way 201855578: Physical barrier operation is not evaluated",
+      "release_eligible": false,
+      "result": null,
+      "route_cost_emitted": false,
+      "schema": "posted-sign-declared-mixed-query-v1",
+      "status": "unsupported"
+    },
+    "travel_time": {
+      "access_verified": false,
+      "anchors_adopted": false,
+      "compilation": {
+        "access_verified": false,
+        "actual_speed_sign_verified": false,
+        "all_incident_ways_accounted": false,
+        "anchors_adopted": false,
+        "complete_geographic_graph_constructed": false,
+        "connector_costs_included": false,
+        "declared_graph_compiled": false,
+        "geographic_timezone_assignment_verified": false,
+        "graph": null,
+        "input_sha256": null,
+        "lane_connectivity_evaluated": false,
+        "lane_indications_used_as_restrictions": false,
+        "other_relations_accounted": false,
+        "reason": "Unsupported supplied raw way 201855578: Physical barrier operation is not evaluated",
+        "release_eligible": false,
+        "scenario_sha256": "06e2de086a2733280684324e8b10fae14d8bcbca98a8c3add8bb3de06ab521b4",
+        "schema": "posted-sign-declared-mixed-graph-v1",
+        "scope": "Posted numeric speed-limit metadata profile; only the complete supplied raw-way/node/control universe. Via-node controls use the static-guidance profile; static via-way controls use the stricter unchanged historical profile. Unknown supplied controls reject the entire bundle. No incident/exterior closure, physical access or geographic graph certification.",
+        "status": "unsupported"
+      },
+      "connector_costs_included": false,
+      "geographic_coverage_certified": false,
+      "reason": "Unsupported supplied raw way 201855578: Physical barrier operation is not evaluated",
+      "release_eligible": false,
+      "result": null,
+      "route_cost_emitted": false,
+      "schema": "posted-sign-declared-mixed-query-v1",
+      "status": "unsupported"
+    }
+  },
+  "unenumerated_outer_source_nodes": 552,
+  "unknown_controls_omitted": false,
+  "unknown_raw_way_context": {
+    "1216151141": {
+      "complete_raw_way": {
+        "id": 1216151141,
+        "nodes": [
+          [
+            11268369833,
+            -105.0779332,
+            40.592179
+          ],
+          [
+            11268369834,
+            -105.0776887,
+            40.5921061
+          ],
+          [
+            11268369835,
+            -105.0774819,
+            40.592101
+          ],
+          [
+            11268369836,
+            -105.0773632,
+            40.5920965
+          ],
+          [
+            11268369837,
+            -105.0773109,
+            40.5920893
+          ],
+          [
+            11268369838,
+            -105.0772654,
+            40.5920774
+          ],
+          [
+            11268369839,
+            -105.0772103,
+            40.5920561
+          ],
+          [
+            11268369840,
+            -105.0771808,
+            40.5920394
+          ],
+          [
+            11268369841,
+            -105.0771239,
+            40.5919975
+          ],
+          [
+            11268369842,
+            -105.0770823,
+            40.5919522
+          ],
+          [
+            11268369843,
+            -105.0770425,
+            40.5918804
+          ]
+        ],
+        "tags": {
+          "highway": "tertiary_link",
+          "lanes": "1",
+          "name": "Cherry Street",
+          "oneway": "yes",
+          "turn": "right"
+        },
+        "timestamp": "2025-05-01 20:23:56+00:00",
+        "version": 3
+      },
+      "permission_assumed": false,
+      "reason": "Unsupported non-lane/mode/conditional turn indication",
+      "status": "unsupported"
+    },
+    "201855578": {
+      "complete_raw_way": {
+        "id": 201855578,
+        "nodes": [
+          [
+            2118741415,
+            -105.0760821,
+            40.5885125
+          ],
+          [
+            7416599557,
+            -105.0759826,
+            40.5885967
+          ],
+          [
+            8917794985,
+            -105.0759544,
+            40.5886236
+          ],
+          [
+            8917794982,
+            -105.0759063,
+            40.5886825
+          ],
+          [
+            8917794984,
+            -105.0756466,
+            40.588912
+          ],
+          [
+            8917794983,
+            -105.0755353,
+            40.5889758
+          ],
+          [
+            2118741416,
+            -105.0754808,
+            40.5890262
+          ]
+        ],
+        "tags": {
+          "highway": "service",
+          "name": "Old Firehouse Alley",
+          "oneway": "yes",
+          "surface": "asphalt"
+        },
+        "timestamp": "2025-07-27 02:55:59+00:00",
+        "version": 6
+      },
+      "permission_assumed": false,
+      "reason": "Physical barrier operation is not evaluated",
+      "status": "unsupported"
+    }
+  },
+  "warning": "A separate audited NO-prohibition is inert only because a required raw member direction is already one-way denied. ONLY rules cannot be discharged this way. All 15 declarations are retained. Equal exact brackets hold only within this finite unchanged-permission completion domain; unknown gate/whole-way turn geometry remains hypothetical in both directions with zero time. Strict graph/query rejection, external geography, independent access/anchor review and public release gates remain intact.",
+  "whole_way_turn_permission_assumed": false,
+  "witness_report_sha256": "6b61eb94355582b44811bfd5565e31a42df2a8eff756343dabc9fa5d393e218b"
+}

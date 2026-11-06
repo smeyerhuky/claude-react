@@ -2,6 +2,12 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/road_inert_no_prohibition.py'
+      - 'scripts/test_road_inert_no_prohibition.py'
+      - 'scripts/fort_collins_inert_bounds_checkpoint.py'
+      - 'scripts/test_fort_collins_inert_bounds.py'
+      - 'docs/research/fort-collins-inert-prohibition-bounds/**'
+      - '.github/workflows/fort-collins-inert-bounds.yml'
       - 'scripts/fort_collins_opaque_source*.py'
       - 'scripts/test_fort_collins_opaque_source_core.py'
       - 'docs/research/fort-collins-opaque-source-core/**'
