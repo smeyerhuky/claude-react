@@ -2,6 +2,10 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/fort_collins_opaque_source*.py'
+      - 'scripts/test_fort_collins_opaque_source_core.py'
+      - 'docs/research/fort-collins-opaque-source-core/**'
+      - '.github/workflows/fort-collins-opaque-source-core.yml'
       - 'scripts/road_opaque_control_bounds.py'
       - 'scripts/test_road_opaque_control_bounds.py'
       - 'scripts/fort_collins_gate_bounds_checkpoint.py'
