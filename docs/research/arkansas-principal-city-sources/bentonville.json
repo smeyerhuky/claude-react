@@ -1,0 +1,38 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-11-06",
+  "cbsa": "22220",
+  "city_name": "Bentonville",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-11-06",
+    "final_url": "https://www.bentonville.ar.gov/",
+    "http_status": 200,
+    "response_bytes": 166606,
+    "response_sha256": "e51c4796c10cdee82e7aa6b53814b458489419201a4aef32be76272663249af3",
+    "url": "https://www.bentonville.ar.gov/"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and full connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review, reference-scenario evaluation or revalidation of historical statements. Full maps, entrance photos and dynamic page content have not been visually audited."
+  ],
+  "observations": [
+    "The city website contact section identifies the City of Bentonville at 305 SW A Street, Bentonville, Arkansas 72712. This is a municipal contact address, not a surveyed car entrance.",
+    "No historical Downtown by Design parking count is used as a current facility inventory."
+  ],
+  "principal_city_id": "0505320",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "contact_address_is_reviewed_vehicle_entry": false,
+    "historic_parking_plan_used_as_current_inventory": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Response hashes identify external bytes not retained in this repository and cannot be recomputed from this derived record. Full HTML/PDF, error bodies, form/runtime state, private source archives and environment configuration omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "305 SW A St.",
+  "source_http_status": 200,
+  "source_kind": "municipal_facility_location",
+  "url": "https://www.bentonville.ar.gov/"
+}

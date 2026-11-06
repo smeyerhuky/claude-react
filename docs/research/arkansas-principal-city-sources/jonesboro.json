@@ -1,0 +1,37 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-11-06",
+  "cbsa": "27860",
+  "city_name": "Jonesboro",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-11-06",
+    "final_url": "https://www.jonesboroar.gov/m/directory/department?did=28",
+    "http_status": 200,
+    "response_bytes": 86676,
+    "response_sha256": "cd0de040130c3742271004d0f4b8a31343404dc7f7dcbc0b8a356ba4f3798eed",
+    "url": "https://www.jonesboroar.gov/m/directory/department?did=28"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and full connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review, reference-scenario evaluation or revalidation of historical statements. Full maps, entrance photos and dynamic page content have not been visually audited."
+  ],
+  "observations": [
+    "The official City Clerk directory lists 300 South Church Street, Jonesboro, Arkansas 72401, and Monday through Friday office hours of 8 a.m. to 5 p.m.",
+    "This identifies office context only. Office service hours do not establish driving entry or exit hours. The former jonesboro.org directory redirects to the city publisher jonesboroar.gov; this record binds a fresh request to the final official URL."
+  ],
+  "principal_city_id": "0535710",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "office_hours_are_vehicle_access_hours": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Response hashes identify external bytes not retained in this repository and cannot be recomputed from this derived record. Full HTML/PDF, error bodies, form/runtime state, private source archives and environment configuration omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "Physical Address 300 S Church St",
+  "source_http_status": 200,
+  "source_kind": "municipal_facility_location",
+  "url": "https://www.jonesboroar.gov/m/directory/department?did=28"
+}

@@ -22,6 +22,14 @@ const {chromium}=require('playwright');
    await page.locator('#search').fill(id);await page.locator('#rows button').click();
    const text=await page.locator('#detail').innerText();if(!claims.every(claim=>text.includes(claim)))throw Error('Missouri publication date or visitor scope lost '+id);
   }
+  await page.locator('#state').selectOption('AR');await page.locator('#search').fill('22220');
+  if(await page.locator('#rows tr').count()!==4)throw Error('Arkansas northwest principal cities collapsed');
+  await page.locator('#search').fill('30780');
+  if(await page.locator('#rows tr').count()!==3)throw Error('Conway/Little Rock/North Little Rock collapsed');
+  for(const [id,claims] of [['0515190',['May 19, 2026','May 26','does not verify actual work start']],['0524550',['Selected publication unavailable','HTTP 403','retrieval gap']],['0550450',['North Little Rock','does not own','north-little-rock.json']],['0566080',['does not expose clerk office hours','springdale.json']]]){
+   await page.locator('#search').fill(id);await page.locator('#rows button').click();
+   const text=await page.locator('#detail').innerText();if(!claims.every(claim=>text.includes(claim)))throw Error('Arkansas publication timing/retrieval/scope lost '+id);
+  }
   await page.locator('#state').selectOption('all');await page.locator('#search').fill('0809280');await page.locator('#rows button').click();
   if(!(await page.locator('#detail-title').innerText()).includes('Broomfield'))throw Error('City FIPS search failed');
   await page.locator('#search').fill('no matching principal city');if(await page.locator('#rows tr').count()!==0||!(await page.locator('#empty').isVisible()))throw Error('Empty search misrepresented');

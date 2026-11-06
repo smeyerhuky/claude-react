@@ -1,0 +1,75 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "geographic_coverage_certified": false,
+  "principal_inventory_sha256": "22f509906e005e1c6215c5f857fa0865278f4289753fad887ee05b730f8cd9cd",
+  "records": [
+    {
+      "cbsa": "22220",
+      "city_name": "Bentonville",
+      "principal_city_id": "0505320",
+      "source_path": "docs/research/arkansas-principal-city-sources/bentonville.json",
+      "source_sha256": "7759760b167016d4e31b04790127c159526af32325ed6c3dc754470963c9369e"
+    },
+    {
+      "cbsa": "22220",
+      "city_name": "Fayetteville",
+      "principal_city_id": "0523290",
+      "source_path": "docs/research/arkansas-principal-city-sources/fayetteville.json",
+      "source_sha256": "dc7271d5336373aaaa7d4dc315c427f7536f4c8d64397cf90649fccd040e5073"
+    },
+    {
+      "cbsa": "22220",
+      "city_name": "Rogers",
+      "principal_city_id": "0560410",
+      "source_path": "docs/research/arkansas-principal-city-sources/rogers.json",
+      "source_sha256": "cea9c6659e0ce4ef777ee31bc65be5a4bf46ad9c211ba02565cb61f075446080"
+    },
+    {
+      "cbsa": "22220",
+      "city_name": "Springdale",
+      "principal_city_id": "0566080",
+      "source_path": "docs/research/arkansas-principal-city-sources/springdale.json",
+      "source_sha256": "c63501ef4c014d4f19bbbc394c11251342c12bb96fc9270eda64480bd653f308"
+    },
+    {
+      "cbsa": "22900",
+      "city_name": "Fort Smith",
+      "principal_city_id": "0524550",
+      "source_path": "docs/research/arkansas-principal-city-sources/fort-smith.json",
+      "source_sha256": "dce0f7d2383214fa8488c974ca4ce8b33b956d1498b591865570e69af7fed57c"
+    },
+    {
+      "cbsa": "27860",
+      "city_name": "Jonesboro",
+      "principal_city_id": "0535710",
+      "source_path": "docs/research/arkansas-principal-city-sources/jonesboro.json",
+      "source_sha256": "5a87db638abd1724f0fd60832c86c05e013a8f57985888709a1304fa1952a69d"
+    },
+    {
+      "cbsa": "30780",
+      "city_name": "Conway",
+      "principal_city_id": "0515190",
+      "source_path": "docs/research/arkansas-principal-city-sources/conway.json",
+      "source_sha256": "29160e52018d21664abe4d15049d97432c600249063cf5b61343d924b9483e68"
+    },
+    {
+      "cbsa": "30780",
+      "city_name": "Little Rock",
+      "principal_city_id": "0541000",
+      "source_path": "docs/research/arkansas-principal-city-sources/little-rock.json",
+      "source_sha256": "5c8870f4e8c858555ce462597004a970c5e4633bee4dbbcba9fd3fe1f674db0c"
+    },
+    {
+      "cbsa": "30780",
+      "city_name": "North Little Rock",
+      "principal_city_id": "0550450",
+      "source_path": "docs/research/arkansas-principal-city-sources/north-little-rock.json",
+      "source_sha256": "fe7b80e9bc7bfd00e016a302009bbff68e10aa172a3b8fcca3bfcd183cb1b215"
+    }
+  ],
+  "release_eligible": false,
+  "schema": "principal-city-source-batch-v1",
+  "state": "AR",
+  "warning": "Complete publication-work accounting for nine Arkansas principal-city memberships in four CBSAs. Eight inspected contexts and one blocked retrieval do not approve vehicle access, anchors, connectors, route costs, coverage or public release."
+}

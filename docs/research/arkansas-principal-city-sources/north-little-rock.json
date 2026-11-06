@@ -1,0 +1,38 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-11-06",
+  "cbsa": "30780",
+  "city_name": "North Little Rock",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-11-06",
+    "final_url": "https://nlr.ar.gov/contact-us/",
+    "http_status": 200,
+    "response_bytes": 167015,
+    "response_sha256": "4001eaeb94dd737f9faea7c4a5c8c178bbe64e74a11c75a9f0c1da4374a53de8",
+    "url": "https://nlr.ar.gov/contact-us/"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and full connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review, reference-scenario evaluation or revalidation of historical statements. Full maps, entrance photos and dynamic page content have not been visually audited."
+  ],
+  "observations": [
+    "The city contact page identifies North Little Rock City Hall at 300 Main Street. Its parking-ticket FAQ directs inquiries about the lot opposite Argenta Community Theater to a separate operator and says the city does not own that lot.",
+    "This is North Little Rock context, separately retained from Little Rock within the same metro. An operator referral establishes neither ordinary-car permission nor exact access geometry."
+  ],
+  "principal_city_id": "0550450",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "another_principal_city_source_substitution_permitted": false,
+    "argenta_theater_opposite_lot_is_city_owned": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and factual observations only. Response hashes identify external bytes not retained in this repository and cannot be recomputed from this derived record. Full HTML/PDF, error bodies, form/runtime state, private source archives and environment configuration omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "The City does not own the parking lot across from Argenta Community Theater.",
+  "source_http_status": 200,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://nlr.ar.gov/contact-us/"
+}
