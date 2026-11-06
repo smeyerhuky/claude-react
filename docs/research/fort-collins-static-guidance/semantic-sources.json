@@ -1,0 +1,21 @@
+{
+  "schema": "static-lane-guidance-semantic-observations-v1",
+  "observed_utc_date": "2026-11-06",
+  "sources": [
+    {
+      "url": "https://wiki.openstreetmap.org/wiki/Key:turn",
+      "observation": "Turn lane values describe indications. Missing indications do not establish a turn ban; independently recorded restrictions must be handled separately. Empty and none denote no indication. Semicolons separate multiple indications within one lane."
+    },
+    {
+      "url": "https://wiki.openstreetmap.org/wiki/Lanes",
+      "observation": "Pipe-separated lane rows run left to right in the direction of travel. Forward and backward refer to the original OSM way orientation; backward lane rows are not reversed."
+    },
+    {
+      "url": "https://wiki.openstreetmap.org/wiki/Relation:connectivity",
+      "observation": "Connectivity relations can describe precise lane connections. Indications and road topology alone do not establish those physical connections."
+    }
+  ],
+  "role": "Primary community tagging documentation informing a narrow model grammar, not independent physical or legal access evidence.",
+  "access_verified": false,
+  "release_eligible": false
+}
