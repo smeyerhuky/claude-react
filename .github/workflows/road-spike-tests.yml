@@ -2,6 +2,10 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/road_posted_speed*.py'
+      - 'scripts/fort_collins_posted_speed_checkpoint.py'
+      - 'scripts/test_road_posted_speed.py'
+      - 'docs/research/fort-collins-posted-speed/**'
       - 'scripts/fort_collins_guidance_road_frontier.py'
       - 'scripts/fort_collins_guidance_frontier_checkpoint.py'
       - 'scripts/test_fort_collins_guidance_frontier.py'
