@@ -2,6 +2,11 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/road_competitive_core.py'
+      - 'scripts/test_road_competitive_core.py'
+      - 'scripts/fort_collins_competitive*.py'
+      - 'scripts/test_fort_collins_competitive_core.py'
+      - 'docs/research/fort-collins-competitive-core/**'
       - 'scripts/road_posted_speed*.py'
       - 'scripts/fort_collins_posted_speed_checkpoint.py'
       - 'scripts/test_road_posted_speed.py'
