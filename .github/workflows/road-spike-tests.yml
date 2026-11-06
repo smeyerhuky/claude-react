@@ -2,6 +2,9 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/build_native_query_explorer.py'
+      - 'scripts/test_native_query_explorer.py'
+      - 'src/research/metro-native-directional-bounds.html'
       - 'scripts/fort_collins_bidirectional_checkpoint.py'
       - 'scripts/test_fort_collins_bidirectional_bounds.py'
       - 'docs/research/fort-collins-bidirectional-query-bounds/**'
