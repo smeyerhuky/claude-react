@@ -2,9 +2,19 @@
 
 `python scripts/fetch_research_source.py --source colorado.osm.pbf --output local-data/colorado.osm.pbf` recovers only a filename in the pinned original-source manifest. It first tries the existing unpublished archive, then the original canonical URL if archive lookup/transfer is unavailable. Every recovered file must match the exact original size and SHA-256 before becoming usable. Existing matching local inputs are reused; corrupt local inputs, conflicting archive records and published/foreign archive identities fail without replacement. No source release is created or published.
 
-The manual **Exact research source recovery** workflow can prime a default-branch Actions cache for the six original routing inputs. This avoids repeating large provider downloads when read-only PR jobs cannot access draft assets. Its cache key depends on those six input names/sizes/hashes, so unrelated archive extensions do not invalidate it. All cached bytes remain untrusted until the same size/SHA-256 checks pass. Cache expiry is an availability issue; the archive and canonical sources remain the recovery paths.
+The manual **Exact research source recovery** workflow can prime a default-branch Actions cache for six or eight exact original routing inputs. This avoids repeating large provider downloads when read-only PR jobs cannot access draft assets. The default six-input cache key is unchanged. The explicit eight-input scope additionally binds Wyoming and Nevada; unrelated archive extensions do not invalidate either scope. All cached bytes remain untrusted until the same size/SHA-256 checks pass. Cache expiry is an availability issue; the archive and canonical sources remain the recovery paths.
 
-Only manual dispatch gets a repository token able to read the draft originals; PR checks use read-only permissions. The manual job invokes read-only API/download operations and caches only the six public original PBFs, with no credentials or environment files. All six total about 1.3 GB under a 1.5 GB cache-input budget; no graph caps or original-source retention budget changes. Source cache priming is not source publication, access certification or a production release.
+Only manual dispatch gets the existing repository identity able to read draft originals; PR checks use read-only permissions. The manual job invokes read-only API/download operations and caches only the selected public original PBFs, with no credentials or environment files. Checkout credentials are not persisted. The six-input budget remains 1.5 GB; the eight-input budget is 1.7 GB for 1,504,347,559 pinned bytes. No graph caps or original-source retention budget change. No original bytes enter an artifact or published release. Source cache priming is not source publication, access certification or a production release.
+
+Select `prime-eight-original-cache` on the manual workflow to recover the complete
+eight-input set on the default branch. Eight-source consumers select
+`cache_key(manifest, scope='eight')`; six-source consumers retain the unchanged
+default. Missing or duplicate entries, unsupported scopes and aggregate budget
+violations fail closed. A six-input cache never claims to contain eight inputs.
+
+```sh
+gh workflow run research-source-recovery.yml --ref main -f purpose=prime-eight-original-cache
+```
 
 ## Verify actual bytes from the unpublished draft
 
