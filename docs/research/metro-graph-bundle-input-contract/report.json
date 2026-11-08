@@ -1,0 +1,111 @@
+{
+  "access_verified": false,
+  "anchor_policy": "historical-native-Census-road-leads-without-connectors",
+  "anchors_adopted": false,
+  "bundle_sha256": "efdefba88eaf36fa599cfd28c6ec2ac79bdeba520bc5d695ba471bfe9503747f",
+  "connector_costs_included": false,
+  "costs": 2508,
+  "declared_input_check": {
+    "access_verified": false,
+    "anchors_adopted": false,
+    "bundle_sha256": "efdefba88eaf36fa599cfd28c6ec2ac79bdeba520bc5d695ba471bfe9503747f",
+    "connector_costs_included": false,
+    "declared_osm_bytes": 1504347559,
+    "geographic_coverage_certified": false,
+    "osm_input_files": 8,
+    "release_eligible": false,
+    "source_bytes_verified": false
+  },
+  "finite_costs": 2356,
+  "fixed_reference_scenario_applied": false,
+  "geographic_coverage_certified": false,
+  "graph_rebuilt": false,
+  "implementation_sha256": {
+    "scripts/colorado_reviewed_connectors.json": "cbac5c424e0c840a95de00ddf1f77a5627d35543b2d97a524222908590c62d38",
+    "scripts/metro_graph_bundle_checkpoint.py": "7230a6364ee150056cb46f31ce3c14b723d8ebbead3d5c67ff058610ca4e7f4c",
+    "scripts/metro_graph_bundle_contract.py": "f9363a4a78c01f189d16bee1ef3b854b8b5471a4d35a48407320a37839a6fca9"
+  },
+  "modeled_nodata_costs": 152,
+  "native_metro_origins": 33,
+  "query_contexts": [
+    {
+      "bindings": {
+        "domains_sha256": "d860aef0a6ac2e442590098ed98a7cd601fa63764d8d76ba63e444bebcc5a260",
+        "graph_model_sha256": "028beea7a6fefcaf0b4c3d1a7468e8e2d1e0eee7207208fdb57f359e6601e32d",
+        "native_origin_records_sha256": "cce771fc9c287fddd3f37065f43ddc17c470b18359803320a7c0eac923bb2bb9",
+        "query_endpoint_set_sha256": "72ec36f0cb5dd694fc2825514cc1aaa5ee42cf7a35d5d2ef8178bfb493eb4de0",
+        "retained_graph_policy_sha256": "028beea7a6fefcaf0b4c3d1a7468e8e2d1e0eee7207208fdb57f359e6601e32d"
+      },
+      "bundle_sha256": "efdefba88eaf36fa599cfd28c6ec2ac79bdeba520bc5d695ba471bfe9503747f",
+      "connector_costs_included": false,
+      "direction": "metro-to-location",
+      "fixed_reference_scenario_applied": false,
+      "metric": "length",
+      "release_eligible": false,
+      "scenario_id": "census-eight-state-33-source-19-sample-v1",
+      "unit": "meters"
+    },
+    {
+      "bindings": {
+        "domains_sha256": "d860aef0a6ac2e442590098ed98a7cd601fa63764d8d76ba63e444bebcc5a260",
+        "graph_model_sha256": "028beea7a6fefcaf0b4c3d1a7468e8e2d1e0eee7207208fdb57f359e6601e32d",
+        "native_origin_records_sha256": "cce771fc9c287fddd3f37065f43ddc17c470b18359803320a7c0eac923bb2bb9",
+        "query_endpoint_set_sha256": "72ec36f0cb5dd694fc2825514cc1aaa5ee42cf7a35d5d2ef8178bfb493eb4de0",
+        "retained_graph_policy_sha256": "028beea7a6fefcaf0b4c3d1a7468e8e2d1e0eee7207208fdb57f359e6601e32d"
+      },
+      "bundle_sha256": "efdefba88eaf36fa599cfd28c6ec2ac79bdeba520bc5d695ba471bfe9503747f",
+      "connector_costs_included": false,
+      "direction": "location-to-metro",
+      "fixed_reference_scenario_applied": false,
+      "metric": "length",
+      "release_eligible": false,
+      "scenario_id": "census-eight-state-33-source-19-sample-v1",
+      "unit": "meters"
+    },
+    {
+      "bindings": {
+        "domains_sha256": "d860aef0a6ac2e442590098ed98a7cd601fa63764d8d76ba63e444bebcc5a260",
+        "graph_model_sha256": "028beea7a6fefcaf0b4c3d1a7468e8e2d1e0eee7207208fdb57f359e6601e32d",
+        "native_origin_records_sha256": "cce771fc9c287fddd3f37065f43ddc17c470b18359803320a7c0eac923bb2bb9",
+        "query_endpoint_set_sha256": "72ec36f0cb5dd694fc2825514cc1aaa5ee42cf7a35d5d2ef8178bfb493eb4de0",
+        "retained_graph_policy_sha256": "028beea7a6fefcaf0b4c3d1a7468e8e2d1e0eee7207208fdb57f359e6601e32d"
+      },
+      "bundle_sha256": "efdefba88eaf36fa599cfd28c6ec2ac79bdeba520bc5d695ba471bfe9503747f",
+      "connector_costs_included": false,
+      "direction": "metro-to-location",
+      "fixed_reference_scenario_applied": false,
+      "metric": "travel_time",
+      "release_eligible": false,
+      "scenario_id": "census-eight-state-33-source-19-sample-v1",
+      "unit": "seconds"
+    },
+    {
+      "bindings": {
+        "domains_sha256": "d860aef0a6ac2e442590098ed98a7cd601fa63764d8d76ba63e444bebcc5a260",
+        "graph_model_sha256": "028beea7a6fefcaf0b4c3d1a7468e8e2d1e0eee7207208fdb57f359e6601e32d",
+        "native_origin_records_sha256": "cce771fc9c287fddd3f37065f43ddc17c470b18359803320a7c0eac923bb2bb9",
+        "query_endpoint_set_sha256": "72ec36f0cb5dd694fc2825514cc1aaa5ee42cf7a35d5d2ef8178bfb493eb4de0",
+        "retained_graph_policy_sha256": "028beea7a6fefcaf0b4c3d1a7468e8e2d1e0eee7207208fdb57f359e6601e32d"
+      },
+      "bundle_sha256": "efdefba88eaf36fa599cfd28c6ec2ac79bdeba520bc5d695ba471bfe9503747f",
+      "connector_costs_included": false,
+      "direction": "location-to-metro",
+      "fixed_reference_scenario_applied": false,
+      "metric": "travel_time",
+      "release_eligible": false,
+      "scenario_id": "census-eight-state-33-source-19-sample-v1",
+      "unit": "seconds"
+    }
+  ],
+  "release_eligible": false,
+  "retained_input_check": {
+    "release_eligible": false,
+    "retained_inputs_verified": 4,
+    "source_bytes_verified": false
+  },
+  "sample_nodes": 19,
+  "schema": "metro-graph-bundle-input-checkpoint-v1",
+  "source_bytes_verified": false,
+  "source_header_replayed": false,
+  "warning": "Input identity accounting only. Eight OSM files are distinct from 33 metro origins. Metadata and retained hashes do not replay original PBF headers, rebuild the graph, certify source synchronization, adopt anchors or verify current legal/physical access. The fixed-departure scenario is not applied to these historical costs. No production loader or approval-ledger integration is installed. #137, #138 and #139 remain open."
+}

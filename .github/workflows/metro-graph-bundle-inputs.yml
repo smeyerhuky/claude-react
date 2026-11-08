@@ -1,0 +1,34 @@
+name: Metro graph bundle input contract
+on:
+  pull_request:
+    paths:
+      - 'scripts/metro_graph_bundle_*.py'
+      - 'scripts/test_metro_graph_bundle_contract.py'
+      - 'scripts/las_vegas*checkpoint.py'
+      - 'scripts/las_vegas_probe_reference.py'
+      - 'scripts/colorado_reviewed_connectors.json'
+      - 'docs/research/metro-graph-bundle-input-contract/**'
+      - 'docs/research/census-33-source-checkpoint/**'
+      - 'docs/research/las-vegas-probe-extension/**'
+      - 'docs/research/utah-parent-reference/domains.json'
+      - '.github/workflows/metro-graph-bundle-inputs.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  retained-input-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s scripts -p test_metro_graph_bundle_contract.py -v
+      - run: python scripts/metro_graph_bundle_checkpoint.py
+      - run: python scripts/las_vegas_ui_checkpoint.py --check-frozen
+      - uses: actions/upload-artifact@v6
+        with:
+          name: metro-graph-bundle-input-contract
+          path: docs/research/metro-graph-bundle-input-contract/
+          retention-days: 14
