@@ -46,7 +46,7 @@ jobs:
           sys.path.insert(0,'scripts')
           from research_source_cache import cache_key,MANIFEST
           with Path(os.environ['GITHUB_OUTPUT']).open('a') as handle:
-              handle.write('key='+cache_key(json.loads(MANIFEST.read_text()))+'\n')
+              handle.write('key='+cache_key(json.loads(MANIFEST.read_text()),scope='eight')+'\n')
           PYKEY
       - uses: actions/cache/restore@v4
         with:
