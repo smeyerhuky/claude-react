@@ -1,0 +1,77 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "bindings": {
+    "domains_sha256": "d860aef0a6ac2e442590098ed98a7cd601fa63764d8d76ba63e444bebcc5a260",
+    "graph_model_sha256": "028beea7a6fefcaf0b4c3d1a7468e8e2d1e0eee7207208fdb57f359e6601e32d",
+    "native_origin_records_sha256": "cce771fc9c287fddd3f37065f43ddc17c470b18359803320a7c0eac923bb2bb9",
+    "query_endpoint_set_sha256": "72ec36f0cb5dd694fc2825514cc1aaa5ee42cf7a35d5d2ef8178bfb493eb4de0",
+    "retained_graph_policy_sha256": "028beea7a6fefcaf0b4c3d1a7468e8e2d1e0eee7207208fdb57f359e6601e32d"
+  },
+  "connector_costs_included": false,
+  "geographic_coverage_certified": false,
+  "historical_scenario": {
+    "fixed_reference_scenario_applied": false,
+    "fixed_reference_scenario_sha256": null,
+    "scenario_id": "census-eight-state-33-source-19-sample-v1"
+  },
+  "osm_sources": [
+    {
+      "name": "arizona.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "77dc176e64538b08fb837f5c3515bea3956c2d9a037089aa6a958b405aba76a9",
+      "size_bytes": 304245283
+    },
+    {
+      "name": "colorado.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+      "size_bytes": 386197077
+    },
+    {
+      "name": "kansas.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "eae1e55d59e8a15fe6abd7057b86098c6e03bb9a88b7997f46256ca59386f30e",
+      "size_bytes": 117395534
+    },
+    {
+      "name": "nevada.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "4cc689a971124a50d1ffe169e93a4c69542f478e47b6164007dd6e57f85650b5",
+      "size_bytes": 124016809
+    },
+    {
+      "name": "new-mexico.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "2aa3ba0e91c0f19ffd0d614d98f112546552a51d02daf2474d8f06e54304508a",
+      "size_bytes": 136658631
+    },
+    {
+      "name": "oklahoma.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "4e76187cb20fd187d759de9565568381a76d87518377a0e03585d9865e498106",
+      "size_bytes": 169850063
+    },
+    {
+      "name": "utah.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "34f704431a8b3812372ec10083e151d4227a50caf19159fc9af730f942940c41",
+      "size_bytes": 170845020
+    },
+    {
+      "name": "wyoming.osm.pbf",
+      "replication_timestamp": "2026-10-27T21:23:59Z",
+      "sha256": "9dd05b095a075dc7ed08539eef6936564ba968ba27e764b0fc5533c460fec3f4",
+      "size_bytes": 95139142
+    }
+  ],
+  "release_eligible": false,
+  "research_only": true,
+  "retained_inputs": {
+    "docs/research/census-33-source-checkpoint/baseline.json": "d077818c69d25f23f7b8004937c58341207334655a23493c5856977b87f6e9c8",
+    "docs/research/census-33-source-checkpoint/manifest.json": "09a50d8ded349ab024e63b89d460e145a3b4933d88ed19fb948aed1cb6e7c16c",
+    "docs/research/las-vegas-probe-extension/retained33-manifest.json": "be42db4c55f4f15950d73b0abe64b02027320f9db434472ed6619bf4b286243c",
+    "docs/research/utah-parent-reference/domains.json": "d860aef0a6ac2e442590098ed98a7cd601fa63764d8d76ba63e444bebcc5a260"
+  },
+  "schema": "metro-graph-bundle-inputs-research-v1"
+}

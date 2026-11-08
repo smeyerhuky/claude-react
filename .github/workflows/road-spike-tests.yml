@@ -2,6 +2,10 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/metro_graph_bundle_*.py'
+      - 'scripts/test_metro_graph_bundle_contract.py'
+      - 'docs/research/metro-graph-bundle-input-contract/**'
+      - '.github/workflows/metro-graph-bundle-inputs.yml'
       - 'scripts/*principal_city_source*.py'
       - 'docs/research/*-principal-city-sources/**'
       - 'docs/research/principal-city-source-work/**'

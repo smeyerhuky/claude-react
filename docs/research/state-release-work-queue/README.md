@@ -63,6 +63,13 @@ before multi-source public release. Unsupported water, points, borders,
 competitors, custom CSVs and absent/mismatched assets must remain unshaded or
 fail closed. Preserve straight-line rendering and the historical inspector views.
 
+The [research graph-bundle input contract](../metro-graph-bundle-input-contract/README.md)
+now binds the retained eight OSM identities separately from the 33 native metro
+origins, historical graph policy, domain and endpoint set. This verifies input
+accounting, not a rebuilt graph, source overlap reconciliation, an applied fixed
+scenario, approved anchor set or production release bundle. It cannot replace
+the existing independent access gate or certify any of the coverage items above.
+
 ## Current first-state work
 
 Colorado's seven native-point qualifiers have graph-only research costs, but
