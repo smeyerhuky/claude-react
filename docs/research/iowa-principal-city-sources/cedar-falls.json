@@ -1,0 +1,38 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-11-08",
+  "cbsa": "47940",
+  "city_name": "Cedar Falls",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-11-08",
+    "final_url": "https://cedarfalls.com/443/Parking",
+    "http_status": 200,
+    "response_bytes": 109716,
+    "response_sha256": "d98e2abe347a4dfb7e3c861217edba1e532af9f4b72c1410b1ef66807142f05e",
+    "url": "https://cedarfalls.com/443/Parking"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and complete connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review, a reference-scenario evaluation or a revalidation of historical statements. Embedded maps, driveway images and dynamic application state have not been visually audited."
+  ],
+  "observations": [
+    "The city parking page distinguishes several free, time-limited downtown parking options, certain shared business lots, municipal-lot permits and separate enforcement hours.",
+    "Parking limits and charging/enforcement periods do not establish entrance gate hours. A shared business parking arrangement is not an unrestricted city road, and no driveway, curb approach or same-grade connection is verified."
+  ],
+  "principal_city_id": "1911755",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "parking_limit_is_entry_gate_hours": false,
+    "shared_business_lots_are_unrestricted_city_roads": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and limited factual observations only. Response fingerprints identify external bytes not retained in this repository and cannot be reconstructed from the derived record. Raw HTML/PDF, blocked error bodies, application state, private source archives and environment configuration omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "Free parking is also available in certain shared business lots including Viking Pump.",
+  "source_http_status": 200,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://cedarfalls.com/443/Parking"
+}

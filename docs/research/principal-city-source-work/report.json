@@ -4706,18 +4706,24 @@
       "anchor_adopted": false,
       "cbsa": "11180",
       "city_name": "Ames",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and complete connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, a reference-scenario evaluation or a revalidation of historical statements. Embedded maps, driveway images and dynamic application state have not been visually audited."
+      ],
+      "observations": [
+        "The city parking page distinguishes employee parking tags, resident overnight permits and reserved parking. Its 2026 employee-tag guidance allows extended use of specified four-hour CBD spaces but excludes parking from 4 a.m. to 6 a.m. and excludes two-hour spaces.",
+        "Tag availability, purchase details and program dates are not ordinary-car driveway evidence. A parking exclusion is not a finding that the surrounding road is closed."
+      ],
       "principal_city_id": "1901855",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-08",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/iowa-principal-city-sources/ames.json",
+      "source_sha256": "317ac05de0cc61e1735899c488b0b7f00279f6bbdffb2cdf9f473ccdab32a213",
       "state": "IA",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.cityofames.org/My-Government/Departments/Public-Works/Parking"
     },
     {
       "access_review_status": "unresolved",
@@ -4725,18 +4731,24 @@
       "anchor_adopted": false,
       "cbsa": "47940",
       "city_name": "Cedar Falls",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and complete connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, a reference-scenario evaluation or a revalidation of historical statements. Embedded maps, driveway images and dynamic application state have not been visually audited."
+      ],
+      "observations": [
+        "The city parking page distinguishes several free, time-limited downtown parking options, certain shared business lots, municipal-lot permits and separate enforcement hours.",
+        "Parking limits and charging/enforcement periods do not establish entrance gate hours. A shared business parking arrangement is not an unrestricted city road, and no driveway, curb approach or same-grade connection is verified."
+      ],
       "principal_city_id": "1911755",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-08",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/iowa-principal-city-sources/cedar-falls.json",
+      "source_sha256": "a25e856567cf2b45a99c4c85709d47b021406c10d7320d006845d0d910d358a8",
       "state": "IA",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://cedarfalls.com/443/Parking"
     },
     {
       "access_review_status": "unresolved",
@@ -4744,18 +4756,24 @@
       "anchor_adopted": false,
       "cbsa": "16300",
       "city_name": "Cedar Rapids",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and complete connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, a reference-scenario evaluation or a revalidation of historical statements. Embedded maps, driveway images and dynamic application state have not been visually audited."
+      ],
+      "observations": [
+        "Park Cedar Rapids lists off-street facilities, payment upon arrival, on-street enforcement and event parking. The Five Seasons Ramp is marked closed for ongoing maintenance, despite general round-the-clock wording elsewhere in the listing.",
+        "This is operator guidance, not a municipal legal-access attestation. No closed facility is selected as open; general payment or printed opening information does not verify exact entry, exit or grade."
+      ],
       "principal_city_id": "1912000",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-08",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "operator_parking_guidance",
+      "source_path": "docs/research/iowa-principal-city-sources/cedar-rapids.json",
+      "source_sha256": "2cf5c15aa81b6779b1fe177ca52da9839958de8ce2eb248890db297f980166e6",
       "state": "IA",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://parkcedarrapids.com/find-parking/"
     },
     {
       "access_review_status": "unresolved",
@@ -4763,18 +4781,24 @@
       "anchor_adopted": false,
       "cbsa": "19340",
       "city_name": "Davenport",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and complete connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, a reference-scenario evaluation or a revalidation of historical statements. Embedded maps, driveway images and dynamic application state have not been visually audited."
+      ],
+      "observations": [
+        "The city identifies Harrison Street Ramp at 202 Harrison Street and describes prepaid short-term parking, payment by plate at a station or app, and separate signed, unassigned and downtown-resident monthly arrangements.",
+        "Payment options, a resident rate and a facility address do not establish unrestricted use or a surveyed drivable connector. No booth attendant is described; that does not verify an ungated or continuously usable entrance."
+      ],
       "principal_city_id": "1919000",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-08",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/iowa-principal-city-sources/davenport.json",
+      "source_sha256": "43e8d945134524b87b4b013a65f7bfe86fe23ed5cb9605b7d307a252192bb1bc",
       "state": "IA",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.davenportiowa.com/services/public_works/parking/harrison_st_parking_ramp"
     },
     {
       "access_review_status": "unresolved",
@@ -4782,18 +4806,24 @@
       "anchor_adopted": false,
       "cbsa": "19780",
       "city_name": "Des Moines",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and complete connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, a reference-scenario evaluation or a revalidation of historical statements. Embedded maps, driveway images and dynamic application state have not been visually audited."
+      ],
+      "observations": [
+        "Council Communication 25-012, for January 13, 2025, proposes parking-rate provisions for 1200 Mulberry Street garage and an upper limit for prepaid special-event charges. It distinguishes the garage from the administration building at 1200 Locust Street and describes a future reservation service.",
+        "The communication is planning context, not proof that an amendment passed, a future system became operational, printed rates remain current, or a specific driveway is permitted at the reference instant."
+      ],
       "principal_city_id": "1921000",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-08",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_planning",
+      "source_path": "docs/research/iowa-principal-city-sources/des-moines.json",
+      "source_sha256": "6a00bde6df174eaca92a16efefa0a613077a9266398cd8016d174dfbe92fa6e5",
       "state": "IA",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://councildocs.dsm.city/communications/2025/25-012.pdf"
     },
     {
       "access_review_status": "unresolved",
@@ -4801,18 +4831,22 @@
       "anchor_adopted": false,
       "cbsa": "26980",
       "city_name": "Iowa City",
-      "limitations": [],
+      "limitations": [
+        "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and complete connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, a reference-scenario evaluation or a revalidation of historical statements. Embedded maps, driveway images and dynamic application state have not been visually audited.",
+        "The selected official publication returned HTTP 403. No quote, observation or search-result text is promoted into inspected evidence. The retrieval gap is not a finding that vehicle access is unavailable."
+      ],
       "observations": [],
       "principal_city_id": "1938595",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-08",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "unavailable",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/iowa-principal-city-sources/iowa-city.json",
+      "source_sha256": "274a447a3755663cfe55516b899ff08fa922a92c7d92be7659b72b55a51dc739",
       "state": "IA",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "selected_publication_unavailable",
+      "url": "https://www.icgov.org/government/departments-and-divisions/transportation/parking/parking-ramps-parking-meters"
     },
     {
       "access_review_status": "unresolved",
@@ -4820,18 +4854,24 @@
       "anchor_adopted": false,
       "cbsa": "43580",
       "city_name": "Sioux City",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and complete connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, a reference-scenario evaluation or a revalidation of historical statements. Embedded maps, driveway images and dynamic application state have not been visually audited."
+      ],
+      "observations": [
+        "The city lists four municipal downtown ramps: Discovery, Heritage, Martin Luther King Jr. and Rivers Landing. It distinguishes weekday meter enforcement from evening/weekend payment periods and weekend ramp charging policy.",
+        "Parking and skywalk information, including a free period, is not permission for a private car to use an arbitrary path or a verified vehicle entry. No skywalk is treated as a motor connector."
+      ],
       "principal_city_id": "1973335",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-08",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/iowa-principal-city-sources/sioux-city.json",
+      "source_sha256": "34763338c9f14c40ddd7971c6af2e787dc275955920bc858400101b617b842f2",
       "state": "IA",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.sioux-city.org/564/Parking-Skywalks"
     },
     {
       "access_review_status": "unresolved",
@@ -4839,18 +4879,24 @@
       "anchor_adopted": false,
       "cbsa": "47940",
       "city_name": "Waterloo",
-      "limitations": [],
-      "observations": [],
+      "limitations": [
+        "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and complete connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, a reference-scenario evaluation or a revalidation of historical statements. Embedded maps, driveway images and dynamic application state have not been visually audited."
+      ],
+      "observations": [
+        "The official City Clerk page identifies City Hall at 715 Mulberry Street, Waterloo, Iowa 50703, and gives weekday office service hours. It describes the clerk\u2019s administrative records and permit responsibilities.",
+        "This retains municipal contact context. Office hours and a postal building address are not reviewed car-entry hours or a surveyed driveway. Waterloo remains separate from Cedar Falls within their shared metro."
+      ],
       "principal_city_id": "1982425",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-08",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "direct_http",
+      "source_kind": "municipal_facility_location",
+      "source_path": "docs/research/iowa-principal-city-sources/waterloo.json",
+      "source_sha256": "2a6fd216a02b70b76b70557a3f28e76d815628cfb33fe84a6474bf21e6d4e76a",
       "state": "IA",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "context_retained",
+      "url": "https://www.cityofwaterlooiowa.com/government/city_clerks/index.php"
     },
     {
       "access_review_status": "unresolved",
@@ -4858,18 +4904,22 @@
       "anchor_adopted": false,
       "cbsa": "19780",
       "city_name": "West Des Moines",
-      "limitations": [],
+      "limitations": [
+        "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and complete connector costs remain independently unverified. No anchor or connector approval.",
+        "Capture date is not a field review, a reference-scenario evaluation or a revalidation of historical statements. Embedded maps, driveway images and dynamic application state have not been visually audited.",
+        "The selected official publication returned HTTP 403. No quote, observation or search-result text is promoted into inspected evidence. The retrieval gap is not a finding that vehicle access is unavailable."
+      ],
       "observations": [],
       "principal_city_id": "1983910",
-      "recorded_at_utc": null,
+      "recorded_at_utc": "2026-11-08",
       "release_eligible": false,
-      "retrieval_method": null,
-      "source_kind": null,
-      "source_path": null,
-      "source_sha256": null,
+      "retrieval_method": "unavailable",
+      "source_kind": "municipal_parking_guidance",
+      "source_path": "docs/research/iowa-principal-city-sources/west-des-moines.json",
+      "source_sha256": "b9c8b8084e1de19f23275170aef5930f43297bdc8171d7f4198a90305613b50f",
       "state": "IA",
-      "status": "not_recorded_here",
-      "url": null
+      "status": "selected_publication_unavailable",
+      "url": "https://www.wdm.iowa.gov/government/parks-recreation/facilities/jamie-hurd-amphitheater"
     },
     {
       "access_review_status": "unresolved",
@@ -13662,9 +13712,9 @@
   ],
   "connectors_approved": 0,
   "counts": {
-    "context_retained": 67,
-    "not_recorded_here": 623,
-    "selected_publication_unavailable": 8
+    "context_retained": 74,
+    "not_recorded_here": 614,
+    "selected_publication_unavailable": 10
   },
   "input_sha256": {
     "docs/research/arizona-principal-city-sources/casa-grande.json": "e9d81166b48a814782c5b1c89924be8afcdc9018ac0d789a5a7cbdb0f9132c6d",
@@ -13706,6 +13756,16 @@
     "docs/research/colorado-principal-city-sources/loveland.json": "da7ad13e43fdc9666346234f9c18a77a30de7049132a67d15ace18b204b8a4c6",
     "docs/research/colorado-principal-city-sources/manifest.json": "e5ca7b060005c83155f36f7150acc4dc78a16ee0537049055f4b35aa748e98a0",
     "docs/research/connector-reviews/denver-union-station-proposal.json": "a4659ca41fff778ae89bfb884d296a99d470557cd53b106efec5ee7dbd3bb2d9",
+    "docs/research/iowa-principal-city-sources/ames.json": "317ac05de0cc61e1735899c488b0b7f00279f6bbdffb2cdf9f473ccdab32a213",
+    "docs/research/iowa-principal-city-sources/cedar-falls.json": "a25e856567cf2b45a99c4c85709d47b021406c10d7320d006845d0d910d358a8",
+    "docs/research/iowa-principal-city-sources/cedar-rapids.json": "2cf5c15aa81b6779b1fe177ca52da9839958de8ce2eb248890db297f980166e6",
+    "docs/research/iowa-principal-city-sources/davenport.json": "43e8d945134524b87b4b013a65f7bfe86fe23ed5cb9605b7d307a252192bb1bc",
+    "docs/research/iowa-principal-city-sources/des-moines.json": "6a00bde6df174eaca92a16efefa0a613077a9266398cd8016d174dfbe92fa6e5",
+    "docs/research/iowa-principal-city-sources/iowa-city.json": "274a447a3755663cfe55516b899ff08fa922a92c7d92be7659b72b55a51dc739",
+    "docs/research/iowa-principal-city-sources/manifest.json": "3b2a1881d2e0a76b08651e4dba86782cd716c9a36c70d6853a3a44be4e3d93d3",
+    "docs/research/iowa-principal-city-sources/sioux-city.json": "34763338c9f14c40ddd7971c6af2e787dc275955920bc858400101b617b842f2",
+    "docs/research/iowa-principal-city-sources/waterloo.json": "2a6fd216a02b70b76b70557a3f28e76d815628cfb33fe84a6474bf21e6d4e76a",
+    "docs/research/iowa-principal-city-sources/west-des-moines.json": "b9c8b8084e1de19f23275170aef5930f43297bdc8171d7f4198a90305613b50f",
     "docs/research/kansas-principal-city-sources/kansas-city.json": "d53e3200dfeae5bba112f43ee7bff448c029f16288d9738127ae717c5a099bf8",
     "docs/research/kansas-principal-city-sources/lawrence.json": "422e586dbd588c0a3f8871925369125063601bf2e390cb3d28ba62d454d3311c",
     "docs/research/kansas-principal-city-sources/lenexa.json": "82c6e337c0c12965d3e94727129a96909e417d349110841d5b0a293a1a5a43cb",
@@ -13761,6 +13821,7 @@
     "scripts/arkansas_principal_city_source_screen.py": "ffb70c40a35cdd6c90b5798341001c22c5bb26e64512294ce0beb97b71b43b4a",
     "scripts/colorado_principal_city_source_screen.py": "5a8266ca0f5d5e860e4b69f2b77536c7f392f43a58734b482d9b038e8b937cf9",
     "scripts/colorado_reviewed_connectors.json": "cbac5c424e0c840a95de00ddf1f77a5627d35543b2d97a524222908590c62d38",
+    "scripts/iowa_principal_city_source_screen.py": "435c15546ba3e2560c0d213ae123e98a9548acf890df7972041da79a4fff0c1b",
     "scripts/kansas_principal_city_source_screen.py": "c0235c1d22cf68dabaaee4c44c014851b77edb1fb78b5836ef018133c0f0f4eb",
     "scripts/metro_principal_city_inventory.py": "cd1e6074b0698433681ee6f5bc41b98c45dbcc49bac2f41e373fcce9aa375a8e",
     "scripts/missouri_principal_city_source_screen.py": "8b51356e6e2124b5856b03896bad815888521688422e41480196ff78d9509681",
@@ -13769,13 +13830,13 @@
     "scripts/nevada_principal_city_source_screen.py": "fbf1e8e9e2532bb8006b872a4e3a05349024310df87007327f37bee5aed0e987",
     "scripts/oklahoma_principal_city_source_screen.py": "76c671aea851f5333ea549918a0e38d6c97a3d01e20dde83348dc5d9ec1c0a27",
     "scripts/principal_city_source_screen.py": "ae2cb4d19c4f95c9a5be92918fc0f0e41cd47d7b187bf176e60ac9e6cdca79e4",
-    "scripts/principal_city_source_work.py": "733942ea79f42b52882f894de37a95d659d7756ab95e2968cb4c722970a7345e",
+    "scripts/principal_city_source_work.py": "fc28e7deb78b3bc2323c3e4e1204f6926f69939c0af8ed456e3c8e93412dbe37",
     "scripts/utah_principal_city_source_screen.py": "8dd836ca3b07af78b9be9546aec15c34cabad1d4db85b1f493b265992a5814ed",
     "scripts/wyoming_principal_city_source_screen.py": "e95bdb9d93b7983401e0becb98e07d69e6b7a2be3531e7d9a635a58aaabc2d5e"
   },
   "membership_count": 698,
   "metro_count": 367,
-  "recorded_memberships": 75,
+  "recorded_memberships": 84,
   "release_eligible": false,
   "schema": "principal-city-source-work-v1",
   "scope": "Principal-city state membership, distinct from the state containing a Census representative point.",
@@ -13948,9 +14009,9 @@
     {
       "approved_anchors": 0,
       "counts": {
-        "context_retained": 0,
-        "not_recorded_here": 9,
-        "selected_publication_unavailable": 0
+        "context_retained": 7,
+        "not_recorded_here": 0,
+        "selected_publication_unavailable": 2
       },
       "memberships": 9,
       "release_eligible": false,

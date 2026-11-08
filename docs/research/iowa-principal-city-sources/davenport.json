@@ -1,0 +1,38 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-11-08",
+  "cbsa": "19340",
+  "city_name": "Davenport",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-11-08",
+    "final_url": "https://www.davenportiowa.com/services/public_works/parking/harrison_st_parking_ramp",
+    "http_status": 200,
+    "response_bytes": 117518,
+    "response_sha256": "f7aeec86701b7af74c1b32ba87f7f7f54b09a4e1142455b9d540c2a07ffe24f5",
+    "url": "https://www.davenportiowa.com/services/public_works/parking/harrison_st_parking_ramp"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and complete connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review, a reference-scenario evaluation or a revalidation of historical statements. Embedded maps, driveway images and dynamic application state have not been visually audited."
+  ],
+  "observations": [
+    "The city identifies Harrison Street Ramp at 202 Harrison Street and describes prepaid short-term parking, payment by plate at a station or app, and separate signed, unassigned and downtown-resident monthly arrangements.",
+    "Payment options, a resident rate and a facility address do not establish unrestricted use or a surveyed drivable connector. No booth attendant is described; that does not verify an ungated or continuously usable entrance."
+  ],
+  "principal_city_id": "1919000",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "monthly_resident_rate_is_unrestricted_parking": false,
+    "prepayment_is_connector_access_evidence": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and limited factual observations only. Response fingerprints identify external bytes not retained in this repository and cannot be reconstructed from the derived record. Raw HTML/PDF, blocked error bodies, application state, private source archives and environment configuration omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "Short term parking is pre-pay.",
+  "source_http_status": 200,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.davenportiowa.com/services/public_works/parking/harrison_st_parking_ramp"
+}

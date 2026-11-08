@@ -1,0 +1,38 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-11-08",
+  "cbsa": "43580",
+  "city_name": "Sioux City",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-11-08",
+    "final_url": "https://www.sioux-city.org/564/Parking-Skywalks",
+    "http_status": 200,
+    "response_bytes": 100125,
+    "response_sha256": "bc5ec17d51c7a09aa1414845a577adb2986f0d1dba043506afc67ec5a9c924f5",
+    "url": "https://www.sioux-city.org/564/Parking-Skywalks"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and complete connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review, a reference-scenario evaluation or a revalidation of historical statements. Embedded maps, driveway images and dynamic application state have not been visually audited."
+  ],
+  "observations": [
+    "The city lists four municipal downtown ramps: Discovery, Heritage, Martin Luther King Jr. and Rivers Landing. It distinguishes weekday meter enforcement from evening/weekend payment periods and weekend ramp charging policy.",
+    "Parking and skywalk information, including a free period, is not permission for a private car to use an arbitrary path or a verified vehicle entry. No skywalk is treated as a motor connector."
+  ],
+  "principal_city_id": "1973335",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "free_periods_are_unrestricted_car_entry": false,
+    "skywalk_is_motor_vehicle_connector": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and limited factual observations only. Response fingerprints identify external bytes not retained in this repository and cannot be reconstructed from the derived record. Raw HTML/PDF, blocked error bodies, application state, private source archives and environment configuration omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "free beginning at 7 pm on Friday until 5 am on Monday morning.",
+  "source_http_status": 200,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.sioux-city.org/564/Parking-Skywalks"
+}
