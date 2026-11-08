@@ -67,3 +67,22 @@ reviewed compatible region assets and UI validation. Zero connectors are approve
 no anchors are adopted, and the public straight-line map and older inspector views
 remain untouched. Raw extracts, private archives and environment configuration are
 not included in this artifact. No additional metro is routed by this contract.
+
+## Fresh original-source replay
+
+The historical parent and protected-probe workflows install the same exact
+four-package runtime from `graph-runtime-requirements.txt` and verify all 36
+historical graph-code hashes and package versions before source recovery.
+The parent workflow rebuilds from eight originals and compares every one of its
+2,376 costs, including exact native replay legs and shared budgets, against the
+retained parent report. The protected-probe workflow independently rebuilds its
+own temporary graph before evaluating the additional sample and auditing its
+results against the retained parent. Derived graphs are not restored from
+another execution. Neither workflow writes the source archive or approval ledger.
+
+The prior parent report records a peak of 8,964,968 KiB of process RSS. That
+observed peak exceeds an 8 GiB workspace limit; a local rebuild requires adequate
+memory headroom. Matching source bytes or package versions alone is not a reason
+to start a rebuild that exceeds the available resource budget. These historical
+replays preserve the original static graph model; they do not apply the newer
+fixed-departure scenario or establish road-tab readiness.
