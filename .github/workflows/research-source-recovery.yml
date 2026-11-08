@@ -18,6 +18,7 @@ on:
         default: prime-original-cache
         options:
           - prime-original-cache
+          - prime-eight-original-cache
           - restore-nevada
 permissions:
   contents: read
@@ -42,22 +43,30 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
+      # A writer identity can read unpublished draft assets. Recovery uses GET
+      # only; originals go to the existing cache, never an artifact or release.
       contents: write
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       - id: identity
-        name: Derive cache identity from the six exact input hashes
+        name: Derive cache identity from the selected exact original inputs
+        env:
+          RESEARCH_RECOVERY_PURPOSE: ${{ inputs.purpose }}
         run: |
           python - <<'PY'
           import json,os,sys
           from pathlib import Path
           sys.path.insert(0,'scripts')
-          from research_source_cache import cache_key,MANIFEST
+          from research_source_cache import cache_key,MANIFEST,SOURCE_SETS
+          scope='eight' if os.environ['RESEARCH_RECOVERY_PURPOSE']=='prime-eight-original-cache' else 'six'
           with Path(os.environ['GITHUB_OUTPUT']).open('a') as f:
-              f.write('key='+cache_key(json.loads(MANIFEST.read_text()))+'\n')
+              f.write('key='+cache_key(json.loads(MANIFEST.read_text()),scope=scope)+'\n')
+              f.write('sources='+' '.join(SOURCE_SETS[scope])+'\n')
           PY
       - uses: actions/cache/restore@v4
         id: original-cache
@@ -67,9 +76,10 @@ jobs:
       - name: Recover and verify each original; never publish a source release
         env:
           GH_TOKEN: ${{ github.token }}
+          RESEARCH_SOURCE_NAMES: ${{ steps.identity.outputs.sources }}
         run: |
-          for state in colorado new-mexico arizona utah oklahoma kansas; do
-            python scripts/fetch_research_source.py --source "$state.osm.pbf" --output "local-data/$state.osm.pbf"
+          for source in $RESEARCH_SOURCE_NAMES; do
+            python scripts/fetch_research_source.py --source "$source" --output "local-data/$source"
           done
       - uses: actions/cache/save@v4
         if: steps.original-cache.outputs.cache-hit != 'true'
