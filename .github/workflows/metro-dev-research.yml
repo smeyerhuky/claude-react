@@ -2,6 +2,9 @@ name: Metro development research inspector
 on:
   pull_request:
     paths:
+      - 'scripts/*northern_detour*'
+      - 'docs/research/northern-detour-explorer/**'
+      - 'docs/research/northern-local-detours/**'
       - 'scripts/build_native_query_explorer.py'
       - 'scripts/test_native_query_explorer.py'
       - 'scripts/check_native_query_explorer.cjs'
@@ -127,6 +130,9 @@ jobs:
           cmp /tmp/native-directional-bounds.html src/research/metro-native-directional-bounds.html
           python scripts/road_reference_scenario.py --output /tmp/reference-scenario.json
           cmp /tmp/reference-scenario.json src/research/metro-reference-scenario.json
+          python -m unittest discover -s scripts -p test_northern_detour_explorer.py -v
+          python scripts/build_northern_detour_explorer.py --output /tmp/northern-detours.html
+          cmp /tmp/northern-detours.html src/research/metro-northern-detours.html
           python scripts/las_vegas_ui_checkpoint.py --check-frozen
           python -m unittest discover -s scripts -p 'test_las_vegas_ui_checkpoint.py' -v
           python scripts/build_las_vegas_probe_explorer.py --output /tmp/las-vegas.html
@@ -156,6 +162,7 @@ jobs:
           hashes=[json.loads(Path('docs/research/census-33-source-checkpoint/manifest.json').read_text())['baseline_sha256'],json.loads(Path('docs/research/denver-waypoint-hypothesis/manifest.json').read_text())['report_sha256'],json.loads(Path('docs/research/census-26-source-checkpoint/manifest.json').read_text())['baseline_sha256'],json.loads(Path('docs/research/census-31-source-checkpoint/manifest.json').read_text())['baseline_sha256'],json.loads(Path('docs/research/census-32-source-checkpoint/manifest.json').read_text())['baseline_sha256']]
           markers=[json.loads(Path('src/research/metro-reference-scenario.json').read_text())['scenario_sha256'],'Mixed road maneuver histories','way:9680890:full_approach','Declared road-model kernel','reference-declared-graph-checkpoint-v1','Principal-city source work inventory','principal-city-source-work-v1','Planned road-model assumptions','Inspect road research (dev)','Road research inspector','MetroRoadResearchPanel','Metro competitor investigation inventory',*hashes]
           markers += ['Fort Collins directional query bounds','native-core-directional-inspector-v1',json.loads(Path('docs/research/fort-collins-bidirectional-query-bounds/report.json').read_text())['source_context_sha256']]
+          markers += ['Inspect the supported detours','northern-detour-offline-explorer-v1',json.loads(Path('docs/research/northern-detour-explorer/manifest.json').read_text())['geometry_sha256']]
           for path in Path('dist').rglob('*.js'):
               text=path.read_text()
               assert not any(marker in text for marker in markers),str(path)
@@ -172,9 +179,17 @@ jobs:
         run: |
           mkdir -p inspector-artifact
           NODE_PATH="$RUNNER_TEMP/metro-inspector-driver/node_modules" node scripts/check_native_query_explorer.cjs src/research/metro-native-directional-bounds.html inspector-artifact/native-directional-standalone.png
+      - name: Check all forty northern metric witnesses and native geometry offline
+        run: |
+          mkdir -p inspector-artifact
+          NODE_PATH="$RUNNER_TEMP/metro-inspector-driver/node_modules" node scripts/check_northern_detour_explorer.cjs src/research/metro-northern-detours.html inspector-artifact/northern-detours-standalone.png
       - name: Retain the public standalone source-work explorer and frozen report
         run: |
           mkdir -p inspector-artifact
+          cp src/research/metro-northern-detours.html inspector-artifact/northern-detours.html
+          cp docs/research/northern-local-detours/report.json inspector-artifact/northern-detours-report.json
+          cp docs/research/northern-detour-explorer/geometry.json inspector-artifact/northern-detours-geometry.json
+          cp docs/research/northern-detour-explorer/manifest.json inspector-artifact/northern-detours-manifest.json
           cp src/research/metro-principal-sources.html inspector-artifact/principal-city-source-work.html
           cp src/research/metro-reference-kernel.html inspector-artifact/reference-kernel.html
           cp docs/research/reference-declared-graph/report.json inspector-artifact/reference-kernel-report.json

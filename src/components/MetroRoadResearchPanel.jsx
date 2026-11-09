@@ -10,6 +10,7 @@ import principalSourcesHtml from '../research/metro-principal-sources.html?raw'
 import kernelHtml from '../research/metro-reference-kernel.html?raw'
 import mixedManeuverHtml from '../research/metro-mixed-maneuvers.html?raw'
 import nativeBoundsHtml from '../research/metro-native-directional-bounds.html?raw'
+import northernDetoursHtml from '../research/metro-northern-detours.html?raw'
 
 const views = {
   probes: { title: 'Census road-node research experiment', html: probeHtml },
@@ -22,6 +23,7 @@ const views = {
   kernel: { title: 'Declared road-model kernel', html: kernelHtml },
   mixedManeuvers: { title: 'Mixed road maneuver histories', html: mixedManeuverHtml },
   nativeBounds: { title: 'Fort Collins native directional bounds', html: nativeBoundsHtml },
+  northernDetours: { title: 'Northern Colorado road witnesses', html: northernDetoursHtml },
 }
 
 export default function MetroRoadResearchPanel() {
@@ -45,7 +47,7 @@ export default function MetroRoadResearchPanel() {
         <p>Frozen research snapshots with unapproved road leads and incomplete source work. These views do not follow the map’s population threshold, uploaded data or selected metro. They do not approve road regions or vehicle access.</p>
         <details data-testid="metro-reference-scenario" data-scenario-sha256={referenceScenario.scenario_sha256} className="rounded border border-slate-300 bg-slate-50 p-2">
           <summary className="cursor-pointer font-medium">Planned road-model assumptions</summary>
-          <p className="mt-2 font-medium">Not applied to the older Census cost experiments. The declared-kernel and native-node bound views use this fixed scenario.</p>
+          <p className="mt-2 font-medium">Not applied to the older Census cost experiments. The declared-kernel, native-node bound and northern road-witness views use this fixed scenario.</p>
           <p className="mt-1">{referenceScenario.planned_info_tooltip}</p>
         </details>
         <label className="flex flex-wrap items-center gap-2">Research experiment
@@ -60,6 +62,7 @@ export default function MetroRoadResearchPanel() {
             <option value="kernel">Declared road-model kernel — two ways, unverified access</option>
             <option value="mixedManeuvers">Mixed road maneuver histories — unverified access</option>
             <option value="nativeBounds">Fort Collins native directional bounds — conditional model</option>
+            <option value="northernDetours">Northern Colorado road witnesses — 40 finite research results</option>
           </select>
         </label>
       </div>
