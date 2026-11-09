@@ -41,6 +41,10 @@ def encoded(value):
     return (json.dumps(value, sort_keys=True, indent=2, allow_nan=False)+'\n').encode()
 
 
+def geometry_encoded(value):
+    return (json.dumps(value, sort_keys=True, separators=(',', ':'), allow_nan=False)+'\n').encode()
+
+
 def source_reader(path, source):
     import shapefile
     from pyproj import CRS
@@ -106,10 +110,10 @@ def derive(original_dir):
                     bounds_lonlat=BOUNDS, selected_county_geoid='08069',
                     selection=SELECTION,
                     source_water_records=2300, selected_water_records=279,
-                    derived_sha256={'land.geojson': hashlib.sha256(encoded(land)).hexdigest(),
-                                    'water.geojson': hashlib.sha256(encoded(water)).hexdigest()},
+                    derived_sha256={'land.geojson': hashlib.sha256(geometry_encoded(land)).hexdigest(),
+                                    'water.geojson': hashlib.sha256(geometry_encoded(water)).hexdigest()},
                     input_completeness_certified=False, release_eligible=False)
-    return {'land.geojson': encoded(land), 'water.geojson': encoded(water), 'manifest.json': encoded(manifest)}
+    return {'land.geojson': geometry_encoded(land), 'water.geojson': geometry_encoded(water), 'manifest.json': encoded(manifest)}
 
 
 def audit(root=OUTPUT):

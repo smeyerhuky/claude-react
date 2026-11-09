@@ -14,8 +14,8 @@
     "stated_accuracy_m": 4.0
   },
   "derived_sha256": {
-    "land.geojson": "7fdf1652c141de027561116a184480ca349081c0cb60028fade2b358eea0b63d",
-    "water.geojson": "572e14cf87551fbc04d57d38285c41fab89d5ac15d9b49690118ffdba2cf8c38"
+    "land.geojson": "9215644226a822ce67d87fd16b1d2db6a49e2329907688c7e630ae8fc43715e6",
+    "water.geojson": "f876bf45bf700b29a4e73c2837e21b450fe54e3cd5987d4a6db9ba8842d4a2b6"
   },
   "input_completeness_certified": false,
   "publisher": "U.S. Census Bureau",
