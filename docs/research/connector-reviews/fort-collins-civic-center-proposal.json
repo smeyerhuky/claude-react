@@ -22,11 +22,12 @@
       "status": "unknown"
     },
     "direction_and_turns": {
-      "reason": "Old null city fields are not current directions; raw one-way streets and conditional maneuver require separate evaluation and independent review.",
+      "reason": "The old city null fields do not establish direction. Newly captured CDOT highway geometrics in the bounded Fort Collins context explicitly label 18 records Two-Way with UPDATEYR 2025; nearby local-road numeric OPERATION codes have no retained domain and remain undecoded. This is independent corridor context, not a match of the Civic Center garage entry/exit, complete turn permissions or proof at the fixed reference instant. Raw one-way streets and the conditional maneuver still require full path-specific review.",
       "sources": [
         "streets-context",
         "raw-osm-context",
-        "report"
+        "report",
+        "cdot-road-context"
       ],
       "status": "unknown"
     },
@@ -143,6 +144,50 @@
         "connector_costs_included"
       ],
       "source": "report"
+    },
+    {
+      "equals": 18,
+      "keys": [
+        "cities",
+        "fort-collins",
+        "queries",
+        "12",
+        "operation_histogram",
+        "Two-Way"
+      ],
+      "source": "cdot-road-context"
+    },
+    {
+      "equals": 14,
+      "keys": [
+        "cities",
+        "loveland",
+        "queries",
+        "12",
+        "operation_histogram",
+        "One-Way"
+      ],
+      "source": "cdot-road-context"
+    },
+    {
+      "equals": 3,
+      "keys": [
+        "cities",
+        "greeley",
+        "queries",
+        "12",
+        "operation_histogram",
+        "One-Way"
+      ],
+      "source": "cdot-road-context"
+    },
+    {
+      "equals": false,
+      "keys": [
+        "interpretation",
+        "current_conditions_certified"
+      ],
+      "source": "cdot-road-context"
     }
   ],
   "origin_policy": "urban-access-anchor-v1",
@@ -151,7 +196,7 @@
   "reviewer": {
     "identity": "OpenAI Codex (AI source/context review)",
     "kind": "ai",
-    "procedure": "Inspect primary municipal/event publications; visually inspect the retained municipal parking PDF page 2 and original city-published exterior photo; compare municipal street identity/date/null fields against exact original raw OSM ways, all selected vertex-node tags and touching restrictions. Treat AI interpretation, tags and CI as separate from independent physical/legal certification. Do not adopt an anchor, invent a connector, replace the native Census origin or claim an independent approver."
+    "procedure": "Inspect primary municipal/event publications; visually inspect the retained municipal parking PDF page 2 and original city-published exterior photo; compare municipal street identity/date/null fields against exact original raw OSM ways, all selected vertex-node tags and touching restrictions. Treat AI interpretation, tags and CI as separate from independent physical/legal certification. Do not adopt an anchor, invent a connector, replace the native Census origin or claim an independent approver. November 9 follow-up: inspect the government-hosted CDOT inventory, compare bounded feature OBJECTIDs to separate IDs-only queries, retain explicit highway operation labels and 2025 update fields, and distinguish undecoded local-road codes/access categories from legal full-path permission."
   },
   "schema": "ai-connector-review-v1",
   "sources": [
@@ -196,6 +241,13 @@
       "path": "docs/research/fort-collins-entry-context/photo-observation.json",
       "provenance": "AI visual observations of an undated city-published image, with original URL/SHA; AI observations are not an independent physical audit.",
       "sha256": "f4f41cfa3d81f2dcb480571e1f58e9cef237801759ef9a6d539ffa734807097c"
+    },
+    {
+      "id": "cdot-road-context",
+      "kind": "independent_access_record",
+      "path": "docs/research/cdot-northern-road-context/context.json",
+      "provenance": "Selected factual inventory observations from CDOT government-hosted highway, geometrics and local-road layers. Nine bounded feature queries have independently matched OBJECTID inventories; primary response receipts retained. Not a garage entry survey, grade certificate, complete turn inventory or permission approval.",
+      "sha256": "1310513b30d89048fd19120a350c5692ae497b7c5363fdcb0e6f54d0af1d09b0"
     }
   ]
 }
