@@ -1,10 +1,24 @@
 # State work queue toward the public road-distance/time tab
 
-This queue covers all 50 states, DC and Puerto Rico. It uses all 367 qualifying
-Census identities, including AK/HI/PR and the eight absent from the public CSV.
+The **current public map target is the contiguous United States**. Alaska and
+Hawaii are outside that displayed extent; the existing renderer and CSV filter
+also exclude Puerto Rico. There are **359 qualifying metro identities in that
+target: 33 routed research leads and 326 still unrouted**. These are source
+counts, not completed or approved urban anchors. Zero states are public-ready
+and zero connectors are independently approved.
+
+The separate nationwide audit retains all 367 qualifying Census identities
+across 50 states, DC and Puerto Rico, with 334 unrouted. Its eight additional
+identities (one AK, two HI, five PR) are also the eight absent from the current
+public CSV. They remain inspectable audit records; completing them is **not a
+prerequisite for the displayed-map road tab**. `report.json` records
+`public_map_scope` totals and each state's `in_current_public_map_scope` flag
+separately from the unchanged nationwide totals. A target boundary alone never
+proves that an exterior route or competing metro can be ignored; #138 still
+requires supported-extent coverage and relevant competition evidence.
+
 The current audited 33-source, 19-sample checkpoint contains 2,508 costs:
-2,356 finite, 152 modeled NoData. **334 qualifying competitors are unrouted;
-zero states are public-ready and zero connectors are independently approved.**
+2,356 finite, 152 modeled NoData. No historical cost or public geometry changes.
 
 State grouping uses the retained native NAD83 representative-point membership.
 It is a work assignment, not CBSA extent, extract ownership, route closure or
@@ -12,6 +26,7 @@ metro destination policy. In particular Washington's native point is in Virginia
 DC's zero native-point count is not a vacuous coverage certificate. Cross-border
 metros and routes leaving/re-entering a state remain in the full competition.
 All source identities remain explicit; nothing is excluded by scheduling rank.
+Off-map jurisdiction rows retain their audit rank, not a displayed-map work obligation.
 
 `report.json` reproduces against the current audited costs, native membership,
 complete domains, retained lead scans and all AI review packets. Input digests
@@ -22,7 +37,7 @@ Neither a retained lead scan nor a positive AI finding is an approved connector.
 ## Execution order
 
 Start with Colorado as the existing first public beta target, then New Mexico,
-Arizona, Utah, Oklahoma, Kansas, Wyoming and Nevada. Remaining jurisdictions are
+Arizona, Utah, Oklahoma, Kansas, Wyoming and Nevada. Remaining in-scope jurisdictions are
 scheduled by their earliest still-unrouted competitor in the queue recomputed
 against the latest 19-sample baseline. That distance is only a scheduling
 heuristic, never an admissible route bound or exclusion proof. Advance unblocked
