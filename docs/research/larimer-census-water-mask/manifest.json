@@ -1,0 +1,45 @@
+{
+  "bounds_lonlat": [
+    -105.2,
+    40.5,
+    -105.0,
+    40.65
+  ],
+  "coordinate_operation": {
+    "accuracy_is_error_bound": false,
+    "name": "NAD83 to WGS 84 (1)",
+    "operation": "EPSG:1188",
+    "output_crs": "EPSG:4326",
+    "source_crs": "EPSG:4269",
+    "stated_accuracy_m": 4.0
+  },
+  "derived_sha256": {
+    "land.geojson": "7fdf1652c141de027561116a184480ca349081c0cb60028fade2b358eea0b63d",
+    "water.geojson": "572e14cf87551fbc04d57d38285c41fab89d5ac15d9b49690118ffdba2cf8c38"
+  },
+  "input_completeness_certified": false,
+  "publisher": "U.S. Census Bureau",
+  "release_eligible": false,
+  "schema": "larimer-census-mask-inputs-v1",
+  "selected_county_geoid": "08069",
+  "selected_water_records": 279,
+  "selection": "all-source-water-polygons-intersecting-closed-window; complete geometry retained; no clipping or simplification",
+  "source_water_records": 2300,
+  "sources": {
+    "county": {
+      "name": "cb_2025_us_county_500k.zip",
+      "records": 3235,
+      "sha256": "aa976c00b181939755d0da757f4c7c2dc0103c3b3b4530fb2a91c2bb62fc777c",
+      "size_bytes": 11758981,
+      "url": "https://www2.census.gov/geo/tiger/GENZ2025/shp/cb_2025_us_county_500k.zip"
+    },
+    "water": {
+      "name": "tl_2025_08069_areawater.zip",
+      "records": 2300,
+      "sha256": "6cb0e04c3fa2282e74f1fcc9c6bd6f279e98f0780fe0c0ed1e22052d8014703b",
+      "size_bytes": 1049989,
+      "url": "https://www2.census.gov/geo/tiger/TIGER2025/AREAWATER/tl_2025_08069_areawater.zip"
+    }
+  },
+  "vintage": 2025
+}
