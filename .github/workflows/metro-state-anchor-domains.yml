@@ -1,0 +1,51 @@
+name: Displayed metro hierarchical location domains
+on:
+  pull_request:
+    paths:
+      - 'scripts/*metro_state_anchor_domains.py'
+      - 'scripts/colorado_principal_city_domains.py'
+      - 'scripts/larimer_census_water_mask.py'
+      - 'scripts/metro_principal_city_inventory.py'
+      - 'docs/research/metro-state-anchor-domains/**'
+      - 'docs/research/colorado-principal-city-domains/**'
+      - 'docs/research/principal-city-inventory/**'
+      - '.github/workflows/metro-state-anchor-domains.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-sources-and-complete-scope-replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'shapely>=2,<3' 'pyshp>=2.3,<3' 'pyproj>=3.7,<4' 'matplotlib>=3.9,<4' 'openpyxl==3.1.5'
+      - run: python -m unittest discover -s scripts -p test_metro_state_anchor_domains.py -v
+      - name: Preserve unknown anchors and existing scope checks
+        run: |
+          python -m unittest discover -s scripts -p test_metro_anchor_set_contract.py -v
+          python -m unittest discover -s scripts -p test_metro_state_work_queue.py -v
+          python scripts/metro_state_work_queue.py --check docs/research/state-release-work-queue/report.json
+      - name: Download four pinned public Census originals
+        run: |
+          mkdir -p "$RUNNER_TEMP/metro-domain-originals"
+          curl -fLsS --retry 2 --max-time 90 -o "$RUNNER_TEMP/metro-domain-originals/tl_2025_us_state.zip" https://www2.census.gov/geo/tiger/TIGER2025/STATE/tl_2025_us_state.zip
+          curl -fLsS --retry 2 --max-time 90 -o "$RUNNER_TEMP/metro-domain-originals/tl_2025_08_place.zip" https://www2.census.gov/geo/tiger/TIGER2025/PLACE/tl_2025_08_place.zip
+          curl -fLsS --retry 2 --max-time 90 -o "$RUNNER_TEMP/metro-domain-originals/tl_2025_31_place.zip" https://www2.census.gov/geo/tiger/TIGER2025/PLACE/tl_2025_31_place.zip
+          curl -fLsS --retry 2 --max-time 90 -o "$RUNNER_TEMP/metro-domain-originals/tl_2025_56_place.zip" https://www2.census.gov/geo/tiger/TIGER2025/PLACE/tl_2025_56_place.zip
+      - name: Verify originals and reproduce all retained envelopes
+        run: python scripts/metro_state_anchor_domains.py --original-dir "$RUNNER_TEMP/metro-domain-originals"
+      - name: Stage derived records and conditional-budget figure only
+        run: |
+          mkdir -p /tmp/metro-state-domain-artifact
+          cp docs/research/metro-state-anchor-domains/* /tmp/metro-state-domain-artifact/
+          python scripts/render_metro_state_anchor_domains.py /tmp/metro-state-domain-artifact/conditional-budgets.png
+      - uses: actions/upload-artifact@v6
+        with:
+          name: metro-state-anchor-domains
+          path: /tmp/metro-state-domain-artifact/
+          retention-days: 14
