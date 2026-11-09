@@ -6,7 +6,7 @@
     "name": "38th & Blake RTD Park-n-Ride driveway candidate",
     "approved": false,
     "coordinate_status": "operator_facility_point_generalized_osm_driveway_unverified",
-    "selection_reason": "Near-central Denver transit parking alternative after 10th/Osage operator record showed zero auto spaces. Does not resolve a single-anchor policy for Denver-Aurora-Centennial or supersede Union Station proposal.",
+    "selection_reason": "Near-central Denver transit parking alternative after 10th/Osage operator record showed zero auto spaces. One unadopted candidate within the user-selected nearest reviewed principal-city anchor-set policy; it neither supplies the complete reviewed set nor supersedes the Union Station proposal.",
     "modeled_road_junction_node": 176077058
   },
   "reviewer": {

@@ -30,7 +30,10 @@ gaps instead of treating already retrieved publications as unavailable.
 
 Obtain an independently locatable operator or road-authority site/entrance plan, applicable parking/vehicle-use conditions and current direction/turn/grade evidence. Match the actual directed entry and exit to the pinned road nodes; choose an explicit anchor and calculate its path length/cost. Review all five questions in the retained AI packet. Only supported findings can proceed to #137's separate, different release approver. Another name in the same AI run is not independent approval.
 
-A single Denver location also needs a documented selection decision for the multi-center Denver–Aurora–Centennial CBSA. This pilot does not silently resolve that policy by choosing the nearest lot.
+The destination policy is already chosen: nearest of a reviewed set across the
+metro's principal cities. No further user policy decision is pending here. One
+unadopted Denver candidate does not supply that complete reviewed set; see the
+[anchor-set contract](../metro-anchor-set-contract.md).
 
 ## Replay
 
