@@ -2,6 +2,10 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/*northern_urban_path_checkpoint.py'
+      - 'scripts/*road_maneuver_subset_projection.py'
+      - 'docs/research/northern-urban-paths/**'
+      - '.github/workflows/northern-urban-paths.yml'
       - 'scripts/*metro_state_anchor_domains.py'
       - 'docs/research/metro-state-anchor-domains/**'
       - '.github/workflows/metro-state-anchor-domains.yml'
