@@ -24,6 +24,12 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install -r docs/research/las-vegas-probe-extension/graph-runtime-requirements.txt
+      - name: Verify exact historical graph code and dependencies before source recovery
+        run: |
+          PYTHONPATH=scripts python - <<'PYVERIFY'
+          from las_vegas_probe_reference import verify, REFERENCE
+          verify(REFERENCE / 'retained33-source-report.json', require_current=True)
+          PYVERIFY
       - run: python -m unittest discover -s scripts -p 'test_road_transposed_probe_queries.py' -v
       - run: python -m unittest discover -s scripts -p 'test_road_boundary_label_batches.py' -v
       - id: source-identity
@@ -34,7 +40,7 @@ jobs:
           sys.path.insert(0,'scripts')
           from research_source_cache import cache_key,MANIFEST
           with Path(os.environ['GITHUB_OUTPUT']).open('a') as handle:
-              handle.write('key='+cache_key(json.loads(MANIFEST.read_text()))+'\n')
+              handle.write('key='+cache_key(json.loads(MANIFEST.read_text()),scope='eight')+'\n')
           PYKEY
       - uses: actions/cache/restore@v4
         with:
