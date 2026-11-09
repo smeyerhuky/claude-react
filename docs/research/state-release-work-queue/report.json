@@ -14,7 +14,7 @@
     "docs/research/connector-reviews/29820-census-lead.json": "7545a9196009d0d2ba89c66d91ba8a347e606aa69df38ed38b8098b914e24e32",
     "docs/research/connector-reviews/29820-city-garage-proposal.json": "ff36d9830ba8e4e90beab7c5d120e3c734af7577825d67ef21619d07274114dd",
     "docs/research/connector-reviews/44180-cross-border-census-lead.json": "556c627b44b08c8bbfa86d5e667688ac0f39bf27d5462990555adc3e78eafb46",
-    "docs/research/connector-reviews/denver-blake-rtd-proposal.json": "697ee0a3ee9bfb91e238f976ddabbf4889af5ad30775ecb8edd87bedef96231b",
+    "docs/research/connector-reviews/denver-blake-rtd-proposal.json": "7d751703a323760bf4145ba51031cfbf5ab12ac8880c4a8913a7596ce3bc9ff8",
     "docs/research/connector-reviews/denver-union-station-proposal.json": "a4659ca41fff778ae89bfb884d296a99d470557cd53b106efec5ee7dbd3bb2d9",
     "docs/research/connector-reviews/fort-collins-civic-center-proposal.json": "8709db3555301afb21958de9ccc60ce3f37a2e7ccca510291383f289326c49eb",
     "docs/research/connector-reviews/tucson-census-lead.json": "9daa5e17d0802cb360c6ef522c2232acf0d4fb68bd69b3b6b697afe036ab7e28",
@@ -90,7 +90,7 @@
               "decision": "needs_evidence",
               "origin_policy": "urban-access-anchor-v1",
               "path": "docs/research/connector-reviews/denver-blake-rtd-proposal.json",
-              "sha256": "697ee0a3ee9bfb91e238f976ddabbf4889af5ad30775ecb8edd87bedef96231b"
+              "sha256": "7d751703a323760bf4145ba51031cfbf5ab12ac8880c4a8913a7596ce3bc9ff8"
             },
             {
               "decision": "needs_evidence",

@@ -6,13 +6,13 @@
     "name": "38th & Blake RTD Park-n-Ride driveway candidate",
     "approved": false,
     "coordinate_status": "operator_facility_point_generalized_osm_driveway_unverified",
-    "selection_reason": "Near-central Denver transit parking alternative after 10th/Osage operator record showed zero auto spaces. Does not resolve a single-anchor policy for Denver-Aurora-Centennial or supersede Union Station proposal.",
+    "selection_reason": "Near-central Denver transit parking alternative after 10th/Osage operator record showed zero auto spaces. One unadopted candidate within the user-selected nearest reviewed principal-city anchor-set policy; it neither supplies the complete reviewed set nor supersedes the Union Station proposal.",
     "modeled_road_junction_node": 176077058
   },
   "reviewer": {
     "kind": "ai",
     "identity": "Codex (OpenAI), 2026-10-29",
-    "procedure": "Inspect operator map metadata, linked facilities layer, zero-space Osage record and 200-space Blake record; compare generalized geometry with pinned Colorado OSM driveway; replay deterministic source screening and assess all five access questions. Inspect city parking/driveway capture criteria and compare exact retained polygons in WGS84 UTM zone 13; preserve absent, historical and 2D evidence limitations."
+    "procedure": "Inspect operator map metadata, linked facilities layer, zero-space Osage record and 200-space Blake record; compare generalized geometry with pinned Colorado OSM driveway; replay deterministic source screening and assess all five access questions. Inspect city parking/driveway capture criteria and compare exact retained polygons in WGS84 UTM zone 13; preserve absent, historical and 2D evidence limitations. Follow-up 2026-11-09: directly retrieve operator parking and facility publications; distinguish transit-use parking conditions from driveway-entry permission and preserve uncertainty at the fixed reference instant."
   },
   "sources": [
     {
@@ -56,6 +56,13 @@
       "sha256": "7424a66eae68409fa15380c27fa150d0b6d33bc440d8fa438e9b27e106a5a3c8",
       "kind": "routing_model",
       "provenance": "Denver city-published 2022 imagery-derived 2D parking footprints and replay comparison. Exact requests/hashes retained in city-geometry/manifest.json. Historical geometry, not current legal/grade/turn evidence."
+    },
+    {
+      "id": "operator-parking-followup",
+      "path": "docs/research/denver-rtd-anchor/parking-publication-followup.json",
+      "sha256": "628e5a9d7faa81ac534814412d831888eae719e7aab95c32744b9527f6fd2a8e",
+      "kind": "independent_access_record",
+      "provenance": "Limited observations and short quote from two directly retrieved HTTP 200 RTD publications, with source-body hashes and capture timestamps. Published parking-use terms are not surveyed driveway geometry or independent release approval."
     }
   ],
   "machine_assertions": [
@@ -118,6 +125,40 @@
         "covers_road_junction"
       ],
       "equals": false
+    },
+    {
+      "source": "operator-parking-followup",
+      "keys": [
+        "parking_page",
+        "capture",
+        "status"
+      ],
+      "equals": 200
+    },
+    {
+      "source": "operator-parking-followup",
+      "keys": [
+        "facility_page",
+        "capture",
+        "status"
+      ],
+      "equals": 200
+    },
+    {
+      "source": "operator-parking-followup",
+      "keys": [
+        "interpretation",
+        "historical_retrieval_gap_resolved"
+      ],
+      "equals": true
+    },
+    {
+      "source": "operator-parking-followup",
+      "keys": [
+        "interpretation",
+        "parking_restriction_is_driveway_entry_prohibition"
+      ],
+      "equals": false
     }
   ],
   "findings": {
@@ -135,11 +176,12 @@
     },
     "legal_motor_access": {
       "status": "unknown",
-      "reason": "RTD lists 200 auto spaces, but full parking conditions, vehicle class, hours and exact driveway rights are unresolved. Operator guidance requests returned HTTP 403; this is missing evidence, not denial of access.",
+      "reason": "RTD parking and facility publications retrieved on 2026-11-09 now establish published transit-passenger parking conditions, payment rules and an exception requiring RTD permission for parking without transit use. The prior HTTP 403 retrieval gap is resolved for these current publications. Parking restrictions do not themselves prohibit driveway entry or pickup/drop-off. Exact vehicle-path permissions, posted controls and applicability at the fixed 2026-10-28 reference instant remain unestablished; general-purpose unrestricted parking is not established.",
       "sources": [
         "operator-map",
         "operator-facilities",
-        "screen"
+        "screen",
+        "operator-parking-followup"
       ]
     },
     "same_grade": {
