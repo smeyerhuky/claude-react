@@ -28,8 +28,9 @@ nor approves the data behind its entries.
 The context contains five SHA-256 bindings: `graph_bundle_sha256`,
 `anchor_registry_sha256`, `scenario_sha256`, `metro_dataset_sha256` and
 `coverage_mask_sha256`. It also requires sorted unique `eligible_cbsa_ids`, the
-exact integer `population_threshold`, `metric`, `direction`, `units` a versioned `extent_id`, `layer_kind` and `cost_limit`. The caller must compute the eligible set from its selected
-dataset, not copy a proposed set from the asset. The exact dataset digest prevents
+exact integer `population_threshold`, `metric`, `direction`, `units`, a versioned
+`extent_id`, `layer_kind` and `cost_limit`. The caller must compute the eligible
+set from its selected dataset, not copy a proposed set from the asset. The exact dataset digest prevents
 built-in data and a changed/uploaded CSV from sharing a receipt. A CSV has no
 supported road asset merely because its place names resemble the Census data.
 
