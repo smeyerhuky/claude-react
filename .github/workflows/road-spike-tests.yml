@@ -2,6 +2,9 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/*larimer*census*mask.py'
+      - 'docs/research/larimer-census-water-mask/**'
+      - '.github/workflows/larimer-census-water-mask.yml'
       - 'scripts/research_source_cache.py'
       - 'scripts/test_research_source_cache.py'
       - '.github/workflows/research-source-recovery.yml'
