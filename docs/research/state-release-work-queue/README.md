@@ -99,3 +99,9 @@ reason to stall all other states or to invent permitted ingress.
 Run `python scripts/metro_state_work_queue.py --check docs/research/state-release-work-queue/report.json`.
 Run `python -m unittest discover -s scripts -p test_metro_state_work_queue.py -v`.
 The work queue is reproducible scheduling evidence, not the public release gate.
+
+The [browser-side asset compatibility research](../road-asset-compatibility/README.md)
+now checks exact manifest/payload bytes against an independently selected query
+context, including the dataset, eligible metro set, threshold, scenario, anchors,
+mask and directed metric. Its synthetic tests do not install a production loader,
+validate geometry or satisfy the independent access and coverage gates.
