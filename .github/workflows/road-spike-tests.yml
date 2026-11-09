@@ -2,6 +2,9 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/*metro_state_anchor_domains.py'
+      - 'docs/research/metro-state-anchor-domains/**'
+      - '.github/workflows/metro-state-anchor-domains.yml'
       - 'scripts/*colorado_principal_city_domains.py'
       - 'docs/research/colorado-principal-city-domains/**'
       - '.github/workflows/colorado-principal-city-domains.yml'
