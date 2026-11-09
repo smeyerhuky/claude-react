@@ -27,6 +27,28 @@ class StateWorkQueueTests(unittest.TestCase):
         self.assertEqual(rows['KS']['modeled_nodata_costs'], 76)
         self.assertEqual(data['states'][0]['state'], 'CO')
 
+    def test_displayed_map_scope_is_separate_from_nationwide_audit(self):
+        data = build()
+        scope = data['public_map_scope']
+        self.assertEqual(scope['excluded_jurisdictions'], ['AK', 'HI', 'PR'])
+        self.assertEqual((scope['qualifying_identities'], scope['routed_research_leads'],
+                          scope['unrouted_qualifying_identities']), (359, 33, 326))
+        rows = data['states']
+        included = {m['cbsa'] for r in rows if r['in_current_public_map_scope'] for m in r['metros']}
+        excluded = {m['cbsa'] for r in rows if not r['in_current_public_map_scope'] for m in r['metros']}
+        self.assertEqual(len(excluded), 8)
+        self.assertFalse(included & excluded)
+        # Independent current dataset checks: the public CSV identities and its
+        # renderer's existing coordinate window agree with this target today.
+        self.assertEqual(included, {r['cbsa'] for r in self.domains['domains'] if r['included_in_existing_csv']})
+        self.assertEqual(included, {r['cbsa'] for r in self.domains['domains']
+                                   if -125 <= r['native_representative_lonlat'][0] <= -66
+                                   and 24 <= r['native_representative_lonlat'][1] <= 50})
+        self.assertEqual(data['qualifying_identities'], len(included | excluded))
+        self.assertFalse(scope['release_eligible'])
+        self.assertEqual(scope['public_ready_states'], 0)
+        self.assertTrue(all(r['release_eligible'] is False for r in rows))
+
     def test_missing_duplicate_or_ambiguous_native_identity_is_rejected(self):
         for mutation in ('missing', 'duplicate', 'ambiguous', 'moved'):
             with self.subTest(mutation=mutation):

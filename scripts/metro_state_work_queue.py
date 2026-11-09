@@ -9,6 +9,7 @@ from las_vegas_ui_checkpoint import check_frozen, ROOT
 from metro_scenario_checkpoint import require
 
 STATES = 'AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY PR'.split()
+OFF_MAP_STATES = frozenset(('AK', 'HI', 'PR'))
 BETA_ORDER = 'CO NM AZ UT OK KS WY NV'.split()
 OUTPUT = ROOT / 'docs/research/state-release-work-queue'
 
@@ -47,7 +48,9 @@ def project(baseline, domains, membership, ranks, scans, packets):
     for state in sorted(STATES, key=order):
         metros = groups[state]
         unknown = [r['cbsa'] for r in metros if not r['routed_research_lead']]
-        rows.append(dict(state=state, work_order=len(rows)+1, native_point_qualifiers=len(metros),
+        rows.append(dict(state=state, work_order=len(rows)+1,
+                         in_current_public_map_scope=state not in OFF_MAP_STATES,
+                         native_point_qualifiers=len(metros),
                          routed_research_leads=sum(r['routed_research_lead'] for r in metros),
                          unrouted_cbsa_ids=unknown, modeled_nodata_costs=sum(r['modeled_nodata_costs'] for r in metros),
                          absent_public_csv_cbsa_ids=[r['cbsa'] for r in metros if not r['in_public_csv']],
@@ -55,11 +58,20 @@ def project(baseline, domains, membership, ranks, scans, packets):
                          status='blocked_on_access_coverage_and_artifact_gates',
                          next_work=('source_and_anchor_investigation' if unknown else 'independent_anchor_and_destination_access_evidence'),
                          open_release_gates=[137, 138, 139]))
-    return dict(schema='state-release-work-queue-v1', jurisdiction_scope='50 states, DC and Puerto Rico; native point grouping only',
+    target_rows = [row for row in rows if row['in_current_public_map_scope']]
+    public_map_scope = dict(
+        description='Contiguous United States; current public map target, not certified route coverage',
+        excluded_jurisdictions=sorted(OFF_MAP_STATES),
+        qualifying_identities=sum(row['native_point_qualifiers'] for row in target_rows),
+        routed_research_leads=sum(row['routed_research_leads'] for row in target_rows),
+        unrouted_qualifying_identities=sum(len(row['unrouted_cbsa_ids']) for row in target_rows),
+        public_ready_states=0, release_eligible=False,
+        warning='Off-map jurisdictions are retained for the nationwide audit and do not block the displayed-map target. This scope is not evidence to exclude an exterior route or competing metro affecting the supported extent.')
+    return dict(schema='state-release-work-queue-v1', public_map_scope=public_map_scope, jurisdiction_scope='50 states, DC and Puerto Rico; native point grouping only',
                 states=rows, qualifying_identities=367, routed_research_leads=len(modeled),
                 unrouted_qualifying_identities=len(ids-modeled), modeled_nodata_costs=baseline['unreachable_queries'],
                 public_ready_states=0, access_certified=False, release_eligible=False,
-                warning='Scheduling only. Native-point state membership is not CBSA extent, extract coverage, exterior-route closure or release approval. Empty native-state groups (including DC) are not vacuously complete. AK, HI, PR and all eight absent-public-CSV qualifiers remain explicit. No omitted competitor is excluded.')
+                warning='Scheduling only. Native-point state membership is not CBSA extent, extract coverage, exterior-route closure or release approval. Empty native-state groups (including DC) are not vacuously complete. AK, HI, PR and all eight absent-public-CSV qualifiers remain explicit in the nationwide audit, outside the current displayed-map target. Scope does not certify competitor exclusion or route closure.')
 
 
 def build():
@@ -101,4 +113,4 @@ if __name__ == '__main__':
     a = p.parse_args(); result = build()
     if a.check: require(json.loads(a.check.read_text()) == result, 'State work queue differs from retained evidence')
     if a.output: a.output.parent.mkdir(parents=True, exist_ok=True); a.output.write_text(json.dumps(result, sort_keys=True, indent=2)+'\n')
-    print(json.dumps({k: result[k] for k in ('qualifying_identities', 'routed_research_leads', 'unrouted_qualifying_identities', 'modeled_nodata_costs', 'public_ready_states')}, indent=2))
+    print(json.dumps({'public_map_scope': result['public_map_scope'], **{k: result[k] for k in ('qualifying_identities', 'routed_research_leads', 'unrouted_qualifying_identities', 'modeled_nodata_costs', 'public_ready_states')}}, indent=2))

@@ -36,6 +36,20 @@
   },
   "jurisdiction_scope": "50 states, DC and Puerto Rico; native point grouping only",
   "modeled_nodata_costs": 152,
+  "public_map_scope": {
+    "description": "Contiguous United States; current public map target, not certified route coverage",
+    "excluded_jurisdictions": [
+      "AK",
+      "HI",
+      "PR"
+    ],
+    "public_ready_states": 0,
+    "qualifying_identities": 359,
+    "release_eligible": false,
+    "routed_research_leads": 33,
+    "unrouted_qualifying_identities": 326,
+    "warning": "Off-map jurisdictions are retained for the nationwide audit and do not block the displayed-map target. This scope is not evidence to exclude an exterior route or competing metro affecting the supported extent."
+  },
   "public_ready_states": 0,
   "qualifying_identities": 367,
   "release_eligible": false,
@@ -45,6 +59,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "14500",
@@ -148,6 +163,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "10740",
@@ -204,6 +220,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "22380",
@@ -294,6 +311,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "30860",
@@ -359,6 +377,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "22900",
@@ -424,6 +443,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "29940",
@@ -487,6 +507,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "16940",
@@ -516,6 +537,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "29820",
@@ -569,6 +591,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "10180",
@@ -830,6 +853,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "17860",
@@ -941,6 +965,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "22220",
@@ -999,6 +1024,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "12540",
@@ -1270,6 +1296,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "10780",
@@ -1391,6 +1418,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "30700",
@@ -1432,6 +1460,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "16860",
@@ -1533,6 +1562,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "11180",
@@ -1614,6 +1644,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "14540",
@@ -1715,6 +1746,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "39660",
@@ -1756,6 +1788,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "14010",
@@ -1857,6 +1890,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "14260",
@@ -1918,6 +1952,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "25060",
@@ -1969,6 +2004,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "11500",
@@ -2110,6 +2146,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "14020",
@@ -2221,6 +2258,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "20260",
@@ -2302,6 +2340,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "13740",
@@ -2353,6 +2392,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "11540",
@@ -2504,6 +2544,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "10540",
@@ -2575,6 +2616,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "13900",
@@ -2616,6 +2658,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "10500",
@@ -2767,6 +2810,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "11460",
@@ -2938,6 +2982,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "15980",
@@ -3179,6 +3224,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "10420",
@@ -3330,6 +3376,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "13380",
@@ -3461,6 +3508,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "13220",
@@ -3542,6 +3590,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "11700",
@@ -3713,6 +3762,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "13980",
@@ -3834,6 +3884,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "16700",
@@ -3935,6 +3986,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "10900",
@@ -4116,6 +4168,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "10580",
@@ -4257,6 +4310,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "12580",
@@ -4308,6 +4362,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "20100",
@@ -4339,6 +4394,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "12100",
@@ -4390,6 +4446,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "14860",
@@ -4461,6 +4518,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "11200",
@@ -4542,6 +4600,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "15540",
@@ -4573,6 +4632,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "31700",
@@ -4604,6 +4664,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "39300",
@@ -4635,6 +4696,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [
         {
           "cbsa": "12620",
@@ -4692,6 +4754,7 @@
         "41980"
       ],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": false,
       "metros": [
         {
           "cbsa": "10380",
@@ -4765,6 +4828,7 @@
         "11260"
       ],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": false,
       "metros": [
         {
           "cbsa": "11260",
@@ -4799,6 +4863,7 @@
         "46520"
       ],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": false,
       "metros": [
         {
           "cbsa": "27980",
@@ -4840,6 +4905,7 @@
     {
       "absent_public_csv_cbsa_ids": [],
       "geographic_coverage_certified": false,
+      "in_current_public_map_scope": true,
       "metros": [],
       "modeled_nodata_costs": 0,
       "native_point_qualifiers": 0,
@@ -4858,5 +4924,5 @@
     }
   ],
   "unrouted_qualifying_identities": 334,
-  "warning": "Scheduling only. Native-point state membership is not CBSA extent, extract coverage, exterior-route closure or release approval. Empty native-state groups (including DC) are not vacuously complete. AK, HI, PR and all eight absent-public-CSV qualifiers remain explicit. No omitted competitor is excluded."
+  "warning": "Scheduling only. Native-point state membership is not CBSA extent, extract coverage, exterior-route closure or release approval. Empty native-state groups (including DC) are not vacuously complete. AK, HI, PR and all eight absent-public-CSV qualifiers remain explicit in the nationwide audit, outside the current displayed-map target. Scope does not certify competitor exclusion or route closure."
 }
