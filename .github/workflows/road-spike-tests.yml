@@ -2,6 +2,9 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/*northern_local_detour_checkpoint.py'
+      - 'docs/research/northern-local-detours/**'
+      - '.github/workflows/northern-local-detours.yml'
       - 'scripts/*northern_urban_path_checkpoint.py'
       - 'scripts/*road_maneuver_subset_projection.py'
       - 'docs/research/northern-urban-paths/**'
