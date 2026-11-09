@@ -1,0 +1,45 @@
+name: Colorado principal-city geographic domains
+on:
+  pull_request:
+    paths:
+      - 'scripts/*colorado_principal_city_domains.py'
+      - 'scripts/larimer_census_water_mask.py'
+      - 'scripts/metro_competition_bounds.py'
+      - 'scripts/metro_principal_city_inventory.py'
+      - 'docs/research/colorado-principal-city-domains/**'
+      - 'docs/research/principal-city-inventory/**'
+      - '.github/workflows/colorado-principal-city-domains.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  city-source-and-bound-replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'shapely>=2,<3' 'pyshp>=2.3,<3' 'pyproj>=3.7,<4' 'matplotlib>=3.9,<4' 'openpyxl==3.1.5'
+      - run: python -m unittest discover -s scripts -p test_colorado_principal_city_domains.py -v
+      - name: Preserve full principal-city inventory and unknown-anchor behavior
+        run: |
+          python -m unittest discover -s scripts -p test_metro_principal_city_inventory.py -v
+          python -m unittest discover -s scripts -p test_metro_anchor_set_contract.py -v
+          python scripts/metro_state_work_queue.py --check docs/research/state-release-work-queue/report.json
+      - name: Replay exact independently published place source
+        run: |
+          curl -fLsS --retry 2 --max-time 90 -o "$RUNNER_TEMP/tl_2025_08_place.zip" https://www2.census.gov/geo/tiger/TIGER2025/PLACE/tl_2025_08_place.zip
+          python scripts/colorado_principal_city_domains.py --original "$RUNNER_TEMP/tl_2025_08_place.zip"
+      - name: Stage derived records and footprint comparison
+        run: |
+          mkdir -p /tmp/colorado-city-domain-artifact
+          cp docs/research/colorado-principal-city-domains/* /tmp/colorado-city-domain-artifact/
+          python scripts/render_colorado_principal_city_domains.py /tmp/colorado-city-domain-artifact/city-domains.png
+      - uses: actions/upload-artifact@v6
+        with:
+          name: colorado-principal-city-domains
+          path: /tmp/colorado-city-domain-artifact/
+          retention-days: 14

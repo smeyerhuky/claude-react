@@ -2,6 +2,9 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/*colorado_principal_city_domains.py'
+      - 'docs/research/colorado-principal-city-domains/**'
+      - '.github/workflows/colorado-principal-city-domains.yml'
       - 'scripts/*larimer*census*mask.py'
       - 'docs/research/larimer-census-water-mask/**'
       - '.github/workflows/larimer-census-water-mask.yml'

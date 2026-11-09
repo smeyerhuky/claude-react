@@ -1,0 +1,74 @@
+{
+  "anchors_adopted": false,
+  "coordinate_operation": {
+    "accuracy_is_error_bound": false,
+    "name": "NAD83 to WGS 84 (1)",
+    "operation": "EPSG:1188",
+    "output_crs": "EPSG:4326",
+    "source_crs": "EPSG:4269",
+    "stated_accuracy_m": 4.0
+  },
+  "original_water_mask_not_used": true,
+  "principal_inventory_sha256": "22f509906e005e1c6215c5f857fa0865278f4289753fad887ee05b730f8cd9cd",
+  "publisher": "U.S. Census Bureau",
+  "release_eligible": false,
+  "required_cities": {
+    "0804000": {
+      "cbsa": "19740",
+      "name": "Aurora"
+    },
+    "0807850": {
+      "cbsa": "14500",
+      "name": "Boulder"
+    },
+    "0809280": {
+      "cbsa": "19740",
+      "name": "Broomfield"
+    },
+    "0812815": {
+      "cbsa": "19740",
+      "name": "Centennial"
+    },
+    "0816000": {
+      "cbsa": "17820",
+      "name": "Colorado Springs"
+    },
+    "0816495": {
+      "cbsa": "19740",
+      "name": "Commerce City"
+    },
+    "0820000": {
+      "cbsa": "19740",
+      "name": "Denver"
+    },
+    "0827425": {
+      "cbsa": "22660",
+      "name": "Fort Collins"
+    },
+    "0831660": {
+      "cbsa": "24300",
+      "name": "Grand Junction"
+    },
+    "0832155": {
+      "cbsa": "24540",
+      "name": "Greeley"
+    },
+    "0846465": {
+      "cbsa": "22660",
+      "name": "Loveland"
+    },
+    "0862000": {
+      "cbsa": "39380",
+      "name": "Pueblo"
+    }
+  },
+  "retained_geometry_sha256": "455f085c433d0668efd17b07e32ca7a29315b08ade9343adb266e58e9e10d737",
+  "schema": "colorado-principal-city-domain-inputs-v1",
+  "source": {
+    "name": "tl_2025_08_place.zip",
+    "records": 482,
+    "sha256": "e0072e2f1c049e53d598119014e6bc93f82a0a02082b3604d81b0a8c3e8b043c",
+    "size_bytes": 2791333,
+    "url": "https://www2.census.gov/geo/tiger/TIGER2025/PLACE/tl_2025_08_place.zip"
+  }
+}

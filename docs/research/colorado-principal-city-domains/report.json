@@ -1,0 +1,462 @@
+{
+  "access_verified": false,
+  "adopted_anchor_registry": false,
+  "applied_competitor_exclusions": [],
+  "city_domains": [
+    {
+      "CLASSFP": "C1",
+      "FUNCSTAT": "A",
+      "PCICBSA": "Y",
+      "bounds_lonlat": [
+        -104.886613,
+        39.550908,
+        -104.489074,
+        39.826852
+      ],
+      "cbsa": "19740",
+      "conditional_distance_lower_bound_exact": [
+        "419648677484314679",
+        "4947802324992"
+      ],
+      "enclosing_ball": {
+        "center_lonlat": [
+          -104.6878435,
+          39.68888
+        ],
+        "method": "rational-meridian-parallel-box-enclosure-v1",
+        "radius_m_exact": [
+          "41516118372976943575",
+          "1108307720798208"
+        ],
+        "sphere_radius_m": 6371000
+      },
+      "name": "Aurora",
+      "principal_city_id": "0804000"
+    },
+    {
+      "CLASSFP": "C1",
+      "FUNCSTAT": "A",
+      "PCICBSA": "Y",
+      "bounds_lonlat": [
+        -105.30145,
+        39.956915,
+        -105.178355,
+        40.094412
+      ],
+      "cbsa": "14500",
+      "conditional_distance_lower_bound_exact": [
+        "23255012696068207709",
+        "422212465065984"
+      ],
+      "enclosing_ball": {
+        "center_lonlat": [
+          -105.2399025,
+          40.0256635
+        ],
+        "method": "rational-meridian-parallel-box-enclosure-v1",
+        "radius_m_exact": [
+          "16063907060832780325",
+          "1108307720798208"
+        ],
+        "sphere_radius_m": 6371000
+      },
+      "name": "Boulder",
+      "principal_city_id": "0807850"
+    },
+    {
+      "CLASSFP": "C1",
+      "FUNCSTAT": "A",
+      "PCICBSA": "Y",
+      "bounds_lonlat": [
+        -105.166056,
+        39.889212,
+        -104.961071,
+        40.044144
+      ],
+      "cbsa": "19740",
+      "conditional_distance_lower_bound_exact": [
+        "38420688788544795221",
+        "633318697598976"
+      ],
+      "enclosing_ball": {
+        "center_lonlat": [
+          -105.0635635,
+          39.966678
+        ],
+        "method": "rational-meridian-parallel-box-enclosure-v1",
+        "radius_m_exact": [
+          "2773335922444677425",
+          "138538465099776"
+        ],
+        "sphere_radius_m": 6371000
+      },
+      "name": "Broomfield",
+      "principal_city_id": "0809280"
+    },
+    {
+      "CLASSFP": "C1",
+      "FUNCSTAT": "A",
+      "PCICBSA": "Y",
+      "bounds_lonlat": [
+        -104.988352,
+        39.565948,
+        -104.726175,
+        39.63842
+      ],
+      "cbsa": "19740",
+      "conditional_distance_lower_bound_exact": [
+        "133956058145017783261",
+        "1266637395197952"
+      ],
+      "enclosing_ball": {
+        "center_lonlat": [
+          -104.8572635,
+          39.602184
+        ],
+        "method": "rational-meridian-parallel-box-enclosure-v1",
+        "radius_m_exact": [
+          "5157267331691672725",
+          "277076930199552"
+        ],
+        "sphere_radius_m": 6371000
+      },
+      "name": "Centennial",
+      "principal_city_id": "0812815"
+    },
+    {
+      "CLASSFP": "C1",
+      "FUNCSTAT": "A",
+      "PCICBSA": "Y",
+      "bounds_lonlat": [
+        -104.923139,
+        38.715707,
+        -104.581039,
+        39.035871
+      ],
+      "cbsa": "17820",
+      "conditional_distance_lower_bound_exact": [
+        "109389118460275961983",
+        "633318697598976"
+      ],
+      "enclosing_ball": {
+        "center_lonlat": [
+          -104.75208900000001,
+          38.875789
+        ],
+        "method": "rational-meridian-parallel-box-enclosure-v1",
+        "radius_m_exact": [
+          "40824535464387253975",
+          "1108307720798208"
+        ],
+        "sphere_radius_m": 6371000
+      },
+      "name": "Colorado Springs",
+      "principal_city_id": "0816000"
+    },
+    {
+      "CLASSFP": "C1",
+      "FUNCSTAT": "A",
+      "PCICBSA": "Y",
+      "bounds_lonlat": [
+        -104.968863,
+        39.783764,
+        -104.659163,
+        39.928838
+      ],
+      "cbsa": "19740",
+      "conditional_distance_lower_bound_exact": [
+        "5170736816387064919",
+        "70368744177664"
+      ],
+      "enclosing_ball": {
+        "center_lonlat": [
+          -104.814013,
+          39.856301
+        ],
+        "method": "rational-meridian-parallel-box-enclosure-v1",
+        "radius_m_exact": [
+          "8009726501507667475",
+          "316659348799488"
+        ],
+        "sphere_radius_m": 6371000
+      },
+      "name": "Commerce City",
+      "principal_city_id": "0816495"
+    },
+    {
+      "CLASSFP": "C1",
+      "FUNCSTAT": "A",
+      "PCICBSA": "Y",
+      "bounds_lonlat": [
+        -105.109924,
+        39.614311,
+        -104.599581,
+        39.914178
+      ],
+      "cbsa": "19740",
+      "conditional_distance_lower_bound_exact": [
+        "95136983887516252925",
+        "1266637395197952"
+      ],
+      "enclosing_ball": {
+        "center_lonlat": [
+          -104.8547525,
+          39.764244500000004
+        ],
+        "method": "rational-meridian-parallel-box-enclosure-v1",
+        "radius_m_exact": [
+          "5549389313459520925",
+          "123145302310912"
+        ],
+        "sphere_radius_m": 6371000
+      },
+      "name": "Denver",
+      "principal_city_id": "0820000"
+    },
+    {
+      "CLASSFP": "C1",
+      "FUNCSTAT": "A",
+      "PCICBSA": "Y",
+      "bounds_lonlat": [
+        -105.157634,
+        40.472135,
+        -104.986784,
+        40.639352
+      ],
+      "cbsa": "22660",
+      "conditional_distance_lower_bound_exact": [
+        "0",
+        "1"
+      ],
+      "enclosing_ball": {
+        "center_lonlat": [
+          -105.072209,
+          40.555743500000005
+        ],
+        "method": "rational-meridian-parallel-box-enclosure-v1",
+        "radius_m_exact": [
+          "13893178783525339925",
+          "738871813865472"
+        ],
+        "sphere_radius_m": 6371000
+      },
+      "name": "Fort Collins",
+      "principal_city_id": "0827425"
+    },
+    {
+      "CLASSFP": "C1",
+      "FUNCSTAT": "A",
+      "PCICBSA": "Y",
+      "bounds_lonlat": [
+        -108.675868,
+        39.019485,
+        -108.4595,
+        39.153376
+      ],
+      "cbsa": "24300",
+      "conditional_distance_lower_bound_exact": [
+        "202236793623792333295",
+        "1266637395197952"
+      ],
+      "enclosing_ball": {
+        "center_lonlat": [
+          -108.567684,
+          39.086430500000006
+        ],
+        "method": "rational-meridian-parallel-box-enclosure-v1",
+        "radius_m_exact": [
+          "10795665299050005275",
+          "554153860399104"
+        ],
+        "sphere_radius_m": 6371000
+      },
+      "name": "Grand Junction",
+      "principal_city_id": "0831660"
+    },
+    {
+      "CLASSFP": "C1",
+      "FUNCSTAT": "A",
+      "PCICBSA": "Y",
+      "bounds_lonlat": [
+        -104.907501,
+        40.377642,
+        -104.619411,
+        40.481003
+      ],
+      "cbsa": "24540",
+      "conditional_distance_lower_bound_exact": [
+        "852430721632139539",
+        "70368744177664"
+      ],
+      "enclosing_ball": {
+        "center_lonlat": [
+          -104.76345599999999,
+          40.4293225
+        ],
+        "method": "rational-meridian-parallel-box-enclosure-v1",
+        "radius_m_exact": [
+          "12065283053336777825",
+          "554153860399104"
+        ],
+        "sphere_radius_m": 6371000
+      },
+      "name": "Greeley",
+      "principal_city_id": "0832155"
+    },
+    {
+      "CLASSFP": "C1",
+      "FUNCSTAT": "A",
+      "PCICBSA": "Y",
+      "bounds_lonlat": [
+        -105.15962,
+        40.34897,
+        -104.962329,
+        40.465664
+      ],
+      "cbsa": "22660",
+      "conditional_distance_lower_bound_exact": [
+        "5834352846675993601",
+        "422212465065984"
+      ],
+      "enclosing_ball": {
+        "center_lonlat": [
+          -105.0609745,
+          40.407317
+        ],
+        "method": "rational-meridian-parallel-box-enclosure-v1",
+        "radius_m_exact": [
+          "2419407473414172725",
+          "138538465099776"
+        ],
+        "sphere_radius_m": 6371000
+      },
+      "name": "Loveland",
+      "principal_city_id": "0846465"
+    },
+    {
+      "CLASSFP": "C1",
+      "FUNCSTAT": "A",
+      "PCICBSA": "Y",
+      "bounds_lonlat": [
+        -104.722252,
+        38.158863,
+        -104.459952,
+        38.345888
+      ],
+      "cbsa": "39380",
+      "conditional_distance_lower_bound_exact": [
+        "78977174161902402211",
+        "316659348799488"
+      ],
+      "enclosing_ball": {
+        "center_lonlat": [
+          -104.591102,
+          38.2523755
+        ],
+        "method": "rational-meridian-parallel-box-enclosure-v1",
+        "radius_m_exact": [
+          "3077571682983733375",
+          "123145302310912"
+        ],
+        "sphere_radius_m": 6371000
+      },
+      "name": "Pueblo",
+      "principal_city_id": "0862000"
+    }
+  ],
+  "complete_global_competition": false,
+  "distance_bound_method": "max-of-rational-box-and-enclosing-ball-bounds-v1",
+  "geographic_context_point": [
+    -105.08,
+    40.59
+  ],
+  "implementation_sha256": {
+    "colorado_principal_city_domains.py": "91c748f83a8f573f35ae56a622f7e53ecf2318df1375dc3e5918c560d7468780",
+    "larimer_census_water_mask.py": "789b3044af3ccaf565702a4aa7c9b9390f30dd32049412718a142fbdf1465700",
+    "metro_competition_bounds.py": "6be0a3adc4c1ac0b226797fccf1078867a37b51a48c5ebbcf91de5039b01e8d1",
+    "metro_principal_city_inventory.py": "cd1e6074b0698433681ee6f5bc41b98c45dbcc49bac2f41e373fcce9aa375a8e"
+  },
+  "manifest_sha256": "76c01a4aa10bf366a5ac0016a34751074d2424c3906be901f802099a035ef72f",
+  "metro_domains": [
+    {
+      "cbsa": "14500",
+      "conditional_distance_lower_bound_exact": [
+        "23255012696068207709",
+        "422212465065984"
+      ],
+      "required_principal_city_ids": [
+        "0807850"
+      ]
+    },
+    {
+      "cbsa": "17820",
+      "conditional_distance_lower_bound_exact": [
+        "109389118460275961983",
+        "633318697598976"
+      ],
+      "required_principal_city_ids": [
+        "0816000"
+      ]
+    },
+    {
+      "cbsa": "19740",
+      "conditional_distance_lower_bound_exact": [
+        "38420688788544795221",
+        "633318697598976"
+      ],
+      "required_principal_city_ids": [
+        "0804000",
+        "0809280",
+        "0812815",
+        "0816495",
+        "0820000"
+      ]
+    },
+    {
+      "cbsa": "22660",
+      "conditional_distance_lower_bound_exact": [
+        "0",
+        "1"
+      ],
+      "required_principal_city_ids": [
+        "0827425",
+        "0846465"
+      ]
+    },
+    {
+      "cbsa": "24300",
+      "conditional_distance_lower_bound_exact": [
+        "202236793623792333295",
+        "1266637395197952"
+      ],
+      "required_principal_city_ids": [
+        "0831660"
+      ]
+    },
+    {
+      "cbsa": "24540",
+      "conditional_distance_lower_bound_exact": [
+        "852430721632139539",
+        "70368744177664"
+      ],
+      "required_principal_city_ids": [
+        "0832155"
+      ]
+    },
+    {
+      "cbsa": "39380",
+      "conditional_distance_lower_bound_exact": [
+        "78977174161902402211",
+        "316659348799488"
+      ],
+      "required_principal_city_ids": [
+        "0862000"
+      ]
+    }
+  ],
+  "original_source_replayed": false,
+  "release_eligible": false,
+  "schema": "colorado-principal-city-domains-research-v1",
+  "travel_time_lower_bounds": null,
+  "warning": "Conditional source-model domains only: requires a separately reviewed policy restricting anchors to these exact polygons and compatible full-route geometric cost domination. City footprints do not prove legal/physical vehicle access or current jurisdiction. No global speed ceiling, incumbent path, exterior closure or metro exclusion is established. Missing required anchors remain unknown under the unchanged anchor-set contract."
+}
