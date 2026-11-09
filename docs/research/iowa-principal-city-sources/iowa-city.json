@@ -1,0 +1,36 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-11-08",
+  "cbsa": "26980",
+  "city_name": "Iowa City",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-11-08",
+    "final_url": "https://www.icgov.org/government/departments-and-divisions/transportation/parking/parking-ramps-parking-meters",
+    "http_status": 403,
+    "response_bytes": 529,
+    "response_sha256": "77889ed2892db6908f48b20f44548e5fd998088a107f7c2e78795d004953a46c",
+    "url": "https://www.icgov.org/government/departments-and-divisions/transportation/parking/parking-ramps-parking-meters"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and complete connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review, a reference-scenario evaluation or a revalidation of historical statements. Embedded maps, driveway images and dynamic application state have not been visually audited.",
+    "The selected official publication returned HTTP 403. No quote, observation or search-result text is promoted into inspected evidence. The retrieval gap is not a finding that vehicle access is unavailable."
+  ],
+  "observations": [],
+  "principal_city_id": "1938595",
+  "publication_status": "selected_publication_unavailable",
+  "published_conditions": {
+    "blocked_request_is_inspected_publication": false,
+    "retrieval_failure_proves_no_car_access": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and limited factual observations only. Response fingerprints identify external bytes not retained in this repository and cannot be reconstructed from the derived record. Raw HTML/PDF, blocked error bodies, application state, private source archives and environment configuration omitted.",
+  "retrieval_method": "unavailable",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "",
+  "source_http_status": null,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.icgov.org/government/departments-and-divisions/transportation/parking/parking-ramps-parking-meters"
+}

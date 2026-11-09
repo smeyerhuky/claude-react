@@ -1,0 +1,39 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-11-08",
+  "cbsa": "19780",
+  "city_name": "Des Moines",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-11-08",
+    "final_url": "https://councildocs.dsm.city/communications/2025/25-012.pdf",
+    "http_status": 200,
+    "response_bytes": 242981,
+    "response_sha256": "ca3b7ecf6b005c2b34b90e664bdccde970edd7c352203cfca71b7f12ab3768e6",
+    "url": "https://councildocs.dsm.city/communications/2025/25-012.pdf"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and complete connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review, a reference-scenario evaluation or a revalidation of historical statements. Embedded maps, driveway images and dynamic application state have not been visually audited."
+  ],
+  "observations": [
+    "Council Communication 25-012, for January 13, 2025, proposes parking-rate provisions for 1200 Mulberry Street garage and an upper limit for prepaid special-event charges. It distinguishes the garage from the administration building at 1200 Locust Street and describes a future reservation service.",
+    "The communication is planning context, not proof that an amendment passed, a future system became operational, printed rates remain current, or a specific driveway is permitted at the reference instant."
+  ],
+  "principal_city_id": "1921000",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "council_communication_date": "2025-01-13",
+    "future_reservation_system_operation_verified": false,
+    "proposal_is_enacted_ordinance": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and limited factual observations only. Response fingerprints identify external bytes not retained in this repository and cannot be reconstructed from the derived record. Raw HTML/PDF, blocked error bodies, application state, private source archives and environment configuration omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "This proposal amends Municipal Code Section 114-658",
+  "source_http_status": 200,
+  "source_kind": "municipal_planning",
+  "url": "https://councildocs.dsm.city/communications/2025/25-012.pdf"
+}

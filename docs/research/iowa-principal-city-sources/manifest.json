@@ -1,0 +1,75 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "geographic_coverage_certified": false,
+  "principal_inventory_sha256": "22f509906e005e1c6215c5f857fa0865278f4289753fad887ee05b730f8cd9cd",
+  "records": [
+    {
+      "cbsa": "11180",
+      "city_name": "Ames",
+      "principal_city_id": "1901855",
+      "source_path": "docs/research/iowa-principal-city-sources/ames.json",
+      "source_sha256": "317ac05de0cc61e1735899c488b0b7f00279f6bbdffb2cdf9f473ccdab32a213"
+    },
+    {
+      "cbsa": "16300",
+      "city_name": "Cedar Rapids",
+      "principal_city_id": "1912000",
+      "source_path": "docs/research/iowa-principal-city-sources/cedar-rapids.json",
+      "source_sha256": "2cf5c15aa81b6779b1fe177ca52da9839958de8ce2eb248890db297f980166e6"
+    },
+    {
+      "cbsa": "19340",
+      "city_name": "Davenport",
+      "principal_city_id": "1919000",
+      "source_path": "docs/research/iowa-principal-city-sources/davenport.json",
+      "source_sha256": "43e8d945134524b87b4b013a65f7bfe86fe23ed5cb9605b7d307a252192bb1bc"
+    },
+    {
+      "cbsa": "19780",
+      "city_name": "Des Moines",
+      "principal_city_id": "1921000",
+      "source_path": "docs/research/iowa-principal-city-sources/des-moines.json",
+      "source_sha256": "6a00bde6df174eaca92a16efefa0a613077a9266398cd8016d174dfbe92fa6e5"
+    },
+    {
+      "cbsa": "19780",
+      "city_name": "West Des Moines",
+      "principal_city_id": "1983910",
+      "source_path": "docs/research/iowa-principal-city-sources/west-des-moines.json",
+      "source_sha256": "b9c8b8084e1de19f23275170aef5930f43297bdc8171d7f4198a90305613b50f"
+    },
+    {
+      "cbsa": "26980",
+      "city_name": "Iowa City",
+      "principal_city_id": "1938595",
+      "source_path": "docs/research/iowa-principal-city-sources/iowa-city.json",
+      "source_sha256": "274a447a3755663cfe55516b899ff08fa922a92c7d92be7659b72b55a51dc739"
+    },
+    {
+      "cbsa": "43580",
+      "city_name": "Sioux City",
+      "principal_city_id": "1973335",
+      "source_path": "docs/research/iowa-principal-city-sources/sioux-city.json",
+      "source_sha256": "34763338c9f14c40ddd7971c6af2e787dc275955920bc858400101b617b842f2"
+    },
+    {
+      "cbsa": "47940",
+      "city_name": "Cedar Falls",
+      "principal_city_id": "1911755",
+      "source_path": "docs/research/iowa-principal-city-sources/cedar-falls.json",
+      "source_sha256": "a25e856567cf2b45a99c4c85709d47b021406c10d7320d006845d0d910d358a8"
+    },
+    {
+      "cbsa": "47940",
+      "city_name": "Waterloo",
+      "principal_city_id": "1982425",
+      "source_path": "docs/research/iowa-principal-city-sources/waterloo.json",
+      "source_sha256": "2a6fd216a02b70b76b70557a3f28e76d815628cfb33fe84a6474bf21e6d4e76a"
+    }
+  ],
+  "release_eligible": false,
+  "schema": "principal-city-source-batch-v1",
+  "state": "IA",
+  "warning": "Complete source-work accounting for nine Iowa principal-city memberships in seven CBSAs. Seven retained contexts and two blocked retrievals do not approve anchors, connectors, vehicle access, route costs, coverage or public release."
+}

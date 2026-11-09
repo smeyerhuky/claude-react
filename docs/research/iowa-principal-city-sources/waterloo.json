@@ -1,0 +1,38 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-11-08",
+  "cbsa": "47940",
+  "city_name": "Waterloo",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-11-08",
+    "final_url": "https://www.cityofwaterlooiowa.com/government/city_clerks/index.php",
+    "http_status": 200,
+    "response_bytes": 92323,
+    "response_sha256": "156e984b0ed8302bffdfdd19f537b2506680933dc7f7d09fd4499eed5bb97095",
+    "url": "https://www.cityofwaterlooiowa.com/government/city_clerks/index.php"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and complete connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review, a reference-scenario evaluation or a revalidation of historical statements. Embedded maps, driveway images and dynamic application state have not been visually audited."
+  ],
+  "observations": [
+    "The official City Clerk page identifies City Hall at 715 Mulberry Street, Waterloo, Iowa 50703, and gives weekday office service hours. It describes the clerk\u2019s administrative records and permit responsibilities.",
+    "This retains municipal contact context. Office hours and a postal building address are not reviewed car-entry hours or a surveyed driveway. Waterloo remains separate from Cedar Falls within their shared metro."
+  ],
+  "principal_city_id": "1982425",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "city_hall_postal_address_is_reviewed_driveway": false,
+    "office_hours_are_car_access_hours": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and limited factual observations only. Response fingerprints identify external bytes not retained in this repository and cannot be reconstructed from the derived record. Raw HTML/PDF, blocked error bodies, application state, private source archives and environment configuration omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "City Hall 715 Mulberry Street Waterloo, IA 50703",
+  "source_http_status": 200,
+  "source_kind": "municipal_facility_location",
+  "url": "https://www.cityofwaterlooiowa.com/government/city_clerks/index.php"
+}

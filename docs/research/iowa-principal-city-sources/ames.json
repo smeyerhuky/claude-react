@@ -1,0 +1,39 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-11-08",
+  "cbsa": "11180",
+  "city_name": "Ames",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-11-08",
+    "final_url": "https://www.cityofames.org/My-Government/Departments/Public-Works/Parking",
+    "http_status": 200,
+    "response_bytes": 105821,
+    "response_sha256": "38bd135d2d935437273ccfe2ef75800996b226c01151f8e5efd2aace06e54e33",
+    "url": "https://www.cityofames.org/My-Government/Departments/Public-Works/Parking"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and complete connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review, a reference-scenario evaluation or a revalidation of historical statements. Embedded maps, driveway images and dynamic application state have not been visually audited."
+  ],
+  "observations": [
+    "The city parking page distinguishes employee parking tags, resident overnight permits and reserved parking. Its 2026 employee-tag guidance allows extended use of specified four-hour CBD spaces but excludes parking from 4 a.m. to 6 a.m. and excludes two-hour spaces.",
+    "Tag availability, purchase details and program dates are not ordinary-car driveway evidence. A parking exclusion is not a finding that the surrounding road is closed."
+  ],
+  "principal_city_id": "1901855",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "employee_tag_is_unrestricted_public_parking": false,
+    "parking_exclusion_is_road_closure": false,
+    "program_year_proves_reference_date_access": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and limited factual observations only. Response fingerprints identify external bytes not retained in this repository and cannot be reconstructed from the derived record. Raw HTML/PDF, blocked error bodies, application state, private source archives and environment configuration omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "parking is not permitted daily from 4:00 AM to 6:00 AM.",
+  "source_http_status": 200,
+  "source_kind": "municipal_parking_guidance",
+  "url": "https://www.cityofames.org/My-Government/Departments/Public-Works/Parking"
+}

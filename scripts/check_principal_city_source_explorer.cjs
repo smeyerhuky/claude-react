@@ -36,6 +36,14 @@ const {chromium}=require('playwright');
    await page.locator('#search').fill(id);await page.locator('#rows button').click();
    const text=await page.locator('#detail').innerText();if(!claims.every(claim=>text.includes(claim)))throw Error('Nebraska publication scope or vehicle-entry limits lost '+id);
   }
+  await page.locator('#state').selectOption('IA');await page.locator('#search').fill('19780');
+  if(await page.locator('#rows tr').count()!==2)throw Error('Des Moines and West Des Moines collapsed');
+  await page.locator('#search').fill('47940');
+  if(await page.locator('#rows tr').count()!==2)throw Error('Waterloo and Cedar Falls collapsed');
+  for(const [id,claims] of [['1912000',['Five Seasons Ramp','closed for ongoing maintenance','operator guidance']],['1921000',['January 13, 2025','not proof that an amendment passed']],['1983910',['Selected publication unavailable','HTTP 403']],['1938595',['Selected publication unavailable','HTTP 403']]]){
+   await page.locator('#search').fill(id);await page.locator('#rows button').click();
+   const text=await page.locator('#detail').innerText();if(!claims.every(claim=>text.includes(claim)))throw Error('Iowa publication timing/retrieval/scope lost '+id);
+  }
   await page.locator('#state').selectOption('all');await page.locator('#search').fill('0809280');await page.locator('#rows button').click();
   if(!(await page.locator('#detail-title').innerText()).includes('Broomfield'))throw Error('City FIPS search failed');
   await page.locator('#search').fill('no matching principal city');if(await page.locator('#rows tr').count()!==0||!(await page.locator('#empty').isVisible()))throw Error('Empty search misrepresented');

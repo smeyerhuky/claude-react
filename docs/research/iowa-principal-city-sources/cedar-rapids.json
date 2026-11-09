@@ -1,0 +1,38 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "capture_date_utc": "2026-11-08",
+  "cbsa": "16300",
+  "city_name": "Cedar Rapids",
+  "direct_http_attempt": {
+    "capture_date_utc": "2026-11-08",
+    "final_url": "https://parkcedarrapids.com/find-parking/",
+    "http_status": 200,
+    "response_bytes": 158429,
+    "response_sha256": "bcbefc645803ee0de15e5fd7dea84fa4230901076aecf6e388da010b0b986c79",
+    "url": "https://parkcedarrapids.com/find-parking/"
+  },
+  "entry_review_status": "needs_evidence",
+  "limitations": [
+    "Publication work only. Exact ordinary-car entry/exit, surveyed coordinate/datum, same-grade path, current vehicle/maneuver rules and complete connector costs remain independently unverified. No anchor or connector approval.",
+    "Capture date is not a field review, a reference-scenario evaluation or a revalidation of historical statements. Embedded maps, driveway images and dynamic application state have not been visually audited."
+  ],
+  "observations": [
+    "Park Cedar Rapids lists off-street facilities, payment upon arrival, on-street enforcement and event parking. The Five Seasons Ramp is marked closed for ongoing maintenance, despite general round-the-clock wording elsewhere in the listing.",
+    "This is operator guidance, not a municipal legal-access attestation. No closed facility is selected as open; general payment or printed opening information does not verify exact entry, exit or grade."
+  ],
+  "principal_city_id": "1912000",
+  "publication_status": "retained_publication_observation",
+  "published_conditions": {
+    "five_seasons_ramp_selected_as_open": false,
+    "operator_listing_is_city_access_attestation": false
+  },
+  "release_eligible": false,
+  "retention": "Short literal quote and limited factual observations only. Response fingerprints identify external bytes not retained in this repository and cannot be reconstructed from the derived record. Raw HTML/PDF, blocked error bodies, application state, private source archives and environment configuration omitted.",
+  "retrieval_method": "direct_http",
+  "schema": "principal-city-publication-observation-v2",
+  "selected_quote": "Closed for Ongoing Maintenance",
+  "source_http_status": 200,
+  "source_kind": "operator_parking_guidance",
+  "url": "https://parkcedarrapids.com/find-parking/"
+}
