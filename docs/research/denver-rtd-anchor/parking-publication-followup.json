@@ -1,0 +1,48 @@
+{
+  "schema": "rtd-parking-publication-followup-v1",
+  "cbsa": "19740",
+  "candidate": "38th / Blake Station",
+  "parking_page": {
+    "capture": {
+      "url": "https://www.rtd-denver.com/how-to-ride/parking",
+      "final_url": "https://www.rtd-denver.com/how-to-ride/parking",
+      "status": 200,
+      "size_bytes": 178613,
+      "sha256": "c4aee81a3c7fc4c16a972b8840ded3dfe5240e7f3482a56f339f22f8e8cc5699",
+      "captured_at_utc": "2026-11-09T16:38:56.233428+00:00"
+    },
+    "short_quote": "Unless otherwise permitted by RTD, parking a vehicle in Park-n-Rides without use of the RTD transit system is prohibited",
+    "observations": [
+      "RTD describes Park-n-Rides as for transit passengers and warns that violating parking rules or fees can lead to penalties or towing.",
+      "The parking-fee page lists 38th and Blake Station. Parking without transit use requires RTD permission."
+    ]
+  },
+  "facility_page": {
+    "capture": {
+      "url": "https://app.rtd-denver.com/facilities/38th-blake-station",
+      "final_url": "https://app.rtd-denver.com/facilities/38th-blake-station",
+      "status": 200,
+      "size_bytes": 51360,
+      "sha256": "6211fee14b5a7e519ab5bc7be74556ed391c1b231214e3886120bda422894d7f",
+      "captured_at_utc": "2026-11-09T16:38:56.940615+00:00"
+    },
+    "observations": [
+      "The operator identifies 38th / Blake Station as a Rail Station Park-n-Ride with paid parking at 3737 Blake St, Denver, 80205, with 200 parking spaces.",
+      "For in-district vehicles the page states the first 24 hours are free, then $2 per day; out-of-district vehicles cost $4 per day. Parking must be paid before boarding."
+    ]
+  },
+  "interpretation": {
+    "historical_retrieval_gap_resolved": true,
+    "general_purpose_unrestricted_parking_established": false,
+    "parking_restriction_is_driveway_entry_prohibition": false,
+    "limitations": [
+      "This is an operator publication captured now, not a finding that these conditions applied at the fixed 2026-10-28 reference instant.",
+      "Parking conditions are not proof of a prohibition on vehicle entry, pickup or drop-off.",
+      "No exact entrance coordinate, current posted turn control, complete physical or same-grade path, connector cost or multi-city anchor-set completeness is established."
+    ]
+  },
+  "source_retention": "Limited factual observations and one short quote; original HTML retained outside the repository. Body SHA-256 receipts identify fetched bytes, not a reproducible body in this derived record.",
+  "anchor_adopted": false,
+  "access_verified": false,
+  "release_eligible": false
+}
