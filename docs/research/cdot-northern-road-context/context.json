@@ -1,0 +1,570 @@
+{
+  "access_verified": false,
+  "anchor_adopted": false,
+  "catalog_receipt": {
+    "sha256": "19566e14ea82963b47eea4610124a695f644a51333524643db97513083db62c8",
+    "size_bytes": 9989
+  },
+  "cities": {
+    "fort-collins": {
+      "cbsa": "22660",
+      "city_name": "Fort Collins",
+      "principal_city_id": "0827425",
+      "queries": {
+        "12": {
+          "capture": {
+            "captured_at_utc": "2026-11-09T20:26:11.748694+00:00",
+            "sha256": "95f0493ddf468280444308c5a0dccf609c8a1ba1f0fd88c9460db1d6550603e2",
+            "size_bytes": 25452,
+            "status": 200,
+            "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/12/query?f=json&where=1%3D1&geometry=-105.082%2C40.583%2C-105.071%2C40.594&geometryType=esriGeometryEnvelope&inSR=4326&outSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&resultRecordCount=500"
+          },
+          "feature_count": 18,
+          "id_inventory_capture": {
+            "captured_at_utc": "2026-11-09T20:31:22.501271+00:00",
+            "sha256": "f1565544ae21ea294575248ce057e4e577850a6cdb59b18118b1deed8acbdaa0",
+            "size_bytes": 151,
+            "status": 200,
+            "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/12/query?f=json&where=1%3D1&geometry=-105.082%2C40.583%2C-105.071%2C40.594&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+          },
+          "id_inventory_matches": true,
+          "object_ids": [
+            5751,
+            8247,
+            9220,
+            10523,
+            12255,
+            52207,
+            52226,
+            52390,
+            52708,
+            53039,
+            53313,
+            53336,
+            53571,
+            53814,
+            54272,
+            55962,
+            56389,
+            56647
+          ],
+          "operation_histogram": {
+            "Two-Way": 18
+          },
+          "truncated": false,
+          "update_year_histogram": {
+            "2025": 18
+          }
+        },
+        "14": {
+          "capture": {
+            "captured_at_utc": "2026-11-09T20:26:12.112355+00:00",
+            "sha256": "ba88978b55fbd0de341c508c2ec93ca5686d7e38725d4bdbcb181fda56d51946",
+            "size_bytes": 44665,
+            "status": 200,
+            "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/14/query?f=json&where=1%3D1&geometry=-105.082%2C40.583%2C-105.071%2C40.594&geometryType=esriGeometryEnvelope&inSR=4326&outSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&resultRecordCount=500"
+          },
+          "codes_decoded": false,
+          "feature_count": 28,
+          "id_inventory_capture": {
+            "captured_at_utc": "2026-11-09T20:31:22.669325+00:00",
+            "sha256": "01de4473431cf7a3fbe0b03cd2c613b0ad5ec8c2c669194c23b9bc864e655189",
+            "size_bytes": 240,
+            "status": 200,
+            "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/14/query?f=json&where=1%3D1&geometry=-105.082%2C40.583%2C-105.071%2C40.594&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+          },
+          "id_inventory_matches": true,
+          "object_ids": [
+            79535,
+            79719,
+            113557,
+            113644,
+            113755,
+            113953,
+            114836,
+            115365,
+            115368,
+            115379,
+            115445,
+            115466,
+            115786,
+            115925,
+            115927,
+            116004,
+            116670,
+            116785,
+            116791,
+            116911,
+            117096,
+            117417,
+            117439,
+            117442,
+            117473,
+            117599,
+            119066,
+            182212
+          ],
+          "operation_codes_observed": [
+            "2"
+          ],
+          "truncated": false
+        },
+        "7": {
+          "capture": {
+            "captured_at_utc": "2026-11-09T20:26:11.558976+00:00",
+            "sha256": "f8553c95b50ae908d2633ba6ad8128bf332ab86fbb6d48fc14ca074652b9d764",
+            "size_bytes": 25062,
+            "status": 200,
+            "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/7/query?f=json&where=1%3D1&geometry=-105.082%2C40.583%2C-105.071%2C40.594&geometryType=esriGeometryEnvelope&inSR=4326&outSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&resultRecordCount=500"
+          },
+          "feature_count": 22,
+          "id_inventory_capture": {
+            "captured_at_utc": "2026-11-09T20:31:23.000838+00:00",
+            "sha256": "8484ada0232dab7f18c5f75da07a261162090d5e264e7ee83ababb9dbfd39bbb",
+            "size_bytes": 178,
+            "status": 200,
+            "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/7/query?f=json&where=1%3D1&geometry=-105.082%2C40.583%2C-105.071%2C40.594&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+          },
+          "id_inventory_matches": true,
+          "object_ids": [
+            26277,
+            26284,
+            26777,
+            27441,
+            27490,
+            27544,
+            28029,
+            28056,
+            28310,
+            28608,
+            29198,
+            29330,
+            29577,
+            30407,
+            30740,
+            31412,
+            31575,
+            32766,
+            32907,
+            33551,
+            34553,
+            34605
+          ],
+          "truncated": false
+        }
+      }
+    },
+    "greeley": {
+      "cbsa": "24540",
+      "city_name": "Greeley",
+      "principal_city_id": "0832155",
+      "queries": {
+        "12": {
+          "capture": {
+            "captured_at_utc": "2026-11-09T20:26:13.339928+00:00",
+            "sha256": "adb553c6d661730be5a4e883ec9aa5a0ebe629c76a4765e6e1ca7bc5730e1dd7",
+            "size_bytes": 20661,
+            "status": 200,
+            "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/12/query?f=json&where=1%3D1&geometry=-104.697%2C40.418%2C-104.683%2C40.428&geometryType=esriGeometryEnvelope&inSR=4326&outSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&resultRecordCount=500"
+          },
+          "feature_count": 14,
+          "id_inventory_capture": {
+            "captured_at_utc": "2026-11-09T20:31:24.150069+00:00",
+            "sha256": "9cd7da6bdbed0ccd129f5f8f9d21f5a1179fe55c8bee66a2a1f5d982f46663e5",
+            "size_bytes": 130,
+            "status": 200,
+            "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/12/query?f=json&where=1%3D1&geometry=-104.697%2C40.418%2C-104.683%2C40.428&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+          },
+          "id_inventory_matches": true,
+          "object_ids": [
+            13074,
+            13636,
+            13744,
+            14444,
+            14991,
+            16103,
+            17457,
+            17527,
+            17623,
+            37080,
+            38335,
+            38450,
+            40710,
+            41446
+          ],
+          "operation_histogram": {
+            "One-Way": 3,
+            "Two-Way": 11
+          },
+          "truncated": false,
+          "update_year_histogram": {
+            "2025": 14
+          }
+        },
+        "14": {
+          "capture": {
+            "captured_at_utc": "2026-11-09T20:26:14.115030+00:00",
+            "sha256": "466b1cec0ea179a40c830db93f198fcbb6f1af10a990db894438bff6bc66ffbd",
+            "size_bytes": 53355,
+            "status": 200,
+            "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/14/query?f=json&where=1%3D1&geometry=-104.697%2C40.418%2C-104.683%2C40.428&geometryType=esriGeometryEnvelope&inSR=4326&outSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&resultRecordCount=500"
+          },
+          "codes_decoded": false,
+          "feature_count": 56,
+          "id_inventory_capture": {
+            "captured_at_utc": "2026-11-09T20:31:24.150159+00:00",
+            "sha256": "74b76ee29446b630f003ba6c43ac6cb4cd583c340a7e858f08b7f279fa0980a4",
+            "size_bytes": 386,
+            "status": 200,
+            "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/14/query?f=json&where=1%3D1&geometry=-104.697%2C40.418%2C-104.683%2C40.428&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+          },
+          "id_inventory_matches": true,
+          "object_ids": [
+            81932,
+            81943,
+            81976,
+            82083,
+            82120,
+            82191,
+            82286,
+            82372,
+            82445,
+            82449,
+            82488,
+            82516,
+            82663,
+            82691,
+            82904,
+            82972,
+            83051,
+            83094,
+            83152,
+            83179,
+            83235,
+            83276,
+            83382,
+            83400,
+            83461,
+            83469,
+            83517,
+            83544,
+            83565,
+            83566,
+            83599,
+            83608,
+            83667,
+            83726,
+            83814,
+            83827,
+            83844,
+            83859,
+            83893,
+            83899,
+            84406,
+            85783,
+            86079,
+            86302,
+            86364,
+            86381,
+            86404,
+            86615,
+            86750,
+            86797,
+            86804,
+            86834,
+            133921,
+            133930,
+            166997,
+            167700
+          ],
+          "operation_codes_observed": [
+            "1",
+            "2"
+          ],
+          "truncated": false
+        },
+        "7": {
+          "capture": {
+            "captured_at_utc": "2026-11-09T20:26:13.294814+00:00",
+            "sha256": "f58c8dde00a6f83de612bb34aedd655627c667f04b40ff85b7bfdbaff36a8acd",
+            "size_bytes": 21756,
+            "status": 200,
+            "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/7/query?f=json&where=1%3D1&geometry=-104.697%2C40.418%2C-104.683%2C40.428&geometryType=esriGeometryEnvelope&inSR=4326&outSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&resultRecordCount=500"
+          },
+          "feature_count": 19,
+          "id_inventory_capture": {
+            "captured_at_utc": "2026-11-09T20:31:23.317747+00:00",
+            "sha256": "a10086bc83e22395052dda79bbcb0b64e94f3c1c6d763158b9e4631c32f0561f",
+            "size_bytes": 160,
+            "status": 200,
+            "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/7/query?f=json&where=1%3D1&geometry=-104.697%2C40.418%2C-104.683%2C40.428&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+          },
+          "id_inventory_matches": true,
+          "object_ids": [
+            31038,
+            31089,
+            31239,
+            31321,
+            31355,
+            31378,
+            31768,
+            32139,
+            32197,
+            32414,
+            32579,
+            32585,
+            33074,
+            33514,
+            33609,
+            33950,
+            34011,
+            34245,
+            35144
+          ],
+          "truncated": false
+        }
+      }
+    },
+    "loveland": {
+      "cbsa": "22660",
+      "city_name": "Loveland",
+      "principal_city_id": "0846465",
+      "queries": {
+        "12": {
+          "capture": {
+            "captured_at_utc": "2026-11-09T20:26:12.881041+00:00",
+            "sha256": "f222c8b06162ff0e25776d680482d36eb47e7430bdce5eb527f637f33328f321",
+            "size_bytes": 21928,
+            "status": 200,
+            "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/12/query?f=json&where=1%3D1&geometry=-105.081%2C40.39%2C-105.069%2C40.401&geometryType=esriGeometryEnvelope&inSR=4326&outSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&resultRecordCount=500"
+          },
+          "feature_count": 14,
+          "id_inventory_capture": {
+            "captured_at_utc": "2026-11-09T20:31:23.071674+00:00",
+            "sha256": "b07563803591ee28ebec0b92bef7d327c8c28511301298df6e19c4705b743e3f",
+            "size_bytes": 130,
+            "status": 200,
+            "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/12/query?f=json&where=1%3D1&geometry=-105.081%2C40.39%2C-105.069%2C40.401&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+          },
+          "id_inventory_matches": true,
+          "object_ids": [
+            52752,
+            52896,
+            53229,
+            53409,
+            53681,
+            54267,
+            54360,
+            54448,
+            55357,
+            55610,
+            55718,
+            62188,
+            62224,
+            62246
+          ],
+          "operation_histogram": {
+            "One-Way": 14
+          },
+          "truncated": false,
+          "update_year_histogram": {
+            "2025": 14
+          }
+        },
+        "14": {
+          "capture": {
+            "captured_at_utc": "2026-11-09T20:26:13.698246+00:00",
+            "sha256": "99a1485d4e60c0e502d6bcb17b6487654af79058f6d76cc7a196e5707aa7a613",
+            "size_bytes": 65871,
+            "status": 200,
+            "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/14/query?f=json&where=1%3D1&geometry=-105.081%2C40.39%2C-105.069%2C40.401&geometryType=esriGeometryEnvelope&inSR=4326&outSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&resultRecordCount=500"
+          },
+          "codes_decoded": false,
+          "feature_count": 71,
+          "id_inventory_capture": {
+            "captured_at_utc": "2026-11-09T20:31:23.118171+00:00",
+            "sha256": "ee7875564d8eccfbff05757607790bea2720e2f7255361285dbf9fbb7272f6a2",
+            "size_bytes": 539,
+            "status": 200,
+            "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/14/query?f=json&where=1%3D1&geometry=-105.081%2C40.39%2C-105.069%2C40.401&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+          },
+          "id_inventory_matches": true,
+          "object_ids": [
+            71444,
+            77697,
+            78407,
+            78653,
+            110380,
+            110415,
+            110886,
+            111023,
+            111419,
+            111426,
+            111438,
+            111524,
+            111610,
+            111626,
+            111648,
+            111691,
+            111754,
+            111782,
+            111811,
+            111822,
+            111832,
+            111937,
+            111942,
+            111949,
+            112007,
+            112034,
+            112040,
+            112119,
+            112165,
+            112221,
+            112238,
+            112241,
+            112267,
+            112331,
+            112338,
+            112343,
+            112448,
+            112481,
+            112545,
+            112572,
+            112585,
+            112677,
+            112723,
+            112727,
+            112752,
+            112761,
+            112769,
+            112786,
+            112881,
+            112903,
+            112928,
+            112931,
+            112977,
+            112986,
+            113092,
+            113103,
+            113125,
+            113146,
+            113147,
+            113152,
+            113168,
+            113189,
+            113285,
+            113322,
+            113331,
+            113349,
+            113788,
+            113988,
+            114305,
+            114546,
+            114553
+          ],
+          "operation_codes_observed": [
+            "1",
+            "2"
+          ],
+          "truncated": false
+        },
+        "7": {
+          "capture": {
+            "captured_at_utc": "2026-11-09T20:26:12.457291+00:00",
+            "sha256": "790776b44e3dc713e2bb3c912619cae2cfb71f17b2d15fc562b7c66155054b59",
+            "size_bytes": 36375,
+            "status": 200,
+            "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/7/query?f=json&where=1%3D1&geometry=-105.081%2C40.39%2C-105.069%2C40.401&geometryType=esriGeometryEnvelope&inSR=4326&outSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&resultRecordCount=500"
+          },
+          "feature_count": 34,
+          "id_inventory_capture": {
+            "captured_at_utc": "2026-11-09T20:31:22.838342+00:00",
+            "sha256": "ed903e52c42dd7e208ea4a2bd77cf0d07eb36af1df0a8551bcbce72448e81cc3",
+            "size_bytes": 250,
+            "status": 200,
+            "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/7/query?f=json&where=1%3D1&geometry=-105.081%2C40.39%2C-105.069%2C40.401&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+          },
+          "id_inventory_matches": true,
+          "object_ids": [
+            27397,
+            27987,
+            28209,
+            29858,
+            29913,
+            30267,
+            30731,
+            30736,
+            30741,
+            30757,
+            31072,
+            31719,
+            32306,
+            32379,
+            32480,
+            32564,
+            32629,
+            32692,
+            32718,
+            33438,
+            33746,
+            33916,
+            34074,
+            34086,
+            34316,
+            34367,
+            34532,
+            34812,
+            34889,
+            35084,
+            35091,
+            35167,
+            35220,
+            35235
+          ],
+          "truncated": false
+        }
+      }
+    }
+  },
+  "interpretation": {
+    "current_conditions_certified": false,
+    "feature_records_are_unique_physical_roads": false,
+    "notes": [
+      "Highway geometrics OPERATION labels are explicit published One-Way or Two-Way values. They do not identify permitted driveway ingress or every legal turn.",
+      "UPDATEYR=2025 is an inventory field, not a survey date, capture time or proof of conditions at the fixed reference instant.",
+      "Local-road OPERATION and GOVLEVEL values have no coded-value domain in this layer metadata. They remain undecoded; SEGMDIR is not adopted as a permitted driving orientation.",
+      "ACCESS_ labels such as Non-Rural Arterial are access-management categories, not unconditional private-car entry permissions. SPEEDLIM is not adopted as a model speed or global ceiling.",
+      "All geometries were requested in EPSG:4326 from a service declaring native EPSG:26913. Server datum transformation and positional accuracy were not independently established; no connector cost or exact registration is inferred.",
+      "These intersecting queries have matched feature/ID inventories, not statewide network, incident-way or access completeness. Overlapping layer records are not distinct physical roads."
+    ]
+  },
+  "layer_metadata": {
+    "12": {
+      "coded_field_domains_present": false,
+      "editing_timestamp_present": false,
+      "sha256": "49b1785a6158696fe3c2850f8c20d6e4338a4979303bc0132cf66d4cd7a95da6",
+      "size_bytes": 31177,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/12?f=json"
+    },
+    "14": {
+      "coded_field_domains_present": false,
+      "editing_timestamp_present": false,
+      "sha256": "db48fa0b64a140c3f804d20cdd4bdf9a07457b5a0859aa1ccdcfbbc937bb082f",
+      "size_bytes": 12858,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/14?f=json"
+    },
+    "7": {
+      "coded_field_domains_present": false,
+      "editing_timestamp_present": false,
+      "sha256": "5bd099f86ff32127a0dc59fb63d3d14265d59f286cab8d693aebea821eadd260",
+      "size_bytes": 13459,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/7?f=json"
+    }
+  },
+  "publisher_endpoint_host": "dtdapps.codot.gov",
+  "release_eligible": false,
+  "returned_feature_records": 276,
+  "schema": "cdot-northern-road-context-v1",
+  "service_url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer",
+  "source_retention": "Only selected factual observations, query identities and body receipts are retained here. Complete response geometry and HTML remain outside Git; receipts cannot be recomputed from this derived record."
+}
