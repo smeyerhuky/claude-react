@@ -3,7 +3,7 @@
   "anchors_adopted": false,
   "approved_connectors": 0,
   "geographic_coverage_certified": false,
-  "implementation_sha256": "962d7bd7a3bd34d4faff4a7d05cacf4daf63d5d27e1a9f513e3c1a29aff8704c",
+  "implementation_sha256": "6f5fa477375a25fafc5454065ed0b01b7aa2a8da69947f5188a4d08015a05604",
   "items_sha256": "91806ab8ce9c2b597ed84348e6cb43a49a27e0848494d8d6444feca001a0000d",
   "manifest_sha256": "bda1a1b47b8020da47bde14095c27bbb4fdc2353c0b9f8eab24fed56eca80986",
   "points": [
@@ -42,7 +42,7 @@
         "stated_datum_accuracy_m": 4.0,
         "target": "EPSG:26913"
       },
-      "crop_ground_width_m": 192.0,
+      "crop_grid_width_m": 192.0,
       "crs": "EPSG:26913",
       "current_conditions_verified": false,
       "grade_certified": false,
@@ -115,7 +115,7 @@
         "stated_datum_accuracy_m": 4.0,
         "target": "EPSG:26913"
       },
-      "crop_ground_width_m": 192.0,
+      "crop_grid_width_m": 192.0,
       "crs": "EPSG:26913",
       "current_conditions_verified": false,
       "grade_certified": false,
@@ -188,7 +188,7 @@
         "stated_datum_accuracy_m": 4.0,
         "target": "EPSG:26913"
       },
-      "crop_ground_width_m": 192.0,
+      "crop_grid_width_m": 192.0,
       "crs": "EPSG:26913",
       "current_conditions_verified": false,
       "grade_certified": false,
@@ -261,7 +261,7 @@
         "stated_datum_accuracy_m": 4.0,
         "target": "EPSG:26913"
       },
-      "crop_ground_width_m": 192.0,
+      "crop_grid_width_m": 192.0,
       "crs": "EPSG:26913",
       "current_conditions_verified": false,
       "grade_certified": false,
@@ -334,7 +334,7 @@
         "stated_datum_accuracy_m": 4.0,
         "target": "EPSG:26913"
       },
-      "crop_ground_width_m": 192.0,
+      "crop_grid_width_m": 192.0,
       "crs": "EPSG:26913",
       "current_conditions_verified": false,
       "grade_certified": false,

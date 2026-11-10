@@ -142,7 +142,7 @@ def audit(directory):
         validate_review(review, c, item, actual)
         points.append(dict(candidate=c, item_id=item['id'], acquisition_reported_utc=item['properties']['datetime'],
             source_resolution_m=item['properties']['gsd'], bbox_native_m=bbox, crs='EPSG:26913',
-            crop_ground_width_m=192., requested_resolution_m=.3, center_pixel_boundary=[320.,320.],
+            crop_grid_width_m=192., requested_resolution_m=.3, center_pixel_boundary=[320.,320.],
             coordinate_operation=operation, pixels=actual, review=review,
             current_conditions_verified=False, grade_certified=False, access_verified=False, anchor_adopted=False))
     return dict(schema='northern-dated-site-imagery-v1', implementation_sha256=digest(__file__),
