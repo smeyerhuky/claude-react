@@ -1,0 +1,634 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "approved_connectors": 0,
+  "geographic_coverage_certified": false,
+  "implementation_sha256": "0ac05cb482889bb7e47658346b3df5c36ef24a04e8e213c15d4502d6391e8b7f",
+  "independent_sources_inspected": true,
+  "manifest_sha256": "0660ae10e32bf89e21f1c8487546bf05f0835ed237c0edb8ab487b1203e1f490",
+  "native_sha256": "062b0b116266b5ff005ad1e81c5386569b4196fb1c6152d53809c46771f64715",
+  "points": [
+    {
+      "access_verified": false,
+      "anchor_adopted": false,
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0827425",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 29.8667404569879,
+        "id": "fort-college",
+        "lonlat": [
+          -105.0771007,
+          40.5900781
+        ],
+        "node": 2068308017,
+        "way": 6169351
+      },
+      "cdot_context": [
+        {
+          "alias": "N COLLEGE AVE",
+          "coordinate_operation": {
+            "datum_operation": "inverse EPSG:1188",
+            "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=utm zone=13 ellps=GRS80",
+            "source": "EPSG:4326",
+            "stated_accuracy_is_error_bound": false,
+            "stated_datum_accuracy_m": 4.0,
+            "target": "EPSG:26913"
+          },
+          "layer": 7,
+          "object_id": 31412,
+          "operation": null,
+          "registration_distance_m": 14.10062460456699,
+          "returned_feature_ids": [
+            31412,
+            27441,
+            29198
+          ],
+          "route": "287C",
+          "route_matches_recorded_osm_route": true,
+          "update_year": null
+        },
+        {
+          "alias": null,
+          "coordinate_operation": {
+            "datum_operation": "inverse EPSG:1188",
+            "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=utm zone=13 ellps=GRS80",
+            "source": "EPSG:4326",
+            "stated_accuracy_is_error_bound": false,
+            "stated_datum_accuracy_m": 4.0,
+            "target": "EPSG:26913"
+          },
+          "layer": 12,
+          "object_id": 52226,
+          "operation": "Two-Way",
+          "registration_distance_m": 14.100660791001738,
+          "returned_feature_ids": [
+            52226,
+            8247,
+            53039
+          ],
+          "route": "287C",
+          "route_matches_recorded_osm_route": true,
+          "update_year": "2025"
+        }
+      ],
+      "coordinate_operation": {
+        "datum_operation": "inverse EPSG:1188",
+        "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=lcc lat_0=39.3333333333333 lon_0=-105.5 lat_1=40.7833333333333 lat_2=39.7166666666667 x_0=914401.828803658 y_0=304800.609601219 ellps=GRS80 step proj=unitconvert xy_in=m xy_out=us-ft",
+        "source": "EPSG:4326",
+        "stated_accuracy_is_error_bound": false,
+        "stated_datum_accuracy_m": 4.0,
+        "target": "EPSG:2231"
+      },
+      "municipal_direction": {
+        "code_definition_available": false,
+        "decoded": null,
+        "raw": null
+      },
+      "municipal_duplicate_geometry_ids": [
+        8988
+      ],
+      "municipal_facts": {
+        "ONEWAY": null,
+        "PRIVSTRT": "NO",
+        "REVDATE": 1383004800000,
+        "STATUS": "BUILT"
+      },
+      "municipal_matching_ids": [
+        8988,
+        8038
+      ],
+      "municipal_name": "N COLLEGE AVE",
+      "municipal_object_id": 8988,
+      "municipal_record_dates_utc": {
+        "REVDATE": "2013-10-29T00:00:00+00:00"
+      },
+      "municipal_registration_distance_m": 7.969454751342405,
+      "municipality_from_to_vs_osm_permitted_direction_cosine": null,
+      "municipality_selected_segment_native": [
+        [
+          3117477.23999999,
+          1457726.06999999
+        ],
+        [
+          3117477.33,
+          1458344.23
+        ]
+      ],
+      "municipality_source_geometry_sha256": "d79377467cde5bde769cc039985c15e8fcd2b83af9504aef4cd7ddbcf1382327",
+      "osm_way_tags": {
+        "CDOT_route": "287C",
+        "highway": "trunk",
+        "name": "North College Avenue",
+        "oneway": "yes",
+        "ref": "US 287"
+      },
+      "registration_is_connector_cost": false,
+      "unqualified_nearest_distance_m": 7.969454751342405,
+      "unqualified_nearest_matches_named_road": true,
+      "unqualified_nearest_name": "N COLLEGE AVE",
+      "unqualified_nearest_object_id": 8988
+    },
+    {
+      "access_verified": false,
+      "anchor_adopted": false,
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0846465",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 59.911688669495675,
+        "id": "loveland-lincoln",
+        "lonlat": [
+          -105.0731934,
+          40.3970269
+        ],
+        "node": 4543992892,
+        "way": 862924886
+      },
+      "cdot_context": [
+        {
+          "alias": "N LINCOLN AVE",
+          "coordinate_operation": {
+            "datum_operation": "inverse EPSG:1188",
+            "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=utm zone=13 ellps=GRS80",
+            "source": "EPSG:4326",
+            "stated_accuracy_is_error_bound": false,
+            "stated_datum_accuracy_m": 4.0,
+            "target": "EPSG:26913"
+          },
+          "layer": 7,
+          "object_id": 30731,
+          "operation": null,
+          "registration_distance_m": 3.475763841557702,
+          "returned_feature_ids": [
+            30731,
+            33916,
+            35220,
+            34316
+          ],
+          "route": "287C",
+          "route_matches_recorded_osm_route": true,
+          "update_year": null
+        },
+        {
+          "alias": null,
+          "coordinate_operation": {
+            "datum_operation": "inverse EPSG:1188",
+            "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=utm zone=13 ellps=GRS80",
+            "source": "EPSG:4326",
+            "stated_accuracy_is_error_bound": false,
+            "stated_datum_accuracy_m": 4.0,
+            "target": "EPSG:26913"
+          },
+          "layer": 12,
+          "object_id": 55357,
+          "operation": "One-Way",
+          "registration_distance_m": 3.4757686239027956,
+          "returned_feature_ids": [
+            55357,
+            53681,
+            53409,
+            53229
+          ],
+          "route": "287C",
+          "route_matches_recorded_osm_route": true,
+          "update_year": "2025"
+        }
+      ],
+      "coordinate_operation": {
+        "datum_operation": "inverse NAD83(HARN) to WGS 84 (3)",
+        "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=push v_3 step proj=cart ellps=WGS84 step inv proj=helmert x=-0.991 y=1.9072 z=0.5129 rx=-0.0257899075194932 ry=-0.0096500989602704 rz=-0.0116599432323421 s=0 convention=coordinate_frame step inv proj=cart ellps=GRS80 step proj=pop v_3 step proj=lcc lat_0=39.3333333333333 lon_0=-105.5 lat_1=40.7833333333333 lat_2=39.7166666666667 x_0=914401.828803658 y_0=304800.609601219 ellps=GRS80 step proj=unitconvert xy_in=m xy_out=us-ft",
+        "source": "EPSG:4326",
+        "stated_accuracy_is_error_bound": false,
+        "stated_datum_accuracy_m": 1.0,
+        "target": "EPSG:2876"
+      },
+      "municipal_direction": {
+        "code_definition_available": true,
+        "decoded": "From-To",
+        "raw": "FT"
+      },
+      "municipal_duplicate_geometry_ids": [
+        4560
+      ],
+      "municipal_facts": {
+        "BUILT": "Yes",
+        "LASTUPDATE": 1791256172000,
+        "LIFECYCLE": "Active",
+        "MAINTAINEDBY": "CDOT",
+        "ONEWAYDIR": "FT",
+        "OWNEDBY": "CDOT",
+        "PRIVATE": "No"
+      },
+      "municipal_matching_ids": [
+        4560,
+        4561,
+        8067,
+        4542
+      ],
+      "municipal_name": "N Lincoln Ave",
+      "municipal_object_id": 4560,
+      "municipal_record_dates_utc": {
+        "LASTUPDATE": "2026-10-06T03:09:32+00:00"
+      },
+      "municipal_registration_distance_m": 0.5756139619399067,
+      "municipality_from_to_vs_osm_permitted_direction_cosine": 0.9999871449541462,
+      "municipality_selected_segment_native": [
+        [
+          3118875.4965114743,
+          1387565.112643063
+        ],
+        [
+          3118875.752088383,
+          1387761.4892188162
+        ]
+      ],
+      "municipality_source_geometry_sha256": "3e0ae4b2f32b7b3ca13cfc771f5b5ab72f547519945647a999ec50cba8d841cb",
+      "osm_way_tags": {
+        "CDOT_route": "287C",
+        "highway": "trunk",
+        "name": "North Lincoln Avenue",
+        "oneway": "yes",
+        "ref": "US 287"
+      },
+      "registration_is_connector_cost": false,
+      "unqualified_nearest_distance_m": 0.5756139619399067,
+      "unqualified_nearest_matches_named_road": true,
+      "unqualified_nearest_name": "N Lincoln Ave",
+      "unqualified_nearest_object_id": 4560
+    },
+    {
+      "access_verified": false,
+      "anchor_adopted": false,
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0846465",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 91.38673655732813,
+        "id": "loveland-cleveland",
+        "lonlat": [
+          -105.0745222,
+          40.3970413
+        ],
+        "node": 4543992893,
+        "way": 850007405
+      },
+      "cdot_context": [
+        {
+          "alias": "N CLEVELAND AVE",
+          "coordinate_operation": {
+            "datum_operation": "inverse EPSG:1188",
+            "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=utm zone=13 ellps=GRS80",
+            "source": "EPSG:4326",
+            "stated_accuracy_is_error_bound": false,
+            "stated_datum_accuracy_m": 4.0,
+            "target": "EPSG:26913"
+          },
+          "layer": 7,
+          "object_id": 29858,
+          "operation": null,
+          "registration_distance_m": 3.2377959787835127,
+          "returned_feature_ids": [
+            29858,
+            28209,
+            27987,
+            30757,
+            27397
+          ],
+          "route": "287Z",
+          "route_matches_recorded_osm_route": true,
+          "update_year": null
+        },
+        {
+          "alias": null,
+          "coordinate_operation": {
+            "datum_operation": "inverse EPSG:1188",
+            "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=utm zone=13 ellps=GRS80",
+            "source": "EPSG:4326",
+            "stated_accuracy_is_error_bound": false,
+            "stated_datum_accuracy_m": 4.0,
+            "target": "EPSG:26913"
+          },
+          "layer": 12,
+          "object_id": 62224,
+          "operation": "One-Way",
+          "registration_distance_m": 3.2377965037849834,
+          "returned_feature_ids": [
+            62224,
+            62246
+          ],
+          "route": "287Z",
+          "route_matches_recorded_osm_route": true,
+          "update_year": "2025"
+        }
+      ],
+      "coordinate_operation": {
+        "datum_operation": "inverse NAD83(HARN) to WGS 84 (3)",
+        "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=push v_3 step proj=cart ellps=WGS84 step inv proj=helmert x=-0.991 y=1.9072 z=0.5129 rx=-0.0257899075194932 ry=-0.0096500989602704 rz=-0.0116599432323421 s=0 convention=coordinate_frame step inv proj=cart ellps=GRS80 step proj=pop v_3 step proj=lcc lat_0=39.3333333333333 lon_0=-105.5 lat_1=40.7833333333333 lat_2=39.7166666666667 x_0=914401.828803658 y_0=304800.609601219 ellps=GRS80 step proj=unitconvert xy_in=m xy_out=us-ft",
+        "source": "EPSG:4326",
+        "stated_accuracy_is_error_bound": false,
+        "stated_datum_accuracy_m": 1.0,
+        "target": "EPSG:2876"
+      },
+      "municipal_direction": {
+        "code_definition_available": true,
+        "decoded": "From-To",
+        "raw": "FT"
+      },
+      "municipal_duplicate_geometry_ids": [
+        4556
+      ],
+      "municipal_facts": {
+        "BUILT": "Yes",
+        "LASTUPDATE": 1791256172000,
+        "LIFECYCLE": "Active",
+        "MAINTAINEDBY": "CDOT",
+        "ONEWAYDIR": "FT",
+        "OWNEDBY": "CDOT",
+        "PRIVATE": "No"
+      },
+      "municipal_matching_ids": [
+        4556,
+        4558,
+        3036,
+        4539
+      ],
+      "municipal_name": "N Cleveland Ave",
+      "municipal_object_id": 4556,
+      "municipal_record_dates_utc": {
+        "LASTUPDATE": "2026-10-06T03:09:32+00:00"
+      },
+      "municipal_registration_distance_m": 0.8772207749537495,
+      "municipality_from_to_vs_osm_permitted_direction_cosine": 0.9999996795436403,
+      "municipality_selected_segment_native": [
+        [
+          3118504.6419382244,
+          1387764.7182149738
+        ],
+        [
+          3118503.2465998083,
+          1387571.2379588932
+        ]
+      ],
+      "municipality_source_geometry_sha256": "a130b08074fcb3c790900d78a227208f40ce85794cdd3947d411354ada331d9a",
+      "osm_way_tags": {
+        "CDOT_route": "287Z",
+        "highway": "trunk",
+        "name": "North Cleveland Avenue",
+        "oneway": "yes",
+        "ref": "US 287"
+      },
+      "registration_is_connector_cost": false,
+      "unqualified_nearest_distance_m": 0.06415555960673326,
+      "unqualified_nearest_matches_named_road": false,
+      "unqualified_nearest_name": "Artist Alley",
+      "unqualified_nearest_object_id": 8047
+    },
+    {
+      "access_verified": false,
+      "anchor_adopted": false,
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0832155",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 644.7069294373161,
+        "id": "greeley-ninth",
+        "lonlat": [
+          -104.6948769,
+          40.4239405
+        ],
+        "node": 7432996608,
+        "way": 99825591
+      },
+      "cdot_context": [
+        {
+          "alias": "9TH ST",
+          "coordinate_operation": {
+            "datum_operation": "inverse EPSG:1188",
+            "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=utm zone=13 ellps=GRS80",
+            "source": "EPSG:4326",
+            "stated_accuracy_is_error_bound": false,
+            "stated_datum_accuracy_m": 4.0,
+            "target": "EPSG:26913"
+          },
+          "layer": 7,
+          "object_id": 31321,
+          "operation": null,
+          "registration_distance_m": 0.1542865494185788,
+          "returned_feature_ids": [
+            31321,
+            31089,
+            32139
+          ],
+          "route": "034Z",
+          "route_matches_recorded_osm_route": true,
+          "update_year": null
+        },
+        {
+          "alias": null,
+          "coordinate_operation": {
+            "datum_operation": "inverse EPSG:1188",
+            "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=utm zone=13 ellps=GRS80",
+            "source": "EPSG:4326",
+            "stated_accuracy_is_error_bound": false,
+            "stated_datum_accuracy_m": 4.0,
+            "target": "EPSG:26913"
+          },
+          "layer": 12,
+          "object_id": 16103,
+          "operation": "One-Way",
+          "registration_distance_m": 0.1542381129553128,
+          "returned_feature_ids": [
+            16103,
+            17457
+          ],
+          "route": "034Z",
+          "route_matches_recorded_osm_route": true,
+          "update_year": "2025"
+        }
+      ],
+      "coordinate_operation": {
+        "datum_operation": "inverse NAD83(HARN) to WGS 84 (3)",
+        "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=push v_3 step proj=cart ellps=WGS84 step inv proj=helmert x=-0.991 y=1.9072 z=0.5129 rx=-0.0257899075194932 ry=-0.0096500989602704 rz=-0.0116599432323421 s=0 convention=coordinate_frame step inv proj=cart ellps=GRS80 step proj=pop v_3 step proj=lcc lat_0=39.3333333333333 lon_0=-105.5 lat_1=40.7833333333333 lat_2=39.7166666666667 x_0=914401.828803658 y_0=304800.609601219 ellps=GRS80 step proj=unitconvert xy_in=m xy_out=us-ft",
+        "source": "EPSG:4326",
+        "stated_accuracy_is_error_bound": false,
+        "stated_datum_accuracy_m": 1.0,
+        "target": "EPSG:2876"
+      },
+      "municipal_direction": {
+        "code_definition_available": false,
+        "decoded": null,
+        "raw": "FT"
+      },
+      "municipal_duplicate_geometry_ids": [
+        10216,
+        23469
+      ],
+      "municipal_facts": {
+        "MAINTAINS": "City of Greeley",
+        "ONEWAY": "FT",
+        "STATUS": "Built",
+        "UPDATE_DATE": "Unknown"
+      },
+      "municipal_matching_ids": [
+        10216,
+        23469,
+        10264,
+        16650
+      ],
+      "municipal_name": "9th St",
+      "municipal_object_id": 10216,
+      "municipal_record_dates_utc": {},
+      "municipal_registration_distance_m": 0.6877341537522577,
+      "municipality_from_to_vs_osm_permitted_direction_cosine": null,
+      "municipality_selected_segment_native": [
+        [
+          3224278.4635266364,
+          1398299.5793707818
+        ],
+        [
+          3223776.9523908347,
+          1398298.6764799207
+        ]
+      ],
+      "municipality_source_geometry_sha256": "8d73031beb4fbeef1bedffa66f6c66032f64f68c0eb47a8f874e88696bc2b02f",
+      "osm_way_tags": {
+        "CDOT_route": "034Z",
+        "highway": "primary",
+        "name": "9th Street",
+        "oneway": "yes",
+        "ref": "US 34 Business"
+      },
+      "registration_is_connector_cost": false,
+      "unqualified_nearest_distance_m": 0.6877341537522577,
+      "unqualified_nearest_matches_named_road": true,
+      "unqualified_nearest_name": "9th St",
+      "unqualified_nearest_object_id": 10216
+    },
+    {
+      "access_verified": false,
+      "anchor_adopted": false,
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0832155",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 325.6835649657252,
+        "id": "greeley-tenth",
+        "lonlat": [
+          -104.6909798,
+          40.4225311
+        ],
+        "node": 11969991394,
+        "way": 1291045341
+      },
+      "cdot_context": [
+        {
+          "alias": "8TH AVE",
+          "coordinate_operation": {
+            "datum_operation": "inverse EPSG:1188",
+            "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=utm zone=13 ellps=GRS80",
+            "source": "EPSG:4326",
+            "stated_accuracy_is_error_bound": false,
+            "stated_datum_accuracy_m": 4.0,
+            "target": "EPSG:26913"
+          },
+          "layer": 7,
+          "object_id": 32197,
+          "operation": null,
+          "registration_distance_m": 1.3768866402878428,
+          "returned_feature_ids": [
+            32197,
+            35144,
+            31378
+          ],
+          "route": "034D",
+          "route_matches_recorded_osm_route": true,
+          "update_year": null
+        },
+        {
+          "alias": null,
+          "coordinate_operation": {
+            "datum_operation": "inverse EPSG:1188",
+            "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=utm zone=13 ellps=GRS80",
+            "source": "EPSG:4326",
+            "stated_accuracy_is_error_bound": false,
+            "stated_datum_accuracy_m": 4.0,
+            "target": "EPSG:26913"
+          },
+          "layer": 12,
+          "object_id": 13074,
+          "operation": "Two-Way",
+          "registration_distance_m": 1.3768847632280747,
+          "returned_feature_ids": [
+            13074,
+            14444,
+            38450
+          ],
+          "route": "034D",
+          "route_matches_recorded_osm_route": true,
+          "update_year": "2025"
+        }
+      ],
+      "coordinate_operation": {
+        "datum_operation": "inverse NAD83(HARN) to WGS 84 (3)",
+        "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=push v_3 step proj=cart ellps=WGS84 step inv proj=helmert x=-0.991 y=1.9072 z=0.5129 rx=-0.0257899075194932 ry=-0.0096500989602704 rz=-0.0116599432323421 s=0 convention=coordinate_frame step inv proj=cart ellps=GRS80 step proj=pop v_3 step proj=lcc lat_0=39.3333333333333 lon_0=-105.5 lat_1=40.7833333333333 lat_2=39.7166666666667 x_0=914401.828803658 y_0=304800.609601219 ellps=GRS80 step proj=unitconvert xy_in=m xy_out=us-ft",
+        "source": "EPSG:4326",
+        "stated_accuracy_is_error_bound": false,
+        "stated_datum_accuracy_m": 1.0,
+        "target": "EPSG:2876"
+      },
+      "municipal_direction": {
+        "code_definition_available": false,
+        "decoded": null,
+        "raw": "NA"
+      },
+      "municipal_duplicate_geometry_ids": [
+        6690,
+        23683
+      ],
+      "municipal_facts": {
+        "MAINTAINS": "City of Greeley",
+        "ONEWAY": "NA",
+        "STATUS": "Built",
+        "UPDATE_DATE": "Unknown"
+      },
+      "municipal_matching_ids": [
+        6690,
+        23683,
+        6687,
+        20754
+      ],
+      "municipal_name": "10th St",
+      "municipal_object_id": 6690,
+      "municipal_record_dates_utc": {},
+      "municipal_registration_distance_m": 1.3246972126040326,
+      "municipality_from_to_vs_osm_permitted_direction_cosine": null,
+      "municipality_selected_segment_native": [
+        [
+          3225280.9798880965,
+          1397797.941582337
+        ],
+        [
+          3224779.969091341,
+          1397797.382860884
+        ]
+      ],
+      "municipality_source_geometry_sha256": "0fb4a0b125a56b02d3d693e9ad5033eecbfc7a6ee3094ea63285bba45a5436fc",
+      "osm_way_tags": {
+        "CDOT_route": "034D",
+        "highway": "primary",
+        "name": "10th Street",
+        "ref": "US 34 Business"
+      },
+      "registration_is_connector_cost": false,
+      "unqualified_nearest_distance_m": 1.3246972126040326,
+      "unqualified_nearest_matches_named_road": true,
+      "unqualified_nearest_name": "10th St",
+      "unqualified_nearest_object_id": 6690
+    }
+  ],
+  "release_eligible": false,
+  "report_sha256": "194ea64e64bc785fe9778a4e67144126ed7c37a9ed2c77c9cfd3bde1418c6769",
+  "schema": "northern-independent-endpoint-context-v1",
+  "scope": "Agency road-name, source-status and directional context only. Registration distances are approximate diagnostics, not off-road joins, connector costs, survey error bounds or access certification. Uncoded/null direction values remain undefined; corridor-wide two-way operation does not determine individual carriageway bearing. Duplicate source geometry is not independent corroboration."
+}

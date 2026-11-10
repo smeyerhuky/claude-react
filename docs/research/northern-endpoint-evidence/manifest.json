@@ -1,0 +1,303 @@
+{
+  "original_responses_published": false,
+  "release_eligible": false,
+  "schema": "northern-independent-agency-source-manifest-v1",
+  "sources": {
+    "cdot-layer-12": {
+      "captured_at_utc": "2026-11-10T00:27:58.142279+00:00",
+      "semantic_sha256": "e7c0768828a87b90eb1f07973c49852d1b526fbb47a3fb49d8b802895ef1611f",
+      "sha256": "a4186156e3de71088d87a1d50affa214afbb6fc289822306bc9fb193da79dd61",
+      "size_bytes": 45863,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/12?f=pjson"
+    },
+    "cdot-layer-7": {
+      "captured_at_utc": "2026-11-10T00:27:57.766551+00:00",
+      "semantic_sha256": "4737355aeca5beec1809a1fddece578d9938fcfb3d4343d1b59e47aa42589e34",
+      "sha256": "cf3d93ce6a974cb4acc02166e5cbe043cd3e5357e16ba2645b016c6f0bdda3aa",
+      "size_bytes": 17030,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/7?f=pjson"
+    },
+    "fort-city-layer": {
+      "captured_at_utc": "2026-11-10T00:24:52.388678+00:00",
+      "semantic_sha256": "708fd003ce167b8dcb1920568ee85b0b03803e8a8047b60d347c4fba002d48a8",
+      "sha256": "766ba50dcdb13b1a69aeedaef48670c53b5d25c5bc5e2e48d088703372fde2db",
+      "size_bytes": 34644,
+      "status": 200,
+      "url": "https://services1.arcgis.com/dLpFH5mwVvxSN4OE/arcgis/rest/services/Street_Centerlines/FeatureServer/0?f=pjson"
+    },
+    "fort-college-12": {
+      "captured_at_utc": "2026-11-10T00:17:13.854688+00:00",
+      "semantic_sha256": "6508eb06ef2bba98bc06ef78518f94f911b43253dc406b2c9946389c3d21af05",
+      "sha256": "7815c6c9fb7da04ea95682edaa267d6bc9ef7617fde07079322167d658fe6cda",
+      "size_bytes": 1829,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/12/query?f=json&where=1%3D1&geometry=-105.0779007%2C40.5892781%2C-105.0763007%2C40.5908781&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outSR=26913&outFields=OBJECTID%2CROUTE%2CREFPT%2CENDREFPT%2COPERATION%2CUPDATEYR%2CPRISURF%2CTHRULNQTY%2CISDIVIDED&returnGeometry=true&orderByFields=OBJECTID+ASC&resultRecordCount=500"
+    },
+    "fort-college-12-ids": {
+      "captured_at_utc": "2026-11-10T00:17:13.439707+00:00",
+      "semantic_sha256": "cbf8250487e4ec5f49ee9f8534a99fb87d2ce7c54d682f3de588a84b8ac1c0a2",
+      "sha256": "b68374818f6a710b597412b020aca9b9d3af6c95c87bbf0d7533a95ce122e68d",
+      "size_bytes": 63,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/12/query?f=json&where=1%3D1&geometry=-105.0779007%2C40.5892781%2C-105.0763007%2C40.5908781&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+    },
+    "fort-college-7": {
+      "captured_at_utc": "2026-11-10T00:17:13.841260+00:00",
+      "semantic_sha256": "22f99304e543b0b9897e44a4b56802f8ad7cdb84c143cb3ab2a536c6699b397d",
+      "sha256": "1d5c833f0210d2bd5810d11f47b0d17b20720037e8aecbaa9114c2147ec21803",
+      "size_bytes": 2569,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/7/query?f=json&where=1%3D1&geometry=-105.0779007%2C40.5892781%2C-105.0763007%2C40.5908781&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outSR=26913&outFields=OBJECTID%2CROUTE%2CREFPT%2CENDREFPT%2CCITY%2CFIPSCITY%2CFIPSCOUNTY%2CROUTESIGN%2CALIAS%2CSPEEDLIM%2CPRISURF%2CTHRULNQTY%2CISDIVIDED%2CACCESS_&returnGeometry=true&orderByFields=OBJECTID+ASC&resultRecordCount=500"
+    },
+    "fort-college-7-ids": {
+      "captured_at_utc": "2026-11-10T00:17:13.427522+00:00",
+      "semantic_sha256": "5cc098194155e2cba1d8cda8a2e4652407e1df7ba119f6f33b110b1acc9c19b0",
+      "sha256": "094516fe2976c2fc3ca8a8adcf822b15fa8a155db3dfa2bfa653b530d00c21cd",
+      "size_bytes": 64,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/7/query?f=json&where=1%3D1&geometry=-105.0779007%2C40.5892781%2C-105.0763007%2C40.5908781&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+    },
+    "fort-college-city": {
+      "captured_at_utc": "2026-11-10T00:24:51.570666+00:00",
+      "semantic_sha256": "d1ccd6db61cd3bda6782a326732288709e23e2a530d6ca74fd9cf6e3eeea732d",
+      "sha256": "ddc739c231a9f399a61b579365dce57e3b1c6db234481f9764e0faffc7829ebc",
+      "size_bytes": 8422,
+      "status": 200,
+      "url": "https://services1.arcgis.com/dLpFH5mwVvxSN4OE/arcgis/rest/services/Street_Centerlines/FeatureServer/0/query?f=json&where=1%3D1&geometry=-105.0779007%2C40.5892781%2C-105.0763007%2C40.5908781&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&orderByFields=OBJECTID+ASC&resultRecordCount=500"
+    },
+    "fort-college-city-ids": {
+      "captured_at_utc": "2026-11-10T00:24:51.539483+00:00",
+      "semantic_sha256": "77b5e442a83fe62dad8d5707b62646a2a369311c8bbd89540487fd5b0befc3e9",
+      "sha256": "474ece01d01503af1a3f9d6f75d437c5e1684e2cc6d35a518c67f6968d180ba0",
+      "size_bytes": 74,
+      "status": 200,
+      "url": "https://services1.arcgis.com/dLpFH5mwVvxSN4OE/arcgis/rest/services/Street_Centerlines/FeatureServer/0/query?f=json&where=1%3D1&geometry=-105.0779007%2C40.5892781%2C-105.0763007%2C40.5908781&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+    },
+    "fort-official-item": {
+      "captured_at_utc": "2026-11-10T00:22:53.258131+00:00",
+      "semantic_sha256": "27efd99505511be3cf5350c8b7ebc1d639cd4cd88678ebfae2dd7815676567f4",
+      "sha256": "b8eec40faa357282a4aad7816fce90221ac366c0a04085454245dc3ada9518ba",
+      "size_bytes": 3632,
+      "status": 200,
+      "url": "https://www.arcgis.com/sharing/rest/content/items/f6380ef587ac4e54aaf988b15d8d1746?f=pjson"
+    },
+    "fort-official-org": {
+      "captured_at_utc": "2026-11-10T00:22:53.144799+00:00",
+      "semantic_sha256": "df6670b85dfb3ec30b9294fab21e490bcdb99f978dd8fd096f001aaf97335652",
+      "sha256": "3cc42b3d09254235803f61f99d106f1dcd02f4ce241d543806c9bba14aed1579",
+      "size_bytes": 25900,
+      "status": 200,
+      "url": "https://www.arcgis.com/sharing/rest/portals/dLpFH5mwVvxSN4OE?f=pjson"
+    },
+    "greeley-ninth-12": {
+      "captured_at_utc": "2026-11-10T00:17:14.918963+00:00",
+      "semantic_sha256": "f0975953107dcccd0aee941707df7e4395071399e01252aade66a3f8a50b8cab",
+      "sha256": "f298ad2e224fe654f791d42583b52d594931ef8034d4ac94e37c2e4dc193c6ec",
+      "size_bytes": 1458,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/12/query?f=json&where=1%3D1&geometry=-104.6956769%2C40.4231405%2C-104.6940769%2C40.4247405&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outSR=26913&outFields=OBJECTID%2CROUTE%2CREFPT%2CENDREFPT%2COPERATION%2CUPDATEYR%2CPRISURF%2CTHRULNQTY%2CISDIVIDED&returnGeometry=true&orderByFields=OBJECTID+ASC&resultRecordCount=500"
+    },
+    "greeley-ninth-12-ids": {
+      "captured_at_utc": "2026-11-10T00:17:14.984268+00:00",
+      "semantic_sha256": "c42d965c7b3656b031fbabcf761c07b805058954bdece9d841c42f7ef0169cff",
+      "sha256": "c42d965c7b3656b031fbabcf761c07b805058954bdece9d841c42f7ef0169cff",
+      "size_bytes": 58,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/12/query?f=json&where=1%3D1&geometry=-104.6956769%2C40.4231405%2C-104.6940769%2C40.4247405&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+    },
+    "greeley-ninth-7": {
+      "captured_at_utc": "2026-11-10T00:17:14.695777+00:00",
+      "semantic_sha256": "15ed6dd610d4ac6e796127c4ec4d21798179bd9df04829083b2d02e0de1ea67d",
+      "sha256": "e2c2203d187d3697cf33748e1ca446649d79af6442bdd2fc99ab8a6f56d29a8d",
+      "size_bytes": 2373,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/7/query?f=json&where=1%3D1&geometry=-104.6956769%2C40.4231405%2C-104.6940769%2C40.4247405&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outSR=26913&outFields=OBJECTID%2CROUTE%2CREFPT%2CENDREFPT%2CCITY%2CFIPSCITY%2CFIPSCOUNTY%2CROUTESIGN%2CALIAS%2CSPEEDLIM%2CPRISURF%2CTHRULNQTY%2CISDIVIDED%2CACCESS_&returnGeometry=true&orderByFields=OBJECTID+ASC&resultRecordCount=500"
+    },
+    "greeley-ninth-7-ids": {
+      "captured_at_utc": "2026-11-10T00:17:14.760429+00:00",
+      "semantic_sha256": "355170dc035d88f918b623b86d0a779e0839fb39b88c4b1b7d938944824e2369",
+      "sha256": "bb6070c456144177932df940aa16f27af387d6a970b5e352a871e7c3c000d0e0",
+      "size_bytes": 64,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/7/query?f=json&where=1%3D1&geometry=-104.6956769%2C40.4231405%2C-104.6940769%2C40.4247405&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+    },
+    "greeley-ninth-city": {
+      "captured_at_utc": "2026-11-10T00:19:48.861779+00:00",
+      "semantic_sha256": "564b1f2329dd5d026094eb3ed973b43bbc57bccb6270b9928883671959ec2903",
+      "sha256": "74b8cd582422e7e0b7504f0586854365401e8a6f9941e915249c91798c76a65a",
+      "size_bytes": 14299,
+      "status": 200,
+      "url": "https://gis.greeleygov.com/arcgis_svr5/rest/services/TrakIT2025/MapServer/5/query?f=json&where=1%3D1&geometry=-104.6956769%2C40.4231405%2C-104.6940769%2C40.4247405&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&resultRecordCount=500&orderByFields=OBJECTID+ASC"
+    },
+    "greeley-ninth-city-ids": {
+      "captured_at_utc": "2026-11-10T00:19:48.612661+00:00",
+      "semantic_sha256": "f9e2a4e3ed2dd0789303550f035d8c1c8c80305f0b048be22e59e0e21256ff91",
+      "sha256": "58d9c5c9509bd5634bdfca2edd9bc7bb21672adcee76d58e49ab646f0cc490fc",
+      "size_bytes": 116,
+      "status": 200,
+      "url": "https://gis.greeleygov.com/arcgis_svr5/rest/services/TrakIT2025/MapServer/5/query?f=json&where=1%3D1&geometry=-104.6956769%2C40.4231405%2C-104.6940769%2C40.4247405&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+    },
+    "greeley-streets-layer": {
+      "captured_at_utc": "2026-11-10T00:19:48.231504+00:00",
+      "semantic_sha256": "2d788c444a698693119d1c9429274b4812ae56c47941f5c54395b149351fb955",
+      "sha256": "7a6f8386823818a8919a02fece1cbb614203fc3fc8c8512dd6296b4c12d469c9",
+      "size_bytes": 19481,
+      "status": 200,
+      "url": "https://gis.greeleygov.com/arcgis_svr5/rest/services/TrakIT2025/MapServer/5?f=pjson"
+    },
+    "greeley-tenth-12": {
+      "captured_at_utc": "2026-11-10T00:17:15.201089+00:00",
+      "semantic_sha256": "1013d2da62abd8e119bee066b6b1f587741f9cfd7f3b8e9dc21e5f5dcb1b5ab8",
+      "sha256": "412af302d7da9266e04e6605462b26372edf37ca78f4255cd1938a2a22c51214",
+      "size_bytes": 2094,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/12/query?f=json&where=1%3D1&geometry=-104.69177979999999%2C40.4217311%2C-104.6901798%2C40.4233311&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outSR=26913&outFields=OBJECTID%2CROUTE%2CREFPT%2CENDREFPT%2COPERATION%2CUPDATEYR%2CPRISURF%2CTHRULNQTY%2CISDIVIDED&returnGeometry=true&orderByFields=OBJECTID+ASC&resultRecordCount=500"
+    },
+    "greeley-tenth-12-ids": {
+      "captured_at_utc": "2026-11-10T00:17:15.289510+00:00",
+      "semantic_sha256": "859dd2ecbf2fee48b4e09d643d59778fe40e3c30d319ba7f1a7a92bbec66ae49",
+      "sha256": "af4fc07a33c0a0bde936debbe77858e8cf2e49fc6483c7d243cf8a8f4ca46405",
+      "size_bytes": 64,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/12/query?f=json&where=1%3D1&geometry=-104.69177979999999%2C40.4217311%2C-104.6901798%2C40.4233311&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+    },
+    "greeley-tenth-7": {
+      "captured_at_utc": "2026-11-10T00:17:14.985063+00:00",
+      "semantic_sha256": "93f8bee64413bc17560dc1d40b4cafd3f499d5525ac013cfd62d431d3090b1d2",
+      "sha256": "949a0168092ba74edff95871ae392e4a0c66b404b24f1a7d6101056a8900dcb7",
+      "size_bytes": 2495,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/7/query?f=json&where=1%3D1&geometry=-104.69177979999999%2C40.4217311%2C-104.6901798%2C40.4233311&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outSR=26913&outFields=OBJECTID%2CROUTE%2CREFPT%2CENDREFPT%2CCITY%2CFIPSCITY%2CFIPSCOUNTY%2CROUTESIGN%2CALIAS%2CSPEEDLIM%2CPRISURF%2CTHRULNQTY%2CISDIVIDED%2CACCESS_&returnGeometry=true&orderByFields=OBJECTID+ASC&resultRecordCount=500"
+    },
+    "greeley-tenth-7-ids": {
+      "captured_at_utc": "2026-11-10T00:17:15.069537+00:00",
+      "semantic_sha256": "ca72285d08ab9d87135dd11b7a8038e61f36aa3fc878ae664bfa6c9545cde729",
+      "sha256": "ba27ddc041f960fb2cc635729f36415607ed6a055229bd795e2a1e613900216c",
+      "size_bytes": 64,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/7/query?f=json&where=1%3D1&geometry=-104.69177979999999%2C40.4217311%2C-104.6901798%2C40.4233311&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+    },
+    "greeley-tenth-city": {
+      "captured_at_utc": "2026-11-10T00:19:48.888453+00:00",
+      "semantic_sha256": "31e7f53aec5d8da6dcb9cbef73eb0be6158039c7c2bbf8f00071de26e78c543a",
+      "sha256": "d5e6460295836105788536b70cde7d16bdb5911e9eaea697b3adcc4c2ef4bf17",
+      "size_bytes": 14525,
+      "status": 200,
+      "url": "https://gis.greeleygov.com/arcgis_svr5/rest/services/TrakIT2025/MapServer/5/query?f=json&where=1%3D1&geometry=-104.69177979999999%2C40.4217311%2C-104.6901798%2C40.4233311&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&resultRecordCount=500&orderByFields=OBJECTID+ASC"
+    },
+    "greeley-tenth-city-ids": {
+      "captured_at_utc": "2026-11-10T00:19:49.083416+00:00",
+      "semantic_sha256": "e22fc3b0f1d492df8bb9a89f3399e0469834a075ed14e08fa57c08942c133dec",
+      "sha256": "2f62edaaea2d322a1a6944c4a8bca505b51f5d2b97148a4f8009dc161de3479c",
+      "size_bytes": 116,
+      "status": 200,
+      "url": "https://gis.greeleygov.com/arcgis_svr5/rest/services/TrakIT2025/MapServer/5/query?f=json&where=1%3D1&geometry=-104.69177979999999%2C40.4217311%2C-104.6901798%2C40.4233311&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+    },
+    "loveland-cleveland-12": {
+      "captured_at_utc": "2026-11-10T00:17:14.451012+00:00",
+      "semantic_sha256": "712244d6e61aac78c729c2d1d04e56bc63b4556d22a2d403023d2a7cfb72f173",
+      "sha256": "e73589a13c3fa96ab537cca8de8f88d832a471c26669b8a2345bc3cf9462b017",
+      "size_bytes": 1805,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/12/query?f=json&where=1%3D1&geometry=-105.0753222%2C40.3962413%2C-105.0737222%2C40.397841299999996&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outSR=26913&outFields=OBJECTID%2CROUTE%2CREFPT%2CENDREFPT%2COPERATION%2CUPDATEYR%2CPRISURF%2CTHRULNQTY%2CISDIVIDED&returnGeometry=true&orderByFields=OBJECTID+ASC&resultRecordCount=500"
+    },
+    "loveland-cleveland-12-ids": {
+      "captured_at_utc": "2026-11-10T00:17:14.427977+00:00",
+      "semantic_sha256": "0f56993053debe0f999ee1ffd377c8ae8fbac03285d3acff00e9e4185b70434c",
+      "sha256": "0f56993053debe0f999ee1ffd377c8ae8fbac03285d3acff00e9e4185b70434c",
+      "size_bytes": 58,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/12/query?f=json&where=1%3D1&geometry=-105.0753222%2C40.3962413%2C-105.0737222%2C40.397841299999996&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+    },
+    "loveland-cleveland-7": {
+      "captured_at_utc": "2026-11-10T00:17:14.137697+00:00",
+      "semantic_sha256": "dfcb7bdb45ad611abc0d08fb1487a59f0c16f0ca8c2c4808780fe4554999fcfc",
+      "sha256": "139db97fe4941963070289435889bb29a90a9580d8265f70817df86b07cb8573",
+      "size_bytes": 3202,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/7/query?f=json&where=1%3D1&geometry=-105.0753222%2C40.3962413%2C-105.0737222%2C40.397841299999996&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outSR=26913&outFields=OBJECTID%2CROUTE%2CREFPT%2CENDREFPT%2CCITY%2CFIPSCITY%2CFIPSCOUNTY%2CROUTESIGN%2CALIAS%2CSPEEDLIM%2CPRISURF%2CTHRULNQTY%2CISDIVIDED%2CACCESS_&returnGeometry=true&orderByFields=OBJECTID+ASC&resultRecordCount=500"
+    },
+    "loveland-cleveland-7-ids": {
+      "captured_at_utc": "2026-11-10T00:17:14.640138+00:00",
+      "semantic_sha256": "51dd375913d502e7c9e1a4f010f5eda9f44497e08992dabd5330092d400b8cf3",
+      "sha256": "2d4fa0bd49b62dce781c541cad592deacd57124c82940f55582e78078d9a3632",
+      "size_bytes": 76,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/7/query?f=json&where=1%3D1&geometry=-105.0753222%2C40.3962413%2C-105.0737222%2C40.397841299999996&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+    },
+    "loveland-cleveland-city": {
+      "captured_at_utc": "2026-11-10T00:21:08.601180+00:00",
+      "semantic_sha256": "22293b287bc511fd4b3665545289a921c2c887960b9ecf5daf0e41e373f73b22",
+      "sha256": "0f18b03b07a28cc3176aafd83f81c2f2c3956248cefbf1cecfbcaa9ef7e0a337",
+      "size_bytes": 26261,
+      "status": 200,
+      "url": "https://mapserv.cityofloveland.org/arcgis/rest/services/layers/RoadCenterline/MapServer/0/query?f=json&where=1%3D1&geometry=-105.0753222%2C40.3962413%2C-105.0737222%2C40.397841299999996&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&resultRecordCount=500&orderByFields=OBJECTID+ASC"
+    },
+    "loveland-cleveland-city-ids": {
+      "captured_at_utc": "2026-11-10T00:21:08.718003+00:00",
+      "semantic_sha256": "70ee1f7351a06903d44ff6eae580ede974343c2a897de6dd9173da3b49cfed4c",
+      "sha256": "70ee1f7351a06903d44ff6eae580ede974343c2a897de6dd9173da3b49cfed4c",
+      "size_bytes": 136,
+      "status": 200,
+      "url": "https://mapserv.cityofloveland.org/arcgis/rest/services/layers/RoadCenterline/MapServer/0/query?f=json&where=1%3D1&geometry=-105.0753222%2C40.3962413%2C-105.0737222%2C40.397841299999996&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+    },
+    "loveland-lincoln-12": {
+      "captured_at_utc": "2026-11-10T00:17:14.608845+00:00",
+      "semantic_sha256": "622fcbca800543f0760460d11f91cda787f7276fb56086ee761de3b054fc2a56",
+      "sha256": "803ded642b391e9affa6245d20e4394cacbd44f609814d70a7e41216f6ee3c48",
+      "size_bytes": 2342,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/12/query?f=json&where=1%3D1&geometry=-105.07399339999999%2C40.3962269%2C-105.0723934%2C40.3978269&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outSR=26913&outFields=OBJECTID%2CROUTE%2CREFPT%2CENDREFPT%2COPERATION%2CUPDATEYR%2CPRISURF%2CTHRULNQTY%2CISDIVIDED&returnGeometry=true&orderByFields=OBJECTID+ASC&resultRecordCount=500"
+    },
+    "loveland-lincoln-12-ids": {
+      "captured_at_utc": "2026-11-10T00:17:14.144018+00:00",
+      "semantic_sha256": "0141db510537c0a9f83cebf87ad65a28a2e55945a4b6c97b82f2b8294c6176f2",
+      "sha256": "70eb780b9160ff2bae66ce98aa5587842781b4a14fe4e1f6d22919860bd5adca",
+      "size_bytes": 70,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/12/query?f=json&where=1%3D1&geometry=-105.07399339999999%2C40.3962269%2C-105.0723934%2C40.3978269&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+    },
+    "loveland-lincoln-7": {
+      "captured_at_utc": "2026-11-10T00:17:13.838299+00:00",
+      "semantic_sha256": "d2e0bbf6b54122e3c149c3efe3f7d6b76cacbf07feb3255d2fb3f149ab95ae1f",
+      "sha256": "e8ac717df278b630f47e75ae314794d37732a2eb6491aaf51d257064e2ef119b",
+      "size_bytes": 3039,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/7/query?f=json&where=1%3D1&geometry=-105.07399339999999%2C40.3962269%2C-105.0723934%2C40.3978269&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outSR=26913&outFields=OBJECTID%2CROUTE%2CREFPT%2CENDREFPT%2CCITY%2CFIPSCITY%2CFIPSCOUNTY%2CROUTESIGN%2CALIAS%2CSPEEDLIM%2CPRISURF%2CTHRULNQTY%2CISDIVIDED%2CACCESS_&returnGeometry=true&orderByFields=OBJECTID+ASC&resultRecordCount=500"
+    },
+    "loveland-lincoln-7-ids": {
+      "captured_at_utc": "2026-11-10T00:17:13.769646+00:00",
+      "semantic_sha256": "2c31672422743ed6e88e384d1e8e19e8d02071f5f16e0dc1d1756e592321ccf2",
+      "sha256": "c3b0443c9796a10c440d5490c97def867e5336bdc518eff97512a2e9b7d9ef06",
+      "size_bytes": 70,
+      "status": 200,
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/7/query?f=json&where=1%3D1&geometry=-105.07399339999999%2C40.3962269%2C-105.0723934%2C40.3978269&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+    },
+    "loveland-lincoln-city": {
+      "captured_at_utc": "2026-11-10T00:21:11.561085+00:00",
+      "semantic_sha256": "4dcac1cc696c95fd90c7d49de5d4bc663a863e354f12ea6cba24b21156fe85df",
+      "sha256": "46320ef2499b355420034447018bfb4fe2670c53232fb10cb71be19cec87c769",
+      "size_bytes": 19308,
+      "status": 200,
+      "url": "https://mapserv.cityofloveland.org/arcgis/rest/services/layers/RoadCenterline/MapServer/0/query?f=json&where=1%3D1&geometry=-105.07399339999999%2C40.3962269%2C-105.0723934%2C40.3978269&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&resultRecordCount=500&orderByFields=OBJECTID+ASC"
+    },
+    "loveland-lincoln-city-ids": {
+      "captured_at_utc": "2026-11-10T00:21:08.764255+00:00",
+      "semantic_sha256": "5db50aff8b11d52e8aa6328ecf589c9d0405618e106b5ff4c8df4547c10ebd6f",
+      "sha256": "5db50aff8b11d52e8aa6328ecf589c9d0405618e106b5ff4c8df4547c10ebd6f",
+      "size_bytes": 106,
+      "status": 200,
+      "url": "https://mapserv.cityofloveland.org/arcgis/rest/services/layers/RoadCenterline/MapServer/0/query?f=json&where=1%3D1&geometry=-105.07399339999999%2C40.3962269%2C-105.0723934%2C40.3978269&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true"
+    },
+    "loveland-road-layer": {
+      "captured_at_utc": "2026-11-10T00:20:18.673388+00:00",
+      "semantic_sha256": "7c4c02621abfedca3392b0b07d935c4f2c5aa940c57d64fe28b0a3bcbfb8ce61",
+      "sha256": "5ffd4d7e374bcc7ad83e504f23db0b8515bf90e8df21c05ce17589ae0fdd4753",
+      "size_bytes": 31146,
+      "status": 200,
+      "url": "https://mapserv.cityofloveland.org/arcgis/rest/services/layers/RoadCenterline/MapServer/0?f=pjson"
+    }
+  }
+}
