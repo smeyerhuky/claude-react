@@ -1,0 +1,122 @@
+{
+  "procedure": "Inspect each exact 640\u00d7640 crop with north up in EPSG:26913; native candidate registered at center boundary (320,320). Read the primary STAC acquisition field, source grid and validity mask. Describe visible context; do not infer present access, legal direction, turns, surveyed grade or approval from imagery.",
+  "reviewer": "Codex \u2014 historical image interpretation only",
+  "schema": "northern-historical-overhead-review-v1",
+  "sites": {
+    "fort-college": {
+      "access_certified": false,
+      "acquisition_reported_utc": "2023-09-25T16:00:00Z",
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0827425",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 29.8667404569879,
+        "id": "fort-college",
+        "lonlat": [
+          -105.0771007,
+          40.5900781
+        ],
+        "node": 2068308017,
+        "way": 6169351
+      },
+      "current_conditions_verified": false,
+      "grade_certified": false,
+      "grade_observation": "No elevated deck or portal is apparent at the registered center in this overhead crop. This is not a determination of surveyed grade or clearance.",
+      "item_id": "co_m_4010532_nw_13_030_20230925_20240104",
+      "observation": "Paved north\u2013south street surface is visible at the registered center. Vehicles, marked parking and a narrow landscaped median appear nearby; cross streets are visible toward both ends of the crop.",
+      "pixel_sha256": "05d02e674a15633cc5d5370faa682d4b0c87ea073dad7477112209845d35d8f4"
+    },
+    "greeley-ninth": {
+      "access_certified": false,
+      "acquisition_reported_utc": "2023-09-25T16:00:00Z",
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0832155",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 644.7069294373161,
+        "id": "greeley-ninth",
+        "lonlat": [
+          -104.6948769,
+          40.4239405
+        ],
+        "node": 7432996608,
+        "way": 99825591
+      },
+      "current_conditions_verified": false,
+      "grade_certified": false,
+      "grade_observation": "No elevated deck or portal is apparent at the registered center in this overhead crop. This is not a determination of surveyed grade or clearance.",
+      "item_id": "co_m_4010435_sw_13_030_20230925_20240104",
+      "observation": "A paved east\u2013west street is visible at the registered center. Vehicles, lane markings and a marked crossing at the intersection to the east are visible.",
+      "pixel_sha256": "d1b35b38ab586be46f10c1f9e017791343f601a81fa7ca0ee7da0a04c43ed99b"
+    },
+    "greeley-tenth": {
+      "access_certified": false,
+      "acquisition_reported_utc": "2023-09-25T16:00:00Z",
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0832155",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 325.6835649657252,
+        "id": "greeley-tenth",
+        "lonlat": [
+          -104.6909798,
+          40.4225311
+        ],
+        "node": 11969991394,
+        "way": 1291045341
+      },
+      "current_conditions_verified": false,
+      "grade_certified": false,
+      "grade_observation": "No elevated deck or portal is apparent at the registered center in this overhead crop. This is not a determination of surveyed grade or clearance.",
+      "item_id": "co_m_4010435_sw_13_030_20230925_20240104",
+      "observation": "The registered center is within the visible paved east\u2013west street and north\u2013south intersection. Vehicles, lane arrows and crosswalk markings are visible nearby.",
+      "pixel_sha256": "5aa65e358964102182ba203e2189ef3972c2b434ece461bf739bf0977543ec62"
+    },
+    "loveland-cleveland": {
+      "access_certified": false,
+      "acquisition_reported_utc": "2023-09-25T16:00:00Z",
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0846465",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 91.38673655732813,
+        "id": "loveland-cleveland",
+        "lonlat": [
+          -105.0745222,
+          40.3970413
+        ],
+        "node": 4543992893,
+        "way": 850007405
+      },
+      "current_conditions_verified": false,
+      "grade_certified": false,
+      "grade_observation": "No elevated deck or portal is apparent at the registered center in this overhead crop. This is not a determination of surveyed grade or clearance.",
+      "item_id": "co_m_4010540_sw_13_030_20230925_20240104",
+      "observation": "A paved north\u2013south street is visible at the registered center. A narrower east\u2013west paved passage meets the street near the center; vehicles and marked crossings appear nearby.",
+      "pixel_sha256": "3df6f54f115431fdac662f7dbf91d61a1c2cd0a8bb48e93f0b635c6d2d815102"
+    },
+    "loveland-lincoln": {
+      "access_certified": false,
+      "acquisition_reported_utc": "2023-09-25T16:00:00Z",
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0846465",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 59.911688669495675,
+        "id": "loveland-lincoln",
+        "lonlat": [
+          -105.0731934,
+          40.3970269
+        ],
+        "node": 4543992892,
+        "way": 862924886
+      },
+      "current_conditions_verified": false,
+      "grade_certified": false,
+      "grade_observation": "No elevated deck or portal is apparent at the registered center in this overhead crop. This is not a determination of surveyed grade or clearance.",
+      "item_id": "co_m_4010540_sw_13_030_20230925_20240104",
+      "observation": "A paved north\u2013south street is visible between buildings at the registered center, partly affected by building shadow. Vehicles and marked crossings are visible nearby.",
+      "pixel_sha256": "2fc8936cfa0afe2cd86d21d47178336942d7d67fa40ece0d2f4dd7af97b87ced"
+    }
+  }
+}

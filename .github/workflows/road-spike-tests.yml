@@ -2,6 +2,9 @@ name: Road allocation spike tests
 on:
   pull_request:
     paths:
+      - 'scripts/*northern_site_imagery.py'
+      - 'docs/research/northern-site-imagery/**'
+      - '.github/workflows/northern-site-imagery.yml'
       - 'scripts/*northern_endpoint_evidence.py'
       - 'docs/research/northern-endpoint-evidence/**'
       - '.github/workflows/northern-endpoint-evidence.yml'
