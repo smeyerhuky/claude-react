@@ -1,0 +1,96 @@
+{
+  "agency_report_sha256": "77fcd76aeb5ed50a198d06769048616b46679e791bc41c5844b67aee69a47427",
+  "items_sha256": "91806ab8ce9c2b597ed84348e6cb43a49a27e0848494d8d6444feca001a0000d",
+  "native_sha256": "062b0b116266b5ff005ad1e81c5386569b4196fb1c6152d53809c46771f64715",
+  "original_pixels_published": false,
+  "release_eligible": false,
+  "schema": "northern-site-imagery-manifest-v1",
+  "sites": {
+    "fort-college": {
+      "captured_at_utc": "2026-11-10T21:20:33.549216+00:00",
+      "image_sha256": "0cf33d0f1a739613a863754a2bb245c7b8a4fd116fcb7950aa62d636328d7cc7",
+      "image_size_bytes": 973403,
+      "image_url": "https://planetarycomputer.microsoft.com/api/data/v1/item/bbox/493379.70635176246,4493160.320597438,493571.70635176246,4493352.320597438/640x640.png?collection=naip&item=co_m_4010532_nw_13_030_20230925_20240104&coord_crs=EPSG%3A26913&dst_crs=EPSG%3A26913&assets=image&asset_bidx=image%7C1%2C2%2C3&resampling=nearest&reproject=nearest&return_mask=true",
+      "item_semantic_sha256": "ef121374ec8035403d43906a02fbc5428c0834fa2f9ea97637ac6d5791f2866f",
+      "item_sha256": "594cb084436e963719313e3e401865dad0ced789cb33fbe4fc77d7e8854003fb",
+      "item_size_bytes": 3059,
+      "item_url": "https://planetarycomputer.microsoft.com/api/stac/v1/collections/naip/items/co_m_4010532_nw_13_030_20230925_20240104",
+      "pixels": {
+        "height": 640,
+        "mode": "RGBA",
+        "pixel_sha256": "05d02e674a15633cc5d5370faa682d4b0c87ea073dad7477112209845d35d8f4",
+        "valid_pixels": 409600,
+        "width": 640
+      }
+    },
+    "greeley-ninth": {
+      "captured_at_utc": "2026-11-10T21:20:36.079700+00:00",
+      "image_sha256": "ba62293fe17cd22ab49285269c7c6ce2431fcb25aaad1864097cd0f4dd184024",
+      "image_size_bytes": 953780,
+      "image_url": "https://planetarycomputer.microsoft.com/api/data/v1/item/bbox/525787.4531017792,4474760.885730804,525979.4531017792,4474952.885730804/640x640.png?collection=naip&item=co_m_4010435_sw_13_030_20230925_20240104&coord_crs=EPSG%3A26913&dst_crs=EPSG%3A26913&assets=image&asset_bidx=image%7C1%2C2%2C3&resampling=nearest&reproject=nearest&return_mask=true",
+      "item_semantic_sha256": "27028743fa1b6b3ec4a649dc2bff1cad1d46cff3054ff55f03d28580fe972766",
+      "item_sha256": "82be5f688bb45b0bdfe060359039a7827b21db3e93ff85e6f06cd79202fc4a9b",
+      "item_size_bytes": 3047,
+      "item_url": "https://planetarycomputer.microsoft.com/api/stac/v1/collections/naip/items/co_m_4010435_sw_13_030_20230925_20240104",
+      "pixels": {
+        "height": 640,
+        "mode": "RGBA",
+        "pixel_sha256": "d1b35b38ab586be46f10c1f9e017791343f601a81fa7ca0ee7da0a04c43ed99b",
+        "valid_pixels": 409600,
+        "width": 640
+      }
+    },
+    "greeley-tenth": {
+      "captured_at_utc": "2026-11-10T21:20:36.983871+00:00",
+      "image_sha256": "1536b6bd738eaf6f5328b4d0193c4d5ac3b29eff5170701ffc7e31d444a0730b",
+      "image_size_bytes": 959675,
+      "image_url": "https://planetarycomputer.microsoft.com/api/data/v1/item/bbox/526118.5899471854,4474605.5931673115,526310.5899471854,4474797.5931673115/640x640.png?collection=naip&item=co_m_4010435_sw_13_030_20230925_20240104&coord_crs=EPSG%3A26913&dst_crs=EPSG%3A26913&assets=image&asset_bidx=image%7C1%2C2%2C3&resampling=nearest&reproject=nearest&return_mask=true",
+      "item_semantic_sha256": "27028743fa1b6b3ec4a649dc2bff1cad1d46cff3054ff55f03d28580fe972766",
+      "item_sha256": "82be5f688bb45b0bdfe060359039a7827b21db3e93ff85e6f06cd79202fc4a9b",
+      "item_size_bytes": 3047,
+      "item_url": "https://planetarycomputer.microsoft.com/api/stac/v1/collections/naip/items/co_m_4010435_sw_13_030_20230925_20240104",
+      "pixels": {
+        "height": 640,
+        "mode": "RGBA",
+        "pixel_sha256": "5aa65e358964102182ba203e2189ef3972c2b434ece461bf739bf0977543ec62",
+        "valid_pixels": 409600,
+        "width": 640
+      }
+    },
+    "loveland-cleveland": {
+      "captured_at_utc": "2026-11-10T21:20:34.222757+00:00",
+      "image_sha256": "99c86a6c0a1500c296b1448097a2f17798e32cba17b35bf7a4f248517f65f789",
+      "image_size_bytes": 941865,
+      "image_url": "https://planetarycomputer.microsoft.com/api/data/v1/item/bbox/493579.8028845374,4471733.100169127,493771.8028845374,4471925.100169127/640x640.png?collection=naip&item=co_m_4010540_sw_13_030_20230925_20240104&coord_crs=EPSG%3A26913&dst_crs=EPSG%3A26913&assets=image&asset_bidx=image%7C1%2C2%2C3&resampling=nearest&reproject=nearest&return_mask=true",
+      "item_semantic_sha256": "e20f26005a8e195837c41f0842bcd1797d0fa8bb8ca2371072c386dc8bb14779",
+      "item_sha256": "5a7df2f9be2c3e1a9a8276f9bb03d2fba9586d0759bf3f43be44dad5287e7176",
+      "item_size_bytes": 3059,
+      "item_url": "https://planetarycomputer.microsoft.com/api/stac/v1/collections/naip/items/co_m_4010540_sw_13_030_20230925_20240104",
+      "pixels": {
+        "height": 640,
+        "mode": "RGBA",
+        "pixel_sha256": "3df6f54f115431fdac662f7dbf91d61a1c2cd0a8bb48e93f0b635c6d2d815102",
+        "valid_pixels": 409600,
+        "width": 640
+      }
+    },
+    "loveland-lincoln": {
+      "captured_at_utc": "2026-11-10T21:20:34.057227+00:00",
+      "image_sha256": "3dcbcaf60bb3cbc51b4f75996c3a6e4bc6b0080268b50e2bd00fcf021e7d83d5",
+      "image_size_bytes": 963790,
+      "image_url": "https://planetarycomputer.microsoft.com/api/data/v1/item/bbox/493692.5678761892,4471731.407592977,493884.5678761892,4471923.407592977/640x640.png?collection=naip&item=co_m_4010540_sw_13_030_20230925_20240104&coord_crs=EPSG%3A26913&dst_crs=EPSG%3A26913&assets=image&asset_bidx=image%7C1%2C2%2C3&resampling=nearest&reproject=nearest&return_mask=true",
+      "item_semantic_sha256": "e20f26005a8e195837c41f0842bcd1797d0fa8bb8ca2371072c386dc8bb14779",
+      "item_sha256": "5a7df2f9be2c3e1a9a8276f9bb03d2fba9586d0759bf3f43be44dad5287e7176",
+      "item_size_bytes": 3059,
+      "item_url": "https://planetarycomputer.microsoft.com/api/stac/v1/collections/naip/items/co_m_4010540_sw_13_030_20230925_20240104",
+      "pixels": {
+        "height": 640,
+        "mode": "RGBA",
+        "pixel_sha256": "2fc8936cfa0afe2cd86d21d47178336942d7d67fa40ece0d2f4dd7af97b87ced",
+        "valid_pixels": 409600,
+        "width": 640
+      }
+    }
+  },
+  "witness_report_sha256": "194ea64e64bc785fe9778a4e67144126ed7c37a9ed2c77c9cfd3bde1418c6769"
+}
