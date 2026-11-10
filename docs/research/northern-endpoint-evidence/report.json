@@ -3,9 +3,9 @@
   "anchors_adopted": false,
   "approved_connectors": 0,
   "geographic_coverage_certified": false,
-  "implementation_sha256": "0ac05cb482889bb7e47658346b3df5c36ef24a04e8e213c15d4502d6391e8b7f",
+  "implementation_sha256": "c6a42c98cf64103f9da6f43d7136e006452a79c8eda5a656f52a1a276cb081a6",
   "independent_sources_inspected": true,
-  "manifest_sha256": "0660ae10e32bf89e21f1c8487546bf05f0835ed237c0edb8ab487b1203e1f490",
+  "manifest_sha256": "bf8c53b6b7acb2f6bb3c32bfa7d262502f42e1a6ad5751b39e73099537a4421b",
   "native_sha256": "062b0b116266b5ff005ad1e81c5386569b4196fb1c6152d53809c46771f64715",
   "points": [
     {

@@ -29,7 +29,7 @@ FACT_KEYS=['PRIVATE','PRIVSTRT','BUILT','STATUS','LIFECYCLE','ONEWAYDIR','ONEWAY
 def encoded(value):return (json.dumps(value,sort_keys=True,indent=2,allow_nan=False)+'\n').encode()
 
 
-def source_digest(content):
+def source_value(content):
     value=json.loads(content)
     if isinstance(value,dict) and value.get('id')=='f6380ef587ac4e54aaf988b15d8d1746' and value.get('type')=='Feature Service':
         # ArcGIS usage counters change independently of publisher/source data.
@@ -40,7 +40,10 @@ def source_digest(content):
         need(isinstance(ids,list) and all(type(v) is int and v>0 for v in ids)
              and len(set(ids))==len(ids),'Unique positive complete agency ID inventory required')
         value=dict(value,objectIds=sorted(ids))
-    return canonical_sha(value)
+    return value
+
+
+def source_digest(content):return canonical_sha(source_value(content))
 
 
 def normalized_name(value):
@@ -221,7 +224,11 @@ def fetch_originals(directory):
         u=urllib.parse.urlsplit(record['url']);need(u.scheme=='https' and u.hostname in HOSTS and not u.username and not u.password,'Allowlisted public agency source URL required')
         with urllib.request.urlopen(record['url'],timeout=45) as response:
             data=response.read(3_000_001);need(response.status==200 and len(data)<=3_000_000,'Complete bounded HTTP200 agency source required')
-        need(source_digest(data)==record['semantic_sha256'],'Agency source content changed; inspect before refreshing snapshot: '+key)
+        if source_digest(data)!=record['semantic_sha256']:
+            value=source_value(data);observed={k:canonical_sha(v) for k,v in value.items()}
+            changed=sorted(k for k in observed.keys()|record['top_level_sha256'].keys() if observed.get(k)!=record['top_level_sha256'].get(k))
+            error=value.get('error');code=error.get('code') if isinstance(error,dict) else None
+            raise ValueError(f'Agency source content changed: {key}; changed fields={changed}; response error code={code}. Inspect source before refreshing snapshot.')
         (Path(directory)/(key+'.json')).write_bytes(data)
         raw_sha=hashlib.sha256(data).hexdigest()
         receipts[key]=dict(sha256=raw_sha,size_bytes=len(data),semantic_sha256=source_digest(data),
