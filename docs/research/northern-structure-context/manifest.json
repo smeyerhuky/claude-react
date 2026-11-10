@@ -1,0 +1,667 @@
+{
+  "agency_report_sha256": "77fcd76aeb5ed50a198d06769048616b46679e791bc41c5844b67aee69a47427",
+  "imagery_report_sha256": "e72b6690f3364360cde7e630207d3b9dcc7c17f8b0e5e462b13a32b239c4e772",
+  "native_sha256": "062b0b116266b5ff005ad1e81c5386569b4196fb1c6152d53809c46771f64715",
+  "original_responses_published": false,
+  "release_eligible": false,
+  "schema": "northern-cdot-structure-source-manifest-v1",
+  "sources": {
+    "cdot-0-metadata": {
+      "captured_at_utc": "2026-11-10T21:32:14.673987+00:00",
+      "semantic_sha256": "8bbbbdd98dff1ef994b9a775bfb9e2de2f5591de637c68f688b83929b3b6443c",
+      "sha256": "bb21ad9db9b23918c1fe6b473952ea75f46aeb26b0e42ae05efbc05540ce33ff",
+      "size_bytes": 16608,
+      "top_level_sha256": {
+        "advancedEditingCapabilities": "a1f61268166e9195b5623d1e52de7781e45fd988e4a792416529857e69a96bd0",
+        "advancedQueryAnalyticCapabilities": "7ea4999d52f4eba7105f567cecb2944da829e6d0ab08a42c20b4f64180949e5e",
+        "advancedQueryCapabilities": "c023e52a15c24da35badc7808d1fd567dac09c19317f5dead2e14aa74d7ffce0",
+        "allowGeometryUpdates": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "allowTrueCurvesUpdates": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "archivingInfo": "71718a9dafff434f092db856e9c28fb7e2001084774272e8de0e1428ddbb3781",
+        "bigIntegerRestrictedTo53Bits": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "canScaleSymbols": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "capabilities": "36f58a4bc68841966647ee936a63b27b5f7ca3ee0a12dde6360463a85a270b76",
+        "cimVersion": "befcc9231ebcae8c797a4c67479ea225efa7019c5ba5457c9215ce55215131c4",
+        "copyrightText": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "currentVersion": "d9d8b73e7fa3813fae560964e8385264962717722f793f97bd6c3baebe6941d6",
+        "dateFieldsTimeReference": "d7b33466bd43809f62d1a17056ca254a29ba0d11bff83b41f4a01ad8ef551b76",
+        "datesInUnknownTimezone": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "defaultVisibility": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "description": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "displayField": "1f6f1d6c4aa914a4ed3d4e34ba4eb9e1d7bb1f25d863a50bf0f5b141e9575599",
+        "drawingInfo": "07fc577bca7d0d9a3868ea520f2c71ca3103dfb6dfbf8ccd23d087f4c3955274",
+        "editFieldsInfo": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "extent": "9e82b7e454754174b96afbce67dba53181f40f2eb061d1dbeb948bf9b3b47f1b",
+        "fields": "ecc9a2e804e38d7f51fb528929635212eb589f0eab5bf54054124e0251936b25",
+        "geometryField": "788121d2f0e713d335e99fff8a216df81f039ba7a0f04887845c385920f30f01",
+        "geometryType": "06fceaded1e71bc037ac37d7b17ced9f1aa0015adfe3065058837b523e3fbbd5",
+        "globalIdField": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "hasAttachments": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "hasM": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "hasMetadata": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "hasZ": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "htmlPopupType": "0060a47f03c0aaa99ab642e5cda64235d580c234ad982f392b2c174cda0e15a2",
+        "id": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+        "indexes": "5b21fc154ba6ae3f3723258e4f310eb5d3ce6429de57055a0b1e6a13dfd64f27",
+        "infoInEstimates": "d37f9cac9c5fa8d097ea96823b2730910059e2fac916d34454a50235b8f2b444",
+        "isCoGoEnabled": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "isDataArchived": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "isDataBranchVersioned": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "isDataReplicaTracked": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "isDataVersioned": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "maxRecordCount": "81a83544cf93c245178cbc1620030f1123f435af867c79d87135983c52ab39d9",
+        "maxRecordCountFactor": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+        "maxScale": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+        "minScale": "8d6962a152aee235ba824c41758b8da2371b7077b4ea0afaaec94014e16e3bc7",
+        "name": "198e031ec3e94803a243588418b122570e9940bc5b9dd4f2d70645289aeaa179",
+        "objectIdField": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "onlyAllowTrueCurveUpdatesByTrueCurveClients": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "ownershipBasedAccessControlForFeatures": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "parentLayer": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "preferredTimeReference": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "relationships": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceSpatialReference": "bb3ece1bd96d841430cffefca22f3be5fe0f91084b86b5260f001f02fde1fc38",
+        "spatialReference": "322d9f3064d4cb0e52867ca4383e893d276005b47a4e275a9bf17817add58b12",
+        "standardMaxRecordCount": "492f431bae35265f2e5f4ed49bd8c58dda912431be561504846988d00d05d117",
+        "standardMaxRecordCountNoGeometry": "492f431bae35265f2e5f4ed49bd8c58dda912431be561504846988d00d05d117",
+        "subtypeField": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "supportedAppendFormats": "eb83a886c3da86e89a3b203ca4e6df2a60f2253d105dd9b3f10f26923d2c18f5",
+        "supportedExportFormats": "225205a076d8aba6f1dcb2e42699b7e03a6c501b92a445263416030f2ceb611b",
+        "supportedQueryFormats": "c49239d2fbc4691a96b6c68c66aaf1cd4d3e59af98788d1a0398c33e5ae4be07",
+        "supportedSpatialRelationships": "b33b2f16043f9189a00e3b1b173e6db991f885d0efcfbeb2e56a85df1250484d",
+        "supportsASyncCalculate": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsAdvancedQueries": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsAppend": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsApplyEditsWithGlobalIds": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "supportsCalculate": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsCoordinatesQuantization": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsDatumTransformation": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsExceedsLimitStatistics": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsQuantizationEditMode": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsRollbackOnFailureParameter": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsStatistics": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsValidateSQL": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "syncCanReturnChanges": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "templates": "51552ce19a586007b79e2cc85248f766285334f21cd6eae1f29124f6018fd24e",
+        "tileMaxRecordCount": "ad5f9478d603fe97eae2bbff07f76fe7f18610343b5f3bc8e00945ee51b30d2c",
+        "type": "96c457e21556ea1c289f09cea4da9264012edf8e95134b8d8c4f72cc87a6b963",
+        "typeIdField": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "types": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "useStandardizedQueries": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/0?f=pjson"
+    },
+    "cdot-31-metadata": {
+      "captured_at_utc": "2026-11-10T21:32:14.735088+00:00",
+      "semantic_sha256": "f213fd00ab892c20dc3efd9df49c03a8d9677f4404fda721e9c726c843340178",
+      "sha256": "623f2ae45d5dab5d1c2a490ac80108514bd53452a3a935e96b21acb846fbce64",
+      "size_bytes": 54916,
+      "top_level_sha256": {
+        "advancedEditingCapabilities": "a1f61268166e9195b5623d1e52de7781e45fd988e4a792416529857e69a96bd0",
+        "advancedQueryAnalyticCapabilities": "7ea4999d52f4eba7105f567cecb2944da829e6d0ab08a42c20b4f64180949e5e",
+        "advancedQueryCapabilities": "c023e52a15c24da35badc7808d1fd567dac09c19317f5dead2e14aa74d7ffce0",
+        "allowGeometryUpdates": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "allowTrueCurvesUpdates": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "archivingInfo": "71718a9dafff434f092db856e9c28fb7e2001084774272e8de0e1428ddbb3781",
+        "bigIntegerRestrictedTo53Bits": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "canScaleSymbols": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "capabilities": "36f58a4bc68841966647ee936a63b27b5f7ca3ee0a12dde6360463a85a270b76",
+        "cimVersion": "befcc9231ebcae8c797a4c67479ea225efa7019c5ba5457c9215ce55215131c4",
+        "copyrightText": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "currentVersion": "d9d8b73e7fa3813fae560964e8385264962717722f793f97bd6c3baebe6941d6",
+        "dateFieldsTimeReference": "d7b33466bd43809f62d1a17056ca254a29ba0d11bff83b41f4a01ad8ef551b76",
+        "datesInUnknownTimezone": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "defaultVisibility": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "description": "2c905afba0a484afb0c4794e8e5b5c98d8a618334771c9ac084696107712740f",
+        "displayField": "3a7c5124e3435a320a6d60ca9c8d10c2d14f1f2033b8b05b5decbe3edde9b803",
+        "drawingInfo": "d2cc25f5b2952a0334204138853f3c0587543e1cf5a7f7cbd8abd2d69f6f92e6",
+        "editFieldsInfo": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "extent": "9e82b7e454754174b96afbce67dba53181f40f2eb061d1dbeb948bf9b3b47f1b",
+        "fields": "c29b64a689447a4f12aac2c301dd5949a7560aaef80fa8eaa1ba201e373eafe8",
+        "geometryField": "788121d2f0e713d335e99fff8a216df81f039ba7a0f04887845c385920f30f01",
+        "geometryType": "06fceaded1e71bc037ac37d7b17ced9f1aa0015adfe3065058837b523e3fbbd5",
+        "globalIdField": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "hasAttachments": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "hasM": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "hasMetadata": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "hasZ": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "htmlPopupType": "cd531d4a45f3eafbe1e2876d66ccdaa79469b782730d959ac24e91f2a28f02d7",
+        "id": "eb1e33e8a81b697b75855af6bfcdbcbf7cbbde9f94962ceaec1ed8af21f5a50f",
+        "indexes": "5b21fc154ba6ae3f3723258e4f310eb5d3ce6429de57055a0b1e6a13dfd64f27",
+        "infoInEstimates": "d37f9cac9c5fa8d097ea96823b2730910059e2fac916d34454a50235b8f2b444",
+        "isCoGoEnabled": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "isDataArchived": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "isDataBranchVersioned": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "isDataReplicaTracked": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "isDataVersioned": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "maxRecordCount": "81a83544cf93c245178cbc1620030f1123f435af867c79d87135983c52ab39d9",
+        "maxRecordCountFactor": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+        "maxScale": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+        "minScale": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+        "name": "02b1a1bfc99cdb6dd2655eb5ce962e9b38f92a76c02ea55f5da37c1a76c5560f",
+        "objectIdField": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "onlyAllowTrueCurveUpdatesByTrueCurveClients": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "ownershipBasedAccessControlForFeatures": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "parentLayer": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "preferredTimeReference": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "relationships": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceSpatialReference": "bb3ece1bd96d841430cffefca22f3be5fe0f91084b86b5260f001f02fde1fc38",
+        "spatialReference": "322d9f3064d4cb0e52867ca4383e893d276005b47a4e275a9bf17817add58b12",
+        "standardMaxRecordCount": "492f431bae35265f2e5f4ed49bd8c58dda912431be561504846988d00d05d117",
+        "standardMaxRecordCountNoGeometry": "492f431bae35265f2e5f4ed49bd8c58dda912431be561504846988d00d05d117",
+        "subtypeField": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "supportedAppendFormats": "eb83a886c3da86e89a3b203ca4e6df2a60f2253d105dd9b3f10f26923d2c18f5",
+        "supportedExportFormats": "225205a076d8aba6f1dcb2e42699b7e03a6c501b92a445263416030f2ceb611b",
+        "supportedQueryFormats": "c49239d2fbc4691a96b6c68c66aaf1cd4d3e59af98788d1a0398c33e5ae4be07",
+        "supportedSpatialRelationships": "b33b2f16043f9189a00e3b1b173e6db991f885d0efcfbeb2e56a85df1250484d",
+        "supportsASyncCalculate": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsAdvancedQueries": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsAppend": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsApplyEditsWithGlobalIds": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "supportsCalculate": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsCoordinatesQuantization": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsDatumTransformation": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsExceedsLimitStatistics": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsQuantizationEditMode": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsRollbackOnFailureParameter": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsStatistics": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsValidateSQL": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "syncCanReturnChanges": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "templates": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "tileMaxRecordCount": "ad5f9478d603fe97eae2bbff07f76fe7f18610343b5f3bc8e00945ee51b30d2c",
+        "type": "96c457e21556ea1c289f09cea4da9264012edf8e95134b8d8c4f72cc87a6b963",
+        "typeIdField": "15fc046a17370332a4394f55a15dd2bc5411659ae4894c0922a40e6096bb76ac",
+        "types": "947af0f0effcde8b537fd3255456c087c23e4eaccbb65b32cbbeb982b3c26a4c",
+        "useStandardizedQueries": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/31?f=pjson"
+    },
+    "cdot-9-metadata": {
+      "captured_at_utc": "2026-11-10T21:32:14.702869+00:00",
+      "semantic_sha256": "b00be567bfc9f0c9e7d9def17907cb8216d08fdbdb06f0b256d9811969c592a0",
+      "sha256": "3768e5a127dedd669960e32fa885eadee784b7415a961d36bb40398db81c8884",
+      "size_bytes": 20045,
+      "top_level_sha256": {
+        "advancedEditingCapabilities": "a1f61268166e9195b5623d1e52de7781e45fd988e4a792416529857e69a96bd0",
+        "advancedQueryAnalyticCapabilities": "7ea4999d52f4eba7105f567cecb2944da829e6d0ab08a42c20b4f64180949e5e",
+        "advancedQueryCapabilities": "ff83bf11d31d9d6d7541645cca26a0067def777a91b3140c28d0945bf220e9b0",
+        "allowGeometryUpdates": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "allowTrueCurvesUpdates": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "allowUpdateWithoutMValues": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "archivingInfo": "71718a9dafff434f092db856e9c28fb7e2001084774272e8de0e1428ddbb3781",
+        "bigIntegerRestrictedTo53Bits": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "canScaleSymbols": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "capabilities": "36f58a4bc68841966647ee936a63b27b5f7ca3ee0a12dde6360463a85a270b76",
+        "cimVersion": "befcc9231ebcae8c797a4c67479ea225efa7019c5ba5457c9215ce55215131c4",
+        "copyrightText": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "currentVersion": "d9d8b73e7fa3813fae560964e8385264962717722f793f97bd6c3baebe6941d6",
+        "dateFieldsTimeReference": "d7b33466bd43809f62d1a17056ca254a29ba0d11bff83b41f4a01ad8ef551b76",
+        "datesInUnknownTimezone": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "defaultVisibility": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "description": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "displayField": "6773a986c0f9fa964e2b2f2f1d26e9ff9423c3d7e3fffce178e52987af07a9d6",
+        "drawingInfo": "df9c74f3b9acb14729085519ba817144e46f0b77e14aebb617b7b07dbba406d9",
+        "editFieldsInfo": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "enableZDefaults": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "extent": "d64b3f1262399aead66e14d8c98034640a2adf5d6c21d747bad8b1110ed94524",
+        "fields": "4a707f1a5ebb933b76ca908d8765a2ca8ee21abb6795a0a661c48bc237979932",
+        "geometryField": "788121d2f0e713d335e99fff8a216df81f039ba7a0f04887845c385920f30f01",
+        "geometryProperties": "2c839f16f84ff02a3fc3f58f471b142531d6a969e4e7a5ef1c257ab38b604939",
+        "geometryType": "d87c5563ac0b95f142cf503af062cead09c7ae8e057f7c366a06e064f47a1546",
+        "globalIdField": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "hasAttachments": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "hasGeometryProperties": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "hasM": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "hasMetadata": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "hasZ": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "htmlPopupType": "0060a47f03c0aaa99ab642e5cda64235d580c234ad982f392b2c174cda0e15a2",
+        "id": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7",
+        "indexes": "620ca6914730870259ba89947240ba8f43b8345cc20dc3df0258afc5efc76ce7",
+        "infoInEstimates": "d37f9cac9c5fa8d097ea96823b2730910059e2fac916d34454a50235b8f2b444",
+        "isCoGoEnabled": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "isDataArchived": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "isDataBranchVersioned": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "isDataReplicaTracked": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "isDataVersioned": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "maxRecordCount": "81a83544cf93c245178cbc1620030f1123f435af867c79d87135983c52ab39d9",
+        "maxRecordCountFactor": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+        "maxScale": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+        "minScale": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+        "name": "95ac89ce9aa1b9f02d58b9bbe894a9c9f1e8824f2cf7d9b20ff735c38b801e81",
+        "objectIdField": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "onlyAllowTrueCurveUpdatesByTrueCurveClients": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "ownershipBasedAccessControlForFeatures": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "parentLayer": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "preferredTimeReference": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "relationships": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceSpatialReference": "6d20cecd605a02afc87506fb3e935a61eae2eb2873f3f0bab43b46cfe4269cef",
+        "spatialReference": "322d9f3064d4cb0e52867ca4383e893d276005b47a4e275a9bf17817add58b12",
+        "standardMaxRecordCount": "ad5f9478d603fe97eae2bbff07f76fe7f18610343b5f3bc8e00945ee51b30d2c",
+        "standardMaxRecordCountNoGeometry": "492f431bae35265f2e5f4ed49bd8c58dda912431be561504846988d00d05d117",
+        "subtypeField": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "supportedAppendFormats": "eb83a886c3da86e89a3b203ca4e6df2a60f2253d105dd9b3f10f26923d2c18f5",
+        "supportedExportFormats": "225205a076d8aba6f1dcb2e42699b7e03a6c501b92a445263416030f2ceb611b",
+        "supportedQueryFormats": "c49239d2fbc4691a96b6c68c66aaf1cd4d3e59af98788d1a0398c33e5ae4be07",
+        "supportedSpatialRelationships": "b33b2f16043f9189a00e3b1b173e6db991f885d0efcfbeb2e56a85df1250484d",
+        "supportsASyncCalculate": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsAdvancedQueries": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsAppend": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsApplyEditsWithGlobalIds": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "supportsCalculate": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsCoordinatesQuantization": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsDatumTransformation": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsExceedsLimitStatistics": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsQuantizationEditMode": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsRollbackOnFailureParameter": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsStatistics": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsVCSProjection": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "supportsValidateSQL": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+        "syncCanReturnChanges": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "templates": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "tileMaxRecordCount": "b090147020e033534635010c4f7eb6fc270d44e5df67ea9e744a8087df9ca106",
+        "type": "96c457e21556ea1c289f09cea4da9264012edf8e95134b8d8c4f72cc87a6b963",
+        "typeIdField": "7a12fa80ae1c1a23129bd94ef73337e5e1653f0756125da59a74ea6d371bd24e",
+        "types": "a5f897c11c3a43af446fe9df1064254c78e8f0208cbff7c4560518b5b95b972f",
+        "useStandardizedQueries": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/9?f=pjson"
+    },
+    "fort-college-structure-context-0": {
+      "captured_at_utc": "2026-11-10T21:53:38.667212+00:00",
+      "semantic_sha256": "649a8cda11cd3ae108edd20e7151c8ea222b8047ef303da1a6026e43269c6730",
+      "sha256": "feb4d3cfd107f51817044878b4f01057d2dab5822b749b32802033276dbe37a8",
+      "size_bytes": 157,
+      "top_level_sha256": {
+        "features": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "geometryType": "06fceaded1e71bc037ac37d7b17ced9f1aa0015adfe3065058837b523e3fbbd5",
+        "globalIdFieldName": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "spatialReference": "d557dc1f983b7f77170e7c75f293588cfa1231f94df88861cb3dbfc9bfa70598"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/0/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-105.0771007%2C%22y%22%3A40.5900781%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&outFields=OBJECTID%2CSTRUCTURE_KEY%2CSTRUCTURE_NUM%2CROUTE%2CREFPT%2CENDREFPT%2CSTRUCTURE_TYPE%2CSTRUCTURE_CLASS%2CSTRUCTURE_STATUS%2CFACILITY%2CFEATINT%2CON_UNDER%2CSTRLENGTH%2CYEARBUILT&returnGeometry=true&resultRecordCount=1000"
+    },
+    "fort-college-structure-context-0-ids": {
+      "captured_at_utc": "2026-11-10T21:53:39.062102+00:00",
+      "semantic_sha256": "667410564a013e24d2b824ed7ea5c2613b8f5a6ea02633399a491988c5e3a512",
+      "sha256": "667410564a013e24d2b824ed7ea5c2613b8f5a6ea02633399a491988c5e3a512",
+      "size_bytes": 49,
+      "top_level_sha256": {
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "objectIds": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/0/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-105.0771007%2C%22y%22%3A40.5900781%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&resultRecordCount=1000&returnIdsOnly=true"
+    },
+    "fort-college-structure-context-31": {
+      "captured_at_utc": "2026-11-10T21:53:39.828635+00:00",
+      "semantic_sha256": "0a850dbeda67ac58485d801f93118178d3188f6adf4d71a72c033618abb18f13",
+      "sha256": "438a2cd46978243728f8d286471fec4e297c7f31675ddf09904ceba852001142",
+      "size_bytes": 9686,
+      "top_level_sha256": {
+        "features": "bd44b69c4f1721bdcce0a8d0539b75000ec85ee8f1e749a103baec2abe6f0dc9",
+        "fields": "d35e41efa0a55d1907f92d155883186c52ab1e49f600a405e954dad26f130b19",
+        "geometryType": "06fceaded1e71bc037ac37d7b17ced9f1aa0015adfe3065058837b523e3fbbd5",
+        "globalIdFieldName": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "spatialReference": "d557dc1f983b7f77170e7c75f293588cfa1231f94df88861cb3dbfc9bfa70598"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/31/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-105.0771007%2C%22y%22%3A40.5900781%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&outFields=OBJECTID%2CSTRUCTURE_KEY%2CSTRUCTURE_NUM%2CROUTE%2CREFPT%2CENDREFPT%2CSTRUCTURE_TYPE%2CSTRUCTURE_CLASS%2CSTRUCTURE_STATUS%2CFACILITY%2CFEATINT%2CON_UNDER%2CSTRLENGTH%2CYEARBUILT&returnGeometry=true&resultRecordCount=1000"
+    },
+    "fort-college-structure-context-31-ids": {
+      "captured_at_utc": "2026-11-10T21:53:40.144858+00:00",
+      "semantic_sha256": "f7a44d499be2b7f44c367994a5ea7a0b9014b6894d853577f057b72b579fc77e",
+      "sha256": "f7a44d499be2b7f44c367994a5ea7a0b9014b6894d853577f057b72b579fc77e",
+      "size_bytes": 180,
+      "top_level_sha256": {
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "objectIds": "c2535dc6681d81dc4de2f3f82db69d973ead27b06f361c10281e1cd232a4e65a"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/31/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-105.0771007%2C%22y%22%3A40.5900781%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&resultRecordCount=1000&returnIdsOnly=true"
+    },
+    "fort-college-structure-context-9": {
+      "captured_at_utc": "2026-11-10T21:53:40.420770+00:00",
+      "semantic_sha256": "f54ed48b0c644169188c40fed67ce8541868a0a8777b6ca7b372a50638095204",
+      "sha256": "998c24a06448fe7eac93fd7a64e24c7da5a4194a898c23739e9c9a90d0e59c1f",
+      "size_bytes": 4351,
+      "top_level_sha256": {
+        "features": "1ae07f9361348724cc323a682147126954efca53d0341708612aa1609608d201",
+        "fields": "e64b83a02893b7456488283211b3c606fdf818cc46d119fa54f0ae6640acf0a4",
+        "geometryType": "d87c5563ac0b95f142cf503af062cead09c7ae8e057f7c366a06e064f47a1546",
+        "globalIdFieldName": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "hasM": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "hasZ": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "spatialReference": "d557dc1f983b7f77170e7c75f293588cfa1231f94df88861cb3dbfc9bfa70598"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/9/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-105.0771007%2C%22y%22%3A40.5900781%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&outFields=OBJECTID%2CROUTE%2CREFPT%2CENDREFPT%2CACCCAT%2CACCESS_&returnGeometry=true&resultRecordCount=1000"
+    },
+    "fort-college-structure-context-9-ids": {
+      "captured_at_utc": "2026-11-10T21:53:40.719813+00:00",
+      "semantic_sha256": "079af013456bbb8dec941c0773aecd6199a8cf20a102a73918873ad976dbe991",
+      "sha256": "079af013456bbb8dec941c0773aecd6199a8cf20a102a73918873ad976dbe991",
+      "size_bytes": 59,
+      "top_level_sha256": {
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "objectIds": "82e3ab12c4ca1b688e4aee34573cee2b667a20159d7f04def6a033a77955a4b3"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/9/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-105.0771007%2C%22y%22%3A40.5900781%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&resultRecordCount=1000&returnIdsOnly=true"
+    },
+    "greeley-ninth-structure-context-0": {
+      "captured_at_utc": "2026-11-10T21:53:40.380533+00:00",
+      "semantic_sha256": "649a8cda11cd3ae108edd20e7151c8ea222b8047ef303da1a6026e43269c6730",
+      "sha256": "feb4d3cfd107f51817044878b4f01057d2dab5822b749b32802033276dbe37a8",
+      "size_bytes": 157,
+      "top_level_sha256": {
+        "features": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "geometryType": "06fceaded1e71bc037ac37d7b17ced9f1aa0015adfe3065058837b523e3fbbd5",
+        "globalIdFieldName": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "spatialReference": "d557dc1f983b7f77170e7c75f293588cfa1231f94df88861cb3dbfc9bfa70598"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/0/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-104.6948769%2C%22y%22%3A40.4239405%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&outFields=OBJECTID%2CSTRUCTURE_KEY%2CSTRUCTURE_NUM%2CROUTE%2CREFPT%2CENDREFPT%2CSTRUCTURE_TYPE%2CSTRUCTURE_CLASS%2CSTRUCTURE_STATUS%2CFACILITY%2CFEATINT%2CON_UNDER%2CSTRLENGTH%2CYEARBUILT&returnGeometry=true&resultRecordCount=1000"
+    },
+    "greeley-ninth-structure-context-0-ids": {
+      "captured_at_utc": "2026-11-10T21:53:40.660591+00:00",
+      "semantic_sha256": "667410564a013e24d2b824ed7ea5c2613b8f5a6ea02633399a491988c5e3a512",
+      "sha256": "667410564a013e24d2b824ed7ea5c2613b8f5a6ea02633399a491988c5e3a512",
+      "size_bytes": 49,
+      "top_level_sha256": {
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "objectIds": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/0/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-104.6948769%2C%22y%22%3A40.4239405%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&resultRecordCount=1000&returnIdsOnly=true"
+    },
+    "greeley-ninth-structure-context-31": {
+      "captured_at_utc": "2026-11-10T21:53:40.965368+00:00",
+      "semantic_sha256": "1aecc29b8dc853dc1e841cef4a3ae35c7ec0a445cdd411afa64a919a6f5de6ad",
+      "sha256": "0f51eb81b7cced68ea7fe1a85ecb3f524f7d9cf06075fab0611ab4a7e34b2c4f",
+      "size_bytes": 12019,
+      "top_level_sha256": {
+        "features": "80f11370102d0c985e8c6bd480027aae4d9b868381668085282bd01531f789c6",
+        "fields": "d35e41efa0a55d1907f92d155883186c52ab1e49f600a405e954dad26f130b19",
+        "geometryType": "06fceaded1e71bc037ac37d7b17ced9f1aa0015adfe3065058837b523e3fbbd5",
+        "globalIdFieldName": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "spatialReference": "d557dc1f983b7f77170e7c75f293588cfa1231f94df88861cb3dbfc9bfa70598"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/31/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-104.6948769%2C%22y%22%3A40.4239405%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&outFields=OBJECTID%2CSTRUCTURE_KEY%2CSTRUCTURE_NUM%2CROUTE%2CREFPT%2CENDREFPT%2CSTRUCTURE_TYPE%2CSTRUCTURE_CLASS%2CSTRUCTURE_STATUS%2CFACILITY%2CFEATINT%2CON_UNDER%2CSTRLENGTH%2CYEARBUILT&returnGeometry=true&resultRecordCount=1000"
+    },
+    "greeley-ninth-structure-context-31-ids": {
+      "captured_at_utc": "2026-11-10T21:53:41.253813+00:00",
+      "semantic_sha256": "195d0cbad2c584dd6b1632623492acb892551e9ba824831e80befa3517cfb724",
+      "sha256": "195d0cbad2c584dd6b1632623492acb892551e9ba824831e80befa3517cfb724",
+      "size_bytes": 196,
+      "top_level_sha256": {
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "objectIds": "94ff6b36383f16437c063b0c0442b4e1546cb7582f35d54332529e45f0983a4a"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/31/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-104.6948769%2C%22y%22%3A40.4239405%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&resultRecordCount=1000&returnIdsOnly=true"
+    },
+    "greeley-ninth-structure-context-9": {
+      "captured_at_utc": "2026-11-10T21:53:41.548044+00:00",
+      "semantic_sha256": "9d5e16eb5bbdf40bceab406800add9acbfaaef798ce321c4f32741046f566c7b",
+      "sha256": "98b3ea5bb4b9ecff548cb2e46d4a7a34c1d623a330f7c36cc42738a73c346cb7",
+      "size_bytes": 4537,
+      "top_level_sha256": {
+        "features": "2c9782181be7e7069fc2d6372acb372875dad4fe7cce89d31228007c2d22c2db",
+        "fields": "e64b83a02893b7456488283211b3c606fdf818cc46d119fa54f0ae6640acf0a4",
+        "geometryType": "d87c5563ac0b95f142cf503af062cead09c7ae8e057f7c366a06e064f47a1546",
+        "globalIdFieldName": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "hasM": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "hasZ": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "spatialReference": "d557dc1f983b7f77170e7c75f293588cfa1231f94df88861cb3dbfc9bfa70598"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/9/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-104.6948769%2C%22y%22%3A40.4239405%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&outFields=OBJECTID%2CROUTE%2CREFPT%2CENDREFPT%2CACCCAT%2CACCESS_&returnGeometry=true&resultRecordCount=1000"
+    },
+    "greeley-ninth-structure-context-9-ids": {
+      "captured_at_utc": "2026-11-10T21:53:41.826978+00:00",
+      "semantic_sha256": "57986ca852b9f9ee4687f26ca661d6552156be5e5102c475c6e0a359fc5682d6",
+      "sha256": "57986ca852b9f9ee4687f26ca661d6552156be5e5102c475c6e0a359fc5682d6",
+      "size_bytes": 58,
+      "top_level_sha256": {
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "objectIds": "452e7600fb77224736380c88e69c8a17b5114bd3b9482a822d1a1f4ff0646647"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/9/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-104.6948769%2C%22y%22%3A40.4239405%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&resultRecordCount=1000&returnIdsOnly=true"
+    },
+    "greeley-tenth-structure-context-0": {
+      "captured_at_utc": "2026-11-10T21:53:40.373429+00:00",
+      "semantic_sha256": "649a8cda11cd3ae108edd20e7151c8ea222b8047ef303da1a6026e43269c6730",
+      "sha256": "feb4d3cfd107f51817044878b4f01057d2dab5822b749b32802033276dbe37a8",
+      "size_bytes": 157,
+      "top_level_sha256": {
+        "features": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "geometryType": "06fceaded1e71bc037ac37d7b17ced9f1aa0015adfe3065058837b523e3fbbd5",
+        "globalIdFieldName": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "spatialReference": "d557dc1f983b7f77170e7c75f293588cfa1231f94df88861cb3dbfc9bfa70598"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/0/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-104.6909798%2C%22y%22%3A40.4225311%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&outFields=OBJECTID%2CSTRUCTURE_KEY%2CSTRUCTURE_NUM%2CROUTE%2CREFPT%2CENDREFPT%2CSTRUCTURE_TYPE%2CSTRUCTURE_CLASS%2CSTRUCTURE_STATUS%2CFACILITY%2CFEATINT%2CON_UNDER%2CSTRLENGTH%2CYEARBUILT&returnGeometry=true&resultRecordCount=1000"
+    },
+    "greeley-tenth-structure-context-0-ids": {
+      "captured_at_utc": "2026-11-10T21:53:40.643152+00:00",
+      "semantic_sha256": "667410564a013e24d2b824ed7ea5c2613b8f5a6ea02633399a491988c5e3a512",
+      "sha256": "667410564a013e24d2b824ed7ea5c2613b8f5a6ea02633399a491988c5e3a512",
+      "size_bytes": 49,
+      "top_level_sha256": {
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "objectIds": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/0/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-104.6909798%2C%22y%22%3A40.4225311%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&resultRecordCount=1000&returnIdsOnly=true"
+    },
+    "greeley-tenth-structure-context-31": {
+      "captured_at_utc": "2026-11-10T21:53:40.948356+00:00",
+      "semantic_sha256": "29dd72079f4b83323a5359a8a5b234b6a28be7dbfef83d2da62e786a51fa9bba",
+      "sha256": "01e77b7824424e34acee64beb5427174fc3b7290d4206a9aa92f88f1d79735e6",
+      "size_bytes": 13095,
+      "top_level_sha256": {
+        "features": "00dea7de4ac892845ce9c8074961ed1a5d562587055f5dec36daba6f62e14603",
+        "fields": "d35e41efa0a55d1907f92d155883186c52ab1e49f600a405e954dad26f130b19",
+        "geometryType": "06fceaded1e71bc037ac37d7b17ced9f1aa0015adfe3065058837b523e3fbbd5",
+        "globalIdFieldName": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "spatialReference": "d557dc1f983b7f77170e7c75f293588cfa1231f94df88861cb3dbfc9bfa70598"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/31/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-104.6909798%2C%22y%22%3A40.4225311%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&outFields=OBJECTID%2CSTRUCTURE_KEY%2CSTRUCTURE_NUM%2CROUTE%2CREFPT%2CENDREFPT%2CSTRUCTURE_TYPE%2CSTRUCTURE_CLASS%2CSTRUCTURE_STATUS%2CFACILITY%2CFEATINT%2CON_UNDER%2CSTRLENGTH%2CYEARBUILT&returnGeometry=true&resultRecordCount=1000"
+    },
+    "greeley-tenth-structure-context-31-ids": {
+      "captured_at_utc": "2026-11-10T21:53:41.232375+00:00",
+      "semantic_sha256": "e5ac5618e1326e484829640f248c9772ca89145ecccd930489b0b68ef1fafdc8",
+      "sha256": "e5ac5618e1326e484829640f248c9772ca89145ecccd930489b0b68ef1fafdc8",
+      "size_bytes": 211,
+      "top_level_sha256": {
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "objectIds": "c1257840e9aae997a095ef0d1b06ecde7933aa0a3593758d6651f530c050c7d9"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/31/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-104.6909798%2C%22y%22%3A40.4225311%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&resultRecordCount=1000&returnIdsOnly=true"
+    },
+    "greeley-tenth-structure-context-9": {
+      "captured_at_utc": "2026-11-10T21:53:41.510699+00:00",
+      "semantic_sha256": "9d5e16eb5bbdf40bceab406800add9acbfaaef798ce321c4f32741046f566c7b",
+      "sha256": "98b3ea5bb4b9ecff548cb2e46d4a7a34c1d623a330f7c36cc42738a73c346cb7",
+      "size_bytes": 4537,
+      "top_level_sha256": {
+        "features": "2c9782181be7e7069fc2d6372acb372875dad4fe7cce89d31228007c2d22c2db",
+        "fields": "e64b83a02893b7456488283211b3c606fdf818cc46d119fa54f0ae6640acf0a4",
+        "geometryType": "d87c5563ac0b95f142cf503af062cead09c7ae8e057f7c366a06e064f47a1546",
+        "globalIdFieldName": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "hasM": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "hasZ": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "spatialReference": "d557dc1f983b7f77170e7c75f293588cfa1231f94df88861cb3dbfc9bfa70598"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/9/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-104.6909798%2C%22y%22%3A40.4225311%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&outFields=OBJECTID%2CROUTE%2CREFPT%2CENDREFPT%2CACCCAT%2CACCESS_&returnGeometry=true&resultRecordCount=1000"
+    },
+    "greeley-tenth-structure-context-9-ids": {
+      "captured_at_utc": "2026-11-10T21:53:41.801304+00:00",
+      "semantic_sha256": "57986ca852b9f9ee4687f26ca661d6552156be5e5102c475c6e0a359fc5682d6",
+      "sha256": "57986ca852b9f9ee4687f26ca661d6552156be5e5102c475c6e0a359fc5682d6",
+      "size_bytes": 58,
+      "top_level_sha256": {
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "objectIds": "452e7600fb77224736380c88e69c8a17b5114bd3b9482a822d1a1f4ff0646647"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/9/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-104.6909798%2C%22y%22%3A40.4225311%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&resultRecordCount=1000&returnIdsOnly=true"
+    },
+    "loveland-cleveland-structure-context-0": {
+      "captured_at_utc": "2026-11-10T21:53:38.515478+00:00",
+      "semantic_sha256": "fecfb0116f0c2d14dad47769282368a0a976bf41c93fd808286962c791ac744d",
+      "sha256": "5dcb8d224da3c0b4b8882e736693758173a28a14cf76b8d4dea2954e972187ef",
+      "size_bytes": 2026,
+      "top_level_sha256": {
+        "features": "dbb76b2f036425388e681626790662e750667c7baf647ccede45f8f857f0e74e",
+        "fields": "4def7ee564927e3b9a2b8b2b9697bf219284b6f9acfc1cebe526568ed745e682",
+        "geometryType": "06fceaded1e71bc037ac37d7b17ced9f1aa0015adfe3065058837b523e3fbbd5",
+        "globalIdFieldName": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "spatialReference": "d557dc1f983b7f77170e7c75f293588cfa1231f94df88861cb3dbfc9bfa70598"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/0/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-105.0745222%2C%22y%22%3A40.3970413%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&outFields=OBJECTID%2CSTRUCTURE_KEY%2CSTRUCTURE_NUM%2CROUTE%2CREFPT%2CENDREFPT%2CSTRUCTURE_TYPE%2CSTRUCTURE_CLASS%2CSTRUCTURE_STATUS%2CFACILITY%2CFEATINT%2CON_UNDER%2CSTRLENGTH%2CYEARBUILT&returnGeometry=true&resultRecordCount=1000"
+    },
+    "loveland-cleveland-structure-context-0-ids": {
+      "captured_at_utc": "2026-11-10T21:53:38.841483+00:00",
+      "semantic_sha256": "51f95f428d19200fe3f580586c324b480ef5efff8cb9c8de2fdc49cb035ef160",
+      "sha256": "51f95f428d19200fe3f580586c324b480ef5efff8cb9c8de2fdc49cb035ef160",
+      "size_bytes": 58,
+      "top_level_sha256": {
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "objectIds": "b89a403bf4d68040e970900d24d4cbc9b0ce3d59fe464c5f3ae2d3b40668556c"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/0/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-105.0745222%2C%22y%22%3A40.3970413%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&resultRecordCount=1000&returnIdsOnly=true"
+    },
+    "loveland-cleveland-structure-context-31": {
+      "captured_at_utc": "2026-11-10T21:53:39.228971+00:00",
+      "semantic_sha256": "066ee9086ae16000112dcffe25275b211d324a88cba8b45f5c4d0a5fcf79b6fb",
+      "sha256": "5ddbc0472937f096587862b63f6a78a8768426c33b2ca2cd7ab2a1d40cc7b84a",
+      "size_bytes": 12511,
+      "top_level_sha256": {
+        "features": "e879fd5d45bed75e53c4bea3c992d6064f7cf59bc8ffadbbdb797d7b3f3f1166",
+        "fields": "d35e41efa0a55d1907f92d155883186c52ab1e49f600a405e954dad26f130b19",
+        "geometryType": "06fceaded1e71bc037ac37d7b17ced9f1aa0015adfe3065058837b523e3fbbd5",
+        "globalIdFieldName": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "spatialReference": "d557dc1f983b7f77170e7c75f293588cfa1231f94df88861cb3dbfc9bfa70598"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/31/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-105.0745222%2C%22y%22%3A40.3970413%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&outFields=OBJECTID%2CSTRUCTURE_KEY%2CSTRUCTURE_NUM%2CROUTE%2CREFPT%2CENDREFPT%2CSTRUCTURE_TYPE%2CSTRUCTURE_CLASS%2CSTRUCTURE_STATUS%2CFACILITY%2CFEATINT%2CON_UNDER%2CSTRLENGTH%2CYEARBUILT&returnGeometry=true&resultRecordCount=1000"
+    },
+    "loveland-cleveland-structure-context-31-ids": {
+      "captured_at_utc": "2026-11-10T21:53:39.506401+00:00",
+      "semantic_sha256": "604f9eecb26769a34aeff8ed97bb14dff2f64d5273328352f9b4c457a870531d",
+      "sha256": "604f9eecb26769a34aeff8ed97bb14dff2f64d5273328352f9b4c457a870531d",
+      "size_bytes": 232,
+      "top_level_sha256": {
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "objectIds": "ebd89a9dd7b907538e2bf89f1c50ff104491c7b6ba4f07bc589a6426c0b8a815"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/31/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-105.0745222%2C%22y%22%3A40.3970413%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&resultRecordCount=1000&returnIdsOnly=true"
+    },
+    "loveland-cleveland-structure-context-9": {
+      "captured_at_utc": "2026-11-10T21:53:39.798627+00:00",
+      "semantic_sha256": "662ea1c5592df615f716743ceb056f292da8d3ecf2954b764c03573adb1c5732",
+      "sha256": "09417fd598f72e591fdbf779f5a6a40eda26a5052cd9cfb5c83795bf07c13874",
+      "size_bytes": 6021,
+      "top_level_sha256": {
+        "features": "b941103b3e91f1a61766e65fd59cc80a11f3569577030951e7fff23aeed75c46",
+        "fields": "e64b83a02893b7456488283211b3c606fdf818cc46d119fa54f0ae6640acf0a4",
+        "geometryType": "d87c5563ac0b95f142cf503af062cead09c7ae8e057f7c366a06e064f47a1546",
+        "globalIdFieldName": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "hasM": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "hasZ": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "spatialReference": "d557dc1f983b7f77170e7c75f293588cfa1231f94df88861cb3dbfc9bfa70598"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/9/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-105.0745222%2C%22y%22%3A40.3970413%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&outFields=OBJECTID%2CROUTE%2CREFPT%2CENDREFPT%2CACCCAT%2CACCESS_&returnGeometry=true&resultRecordCount=1000"
+    },
+    "loveland-cleveland-structure-context-9-ids": {
+      "captured_at_utc": "2026-11-10T21:53:40.092791+00:00",
+      "semantic_sha256": "6bccbd88c699f6c60920ab1c0b2bfcd9f97a3ab30c2f7fa971bf7a43b680807d",
+      "sha256": "6bccbd88c699f6c60920ab1c0b2bfcd9f97a3ab30c2f7fa971bf7a43b680807d",
+      "size_bytes": 53,
+      "top_level_sha256": {
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "objectIds": "d7ee7b05b429848d70918ae3fb1621ba09279dc07d0b1c7252e813349c1c714e"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/9/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-105.0745222%2C%22y%22%3A40.3970413%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&resultRecordCount=1000&returnIdsOnly=true"
+    },
+    "loveland-lincoln-structure-context-0": {
+      "captured_at_utc": "2026-11-10T21:53:38.530835+00:00",
+      "semantic_sha256": "fecfb0116f0c2d14dad47769282368a0a976bf41c93fd808286962c791ac744d",
+      "sha256": "5dcb8d224da3c0b4b8882e736693758173a28a14cf76b8d4dea2954e972187ef",
+      "size_bytes": 2026,
+      "top_level_sha256": {
+        "features": "dbb76b2f036425388e681626790662e750667c7baf647ccede45f8f857f0e74e",
+        "fields": "4def7ee564927e3b9a2b8b2b9697bf219284b6f9acfc1cebe526568ed745e682",
+        "geometryType": "06fceaded1e71bc037ac37d7b17ced9f1aa0015adfe3065058837b523e3fbbd5",
+        "globalIdFieldName": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "spatialReference": "d557dc1f983b7f77170e7c75f293588cfa1231f94df88861cb3dbfc9bfa70598"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/0/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-105.0731934%2C%22y%22%3A40.3970269%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&outFields=OBJECTID%2CSTRUCTURE_KEY%2CSTRUCTURE_NUM%2CROUTE%2CREFPT%2CENDREFPT%2CSTRUCTURE_TYPE%2CSTRUCTURE_CLASS%2CSTRUCTURE_STATUS%2CFACILITY%2CFEATINT%2CON_UNDER%2CSTRLENGTH%2CYEARBUILT&returnGeometry=true&resultRecordCount=1000"
+    },
+    "loveland-lincoln-structure-context-0-ids": {
+      "captured_at_utc": "2026-11-10T21:53:38.830378+00:00",
+      "semantic_sha256": "51f95f428d19200fe3f580586c324b480ef5efff8cb9c8de2fdc49cb035ef160",
+      "sha256": "51f95f428d19200fe3f580586c324b480ef5efff8cb9c8de2fdc49cb035ef160",
+      "size_bytes": 58,
+      "top_level_sha256": {
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "objectIds": "b89a403bf4d68040e970900d24d4cbc9b0ce3d59fe464c5f3ae2d3b40668556c"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/0/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-105.0731934%2C%22y%22%3A40.3970269%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&resultRecordCount=1000&returnIdsOnly=true"
+    },
+    "loveland-lincoln-structure-context-31": {
+      "captured_at_utc": "2026-11-10T21:53:39.230488+00:00",
+      "semantic_sha256": "53f4e1ede2680abb5d020b46c0fe2690b9ad06014b9139a71b2720714d12bdbe",
+      "sha256": "5ae40cae19d6970ebafdc1a374864f1d46a5db811d03eac729c6c622e3d03a45",
+      "size_bytes": 12903,
+      "top_level_sha256": {
+        "features": "34e2ed8e3662cd059f0ea5c956837bece3636fd2dd50e8564ef05487a8666803",
+        "fields": "d35e41efa0a55d1907f92d155883186c52ab1e49f600a405e954dad26f130b19",
+        "geometryType": "06fceaded1e71bc037ac37d7b17ced9f1aa0015adfe3065058837b523e3fbbd5",
+        "globalIdFieldName": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "spatialReference": "d557dc1f983b7f77170e7c75f293588cfa1231f94df88861cb3dbfc9bfa70598"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/31/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-105.0731934%2C%22y%22%3A40.3970269%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&outFields=OBJECTID%2CSTRUCTURE_KEY%2CSTRUCTURE_NUM%2CROUTE%2CREFPT%2CENDREFPT%2CSTRUCTURE_TYPE%2CSTRUCTURE_CLASS%2CSTRUCTURE_STATUS%2CFACILITY%2CFEATINT%2CON_UNDER%2CSTRLENGTH%2CYEARBUILT&returnGeometry=true&resultRecordCount=1000"
+    },
+    "loveland-lincoln-structure-context-31-ids": {
+      "captured_at_utc": "2026-11-10T21:53:39.528150+00:00",
+      "semantic_sha256": "76a398180e1caafddb1c9e16950530441f29d253fe1ab545b6ee8e8c0fd96ec2",
+      "sha256": "76a398180e1caafddb1c9e16950530441f29d253fe1ab545b6ee8e8c0fd96ec2",
+      "size_bytes": 238,
+      "top_level_sha256": {
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "objectIds": "4eb15da1a83efc7280f540d0ce241e28024d588a4f500e10727c2e4ad23e6c2d"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/31/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-105.0731934%2C%22y%22%3A40.3970269%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&resultRecordCount=1000&returnIdsOnly=true"
+    },
+    "loveland-lincoln-structure-context-9": {
+      "captured_at_utc": "2026-11-10T21:53:39.806298+00:00",
+      "semantic_sha256": "662ea1c5592df615f716743ceb056f292da8d3ecf2954b764c03573adb1c5732",
+      "sha256": "09417fd598f72e591fdbf779f5a6a40eda26a5052cd9cfb5c83795bf07c13874",
+      "size_bytes": 6021,
+      "top_level_sha256": {
+        "features": "b941103b3e91f1a61766e65fd59cc80a11f3569577030951e7fff23aeed75c46",
+        "fields": "e64b83a02893b7456488283211b3c606fdf818cc46d119fa54f0ae6640acf0a4",
+        "geometryType": "d87c5563ac0b95f142cf503af062cead09c7ae8e057f7c366a06e064f47a1546",
+        "globalIdFieldName": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "hasM": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "hasZ": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "spatialReference": "d557dc1f983b7f77170e7c75f293588cfa1231f94df88861cb3dbfc9bfa70598"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/9/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-105.0731934%2C%22y%22%3A40.3970269%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&outFields=OBJECTID%2CROUTE%2CREFPT%2CENDREFPT%2CACCCAT%2CACCESS_&returnGeometry=true&resultRecordCount=1000"
+    },
+    "loveland-lincoln-structure-context-9-ids": {
+      "captured_at_utc": "2026-11-10T21:53:40.098644+00:00",
+      "semantic_sha256": "6bccbd88c699f6c60920ab1c0b2bfcd9f97a3ab30c2f7fa971bf7a43b680807d",
+      "sha256": "6bccbd88c699f6c60920ab1c0b2bfcd9f97a3ab30c2f7fa971bf7a43b680807d",
+      "size_bytes": 53,
+      "top_level_sha256": {
+        "objectIdFieldName": "a8ae2e4ca0badc2fc917e93c40743d8565fbc006f95c526b2eae7c13f1f722eb",
+        "objectIds": "d7ee7b05b429848d70918ae3fb1621ba09279dc07d0b1c7252e813349c1c714e"
+      },
+      "url": "https://dtdapps.codot.gov/server/rest/services/Webapps/open_data_sde/FeatureServer/9/query?f=json&where=1%3D1&geometry=%7B%22x%22%3A-105.0731934%2C%22y%22%3A40.3970269%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=500&units=esriSRUnit_Meter&outSR=26913&resultRecordCount=1000&returnIdsOnly=true"
+    }
+  }
+}

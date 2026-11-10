@@ -1,0 +1,1571 @@
+{
+  "access_verified": false,
+  "anchors_adopted": false,
+  "approved_connectors": 0,
+  "geographic_coverage_certified": false,
+  "implementation_sha256": "7d2f210aa6804b946a7c66e0c6eb931899ba48219462af778880a0b31a733e25",
+  "manifest_sha256": "58ccf3f5a34405dbcd0a58b5fa57845dddc4ff8d383af0130ba5922e3b498ebb",
+  "points": [
+    {
+      "access_categories_grant_vehicle_permission": false,
+      "access_verified": false,
+      "anchor_adopted": false,
+      "bridge_inventory_comparison": {
+        "absence_is_grade_proof": false,
+        "independent_corroboration": false,
+        "layer0_only_structure_keys": [],
+        "layer31_only_structure_keys": [
+          "FCLIND-0.1-WLLW"
+        ],
+        "same_inventory": false,
+        "shared_structure_keys": []
+      },
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0827425",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 29.8667404569879,
+        "id": "fort-college",
+        "lonlat": [
+          -105.0771007,
+          40.5900781
+        ],
+        "node": 2068308017,
+        "way": 6169351
+      },
+      "coordinate_operation": {
+        "datum_operation": "inverse EPSG:1188",
+        "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=utm zone=13 ellps=GRS80",
+        "source": "EPSG:4326",
+        "stated_accuracy_is_error_bound": false,
+        "stated_datum_accuracy_m": 4.0,
+        "target": "EPSG:26913"
+      },
+      "grade_certified": false,
+      "inventories": {
+        "0": {
+          "bridges": [],
+          "class_counts": {},
+          "feature_count": 0,
+          "nearest_four_signals": [],
+          "object_ids": []
+        },
+        "31": {
+          "bridges": [
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": "Linden Street",
+                "FEATINT": "Cache La Poudre River",
+                "OBJECTID": 19398,
+                "ON_UNDER": "1C",
+                "REFPT": 0.0,
+                "ROUTE": "0",
+                "STRLENGTH": 205,
+                "STRUCTURE_CLASS": "Bridge",
+                "STRUCTURE_KEY": "FCLIND-0.1-WLLW",
+                "STRUCTURE_NUM": "FCLIND-0.1-WLLW",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "CPGC",
+                "YEARBUILT": "1984"
+              },
+              "nominal_point_distance_m": 471.72356992936943,
+              "source_geometry_sha256": "f2123a79f70a841654212179f8c858dc6fb363c2a6ab4ec3f6448e4940ccc5b6",
+              "source_point_native_m": [
+                493929.4559000004,
+                4493385.295299999
+              ]
+            }
+          ],
+          "class_counts": {
+            "Bridge": 1,
+            "Signal": 22
+          },
+          "feature_count": 23,
+          "nearest_four_signals": [
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": null,
+                "FEATINT": "EBND JEFFERSON",
+                "OBJECTID": 11671,
+                "ON_UNDER": "B",
+                "REFPT": 346.866,
+                "ROUTE": "287C",
+                "STRLENGTH": 45,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "287C346900A",
+                "STRUCTURE_NUM": "287C346900A",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": null
+              },
+              "nominal_point_distance_m": 68.1559134322444,
+              "source_geometry_sha256": "2b95c844b839701682fee36de0b27e19a682e6a8d5ad376ead6fce7d662a98dc",
+              "source_point_native_m": [
+                493493.69739999995,
+                4493322.0591
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": "-1",
+                "FEATINT": "SBND ML",
+                "OBJECTID": 11674,
+                "ON_UNDER": "B",
+                "REFPT": 346.867,
+                "ROUTE": "287C",
+                "STRLENGTH": 46,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "287C346900D",
+                "STRUCTURE_NUM": "287C346900D",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": "-1"
+              },
+              "nominal_point_distance_m": 68.24730985845865,
+              "source_geometry_sha256": "30bfe934e06c9c4736a3d610d09cd39c14a5071785ba4551f85a9bcc474d23b7",
+              "source_point_native_m": [
+                493469.6673999997,
+                4493324.3002
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": null,
+                "FEATINT": "NBND ML",
+                "OBJECTID": 11672,
+                "ON_UNDER": "B",
+                "REFPT": 346.878,
+                "ROUTE": "287C",
+                "STRLENGTH": 35,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "287C346900B",
+                "STRUCTURE_NUM": "287C346900B",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": null
+              },
+              "nominal_point_distance_m": 88.58280291874286,
+              "source_geometry_sha256": "d96af06a91b37a7dc035ea6a97f5d57b904044f6c6399c0946bb0c953c41bcd1",
+              "source_point_native_m": [
+                493495.32320000045,
+                4493342.704
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": "-1",
+                "FEATINT": "WBND MAPLE ST",
+                "OBJECTID": 11673,
+                "ON_UNDER": "B",
+                "REFPT": 346.881,
+                "ROUTE": "287C",
+                "STRLENGTH": 46,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "287C346900C",
+                "STRUCTURE_NUM": "287C346900C",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": "-1"
+              },
+              "nominal_point_distance_m": 92.64847756565926,
+              "source_geometry_sha256": "02b7e249e9f999a0ddbd4071cf7dbd30e6531a646bac26adff3218a3c53497ce",
+              "source_point_native_m": [
+                493467.57320000045,
+                4493348.611400001
+              ]
+            }
+          ],
+          "object_ids": [
+            1290,
+            1291,
+            1292,
+            1293,
+            11663,
+            11664,
+            11666,
+            11667,
+            11668,
+            11669,
+            11670,
+            11671,
+            11672,
+            11673,
+            11674,
+            11675,
+            11676,
+            11677,
+            11678,
+            11679,
+            11680,
+            11681,
+            19398
+          ]
+        },
+        "9": {
+          "feature_count": 3,
+          "object_ids": [
+            184,
+            903,
+            1020
+          ],
+          "recorded_osm_route_matches": [
+            {
+              "attributes": {
+                "ACCCAT": "NR-C: Non-Rural Arterial",
+                "ACCESS_": "NRC",
+                "ENDREFPT": 346.874,
+                "OBJECTID": 184,
+                "REFPT": 345.982,
+                "ROUTE": "287C"
+              },
+              "nominal_line_registration_m": 14.100638540639666,
+              "source_geometry_sha256": "7bb251436bb054c1fbe8fcb356304c0032a02184038207a7238ab6fe8caf5315"
+            },
+            {
+              "attributes": {
+                "ACCCAT": "NR-B: Non-Rural Arterial",
+                "ACCESS_": "NRB",
+                "ENDREFPT": 348.634,
+                "OBJECTID": 1020,
+                "REFPT": 346.874,
+                "ROUTE": "287C"
+              },
+              "nominal_line_registration_m": 80.95785635548525,
+              "source_geometry_sha256": "bf38f3b00b1c63dfb36e5757d261dd2bc6dac5150da6827bd9266634baf6d6bf"
+            }
+          ],
+          "records": [
+            {
+              "attributes": {
+                "ACCCAT": "NR-C: Non-Rural Arterial",
+                "ACCESS_": "NRC",
+                "ENDREFPT": 346.874,
+                "OBJECTID": 184,
+                "REFPT": 345.982,
+                "ROUTE": "287C"
+              },
+              "nominal_line_registration_m": 14.100638540639666,
+              "source_geometry_sha256": "7bb251436bb054c1fbe8fcb356304c0032a02184038207a7238ab6fe8caf5315"
+            },
+            {
+              "attributes": {
+                "ACCCAT": "NR-B: Non-Rural Arterial",
+                "ACCESS_": "NRB",
+                "ENDREFPT": 136.406,
+                "OBJECTID": 903,
+                "REFPT": 134.77,
+                "ROUTE": "014C"
+              },
+              "nominal_line_registration_m": 77.04724827578161,
+              "source_geometry_sha256": "64edaa7dd45bd50f43aac1ba0179943395bb56f474d920275b6d5cb2b60599d9"
+            },
+            {
+              "attributes": {
+                "ACCCAT": "NR-B: Non-Rural Arterial",
+                "ACCESS_": "NRB",
+                "ENDREFPT": 348.634,
+                "OBJECTID": 1020,
+                "REFPT": 346.874,
+                "ROUTE": "287C"
+              },
+              "nominal_line_registration_m": 80.95785635548525,
+              "source_geometry_sha256": "bf38f3b00b1c63dfb36e5757d261dd2bc6dac5150da6827bd9266634baf6d6bf"
+            }
+          ]
+        }
+      },
+      "nearby_direction_labels_assign_lane": false,
+      "osm_way_tags": {
+        "CDOT_route": "287C",
+        "highway": "trunk",
+        "name": "North College Avenue",
+        "oneway": "yes",
+        "ref": "US 287"
+      },
+      "query_is_complete_world_inventory": false,
+      "requested_query_radius_m": 500
+    },
+    {
+      "access_categories_grant_vehicle_permission": false,
+      "access_verified": false,
+      "anchor_adopted": false,
+      "bridge_inventory_comparison": {
+        "absence_is_grade_proof": false,
+        "independent_corroboration": false,
+        "layer0_only_structure_keys": [],
+        "layer31_only_structure_keys": [
+          "LOV150RAILRD AV",
+          "LOV150WASHTN AV"
+        ],
+        "same_inventory": false,
+        "shared_structure_keys": [
+          "C-16-BH",
+          "C-16-BI"
+        ]
+      },
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0846465",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 59.911688669495675,
+        "id": "loveland-lincoln",
+        "lonlat": [
+          -105.0731934,
+          40.3970269
+        ],
+        "node": 4543992892,
+        "way": 862924886
+      },
+      "coordinate_operation": {
+        "datum_operation": "inverse EPSG:1188",
+        "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=utm zone=13 ellps=GRS80",
+        "source": "EPSG:4326",
+        "stated_accuracy_is_error_bound": false,
+        "stated_datum_accuracy_m": 4.0,
+        "target": "EPSG:26913"
+      },
+      "grade_certified": false,
+      "inventories": {
+        "0": {
+          "bridges": [
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": "US 287 NBND",
+                "FEATINT": "GREELEY-LOVELAND CANAL",
+                "OBJECTID": 14073,
+                "ON_UNDER": "1C",
+                "REFPT": 333.053,
+                "ROUTE": "287C",
+                "STRLENGTH": 45,
+                "STRUCTURE_CLASS": "Bridge",
+                "STRUCTURE_KEY": "C-16-BI",
+                "STRUCTURE_NUM": "C-16-BI",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "CSP",
+                "YEARBUILT": "2002"
+              },
+              "nominal_point_distance_m": 447.6991976347493,
+              "source_geometry_sha256": "6767166362fcc43b13f1fec5b9f0365a6d2ba31d18b33222ecf29ef7a2fd4a87",
+              "source_point_native_m": [
+                493788.5033,
+                4471379.7084
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": "US287 SBND",
+                "FEATINT": "GREELEY-LOVELAND CANAL",
+                "OBJECTID": 14070,
+                "ON_UNDER": "1C",
+                "REFPT": 1.307,
+                "ROUTE": "287Z",
+                "STRLENGTH": 45,
+                "STRUCTURE_CLASS": "Bridge",
+                "STRUCTURE_KEY": "C-16-BH",
+                "STRUCTURE_NUM": "C-16-BH",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "CSP",
+                "YEARBUILT": "2003"
+              },
+              "nominal_point_distance_m": 471.8057809248843,
+              "source_geometry_sha256": "bc3515ce79088754ce501bb78d9f76b6422107d17b042ada49a5859ed662cb84",
+              "source_point_native_m": [
+                493678.16509999987,
+                4471368.7008
+              ]
+            }
+          ],
+          "class_counts": {
+            "Bridge": 2
+          },
+          "feature_count": 2,
+          "nearest_four_signals": [],
+          "object_ids": [
+            14070,
+            14073
+          ]
+        },
+        "31": {
+          "bridges": [
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": "US 287 NBND",
+                "FEATINT": "GREELEY-LOVELAND CANAL",
+                "OBJECTID": 14073,
+                "ON_UNDER": "1C",
+                "REFPT": 333.053,
+                "ROUTE": "287C",
+                "STRLENGTH": 45,
+                "STRUCTURE_CLASS": "Bridge",
+                "STRUCTURE_KEY": "C-16-BI",
+                "STRUCTURE_NUM": "C-16-BI",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "CSP",
+                "YEARBUILT": "2002"
+              },
+              "nominal_point_distance_m": 447.6991976347493,
+              "source_geometry_sha256": "6767166362fcc43b13f1fec5b9f0365a6d2ba31d18b33222ecf29ef7a2fd4a87",
+              "source_point_native_m": [
+                493788.5033,
+                4471379.7084
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": "US287 SBND",
+                "FEATINT": "GREELEY-LOVELAND CANAL",
+                "OBJECTID": 14070,
+                "ON_UNDER": "1C",
+                "REFPT": 1.307,
+                "ROUTE": "287Z",
+                "STRLENGTH": 45,
+                "STRUCTURE_CLASS": "Bridge",
+                "STRUCTURE_KEY": "C-16-BH",
+                "STRUCTURE_NUM": "C-16-BH",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "CSP",
+                "YEARBUILT": "2003"
+              },
+              "nominal_point_distance_m": 471.8057809248843,
+              "source_geometry_sha256": "bc3515ce79088754ce501bb78d9f76b6422107d17b042ada49a5859ed662cb84",
+              "source_point_native_m": [
+                493678.16509999987,
+                4471368.7008
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": "Washington Avenue",
+                "FEATINT": "Greeley Loveland Canal",
+                "OBJECTID": 22442,
+                "ON_UNDER": "1C",
+                "REFPT": 0.0,
+                "ROUTE": "0",
+                "STRLENGTH": 33,
+                "STRUCTURE_CLASS": "Bridge",
+                "STRUCTURE_KEY": "LOV150WASHTN AV",
+                "STRUCTURE_NUM": "LOV150WASHTN AV",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "CSG",
+                "YEARBUILT": "1922"
+              },
+              "nominal_point_distance_m": 486.7869914052253,
+              "source_geometry_sha256": "fc51c6c18c7c59335b11c6d801f8b95c2f9650e2417c6c1c23fda0847fc34857",
+              "source_point_native_m": [
+                494005.94579999987,
+                4471391.852299999
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": "Railroad Avenue",
+                "FEATINT": "Greeley Loveland Canal",
+                "OBJECTID": 22441,
+                "ON_UNDER": "1C",
+                "REFPT": 0.0,
+                "ROUTE": "0",
+                "STRLENGTH": 42,
+                "STRUCTURE_CLASS": "Bridge",
+                "STRUCTURE_KEY": "LOV150RAILRD AV",
+                "STRUCTURE_NUM": "LOV150RAILRD AV",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "CSG",
+                "YEARBUILT": "1917"
+              },
+              "nominal_point_distance_m": 497.2263409599932,
+              "source_geometry_sha256": "a2e920479c54ae5999b5406f5effb145addb079318b29c942ab732278b415d18",
+              "source_point_native_m": [
+                493532.0497000003,
+                4471401.458699999
+              ]
+            }
+          ],
+          "class_counts": {
+            "Bridge": 4,
+            "Signal": 28
+          },
+          "feature_count": 32,
+          "nearest_four_signals": [
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": null,
+                "FEATINT": "NBND ML",
+                "OBJECTID": 11504,
+                "ON_UNDER": "B",
+                "REFPT": 333.31,
+                "ROUTE": "287C",
+                "STRLENGTH": 46,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "287C333410B1",
+                "STRUCTURE_NUM": "287C333410B1",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": null
+              },
+              "nominal_point_distance_m": 47.25453185607367,
+              "source_geometry_sha256": "8a51a8c7a6daa86ccf77877c0930a77f4a45bdfa9e3bcc5b8ce05ce02da8efb7",
+              "source_point_native_m": [
+                493796.64279999956,
+                4471780.848099999
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": "Lincoln Ave.",
+                "FEATINT": "NBND ML",
+                "OBJECTID": 11498,
+                "ON_UNDER": "B",
+                "REFPT": 333.31,
+                "ROUTE": "287C",
+                "STRLENGTH": 24,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "287C333337B1",
+                "STRUCTURE_NUM": "287C333337B1",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": null
+              },
+              "nominal_point_distance_m": 47.298900379564174,
+              "source_geometry_sha256": "5ed5ca3ff88b259e331c3d91ec9e6ae492fddb9239b55b27c095b9b9e4d0ab81",
+              "source_point_native_m": [
+                493796.89740000013,
+                4471780.8478999995
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": null,
+                "FEATINT": "WB 5th Street",
+                "OBJECTID": 11499,
+                "ON_UNDER": "B",
+                "REFPT": 333.307,
+                "ROUTE": "287C",
+                "STRLENGTH": 30,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "287C333337C1",
+                "STRUCTURE_NUM": "287C333337C1",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": null
+              },
+              "nominal_point_distance_m": 51.815511693777054,
+              "source_geometry_sha256": "c60980932ca59f548050e415e5e573f6373c7a2cb6c63d671ec26818bc24647b",
+              "source_point_native_m": [
+                493778.733,
+                4471776.534
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": null,
+                "FEATINT": "WBND 6TH ST",
+                "OBJECTID": 11505,
+                "ON_UNDER": "B",
+                "REFPT": 333.307,
+                "ROUTE": "287C",
+                "STRLENGTH": 30,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "287C333410C1",
+                "STRUCTURE_NUM": "287C333410C1",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": null
+              },
+              "nominal_point_distance_m": 52.32587907827663,
+              "source_geometry_sha256": "b690b39c5a7756ae684bad6077728c2cc6c853f0bd14267cd2f38eaecb8a0027",
+              "source_point_native_m": [
+                493777.79920000024,
+                4471776.2018
+              ]
+            }
+          ],
+          "object_ids": [
+            11485,
+            11486,
+            11487,
+            11488,
+            11489,
+            11491,
+            11492,
+            11493,
+            11494,
+            11495,
+            11496,
+            11497,
+            11498,
+            11499,
+            11500,
+            11501,
+            11502,
+            11503,
+            11504,
+            11505,
+            11506,
+            11507,
+            11508,
+            11509,
+            11510,
+            11511,
+            11512,
+            11513,
+            14070,
+            14073,
+            22441,
+            22442
+          ]
+        },
+        "9": {
+          "feature_count": 2,
+          "object_ids": [
+            44,
+            828
+          ],
+          "recorded_osm_route_matches": [
+            {
+              "attributes": {
+                "ACCCAT": "NR-B: Non-Rural Arterial",
+                "ACCESS_": "NRB",
+                "ENDREFPT": 335.113,
+                "OBJECTID": 828,
+                "REFPT": 332.613,
+                "ROUTE": "287C"
+              },
+              "nominal_line_registration_m": 3.4757686239027956,
+              "source_geometry_sha256": "27d4ebc7ab1e30cf13abf6befb42a7d1dc62a9cfdf45f434c8f624ccacf2afff"
+            }
+          ],
+          "records": [
+            {
+              "attributes": {
+                "ACCCAT": "NR-B: Non-Rural Arterial",
+                "ACCESS_": "NRB",
+                "ENDREFPT": 335.113,
+                "OBJECTID": 828,
+                "REFPT": 332.613,
+                "ROUTE": "287C"
+              },
+              "nominal_line_registration_m": 3.4757686239027956,
+              "source_geometry_sha256": "27d4ebc7ab1e30cf13abf6befb42a7d1dc62a9cfdf45f434c8f624ccacf2afff"
+            },
+            {
+              "attributes": {
+                "ACCCAT": "NR-B: Non-Rural Arterial",
+                "ACCESS_": "NRB",
+                "ENDREFPT": 1.763,
+                "OBJECTID": 44,
+                "REFPT": 0.0,
+                "ROUTE": "287Z"
+              },
+              "nominal_line_registration_m": 109.53695489095688,
+              "source_geometry_sha256": "0dcf59762ee523cd2fd86d977170e47edf4884f197e44d580c48d3686f6c5a52"
+            }
+          ]
+        }
+      },
+      "nearby_direction_labels_assign_lane": false,
+      "osm_way_tags": {
+        "CDOT_route": "287C",
+        "highway": "trunk",
+        "name": "North Lincoln Avenue",
+        "oneway": "yes",
+        "ref": "US 287"
+      },
+      "query_is_complete_world_inventory": false,
+      "requested_query_radius_m": 500
+    },
+    {
+      "access_categories_grant_vehicle_permission": false,
+      "access_verified": false,
+      "anchor_adopted": false,
+      "bridge_inventory_comparison": {
+        "absence_is_grade_proof": false,
+        "independent_corroboration": false,
+        "layer0_only_structure_keys": [],
+        "layer31_only_structure_keys": [
+          "LOV150RAILRD AV"
+        ],
+        "same_inventory": false,
+        "shared_structure_keys": [
+          "C-16-BH",
+          "C-16-BI"
+        ]
+      },
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0846465",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 91.38673655732813,
+        "id": "loveland-cleveland",
+        "lonlat": [
+          -105.0745222,
+          40.3970413
+        ],
+        "node": 4543992893,
+        "way": 850007405
+      },
+      "coordinate_operation": {
+        "datum_operation": "inverse EPSG:1188",
+        "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=utm zone=13 ellps=GRS80",
+        "source": "EPSG:4326",
+        "stated_accuracy_is_error_bound": false,
+        "stated_datum_accuracy_m": 4.0,
+        "target": "EPSG:26913"
+      },
+      "grade_certified": false,
+      "inventories": {
+        "0": {
+          "bridges": [
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": "US287 SBND",
+                "FEATINT": "GREELEY-LOVELAND CANAL",
+                "OBJECTID": 14070,
+                "ON_UNDER": "1C",
+                "REFPT": 1.307,
+                "ROUTE": "287Z",
+                "STRLENGTH": 45,
+                "STRUCTURE_CLASS": "Bridge",
+                "STRUCTURE_KEY": "C-16-BH",
+                "STRUCTURE_NUM": "C-16-BH",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "CSP",
+                "YEARBUILT": "2003"
+              },
+              "nominal_point_distance_m": 460.4054291106249,
+              "source_geometry_sha256": "bc3515ce79088754ce501bb78d9f76b6422107d17b042ada49a5859ed662cb84",
+              "source_point_native_m": [
+                493678.16509999987,
+                4471368.7008
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": "US 287 NBND",
+                "FEATINT": "GREELEY-LOVELAND CANAL",
+                "OBJECTID": 14073,
+                "ON_UNDER": "1C",
+                "REFPT": 333.053,
+                "ROUTE": "287C",
+                "STRLENGTH": 45,
+                "STRUCTURE_CLASS": "Bridge",
+                "STRUCTURE_KEY": "C-16-BI",
+                "STRUCTURE_NUM": "C-16-BI",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "CSP",
+                "YEARBUILT": "2002"
+              },
+              "nominal_point_distance_m": 463.30804634123143,
+              "source_geometry_sha256": "6767166362fcc43b13f1fec5b9f0365a6d2ba31d18b33222ecf29ef7a2fd4a87",
+              "source_point_native_m": [
+                493788.5033,
+                4471379.7084
+              ]
+            }
+          ],
+          "class_counts": {
+            "Bridge": 2
+          },
+          "feature_count": 2,
+          "nearest_four_signals": [],
+          "object_ids": [
+            14070,
+            14073
+          ]
+        },
+        "31": {
+          "bridges": [
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": "Railroad Avenue",
+                "FEATINT": "Greeley Loveland Canal",
+                "OBJECTID": 22441,
+                "ON_UNDER": "1C",
+                "REFPT": 0.0,
+                "ROUTE": "0",
+                "STRLENGTH": 42,
+                "STRUCTURE_CLASS": "Bridge",
+                "STRUCTURE_KEY": "LOV150RAILRD AV",
+                "STRUCTURE_NUM": "LOV150RAILRD AV",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "CSG",
+                "YEARBUILT": "1917"
+              },
+              "nominal_point_distance_m": 451.1565184967071,
+              "source_geometry_sha256": "a2e920479c54ae5999b5406f5effb145addb079318b29c942ab732278b415d18",
+              "source_point_native_m": [
+                493532.0497000003,
+                4471401.458699999
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": "US287 SBND",
+                "FEATINT": "GREELEY-LOVELAND CANAL",
+                "OBJECTID": 14070,
+                "ON_UNDER": "1C",
+                "REFPT": 1.307,
+                "ROUTE": "287Z",
+                "STRLENGTH": 45,
+                "STRUCTURE_CLASS": "Bridge",
+                "STRUCTURE_KEY": "C-16-BH",
+                "STRUCTURE_NUM": "C-16-BH",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "CSP",
+                "YEARBUILT": "2003"
+              },
+              "nominal_point_distance_m": 460.4054291106249,
+              "source_geometry_sha256": "bc3515ce79088754ce501bb78d9f76b6422107d17b042ada49a5859ed662cb84",
+              "source_point_native_m": [
+                493678.16509999987,
+                4471368.7008
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": "US 287 NBND",
+                "FEATINT": "GREELEY-LOVELAND CANAL",
+                "OBJECTID": 14073,
+                "ON_UNDER": "1C",
+                "REFPT": 333.053,
+                "ROUTE": "287C",
+                "STRLENGTH": 45,
+                "STRUCTURE_CLASS": "Bridge",
+                "STRUCTURE_KEY": "C-16-BI",
+                "STRUCTURE_NUM": "C-16-BI",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "CSP",
+                "YEARBUILT": "2002"
+              },
+              "nominal_point_distance_m": 463.30804634123143,
+              "source_geometry_sha256": "6767166362fcc43b13f1fec5b9f0365a6d2ba31d18b33222ecf29ef7a2fd4a87",
+              "source_point_native_m": [
+                493788.5033,
+                4471379.7084
+              ]
+            }
+          ],
+          "class_counts": {
+            "Bridge": 3,
+            "Signal": 28
+          },
+          "feature_count": 31,
+          "nearest_four_signals": [
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": null,
+                "FEATINT": "EBND 6TH ST",
+                "OBJECTID": 11506,
+                "ON_UNDER": "B",
+                "REFPT": 333.369,
+                "ROUTE": "287C",
+                "STRLENGTH": 86,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "287C333420A1",
+                "STRUCTURE_NUM": "287C333420A1",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": null
+              },
+              "nominal_point_distance_m": 49.61724826163447,
+              "source_geometry_sha256": "9bfe34e100c5158111930ad40087e7925aa0b02747e830f6e97ec13c48039746",
+              "source_point_native_m": [
+                493689.7101999996,
+                4471876.728499999
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": null,
+                "FEATINT": "WBND 6TH ST",
+                "OBJECTID": 11507,
+                "ON_UNDER": "B",
+                "REFPT": 333.379,
+                "ROUTE": "287C",
+                "STRLENGTH": 32,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "287C333420C1",
+                "STRUCTURE_NUM": "287C333420C1",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": null
+              },
+              "nominal_point_distance_m": 65.77736237760965,
+              "source_geometry_sha256": "133d56205792fd8e8cdb8102cef864fd414f601b69ad02757d6dbcbc0b7598a0",
+              "source_point_native_m": [
+                493663.5867999997,
+                4471893.733200001
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": null,
+                "FEATINT": "WBND 6TH ST",
+                "OBJECTID": 11505,
+                "ON_UNDER": "B",
+                "REFPT": 333.307,
+                "ROUTE": "287C",
+                "STRLENGTH": 30,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "287C333410C1",
+                "STRUCTURE_NUM": "287C333410C1",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": null
+              },
+              "nominal_point_distance_m": 114.89771896905293,
+              "source_geometry_sha256": "b690b39c5a7756ae684bad6077728c2cc6c853f0bd14267cd2f38eaecb8a0027",
+              "source_point_native_m": [
+                493777.79920000024,
+                4471776.2018
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": null,
+                "FEATINT": "WB 5th Street",
+                "OBJECTID": 11499,
+                "ON_UNDER": "B",
+                "REFPT": 333.307,
+                "ROUTE": "287C",
+                "STRLENGTH": 30,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "287C333337C1",
+                "STRUCTURE_NUM": "287C333337C1",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": null
+              },
+              "nominal_point_distance_m": 115.5759958028795,
+              "source_geometry_sha256": "c60980932ca59f548050e415e5e573f6373c7a2cb6c63d671ec26818bc24647b",
+              "source_point_native_m": [
+                493778.733,
+                4471776.534
+              ]
+            }
+          ],
+          "object_ids": [
+            11486,
+            11487,
+            11488,
+            11489,
+            11490,
+            11491,
+            11492,
+            11493,
+            11494,
+            11495,
+            11496,
+            11497,
+            11498,
+            11499,
+            11500,
+            11501,
+            11502,
+            11503,
+            11504,
+            11505,
+            11506,
+            11507,
+            11508,
+            11509,
+            11510,
+            11511,
+            11512,
+            11513,
+            14070,
+            14073,
+            22441
+          ]
+        },
+        "9": {
+          "feature_count": 2,
+          "object_ids": [
+            44,
+            828
+          ],
+          "recorded_osm_route_matches": [
+            {
+              "attributes": {
+                "ACCCAT": "NR-B: Non-Rural Arterial",
+                "ACCESS_": "NRB",
+                "ENDREFPT": 1.763,
+                "OBJECTID": 44,
+                "REFPT": 0.0,
+                "ROUTE": "287Z"
+              },
+              "nominal_line_registration_m": 3.2377965037849834,
+              "source_geometry_sha256": "0dcf59762ee523cd2fd86d977170e47edf4884f197e44d580c48d3686f6c5a52"
+            }
+          ],
+          "records": [
+            {
+              "attributes": {
+                "ACCCAT": "NR-B: Non-Rural Arterial",
+                "ACCESS_": "NRB",
+                "ENDREFPT": 1.763,
+                "OBJECTID": 44,
+                "REFPT": 0.0,
+                "ROUTE": "287Z"
+              },
+              "nominal_line_registration_m": 3.2377965037849834,
+              "source_geometry_sha256": "0dcf59762ee523cd2fd86d977170e47edf4884f197e44d580c48d3686f6c5a52"
+            },
+            {
+              "attributes": {
+                "ACCCAT": "NR-B: Non-Rural Arterial",
+                "ACCESS_": "NRB",
+                "ENDREFPT": 335.113,
+                "OBJECTID": 828,
+                "REFPT": 332.613,
+                "ROUTE": "287C"
+              },
+              "nominal_line_registration_m": 109.05631732655281,
+              "source_geometry_sha256": "27d4ebc7ab1e30cf13abf6befb42a7d1dc62a9cfdf45f434c8f624ccacf2afff"
+            }
+          ]
+        }
+      },
+      "nearby_direction_labels_assign_lane": false,
+      "osm_way_tags": {
+        "CDOT_route": "287Z",
+        "highway": "trunk",
+        "name": "North Cleveland Avenue",
+        "oneway": "yes",
+        "ref": "US 287"
+      },
+      "query_is_complete_world_inventory": false,
+      "requested_query_radius_m": 500
+    },
+    {
+      "access_categories_grant_vehicle_permission": false,
+      "access_verified": false,
+      "anchor_adopted": false,
+      "bridge_inventory_comparison": {
+        "absence_is_grade_proof": false,
+        "independent_corroboration": false,
+        "layer0_only_structure_keys": [],
+        "layer31_only_structure_keys": [],
+        "same_inventory": true,
+        "shared_structure_keys": []
+      },
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0832155",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 644.7069294373161,
+        "id": "greeley-ninth",
+        "lonlat": [
+          -104.6948769,
+          40.4239405
+        ],
+        "node": 7432996608,
+        "way": 99825591
+      },
+      "coordinate_operation": {
+        "datum_operation": "inverse EPSG:1188",
+        "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=utm zone=13 ellps=GRS80",
+        "source": "EPSG:4326",
+        "stated_accuracy_is_error_bound": false,
+        "stated_datum_accuracy_m": 4.0,
+        "target": "EPSG:26913"
+      },
+      "grade_certified": false,
+      "inventories": {
+        "0": {
+          "bridges": [],
+          "class_counts": {},
+          "feature_count": 0,
+          "nearest_four_signals": [],
+          "object_ids": []
+        },
+        "31": {
+          "bridges": [],
+          "class_counts": {
+            "Signal": 30
+          },
+          "feature_count": 30,
+          "nearest_four_signals": [
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": null,
+                "FEATINT": "WBND ML",
+                "OBJECTID": 3212,
+                "ON_UNDER": "B",
+                "REFPT": 0.102,
+                "ROUTE": "034Z",
+                "STRLENGTH": 25,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "034Z000141D",
+                "STRUCTURE_NUM": "034Z000141D",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": null
+              },
+              "nominal_point_distance_m": 26.52595042632169,
+              "source_geometry_sha256": "1dd84b2fcb0c3db2189822d3db4e40af3142f47c14f2b1109e488d87a70c868d",
+              "source_point_native_m": [
+                525907.5082,
+                4474868.065099999
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": null,
+                "FEATINT": "SBND 10TH AVE",
+                "OBJECTID": 3210,
+                "ON_UNDER": "B",
+                "REFPT": 0.085,
+                "ROUTE": "034Z",
+                "STRLENGTH": 31,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "034Z000141A",
+                "STRUCTURE_NUM": "034Z000141A",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": null
+              },
+              "nominal_point_distance_m": 31.227466217897163,
+              "source_geometry_sha256": "94264228a478dbc7fad743a3327fbdb2df4058c1faf48dd712b00f6eac156e36",
+              "source_point_native_m": [
+                525910.6538000004,
+                4474841.547
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": null,
+                "FEATINT": "NBND 10TH AVE",
+                "OBJECTID": 3211,
+                "ON_UNDER": "B",
+                "REFPT": 0.094,
+                "ROUTE": "034Z",
+                "STRLENGTH": 31,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "034Z000141C",
+                "STRUCTURE_NUM": "034Z000141C",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": null
+              },
+              "nominal_point_distance_m": 53.10464714911601,
+              "source_geometry_sha256": "a7e523122400b3d5d1105f478282ac9d79aa16bd807040715473b2b3fd13d31d",
+              "source_point_native_m": [
+                525934.2144999998,
+                4474872.486500001
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": null,
+                "FEATINT": "NBND 11TH AVE",
+                "OBJECTID": 3215,
+                "ON_UNDER": "B",
+                "REFPT": 0.18,
+                "ROUTE": "034Z",
+                "STRLENGTH": 25,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "034Z000235C",
+                "STRUCTURE_NUM": "034Z000235C",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": null
+              },
+              "nominal_point_distance_m": 106.69898503893661,
+              "source_geometry_sha256": "35184b42266179d75817848a4d8efa5e8b5f01dad8af00a0a70fa13101b8ea09",
+              "source_point_native_m": [
+                525778.3709000004,
+                4474875.389900001
+              ]
+            }
+          ],
+          "object_ids": [
+            3170,
+            3171,
+            3172,
+            3173,
+            3174,
+            3175,
+            3176,
+            3177,
+            3178,
+            3179,
+            3180,
+            3181,
+            3182,
+            3183,
+            3184,
+            3210,
+            3211,
+            3212,
+            3213,
+            3214,
+            3215,
+            3216,
+            7527,
+            7528,
+            7529,
+            7530,
+            7531,
+            7532,
+            7533,
+            7534
+          ]
+        },
+        "9": {
+          "feature_count": 3,
+          "object_ids": [
+            97,
+            654,
+            1005
+          ],
+          "recorded_osm_route_matches": [
+            {
+              "attributes": {
+                "ACCCAT": "NR-C: Non-Rural Arterial",
+                "ACCESS_": "NRC",
+                "ENDREFPT": 1.239,
+                "OBJECTID": 1005,
+                "REFPT": 0.0,
+                "ROUTE": "034Z"
+              },
+              "nominal_line_registration_m": 0.1542381129553128,
+              "source_geometry_sha256": "5313f751a52f6146403049e0458bfe67f81e0815d561821f3272df7fecba90a0"
+            }
+          ],
+          "records": [
+            {
+              "attributes": {
+                "ACCCAT": "NR-C: Non-Rural Arterial",
+                "ACCESS_": "NRC",
+                "ENDREFPT": 1.239,
+                "OBJECTID": 1005,
+                "REFPT": 0.0,
+                "ROUTE": "034Z"
+              },
+              "nominal_line_registration_m": 0.1542381129553128,
+              "source_geometry_sha256": "5313f751a52f6146403049e0458bfe67f81e0815d561821f3272df7fecba90a0"
+            },
+            {
+              "attributes": {
+                "ACCCAT": "NR-C: Non-Rural Arterial",
+                "ACCESS_": "NRC",
+                "ENDREFPT": 11.749,
+                "OBJECTID": 654,
+                "REFPT": 8.768,
+                "ROUTE": "034D"
+              },
+              "nominal_line_registration_m": 151.8744739367116,
+              "source_geometry_sha256": "163bc6fa9f9edd5ee81bf323ec761a97d81fbd9c0cc3e19e0f1effc250b49a60"
+            },
+            {
+              "attributes": {
+                "ACCCAT": "NR-C: Non-Rural Arterial",
+                "ACCESS_": "NRC",
+                "ENDREFPT": 0.416,
+                "OBJECTID": 97,
+                "REFPT": 0.0,
+                "ROUTE": "085H"
+              },
+              "nominal_line_registration_m": 349.67609376220935,
+              "source_geometry_sha256": "6c1918913f87f62358f67b3b154c6186dc13d57546fea8f50c0fbca72ff075ea"
+            }
+          ]
+        }
+      },
+      "nearby_direction_labels_assign_lane": false,
+      "osm_way_tags": {
+        "CDOT_route": "034Z",
+        "highway": "primary",
+        "name": "9th Street",
+        "oneway": "yes",
+        "ref": "US 34 Business"
+      },
+      "query_is_complete_world_inventory": false,
+      "requested_query_radius_m": 500
+    },
+    {
+      "access_categories_grant_vehicle_permission": false,
+      "access_verified": false,
+      "anchor_adopted": false,
+      "bridge_inventory_comparison": {
+        "absence_is_grade_proof": false,
+        "independent_corroboration": false,
+        "layer0_only_structure_keys": [],
+        "layer31_only_structure_keys": [],
+        "same_inventory": true,
+        "shared_structure_keys": []
+      },
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0832155",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 325.6835649657252,
+        "id": "greeley-tenth",
+        "lonlat": [
+          -104.6909798,
+          40.4225311
+        ],
+        "node": 11969991394,
+        "way": 1291045341
+      },
+      "coordinate_operation": {
+        "datum_operation": "inverse EPSG:1188",
+        "projection_definition": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=utm zone=13 ellps=GRS80",
+        "source": "EPSG:4326",
+        "stated_accuracy_is_error_bound": false,
+        "stated_datum_accuracy_m": 4.0,
+        "target": "EPSG:26913"
+      },
+      "grade_certified": false,
+      "inventories": {
+        "0": {
+          "bridges": [],
+          "class_counts": {},
+          "feature_count": 0,
+          "nearest_four_signals": [],
+          "object_ids": []
+        },
+        "31": {
+          "bridges": [],
+          "class_counts": {
+            "Signal": 33
+          },
+          "feature_count": 33,
+          "nearest_four_signals": [
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": null,
+                "FEATINT": "WBND ML",
+                "OBJECTID": 3184,
+                "ON_UNDER": "B",
+                "REFPT": 10.183,
+                "ROUTE": "034D",
+                "STRLENGTH": 37,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "034D010191D",
+                "STRUCTURE_NUM": "034D010191D",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": null
+              },
+              "nominal_point_distance_m": 12.606176879603039,
+              "source_geometry_sha256": "1d3c1c72d44587fd1a45aece5cf98b97f61cd4cc392cb4e1fcecce98d741fdf2",
+              "source_point_native_m": [
+                526210.1306999996,
+                4474713.384299999
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": null,
+                "FEATINT": "EB ML (SB 8TH AVE)",
+                "OBJECTID": 3181,
+                "ON_UNDER": "B",
+                "REFPT": 10.206,
+                "ROUTE": "034D",
+                "STRLENGTH": 30,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "034D010191A",
+                "STRUCTURE_NUM": "034D010191A",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": null
+              },
+              "nominal_point_distance_m": 15.301081505179646,
+              "source_geometry_sha256": "bdd5c8a42251a68850f8b72c8e515d95b7463eb11f19f8baaf3f0830ba43696f",
+              "source_point_native_m": [
+                526213.7883000001,
+                4474686.313100001
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": null,
+                "FEATINT": "NBND 8TH AVE/US 85 BUS",
+                "OBJECTID": 3183,
+                "ON_UNDER": "B",
+                "REFPT": 10.194,
+                "ROUTE": "034D",
+                "STRLENGTH": 31,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "034D010191C",
+                "STRUCTURE_NUM": "034D010191C",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": null
+              },
+              "nominal_point_distance_m": 30.773492580381582,
+              "source_geometry_sha256": "52eb993b02a72b0b80db6a8bd16663723965f4b132ab4b35a071b067656af39e",
+              "source_point_native_m": [
+                526240.3130999999,
+                4474718.4848
+              ]
+            },
+            {
+              "attributes": {
+                "ENDREFPT": null,
+                "FACILITY": null,
+                "FEATINT": "EBND 10TH ST",
+                "OBJECTID": 3182,
+                "ON_UNDER": "B",
+                "REFPT": 10.194,
+                "ROUTE": "034D",
+                "STRLENGTH": 37,
+                "STRUCTURE_CLASS": "Signal",
+                "STRUCTURE_KEY": "034D010191B",
+                "STRUCTURE_NUM": "034D010191B",
+                "STRUCTURE_STATUS": 3,
+                "STRUCTURE_TYPE": "SGNAL",
+                "YEARBUILT": null
+              },
+              "nominal_point_distance_m": 31.170787677764466,
+              "source_geometry_sha256": "45d847da68106856fa8f27275851da18e20470383fea671f08cb71df709cdc70",
+              "source_point_native_m": [
+                526243.4672999997,
+                4474689.857899999
+              ]
+            }
+          ],
+          "object_ids": [
+            3170,
+            3171,
+            3172,
+            3173,
+            3174,
+            3175,
+            3176,
+            3177,
+            3178,
+            3179,
+            3180,
+            3181,
+            3182,
+            3183,
+            3184,
+            3185,
+            3186,
+            3187,
+            3210,
+            3211,
+            3212,
+            3213,
+            3214,
+            3215,
+            3216,
+            7527,
+            7528,
+            7529,
+            7530,
+            7531,
+            7532,
+            7533,
+            7534
+          ]
+        },
+        "9": {
+          "feature_count": 3,
+          "object_ids": [
+            97,
+            654,
+            1005
+          ],
+          "recorded_osm_route_matches": [
+            {
+              "attributes": {
+                "ACCCAT": "NR-C: Non-Rural Arterial",
+                "ACCESS_": "NRC",
+                "ENDREFPT": 11.749,
+                "OBJECTID": 654,
+                "REFPT": 8.768,
+                "ROUTE": "034D"
+              },
+              "nominal_line_registration_m": 1.3768847632280747,
+              "source_geometry_sha256": "163bc6fa9f9edd5ee81bf323ec761a97d81fbd9c0cc3e19e0f1effc250b49a60"
+            }
+          ],
+          "records": [
+            {
+              "attributes": {
+                "ACCCAT": "NR-C: Non-Rural Arterial",
+                "ACCESS_": "NRC",
+                "ENDREFPT": 11.749,
+                "OBJECTID": 654,
+                "REFPT": 8.768,
+                "ROUTE": "034D"
+              },
+              "nominal_line_registration_m": 1.3768847632280747,
+              "source_geometry_sha256": "163bc6fa9f9edd5ee81bf323ec761a97d81fbd9c0cc3e19e0f1effc250b49a60"
+            },
+            {
+              "attributes": {
+                "ACCCAT": "NR-C: Non-Rural Arterial",
+                "ACCESS_": "NRC",
+                "ENDREFPT": 0.416,
+                "OBJECTID": 97,
+                "REFPT": 0.0,
+                "ROUTE": "085H"
+              },
+              "nominal_line_registration_m": 12.912565488491934,
+              "source_geometry_sha256": "6c1918913f87f62358f67b3b154c6186dc13d57546fea8f50c0fbca72ff075ea"
+            },
+            {
+              "attributes": {
+                "ACCCAT": "NR-C: Non-Rural Arterial",
+                "ACCESS_": "NRC",
+                "ENDREFPT": 1.239,
+                "OBJECTID": 1005,
+                "REFPT": 0.0,
+                "ROUTE": "034Z"
+              },
+              "nominal_line_registration_m": 296.99543427117806,
+              "source_geometry_sha256": "5313f751a52f6146403049e0458bfe67f81e0815d561821f3272df7fecba90a0"
+            }
+          ]
+        }
+      },
+      "nearby_direction_labels_assign_lane": false,
+      "osm_way_tags": {
+        "CDOT_route": "034D",
+        "highway": "primary",
+        "name": "10th Street",
+        "ref": "US 34 Business"
+      },
+      "query_is_complete_world_inventory": false,
+      "requested_query_radius_m": 500
+    }
+  ],
+  "release_eligible": false,
+  "schema": "northern-cdot-structure-context-v1",
+  "scope": "Nearby state structure points, literal signal labels and highway access classifications only. Separate source queries have complete returned ID inventories, not a complete world survey. A structure point is not a bridge footprint; a signal point/label is not an assigned lane or a turn rule. Different CDOT layers share a publisher and are not independent corroboration. Do not infer no bridge from zero returned bridge points, or legal car entry from an arterial classification. Native coordinate registration has stated datum accuracy, not a certified error bound or connector cost. No grade, current legal/physical access, anchor adoption, route optimality or geographic coverage is certified."
+}
