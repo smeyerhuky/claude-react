@@ -1,0 +1,266 @@
+{
+  "candidates": [
+    {
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0827425",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 29.8667404569879,
+        "id": "fort-college",
+        "lonlat": [
+          -105.0771007,
+          40.5900781
+        ],
+        "node": 2068308017,
+        "way": 6169351
+      },
+      "raw_node": {
+        "id": 2068308017,
+        "lonlat": [
+          -105.0771007,
+          40.5900781
+        ],
+        "tags": {}
+      },
+      "raw_way": {
+        "id": 6169351,
+        "local_geometry": [
+          [
+            1819705153,
+            -105.0771003,
+            40.5901326
+          ],
+          [
+            2068308017,
+            -105.0771007,
+            40.5900781
+          ],
+          [
+            3707437475,
+            -105.0771018,
+            40.5892483
+          ]
+        ],
+        "raw_node_index": 3,
+        "tags": {
+          "CDOT_route": "287C",
+          "highway": "trunk",
+          "name": "North College Avenue",
+          "oneway": "yes",
+          "ref": "US 287"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0846465",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 59.911688669495675,
+        "id": "loveland-lincoln",
+        "lonlat": [
+          -105.0731934,
+          40.3970269
+        ],
+        "node": 4543992892,
+        "way": 862924886
+      },
+      "raw_node": {
+        "id": 4543992892,
+        "lonlat": [
+          -105.0731934,
+          40.3970269
+        ],
+        "tags": {}
+      },
+      "raw_way": {
+        "id": 862924886,
+        "local_geometry": [
+          [
+            51113860,
+            -105.0732012,
+            40.3964979
+          ],
+          [
+            4543992892,
+            -105.0731934,
+            40.3970269
+          ],
+          [
+            51173150,
+            -105.0731861,
+            40.39753
+          ]
+        ],
+        "raw_node_index": 3,
+        "tags": {
+          "CDOT_route": "287C",
+          "highway": "trunk",
+          "name": "North Lincoln Avenue",
+          "oneway": "yes",
+          "ref": "US 287"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0846465",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 91.38673655732813,
+        "id": "loveland-cleveland",
+        "lonlat": [
+          -105.0745222,
+          40.3970413
+        ],
+        "node": 4543992893,
+        "way": 850007405
+      },
+      "raw_node": {
+        "id": 4543992893,
+        "lonlat": [
+          -105.0745222,
+          40.3970413
+        ],
+        "tags": {}
+      },
+      "raw_way": {
+        "id": 850007405,
+        "local_geometry": [
+          [
+            50823174,
+            -105.074514,
+            40.3975472
+          ],
+          [
+            4543992893,
+            -105.0745222,
+            40.3970413
+          ],
+          [
+            7930245025,
+            -105.0745283,
+            40.3966938
+          ]
+        ],
+        "raw_node_index": 1,
+        "tags": {
+          "CDOT_route": "287Z",
+          "highway": "trunk",
+          "name": "North Cleveland Avenue",
+          "oneway": "yes",
+          "ref": "US 287"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0832155",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 644.7069294373161,
+        "id": "greeley-ninth",
+        "lonlat": [
+          -104.6948769,
+          40.4239405
+        ],
+        "node": 7432996608,
+        "way": 99825591
+      },
+      "raw_node": {
+        "id": 7432996608,
+        "lonlat": [
+          -104.6948769,
+          40.4239405
+        ],
+        "tags": {}
+      },
+      "raw_way": {
+        "id": 99825591,
+        "local_geometry": [
+          [
+            3364738093,
+            -104.6945858,
+            40.4239389
+          ],
+          [
+            7432996608,
+            -104.6948769,
+            40.4239405
+          ],
+          [
+            13297118161,
+            -104.6952184,
+            40.4239424
+          ]
+        ],
+        "raw_node_index": 2,
+        "tags": {
+          "CDOT_route": "034Z",
+          "highway": "primary",
+          "name": "9th Street",
+          "oneway": "yes",
+          "ref": "US 34 Business"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "anchor_adopted": false,
+        "city": "0832155",
+        "context_displacement_is_connector": false,
+        "context_displacement_m": 325.6835649657252,
+        "id": "greeley-tenth",
+        "lonlat": [
+          -104.6909798,
+          40.4225311
+        ],
+        "node": 11969991394,
+        "way": 1291045341
+      },
+      "raw_node": {
+        "id": 11969991394,
+        "lonlat": [
+          -104.6909798,
+          40.4225311
+        ],
+        "tags": {}
+      },
+      "raw_way": {
+        "id": 1291045341,
+        "local_geometry": [
+          [
+            11794859652,
+            -104.6910097,
+            40.4225315
+          ],
+          [
+            11969991394,
+            -104.6909798,
+            40.4225311
+          ],
+          [
+            55811306,
+            -104.6909108,
+            40.4225303
+          ]
+        ],
+        "raw_node_index": 2,
+        "tags": {
+          "CDOT_route": "034D",
+          "highway": "primary",
+          "name": "10th Street",
+          "ref": "US 34 Business"
+        }
+      }
+    }
+  ],
+  "report_sha256": "194ea64e64bc785fe9778a4e67144126ed7c37a9ed2c77c9cfd3bde1418c6769",
+  "schema": "northern-native-endpoint-source-projection-v1",
+  "source_identity": {
+    "name": "colorado.osm.pbf",
+    "replication_timestamp": "2026-10-27T21:23:59Z",
+    "sha256": "ef1f9e0832de42ccae2b5614d9d1a00ec41d1b6506e4ca9ef12e1eb895e5d4b7",
+    "size_bytes": 386197077
+  }
+}
